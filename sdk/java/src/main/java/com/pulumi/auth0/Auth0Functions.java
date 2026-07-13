@@ -60,6 +60,10 @@ import com.pulumi.auth0.inputs.GetPromptScreenPartialsArgs;
 import com.pulumi.auth0.inputs.GetPromptScreenPartialsPlainArgs;
 import com.pulumi.auth0.inputs.GetPromptScreenRendererArgs;
 import com.pulumi.auth0.inputs.GetPromptScreenRendererPlainArgs;
+import com.pulumi.auth0.inputs.GetRateLimitPoliciesArgs;
+import com.pulumi.auth0.inputs.GetRateLimitPoliciesPlainArgs;
+import com.pulumi.auth0.inputs.GetRateLimitPolicyArgs;
+import com.pulumi.auth0.inputs.GetRateLimitPolicyPlainArgs;
 import com.pulumi.auth0.inputs.GetResourceServerArgs;
 import com.pulumi.auth0.inputs.GetResourceServerPlainArgs;
 import com.pulumi.auth0.inputs.GetRoleArgs;
@@ -107,6 +111,8 @@ import com.pulumi.auth0.outputs.GetPhoneNotificationTemplateResult;
 import com.pulumi.auth0.outputs.GetPhoneProviderResult;
 import com.pulumi.auth0.outputs.GetPromptScreenPartialsResult;
 import com.pulumi.auth0.outputs.GetPromptScreenRendererResult;
+import com.pulumi.auth0.outputs.GetRateLimitPoliciesResult;
+import com.pulumi.auth0.outputs.GetRateLimitPolicyResult;
 import com.pulumi.auth0.outputs.GetResourceServerResult;
 import com.pulumi.auth0.outputs.GetRoleResult;
 import com.pulumi.auth0.outputs.GetSelfServiceProfileResult;
@@ -7620,6 +7626,500 @@ public final class Auth0Functions {
      */
     public static CompletableFuture<GetPromptScreenRendererResult> getPromptScreenRendererPlain(GetPromptScreenRendererPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getPromptScreenRenderer:getPromptScreenRenderer", TypeShape.of(GetPromptScreenRendererResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve Rate Limit Policies, optionally filtered by resource, consumer, or consumer selector. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetRateLimitPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = Auth0Functions.getRateLimitPolicies(GetRateLimitPoliciesArgs.builder()
+     *             .resource("oauth_authentication_api")
+     *             .consumer("client")
+     *             .consumerSelector("default")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRateLimitPoliciesResult> getRateLimitPolicies() {
+        return getRateLimitPolicies(GetRateLimitPoliciesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve Rate Limit Policies, optionally filtered by resource, consumer, or consumer selector. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetRateLimitPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = Auth0Functions.getRateLimitPolicies(GetRateLimitPoliciesArgs.builder()
+     *             .resource("oauth_authentication_api")
+     *             .consumer("client")
+     *             .consumerSelector("default")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRateLimitPoliciesResult> getRateLimitPoliciesPlain() {
+        return getRateLimitPoliciesPlain(GetRateLimitPoliciesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve Rate Limit Policies, optionally filtered by resource, consumer, or consumer selector. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetRateLimitPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = Auth0Functions.getRateLimitPolicies(GetRateLimitPoliciesArgs.builder()
+     *             .resource("oauth_authentication_api")
+     *             .consumer("client")
+     *             .consumerSelector("default")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRateLimitPoliciesResult> getRateLimitPolicies(GetRateLimitPoliciesArgs args) {
+        return getRateLimitPolicies(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve Rate Limit Policies, optionally filtered by resource, consumer, or consumer selector. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetRateLimitPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = Auth0Functions.getRateLimitPolicies(GetRateLimitPoliciesArgs.builder()
+     *             .resource("oauth_authentication_api")
+     *             .consumer("client")
+     *             .consumerSelector("default")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRateLimitPoliciesResult> getRateLimitPoliciesPlain(GetRateLimitPoliciesPlainArgs args) {
+        return getRateLimitPoliciesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve Rate Limit Policies, optionally filtered by resource, consumer, or consumer selector. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetRateLimitPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = Auth0Functions.getRateLimitPolicies(GetRateLimitPoliciesArgs.builder()
+     *             .resource("oauth_authentication_api")
+     *             .consumer("client")
+     *             .consumerSelector("default")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRateLimitPoliciesResult> getRateLimitPolicies(GetRateLimitPoliciesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getRateLimitPolicies:getRateLimitPolicies", TypeShape.of(GetRateLimitPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve Rate Limit Policies, optionally filtered by resource, consumer, or consumer selector. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetRateLimitPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = Auth0Functions.getRateLimitPolicies(GetRateLimitPoliciesArgs.builder()
+     *             .resource("oauth_authentication_api")
+     *             .consumer("client")
+     *             .consumerSelector("default")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRateLimitPoliciesResult> getRateLimitPolicies(GetRateLimitPoliciesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getRateLimitPolicies:getRateLimitPolicies", TypeShape.of(GetRateLimitPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve Rate Limit Policies, optionally filtered by resource, consumer, or consumer selector. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetRateLimitPoliciesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = Auth0Functions.getRateLimitPolicies(GetRateLimitPoliciesArgs.builder()
+     *             .resource("oauth_authentication_api")
+     *             .consumer("client")
+     *             .consumerSelector("default")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRateLimitPoliciesResult> getRateLimitPoliciesPlain(GetRateLimitPoliciesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getRateLimitPolicies:getRateLimitPolicies", TypeShape.of(GetRateLimitPoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a single Rate Limit Policy by ID. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetRateLimitPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Auth0Functions.getRateLimitPolicy(GetRateLimitPolicyArgs.builder()
+     *             .policyId("rlp_XXXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRateLimitPolicyResult> getRateLimitPolicy(GetRateLimitPolicyArgs args) {
+        return getRateLimitPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a single Rate Limit Policy by ID. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetRateLimitPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Auth0Functions.getRateLimitPolicy(GetRateLimitPolicyArgs.builder()
+     *             .policyId("rlp_XXXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRateLimitPolicyResult> getRateLimitPolicyPlain(GetRateLimitPolicyPlainArgs args) {
+        return getRateLimitPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a single Rate Limit Policy by ID. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetRateLimitPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Auth0Functions.getRateLimitPolicy(GetRateLimitPolicyArgs.builder()
+     *             .policyId("rlp_XXXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRateLimitPolicyResult> getRateLimitPolicy(GetRateLimitPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getRateLimitPolicy:getRateLimitPolicy", TypeShape.of(GetRateLimitPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a single Rate Limit Policy by ID. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetRateLimitPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Auth0Functions.getRateLimitPolicy(GetRateLimitPolicyArgs.builder()
+     *             .policyId("rlp_XXXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRateLimitPolicyResult> getRateLimitPolicy(GetRateLimitPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getRateLimitPolicy:getRateLimitPolicy", TypeShape.of(GetRateLimitPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a single Rate Limit Policy by ID. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetRateLimitPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Auth0Functions.getRateLimitPolicy(GetRateLimitPolicyArgs.builder()
+     *             .policyId("rlp_XXXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRateLimitPolicyResult> getRateLimitPolicyPlain(GetRateLimitPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getRateLimitPolicy:getRateLimitPolicy", TypeShape.of(GetRateLimitPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source to retrieve a specific Auth0 resource server by `resourceServerId` or `identifier`.

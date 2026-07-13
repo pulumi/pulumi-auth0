@@ -13,6 +13,709 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetSigningKeysSigningKey struct {
+	// The public certificate of the signing key.
+	Cert string `pulumi:"cert"`
+	// True if the key is the the current key.
+	Current bool `pulumi:"current"`
+	// The cert fingerprint.
+	Fingerprint string `pulumi:"fingerprint"`
+	// The key ID of the signing key.
+	Kid string `pulumi:"kid"`
+	// True if the key is the the next key.
+	Next bool `pulumi:"next"`
+	// The public certificate of the signing key in PKCS7 format.
+	Pkcs7 string `pulumi:"pkcs7"`
+	// True if the key is the the previous key.
+	Previous bool `pulumi:"previous"`
+	// True if the key is revoked.
+	Revoked bool `pulumi:"revoked"`
+	// The cert thumbprint.
+	Thumbprint string `pulumi:"thumbprint"`
+}
+
+// GetSigningKeysSigningKeyInput is an input type that accepts GetSigningKeysSigningKeyArgs and GetSigningKeysSigningKeyOutput values.
+// You can construct a concrete instance of `GetSigningKeysSigningKeyInput` via:
+//
+//	GetSigningKeysSigningKeyArgs{...}
+type GetSigningKeysSigningKeyInput interface {
+	pulumi.Input
+
+	ToGetSigningKeysSigningKeyOutput() GetSigningKeysSigningKeyOutput
+	ToGetSigningKeysSigningKeyOutputWithContext(context.Context) GetSigningKeysSigningKeyOutput
+}
+
+type GetSigningKeysSigningKeyArgs struct {
+	// The public certificate of the signing key.
+	Cert pulumi.StringInput `pulumi:"cert"`
+	// True if the key is the the current key.
+	Current pulumi.BoolInput `pulumi:"current"`
+	// The cert fingerprint.
+	Fingerprint pulumi.StringInput `pulumi:"fingerprint"`
+	// The key ID of the signing key.
+	Kid pulumi.StringInput `pulumi:"kid"`
+	// True if the key is the the next key.
+	Next pulumi.BoolInput `pulumi:"next"`
+	// The public certificate of the signing key in PKCS7 format.
+	Pkcs7 pulumi.StringInput `pulumi:"pkcs7"`
+	// True if the key is the the previous key.
+	Previous pulumi.BoolInput `pulumi:"previous"`
+	// True if the key is revoked.
+	Revoked pulumi.BoolInput `pulumi:"revoked"`
+	// The cert thumbprint.
+	Thumbprint pulumi.StringInput `pulumi:"thumbprint"`
+}
+
+func (GetSigningKeysSigningKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSigningKeysSigningKey)(nil)).Elem()
+}
+
+func (i GetSigningKeysSigningKeyArgs) ToGetSigningKeysSigningKeyOutput() GetSigningKeysSigningKeyOutput {
+	return i.ToGetSigningKeysSigningKeyOutputWithContext(context.Background())
+}
+
+func (i GetSigningKeysSigningKeyArgs) ToGetSigningKeysSigningKeyOutputWithContext(ctx context.Context) GetSigningKeysSigningKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSigningKeysSigningKeyOutput)
+}
+
+// GetSigningKeysSigningKeyArrayInput is an input type that accepts GetSigningKeysSigningKeyArray and GetSigningKeysSigningKeyArrayOutput values.
+// You can construct a concrete instance of `GetSigningKeysSigningKeyArrayInput` via:
+//
+//	GetSigningKeysSigningKeyArray{ GetSigningKeysSigningKeyArgs{...} }
+type GetSigningKeysSigningKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetSigningKeysSigningKeyArrayOutput() GetSigningKeysSigningKeyArrayOutput
+	ToGetSigningKeysSigningKeyArrayOutputWithContext(context.Context) GetSigningKeysSigningKeyArrayOutput
+}
+
+type GetSigningKeysSigningKeyArray []GetSigningKeysSigningKeyInput
+
+func (GetSigningKeysSigningKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSigningKeysSigningKey)(nil)).Elem()
+}
+
+func (i GetSigningKeysSigningKeyArray) ToGetSigningKeysSigningKeyArrayOutput() GetSigningKeysSigningKeyArrayOutput {
+	return i.ToGetSigningKeysSigningKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetSigningKeysSigningKeyArray) ToGetSigningKeysSigningKeyArrayOutputWithContext(ctx context.Context) GetSigningKeysSigningKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSigningKeysSigningKeyArrayOutput)
+}
+
+type GetSigningKeysSigningKeyOutput struct{ *pulumi.OutputState }
+
+func (GetSigningKeysSigningKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSigningKeysSigningKey)(nil)).Elem()
+}
+
+func (o GetSigningKeysSigningKeyOutput) ToGetSigningKeysSigningKeyOutput() GetSigningKeysSigningKeyOutput {
+	return o
+}
+
+func (o GetSigningKeysSigningKeyOutput) ToGetSigningKeysSigningKeyOutputWithContext(ctx context.Context) GetSigningKeysSigningKeyOutput {
+	return o
+}
+
+// The public certificate of the signing key.
+func (o GetSigningKeysSigningKeyOutput) Cert() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSigningKeysSigningKey) string { return v.Cert }).(pulumi.StringOutput)
+}
+
+// True if the key is the the current key.
+func (o GetSigningKeysSigningKeyOutput) Current() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSigningKeysSigningKey) bool { return v.Current }).(pulumi.BoolOutput)
+}
+
+// The cert fingerprint.
+func (o GetSigningKeysSigningKeyOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSigningKeysSigningKey) string { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// The key ID of the signing key.
+func (o GetSigningKeysSigningKeyOutput) Kid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSigningKeysSigningKey) string { return v.Kid }).(pulumi.StringOutput)
+}
+
+// True if the key is the the next key.
+func (o GetSigningKeysSigningKeyOutput) Next() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSigningKeysSigningKey) bool { return v.Next }).(pulumi.BoolOutput)
+}
+
+// The public certificate of the signing key in PKCS7 format.
+func (o GetSigningKeysSigningKeyOutput) Pkcs7() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSigningKeysSigningKey) string { return v.Pkcs7 }).(pulumi.StringOutput)
+}
+
+// True if the key is the the previous key.
+func (o GetSigningKeysSigningKeyOutput) Previous() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSigningKeysSigningKey) bool { return v.Previous }).(pulumi.BoolOutput)
+}
+
+// True if the key is revoked.
+func (o GetSigningKeysSigningKeyOutput) Revoked() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSigningKeysSigningKey) bool { return v.Revoked }).(pulumi.BoolOutput)
+}
+
+// The cert thumbprint.
+func (o GetSigningKeysSigningKeyOutput) Thumbprint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSigningKeysSigningKey) string { return v.Thumbprint }).(pulumi.StringOutput)
+}
+
+type GetSigningKeysSigningKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSigningKeysSigningKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSigningKeysSigningKey)(nil)).Elem()
+}
+
+func (o GetSigningKeysSigningKeyArrayOutput) ToGetSigningKeysSigningKeyArrayOutput() GetSigningKeysSigningKeyArrayOutput {
+	return o
+}
+
+func (o GetSigningKeysSigningKeyArrayOutput) ToGetSigningKeysSigningKeyArrayOutputWithContext(ctx context.Context) GetSigningKeysSigningKeyArrayOutput {
+	return o
+}
+
+func (o GetSigningKeysSigningKeyArrayOutput) Index(i pulumi.IntInput) GetSigningKeysSigningKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSigningKeysSigningKey {
+		return vs[0].([]GetSigningKeysSigningKey)[vs[1].(int)]
+	}).(GetSigningKeysSigningKeyOutput)
+}
+
+type GetTenantDefaultTokenQuota struct {
+	// The token quota configuration.
+	Clients []GetTenantDefaultTokenQuotaClient `pulumi:"clients"`
+	// The token quota configuration.
+	Organizations []GetTenantDefaultTokenQuotaOrganization `pulumi:"organizations"`
+}
+
+// GetTenantDefaultTokenQuotaInput is an input type that accepts GetTenantDefaultTokenQuotaArgs and GetTenantDefaultTokenQuotaOutput values.
+// You can construct a concrete instance of `GetTenantDefaultTokenQuotaInput` via:
+//
+//	GetTenantDefaultTokenQuotaArgs{...}
+type GetTenantDefaultTokenQuotaInput interface {
+	pulumi.Input
+
+	ToGetTenantDefaultTokenQuotaOutput() GetTenantDefaultTokenQuotaOutput
+	ToGetTenantDefaultTokenQuotaOutputWithContext(context.Context) GetTenantDefaultTokenQuotaOutput
+}
+
+type GetTenantDefaultTokenQuotaArgs struct {
+	// The token quota configuration.
+	Clients GetTenantDefaultTokenQuotaClientArrayInput `pulumi:"clients"`
+	// The token quota configuration.
+	Organizations GetTenantDefaultTokenQuotaOrganizationArrayInput `pulumi:"organizations"`
+}
+
+func (GetTenantDefaultTokenQuotaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantDefaultTokenQuota)(nil)).Elem()
+}
+
+func (i GetTenantDefaultTokenQuotaArgs) ToGetTenantDefaultTokenQuotaOutput() GetTenantDefaultTokenQuotaOutput {
+	return i.ToGetTenantDefaultTokenQuotaOutputWithContext(context.Background())
+}
+
+func (i GetTenantDefaultTokenQuotaArgs) ToGetTenantDefaultTokenQuotaOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantDefaultTokenQuotaOutput)
+}
+
+// GetTenantDefaultTokenQuotaArrayInput is an input type that accepts GetTenantDefaultTokenQuotaArray and GetTenantDefaultTokenQuotaArrayOutput values.
+// You can construct a concrete instance of `GetTenantDefaultTokenQuotaArrayInput` via:
+//
+//	GetTenantDefaultTokenQuotaArray{ GetTenantDefaultTokenQuotaArgs{...} }
+type GetTenantDefaultTokenQuotaArrayInput interface {
+	pulumi.Input
+
+	ToGetTenantDefaultTokenQuotaArrayOutput() GetTenantDefaultTokenQuotaArrayOutput
+	ToGetTenantDefaultTokenQuotaArrayOutputWithContext(context.Context) GetTenantDefaultTokenQuotaArrayOutput
+}
+
+type GetTenantDefaultTokenQuotaArray []GetTenantDefaultTokenQuotaInput
+
+func (GetTenantDefaultTokenQuotaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantDefaultTokenQuota)(nil)).Elem()
+}
+
+func (i GetTenantDefaultTokenQuotaArray) ToGetTenantDefaultTokenQuotaArrayOutput() GetTenantDefaultTokenQuotaArrayOutput {
+	return i.ToGetTenantDefaultTokenQuotaArrayOutputWithContext(context.Background())
+}
+
+func (i GetTenantDefaultTokenQuotaArray) ToGetTenantDefaultTokenQuotaArrayOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantDefaultTokenQuotaArrayOutput)
+}
+
+type GetTenantDefaultTokenQuotaOutput struct{ *pulumi.OutputState }
+
+func (GetTenantDefaultTokenQuotaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantDefaultTokenQuota)(nil)).Elem()
+}
+
+func (o GetTenantDefaultTokenQuotaOutput) ToGetTenantDefaultTokenQuotaOutput() GetTenantDefaultTokenQuotaOutput {
+	return o
+}
+
+func (o GetTenantDefaultTokenQuotaOutput) ToGetTenantDefaultTokenQuotaOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaOutput {
+	return o
+}
+
+// The token quota configuration.
+func (o GetTenantDefaultTokenQuotaOutput) Clients() GetTenantDefaultTokenQuotaClientArrayOutput {
+	return o.ApplyT(func(v GetTenantDefaultTokenQuota) []GetTenantDefaultTokenQuotaClient { return v.Clients }).(GetTenantDefaultTokenQuotaClientArrayOutput)
+}
+
+// The token quota configuration.
+func (o GetTenantDefaultTokenQuotaOutput) Organizations() GetTenantDefaultTokenQuotaOrganizationArrayOutput {
+	return o.ApplyT(func(v GetTenantDefaultTokenQuota) []GetTenantDefaultTokenQuotaOrganization { return v.Organizations }).(GetTenantDefaultTokenQuotaOrganizationArrayOutput)
+}
+
+type GetTenantDefaultTokenQuotaArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTenantDefaultTokenQuotaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantDefaultTokenQuota)(nil)).Elem()
+}
+
+func (o GetTenantDefaultTokenQuotaArrayOutput) ToGetTenantDefaultTokenQuotaArrayOutput() GetTenantDefaultTokenQuotaArrayOutput {
+	return o
+}
+
+func (o GetTenantDefaultTokenQuotaArrayOutput) ToGetTenantDefaultTokenQuotaArrayOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaArrayOutput {
+	return o
+}
+
+func (o GetTenantDefaultTokenQuotaArrayOutput) Index(i pulumi.IntInput) GetTenantDefaultTokenQuotaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantDefaultTokenQuota {
+		return vs[0].([]GetTenantDefaultTokenQuota)[vs[1].(int)]
+	}).(GetTenantDefaultTokenQuotaOutput)
+}
+
+type GetTenantDefaultTokenQuotaClient struct {
+	// The token quota configuration for client credentials.
+	ClientCredentials []GetTenantDefaultTokenQuotaClientClientCredential `pulumi:"clientCredentials"`
+}
+
+// GetTenantDefaultTokenQuotaClientInput is an input type that accepts GetTenantDefaultTokenQuotaClientArgs and GetTenantDefaultTokenQuotaClientOutput values.
+// You can construct a concrete instance of `GetTenantDefaultTokenQuotaClientInput` via:
+//
+//	GetTenantDefaultTokenQuotaClientArgs{...}
+type GetTenantDefaultTokenQuotaClientInput interface {
+	pulumi.Input
+
+	ToGetTenantDefaultTokenQuotaClientOutput() GetTenantDefaultTokenQuotaClientOutput
+	ToGetTenantDefaultTokenQuotaClientOutputWithContext(context.Context) GetTenantDefaultTokenQuotaClientOutput
+}
+
+type GetTenantDefaultTokenQuotaClientArgs struct {
+	// The token quota configuration for client credentials.
+	ClientCredentials GetTenantDefaultTokenQuotaClientClientCredentialArrayInput `pulumi:"clientCredentials"`
+}
+
+func (GetTenantDefaultTokenQuotaClientArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantDefaultTokenQuotaClient)(nil)).Elem()
+}
+
+func (i GetTenantDefaultTokenQuotaClientArgs) ToGetTenantDefaultTokenQuotaClientOutput() GetTenantDefaultTokenQuotaClientOutput {
+	return i.ToGetTenantDefaultTokenQuotaClientOutputWithContext(context.Background())
+}
+
+func (i GetTenantDefaultTokenQuotaClientArgs) ToGetTenantDefaultTokenQuotaClientOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaClientOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantDefaultTokenQuotaClientOutput)
+}
+
+// GetTenantDefaultTokenQuotaClientArrayInput is an input type that accepts GetTenantDefaultTokenQuotaClientArray and GetTenantDefaultTokenQuotaClientArrayOutput values.
+// You can construct a concrete instance of `GetTenantDefaultTokenQuotaClientArrayInput` via:
+//
+//	GetTenantDefaultTokenQuotaClientArray{ GetTenantDefaultTokenQuotaClientArgs{...} }
+type GetTenantDefaultTokenQuotaClientArrayInput interface {
+	pulumi.Input
+
+	ToGetTenantDefaultTokenQuotaClientArrayOutput() GetTenantDefaultTokenQuotaClientArrayOutput
+	ToGetTenantDefaultTokenQuotaClientArrayOutputWithContext(context.Context) GetTenantDefaultTokenQuotaClientArrayOutput
+}
+
+type GetTenantDefaultTokenQuotaClientArray []GetTenantDefaultTokenQuotaClientInput
+
+func (GetTenantDefaultTokenQuotaClientArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantDefaultTokenQuotaClient)(nil)).Elem()
+}
+
+func (i GetTenantDefaultTokenQuotaClientArray) ToGetTenantDefaultTokenQuotaClientArrayOutput() GetTenantDefaultTokenQuotaClientArrayOutput {
+	return i.ToGetTenantDefaultTokenQuotaClientArrayOutputWithContext(context.Background())
+}
+
+func (i GetTenantDefaultTokenQuotaClientArray) ToGetTenantDefaultTokenQuotaClientArrayOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaClientArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantDefaultTokenQuotaClientArrayOutput)
+}
+
+type GetTenantDefaultTokenQuotaClientOutput struct{ *pulumi.OutputState }
+
+func (GetTenantDefaultTokenQuotaClientOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantDefaultTokenQuotaClient)(nil)).Elem()
+}
+
+func (o GetTenantDefaultTokenQuotaClientOutput) ToGetTenantDefaultTokenQuotaClientOutput() GetTenantDefaultTokenQuotaClientOutput {
+	return o
+}
+
+func (o GetTenantDefaultTokenQuotaClientOutput) ToGetTenantDefaultTokenQuotaClientOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaClientOutput {
+	return o
+}
+
+// The token quota configuration for client credentials.
+func (o GetTenantDefaultTokenQuotaClientOutput) ClientCredentials() GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput {
+	return o.ApplyT(func(v GetTenantDefaultTokenQuotaClient) []GetTenantDefaultTokenQuotaClientClientCredential {
+		return v.ClientCredentials
+	}).(GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput)
+}
+
+type GetTenantDefaultTokenQuotaClientArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTenantDefaultTokenQuotaClientArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantDefaultTokenQuotaClient)(nil)).Elem()
+}
+
+func (o GetTenantDefaultTokenQuotaClientArrayOutput) ToGetTenantDefaultTokenQuotaClientArrayOutput() GetTenantDefaultTokenQuotaClientArrayOutput {
+	return o
+}
+
+func (o GetTenantDefaultTokenQuotaClientArrayOutput) ToGetTenantDefaultTokenQuotaClientArrayOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaClientArrayOutput {
+	return o
+}
+
+func (o GetTenantDefaultTokenQuotaClientArrayOutput) Index(i pulumi.IntInput) GetTenantDefaultTokenQuotaClientOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantDefaultTokenQuotaClient {
+		return vs[0].([]GetTenantDefaultTokenQuotaClient)[vs[1].(int)]
+	}).(GetTenantDefaultTokenQuotaClientOutput)
+}
+
+type GetTenantDefaultTokenQuotaClientClientCredential struct {
+	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+	Enforce bool `pulumi:"enforce"`
+	// Maximum number of issued tokens per day
+	PerDay int `pulumi:"perDay"`
+	// Maximum number of issued tokens per hour
+	PerHour int `pulumi:"perHour"`
+}
+
+// GetTenantDefaultTokenQuotaClientClientCredentialInput is an input type that accepts GetTenantDefaultTokenQuotaClientClientCredentialArgs and GetTenantDefaultTokenQuotaClientClientCredentialOutput values.
+// You can construct a concrete instance of `GetTenantDefaultTokenQuotaClientClientCredentialInput` via:
+//
+//	GetTenantDefaultTokenQuotaClientClientCredentialArgs{...}
+type GetTenantDefaultTokenQuotaClientClientCredentialInput interface {
+	pulumi.Input
+
+	ToGetTenantDefaultTokenQuotaClientClientCredentialOutput() GetTenantDefaultTokenQuotaClientClientCredentialOutput
+	ToGetTenantDefaultTokenQuotaClientClientCredentialOutputWithContext(context.Context) GetTenantDefaultTokenQuotaClientClientCredentialOutput
+}
+
+type GetTenantDefaultTokenQuotaClientClientCredentialArgs struct {
+	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+	Enforce pulumi.BoolInput `pulumi:"enforce"`
+	// Maximum number of issued tokens per day
+	PerDay pulumi.IntInput `pulumi:"perDay"`
+	// Maximum number of issued tokens per hour
+	PerHour pulumi.IntInput `pulumi:"perHour"`
+}
+
+func (GetTenantDefaultTokenQuotaClientClientCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantDefaultTokenQuotaClientClientCredential)(nil)).Elem()
+}
+
+func (i GetTenantDefaultTokenQuotaClientClientCredentialArgs) ToGetTenantDefaultTokenQuotaClientClientCredentialOutput() GetTenantDefaultTokenQuotaClientClientCredentialOutput {
+	return i.ToGetTenantDefaultTokenQuotaClientClientCredentialOutputWithContext(context.Background())
+}
+
+func (i GetTenantDefaultTokenQuotaClientClientCredentialArgs) ToGetTenantDefaultTokenQuotaClientClientCredentialOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaClientClientCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantDefaultTokenQuotaClientClientCredentialOutput)
+}
+
+// GetTenantDefaultTokenQuotaClientClientCredentialArrayInput is an input type that accepts GetTenantDefaultTokenQuotaClientClientCredentialArray and GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput values.
+// You can construct a concrete instance of `GetTenantDefaultTokenQuotaClientClientCredentialArrayInput` via:
+//
+//	GetTenantDefaultTokenQuotaClientClientCredentialArray{ GetTenantDefaultTokenQuotaClientClientCredentialArgs{...} }
+type GetTenantDefaultTokenQuotaClientClientCredentialArrayInput interface {
+	pulumi.Input
+
+	ToGetTenantDefaultTokenQuotaClientClientCredentialArrayOutput() GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput
+	ToGetTenantDefaultTokenQuotaClientClientCredentialArrayOutputWithContext(context.Context) GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput
+}
+
+type GetTenantDefaultTokenQuotaClientClientCredentialArray []GetTenantDefaultTokenQuotaClientClientCredentialInput
+
+func (GetTenantDefaultTokenQuotaClientClientCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantDefaultTokenQuotaClientClientCredential)(nil)).Elem()
+}
+
+func (i GetTenantDefaultTokenQuotaClientClientCredentialArray) ToGetTenantDefaultTokenQuotaClientClientCredentialArrayOutput() GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput {
+	return i.ToGetTenantDefaultTokenQuotaClientClientCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i GetTenantDefaultTokenQuotaClientClientCredentialArray) ToGetTenantDefaultTokenQuotaClientClientCredentialArrayOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput)
+}
+
+type GetTenantDefaultTokenQuotaClientClientCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetTenantDefaultTokenQuotaClientClientCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantDefaultTokenQuotaClientClientCredential)(nil)).Elem()
+}
+
+func (o GetTenantDefaultTokenQuotaClientClientCredentialOutput) ToGetTenantDefaultTokenQuotaClientClientCredentialOutput() GetTenantDefaultTokenQuotaClientClientCredentialOutput {
+	return o
+}
+
+func (o GetTenantDefaultTokenQuotaClientClientCredentialOutput) ToGetTenantDefaultTokenQuotaClientClientCredentialOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaClientClientCredentialOutput {
+	return o
+}
+
+// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+func (o GetTenantDefaultTokenQuotaClientClientCredentialOutput) Enforce() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantDefaultTokenQuotaClientClientCredential) bool { return v.Enforce }).(pulumi.BoolOutput)
+}
+
+// Maximum number of issued tokens per day
+func (o GetTenantDefaultTokenQuotaClientClientCredentialOutput) PerDay() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTenantDefaultTokenQuotaClientClientCredential) int { return v.PerDay }).(pulumi.IntOutput)
+}
+
+// Maximum number of issued tokens per hour
+func (o GetTenantDefaultTokenQuotaClientClientCredentialOutput) PerHour() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTenantDefaultTokenQuotaClientClientCredential) int { return v.PerHour }).(pulumi.IntOutput)
+}
+
+type GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantDefaultTokenQuotaClientClientCredential)(nil)).Elem()
+}
+
+func (o GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput) ToGetTenantDefaultTokenQuotaClientClientCredentialArrayOutput() GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput {
+	return o
+}
+
+func (o GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput) ToGetTenantDefaultTokenQuotaClientClientCredentialArrayOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput {
+	return o
+}
+
+func (o GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput) Index(i pulumi.IntInput) GetTenantDefaultTokenQuotaClientClientCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantDefaultTokenQuotaClientClientCredential {
+		return vs[0].([]GetTenantDefaultTokenQuotaClientClientCredential)[vs[1].(int)]
+	}).(GetTenantDefaultTokenQuotaClientClientCredentialOutput)
+}
+
+type GetTenantDefaultTokenQuotaOrganization struct {
+	// The token quota configuration for client credentials.
+	ClientCredentials []GetTenantDefaultTokenQuotaOrganizationClientCredential `pulumi:"clientCredentials"`
+}
+
+// GetTenantDefaultTokenQuotaOrganizationInput is an input type that accepts GetTenantDefaultTokenQuotaOrganizationArgs and GetTenantDefaultTokenQuotaOrganizationOutput values.
+// You can construct a concrete instance of `GetTenantDefaultTokenQuotaOrganizationInput` via:
+//
+//	GetTenantDefaultTokenQuotaOrganizationArgs{...}
+type GetTenantDefaultTokenQuotaOrganizationInput interface {
+	pulumi.Input
+
+	ToGetTenantDefaultTokenQuotaOrganizationOutput() GetTenantDefaultTokenQuotaOrganizationOutput
+	ToGetTenantDefaultTokenQuotaOrganizationOutputWithContext(context.Context) GetTenantDefaultTokenQuotaOrganizationOutput
+}
+
+type GetTenantDefaultTokenQuotaOrganizationArgs struct {
+	// The token quota configuration for client credentials.
+	ClientCredentials GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayInput `pulumi:"clientCredentials"`
+}
+
+func (GetTenantDefaultTokenQuotaOrganizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantDefaultTokenQuotaOrganization)(nil)).Elem()
+}
+
+func (i GetTenantDefaultTokenQuotaOrganizationArgs) ToGetTenantDefaultTokenQuotaOrganizationOutput() GetTenantDefaultTokenQuotaOrganizationOutput {
+	return i.ToGetTenantDefaultTokenQuotaOrganizationOutputWithContext(context.Background())
+}
+
+func (i GetTenantDefaultTokenQuotaOrganizationArgs) ToGetTenantDefaultTokenQuotaOrganizationOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaOrganizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantDefaultTokenQuotaOrganizationOutput)
+}
+
+// GetTenantDefaultTokenQuotaOrganizationArrayInput is an input type that accepts GetTenantDefaultTokenQuotaOrganizationArray and GetTenantDefaultTokenQuotaOrganizationArrayOutput values.
+// You can construct a concrete instance of `GetTenantDefaultTokenQuotaOrganizationArrayInput` via:
+//
+//	GetTenantDefaultTokenQuotaOrganizationArray{ GetTenantDefaultTokenQuotaOrganizationArgs{...} }
+type GetTenantDefaultTokenQuotaOrganizationArrayInput interface {
+	pulumi.Input
+
+	ToGetTenantDefaultTokenQuotaOrganizationArrayOutput() GetTenantDefaultTokenQuotaOrganizationArrayOutput
+	ToGetTenantDefaultTokenQuotaOrganizationArrayOutputWithContext(context.Context) GetTenantDefaultTokenQuotaOrganizationArrayOutput
+}
+
+type GetTenantDefaultTokenQuotaOrganizationArray []GetTenantDefaultTokenQuotaOrganizationInput
+
+func (GetTenantDefaultTokenQuotaOrganizationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantDefaultTokenQuotaOrganization)(nil)).Elem()
+}
+
+func (i GetTenantDefaultTokenQuotaOrganizationArray) ToGetTenantDefaultTokenQuotaOrganizationArrayOutput() GetTenantDefaultTokenQuotaOrganizationArrayOutput {
+	return i.ToGetTenantDefaultTokenQuotaOrganizationArrayOutputWithContext(context.Background())
+}
+
+func (i GetTenantDefaultTokenQuotaOrganizationArray) ToGetTenantDefaultTokenQuotaOrganizationArrayOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaOrganizationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantDefaultTokenQuotaOrganizationArrayOutput)
+}
+
+type GetTenantDefaultTokenQuotaOrganizationOutput struct{ *pulumi.OutputState }
+
+func (GetTenantDefaultTokenQuotaOrganizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantDefaultTokenQuotaOrganization)(nil)).Elem()
+}
+
+func (o GetTenantDefaultTokenQuotaOrganizationOutput) ToGetTenantDefaultTokenQuotaOrganizationOutput() GetTenantDefaultTokenQuotaOrganizationOutput {
+	return o
+}
+
+func (o GetTenantDefaultTokenQuotaOrganizationOutput) ToGetTenantDefaultTokenQuotaOrganizationOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaOrganizationOutput {
+	return o
+}
+
+// The token quota configuration for client credentials.
+func (o GetTenantDefaultTokenQuotaOrganizationOutput) ClientCredentials() GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput {
+	return o.ApplyT(func(v GetTenantDefaultTokenQuotaOrganization) []GetTenantDefaultTokenQuotaOrganizationClientCredential {
+		return v.ClientCredentials
+	}).(GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput)
+}
+
+type GetTenantDefaultTokenQuotaOrganizationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTenantDefaultTokenQuotaOrganizationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantDefaultTokenQuotaOrganization)(nil)).Elem()
+}
+
+func (o GetTenantDefaultTokenQuotaOrganizationArrayOutput) ToGetTenantDefaultTokenQuotaOrganizationArrayOutput() GetTenantDefaultTokenQuotaOrganizationArrayOutput {
+	return o
+}
+
+func (o GetTenantDefaultTokenQuotaOrganizationArrayOutput) ToGetTenantDefaultTokenQuotaOrganizationArrayOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaOrganizationArrayOutput {
+	return o
+}
+
+func (o GetTenantDefaultTokenQuotaOrganizationArrayOutput) Index(i pulumi.IntInput) GetTenantDefaultTokenQuotaOrganizationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantDefaultTokenQuotaOrganization {
+		return vs[0].([]GetTenantDefaultTokenQuotaOrganization)[vs[1].(int)]
+	}).(GetTenantDefaultTokenQuotaOrganizationOutput)
+}
+
+type GetTenantDefaultTokenQuotaOrganizationClientCredential struct {
+	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+	Enforce bool `pulumi:"enforce"`
+	// Maximum number of issued tokens per day
+	PerDay int `pulumi:"perDay"`
+	// Maximum number of issued tokens per hour
+	PerHour int `pulumi:"perHour"`
+}
+
+// GetTenantDefaultTokenQuotaOrganizationClientCredentialInput is an input type that accepts GetTenantDefaultTokenQuotaOrganizationClientCredentialArgs and GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput values.
+// You can construct a concrete instance of `GetTenantDefaultTokenQuotaOrganizationClientCredentialInput` via:
+//
+//	GetTenantDefaultTokenQuotaOrganizationClientCredentialArgs{...}
+type GetTenantDefaultTokenQuotaOrganizationClientCredentialInput interface {
+	pulumi.Input
+
+	ToGetTenantDefaultTokenQuotaOrganizationClientCredentialOutput() GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput
+	ToGetTenantDefaultTokenQuotaOrganizationClientCredentialOutputWithContext(context.Context) GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput
+}
+
+type GetTenantDefaultTokenQuotaOrganizationClientCredentialArgs struct {
+	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+	Enforce pulumi.BoolInput `pulumi:"enforce"`
+	// Maximum number of issued tokens per day
+	PerDay pulumi.IntInput `pulumi:"perDay"`
+	// Maximum number of issued tokens per hour
+	PerHour pulumi.IntInput `pulumi:"perHour"`
+}
+
+func (GetTenantDefaultTokenQuotaOrganizationClientCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantDefaultTokenQuotaOrganizationClientCredential)(nil)).Elem()
+}
+
+func (i GetTenantDefaultTokenQuotaOrganizationClientCredentialArgs) ToGetTenantDefaultTokenQuotaOrganizationClientCredentialOutput() GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput {
+	return i.ToGetTenantDefaultTokenQuotaOrganizationClientCredentialOutputWithContext(context.Background())
+}
+
+func (i GetTenantDefaultTokenQuotaOrganizationClientCredentialArgs) ToGetTenantDefaultTokenQuotaOrganizationClientCredentialOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput)
+}
+
+// GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayInput is an input type that accepts GetTenantDefaultTokenQuotaOrganizationClientCredentialArray and GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput values.
+// You can construct a concrete instance of `GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayInput` via:
+//
+//	GetTenantDefaultTokenQuotaOrganizationClientCredentialArray{ GetTenantDefaultTokenQuotaOrganizationClientCredentialArgs{...} }
+type GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayInput interface {
+	pulumi.Input
+
+	ToGetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput() GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput
+	ToGetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutputWithContext(context.Context) GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput
+}
+
+type GetTenantDefaultTokenQuotaOrganizationClientCredentialArray []GetTenantDefaultTokenQuotaOrganizationClientCredentialInput
+
+func (GetTenantDefaultTokenQuotaOrganizationClientCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantDefaultTokenQuotaOrganizationClientCredential)(nil)).Elem()
+}
+
+func (i GetTenantDefaultTokenQuotaOrganizationClientCredentialArray) ToGetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput() GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput {
+	return i.ToGetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i GetTenantDefaultTokenQuotaOrganizationClientCredentialArray) ToGetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput)
+}
+
+type GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantDefaultTokenQuotaOrganizationClientCredential)(nil)).Elem()
+}
+
+func (o GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput) ToGetTenantDefaultTokenQuotaOrganizationClientCredentialOutput() GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput {
+	return o
+}
+
+func (o GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput) ToGetTenantDefaultTokenQuotaOrganizationClientCredentialOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput {
+	return o
+}
+
+// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+func (o GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput) Enforce() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantDefaultTokenQuotaOrganizationClientCredential) bool { return v.Enforce }).(pulumi.BoolOutput)
+}
+
+// Maximum number of issued tokens per day
+func (o GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput) PerDay() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTenantDefaultTokenQuotaOrganizationClientCredential) int { return v.PerDay }).(pulumi.IntOutput)
+}
+
+// Maximum number of issued tokens per hour
+func (o GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput) PerHour() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTenantDefaultTokenQuotaOrganizationClientCredential) int { return v.PerHour }).(pulumi.IntOutput)
+}
+
+type GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantDefaultTokenQuotaOrganizationClientCredential)(nil)).Elem()
+}
+
+func (o GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput) ToGetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput() GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput {
+	return o
+}
+
+func (o GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput) ToGetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput {
+	return o
+}
+
+func (o GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput) Index(i pulumi.IntInput) GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantDefaultTokenQuotaOrganizationClientCredential {
+		return vs[0].([]GetTenantDefaultTokenQuotaOrganizationClientCredential)[vs[1].(int)]
+	}).(GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput)
+}
+
 type GetTenantErrorPage struct {
 	// Custom Error HTML (Liquid syntax is supported)
 	Html string `pulumi:"html"`
@@ -1893,6 +2596,18 @@ func (o GetUserPermissionTypeArrayOutput) Index(i pulumi.IntInput) GetUserPermis
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSigningKeysSigningKeyInput)(nil)).Elem(), GetSigningKeysSigningKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSigningKeysSigningKeyArrayInput)(nil)).Elem(), GetSigningKeysSigningKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaInput)(nil)).Elem(), GetTenantDefaultTokenQuotaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaArrayInput)(nil)).Elem(), GetTenantDefaultTokenQuotaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaClientInput)(nil)).Elem(), GetTenantDefaultTokenQuotaClientArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaClientArrayInput)(nil)).Elem(), GetTenantDefaultTokenQuotaClientArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaClientClientCredentialInput)(nil)).Elem(), GetTenantDefaultTokenQuotaClientClientCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaClientClientCredentialArrayInput)(nil)).Elem(), GetTenantDefaultTokenQuotaClientClientCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaOrganizationInput)(nil)).Elem(), GetTenantDefaultTokenQuotaOrganizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaOrganizationArrayInput)(nil)).Elem(), GetTenantDefaultTokenQuotaOrganizationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaOrganizationClientCredentialInput)(nil)).Elem(), GetTenantDefaultTokenQuotaOrganizationClientCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayInput)(nil)).Elem(), GetTenantDefaultTokenQuotaOrganizationClientCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantErrorPageInput)(nil)).Elem(), GetTenantErrorPageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantErrorPageArrayInput)(nil)).Elem(), GetTenantErrorPageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantFlagInput)(nil)).Elem(), GetTenantFlagArgs{})
@@ -1921,6 +2636,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserConnectedAccountsConnectedAccountArrayInput)(nil)).Elem(), GetUserConnectedAccountsConnectedAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPermissionTypeInput)(nil)).Elem(), GetUserPermissionTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPermissionTypeArrayInput)(nil)).Elem(), GetUserPermissionTypeArray{})
+	pulumi.RegisterOutputType(GetSigningKeysSigningKeyOutput{})
+	pulumi.RegisterOutputType(GetSigningKeysSigningKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaOutput{})
+	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaArrayOutput{})
+	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaClientOutput{})
+	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaClientArrayOutput{})
+	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaClientClientCredentialOutput{})
+	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaOrganizationOutput{})
+	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaOrganizationArrayOutput{})
+	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput{})
+	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetTenantErrorPageOutput{})
 	pulumi.RegisterOutputType(GetTenantErrorPageArrayOutput{})
 	pulumi.RegisterOutputType(GetTenantFlagOutput{})

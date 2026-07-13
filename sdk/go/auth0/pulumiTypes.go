@@ -924,6 +924,115 @@ func (o ActionSecretArrayOutput) Index(i pulumi.IntInput) ActionSecretOutput {
 	}).(ActionSecretOutput)
 }
 
+type ActionSecretsWo struct {
+	// The name of the action.
+	Name string `pulumi:"name"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Secret value (write-only). This value is never stored in Terraform state.
+	Value string `pulumi:"value"`
+}
+
+// ActionSecretsWoInput is an input type that accepts ActionSecretsWoArgs and ActionSecretsWoOutput values.
+// You can construct a concrete instance of `ActionSecretsWoInput` via:
+//
+//	ActionSecretsWoArgs{...}
+type ActionSecretsWoInput interface {
+	pulumi.Input
+
+	ToActionSecretsWoOutput() ActionSecretsWoOutput
+	ToActionSecretsWoOutputWithContext(context.Context) ActionSecretsWoOutput
+}
+
+type ActionSecretsWoArgs struct {
+	// The name of the action.
+	Name pulumi.StringInput `pulumi:"name"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Secret value (write-only). This value is never stored in Terraform state.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ActionSecretsWoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSecretsWo)(nil)).Elem()
+}
+
+func (i ActionSecretsWoArgs) ToActionSecretsWoOutput() ActionSecretsWoOutput {
+	return i.ToActionSecretsWoOutputWithContext(context.Background())
+}
+
+func (i ActionSecretsWoArgs) ToActionSecretsWoOutputWithContext(ctx context.Context) ActionSecretsWoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSecretsWoOutput)
+}
+
+// ActionSecretsWoArrayInput is an input type that accepts ActionSecretsWoArray and ActionSecretsWoArrayOutput values.
+// You can construct a concrete instance of `ActionSecretsWoArrayInput` via:
+//
+//	ActionSecretsWoArray{ ActionSecretsWoArgs{...} }
+type ActionSecretsWoArrayInput interface {
+	pulumi.Input
+
+	ToActionSecretsWoArrayOutput() ActionSecretsWoArrayOutput
+	ToActionSecretsWoArrayOutputWithContext(context.Context) ActionSecretsWoArrayOutput
+}
+
+type ActionSecretsWoArray []ActionSecretsWoInput
+
+func (ActionSecretsWoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionSecretsWo)(nil)).Elem()
+}
+
+func (i ActionSecretsWoArray) ToActionSecretsWoArrayOutput() ActionSecretsWoArrayOutput {
+	return i.ToActionSecretsWoArrayOutputWithContext(context.Background())
+}
+
+func (i ActionSecretsWoArray) ToActionSecretsWoArrayOutputWithContext(ctx context.Context) ActionSecretsWoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionSecretsWoArrayOutput)
+}
+
+type ActionSecretsWoOutput struct{ *pulumi.OutputState }
+
+func (ActionSecretsWoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionSecretsWo)(nil)).Elem()
+}
+
+func (o ActionSecretsWoOutput) ToActionSecretsWoOutput() ActionSecretsWoOutput {
+	return o
+}
+
+func (o ActionSecretsWoOutput) ToActionSecretsWoOutputWithContext(ctx context.Context) ActionSecretsWoOutput {
+	return o
+}
+
+// The name of the action.
+func (o ActionSecretsWoOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionSecretsWo) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// Secret value (write-only). This value is never stored in Terraform state.
+func (o ActionSecretsWoOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionSecretsWo) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ActionSecretsWoArrayOutput struct{ *pulumi.OutputState }
+
+func (ActionSecretsWoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ActionSecretsWo)(nil)).Elem()
+}
+
+func (o ActionSecretsWoArrayOutput) ToActionSecretsWoArrayOutput() ActionSecretsWoArrayOutput {
+	return o
+}
+
+func (o ActionSecretsWoArrayOutput) ToActionSecretsWoArrayOutputWithContext(ctx context.Context) ActionSecretsWoArrayOutput {
+	return o
+}
+
+func (o ActionSecretsWoArrayOutput) Index(i pulumi.IntInput) ActionSecretsWoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ActionSecretsWo {
+		return vs[0].([]ActionSecretsWo)[vs[1].(int)]
+	}).(ActionSecretsWoOutput)
+}
+
 type ActionSupportedTriggers struct {
 	// The trigger ID.
 	Id string `pulumi:"id"`
@@ -39599,6 +39708,181 @@ func (o PromptScreenRendererFiltersPtrOutput) Organizations() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+type RateLimitPolicyConfiguration struct {
+	// Action to take when the rate limit is exceeded. Valid values are: allow block log redirect
+	Action string `pulumi:"action"`
+	// Maximum number of requests allowed in a single window (0-10000). Required and only valid for the `block`, `log`, and `redirect` actions. (EA only)
+	Limit *int `pulumi:"limit"`
+	// HTTPS URI to redirect to when the rate limit is exceeded. Required and only valid for the `redirect` action. (EA only)
+	RedirectUri *string `pulumi:"redirectUri"`
+}
+
+// RateLimitPolicyConfigurationInput is an input type that accepts RateLimitPolicyConfigurationArgs and RateLimitPolicyConfigurationOutput values.
+// You can construct a concrete instance of `RateLimitPolicyConfigurationInput` via:
+//
+//	RateLimitPolicyConfigurationArgs{...}
+type RateLimitPolicyConfigurationInput interface {
+	pulumi.Input
+
+	ToRateLimitPolicyConfigurationOutput() RateLimitPolicyConfigurationOutput
+	ToRateLimitPolicyConfigurationOutputWithContext(context.Context) RateLimitPolicyConfigurationOutput
+}
+
+type RateLimitPolicyConfigurationArgs struct {
+	// Action to take when the rate limit is exceeded. Valid values are: allow block log redirect
+	Action pulumi.StringInput `pulumi:"action"`
+	// Maximum number of requests allowed in a single window (0-10000). Required and only valid for the `block`, `log`, and `redirect` actions. (EA only)
+	Limit pulumi.IntPtrInput `pulumi:"limit"`
+	// HTTPS URI to redirect to when the rate limit is exceeded. Required and only valid for the `redirect` action. (EA only)
+	RedirectUri pulumi.StringPtrInput `pulumi:"redirectUri"`
+}
+
+func (RateLimitPolicyConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RateLimitPolicyConfiguration)(nil)).Elem()
+}
+
+func (i RateLimitPolicyConfigurationArgs) ToRateLimitPolicyConfigurationOutput() RateLimitPolicyConfigurationOutput {
+	return i.ToRateLimitPolicyConfigurationOutputWithContext(context.Background())
+}
+
+func (i RateLimitPolicyConfigurationArgs) ToRateLimitPolicyConfigurationOutputWithContext(ctx context.Context) RateLimitPolicyConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RateLimitPolicyConfigurationOutput)
+}
+
+func (i RateLimitPolicyConfigurationArgs) ToRateLimitPolicyConfigurationPtrOutput() RateLimitPolicyConfigurationPtrOutput {
+	return i.ToRateLimitPolicyConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i RateLimitPolicyConfigurationArgs) ToRateLimitPolicyConfigurationPtrOutputWithContext(ctx context.Context) RateLimitPolicyConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RateLimitPolicyConfigurationOutput).ToRateLimitPolicyConfigurationPtrOutputWithContext(ctx)
+}
+
+// RateLimitPolicyConfigurationPtrInput is an input type that accepts RateLimitPolicyConfigurationArgs, RateLimitPolicyConfigurationPtr and RateLimitPolicyConfigurationPtrOutput values.
+// You can construct a concrete instance of `RateLimitPolicyConfigurationPtrInput` via:
+//
+//	        RateLimitPolicyConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type RateLimitPolicyConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToRateLimitPolicyConfigurationPtrOutput() RateLimitPolicyConfigurationPtrOutput
+	ToRateLimitPolicyConfigurationPtrOutputWithContext(context.Context) RateLimitPolicyConfigurationPtrOutput
+}
+
+type rateLimitPolicyConfigurationPtrType RateLimitPolicyConfigurationArgs
+
+func RateLimitPolicyConfigurationPtr(v *RateLimitPolicyConfigurationArgs) RateLimitPolicyConfigurationPtrInput {
+	return (*rateLimitPolicyConfigurationPtrType)(v)
+}
+
+func (*rateLimitPolicyConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RateLimitPolicyConfiguration)(nil)).Elem()
+}
+
+func (i *rateLimitPolicyConfigurationPtrType) ToRateLimitPolicyConfigurationPtrOutput() RateLimitPolicyConfigurationPtrOutput {
+	return i.ToRateLimitPolicyConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *rateLimitPolicyConfigurationPtrType) ToRateLimitPolicyConfigurationPtrOutputWithContext(ctx context.Context) RateLimitPolicyConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RateLimitPolicyConfigurationPtrOutput)
+}
+
+type RateLimitPolicyConfigurationOutput struct{ *pulumi.OutputState }
+
+func (RateLimitPolicyConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RateLimitPolicyConfiguration)(nil)).Elem()
+}
+
+func (o RateLimitPolicyConfigurationOutput) ToRateLimitPolicyConfigurationOutput() RateLimitPolicyConfigurationOutput {
+	return o
+}
+
+func (o RateLimitPolicyConfigurationOutput) ToRateLimitPolicyConfigurationOutputWithContext(ctx context.Context) RateLimitPolicyConfigurationOutput {
+	return o
+}
+
+func (o RateLimitPolicyConfigurationOutput) ToRateLimitPolicyConfigurationPtrOutput() RateLimitPolicyConfigurationPtrOutput {
+	return o.ToRateLimitPolicyConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o RateLimitPolicyConfigurationOutput) ToRateLimitPolicyConfigurationPtrOutputWithContext(ctx context.Context) RateLimitPolicyConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RateLimitPolicyConfiguration) *RateLimitPolicyConfiguration {
+		return &v
+	}).(RateLimitPolicyConfigurationPtrOutput)
+}
+
+// Action to take when the rate limit is exceeded. Valid values are: allow block log redirect
+func (o RateLimitPolicyConfigurationOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v RateLimitPolicyConfiguration) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Maximum number of requests allowed in a single window (0-10000). Required and only valid for the `block`, `log`, and `redirect` actions. (EA only)
+func (o RateLimitPolicyConfigurationOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RateLimitPolicyConfiguration) *int { return v.Limit }).(pulumi.IntPtrOutput)
+}
+
+// HTTPS URI to redirect to when the rate limit is exceeded. Required and only valid for the `redirect` action. (EA only)
+func (o RateLimitPolicyConfigurationOutput) RedirectUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RateLimitPolicyConfiguration) *string { return v.RedirectUri }).(pulumi.StringPtrOutput)
+}
+
+type RateLimitPolicyConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (RateLimitPolicyConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RateLimitPolicyConfiguration)(nil)).Elem()
+}
+
+func (o RateLimitPolicyConfigurationPtrOutput) ToRateLimitPolicyConfigurationPtrOutput() RateLimitPolicyConfigurationPtrOutput {
+	return o
+}
+
+func (o RateLimitPolicyConfigurationPtrOutput) ToRateLimitPolicyConfigurationPtrOutputWithContext(ctx context.Context) RateLimitPolicyConfigurationPtrOutput {
+	return o
+}
+
+func (o RateLimitPolicyConfigurationPtrOutput) Elem() RateLimitPolicyConfigurationOutput {
+	return o.ApplyT(func(v *RateLimitPolicyConfiguration) RateLimitPolicyConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret RateLimitPolicyConfiguration
+		return ret
+	}).(RateLimitPolicyConfigurationOutput)
+}
+
+// Action to take when the rate limit is exceeded. Valid values are: allow block log redirect
+func (o RateLimitPolicyConfigurationPtrOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RateLimitPolicyConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Action
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of requests allowed in a single window (0-10000). Required and only valid for the `block`, `log`, and `redirect` actions. (EA only)
+func (o RateLimitPolicyConfigurationPtrOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RateLimitPolicyConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Limit
+	}).(pulumi.IntPtrOutput)
+}
+
+// HTTPS URI to redirect to when the rate limit is exceeded. Required and only valid for the `redirect` action. (EA only)
+func (o RateLimitPolicyConfigurationPtrOutput) RedirectUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RateLimitPolicyConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectUri
+	}).(pulumi.StringPtrOutput)
+}
+
 type ResourceServerAuthorizationDetail struct {
 	// Disable authorization details.
 	Disable *bool `pulumi:"disable"`
@@ -46494,6 +46778,112 @@ func (o GetActionSecretArrayOutput) Index(i pulumi.IntInput) GetActionSecretOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetActionSecret {
 		return vs[0].([]GetActionSecret)[vs[1].(int)]
 	}).(GetActionSecretOutput)
+}
+
+type GetActionSecretsWo struct {
+	// Secret name.
+	Name string `pulumi:"name"`
+	// Secret value (write-only). This value is never stored in Terraform state.
+	Value string `pulumi:"value"`
+}
+
+// GetActionSecretsWoInput is an input type that accepts GetActionSecretsWoArgs and GetActionSecretsWoOutput values.
+// You can construct a concrete instance of `GetActionSecretsWoInput` via:
+//
+//	GetActionSecretsWoArgs{...}
+type GetActionSecretsWoInput interface {
+	pulumi.Input
+
+	ToGetActionSecretsWoOutput() GetActionSecretsWoOutput
+	ToGetActionSecretsWoOutputWithContext(context.Context) GetActionSecretsWoOutput
+}
+
+type GetActionSecretsWoArgs struct {
+	// Secret name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Secret value (write-only). This value is never stored in Terraform state.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetActionSecretsWoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionSecretsWo)(nil)).Elem()
+}
+
+func (i GetActionSecretsWoArgs) ToGetActionSecretsWoOutput() GetActionSecretsWoOutput {
+	return i.ToGetActionSecretsWoOutputWithContext(context.Background())
+}
+
+func (i GetActionSecretsWoArgs) ToGetActionSecretsWoOutputWithContext(ctx context.Context) GetActionSecretsWoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionSecretsWoOutput)
+}
+
+// GetActionSecretsWoArrayInput is an input type that accepts GetActionSecretsWoArray and GetActionSecretsWoArrayOutput values.
+// You can construct a concrete instance of `GetActionSecretsWoArrayInput` via:
+//
+//	GetActionSecretsWoArray{ GetActionSecretsWoArgs{...} }
+type GetActionSecretsWoArrayInput interface {
+	pulumi.Input
+
+	ToGetActionSecretsWoArrayOutput() GetActionSecretsWoArrayOutput
+	ToGetActionSecretsWoArrayOutputWithContext(context.Context) GetActionSecretsWoArrayOutput
+}
+
+type GetActionSecretsWoArray []GetActionSecretsWoInput
+
+func (GetActionSecretsWoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionSecretsWo)(nil)).Elem()
+}
+
+func (i GetActionSecretsWoArray) ToGetActionSecretsWoArrayOutput() GetActionSecretsWoArrayOutput {
+	return i.ToGetActionSecretsWoArrayOutputWithContext(context.Background())
+}
+
+func (i GetActionSecretsWoArray) ToGetActionSecretsWoArrayOutputWithContext(ctx context.Context) GetActionSecretsWoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetActionSecretsWoArrayOutput)
+}
+
+type GetActionSecretsWoOutput struct{ *pulumi.OutputState }
+
+func (GetActionSecretsWoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetActionSecretsWo)(nil)).Elem()
+}
+
+func (o GetActionSecretsWoOutput) ToGetActionSecretsWoOutput() GetActionSecretsWoOutput {
+	return o
+}
+
+func (o GetActionSecretsWoOutput) ToGetActionSecretsWoOutputWithContext(ctx context.Context) GetActionSecretsWoOutput {
+	return o
+}
+
+// Secret name.
+func (o GetActionSecretsWoOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionSecretsWo) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Secret value (write-only). This value is never stored in Terraform state.
+func (o GetActionSecretsWoOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetActionSecretsWo) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetActionSecretsWoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetActionSecretsWoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetActionSecretsWo)(nil)).Elem()
+}
+
+func (o GetActionSecretsWoArrayOutput) ToGetActionSecretsWoArrayOutput() GetActionSecretsWoArrayOutput {
+	return o
+}
+
+func (o GetActionSecretsWoArrayOutput) ToGetActionSecretsWoArrayOutputWithContext(ctx context.Context) GetActionSecretsWoArrayOutput {
+	return o
+}
+
+func (o GetActionSecretsWoArrayOutput) Index(i pulumi.IntInput) GetActionSecretsWoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetActionSecretsWo {
+		return vs[0].([]GetActionSecretsWo)[vs[1].(int)]
+	}).(GetActionSecretsWoOutput)
 }
 
 type GetActionSupportedTrigger struct {
@@ -71737,6 +72127,389 @@ func (o GetPromptScreenRendererFilterArrayOutput) Index(i pulumi.IntInput) GetPr
 	}).(GetPromptScreenRendererFilterOutput)
 }
 
+type GetRateLimitPoliciesRateLimitPolicy struct {
+	// The throttling configuration applied when the rate limit is reached. (EA only)
+	Configurations []GetRateLimitPoliciesRateLimitPolicyConfiguration `pulumi:"configurations"`
+	// The consumer category the policy applies to. Valid values are: [client] (EA Only)
+	Consumer string `pulumi:"consumer"`
+	// Identifier or category within the consumer to which the policy applies. Supported values: `client_id:<client_id>`, `client_id:<cimd_uri>`, `cimdClients`, `thirdPartyClients`, or `default`. (EA only)
+	ConsumerSelector string `pulumi:"consumerSelector"`
+	// The date and time when the rate limit policy was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// The ID of the Rate Limit Policy. (EA only)
+	Id string `pulumi:"id"`
+	// The resource the policy applies to. Valid values are: [oauthAuthenticationApi] (EA Only)
+	Resource string `pulumi:"resource"`
+	// The date and time when the rate limit policy was last updated.
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetRateLimitPoliciesRateLimitPolicyInput is an input type that accepts GetRateLimitPoliciesRateLimitPolicyArgs and GetRateLimitPoliciesRateLimitPolicyOutput values.
+// You can construct a concrete instance of `GetRateLimitPoliciesRateLimitPolicyInput` via:
+//
+//	GetRateLimitPoliciesRateLimitPolicyArgs{...}
+type GetRateLimitPoliciesRateLimitPolicyInput interface {
+	pulumi.Input
+
+	ToGetRateLimitPoliciesRateLimitPolicyOutput() GetRateLimitPoliciesRateLimitPolicyOutput
+	ToGetRateLimitPoliciesRateLimitPolicyOutputWithContext(context.Context) GetRateLimitPoliciesRateLimitPolicyOutput
+}
+
+type GetRateLimitPoliciesRateLimitPolicyArgs struct {
+	// The throttling configuration applied when the rate limit is reached. (EA only)
+	Configurations GetRateLimitPoliciesRateLimitPolicyConfigurationArrayInput `pulumi:"configurations"`
+	// The consumer category the policy applies to. Valid values are: [client] (EA Only)
+	Consumer pulumi.StringInput `pulumi:"consumer"`
+	// Identifier or category within the consumer to which the policy applies. Supported values: `client_id:<client_id>`, `client_id:<cimd_uri>`, `cimdClients`, `thirdPartyClients`, or `default`. (EA only)
+	ConsumerSelector pulumi.StringInput `pulumi:"consumerSelector"`
+	// The date and time when the rate limit policy was created.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// The ID of the Rate Limit Policy. (EA only)
+	Id pulumi.StringInput `pulumi:"id"`
+	// The resource the policy applies to. Valid values are: [oauthAuthenticationApi] (EA Only)
+	Resource pulumi.StringInput `pulumi:"resource"`
+	// The date and time when the rate limit policy was last updated.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetRateLimitPoliciesRateLimitPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRateLimitPoliciesRateLimitPolicy)(nil)).Elem()
+}
+
+func (i GetRateLimitPoliciesRateLimitPolicyArgs) ToGetRateLimitPoliciesRateLimitPolicyOutput() GetRateLimitPoliciesRateLimitPolicyOutput {
+	return i.ToGetRateLimitPoliciesRateLimitPolicyOutputWithContext(context.Background())
+}
+
+func (i GetRateLimitPoliciesRateLimitPolicyArgs) ToGetRateLimitPoliciesRateLimitPolicyOutputWithContext(ctx context.Context) GetRateLimitPoliciesRateLimitPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRateLimitPoliciesRateLimitPolicyOutput)
+}
+
+// GetRateLimitPoliciesRateLimitPolicyArrayInput is an input type that accepts GetRateLimitPoliciesRateLimitPolicyArray and GetRateLimitPoliciesRateLimitPolicyArrayOutput values.
+// You can construct a concrete instance of `GetRateLimitPoliciesRateLimitPolicyArrayInput` via:
+//
+//	GetRateLimitPoliciesRateLimitPolicyArray{ GetRateLimitPoliciesRateLimitPolicyArgs{...} }
+type GetRateLimitPoliciesRateLimitPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetRateLimitPoliciesRateLimitPolicyArrayOutput() GetRateLimitPoliciesRateLimitPolicyArrayOutput
+	ToGetRateLimitPoliciesRateLimitPolicyArrayOutputWithContext(context.Context) GetRateLimitPoliciesRateLimitPolicyArrayOutput
+}
+
+type GetRateLimitPoliciesRateLimitPolicyArray []GetRateLimitPoliciesRateLimitPolicyInput
+
+func (GetRateLimitPoliciesRateLimitPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRateLimitPoliciesRateLimitPolicy)(nil)).Elem()
+}
+
+func (i GetRateLimitPoliciesRateLimitPolicyArray) ToGetRateLimitPoliciesRateLimitPolicyArrayOutput() GetRateLimitPoliciesRateLimitPolicyArrayOutput {
+	return i.ToGetRateLimitPoliciesRateLimitPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRateLimitPoliciesRateLimitPolicyArray) ToGetRateLimitPoliciesRateLimitPolicyArrayOutputWithContext(ctx context.Context) GetRateLimitPoliciesRateLimitPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRateLimitPoliciesRateLimitPolicyArrayOutput)
+}
+
+type GetRateLimitPoliciesRateLimitPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetRateLimitPoliciesRateLimitPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRateLimitPoliciesRateLimitPolicy)(nil)).Elem()
+}
+
+func (o GetRateLimitPoliciesRateLimitPolicyOutput) ToGetRateLimitPoliciesRateLimitPolicyOutput() GetRateLimitPoliciesRateLimitPolicyOutput {
+	return o
+}
+
+func (o GetRateLimitPoliciesRateLimitPolicyOutput) ToGetRateLimitPoliciesRateLimitPolicyOutputWithContext(ctx context.Context) GetRateLimitPoliciesRateLimitPolicyOutput {
+	return o
+}
+
+// The throttling configuration applied when the rate limit is reached. (EA only)
+func (o GetRateLimitPoliciesRateLimitPolicyOutput) Configurations() GetRateLimitPoliciesRateLimitPolicyConfigurationArrayOutput {
+	return o.ApplyT(func(v GetRateLimitPoliciesRateLimitPolicy) []GetRateLimitPoliciesRateLimitPolicyConfiguration {
+		return v.Configurations
+	}).(GetRateLimitPoliciesRateLimitPolicyConfigurationArrayOutput)
+}
+
+// The consumer category the policy applies to. Valid values are: [client] (EA Only)
+func (o GetRateLimitPoliciesRateLimitPolicyOutput) Consumer() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRateLimitPoliciesRateLimitPolicy) string { return v.Consumer }).(pulumi.StringOutput)
+}
+
+// Identifier or category within the consumer to which the policy applies. Supported values: `client_id:<client_id>`, `client_id:<cimd_uri>`, `cimdClients`, `thirdPartyClients`, or `default`. (EA only)
+func (o GetRateLimitPoliciesRateLimitPolicyOutput) ConsumerSelector() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRateLimitPoliciesRateLimitPolicy) string { return v.ConsumerSelector }).(pulumi.StringOutput)
+}
+
+// The date and time when the rate limit policy was created.
+func (o GetRateLimitPoliciesRateLimitPolicyOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRateLimitPoliciesRateLimitPolicy) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The ID of the Rate Limit Policy. (EA only)
+func (o GetRateLimitPoliciesRateLimitPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRateLimitPoliciesRateLimitPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The resource the policy applies to. Valid values are: [oauthAuthenticationApi] (EA Only)
+func (o GetRateLimitPoliciesRateLimitPolicyOutput) Resource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRateLimitPoliciesRateLimitPolicy) string { return v.Resource }).(pulumi.StringOutput)
+}
+
+// The date and time when the rate limit policy was last updated.
+func (o GetRateLimitPoliciesRateLimitPolicyOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRateLimitPoliciesRateLimitPolicy) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetRateLimitPoliciesRateLimitPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRateLimitPoliciesRateLimitPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRateLimitPoliciesRateLimitPolicy)(nil)).Elem()
+}
+
+func (o GetRateLimitPoliciesRateLimitPolicyArrayOutput) ToGetRateLimitPoliciesRateLimitPolicyArrayOutput() GetRateLimitPoliciesRateLimitPolicyArrayOutput {
+	return o
+}
+
+func (o GetRateLimitPoliciesRateLimitPolicyArrayOutput) ToGetRateLimitPoliciesRateLimitPolicyArrayOutputWithContext(ctx context.Context) GetRateLimitPoliciesRateLimitPolicyArrayOutput {
+	return o
+}
+
+func (o GetRateLimitPoliciesRateLimitPolicyArrayOutput) Index(i pulumi.IntInput) GetRateLimitPoliciesRateLimitPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRateLimitPoliciesRateLimitPolicy {
+		return vs[0].([]GetRateLimitPoliciesRateLimitPolicy)[vs[1].(int)]
+	}).(GetRateLimitPoliciesRateLimitPolicyOutput)
+}
+
+type GetRateLimitPoliciesRateLimitPolicyConfiguration struct {
+	// Action to take when the rate limit is exceeded. Valid values are: [allow block log redirect] (EA only)
+	Action string `pulumi:"action"`
+	// Maximum number of requests allowed in a single window (0-10000). Required and only valid for the `block`, `log`, and `redirect` actions. (EA only)
+	Limit int `pulumi:"limit"`
+	// HTTPS URI to redirect to when the rate limit is exceeded. Required and only valid for the `redirect` action. (EA only)
+	RedirectUri string `pulumi:"redirectUri"`
+}
+
+// GetRateLimitPoliciesRateLimitPolicyConfigurationInput is an input type that accepts GetRateLimitPoliciesRateLimitPolicyConfigurationArgs and GetRateLimitPoliciesRateLimitPolicyConfigurationOutput values.
+// You can construct a concrete instance of `GetRateLimitPoliciesRateLimitPolicyConfigurationInput` via:
+//
+//	GetRateLimitPoliciesRateLimitPolicyConfigurationArgs{...}
+type GetRateLimitPoliciesRateLimitPolicyConfigurationInput interface {
+	pulumi.Input
+
+	ToGetRateLimitPoliciesRateLimitPolicyConfigurationOutput() GetRateLimitPoliciesRateLimitPolicyConfigurationOutput
+	ToGetRateLimitPoliciesRateLimitPolicyConfigurationOutputWithContext(context.Context) GetRateLimitPoliciesRateLimitPolicyConfigurationOutput
+}
+
+type GetRateLimitPoliciesRateLimitPolicyConfigurationArgs struct {
+	// Action to take when the rate limit is exceeded. Valid values are: [allow block log redirect] (EA only)
+	Action pulumi.StringInput `pulumi:"action"`
+	// Maximum number of requests allowed in a single window (0-10000). Required and only valid for the `block`, `log`, and `redirect` actions. (EA only)
+	Limit pulumi.IntInput `pulumi:"limit"`
+	// HTTPS URI to redirect to when the rate limit is exceeded. Required and only valid for the `redirect` action. (EA only)
+	RedirectUri pulumi.StringInput `pulumi:"redirectUri"`
+}
+
+func (GetRateLimitPoliciesRateLimitPolicyConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRateLimitPoliciesRateLimitPolicyConfiguration)(nil)).Elem()
+}
+
+func (i GetRateLimitPoliciesRateLimitPolicyConfigurationArgs) ToGetRateLimitPoliciesRateLimitPolicyConfigurationOutput() GetRateLimitPoliciesRateLimitPolicyConfigurationOutput {
+	return i.ToGetRateLimitPoliciesRateLimitPolicyConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetRateLimitPoliciesRateLimitPolicyConfigurationArgs) ToGetRateLimitPoliciesRateLimitPolicyConfigurationOutputWithContext(ctx context.Context) GetRateLimitPoliciesRateLimitPolicyConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRateLimitPoliciesRateLimitPolicyConfigurationOutput)
+}
+
+// GetRateLimitPoliciesRateLimitPolicyConfigurationArrayInput is an input type that accepts GetRateLimitPoliciesRateLimitPolicyConfigurationArray and GetRateLimitPoliciesRateLimitPolicyConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetRateLimitPoliciesRateLimitPolicyConfigurationArrayInput` via:
+//
+//	GetRateLimitPoliciesRateLimitPolicyConfigurationArray{ GetRateLimitPoliciesRateLimitPolicyConfigurationArgs{...} }
+type GetRateLimitPoliciesRateLimitPolicyConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetRateLimitPoliciesRateLimitPolicyConfigurationArrayOutput() GetRateLimitPoliciesRateLimitPolicyConfigurationArrayOutput
+	ToGetRateLimitPoliciesRateLimitPolicyConfigurationArrayOutputWithContext(context.Context) GetRateLimitPoliciesRateLimitPolicyConfigurationArrayOutput
+}
+
+type GetRateLimitPoliciesRateLimitPolicyConfigurationArray []GetRateLimitPoliciesRateLimitPolicyConfigurationInput
+
+func (GetRateLimitPoliciesRateLimitPolicyConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRateLimitPoliciesRateLimitPolicyConfiguration)(nil)).Elem()
+}
+
+func (i GetRateLimitPoliciesRateLimitPolicyConfigurationArray) ToGetRateLimitPoliciesRateLimitPolicyConfigurationArrayOutput() GetRateLimitPoliciesRateLimitPolicyConfigurationArrayOutput {
+	return i.ToGetRateLimitPoliciesRateLimitPolicyConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetRateLimitPoliciesRateLimitPolicyConfigurationArray) ToGetRateLimitPoliciesRateLimitPolicyConfigurationArrayOutputWithContext(ctx context.Context) GetRateLimitPoliciesRateLimitPolicyConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRateLimitPoliciesRateLimitPolicyConfigurationArrayOutput)
+}
+
+type GetRateLimitPoliciesRateLimitPolicyConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetRateLimitPoliciesRateLimitPolicyConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRateLimitPoliciesRateLimitPolicyConfiguration)(nil)).Elem()
+}
+
+func (o GetRateLimitPoliciesRateLimitPolicyConfigurationOutput) ToGetRateLimitPoliciesRateLimitPolicyConfigurationOutput() GetRateLimitPoliciesRateLimitPolicyConfigurationOutput {
+	return o
+}
+
+func (o GetRateLimitPoliciesRateLimitPolicyConfigurationOutput) ToGetRateLimitPoliciesRateLimitPolicyConfigurationOutputWithContext(ctx context.Context) GetRateLimitPoliciesRateLimitPolicyConfigurationOutput {
+	return o
+}
+
+// Action to take when the rate limit is exceeded. Valid values are: [allow block log redirect] (EA only)
+func (o GetRateLimitPoliciesRateLimitPolicyConfigurationOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRateLimitPoliciesRateLimitPolicyConfiguration) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Maximum number of requests allowed in a single window (0-10000). Required and only valid for the `block`, `log`, and `redirect` actions. (EA only)
+func (o GetRateLimitPoliciesRateLimitPolicyConfigurationOutput) Limit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRateLimitPoliciesRateLimitPolicyConfiguration) int { return v.Limit }).(pulumi.IntOutput)
+}
+
+// HTTPS URI to redirect to when the rate limit is exceeded. Required and only valid for the `redirect` action. (EA only)
+func (o GetRateLimitPoliciesRateLimitPolicyConfigurationOutput) RedirectUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRateLimitPoliciesRateLimitPolicyConfiguration) string { return v.RedirectUri }).(pulumi.StringOutput)
+}
+
+type GetRateLimitPoliciesRateLimitPolicyConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRateLimitPoliciesRateLimitPolicyConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRateLimitPoliciesRateLimitPolicyConfiguration)(nil)).Elem()
+}
+
+func (o GetRateLimitPoliciesRateLimitPolicyConfigurationArrayOutput) ToGetRateLimitPoliciesRateLimitPolicyConfigurationArrayOutput() GetRateLimitPoliciesRateLimitPolicyConfigurationArrayOutput {
+	return o
+}
+
+func (o GetRateLimitPoliciesRateLimitPolicyConfigurationArrayOutput) ToGetRateLimitPoliciesRateLimitPolicyConfigurationArrayOutputWithContext(ctx context.Context) GetRateLimitPoliciesRateLimitPolicyConfigurationArrayOutput {
+	return o
+}
+
+func (o GetRateLimitPoliciesRateLimitPolicyConfigurationArrayOutput) Index(i pulumi.IntInput) GetRateLimitPoliciesRateLimitPolicyConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRateLimitPoliciesRateLimitPolicyConfiguration {
+		return vs[0].([]GetRateLimitPoliciesRateLimitPolicyConfiguration)[vs[1].(int)]
+	}).(GetRateLimitPoliciesRateLimitPolicyConfigurationOutput)
+}
+
+type GetRateLimitPolicyConfiguration struct {
+	// Action to take when the rate limit is exceeded. Valid values are: [allow block log redirect] (EA only)
+	Action string `pulumi:"action"`
+	// Maximum number of requests allowed in a single window (0-10000). Required and only valid for the `block`, `log`, and `redirect` actions. (EA only)
+	Limit int `pulumi:"limit"`
+	// HTTPS URI to redirect to when the rate limit is exceeded. Required and only valid for the `redirect` action. (EA only)
+	RedirectUri string `pulumi:"redirectUri"`
+}
+
+// GetRateLimitPolicyConfigurationInput is an input type that accepts GetRateLimitPolicyConfigurationArgs and GetRateLimitPolicyConfigurationOutput values.
+// You can construct a concrete instance of `GetRateLimitPolicyConfigurationInput` via:
+//
+//	GetRateLimitPolicyConfigurationArgs{...}
+type GetRateLimitPolicyConfigurationInput interface {
+	pulumi.Input
+
+	ToGetRateLimitPolicyConfigurationOutput() GetRateLimitPolicyConfigurationOutput
+	ToGetRateLimitPolicyConfigurationOutputWithContext(context.Context) GetRateLimitPolicyConfigurationOutput
+}
+
+type GetRateLimitPolicyConfigurationArgs struct {
+	// Action to take when the rate limit is exceeded. Valid values are: [allow block log redirect] (EA only)
+	Action pulumi.StringInput `pulumi:"action"`
+	// Maximum number of requests allowed in a single window (0-10000). Required and only valid for the `block`, `log`, and `redirect` actions. (EA only)
+	Limit pulumi.IntInput `pulumi:"limit"`
+	// HTTPS URI to redirect to when the rate limit is exceeded. Required and only valid for the `redirect` action. (EA only)
+	RedirectUri pulumi.StringInput `pulumi:"redirectUri"`
+}
+
+func (GetRateLimitPolicyConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRateLimitPolicyConfiguration)(nil)).Elem()
+}
+
+func (i GetRateLimitPolicyConfigurationArgs) ToGetRateLimitPolicyConfigurationOutput() GetRateLimitPolicyConfigurationOutput {
+	return i.ToGetRateLimitPolicyConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetRateLimitPolicyConfigurationArgs) ToGetRateLimitPolicyConfigurationOutputWithContext(ctx context.Context) GetRateLimitPolicyConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRateLimitPolicyConfigurationOutput)
+}
+
+// GetRateLimitPolicyConfigurationArrayInput is an input type that accepts GetRateLimitPolicyConfigurationArray and GetRateLimitPolicyConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetRateLimitPolicyConfigurationArrayInput` via:
+//
+//	GetRateLimitPolicyConfigurationArray{ GetRateLimitPolicyConfigurationArgs{...} }
+type GetRateLimitPolicyConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetRateLimitPolicyConfigurationArrayOutput() GetRateLimitPolicyConfigurationArrayOutput
+	ToGetRateLimitPolicyConfigurationArrayOutputWithContext(context.Context) GetRateLimitPolicyConfigurationArrayOutput
+}
+
+type GetRateLimitPolicyConfigurationArray []GetRateLimitPolicyConfigurationInput
+
+func (GetRateLimitPolicyConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRateLimitPolicyConfiguration)(nil)).Elem()
+}
+
+func (i GetRateLimitPolicyConfigurationArray) ToGetRateLimitPolicyConfigurationArrayOutput() GetRateLimitPolicyConfigurationArrayOutput {
+	return i.ToGetRateLimitPolicyConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetRateLimitPolicyConfigurationArray) ToGetRateLimitPolicyConfigurationArrayOutputWithContext(ctx context.Context) GetRateLimitPolicyConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRateLimitPolicyConfigurationArrayOutput)
+}
+
+type GetRateLimitPolicyConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetRateLimitPolicyConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRateLimitPolicyConfiguration)(nil)).Elem()
+}
+
+func (o GetRateLimitPolicyConfigurationOutput) ToGetRateLimitPolicyConfigurationOutput() GetRateLimitPolicyConfigurationOutput {
+	return o
+}
+
+func (o GetRateLimitPolicyConfigurationOutput) ToGetRateLimitPolicyConfigurationOutputWithContext(ctx context.Context) GetRateLimitPolicyConfigurationOutput {
+	return o
+}
+
+// Action to take when the rate limit is exceeded. Valid values are: [allow block log redirect] (EA only)
+func (o GetRateLimitPolicyConfigurationOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRateLimitPolicyConfiguration) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Maximum number of requests allowed in a single window (0-10000). Required and only valid for the `block`, `log`, and `redirect` actions. (EA only)
+func (o GetRateLimitPolicyConfigurationOutput) Limit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRateLimitPolicyConfiguration) int { return v.Limit }).(pulumi.IntOutput)
+}
+
+// HTTPS URI to redirect to when the rate limit is exceeded. Required and only valid for the `redirect` action. (EA only)
+func (o GetRateLimitPolicyConfigurationOutput) RedirectUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRateLimitPolicyConfiguration) string { return v.RedirectUri }).(pulumi.StringOutput)
+}
+
+type GetRateLimitPolicyConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRateLimitPolicyConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRateLimitPolicyConfiguration)(nil)).Elem()
+}
+
+func (o GetRateLimitPolicyConfigurationArrayOutput) ToGetRateLimitPolicyConfigurationArrayOutput() GetRateLimitPolicyConfigurationArrayOutput {
+	return o
+}
+
+func (o GetRateLimitPolicyConfigurationArrayOutput) ToGetRateLimitPolicyConfigurationArrayOutputWithContext(ctx context.Context) GetRateLimitPolicyConfigurationArrayOutput {
+	return o
+}
+
+func (o GetRateLimitPolicyConfigurationArrayOutput) Index(i pulumi.IntInput) GetRateLimitPolicyConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRateLimitPolicyConfiguration {
+		return vs[0].([]GetRateLimitPolicyConfiguration)[vs[1].(int)]
+	}).(GetRateLimitPolicyConfigurationOutput)
+}
+
 type GetResourceServerAuthorizationDetail struct {
 	// Disable authorization details.
 	Disable bool `pulumi:"disable"`
@@ -73157,709 +73930,6 @@ func (o GetSelfServiceProfileUserAttributeArrayOutput) Index(i pulumi.IntInput) 
 	}).(GetSelfServiceProfileUserAttributeOutput)
 }
 
-type GetSigningKeysSigningKey struct {
-	// The public certificate of the signing key.
-	Cert string `pulumi:"cert"`
-	// True if the key is the the current key.
-	Current bool `pulumi:"current"`
-	// The cert fingerprint.
-	Fingerprint string `pulumi:"fingerprint"`
-	// The key ID of the signing key.
-	Kid string `pulumi:"kid"`
-	// True if the key is the the next key.
-	Next bool `pulumi:"next"`
-	// The public certificate of the signing key in PKCS7 format.
-	Pkcs7 string `pulumi:"pkcs7"`
-	// True if the key is the the previous key.
-	Previous bool `pulumi:"previous"`
-	// True if the key is revoked.
-	Revoked bool `pulumi:"revoked"`
-	// The cert thumbprint.
-	Thumbprint string `pulumi:"thumbprint"`
-}
-
-// GetSigningKeysSigningKeyInput is an input type that accepts GetSigningKeysSigningKeyArgs and GetSigningKeysSigningKeyOutput values.
-// You can construct a concrete instance of `GetSigningKeysSigningKeyInput` via:
-//
-//	GetSigningKeysSigningKeyArgs{...}
-type GetSigningKeysSigningKeyInput interface {
-	pulumi.Input
-
-	ToGetSigningKeysSigningKeyOutput() GetSigningKeysSigningKeyOutput
-	ToGetSigningKeysSigningKeyOutputWithContext(context.Context) GetSigningKeysSigningKeyOutput
-}
-
-type GetSigningKeysSigningKeyArgs struct {
-	// The public certificate of the signing key.
-	Cert pulumi.StringInput `pulumi:"cert"`
-	// True if the key is the the current key.
-	Current pulumi.BoolInput `pulumi:"current"`
-	// The cert fingerprint.
-	Fingerprint pulumi.StringInput `pulumi:"fingerprint"`
-	// The key ID of the signing key.
-	Kid pulumi.StringInput `pulumi:"kid"`
-	// True if the key is the the next key.
-	Next pulumi.BoolInput `pulumi:"next"`
-	// The public certificate of the signing key in PKCS7 format.
-	Pkcs7 pulumi.StringInput `pulumi:"pkcs7"`
-	// True if the key is the the previous key.
-	Previous pulumi.BoolInput `pulumi:"previous"`
-	// True if the key is revoked.
-	Revoked pulumi.BoolInput `pulumi:"revoked"`
-	// The cert thumbprint.
-	Thumbprint pulumi.StringInput `pulumi:"thumbprint"`
-}
-
-func (GetSigningKeysSigningKeyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSigningKeysSigningKey)(nil)).Elem()
-}
-
-func (i GetSigningKeysSigningKeyArgs) ToGetSigningKeysSigningKeyOutput() GetSigningKeysSigningKeyOutput {
-	return i.ToGetSigningKeysSigningKeyOutputWithContext(context.Background())
-}
-
-func (i GetSigningKeysSigningKeyArgs) ToGetSigningKeysSigningKeyOutputWithContext(ctx context.Context) GetSigningKeysSigningKeyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSigningKeysSigningKeyOutput)
-}
-
-// GetSigningKeysSigningKeyArrayInput is an input type that accepts GetSigningKeysSigningKeyArray and GetSigningKeysSigningKeyArrayOutput values.
-// You can construct a concrete instance of `GetSigningKeysSigningKeyArrayInput` via:
-//
-//	GetSigningKeysSigningKeyArray{ GetSigningKeysSigningKeyArgs{...} }
-type GetSigningKeysSigningKeyArrayInput interface {
-	pulumi.Input
-
-	ToGetSigningKeysSigningKeyArrayOutput() GetSigningKeysSigningKeyArrayOutput
-	ToGetSigningKeysSigningKeyArrayOutputWithContext(context.Context) GetSigningKeysSigningKeyArrayOutput
-}
-
-type GetSigningKeysSigningKeyArray []GetSigningKeysSigningKeyInput
-
-func (GetSigningKeysSigningKeyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSigningKeysSigningKey)(nil)).Elem()
-}
-
-func (i GetSigningKeysSigningKeyArray) ToGetSigningKeysSigningKeyArrayOutput() GetSigningKeysSigningKeyArrayOutput {
-	return i.ToGetSigningKeysSigningKeyArrayOutputWithContext(context.Background())
-}
-
-func (i GetSigningKeysSigningKeyArray) ToGetSigningKeysSigningKeyArrayOutputWithContext(ctx context.Context) GetSigningKeysSigningKeyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSigningKeysSigningKeyArrayOutput)
-}
-
-type GetSigningKeysSigningKeyOutput struct{ *pulumi.OutputState }
-
-func (GetSigningKeysSigningKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSigningKeysSigningKey)(nil)).Elem()
-}
-
-func (o GetSigningKeysSigningKeyOutput) ToGetSigningKeysSigningKeyOutput() GetSigningKeysSigningKeyOutput {
-	return o
-}
-
-func (o GetSigningKeysSigningKeyOutput) ToGetSigningKeysSigningKeyOutputWithContext(ctx context.Context) GetSigningKeysSigningKeyOutput {
-	return o
-}
-
-// The public certificate of the signing key.
-func (o GetSigningKeysSigningKeyOutput) Cert() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSigningKeysSigningKey) string { return v.Cert }).(pulumi.StringOutput)
-}
-
-// True if the key is the the current key.
-func (o GetSigningKeysSigningKeyOutput) Current() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetSigningKeysSigningKey) bool { return v.Current }).(pulumi.BoolOutput)
-}
-
-// The cert fingerprint.
-func (o GetSigningKeysSigningKeyOutput) Fingerprint() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSigningKeysSigningKey) string { return v.Fingerprint }).(pulumi.StringOutput)
-}
-
-// The key ID of the signing key.
-func (o GetSigningKeysSigningKeyOutput) Kid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSigningKeysSigningKey) string { return v.Kid }).(pulumi.StringOutput)
-}
-
-// True if the key is the the next key.
-func (o GetSigningKeysSigningKeyOutput) Next() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetSigningKeysSigningKey) bool { return v.Next }).(pulumi.BoolOutput)
-}
-
-// The public certificate of the signing key in PKCS7 format.
-func (o GetSigningKeysSigningKeyOutput) Pkcs7() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSigningKeysSigningKey) string { return v.Pkcs7 }).(pulumi.StringOutput)
-}
-
-// True if the key is the the previous key.
-func (o GetSigningKeysSigningKeyOutput) Previous() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetSigningKeysSigningKey) bool { return v.Previous }).(pulumi.BoolOutput)
-}
-
-// True if the key is revoked.
-func (o GetSigningKeysSigningKeyOutput) Revoked() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetSigningKeysSigningKey) bool { return v.Revoked }).(pulumi.BoolOutput)
-}
-
-// The cert thumbprint.
-func (o GetSigningKeysSigningKeyOutput) Thumbprint() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSigningKeysSigningKey) string { return v.Thumbprint }).(pulumi.StringOutput)
-}
-
-type GetSigningKeysSigningKeyArrayOutput struct{ *pulumi.OutputState }
-
-func (GetSigningKeysSigningKeyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSigningKeysSigningKey)(nil)).Elem()
-}
-
-func (o GetSigningKeysSigningKeyArrayOutput) ToGetSigningKeysSigningKeyArrayOutput() GetSigningKeysSigningKeyArrayOutput {
-	return o
-}
-
-func (o GetSigningKeysSigningKeyArrayOutput) ToGetSigningKeysSigningKeyArrayOutputWithContext(ctx context.Context) GetSigningKeysSigningKeyArrayOutput {
-	return o
-}
-
-func (o GetSigningKeysSigningKeyArrayOutput) Index(i pulumi.IntInput) GetSigningKeysSigningKeyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSigningKeysSigningKey {
-		return vs[0].([]GetSigningKeysSigningKey)[vs[1].(int)]
-	}).(GetSigningKeysSigningKeyOutput)
-}
-
-type GetTenantDefaultTokenQuota struct {
-	// The token quota configuration.
-	Clients []GetTenantDefaultTokenQuotaClient `pulumi:"clients"`
-	// The token quota configuration.
-	Organizations []GetTenantDefaultTokenQuotaOrganization `pulumi:"organizations"`
-}
-
-// GetTenantDefaultTokenQuotaInput is an input type that accepts GetTenantDefaultTokenQuotaArgs and GetTenantDefaultTokenQuotaOutput values.
-// You can construct a concrete instance of `GetTenantDefaultTokenQuotaInput` via:
-//
-//	GetTenantDefaultTokenQuotaArgs{...}
-type GetTenantDefaultTokenQuotaInput interface {
-	pulumi.Input
-
-	ToGetTenantDefaultTokenQuotaOutput() GetTenantDefaultTokenQuotaOutput
-	ToGetTenantDefaultTokenQuotaOutputWithContext(context.Context) GetTenantDefaultTokenQuotaOutput
-}
-
-type GetTenantDefaultTokenQuotaArgs struct {
-	// The token quota configuration.
-	Clients GetTenantDefaultTokenQuotaClientArrayInput `pulumi:"clients"`
-	// The token quota configuration.
-	Organizations GetTenantDefaultTokenQuotaOrganizationArrayInput `pulumi:"organizations"`
-}
-
-func (GetTenantDefaultTokenQuotaArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTenantDefaultTokenQuota)(nil)).Elem()
-}
-
-func (i GetTenantDefaultTokenQuotaArgs) ToGetTenantDefaultTokenQuotaOutput() GetTenantDefaultTokenQuotaOutput {
-	return i.ToGetTenantDefaultTokenQuotaOutputWithContext(context.Background())
-}
-
-func (i GetTenantDefaultTokenQuotaArgs) ToGetTenantDefaultTokenQuotaOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTenantDefaultTokenQuotaOutput)
-}
-
-// GetTenantDefaultTokenQuotaArrayInput is an input type that accepts GetTenantDefaultTokenQuotaArray and GetTenantDefaultTokenQuotaArrayOutput values.
-// You can construct a concrete instance of `GetTenantDefaultTokenQuotaArrayInput` via:
-//
-//	GetTenantDefaultTokenQuotaArray{ GetTenantDefaultTokenQuotaArgs{...} }
-type GetTenantDefaultTokenQuotaArrayInput interface {
-	pulumi.Input
-
-	ToGetTenantDefaultTokenQuotaArrayOutput() GetTenantDefaultTokenQuotaArrayOutput
-	ToGetTenantDefaultTokenQuotaArrayOutputWithContext(context.Context) GetTenantDefaultTokenQuotaArrayOutput
-}
-
-type GetTenantDefaultTokenQuotaArray []GetTenantDefaultTokenQuotaInput
-
-func (GetTenantDefaultTokenQuotaArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTenantDefaultTokenQuota)(nil)).Elem()
-}
-
-func (i GetTenantDefaultTokenQuotaArray) ToGetTenantDefaultTokenQuotaArrayOutput() GetTenantDefaultTokenQuotaArrayOutput {
-	return i.ToGetTenantDefaultTokenQuotaArrayOutputWithContext(context.Background())
-}
-
-func (i GetTenantDefaultTokenQuotaArray) ToGetTenantDefaultTokenQuotaArrayOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTenantDefaultTokenQuotaArrayOutput)
-}
-
-type GetTenantDefaultTokenQuotaOutput struct{ *pulumi.OutputState }
-
-func (GetTenantDefaultTokenQuotaOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTenantDefaultTokenQuota)(nil)).Elem()
-}
-
-func (o GetTenantDefaultTokenQuotaOutput) ToGetTenantDefaultTokenQuotaOutput() GetTenantDefaultTokenQuotaOutput {
-	return o
-}
-
-func (o GetTenantDefaultTokenQuotaOutput) ToGetTenantDefaultTokenQuotaOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaOutput {
-	return o
-}
-
-// The token quota configuration.
-func (o GetTenantDefaultTokenQuotaOutput) Clients() GetTenantDefaultTokenQuotaClientArrayOutput {
-	return o.ApplyT(func(v GetTenantDefaultTokenQuota) []GetTenantDefaultTokenQuotaClient { return v.Clients }).(GetTenantDefaultTokenQuotaClientArrayOutput)
-}
-
-// The token quota configuration.
-func (o GetTenantDefaultTokenQuotaOutput) Organizations() GetTenantDefaultTokenQuotaOrganizationArrayOutput {
-	return o.ApplyT(func(v GetTenantDefaultTokenQuota) []GetTenantDefaultTokenQuotaOrganization { return v.Organizations }).(GetTenantDefaultTokenQuotaOrganizationArrayOutput)
-}
-
-type GetTenantDefaultTokenQuotaArrayOutput struct{ *pulumi.OutputState }
-
-func (GetTenantDefaultTokenQuotaArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTenantDefaultTokenQuota)(nil)).Elem()
-}
-
-func (o GetTenantDefaultTokenQuotaArrayOutput) ToGetTenantDefaultTokenQuotaArrayOutput() GetTenantDefaultTokenQuotaArrayOutput {
-	return o
-}
-
-func (o GetTenantDefaultTokenQuotaArrayOutput) ToGetTenantDefaultTokenQuotaArrayOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaArrayOutput {
-	return o
-}
-
-func (o GetTenantDefaultTokenQuotaArrayOutput) Index(i pulumi.IntInput) GetTenantDefaultTokenQuotaOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantDefaultTokenQuota {
-		return vs[0].([]GetTenantDefaultTokenQuota)[vs[1].(int)]
-	}).(GetTenantDefaultTokenQuotaOutput)
-}
-
-type GetTenantDefaultTokenQuotaClient struct {
-	// The token quota configuration for client credentials.
-	ClientCredentials []GetTenantDefaultTokenQuotaClientClientCredential `pulumi:"clientCredentials"`
-}
-
-// GetTenantDefaultTokenQuotaClientInput is an input type that accepts GetTenantDefaultTokenQuotaClientArgs and GetTenantDefaultTokenQuotaClientOutput values.
-// You can construct a concrete instance of `GetTenantDefaultTokenQuotaClientInput` via:
-//
-//	GetTenantDefaultTokenQuotaClientArgs{...}
-type GetTenantDefaultTokenQuotaClientInput interface {
-	pulumi.Input
-
-	ToGetTenantDefaultTokenQuotaClientOutput() GetTenantDefaultTokenQuotaClientOutput
-	ToGetTenantDefaultTokenQuotaClientOutputWithContext(context.Context) GetTenantDefaultTokenQuotaClientOutput
-}
-
-type GetTenantDefaultTokenQuotaClientArgs struct {
-	// The token quota configuration for client credentials.
-	ClientCredentials GetTenantDefaultTokenQuotaClientClientCredentialArrayInput `pulumi:"clientCredentials"`
-}
-
-func (GetTenantDefaultTokenQuotaClientArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTenantDefaultTokenQuotaClient)(nil)).Elem()
-}
-
-func (i GetTenantDefaultTokenQuotaClientArgs) ToGetTenantDefaultTokenQuotaClientOutput() GetTenantDefaultTokenQuotaClientOutput {
-	return i.ToGetTenantDefaultTokenQuotaClientOutputWithContext(context.Background())
-}
-
-func (i GetTenantDefaultTokenQuotaClientArgs) ToGetTenantDefaultTokenQuotaClientOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaClientOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTenantDefaultTokenQuotaClientOutput)
-}
-
-// GetTenantDefaultTokenQuotaClientArrayInput is an input type that accepts GetTenantDefaultTokenQuotaClientArray and GetTenantDefaultTokenQuotaClientArrayOutput values.
-// You can construct a concrete instance of `GetTenantDefaultTokenQuotaClientArrayInput` via:
-//
-//	GetTenantDefaultTokenQuotaClientArray{ GetTenantDefaultTokenQuotaClientArgs{...} }
-type GetTenantDefaultTokenQuotaClientArrayInput interface {
-	pulumi.Input
-
-	ToGetTenantDefaultTokenQuotaClientArrayOutput() GetTenantDefaultTokenQuotaClientArrayOutput
-	ToGetTenantDefaultTokenQuotaClientArrayOutputWithContext(context.Context) GetTenantDefaultTokenQuotaClientArrayOutput
-}
-
-type GetTenantDefaultTokenQuotaClientArray []GetTenantDefaultTokenQuotaClientInput
-
-func (GetTenantDefaultTokenQuotaClientArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTenantDefaultTokenQuotaClient)(nil)).Elem()
-}
-
-func (i GetTenantDefaultTokenQuotaClientArray) ToGetTenantDefaultTokenQuotaClientArrayOutput() GetTenantDefaultTokenQuotaClientArrayOutput {
-	return i.ToGetTenantDefaultTokenQuotaClientArrayOutputWithContext(context.Background())
-}
-
-func (i GetTenantDefaultTokenQuotaClientArray) ToGetTenantDefaultTokenQuotaClientArrayOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaClientArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTenantDefaultTokenQuotaClientArrayOutput)
-}
-
-type GetTenantDefaultTokenQuotaClientOutput struct{ *pulumi.OutputState }
-
-func (GetTenantDefaultTokenQuotaClientOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTenantDefaultTokenQuotaClient)(nil)).Elem()
-}
-
-func (o GetTenantDefaultTokenQuotaClientOutput) ToGetTenantDefaultTokenQuotaClientOutput() GetTenantDefaultTokenQuotaClientOutput {
-	return o
-}
-
-func (o GetTenantDefaultTokenQuotaClientOutput) ToGetTenantDefaultTokenQuotaClientOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaClientOutput {
-	return o
-}
-
-// The token quota configuration for client credentials.
-func (o GetTenantDefaultTokenQuotaClientOutput) ClientCredentials() GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput {
-	return o.ApplyT(func(v GetTenantDefaultTokenQuotaClient) []GetTenantDefaultTokenQuotaClientClientCredential {
-		return v.ClientCredentials
-	}).(GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput)
-}
-
-type GetTenantDefaultTokenQuotaClientArrayOutput struct{ *pulumi.OutputState }
-
-func (GetTenantDefaultTokenQuotaClientArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTenantDefaultTokenQuotaClient)(nil)).Elem()
-}
-
-func (o GetTenantDefaultTokenQuotaClientArrayOutput) ToGetTenantDefaultTokenQuotaClientArrayOutput() GetTenantDefaultTokenQuotaClientArrayOutput {
-	return o
-}
-
-func (o GetTenantDefaultTokenQuotaClientArrayOutput) ToGetTenantDefaultTokenQuotaClientArrayOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaClientArrayOutput {
-	return o
-}
-
-func (o GetTenantDefaultTokenQuotaClientArrayOutput) Index(i pulumi.IntInput) GetTenantDefaultTokenQuotaClientOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantDefaultTokenQuotaClient {
-		return vs[0].([]GetTenantDefaultTokenQuotaClient)[vs[1].(int)]
-	}).(GetTenantDefaultTokenQuotaClientOutput)
-}
-
-type GetTenantDefaultTokenQuotaClientClientCredential struct {
-	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
-	Enforce bool `pulumi:"enforce"`
-	// Maximum number of issued tokens per day
-	PerDay int `pulumi:"perDay"`
-	// Maximum number of issued tokens per hour
-	PerHour int `pulumi:"perHour"`
-}
-
-// GetTenantDefaultTokenQuotaClientClientCredentialInput is an input type that accepts GetTenantDefaultTokenQuotaClientClientCredentialArgs and GetTenantDefaultTokenQuotaClientClientCredentialOutput values.
-// You can construct a concrete instance of `GetTenantDefaultTokenQuotaClientClientCredentialInput` via:
-//
-//	GetTenantDefaultTokenQuotaClientClientCredentialArgs{...}
-type GetTenantDefaultTokenQuotaClientClientCredentialInput interface {
-	pulumi.Input
-
-	ToGetTenantDefaultTokenQuotaClientClientCredentialOutput() GetTenantDefaultTokenQuotaClientClientCredentialOutput
-	ToGetTenantDefaultTokenQuotaClientClientCredentialOutputWithContext(context.Context) GetTenantDefaultTokenQuotaClientClientCredentialOutput
-}
-
-type GetTenantDefaultTokenQuotaClientClientCredentialArgs struct {
-	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
-	Enforce pulumi.BoolInput `pulumi:"enforce"`
-	// Maximum number of issued tokens per day
-	PerDay pulumi.IntInput `pulumi:"perDay"`
-	// Maximum number of issued tokens per hour
-	PerHour pulumi.IntInput `pulumi:"perHour"`
-}
-
-func (GetTenantDefaultTokenQuotaClientClientCredentialArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTenantDefaultTokenQuotaClientClientCredential)(nil)).Elem()
-}
-
-func (i GetTenantDefaultTokenQuotaClientClientCredentialArgs) ToGetTenantDefaultTokenQuotaClientClientCredentialOutput() GetTenantDefaultTokenQuotaClientClientCredentialOutput {
-	return i.ToGetTenantDefaultTokenQuotaClientClientCredentialOutputWithContext(context.Background())
-}
-
-func (i GetTenantDefaultTokenQuotaClientClientCredentialArgs) ToGetTenantDefaultTokenQuotaClientClientCredentialOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaClientClientCredentialOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTenantDefaultTokenQuotaClientClientCredentialOutput)
-}
-
-// GetTenantDefaultTokenQuotaClientClientCredentialArrayInput is an input type that accepts GetTenantDefaultTokenQuotaClientClientCredentialArray and GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput values.
-// You can construct a concrete instance of `GetTenantDefaultTokenQuotaClientClientCredentialArrayInput` via:
-//
-//	GetTenantDefaultTokenQuotaClientClientCredentialArray{ GetTenantDefaultTokenQuotaClientClientCredentialArgs{...} }
-type GetTenantDefaultTokenQuotaClientClientCredentialArrayInput interface {
-	pulumi.Input
-
-	ToGetTenantDefaultTokenQuotaClientClientCredentialArrayOutput() GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput
-	ToGetTenantDefaultTokenQuotaClientClientCredentialArrayOutputWithContext(context.Context) GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput
-}
-
-type GetTenantDefaultTokenQuotaClientClientCredentialArray []GetTenantDefaultTokenQuotaClientClientCredentialInput
-
-func (GetTenantDefaultTokenQuotaClientClientCredentialArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTenantDefaultTokenQuotaClientClientCredential)(nil)).Elem()
-}
-
-func (i GetTenantDefaultTokenQuotaClientClientCredentialArray) ToGetTenantDefaultTokenQuotaClientClientCredentialArrayOutput() GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput {
-	return i.ToGetTenantDefaultTokenQuotaClientClientCredentialArrayOutputWithContext(context.Background())
-}
-
-func (i GetTenantDefaultTokenQuotaClientClientCredentialArray) ToGetTenantDefaultTokenQuotaClientClientCredentialArrayOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput)
-}
-
-type GetTenantDefaultTokenQuotaClientClientCredentialOutput struct{ *pulumi.OutputState }
-
-func (GetTenantDefaultTokenQuotaClientClientCredentialOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTenantDefaultTokenQuotaClientClientCredential)(nil)).Elem()
-}
-
-func (o GetTenantDefaultTokenQuotaClientClientCredentialOutput) ToGetTenantDefaultTokenQuotaClientClientCredentialOutput() GetTenantDefaultTokenQuotaClientClientCredentialOutput {
-	return o
-}
-
-func (o GetTenantDefaultTokenQuotaClientClientCredentialOutput) ToGetTenantDefaultTokenQuotaClientClientCredentialOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaClientClientCredentialOutput {
-	return o
-}
-
-// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
-func (o GetTenantDefaultTokenQuotaClientClientCredentialOutput) Enforce() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetTenantDefaultTokenQuotaClientClientCredential) bool { return v.Enforce }).(pulumi.BoolOutput)
-}
-
-// Maximum number of issued tokens per day
-func (o GetTenantDefaultTokenQuotaClientClientCredentialOutput) PerDay() pulumi.IntOutput {
-	return o.ApplyT(func(v GetTenantDefaultTokenQuotaClientClientCredential) int { return v.PerDay }).(pulumi.IntOutput)
-}
-
-// Maximum number of issued tokens per hour
-func (o GetTenantDefaultTokenQuotaClientClientCredentialOutput) PerHour() pulumi.IntOutput {
-	return o.ApplyT(func(v GetTenantDefaultTokenQuotaClientClientCredential) int { return v.PerHour }).(pulumi.IntOutput)
-}
-
-type GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput struct{ *pulumi.OutputState }
-
-func (GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTenantDefaultTokenQuotaClientClientCredential)(nil)).Elem()
-}
-
-func (o GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput) ToGetTenantDefaultTokenQuotaClientClientCredentialArrayOutput() GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput {
-	return o
-}
-
-func (o GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput) ToGetTenantDefaultTokenQuotaClientClientCredentialArrayOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput {
-	return o
-}
-
-func (o GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput) Index(i pulumi.IntInput) GetTenantDefaultTokenQuotaClientClientCredentialOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantDefaultTokenQuotaClientClientCredential {
-		return vs[0].([]GetTenantDefaultTokenQuotaClientClientCredential)[vs[1].(int)]
-	}).(GetTenantDefaultTokenQuotaClientClientCredentialOutput)
-}
-
-type GetTenantDefaultTokenQuotaOrganization struct {
-	// The token quota configuration for client credentials.
-	ClientCredentials []GetTenantDefaultTokenQuotaOrganizationClientCredential `pulumi:"clientCredentials"`
-}
-
-// GetTenantDefaultTokenQuotaOrganizationInput is an input type that accepts GetTenantDefaultTokenQuotaOrganizationArgs and GetTenantDefaultTokenQuotaOrganizationOutput values.
-// You can construct a concrete instance of `GetTenantDefaultTokenQuotaOrganizationInput` via:
-//
-//	GetTenantDefaultTokenQuotaOrganizationArgs{...}
-type GetTenantDefaultTokenQuotaOrganizationInput interface {
-	pulumi.Input
-
-	ToGetTenantDefaultTokenQuotaOrganizationOutput() GetTenantDefaultTokenQuotaOrganizationOutput
-	ToGetTenantDefaultTokenQuotaOrganizationOutputWithContext(context.Context) GetTenantDefaultTokenQuotaOrganizationOutput
-}
-
-type GetTenantDefaultTokenQuotaOrganizationArgs struct {
-	// The token quota configuration for client credentials.
-	ClientCredentials GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayInput `pulumi:"clientCredentials"`
-}
-
-func (GetTenantDefaultTokenQuotaOrganizationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTenantDefaultTokenQuotaOrganization)(nil)).Elem()
-}
-
-func (i GetTenantDefaultTokenQuotaOrganizationArgs) ToGetTenantDefaultTokenQuotaOrganizationOutput() GetTenantDefaultTokenQuotaOrganizationOutput {
-	return i.ToGetTenantDefaultTokenQuotaOrganizationOutputWithContext(context.Background())
-}
-
-func (i GetTenantDefaultTokenQuotaOrganizationArgs) ToGetTenantDefaultTokenQuotaOrganizationOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaOrganizationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTenantDefaultTokenQuotaOrganizationOutput)
-}
-
-// GetTenantDefaultTokenQuotaOrganizationArrayInput is an input type that accepts GetTenantDefaultTokenQuotaOrganizationArray and GetTenantDefaultTokenQuotaOrganizationArrayOutput values.
-// You can construct a concrete instance of `GetTenantDefaultTokenQuotaOrganizationArrayInput` via:
-//
-//	GetTenantDefaultTokenQuotaOrganizationArray{ GetTenantDefaultTokenQuotaOrganizationArgs{...} }
-type GetTenantDefaultTokenQuotaOrganizationArrayInput interface {
-	pulumi.Input
-
-	ToGetTenantDefaultTokenQuotaOrganizationArrayOutput() GetTenantDefaultTokenQuotaOrganizationArrayOutput
-	ToGetTenantDefaultTokenQuotaOrganizationArrayOutputWithContext(context.Context) GetTenantDefaultTokenQuotaOrganizationArrayOutput
-}
-
-type GetTenantDefaultTokenQuotaOrganizationArray []GetTenantDefaultTokenQuotaOrganizationInput
-
-func (GetTenantDefaultTokenQuotaOrganizationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTenantDefaultTokenQuotaOrganization)(nil)).Elem()
-}
-
-func (i GetTenantDefaultTokenQuotaOrganizationArray) ToGetTenantDefaultTokenQuotaOrganizationArrayOutput() GetTenantDefaultTokenQuotaOrganizationArrayOutput {
-	return i.ToGetTenantDefaultTokenQuotaOrganizationArrayOutputWithContext(context.Background())
-}
-
-func (i GetTenantDefaultTokenQuotaOrganizationArray) ToGetTenantDefaultTokenQuotaOrganizationArrayOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaOrganizationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTenantDefaultTokenQuotaOrganizationArrayOutput)
-}
-
-type GetTenantDefaultTokenQuotaOrganizationOutput struct{ *pulumi.OutputState }
-
-func (GetTenantDefaultTokenQuotaOrganizationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTenantDefaultTokenQuotaOrganization)(nil)).Elem()
-}
-
-func (o GetTenantDefaultTokenQuotaOrganizationOutput) ToGetTenantDefaultTokenQuotaOrganizationOutput() GetTenantDefaultTokenQuotaOrganizationOutput {
-	return o
-}
-
-func (o GetTenantDefaultTokenQuotaOrganizationOutput) ToGetTenantDefaultTokenQuotaOrganizationOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaOrganizationOutput {
-	return o
-}
-
-// The token quota configuration for client credentials.
-func (o GetTenantDefaultTokenQuotaOrganizationOutput) ClientCredentials() GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput {
-	return o.ApplyT(func(v GetTenantDefaultTokenQuotaOrganization) []GetTenantDefaultTokenQuotaOrganizationClientCredential {
-		return v.ClientCredentials
-	}).(GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput)
-}
-
-type GetTenantDefaultTokenQuotaOrganizationArrayOutput struct{ *pulumi.OutputState }
-
-func (GetTenantDefaultTokenQuotaOrganizationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTenantDefaultTokenQuotaOrganization)(nil)).Elem()
-}
-
-func (o GetTenantDefaultTokenQuotaOrganizationArrayOutput) ToGetTenantDefaultTokenQuotaOrganizationArrayOutput() GetTenantDefaultTokenQuotaOrganizationArrayOutput {
-	return o
-}
-
-func (o GetTenantDefaultTokenQuotaOrganizationArrayOutput) ToGetTenantDefaultTokenQuotaOrganizationArrayOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaOrganizationArrayOutput {
-	return o
-}
-
-func (o GetTenantDefaultTokenQuotaOrganizationArrayOutput) Index(i pulumi.IntInput) GetTenantDefaultTokenQuotaOrganizationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantDefaultTokenQuotaOrganization {
-		return vs[0].([]GetTenantDefaultTokenQuotaOrganization)[vs[1].(int)]
-	}).(GetTenantDefaultTokenQuotaOrganizationOutput)
-}
-
-type GetTenantDefaultTokenQuotaOrganizationClientCredential struct {
-	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
-	Enforce bool `pulumi:"enforce"`
-	// Maximum number of issued tokens per day
-	PerDay int `pulumi:"perDay"`
-	// Maximum number of issued tokens per hour
-	PerHour int `pulumi:"perHour"`
-}
-
-// GetTenantDefaultTokenQuotaOrganizationClientCredentialInput is an input type that accepts GetTenantDefaultTokenQuotaOrganizationClientCredentialArgs and GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput values.
-// You can construct a concrete instance of `GetTenantDefaultTokenQuotaOrganizationClientCredentialInput` via:
-//
-//	GetTenantDefaultTokenQuotaOrganizationClientCredentialArgs{...}
-type GetTenantDefaultTokenQuotaOrganizationClientCredentialInput interface {
-	pulumi.Input
-
-	ToGetTenantDefaultTokenQuotaOrganizationClientCredentialOutput() GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput
-	ToGetTenantDefaultTokenQuotaOrganizationClientCredentialOutputWithContext(context.Context) GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput
-}
-
-type GetTenantDefaultTokenQuotaOrganizationClientCredentialArgs struct {
-	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
-	Enforce pulumi.BoolInput `pulumi:"enforce"`
-	// Maximum number of issued tokens per day
-	PerDay pulumi.IntInput `pulumi:"perDay"`
-	// Maximum number of issued tokens per hour
-	PerHour pulumi.IntInput `pulumi:"perHour"`
-}
-
-func (GetTenantDefaultTokenQuotaOrganizationClientCredentialArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTenantDefaultTokenQuotaOrganizationClientCredential)(nil)).Elem()
-}
-
-func (i GetTenantDefaultTokenQuotaOrganizationClientCredentialArgs) ToGetTenantDefaultTokenQuotaOrganizationClientCredentialOutput() GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput {
-	return i.ToGetTenantDefaultTokenQuotaOrganizationClientCredentialOutputWithContext(context.Background())
-}
-
-func (i GetTenantDefaultTokenQuotaOrganizationClientCredentialArgs) ToGetTenantDefaultTokenQuotaOrganizationClientCredentialOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput)
-}
-
-// GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayInput is an input type that accepts GetTenantDefaultTokenQuotaOrganizationClientCredentialArray and GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput values.
-// You can construct a concrete instance of `GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayInput` via:
-//
-//	GetTenantDefaultTokenQuotaOrganizationClientCredentialArray{ GetTenantDefaultTokenQuotaOrganizationClientCredentialArgs{...} }
-type GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayInput interface {
-	pulumi.Input
-
-	ToGetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput() GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput
-	ToGetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutputWithContext(context.Context) GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput
-}
-
-type GetTenantDefaultTokenQuotaOrganizationClientCredentialArray []GetTenantDefaultTokenQuotaOrganizationClientCredentialInput
-
-func (GetTenantDefaultTokenQuotaOrganizationClientCredentialArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTenantDefaultTokenQuotaOrganizationClientCredential)(nil)).Elem()
-}
-
-func (i GetTenantDefaultTokenQuotaOrganizationClientCredentialArray) ToGetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput() GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput {
-	return i.ToGetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutputWithContext(context.Background())
-}
-
-func (i GetTenantDefaultTokenQuotaOrganizationClientCredentialArray) ToGetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput)
-}
-
-type GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput struct{ *pulumi.OutputState }
-
-func (GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTenantDefaultTokenQuotaOrganizationClientCredential)(nil)).Elem()
-}
-
-func (o GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput) ToGetTenantDefaultTokenQuotaOrganizationClientCredentialOutput() GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput {
-	return o
-}
-
-func (o GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput) ToGetTenantDefaultTokenQuotaOrganizationClientCredentialOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput {
-	return o
-}
-
-// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
-func (o GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput) Enforce() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetTenantDefaultTokenQuotaOrganizationClientCredential) bool { return v.Enforce }).(pulumi.BoolOutput)
-}
-
-// Maximum number of issued tokens per day
-func (o GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput) PerDay() pulumi.IntOutput {
-	return o.ApplyT(func(v GetTenantDefaultTokenQuotaOrganizationClientCredential) int { return v.PerDay }).(pulumi.IntOutput)
-}
-
-// Maximum number of issued tokens per hour
-func (o GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput) PerHour() pulumi.IntOutput {
-	return o.ApplyT(func(v GetTenantDefaultTokenQuotaOrganizationClientCredential) int { return v.PerHour }).(pulumi.IntOutput)
-}
-
-type GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput struct{ *pulumi.OutputState }
-
-func (GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTenantDefaultTokenQuotaOrganizationClientCredential)(nil)).Elem()
-}
-
-func (o GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput) ToGetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput() GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput {
-	return o
-}
-
-func (o GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput) ToGetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutputWithContext(ctx context.Context) GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput {
-	return o
-}
-
-func (o GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput) Index(i pulumi.IntInput) GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantDefaultTokenQuotaOrganizationClientCredential {
-		return vs[0].([]GetTenantDefaultTokenQuotaOrganizationClientCredential)[vs[1].(int)]
-	}).(GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionDependencyInput)(nil)).Elem(), ActionDependencyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionDependencyArrayInput)(nil)).Elem(), ActionDependencyArray{})
@@ -73877,6 +73947,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionModuleSecretArrayInput)(nil)).Elem(), ActionModuleSecretArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSecretInput)(nil)).Elem(), ActionSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSecretArrayInput)(nil)).Elem(), ActionSecretArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSecretsWoInput)(nil)).Elem(), ActionSecretsWoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ActionSecretsWoArrayInput)(nil)).Elem(), ActionSecretsWoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSupportedTriggersInput)(nil)).Elem(), ActionSupportedTriggersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionSupportedTriggersPtrInput)(nil)).Elem(), ActionSupportedTriggersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionBotDetectionInput)(nil)).Elem(), AttackProtectionBotDetectionArgs{})
@@ -74304,6 +74376,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PromptScreenPartialsScreenPartialInsertionPointsInput)(nil)).Elem(), PromptScreenPartialsScreenPartialInsertionPointsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PromptScreenRendererFiltersInput)(nil)).Elem(), PromptScreenRendererFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PromptScreenRendererFiltersPtrInput)(nil)).Elem(), PromptScreenRendererFiltersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitPolicyConfigurationInput)(nil)).Elem(), RateLimitPolicyConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitPolicyConfigurationPtrInput)(nil)).Elem(), RateLimitPolicyConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerAuthorizationDetailInput)(nil)).Elem(), ResourceServerAuthorizationDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerAuthorizationDetailArrayInput)(nil)).Elem(), ResourceServerAuthorizationDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceServerAuthorizationPolicyInput)(nil)).Elem(), ResourceServerAuthorizationPolicyArgs{})
@@ -74398,6 +74472,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionModuleVersionsVersionSecretArrayInput)(nil)).Elem(), GetActionModuleVersionsVersionSecretArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionSecretInput)(nil)).Elem(), GetActionSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionSecretArrayInput)(nil)).Elem(), GetActionSecretArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionSecretsWoInput)(nil)).Elem(), GetActionSecretsWoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetActionSecretsWoArrayInput)(nil)).Elem(), GetActionSecretsWoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionSupportedTriggerInput)(nil)).Elem(), GetActionSupportedTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionSupportedTriggerArrayInput)(nil)).Elem(), GetActionSupportedTriggerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionBotDetectionInput)(nil)).Elem(), GetAttackProtectionBotDetectionArgs{})
@@ -74806,6 +74882,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPromptScreenPartialsScreenPartialInsertionPointArrayInput)(nil)).Elem(), GetPromptScreenPartialsScreenPartialInsertionPointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPromptScreenRendererFilterInput)(nil)).Elem(), GetPromptScreenRendererFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPromptScreenRendererFilterArrayInput)(nil)).Elem(), GetPromptScreenRendererFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRateLimitPoliciesRateLimitPolicyInput)(nil)).Elem(), GetRateLimitPoliciesRateLimitPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRateLimitPoliciesRateLimitPolicyArrayInput)(nil)).Elem(), GetRateLimitPoliciesRateLimitPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRateLimitPoliciesRateLimitPolicyConfigurationInput)(nil)).Elem(), GetRateLimitPoliciesRateLimitPolicyConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRateLimitPoliciesRateLimitPolicyConfigurationArrayInput)(nil)).Elem(), GetRateLimitPoliciesRateLimitPolicyConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRateLimitPolicyConfigurationInput)(nil)).Elem(), GetRateLimitPolicyConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRateLimitPolicyConfigurationArrayInput)(nil)).Elem(), GetRateLimitPolicyConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerAuthorizationDetailInput)(nil)).Elem(), GetResourceServerAuthorizationDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerAuthorizationDetailArrayInput)(nil)).Elem(), GetResourceServerAuthorizationDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerAuthorizationPolicyInput)(nil)).Elem(), GetResourceServerAuthorizationPolicyArgs{})
@@ -74832,18 +74914,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSelfServiceProfileBrandingColorArrayInput)(nil)).Elem(), GetSelfServiceProfileBrandingColorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSelfServiceProfileUserAttributeInput)(nil)).Elem(), GetSelfServiceProfileUserAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSelfServiceProfileUserAttributeArrayInput)(nil)).Elem(), GetSelfServiceProfileUserAttributeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSigningKeysSigningKeyInput)(nil)).Elem(), GetSigningKeysSigningKeyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSigningKeysSigningKeyArrayInput)(nil)).Elem(), GetSigningKeysSigningKeyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaInput)(nil)).Elem(), GetTenantDefaultTokenQuotaArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaArrayInput)(nil)).Elem(), GetTenantDefaultTokenQuotaArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaClientInput)(nil)).Elem(), GetTenantDefaultTokenQuotaClientArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaClientArrayInput)(nil)).Elem(), GetTenantDefaultTokenQuotaClientArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaClientClientCredentialInput)(nil)).Elem(), GetTenantDefaultTokenQuotaClientClientCredentialArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaClientClientCredentialArrayInput)(nil)).Elem(), GetTenantDefaultTokenQuotaClientClientCredentialArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaOrganizationInput)(nil)).Elem(), GetTenantDefaultTokenQuotaOrganizationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaOrganizationArrayInput)(nil)).Elem(), GetTenantDefaultTokenQuotaOrganizationArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaOrganizationClientCredentialInput)(nil)).Elem(), GetTenantDefaultTokenQuotaOrganizationClientCredentialArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayInput)(nil)).Elem(), GetTenantDefaultTokenQuotaOrganizationClientCredentialArray{})
 	pulumi.RegisterOutputType(ActionDependencyOutput{})
 	pulumi.RegisterOutputType(ActionDependencyArrayOutput{})
 	pulumi.RegisterOutputType(ActionModuleTypeOutput{})
@@ -74860,6 +74930,8 @@ func init() {
 	pulumi.RegisterOutputType(ActionModuleSecretArrayOutput{})
 	pulumi.RegisterOutputType(ActionSecretOutput{})
 	pulumi.RegisterOutputType(ActionSecretArrayOutput{})
+	pulumi.RegisterOutputType(ActionSecretsWoOutput{})
+	pulumi.RegisterOutputType(ActionSecretsWoArrayOutput{})
 	pulumi.RegisterOutputType(ActionSupportedTriggersOutput{})
 	pulumi.RegisterOutputType(ActionSupportedTriggersPtrOutput{})
 	pulumi.RegisterOutputType(AttackProtectionBotDetectionOutput{})
@@ -75287,6 +75359,8 @@ func init() {
 	pulumi.RegisterOutputType(PromptScreenPartialsScreenPartialInsertionPointsOutput{})
 	pulumi.RegisterOutputType(PromptScreenRendererFiltersOutput{})
 	pulumi.RegisterOutputType(PromptScreenRendererFiltersPtrOutput{})
+	pulumi.RegisterOutputType(RateLimitPolicyConfigurationOutput{})
+	pulumi.RegisterOutputType(RateLimitPolicyConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ResourceServerAuthorizationDetailOutput{})
 	pulumi.RegisterOutputType(ResourceServerAuthorizationDetailArrayOutput{})
 	pulumi.RegisterOutputType(ResourceServerAuthorizationPolicyOutput{})
@@ -75381,6 +75455,8 @@ func init() {
 	pulumi.RegisterOutputType(GetActionModuleVersionsVersionSecretArrayOutput{})
 	pulumi.RegisterOutputType(GetActionSecretOutput{})
 	pulumi.RegisterOutputType(GetActionSecretArrayOutput{})
+	pulumi.RegisterOutputType(GetActionSecretsWoOutput{})
+	pulumi.RegisterOutputType(GetActionSecretsWoArrayOutput{})
 	pulumi.RegisterOutputType(GetActionSupportedTriggerOutput{})
 	pulumi.RegisterOutputType(GetActionSupportedTriggerArrayOutput{})
 	pulumi.RegisterOutputType(GetAttackProtectionBotDetectionOutput{})
@@ -75789,6 +75865,12 @@ func init() {
 	pulumi.RegisterOutputType(GetPromptScreenPartialsScreenPartialInsertionPointArrayOutput{})
 	pulumi.RegisterOutputType(GetPromptScreenRendererFilterOutput{})
 	pulumi.RegisterOutputType(GetPromptScreenRendererFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetRateLimitPoliciesRateLimitPolicyOutput{})
+	pulumi.RegisterOutputType(GetRateLimitPoliciesRateLimitPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetRateLimitPoliciesRateLimitPolicyConfigurationOutput{})
+	pulumi.RegisterOutputType(GetRateLimitPoliciesRateLimitPolicyConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetRateLimitPolicyConfigurationOutput{})
+	pulumi.RegisterOutputType(GetRateLimitPolicyConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceServerAuthorizationDetailOutput{})
 	pulumi.RegisterOutputType(GetResourceServerAuthorizationDetailArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceServerAuthorizationPolicyOutput{})
@@ -75815,16 +75897,4 @@ func init() {
 	pulumi.RegisterOutputType(GetSelfServiceProfileBrandingColorArrayOutput{})
 	pulumi.RegisterOutputType(GetSelfServiceProfileUserAttributeOutput{})
 	pulumi.RegisterOutputType(GetSelfServiceProfileUserAttributeArrayOutput{})
-	pulumi.RegisterOutputType(GetSigningKeysSigningKeyOutput{})
-	pulumi.RegisterOutputType(GetSigningKeysSigningKeyArrayOutput{})
-	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaOutput{})
-	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaArrayOutput{})
-	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaClientOutput{})
-	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaClientArrayOutput{})
-	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaClientClientCredentialOutput{})
-	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaClientClientCredentialArrayOutput{})
-	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaOrganizationOutput{})
-	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaOrganizationArrayOutput{})
-	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaOrganizationClientCredentialOutput{})
-	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaOrganizationClientCredentialArrayOutput{})
 }

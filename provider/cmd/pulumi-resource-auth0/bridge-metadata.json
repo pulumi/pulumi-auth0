@@ -14,6 +14,9 @@
                     "secrets": {
                         "maxItemsOne": false
                     },
+                    "secrets_wo": {
+                        "maxItemsOne": false
+                    },
                     "supported_triggers": {
                         "maxItemsOne": true
                     }
@@ -1526,6 +1529,15 @@
                     }
                 }
             },
+            "auth0_rate_limit_policy": {
+                "current": "auth0:index/rateLimitPolicy:RateLimitPolicy",
+                "majorVersion": 3,
+                "fields": {
+                    "configuration": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "auth0_resource_server": {
                 "current": "auth0:index/resourceServer:ResourceServer",
                 "majorVersion": 3,
@@ -1812,6 +1824,9 @@
                         "maxItemsOne": false
                     },
                     "secrets": {
+                        "maxItemsOne": false
+                    },
+                    "secrets_wo": {
                         "maxItemsOne": false
                     },
                     "supported_triggers": {
@@ -3293,6 +3308,31 @@
                         "maxItemsOne": false
                     },
                     "filters": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "auth0_rate_limit_policies": {
+                "current": "auth0:index/getRateLimitPolicies:getRateLimitPolicies",
+                "majorVersion": 3,
+                "fields": {
+                    "rate_limit_policies": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "configuration": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "auth0_rate_limit_policy": {
+                "current": "auth0:index/getRateLimitPolicy:getRateLimitPolicy",
+                "majorVersion": 3,
+                "fields": {
+                    "configuration": {
                         "maxItemsOne": false
                     }
                 }

@@ -308,6 +308,24 @@
                 "value"
             ]
         },
+        "auth0:index/ActionSecretsWo:ActionSecretsWo": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the action.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "**NOTE:** This field is write-only and its value will not be updated in state as part of read operations.\nSecret value (write-only). This value is never stored in Terraform state.\n",
+                    "secret": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "value"
+            ]
+        },
         "auth0:index/ActionSupportedTriggers:ActionSupportedTriggers": {
             "properties": {
                 "id": {
@@ -6008,6 +6026,26 @@
                 "matchType"
             ]
         },
+        "auth0:index/RateLimitPolicyConfiguration:RateLimitPolicyConfiguration": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "Action to take when the rate limit is exceeded. Valid values are: allow block log redirect\n"
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "Maximum number of requests allowed in a single window (0-10000). Required and only valid for the \u003cspan pulumi-lang-nodejs=\"`block`\" pulumi-lang-dotnet=\"`Block`\" pulumi-lang-go=\"`block`\" pulumi-lang-python=\"`block`\" pulumi-lang-yaml=\"`block`\" pulumi-lang-java=\"`block`\" pulumi-lang-hcl=\"`block`\"\u003e`block`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`log`\" pulumi-lang-dotnet=\"`Log`\" pulumi-lang-go=\"`log`\" pulumi-lang-python=\"`log`\" pulumi-lang-yaml=\"`log`\" pulumi-lang-java=\"`log`\" pulumi-lang-hcl=\"`log`\"\u003e`log`\u003c/span\u003e, and \u003cspan pulumi-lang-nodejs=\"`redirect`\" pulumi-lang-dotnet=\"`Redirect`\" pulumi-lang-go=\"`redirect`\" pulumi-lang-python=\"`redirect`\" pulumi-lang-yaml=\"`redirect`\" pulumi-lang-java=\"`redirect`\" pulumi-lang-hcl=\"`redirect`\"\u003e`redirect`\u003c/span\u003e actions. (EA only)\n"
+                },
+                "redirectUri": {
+                    "type": "string",
+                    "description": "HTTPS URI to redirect to when the rate limit is exceeded. Required and only valid for the \u003cspan pulumi-lang-nodejs=\"`redirect`\" pulumi-lang-dotnet=\"`Redirect`\" pulumi-lang-go=\"`redirect`\" pulumi-lang-python=\"`redirect`\" pulumi-lang-yaml=\"`redirect`\" pulumi-lang-java=\"`redirect`\" pulumi-lang-hcl=\"`redirect`\"\u003e`redirect`\u003c/span\u003e action. (EA only)\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "action"
+            ]
+        },
         "auth0:index/ResourceServerAuthorizationDetail:ResourceServerAuthorizationDetail": {
             "properties": {
                 "disable": {
@@ -7215,6 +7253,28 @@
                 "value": {
                     "type": "string",
                     "description": "Secret value.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getActionSecretsWo:getActionSecretsWo": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Secret name.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Secret value (write-only). This value is never stored in Terraform state.\n"
                 }
             },
             "type": "object",
@@ -14317,6 +14377,110 @@
                 }
             }
         },
+        "auth0:index/getRateLimitPoliciesRateLimitPolicy:getRateLimitPoliciesRateLimitPolicy": {
+            "properties": {
+                "configurations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getRateLimitPoliciesRateLimitPolicyConfiguration:getRateLimitPoliciesRateLimitPolicyConfiguration"
+                    },
+                    "description": "The throttling configuration applied when the rate limit is reached. (EA only)\n"
+                },
+                "consumer": {
+                    "type": "string",
+                    "description": "The consumer category the policy applies to. Valid values are: [client] (EA Only)\n"
+                },
+                "consumerSelector": {
+                    "type": "string",
+                    "description": "Identifier or category within the consumer to which the policy applies. Supported values: `client_id:\u003cclient_id\u003e`, `client_id:\u003ccimd_uri\u003e`, \u003cspan pulumi-lang-nodejs=\"`cimdClients`\" pulumi-lang-dotnet=\"`CimdClients`\" pulumi-lang-go=\"`cimdClients`\" pulumi-lang-python=\"`cimd_clients`\" pulumi-lang-yaml=\"`cimdClients`\" pulumi-lang-java=\"`cimdClients`\" pulumi-lang-hcl=\"`cimd_clients`\"\u003e`cimdClients`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`thirdPartyClients`\" pulumi-lang-dotnet=\"`ThirdPartyClients`\" pulumi-lang-go=\"`thirdPartyClients`\" pulumi-lang-python=\"`third_party_clients`\" pulumi-lang-yaml=\"`thirdPartyClients`\" pulumi-lang-java=\"`thirdPartyClients`\" pulumi-lang-hcl=\"`third_party_clients`\"\u003e`thirdPartyClients`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\" pulumi-lang-hcl=\"`default`\"\u003e`default`\u003c/span\u003e. (EA only)\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The date and time when the rate limit policy was created.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of the Rate Limit Policy. (EA only)\n"
+                },
+                "resource": {
+                    "type": "string",
+                    "description": "The resource the policy applies to. Valid values are: \u003cspan pulumi-lang-nodejs=\"[oauthAuthenticationApi]\" pulumi-lang-dotnet=\"[OauthAuthenticationApi]\" pulumi-lang-go=\"[oauthAuthenticationApi]\" pulumi-lang-python=\"[oauth_authentication_api]\" pulumi-lang-yaml=\"[oauthAuthenticationApi]\" pulumi-lang-java=\"[oauthAuthenticationApi]\" pulumi-lang-hcl=\"[oauth_authentication_api]\"\u003e[oauthAuthenticationApi]\u003c/span\u003e (EA Only)\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "The date and time when the rate limit policy was last updated.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "configurations",
+                "consumer",
+                "consumerSelector",
+                "createdAt",
+                "id",
+                "resource",
+                "updatedAt"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getRateLimitPoliciesRateLimitPolicyConfiguration:getRateLimitPoliciesRateLimitPolicyConfiguration": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "Action to take when the rate limit is exceeded. Valid values are: [allow block log redirect] (EA only)\n"
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "Maximum number of requests allowed in a single window (0-10000). Required and only valid for the \u003cspan pulumi-lang-nodejs=\"`block`\" pulumi-lang-dotnet=\"`Block`\" pulumi-lang-go=\"`block`\" pulumi-lang-python=\"`block`\" pulumi-lang-yaml=\"`block`\" pulumi-lang-java=\"`block`\" pulumi-lang-hcl=\"`block`\"\u003e`block`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`log`\" pulumi-lang-dotnet=\"`Log`\" pulumi-lang-go=\"`log`\" pulumi-lang-python=\"`log`\" pulumi-lang-yaml=\"`log`\" pulumi-lang-java=\"`log`\" pulumi-lang-hcl=\"`log`\"\u003e`log`\u003c/span\u003e, and \u003cspan pulumi-lang-nodejs=\"`redirect`\" pulumi-lang-dotnet=\"`Redirect`\" pulumi-lang-go=\"`redirect`\" pulumi-lang-python=\"`redirect`\" pulumi-lang-yaml=\"`redirect`\" pulumi-lang-java=\"`redirect`\" pulumi-lang-hcl=\"`redirect`\"\u003e`redirect`\u003c/span\u003e actions. (EA only)\n"
+                },
+                "redirectUri": {
+                    "type": "string",
+                    "description": "HTTPS URI to redirect to when the rate limit is exceeded. Required and only valid for the \u003cspan pulumi-lang-nodejs=\"`redirect`\" pulumi-lang-dotnet=\"`Redirect`\" pulumi-lang-go=\"`redirect`\" pulumi-lang-python=\"`redirect`\" pulumi-lang-yaml=\"`redirect`\" pulumi-lang-java=\"`redirect`\" pulumi-lang-hcl=\"`redirect`\"\u003e`redirect`\u003c/span\u003e action. (EA only)\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "action",
+                "limit",
+                "redirectUri"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getRateLimitPolicyConfiguration:getRateLimitPolicyConfiguration": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "Action to take when the rate limit is exceeded. Valid values are: [allow block log redirect] (EA only)\n"
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "Maximum number of requests allowed in a single window (0-10000). Required and only valid for the \u003cspan pulumi-lang-nodejs=\"`block`\" pulumi-lang-dotnet=\"`Block`\" pulumi-lang-go=\"`block`\" pulumi-lang-python=\"`block`\" pulumi-lang-yaml=\"`block`\" pulumi-lang-java=\"`block`\" pulumi-lang-hcl=\"`block`\"\u003e`block`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`log`\" pulumi-lang-dotnet=\"`Log`\" pulumi-lang-go=\"`log`\" pulumi-lang-python=\"`log`\" pulumi-lang-yaml=\"`log`\" pulumi-lang-java=\"`log`\" pulumi-lang-hcl=\"`log`\"\u003e`log`\u003c/span\u003e, and \u003cspan pulumi-lang-nodejs=\"`redirect`\" pulumi-lang-dotnet=\"`Redirect`\" pulumi-lang-go=\"`redirect`\" pulumi-lang-python=\"`redirect`\" pulumi-lang-yaml=\"`redirect`\" pulumi-lang-java=\"`redirect`\" pulumi-lang-hcl=\"`redirect`\"\u003e`redirect`\u003c/span\u003e actions. (EA only)\n"
+                },
+                "redirectUri": {
+                    "type": "string",
+                    "description": "HTTPS URI to redirect to when the rate limit is exceeded. Required and only valid for the \u003cspan pulumi-lang-nodejs=\"`redirect`\" pulumi-lang-dotnet=\"`Redirect`\" pulumi-lang-go=\"`redirect`\" pulumi-lang-python=\"`redirect`\" pulumi-lang-yaml=\"`redirect`\" pulumi-lang-java=\"`redirect`\" pulumi-lang-hcl=\"`redirect`\"\u003e`redirect`\u003c/span\u003e action. (EA only)\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "action",
+                "limit",
+                "redirectUri"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "auth0:index/getResourceServerAuthorizationDetail:getResourceServerAuthorizationDetail": {
             "properties": {
                 "disable": {
@@ -15470,7 +15634,7 @@
     },
     "resources": {
         "auth0:index/action:Action": {
-            "description": "Actions are secure, tenant-specific, versioned functions written in Node.js that execute at certain points during the Auth0 runtime. Actions are used to customize and extend Auth0's capabilities with custom logic.\n\n\u003e An action bound to a trigger cannot be deleted. To destroy such an action, the trigger binding must first be deleted.\nA binding is usually managed by\u003cspan pulumi-lang-nodejs=\" auth0.TriggerAction \" pulumi-lang-dotnet=\" auth0.TriggerAction \" pulumi-lang-go=\" TriggerAction \" pulumi-lang-python=\" TriggerAction \" pulumi-lang-yaml=\" auth0.TriggerAction \" pulumi-lang-java=\" auth0.TriggerAction \" pulumi-lang-hcl=\" auth0_trigger_action \"\u003e auth0.TriggerAction \u003c/span\u003eresource.\nThe provider also supports a 1:many variant auth0_trigger_actions.\nIf by any means, a binding is missing is the state file, it can be imported to the state and deleted, before attempting to delete the action.\n\n\u003e Values provided in the sensitive values shall be stored in the raw state as plain text: secrets.\nRead more about sensitive data in state.\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\nimport * as std from \"@pulumi/std\";\n\nconst myAction = new auth0.Action(\"my_action\", {\n    name: std.format({\n        input: \"Test Action %s\",\n        args: [std.timestamp({}).result],\n    }).result,\n    runtime: \"node22\",\n    deploy: true,\n    code: `/**\n * Handler that will be called during the execution of a PostLogin flow.\n *\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.\n */\n exports.onExecutePostLogin = async (event, api) =\u003e {\n   console.log(event);\n };\n`,\n    supportedTriggers: {\n        id: \"post-login\",\n        version: \"v3\",\n    },\n    dependencies: [\n        {\n            name: \"lodash\",\n            version: \"latest\",\n        },\n        {\n            name: \"request\",\n            version: \"latest\",\n        },\n    ],\n    secrets: [\n        {\n            name: \"FOO\",\n            value: \"Foo\",\n        },\n        {\n            name: \"BAR\",\n            value: \"Bar\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\nimport pulumi_std as std\n\nmy_action = auth0.Action(\"my_action\",\n    name=std.format(input=\"Test Action %s\",\n        args=[std.timestamp()[\"result\"]])[\"result\"],\n    runtime=\"node22\",\n    deploy=True,\n    code=\"\"\"/**\n * Handler that will be called during the execution of a PostLogin flow.\n *\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.\n */\n exports.onExecutePostLogin = async (event, api) =\u003e {\n   console.log(event);\n };\n\"\"\",\n    supported_triggers={\n        \"id\": \"post-login\",\n        \"version\": \"v3\",\n    },\n    dependencies=[\n        {\n            \"name\": \"lodash\",\n            \"version\": \"latest\",\n        },\n        {\n            \"name\": \"request\",\n            \"version\": \"latest\",\n        },\n    ],\n    secrets=[\n        {\n            \"name\": \"FOO\",\n            \"value\": \"Foo\",\n        },\n        {\n            \"name\": \"BAR\",\n            \"value\": \"Bar\",\n        },\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\nusing Std = Pulumi.Std;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myAction = new Auth0.Action(\"my_action\", new()\n    {\n        Name = Std.Format.Invoke(new()\n        {\n            Input = \"Test Action %s\",\n            Args = new[]\n            {\n                Std.Timestamp.Invoke().Result,\n            },\n        }).Result,\n        Runtime = \"node22\",\n        Deploy = true,\n        Code = @\"/**\n * Handler that will be called during the execution of a PostLogin flow.\n *\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.\n */\n exports.onExecutePostLogin = async (event, api) =\u003e {\n   console.log(event);\n };\n\",\n        SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs\n        {\n            Id = \"post-login\",\n            Version = \"v3\",\n        },\n        Dependencies = new[]\n        {\n            new Auth0.Inputs.ActionDependencyArgs\n            {\n                Name = \"lodash\",\n                Version = \"latest\",\n            },\n            new Auth0.Inputs.ActionDependencyArgs\n            {\n                Name = \"request\",\n                Version = \"latest\",\n            },\n        },\n        Secrets = new[]\n        {\n            new Auth0.Inputs.ActionSecretArgs\n            {\n                Name = \"FOO\",\n                Value = \"Foo\",\n            },\n            new Auth0.Inputs.ActionSecretArgs\n            {\n                Name = \"BAR\",\n                Value = \"Bar\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi-std/sdk/go/std\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tinvokeFormat, err := std.Format(ctx, map[string]interface{}{\n\t\t\t\"input\": \"Test Action %s\",\n\t\t\t\"args\": []interface{}{\n\t\t\t\tstd.Timestamp(ctx, map[string]interface{}{}, nil).Result,\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = auth0.NewAction(ctx, \"my_action\", \u0026auth0.ActionArgs{\n\t\t\tName:    invokeFormat.Result,\n\t\t\tRuntime: pulumi.String(\"node22\"),\n\t\t\tDeploy:  pulumi.Bool(true),\n\t\t\tCode: pulumi.String(`/**\n * Handler that will be called during the execution of a PostLogin flow.\n *\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.\n */\n exports.onExecutePostLogin = async (event, api) =\u003e {\n   console.log(event);\n };\n`),\n\t\t\tSupportedTriggers: \u0026auth0.ActionSupportedTriggersArgs{\n\t\t\t\tId:      pulumi.String(\"post-login\"),\n\t\t\t\tVersion: pulumi.String(\"v3\"),\n\t\t\t},\n\t\t\tDependencies: auth0.ActionDependencyArray{\n\t\t\t\t\u0026auth0.ActionDependencyArgs{\n\t\t\t\t\tName:    pulumi.String(\"lodash\"),\n\t\t\t\t\tVersion: pulumi.String(\"latest\"),\n\t\t\t\t},\n\t\t\t\t\u0026auth0.ActionDependencyArgs{\n\t\t\t\t\tName:    pulumi.String(\"request\"),\n\t\t\t\t\tVersion: pulumi.String(\"latest\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tSecrets: auth0.ActionSecretArray{\n\t\t\t\t\u0026auth0.ActionSecretArgs{\n\t\t\t\t\tName:  pulumi.String(\"FOO\"),\n\t\t\t\t\tValue: pulumi.String(\"Foo\"),\n\t\t\t\t},\n\t\t\t\t\u0026auth0.ActionSecretArgs{\n\t\t\t\t\tName:  pulumi.String(\"BAR\"),\n\t\t\t\t\tValue: pulumi.String(\"Bar\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    auth0 = {\n      source = \"pulumi/auth0\"\n    }\n  }\n}\n\ndata \"std_format\" \"invoke_0\" {\n  input = \"Test Action %s\"\n  args  = [timestamp()]\n}\n\nresource \"auth0_action\" \"my_action\" {\n  name    = data.std_format.invoke_0.result\n  runtime = \"node22\"\n  deploy  = true\n  code    = \"/**\\n * Handler that will be called during the execution of a PostLogin flow.\\n *\\n * @param {Event} event - Details about the user and the context in which they are logging in.\\n * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.\\n */\\n exports.onExecutePostLogin = async (event, api) =\u003e {\\n   console.log(event);\\n };\\n\"\n  supported_triggers = {\n    id      = \"post-login\"\n    version = \"v3\"\n  }\n  dependencies {\n    name    = \"lodash\"\n    version = \"latest\"\n  }\n  dependencies {\n    name    = \"request\"\n    version = \"latest\"\n  }\n  secrets {\n    name  = \"FOO\"\n    value = \"Foo\"\n  }\n  secrets {\n    name  = \"BAR\"\n    value = \"Bar\"\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Action;\nimport com.pulumi.auth0.ActionArgs;\nimport com.pulumi.auth0.inputs.ActionSupportedTriggersArgs;\nimport com.pulumi.auth0.inputs.ActionDependencyArgs;\nimport com.pulumi.auth0.inputs.ActionSecretArgs;\nimport com.pulumi.std.StdFunctions;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myAction = new Action(\"myAction\", ActionArgs.builder()\n            .name(StdFunctions.format(Map.ofEntries(\n                Map.entry(\"input\", \"Test Action %s\"),\n                Map.entry(\"args\", Arrays.asList(StdFunctions.timestamp(Map.ofEntries(\n                )).result()))\n            )).result())\n            .runtime(\"node22\")\n            .deploy(true)\n            .code(\"\"\"\n/**\n * Handler that will be called during the execution of a PostLogin flow.\n *\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.\n */\n exports.onExecutePostLogin = async (event, api) =\u003e {\n   console.log(event);\n };\n            \"\"\")\n            .supportedTriggers(ActionSupportedTriggersArgs.builder()\n                .id(\"post-login\")\n                .version(\"v3\")\n                .build())\n            .dependencies(            \n                ActionDependencyArgs.builder()\n                    .name(\"lodash\")\n                    .version(\"latest\")\n                    .build(),\n                ActionDependencyArgs.builder()\n                    .name(\"request\")\n                    .version(\"latest\")\n                    .build())\n            .secrets(            \n                ActionSecretArgs.builder()\n                    .name(\"FOO\")\n                    .value(\"Foo\")\n                    .build(),\n                ActionSecretArgs.builder()\n                    .name(\"BAR\")\n                    .value(\"Bar\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myAction:\n    type: auth0:Action\n    name: my_action\n    properties:\n      name:\n        fn::invoke:\n          function: std:format\n          arguments:\n            input: Test Action %s\n            args:\n              - fn::invoke:\n                  function: std:timestamp\n                  arguments: {}\n                  return: result\n          return: result\n      runtime: node22\n      deploy: true\n      code: |\n        /**\n         * Handler that will be called during the execution of a PostLogin flow.\n         *\n         * @param {Event} event - Details about the user and the context in which they are logging in.\n         * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.\n         */\n         exports.onExecutePostLogin = async (event, api) =\u003e {\n           console.log(event);\n         };\n      supportedTriggers:\n        id: post-login\n        version: v3\n      dependencies:\n        - name: lodash\n          version: latest\n        - name: request\n          version: latest\n      secrets:\n        - name: FOO\n          value: Foo\n        - name: BAR\n          value: Bar\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported by specifying the action ID.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/action:Action my_action \"12f4f21b-017a-319d-92e7-2291c1ca36c4\"\n```\n\n\u003e For security reasons importing \u003cspan pulumi-lang-nodejs=\"`secrets`\" pulumi-lang-dotnet=\"`Secrets`\" pulumi-lang-go=\"`secrets`\" pulumi-lang-python=\"`secrets`\" pulumi-lang-yaml=\"`secrets`\" pulumi-lang-java=\"`secrets`\" pulumi-lang-hcl=\"`secrets`\"\u003e`secrets`\u003c/span\u003e is not allowed. Therefore, it is advised to import\nthe action without secrets and adding them back after the action has been imported.\n\n",
+            "description": "Actions are secure, tenant-specific, versioned functions written in Node.js that execute at certain points during the Auth0 runtime. Actions are used to customize and extend Auth0's capabilities with custom logic.\n\n\u003e An action bound to a trigger cannot be deleted. To destroy such an action, the trigger binding must first be deleted.\nA binding is usually managed by\u003cspan pulumi-lang-nodejs=\" auth0.TriggerAction \" pulumi-lang-dotnet=\" auth0.TriggerAction \" pulumi-lang-go=\" TriggerAction \" pulumi-lang-python=\" TriggerAction \" pulumi-lang-yaml=\" auth0.TriggerAction \" pulumi-lang-java=\" auth0.TriggerAction \" pulumi-lang-hcl=\" auth0_trigger_action \"\u003e auth0.TriggerAction \u003c/span\u003eresource.\nThe provider also supports a 1:many variant auth0_trigger_actions.\nIf by any means, a binding is missing is the state file, it can be imported to the state and deleted, before attempting to delete the action.\n\n\u003e Values provided in the \u003cspan pulumi-lang-nodejs=\"`secrets`\" pulumi-lang-dotnet=\"`Secrets`\" pulumi-lang-go=\"`secrets`\" pulumi-lang-python=\"`secrets`\" pulumi-lang-yaml=\"`secrets`\" pulumi-lang-java=\"`secrets`\" pulumi-lang-hcl=\"`secrets`\"\u003e`secrets`\u003c/span\u003e block are stored in the raw state as plain text.\nRead more about sensitive data in state.\nFor better security, consider using the \u003cspan pulumi-lang-nodejs=\"`secretsWo`\" pulumi-lang-dotnet=\"`SecretsWo`\" pulumi-lang-go=\"`secretsWo`\" pulumi-lang-python=\"`secrets_wo`\" pulumi-lang-yaml=\"`secretsWo`\" pulumi-lang-java=\"`secretsWo`\" pulumi-lang-hcl=\"`secrets_wo`\"\u003e`secretsWo`\u003c/span\u003e write-only alternative, whose values are never stored in Terraform state.\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\nimport * as std from \"@pulumi/std\";\n\nconst myAction = new auth0.Action(\"my_action\", {\n    name: std.format({\n        input: \"Test Action %s\",\n        args: [std.timestamp({}).result],\n    }).result,\n    runtime: \"node22\",\n    deploy: true,\n    code: `/**\n * Handler that will be called during the execution of a PostLogin flow.\n *\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.\n */\n exports.onExecutePostLogin = async (event, api) =\u003e {\n   console.log(event);\n };\n`,\n    supportedTriggers: {\n        id: \"post-login\",\n        version: \"v3\",\n    },\n    dependencies: [\n        {\n            name: \"lodash\",\n            version: \"latest\",\n        },\n        {\n            name: \"request\",\n            version: \"latest\",\n        },\n    ],\n    secrets: [\n        {\n            name: \"FOO\",\n            value: \"Foo\",\n        },\n        {\n            name: \"BAR\",\n            value: \"Bar\",\n        },\n    ],\n});\nconst config = new pulumi.Config();\n// API key passed to the post-login action.\nconst actionApiKey = config.require(\"actionApiKey\");\nconst mySecureAction = new auth0.Action(\"my_secure_action\", {\n    name: std.format({\n        input: \"Secure Action %s\",\n        args: [std.timestamp({}).result],\n    }).result,\n    runtime: \"node22\",\n    deploy: true,\n    code: `exports.onExecutePostLogin = async (event, api) =\u003e {\n  console.log(event);\n};\n`,\n    supportedTriggers: {\n        id: \"post-login\",\n        version: \"v3\",\n    },\n    secretsWos: [{\n        name: \"API_KEY\",\n        value: actionApiKey,\n    }],\n    secretsWoVersion: 1,\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\nimport pulumi_std as std\n\nmy_action = auth0.Action(\"my_action\",\n    name=std.format(input=\"Test Action %s\",\n        args=[std.timestamp()[\"result\"]])[\"result\"],\n    runtime=\"node22\",\n    deploy=True,\n    code=\"\"\"/**\n * Handler that will be called during the execution of a PostLogin flow.\n *\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.\n */\n exports.onExecutePostLogin = async (event, api) =\u003e {\n   console.log(event);\n };\n\"\"\",\n    supported_triggers={\n        \"id\": \"post-login\",\n        \"version\": \"v3\",\n    },\n    dependencies=[\n        {\n            \"name\": \"lodash\",\n            \"version\": \"latest\",\n        },\n        {\n            \"name\": \"request\",\n            \"version\": \"latest\",\n        },\n    ],\n    secrets=[\n        {\n            \"name\": \"FOO\",\n            \"value\": \"Foo\",\n        },\n        {\n            \"name\": \"BAR\",\n            \"value\": \"Bar\",\n        },\n    ])\nconfig = pulumi.Config()\n# API key passed to the post-login action.\naction_api_key = config.require(\"actionApiKey\")\nmy_secure_action = auth0.Action(\"my_secure_action\",\n    name=std.format(input=\"Secure Action %s\",\n        args=[std.timestamp()[\"result\"]])[\"result\"],\n    runtime=\"node22\",\n    deploy=True,\n    code=\"\"\"exports.onExecutePostLogin = async (event, api) =\u003e {\n  console.log(event);\n};\n\"\"\",\n    supported_triggers={\n        \"id\": \"post-login\",\n        \"version\": \"v3\",\n    },\n    secrets_wos=[{\n        \"name\": \"API_KEY\",\n        \"value\": action_api_key,\n    }],\n    secrets_wo_version=1)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\nusing Std = Pulumi.Std;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myAction = new Auth0.Action(\"my_action\", new()\n    {\n        Name = Std.Format.Invoke(new()\n        {\n            Input = \"Test Action %s\",\n            Args = new[]\n            {\n                Std.Timestamp.Invoke().Result,\n            },\n        }).Result,\n        Runtime = \"node22\",\n        Deploy = true,\n        Code = @\"/**\n * Handler that will be called during the execution of a PostLogin flow.\n *\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.\n */\n exports.onExecutePostLogin = async (event, api) =\u003e {\n   console.log(event);\n };\n\",\n        SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs\n        {\n            Id = \"post-login\",\n            Version = \"v3\",\n        },\n        Dependencies = new[]\n        {\n            new Auth0.Inputs.ActionDependencyArgs\n            {\n                Name = \"lodash\",\n                Version = \"latest\",\n            },\n            new Auth0.Inputs.ActionDependencyArgs\n            {\n                Name = \"request\",\n                Version = \"latest\",\n            },\n        },\n        Secrets = new[]\n        {\n            new Auth0.Inputs.ActionSecretArgs\n            {\n                Name = \"FOO\",\n                Value = \"Foo\",\n            },\n            new Auth0.Inputs.ActionSecretArgs\n            {\n                Name = \"BAR\",\n                Value = \"Bar\",\n            },\n        },\n    });\n\n    var config = new Config();\n    // API key passed to the post-login action.\n    var actionApiKey = config.Require(\"actionApiKey\");\n    var mySecureAction = new Auth0.Action(\"my_secure_action\", new()\n    {\n        Name = Std.Format.Invoke(new()\n        {\n            Input = \"Secure Action %s\",\n            Args = new[]\n            {\n                Std.Timestamp.Invoke().Result,\n            },\n        }).Result,\n        Runtime = \"node22\",\n        Deploy = true,\n        Code = @\"exports.onExecutePostLogin = async (event, api) =\u003e {\n  console.log(event);\n};\n\",\n        SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs\n        {\n            Id = \"post-login\",\n            Version = \"v3\",\n        },\n        SecretsWos = new[]\n        {\n            new Auth0.Inputs.ActionSecretsWoArgs\n            {\n                Name = \"API_KEY\",\n                Value = actionApiKey,\n            },\n        },\n        SecretsWoVersion = 1,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi-std/sdk/go/std\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tinvokeFormat, err := std.Format(ctx, map[string]interface{}{\n\t\t\t\"input\": \"Test Action %s\",\n\t\t\t\"args\": []interface{}{\n\t\t\t\tstd.Timestamp(ctx, map[string]interface{}{}, nil).Result,\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = auth0.NewAction(ctx, \"my_action\", \u0026auth0.ActionArgs{\n\t\t\tName:    invokeFormat.Result,\n\t\t\tRuntime: pulumi.String(\"node22\"),\n\t\t\tDeploy:  pulumi.Bool(true),\n\t\t\tCode: pulumi.String(`/**\n * Handler that will be called during the execution of a PostLogin flow.\n *\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.\n */\n exports.onExecutePostLogin = async (event, api) =\u003e {\n   console.log(event);\n };\n`),\n\t\t\tSupportedTriggers: \u0026auth0.ActionSupportedTriggersArgs{\n\t\t\t\tId:      pulumi.String(\"post-login\"),\n\t\t\t\tVersion: pulumi.String(\"v3\"),\n\t\t\t},\n\t\t\tDependencies: auth0.ActionDependencyArray{\n\t\t\t\t\u0026auth0.ActionDependencyArgs{\n\t\t\t\t\tName:    pulumi.String(\"lodash\"),\n\t\t\t\t\tVersion: pulumi.String(\"latest\"),\n\t\t\t\t},\n\t\t\t\t\u0026auth0.ActionDependencyArgs{\n\t\t\t\t\tName:    pulumi.String(\"request\"),\n\t\t\t\t\tVersion: pulumi.String(\"latest\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tSecrets: auth0.ActionSecretArray{\n\t\t\t\t\u0026auth0.ActionSecretArgs{\n\t\t\t\t\tName:  pulumi.String(\"FOO\"),\n\t\t\t\t\tValue: pulumi.String(\"Foo\"),\n\t\t\t\t},\n\t\t\t\t\u0026auth0.ActionSecretArgs{\n\t\t\t\t\tName:  pulumi.String(\"BAR\"),\n\t\t\t\t\tValue: pulumi.String(\"Bar\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tcfg := config.New(ctx, \"\")\n\t\t// API key passed to the post-login action.\n\t\tactionApiKey := cfg.Require(\"actionApiKey\")\n\t\tinvokeFormat1, err := std.Format(ctx, map[string]interface{}{\n\t\t\t\"input\": \"Secure Action %s\",\n\t\t\t\"args\": []interface{}{\n\t\t\t\tstd.Timestamp(ctx, map[string]interface{}{}, nil).Result,\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = auth0.NewAction(ctx, \"my_secure_action\", \u0026auth0.ActionArgs{\n\t\t\tName:    invokeFormat1.Result,\n\t\t\tRuntime: pulumi.String(\"node22\"),\n\t\t\tDeploy:  pulumi.Bool(true),\n\t\t\tCode:    pulumi.String(\"exports.onExecutePostLogin = async (event, api) =\u003e {\\n  console.log(event);\\n};\\n\"),\n\t\t\tSupportedTriggers: \u0026auth0.ActionSupportedTriggersArgs{\n\t\t\t\tId:      pulumi.String(\"post-login\"),\n\t\t\t\tVersion: pulumi.String(\"v3\"),\n\t\t\t},\n\t\t\tSecretsWos: auth0.ActionSecretsWoArray{\n\t\t\t\t\u0026auth0.ActionSecretsWoArgs{\n\t\t\t\t\tName:  pulumi.String(\"API_KEY\"),\n\t\t\t\t\tValue: pulumi.String(actionApiKey),\n\t\t\t\t},\n\t\t\t},\n\t\t\tSecretsWoVersion: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    auth0 = {\n      source = \"pulumi/auth0\"\n    }\n  }\n}\n\ndata \"std_format\" \"invoke_0\" {\n  input = \"Test Action %s\"\n  args  = [timestamp()]\n}\ndata \"std_format\" \"invoke_1\" {\n  input = \"Secure Action %s\"\n  args  = [timestamp()]\n}\n\nresource \"auth0_action\" \"my_action\" {\n  name    = data.std_format.invoke_0.result\n  runtime = \"node22\"\n  deploy  = true\n  code    = \"/**\\n * Handler that will be called during the execution of a PostLogin flow.\\n *\\n * @param {Event} event - Details about the user and the context in which they are logging in.\\n * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.\\n */\\n exports.onExecutePostLogin = async (event, api) =\u003e {\\n   console.log(event);\\n };\\n\"\n  supported_triggers = {\n    id      = \"post-login\"\n    version = \"v3\"\n  }\n  dependencies {\n    name    = \"lodash\"\n    version = \"latest\"\n  }\n  dependencies {\n    name    = \"request\"\n    version = \"latest\"\n  }\n  secrets {\n    name  = \"FOO\"\n    value = \"Foo\"\n  }\n  secrets {\n    name  = \"BAR\"\n    value = \"Bar\"\n  }\n}\nresource \"auth0_action\" \"my_secure_action\" {\n  name    = data.std_format.invoke_1.result\n  runtime = \"node22\"\n  deploy  = true\n  code    = \"exports.onExecutePostLogin = async (event, api) =\u003e {\\n  console.log(event);\\n};\\n\"\n  supported_triggers = {\n    id      = \"post-login\"\n    version = \"v3\"\n  }\n  secrets_wos {\n    name  = \"API_KEY\"\n    value = var.actionApiKey\n  }\n  secrets_wo_version = 1\n}\n# Creates an action with write-only secrets (recommended for security).\n# Secret values are never stored in Terraform state. They can be supplied via\n# regular sensitive variables or via ephemeral variables/resources.\nvariable \"actionApiKey\" {\n  type        = string\n  description = \"API key passed to the post-login action.\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Action;\nimport com.pulumi.auth0.ActionArgs;\nimport com.pulumi.auth0.inputs.ActionSupportedTriggersArgs;\nimport com.pulumi.auth0.inputs.ActionDependencyArgs;\nimport com.pulumi.auth0.inputs.ActionSecretArgs;\nimport com.pulumi.std.StdFunctions;\nimport com.pulumi.auth0.inputs.ActionSecretsWoArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var config = ctx.config();\n        var myAction = new Action(\"myAction\", ActionArgs.builder()\n            .name(StdFunctions.format(Map.ofEntries(\n                Map.entry(\"input\", \"Test Action %s\"),\n                Map.entry(\"args\", Arrays.asList(StdFunctions.timestamp(Map.ofEntries(\n                )).result()))\n            )).result())\n            .runtime(\"node22\")\n            .deploy(true)\n            .code(\"\"\"\n/**\n * Handler that will be called during the execution of a PostLogin flow.\n *\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.\n */\n exports.onExecutePostLogin = async (event, api) =\u003e {\n   console.log(event);\n };\n            \"\"\")\n            .supportedTriggers(ActionSupportedTriggersArgs.builder()\n                .id(\"post-login\")\n                .version(\"v3\")\n                .build())\n            .dependencies(            \n                ActionDependencyArgs.builder()\n                    .name(\"lodash\")\n                    .version(\"latest\")\n                    .build(),\n                ActionDependencyArgs.builder()\n                    .name(\"request\")\n                    .version(\"latest\")\n                    .build())\n            .secrets(            \n                ActionSecretArgs.builder()\n                    .name(\"FOO\")\n                    .value(\"Foo\")\n                    .build(),\n                ActionSecretArgs.builder()\n                    .name(\"BAR\")\n                    .value(\"Bar\")\n                    .build())\n            .build());\n\n        final var actionApiKey = config.require(\"actionApiKey\");\n        var mySecureAction = new Action(\"mySecureAction\", ActionArgs.builder()\n            .name(StdFunctions.format(Map.ofEntries(\n                Map.entry(\"input\", \"Secure Action %s\"),\n                Map.entry(\"args\", Arrays.asList(StdFunctions.timestamp(Map.ofEntries(\n                )).result()))\n            )).result())\n            .runtime(\"node22\")\n            .deploy(true)\n            .code(\"\"\"\nexports.onExecutePostLogin = async (event, api) =\u003e {\n  console.log(event);\n};\n            \"\"\")\n            .supportedTriggers(ActionSupportedTriggersArgs.builder()\n                .id(\"post-login\")\n                .version(\"v3\")\n                .build())\n            .secretsWos(ActionSecretsWoArgs.builder()\n                .name(\"API_KEY\")\n                .value(actionApiKey)\n                .build())\n            .secretsWoVersion(1)\n            .build());\n\n    }\n}\n```\n```yaml\nconfiguration:\n  # Creates an action with write-only secrets (recommended for security).\n  # Secret values are never stored in Terraform state. They can be supplied via\n  # regular sensitive variables or via ephemeral variables/resources.\n  actionApiKey:\n    type: string\nresources:\n  myAction:\n    type: auth0:Action\n    name: my_action\n    properties:\n      name:\n        fn::invoke:\n          function: std:format\n          arguments:\n            input: Test Action %s\n            args:\n              - fn::invoke:\n                  function: std:timestamp\n                  arguments: {}\n                  return: result\n          return: result\n      runtime: node22\n      deploy: true\n      code: |\n        /**\n         * Handler that will be called during the execution of a PostLogin flow.\n         *\n         * @param {Event} event - Details about the user and the context in which they are logging in.\n         * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.\n         */\n         exports.onExecutePostLogin = async (event, api) =\u003e {\n           console.log(event);\n         };\n      supportedTriggers:\n        id: post-login\n        version: v3\n      dependencies:\n        - name: lodash\n          version: latest\n        - name: request\n          version: latest\n      secrets:\n        - name: FOO\n          value: Foo\n        - name: BAR\n          value: Bar\n  mySecureAction:\n    type: auth0:Action\n    name: my_secure_action\n    properties:\n      name:\n        fn::invoke:\n          function: std:format\n          arguments:\n            input: Secure Action %s\n            args:\n              - fn::invoke:\n                  function: std:timestamp\n                  arguments: {}\n                  return: result\n          return: result\n      runtime: node22\n      deploy: true\n      code: |\n        exports.onExecutePostLogin = async (event, api) =\u003e {\n          console.log(event);\n        };\n      supportedTriggers:\n        id: post-login\n        version: v3\n      secretsWos:\n        - name: API_KEY\n          value: ${actionApiKey}\n      secretsWoVersion: 1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported by specifying the action ID.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/action:Action my_action \"12f4f21b-017a-319d-92e7-2291c1ca36c4\"\n```\n\n\u003e For security reasons importing \u003cspan pulumi-lang-nodejs=\"`secrets`\" pulumi-lang-dotnet=\"`Secrets`\" pulumi-lang-go=\"`secrets`\" pulumi-lang-python=\"`secrets`\" pulumi-lang-yaml=\"`secrets`\" pulumi-lang-java=\"`secrets`\" pulumi-lang-hcl=\"`secrets`\"\u003e`secrets`\u003c/span\u003e is not allowed. Therefore, it is advised to import\nthe action without secrets and adding them back after the action has been imported.\n\n",
             "properties": {
                 "code": {
                     "type": "string",
@@ -15481,18 +15645,18 @@
                     "items": {
                         "$ref": "#/types/auth0:index/ActionDependency:ActionDependency"
                     },
-                    "description": "List of third party npm modules, and their versions, that this action depends on.\n"
+                    "description": "List of third party npm modules, and their versions, that this action depends on."
                 },
                 "deploy": {
                     "type": "boolean",
-                    "description": "Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.\n"
+                    "description": "Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately."
                 },
                 "modules": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/auth0:index/ActionModule:ActionModule"
                     },
-                    "description": "List of action modules and their versions that this action depends on.\n"
+                    "description": "List of action modules and their versions that this action depends on."
                 },
                 "name": {
                     "type": "string",
@@ -15500,14 +15664,25 @@
                 },
                 "runtime": {
                     "type": "string",
-                    "description": "The Node runtime. Possible values are: \u003cspan pulumi-lang-nodejs=\"`node12`\" pulumi-lang-dotnet=\"`Node12`\" pulumi-lang-go=\"`node12`\" pulumi-lang-python=\"`node12`\" pulumi-lang-yaml=\"`node12`\" pulumi-lang-java=\"`node12`\" pulumi-lang-hcl=\"`node12`\"\u003e`node12`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`node16`\" pulumi-lang-dotnet=\"`Node16`\" pulumi-lang-go=\"`node16`\" pulumi-lang-python=\"`node16`\" pulumi-lang-yaml=\"`node16`\" pulumi-lang-java=\"`node16`\" pulumi-lang-hcl=\"`node16`\"\u003e`node16`\u003c/span\u003e (not recommended), \u003cspan pulumi-lang-nodejs=\"`node18`\" pulumi-lang-dotnet=\"`Node18`\" pulumi-lang-go=\"`node18`\" pulumi-lang-python=\"`node18`\" pulumi-lang-yaml=\"`node18`\" pulumi-lang-java=\"`node18`\" pulumi-lang-hcl=\"`node18`\"\u003e`node18`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`node22`\" pulumi-lang-dotnet=\"`Node22`\" pulumi-lang-go=\"`node22`\" pulumi-lang-python=\"`node22`\" pulumi-lang-yaml=\"`node22`\" pulumi-lang-java=\"`node22`\" pulumi-lang-hcl=\"`node22`\"\u003e`node22`\u003c/span\u003e\n"
+                    "description": "The Node runtime. Possible values are: \u003cspan pulumi-lang-nodejs=\"`node12`\" pulumi-lang-dotnet=\"`Node12`\" pulumi-lang-go=\"`node12`\" pulumi-lang-python=\"`node12`\" pulumi-lang-yaml=\"`node12`\" pulumi-lang-java=\"`node12`\" pulumi-lang-hcl=\"`node12`\"\u003e`node12`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`node16`\" pulumi-lang-dotnet=\"`Node16`\" pulumi-lang-go=\"`node16`\" pulumi-lang-python=\"`node16`\" pulumi-lang-yaml=\"`node16`\" pulumi-lang-java=\"`node16`\" pulumi-lang-hcl=\"`node16`\"\u003e`node16`\u003c/span\u003e (not recommended), \u003cspan pulumi-lang-nodejs=\"`node18`\" pulumi-lang-dotnet=\"`Node18`\" pulumi-lang-go=\"`node18`\" pulumi-lang-python=\"`node18`\" pulumi-lang-yaml=\"`node18`\" pulumi-lang-java=\"`node18`\" pulumi-lang-hcl=\"`node18`\"\u003e`node18`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`node22`\" pulumi-lang-dotnet=\"`Node22`\" pulumi-lang-go=\"`node22`\" pulumi-lang-python=\"`node22`\" pulumi-lang-yaml=\"`node22`\" pulumi-lang-java=\"`node22`\" pulumi-lang-hcl=\"`node22`\"\u003e`node22`\u003c/span\u003e"
                 },
                 "secrets": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/auth0:index/ActionSecret:ActionSecret"
                     },
-                    "description": "List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.\n"
+                    "description": "List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using \u003cspan pulumi-lang-nodejs=\"`secretsWo`\" pulumi-lang-dotnet=\"`SecretsWo`\" pulumi-lang-go=\"`secretsWo`\" pulumi-lang-python=\"`secrets_wo`\" pulumi-lang-yaml=\"`secretsWo`\" pulumi-lang-java=\"`secretsWo`\" pulumi-lang-hcl=\"`secrets_wo`\"\u003e`secretsWo`\u003c/span\u003e instead, which supports write-only values and ephemeral variables."
+                },
+                "secretsWoVersion": {
+                    "type": "integer",
+                    "description": "Version number for \u003cspan pulumi-lang-nodejs=\"`secretsWo`\" pulumi-lang-dotnet=\"`SecretsWo`\" pulumi-lang-go=\"`secretsWo`\" pulumi-lang-python=\"`secrets_wo`\" pulumi-lang-yaml=\"`secretsWo`\" pulumi-lang-java=\"`secretsWo`\" pulumi-lang-hcl=\"`secrets_wo`\"\u003e`secretsWo`\u003c/span\u003e changes. Adding, renaming, or removing a \u003cspan pulumi-lang-nodejs=\"`secretsWo`\" pulumi-lang-dotnet=\"`SecretsWo`\" pulumi-lang-go=\"`secretsWo`\" pulumi-lang-python=\"`secrets_wo`\" pulumi-lang-yaml=\"`secretsWo`\" pulumi-lang-java=\"`secretsWo`\" pulumi-lang-hcl=\"`secrets_wo`\"\u003e`secretsWo`\u003c/span\u003e entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API."
+                },
+                "secretsWos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/ActionSecretsWo:ActionSecretsWo"
+                    },
+                    "description": "List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the \u003cspan pulumi-lang-nodejs=\"`secretsWoVersion`\" pulumi-lang-dotnet=\"`SecretsWoVersion`\" pulumi-lang-go=\"`secretsWoVersion`\" pulumi-lang-python=\"`secrets_wo_version`\" pulumi-lang-yaml=\"`secretsWoVersion`\" pulumi-lang-java=\"`secretsWoVersion`\" pulumi-lang-hcl=\"`secrets_wo_version`\"\u003e`secretsWoVersion`\u003c/span\u003e attribute. To remove all secrets, delete the \u003cspan pulumi-lang-nodejs=\"`secretsWo`\" pulumi-lang-dotnet=\"`SecretsWo`\" pulumi-lang-go=\"`secretsWo`\" pulumi-lang-python=\"`secrets_wo`\" pulumi-lang-yaml=\"`secretsWo`\" pulumi-lang-java=\"`secretsWo`\" pulumi-lang-hcl=\"`secrets_wo`\"\u003e`secretsWo`\u003c/span\u003e blocks together with the \u003cspan pulumi-lang-nodejs=\"`secretsWoVersion`\" pulumi-lang-dotnet=\"`SecretsWoVersion`\" pulumi-lang-go=\"`secretsWoVersion`\" pulumi-lang-python=\"`secrets_wo_version`\" pulumi-lang-yaml=\"`secretsWoVersion`\" pulumi-lang-java=\"`secretsWoVersion`\" pulumi-lang-hcl=\"`secrets_wo_version`\"\u003e`secretsWoVersion`\u003c/span\u003e attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with \u003cspan pulumi-lang-nodejs=\"`secrets`\" pulumi-lang-dotnet=\"`Secrets`\" pulumi-lang-go=\"`secrets`\" pulumi-lang-python=\"`secrets`\" pulumi-lang-yaml=\"`secrets`\" pulumi-lang-java=\"`secrets`\" pulumi-lang-hcl=\"`secrets`\"\u003e`secrets`\u003c/span\u003e."
                 },
                 "supportedTriggers": {
                     "$ref": "#/types/auth0:index/ActionSupportedTriggers:ActionSupportedTriggers",
@@ -15515,7 +15690,7 @@
                 },
                 "versionId": {
                     "type": "string",
-                    "description": "Version ID of the action. This value is available if \u003cspan pulumi-lang-nodejs=\"`deploy`\" pulumi-lang-dotnet=\"`Deploy`\" pulumi-lang-go=\"`deploy`\" pulumi-lang-python=\"`deploy`\" pulumi-lang-yaml=\"`deploy`\" pulumi-lang-java=\"`deploy`\" pulumi-lang-hcl=\"`deploy`\"\u003e`deploy`\u003c/span\u003e is set to true.\n"
+                    "description": "Version ID of the action. This value is available if \u003cspan pulumi-lang-nodejs=\"`deploy`\" pulumi-lang-dotnet=\"`Deploy`\" pulumi-lang-go=\"`deploy`\" pulumi-lang-python=\"`deploy`\" pulumi-lang-yaml=\"`deploy`\" pulumi-lang-java=\"`deploy`\" pulumi-lang-hcl=\"`deploy`\"\u003e`deploy`\u003c/span\u003e is set to true."
                 }
             },
             "required": [
@@ -15535,18 +15710,18 @@
                     "items": {
                         "$ref": "#/types/auth0:index/ActionDependency:ActionDependency"
                     },
-                    "description": "List of third party npm modules, and their versions, that this action depends on.\n"
+                    "description": "List of third party npm modules, and their versions, that this action depends on."
                 },
                 "deploy": {
                     "type": "boolean",
-                    "description": "Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.\n"
+                    "description": "Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately."
                 },
                 "modules": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/auth0:index/ActionModule:ActionModule"
                     },
-                    "description": "List of action modules and their versions that this action depends on.\n"
+                    "description": "List of action modules and their versions that this action depends on."
                 },
                 "name": {
                     "type": "string",
@@ -15554,14 +15729,25 @@
                 },
                 "runtime": {
                     "type": "string",
-                    "description": "The Node runtime. Possible values are: \u003cspan pulumi-lang-nodejs=\"`node12`\" pulumi-lang-dotnet=\"`Node12`\" pulumi-lang-go=\"`node12`\" pulumi-lang-python=\"`node12`\" pulumi-lang-yaml=\"`node12`\" pulumi-lang-java=\"`node12`\" pulumi-lang-hcl=\"`node12`\"\u003e`node12`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`node16`\" pulumi-lang-dotnet=\"`Node16`\" pulumi-lang-go=\"`node16`\" pulumi-lang-python=\"`node16`\" pulumi-lang-yaml=\"`node16`\" pulumi-lang-java=\"`node16`\" pulumi-lang-hcl=\"`node16`\"\u003e`node16`\u003c/span\u003e (not recommended), \u003cspan pulumi-lang-nodejs=\"`node18`\" pulumi-lang-dotnet=\"`Node18`\" pulumi-lang-go=\"`node18`\" pulumi-lang-python=\"`node18`\" pulumi-lang-yaml=\"`node18`\" pulumi-lang-java=\"`node18`\" pulumi-lang-hcl=\"`node18`\"\u003e`node18`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`node22`\" pulumi-lang-dotnet=\"`Node22`\" pulumi-lang-go=\"`node22`\" pulumi-lang-python=\"`node22`\" pulumi-lang-yaml=\"`node22`\" pulumi-lang-java=\"`node22`\" pulumi-lang-hcl=\"`node22`\"\u003e`node22`\u003c/span\u003e\n"
+                    "description": "The Node runtime. Possible values are: \u003cspan pulumi-lang-nodejs=\"`node12`\" pulumi-lang-dotnet=\"`Node12`\" pulumi-lang-go=\"`node12`\" pulumi-lang-python=\"`node12`\" pulumi-lang-yaml=\"`node12`\" pulumi-lang-java=\"`node12`\" pulumi-lang-hcl=\"`node12`\"\u003e`node12`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`node16`\" pulumi-lang-dotnet=\"`Node16`\" pulumi-lang-go=\"`node16`\" pulumi-lang-python=\"`node16`\" pulumi-lang-yaml=\"`node16`\" pulumi-lang-java=\"`node16`\" pulumi-lang-hcl=\"`node16`\"\u003e`node16`\u003c/span\u003e (not recommended), \u003cspan pulumi-lang-nodejs=\"`node18`\" pulumi-lang-dotnet=\"`Node18`\" pulumi-lang-go=\"`node18`\" pulumi-lang-python=\"`node18`\" pulumi-lang-yaml=\"`node18`\" pulumi-lang-java=\"`node18`\" pulumi-lang-hcl=\"`node18`\"\u003e`node18`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`node22`\" pulumi-lang-dotnet=\"`Node22`\" pulumi-lang-go=\"`node22`\" pulumi-lang-python=\"`node22`\" pulumi-lang-yaml=\"`node22`\" pulumi-lang-java=\"`node22`\" pulumi-lang-hcl=\"`node22`\"\u003e`node22`\u003c/span\u003e"
                 },
                 "secrets": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/auth0:index/ActionSecret:ActionSecret"
                     },
-                    "description": "List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.\n"
+                    "description": "List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using \u003cspan pulumi-lang-nodejs=\"`secretsWo`\" pulumi-lang-dotnet=\"`SecretsWo`\" pulumi-lang-go=\"`secretsWo`\" pulumi-lang-python=\"`secrets_wo`\" pulumi-lang-yaml=\"`secretsWo`\" pulumi-lang-java=\"`secretsWo`\" pulumi-lang-hcl=\"`secrets_wo`\"\u003e`secretsWo`\u003c/span\u003e instead, which supports write-only values and ephemeral variables."
+                },
+                "secretsWoVersion": {
+                    "type": "integer",
+                    "description": "Version number for \u003cspan pulumi-lang-nodejs=\"`secretsWo`\" pulumi-lang-dotnet=\"`SecretsWo`\" pulumi-lang-go=\"`secretsWo`\" pulumi-lang-python=\"`secrets_wo`\" pulumi-lang-yaml=\"`secretsWo`\" pulumi-lang-java=\"`secretsWo`\" pulumi-lang-hcl=\"`secrets_wo`\"\u003e`secretsWo`\u003c/span\u003e changes. Adding, renaming, or removing a \u003cspan pulumi-lang-nodejs=\"`secretsWo`\" pulumi-lang-dotnet=\"`SecretsWo`\" pulumi-lang-go=\"`secretsWo`\" pulumi-lang-python=\"`secrets_wo`\" pulumi-lang-yaml=\"`secretsWo`\" pulumi-lang-java=\"`secretsWo`\" pulumi-lang-hcl=\"`secrets_wo`\"\u003e`secretsWo`\u003c/span\u003e entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API."
+                },
+                "secretsWos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/ActionSecretsWo:ActionSecretsWo"
+                    },
+                    "description": "List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the \u003cspan pulumi-lang-nodejs=\"`secretsWoVersion`\" pulumi-lang-dotnet=\"`SecretsWoVersion`\" pulumi-lang-go=\"`secretsWoVersion`\" pulumi-lang-python=\"`secrets_wo_version`\" pulumi-lang-yaml=\"`secretsWoVersion`\" pulumi-lang-java=\"`secretsWoVersion`\" pulumi-lang-hcl=\"`secrets_wo_version`\"\u003e`secretsWoVersion`\u003c/span\u003e attribute. To remove all secrets, delete the \u003cspan pulumi-lang-nodejs=\"`secretsWo`\" pulumi-lang-dotnet=\"`SecretsWo`\" pulumi-lang-go=\"`secretsWo`\" pulumi-lang-python=\"`secrets_wo`\" pulumi-lang-yaml=\"`secretsWo`\" pulumi-lang-java=\"`secretsWo`\" pulumi-lang-hcl=\"`secrets_wo`\"\u003e`secretsWo`\u003c/span\u003e blocks together with the \u003cspan pulumi-lang-nodejs=\"`secretsWoVersion`\" pulumi-lang-dotnet=\"`SecretsWoVersion`\" pulumi-lang-go=\"`secretsWoVersion`\" pulumi-lang-python=\"`secrets_wo_version`\" pulumi-lang-yaml=\"`secretsWoVersion`\" pulumi-lang-java=\"`secretsWoVersion`\" pulumi-lang-hcl=\"`secrets_wo_version`\"\u003e`secretsWoVersion`\u003c/span\u003e attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with \u003cspan pulumi-lang-nodejs=\"`secrets`\" pulumi-lang-dotnet=\"`Secrets`\" pulumi-lang-go=\"`secrets`\" pulumi-lang-python=\"`secrets`\" pulumi-lang-yaml=\"`secrets`\" pulumi-lang-java=\"`secrets`\" pulumi-lang-hcl=\"`secrets`\"\u003e`secrets`\u003c/span\u003e."
                 },
                 "supportedTriggers": {
                     "$ref": "#/types/auth0:index/ActionSupportedTriggers:ActionSupportedTriggers",
@@ -15584,18 +15770,18 @@
                         "items": {
                             "$ref": "#/types/auth0:index/ActionDependency:ActionDependency"
                         },
-                        "description": "List of third party npm modules, and their versions, that this action depends on.\n"
+                        "description": "List of third party npm modules, and their versions, that this action depends on."
                     },
                     "deploy": {
                         "type": "boolean",
-                        "description": "Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.\n"
+                        "description": "Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately."
                     },
                     "modules": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/auth0:index/ActionModule:ActionModule"
                         },
-                        "description": "List of action modules and their versions that this action depends on.\n"
+                        "description": "List of action modules and their versions that this action depends on."
                     },
                     "name": {
                         "type": "string",
@@ -15603,14 +15789,25 @@
                     },
                     "runtime": {
                         "type": "string",
-                        "description": "The Node runtime. Possible values are: \u003cspan pulumi-lang-nodejs=\"`node12`\" pulumi-lang-dotnet=\"`Node12`\" pulumi-lang-go=\"`node12`\" pulumi-lang-python=\"`node12`\" pulumi-lang-yaml=\"`node12`\" pulumi-lang-java=\"`node12`\" pulumi-lang-hcl=\"`node12`\"\u003e`node12`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`node16`\" pulumi-lang-dotnet=\"`Node16`\" pulumi-lang-go=\"`node16`\" pulumi-lang-python=\"`node16`\" pulumi-lang-yaml=\"`node16`\" pulumi-lang-java=\"`node16`\" pulumi-lang-hcl=\"`node16`\"\u003e`node16`\u003c/span\u003e (not recommended), \u003cspan pulumi-lang-nodejs=\"`node18`\" pulumi-lang-dotnet=\"`Node18`\" pulumi-lang-go=\"`node18`\" pulumi-lang-python=\"`node18`\" pulumi-lang-yaml=\"`node18`\" pulumi-lang-java=\"`node18`\" pulumi-lang-hcl=\"`node18`\"\u003e`node18`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`node22`\" pulumi-lang-dotnet=\"`Node22`\" pulumi-lang-go=\"`node22`\" pulumi-lang-python=\"`node22`\" pulumi-lang-yaml=\"`node22`\" pulumi-lang-java=\"`node22`\" pulumi-lang-hcl=\"`node22`\"\u003e`node22`\u003c/span\u003e\n"
+                        "description": "The Node runtime. Possible values are: \u003cspan pulumi-lang-nodejs=\"`node12`\" pulumi-lang-dotnet=\"`Node12`\" pulumi-lang-go=\"`node12`\" pulumi-lang-python=\"`node12`\" pulumi-lang-yaml=\"`node12`\" pulumi-lang-java=\"`node12`\" pulumi-lang-hcl=\"`node12`\"\u003e`node12`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`node16`\" pulumi-lang-dotnet=\"`Node16`\" pulumi-lang-go=\"`node16`\" pulumi-lang-python=\"`node16`\" pulumi-lang-yaml=\"`node16`\" pulumi-lang-java=\"`node16`\" pulumi-lang-hcl=\"`node16`\"\u003e`node16`\u003c/span\u003e (not recommended), \u003cspan pulumi-lang-nodejs=\"`node18`\" pulumi-lang-dotnet=\"`Node18`\" pulumi-lang-go=\"`node18`\" pulumi-lang-python=\"`node18`\" pulumi-lang-yaml=\"`node18`\" pulumi-lang-java=\"`node18`\" pulumi-lang-hcl=\"`node18`\"\u003e`node18`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`node22`\" pulumi-lang-dotnet=\"`Node22`\" pulumi-lang-go=\"`node22`\" pulumi-lang-python=\"`node22`\" pulumi-lang-yaml=\"`node22`\" pulumi-lang-java=\"`node22`\" pulumi-lang-hcl=\"`node22`\"\u003e`node22`\u003c/span\u003e"
                     },
                     "secrets": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/auth0:index/ActionSecret:ActionSecret"
                         },
-                        "description": "List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.\n"
+                        "description": "List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using \u003cspan pulumi-lang-nodejs=\"`secretsWo`\" pulumi-lang-dotnet=\"`SecretsWo`\" pulumi-lang-go=\"`secretsWo`\" pulumi-lang-python=\"`secrets_wo`\" pulumi-lang-yaml=\"`secretsWo`\" pulumi-lang-java=\"`secretsWo`\" pulumi-lang-hcl=\"`secrets_wo`\"\u003e`secretsWo`\u003c/span\u003e instead, which supports write-only values and ephemeral variables."
+                    },
+                    "secretsWoVersion": {
+                        "type": "integer",
+                        "description": "Version number for \u003cspan pulumi-lang-nodejs=\"`secretsWo`\" pulumi-lang-dotnet=\"`SecretsWo`\" pulumi-lang-go=\"`secretsWo`\" pulumi-lang-python=\"`secrets_wo`\" pulumi-lang-yaml=\"`secretsWo`\" pulumi-lang-java=\"`secretsWo`\" pulumi-lang-hcl=\"`secrets_wo`\"\u003e`secretsWo`\u003c/span\u003e changes. Adding, renaming, or removing a \u003cspan pulumi-lang-nodejs=\"`secretsWo`\" pulumi-lang-dotnet=\"`SecretsWo`\" pulumi-lang-go=\"`secretsWo`\" pulumi-lang-python=\"`secrets_wo`\" pulumi-lang-yaml=\"`secretsWo`\" pulumi-lang-java=\"`secretsWo`\" pulumi-lang-hcl=\"`secrets_wo`\"\u003e`secretsWo`\u003c/span\u003e entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API."
+                    },
+                    "secretsWos": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/auth0:index/ActionSecretsWo:ActionSecretsWo"
+                        },
+                        "description": "List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the \u003cspan pulumi-lang-nodejs=\"`secretsWoVersion`\" pulumi-lang-dotnet=\"`SecretsWoVersion`\" pulumi-lang-go=\"`secretsWoVersion`\" pulumi-lang-python=\"`secrets_wo_version`\" pulumi-lang-yaml=\"`secretsWoVersion`\" pulumi-lang-java=\"`secretsWoVersion`\" pulumi-lang-hcl=\"`secrets_wo_version`\"\u003e`secretsWoVersion`\u003c/span\u003e attribute. To remove all secrets, delete the \u003cspan pulumi-lang-nodejs=\"`secretsWo`\" pulumi-lang-dotnet=\"`SecretsWo`\" pulumi-lang-go=\"`secretsWo`\" pulumi-lang-python=\"`secrets_wo`\" pulumi-lang-yaml=\"`secretsWo`\" pulumi-lang-java=\"`secretsWo`\" pulumi-lang-hcl=\"`secrets_wo`\"\u003e`secretsWo`\u003c/span\u003e blocks together with the \u003cspan pulumi-lang-nodejs=\"`secretsWoVersion`\" pulumi-lang-dotnet=\"`SecretsWoVersion`\" pulumi-lang-go=\"`secretsWoVersion`\" pulumi-lang-python=\"`secrets_wo_version`\" pulumi-lang-yaml=\"`secretsWoVersion`\" pulumi-lang-java=\"`secretsWoVersion`\" pulumi-lang-hcl=\"`secrets_wo_version`\"\u003e`secretsWoVersion`\u003c/span\u003e attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with \u003cspan pulumi-lang-nodejs=\"`secrets`\" pulumi-lang-dotnet=\"`Secrets`\" pulumi-lang-go=\"`secrets`\" pulumi-lang-python=\"`secrets`\" pulumi-lang-yaml=\"`secrets`\" pulumi-lang-java=\"`secrets`\" pulumi-lang-hcl=\"`secrets`\"\u003e`secrets`\u003c/span\u003e."
                     },
                     "supportedTriggers": {
                         "$ref": "#/types/auth0:index/ActionSupportedTriggers:ActionSupportedTriggers",
@@ -15618,7 +15815,7 @@
                     },
                     "versionId": {
                         "type": "string",
-                        "description": "Version ID of the action. This value is available if \u003cspan pulumi-lang-nodejs=\"`deploy`\" pulumi-lang-dotnet=\"`Deploy`\" pulumi-lang-go=\"`deploy`\" pulumi-lang-python=\"`deploy`\" pulumi-lang-yaml=\"`deploy`\" pulumi-lang-java=\"`deploy`\" pulumi-lang-hcl=\"`deploy`\"\u003e`deploy`\u003c/span\u003e is set to true.\n"
+                        "description": "Version ID of the action. This value is available if \u003cspan pulumi-lang-nodejs=\"`deploy`\" pulumi-lang-dotnet=\"`Deploy`\" pulumi-lang-go=\"`deploy`\" pulumi-lang-python=\"`deploy`\" pulumi-lang-yaml=\"`deploy`\" pulumi-lang-java=\"`deploy`\" pulumi-lang-hcl=\"`deploy`\"\u003e`deploy`\u003c/span\u003e is set to true."
                     }
                 },
                 "type": "object"
@@ -16243,7 +16440,7 @@
                 },
                 "initiateLoginUri": {
                     "type": "string",
-                    "description": "Initiate login URI. Must be HTTPS or an empty string.\n"
+                    "description": "Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.\n"
                 },
                 "isFirstParty": {
                     "type": "boolean",
@@ -16521,7 +16718,7 @@
                 },
                 "initiateLoginUri": {
                     "type": "string",
-                    "description": "Initiate login URI. Must be HTTPS or an empty string.\n"
+                    "description": "Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.\n"
                 },
                 "isFirstParty": {
                     "type": "boolean",
@@ -16774,7 +16971,7 @@
                     },
                     "initiateLoginUri": {
                         "type": "string",
-                        "description": "Initiate login URI. Must be HTTPS or an empty string.\n"
+                        "description": "Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.\n"
                     },
                     "isFirstParty": {
                         "type": "boolean",
@@ -21452,6 +21649,103 @@
                 "type": "object"
             }
         },
+        "auth0:index/rateLimitPolicy:RateLimitPolicy": {
+            "description": "With this resource, you can manage Rate Limit Policies for the Authentication API, applying per-application (client-ID-based) throttling so a single application's traffic spike is isolated at the edge and does not exhaust the tenant's global rate limit. (EA only)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst noisyApp = new auth0.RateLimitPolicy(\"noisy_app\", {\n    resource: \"oauth_authentication_api\",\n    consumer: \"client\",\n    consumerSelector: \"client_id:abc123\",\n    configuration: {\n        action: \"redirect\",\n        limit: 1000,\n        redirectUri: \"https://example.com/rate-limited\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nnoisy_app = auth0.RateLimitPolicy(\"noisy_app\",\n    resource=\"oauth_authentication_api\",\n    consumer=\"client\",\n    consumer_selector=\"client_id:abc123\",\n    configuration={\n        \"action\": \"redirect\",\n        \"limit\": 1000,\n        \"redirect_uri\": \"https://example.com/rate-limited\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var noisyApp = new Auth0.RateLimitPolicy(\"noisy_app\", new()\n    {\n        Resource = \"oauth_authentication_api\",\n        Consumer = \"client\",\n        ConsumerSelector = \"client_id:abc123\",\n        Configuration = new Auth0.Inputs.RateLimitPolicyConfigurationArgs\n        {\n            Action = \"redirect\",\n            Limit = 1000,\n            RedirectUri = \"https://example.com/rate-limited\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewRateLimitPolicy(ctx, \"noisy_app\", \u0026auth0.RateLimitPolicyArgs{\n\t\t\tResource:         pulumi.String(\"oauth_authentication_api\"),\n\t\t\tConsumer:         pulumi.String(\"client\"),\n\t\t\tConsumerSelector: pulumi.String(\"client_id:abc123\"),\n\t\t\tConfiguration: \u0026auth0.RateLimitPolicyConfigurationArgs{\n\t\t\t\tAction:      pulumi.String(\"redirect\"),\n\t\t\t\tLimit:       pulumi.Int(1000),\n\t\t\t\tRedirectUri: pulumi.String(\"https://example.com/rate-limited\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    auth0 = {\n      source = \"pulumi/auth0\"\n    }\n  }\n}\n\nresource \"auth0_ratelimitpolicy\" \"noisy_app\" {\n  resource          = \"oauth_authentication_api\"\n  consumer          = \"client\"\n  consumer_selector = \"client_id:abc123\"\n  configuration = {\n    action       = \"redirect\"\n    limit        = 1000\n    redirect_uri = \"https://example.com/rate-limited\"\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.RateLimitPolicy;\nimport com.pulumi.auth0.RateLimitPolicyArgs;\nimport com.pulumi.auth0.inputs.RateLimitPolicyConfigurationArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var noisyApp = new RateLimitPolicy(\"noisyApp\", RateLimitPolicyArgs.builder()\n            .resource(\"oauth_authentication_api\")\n            .consumer(\"client\")\n            .consumerSelector(\"client_id:abc123\")\n            .configuration(RateLimitPolicyConfigurationArgs.builder()\n                .action(\"redirect\")\n                .limit(1000)\n                .redirectUri(\"https://example.com/rate-limited\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  noisyApp:\n    type: auth0:RateLimitPolicy\n    name: noisy_app\n    properties:\n      resource: oauth_authentication_api\n      consumer: client\n      consumerSelector: client_id:abc123\n      configuration:\n        action: redirect\n        limit: 1000\n        redirectUri: https://example.com/rate-limited\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nRate limit policies can be imported using their ID.\n\nYou can find existing rate limit policy IDs using the Auth0 Management API.\nhttps://auth0.com/docs/api/management/v2#!/Rate_Limit_Policies/get_rate_limit_policies\n\nExample:\n\n```sh\n$ pulumi import auth0:index/rateLimitPolicy:RateLimitPolicy noisy_app \"rlp_XXXXXXXXXXXXXXXX\"\n```\n\n",
+            "properties": {
+                "configuration": {
+                    "$ref": "#/types/auth0:index/RateLimitPolicyConfiguration:RateLimitPolicyConfiguration",
+                    "description": "The throttling configuration applied when the rate limit is reached. (EA only)\n"
+                },
+                "consumer": {
+                    "type": "string",
+                    "description": "The consumer category the policy applies to. Valid values are: client\n"
+                },
+                "consumerSelector": {
+                    "type": "string",
+                    "description": "Identifier or category within the consumer to which the policy applies. Supported values: `client_id:\u003cclient_id\u003e`, `client_id:\u003ccimd_uri\u003e`, \u003cspan pulumi-lang-nodejs=\"`cimdClients`\" pulumi-lang-dotnet=\"`CimdClients`\" pulumi-lang-go=\"`cimdClients`\" pulumi-lang-python=\"`cimd_clients`\" pulumi-lang-yaml=\"`cimdClients`\" pulumi-lang-java=\"`cimdClients`\" pulumi-lang-hcl=\"`cimd_clients`\"\u003e`cimdClients`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`thirdPartyClients`\" pulumi-lang-dotnet=\"`ThirdPartyClients`\" pulumi-lang-go=\"`thirdPartyClients`\" pulumi-lang-python=\"`third_party_clients`\" pulumi-lang-yaml=\"`thirdPartyClients`\" pulumi-lang-java=\"`thirdPartyClients`\" pulumi-lang-hcl=\"`third_party_clients`\"\u003e`thirdPartyClients`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\" pulumi-lang-hcl=\"`default`\"\u003e`default`\u003c/span\u003e. (EA only)\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The date and time when the rate limit policy was created.\n"
+                },
+                "resource": {
+                    "type": "string",
+                    "description": "The resource the policy applies to. Valid values are: oauth*authentication*api\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "The date and time when the rate limit policy was last updated.\n"
+                }
+            },
+            "required": [
+                "configuration",
+                "consumer",
+                "consumerSelector",
+                "createdAt",
+                "resource",
+                "updatedAt"
+            ],
+            "inputProperties": {
+                "configuration": {
+                    "$ref": "#/types/auth0:index/RateLimitPolicyConfiguration:RateLimitPolicyConfiguration",
+                    "description": "The throttling configuration applied when the rate limit is reached. (EA only)\n"
+                },
+                "consumer": {
+                    "type": "string",
+                    "description": "The consumer category the policy applies to. Valid values are: client\n",
+                    "willReplaceOnChanges": true
+                },
+                "consumerSelector": {
+                    "type": "string",
+                    "description": "Identifier or category within the consumer to which the policy applies. Supported values: `client_id:\u003cclient_id\u003e`, `client_id:\u003ccimd_uri\u003e`, \u003cspan pulumi-lang-nodejs=\"`cimdClients`\" pulumi-lang-dotnet=\"`CimdClients`\" pulumi-lang-go=\"`cimdClients`\" pulumi-lang-python=\"`cimd_clients`\" pulumi-lang-yaml=\"`cimdClients`\" pulumi-lang-java=\"`cimdClients`\" pulumi-lang-hcl=\"`cimd_clients`\"\u003e`cimdClients`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`thirdPartyClients`\" pulumi-lang-dotnet=\"`ThirdPartyClients`\" pulumi-lang-go=\"`thirdPartyClients`\" pulumi-lang-python=\"`third_party_clients`\" pulumi-lang-yaml=\"`thirdPartyClients`\" pulumi-lang-java=\"`thirdPartyClients`\" pulumi-lang-hcl=\"`third_party_clients`\"\u003e`thirdPartyClients`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\" pulumi-lang-hcl=\"`default`\"\u003e`default`\u003c/span\u003e. (EA only)\n",
+                    "willReplaceOnChanges": true
+                },
+                "resource": {
+                    "type": "string",
+                    "description": "The resource the policy applies to. Valid values are: oauth*authentication*api\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "configuration",
+                "consumer",
+                "consumerSelector",
+                "resource"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering RateLimitPolicy resources.\n",
+                "properties": {
+                    "configuration": {
+                        "$ref": "#/types/auth0:index/RateLimitPolicyConfiguration:RateLimitPolicyConfiguration",
+                        "description": "The throttling configuration applied when the rate limit is reached. (EA only)\n"
+                    },
+                    "consumer": {
+                        "type": "string",
+                        "description": "The consumer category the policy applies to. Valid values are: client\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "consumerSelector": {
+                        "type": "string",
+                        "description": "Identifier or category within the consumer to which the policy applies. Supported values: `client_id:\u003cclient_id\u003e`, `client_id:\u003ccimd_uri\u003e`, \u003cspan pulumi-lang-nodejs=\"`cimdClients`\" pulumi-lang-dotnet=\"`CimdClients`\" pulumi-lang-go=\"`cimdClients`\" pulumi-lang-python=\"`cimd_clients`\" pulumi-lang-yaml=\"`cimdClients`\" pulumi-lang-java=\"`cimdClients`\" pulumi-lang-hcl=\"`cimd_clients`\"\u003e`cimdClients`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`thirdPartyClients`\" pulumi-lang-dotnet=\"`ThirdPartyClients`\" pulumi-lang-go=\"`thirdPartyClients`\" pulumi-lang-python=\"`third_party_clients`\" pulumi-lang-yaml=\"`thirdPartyClients`\" pulumi-lang-java=\"`thirdPartyClients`\" pulumi-lang-hcl=\"`third_party_clients`\"\u003e`thirdPartyClients`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\" pulumi-lang-hcl=\"`default`\"\u003e`default`\u003c/span\u003e. (EA only)\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The date and time when the rate limit policy was created.\n"
+                    },
+                    "resource": {
+                        "type": "string",
+                        "description": "The resource the policy applies to. Valid values are: oauth*authentication*api\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "The date and time when the rate limit policy was last updated.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "auth0:index/resourceServer:ResourceServer": {
             "description": "With this resource, you can set up APIs that can be consumed from your authorized applications.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myResourceServer = new auth0.ResourceServer(\"my_resource_server\", {\n    name: \"Example Resource Server (Managed by Terraform)\",\n    identifier: \"https://api.example.com\",\n    signingAlg: \"RS256\",\n    allowOfflineAccess: true,\n    allowOnlineAccess: true,\n    allowOnlineAccessWithEphemeralSessions: false,\n    tokenLifetime: 8600,\n    skipConsentForVerifiableFirstPartyClients: true,\n    consentPolicy: \"transactional-authorization-with-mfa\",\n    tokenEncryption: {\n        format: \"compact-nested-jwe\",\n        encryptionKey: {\n            name: \"keyname\",\n            algorithm: \"RSA-OAEP-256\",\n            pem: `-----BEGIN CERTIFICATE-----\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n-----END CERTIFICATE-----\n`,\n        },\n    },\n    authorizationDetails: [\n        {\n            type: \"payment\",\n        },\n        {\n            type: \"non-payment\",\n        },\n    ],\n    proofOfPossession: {\n        mechanism: \"mtls\",\n        required: true,\n    },\n    subjectTypeAuthorization: {\n        user: {\n            policy: \"allow_all\",\n        },\n        client: {\n            policy: \"require_client_grant\",\n        },\n    },\n});\n// Sample OIN resource server configuration\nconst oktaOinExpressConfigurationApi = new auth0.ResourceServer(\"okta_oin_express_configuration_api\", {\n    identifier: \"urn:auth0:express-configure\",\n    name: \"Okta OIN Express Configuration API\",\n    signingAlg: \"RS256\",\n    signingSecret: null,\n    skipConsentForVerifiableFirstPartyClients: false,\n    tokenDialect: null,\n    tokenLifetime: 86400,\n    verificationLocation: null,\n    proofOfPossession: {\n        disable: true,\n        mechanism: null,\n        required: false,\n    },\n    tokenEncryption: {\n        disable: true,\n        format: null,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_resource_server = auth0.ResourceServer(\"my_resource_server\",\n    name=\"Example Resource Server (Managed by Terraform)\",\n    identifier=\"https://api.example.com\",\n    signing_alg=\"RS256\",\n    allow_offline_access=True,\n    allow_online_access=True,\n    allow_online_access_with_ephemeral_sessions=False,\n    token_lifetime=8600,\n    skip_consent_for_verifiable_first_party_clients=True,\n    consent_policy=\"transactional-authorization-with-mfa\",\n    token_encryption={\n        \"format\": \"compact-nested-jwe\",\n        \"encryption_key\": {\n            \"name\": \"keyname\",\n            \"algorithm\": \"RSA-OAEP-256\",\n            \"pem\": \"\"\"-----BEGIN CERTIFICATE-----\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n-----END CERTIFICATE-----\n\"\"\",\n        },\n    },\n    authorization_details=[\n        {\n            \"type\": \"payment\",\n        },\n        {\n            \"type\": \"non-payment\",\n        },\n    ],\n    proof_of_possession={\n        \"mechanism\": \"mtls\",\n        \"required\": True,\n    },\n    subject_type_authorization={\n        \"user\": {\n            \"policy\": \"allow_all\",\n        },\n        \"client\": {\n            \"policy\": \"require_client_grant\",\n        },\n    })\n# Sample OIN resource server configuration\nokta_oin_express_configuration_api = auth0.ResourceServer(\"okta_oin_express_configuration_api\",\n    identifier=\"urn:auth0:express-configure\",\n    name=\"Okta OIN Express Configuration API\",\n    signing_alg=\"RS256\",\n    signing_secret=None,\n    skip_consent_for_verifiable_first_party_clients=False,\n    token_dialect=None,\n    token_lifetime=86400,\n    verification_location=None,\n    proof_of_possession={\n        \"disable\": True,\n        \"mechanism\": None,\n        \"required\": False,\n    },\n    token_encryption={\n        \"disable\": True,\n        \"format\": None,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myResourceServer = new Auth0.ResourceServer(\"my_resource_server\", new()\n    {\n        Name = \"Example Resource Server (Managed by Terraform)\",\n        Identifier = \"https://api.example.com\",\n        SigningAlg = \"RS256\",\n        AllowOfflineAccess = true,\n        AllowOnlineAccess = true,\n        AllowOnlineAccessWithEphemeralSessions = false,\n        TokenLifetime = 8600,\n        SkipConsentForVerifiableFirstPartyClients = true,\n        ConsentPolicy = \"transactional-authorization-with-mfa\",\n        TokenEncryption = new Auth0.Inputs.ResourceServerTokenEncryptionArgs\n        {\n            Format = \"compact-nested-jwe\",\n            EncryptionKey = new Auth0.Inputs.ResourceServerTokenEncryptionEncryptionKeyArgs\n            {\n                Name = \"keyname\",\n                Algorithm = \"RSA-OAEP-256\",\n                Pem = @\"-----BEGIN CERTIFICATE-----\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n-----END CERTIFICATE-----\n\",\n            },\n        },\n        AuthorizationDetails = new[]\n        {\n            new Auth0.Inputs.ResourceServerAuthorizationDetailArgs\n            {\n                Type = \"payment\",\n            },\n            new Auth0.Inputs.ResourceServerAuthorizationDetailArgs\n            {\n                Type = \"non-payment\",\n            },\n        },\n        ProofOfPossession = new Auth0.Inputs.ResourceServerProofOfPossessionArgs\n        {\n            Mechanism = \"mtls\",\n            Required = true,\n        },\n        SubjectTypeAuthorization = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationArgs\n        {\n            User = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationUserArgs\n            {\n                Policy = \"allow_all\",\n            },\n            Client = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationClientArgs\n            {\n                Policy = \"require_client_grant\",\n            },\n        },\n    });\n\n    // Sample OIN resource server configuration\n    var oktaOinExpressConfigurationApi = new Auth0.ResourceServer(\"okta_oin_express_configuration_api\", new()\n    {\n        Identifier = \"urn:auth0:express-configure\",\n        Name = \"Okta OIN Express Configuration API\",\n        SigningAlg = \"RS256\",\n        SigningSecret = null,\n        SkipConsentForVerifiableFirstPartyClients = false,\n        TokenDialect = null,\n        TokenLifetime = 86400,\n        VerificationLocation = null,\n        ProofOfPossession = new Auth0.Inputs.ResourceServerProofOfPossessionArgs\n        {\n            Disable = true,\n            Mechanism = null,\n            Required = false,\n        },\n        TokenEncryption = new Auth0.Inputs.ResourceServerTokenEncryptionArgs\n        {\n            Disable = true,\n            Format = null,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewResourceServer(ctx, \"my_resource_server\", \u0026auth0.ResourceServerArgs{\n\t\t\tName:                                   pulumi.String(\"Example Resource Server (Managed by Terraform)\"),\n\t\t\tIdentifier:                             pulumi.String(\"https://api.example.com\"),\n\t\t\tSigningAlg:                             pulumi.String(\"RS256\"),\n\t\t\tAllowOfflineAccess:                     pulumi.Bool(true),\n\t\t\tAllowOnlineAccess:                      pulumi.Bool(true),\n\t\t\tAllowOnlineAccessWithEphemeralSessions: pulumi.Bool(false),\n\t\t\tTokenLifetime:                          pulumi.Int(8600),\n\t\t\tSkipConsentForVerifiableFirstPartyClients: pulumi.Bool(true),\n\t\t\tConsentPolicy: pulumi.String(\"transactional-authorization-with-mfa\"),\n\t\t\tTokenEncryption: \u0026auth0.ResourceServerTokenEncryptionArgs{\n\t\t\t\tFormat: pulumi.String(\"compact-nested-jwe\"),\n\t\t\t\tEncryptionKey: \u0026auth0.ResourceServerTokenEncryptionEncryptionKeyArgs{\n\t\t\t\t\tName:      pulumi.String(\"keyname\"),\n\t\t\t\t\tAlgorithm: pulumi.String(\"RSA-OAEP-256\"),\n\t\t\t\t\tPem:       pulumi.String(\"-----BEGIN CERTIFICATE-----\\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\\n-----END CERTIFICATE-----\\n\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tAuthorizationDetails: auth0.ResourceServerAuthorizationDetailArray{\n\t\t\t\t\u0026auth0.ResourceServerAuthorizationDetailArgs{\n\t\t\t\t\tType: pulumi.String(\"payment\"),\n\t\t\t\t},\n\t\t\t\t\u0026auth0.ResourceServerAuthorizationDetailArgs{\n\t\t\t\t\tType: pulumi.String(\"non-payment\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tProofOfPossession: \u0026auth0.ResourceServerProofOfPossessionArgs{\n\t\t\t\tMechanism: pulumi.String(\"mtls\"),\n\t\t\t\tRequired:  pulumi.Bool(true),\n\t\t\t},\n\t\t\tSubjectTypeAuthorization: \u0026auth0.ResourceServerSubjectTypeAuthorizationArgs{\n\t\t\t\tUser: \u0026auth0.ResourceServerSubjectTypeAuthorizationUserArgs{\n\t\t\t\t\tPolicy: pulumi.String(\"allow_all\"),\n\t\t\t\t},\n\t\t\t\tClient: \u0026auth0.ResourceServerSubjectTypeAuthorizationClientArgs{\n\t\t\t\t\tPolicy: pulumi.String(\"require_client_grant\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Sample OIN resource server configuration\n\t\t_, err = auth0.NewResourceServer(ctx, \"okta_oin_express_configuration_api\", \u0026auth0.ResourceServerArgs{\n\t\t\tIdentifier:    pulumi.String(\"urn:auth0:express-configure\"),\n\t\t\tName:          pulumi.String(\"Okta OIN Express Configuration API\"),\n\t\t\tSigningAlg:    pulumi.String(\"RS256\"),\n\t\t\tSigningSecret: nil,\n\t\t\tSkipConsentForVerifiableFirstPartyClients: pulumi.Bool(false),\n\t\t\tTokenDialect:         nil,\n\t\t\tTokenLifetime:        pulumi.Int(86400),\n\t\t\tVerificationLocation: nil,\n\t\t\tProofOfPossession: \u0026auth0.ResourceServerProofOfPossessionArgs{\n\t\t\t\tDisable:   pulumi.Bool(true),\n\t\t\t\tMechanism: nil,\n\t\t\t\tRequired:  pulumi.Bool(false),\n\t\t\t},\n\t\t\tTokenEncryption: \u0026auth0.ResourceServerTokenEncryptionArgs{\n\t\t\t\tDisable: pulumi.Bool(true),\n\t\t\t\tFormat:  nil,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    auth0 = {\n      source = \"pulumi/auth0\"\n    }\n  }\n}\n\nresource \"auth0_resourceserver\" \"my_resource_server\" {\n  name                                            = \"Example Resource Server (Managed by Terraform)\"\n  identifier                                      = \"https://api.example.com\"\n  signing_alg                                     = \"RS256\"\n  allow_offline_access                            = true\n  allow_online_access                             = true\n  allow_online_access_with_ephemeral_sessions     = false\n  token_lifetime                                  = 8600\n  skip_consent_for_verifiable_first_party_clients = true\n  consent_policy                                  = \"transactional-authorization-with-mfa\"\n  token_encryption = {\n    format = \"compact-nested-jwe\"\n    encryption_key = {\n      name      = \"keyname\"\n      algorithm = \"RSA-OAEP-256\"\n      pem       = \"-----BEGIN CERTIFICATE-----\\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\\n-----END CERTIFICATE-----\\n\"\n    }\n  }\n  authorization_details {\n    type = \"payment\"\n  }\n  authorization_details {\n    type = \"non-payment\"\n  }\n  proof_of_possession = {\n    mechanism = \"mtls\"\n    required  = true\n  }\n  subject_type_authorization = {\n    user = {\n      policy = \"allow_all\"\n    }\n    client = {\n      policy = \"require_client_grant\"\n    }\n  }\n}\n# Sample OIN resource server configuration\nresource \"auth0_resourceserver\" \"okta_oin_express_configuration_api\" {\n  identifier                                      = \"urn:auth0:express-configure\"\n  name                                            = \"Okta OIN Express Configuration API\"\n  signing_alg                                     = \"RS256\"\n  signing_secret                                  = null\n  skip_consent_for_verifiable_first_party_clients = false\n  token_dialect                                   = null\n  token_lifetime                                  = 86400\n  verification_location                           = null\n  proof_of_possession = {\n    disable   = true\n    mechanism = null\n    required  = false\n  }\n  token_encryption = {\n    disable = true\n    format  = null\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.ResourceServer;\nimport com.pulumi.auth0.ResourceServerArgs;\nimport com.pulumi.auth0.inputs.ResourceServerTokenEncryptionArgs;\nimport com.pulumi.auth0.inputs.ResourceServerTokenEncryptionEncryptionKeyArgs;\nimport com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;\nimport com.pulumi.auth0.inputs.ResourceServerProofOfPossessionArgs;\nimport com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationArgs;\nimport com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationUserArgs;\nimport com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationClientArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myResourceServer = new ResourceServer(\"myResourceServer\", ResourceServerArgs.builder()\n            .name(\"Example Resource Server (Managed by Terraform)\")\n            .identifier(\"https://api.example.com\")\n            .signingAlg(\"RS256\")\n            .allowOfflineAccess(true)\n            .allowOnlineAccess(true)\n            .allowOnlineAccessWithEphemeralSessions(false)\n            .tokenLifetime(8600)\n            .skipConsentForVerifiableFirstPartyClients(true)\n            .consentPolicy(\"transactional-authorization-with-mfa\")\n            .tokenEncryption(ResourceServerTokenEncryptionArgs.builder()\n                .format(\"compact-nested-jwe\")\n                .encryptionKey(ResourceServerTokenEncryptionEncryptionKeyArgs.builder()\n                    .name(\"keyname\")\n                    .algorithm(\"RSA-OAEP-256\")\n                    .pem(\"\"\"\n-----BEGIN CERTIFICATE-----\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n-----END CERTIFICATE-----\n                    \"\"\")\n                    .build())\n                .build())\n            .authorizationDetails(            \n                ResourceServerAuthorizationDetailArgs.builder()\n                    .type(\"payment\")\n                    .build(),\n                ResourceServerAuthorizationDetailArgs.builder()\n                    .type(\"non-payment\")\n                    .build())\n            .proofOfPossession(ResourceServerProofOfPossessionArgs.builder()\n                .mechanism(\"mtls\")\n                .required(true)\n                .build())\n            .subjectTypeAuthorization(ResourceServerSubjectTypeAuthorizationArgs.builder()\n                .user(ResourceServerSubjectTypeAuthorizationUserArgs.builder()\n                    .policy(\"allow_all\")\n                    .build())\n                .client(ResourceServerSubjectTypeAuthorizationClientArgs.builder()\n                    .policy(\"require_client_grant\")\n                    .build())\n                .build())\n            .build());\n\n        // Sample OIN resource server configuration\n        var oktaOinExpressConfigurationApi = new ResourceServer(\"oktaOinExpressConfigurationApi\", ResourceServerArgs.builder()\n            .identifier(\"urn:auth0:express-configure\")\n            .name(\"Okta OIN Express Configuration API\")\n            .signingAlg(\"RS256\")\n            .signingSecret(null)\n            .skipConsentForVerifiableFirstPartyClients(false)\n            .tokenDialect(null)\n            .tokenLifetime(86400)\n            .verificationLocation(null)\n            .proofOfPossession(ResourceServerProofOfPossessionArgs.builder()\n                .disable(true)\n                .mechanism(null)\n                .required(false)\n                .build())\n            .tokenEncryption(ResourceServerTokenEncryptionArgs.builder()\n                .disable(true)\n                .format(null)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myResourceServer:\n    type: auth0:ResourceServer\n    name: my_resource_server\n    properties:\n      name: Example Resource Server (Managed by Terraform)\n      identifier: https://api.example.com\n      signingAlg: RS256\n      allowOfflineAccess: true\n      allowOnlineAccess: true\n      allowOnlineAccessWithEphemeralSessions: false\n      tokenLifetime: 8600\n      skipConsentForVerifiableFirstPartyClients: true\n      consentPolicy: transactional-authorization-with-mfa\n      tokenEncryption:\n        format: compact-nested-jwe\n        encryptionKey:\n          name: keyname\n          algorithm: RSA-OAEP-256\n          pem: |\n            -----BEGIN CERTIFICATE-----\n            MIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n            -----END CERTIFICATE-----\n      authorizationDetails:\n        - type: payment\n        - type: non-payment\n      proofOfPossession:\n        mechanism: mtls\n        required: true\n      subjectTypeAuthorization:\n        user:\n          policy: allow_all\n        client:\n          policy: require_client_grant\n  # Sample OIN resource server configuration\n  oktaOinExpressConfigurationApi:\n    type: auth0:ResourceServer\n    name: okta_oin_express_configuration_api\n    properties:\n      identifier: urn:auth0:express-configure\n      name: Okta OIN Express Configuration API\n      signingAlg: RS256\n      signingSecret: null\n      skipConsentForVerifiableFirstPartyClients: false\n      tokenDialect: null\n      tokenLifetime: 86400\n      verificationLocation: null\n      proofOfPossession:\n        disable: true\n        mechanism: null\n        required: false\n      tokenEncryption:\n        disable: true\n        format: null\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nExisting resource servers can be imported using their ID.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/resourceServer:ResourceServer my_resource_server \"XXXXXXXXXXXXXXXXXXXXXXX\"\n```\n\n",
             "properties": {
@@ -22600,7 +22894,6 @@
                 "customizeMfaInPostloginAction",
                 "defaultAudience",
                 "defaultDirectory",
-                "defaultRedirectionUri",
                 "disableAcrValuesSupported",
                 "dynamicClientRegistrationSecurityMode",
                 "enabledLocales",
@@ -23724,9 +24017,20 @@
                         "type": "string"
                     },
                     "secrets": {
-                        "description": "List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.\n",
+                        "description": "List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using \u003cspan pulumi-lang-nodejs=\"`secretsWo`\" pulumi-lang-dotnet=\"`SecretsWo`\" pulumi-lang-go=\"`secretsWo`\" pulumi-lang-python=\"`secrets_wo`\" pulumi-lang-yaml=\"`secretsWo`\" pulumi-lang-java=\"`secretsWo`\" pulumi-lang-hcl=\"`secrets_wo`\"\u003e`secretsWo`\u003c/span\u003e instead, which supports write-only values and ephemeral variables.\n",
                         "items": {
                             "$ref": "#/types/auth0:index/getActionSecret:getActionSecret"
+                        },
+                        "type": "array"
+                    },
+                    "secretsWoVersion": {
+                        "description": "Version number for \u003cspan pulumi-lang-nodejs=\"`secretsWo`\" pulumi-lang-dotnet=\"`SecretsWo`\" pulumi-lang-go=\"`secretsWo`\" pulumi-lang-python=\"`secrets_wo`\" pulumi-lang-yaml=\"`secretsWo`\" pulumi-lang-java=\"`secretsWo`\" pulumi-lang-hcl=\"`secrets_wo`\"\u003e`secretsWo`\u003c/span\u003e changes. Adding, renaming, or removing a \u003cspan pulumi-lang-nodejs=\"`secretsWo`\" pulumi-lang-dotnet=\"`SecretsWo`\" pulumi-lang-go=\"`secretsWo`\" pulumi-lang-python=\"`secrets_wo`\" pulumi-lang-yaml=\"`secretsWo`\" pulumi-lang-java=\"`secretsWo`\" pulumi-lang-hcl=\"`secrets_wo`\"\u003e`secretsWo`\u003c/span\u003e entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API.\n",
+                        "type": "integer"
+                    },
+                    "secretsWos": {
+                        "description": "List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the \u003cspan pulumi-lang-nodejs=\"`secretsWoVersion`\" pulumi-lang-dotnet=\"`SecretsWoVersion`\" pulumi-lang-go=\"`secretsWoVersion`\" pulumi-lang-python=\"`secrets_wo_version`\" pulumi-lang-yaml=\"`secretsWoVersion`\" pulumi-lang-java=\"`secretsWoVersion`\" pulumi-lang-hcl=\"`secrets_wo_version`\"\u003e`secretsWoVersion`\u003c/span\u003e attribute. To remove all secrets, delete the \u003cspan pulumi-lang-nodejs=\"`secretsWo`\" pulumi-lang-dotnet=\"`SecretsWo`\" pulumi-lang-go=\"`secretsWo`\" pulumi-lang-python=\"`secrets_wo`\" pulumi-lang-yaml=\"`secretsWo`\" pulumi-lang-java=\"`secretsWo`\" pulumi-lang-hcl=\"`secrets_wo`\"\u003e`secretsWo`\u003c/span\u003e blocks together with the \u003cspan pulumi-lang-nodejs=\"`secretsWoVersion`\" pulumi-lang-dotnet=\"`SecretsWoVersion`\" pulumi-lang-go=\"`secretsWoVersion`\" pulumi-lang-python=\"`secrets_wo_version`\" pulumi-lang-yaml=\"`secretsWoVersion`\" pulumi-lang-java=\"`secretsWoVersion`\" pulumi-lang-hcl=\"`secrets_wo_version`\"\u003e`secretsWoVersion`\u003c/span\u003e attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with \u003cspan pulumi-lang-nodejs=\"`secrets`\" pulumi-lang-dotnet=\"`Secrets`\" pulumi-lang-go=\"`secrets`\" pulumi-lang-python=\"`secrets`\" pulumi-lang-yaml=\"`secrets`\" pulumi-lang-java=\"`secrets`\" pulumi-lang-hcl=\"`secrets`\"\u003e`secrets`\u003c/span\u003e.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getActionSecretsWo:getActionSecretsWo"
                         },
                         "type": "array"
                     },
@@ -23749,6 +24053,8 @@
                     "modules",
                     "runtime",
                     "secrets",
+                    "secretsWos",
+                    "secretsWoVersion",
                     "supportedTriggers",
                     "versionId"
                 ],
@@ -24411,7 +24717,7 @@
                         "type": "string"
                     },
                     "initiateLoginUri": {
-                        "description": "Initiate login URI. Must be HTTPS or an empty string.\n",
+                        "description": "Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.\n",
                         "type": "string"
                     },
                     "isFirstParty": {
@@ -26159,6 +26465,127 @@
                     "screenName",
                     "tenant",
                     "usePageTemplate",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "auth0:index/getRateLimitPolicies:getRateLimitPolicies": {
+            "description": "Data source to retrieve Rate Limit Policies, optionally filtered by resource, consumer, or consumer selector. (EA only)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst filtered = auth0.getRateLimitPolicies({\n    resource: \"oauth_authentication_api\",\n    consumer: \"client\",\n    consumerSelector: \"default\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nfiltered = auth0.get_rate_limit_policies(resource=\"oauth_authentication_api\",\n    consumer=\"client\",\n    consumer_selector=\"default\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var filtered = Auth0.GetRateLimitPolicies.Invoke(new()\n    {\n        Resource = \"oauth_authentication_api\",\n        Consumer = \"client\",\n        ConsumerSelector = \"default\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.GetRateLimitPolicies(ctx, \u0026auth0.GetRateLimitPoliciesArgs{\n\t\t\tResource:         pulumi.StringRef(\"oauth_authentication_api\"),\n\t\t\tConsumer:         pulumi.StringRef(\"client\"),\n\t\t\tConsumerSelector: pulumi.StringRef(\"default\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    auth0 = {\n      source = \"pulumi/auth0\"\n    }\n  }\n}\n\ndata \"auth0_getratelimitpolicies\" \"filtered\" {\n  resource          = \"oauth_authentication_api\"\n  consumer          = \"client\"\n  consumer_selector = \"default\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Auth0Functions;\nimport com.pulumi.auth0.inputs.GetRateLimitPoliciesArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var filtered = Auth0Functions.getRateLimitPolicies(GetRateLimitPoliciesArgs.builder()\n            .resource(\"oauth_authentication_api\")\n            .consumer(\"client\")\n            .consumerSelector(\"default\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  filtered:\n    fn::invoke:\n      function: auth0:getRateLimitPolicies\n      arguments:\n        resource: oauth_authentication_api\n        consumer: client\n        consumerSelector: default\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getRateLimitPolicies.\n",
+                "properties": {
+                    "consumer": {
+                        "type": "string",
+                        "description": "Filter policies by consumer. Requires \u003cspan pulumi-lang-nodejs=\"`resource`\" pulumi-lang-dotnet=\"`Resource`\" pulumi-lang-go=\"`resource`\" pulumi-lang-python=\"`resource`\" pulumi-lang-yaml=\"`resource`\" pulumi-lang-java=\"`resource`\" pulumi-lang-hcl=\"`resource`\"\u003e`resource`\u003c/span\u003e to also be set. (EA only)\n"
+                    },
+                    "consumerSelector": {
+                        "type": "string",
+                        "description": "Filter policies by consumer selector. Requires \u003cspan pulumi-lang-nodejs=\"`consumer`\" pulumi-lang-dotnet=\"`Consumer`\" pulumi-lang-go=\"`consumer`\" pulumi-lang-python=\"`consumer`\" pulumi-lang-yaml=\"`consumer`\" pulumi-lang-java=\"`consumer`\" pulumi-lang-hcl=\"`consumer`\"\u003e`consumer`\u003c/span\u003e to also be set. (EA only)\n"
+                    },
+                    "resource": {
+                        "type": "string",
+                        "description": "Filter policies by resource. (EA only)\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRateLimitPolicies.\n",
+                "properties": {
+                    "consumer": {
+                        "description": "Filter policies by consumer. Requires \u003cspan pulumi-lang-nodejs=\"`resource`\" pulumi-lang-dotnet=\"`Resource`\" pulumi-lang-go=\"`resource`\" pulumi-lang-python=\"`resource`\" pulumi-lang-yaml=\"`resource`\" pulumi-lang-java=\"`resource`\" pulumi-lang-hcl=\"`resource`\"\u003e`resource`\u003c/span\u003e to also be set. (EA only)\n",
+                        "type": "string"
+                    },
+                    "consumerSelector": {
+                        "description": "Filter policies by consumer selector. Requires \u003cspan pulumi-lang-nodejs=\"`consumer`\" pulumi-lang-dotnet=\"`Consumer`\" pulumi-lang-go=\"`consumer`\" pulumi-lang-python=\"`consumer`\" pulumi-lang-yaml=\"`consumer`\" pulumi-lang-java=\"`consumer`\" pulumi-lang-hcl=\"`consumer`\"\u003e`consumer`\u003c/span\u003e to also be set. (EA only)\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "rateLimitPolicies": {
+                        "description": "List of Rate Limit Policies matching the filter criteria. (EA only)\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getRateLimitPoliciesRateLimitPolicy:getRateLimitPoliciesRateLimitPolicy"
+                        },
+                        "type": "array"
+                    },
+                    "resource": {
+                        "description": "Filter policies by resource. (EA only)\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "rateLimitPolicies",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "auth0:index/getRateLimitPolicy:getRateLimitPolicy": {
+            "description": "Data source to retrieve a single Rate Limit Policy by ID. (EA only)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst example = auth0.getRateLimitPolicy({\n    policyId: \"rlp_XXXXXXXXXXXXXXXX\",\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nexample = auth0.get_rate_limit_policy(policy_id=\"rlp_XXXXXXXXXXXXXXXX\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Auth0.GetRateLimitPolicy.Invoke(new()\n    {\n        PolicyId = \"rlp_XXXXXXXXXXXXXXXX\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.GetRateLimitPolicy(ctx, \u0026auth0.LookupRateLimitPolicyArgs{\n\t\t\tPolicyId: \"rlp_XXXXXXXXXXXXXXXX\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    auth0 = {\n      source = \"pulumi/auth0\"\n    }\n  }\n}\n\ndata \"auth0_getratelimitpolicy\" \"example\" {\n  policy_id = \"rlp_XXXXXXXXXXXXXXXX\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Auth0Functions;\nimport com.pulumi.auth0.inputs.GetRateLimitPolicyArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = Auth0Functions.getRateLimitPolicy(GetRateLimitPolicyArgs.builder()\n            .policyId(\"rlp_XXXXXXXXXXXXXXXX\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: auth0:getRateLimitPolicy\n      arguments:\n        policyId: rlp_XXXXXXXXXXXXXXXX\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getRateLimitPolicy.\n",
+                "properties": {
+                    "policyId": {
+                        "type": "string",
+                        "description": "The ID of the Rate Limit Policy. (EA only)\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "policyId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRateLimitPolicy.\n",
+                "properties": {
+                    "configurations": {
+                        "description": "The throttling configuration applied when the rate limit is reached. (EA only)\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getRateLimitPolicyConfiguration:getRateLimitPolicyConfiguration"
+                        },
+                        "type": "array"
+                    },
+                    "consumer": {
+                        "description": "The consumer category the policy applies to. Valid values are: client\n",
+                        "type": "string"
+                    },
+                    "consumerSelector": {
+                        "description": "Identifier or category within the consumer to which the policy applies. Supported values: `client_id:\u003cclient_id\u003e`, `client_id:\u003ccimd_uri\u003e`, \u003cspan pulumi-lang-nodejs=\"`cimdClients`\" pulumi-lang-dotnet=\"`CimdClients`\" pulumi-lang-go=\"`cimdClients`\" pulumi-lang-python=\"`cimd_clients`\" pulumi-lang-yaml=\"`cimdClients`\" pulumi-lang-java=\"`cimdClients`\" pulumi-lang-hcl=\"`cimd_clients`\"\u003e`cimdClients`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`thirdPartyClients`\" pulumi-lang-dotnet=\"`ThirdPartyClients`\" pulumi-lang-go=\"`thirdPartyClients`\" pulumi-lang-python=\"`third_party_clients`\" pulumi-lang-yaml=\"`thirdPartyClients`\" pulumi-lang-java=\"`thirdPartyClients`\" pulumi-lang-hcl=\"`third_party_clients`\"\u003e`thirdPartyClients`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`default`\" pulumi-lang-dotnet=\"`Default`\" pulumi-lang-go=\"`default`\" pulumi-lang-python=\"`default`\" pulumi-lang-yaml=\"`default`\" pulumi-lang-java=\"`default`\" pulumi-lang-hcl=\"`default`\"\u003e`default`\u003c/span\u003e. (EA only)\n",
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "description": "The date and time when the rate limit policy was created.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "policyId": {
+                        "description": "The ID of the Rate Limit Policy. (EA only)\n",
+                        "type": "string"
+                    },
+                    "resource": {
+                        "description": "The resource the policy applies to. Valid values are: oauth*authentication*api\n",
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "description": "The date and time when the rate limit policy was last updated.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "configurations",
+                    "consumer",
+                    "consumerSelector",
+                    "createdAt",
+                    "policyId",
+                    "resource",
+                    "updatedAt",
                     "id"
                 ],
                 "type": "object"

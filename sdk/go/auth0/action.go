@@ -19,8 +19,9 @@ import (
 // The provider also supports a 1:many variant auth0_trigger_actions.
 // If by any means, a binding is missing is the state file, it can be imported to the state and deleted, before attempting to delete the action.
 //
-// > Values provided in the sensitive values shall be stored in the raw state as plain text: secrets.
+// > Values provided in the `secrets` block are stored in the raw state as plain text.
 // Read more about sensitive data in state.
+// For better security, consider using the `secretsWo` write-only alternative, whose values are never stored in Terraform state.
 //
 // ## Example Usage
 //
@@ -32,6 +33,7 @@ import (
 //	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
@@ -90,6 +92,38 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			cfg := config.New(ctx, "")
+//			// API key passed to the post-login action.
+//			actionApiKey := cfg.Require("actionApiKey")
+//			invokeFormat1, err := std.Format(ctx, map[string]interface{}{
+//				"input": "Secure Action %s",
+//				"args": []interface{}{
+//					std.Timestamp(ctx, map[string]interface{}{}, nil).Result,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = auth0.NewAction(ctx, "my_secure_action", &auth0.ActionArgs{
+//				Name:    invokeFormat1.Result,
+//				Runtime: pulumi.String("node22"),
+//				Deploy:  pulumi.Bool(true),
+//				Code:    pulumi.String("exports.onExecutePostLogin = async (event, api) => {\n  console.log(event);\n};\n"),
+//				SupportedTriggers: &auth0.ActionSupportedTriggersArgs{
+//					Id:      pulumi.String("post-login"),
+//					Version: pulumi.String("v3"),
+//				},
+//				SecretsWos: auth0.ActionSecretsWoArray{
+//					&auth0.ActionSecretsWoArgs{
+//						Name:  pulumi.String("API_KEY"),
+//						Value: pulumi.String(actionApiKey),
+//					},
+//				},
+//				SecretsWoVersion: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -123,8 +157,12 @@ type Action struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
 	Runtime pulumi.StringOutput `pulumi:"runtime"`
-	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
+	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `secretsWo` instead, which supports write-only values and ephemeral variables.
 	Secrets ActionSecretArrayOutput `pulumi:"secrets"`
+	// Version number for `secretsWo` changes. Adding, renaming, or removing a `secretsWo` entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API.
+	SecretsWoVersion pulumi.IntPtrOutput `pulumi:"secretsWoVersion"`
+	// List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secretsWoVersion` attribute. To remove all secrets, delete the `secretsWo` blocks together with the `secretsWoVersion` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
+	SecretsWos ActionSecretsWoArrayOutput `pulumi:"secretsWos"`
 	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
 	SupportedTriggers ActionSupportedTriggersOutput `pulumi:"supportedTriggers"`
 	// Version ID of the action. This value is available if `deploy` is set to true.
@@ -179,8 +217,12 @@ type actionState struct {
 	Name *string `pulumi:"name"`
 	// The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
 	Runtime *string `pulumi:"runtime"`
-	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
+	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `secretsWo` instead, which supports write-only values and ephemeral variables.
 	Secrets []ActionSecret `pulumi:"secrets"`
+	// Version number for `secretsWo` changes. Adding, renaming, or removing a `secretsWo` entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API.
+	SecretsWoVersion *int `pulumi:"secretsWoVersion"`
+	// List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secretsWoVersion` attribute. To remove all secrets, delete the `secretsWo` blocks together with the `secretsWoVersion` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
+	SecretsWos []ActionSecretsWo `pulumi:"secretsWos"`
 	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
 	SupportedTriggers *ActionSupportedTriggers `pulumi:"supportedTriggers"`
 	// Version ID of the action. This value is available if `deploy` is set to true.
@@ -200,8 +242,12 @@ type ActionState struct {
 	Name pulumi.StringPtrInput
 	// The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
 	Runtime pulumi.StringPtrInput
-	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
+	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `secretsWo` instead, which supports write-only values and ephemeral variables.
 	Secrets ActionSecretArrayInput
+	// Version number for `secretsWo` changes. Adding, renaming, or removing a `secretsWo` entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API.
+	SecretsWoVersion pulumi.IntPtrInput
+	// List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secretsWoVersion` attribute. To remove all secrets, delete the `secretsWo` blocks together with the `secretsWoVersion` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
+	SecretsWos ActionSecretsWoArrayInput
 	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
 	SupportedTriggers ActionSupportedTriggersPtrInput
 	// Version ID of the action. This value is available if `deploy` is set to true.
@@ -225,8 +271,12 @@ type actionArgs struct {
 	Name *string `pulumi:"name"`
 	// The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
 	Runtime *string `pulumi:"runtime"`
-	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
+	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `secretsWo` instead, which supports write-only values and ephemeral variables.
 	Secrets []ActionSecret `pulumi:"secrets"`
+	// Version number for `secretsWo` changes. Adding, renaming, or removing a `secretsWo` entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API.
+	SecretsWoVersion *int `pulumi:"secretsWoVersion"`
+	// List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secretsWoVersion` attribute. To remove all secrets, delete the `secretsWo` blocks together with the `secretsWoVersion` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
+	SecretsWos []ActionSecretsWo `pulumi:"secretsWos"`
 	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
 	SupportedTriggers ActionSupportedTriggers `pulumi:"supportedTriggers"`
 }
@@ -245,8 +295,12 @@ type ActionArgs struct {
 	Name pulumi.StringPtrInput
 	// The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
 	Runtime pulumi.StringPtrInput
-	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
+	// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `secretsWo` instead, which supports write-only values and ephemeral variables.
 	Secrets ActionSecretArrayInput
+	// Version number for `secretsWo` changes. Adding, renaming, or removing a `secretsWo` entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API.
+	SecretsWoVersion pulumi.IntPtrInput
+	// List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secretsWoVersion` attribute. To remove all secrets, delete the `secretsWo` blocks together with the `secretsWoVersion` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
+	SecretsWos ActionSecretsWoArrayInput
 	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
 	SupportedTriggers ActionSupportedTriggersInput
 }
@@ -368,9 +422,19 @@ func (o ActionOutput) Runtime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Action) pulumi.StringOutput { return v.Runtime }).(pulumi.StringOutput)
 }
 
-// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
+// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `secretsWo` instead, which supports write-only values and ephemeral variables.
 func (o ActionOutput) Secrets() ActionSecretArrayOutput {
 	return o.ApplyT(func(v *Action) ActionSecretArrayOutput { return v.Secrets }).(ActionSecretArrayOutput)
+}
+
+// Version number for `secretsWo` changes. Adding, renaming, or removing a `secretsWo` entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API.
+func (o ActionOutput) SecretsWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Action) pulumi.IntPtrOutput { return v.SecretsWoVersion }).(pulumi.IntPtrOutput)
+}
+
+// List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secretsWoVersion` attribute. To remove all secrets, delete the `secretsWo` blocks together with the `secretsWoVersion` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
+func (o ActionOutput) SecretsWos() ActionSecretsWoArrayOutput {
+	return o.ApplyT(func(v *Action) ActionSecretsWoArrayOutput { return v.SecretsWos }).(ActionSecretsWoArrayOutput)
 }
 
 // List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.

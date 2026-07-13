@@ -27,7 +27,7 @@ class GetActionResult:
     """
     A collection of values returned by getAction.
     """
-    def __init__(__self__, code=None, dependencies=None, deploy=None, id=None, modules=None, name=None, runtime=None, secrets=None, supported_triggers=None, version_id=None):
+    def __init__(__self__, code=None, dependencies=None, deploy=None, id=None, modules=None, name=None, runtime=None, secrets=None, secrets_wo_version=None, secrets_wos=None, supported_triggers=None, version_id=None):
         if code and not isinstance(code, str):
             raise TypeError("Expected argument 'code' to be a str")
         pulumi.set(__self__, "code", code)
@@ -52,6 +52,12 @@ class GetActionResult:
         if secrets and not isinstance(secrets, list):
             raise TypeError("Expected argument 'secrets' to be a list")
         pulumi.set(__self__, "secrets", secrets)
+        if secrets_wo_version and not isinstance(secrets_wo_version, int):
+            raise TypeError("Expected argument 'secrets_wo_version' to be a int")
+        pulumi.set(__self__, "secrets_wo_version", secrets_wo_version)
+        if secrets_wos and not isinstance(secrets_wos, list):
+            raise TypeError("Expected argument 'secrets_wos' to be a list")
+        pulumi.set(__self__, "secrets_wos", secrets_wos)
         if supported_triggers and not isinstance(supported_triggers, list):
             raise TypeError("Expected argument 'supported_triggers' to be a list")
         pulumi.set(__self__, "supported_triggers", supported_triggers)
@@ -119,9 +125,25 @@ class GetActionResult:
     @pulumi.getter
     def secrets(self) -> Sequence['outputs.GetActionSecretResult']:
         """
-        List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
+        List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `secrets_wo` instead, which supports write-only values and ephemeral variables.
         """
         return pulumi.get(self, "secrets")
+
+    @_builtins.property
+    @pulumi.getter(name="secretsWoVersion")
+    def secrets_wo_version(self) -> _builtins.int:
+        """
+        Version number for `secrets_wo` changes. Adding, renaming, or removing a `secrets_wo` entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API.
+        """
+        return pulumi.get(self, "secrets_wo_version")
+
+    @_builtins.property
+    @pulumi.getter(name="secretsWos")
+    def secrets_wos(self) -> Sequence['outputs.GetActionSecretsWoResult']:
+        """
+        List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secrets_wo_version` attribute. To remove all secrets, delete the `secrets_wo` blocks together with the `secrets_wo_version` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
+        """
+        return pulumi.get(self, "secrets_wos")
 
     @_builtins.property
     @pulumi.getter(name="supportedTriggers")
@@ -154,6 +176,8 @@ class AwaitableGetActionResult(GetActionResult):
             name=self.name,
             runtime=self.runtime,
             secrets=self.secrets,
+            secrets_wo_version=self.secrets_wo_version,
+            secrets_wos=self.secrets_wos,
             supported_triggers=self.supported_triggers,
             version_id=self.version_id)
 
@@ -183,6 +207,8 @@ def get_action(id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         runtime=pulumi.get(__ret__, 'runtime'),
         secrets=pulumi.get(__ret__, 'secrets'),
+        secrets_wo_version=pulumi.get(__ret__, 'secrets_wo_version'),
+        secrets_wos=pulumi.get(__ret__, 'secrets_wos'),
         supported_triggers=pulumi.get(__ret__, 'supported_triggers'),
         version_id=pulumi.get(__ret__, 'version_id'))
 def get_action_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -209,5 +235,7 @@ def get_action_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None
         name=pulumi.get(__response__, 'name'),
         runtime=pulumi.get(__response__, 'runtime'),
         secrets=pulumi.get(__response__, 'secrets'),
+        secrets_wo_version=pulumi.get(__response__, 'secrets_wo_version'),
+        secrets_wos=pulumi.get(__response__, 'secrets_wos'),
         supported_triggers=pulumi.get(__response__, 'supported_triggers'),
         version_id=pulumi.get(__response__, 'version_id')))

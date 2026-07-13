@@ -122,7 +122,7 @@ export class Tenant extends pulumi.CustomResource {
     /**
      * The default absolute redirection URI. Must be HTTPS or an empty string.
      */
-    declare public readonly defaultRedirectionUri: pulumi.Output<string>;
+    declare public readonly defaultRedirectionUri: pulumi.Output<string | undefined>;
     /**
      * Token Quota configuration.
      */

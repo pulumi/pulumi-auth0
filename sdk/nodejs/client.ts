@@ -148,7 +148,7 @@ export class Client extends pulumi.CustomResource {
      */
     declare public readonly grantTypes: pulumi.Output<string[]>;
     /**
-     * Initiate login URI. Must be HTTPS or an empty string.
+     * Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
      */
     declare public readonly initiateLoginUri: pulumi.Output<string | undefined>;
     /**
@@ -505,7 +505,7 @@ export interface ClientState {
      */
     grantTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Initiate login URI. Must be HTTPS or an empty string.
+     * Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
      */
     initiateLoginUri?: pulumi.Input<string | undefined>;
     /**
@@ -714,7 +714,7 @@ export interface ClientArgs {
      */
     grantTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Initiate login URI. Must be HTTPS or an empty string.
+     * Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
      */
     initiateLoginUri?: pulumi.Input<string | undefined>;
     /**

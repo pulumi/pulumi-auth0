@@ -94,7 +94,7 @@ class ClientArgs:
         :param pulumi.Input['ClientFedcmLoginArgs'] fedcm_login: Federated Credential Management (FedCM) configuration. (EA only)
         :param pulumi.Input[_builtins.str] form_template: HTML form template to be used for WS-Federation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Types of grants that this client is authorized to use.
-        :param pulumi.Input[_builtins.str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string.
+        :param pulumi.Input[_builtins.str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
         :param pulumi.Input[_builtins.bool] is_first_party: Indicates whether this client is a first-party client.
         :param pulumi.Input[_builtins.bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
         :param pulumi.Input['ClientJwtConfigurationArgs'] jwt_configuration: Configuration settings for the JWTs issued for this client.
@@ -482,7 +482,7 @@ class ClientArgs:
     @pulumi.getter(name="initiateLoginUri")
     def initiate_login_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Initiate login URI. Must be HTTPS or an empty string.
+        Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
         """
         return pulumi.get(self, "initiate_login_uri")
 
@@ -899,7 +899,7 @@ class _ClientState:
         :param pulumi.Input['ClientFedcmLoginArgs'] fedcm_login: Federated Credential Management (FedCM) configuration. (EA only)
         :param pulumi.Input[_builtins.str] form_template: HTML form template to be used for WS-Federation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Types of grants that this client is authorized to use.
-        :param pulumi.Input[_builtins.str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string.
+        :param pulumi.Input[_builtins.str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
         :param pulumi.Input[_builtins.bool] is_first_party: Indicates whether this client is a first-party client.
         :param pulumi.Input[_builtins.bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
         :param pulumi.Input[_builtins.str] jwks_uri: URL for the JSON Web Key Set (JWKS) containing the public keys used for `private_key_jwt` authentication. Only present for CIMD clients using `private_key_jwt` authentication.
@@ -1349,7 +1349,7 @@ class _ClientState:
     @pulumi.getter(name="initiateLoginUri")
     def initiate_login_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Initiate login URI. Must be HTTPS or an empty string.
+        Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
         """
         return pulumi.get(self, "initiate_login_uri")
 
@@ -1797,7 +1797,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Union['ClientFedcmLoginArgs', 'ClientFedcmLoginArgsDict']] fedcm_login: Federated Credential Management (FedCM) configuration. (EA only)
         :param pulumi.Input[_builtins.str] form_template: HTML form template to be used for WS-Federation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Types of grants that this client is authorized to use.
-        :param pulumi.Input[_builtins.str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string.
+        :param pulumi.Input[_builtins.str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
         :param pulumi.Input[_builtins.bool] is_first_party: Indicates whether this client is a first-party client.
         :param pulumi.Input[_builtins.bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
         :param pulumi.Input[Union['ClientJwtConfigurationArgs', 'ClientJwtConfigurationArgsDict']] jwt_configuration: Configuration settings for the JWTs issued for this client.
@@ -2074,7 +2074,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Union['ClientFedcmLoginArgs', 'ClientFedcmLoginArgsDict']] fedcm_login: Federated Credential Management (FedCM) configuration. (EA only)
         :param pulumi.Input[_builtins.str] form_template: HTML form template to be used for WS-Federation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Types of grants that this client is authorized to use.
-        :param pulumi.Input[_builtins.str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string.
+        :param pulumi.Input[_builtins.str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
         :param pulumi.Input[_builtins.bool] is_first_party: Indicates whether this client is a first-party client.
         :param pulumi.Input[_builtins.bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
         :param pulumi.Input[_builtins.str] jwks_uri: URL for the JSON Web Key Set (JWKS) containing the public keys used for `private_key_jwt` authentication. Only present for CIMD clients using `private_key_jwt` authentication.
@@ -2369,7 +2369,7 @@ class Client(pulumi.CustomResource):
     @pulumi.getter(name="initiateLoginUri")
     def initiate_login_uri(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Initiate login URI. Must be HTTPS or an empty string.
+        Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
         """
         return pulumi.get(self, "initiate_login_uri")
 

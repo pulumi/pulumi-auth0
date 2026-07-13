@@ -17,8 +17,9 @@ namespace Pulumi.Auth0
     /// The provider also supports a 1:many variant auth0_trigger_actions.
     /// If by any means, a binding is missing is the state file, it can be imported to the state and deleted, before attempting to delete the action.
     /// 
-    /// &gt; Values provided in the sensitive values shall be stored in the raw state as plain text: secrets.
+    /// &gt; Values provided in the `Secrets` block are stored in the raw state as plain text.
     /// Read more about sensitive data in state.
+    /// For better security, consider using the `SecretsWo` write-only alternative, whose values are never stored in Terraform state.
     /// 
     /// ## Example Usage
     /// 
@@ -86,6 +87,41 @@ namespace Pulumi.Auth0
     ///         },
     ///     });
     /// 
+    ///     var config = new Config();
+    ///     // API key passed to the post-login action.
+    ///     var actionApiKey = config.Require("actionApiKey");
+    ///     var mySecureAction = new Auth0.Action("my_secure_action", new()
+    ///     {
+    ///         Name = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "Secure Action %s",
+    ///             Args = new[]
+    ///             {
+    ///                 Std.Timestamp.Invoke().Result,
+    ///             },
+    ///         }).Result,
+    ///         Runtime = "node22",
+    ///         Deploy = true,
+    ///         Code = @"exports.onExecutePostLogin = async (event, api) =&gt; {
+    ///   console.log(event);
+    /// };
+    /// ",
+    ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
+    ///         {
+    ///             Id = "post-login",
+    ///             Version = "v3",
+    ///         },
+    ///         SecretsWos = new[]
+    ///         {
+    ///             new Auth0.Inputs.ActionSecretsWoArgs
+    ///             {
+    ///                 Name = "API_KEY",
+    ///                 Value = actionApiKey,
+    ///             },
+    ///         },
+    ///         SecretsWoVersion = 1,
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -142,10 +178,22 @@ namespace Pulumi.Auth0
         public Output<string> Runtime { get; private set; } = null!;
 
         /// <summary>
-        /// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
+        /// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `SecretsWo` instead, which supports write-only values and ephemeral variables.
         /// </summary>
         [Output("secrets")]
         public Output<ImmutableArray<Outputs.ActionSecret>> Secrets { get; private set; } = null!;
+
+        /// <summary>
+        /// Version number for `SecretsWo` changes. Adding, renaming, or removing a `SecretsWo` entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API.
+        /// </summary>
+        [Output("secretsWoVersion")]
+        public Output<int?> SecretsWoVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `SecretsWoVersion` attribute. To remove all secrets, delete the `SecretsWo` blocks together with the `SecretsWoVersion` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `Secrets`.
+        /// </summary>
+        [Output("secretsWos")]
+        public Output<ImmutableArray<Outputs.ActionSecretsWo>> SecretsWos { get; private set; } = null!;
 
         /// <summary>
         /// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
@@ -257,12 +305,30 @@ namespace Pulumi.Auth0
         private InputList<Inputs.ActionSecretArgs>? _secrets;
 
         /// <summary>
-        /// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
+        /// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `SecretsWo` instead, which supports write-only values and ephemeral variables.
         /// </summary>
         public InputList<Inputs.ActionSecretArgs> Secrets
         {
             get => _secrets ?? (_secrets = new InputList<Inputs.ActionSecretArgs>());
             set => _secrets = value;
+        }
+
+        /// <summary>
+        /// Version number for `SecretsWo` changes. Adding, renaming, or removing a `SecretsWo` entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API.
+        /// </summary>
+        [Input("secretsWoVersion")]
+        public Input<int>? SecretsWoVersion { get; set; }
+
+        [Input("secretsWos")]
+        private InputList<Inputs.ActionSecretsWoArgs>? _secretsWos;
+
+        /// <summary>
+        /// List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `SecretsWoVersion` attribute. To remove all secrets, delete the `SecretsWo` blocks together with the `SecretsWoVersion` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `Secrets`.
+        /// </summary>
+        public InputList<Inputs.ActionSecretsWoArgs> SecretsWos
+        {
+            get => _secretsWos ?? (_secretsWos = new InputList<Inputs.ActionSecretsWoArgs>());
+            set => _secretsWos = value;
         }
 
         /// <summary>
@@ -331,12 +397,30 @@ namespace Pulumi.Auth0
         private InputList<Inputs.ActionSecretGetArgs>? _secrets;
 
         /// <summary>
-        /// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
+        /// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `SecretsWo` instead, which supports write-only values and ephemeral variables.
         /// </summary>
         public InputList<Inputs.ActionSecretGetArgs> Secrets
         {
             get => _secrets ?? (_secrets = new InputList<Inputs.ActionSecretGetArgs>());
             set => _secrets = value;
+        }
+
+        /// <summary>
+        /// Version number for `SecretsWo` changes. Adding, renaming, or removing a `SecretsWo` entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API.
+        /// </summary>
+        [Input("secretsWoVersion")]
+        public Input<int>? SecretsWoVersion { get; set; }
+
+        [Input("secretsWos")]
+        private InputList<Inputs.ActionSecretsWoGetArgs>? _secretsWos;
+
+        /// <summary>
+        /// List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `SecretsWoVersion` attribute. To remove all secrets, delete the `SecretsWo` blocks together with the `SecretsWoVersion` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `Secrets`.
+        /// </summary>
+        public InputList<Inputs.ActionSecretsWoGetArgs> SecretsWos
+        {
+            get => _secretsWos ?? (_secretsWos = new InputList<Inputs.ActionSecretsWoGetArgs>());
+            set => _secretsWos = value;
         }
 
         /// <summary>

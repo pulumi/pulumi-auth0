@@ -122,7 +122,7 @@ type LookupClientResult struct {
 	GrantTypes []string `pulumi:"grantTypes"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Initiate login URI. Must be HTTPS or an empty string.
+	// Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
 	InitiateLoginUri string `pulumi:"initiateLoginUri"`
 	// Indicates whether this client is a first-party client.
 	IsFirstParty bool `pulumi:"isFirstParty"`
@@ -363,7 +363,7 @@ func (o LookupClientResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Initiate login URI. Must be HTTPS or an empty string.
+// Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
 func (o LookupClientResultOutput) InitiateLoginUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientResult) string { return v.InitiateLoginUri }).(pulumi.StringOutput)
 }

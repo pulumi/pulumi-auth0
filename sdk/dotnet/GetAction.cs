@@ -104,9 +104,17 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string Runtime;
         /// <summary>
-        /// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned.
+        /// List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `SecretsWo` instead, which supports write-only values and ephemeral variables.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetActionSecretResult> Secrets;
+        /// <summary>
+        /// Version number for `SecretsWo` changes. Adding, renaming, or removing a `SecretsWo` entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API.
+        /// </summary>
+        public readonly int SecretsWoVersion;
+        /// <summary>
+        /// List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `SecretsWoVersion` attribute. To remove all secrets, delete the `SecretsWo` blocks together with the `SecretsWoVersion` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `Secrets`.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetActionSecretsWoResult> SecretsWos;
         /// <summary>
         /// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
         /// </summary>
@@ -134,6 +142,10 @@ namespace Pulumi.Auth0
 
             ImmutableArray<Outputs.GetActionSecretResult> secrets,
 
+            int secretsWoVersion,
+
+            ImmutableArray<Outputs.GetActionSecretsWoResult> secretsWos,
+
             ImmutableArray<Outputs.GetActionSupportedTriggerResult> supportedTriggers,
 
             string versionId)
@@ -146,6 +158,8 @@ namespace Pulumi.Auth0
             Name = name;
             Runtime = runtime;
             Secrets = secrets;
+            SecretsWoVersion = secretsWoVersion;
+            SecretsWos = secretsWos;
             SupportedTriggers = supportedTriggers;
             VersionId = versionId;
         }

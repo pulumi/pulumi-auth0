@@ -121,6 +121,18 @@ export interface ActionSecret {
     value: string;
 }
 
+export interface ActionSecretsWo {
+    /**
+     * The name of the action.
+     */
+    name: string;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Secret value (write-only). This value is never stored in Terraform state.
+     */
+    value: string;
+}
+
 export interface ActionSupportedTriggers {
     /**
      * The trigger ID.
@@ -3487,6 +3499,17 @@ export interface GetActionSecret {
     name: string;
     /**
      * Secret value.
+     */
+    value: string;
+}
+
+export interface GetActionSecretsWo {
+    /**
+     * Secret name.
+     */
+    name: string;
+    /**
+     * Secret value (write-only). This value is never stored in Terraform state.
      */
     value: string;
 }
@@ -7262,6 +7285,67 @@ export interface GetPromptScreenRendererFilter {
     organizations: string;
 }
 
+export interface GetRateLimitPoliciesRateLimitPolicy {
+    /**
+     * The throttling configuration applied when the rate limit is reached. (EA only)
+     */
+    configurations: outputs.GetRateLimitPoliciesRateLimitPolicyConfiguration[];
+    /**
+     * The consumer category the policy applies to. Valid values are: [client] (EA Only)
+     */
+    consumer: string;
+    /**
+     * Identifier or category within the consumer to which the policy applies. Supported values: `client_id:<client_id>`, `client_id:<cimd_uri>`, `cimdClients`, `thirdPartyClients`, or `default`. (EA only)
+     */
+    consumerSelector: string;
+    /**
+     * The date and time when the rate limit policy was created.
+     */
+    createdAt: string;
+    /**
+     * The ID of the Rate Limit Policy. (EA only)
+     */
+    id: string;
+    /**
+     * The resource the policy applies to. Valid values are: [oauthAuthenticationApi] (EA Only)
+     */
+    resource: string;
+    /**
+     * The date and time when the rate limit policy was last updated.
+     */
+    updatedAt: string;
+}
+
+export interface GetRateLimitPoliciesRateLimitPolicyConfiguration {
+    /**
+     * Action to take when the rate limit is exceeded. Valid values are: [allow block log redirect] (EA only)
+     */
+    action: string;
+    /**
+     * Maximum number of requests allowed in a single window (0-10000). Required and only valid for the `block`, `log`, and `redirect` actions. (EA only)
+     */
+    limit: number;
+    /**
+     * HTTPS URI to redirect to when the rate limit is exceeded. Required and only valid for the `redirect` action. (EA only)
+     */
+    redirectUri: string;
+}
+
+export interface GetRateLimitPolicyConfiguration {
+    /**
+     * Action to take when the rate limit is exceeded. Valid values are: [allow block log redirect] (EA only)
+     */
+    action: string;
+    /**
+     * Maximum number of requests allowed in a single window (0-10000). Required and only valid for the `block`, `log`, and `redirect` actions. (EA only)
+     */
+    limit: number;
+    /**
+     * HTTPS URI to redirect to when the rate limit is exceeded. Required and only valid for the `redirect` action. (EA only)
+     */
+    redirectUri: string;
+}
+
 export interface GetResourceServerAuthorizationDetail {
     /**
      * Disable authorization details.
@@ -8569,6 +8653,21 @@ export interface PromptScreenRendererFilters {
      * An array of organizations identified by id or a metadata key/value pair. Entity Limit: 25.
      */
     organizations?: string;
+}
+
+export interface RateLimitPolicyConfiguration {
+    /**
+     * Action to take when the rate limit is exceeded. Valid values are: allow block log redirect
+     */
+    action: string;
+    /**
+     * Maximum number of requests allowed in a single window (0-10000). Required and only valid for the `block`, `log`, and `redirect` actions. (EA only)
+     */
+    limit?: number;
+    /**
+     * HTTPS URI to redirect to when the rate limit is exceeded. Required and only valid for the `redirect` action. (EA only)
+     */
+    redirectUri?: string;
 }
 
 export interface ResourceServerAuthorizationDetail {

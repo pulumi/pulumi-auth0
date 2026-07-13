@@ -408,14 +408,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Initiate login URI. Must be HTTPS or an empty string.
+     * Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
      * 
      */
     @Import(name="initiateLoginUri")
     private @Nullable Output<String> initiateLoginUri;
 
     /**
-     * @return Initiate login URI. Must be HTTPS or an empty string.
+     * @return Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
      * 
      */
     public Optional<Output<String>> initiateLoginUri() {
@@ -1531,7 +1531,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param initiateLoginUri Initiate login URI. Must be HTTPS or an empty string.
+         * @param initiateLoginUri Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
          * 
          * @return builder
          * 
@@ -1542,7 +1542,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param initiateLoginUri Initiate login URI. Must be HTTPS or an empty string.
+         * @param initiateLoginUri Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
          * 
          * @return builder
          * 

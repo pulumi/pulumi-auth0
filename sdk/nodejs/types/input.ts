@@ -121,6 +121,18 @@ export interface ActionSecret {
     value: pulumi.Input<string>;
 }
 
+export interface ActionSecretsWo {
+    /**
+     * The name of the action.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Secret value (write-only). This value is never stored in Terraform state.
+     */
+    value: pulumi.Input<string>;
+}
+
 export interface ActionSupportedTriggers {
     /**
      * The trigger ID.
@@ -4116,6 +4128,21 @@ export interface PromptScreenRendererFilters {
      * An array of organizations identified by id or a metadata key/value pair. Entity Limit: 25.
      */
     organizations?: pulumi.Input<string | undefined>;
+}
+
+export interface RateLimitPolicyConfiguration {
+    /**
+     * Action to take when the rate limit is exceeded. Valid values are: allow block log redirect
+     */
+    action: pulumi.Input<string>;
+    /**
+     * Maximum number of requests allowed in a single window (0-10000). Required and only valid for the `block`, `log`, and `redirect` actions. (EA only)
+     */
+    limit?: pulumi.Input<number | undefined>;
+    /**
+     * HTTPS URI to redirect to when the rate limit is exceeded. Required and only valid for the `redirect` action. (EA only)
+     */
+    redirectUri?: pulumi.Input<string | undefined>;
 }
 
 export interface ResourceServerAuthorizationDetail {
