@@ -42,7 +42,7 @@ require (
 	github.com/apparentlymart/go-textseg/v15 v15.0.0 // indirect
 	github.com/armon/go-radix v1.0.0 // indirect
 	github.com/atotto/clipboard v0.1.4 // indirect
-	github.com/auth0/go-auth0 v1.44.0 // indirect
+	github.com/auth0/go-auth0 v1.45.0 // indirect
 	github.com/auth0/go-auth0/v2 v2.14.0 // indirect
 	github.com/aws/aws-sdk-go-v2 v1.41.11 // indirect
 	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.7.12 // indirect

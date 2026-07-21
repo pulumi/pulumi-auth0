@@ -6472,7 +6472,7 @@
                 },
                 "enablePublicSignupUserExistsError": {
                     "type": "boolean",
-                    "description": "Indicates whether the public sign up process shows a \u003cspan pulumi-lang-nodejs=\"`userExists`\" pulumi-lang-dotnet=\"`UserExists`\" pulumi-lang-go=\"`userExists`\" pulumi-lang-python=\"`user_exists`\" pulumi-lang-yaml=\"`userExists`\" pulumi-lang-java=\"`userExists`\" pulumi-lang-hcl=\"`user_exists`\"\u003e`userExists`\u003c/span\u003e error if the user already exists.\n"
+                    "description": "Indicates whether the public sign up process shows a \u003cspan pulumi-lang-nodejs=\"`userExists`\" pulumi-lang-dotnet=\"`UserExists`\" pulumi-lang-go=\"`userExists`\" pulumi-lang-python=\"`user_exists`\" pulumi-lang-yaml=\"`userExists`\" pulumi-lang-java=\"`userExists`\" pulumi-lang-hcl=\"`user_exists`\"\u003e`userExists`\u003c/span\u003e error if the user already exists. Note: the Auth0 Dashboard toggle **Use a generic response in public signup API error message** shows the inverse of this value.\n"
                 },
                 "enableSso": {
                     "type": "boolean",
@@ -6484,7 +6484,7 @@
                 },
                 "noDiscloseEnterpriseConnections": {
                     "type": "boolean",
-                    "description": "Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.\n"
+                    "description": "Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file. Note: the Auth0 Dashboard toggle **Enable Publishing of Enterprise Connections Information with IdP domains** shows the inverse of this value.\n"
                 },
                 "removeAlgFromJwks": {
                     "type": "boolean",
@@ -15077,7 +15077,7 @@
                 },
                 "enablePublicSignupUserExistsError": {
                     "type": "boolean",
-                    "description": "Indicates whether the public sign up process shows a \u003cspan pulumi-lang-nodejs=\"`userExists`\" pulumi-lang-dotnet=\"`UserExists`\" pulumi-lang-go=\"`userExists`\" pulumi-lang-python=\"`user_exists`\" pulumi-lang-yaml=\"`userExists`\" pulumi-lang-java=\"`userExists`\" pulumi-lang-hcl=\"`user_exists`\"\u003e`userExists`\u003c/span\u003e error if the user already exists.\n"
+                    "description": "Indicates whether the public sign up process shows a \u003cspan pulumi-lang-nodejs=\"`userExists`\" pulumi-lang-dotnet=\"`UserExists`\" pulumi-lang-go=\"`userExists`\" pulumi-lang-python=\"`user_exists`\" pulumi-lang-yaml=\"`userExists`\" pulumi-lang-java=\"`userExists`\" pulumi-lang-hcl=\"`user_exists`\"\u003e`userExists`\u003c/span\u003e error if the user already exists. Note: the Auth0 Dashboard toggle **Use a generic response in public signup API error message** shows the inverse of this value.\n"
                 },
                 "enableSso": {
                     "type": "boolean",
@@ -15089,7 +15089,7 @@
                 },
                 "noDiscloseEnterpriseConnections": {
                     "type": "boolean",
-                    "description": "Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.\n"
+                    "description": "Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file. Note: the Auth0 Dashboard toggle **Enable Publishing of Enterprise Connections Information with IdP domains** shows the inverse of this value.\n"
                 },
                 "removeAlgFromJwks": {
                     "type": "boolean",
@@ -20183,7 +20183,7 @@
             }
         },
         "auth0:index/organization:Organization": {
-            "description": "The Organizations feature represents a broad update to the Auth0 platform that allows our business-to-business (B2B) customers to better manage their partners and customers, and to customize the ways that end-users access their applications. Auth0 customers can use Organizations to:\n\n  - Represent their business customers and partners in Auth0 and manage their\n    membership.\n  - Configure branded, federated login flows for each business.\n  - Build administration capabilities into their products, using Organizations\n    APIs, so that those businesses can manage their own organizations.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myOrganization = new auth0.Organization(\"my_organization\", {\n    name: \"auth0-inc\",\n    displayName: \"Auth0 Inc.\",\n    branding: {\n        logoUrl: \"https://example.com/assets/icons/icon.png\",\n        colors: {\n            primary: \"#f2f2f2\",\n            page_background: \"#e1e1e1\",\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_organization = auth0.Organization(\"my_organization\",\n    name=\"auth0-inc\",\n    display_name=\"Auth0 Inc.\",\n    branding={\n        \"logo_url\": \"https://example.com/assets/icons/icon.png\",\n        \"colors\": {\n            \"primary\": \"#f2f2f2\",\n            \"page_background\": \"#e1e1e1\",\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myOrganization = new Auth0.Organization(\"my_organization\", new()\n    {\n        Name = \"auth0-inc\",\n        DisplayName = \"Auth0 Inc.\",\n        Branding = new Auth0.Inputs.OrganizationBrandingArgs\n        {\n            LogoUrl = \"https://example.com/assets/icons/icon.png\",\n            Colors = \n            {\n                { \"primary\", \"#f2f2f2\" },\n                { \"page_background\", \"#e1e1e1\" },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewOrganization(ctx, \"my_organization\", \u0026auth0.OrganizationArgs{\n\t\t\tName:        pulumi.String(\"auth0-inc\"),\n\t\t\tDisplayName: pulumi.String(\"Auth0 Inc.\"),\n\t\t\tBranding: \u0026auth0.OrganizationBrandingArgs{\n\t\t\t\tLogoUrl: pulumi.String(\"https://example.com/assets/icons/icon.png\"),\n\t\t\t\tColors: pulumi.StringMap{\n\t\t\t\t\t\"primary\":         pulumi.String(\"#f2f2f2\"),\n\t\t\t\t\t\"page_background\": pulumi.String(\"#e1e1e1\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    auth0 = {\n      source = \"pulumi/auth0\"\n    }\n  }\n}\n\nresource \"auth0_organization\" \"my_organization\" {\n  name         = \"auth0-inc\"\n  display_name = \"Auth0 Inc.\"\n  branding = {\n    logo_url = \"https://example.com/assets/icons/icon.png\"\n    colors = {\n      \"primary\"         = \"#f2f2f2\"\n      \"page_background\" = \"#e1e1e1\"\n    }\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Organization;\nimport com.pulumi.auth0.OrganizationArgs;\nimport com.pulumi.auth0.inputs.OrganizationBrandingArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myOrganization = new Organization(\"myOrganization\", OrganizationArgs.builder()\n            .name(\"auth0-inc\")\n            .displayName(\"Auth0 Inc.\")\n            .branding(OrganizationBrandingArgs.builder()\n                .logoUrl(\"https://example.com/assets/icons/icon.png\")\n                .colors(Map.ofEntries(\n                    Map.entry(\"primary\", \"#f2f2f2\"),\n                    Map.entry(\"page_background\", \"#e1e1e1\")\n                ))\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myOrganization:\n    type: auth0:Organization\n    name: my_organization\n    properties:\n      name: auth0-inc\n      displayName: Auth0 Inc.\n      branding:\n        logoUrl: https://example.com/assets/icons/icon.png\n        colors:\n          primary: '#f2f2f2'\n          page_background: '#e1e1e1'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported by specifying the organization ID.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/organization:Organization my_organization \"org_XXXXXXXXXXXXXX\"\n```\n\n",
+            "description": "The Organizations feature represents a broad update to the Auth0 platform that allows our business-to-business (B2B) customers to better manage their partners and customers, and to customize the ways that end-users access their applications. Auth0 customers can use Organizations to:\n\n  - Represent their business customers and partners in Auth0 and manage their\n    membership.\n  - Configure branded, federated login flows for each business.\n  - Build administration capabilities into their products, using Organizations\n    APIs, so that those businesses can manage their own organizations.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myOrganization = new auth0.Organization(\"my_organization\", {\n    name: \"auth0-inc\",\n    displayName: \"Auth0 Inc.\",\n    thirdPartyClientAccess: \"block\",\n    branding: {\n        logoUrl: \"https://example.com/assets/icons/icon.png\",\n        colors: {\n            primary: \"#f2f2f2\",\n            page_background: \"#e1e1e1\",\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_organization = auth0.Organization(\"my_organization\",\n    name=\"auth0-inc\",\n    display_name=\"Auth0 Inc.\",\n    third_party_client_access=\"block\",\n    branding={\n        \"logo_url\": \"https://example.com/assets/icons/icon.png\",\n        \"colors\": {\n            \"primary\": \"#f2f2f2\",\n            \"page_background\": \"#e1e1e1\",\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myOrganization = new Auth0.Organization(\"my_organization\", new()\n    {\n        Name = \"auth0-inc\",\n        DisplayName = \"Auth0 Inc.\",\n        ThirdPartyClientAccess = \"block\",\n        Branding = new Auth0.Inputs.OrganizationBrandingArgs\n        {\n            LogoUrl = \"https://example.com/assets/icons/icon.png\",\n            Colors = \n            {\n                { \"primary\", \"#f2f2f2\" },\n                { \"page_background\", \"#e1e1e1\" },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewOrganization(ctx, \"my_organization\", \u0026auth0.OrganizationArgs{\n\t\t\tName:                   pulumi.String(\"auth0-inc\"),\n\t\t\tDisplayName:            pulumi.String(\"Auth0 Inc.\"),\n\t\t\tThirdPartyClientAccess: pulumi.String(\"block\"),\n\t\t\tBranding: \u0026auth0.OrganizationBrandingArgs{\n\t\t\t\tLogoUrl: pulumi.String(\"https://example.com/assets/icons/icon.png\"),\n\t\t\t\tColors: pulumi.StringMap{\n\t\t\t\t\t\"primary\":         pulumi.String(\"#f2f2f2\"),\n\t\t\t\t\t\"page_background\": pulumi.String(\"#e1e1e1\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    auth0 = {\n      source = \"pulumi/auth0\"\n    }\n  }\n}\n\nresource \"auth0_organization\" \"my_organization\" {\n  name                      = \"auth0-inc\"\n  display_name              = \"Auth0 Inc.\"\n  third_party_client_access = \"block\"\n  branding = {\n    logo_url = \"https://example.com/assets/icons/icon.png\"\n    colors = {\n      \"primary\"         = \"#f2f2f2\"\n      \"page_background\" = \"#e1e1e1\"\n    }\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Organization;\nimport com.pulumi.auth0.OrganizationArgs;\nimport com.pulumi.auth0.inputs.OrganizationBrandingArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myOrganization = new Organization(\"myOrganization\", OrganizationArgs.builder()\n            .name(\"auth0-inc\")\n            .displayName(\"Auth0 Inc.\")\n            .thirdPartyClientAccess(\"block\")\n            .branding(OrganizationBrandingArgs.builder()\n                .logoUrl(\"https://example.com/assets/icons/icon.png\")\n                .colors(Map.ofEntries(\n                    Map.entry(\"primary\", \"#f2f2f2\"),\n                    Map.entry(\"page_background\", \"#e1e1e1\")\n                ))\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myOrganization:\n    type: auth0:Organization\n    name: my_organization\n    properties:\n      name: auth0-inc\n      displayName: Auth0 Inc.\n      thirdPartyClientAccess: block\n      branding:\n        logoUrl: https://example.com/assets/icons/icon.png\n        colors:\n          primary: '#f2f2f2'\n          page_background: '#e1e1e1'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported by specifying the organization ID.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/organization:Organization my_organization \"org_XXXXXXXXXXXXXX\"\n```\n\n",
             "properties": {
                 "branding": {
                     "$ref": "#/types/auth0:index/OrganizationBranding:OrganizationBranding",
@@ -20204,6 +20204,10 @@
                     "type": "string",
                     "description": "The name of this organization.\n"
                 },
+                "thirdPartyClientAccess": {
+                    "type": "string",
+                    "description": "Controls whether this organization can be used in user flows with third-party clients. Available values are \u003cspan pulumi-lang-nodejs=\"`allow`\" pulumi-lang-dotnet=\"`Allow`\" pulumi-lang-go=\"`allow`\" pulumi-lang-python=\"`allow`\" pulumi-lang-yaml=\"`allow`\" pulumi-lang-java=\"`allow`\" pulumi-lang-hcl=\"`allow`\"\u003e`allow`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`block`\" pulumi-lang-dotnet=\"`Block`\" pulumi-lang-go=\"`block`\" pulumi-lang-python=\"`block`\" pulumi-lang-yaml=\"`block`\" pulumi-lang-java=\"`block`\" pulumi-lang-hcl=\"`block`\"\u003e`block`\u003c/span\u003e. Defaults to \u003cspan pulumi-lang-nodejs=\"`block`\" pulumi-lang-dotnet=\"`Block`\" pulumi-lang-go=\"`block`\" pulumi-lang-python=\"`block`\" pulumi-lang-yaml=\"`block`\" pulumi-lang-java=\"`block`\" pulumi-lang-hcl=\"`block`\"\u003e`block`\u003c/span\u003e.\n"
+                },
                 "tokenQuota": {
                     "$ref": "#/types/auth0:index/OrganizationTokenQuota:OrganizationTokenQuota",
                     "description": "The token quota configuration.\n"
@@ -20211,7 +20215,8 @@
             },
             "required": [
                 "branding",
-                "name"
+                "name",
+                "thirdPartyClientAccess"
             ],
             "inputProperties": {
                 "branding": {
@@ -20232,6 +20237,10 @@
                 "name": {
                     "type": "string",
                     "description": "The name of this organization.\n"
+                },
+                "thirdPartyClientAccess": {
+                    "type": "string",
+                    "description": "Controls whether this organization can be used in user flows with third-party clients. Available values are \u003cspan pulumi-lang-nodejs=\"`allow`\" pulumi-lang-dotnet=\"`Allow`\" pulumi-lang-go=\"`allow`\" pulumi-lang-python=\"`allow`\" pulumi-lang-yaml=\"`allow`\" pulumi-lang-java=\"`allow`\" pulumi-lang-hcl=\"`allow`\"\u003e`allow`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`block`\" pulumi-lang-dotnet=\"`Block`\" pulumi-lang-go=\"`block`\" pulumi-lang-python=\"`block`\" pulumi-lang-yaml=\"`block`\" pulumi-lang-java=\"`block`\" pulumi-lang-hcl=\"`block`\"\u003e`block`\u003c/span\u003e. Defaults to \u003cspan pulumi-lang-nodejs=\"`block`\" pulumi-lang-dotnet=\"`Block`\" pulumi-lang-go=\"`block`\" pulumi-lang-python=\"`block`\" pulumi-lang-yaml=\"`block`\" pulumi-lang-java=\"`block`\" pulumi-lang-hcl=\"`block`\"\u003e`block`\u003c/span\u003e.\n"
                 },
                 "tokenQuota": {
                     "$ref": "#/types/auth0:index/OrganizationTokenQuota:OrganizationTokenQuota",
@@ -20259,6 +20268,10 @@
                     "name": {
                         "type": "string",
                         "description": "The name of this organization.\n"
+                    },
+                    "thirdPartyClientAccess": {
+                        "type": "string",
+                        "description": "Controls whether this organization can be used in user flows with third-party clients. Available values are \u003cspan pulumi-lang-nodejs=\"`allow`\" pulumi-lang-dotnet=\"`Allow`\" pulumi-lang-go=\"`allow`\" pulumi-lang-python=\"`allow`\" pulumi-lang-yaml=\"`allow`\" pulumi-lang-java=\"`allow`\" pulumi-lang-hcl=\"`allow`\"\u003e`allow`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`block`\" pulumi-lang-dotnet=\"`Block`\" pulumi-lang-go=\"`block`\" pulumi-lang-python=\"`block`\" pulumi-lang-yaml=\"`block`\" pulumi-lang-java=\"`block`\" pulumi-lang-hcl=\"`block`\"\u003e`block`\u003c/span\u003e. Defaults to \u003cspan pulumi-lang-nodejs=\"`block`\" pulumi-lang-dotnet=\"`Block`\" pulumi-lang-go=\"`block`\" pulumi-lang-python=\"`block`\" pulumi-lang-yaml=\"`block`\" pulumi-lang-java=\"`block`\" pulumi-lang-hcl=\"`block`\"\u003e`block`\u003c/span\u003e.\n"
                     },
                     "tokenQuota": {
                         "$ref": "#/types/auth0:index/OrganizationTokenQuota:OrganizationTokenQuota",
@@ -26098,6 +26111,10 @@
                         "description": "Whether to skip organization members. Setting this to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e will skip paginated API calls to /api/v2/organizations/{id}/members.\n",
                         "type": "boolean"
                     },
+                    "thirdPartyClientAccess": {
+                        "description": "Controls whether this organization can be used in user flows with third-party clients. Available values are \u003cspan pulumi-lang-nodejs=\"`allow`\" pulumi-lang-dotnet=\"`Allow`\" pulumi-lang-go=\"`allow`\" pulumi-lang-python=\"`allow`\" pulumi-lang-yaml=\"`allow`\" pulumi-lang-java=\"`allow`\" pulumi-lang-hcl=\"`allow`\"\u003e`allow`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`block`\" pulumi-lang-dotnet=\"`Block`\" pulumi-lang-go=\"`block`\" pulumi-lang-python=\"`block`\" pulumi-lang-yaml=\"`block`\" pulumi-lang-java=\"`block`\" pulumi-lang-hcl=\"`block`\"\u003e`block`\u003c/span\u003e. Defaults to \u003cspan pulumi-lang-nodejs=\"`block`\" pulumi-lang-dotnet=\"`Block`\" pulumi-lang-go=\"`block`\" pulumi-lang-python=\"`block`\" pulumi-lang-yaml=\"`block`\" pulumi-lang-java=\"`block`\" pulumi-lang-hcl=\"`block`\"\u003e`block`\u003c/span\u003e.\n",
+                        "type": "string"
+                    },
                     "tokenQuotas": {
                         "description": "The token quota configuration.\n",
                         "items": {
@@ -26113,6 +26130,7 @@
                     "displayName",
                     "members",
                     "metadata",
+                    "thirdPartyClientAccess",
                     "tokenQuotas",
                     "id"
                 ],
