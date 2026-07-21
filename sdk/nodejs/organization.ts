@@ -24,6 +24,7 @@ import * as utilities from "./utilities";
  * const myOrganization = new auth0.Organization("my_organization", {
  *     name: "auth0-inc",
  *     displayName: "Auth0 Inc.",
+ *     thirdPartyClientAccess: "block",
  *     branding: {
  *         logoUrl: "https://example.com/assets/icons/icon.png",
  *         colors: {
@@ -89,6 +90,10 @@ export class Organization extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
+     */
+    declare public readonly thirdPartyClientAccess: pulumi.Output<string>;
+    /**
      * The token quota configuration.
      */
     declare public readonly tokenQuota: pulumi.Output<outputs.OrganizationTokenQuota | undefined>;
@@ -110,6 +115,7 @@ export class Organization extends pulumi.CustomResource {
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["metadata"] = state?.metadata;
             resourceInputs["name"] = state?.name;
+            resourceInputs["thirdPartyClientAccess"] = state?.thirdPartyClientAccess;
             resourceInputs["tokenQuota"] = state?.tokenQuota;
         } else {
             const args = argsOrState as OrganizationArgs | undefined;
@@ -117,6 +123,7 @@ export class Organization extends pulumi.CustomResource {
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["metadata"] = args?.metadata;
             resourceInputs["name"] = args?.name;
+            resourceInputs["thirdPartyClientAccess"] = args?.thirdPartyClientAccess;
             resourceInputs["tokenQuota"] = args?.tokenQuota;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -145,6 +152,10 @@ export interface OrganizationState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
+     * Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
+     */
+    thirdPartyClientAccess?: pulumi.Input<string | undefined>;
+    /**
      * The token quota configuration.
      */
     tokenQuota?: pulumi.Input<inputs.OrganizationTokenQuota | undefined>;
@@ -170,6 +181,10 @@ export interface OrganizationArgs {
      * The name of this organization.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
+     */
+    thirdPartyClientAccess?: pulumi.Input<string | undefined>;
     /**
      * The token quota configuration.
      */

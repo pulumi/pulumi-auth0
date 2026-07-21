@@ -271,14 +271,14 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates whether the public sign up process shows a `userExists` error if the user already exists.
+     * Indicates whether the public sign up process shows a `userExists` error if the user already exists. Note: the Auth0 Dashboard toggle **Use a generic response in public signup API error message** shows the inverse of this value.
      * 
      */
     @Import(name="enablePublicSignupUserExistsError")
     private @Nullable Output<Boolean> enablePublicSignupUserExistsError;
 
     /**
-     * @return Indicates whether the public sign up process shows a `userExists` error if the user already exists.
+     * @return Indicates whether the public sign up process shows a `userExists` error if the user already exists. Note: the Auth0 Dashboard toggle **Use a generic response in public signup API error message** shows the inverse of this value.
      * 
      */
     public Optional<Output<Boolean>> enablePublicSignupUserExistsError() {
@@ -316,14 +316,14 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+     * Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file. Note: the Auth0 Dashboard toggle **Enable Publishing of Enterprise Connections Information with IdP domains** shows the inverse of this value.
      * 
      */
     @Import(name="noDiscloseEnterpriseConnections")
     private @Nullable Output<Boolean> noDiscloseEnterpriseConnections;
 
     /**
-     * @return Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+     * @return Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file. Note: the Auth0 Dashboard toggle **Enable Publishing of Enterprise Connections Information with IdP domains** shows the inverse of this value.
      * 
      */
     public Optional<Output<Boolean>> noDiscloseEnterpriseConnections() {
@@ -804,7 +804,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enablePublicSignupUserExistsError Indicates whether the public sign up process shows a `userExists` error if the user already exists.
+         * @param enablePublicSignupUserExistsError Indicates whether the public sign up process shows a `userExists` error if the user already exists. Note: the Auth0 Dashboard toggle **Use a generic response in public signup API error message** shows the inverse of this value.
          * 
          * @return builder
          * 
@@ -815,7 +815,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enablePublicSignupUserExistsError Indicates whether the public sign up process shows a `userExists` error if the user already exists.
+         * @param enablePublicSignupUserExistsError Indicates whether the public sign up process shows a `userExists` error if the user already exists. Note: the Auth0 Dashboard toggle **Use a generic response in public signup API error message** shows the inverse of this value.
          * 
          * @return builder
          * 
@@ -867,7 +867,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param noDiscloseEnterpriseConnections Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+         * @param noDiscloseEnterpriseConnections Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file. Note: the Auth0 Dashboard toggle **Enable Publishing of Enterprise Connections Information with IdP domains** shows the inverse of this value.
          * 
          * @return builder
          * 
@@ -878,7 +878,7 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param noDiscloseEnterpriseConnections Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+         * @param noDiscloseEnterpriseConnections Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file. Note: the Auth0 Dashboard toggle **Enable Publishing of Enterprise Connections Information with IdP domains** shows the inverse of this value.
          * 
          * @return builder
          * 

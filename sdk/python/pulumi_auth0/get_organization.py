@@ -27,7 +27,7 @@ class GetOrganizationResult:
     """
     A collection of values returned by getOrganization.
     """
-    def __init__(__self__, brandings=None, client_grants=None, connections=None, display_name=None, id=None, members=None, metadata=None, name=None, organization_id=None, skip_client_grants=None, skip_connections=None, skip_members=None, token_quotas=None):
+    def __init__(__self__, brandings=None, client_grants=None, connections=None, display_name=None, id=None, members=None, metadata=None, name=None, organization_id=None, skip_client_grants=None, skip_connections=None, skip_members=None, third_party_client_access=None, token_quotas=None):
         if brandings and not isinstance(brandings, list):
             raise TypeError("Expected argument 'brandings' to be a list")
         pulumi.set(__self__, "brandings", brandings)
@@ -64,6 +64,9 @@ class GetOrganizationResult:
         if skip_members and not isinstance(skip_members, bool):
             raise TypeError("Expected argument 'skip_members' to be a bool")
         pulumi.set(__self__, "skip_members", skip_members)
+        if third_party_client_access and not isinstance(third_party_client_access, str):
+            raise TypeError("Expected argument 'third_party_client_access' to be a str")
+        pulumi.set(__self__, "third_party_client_access", third_party_client_access)
         if token_quotas and not isinstance(token_quotas, list):
             raise TypeError("Expected argument 'token_quotas' to be a list")
         pulumi.set(__self__, "token_quotas", token_quotas)
@@ -165,6 +168,14 @@ class GetOrganizationResult:
         return pulumi.get(self, "skip_members")
 
     @_builtins.property
+    @pulumi.getter(name="thirdPartyClientAccess")
+    def third_party_client_access(self) -> _builtins.str:
+        """
+        Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
+        """
+        return pulumi.get(self, "third_party_client_access")
+
+    @_builtins.property
     @pulumi.getter(name="tokenQuotas")
     def token_quotas(self) -> Sequence['outputs.GetOrganizationTokenQuotaResult']:
         """
@@ -191,6 +202,7 @@ class AwaitableGetOrganizationResult(GetOrganizationResult):
             skip_client_grants=self.skip_client_grants,
             skip_connections=self.skip_connections,
             skip_members=self.skip_members,
+            third_party_client_access=self.third_party_client_access,
             token_quotas=self.token_quotas)
 
 
@@ -244,6 +256,7 @@ def get_organization(name: Optional[_builtins.str] = None,
         skip_client_grants=pulumi.get(__ret__, 'skip_client_grants'),
         skip_connections=pulumi.get(__ret__, 'skip_connections'),
         skip_members=pulumi.get(__ret__, 'skip_members'),
+        third_party_client_access=pulumi.get(__ret__, 'third_party_client_access'),
         token_quotas=pulumi.get(__ret__, 'token_quotas'))
 def get_organization_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             organization_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -294,4 +307,5 @@ def get_organization_output(name: pulumi.Input[Optional[Optional[_builtins.str]]
         skip_client_grants=pulumi.get(__response__, 'skip_client_grants'),
         skip_connections=pulumi.get(__response__, 'skip_connections'),
         skip_members=pulumi.get(__response__, 'skip_members'),
+        third_party_client_access=pulumi.get(__response__, 'third_party_client_access'),
         token_quotas=pulumi.get(__response__, 'token_quotas')))

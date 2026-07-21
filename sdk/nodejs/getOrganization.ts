@@ -116,6 +116,10 @@ export interface GetOrganizationResult {
      */
     readonly skipMembers?: boolean;
     /**
+     * Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
+     */
+    readonly thirdPartyClientAccess: string;
+    /**
      * The token quota configuration.
      */
     readonly tokenQuotas: outputs.GetOrganizationTokenQuota[];

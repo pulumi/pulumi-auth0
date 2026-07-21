@@ -34,8 +34,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewOrganization(ctx, "my_organization", &auth0.OrganizationArgs{
-//				Name:        pulumi.String("auth0-inc"),
-//				DisplayName: pulumi.String("Auth0 Inc."),
+//				Name:                   pulumi.String("auth0-inc"),
+//				DisplayName:            pulumi.String("Auth0 Inc."),
+//				ThirdPartyClientAccess: pulumi.String("block"),
 //				Branding: &auth0.OrganizationBrandingArgs{
 //					LogoUrl: pulumi.String("https://example.com/assets/icons/icon.png"),
 //					Colors: pulumi.StringMap{
@@ -73,6 +74,8 @@ type Organization struct {
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// The name of this organization.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
+	ThirdPartyClientAccess pulumi.StringOutput `pulumi:"thirdPartyClientAccess"`
 	// The token quota configuration.
 	TokenQuota OrganizationTokenQuotaPtrOutput `pulumi:"tokenQuota"`
 }
@@ -115,6 +118,8 @@ type organizationState struct {
 	Metadata map[string]string `pulumi:"metadata"`
 	// The name of this organization.
 	Name *string `pulumi:"name"`
+	// Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
+	ThirdPartyClientAccess *string `pulumi:"thirdPartyClientAccess"`
 	// The token quota configuration.
 	TokenQuota *OrganizationTokenQuota `pulumi:"tokenQuota"`
 }
@@ -128,6 +133,8 @@ type OrganizationState struct {
 	Metadata pulumi.StringMapInput
 	// The name of this organization.
 	Name pulumi.StringPtrInput
+	// Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
+	ThirdPartyClientAccess pulumi.StringPtrInput
 	// The token quota configuration.
 	TokenQuota OrganizationTokenQuotaPtrInput
 }
@@ -145,6 +152,8 @@ type organizationArgs struct {
 	Metadata map[string]string `pulumi:"metadata"`
 	// The name of this organization.
 	Name *string `pulumi:"name"`
+	// Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
+	ThirdPartyClientAccess *string `pulumi:"thirdPartyClientAccess"`
 	// The token quota configuration.
 	TokenQuota *OrganizationTokenQuota `pulumi:"tokenQuota"`
 }
@@ -159,6 +168,8 @@ type OrganizationArgs struct {
 	Metadata pulumi.StringMapInput
 	// The name of this organization.
 	Name pulumi.StringPtrInput
+	// Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
+	ThirdPartyClientAccess pulumi.StringPtrInput
 	// The token quota configuration.
 	TokenQuota OrganizationTokenQuotaPtrInput
 }
@@ -268,6 +279,11 @@ func (o OrganizationOutput) Metadata() pulumi.StringMapOutput {
 // The name of this organization.
 func (o OrganizationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
+func (o OrganizationOutput) ThirdPartyClientAccess() pulumi.StringOutput {
+	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.ThirdPartyClientAccess }).(pulumi.StringOutput)
 }
 
 // The token quota configuration.

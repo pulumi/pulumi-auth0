@@ -7684,7 +7684,7 @@ export interface GetTenantFlag {
      */
     enablePipeline2: boolean;
     /**
-     * Indicates whether the public sign up process shows a `userExists` error if the user already exists.
+     * Indicates whether the public sign up process shows a `userExists` error if the user already exists. Note: the Auth0 Dashboard toggle **Use a generic response in public signup API error message** shows the inverse of this value.
      */
     enablePublicSignupUserExistsError: boolean;
     /**
@@ -7696,7 +7696,7 @@ export interface GetTenantFlag {
      */
     mfaShowFactorListOnEnrollment: boolean;
     /**
-     * Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+     * Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file. Note: the Auth0 Dashboard toggle **Enable Publishing of Enterprise Connections Information with IdP domains** shows the inverse of this value.
      */
     noDiscloseEnterpriseConnections: boolean;
     /**
@@ -8969,7 +8969,7 @@ export interface TenantFlags {
      */
     enablePipeline2: boolean;
     /**
-     * Indicates whether the public sign up process shows a `userExists` error if the user already exists.
+     * Indicates whether the public sign up process shows a `userExists` error if the user already exists. Note: the Auth0 Dashboard toggle **Use a generic response in public signup API error message** shows the inverse of this value.
      */
     enablePublicSignupUserExistsError: boolean;
     /**
@@ -8981,7 +8981,7 @@ export interface TenantFlags {
      */
     mfaShowFactorListOnEnrollment: boolean;
     /**
-     * Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+     * Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file. Note: the Auth0 Dashboard toggle **Enable Publishing of Enterprise Connections Information with IdP domains** shows the inverse of this value.
      */
     noDiscloseEnterpriseConnections: boolean;
     /**

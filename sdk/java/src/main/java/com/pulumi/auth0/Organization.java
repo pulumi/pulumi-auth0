@@ -54,6 +54,7 @@ import javax.annotation.Nullable;
  *         var myOrganization = new Organization("myOrganization", OrganizationArgs.builder()
  *             .name("auth0-inc")
  *             .displayName("Auth0 Inc.")
+ *             .thirdPartyClientAccess("block")
  *             .branding(OrganizationBrandingArgs.builder()
  *                 .logoUrl("https://example.com/assets/icons/icon.png")
  *                 .colors(Map.ofEntries(
@@ -136,6 +137,20 @@ public class Organization extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
+     * 
+     */
+    @Export(name="thirdPartyClientAccess", refs={String.class}, tree="[0]")
+    private Output<String> thirdPartyClientAccess;
+
+    /**
+     * @return Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
+     * 
+     */
+    public Output<String> thirdPartyClientAccess() {
+        return this.thirdPartyClientAccess;
     }
     /**
      * The token quota configuration.

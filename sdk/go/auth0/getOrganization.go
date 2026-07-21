@@ -96,6 +96,8 @@ type LookupOrganizationResult struct {
 	SkipConnections *bool `pulumi:"skipConnections"`
 	// Whether to skip organization members. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/members.
 	SkipMembers *bool `pulumi:"skipMembers"`
+	// Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
+	ThirdPartyClientAccess string `pulumi:"thirdPartyClientAccess"`
 	// The token quota configuration.
 	TokenQuotas []GetOrganizationTokenQuota `pulumi:"tokenQuotas"`
 }
@@ -200,6 +202,11 @@ func (o LookupOrganizationResultOutput) SkipConnections() pulumi.BoolPtrOutput {
 // Whether to skip organization members. Setting this to `true` will skip paginated API calls to /api/v2/organizations/{id}/members.
 func (o LookupOrganizationResultOutput) SkipMembers() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) *bool { return v.SkipMembers }).(pulumi.BoolPtrOutput)
+}
+
+// Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
+func (o LookupOrganizationResultOutput) ThirdPartyClientAccess() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) string { return v.ThirdPartyClientAccess }).(pulumi.StringOutput)
 }
 
 // The token quota configuration.

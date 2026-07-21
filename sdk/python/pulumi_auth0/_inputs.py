@@ -20472,7 +20472,7 @@ class TenantFlagsArgsDict(TypedDict):
     """
     enable_public_signup_user_exists_error: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
+    Indicates whether the public sign up process shows a `user_exists` error if the user already exists. Note: the Auth0 Dashboard toggle **Use a generic response in public signup API error message** shows the inverse of this value.
     """
     enable_sso: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -20484,7 +20484,7 @@ class TenantFlagsArgsDict(TypedDict):
     """
     no_disclose_enterprise_connections: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+    Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file. Note: the Auth0 Dashboard toggle **Enable Publishing of Enterprise Connections Information with IdP domains** shows the inverse of this value.
     """
     remove_alg_from_jwks: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -20549,10 +20549,10 @@ class TenantFlagsArgs:
         :param pulumi.Input[_builtins.bool] enable_legacy_logs_search_v2: Indicates whether to use the older v2 legacy logs search.
         :param pulumi.Input[_builtins.bool] enable_legacy_profile: Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).
         :param pulumi.Input[_builtins.bool] enable_pipeline2: Indicates whether advanced API Authorization scenarios are enabled.
-        :param pulumi.Input[_builtins.bool] enable_public_signup_user_exists_error: Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
+        :param pulumi.Input[_builtins.bool] enable_public_signup_user_exists_error: Indicates whether the public sign up process shows a `user_exists` error if the user already exists. Note: the Auth0 Dashboard toggle **Use a generic response in public signup API error message** shows the inverse of this value.
         :param pulumi.Input[_builtins.bool] enable_sso: Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
         :param pulumi.Input[_builtins.bool] mfa_show_factor_list_on_enrollment: Used to allow users to pick which factor to enroll with from the list of available MFA factors.
-        :param pulumi.Input[_builtins.bool] no_disclose_enterprise_connections: Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+        :param pulumi.Input[_builtins.bool] no_disclose_enterprise_connections: Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file. Note: the Auth0 Dashboard toggle **Enable Publishing of Enterprise Connections Information with IdP domains** shows the inverse of this value.
         :param pulumi.Input[_builtins.bool] remove_alg_from_jwks: Remove `alg` from jwks(JSON Web Key Sets).
         :param pulumi.Input[_builtins.bool] require_pushed_authorization_requests: This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
         :param pulumi.Input[_builtins.bool] revoke_refresh_token_grant: Delete underlying grant when a refresh token is revoked via the Authentication API.
@@ -20820,7 +20820,7 @@ class TenantFlagsArgs:
     @pulumi.getter(name="enablePublicSignupUserExistsError")
     def enable_public_signup_user_exists_error(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Indicates whether the public sign up process shows a `user_exists` error if the user already exists.
+        Indicates whether the public sign up process shows a `user_exists` error if the user already exists. Note: the Auth0 Dashboard toggle **Use a generic response in public signup API error message** shows the inverse of this value.
         """
         return pulumi.get(self, "enable_public_signup_user_exists_error")
 
@@ -20856,7 +20856,7 @@ class TenantFlagsArgs:
     @pulumi.getter(name="noDiscloseEnterpriseConnections")
     def no_disclose_enterprise_connections(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+        Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file. Note: the Auth0 Dashboard toggle **Enable Publishing of Enterprise Connections Information with IdP domains** shows the inverse of this value.
         """
         return pulumi.get(self, "no_disclose_enterprise_connections")
 

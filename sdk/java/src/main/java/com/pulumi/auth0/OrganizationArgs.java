@@ -79,6 +79,21 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
+     * 
+     */
+    @Import(name="thirdPartyClientAccess")
+    private @Nullable Output<String> thirdPartyClientAccess;
+
+    /**
+     * @return Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
+     * 
+     */
+    public Optional<Output<String>> thirdPartyClientAccess() {
+        return Optional.ofNullable(this.thirdPartyClientAccess);
+    }
+
+    /**
      * The token quota configuration.
      * 
      */
@@ -100,6 +115,7 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
         this.displayName = $.displayName;
         this.metadata = $.metadata;
         this.name = $.name;
+        this.thirdPartyClientAccess = $.thirdPartyClientAccess;
         this.tokenQuota = $.tokenQuota;
     }
 
@@ -203,6 +219,27 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param thirdPartyClientAccess Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder thirdPartyClientAccess(@Nullable Output<String> thirdPartyClientAccess) {
+            $.thirdPartyClientAccess = thirdPartyClientAccess;
+            return this;
+        }
+
+        /**
+         * @param thirdPartyClientAccess Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder thirdPartyClientAccess(String thirdPartyClientAccess) {
+            return thirdPartyClientAccess(Output.of(thirdPartyClientAccess));
         }
 
         /**
