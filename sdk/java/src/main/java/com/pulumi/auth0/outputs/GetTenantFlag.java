@@ -96,7 +96,7 @@ public final class GetTenantFlag {
      */
     private Boolean enablePipeline2;
     /**
-     * @return Indicates whether the public sign up process shows a `userExists` error if the user already exists.
+     * @return Indicates whether the public sign up process shows a `userExists` error if the user already exists. Note: the Auth0 Dashboard toggle **Use a generic response in public signup API error message** shows the inverse of this value.
      * 
      */
     private Boolean enablePublicSignupUserExistsError;
@@ -111,7 +111,7 @@ public final class GetTenantFlag {
      */
     private Boolean mfaShowFactorListOnEnrollment;
     /**
-     * @return Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+     * @return Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file. Note: the Auth0 Dashboard toggle **Enable Publishing of Enterprise Connections Information with IdP domains** shows the inverse of this value.
      * 
      */
     private Boolean noDiscloseEnterpriseConnections;
@@ -257,7 +257,7 @@ public final class GetTenantFlag {
         return this.enablePipeline2;
     }
     /**
-     * @return Indicates whether the public sign up process shows a `userExists` error if the user already exists.
+     * @return Indicates whether the public sign up process shows a `userExists` error if the user already exists. Note: the Auth0 Dashboard toggle **Use a generic response in public signup API error message** shows the inverse of this value.
      * 
      */
     public Boolean enablePublicSignupUserExistsError() {
@@ -278,7 +278,7 @@ public final class GetTenantFlag {
         return this.mfaShowFactorListOnEnrollment;
     }
     /**
-     * @return Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+     * @return Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file. Note: the Auth0 Dashboard toggle **Enable Publishing of Enterprise Connections Information with IdP domains** shows the inverse of this value.
      * 
      */
     public Boolean noDiscloseEnterpriseConnections() {

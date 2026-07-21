@@ -32,6 +32,7 @@ namespace Pulumi.Auth0
     ///     {
     ///         Name = "auth0-inc",
     ///         DisplayName = "Auth0 Inc.",
+    ///         ThirdPartyClientAccess = "block",
     ///         Branding = new Auth0.Inputs.OrganizationBrandingArgs
     ///         {
     ///             LogoUrl = "https://example.com/assets/icons/icon.png",
@@ -82,6 +83,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Controls whether this organization can be used in user flows with third-party clients. Available values are `Allow` or `Block`. Defaults to `Block`.
+        /// </summary>
+        [Output("thirdPartyClientAccess")]
+        public Output<string> ThirdPartyClientAccess { get; private set; } = null!;
 
         /// <summary>
         /// The token quota configuration.
@@ -166,6 +173,12 @@ namespace Pulumi.Auth0
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Controls whether this organization can be used in user flows with third-party clients. Available values are `Allow` or `Block`. Defaults to `Block`.
+        /// </summary>
+        [Input("thirdPartyClientAccess")]
+        public Input<string>? ThirdPartyClientAccess { get; set; }
+
+        /// <summary>
         /// The token quota configuration.
         /// </summary>
         [Input("tokenQuota")]
@@ -208,6 +221,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Controls whether this organization can be used in user flows with third-party clients. Available values are `Allow` or `Block`. Defaults to `Block`.
+        /// </summary>
+        [Input("thirdPartyClientAccess")]
+        public Input<string>? ThirdPartyClientAccess { get; set; }
 
         /// <summary>
         /// The token quota configuration.

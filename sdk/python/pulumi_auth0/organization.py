@@ -25,6 +25,7 @@ class OrganizationArgs:
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 third_party_client_access: pulumi.Input[Optional[_builtins.str]] = None,
                  token_quota: pulumi.Input[Optional['OrganizationTokenQuotaArgs']] = None):
         """
         The set of arguments for constructing a Organization resource.
@@ -33,6 +34,7 @@ class OrganizationArgs:
         :param pulumi.Input[_builtins.str] display_name: Friendly name of this organization.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata associated with the organization. Maximum of 10 metadata properties allowed.
         :param pulumi.Input[_builtins.str] name: The name of this organization.
+        :param pulumi.Input[_builtins.str] third_party_client_access: Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
         :param pulumi.Input['OrganizationTokenQuotaArgs'] token_quota: The token quota configuration.
         """
         if branding is not None:
@@ -43,6 +45,8 @@ class OrganizationArgs:
             pulumi.set(__self__, "metadata", metadata)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if third_party_client_access is not None:
+            pulumi.set(__self__, "third_party_client_access", third_party_client_access)
         if token_quota is not None:
             pulumi.set(__self__, "token_quota", token_quota)
 
@@ -93,6 +97,18 @@ class OrganizationArgs:
     @name.setter
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="thirdPartyClientAccess")
+    def third_party_client_access(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
+        """
+        return pulumi.get(self, "third_party_client_access")
+
+    @third_party_client_access.setter
+    def third_party_client_access(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "third_party_client_access", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenQuota")
@@ -114,6 +130,7 @@ class _OrganizationState:
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 third_party_client_access: pulumi.Input[Optional[_builtins.str]] = None,
                  token_quota: pulumi.Input[Optional['OrganizationTokenQuotaArgs']] = None):
         """
         Input properties used for looking up and filtering Organization resources.
@@ -122,6 +139,7 @@ class _OrganizationState:
         :param pulumi.Input[_builtins.str] display_name: Friendly name of this organization.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata associated with the organization. Maximum of 10 metadata properties allowed.
         :param pulumi.Input[_builtins.str] name: The name of this organization.
+        :param pulumi.Input[_builtins.str] third_party_client_access: Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
         :param pulumi.Input['OrganizationTokenQuotaArgs'] token_quota: The token quota configuration.
         """
         if branding is not None:
@@ -132,6 +150,8 @@ class _OrganizationState:
             pulumi.set(__self__, "metadata", metadata)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if third_party_client_access is not None:
+            pulumi.set(__self__, "third_party_client_access", third_party_client_access)
         if token_quota is not None:
             pulumi.set(__self__, "token_quota", token_quota)
 
@@ -182,6 +202,18 @@ class _OrganizationState:
     @name.setter
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="thirdPartyClientAccess")
+    def third_party_client_access(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
+        """
+        return pulumi.get(self, "third_party_client_access")
+
+    @third_party_client_access.setter
+    def third_party_client_access(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "third_party_client_access", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenQuota")
@@ -206,6 +238,7 @@ class Organization(pulumi.CustomResource):
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 third_party_client_access: pulumi.Input[Optional[_builtins.str]] = None,
                  token_quota: pulumi.Input[Optional[Union['OrganizationTokenQuotaArgs', 'OrganizationTokenQuotaArgsDict']]] = None,
                  __props__=None):
         """
@@ -226,6 +259,7 @@ class Organization(pulumi.CustomResource):
         my_organization = auth0.Organization("my_organization",
             name="auth0-inc",
             display_name="Auth0 Inc.",
+            third_party_client_access="block",
             branding={
                 "logo_url": "https://example.com/assets/icons/icon.png",
                 "colors": {
@@ -252,6 +286,7 @@ class Organization(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: Friendly name of this organization.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata associated with the organization. Maximum of 10 metadata properties allowed.
         :param pulumi.Input[_builtins.str] name: The name of this organization.
+        :param pulumi.Input[_builtins.str] third_party_client_access: Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
         :param pulumi.Input[Union['OrganizationTokenQuotaArgs', 'OrganizationTokenQuotaArgsDict']] token_quota: The token quota configuration.
         """
         ...
@@ -278,6 +313,7 @@ class Organization(pulumi.CustomResource):
         my_organization = auth0.Organization("my_organization",
             name="auth0-inc",
             display_name="Auth0 Inc.",
+            third_party_client_access="block",
             branding={
                 "logo_url": "https://example.com/assets/icons/icon.png",
                 "colors": {
@@ -317,6 +353,7 @@ class Organization(pulumi.CustomResource):
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 third_party_client_access: pulumi.Input[Optional[_builtins.str]] = None,
                  token_quota: pulumi.Input[Optional[Union['OrganizationTokenQuotaArgs', 'OrganizationTokenQuotaArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -331,6 +368,7 @@ class Organization(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["name"] = name
+            __props__.__dict__["third_party_client_access"] = third_party_client_access
             __props__.__dict__["token_quota"] = token_quota
         super(Organization, __self__).__init__(
             'auth0:index/organization:Organization',
@@ -346,6 +384,7 @@ class Organization(pulumi.CustomResource):
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            third_party_client_access: pulumi.Input[Optional[_builtins.str]] = None,
             token_quota: pulumi.Input[Optional[Union['OrganizationTokenQuotaArgs', 'OrganizationTokenQuotaArgsDict']]] = None) -> 'Organization':
         """
         Get an existing Organization resource's state with the given name, id, and optional extra
@@ -358,6 +397,7 @@ class Organization(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: Friendly name of this organization.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata associated with the organization. Maximum of 10 metadata properties allowed.
         :param pulumi.Input[_builtins.str] name: The name of this organization.
+        :param pulumi.Input[_builtins.str] third_party_client_access: Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
         :param pulumi.Input[Union['OrganizationTokenQuotaArgs', 'OrganizationTokenQuotaArgsDict']] token_quota: The token quota configuration.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -368,6 +408,7 @@ class Organization(pulumi.CustomResource):
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["metadata"] = metadata
         __props__.__dict__["name"] = name
+        __props__.__dict__["third_party_client_access"] = third_party_client_access
         __props__.__dict__["token_quota"] = token_quota
         return Organization(resource_name, opts=opts, __props__=__props__)
 
@@ -402,6 +443,14 @@ class Organization(pulumi.CustomResource):
         The name of this organization.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="thirdPartyClientAccess")
+    def third_party_client_access(self) -> pulumi.Output[_builtins.str]:
+        """
+        Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
+        """
+        return pulumi.get(self, "third_party_client_access")
 
     @_builtins.property
     @pulumi.getter(name="tokenQuota")

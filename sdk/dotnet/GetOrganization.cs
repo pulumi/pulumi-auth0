@@ -235,6 +235,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly bool? SkipMembers;
         /// <summary>
+        /// Controls whether this organization can be used in user flows with third-party clients. Available values are `Allow` or `Block`. Defaults to `Block`.
+        /// </summary>
+        public readonly string ThirdPartyClientAccess;
+        /// <summary>
         /// The token quota configuration.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetOrganizationTokenQuotaResult> TokenQuotas;
@@ -265,6 +269,8 @@ namespace Pulumi.Auth0
 
             bool? skipMembers,
 
+            string thirdPartyClientAccess,
+
             ImmutableArray<Outputs.GetOrganizationTokenQuotaResult> tokenQuotas)
         {
             Brandings = brandings;
@@ -279,6 +285,7 @@ namespace Pulumi.Auth0
             SkipClientGrants = skipClientGrants;
             SkipConnections = skipConnections;
             SkipMembers = skipMembers;
+            ThirdPartyClientAccess = thirdPartyClientAccess;
             TokenQuotas = tokenQuotas;
         }
     }

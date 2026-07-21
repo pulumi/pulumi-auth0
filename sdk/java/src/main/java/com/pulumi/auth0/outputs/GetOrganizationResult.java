@@ -79,6 +79,11 @@ public final class GetOrganizationResult {
      */
     private @Nullable Boolean skipMembers;
     /**
+     * @return Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
+     * 
+     */
+    private String thirdPartyClientAccess;
+    /**
      * @return The token quota configuration.
      * 
      */
@@ -170,6 +175,13 @@ public final class GetOrganizationResult {
         return Optional.ofNullable(this.skipMembers);
     }
     /**
+     * @return Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
+     * 
+     */
+    public String thirdPartyClientAccess() {
+        return this.thirdPartyClientAccess;
+    }
+    /**
      * @return The token quota configuration.
      * 
      */
@@ -198,6 +210,7 @@ public final class GetOrganizationResult {
         private @Nullable Boolean skipClientGrants;
         private @Nullable Boolean skipConnections;
         private @Nullable Boolean skipMembers;
+        private String thirdPartyClientAccess;
         private List<GetOrganizationTokenQuota> tokenQuotas;
         public Builder() {}
         public Builder(GetOrganizationResult defaults) {
@@ -214,6 +227,7 @@ public final class GetOrganizationResult {
     	      this.skipClientGrants = defaults.skipClientGrants;
     	      this.skipConnections = defaults.skipConnections;
     	      this.skipMembers = defaults.skipMembers;
+    	      this.thirdPartyClientAccess = defaults.thirdPartyClientAccess;
     	      this.tokenQuotas = defaults.tokenQuotas;
         }
 
@@ -316,6 +330,14 @@ public final class GetOrganizationResult {
             return this;
         }
         @CustomType.Setter
+        public Builder thirdPartyClientAccess(String thirdPartyClientAccess) {
+            if (thirdPartyClientAccess == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationResult", "thirdPartyClientAccess");
+            }
+            this.thirdPartyClientAccess = thirdPartyClientAccess;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tokenQuotas(List<GetOrganizationTokenQuota> tokenQuotas) {
             if (tokenQuotas == null) {
               throw new MissingRequiredPropertyException("GetOrganizationResult", "tokenQuotas");
@@ -340,6 +362,7 @@ public final class GetOrganizationResult {
             _resultValue.skipClientGrants = skipClientGrants;
             _resultValue.skipConnections = skipConnections;
             _resultValue.skipMembers = skipMembers;
+            _resultValue.thirdPartyClientAccess = thirdPartyClientAccess;
             _resultValue.tokenQuotas = tokenQuotas;
             return _resultValue;
         }

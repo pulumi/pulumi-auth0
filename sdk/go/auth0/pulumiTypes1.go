@@ -866,13 +866,13 @@ type GetTenantFlag struct {
 	EnableLegacyProfile bool `pulumi:"enableLegacyProfile"`
 	// Indicates whether advanced API Authorization scenarios are enabled.
 	EnablePipeline2 bool `pulumi:"enablePipeline2"`
-	// Indicates whether the public sign up process shows a `userExists` error if the user already exists.
+	// Indicates whether the public sign up process shows a `userExists` error if the user already exists. Note: the Auth0 Dashboard toggle **Use a generic response in public signup API error message** shows the inverse of this value.
 	EnablePublicSignupUserExistsError bool `pulumi:"enablePublicSignupUserExistsError"`
 	// Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
 	EnableSso bool `pulumi:"enableSso"`
 	// Used to allow users to pick which factor to enroll with from the list of available MFA factors.
 	MfaShowFactorListOnEnrollment bool `pulumi:"mfaShowFactorListOnEnrollment"`
-	// Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+	// Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file. Note: the Auth0 Dashboard toggle **Enable Publishing of Enterprise Connections Information with IdP domains** shows the inverse of this value.
 	NoDiscloseEnterpriseConnections bool `pulumi:"noDiscloseEnterpriseConnections"`
 	// Remove `alg` from jwks(JSON Web Key Sets).
 	RemoveAlgFromJwks bool `pulumi:"removeAlgFromJwks"`
@@ -930,13 +930,13 @@ type GetTenantFlagArgs struct {
 	EnableLegacyProfile pulumi.BoolInput `pulumi:"enableLegacyProfile"`
 	// Indicates whether advanced API Authorization scenarios are enabled.
 	EnablePipeline2 pulumi.BoolInput `pulumi:"enablePipeline2"`
-	// Indicates whether the public sign up process shows a `userExists` error if the user already exists.
+	// Indicates whether the public sign up process shows a `userExists` error if the user already exists. Note: the Auth0 Dashboard toggle **Use a generic response in public signup API error message** shows the inverse of this value.
 	EnablePublicSignupUserExistsError pulumi.BoolInput `pulumi:"enablePublicSignupUserExistsError"`
 	// Flag indicating whether users will not be prompted to confirm log in before SSO redirection. This flag applies to existing tenants only; new tenants have it enforced as true.
 	EnableSso pulumi.BoolInput `pulumi:"enableSso"`
 	// Used to allow users to pick which factor to enroll with from the list of available MFA factors.
 	MfaShowFactorListOnEnrollment pulumi.BoolInput `pulumi:"mfaShowFactorListOnEnrollment"`
-	// Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+	// Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file. Note: the Auth0 Dashboard toggle **Enable Publishing of Enterprise Connections Information with IdP domains** shows the inverse of this value.
 	NoDiscloseEnterpriseConnections pulumi.BoolInput `pulumi:"noDiscloseEnterpriseConnections"`
 	// Remove `alg` from jwks(JSON Web Key Sets).
 	RemoveAlgFromJwks pulumi.BoolInput `pulumi:"removeAlgFromJwks"`
@@ -1084,7 +1084,7 @@ func (o GetTenantFlagOutput) EnablePipeline2() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetTenantFlag) bool { return v.EnablePipeline2 }).(pulumi.BoolOutput)
 }
 
-// Indicates whether the public sign up process shows a `userExists` error if the user already exists.
+// Indicates whether the public sign up process shows a `userExists` error if the user already exists. Note: the Auth0 Dashboard toggle **Use a generic response in public signup API error message** shows the inverse of this value.
 func (o GetTenantFlagOutput) EnablePublicSignupUserExistsError() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetTenantFlag) bool { return v.EnablePublicSignupUserExistsError }).(pulumi.BoolOutput)
 }
@@ -1099,7 +1099,7 @@ func (o GetTenantFlagOutput) MfaShowFactorListOnEnrollment() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetTenantFlag) bool { return v.MfaShowFactorListOnEnrollment }).(pulumi.BoolOutput)
 }
 
-// Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
+// Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file. Note: the Auth0 Dashboard toggle **Enable Publishing of Enterprise Connections Information with IdP domains** shows the inverse of this value.
 func (o GetTenantFlagOutput) NoDiscloseEnterpriseConnections() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetTenantFlag) bool { return v.NoDiscloseEnterpriseConnections }).(pulumi.BoolOutput)
 }
