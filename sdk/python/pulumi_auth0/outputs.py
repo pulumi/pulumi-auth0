@@ -20620,7 +20620,7 @@ class GetClientAddonSapApiResult(dict):
                  token_endpoint_url: _builtins.str,
                  username_attribute: _builtins.str):
         """
-        :param _builtins.str client_id: If activated in the OAuth 2.0 client configuration (transaction `SOAUTH2) the SAML attribute `client_id` must be set and equal the `client_id` form parameter of the access token request.
+        :param _builtins.str client_id: If activated in the OAuth 2.0 client configuration (transaction ` SOAUTH2) the SAML attribute  `client_id`must be set and equal the`client_id` form parameter of the access token request.
         :param _builtins.str name_identifier_format: NameID element of the Subject which can be used to express the user's identity. Defaults to `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`.
         :param _builtins.str scope: Requested scope for SAP APIs.
         :param _builtins.str service_password: Service account password to use to authenticate API calls to the token endpoint.
@@ -20638,7 +20638,7 @@ class GetClientAddonSapApiResult(dict):
     @pulumi.getter(name="clientId")
     def client_id(self) -> _builtins.str:
         """
-        If activated in the OAuth 2.0 client configuration (transaction `SOAUTH2) the SAML attribute `client_id` must be set and equal the `client_id` form parameter of the access token request.
+        If activated in the OAuth 2.0 client configuration (transaction ` SOAUTH2) the SAML attribute  `client_id`must be set and equal the`client_id` form parameter of the access token request.
         """
         return pulumi.get(self, "client_id")
 
