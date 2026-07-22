@@ -95,7 +95,7 @@ publishing {
                 inceptionYear = "2022"
                 name = "pulumi-auth0"
                 packaging = "jar"
-                description = "A Pulumi package for creating and managing auth0 cloud resources."
+                description = $/A Pulumi package for creating and managing auth0 cloud resources./$
 
                 url = "https://github.com/pulumi/pulumi-auth0"
 
