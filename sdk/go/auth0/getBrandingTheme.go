@@ -54,7 +54,9 @@ type LookupBrandingThemeResult struct {
 	DisplayName string                 `pulumi:"displayName"`
 	Fonts       []GetBrandingThemeFont `pulumi:"fonts"`
 	// The provider-assigned unique ID for this managed resource.
-	Id              string                           `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed
+	Identifiers     []GetBrandingThemeIdentifier     `pulumi:"identifiers"`
 	PageBackgrounds []GetBrandingThemePageBackground `pulumi:"pageBackgrounds"`
 	Widgets         []GetBrandingThemeWidget         `pulumi:"widgets"`
 }
@@ -101,6 +103,11 @@ func (o LookupBrandingThemeResultOutput) Fonts() GetBrandingThemeFontArrayOutput
 // The provider-assigned unique ID for this managed resource.
 func (o LookupBrandingThemeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBrandingThemeResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed
+func (o LookupBrandingThemeResultOutput) Identifiers() GetBrandingThemeIdentifierArrayOutput {
+	return o.ApplyT(func(v LookupBrandingThemeResult) []GetBrandingThemeIdentifier { return v.Identifiers }).(GetBrandingThemeIdentifierArrayOutput)
 }
 
 func (o LookupBrandingThemeResultOutput) PageBackgrounds() GetBrandingThemePageBackgroundArrayOutput {

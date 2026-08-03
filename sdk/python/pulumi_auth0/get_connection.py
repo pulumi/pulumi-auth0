@@ -27,7 +27,7 @@ class GetConnectionResult:
     """
     A collection of values returned by getConnection.
     """
-    def __init__(__self__, authentications=None, connected_accounts=None, connection_id=None, display_name=None, enabled_clients=None, id=None, is_domain_connection=None, metadata=None, name=None, options=None, realms=None, show_as_button=None, skip_enabled_clients=None, strategy=None):
+    def __init__(__self__, authentications=None, connected_accounts=None, connection_id=None, cross_app_access_requesting_apps=None, cross_app_access_resource_apps=None, display_name=None, enabled_clients=None, id=None, is_domain_connection=None, metadata=None, name=None, options=None, realms=None, show_as_button=None, skip_enabled_clients=None, strategy=None):
         if authentications and not isinstance(authentications, list):
             raise TypeError("Expected argument 'authentications' to be a list")
         pulumi.set(__self__, "authentications", authentications)
@@ -37,6 +37,12 @@ class GetConnectionResult:
         if connection_id and not isinstance(connection_id, str):
             raise TypeError("Expected argument 'connection_id' to be a str")
         pulumi.set(__self__, "connection_id", connection_id)
+        if cross_app_access_requesting_apps and not isinstance(cross_app_access_requesting_apps, list):
+            raise TypeError("Expected argument 'cross_app_access_requesting_apps' to be a list")
+        pulumi.set(__self__, "cross_app_access_requesting_apps", cross_app_access_requesting_apps)
+        if cross_app_access_resource_apps and not isinstance(cross_app_access_resource_apps, list):
+            raise TypeError("Expected argument 'cross_app_access_resource_apps' to be a list")
+        pulumi.set(__self__, "cross_app_access_resource_apps", cross_app_access_resource_apps)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -75,7 +81,7 @@ class GetConnectionResult:
     @pulumi.getter
     def authentications(self) -> Sequence['outputs.GetConnectionAuthenticationResult']:
         """
-        Configure the purpose of a connection to be used for authentication during login.
+        Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
         """
         return pulumi.get(self, "authentications")
 
@@ -83,7 +89,7 @@ class GetConnectionResult:
     @pulumi.getter(name="connectedAccounts")
     def connected_accounts(self) -> Sequence['outputs.GetConnectionConnectedAccountResult']:
         """
-        Configure the purpose of a connection to be used for connected accounts and Token Vault.
+        Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
         """
         return pulumi.get(self, "connected_accounts")
 
@@ -94,6 +100,22 @@ class GetConnectionResult:
         The ID of the connection. If not provided, `name` must be set.
         """
         return pulumi.get(self, "connection_id")
+
+    @_builtins.property
+    @pulumi.getter(name="crossAppAccessRequestingApps")
+    def cross_app_access_requesting_apps(self) -> Sequence['outputs.GetConnectionCrossAppAccessRequestingAppResult']:
+        """
+        Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `token_vault_xaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+        """
+        return pulumi.get(self, "cross_app_access_requesting_apps")
+
+    @_builtins.property
+    @pulumi.getter(name="crossAppAccessResourceApps")
+    def cross_app_access_resource_apps(self) -> Sequence['outputs.GetConnectionCrossAppAccessResourceAppResult']:
+        """
+        Resource App settings that apply to this connection. (EA only)
+        """
+        return pulumi.get(self, "cross_app_access_resource_apps")
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -193,6 +215,8 @@ class AwaitableGetConnectionResult(GetConnectionResult):
             authentications=self.authentications,
             connected_accounts=self.connected_accounts,
             connection_id=self.connection_id,
+            cross_app_access_requesting_apps=self.cross_app_access_requesting_apps,
+            cross_app_access_resource_apps=self.cross_app_access_resource_apps,
             display_name=self.display_name,
             enabled_clients=self.enabled_clients,
             id=self.id,
@@ -241,6 +265,8 @@ def get_connection(connection_id: Optional[_builtins.str] = None,
         authentications=pulumi.get(__ret__, 'authentications'),
         connected_accounts=pulumi.get(__ret__, 'connected_accounts'),
         connection_id=pulumi.get(__ret__, 'connection_id'),
+        cross_app_access_requesting_apps=pulumi.get(__ret__, 'cross_app_access_requesting_apps'),
+        cross_app_access_resource_apps=pulumi.get(__ret__, 'cross_app_access_resource_apps'),
         display_name=pulumi.get(__ret__, 'display_name'),
         enabled_clients=pulumi.get(__ret__, 'enabled_clients'),
         id=pulumi.get(__ret__, 'id'),
@@ -286,6 +312,8 @@ def get_connection_output(connection_id: pulumi.Input[Optional[Optional[_builtin
         authentications=pulumi.get(__response__, 'authentications'),
         connected_accounts=pulumi.get(__response__, 'connected_accounts'),
         connection_id=pulumi.get(__response__, 'connection_id'),
+        cross_app_access_requesting_apps=pulumi.get(__response__, 'cross_app_access_requesting_apps'),
+        cross_app_access_resource_apps=pulumi.get(__response__, 'cross_app_access_resource_apps'),
         display_name=pulumi.get(__response__, 'display_name'),
         enabled_clients=pulumi.get(__response__, 'enabled_clients'),
         id=pulumi.get(__response__, 'id'),

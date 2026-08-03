@@ -157,6 +157,12 @@ namespace Pulumi.Auth0
         public string? ExternalClientId { get; set; }
 
         /// <summary>
+        /// Set this to avoid persisting the sensitive `ClientSecret` value of each client into state, in which case `ClientSecret` will contain an empty string.
+        /// </summary>
+        [Input("hideClientSecret")]
+        public bool? HideClientSecret { get; set; }
+
+        /// <summary>
         /// Filter clients by first party status.
         /// </summary>
         [Input("isFirstParty")]
@@ -195,6 +201,12 @@ namespace Pulumi.Auth0
         public Input<string>? ExternalClientId { get; set; }
 
         /// <summary>
+        /// Set this to avoid persisting the sensitive `ClientSecret` value of each client into state, in which case `ClientSecret` will contain an empty string.
+        /// </summary>
+        [Input("hideClientSecret")]
+        public Input<bool>? HideClientSecret { get; set; }
+
+        /// <summary>
         /// Filter clients by first party status.
         /// </summary>
         [Input("isFirstParty")]
@@ -229,6 +241,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string? ExternalClientId;
         /// <summary>
+        /// Set this to avoid persisting the sensitive `ClientSecret` value of each client into state, in which case `ClientSecret` will contain an empty string.
+        /// </summary>
+        public readonly bool? HideClientSecret;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -249,6 +265,8 @@ namespace Pulumi.Auth0
 
             string? externalClientId,
 
+            bool? hideClientSecret,
+
             string id,
 
             bool? isFirstParty,
@@ -258,6 +276,7 @@ namespace Pulumi.Auth0
             AppTypes = appTypes;
             Clients = clients;
             ExternalClientId = externalClientId;
+            HideClientSecret = hideClientSecret;
             Id = id;
             IsFirstParty = isFirstParty;
             NameFilter = nameFilter;

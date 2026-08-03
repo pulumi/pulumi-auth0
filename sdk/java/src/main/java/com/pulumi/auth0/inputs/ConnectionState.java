@@ -5,6 +5,8 @@ package com.pulumi.auth0.inputs;
 
 import com.pulumi.auth0.inputs.ConnectionAuthenticationArgs;
 import com.pulumi.auth0.inputs.ConnectionConnectedAccountsArgs;
+import com.pulumi.auth0.inputs.ConnectionCrossAppAccessRequestingAppArgs;
+import com.pulumi.auth0.inputs.ConnectionCrossAppAccessResourceAppArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -22,14 +24,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     public static final ConnectionState Empty = new ConnectionState();
 
     /**
-     * Configure the purpose of a connection to be used for authentication during login.
+     * Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
      * 
      */
     @Import(name="authentication")
     private @Nullable Output<ConnectionAuthenticationArgs> authentication;
 
     /**
-     * @return Configure the purpose of a connection to be used for authentication during login.
+     * @return Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
      * 
      */
     public Optional<Output<ConnectionAuthenticationArgs>> authentication() {
@@ -37,18 +39,48 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configure the purpose of a connection to be used for connected accounts and Token Vault.
+     * Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
      * 
      */
     @Import(name="connectedAccounts")
     private @Nullable Output<ConnectionConnectedAccountsArgs> connectedAccounts;
 
     /**
-     * @return Configure the purpose of a connection to be used for connected accounts and Token Vault.
+     * @return Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
      * 
      */
     public Optional<Output<ConnectionConnectedAccountsArgs>> connectedAccounts() {
         return Optional.ofNullable(this.connectedAccounts);
+    }
+
+    /**
+     * Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `tokenVaultXaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+     * 
+     */
+    @Import(name="crossAppAccessRequestingApp")
+    private @Nullable Output<ConnectionCrossAppAccessRequestingAppArgs> crossAppAccessRequestingApp;
+
+    /**
+     * @return Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `tokenVaultXaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+     * 
+     */
+    public Optional<Output<ConnectionCrossAppAccessRequestingAppArgs>> crossAppAccessRequestingApp() {
+        return Optional.ofNullable(this.crossAppAccessRequestingApp);
+    }
+
+    /**
+     * Resource App settings that apply to this connection. (EA only)
+     * 
+     */
+    @Import(name="crossAppAccessResourceApp")
+    private @Nullable Output<ConnectionCrossAppAccessResourceAppArgs> crossAppAccessResourceApp;
+
+    /**
+     * @return Resource App settings that apply to this connection. (EA only)
+     * 
+     */
+    public Optional<Output<ConnectionCrossAppAccessResourceAppArgs>> crossAppAccessResourceApp() {
+        return Optional.ofNullable(this.crossAppAccessResourceApp);
     }
 
     /**
@@ -176,6 +208,8 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     private ConnectionState(ConnectionState $) {
         this.authentication = $.authentication;
         this.connectedAccounts = $.connectedAccounts;
+        this.crossAppAccessRequestingApp = $.crossAppAccessRequestingApp;
+        this.crossAppAccessResourceApp = $.crossAppAccessResourceApp;
         this.displayName = $.displayName;
         this.isDomainConnection = $.isDomainConnection;
         this.metadata = $.metadata;
@@ -205,7 +239,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authentication Configure the purpose of a connection to be used for authentication during login.
+         * @param authentication Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
          * 
          * @return builder
          * 
@@ -216,7 +250,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authentication Configure the purpose of a connection to be used for authentication during login.
+         * @param authentication Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
          * 
          * @return builder
          * 
@@ -226,7 +260,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectedAccounts Configure the purpose of a connection to be used for connected accounts and Token Vault.
+         * @param connectedAccounts Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
          * 
          * @return builder
          * 
@@ -237,13 +271,55 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectedAccounts Configure the purpose of a connection to be used for connected accounts and Token Vault.
+         * @param connectedAccounts Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
          * 
          * @return builder
          * 
          */
         public Builder connectedAccounts(ConnectionConnectedAccountsArgs connectedAccounts) {
             return connectedAccounts(Output.of(connectedAccounts));
+        }
+
+        /**
+         * @param crossAppAccessRequestingApp Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `tokenVaultXaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAppAccessRequestingApp(@Nullable Output<ConnectionCrossAppAccessRequestingAppArgs> crossAppAccessRequestingApp) {
+            $.crossAppAccessRequestingApp = crossAppAccessRequestingApp;
+            return this;
+        }
+
+        /**
+         * @param crossAppAccessRequestingApp Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `tokenVaultXaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAppAccessRequestingApp(ConnectionCrossAppAccessRequestingAppArgs crossAppAccessRequestingApp) {
+            return crossAppAccessRequestingApp(Output.of(crossAppAccessRequestingApp));
+        }
+
+        /**
+         * @param crossAppAccessResourceApp Resource App settings that apply to this connection. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAppAccessResourceApp(@Nullable Output<ConnectionCrossAppAccessResourceAppArgs> crossAppAccessResourceApp) {
+            $.crossAppAccessResourceApp = crossAppAccessResourceApp;
+            return this;
+        }
+
+        /**
+         * @param crossAppAccessResourceApp Resource App settings that apply to this connection. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAppAccessResourceApp(ConnectionCrossAppAccessResourceAppArgs crossAppAccessResourceApp) {
+            return crossAppAccessResourceApp(Output.of(crossAppAccessResourceApp));
         }
 
         /**

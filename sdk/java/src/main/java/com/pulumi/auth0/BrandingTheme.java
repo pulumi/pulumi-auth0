@@ -9,6 +9,7 @@ import com.pulumi.auth0.inputs.BrandingThemeState;
 import com.pulumi.auth0.outputs.BrandingThemeBorders;
 import com.pulumi.auth0.outputs.BrandingThemeColors;
 import com.pulumi.auth0.outputs.BrandingThemeFonts;
+import com.pulumi.auth0.outputs.BrandingThemeIdentifiers;
 import com.pulumi.auth0.outputs.BrandingThemePageBackground;
 import com.pulumi.auth0.outputs.BrandingThemeWidget;
 import com.pulumi.core.Output;
@@ -66,6 +67,20 @@ public class BrandingTheme extends com.pulumi.resources.CustomResource {
 
     public Output<BrandingThemeFonts> fonts() {
         return this.fonts;
+    }
+    /**
+     * Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed
+     * 
+     */
+    @Export(name="identifiers", refs={BrandingThemeIdentifiers.class}, tree="[0]")
+    private Output<BrandingThemeIdentifiers> identifiers;
+
+    /**
+     * @return Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed
+     * 
+     */
+    public Output<BrandingThemeIdentifiers> identifiers() {
+        return this.identifiers;
     }
     @Export(name="pageBackground", refs={BrandingThemePageBackground.class}, tree="[0]")
     private Output<BrandingThemePageBackground> pageBackground;

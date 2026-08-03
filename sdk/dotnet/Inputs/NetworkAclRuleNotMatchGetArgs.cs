@@ -24,6 +24,18 @@ namespace Pulumi.Auth0.Inputs
             set => _asns = value;
         }
 
+        [Input("auth0Manageds")]
+        private InputList<string>? _auth0Manageds;
+
+        /// <summary>
+        /// Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `TenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+        /// </summary>
+        public InputList<string> Auth0Manageds
+        {
+            get => _auth0Manageds ?? (_auth0Manageds = new InputList<string>());
+            set => _auth0Manageds = value;
+        }
+
         [Input("connectingIpv4Cidrs")]
         private InputList<string>? _connectingIpv4Cidrs;
 

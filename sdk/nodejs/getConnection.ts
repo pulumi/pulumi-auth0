@@ -58,17 +58,25 @@ export interface GetConnectionArgs {
  */
 export interface GetConnectionResult {
     /**
-     * Configure the purpose of a connection to be used for authentication during login.
+     * Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
      */
     readonly authentications: outputs.GetConnectionAuthentication[];
     /**
-     * Configure the purpose of a connection to be used for connected accounts and Token Vault.
+     * Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
      */
     readonly connectedAccounts: outputs.GetConnectionConnectedAccount[];
     /**
      * The ID of the connection. If not provided, `name` must be set.
      */
     readonly connectionId?: string;
+    /**
+     * Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `tokenVaultXaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+     */
+    readonly crossAppAccessRequestingApps: outputs.GetConnectionCrossAppAccessRequestingApp[];
+    /**
+     * Resource App settings that apply to this connection. (EA only)
+     */
+    readonly crossAppAccessResourceApps: outputs.GetConnectionCrossAppAccessResourceApp[];
     /**
      * Name used in login screen.
      */

@@ -24,6 +24,8 @@ class ConnectionArgs:
                  strategy: pulumi.Input[_builtins.str],
                  authentication: pulumi.Input[Optional['ConnectionAuthenticationArgs']] = None,
                  connected_accounts: pulumi.Input[Optional['ConnectionConnectedAccountsArgs']] = None,
+                 cross_app_access_requesting_app: pulumi.Input[Optional['ConnectionCrossAppAccessRequestingAppArgs']] = None,
+                 cross_app_access_resource_app: pulumi.Input[Optional['ConnectionCrossAppAccessResourceAppArgs']] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  is_domain_connection: pulumi.Input[Optional[_builtins.bool]] = None,
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -35,8 +37,10 @@ class ConnectionArgs:
         The set of arguments for constructing a Connection resource.
 
         :param pulumi.Input[_builtins.str] strategy: Type of the connection, which indicates the identity provider.
-        :param pulumi.Input['ConnectionAuthenticationArgs'] authentication: Configure the purpose of a connection to be used for authentication during login.
-        :param pulumi.Input['ConnectionConnectedAccountsArgs'] connected_accounts: Configure the purpose of a connection to be used for connected accounts and Token Vault.
+        :param pulumi.Input['ConnectionAuthenticationArgs'] authentication: Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
+        :param pulumi.Input['ConnectionConnectedAccountsArgs'] connected_accounts: Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
+        :param pulumi.Input['ConnectionCrossAppAccessRequestingAppArgs'] cross_app_access_requesting_app: Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `token_vault_xaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+        :param pulumi.Input['ConnectionCrossAppAccessResourceAppArgs'] cross_app_access_resource_app: Resource App settings that apply to this connection. (EA only)
         :param pulumi.Input[_builtins.str] display_name: Name used in login screen.
         :param pulumi.Input[_builtins.bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
@@ -50,6 +54,10 @@ class ConnectionArgs:
             pulumi.set(__self__, "authentication", authentication)
         if connected_accounts is not None:
             pulumi.set(__self__, "connected_accounts", connected_accounts)
+        if cross_app_access_requesting_app is not None:
+            pulumi.set(__self__, "cross_app_access_requesting_app", cross_app_access_requesting_app)
+        if cross_app_access_resource_app is not None:
+            pulumi.set(__self__, "cross_app_access_resource_app", cross_app_access_resource_app)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if is_domain_connection is not None:
@@ -81,7 +89,7 @@ class ConnectionArgs:
     @pulumi.getter
     def authentication(self) -> pulumi.Input[Optional['ConnectionAuthenticationArgs']]:
         """
-        Configure the purpose of a connection to be used for authentication during login.
+        Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
         """
         return pulumi.get(self, "authentication")
 
@@ -93,13 +101,37 @@ class ConnectionArgs:
     @pulumi.getter(name="connectedAccounts")
     def connected_accounts(self) -> pulumi.Input[Optional['ConnectionConnectedAccountsArgs']]:
         """
-        Configure the purpose of a connection to be used for connected accounts and Token Vault.
+        Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
         """
         return pulumi.get(self, "connected_accounts")
 
     @connected_accounts.setter
     def connected_accounts(self, value: pulumi.Input[Optional['ConnectionConnectedAccountsArgs']]):
         pulumi.set(self, "connected_accounts", value)
+
+    @_builtins.property
+    @pulumi.getter(name="crossAppAccessRequestingApp")
+    def cross_app_access_requesting_app(self) -> pulumi.Input[Optional['ConnectionCrossAppAccessRequestingAppArgs']]:
+        """
+        Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `token_vault_xaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+        """
+        return pulumi.get(self, "cross_app_access_requesting_app")
+
+    @cross_app_access_requesting_app.setter
+    def cross_app_access_requesting_app(self, value: pulumi.Input[Optional['ConnectionCrossAppAccessRequestingAppArgs']]):
+        pulumi.set(self, "cross_app_access_requesting_app", value)
+
+    @_builtins.property
+    @pulumi.getter(name="crossAppAccessResourceApp")
+    def cross_app_access_resource_app(self) -> pulumi.Input[Optional['ConnectionCrossAppAccessResourceAppArgs']]:
+        """
+        Resource App settings that apply to this connection. (EA only)
+        """
+        return pulumi.get(self, "cross_app_access_resource_app")
+
+    @cross_app_access_resource_app.setter
+    def cross_app_access_resource_app(self, value: pulumi.Input[Optional['ConnectionCrossAppAccessResourceAppArgs']]):
+        pulumi.set(self, "cross_app_access_resource_app", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -191,6 +223,8 @@ class _ConnectionState:
     def __init__(__self__, *,
                  authentication: pulumi.Input[Optional['ConnectionAuthenticationArgs']] = None,
                  connected_accounts: pulumi.Input[Optional['ConnectionConnectedAccountsArgs']] = None,
+                 cross_app_access_requesting_app: pulumi.Input[Optional['ConnectionCrossAppAccessRequestingAppArgs']] = None,
+                 cross_app_access_resource_app: pulumi.Input[Optional['ConnectionCrossAppAccessResourceAppArgs']] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  is_domain_connection: pulumi.Input[Optional[_builtins.bool]] = None,
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -202,8 +236,10 @@ class _ConnectionState:
         """
         Input properties used for looking up and filtering Connection resources.
 
-        :param pulumi.Input['ConnectionAuthenticationArgs'] authentication: Configure the purpose of a connection to be used for authentication during login.
-        :param pulumi.Input['ConnectionConnectedAccountsArgs'] connected_accounts: Configure the purpose of a connection to be used for connected accounts and Token Vault.
+        :param pulumi.Input['ConnectionAuthenticationArgs'] authentication: Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
+        :param pulumi.Input['ConnectionConnectedAccountsArgs'] connected_accounts: Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
+        :param pulumi.Input['ConnectionCrossAppAccessRequestingAppArgs'] cross_app_access_requesting_app: Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `token_vault_xaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+        :param pulumi.Input['ConnectionCrossAppAccessResourceAppArgs'] cross_app_access_resource_app: Resource App settings that apply to this connection. (EA only)
         :param pulumi.Input[_builtins.str] display_name: Name used in login screen.
         :param pulumi.Input[_builtins.bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
@@ -217,6 +253,10 @@ class _ConnectionState:
             pulumi.set(__self__, "authentication", authentication)
         if connected_accounts is not None:
             pulumi.set(__self__, "connected_accounts", connected_accounts)
+        if cross_app_access_requesting_app is not None:
+            pulumi.set(__self__, "cross_app_access_requesting_app", cross_app_access_requesting_app)
+        if cross_app_access_resource_app is not None:
+            pulumi.set(__self__, "cross_app_access_resource_app", cross_app_access_resource_app)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if is_domain_connection is not None:
@@ -238,7 +278,7 @@ class _ConnectionState:
     @pulumi.getter
     def authentication(self) -> pulumi.Input[Optional['ConnectionAuthenticationArgs']]:
         """
-        Configure the purpose of a connection to be used for authentication during login.
+        Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
         """
         return pulumi.get(self, "authentication")
 
@@ -250,13 +290,37 @@ class _ConnectionState:
     @pulumi.getter(name="connectedAccounts")
     def connected_accounts(self) -> pulumi.Input[Optional['ConnectionConnectedAccountsArgs']]:
         """
-        Configure the purpose of a connection to be used for connected accounts and Token Vault.
+        Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
         """
         return pulumi.get(self, "connected_accounts")
 
     @connected_accounts.setter
     def connected_accounts(self, value: pulumi.Input[Optional['ConnectionConnectedAccountsArgs']]):
         pulumi.set(self, "connected_accounts", value)
+
+    @_builtins.property
+    @pulumi.getter(name="crossAppAccessRequestingApp")
+    def cross_app_access_requesting_app(self) -> pulumi.Input[Optional['ConnectionCrossAppAccessRequestingAppArgs']]:
+        """
+        Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `token_vault_xaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+        """
+        return pulumi.get(self, "cross_app_access_requesting_app")
+
+    @cross_app_access_requesting_app.setter
+    def cross_app_access_requesting_app(self, value: pulumi.Input[Optional['ConnectionCrossAppAccessRequestingAppArgs']]):
+        pulumi.set(self, "cross_app_access_requesting_app", value)
+
+    @_builtins.property
+    @pulumi.getter(name="crossAppAccessResourceApp")
+    def cross_app_access_resource_app(self) -> pulumi.Input[Optional['ConnectionCrossAppAccessResourceAppArgs']]:
+        """
+        Resource App settings that apply to this connection. (EA only)
+        """
+        return pulumi.get(self, "cross_app_access_resource_app")
+
+    @cross_app_access_resource_app.setter
+    def cross_app_access_resource_app(self, value: pulumi.Input[Optional['ConnectionCrossAppAccessResourceAppArgs']]):
+        pulumi.set(self, "cross_app_access_resource_app", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -363,6 +427,8 @@ class Connection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authentication: pulumi.Input[Optional[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict']]] = None,
                  connected_accounts: pulumi.Input[Optional[Union['ConnectionConnectedAccountsArgs', 'ConnectionConnectedAccountsArgsDict']]] = None,
+                 cross_app_access_requesting_app: pulumi.Input[Optional[Union['ConnectionCrossAppAccessRequestingAppArgs', 'ConnectionCrossAppAccessRequestingAppArgsDict']]] = None,
+                 cross_app_access_resource_app: pulumi.Input[Optional[Union['ConnectionCrossAppAccessResourceAppArgs', 'ConnectionCrossAppAccessResourceAppArgsDict']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  is_domain_connection: pulumi.Input[Optional[_builtins.bool]] = None,
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1085,8 +1151,10 @@ class Connection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict']] authentication: Configure the purpose of a connection to be used for authentication during login.
-        :param pulumi.Input[Union['ConnectionConnectedAccountsArgs', 'ConnectionConnectedAccountsArgsDict']] connected_accounts: Configure the purpose of a connection to be used for connected accounts and Token Vault.
+        :param pulumi.Input[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict']] authentication: Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
+        :param pulumi.Input[Union['ConnectionConnectedAccountsArgs', 'ConnectionConnectedAccountsArgsDict']] connected_accounts: Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
+        :param pulumi.Input[Union['ConnectionCrossAppAccessRequestingAppArgs', 'ConnectionCrossAppAccessRequestingAppArgsDict']] cross_app_access_requesting_app: Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `token_vault_xaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+        :param pulumi.Input[Union['ConnectionCrossAppAccessResourceAppArgs', 'ConnectionCrossAppAccessResourceAppArgsDict']] cross_app_access_resource_app: Resource App settings that apply to this connection. (EA only)
         :param pulumi.Input[_builtins.str] display_name: Name used in login screen.
         :param pulumi.Input[_builtins.bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
@@ -1830,6 +1898,8 @@ class Connection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authentication: pulumi.Input[Optional[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict']]] = None,
                  connected_accounts: pulumi.Input[Optional[Union['ConnectionConnectedAccountsArgs', 'ConnectionConnectedAccountsArgsDict']]] = None,
+                 cross_app_access_requesting_app: pulumi.Input[Optional[Union['ConnectionCrossAppAccessRequestingAppArgs', 'ConnectionCrossAppAccessRequestingAppArgsDict']]] = None,
+                 cross_app_access_resource_app: pulumi.Input[Optional[Union['ConnectionCrossAppAccessResourceAppArgs', 'ConnectionCrossAppAccessResourceAppArgsDict']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  is_domain_connection: pulumi.Input[Optional[_builtins.bool]] = None,
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1849,6 +1919,8 @@ class Connection(pulumi.CustomResource):
 
             __props__.__dict__["authentication"] = authentication
             __props__.__dict__["connected_accounts"] = connected_accounts
+            __props__.__dict__["cross_app_access_requesting_app"] = cross_app_access_requesting_app
+            __props__.__dict__["cross_app_access_resource_app"] = cross_app_access_resource_app
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["is_domain_connection"] = is_domain_connection
             __props__.__dict__["metadata"] = metadata
@@ -1871,6 +1943,8 @@ class Connection(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             authentication: pulumi.Input[Optional[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict']]] = None,
             connected_accounts: pulumi.Input[Optional[Union['ConnectionConnectedAccountsArgs', 'ConnectionConnectedAccountsArgsDict']]] = None,
+            cross_app_access_requesting_app: pulumi.Input[Optional[Union['ConnectionCrossAppAccessRequestingAppArgs', 'ConnectionCrossAppAccessRequestingAppArgsDict']]] = None,
+            cross_app_access_resource_app: pulumi.Input[Optional[Union['ConnectionCrossAppAccessResourceAppArgs', 'ConnectionCrossAppAccessResourceAppArgsDict']]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             is_domain_connection: pulumi.Input[Optional[_builtins.bool]] = None,
             metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1886,8 +1960,10 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict']] authentication: Configure the purpose of a connection to be used for authentication during login.
-        :param pulumi.Input[Union['ConnectionConnectedAccountsArgs', 'ConnectionConnectedAccountsArgsDict']] connected_accounts: Configure the purpose of a connection to be used for connected accounts and Token Vault.
+        :param pulumi.Input[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict']] authentication: Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
+        :param pulumi.Input[Union['ConnectionConnectedAccountsArgs', 'ConnectionConnectedAccountsArgsDict']] connected_accounts: Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
+        :param pulumi.Input[Union['ConnectionCrossAppAccessRequestingAppArgs', 'ConnectionCrossAppAccessRequestingAppArgsDict']] cross_app_access_requesting_app: Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `token_vault_xaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+        :param pulumi.Input[Union['ConnectionCrossAppAccessResourceAppArgs', 'ConnectionCrossAppAccessResourceAppArgsDict']] cross_app_access_resource_app: Resource App settings that apply to this connection. (EA only)
         :param pulumi.Input[_builtins.str] display_name: Name used in login screen.
         :param pulumi.Input[_builtins.bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
@@ -1903,6 +1979,8 @@ class Connection(pulumi.CustomResource):
 
         __props__.__dict__["authentication"] = authentication
         __props__.__dict__["connected_accounts"] = connected_accounts
+        __props__.__dict__["cross_app_access_requesting_app"] = cross_app_access_requesting_app
+        __props__.__dict__["cross_app_access_resource_app"] = cross_app_access_resource_app
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["is_domain_connection"] = is_domain_connection
         __props__.__dict__["metadata"] = metadata
@@ -1917,7 +1995,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def authentication(self) -> pulumi.Output['outputs.ConnectionAuthentication']:
         """
-        Configure the purpose of a connection to be used for authentication during login.
+        Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
         """
         return pulumi.get(self, "authentication")
 
@@ -1925,9 +2003,25 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="connectedAccounts")
     def connected_accounts(self) -> pulumi.Output['outputs.ConnectionConnectedAccounts']:
         """
-        Configure the purpose of a connection to be used for connected accounts and Token Vault.
+        Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
         """
         return pulumi.get(self, "connected_accounts")
+
+    @_builtins.property
+    @pulumi.getter(name="crossAppAccessRequestingApp")
+    def cross_app_access_requesting_app(self) -> pulumi.Output['outputs.ConnectionCrossAppAccessRequestingApp']:
+        """
+        Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `token_vault_xaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+        """
+        return pulumi.get(self, "cross_app_access_requesting_app")
+
+    @_builtins.property
+    @pulumi.getter(name="crossAppAccessResourceApp")
+    def cross_app_access_resource_app(self) -> pulumi.Output[Optional['outputs.ConnectionCrossAppAccessResourceApp']]:
+        """
+        Resource App settings that apply to this connection. (EA only)
+        """
+        return pulumi.get(self, "cross_app_access_resource_app")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

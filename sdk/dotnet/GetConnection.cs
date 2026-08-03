@@ -163,17 +163,25 @@ namespace Pulumi.Auth0
     public sealed class GetConnectionResult
     {
         /// <summary>
-        /// Configure the purpose of a connection to be used for authentication during login.
+        /// Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `Active` to `False` explicitly to deactivate it.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionAuthenticationResult> Authentications;
         /// <summary>
-        /// Configure the purpose of a connection to be used for connected accounts and Token Vault.
+        /// Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `Active` to `False` explicitly to deactivate it.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionConnectedAccountResult> ConnectedAccounts;
         /// <summary>
         /// The ID of the connection. If not provided, `Name` must be set.
         /// </summary>
         public readonly string? ConnectionId;
+        /// <summary>
+        /// Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `TokenVaultXaa` flag to be enabled on your tenant. Only supported on `Oidc` and `Okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `Active` to `False` explicitly to deactivate it. (EA Only)
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetConnectionCrossAppAccessRequestingAppResult> CrossAppAccessRequestingApps;
+        /// <summary>
+        /// Resource App settings that apply to this connection. (EA only)
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetConnectionCrossAppAccessResourceAppResult> CrossAppAccessResourceApps;
         /// <summary>
         /// Name used in login screen.
         /// </summary>
@@ -227,6 +235,10 @@ namespace Pulumi.Auth0
 
             string? connectionId,
 
+            ImmutableArray<Outputs.GetConnectionCrossAppAccessRequestingAppResult> crossAppAccessRequestingApps,
+
+            ImmutableArray<Outputs.GetConnectionCrossAppAccessResourceAppResult> crossAppAccessResourceApps,
+
             string displayName,
 
             ImmutableArray<string> enabledClients,
@@ -252,6 +264,8 @@ namespace Pulumi.Auth0
             Authentications = authentications;
             ConnectedAccounts = connectedAccounts;
             ConnectionId = connectionId;
+            CrossAppAccessRequestingApps = crossAppAccessRequestingApps;
+            CrossAppAccessResourceApps = crossAppAccessResourceApps;
             DisplayName = displayName;
             EnabledClients = enabledClients;
             Id = id;

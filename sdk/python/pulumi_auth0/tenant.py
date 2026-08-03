@@ -25,6 +25,7 @@ class TenantArgs:
                  allow_organization_name_in_authentication_api: pulumi.Input[Optional[_builtins.bool]] = None,
                  allowed_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  client_id_metadata_document_supported: pulumi.Input[Optional[_builtins.bool]] = None,
+                 country_codes: pulumi.Input[Optional['TenantCountryCodesArgs']] = None,
                  customize_mfa_in_postlogin_action: pulumi.Input[Optional[_builtins.bool]] = None,
                  default_audience: pulumi.Input[Optional[_builtins.str]] = None,
                  default_directory: pulumi.Input[Optional[_builtins.str]] = None,
@@ -59,6 +60,7 @@ class TenantArgs:
         :param pulumi.Input[_builtins.bool] allow_organization_name_in_authentication_api: Whether to accept an organization name instead of an ID on auth endpoints.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[_builtins.bool] client_id_metadata_document_supported: Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+        :param pulumi.Input['TenantCountryCodesArgs'] country_codes: Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
         :param pulumi.Input[_builtins.bool] customize_mfa_in_postlogin_action: Whether to enable flexible factors for MFA in the PostLogin action.
         :param pulumi.Input[_builtins.str] default_audience: API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[_builtins.str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
@@ -95,6 +97,8 @@ class TenantArgs:
             pulumi.set(__self__, "allowed_logout_urls", allowed_logout_urls)
         if client_id_metadata_document_supported is not None:
             pulumi.set(__self__, "client_id_metadata_document_supported", client_id_metadata_document_supported)
+        if country_codes is not None:
+            pulumi.set(__self__, "country_codes", country_codes)
         if customize_mfa_in_postlogin_action is not None:
             pulumi.set(__self__, "customize_mfa_in_postlogin_action", customize_mfa_in_postlogin_action)
         if default_audience is not None:
@@ -197,6 +201,18 @@ class TenantArgs:
     @client_id_metadata_document_supported.setter
     def client_id_metadata_document_supported(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "client_id_metadata_document_supported", value)
+
+    @_builtins.property
+    @pulumi.getter(name="countryCodes")
+    def country_codes(self) -> pulumi.Input[Optional['TenantCountryCodesArgs']]:
+        """
+        Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
+        """
+        return pulumi.get(self, "country_codes")
+
+    @country_codes.setter
+    def country_codes(self, value: pulumi.Input[Optional['TenantCountryCodesArgs']]):
+        pulumi.set(self, "country_codes", value)
 
     @_builtins.property
     @pulumi.getter(name="customizeMfaInPostloginAction")
@@ -530,6 +546,7 @@ class _TenantState:
                  allow_organization_name_in_authentication_api: pulumi.Input[Optional[_builtins.bool]] = None,
                  allowed_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  client_id_metadata_document_supported: pulumi.Input[Optional[_builtins.bool]] = None,
+                 country_codes: pulumi.Input[Optional['TenantCountryCodesArgs']] = None,
                  customize_mfa_in_postlogin_action: pulumi.Input[Optional[_builtins.bool]] = None,
                  default_audience: pulumi.Input[Optional[_builtins.str]] = None,
                  default_directory: pulumi.Input[Optional[_builtins.str]] = None,
@@ -564,6 +581,7 @@ class _TenantState:
         :param pulumi.Input[_builtins.bool] allow_organization_name_in_authentication_api: Whether to accept an organization name instead of an ID on auth endpoints.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[_builtins.bool] client_id_metadata_document_supported: Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+        :param pulumi.Input['TenantCountryCodesArgs'] country_codes: Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
         :param pulumi.Input[_builtins.bool] customize_mfa_in_postlogin_action: Whether to enable flexible factors for MFA in the PostLogin action.
         :param pulumi.Input[_builtins.str] default_audience: API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[_builtins.str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
@@ -600,6 +618,8 @@ class _TenantState:
             pulumi.set(__self__, "allowed_logout_urls", allowed_logout_urls)
         if client_id_metadata_document_supported is not None:
             pulumi.set(__self__, "client_id_metadata_document_supported", client_id_metadata_document_supported)
+        if country_codes is not None:
+            pulumi.set(__self__, "country_codes", country_codes)
         if customize_mfa_in_postlogin_action is not None:
             pulumi.set(__self__, "customize_mfa_in_postlogin_action", customize_mfa_in_postlogin_action)
         if default_audience is not None:
@@ -702,6 +722,18 @@ class _TenantState:
     @client_id_metadata_document_supported.setter
     def client_id_metadata_document_supported(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "client_id_metadata_document_supported", value)
+
+    @_builtins.property
+    @pulumi.getter(name="countryCodes")
+    def country_codes(self) -> pulumi.Input[Optional['TenantCountryCodesArgs']]:
+        """
+        Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
+        """
+        return pulumi.get(self, "country_codes")
+
+    @country_codes.setter
+    def country_codes(self, value: pulumi.Input[Optional['TenantCountryCodesArgs']]):
+        pulumi.set(self, "country_codes", value)
 
     @_builtins.property
     @pulumi.getter(name="customizeMfaInPostloginAction")
@@ -1038,6 +1070,7 @@ class Tenant(pulumi.CustomResource):
                  allow_organization_name_in_authentication_api: pulumi.Input[Optional[_builtins.bool]] = None,
                  allowed_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  client_id_metadata_document_supported: pulumi.Input[Optional[_builtins.bool]] = None,
+                 country_codes: pulumi.Input[Optional[Union['TenantCountryCodesArgs', 'TenantCountryCodesArgsDict']]] = None,
                  customize_mfa_in_postlogin_action: pulumi.Input[Optional[_builtins.bool]] = None,
                  default_audience: pulumi.Input[Optional[_builtins.str]] = None,
                  default_directory: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1106,6 +1139,13 @@ class Tenant(pulumi.CustomResource):
                 "html": "<html></html>",
                 "show_log_link": False,
                 "url": "https://example.com/error",
+            },
+            country_codes={
+                "lists": [
+                    "US",
+                    "CA",
+                ],
+                "mode": "allow",
             })
         ```
 
@@ -1129,6 +1169,7 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] allow_organization_name_in_authentication_api: Whether to accept an organization name instead of an ID on auth endpoints.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[_builtins.bool] client_id_metadata_document_supported: Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+        :param pulumi.Input[Union['TenantCountryCodesArgs', 'TenantCountryCodesArgsDict']] country_codes: Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
         :param pulumi.Input[_builtins.bool] customize_mfa_in_postlogin_action: Whether to enable flexible factors for MFA in the PostLogin action.
         :param pulumi.Input[_builtins.str] default_audience: API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[_builtins.str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
@@ -1203,6 +1244,13 @@ class Tenant(pulumi.CustomResource):
                 "html": "<html></html>",
                 "show_log_link": False,
                 "url": "https://example.com/error",
+            },
+            country_codes={
+                "lists": [
+                    "US",
+                    "CA",
+                ],
+                "mode": "allow",
             })
         ```
 
@@ -1239,6 +1287,7 @@ class Tenant(pulumi.CustomResource):
                  allow_organization_name_in_authentication_api: pulumi.Input[Optional[_builtins.bool]] = None,
                  allowed_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  client_id_metadata_document_supported: pulumi.Input[Optional[_builtins.bool]] = None,
+                 country_codes: pulumi.Input[Optional[Union['TenantCountryCodesArgs', 'TenantCountryCodesArgsDict']]] = None,
                  customize_mfa_in_postlogin_action: pulumi.Input[Optional[_builtins.bool]] = None,
                  default_audience: pulumi.Input[Optional[_builtins.str]] = None,
                  default_directory: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1279,6 +1328,7 @@ class Tenant(pulumi.CustomResource):
             __props__.__dict__["allow_organization_name_in_authentication_api"] = allow_organization_name_in_authentication_api
             __props__.__dict__["allowed_logout_urls"] = allowed_logout_urls
             __props__.__dict__["client_id_metadata_document_supported"] = client_id_metadata_document_supported
+            __props__.__dict__["country_codes"] = country_codes
             __props__.__dict__["customize_mfa_in_postlogin_action"] = customize_mfa_in_postlogin_action
             __props__.__dict__["default_audience"] = default_audience
             __props__.__dict__["default_directory"] = default_directory
@@ -1320,6 +1370,7 @@ class Tenant(pulumi.CustomResource):
             allow_organization_name_in_authentication_api: pulumi.Input[Optional[_builtins.bool]] = None,
             allowed_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             client_id_metadata_document_supported: pulumi.Input[Optional[_builtins.bool]] = None,
+            country_codes: pulumi.Input[Optional[Union['TenantCountryCodesArgs', 'TenantCountryCodesArgsDict']]] = None,
             customize_mfa_in_postlogin_action: pulumi.Input[Optional[_builtins.bool]] = None,
             default_audience: pulumi.Input[Optional[_builtins.str]] = None,
             default_directory: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1358,6 +1409,7 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] allow_organization_name_in_authentication_api: Whether to accept an organization name instead of an ID on auth endpoints.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[_builtins.bool] client_id_metadata_document_supported: Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
+        :param pulumi.Input[Union['TenantCountryCodesArgs', 'TenantCountryCodesArgsDict']] country_codes: Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
         :param pulumi.Input[_builtins.bool] customize_mfa_in_postlogin_action: Whether to enable flexible factors for MFA in the PostLogin action.
         :param pulumi.Input[_builtins.str] default_audience: API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[_builtins.str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
@@ -1394,6 +1446,7 @@ class Tenant(pulumi.CustomResource):
         __props__.__dict__["allow_organization_name_in_authentication_api"] = allow_organization_name_in_authentication_api
         __props__.__dict__["allowed_logout_urls"] = allowed_logout_urls
         __props__.__dict__["client_id_metadata_document_supported"] = client_id_metadata_document_supported
+        __props__.__dict__["country_codes"] = country_codes
         __props__.__dict__["customize_mfa_in_postlogin_action"] = customize_mfa_in_postlogin_action
         __props__.__dict__["default_audience"] = default_audience
         __props__.__dict__["default_directory"] = default_directory
@@ -1454,6 +1507,14 @@ class Tenant(pulumi.CustomResource):
         Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
         """
         return pulumi.get(self, "client_id_metadata_document_supported")
+
+    @_builtins.property
+    @pulumi.getter(name="countryCodes")
+    def country_codes(self) -> pulumi.Output[Optional['outputs.TenantCountryCodes']]:
+        """
+        Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
+        """
+        return pulumi.get(self, "country_codes")
 
     @_builtins.property
     @pulumi.getter(name="customizeMfaInPostloginAction")

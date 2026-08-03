@@ -6,6 +6,7 @@ package com.pulumi.auth0;
 import com.pulumi.auth0.inputs.BrandingThemeBordersArgs;
 import com.pulumi.auth0.inputs.BrandingThemeColorsArgs;
 import com.pulumi.auth0.inputs.BrandingThemeFontsArgs;
+import com.pulumi.auth0.inputs.BrandingThemeIdentifiersArgs;
 import com.pulumi.auth0.inputs.BrandingThemePageBackgroundArgs;
 import com.pulumi.auth0.inputs.BrandingThemeWidgetArgs;
 import com.pulumi.core.Output;
@@ -57,6 +58,21 @@ public final class BrandingThemeArgs extends com.pulumi.resources.ResourceArgs {
         return this.fonts;
     }
 
+    /**
+     * Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed
+     * 
+     */
+    @Import(name="identifiers")
+    private @Nullable Output<BrandingThemeIdentifiersArgs> identifiers;
+
+    /**
+     * @return Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed
+     * 
+     */
+    public Optional<Output<BrandingThemeIdentifiersArgs>> identifiers() {
+        return Optional.ofNullable(this.identifiers);
+    }
+
     @Import(name="pageBackground", required=true)
     private Output<BrandingThemePageBackgroundArgs> pageBackground;
 
@@ -78,6 +94,7 @@ public final class BrandingThemeArgs extends com.pulumi.resources.ResourceArgs {
         this.colors = $.colors;
         this.displayName = $.displayName;
         this.fonts = $.fonts;
+        this.identifiers = $.identifiers;
         this.pageBackground = $.pageBackground;
         this.widget = $.widget;
     }
@@ -146,6 +163,27 @@ public final class BrandingThemeArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder fonts(BrandingThemeFontsArgs fonts) {
             return fonts(Output.of(fonts));
+        }
+
+        /**
+         * @param identifiers Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identifiers(@Nullable Output<BrandingThemeIdentifiersArgs> identifiers) {
+            $.identifiers = identifiers;
+            return this;
+        }
+
+        /**
+         * @param identifiers Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identifiers(BrandingThemeIdentifiersArgs identifiers) {
+            return identifiers(Output.of(identifiers));
         }
 
         public Builder pageBackground(Output<BrandingThemePageBackgroundArgs> pageBackground) {

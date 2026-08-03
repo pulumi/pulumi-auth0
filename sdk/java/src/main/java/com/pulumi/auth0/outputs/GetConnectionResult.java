@@ -5,6 +5,8 @@ package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.GetConnectionAuthentication;
 import com.pulumi.auth0.outputs.GetConnectionConnectedAccount;
+import com.pulumi.auth0.outputs.GetConnectionCrossAppAccessRequestingApp;
+import com.pulumi.auth0.outputs.GetConnectionCrossAppAccessResourceApp;
 import com.pulumi.auth0.outputs.GetConnectionOption;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -19,12 +21,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetConnectionResult {
     /**
-     * @return Configure the purpose of a connection to be used for authentication during login.
+     * @return Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
      * 
      */
     private List<GetConnectionAuthentication> authentications;
     /**
-     * @return Configure the purpose of a connection to be used for connected accounts and Token Vault.
+     * @return Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
      * 
      */
     private List<GetConnectionConnectedAccount> connectedAccounts;
@@ -33,6 +35,16 @@ public final class GetConnectionResult {
      * 
      */
     private @Nullable String connectionId;
+    /**
+     * @return Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `tokenVaultXaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+     * 
+     */
+    private List<GetConnectionCrossAppAccessRequestingApp> crossAppAccessRequestingApps;
+    /**
+     * @return Resource App settings that apply to this connection. (EA only)
+     * 
+     */
+    private List<GetConnectionCrossAppAccessResourceApp> crossAppAccessResourceApps;
     /**
      * @return Name used in login screen.
      * 
@@ -91,14 +103,14 @@ public final class GetConnectionResult {
 
     private GetConnectionResult() {}
     /**
-     * @return Configure the purpose of a connection to be used for authentication during login.
+     * @return Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
      * 
      */
     public List<GetConnectionAuthentication> authentications() {
         return this.authentications;
     }
     /**
-     * @return Configure the purpose of a connection to be used for connected accounts and Token Vault.
+     * @return Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
      * 
      */
     public List<GetConnectionConnectedAccount> connectedAccounts() {
@@ -110,6 +122,20 @@ public final class GetConnectionResult {
      */
     public Optional<String> connectionId() {
         return Optional.ofNullable(this.connectionId);
+    }
+    /**
+     * @return Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `tokenVaultXaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+     * 
+     */
+    public List<GetConnectionCrossAppAccessRequestingApp> crossAppAccessRequestingApps() {
+        return this.crossAppAccessRequestingApps;
+    }
+    /**
+     * @return Resource App settings that apply to this connection. (EA only)
+     * 
+     */
+    public List<GetConnectionCrossAppAccessResourceApp> crossAppAccessResourceApps() {
+        return this.crossAppAccessResourceApps;
     }
     /**
      * @return Name used in login screen.
@@ -201,6 +227,8 @@ public final class GetConnectionResult {
         private List<GetConnectionAuthentication> authentications;
         private List<GetConnectionConnectedAccount> connectedAccounts;
         private @Nullable String connectionId;
+        private List<GetConnectionCrossAppAccessRequestingApp> crossAppAccessRequestingApps;
+        private List<GetConnectionCrossAppAccessResourceApp> crossAppAccessResourceApps;
         private String displayName;
         private List<String> enabledClients;
         private String id;
@@ -218,6 +246,8 @@ public final class GetConnectionResult {
     	      this.authentications = defaults.authentications;
     	      this.connectedAccounts = defaults.connectedAccounts;
     	      this.connectionId = defaults.connectionId;
+    	      this.crossAppAccessRequestingApps = defaults.crossAppAccessRequestingApps;
+    	      this.crossAppAccessResourceApps = defaults.crossAppAccessResourceApps;
     	      this.displayName = defaults.displayName;
     	      this.enabledClients = defaults.enabledClients;
     	      this.id = defaults.id;
@@ -258,6 +288,28 @@ public final class GetConnectionResult {
 
             this.connectionId = connectionId;
             return this;
+        }
+        @CustomType.Setter
+        public Builder crossAppAccessRequestingApps(List<GetConnectionCrossAppAccessRequestingApp> crossAppAccessRequestingApps) {
+            if (crossAppAccessRequestingApps == null) {
+              throw new MissingRequiredPropertyException("GetConnectionResult", "crossAppAccessRequestingApps");
+            }
+            this.crossAppAccessRequestingApps = crossAppAccessRequestingApps;
+            return this;
+        }
+        public Builder crossAppAccessRequestingApps(GetConnectionCrossAppAccessRequestingApp... crossAppAccessRequestingApps) {
+            return crossAppAccessRequestingApps(List.of(crossAppAccessRequestingApps));
+        }
+        @CustomType.Setter
+        public Builder crossAppAccessResourceApps(List<GetConnectionCrossAppAccessResourceApp> crossAppAccessResourceApps) {
+            if (crossAppAccessResourceApps == null) {
+              throw new MissingRequiredPropertyException("GetConnectionResult", "crossAppAccessResourceApps");
+            }
+            this.crossAppAccessResourceApps = crossAppAccessResourceApps;
+            return this;
+        }
+        public Builder crossAppAccessResourceApps(GetConnectionCrossAppAccessResourceApp... crossAppAccessResourceApps) {
+            return crossAppAccessResourceApps(List.of(crossAppAccessResourceApps));
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
@@ -357,6 +409,8 @@ public final class GetConnectionResult {
             _resultValue.authentications = authentications;
             _resultValue.connectedAccounts = connectedAccounts;
             _resultValue.connectionId = connectionId;
+            _resultValue.crossAppAccessRequestingApps = crossAppAccessRequestingApps;
+            _resultValue.crossAppAccessResourceApps = crossAppAccessResourceApps;
             _resultValue.displayName = displayName;
             _resultValue.enabledClients = enabledClients;
             _resultValue.id = id;

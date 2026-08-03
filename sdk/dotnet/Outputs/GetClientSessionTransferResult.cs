@@ -23,7 +23,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool CanCreateSessionTransferToken;
         /// <summary>
-        /// Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+        /// Configuration for delegation (impersonation) access using Session Transfer Tokens.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClientSessionTransferDelegationResult> Delegations;
         /// <summary>

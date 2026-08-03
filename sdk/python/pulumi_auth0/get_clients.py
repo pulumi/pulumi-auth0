@@ -27,7 +27,7 @@ class GetClientsResult:
     """
     A collection of values returned by getClients.
     """
-    def __init__(__self__, app_types=None, clients=None, external_client_id=None, id=None, is_first_party=None, name_filter=None):
+    def __init__(__self__, app_types=None, clients=None, external_client_id=None, hide_client_secret=None, id=None, is_first_party=None, name_filter=None):
         if app_types and not isinstance(app_types, list):
             raise TypeError("Expected argument 'app_types' to be a list")
         pulumi.set(__self__, "app_types", app_types)
@@ -37,6 +37,9 @@ class GetClientsResult:
         if external_client_id and not isinstance(external_client_id, str):
             raise TypeError("Expected argument 'external_client_id' to be a str")
         pulumi.set(__self__, "external_client_id", external_client_id)
+        if hide_client_secret and not isinstance(hide_client_secret, bool):
+            raise TypeError("Expected argument 'hide_client_secret' to be a bool")
+        pulumi.set(__self__, "hide_client_secret", hide_client_secret)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -72,6 +75,14 @@ class GetClientsResult:
         return pulumi.get(self, "external_client_id")
 
     @_builtins.property
+    @pulumi.getter(name="hideClientSecret")
+    def hide_client_secret(self) -> Optional[_builtins.bool]:
+        """
+        Set this to avoid persisting the sensitive `client_secret` value of each client into state, in which case `client_secret` will contain an empty string.
+        """
+        return pulumi.get(self, "hide_client_secret")
+
+    @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
@@ -105,6 +116,7 @@ class AwaitableGetClientsResult(GetClientsResult):
             app_types=self.app_types,
             clients=self.clients,
             external_client_id=self.external_client_id,
+            hide_client_secret=self.hide_client_secret,
             id=self.id,
             is_first_party=self.is_first_party,
             name_filter=self.name_filter)
@@ -112,6 +124,7 @@ class AwaitableGetClientsResult(GetClientsResult):
 
 def get_clients(app_types: Optional[Sequence[_builtins.str]] = None,
                 external_client_id: Optional[_builtins.str] = None,
+                hide_client_secret: Optional[_builtins.bool] = None,
                 is_first_party: Optional[_builtins.bool] = None,
                 name_filter: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClientsResult:
@@ -138,12 +151,14 @@ def get_clients(app_types: Optional[Sequence[_builtins.str]] = None,
 
     :param Sequence[_builtins.str] app_types: Filter clients by application types.
     :param _builtins.str external_client_id: Filter clients by CIMD external client ID URL.
+    :param _builtins.bool hide_client_secret: Set this to avoid persisting the sensitive `client_secret` value of each client into state, in which case `client_secret` will contain an empty string.
     :param _builtins.bool is_first_party: Filter clients by first party status.
     :param _builtins.str name_filter: Filter clients by name (partial matches supported).
     """
     __args__ = dict()
     __args__['appTypes'] = app_types
     __args__['externalClientId'] = external_client_id
+    __args__['hideClientSecret'] = hide_client_secret
     __args__['isFirstParty'] = is_first_party
     __args__['nameFilter'] = name_filter
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -153,11 +168,13 @@ def get_clients(app_types: Optional[Sequence[_builtins.str]] = None,
         app_types=pulumi.get(__ret__, 'app_types'),
         clients=pulumi.get(__ret__, 'clients'),
         external_client_id=pulumi.get(__ret__, 'external_client_id'),
+        hide_client_secret=pulumi.get(__ret__, 'hide_client_secret'),
         id=pulumi.get(__ret__, 'id'),
         is_first_party=pulumi.get(__ret__, 'is_first_party'),
         name_filter=pulumi.get(__ret__, 'name_filter'))
 def get_clients_output(app_types: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                        external_client_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       hide_client_secret: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                        is_first_party: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                        name_filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClientsResult]:
@@ -184,12 +201,14 @@ def get_clients_output(app_types: pulumi.Input[Optional[Optional[Sequence[_built
 
     :param Sequence[_builtins.str] app_types: Filter clients by application types.
     :param _builtins.str external_client_id: Filter clients by CIMD external client ID URL.
+    :param _builtins.bool hide_client_secret: Set this to avoid persisting the sensitive `client_secret` value of each client into state, in which case `client_secret` will contain an empty string.
     :param _builtins.bool is_first_party: Filter clients by first party status.
     :param _builtins.str name_filter: Filter clients by name (partial matches supported).
     """
     __args__ = dict()
     __args__['appTypes'] = app_types
     __args__['externalClientId'] = external_client_id
+    __args__['hideClientSecret'] = hide_client_secret
     __args__['isFirstParty'] = is_first_party
     __args__['nameFilter'] = name_filter
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -198,6 +217,7 @@ def get_clients_output(app_types: pulumi.Input[Optional[Optional[Sequence[_built
         app_types=pulumi.get(__response__, 'app_types'),
         clients=pulumi.get(__response__, 'clients'),
         external_client_id=pulumi.get(__response__, 'external_client_id'),
+        hide_client_secret=pulumi.get(__response__, 'hide_client_secret'),
         id=pulumi.get(__response__, 'id'),
         is_first_party=pulumi.get(__response__, 'is_first_party'),
         name_filter=pulumi.get(__response__, 'name_filter')))

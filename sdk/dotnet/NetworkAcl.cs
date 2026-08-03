@@ -83,6 +83,57 @@ namespace Pulumi.Auth0
     ///         },
     ///     });
     /// 
+    ///     // Example of auth0_network_acl using Auth0-curated blocklists (Early Access).
+    ///     //
+    ///     // The `auth0_managed` field requires the `advanced-breached-password-detection`
+    ///     // entitlement and the `tenant_acl_curated_blocklists` feature flag on the tenant.
+    ///     // Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`.
+    ///     var blockIcloudRelay = new Auth0.NetworkAcl("block_icloud_relay", new()
+    ///     {
+    ///         Description = "Block iCloud Private Relay egress proxies",
+    ///         Active = true,
+    ///         Priority = 7,
+    ///         Rule = new Auth0.Inputs.NetworkAclRuleArgs
+    ///         {
+    ///             Action = new Auth0.Inputs.NetworkAclRuleActionArgs
+    ///             {
+    ///                 Block = true,
+    ///             },
+    ///             Scope = "authentication",
+    ///             Match = new Auth0.Inputs.NetworkAclRuleMatchArgs
+    ///             {
+    ///                 Auth0Manageds = new[]
+    ///                 {
+    ///                     "auth0.icloud_relay_proxy",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Example using `not_match` to allow all traffic *unless* it comes from a
+    ///     // low-reputation curated blocklist. `auth0_managed` is accepted on either block.
+    ///     var allowUnlessLowReputation = new Auth0.NetworkAcl("allow_unless_low_reputation", new()
+    ///     {
+    ///         Description = "Allow traffic unless it is on the low-reputation blocklist",
+    ///         Active = true,
+    ///         Priority = 8,
+    ///         Rule = new Auth0.Inputs.NetworkAclRuleArgs
+    ///         {
+    ///             Action = new Auth0.Inputs.NetworkAclRuleActionArgs
+    ///             {
+    ///                 Allow = true,
+    ///             },
+    ///             Scope = "authentication",
+    ///             NotMatch = new Auth0.Inputs.NetworkAclRuleNotMatchArgs
+    ///             {
+    ///                 Auth0Manageds = new[]
+    ///                 {
+    ///                     "auth0.low_reputation",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
     ///     // Example of auth0_network_acl with hostname and connecting IP restrictions
     ///     var blockCanonical = new Auth0.NetworkAcl("block_canonical", new()
     ///     {

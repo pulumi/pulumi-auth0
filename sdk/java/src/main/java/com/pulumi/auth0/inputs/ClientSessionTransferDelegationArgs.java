@@ -17,14 +17,14 @@ public final class ClientSessionTransferDelegationArgs extends com.pulumi.resour
     public static final ClientSessionTransferDelegationArgs Empty = new ClientSessionTransferDelegationArgs();
 
     /**
-     * Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
+     * Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`.
      * 
      */
     @Import(name="allowDelegatedAccess")
     private @Nullable Output<Boolean> allowDelegatedAccess;
 
     /**
-     * @return Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
+     * @return Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> allowDelegatedAccess() {
@@ -32,14 +32,14 @@ public final class ClientSessionTransferDelegationArgs extends com.pulumi.resour
     }
 
     /**
-     * Indicates the device binding enforcement for delegation (impersonation) access. If set to &#39;ip&#39;, device binding is enforced by IP. If set to &#39;asn&#39;, device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+     * Indicates the device binding enforcement for delegation (impersonation) access. If set to &#39;ip&#39;, device binding is enforced by IP. If set to &#39;asn&#39;, device binding is enforced by ASN. Defaults to `ip`.
      * 
      */
     @Import(name="enforceDeviceBinding")
     private @Nullable Output<String> enforceDeviceBinding;
 
     /**
-     * @return Indicates the device binding enforcement for delegation (impersonation) access. If set to &#39;ip&#39;, device binding is enforced by IP. If set to &#39;asn&#39;, device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+     * @return Indicates the device binding enforcement for delegation (impersonation) access. If set to &#39;ip&#39;, device binding is enforced by IP. If set to &#39;asn&#39;, device binding is enforced by ASN. Defaults to `ip`.
      * 
      */
     public Optional<Output<String>> enforceDeviceBinding() {
@@ -72,7 +72,7 @@ public final class ClientSessionTransferDelegationArgs extends com.pulumi.resour
         }
 
         /**
-         * @param allowDelegatedAccess Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
+         * @param allowDelegatedAccess Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ClientSessionTransferDelegationArgs extends com.pulumi.resour
         }
 
         /**
-         * @param allowDelegatedAccess Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
+         * @param allowDelegatedAccess Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class ClientSessionTransferDelegationArgs extends com.pulumi.resour
         }
 
         /**
-         * @param enforceDeviceBinding Indicates the device binding enforcement for delegation (impersonation) access. If set to &#39;ip&#39;, device binding is enforced by IP. If set to &#39;asn&#39;, device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+         * @param enforceDeviceBinding Indicates the device binding enforcement for delegation (impersonation) access. If set to &#39;ip&#39;, device binding is enforced by IP. If set to &#39;asn&#39;, device binding is enforced by ASN. Defaults to `ip`.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ClientSessionTransferDelegationArgs extends com.pulumi.resour
         }
 
         /**
-         * @param enforceDeviceBinding Indicates the device binding enforcement for delegation (impersonation) access. If set to &#39;ip&#39;, device binding is enforced by IP. If set to &#39;asn&#39;, device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+         * @param enforceDeviceBinding Indicates the device binding enforcement for delegation (impersonation) access. If set to &#39;ip&#39;, device binding is enforced by IP. If set to &#39;asn&#39;, device binding is enforced by ASN. Defaults to `ip`.
          * 
          * @return builder
          * 

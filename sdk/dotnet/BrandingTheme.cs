@@ -40,6 +40,12 @@ namespace Pulumi.Auth0
         [Output("fonts")]
         public Output<Outputs.BrandingThemeFonts> Fonts { get; private set; } = null!;
 
+        /// <summary>
+        /// Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed
+        /// </summary>
+        [Output("identifiers")]
+        public Output<Outputs.BrandingThemeIdentifiers> Identifiers { get; private set; } = null!;
+
         [Output("pageBackground")]
         public Output<Outputs.BrandingThemePageBackground> PageBackground { get; private set; } = null!;
 
@@ -107,6 +113,12 @@ namespace Pulumi.Auth0
         [Input("fonts", required: true)]
         public Input<Inputs.BrandingThemeFontsArgs> Fonts { get; set; } = null!;
 
+        /// <summary>
+        /// Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed
+        /// </summary>
+        [Input("identifiers")]
+        public Input<Inputs.BrandingThemeIdentifiersArgs>? Identifiers { get; set; }
+
         [Input("pageBackground", required: true)]
         public Input<Inputs.BrandingThemePageBackgroundArgs> PageBackground { get; set; } = null!;
 
@@ -135,6 +147,12 @@ namespace Pulumi.Auth0
 
         [Input("fonts")]
         public Input<Inputs.BrandingThemeFontsGetArgs>? Fonts { get; set; }
+
+        /// <summary>
+        /// Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed
+        /// </summary>
+        [Input("identifiers")]
+        public Input<Inputs.BrandingThemeIdentifiersGetArgs>? Identifiers { get; set; }
 
         [Input("pageBackground")]
         public Input<Inputs.BrandingThemePageBackgroundGetArgs>? PageBackground { get; set; }

@@ -5,6 +5,7 @@ package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.GetClientsClientExpressConfiguration;
 import com.pulumi.auth0.outputs.GetClientsClientFedcmLogin;
+import com.pulumi.auth0.outputs.GetClientsClientIdentityAssertionAuthorizationGrant;
 import com.pulumi.auth0.outputs.GetClientsClientMyOrganizationConfiguration;
 import com.pulumi.auth0.outputs.GetClientsClientOidcLogout;
 import com.pulumi.auth0.outputs.GetClientsClientSessionTransfer;
@@ -63,7 +64,7 @@ public final class GetClientsClient {
      */
     private Map<String,String> clientMetadata;
     /**
-     * @return Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string.
+     * @return Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. Set `hideClientSecret` to `true` to avoid persisting this value into Terraform state.
      * 
      */
     private String clientSecret;
@@ -102,6 +103,11 @@ public final class GetClientsClient {
      * 
      */
     private List<String> grantTypes;
+    /**
+     * @return Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+     * 
+     */
+    private List<GetClientsClientIdentityAssertionAuthorizationGrant> identityAssertionAuthorizationGrants;
     /**
      * @return Indicates whether this client is a first-party client.
      * 
@@ -232,7 +238,7 @@ public final class GetClientsClient {
         return this.clientMetadata;
     }
     /**
-     * @return Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string.
+     * @return Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. Set `hideClientSecret` to `true` to avoid persisting this value into Terraform state.
      * 
      */
     public String clientSecret() {
@@ -286,6 +292,13 @@ public final class GetClientsClient {
      */
     public List<String> grantTypes() {
         return this.grantTypes;
+    }
+    /**
+     * @return Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+     * 
+     */
+    public List<GetClientsClientIdentityAssertionAuthorizationGrant> identityAssertionAuthorizationGrants() {
+        return this.identityAssertionAuthorizationGrants;
     }
     /**
      * @return Indicates whether this client is a first-party client.
@@ -414,6 +427,7 @@ public final class GetClientsClient {
         private String externalMetadataType;
         private List<GetClientsClientFedcmLogin> fedcmLogins;
         private List<String> grantTypes;
+        private List<GetClientsClientIdentityAssertionAuthorizationGrant> identityAssertionAuthorizationGrants;
         private Boolean isFirstParty;
         private Boolean isTokenEndpointIpHeaderTrusted;
         private String jwksUri;
@@ -448,6 +462,7 @@ public final class GetClientsClient {
     	      this.externalMetadataType = defaults.externalMetadataType;
     	      this.fedcmLogins = defaults.fedcmLogins;
     	      this.grantTypes = defaults.grantTypes;
+    	      this.identityAssertionAuthorizationGrants = defaults.identityAssertionAuthorizationGrants;
     	      this.isFirstParty = defaults.isFirstParty;
     	      this.isTokenEndpointIpHeaderTrusted = defaults.isTokenEndpointIpHeaderTrusted;
     	      this.jwksUri = defaults.jwksUri;
@@ -616,6 +631,17 @@ public final class GetClientsClient {
             return grantTypes(List.of(grantTypes));
         }
         @CustomType.Setter
+        public Builder identityAssertionAuthorizationGrants(List<GetClientsClientIdentityAssertionAuthorizationGrant> identityAssertionAuthorizationGrants) {
+            if (identityAssertionAuthorizationGrants == null) {
+              throw new MissingRequiredPropertyException("GetClientsClient", "identityAssertionAuthorizationGrants");
+            }
+            this.identityAssertionAuthorizationGrants = identityAssertionAuthorizationGrants;
+            return this;
+        }
+        public Builder identityAssertionAuthorizationGrants(GetClientsClientIdentityAssertionAuthorizationGrant... identityAssertionAuthorizationGrants) {
+            return identityAssertionAuthorizationGrants(List.of(identityAssertionAuthorizationGrants));
+        }
+        @CustomType.Setter
         public Builder isFirstParty(Boolean isFirstParty) {
             if (isFirstParty == null) {
               throw new MissingRequiredPropertyException("GetClientsClient", "isFirstParty");
@@ -772,6 +798,7 @@ public final class GetClientsClient {
             _resultValue.externalMetadataType = externalMetadataType;
             _resultValue.fedcmLogins = fedcmLogins;
             _resultValue.grantTypes = grantTypes;
+            _resultValue.identityAssertionAuthorizationGrants = identityAssertionAuthorizationGrants;
             _resultValue.isFirstParty = isFirstParty;
             _resultValue.isTokenEndpointIpHeaderTrusted = isTokenEndpointIpHeaderTrusted;
             _resultValue.jwksUri = jwksUri;

@@ -31,6 +31,11 @@ public final class GetClientsResult {
      */
     private @Nullable String externalClientId;
     /**
+     * @return Set this to avoid persisting the sensitive `clientSecret` value of each client into state, in which case `clientSecret` will contain an empty string.
+     * 
+     */
+    private @Nullable Boolean hideClientSecret;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -69,6 +74,13 @@ public final class GetClientsResult {
         return Optional.ofNullable(this.externalClientId);
     }
     /**
+     * @return Set this to avoid persisting the sensitive `clientSecret` value of each client into state, in which case `clientSecret` will contain an empty string.
+     * 
+     */
+    public Optional<Boolean> hideClientSecret() {
+        return Optional.ofNullable(this.hideClientSecret);
+    }
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -102,6 +114,7 @@ public final class GetClientsResult {
         private @Nullable List<String> appTypes;
         private List<GetClientsClient> clients;
         private @Nullable String externalClientId;
+        private @Nullable Boolean hideClientSecret;
         private String id;
         private @Nullable Boolean isFirstParty;
         private @Nullable String nameFilter;
@@ -111,6 +124,7 @@ public final class GetClientsResult {
     	      this.appTypes = defaults.appTypes;
     	      this.clients = defaults.clients;
     	      this.externalClientId = defaults.externalClientId;
+    	      this.hideClientSecret = defaults.hideClientSecret;
     	      this.id = defaults.id;
     	      this.isFirstParty = defaults.isFirstParty;
     	      this.nameFilter = defaults.nameFilter;
@@ -143,6 +157,12 @@ public final class GetClientsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder hideClientSecret(@Nullable Boolean hideClientSecret) {
+
+            this.hideClientSecret = hideClientSecret;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetClientsResult", "id");
@@ -167,6 +187,7 @@ public final class GetClientsResult {
             _resultValue.appTypes = appTypes;
             _resultValue.clients = clients;
             _resultValue.externalClientId = externalClientId;
+            _resultValue.hideClientSecret = hideClientSecret;
             _resultValue.id = id;
             _resultValue.isFirstParty = isFirstParty;
             _resultValue.nameFilter = nameFilter;

@@ -656,6 +656,32 @@ export interface BrandingThemeFontsTitle {
     size?: pulumi.Input<number | undefined>;
 }
 
+export interface BrandingThemeIdentifiers {
+    /**
+     * Login display style. Available options: `unified`, `separate`.
+     */
+    loginDisplay: pulumi.Input<string>;
+    /**
+     * Whether OTP autocomplete is enabled.
+     */
+    otpAutocomplete: pulumi.Input<boolean>;
+    /**
+     * Phone number display settings.
+     */
+    phoneDisplay: pulumi.Input<inputs.BrandingThemeIdentifiersPhoneDisplay>;
+}
+
+export interface BrandingThemeIdentifiersPhoneDisplay {
+    /**
+     * Phone number formatting. Available options: `international`, `regional`.
+     */
+    formatting: pulumi.Input<string>;
+    /**
+     * Phone number masking. Available options: `maskDigits`, `hideCountryCode`, `showAll`.
+     */
+    masking: pulumi.Input<string>;
+}
+
 export interface BrandingThemePageBackground {
     /**
      * Background color. Defaults to `#000000`.
@@ -1615,6 +1641,13 @@ export interface ClientFedcmLoginGoogle {
     isEnabled: pulumi.Input<boolean>;
 }
 
+export interface ClientIdentityAssertionAuthorizationGrant {
+    /**
+     * Whether the client can exchange ID-JAGs for access tokens. (EA only)
+     */
+    active: pulumi.Input<boolean>;
+}
+
 export interface ClientJwtConfiguration {
     /**
      * Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
@@ -1786,7 +1819,7 @@ export interface ClientSessionTransfer {
      */
     canCreateSessionTransferToken?: pulumi.Input<boolean | undefined>;
     /**
-     * Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+     * Configuration for delegation (impersonation) access using Session Transfer Tokens.
      */
     delegation?: pulumi.Input<inputs.ClientSessionTransferDelegation | undefined>;
     /**
@@ -1805,11 +1838,11 @@ export interface ClientSessionTransfer {
 
 export interface ClientSessionTransferDelegation {
     /**
-     * Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
+     * Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`.
      */
     allowDelegatedAccess?: pulumi.Input<boolean | undefined>;
     /**
-     * Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+     * Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`.
      */
     enforceDeviceBinding?: pulumi.Input<string | undefined>;
 }
@@ -1849,6 +1882,17 @@ export interface ConnectionAuthentication {
 
 export interface ConnectionConnectedAccounts {
     active: pulumi.Input<boolean>;
+}
+
+export interface ConnectionCrossAppAccessRequestingApp {
+    active: pulumi.Input<boolean>;
+}
+
+export interface ConnectionCrossAppAccessResourceApp {
+    /**
+     * Whether the connection acts as a Cross App Access resource application. One of `enabled` or `disabled`. (EA only)
+     */
+    status: pulumi.Input<string>;
 }
 
 export interface ConnectionDirectoryMapping {
@@ -2123,6 +2167,10 @@ export interface ConnectionOptions {
      * If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
      */
     nonPersistentAttrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+     */
+    oidcMetadata?: pulumi.Input<string | undefined>;
     /**
      * Defines options for the passkey authentication method
      */
@@ -3762,6 +3810,10 @@ export interface NetworkAclRuleMatch {
      */
     asns?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
+     * Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+     */
+    auth0Manageds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
      */
     connectingIpv4Cidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -3808,6 +3860,10 @@ export interface NetworkAclRuleNotMatch {
      * ASNs. Must contain between 1 and 10 unique items.
      */
     asns?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    /**
+     * Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+     */
+    auth0Manageds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
      */
@@ -4302,6 +4358,17 @@ export interface SelfServiceProfileUserAttribute {
      * Attribute’s name on Auth0 side
      */
     name: pulumi.Input<string>;
+}
+
+export interface TenantCountryCodes {
+    /**
+     * List of ISO 3166-1 alpha-2 country codes.
+     */
+    lists: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether the list is an allow-list or deny-list. Available options: `allow`, `deny`.
+     */
+    mode: pulumi.Input<string>;
 }
 
 export interface TenantDefaultTokenQuota {

@@ -14,11 +14,11 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GetClientSessionTransferDelegationResult
     {
         /// <summary>
-        /// Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `False`. (EA Only)
+        /// Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `False`.
         /// </summary>
         public readonly bool AllowDelegatedAccess;
         /// <summary>
-        /// Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `Ip`. (EA Only)
+        /// Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `Ip`.
         /// </summary>
         public readonly string EnforceDeviceBinding;
 

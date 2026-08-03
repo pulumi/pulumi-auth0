@@ -33,6 +33,21 @@ public final class NetworkAclRuleMatchArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+     * 
+     */
+    @Import(name="auth0Manageds")
+    private @Nullable Output<List<String>> auth0Manageds;
+
+    /**
+     * @return Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+     * 
+     */
+    public Optional<Output<List<String>>> auth0Manageds() {
+        return Optional.ofNullable(this.auth0Manageds);
+    }
+
+    /**
      * Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
      * 
      */
@@ -186,6 +201,7 @@ public final class NetworkAclRuleMatchArgs extends com.pulumi.resources.Resource
 
     private NetworkAclRuleMatchArgs(NetworkAclRuleMatchArgs $) {
         this.asns = $.asns;
+        this.auth0Manageds = $.auth0Manageds;
         this.connectingIpv4Cidrs = $.connectingIpv4Cidrs;
         this.connectingIpv6Cidrs = $.connectingIpv6Cidrs;
         this.geoCountryCodes = $.geoCountryCodes;
@@ -245,6 +261,37 @@ public final class NetworkAclRuleMatchArgs extends com.pulumi.resources.Resource
          */
         public Builder asns(Integer... asns) {
             return asns(List.of(asns));
+        }
+
+        /**
+         * @param auth0Manageds Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder auth0Manageds(@Nullable Output<List<String>> auth0Manageds) {
+            $.auth0Manageds = auth0Manageds;
+            return this;
+        }
+
+        /**
+         * @param auth0Manageds Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder auth0Manageds(List<String> auth0Manageds) {
+            return auth0Manageds(Output.of(auth0Manageds));
+        }
+
+        /**
+         * @param auth0Manageds Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder auth0Manageds(String... auth0Manageds) {
+            return auth0Manageds(List.of(auth0Manageds));
         }
 
         /**

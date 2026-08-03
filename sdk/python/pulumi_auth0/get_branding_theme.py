@@ -27,7 +27,7 @@ class GetBrandingThemeResult:
     """
     A collection of values returned by getBrandingTheme.
     """
-    def __init__(__self__, borders=None, colors=None, display_name=None, fonts=None, id=None, page_backgrounds=None, widgets=None):
+    def __init__(__self__, borders=None, colors=None, display_name=None, fonts=None, id=None, identifiers=None, page_backgrounds=None, widgets=None):
         if borders and not isinstance(borders, list):
             raise TypeError("Expected argument 'borders' to be a list")
         pulumi.set(__self__, "borders", borders)
@@ -43,6 +43,9 @@ class GetBrandingThemeResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if identifiers and not isinstance(identifiers, list):
+            raise TypeError("Expected argument 'identifiers' to be a list")
+        pulumi.set(__self__, "identifiers", identifiers)
         if page_backgrounds and not isinstance(page_backgrounds, list):
             raise TypeError("Expected argument 'page_backgrounds' to be a list")
         pulumi.set(__self__, "page_backgrounds", page_backgrounds)
@@ -82,6 +85,14 @@ class GetBrandingThemeResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter
+    def identifiers(self) -> Sequence['outputs.GetBrandingThemeIdentifierResult']:
+        """
+        Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed
+        """
+        return pulumi.get(self, "identifiers")
+
+    @_builtins.property
     @pulumi.getter(name="pageBackgrounds")
     def page_backgrounds(self) -> Sequence['outputs.GetBrandingThemePageBackgroundResult']:
         return pulumi.get(self, "page_backgrounds")
@@ -103,6 +114,7 @@ class AwaitableGetBrandingThemeResult(GetBrandingThemeResult):
             display_name=self.display_name,
             fonts=self.fonts,
             id=self.id,
+            identifiers=self.identifiers,
             page_backgrounds=self.page_backgrounds,
             widgets=self.widgets)
 
@@ -130,6 +142,7 @@ def get_branding_theme(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitable
         display_name=pulumi.get(__ret__, 'display_name'),
         fonts=pulumi.get(__ret__, 'fonts'),
         id=pulumi.get(__ret__, 'id'),
+        identifiers=pulumi.get(__ret__, 'identifiers'),
         page_backgrounds=pulumi.get(__ret__, 'page_backgrounds'),
         widgets=pulumi.get(__ret__, 'widgets'))
 def get_branding_theme_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBrandingThemeResult]:
@@ -154,5 +167,6 @@ def get_branding_theme_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.
         display_name=pulumi.get(__response__, 'display_name'),
         fonts=pulumi.get(__response__, 'fonts'),
         id=pulumi.get(__response__, 'id'),
+        identifiers=pulumi.get(__response__, 'identifiers'),
         page_backgrounds=pulumi.get(__response__, 'page_backgrounds'),
         widgets=pulumi.get(__response__, 'widgets')))

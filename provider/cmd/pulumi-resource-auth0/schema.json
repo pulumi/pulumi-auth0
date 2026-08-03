@@ -1101,6 +1101,45 @@
             },
             "type": "object"
         },
+        "auth0:index/BrandingThemeIdentifiers:BrandingThemeIdentifiers": {
+            "properties": {
+                "loginDisplay": {
+                    "type": "string",
+                    "description": "Login display style. Available options: \u003cspan pulumi-lang-nodejs=\"`unified`\" pulumi-lang-dotnet=\"`Unified`\" pulumi-lang-go=\"`unified`\" pulumi-lang-python=\"`unified`\" pulumi-lang-yaml=\"`unified`\" pulumi-lang-java=\"`unified`\" pulumi-lang-hcl=\"`unified`\"\u003e`unified`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`separate`\" pulumi-lang-dotnet=\"`Separate`\" pulumi-lang-go=\"`separate`\" pulumi-lang-python=\"`separate`\" pulumi-lang-yaml=\"`separate`\" pulumi-lang-java=\"`separate`\" pulumi-lang-hcl=\"`separate`\"\u003e`separate`\u003c/span\u003e.\n"
+                },
+                "otpAutocomplete": {
+                    "type": "boolean",
+                    "description": "Whether OTP autocomplete is enabled.\n"
+                },
+                "phoneDisplay": {
+                    "$ref": "#/types/auth0:index/BrandingThemeIdentifiersPhoneDisplay:BrandingThemeIdentifiersPhoneDisplay",
+                    "description": "Phone number display settings.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "loginDisplay",
+                "otpAutocomplete",
+                "phoneDisplay"
+            ]
+        },
+        "auth0:index/BrandingThemeIdentifiersPhoneDisplay:BrandingThemeIdentifiersPhoneDisplay": {
+            "properties": {
+                "formatting": {
+                    "type": "string",
+                    "description": "Phone number formatting. Available options: \u003cspan pulumi-lang-nodejs=\"`international`\" pulumi-lang-dotnet=\"`International`\" pulumi-lang-go=\"`international`\" pulumi-lang-python=\"`international`\" pulumi-lang-yaml=\"`international`\" pulumi-lang-java=\"`international`\" pulumi-lang-hcl=\"`international`\"\u003e`international`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`regional`\" pulumi-lang-dotnet=\"`Regional`\" pulumi-lang-go=\"`regional`\" pulumi-lang-python=\"`regional`\" pulumi-lang-yaml=\"`regional`\" pulumi-lang-java=\"`regional`\" pulumi-lang-hcl=\"`regional`\"\u003e`regional`\u003c/span\u003e.\n"
+                },
+                "masking": {
+                    "type": "string",
+                    "description": "Phone number masking. Available options: \u003cspan pulumi-lang-nodejs=\"`maskDigits`\" pulumi-lang-dotnet=\"`MaskDigits`\" pulumi-lang-go=\"`maskDigits`\" pulumi-lang-python=\"`mask_digits`\" pulumi-lang-yaml=\"`maskDigits`\" pulumi-lang-java=\"`maskDigits`\" pulumi-lang-hcl=\"`mask_digits`\"\u003e`maskDigits`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`hideCountryCode`\" pulumi-lang-dotnet=\"`HideCountryCode`\" pulumi-lang-go=\"`hideCountryCode`\" pulumi-lang-python=\"`hide_country_code`\" pulumi-lang-yaml=\"`hideCountryCode`\" pulumi-lang-java=\"`hideCountryCode`\" pulumi-lang-hcl=\"`hide_country_code`\"\u003e`hideCountryCode`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`showAll`\" pulumi-lang-dotnet=\"`ShowAll`\" pulumi-lang-go=\"`showAll`\" pulumi-lang-python=\"`show_all`\" pulumi-lang-yaml=\"`showAll`\" pulumi-lang-java=\"`showAll`\" pulumi-lang-hcl=\"`show_all`\"\u003e`showAll`\u003c/span\u003e.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "formatting",
+                "masking"
+            ]
+        },
         "auth0:index/BrandingThemePageBackground:BrandingThemePageBackground": {
             "properties": {
                 "backgroundColor": {
@@ -2382,6 +2421,18 @@
                 "isEnabled"
             ]
         },
+        "auth0:index/ClientIdentityAssertionAuthorizationGrant:ClientIdentityAssertionAuthorizationGrant": {
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Whether the client can exchange ID-JAGs for access tokens. (EA only)\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "active"
+            ]
+        },
         "auth0:index/ClientJwtConfiguration:ClientJwtConfiguration": {
             "properties": {
                 "alg": {
@@ -2685,7 +2736,7 @@
                 },
                 "delegation": {
                     "$ref": "#/types/auth0:index/ClientSessionTransferDelegation:ClientSessionTransferDelegation",
-                    "description": "Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)\n"
+                    "description": "Configuration for delegation (impersonation) access using Session Transfer Tokens.\n"
                 },
                 "enforceCascadeRevocation": {
                     "type": "boolean",
@@ -2716,11 +2767,11 @@
             "properties": {
                 "allowDelegatedAccess": {
                     "type": "boolean",
-                    "description": "Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e. (EA Only)\n"
+                    "description": "Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e.\n"
                 },
                 "enforceDeviceBinding": {
                     "type": "string",
-                    "description": "Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to \u003cspan pulumi-lang-nodejs=\"`ip`\" pulumi-lang-dotnet=\"`Ip`\" pulumi-lang-go=\"`ip`\" pulumi-lang-python=\"`ip`\" pulumi-lang-yaml=\"`ip`\" pulumi-lang-java=\"`ip`\" pulumi-lang-hcl=\"`ip`\"\u003e`ip`\u003c/span\u003e. (EA Only)\n"
+                    "description": "Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to \u003cspan pulumi-lang-nodejs=\"`ip`\" pulumi-lang-dotnet=\"`Ip`\" pulumi-lang-go=\"`ip`\" pulumi-lang-python=\"`ip`\" pulumi-lang-yaml=\"`ip`\" pulumi-lang-java=\"`ip`\" pulumi-lang-hcl=\"`ip`\"\u003e`ip`\u003c/span\u003e.\n"
                 }
             },
             "type": "object",
@@ -2797,6 +2848,29 @@
             "type": "object",
             "required": [
                 "active"
+            ]
+        },
+        "auth0:index/ConnectionCrossAppAccessRequestingApp:ConnectionCrossAppAccessRequestingApp": {
+            "properties": {
+                "active": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "active"
+            ]
+        },
+        "auth0:index/ConnectionCrossAppAccessResourceApp:ConnectionCrossAppAccessResourceApp": {
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "description": "Whether the connection acts as a Cross App Access resource application. One of \u003cspan pulumi-lang-nodejs=\"`enabled`\" pulumi-lang-dotnet=\"`Enabled`\" pulumi-lang-go=\"`enabled`\" pulumi-lang-python=\"`enabled`\" pulumi-lang-yaml=\"`enabled`\" pulumi-lang-java=\"`enabled`\" pulumi-lang-hcl=\"`enabled`\"\u003e`enabled`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`disabled`\" pulumi-lang-dotnet=\"`Disabled`\" pulumi-lang-go=\"`disabled`\" pulumi-lang-python=\"`disabled`\" pulumi-lang-yaml=\"`disabled`\" pulumi-lang-java=\"`disabled`\" pulumi-lang-hcl=\"`disabled`\"\u003e`disabled`\u003c/span\u003e. (EA only)\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "status"
             ]
         },
         "auth0:index/ConnectionDirectoryMapping:ConnectionDirectoryMapping": {
@@ -3113,6 +3187,10 @@
                     },
                     "description": "If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.\n"
                 },
+                "oidcMetadata": {
+                    "type": "string",
+                    "description": "Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)\n"
+                },
                 "passkeyOptions": {
                     "$ref": "#/types/auth0:index/ConnectionOptionsPasskeyOptions:ConnectionOptionsPasskeyOptions",
                     "description": "Defines options for the passkey authentication method\n"
@@ -3366,6 +3444,7 @@
                         "mapUserIdToId",
                         "mfa",
                         "nonPersistentAttrs",
+                        "oidcMetadata",
                         "passkeyOptions",
                         "passwordComplexityOptions",
                         "passwordDictionary",
@@ -5485,6 +5564,13 @@
                     },
                     "description": "ASNs. Must contain between 1 and 10 unique items.\n"
                 },
+                "auth0Manageds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the \u003cspan pulumi-lang-nodejs=\"`tenantAclCuratedBlocklists`\" pulumi-lang-dotnet=\"`TenantAclCuratedBlocklists`\" pulumi-lang-go=\"`tenantAclCuratedBlocklists`\" pulumi-lang-python=\"`tenant_acl_curated_blocklists`\" pulumi-lang-yaml=\"`tenantAclCuratedBlocklists`\" pulumi-lang-java=\"`tenantAclCuratedBlocklists`\" pulumi-lang-hcl=\"`tenant_acl_curated_blocklists`\"\u003e`tenantAclCuratedBlocklists`\u003c/span\u003e feature flag to be enabled on the tenant. (EA Only)\n"
+                },
                 "connectingIpv4Cidrs": {
                     "type": "array",
                     "items": {
@@ -5566,6 +5652,13 @@
                         "type": "integer"
                     },
                     "description": "ASNs. Must contain between 1 and 10 unique items.\n"
+                },
+                "auth0Manageds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the \u003cspan pulumi-lang-nodejs=\"`tenantAclCuratedBlocklists`\" pulumi-lang-dotnet=\"`TenantAclCuratedBlocklists`\" pulumi-lang-go=\"`tenantAclCuratedBlocklists`\" pulumi-lang-python=\"`tenant_acl_curated_blocklists`\" pulumi-lang-yaml=\"`tenantAclCuratedBlocklists`\" pulumi-lang-java=\"`tenantAclCuratedBlocklists`\" pulumi-lang-hcl=\"`tenant_acl_curated_blocklists`\"\u003e`tenantAclCuratedBlocklists`\u003c/span\u003e feature flag to be enabled on the tenant. (EA Only)\n"
                 },
                 "connectingIpv4Cidrs": {
                     "type": "array",
@@ -6310,6 +6403,26 @@
                 "description",
                 "isOptional",
                 "name"
+            ]
+        },
+        "auth0:index/TenantCountryCodes:TenantCountryCodes": {
+            "properties": {
+                "lists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of ISO 3166-1 alpha-2 country codes.\n"
+                },
+                "mode": {
+                    "type": "string",
+                    "description": "Whether the list is an allow-list or deny-list. Available options: \u003cspan pulumi-lang-nodejs=\"`allow`\" pulumi-lang-dotnet=\"`Allow`\" pulumi-lang-go=\"`allow`\" pulumi-lang-python=\"`allow`\" pulumi-lang-yaml=\"`allow`\" pulumi-lang-java=\"`allow`\" pulumi-lang-hcl=\"`allow`\"\u003e`allow`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`deny`\" pulumi-lang-dotnet=\"`Deny`\" pulumi-lang-go=\"`deny`\" pulumi-lang-python=\"`deny`\" pulumi-lang-yaml=\"`deny`\" pulumi-lang-java=\"`deny`\" pulumi-lang-hcl=\"`deny`\"\u003e`deny`\u003c/span\u003e.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "lists",
+                "mode"
             ]
         },
         "auth0:index/TenantDefaultTokenQuota:TenantDefaultTokenQuota": {
@@ -8259,6 +8372,58 @@
                 }
             }
         },
+        "auth0:index/getBrandingThemeIdentifier:getBrandingThemeIdentifier": {
+            "properties": {
+                "loginDisplay": {
+                    "type": "string",
+                    "description": "Login display style. Available options: \u003cspan pulumi-lang-nodejs=\"`unified`\" pulumi-lang-dotnet=\"`Unified`\" pulumi-lang-go=\"`unified`\" pulumi-lang-python=\"`unified`\" pulumi-lang-yaml=\"`unified`\" pulumi-lang-java=\"`unified`\" pulumi-lang-hcl=\"`unified`\"\u003e`unified`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`separate`\" pulumi-lang-dotnet=\"`Separate`\" pulumi-lang-go=\"`separate`\" pulumi-lang-python=\"`separate`\" pulumi-lang-yaml=\"`separate`\" pulumi-lang-java=\"`separate`\" pulumi-lang-hcl=\"`separate`\"\u003e`separate`\u003c/span\u003e.\n"
+                },
+                "otpAutocomplete": {
+                    "type": "boolean",
+                    "description": "Whether OTP autocomplete is enabled.\n"
+                },
+                "phoneDisplays": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getBrandingThemeIdentifierPhoneDisplay:getBrandingThemeIdentifierPhoneDisplay"
+                    },
+                    "description": "Phone number display settings.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "loginDisplay",
+                "otpAutocomplete",
+                "phoneDisplays"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getBrandingThemeIdentifierPhoneDisplay:getBrandingThemeIdentifierPhoneDisplay": {
+            "properties": {
+                "formatting": {
+                    "type": "string",
+                    "description": "Phone number formatting. Available options: \u003cspan pulumi-lang-nodejs=\"`international`\" pulumi-lang-dotnet=\"`International`\" pulumi-lang-go=\"`international`\" pulumi-lang-python=\"`international`\" pulumi-lang-yaml=\"`international`\" pulumi-lang-java=\"`international`\" pulumi-lang-hcl=\"`international`\"\u003e`international`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`regional`\" pulumi-lang-dotnet=\"`Regional`\" pulumi-lang-go=\"`regional`\" pulumi-lang-python=\"`regional`\" pulumi-lang-yaml=\"`regional`\" pulumi-lang-java=\"`regional`\" pulumi-lang-hcl=\"`regional`\"\u003e`regional`\u003c/span\u003e.\n"
+                },
+                "masking": {
+                    "type": "string",
+                    "description": "Phone number masking. Available options: \u003cspan pulumi-lang-nodejs=\"`maskDigits`\" pulumi-lang-dotnet=\"`MaskDigits`\" pulumi-lang-go=\"`maskDigits`\" pulumi-lang-python=\"`mask_digits`\" pulumi-lang-yaml=\"`maskDigits`\" pulumi-lang-java=\"`maskDigits`\" pulumi-lang-hcl=\"`mask_digits`\"\u003e`maskDigits`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`hideCountryCode`\" pulumi-lang-dotnet=\"`HideCountryCode`\" pulumi-lang-go=\"`hideCountryCode`\" pulumi-lang-python=\"`hide_country_code`\" pulumi-lang-yaml=\"`hideCountryCode`\" pulumi-lang-java=\"`hideCountryCode`\" pulumi-lang-hcl=\"`hide_country_code`\"\u003e`hideCountryCode`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`showAll`\" pulumi-lang-dotnet=\"`ShowAll`\" pulumi-lang-go=\"`showAll`\" pulumi-lang-python=\"`show_all`\" pulumi-lang-yaml=\"`showAll`\" pulumi-lang-java=\"`showAll`\" pulumi-lang-hcl=\"`show_all`\"\u003e`showAll`\u003c/span\u003e.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "formatting",
+                "masking"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "auth0:index/getBrandingThemePageBackground:getBrandingThemePageBackground": {
             "properties": {
                 "backgroundColor": {
@@ -9772,6 +9937,23 @@
                 }
             }
         },
+        "auth0:index/getClientIdentityAssertionAuthorizationGrant:getClientIdentityAssertionAuthorizationGrant": {
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Whether the client can exchange ID-JAGs for access tokens. (EA only)\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "active"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "auth0:index/getClientJwtConfiguration:getClientJwtConfiguration": {
             "properties": {
                 "alg": {
@@ -10178,7 +10360,7 @@
                     "items": {
                         "$ref": "#/types/auth0:index/getClientSessionTransferDelegation:getClientSessionTransferDelegation"
                     },
-                    "description": "Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)\n"
+                    "description": "Configuration for delegation (impersonation) access using Session Transfer Tokens.\n"
                 },
                 "enforceCascadeRevocation": {
                     "type": "boolean",
@@ -10213,11 +10395,11 @@
             "properties": {
                 "allowDelegatedAccess": {
                     "type": "boolean",
-                    "description": "Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e. (EA Only)\n"
+                    "description": "Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e.\n"
                 },
                 "enforceDeviceBinding": {
                     "type": "string",
-                    "description": "Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to \u003cspan pulumi-lang-nodejs=\"`ip`\" pulumi-lang-dotnet=\"`Ip`\" pulumi-lang-go=\"`ip`\" pulumi-lang-python=\"`ip`\" pulumi-lang-yaml=\"`ip`\" pulumi-lang-java=\"`ip`\" pulumi-lang-hcl=\"`ip`\"\u003e`ip`\u003c/span\u003e. (EA Only)\n"
+                    "description": "Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to \u003cspan pulumi-lang-nodejs=\"`ip`\" pulumi-lang-dotnet=\"`Ip`\" pulumi-lang-go=\"`ip`\" pulumi-lang-python=\"`ip`\" pulumi-lang-yaml=\"`ip`\" pulumi-lang-java=\"`ip`\" pulumi-lang-hcl=\"`ip`\"\u003e`ip`\u003c/span\u003e.\n"
                 }
             },
             "type": "object",
@@ -10429,7 +10611,7 @@
                 },
                 "clientSecret": {
                     "type": "string",
-                    "description": "Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string.\n",
+                    "description": "Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. Set \u003cspan pulumi-lang-nodejs=\"`hideClientSecret`\" pulumi-lang-dotnet=\"`HideClientSecret`\" pulumi-lang-go=\"`hideClientSecret`\" pulumi-lang-python=\"`hide_client_secret`\" pulumi-lang-yaml=\"`hideClientSecret`\" pulumi-lang-java=\"`hideClientSecret`\" pulumi-lang-hcl=\"`hide_client_secret`\"\u003e`hideClientSecret`\u003c/span\u003e to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e to avoid persisting this value into Terraform state.\n",
                     "secret": true
                 },
                 "description": {
@@ -10468,6 +10650,13 @@
                         "type": "string"
                     },
                     "description": "Types of grants that this client is authorized to use.\n"
+                },
+                "identityAssertionAuthorizationGrants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/auth0:index/getClientsClientIdentityAssertionAuthorizationGrant:getClientsClientIdentityAssertionAuthorizationGrant"
+                    },
+                    "description": "Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)\n"
                 },
                 "isFirstParty": {
                     "type": "boolean",
@@ -10567,6 +10756,7 @@
                 "externalMetadataType",
                 "fedcmLogins",
                 "grantTypes",
+                "identityAssertionAuthorizationGrants",
                 "isFirstParty",
                 "isTokenEndpointIpHeaderTrusted",
                 "jwksUri",
@@ -10695,6 +10885,23 @@
             "type": "object",
             "required": [
                 "isEnabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getClientsClientIdentityAssertionAuthorizationGrant:getClientsClientIdentityAssertionAuthorizationGrant": {
+            "properties": {
+                "active": {
+                    "type": "boolean",
+                    "description": "Whether the client can exchange ID-JAGs for access tokens. (EA only)\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "active"
             ],
             "language": {
                 "nodejs": {
@@ -10841,7 +11048,7 @@
                     "items": {
                         "$ref": "#/types/auth0:index/getClientsClientSessionTransferDelegation:getClientsClientSessionTransferDelegation"
                     },
-                    "description": "Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)\n"
+                    "description": "Configuration for delegation (impersonation) access using Session Transfer Tokens.\n"
                 },
                 "enforceCascadeRevocation": {
                     "type": "boolean",
@@ -10876,11 +11083,11 @@
             "properties": {
                 "allowDelegatedAccess": {
                     "type": "boolean",
-                    "description": "Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e. (EA Only)\n"
+                    "description": "Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e.\n"
                 },
                 "enforceDeviceBinding": {
                     "type": "string",
-                    "description": "Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to \u003cspan pulumi-lang-nodejs=\"`ip`\" pulumi-lang-dotnet=\"`Ip`\" pulumi-lang-go=\"`ip`\" pulumi-lang-python=\"`ip`\" pulumi-lang-yaml=\"`ip`\" pulumi-lang-java=\"`ip`\" pulumi-lang-hcl=\"`ip`\"\u003e`ip`\u003c/span\u003e. (EA Only)\n"
+                    "description": "Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to \u003cspan pulumi-lang-nodejs=\"`ip`\" pulumi-lang-dotnet=\"`Ip`\" pulumi-lang-go=\"`ip`\" pulumi-lang-python=\"`ip`\" pulumi-lang-yaml=\"`ip`\" pulumi-lang-java=\"`ip`\" pulumi-lang-hcl=\"`ip`\"\u003e`ip`\u003c/span\u003e.\n"
                 }
             },
             "type": "object",
@@ -10986,6 +11193,39 @@
             "type": "object",
             "required": [
                 "active"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionCrossAppAccessRequestingApp:getConnectionCrossAppAccessRequestingApp": {
+            "properties": {
+                "active": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "active"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getConnectionCrossAppAccessResourceApp:getConnectionCrossAppAccessResourceApp": {
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "description": "Whether the connection acts as a Cross App Access resource application. One of \u003cspan pulumi-lang-nodejs=\"`enabled`\" pulumi-lang-dotnet=\"`Enabled`\" pulumi-lang-go=\"`enabled`\" pulumi-lang-python=\"`enabled`\" pulumi-lang-yaml=\"`enabled`\" pulumi-lang-java=\"`enabled`\" pulumi-lang-hcl=\"`enabled`\"\u003e`enabled`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`disabled`\" pulumi-lang-dotnet=\"`Disabled`\" pulumi-lang-go=\"`disabled`\" pulumi-lang-python=\"`disabled`\" pulumi-lang-yaml=\"`disabled`\" pulumi-lang-java=\"`disabled`\" pulumi-lang-hcl=\"`disabled`\"\u003e`disabled`\u003c/span\u003e. (EA only)\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "status"
             ],
             "language": {
                 "nodejs": {
@@ -11440,6 +11680,10 @@
                     },
                     "description": "If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.\n"
                 },
+                "oidcMetadata": {
+                    "type": "string",
+                    "description": "Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)\n"
+                },
                 "passkeyOptions": {
                     "type": "array",
                     "items": {
@@ -11764,6 +12008,7 @@
                 "mfas",
                 "name",
                 "nonPersistentAttrs",
+                "oidcMetadata",
                 "passkeyOptions",
                 "passwordComplexityOptions",
                 "passwordDictionaries",
@@ -13707,6 +13952,13 @@
                     },
                     "description": "ASNs. Must contain between 1 and 10 unique items.\n"
                 },
+                "auth0Manageds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the \u003cspan pulumi-lang-nodejs=\"`tenantAclCuratedBlocklists`\" pulumi-lang-dotnet=\"`TenantAclCuratedBlocklists`\" pulumi-lang-go=\"`tenantAclCuratedBlocklists`\" pulumi-lang-python=\"`tenant_acl_curated_blocklists`\" pulumi-lang-yaml=\"`tenantAclCuratedBlocklists`\" pulumi-lang-java=\"`tenantAclCuratedBlocklists`\" pulumi-lang-hcl=\"`tenant_acl_curated_blocklists`\"\u003e`tenantAclCuratedBlocklists`\u003c/span\u003e feature flag to be enabled on the tenant. (EA Only)\n"
+                },
                 "connectingIpv4Cidrs": {
                     "type": "array",
                     "items": {
@@ -13781,6 +14033,7 @@
             "type": "object",
             "required": [
                 "asns",
+                "auth0Manageds",
                 "connectingIpv4Cidrs",
                 "connectingIpv6Cidrs",
                 "geoCountryCodes",
@@ -13807,6 +14060,13 @@
                     },
                     "description": "ASNs. Must contain between 1 and 10 unique items.\n"
                 },
+                "auth0Manageds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the \u003cspan pulumi-lang-nodejs=\"`tenantAclCuratedBlocklists`\" pulumi-lang-dotnet=\"`TenantAclCuratedBlocklists`\" pulumi-lang-go=\"`tenantAclCuratedBlocklists`\" pulumi-lang-python=\"`tenant_acl_curated_blocklists`\" pulumi-lang-yaml=\"`tenantAclCuratedBlocklists`\" pulumi-lang-java=\"`tenantAclCuratedBlocklists`\" pulumi-lang-hcl=\"`tenant_acl_curated_blocklists`\"\u003e`tenantAclCuratedBlocklists`\u003c/span\u003e feature flag to be enabled on the tenant. (EA Only)\n"
+                },
                 "connectingIpv4Cidrs": {
                     "type": "array",
                     "items": {
@@ -13881,6 +14141,7 @@
             "type": "object",
             "required": [
                 "asns",
+                "auth0Manageds",
                 "connectingIpv4Cidrs",
                 "connectingIpv6Cidrs",
                 "geoCountryCodes",
@@ -14849,6 +15110,31 @@
                 "previous",
                 "revoked",
                 "thumbprint"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "auth0:index/getTenantCountryCode:getTenantCountryCode": {
+            "properties": {
+                "lists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of ISO 3166-1 alpha-2 country codes.\n"
+                },
+                "mode": {
+                    "type": "string",
+                    "description": "Whether the list is an allow-list or deny-list. Available options: \u003cspan pulumi-lang-nodejs=\"`allow`\" pulumi-lang-dotnet=\"`Allow`\" pulumi-lang-go=\"`allow`\" pulumi-lang-python=\"`allow`\" pulumi-lang-yaml=\"`allow`\" pulumi-lang-java=\"`allow`\" pulumi-lang-hcl=\"`allow`\"\u003e`allow`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`deny`\" pulumi-lang-dotnet=\"`Deny`\" pulumi-lang-go=\"`deny`\" pulumi-lang-python=\"`deny`\" pulumi-lang-yaml=\"`deny`\" pulumi-lang-java=\"`deny`\" pulumi-lang-hcl=\"`deny`\"\u003e`deny`\u003c/span\u003e.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "lists",
+                "mode"
             ],
             "language": {
                 "nodejs": {
@@ -16239,6 +16525,10 @@
                 "fonts": {
                     "$ref": "#/types/auth0:index/BrandingThemeFonts:BrandingThemeFonts"
                 },
+                "identifiers": {
+                    "$ref": "#/types/auth0:index/BrandingThemeIdentifiers:BrandingThemeIdentifiers",
+                    "description": "Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed\n"
+                },
                 "pageBackground": {
                     "$ref": "#/types/auth0:index/BrandingThemePageBackground:BrandingThemePageBackground"
                 },
@@ -16250,6 +16540,7 @@
                 "borders",
                 "colors",
                 "fonts",
+                "identifiers",
                 "pageBackground",
                 "widget"
             ],
@@ -16266,6 +16557,10 @@
                 },
                 "fonts": {
                     "$ref": "#/types/auth0:index/BrandingThemeFonts:BrandingThemeFonts"
+                },
+                "identifiers": {
+                    "$ref": "#/types/auth0:index/BrandingThemeIdentifiers:BrandingThemeIdentifiers",
+                    "description": "Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed\n"
                 },
                 "pageBackground": {
                     "$ref": "#/types/auth0:index/BrandingThemePageBackground:BrandingThemePageBackground"
@@ -16296,6 +16591,10 @@
                     },
                     "fonts": {
                         "$ref": "#/types/auth0:index/BrandingThemeFonts:BrandingThemeFonts"
+                    },
+                    "identifiers": {
+                        "$ref": "#/types/auth0:index/BrandingThemeIdentifiers:BrandingThemeIdentifiers",
+                        "description": "Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed\n"
                     },
                     "pageBackground": {
                         "$ref": "#/types/auth0:index/BrandingThemePageBackground:BrandingThemePageBackground"
@@ -16437,6 +16736,10 @@
                         "type": "string"
                     },
                     "description": "Types of grants that this client is authorized to use.\n"
+                },
+                "identityAssertionAuthorizationGrant": {
+                    "$ref": "#/types/auth0:index/ClientIdentityAssertionAuthorizationGrant:ClientIdentityAssertionAuthorizationGrant",
+                    "description": "Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)\n"
                 },
                 "initiateLoginUri": {
                     "type": "string",
@@ -16716,6 +17019,10 @@
                     },
                     "description": "Types of grants that this client is authorized to use.\n"
                 },
+                "identityAssertionAuthorizationGrant": {
+                    "$ref": "#/types/auth0:index/ClientIdentityAssertionAuthorizationGrant:ClientIdentityAssertionAuthorizationGrant",
+                    "description": "Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)\n"
+                },
                 "initiateLoginUri": {
                     "type": "string",
                     "description": "Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.\n"
@@ -16968,6 +17275,10 @@
                             "type": "string"
                         },
                         "description": "Types of grants that this client is authorized to use.\n"
+                    },
+                    "identityAssertionAuthorizationGrant": {
+                        "$ref": "#/types/auth0:index/ClientIdentityAssertionAuthorizationGrant:ClientIdentityAssertionAuthorizationGrant",
+                        "description": "Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)\n"
                     },
                     "initiateLoginUri": {
                         "type": "string",
@@ -17815,11 +18126,19 @@
             "properties": {
                 "authentication": {
                     "$ref": "#/types/auth0:index/ConnectionAuthentication:ConnectionAuthentication",
-                    "description": "Configure the purpose of a connection to be used for authentication during login.\n"
+                    "description": "Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set \u003cspan pulumi-lang-nodejs=\"`active`\" pulumi-lang-dotnet=\"`Active`\" pulumi-lang-go=\"`active`\" pulumi-lang-python=\"`active`\" pulumi-lang-yaml=\"`active`\" pulumi-lang-java=\"`active`\" pulumi-lang-hcl=\"`active`\"\u003e`active`\u003c/span\u003e to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e explicitly to deactivate it.\n"
                 },
                 "connectedAccounts": {
                     "$ref": "#/types/auth0:index/ConnectionConnectedAccounts:ConnectionConnectedAccounts",
-                    "description": "Configure the purpose of a connection to be used for connected accounts and Token Vault.\n"
+                    "description": "Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set \u003cspan pulumi-lang-nodejs=\"`active`\" pulumi-lang-dotnet=\"`Active`\" pulumi-lang-go=\"`active`\" pulumi-lang-python=\"`active`\" pulumi-lang-yaml=\"`active`\" pulumi-lang-java=\"`active`\" pulumi-lang-hcl=\"`active`\"\u003e`active`\u003c/span\u003e to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e explicitly to deactivate it.\n"
+                },
+                "crossAppAccessRequestingApp": {
+                    "$ref": "#/types/auth0:index/ConnectionCrossAppAccessRequestingApp:ConnectionCrossAppAccessRequestingApp",
+                    "description": "Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the \u003cspan pulumi-lang-nodejs=\"`tokenVaultXaa`\" pulumi-lang-dotnet=\"`TokenVaultXaa`\" pulumi-lang-go=\"`tokenVaultXaa`\" pulumi-lang-python=\"`token_vault_xaa`\" pulumi-lang-yaml=\"`tokenVaultXaa`\" pulumi-lang-java=\"`tokenVaultXaa`\" pulumi-lang-hcl=\"`token_vault_xaa`\"\u003e`tokenVaultXaa`\u003c/span\u003e flag to be enabled on your tenant. Only supported on \u003cspan pulumi-lang-nodejs=\"`oidc`\" pulumi-lang-dotnet=\"`Oidc`\" pulumi-lang-go=\"`oidc`\" pulumi-lang-python=\"`oidc`\" pulumi-lang-yaml=\"`oidc`\" pulumi-lang-java=\"`oidc`\" pulumi-lang-hcl=\"`oidc`\"\u003e`oidc`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`okta`\" pulumi-lang-dotnet=\"`Okta`\" pulumi-lang-go=\"`okta`\" pulumi-lang-python=\"`okta`\" pulumi-lang-yaml=\"`okta`\" pulumi-lang-java=\"`okta`\" pulumi-lang-hcl=\"`okta`\"\u003e`okta`\u003c/span\u003e strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set \u003cspan pulumi-lang-nodejs=\"`active`\" pulumi-lang-dotnet=\"`Active`\" pulumi-lang-go=\"`active`\" pulumi-lang-python=\"`active`\" pulumi-lang-yaml=\"`active`\" pulumi-lang-java=\"`active`\" pulumi-lang-hcl=\"`active`\"\u003e`active`\u003c/span\u003e to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e explicitly to deactivate it. (EA Only)\n"
+                },
+                "crossAppAccessResourceApp": {
+                    "$ref": "#/types/auth0:index/ConnectionCrossAppAccessResourceApp:ConnectionCrossAppAccessResourceApp",
+                    "description": "Resource App settings that apply to this connection. (EA only)\n"
                 },
                 "displayName": {
                     "type": "string",
@@ -17863,6 +18182,7 @@
             "required": [
                 "authentication",
                 "connectedAccounts",
+                "crossAppAccessRequestingApp",
                 "displayName",
                 "isDomainConnection",
                 "name",
@@ -17873,11 +18193,19 @@
             "inputProperties": {
                 "authentication": {
                     "$ref": "#/types/auth0:index/ConnectionAuthentication:ConnectionAuthentication",
-                    "description": "Configure the purpose of a connection to be used for authentication during login.\n"
+                    "description": "Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set \u003cspan pulumi-lang-nodejs=\"`active`\" pulumi-lang-dotnet=\"`Active`\" pulumi-lang-go=\"`active`\" pulumi-lang-python=\"`active`\" pulumi-lang-yaml=\"`active`\" pulumi-lang-java=\"`active`\" pulumi-lang-hcl=\"`active`\"\u003e`active`\u003c/span\u003e to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e explicitly to deactivate it.\n"
                 },
                 "connectedAccounts": {
                     "$ref": "#/types/auth0:index/ConnectionConnectedAccounts:ConnectionConnectedAccounts",
-                    "description": "Configure the purpose of a connection to be used for connected accounts and Token Vault.\n"
+                    "description": "Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set \u003cspan pulumi-lang-nodejs=\"`active`\" pulumi-lang-dotnet=\"`Active`\" pulumi-lang-go=\"`active`\" pulumi-lang-python=\"`active`\" pulumi-lang-yaml=\"`active`\" pulumi-lang-java=\"`active`\" pulumi-lang-hcl=\"`active`\"\u003e`active`\u003c/span\u003e to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e explicitly to deactivate it.\n"
+                },
+                "crossAppAccessRequestingApp": {
+                    "$ref": "#/types/auth0:index/ConnectionCrossAppAccessRequestingApp:ConnectionCrossAppAccessRequestingApp",
+                    "description": "Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the \u003cspan pulumi-lang-nodejs=\"`tokenVaultXaa`\" pulumi-lang-dotnet=\"`TokenVaultXaa`\" pulumi-lang-go=\"`tokenVaultXaa`\" pulumi-lang-python=\"`token_vault_xaa`\" pulumi-lang-yaml=\"`tokenVaultXaa`\" pulumi-lang-java=\"`tokenVaultXaa`\" pulumi-lang-hcl=\"`token_vault_xaa`\"\u003e`tokenVaultXaa`\u003c/span\u003e flag to be enabled on your tenant. Only supported on \u003cspan pulumi-lang-nodejs=\"`oidc`\" pulumi-lang-dotnet=\"`Oidc`\" pulumi-lang-go=\"`oidc`\" pulumi-lang-python=\"`oidc`\" pulumi-lang-yaml=\"`oidc`\" pulumi-lang-java=\"`oidc`\" pulumi-lang-hcl=\"`oidc`\"\u003e`oidc`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`okta`\" pulumi-lang-dotnet=\"`Okta`\" pulumi-lang-go=\"`okta`\" pulumi-lang-python=\"`okta`\" pulumi-lang-yaml=\"`okta`\" pulumi-lang-java=\"`okta`\" pulumi-lang-hcl=\"`okta`\"\u003e`okta`\u003c/span\u003e strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set \u003cspan pulumi-lang-nodejs=\"`active`\" pulumi-lang-dotnet=\"`Active`\" pulumi-lang-go=\"`active`\" pulumi-lang-python=\"`active`\" pulumi-lang-yaml=\"`active`\" pulumi-lang-java=\"`active`\" pulumi-lang-hcl=\"`active`\"\u003e`active`\u003c/span\u003e to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e explicitly to deactivate it. (EA Only)\n"
+                },
+                "crossAppAccessResourceApp": {
+                    "$ref": "#/types/auth0:index/ConnectionCrossAppAccessResourceApp:ConnectionCrossAppAccessResourceApp",
+                    "description": "Resource App settings that apply to this connection. (EA only)\n"
                 },
                 "displayName": {
                     "type": "string",
@@ -17928,11 +18256,19 @@
                 "properties": {
                     "authentication": {
                         "$ref": "#/types/auth0:index/ConnectionAuthentication:ConnectionAuthentication",
-                        "description": "Configure the purpose of a connection to be used for authentication during login.\n"
+                        "description": "Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set \u003cspan pulumi-lang-nodejs=\"`active`\" pulumi-lang-dotnet=\"`Active`\" pulumi-lang-go=\"`active`\" pulumi-lang-python=\"`active`\" pulumi-lang-yaml=\"`active`\" pulumi-lang-java=\"`active`\" pulumi-lang-hcl=\"`active`\"\u003e`active`\u003c/span\u003e to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e explicitly to deactivate it.\n"
                     },
                     "connectedAccounts": {
                         "$ref": "#/types/auth0:index/ConnectionConnectedAccounts:ConnectionConnectedAccounts",
-                        "description": "Configure the purpose of a connection to be used for connected accounts and Token Vault.\n"
+                        "description": "Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set \u003cspan pulumi-lang-nodejs=\"`active`\" pulumi-lang-dotnet=\"`Active`\" pulumi-lang-go=\"`active`\" pulumi-lang-python=\"`active`\" pulumi-lang-yaml=\"`active`\" pulumi-lang-java=\"`active`\" pulumi-lang-hcl=\"`active`\"\u003e`active`\u003c/span\u003e to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e explicitly to deactivate it.\n"
+                    },
+                    "crossAppAccessRequestingApp": {
+                        "$ref": "#/types/auth0:index/ConnectionCrossAppAccessRequestingApp:ConnectionCrossAppAccessRequestingApp",
+                        "description": "Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the \u003cspan pulumi-lang-nodejs=\"`tokenVaultXaa`\" pulumi-lang-dotnet=\"`TokenVaultXaa`\" pulumi-lang-go=\"`tokenVaultXaa`\" pulumi-lang-python=\"`token_vault_xaa`\" pulumi-lang-yaml=\"`tokenVaultXaa`\" pulumi-lang-java=\"`tokenVaultXaa`\" pulumi-lang-hcl=\"`token_vault_xaa`\"\u003e`tokenVaultXaa`\u003c/span\u003e flag to be enabled on your tenant. Only supported on \u003cspan pulumi-lang-nodejs=\"`oidc`\" pulumi-lang-dotnet=\"`Oidc`\" pulumi-lang-go=\"`oidc`\" pulumi-lang-python=\"`oidc`\" pulumi-lang-yaml=\"`oidc`\" pulumi-lang-java=\"`oidc`\" pulumi-lang-hcl=\"`oidc`\"\u003e`oidc`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`okta`\" pulumi-lang-dotnet=\"`Okta`\" pulumi-lang-go=\"`okta`\" pulumi-lang-python=\"`okta`\" pulumi-lang-yaml=\"`okta`\" pulumi-lang-java=\"`okta`\" pulumi-lang-hcl=\"`okta`\"\u003e`okta`\u003c/span\u003e strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set \u003cspan pulumi-lang-nodejs=\"`active`\" pulumi-lang-dotnet=\"`Active`\" pulumi-lang-go=\"`active`\" pulumi-lang-python=\"`active`\" pulumi-lang-yaml=\"`active`\" pulumi-lang-java=\"`active`\" pulumi-lang-hcl=\"`active`\"\u003e`active`\u003c/span\u003e to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e explicitly to deactivate it. (EA Only)\n"
+                    },
+                    "crossAppAccessResourceApp": {
+                        "$ref": "#/types/auth0:index/ConnectionCrossAppAccessResourceApp:ConnectionCrossAppAccessResourceApp",
+                        "description": "Resource App settings that apply to this connection. (EA only)\n"
                     },
                     "displayName": {
                         "type": "string",
@@ -20110,7 +20446,7 @@
             }
         },
         "auth0:index/networkAcl:NetworkAcl": {
-            "description": "With this resource, you can create and manage NetworkACLs for a tenant.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// Example of auth0_network_acl with match criteria\nconst myNetworkAclMatch = new auth0.NetworkAcl(\"my_network_acl_match\", {\n    description: \"Example with match network ACL\",\n    active: true,\n    priority: 1,\n    rule: {\n        action: {\n            allow: true,\n        },\n        scope: \"management\",\n        match: {\n            geoCountryCodes: [\n                \"US\",\n                \"CA\",\n            ],\n            geoSubdivisionCodes: [\n                \"US-NY\",\n                \"CA-ON\",\n            ],\n        },\n    },\n});\n// Example of auth0_network_acl with not-match criteria\nconst myNetworkAclNotMatch = new auth0.NetworkAcl(\"my_network_acl_not_match\", {\n    description: \"Example with not match network ACL\",\n    active: true,\n    priority: 3,\n    rule: {\n        action: {\n            log: true,\n        },\n        scope: \"authentication\",\n        notMatch: {\n            asns: [9876],\n            ipv4Cidrs: [\n                \"192.168.1.0/24\",\n                \"10.0.0.0/8\",\n            ],\n            ipv6Cidrs: [\"2001:db8::/32\"],\n        },\n    },\n});\n// Example of auth0_network_acl with hostname and connecting IP restrictions\nconst blockCanonical = new auth0.NetworkAcl(\"block_canonical\", {\n    description: \"Block canonical domain except from proxy\",\n    active: true,\n    priority: 5,\n    rule: {\n        action: {\n            block: true,\n        },\n        scope: \"tenant\",\n        match: {\n            hostnames: [\"mytenant1.us.auth0.com\"],\n            connectingIpv6Cidrs: [\n                \"2001:db8::/32\",\n                \"::1\",\n            ],\n        },\n        notMatch: {\n            hostnames: [\"mytenant2.us.auth0.com\"],\n            connectingIpv4Cidrs: [\"203.0.113.0/24\"],\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\n# Example of auth0_network_acl with match criteria\nmy_network_acl_match = auth0.NetworkAcl(\"my_network_acl_match\",\n    description=\"Example with match network ACL\",\n    active=True,\n    priority=1,\n    rule={\n        \"action\": {\n            \"allow\": True,\n        },\n        \"scope\": \"management\",\n        \"match\": {\n            \"geo_country_codes\": [\n                \"US\",\n                \"CA\",\n            ],\n            \"geo_subdivision_codes\": [\n                \"US-NY\",\n                \"CA-ON\",\n            ],\n        },\n    })\n# Example of auth0_network_acl with not-match criteria\nmy_network_acl_not_match = auth0.NetworkAcl(\"my_network_acl_not_match\",\n    description=\"Example with not match network ACL\",\n    active=True,\n    priority=3,\n    rule={\n        \"action\": {\n            \"log\": True,\n        },\n        \"scope\": \"authentication\",\n        \"not_match\": {\n            \"asns\": [9876],\n            \"ipv4_cidrs\": [\n                \"192.168.1.0/24\",\n                \"10.0.0.0/8\",\n            ],\n            \"ipv6_cidrs\": [\"2001:db8::/32\"],\n        },\n    })\n# Example of auth0_network_acl with hostname and connecting IP restrictions\nblock_canonical = auth0.NetworkAcl(\"block_canonical\",\n    description=\"Block canonical domain except from proxy\",\n    active=True,\n    priority=5,\n    rule={\n        \"action\": {\n            \"block\": True,\n        },\n        \"scope\": \"tenant\",\n        \"match\": {\n            \"hostnames\": [\"mytenant1.us.auth0.com\"],\n            \"connecting_ipv6_cidrs\": [\n                \"2001:db8::/32\",\n                \"::1\",\n            ],\n        },\n        \"not_match\": {\n            \"hostnames\": [\"mytenant2.us.auth0.com\"],\n            \"connecting_ipv4_cidrs\": [\"203.0.113.0/24\"],\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Example of auth0_network_acl with match criteria\n    var myNetworkAclMatch = new Auth0.NetworkAcl(\"my_network_acl_match\", new()\n    {\n        Description = \"Example with match network ACL\",\n        Active = true,\n        Priority = 1,\n        Rule = new Auth0.Inputs.NetworkAclRuleArgs\n        {\n            Action = new Auth0.Inputs.NetworkAclRuleActionArgs\n            {\n                Allow = true,\n            },\n            Scope = \"management\",\n            Match = new Auth0.Inputs.NetworkAclRuleMatchArgs\n            {\n                GeoCountryCodes = new[]\n                {\n                    \"US\",\n                    \"CA\",\n                },\n                GeoSubdivisionCodes = new[]\n                {\n                    \"US-NY\",\n                    \"CA-ON\",\n                },\n            },\n        },\n    });\n\n    // Example of auth0_network_acl with not-match criteria\n    var myNetworkAclNotMatch = new Auth0.NetworkAcl(\"my_network_acl_not_match\", new()\n    {\n        Description = \"Example with not match network ACL\",\n        Active = true,\n        Priority = 3,\n        Rule = new Auth0.Inputs.NetworkAclRuleArgs\n        {\n            Action = new Auth0.Inputs.NetworkAclRuleActionArgs\n            {\n                Log = true,\n            },\n            Scope = \"authentication\",\n            NotMatch = new Auth0.Inputs.NetworkAclRuleNotMatchArgs\n            {\n                Asns = new[]\n                {\n                    9876,\n                },\n                Ipv4Cidrs = new[]\n                {\n                    \"192.168.1.0/24\",\n                    \"10.0.0.0/8\",\n                },\n                Ipv6Cidrs = new[]\n                {\n                    \"2001:db8::/32\",\n                },\n            },\n        },\n    });\n\n    // Example of auth0_network_acl with hostname and connecting IP restrictions\n    var blockCanonical = new Auth0.NetworkAcl(\"block_canonical\", new()\n    {\n        Description = \"Block canonical domain except from proxy\",\n        Active = true,\n        Priority = 5,\n        Rule = new Auth0.Inputs.NetworkAclRuleArgs\n        {\n            Action = new Auth0.Inputs.NetworkAclRuleActionArgs\n            {\n                Block = true,\n            },\n            Scope = \"tenant\",\n            Match = new Auth0.Inputs.NetworkAclRuleMatchArgs\n            {\n                Hostnames = new[]\n                {\n                    \"mytenant1.us.auth0.com\",\n                },\n                ConnectingIpv6Cidrs = new[]\n                {\n                    \"2001:db8::/32\",\n                    \"::1\",\n                },\n            },\n            NotMatch = new Auth0.Inputs.NetworkAclRuleNotMatchArgs\n            {\n                Hostnames = new[]\n                {\n                    \"mytenant2.us.auth0.com\",\n                },\n                ConnectingIpv4Cidrs = new[]\n                {\n                    \"203.0.113.0/24\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Example of auth0_network_acl with match criteria\n\t\t_, err := auth0.NewNetworkAcl(ctx, \"my_network_acl_match\", \u0026auth0.NetworkAclArgs{\n\t\t\tDescription: pulumi.String(\"Example with match network ACL\"),\n\t\t\tActive:      pulumi.Bool(true),\n\t\t\tPriority:    pulumi.Int(1),\n\t\t\tRule: \u0026auth0.NetworkAclRuleArgs{\n\t\t\t\tAction: \u0026auth0.NetworkAclRuleActionArgs{\n\t\t\t\t\tAllow: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t\tScope: pulumi.String(\"management\"),\n\t\t\t\tMatch: \u0026auth0.NetworkAclRuleMatchArgs{\n\t\t\t\t\tGeoCountryCodes: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"US\"),\n\t\t\t\t\t\tpulumi.String(\"CA\"),\n\t\t\t\t\t},\n\t\t\t\t\tGeoSubdivisionCodes: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"US-NY\"),\n\t\t\t\t\t\tpulumi.String(\"CA-ON\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Example of auth0_network_acl with not-match criteria\n\t\t_, err = auth0.NewNetworkAcl(ctx, \"my_network_acl_not_match\", \u0026auth0.NetworkAclArgs{\n\t\t\tDescription: pulumi.String(\"Example with not match network ACL\"),\n\t\t\tActive:      pulumi.Bool(true),\n\t\t\tPriority:    pulumi.Int(3),\n\t\t\tRule: \u0026auth0.NetworkAclRuleArgs{\n\t\t\t\tAction: \u0026auth0.NetworkAclRuleActionArgs{\n\t\t\t\t\tLog: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t\tScope: pulumi.String(\"authentication\"),\n\t\t\t\tNotMatch: \u0026auth0.NetworkAclRuleNotMatchArgs{\n\t\t\t\t\tAsns: pulumi.IntArray{\n\t\t\t\t\t\tpulumi.Int(9876),\n\t\t\t\t\t},\n\t\t\t\t\tIpv4Cidrs: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"192.168.1.0/24\"),\n\t\t\t\t\t\tpulumi.String(\"10.0.0.0/8\"),\n\t\t\t\t\t},\n\t\t\t\t\tIpv6Cidrs: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"2001:db8::/32\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Example of auth0_network_acl with hostname and connecting IP restrictions\n\t\t_, err = auth0.NewNetworkAcl(ctx, \"block_canonical\", \u0026auth0.NetworkAclArgs{\n\t\t\tDescription: pulumi.String(\"Block canonical domain except from proxy\"),\n\t\t\tActive:      pulumi.Bool(true),\n\t\t\tPriority:    pulumi.Int(5),\n\t\t\tRule: \u0026auth0.NetworkAclRuleArgs{\n\t\t\t\tAction: \u0026auth0.NetworkAclRuleActionArgs{\n\t\t\t\t\tBlock: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t\tScope: pulumi.String(\"tenant\"),\n\t\t\t\tMatch: \u0026auth0.NetworkAclRuleMatchArgs{\n\t\t\t\t\tHostnames: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"mytenant1.us.auth0.com\"),\n\t\t\t\t\t},\n\t\t\t\t\tConnectingIpv6Cidrs: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"2001:db8::/32\"),\n\t\t\t\t\t\tpulumi.String(\"::1\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tNotMatch: \u0026auth0.NetworkAclRuleNotMatchArgs{\n\t\t\t\t\tHostnames: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"mytenant2.us.auth0.com\"),\n\t\t\t\t\t},\n\t\t\t\t\tConnectingIpv4Cidrs: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"203.0.113.0/24\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    auth0 = {\n      source = \"pulumi/auth0\"\n    }\n  }\n}\n\n# Example of auth0_network_acl with match criteria\nresource \"auth0_networkacl\" \"my_network_acl_match\" {\n  description = \"Example with match network ACL\"\n  active      = true\n  priority    = 1\n  rule = {\n    action = {\n      allow = true\n    }\n    scope = \"management\"\n    match = {\n      geo_country_codes     = [\"US\", \"CA\"]\n      geo_subdivision_codes = [\"US-NY\", \"CA-ON\"]\n    }\n  }\n}\n# Example of auth0_network_acl with not-match criteria\nresource \"auth0_networkacl\" \"my_network_acl_not_match\" {\n  description = \"Example with not match network ACL\"\n  active      = true\n  priority    = 3\n  rule = {\n    action = {\n      log = true\n    }\n    scope = \"authentication\"\n    not_match = {\n      asns       = [9876]\n      ipv4_cidrs = [\"192.168.1.0/24\", \"10.0.0.0/8\"]\n      ipv6_cidrs = [\"2001:db8::/32\"]\n    }\n  }\n}\n# Example of auth0_network_acl with hostname and connecting IP restrictions\nresource \"auth0_networkacl\" \"block_canonical\" {\n  description = \"Block canonical domain except from proxy\"\n  active      = true\n  priority    = 5\n  rule = {\n    action = {\n      block = true\n    }\n    scope = \"tenant\"\n    match = {\n      hostnames             = [\"mytenant1.us.auth0.com\"]\n      connecting_ipv6_cidrs = [\"2001:db8::/32\", \"::1\"]\n    }\n    not_match = {\n      hostnames             = [\"mytenant2.us.auth0.com\"]\n      connecting_ipv4_cidrs = [\"203.0.113.0/24\"]\n    }\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.NetworkAcl;\nimport com.pulumi.auth0.NetworkAclArgs;\nimport com.pulumi.auth0.inputs.NetworkAclRuleArgs;\nimport com.pulumi.auth0.inputs.NetworkAclRuleActionArgs;\nimport com.pulumi.auth0.inputs.NetworkAclRuleMatchArgs;\nimport com.pulumi.auth0.inputs.NetworkAclRuleNotMatchArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Example of auth0_network_acl with match criteria\n        var myNetworkAclMatch = new NetworkAcl(\"myNetworkAclMatch\", NetworkAclArgs.builder()\n            .description(\"Example with match network ACL\")\n            .active(true)\n            .priority(1)\n            .rule(NetworkAclRuleArgs.builder()\n                .action(NetworkAclRuleActionArgs.builder()\n                    .allow(true)\n                    .build())\n                .scope(\"management\")\n                .match(NetworkAclRuleMatchArgs.builder()\n                    .geoCountryCodes(                    \n                        \"US\",\n                        \"CA\")\n                    .geoSubdivisionCodes(                    \n                        \"US-NY\",\n                        \"CA-ON\")\n                    .build())\n                .build())\n            .build());\n\n        // Example of auth0_network_acl with not-match criteria\n        var myNetworkAclNotMatch = new NetworkAcl(\"myNetworkAclNotMatch\", NetworkAclArgs.builder()\n            .description(\"Example with not match network ACL\")\n            .active(true)\n            .priority(3)\n            .rule(NetworkAclRuleArgs.builder()\n                .action(NetworkAclRuleActionArgs.builder()\n                    .log(true)\n                    .build())\n                .scope(\"authentication\")\n                .notMatch(NetworkAclRuleNotMatchArgs.builder()\n                    .asns(9876)\n                    .ipv4Cidrs(                    \n                        \"192.168.1.0/24\",\n                        \"10.0.0.0/8\")\n                    .ipv6Cidrs(\"2001:db8::/32\")\n                    .build())\n                .build())\n            .build());\n\n        // Example of auth0_network_acl with hostname and connecting IP restrictions\n        var blockCanonical = new NetworkAcl(\"blockCanonical\", NetworkAclArgs.builder()\n            .description(\"Block canonical domain except from proxy\")\n            .active(true)\n            .priority(5)\n            .rule(NetworkAclRuleArgs.builder()\n                .action(NetworkAclRuleActionArgs.builder()\n                    .block(true)\n                    .build())\n                .scope(\"tenant\")\n                .match(NetworkAclRuleMatchArgs.builder()\n                    .hostnames(\"mytenant1.us.auth0.com\")\n                    .connectingIpv6Cidrs(                    \n                        \"2001:db8::/32\",\n                        \"::1\")\n                    .build())\n                .notMatch(NetworkAclRuleNotMatchArgs.builder()\n                    .hostnames(\"mytenant2.us.auth0.com\")\n                    .connectingIpv4Cidrs(\"203.0.113.0/24\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Example of auth0_network_acl with match criteria\n  myNetworkAclMatch:\n    type: auth0:NetworkAcl\n    name: my_network_acl_match\n    properties:\n      description: Example with match network ACL\n      active: true\n      priority: 1\n      rule:\n        action:\n          allow: true\n        scope: management\n        match:\n          geoCountryCodes:\n            - US\n            - CA\n          geoSubdivisionCodes:\n            - US-NY\n            - CA-ON\n  # Example of auth0_network_acl with not-match criteria\n  myNetworkAclNotMatch:\n    type: auth0:NetworkAcl\n    name: my_network_acl_not_match\n    properties:\n      description: Example with not match network ACL\n      active: true\n      priority: 3\n      rule:\n        action:\n          log: true\n        scope: authentication\n        notMatch:\n          asns:\n            - 9876\n          ipv4Cidrs:\n            - 192.168.1.0/24\n            - 10.0.0.0/8\n          ipv6Cidrs:\n            - 2001:db8::/32\n  # Example of auth0_network_acl with hostname and connecting IP restrictions\n  blockCanonical:\n    type: auth0:NetworkAcl\n    name: block_canonical\n    properties:\n      description: Block canonical domain except from proxy\n      active: true\n      priority: 5\n      rule:\n        action:\n          block: true\n        scope: tenant\n        match:\n          hostnames:\n            - mytenant1.us.auth0.com\n          connectingIpv6Cidrs:\n            - 2001:db8::/32\n            - ::1\n        notMatch:\n          hostnames:\n            - mytenant2.us.auth0.com\n          connectingIpv4Cidrs:\n            - 203.0.113.0/24\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported using the network acl ID.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/networkAcl:NetworkAcl my_network_acl \"167f9a50-4444-3333-1111-ndfdaf953ab4\"\n```\n\n",
+            "description": "With this resource, you can create and manage NetworkACLs for a tenant.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\n// Example of auth0_network_acl with match criteria\nconst myNetworkAclMatch = new auth0.NetworkAcl(\"my_network_acl_match\", {\n    description: \"Example with match network ACL\",\n    active: true,\n    priority: 1,\n    rule: {\n        action: {\n            allow: true,\n        },\n        scope: \"management\",\n        match: {\n            geoCountryCodes: [\n                \"US\",\n                \"CA\",\n            ],\n            geoSubdivisionCodes: [\n                \"US-NY\",\n                \"CA-ON\",\n            ],\n        },\n    },\n});\n// Example of auth0_network_acl with not-match criteria\nconst myNetworkAclNotMatch = new auth0.NetworkAcl(\"my_network_acl_not_match\", {\n    description: \"Example with not match network ACL\",\n    active: true,\n    priority: 3,\n    rule: {\n        action: {\n            log: true,\n        },\n        scope: \"authentication\",\n        notMatch: {\n            asns: [9876],\n            ipv4Cidrs: [\n                \"192.168.1.0/24\",\n                \"10.0.0.0/8\",\n            ],\n            ipv6Cidrs: [\"2001:db8::/32\"],\n        },\n    },\n});\n// Example of auth0_network_acl using Auth0-curated blocklists (Early Access).\n//\n// The `auth0_managed` field requires the `advanced-breached-password-detection`\n// entitlement and the `tenant_acl_curated_blocklists` feature flag on the tenant.\n// Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`.\nconst blockIcloudRelay = new auth0.NetworkAcl(\"block_icloud_relay\", {\n    description: \"Block iCloud Private Relay egress proxies\",\n    active: true,\n    priority: 7,\n    rule: {\n        action: {\n            block: true,\n        },\n        scope: \"authentication\",\n        match: {\n            auth0Manageds: [\"auth0.icloud_relay_proxy\"],\n        },\n    },\n});\n// Example using `not_match` to allow all traffic *unless* it comes from a\n// low-reputation curated blocklist. `auth0_managed` is accepted on either block.\nconst allowUnlessLowReputation = new auth0.NetworkAcl(\"allow_unless_low_reputation\", {\n    description: \"Allow traffic unless it is on the low-reputation blocklist\",\n    active: true,\n    priority: 8,\n    rule: {\n        action: {\n            allow: true,\n        },\n        scope: \"authentication\",\n        notMatch: {\n            auth0Manageds: [\"auth0.low_reputation\"],\n        },\n    },\n});\n// Example of auth0_network_acl with hostname and connecting IP restrictions\nconst blockCanonical = new auth0.NetworkAcl(\"block_canonical\", {\n    description: \"Block canonical domain except from proxy\",\n    active: true,\n    priority: 5,\n    rule: {\n        action: {\n            block: true,\n        },\n        scope: \"tenant\",\n        match: {\n            hostnames: [\"mytenant1.us.auth0.com\"],\n            connectingIpv6Cidrs: [\n                \"2001:db8::/32\",\n                \"::1\",\n            ],\n        },\n        notMatch: {\n            hostnames: [\"mytenant2.us.auth0.com\"],\n            connectingIpv4Cidrs: [\"203.0.113.0/24\"],\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\n# Example of auth0_network_acl with match criteria\nmy_network_acl_match = auth0.NetworkAcl(\"my_network_acl_match\",\n    description=\"Example with match network ACL\",\n    active=True,\n    priority=1,\n    rule={\n        \"action\": {\n            \"allow\": True,\n        },\n        \"scope\": \"management\",\n        \"match\": {\n            \"geo_country_codes\": [\n                \"US\",\n                \"CA\",\n            ],\n            \"geo_subdivision_codes\": [\n                \"US-NY\",\n                \"CA-ON\",\n            ],\n        },\n    })\n# Example of auth0_network_acl with not-match criteria\nmy_network_acl_not_match = auth0.NetworkAcl(\"my_network_acl_not_match\",\n    description=\"Example with not match network ACL\",\n    active=True,\n    priority=3,\n    rule={\n        \"action\": {\n            \"log\": True,\n        },\n        \"scope\": \"authentication\",\n        \"not_match\": {\n            \"asns\": [9876],\n            \"ipv4_cidrs\": [\n                \"192.168.1.0/24\",\n                \"10.0.0.0/8\",\n            ],\n            \"ipv6_cidrs\": [\"2001:db8::/32\"],\n        },\n    })\n# Example of auth0_network_acl using Auth0-curated blocklists (Early Access).\n#\n# The `auth0_managed` field requires the `advanced-breached-password-detection`\n# entitlement and the `tenant_acl_curated_blocklists` feature flag on the tenant.\n# Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`.\nblock_icloud_relay = auth0.NetworkAcl(\"block_icloud_relay\",\n    description=\"Block iCloud Private Relay egress proxies\",\n    active=True,\n    priority=7,\n    rule={\n        \"action\": {\n            \"block\": True,\n        },\n        \"scope\": \"authentication\",\n        \"match\": {\n            \"auth0_manageds\": [\"auth0.icloud_relay_proxy\"],\n        },\n    })\n# Example using `not_match` to allow all traffic *unless* it comes from a\n# low-reputation curated blocklist. `auth0_managed` is accepted on either block.\nallow_unless_low_reputation = auth0.NetworkAcl(\"allow_unless_low_reputation\",\n    description=\"Allow traffic unless it is on the low-reputation blocklist\",\n    active=True,\n    priority=8,\n    rule={\n        \"action\": {\n            \"allow\": True,\n        },\n        \"scope\": \"authentication\",\n        \"not_match\": {\n            \"auth0_manageds\": [\"auth0.low_reputation\"],\n        },\n    })\n# Example of auth0_network_acl with hostname and connecting IP restrictions\nblock_canonical = auth0.NetworkAcl(\"block_canonical\",\n    description=\"Block canonical domain except from proxy\",\n    active=True,\n    priority=5,\n    rule={\n        \"action\": {\n            \"block\": True,\n        },\n        \"scope\": \"tenant\",\n        \"match\": {\n            \"hostnames\": [\"mytenant1.us.auth0.com\"],\n            \"connecting_ipv6_cidrs\": [\n                \"2001:db8::/32\",\n                \"::1\",\n            ],\n        },\n        \"not_match\": {\n            \"hostnames\": [\"mytenant2.us.auth0.com\"],\n            \"connecting_ipv4_cidrs\": [\"203.0.113.0/24\"],\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Example of auth0_network_acl with match criteria\n    var myNetworkAclMatch = new Auth0.NetworkAcl(\"my_network_acl_match\", new()\n    {\n        Description = \"Example with match network ACL\",\n        Active = true,\n        Priority = 1,\n        Rule = new Auth0.Inputs.NetworkAclRuleArgs\n        {\n            Action = new Auth0.Inputs.NetworkAclRuleActionArgs\n            {\n                Allow = true,\n            },\n            Scope = \"management\",\n            Match = new Auth0.Inputs.NetworkAclRuleMatchArgs\n            {\n                GeoCountryCodes = new[]\n                {\n                    \"US\",\n                    \"CA\",\n                },\n                GeoSubdivisionCodes = new[]\n                {\n                    \"US-NY\",\n                    \"CA-ON\",\n                },\n            },\n        },\n    });\n\n    // Example of auth0_network_acl with not-match criteria\n    var myNetworkAclNotMatch = new Auth0.NetworkAcl(\"my_network_acl_not_match\", new()\n    {\n        Description = \"Example with not match network ACL\",\n        Active = true,\n        Priority = 3,\n        Rule = new Auth0.Inputs.NetworkAclRuleArgs\n        {\n            Action = new Auth0.Inputs.NetworkAclRuleActionArgs\n            {\n                Log = true,\n            },\n            Scope = \"authentication\",\n            NotMatch = new Auth0.Inputs.NetworkAclRuleNotMatchArgs\n            {\n                Asns = new[]\n                {\n                    9876,\n                },\n                Ipv4Cidrs = new[]\n                {\n                    \"192.168.1.0/24\",\n                    \"10.0.0.0/8\",\n                },\n                Ipv6Cidrs = new[]\n                {\n                    \"2001:db8::/32\",\n                },\n            },\n        },\n    });\n\n    // Example of auth0_network_acl using Auth0-curated blocklists (Early Access).\n    //\n    // The `auth0_managed` field requires the `advanced-breached-password-detection`\n    // entitlement and the `tenant_acl_curated_blocklists` feature flag on the tenant.\n    // Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`.\n    var blockIcloudRelay = new Auth0.NetworkAcl(\"block_icloud_relay\", new()\n    {\n        Description = \"Block iCloud Private Relay egress proxies\",\n        Active = true,\n        Priority = 7,\n        Rule = new Auth0.Inputs.NetworkAclRuleArgs\n        {\n            Action = new Auth0.Inputs.NetworkAclRuleActionArgs\n            {\n                Block = true,\n            },\n            Scope = \"authentication\",\n            Match = new Auth0.Inputs.NetworkAclRuleMatchArgs\n            {\n                Auth0Manageds = new[]\n                {\n                    \"auth0.icloud_relay_proxy\",\n                },\n            },\n        },\n    });\n\n    // Example using `not_match` to allow all traffic *unless* it comes from a\n    // low-reputation curated blocklist. `auth0_managed` is accepted on either block.\n    var allowUnlessLowReputation = new Auth0.NetworkAcl(\"allow_unless_low_reputation\", new()\n    {\n        Description = \"Allow traffic unless it is on the low-reputation blocklist\",\n        Active = true,\n        Priority = 8,\n        Rule = new Auth0.Inputs.NetworkAclRuleArgs\n        {\n            Action = new Auth0.Inputs.NetworkAclRuleActionArgs\n            {\n                Allow = true,\n            },\n            Scope = \"authentication\",\n            NotMatch = new Auth0.Inputs.NetworkAclRuleNotMatchArgs\n            {\n                Auth0Manageds = new[]\n                {\n                    \"auth0.low_reputation\",\n                },\n            },\n        },\n    });\n\n    // Example of auth0_network_acl with hostname and connecting IP restrictions\n    var blockCanonical = new Auth0.NetworkAcl(\"block_canonical\", new()\n    {\n        Description = \"Block canonical domain except from proxy\",\n        Active = true,\n        Priority = 5,\n        Rule = new Auth0.Inputs.NetworkAclRuleArgs\n        {\n            Action = new Auth0.Inputs.NetworkAclRuleActionArgs\n            {\n                Block = true,\n            },\n            Scope = \"tenant\",\n            Match = new Auth0.Inputs.NetworkAclRuleMatchArgs\n            {\n                Hostnames = new[]\n                {\n                    \"mytenant1.us.auth0.com\",\n                },\n                ConnectingIpv6Cidrs = new[]\n                {\n                    \"2001:db8::/32\",\n                    \"::1\",\n                },\n            },\n            NotMatch = new Auth0.Inputs.NetworkAclRuleNotMatchArgs\n            {\n                Hostnames = new[]\n                {\n                    \"mytenant2.us.auth0.com\",\n                },\n                ConnectingIpv4Cidrs = new[]\n                {\n                    \"203.0.113.0/24\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Example of auth0_network_acl with match criteria\n\t\t_, err := auth0.NewNetworkAcl(ctx, \"my_network_acl_match\", \u0026auth0.NetworkAclArgs{\n\t\t\tDescription: pulumi.String(\"Example with match network ACL\"),\n\t\t\tActive:      pulumi.Bool(true),\n\t\t\tPriority:    pulumi.Int(1),\n\t\t\tRule: \u0026auth0.NetworkAclRuleArgs{\n\t\t\t\tAction: \u0026auth0.NetworkAclRuleActionArgs{\n\t\t\t\t\tAllow: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t\tScope: pulumi.String(\"management\"),\n\t\t\t\tMatch: \u0026auth0.NetworkAclRuleMatchArgs{\n\t\t\t\t\tGeoCountryCodes: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"US\"),\n\t\t\t\t\t\tpulumi.String(\"CA\"),\n\t\t\t\t\t},\n\t\t\t\t\tGeoSubdivisionCodes: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"US-NY\"),\n\t\t\t\t\t\tpulumi.String(\"CA-ON\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Example of auth0_network_acl with not-match criteria\n\t\t_, err = auth0.NewNetworkAcl(ctx, \"my_network_acl_not_match\", \u0026auth0.NetworkAclArgs{\n\t\t\tDescription: pulumi.String(\"Example with not match network ACL\"),\n\t\t\tActive:      pulumi.Bool(true),\n\t\t\tPriority:    pulumi.Int(3),\n\t\t\tRule: \u0026auth0.NetworkAclRuleArgs{\n\t\t\t\tAction: \u0026auth0.NetworkAclRuleActionArgs{\n\t\t\t\t\tLog: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t\tScope: pulumi.String(\"authentication\"),\n\t\t\t\tNotMatch: \u0026auth0.NetworkAclRuleNotMatchArgs{\n\t\t\t\t\tAsns: pulumi.IntArray{\n\t\t\t\t\t\tpulumi.Int(9876),\n\t\t\t\t\t},\n\t\t\t\t\tIpv4Cidrs: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"192.168.1.0/24\"),\n\t\t\t\t\t\tpulumi.String(\"10.0.0.0/8\"),\n\t\t\t\t\t},\n\t\t\t\t\tIpv6Cidrs: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"2001:db8::/32\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Example of auth0_network_acl using Auth0-curated blocklists (Early Access).\n\t\t//\n\t\t// The `auth0_managed` field requires the `advanced-breached-password-detection`\n\t\t// entitlement and the `tenant_acl_curated_blocklists` feature flag on the tenant.\n\t\t// Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`.\n\t\t_, err = auth0.NewNetworkAcl(ctx, \"block_icloud_relay\", \u0026auth0.NetworkAclArgs{\n\t\t\tDescription: pulumi.String(\"Block iCloud Private Relay egress proxies\"),\n\t\t\tActive:      pulumi.Bool(true),\n\t\t\tPriority:    pulumi.Int(7),\n\t\t\tRule: \u0026auth0.NetworkAclRuleArgs{\n\t\t\t\tAction: \u0026auth0.NetworkAclRuleActionArgs{\n\t\t\t\t\tBlock: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t\tScope: pulumi.String(\"authentication\"),\n\t\t\t\tMatch: \u0026auth0.NetworkAclRuleMatchArgs{\n\t\t\t\t\tAuth0Manageds: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"auth0.icloud_relay_proxy\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Example using `not_match` to allow all traffic *unless* it comes from a\n\t\t// low-reputation curated blocklist. `auth0_managed` is accepted on either block.\n\t\t_, err = auth0.NewNetworkAcl(ctx, \"allow_unless_low_reputation\", \u0026auth0.NetworkAclArgs{\n\t\t\tDescription: pulumi.String(\"Allow traffic unless it is on the low-reputation blocklist\"),\n\t\t\tActive:      pulumi.Bool(true),\n\t\t\tPriority:    pulumi.Int(8),\n\t\t\tRule: \u0026auth0.NetworkAclRuleArgs{\n\t\t\t\tAction: \u0026auth0.NetworkAclRuleActionArgs{\n\t\t\t\t\tAllow: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t\tScope: pulumi.String(\"authentication\"),\n\t\t\t\tNotMatch: \u0026auth0.NetworkAclRuleNotMatchArgs{\n\t\t\t\t\tAuth0Manageds: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"auth0.low_reputation\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Example of auth0_network_acl with hostname and connecting IP restrictions\n\t\t_, err = auth0.NewNetworkAcl(ctx, \"block_canonical\", \u0026auth0.NetworkAclArgs{\n\t\t\tDescription: pulumi.String(\"Block canonical domain except from proxy\"),\n\t\t\tActive:      pulumi.Bool(true),\n\t\t\tPriority:    pulumi.Int(5),\n\t\t\tRule: \u0026auth0.NetworkAclRuleArgs{\n\t\t\t\tAction: \u0026auth0.NetworkAclRuleActionArgs{\n\t\t\t\t\tBlock: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t\tScope: pulumi.String(\"tenant\"),\n\t\t\t\tMatch: \u0026auth0.NetworkAclRuleMatchArgs{\n\t\t\t\t\tHostnames: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"mytenant1.us.auth0.com\"),\n\t\t\t\t\t},\n\t\t\t\t\tConnectingIpv6Cidrs: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"2001:db8::/32\"),\n\t\t\t\t\t\tpulumi.String(\"::1\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tNotMatch: \u0026auth0.NetworkAclRuleNotMatchArgs{\n\t\t\t\t\tHostnames: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"mytenant2.us.auth0.com\"),\n\t\t\t\t\t},\n\t\t\t\t\tConnectingIpv4Cidrs: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"203.0.113.0/24\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    auth0 = {\n      source = \"pulumi/auth0\"\n    }\n  }\n}\n\n# Example of auth0_network_acl with match criteria\nresource \"auth0_networkacl\" \"my_network_acl_match\" {\n  description = \"Example with match network ACL\"\n  active      = true\n  priority    = 1\n  rule = {\n    action = {\n      allow = true\n    }\n    scope = \"management\"\n    match = {\n      geo_country_codes     = [\"US\", \"CA\"]\n      geo_subdivision_codes = [\"US-NY\", \"CA-ON\"]\n    }\n  }\n}\n# Example of auth0_network_acl with not-match criteria\nresource \"auth0_networkacl\" \"my_network_acl_not_match\" {\n  description = \"Example with not match network ACL\"\n  active      = true\n  priority    = 3\n  rule = {\n    action = {\n      log = true\n    }\n    scope = \"authentication\"\n    not_match = {\n      asns       = [9876]\n      ipv4_cidrs = [\"192.168.1.0/24\", \"10.0.0.0/8\"]\n      ipv6_cidrs = [\"2001:db8::/32\"]\n    }\n  }\n}\n# Example of auth0_network_acl using Auth0-curated blocklists (Early Access).\n#\n# The `auth0_managed` field requires the `advanced-breached-password-detection`\n# entitlement and the `tenant_acl_curated_blocklists` feature flag on the tenant.\n# Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`.\nresource \"auth0_networkacl\" \"block_icloud_relay\" {\n  description = \"Block iCloud Private Relay egress proxies\"\n  active      = true\n  priority    = 7\n  rule = {\n    action = {\n      block = true\n    }\n    scope = \"authentication\"\n    match = {\n      auth0_manageds = [\"auth0.icloud_relay_proxy\"]\n    }\n  }\n}\n# Example using `not_match` to allow all traffic *unless* it comes from a\n# low-reputation curated blocklist. `auth0_managed` is accepted on either block.\nresource \"auth0_networkacl\" \"allow_unless_low_reputation\" {\n  description = \"Allow traffic unless it is on the low-reputation blocklist\"\n  active      = true\n  priority    = 8\n  rule = {\n    action = {\n      allow = true\n    }\n    scope = \"authentication\"\n    not_match = {\n      auth0_manageds = [\"auth0.low_reputation\"]\n    }\n  }\n}\n# Example of auth0_network_acl with hostname and connecting IP restrictions\nresource \"auth0_networkacl\" \"block_canonical\" {\n  description = \"Block canonical domain except from proxy\"\n  active      = true\n  priority    = 5\n  rule = {\n    action = {\n      block = true\n    }\n    scope = \"tenant\"\n    match = {\n      hostnames             = [\"mytenant1.us.auth0.com\"]\n      connecting_ipv6_cidrs = [\"2001:db8::/32\", \"::1\"]\n    }\n    not_match = {\n      hostnames             = [\"mytenant2.us.auth0.com\"]\n      connecting_ipv4_cidrs = [\"203.0.113.0/24\"]\n    }\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.NetworkAcl;\nimport com.pulumi.auth0.NetworkAclArgs;\nimport com.pulumi.auth0.inputs.NetworkAclRuleArgs;\nimport com.pulumi.auth0.inputs.NetworkAclRuleActionArgs;\nimport com.pulumi.auth0.inputs.NetworkAclRuleMatchArgs;\nimport com.pulumi.auth0.inputs.NetworkAclRuleNotMatchArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Example of auth0_network_acl with match criteria\n        var myNetworkAclMatch = new NetworkAcl(\"myNetworkAclMatch\", NetworkAclArgs.builder()\n            .description(\"Example with match network ACL\")\n            .active(true)\n            .priority(1)\n            .rule(NetworkAclRuleArgs.builder()\n                .action(NetworkAclRuleActionArgs.builder()\n                    .allow(true)\n                    .build())\n                .scope(\"management\")\n                .match(NetworkAclRuleMatchArgs.builder()\n                    .geoCountryCodes(                    \n                        \"US\",\n                        \"CA\")\n                    .geoSubdivisionCodes(                    \n                        \"US-NY\",\n                        \"CA-ON\")\n                    .build())\n                .build())\n            .build());\n\n        // Example of auth0_network_acl with not-match criteria\n        var myNetworkAclNotMatch = new NetworkAcl(\"myNetworkAclNotMatch\", NetworkAclArgs.builder()\n            .description(\"Example with not match network ACL\")\n            .active(true)\n            .priority(3)\n            .rule(NetworkAclRuleArgs.builder()\n                .action(NetworkAclRuleActionArgs.builder()\n                    .log(true)\n                    .build())\n                .scope(\"authentication\")\n                .notMatch(NetworkAclRuleNotMatchArgs.builder()\n                    .asns(9876)\n                    .ipv4Cidrs(                    \n                        \"192.168.1.0/24\",\n                        \"10.0.0.0/8\")\n                    .ipv6Cidrs(\"2001:db8::/32\")\n                    .build())\n                .build())\n            .build());\n\n        // Example of auth0_network_acl using Auth0-curated blocklists (Early Access).\n        //\n        // The `auth0_managed` field requires the `advanced-breached-password-detection`\n        // entitlement and the `tenant_acl_curated_blocklists` feature flag on the tenant.\n        // Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`.\n        var blockIcloudRelay = new NetworkAcl(\"blockIcloudRelay\", NetworkAclArgs.builder()\n            .description(\"Block iCloud Private Relay egress proxies\")\n            .active(true)\n            .priority(7)\n            .rule(NetworkAclRuleArgs.builder()\n                .action(NetworkAclRuleActionArgs.builder()\n                    .block(true)\n                    .build())\n                .scope(\"authentication\")\n                .match(NetworkAclRuleMatchArgs.builder()\n                    .auth0Manageds(\"auth0.icloud_relay_proxy\")\n                    .build())\n                .build())\n            .build());\n\n        // Example using `not_match` to allow all traffic *unless* it comes from a\n        // low-reputation curated blocklist. `auth0_managed` is accepted on either block.\n        var allowUnlessLowReputation = new NetworkAcl(\"allowUnlessLowReputation\", NetworkAclArgs.builder()\n            .description(\"Allow traffic unless it is on the low-reputation blocklist\")\n            .active(true)\n            .priority(8)\n            .rule(NetworkAclRuleArgs.builder()\n                .action(NetworkAclRuleActionArgs.builder()\n                    .allow(true)\n                    .build())\n                .scope(\"authentication\")\n                .notMatch(NetworkAclRuleNotMatchArgs.builder()\n                    .auth0Manageds(\"auth0.low_reputation\")\n                    .build())\n                .build())\n            .build());\n\n        // Example of auth0_network_acl with hostname and connecting IP restrictions\n        var blockCanonical = new NetworkAcl(\"blockCanonical\", NetworkAclArgs.builder()\n            .description(\"Block canonical domain except from proxy\")\n            .active(true)\n            .priority(5)\n            .rule(NetworkAclRuleArgs.builder()\n                .action(NetworkAclRuleActionArgs.builder()\n                    .block(true)\n                    .build())\n                .scope(\"tenant\")\n                .match(NetworkAclRuleMatchArgs.builder()\n                    .hostnames(\"mytenant1.us.auth0.com\")\n                    .connectingIpv6Cidrs(                    \n                        \"2001:db8::/32\",\n                        \"::1\")\n                    .build())\n                .notMatch(NetworkAclRuleNotMatchArgs.builder()\n                    .hostnames(\"mytenant2.us.auth0.com\")\n                    .connectingIpv4Cidrs(\"203.0.113.0/24\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Example of auth0_network_acl with match criteria\n  myNetworkAclMatch:\n    type: auth0:NetworkAcl\n    name: my_network_acl_match\n    properties:\n      description: Example with match network ACL\n      active: true\n      priority: 1\n      rule:\n        action:\n          allow: true\n        scope: management\n        match:\n          geoCountryCodes:\n            - US\n            - CA\n          geoSubdivisionCodes:\n            - US-NY\n            - CA-ON\n  # Example of auth0_network_acl with not-match criteria\n  myNetworkAclNotMatch:\n    type: auth0:NetworkAcl\n    name: my_network_acl_not_match\n    properties:\n      description: Example with not match network ACL\n      active: true\n      priority: 3\n      rule:\n        action:\n          log: true\n        scope: authentication\n        notMatch:\n          asns:\n            - 9876\n          ipv4Cidrs:\n            - 192.168.1.0/24\n            - 10.0.0.0/8\n          ipv6Cidrs:\n            - 2001:db8::/32\n  # Example of auth0_network_acl using Auth0-curated blocklists (Early Access).\n  #\n  # The `auth0_managed` field requires the `advanced-breached-password-detection`\n  # entitlement and the `tenant_acl_curated_blocklists` feature flag on the tenant.\n  # Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`.\n  blockIcloudRelay:\n    type: auth0:NetworkAcl\n    name: block_icloud_relay\n    properties:\n      description: Block iCloud Private Relay egress proxies\n      active: true\n      priority: 7\n      rule:\n        action:\n          block: true\n        scope: authentication\n        match:\n          auth0Manageds:\n            - auth0.icloud_relay_proxy\n  # Example using `not_match` to allow all traffic *unless* it comes from a\n  # low-reputation curated blocklist. `auth0_managed` is accepted on either block.\n  allowUnlessLowReputation:\n    type: auth0:NetworkAcl\n    name: allow_unless_low_reputation\n    properties:\n      description: Allow traffic unless it is on the low-reputation blocklist\n      active: true\n      priority: 8\n      rule:\n        action:\n          allow: true\n        scope: authentication\n        notMatch:\n          auth0Manageds:\n            - auth0.low_reputation\n  # Example of auth0_network_acl with hostname and connecting IP restrictions\n  blockCanonical:\n    type: auth0:NetworkAcl\n    name: block_canonical\n    properties:\n      description: Block canonical domain except from proxy\n      active: true\n      priority: 5\n      rule:\n        action:\n          block: true\n        scope: tenant\n        match:\n          hostnames:\n            - mytenant1.us.auth0.com\n          connectingIpv6Cidrs:\n            - 2001:db8::/32\n            - ::1\n        notMatch:\n          hostnames:\n            - mytenant2.us.auth0.com\n          connectingIpv4Cidrs:\n            - 203.0.113.0/24\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThis resource can be imported using the network acl ID.\n\nExample:\n\n```sh\n$ pulumi import auth0:index/networkAcl:NetworkAcl my_network_acl \"167f9a50-4444-3333-1111-ndfdaf953ab4\"\n```\n\n",
             "properties": {
                 "active": {
                     "type": "boolean",
@@ -22763,7 +23099,7 @@
             }
         },
         "auth0:index/tenant:Tenant": {
-            "description": "With this resource, you can manage Auth0 tenants, including setting logos and support contact information, setting error pages, and configuring default tenant behaviors.\n\n\u003e Creating tenants through the Management API is not currently supported. Therefore, this resource can only\nmanage an existing tenant created through the Auth0 dashboard.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myTenant = new auth0.Tenant(\"my_tenant\", {\n    friendlyName: \"Tenant Name\",\n    pictureUrl: \"http://example.com/logo.png\",\n    supportEmail: \"support@example.com\",\n    supportUrl: \"http://example.com/support\",\n    allowedLogoutUrls: [\"http://example.com/logout\"],\n    sessionLifetime: 8760,\n    sandboxVersion: \"22\",\n    enabledLocales: [\"en\"],\n    defaultRedirectionUri: \"https://example.com/login\",\n    flags: {\n        disableClickjackProtectionHeaders: true,\n        enablePublicSignupUserExistsError: true,\n        useScopeDescriptionsForConsent: true,\n        noDiscloseEnterpriseConnections: false,\n        disableManagementApiSmsObfuscation: false,\n        disableFieldsMapFix: false,\n    },\n    sessionCookie: {\n        mode: \"non-persistent\",\n    },\n    sessions: {\n        oidcLogoutPromptEnabled: false,\n    },\n    errorPage: {\n        html: \"\u003chtml\u003e\u003c/html\u003e\",\n        showLogLink: false,\n        url: \"https://example.com/error\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_tenant = auth0.Tenant(\"my_tenant\",\n    friendly_name=\"Tenant Name\",\n    picture_url=\"http://example.com/logo.png\",\n    support_email=\"support@example.com\",\n    support_url=\"http://example.com/support\",\n    allowed_logout_urls=[\"http://example.com/logout\"],\n    session_lifetime=float(8760),\n    sandbox_version=\"22\",\n    enabled_locales=[\"en\"],\n    default_redirection_uri=\"https://example.com/login\",\n    flags={\n        \"disable_clickjack_protection_headers\": True,\n        \"enable_public_signup_user_exists_error\": True,\n        \"use_scope_descriptions_for_consent\": True,\n        \"no_disclose_enterprise_connections\": False,\n        \"disable_management_api_sms_obfuscation\": False,\n        \"disable_fields_map_fix\": False,\n    },\n    session_cookie={\n        \"mode\": \"non-persistent\",\n    },\n    sessions={\n        \"oidc_logout_prompt_enabled\": False,\n    },\n    error_page={\n        \"html\": \"\u003chtml\u003e\u003c/html\u003e\",\n        \"show_log_link\": False,\n        \"url\": \"https://example.com/error\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myTenant = new Auth0.Tenant(\"my_tenant\", new()\n    {\n        FriendlyName = \"Tenant Name\",\n        PictureUrl = \"http://example.com/logo.png\",\n        SupportEmail = \"support@example.com\",\n        SupportUrl = \"http://example.com/support\",\n        AllowedLogoutUrls = new[]\n        {\n            \"http://example.com/logout\",\n        },\n        SessionLifetime = 8760,\n        SandboxVersion = \"22\",\n        EnabledLocales = new[]\n        {\n            \"en\",\n        },\n        DefaultRedirectionUri = \"https://example.com/login\",\n        Flags = new Auth0.Inputs.TenantFlagsArgs\n        {\n            DisableClickjackProtectionHeaders = true,\n            EnablePublicSignupUserExistsError = true,\n            UseScopeDescriptionsForConsent = true,\n            NoDiscloseEnterpriseConnections = false,\n            DisableManagementApiSmsObfuscation = false,\n            DisableFieldsMapFix = false,\n        },\n        SessionCookie = new Auth0.Inputs.TenantSessionCookieArgs\n        {\n            Mode = \"non-persistent\",\n        },\n        Sessions = new Auth0.Inputs.TenantSessionsArgs\n        {\n            OidcLogoutPromptEnabled = false,\n        },\n        ErrorPage = new Auth0.Inputs.TenantErrorPageArgs\n        {\n            Html = \"\u003chtml\u003e\u003c/html\u003e\",\n            ShowLogLink = false,\n            Url = \"https://example.com/error\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewTenant(ctx, \"my_tenant\", \u0026auth0.TenantArgs{\n\t\t\tFriendlyName: pulumi.String(\"Tenant Name\"),\n\t\t\tPictureUrl:   pulumi.String(\"http://example.com/logo.png\"),\n\t\t\tSupportEmail: pulumi.String(\"support@example.com\"),\n\t\t\tSupportUrl:   pulumi.String(\"http://example.com/support\"),\n\t\t\tAllowedLogoutUrls: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"http://example.com/logout\"),\n\t\t\t},\n\t\t\tSessionLifetime: pulumi.Float64(8760),\n\t\t\tSandboxVersion:  pulumi.String(\"22\"),\n\t\t\tEnabledLocales: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"en\"),\n\t\t\t},\n\t\t\tDefaultRedirectionUri: pulumi.String(\"https://example.com/login\"),\n\t\t\tFlags: \u0026auth0.TenantFlagsArgs{\n\t\t\t\tDisableClickjackProtectionHeaders:  pulumi.Bool(true),\n\t\t\t\tEnablePublicSignupUserExistsError:  pulumi.Bool(true),\n\t\t\t\tUseScopeDescriptionsForConsent:     pulumi.Bool(true),\n\t\t\t\tNoDiscloseEnterpriseConnections:    pulumi.Bool(false),\n\t\t\t\tDisableManagementApiSmsObfuscation: pulumi.Bool(false),\n\t\t\t\tDisableFieldsMapFix:                pulumi.Bool(false),\n\t\t\t},\n\t\t\tSessionCookie: \u0026auth0.TenantSessionCookieArgs{\n\t\t\t\tMode: pulumi.String(\"non-persistent\"),\n\t\t\t},\n\t\t\tSessions: \u0026auth0.TenantSessionsArgs{\n\t\t\t\tOidcLogoutPromptEnabled: pulumi.Bool(false),\n\t\t\t},\n\t\t\tErrorPage: \u0026auth0.TenantErrorPageArgs{\n\t\t\t\tHtml:        pulumi.String(\"\u003chtml\u003e\u003c/html\u003e\"),\n\t\t\t\tShowLogLink: pulumi.Bool(false),\n\t\t\t\tUrl:         pulumi.String(\"https://example.com/error\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    auth0 = {\n      source = \"pulumi/auth0\"\n    }\n  }\n}\n\nresource \"auth0_tenant\" \"my_tenant\" {\n  friendly_name           = \"Tenant Name\"\n  picture_url             = \"http://example.com/logo.png\"\n  support_email           = \"support@example.com\"\n  support_url             = \"http://example.com/support\"\n  allowed_logout_urls     = [\"http://example.com/logout\"]\n  session_lifetime        = 8760\n  sandbox_version         = \"22\"\n  enabled_locales         = [\"en\"]\n  default_redirection_uri = \"https://example.com/login\"\n  flags = {\n    disable_clickjack_protection_headers   = true\n    enable_public_signup_user_exists_error = true\n    use_scope_descriptions_for_consent     = true\n    no_disclose_enterprise_connections     = false\n    disable_management_api_sms_obfuscation = false\n    disable_fields_map_fix                 = false\n  }\n  session_cookie = {\n    mode = \"non-persistent\"\n  }\n  sessions = {\n    oidc_logout_prompt_enabled = false\n  }\n  error_page = {\n    html          = \"\u003chtml\u003e\u003c/html\u003e\"\n    show_log_link = false\n    url           = \"https://example.com/error\"\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Tenant;\nimport com.pulumi.auth0.TenantArgs;\nimport com.pulumi.auth0.inputs.TenantFlagsArgs;\nimport com.pulumi.auth0.inputs.TenantSessionCookieArgs;\nimport com.pulumi.auth0.inputs.TenantSessionsArgs;\nimport com.pulumi.auth0.inputs.TenantErrorPageArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myTenant = new Tenant(\"myTenant\", TenantArgs.builder()\n            .friendlyName(\"Tenant Name\")\n            .pictureUrl(\"http://example.com/logo.png\")\n            .supportEmail(\"support@example.com\")\n            .supportUrl(\"http://example.com/support\")\n            .allowedLogoutUrls(\"http://example.com/logout\")\n            .sessionLifetime(8760.0)\n            .sandboxVersion(\"22\")\n            .enabledLocales(\"en\")\n            .defaultRedirectionUri(\"https://example.com/login\")\n            .flags(TenantFlagsArgs.builder()\n                .disableClickjackProtectionHeaders(true)\n                .enablePublicSignupUserExistsError(true)\n                .useScopeDescriptionsForConsent(true)\n                .noDiscloseEnterpriseConnections(false)\n                .disableManagementApiSmsObfuscation(false)\n                .disableFieldsMapFix(false)\n                .build())\n            .sessionCookie(TenantSessionCookieArgs.builder()\n                .mode(\"non-persistent\")\n                .build())\n            .sessions(TenantSessionsArgs.builder()\n                .oidcLogoutPromptEnabled(false)\n                .build())\n            .errorPage(TenantErrorPageArgs.builder()\n                .html(\"\u003chtml\u003e\u003c/html\u003e\")\n                .showLogLink(false)\n                .url(\"https://example.com/error\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myTenant:\n    type: auth0:Tenant\n    name: my_tenant\n    properties:\n      friendlyName: Tenant Name\n      pictureUrl: http://example.com/logo.png\n      supportEmail: support@example.com\n      supportUrl: http://example.com/support\n      allowedLogoutUrls:\n        - http://example.com/logout\n      sessionLifetime: 8760\n      sandboxVersion: '22'\n      enabledLocales:\n        - en\n      defaultRedirectionUri: https://example.com/login\n      flags:\n        disableClickjackProtectionHeaders: true\n        enablePublicSignupUserExistsError: true\n        useScopeDescriptionsForConsent: true\n        noDiscloseEnterpriseConnections: false\n        disableManagementApiSmsObfuscation: false\n        disableFieldsMapFix: false\n      sessionCookie:\n        mode: non-persistent\n      sessions:\n        oidcLogoutPromptEnabled: false\n      errorPage:\n        html: \u003chtml\u003e\u003c/html\u003e\n        showLogLink: false\n        url: https://example.com/error\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nAs this is not a resource identifiable by an ID within the Auth0 Management API,\ntenant can be imported using a random string.\n\nWe recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)\n\nExample:\n\n```sh\n$ pulumi import auth0:index/tenant:Tenant my_tenant \"82f4f21b-017a-319d-92e7-2291c1ca36c4\"\n```\n\n",
+            "description": "With this resource, you can manage Auth0 tenants, including setting logos and support contact information, setting error pages, and configuring default tenant behaviors.\n\n\u003e Creating tenants through the Management API is not currently supported. Therefore, this resource can only\nmanage an existing tenant created through the Auth0 dashboard.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as auth0 from \"@pulumi/auth0\";\n\nconst myTenant = new auth0.Tenant(\"my_tenant\", {\n    friendlyName: \"Tenant Name\",\n    pictureUrl: \"http://example.com/logo.png\",\n    supportEmail: \"support@example.com\",\n    supportUrl: \"http://example.com/support\",\n    allowedLogoutUrls: [\"http://example.com/logout\"],\n    sessionLifetime: 8760,\n    sandboxVersion: \"22\",\n    enabledLocales: [\"en\"],\n    defaultRedirectionUri: \"https://example.com/login\",\n    flags: {\n        disableClickjackProtectionHeaders: true,\n        enablePublicSignupUserExistsError: true,\n        useScopeDescriptionsForConsent: true,\n        noDiscloseEnterpriseConnections: false,\n        disableManagementApiSmsObfuscation: false,\n        disableFieldsMapFix: false,\n    },\n    sessionCookie: {\n        mode: \"non-persistent\",\n    },\n    sessions: {\n        oidcLogoutPromptEnabled: false,\n    },\n    errorPage: {\n        html: \"\u003chtml\u003e\u003c/html\u003e\",\n        showLogLink: false,\n        url: \"https://example.com/error\",\n    },\n    countryCodes: {\n        lists: [\n            \"US\",\n            \"CA\",\n        ],\n        mode: \"allow\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_auth0 as auth0\n\nmy_tenant = auth0.Tenant(\"my_tenant\",\n    friendly_name=\"Tenant Name\",\n    picture_url=\"http://example.com/logo.png\",\n    support_email=\"support@example.com\",\n    support_url=\"http://example.com/support\",\n    allowed_logout_urls=[\"http://example.com/logout\"],\n    session_lifetime=float(8760),\n    sandbox_version=\"22\",\n    enabled_locales=[\"en\"],\n    default_redirection_uri=\"https://example.com/login\",\n    flags={\n        \"disable_clickjack_protection_headers\": True,\n        \"enable_public_signup_user_exists_error\": True,\n        \"use_scope_descriptions_for_consent\": True,\n        \"no_disclose_enterprise_connections\": False,\n        \"disable_management_api_sms_obfuscation\": False,\n        \"disable_fields_map_fix\": False,\n    },\n    session_cookie={\n        \"mode\": \"non-persistent\",\n    },\n    sessions={\n        \"oidc_logout_prompt_enabled\": False,\n    },\n    error_page={\n        \"html\": \"\u003chtml\u003e\u003c/html\u003e\",\n        \"show_log_link\": False,\n        \"url\": \"https://example.com/error\",\n    },\n    country_codes={\n        \"lists\": [\n            \"US\",\n            \"CA\",\n        ],\n        \"mode\": \"allow\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Auth0 = Pulumi.Auth0;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myTenant = new Auth0.Tenant(\"my_tenant\", new()\n    {\n        FriendlyName = \"Tenant Name\",\n        PictureUrl = \"http://example.com/logo.png\",\n        SupportEmail = \"support@example.com\",\n        SupportUrl = \"http://example.com/support\",\n        AllowedLogoutUrls = new[]\n        {\n            \"http://example.com/logout\",\n        },\n        SessionLifetime = 8760,\n        SandboxVersion = \"22\",\n        EnabledLocales = new[]\n        {\n            \"en\",\n        },\n        DefaultRedirectionUri = \"https://example.com/login\",\n        Flags = new Auth0.Inputs.TenantFlagsArgs\n        {\n            DisableClickjackProtectionHeaders = true,\n            EnablePublicSignupUserExistsError = true,\n            UseScopeDescriptionsForConsent = true,\n            NoDiscloseEnterpriseConnections = false,\n            DisableManagementApiSmsObfuscation = false,\n            DisableFieldsMapFix = false,\n        },\n        SessionCookie = new Auth0.Inputs.TenantSessionCookieArgs\n        {\n            Mode = \"non-persistent\",\n        },\n        Sessions = new Auth0.Inputs.TenantSessionsArgs\n        {\n            OidcLogoutPromptEnabled = false,\n        },\n        ErrorPage = new Auth0.Inputs.TenantErrorPageArgs\n        {\n            Html = \"\u003chtml\u003e\u003c/html\u003e\",\n            ShowLogLink = false,\n            Url = \"https://example.com/error\",\n        },\n        CountryCodes = new Auth0.Inputs.TenantCountryCodesArgs\n        {\n            Lists = new[]\n            {\n                \"US\",\n                \"CA\",\n            },\n            Mode = \"allow\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := auth0.NewTenant(ctx, \"my_tenant\", \u0026auth0.TenantArgs{\n\t\t\tFriendlyName: pulumi.String(\"Tenant Name\"),\n\t\t\tPictureUrl:   pulumi.String(\"http://example.com/logo.png\"),\n\t\t\tSupportEmail: pulumi.String(\"support@example.com\"),\n\t\t\tSupportUrl:   pulumi.String(\"http://example.com/support\"),\n\t\t\tAllowedLogoutUrls: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"http://example.com/logout\"),\n\t\t\t},\n\t\t\tSessionLifetime: pulumi.Float64(8760),\n\t\t\tSandboxVersion:  pulumi.String(\"22\"),\n\t\t\tEnabledLocales: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"en\"),\n\t\t\t},\n\t\t\tDefaultRedirectionUri: pulumi.String(\"https://example.com/login\"),\n\t\t\tFlags: \u0026auth0.TenantFlagsArgs{\n\t\t\t\tDisableClickjackProtectionHeaders:  pulumi.Bool(true),\n\t\t\t\tEnablePublicSignupUserExistsError:  pulumi.Bool(true),\n\t\t\t\tUseScopeDescriptionsForConsent:     pulumi.Bool(true),\n\t\t\t\tNoDiscloseEnterpriseConnections:    pulumi.Bool(false),\n\t\t\t\tDisableManagementApiSmsObfuscation: pulumi.Bool(false),\n\t\t\t\tDisableFieldsMapFix:                pulumi.Bool(false),\n\t\t\t},\n\t\t\tSessionCookie: \u0026auth0.TenantSessionCookieArgs{\n\t\t\t\tMode: pulumi.String(\"non-persistent\"),\n\t\t\t},\n\t\t\tSessions: \u0026auth0.TenantSessionsArgs{\n\t\t\t\tOidcLogoutPromptEnabled: pulumi.Bool(false),\n\t\t\t},\n\t\t\tErrorPage: \u0026auth0.TenantErrorPageArgs{\n\t\t\t\tHtml:        pulumi.String(\"\u003chtml\u003e\u003c/html\u003e\"),\n\t\t\t\tShowLogLink: pulumi.Bool(false),\n\t\t\t\tUrl:         pulumi.String(\"https://example.com/error\"),\n\t\t\t},\n\t\t\tCountryCodes: \u0026auth0.TenantCountryCodesArgs{\n\t\t\t\tLists: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"US\"),\n\t\t\t\t\tpulumi.String(\"CA\"),\n\t\t\t\t},\n\t\t\t\tMode: pulumi.String(\"allow\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    auth0 = {\n      source = \"pulumi/auth0\"\n    }\n  }\n}\n\nresource \"auth0_tenant\" \"my_tenant\" {\n  friendly_name           = \"Tenant Name\"\n  picture_url             = \"http://example.com/logo.png\"\n  support_email           = \"support@example.com\"\n  support_url             = \"http://example.com/support\"\n  allowed_logout_urls     = [\"http://example.com/logout\"]\n  session_lifetime        = 8760\n  sandbox_version         = \"22\"\n  enabled_locales         = [\"en\"]\n  default_redirection_uri = \"https://example.com/login\"\n  flags = {\n    disable_clickjack_protection_headers   = true\n    enable_public_signup_user_exists_error = true\n    use_scope_descriptions_for_consent     = true\n    no_disclose_enterprise_connections     = false\n    disable_management_api_sms_obfuscation = false\n    disable_fields_map_fix                 = false\n  }\n  session_cookie = {\n    mode = \"non-persistent\"\n  }\n  sessions = {\n    oidc_logout_prompt_enabled = false\n  }\n  error_page = {\n    html          = \"\u003chtml\u003e\u003c/html\u003e\"\n    show_log_link = false\n    url           = \"https://example.com/error\"\n  }\n  country_codes = {\n    lists = [\"US\", \"CA\"]\n    mode  = \"allow\"\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.auth0.Tenant;\nimport com.pulumi.auth0.TenantArgs;\nimport com.pulumi.auth0.inputs.TenantFlagsArgs;\nimport com.pulumi.auth0.inputs.TenantSessionCookieArgs;\nimport com.pulumi.auth0.inputs.TenantSessionsArgs;\nimport com.pulumi.auth0.inputs.TenantErrorPageArgs;\nimport com.pulumi.auth0.inputs.TenantCountryCodesArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myTenant = new Tenant(\"myTenant\", TenantArgs.builder()\n            .friendlyName(\"Tenant Name\")\n            .pictureUrl(\"http://example.com/logo.png\")\n            .supportEmail(\"support@example.com\")\n            .supportUrl(\"http://example.com/support\")\n            .allowedLogoutUrls(\"http://example.com/logout\")\n            .sessionLifetime(8760.0)\n            .sandboxVersion(\"22\")\n            .enabledLocales(\"en\")\n            .defaultRedirectionUri(\"https://example.com/login\")\n            .flags(TenantFlagsArgs.builder()\n                .disableClickjackProtectionHeaders(true)\n                .enablePublicSignupUserExistsError(true)\n                .useScopeDescriptionsForConsent(true)\n                .noDiscloseEnterpriseConnections(false)\n                .disableManagementApiSmsObfuscation(false)\n                .disableFieldsMapFix(false)\n                .build())\n            .sessionCookie(TenantSessionCookieArgs.builder()\n                .mode(\"non-persistent\")\n                .build())\n            .sessions(TenantSessionsArgs.builder()\n                .oidcLogoutPromptEnabled(false)\n                .build())\n            .errorPage(TenantErrorPageArgs.builder()\n                .html(\"\u003chtml\u003e\u003c/html\u003e\")\n                .showLogLink(false)\n                .url(\"https://example.com/error\")\n                .build())\n            .countryCodes(TenantCountryCodesArgs.builder()\n                .lists(                \n                    \"US\",\n                    \"CA\")\n                .mode(\"allow\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myTenant:\n    type: auth0:Tenant\n    name: my_tenant\n    properties:\n      friendlyName: Tenant Name\n      pictureUrl: http://example.com/logo.png\n      supportEmail: support@example.com\n      supportUrl: http://example.com/support\n      allowedLogoutUrls:\n        - http://example.com/logout\n      sessionLifetime: 8760\n      sandboxVersion: '22'\n      enabledLocales:\n        - en\n      defaultRedirectionUri: https://example.com/login\n      flags:\n        disableClickjackProtectionHeaders: true\n        enablePublicSignupUserExistsError: true\n        useScopeDescriptionsForConsent: true\n        noDiscloseEnterpriseConnections: false\n        disableManagementApiSmsObfuscation: false\n        disableFieldsMapFix: false\n      sessionCookie:\n        mode: non-persistent\n      sessions:\n        oidcLogoutPromptEnabled: false\n      errorPage:\n        html: \u003chtml\u003e\u003c/html\u003e\n        showLogLink: false\n        url: https://example.com/error\n      countryCodes:\n        lists:\n          - US\n          - CA\n        mode: allow\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nAs this is not a resource identifiable by an ID within the Auth0 Management API,\ntenant can be imported using a random string.\n\nWe recommend [Version 4 UUID](https://www.uuidgenerator.net/version4)\n\nExample:\n\n```sh\n$ pulumi import auth0:index/tenant:Tenant my_tenant \"82f4f21b-017a-319d-92e7-2291c1ca36c4\"\n```\n\n",
             "properties": {
                 "acrValuesSupporteds": {
                     "type": "array",
@@ -22786,6 +23122,10 @@
                 "clientIdMetadataDocumentSupported": {
                     "type": "boolean",
                     "description": "Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.\n"
+                },
+                "countryCodes": {
+                    "$ref": "#/types/auth0:index/TenantCountryCodes:TenantCountryCodes",
+                    "description": "Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.\n"
                 },
                 "customizeMfaInPostloginAction": {
                     "type": "boolean",
@@ -22951,6 +23291,10 @@
                     "type": "boolean",
                     "description": "Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.\n"
                 },
+                "countryCodes": {
+                    "$ref": "#/types/auth0:index/TenantCountryCodes:TenantCountryCodes",
+                    "description": "Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.\n"
+                },
                 "customizeMfaInPostloginAction": {
                     "type": "boolean",
                     "description": "Whether to enable flexible factors for MFA in the PostLogin action.\n"
@@ -23087,6 +23431,10 @@
                     "clientIdMetadataDocumentSupported": {
                         "type": "boolean",
                         "description": "Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.\n"
+                    },
+                    "countryCodes": {
+                        "$ref": "#/types/auth0:index/TenantCountryCodes:TenantCountryCodes",
+                        "description": "Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.\n"
                     },
                     "customizeMfaInPostloginAction": {
                         "type": "boolean",
@@ -24530,6 +24878,13 @@
                         "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
+                    "identifiers": {
+                        "description": "Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getBrandingThemeIdentifier:getBrandingThemeIdentifier"
+                        },
+                        "type": "array"
+                    },
                     "pageBackgrounds": {
                         "items": {
                             "$ref": "#/types/auth0:index/getBrandingThemePageBackground:getBrandingThemePageBackground"
@@ -24548,6 +24903,7 @@
                     "colors",
                     "displayName",
                     "fonts",
+                    "identifiers",
                     "pageBackgrounds",
                     "widgets",
                     "id"
@@ -24563,6 +24919,10 @@
                     "clientId": {
                         "type": "string",
                         "description": "The ID of the client. If not provided, \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e must be set.\n"
+                    },
+                    "hideClientSecret": {
+                        "type": "boolean",
+                        "description": "Set this to avoid persisting the sensitive \u003cspan pulumi-lang-nodejs=\"`clientSecret`\" pulumi-lang-dotnet=\"`ClientSecret`\" pulumi-lang-go=\"`clientSecret`\" pulumi-lang-python=\"`client_secret`\" pulumi-lang-yaml=\"`clientSecret`\" pulumi-lang-java=\"`clientSecret`\" pulumi-lang-hcl=\"`client_secret`\"\u003e`clientSecret`\u003c/span\u003e value into state, in which case \u003cspan pulumi-lang-nodejs=\"`clientSecret`\" pulumi-lang-dotnet=\"`ClientSecret`\" pulumi-lang-go=\"`clientSecret`\" pulumi-lang-python=\"`client_secret`\" pulumi-lang-yaml=\"`clientSecret`\" pulumi-lang-java=\"`clientSecret`\" pulumi-lang-hcl=\"`client_secret`\"\u003e`clientSecret`\u003c/span\u003e will contain an empty string.\n"
                     },
                     "name": {
                         "type": "string",
@@ -24646,7 +25006,7 @@
                         "type": "object"
                     },
                     "clientSecret": {
-                        "description": "Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string.\n",
+                        "description": "Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. Set \u003cspan pulumi-lang-nodejs=\"`hideClientSecret`\" pulumi-lang-dotnet=\"`HideClientSecret`\" pulumi-lang-go=\"`hideClientSecret`\" pulumi-lang-python=\"`hide_client_secret`\" pulumi-lang-yaml=\"`hideClientSecret`\" pulumi-lang-java=\"`hideClientSecret`\" pulumi-lang-hcl=\"`hide_client_secret`\"\u003e`hideClientSecret`\u003c/span\u003e to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e to avoid persisting this value into Terraform state.\n",
                         "secret": true,
                         "type": "string"
                     },
@@ -24725,9 +25085,20 @@
                         },
                         "type": "array"
                     },
+                    "hideClientSecret": {
+                        "description": "Set this to avoid persisting the sensitive \u003cspan pulumi-lang-nodejs=\"`clientSecret`\" pulumi-lang-dotnet=\"`ClientSecret`\" pulumi-lang-go=\"`clientSecret`\" pulumi-lang-python=\"`client_secret`\" pulumi-lang-yaml=\"`clientSecret`\" pulumi-lang-java=\"`clientSecret`\" pulumi-lang-hcl=\"`client_secret`\"\u003e`clientSecret`\u003c/span\u003e value into state, in which case \u003cspan pulumi-lang-nodejs=\"`clientSecret`\" pulumi-lang-dotnet=\"`ClientSecret`\" pulumi-lang-go=\"`clientSecret`\" pulumi-lang-python=\"`client_secret`\" pulumi-lang-yaml=\"`clientSecret`\" pulumi-lang-java=\"`clientSecret`\" pulumi-lang-hcl=\"`client_secret`\"\u003e`clientSecret`\u003c/span\u003e will contain an empty string.\n",
+                        "type": "boolean"
+                    },
                     "id": {
                         "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
+                    },
+                    "identityAssertionAuthorizationGrants": {
+                        "description": "Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getClientIdentityAssertionAuthorizationGrant:getClientIdentityAssertionAuthorizationGrant"
+                        },
+                        "type": "array"
                     },
                     "initiateLoginUri": {
                         "description": "Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.\n",
@@ -24929,6 +25300,7 @@
                     "fedcmLogins",
                     "formTemplate",
                     "grantTypes",
+                    "identityAssertionAuthorizationGrants",
                     "initiateLoginUri",
                     "isFirstParty",
                     "isTokenEndpointIpHeaderTrusted",
@@ -25035,6 +25407,10 @@
                         "type": "string",
                         "description": "Filter clients by CIMD external client ID URL.\n"
                     },
+                    "hideClientSecret": {
+                        "type": "boolean",
+                        "description": "Set this to avoid persisting the sensitive \u003cspan pulumi-lang-nodejs=\"`clientSecret`\" pulumi-lang-dotnet=\"`ClientSecret`\" pulumi-lang-go=\"`clientSecret`\" pulumi-lang-python=\"`client_secret`\" pulumi-lang-yaml=\"`clientSecret`\" pulumi-lang-java=\"`clientSecret`\" pulumi-lang-hcl=\"`client_secret`\"\u003e`clientSecret`\u003c/span\u003e value of each client into state, in which case \u003cspan pulumi-lang-nodejs=\"`clientSecret`\" pulumi-lang-dotnet=\"`ClientSecret`\" pulumi-lang-go=\"`clientSecret`\" pulumi-lang-python=\"`client_secret`\" pulumi-lang-yaml=\"`clientSecret`\" pulumi-lang-java=\"`clientSecret`\" pulumi-lang-hcl=\"`client_secret`\"\u003e`clientSecret`\u003c/span\u003e will contain an empty string.\n"
+                    },
                     "isFirstParty": {
                         "type": "boolean",
                         "description": "Filter clients by first party status.\n"
@@ -25066,6 +25442,10 @@
                     "externalClientId": {
                         "description": "Filter clients by CIMD external client ID URL.\n",
                         "type": "string"
+                    },
+                    "hideClientSecret": {
+                        "description": "Set this to avoid persisting the sensitive \u003cspan pulumi-lang-nodejs=\"`clientSecret`\" pulumi-lang-dotnet=\"`ClientSecret`\" pulumi-lang-go=\"`clientSecret`\" pulumi-lang-python=\"`client_secret`\" pulumi-lang-yaml=\"`clientSecret`\" pulumi-lang-java=\"`clientSecret`\" pulumi-lang-hcl=\"`client_secret`\"\u003e`clientSecret`\u003c/span\u003e value of each client into state, in which case \u003cspan pulumi-lang-nodejs=\"`clientSecret`\" pulumi-lang-dotnet=\"`ClientSecret`\" pulumi-lang-go=\"`clientSecret`\" pulumi-lang-python=\"`client_secret`\" pulumi-lang-yaml=\"`clientSecret`\" pulumi-lang-java=\"`clientSecret`\" pulumi-lang-hcl=\"`client_secret`\"\u003e`clientSecret`\u003c/span\u003e will contain an empty string.\n",
+                        "type": "boolean"
                     },
                     "id": {
                         "description": "The provider-assigned unique ID for this managed resource.",
@@ -25111,14 +25491,14 @@
                 "description": "A collection of values returned by getConnection.\n",
                 "properties": {
                     "authentications": {
-                        "description": "Configure the purpose of a connection to be used for authentication during login.\n",
+                        "description": "Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set \u003cspan pulumi-lang-nodejs=\"`active`\" pulumi-lang-dotnet=\"`Active`\" pulumi-lang-go=\"`active`\" pulumi-lang-python=\"`active`\" pulumi-lang-yaml=\"`active`\" pulumi-lang-java=\"`active`\" pulumi-lang-hcl=\"`active`\"\u003e`active`\u003c/span\u003e to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e explicitly to deactivate it.\n",
                         "items": {
                             "$ref": "#/types/auth0:index/getConnectionAuthentication:getConnectionAuthentication"
                         },
                         "type": "array"
                     },
                     "connectedAccounts": {
-                        "description": "Configure the purpose of a connection to be used for connected accounts and Token Vault.\n",
+                        "description": "Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set \u003cspan pulumi-lang-nodejs=\"`active`\" pulumi-lang-dotnet=\"`Active`\" pulumi-lang-go=\"`active`\" pulumi-lang-python=\"`active`\" pulumi-lang-yaml=\"`active`\" pulumi-lang-java=\"`active`\" pulumi-lang-hcl=\"`active`\"\u003e`active`\u003c/span\u003e to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e explicitly to deactivate it.\n",
                         "items": {
                             "$ref": "#/types/auth0:index/getConnectionConnectedAccount:getConnectionConnectedAccount"
                         },
@@ -25127,6 +25507,20 @@
                     "connectionId": {
                         "description": "The ID of the connection. If not provided, \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\" pulumi-lang-hcl=\"`name`\"\u003e`name`\u003c/span\u003e must be set.\n",
                         "type": "string"
+                    },
+                    "crossAppAccessRequestingApps": {
+                        "description": "Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the \u003cspan pulumi-lang-nodejs=\"`tokenVaultXaa`\" pulumi-lang-dotnet=\"`TokenVaultXaa`\" pulumi-lang-go=\"`tokenVaultXaa`\" pulumi-lang-python=\"`token_vault_xaa`\" pulumi-lang-yaml=\"`tokenVaultXaa`\" pulumi-lang-java=\"`tokenVaultXaa`\" pulumi-lang-hcl=\"`token_vault_xaa`\"\u003e`tokenVaultXaa`\u003c/span\u003e flag to be enabled on your tenant. Only supported on \u003cspan pulumi-lang-nodejs=\"`oidc`\" pulumi-lang-dotnet=\"`Oidc`\" pulumi-lang-go=\"`oidc`\" pulumi-lang-python=\"`oidc`\" pulumi-lang-yaml=\"`oidc`\" pulumi-lang-java=\"`oidc`\" pulumi-lang-hcl=\"`oidc`\"\u003e`oidc`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`okta`\" pulumi-lang-dotnet=\"`Okta`\" pulumi-lang-go=\"`okta`\" pulumi-lang-python=\"`okta`\" pulumi-lang-yaml=\"`okta`\" pulumi-lang-java=\"`okta`\" pulumi-lang-hcl=\"`okta`\"\u003e`okta`\u003c/span\u003e strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set \u003cspan pulumi-lang-nodejs=\"`active`\" pulumi-lang-dotnet=\"`Active`\" pulumi-lang-go=\"`active`\" pulumi-lang-python=\"`active`\" pulumi-lang-yaml=\"`active`\" pulumi-lang-java=\"`active`\" pulumi-lang-hcl=\"`active`\"\u003e`active`\u003c/span\u003e to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\" pulumi-lang-hcl=\"`false`\"\u003e`false`\u003c/span\u003e explicitly to deactivate it. (EA Only)\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getConnectionCrossAppAccessRequestingApp:getConnectionCrossAppAccessRequestingApp"
+                        },
+                        "type": "array"
+                    },
+                    "crossAppAccessResourceApps": {
+                        "description": "Resource App settings that apply to this connection. (EA only)\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getConnectionCrossAppAccessResourceApp:getConnectionCrossAppAccessResourceApp"
+                        },
+                        "type": "array"
                     },
                     "displayName": {
                         "description": "Name used in login screen.\n",
@@ -25188,6 +25582,8 @@
                 "required": [
                     "authentications",
                     "connectedAccounts",
+                    "crossAppAccessRequestingApps",
+                    "crossAppAccessResourceApps",
                     "displayName",
                     "enabledClients",
                     "isDomainConnection",
@@ -26974,6 +27370,13 @@
                         "description": "Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.\n",
                         "type": "boolean"
                     },
+                    "countryCodes": {
+                        "description": "Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.\n",
+                        "items": {
+                            "$ref": "#/types/auth0:index/getTenantCountryCode:getTenantCountryCode"
+                        },
+                        "type": "array"
+                    },
                     "customizeMfaInPostloginAction": {
                         "description": "Whether to enable flexible factors for MFA in the PostLogin action.\n",
                         "type": "boolean"
@@ -27124,6 +27527,7 @@
                     "allowOrganizationNameInAuthenticationApi",
                     "allowedLogoutUrls",
                     "clientIdMetadataDocumentSupported",
+                    "countryCodes",
                     "customizeMfaInPostloginAction",
                     "defaultAudience",
                     "defaultDirectory",

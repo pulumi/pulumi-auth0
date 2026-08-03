@@ -18,6 +18,11 @@ public final class GetNetworkAclRuleNotMatch {
      */
     private List<Integer> asns;
     /**
+     * @return Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+     * 
+     */
+    private List<String> auth0Manageds;
+    /**
      * @return Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
      * 
      */
@@ -75,6 +80,13 @@ public final class GetNetworkAclRuleNotMatch {
      */
     public List<Integer> asns() {
         return this.asns;
+    }
+    /**
+     * @return Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+     * 
+     */
+    public List<String> auth0Manageds() {
+        return this.auth0Manageds;
     }
     /**
      * @return Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
@@ -157,6 +169,7 @@ public final class GetNetworkAclRuleNotMatch {
     @CustomType.Builder
     public static final class Builder {
         private List<Integer> asns;
+        private List<String> auth0Manageds;
         private List<String> connectingIpv4Cidrs;
         private List<String> connectingIpv6Cidrs;
         private List<String> geoCountryCodes;
@@ -171,6 +184,7 @@ public final class GetNetworkAclRuleNotMatch {
         public Builder(GetNetworkAclRuleNotMatch defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.asns = defaults.asns;
+    	      this.auth0Manageds = defaults.auth0Manageds;
     	      this.connectingIpv4Cidrs = defaults.connectingIpv4Cidrs;
     	      this.connectingIpv6Cidrs = defaults.connectingIpv6Cidrs;
     	      this.geoCountryCodes = defaults.geoCountryCodes;
@@ -193,6 +207,17 @@ public final class GetNetworkAclRuleNotMatch {
         }
         public Builder asns(Integer... asns) {
             return asns(List.of(asns));
+        }
+        @CustomType.Setter
+        public Builder auth0Manageds(List<String> auth0Manageds) {
+            if (auth0Manageds == null) {
+              throw new MissingRequiredPropertyException("GetNetworkAclRuleNotMatch", "auth0Manageds");
+            }
+            this.auth0Manageds = auth0Manageds;
+            return this;
+        }
+        public Builder auth0Manageds(String... auth0Manageds) {
+            return auth0Manageds(List.of(auth0Manageds));
         }
         @CustomType.Setter
         public Builder connectingIpv4Cidrs(List<String> connectingIpv4Cidrs) {
@@ -307,6 +332,7 @@ public final class GetNetworkAclRuleNotMatch {
         public GetNetworkAclRuleNotMatch build() {
             final var _resultValue = new GetNetworkAclRuleNotMatch();
             _resultValue.asns = asns;
+            _resultValue.auth0Manageds = auth0Manageds;
             _resultValue.connectingIpv4Cidrs = connectingIpv4Cidrs;
             _resultValue.connectingIpv6Cidrs = connectingIpv6Cidrs;
             _resultValue.geoCountryCodes = geoCountryCodes;

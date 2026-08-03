@@ -10,6 +10,7 @@ import com.pulumi.auth0.outputs.ClientAddons;
 import com.pulumi.auth0.outputs.ClientDefaultOrganization;
 import com.pulumi.auth0.outputs.ClientExpressConfiguration;
 import com.pulumi.auth0.outputs.ClientFedcmLogin;
+import com.pulumi.auth0.outputs.ClientIdentityAssertionAuthorizationGrant;
 import com.pulumi.auth0.outputs.ClientJwtConfiguration;
 import com.pulumi.auth0.outputs.ClientMobile;
 import com.pulumi.auth0.outputs.ClientMyOrganizationConfiguration;
@@ -395,6 +396,20 @@ public class Client extends com.pulumi.resources.CustomResource {
      */
     public Output<List<String>> grantTypes() {
         return this.grantTypes;
+    }
+    /**
+     * Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+     * 
+     */
+    @Export(name="identityAssertionAuthorizationGrant", refs={ClientIdentityAssertionAuthorizationGrant.class}, tree="[0]")
+    private Output</* @Nullable */ ClientIdentityAssertionAuthorizationGrant> identityAssertionAuthorizationGrant;
+
+    /**
+     * @return Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+     * 
+     */
+    public Output<Optional<ClientIdentityAssertionAuthorizationGrant>> identityAssertionAuthorizationGrant() {
+        return Codegen.optional(this.identityAssertionAuthorizationGrant);
     }
     /**
      * Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.

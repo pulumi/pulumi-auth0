@@ -361,6 +361,11 @@ public final class ConnectionOptions {
      */
     private @Nullable List<String> nonPersistentAttrs;
     /**
+     * @return Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+     * 
+     */
+    private @Nullable String oidcMetadata;
+    /**
      * @return Defines options for the passkey authentication method
      * 
      */
@@ -1093,6 +1098,13 @@ public final class ConnectionOptions {
         return this.nonPersistentAttrs == null ? List.of() : this.nonPersistentAttrs;
     }
     /**
+     * @return Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+     * 
+     */
+    public Optional<String> oidcMetadata() {
+        return Optional.ofNullable(this.oidcMetadata);
+    }
+    /**
      * @return Defines options for the passkey authentication method
      * 
      */
@@ -1552,6 +1564,7 @@ public final class ConnectionOptions {
         private @Nullable ConnectionOptionsMfa mfa;
         private @Nullable String name;
         private @Nullable List<String> nonPersistentAttrs;
+        private @Nullable String oidcMetadata;
         private @Nullable ConnectionOptionsPasskeyOptions passkeyOptions;
         private @Nullable ConnectionOptionsPasswordComplexityOptions passwordComplexityOptions;
         private @Nullable ConnectionOptionsPasswordDictionary passwordDictionary;
@@ -1675,6 +1688,7 @@ public final class ConnectionOptions {
     	      this.mfa = defaults.mfa;
     	      this.name = defaults.name;
     	      this.nonPersistentAttrs = defaults.nonPersistentAttrs;
+    	      this.oidcMetadata = defaults.oidcMetadata;
     	      this.passkeyOptions = defaults.passkeyOptions;
     	      this.passwordComplexityOptions = defaults.passwordComplexityOptions;
     	      this.passwordDictionary = defaults.passwordDictionary;
@@ -2147,6 +2161,12 @@ public final class ConnectionOptions {
             return nonPersistentAttrs(List.of(nonPersistentAttrs));
         }
         @CustomType.Setter
+        public Builder oidcMetadata(@Nullable String oidcMetadata) {
+
+            this.oidcMetadata = oidcMetadata;
+            return this;
+        }
+        @CustomType.Setter
         public Builder passkeyOptions(@Nullable ConnectionOptionsPasskeyOptions passkeyOptions) {
 
             this.passkeyOptions = passkeyOptions;
@@ -2552,6 +2572,7 @@ public final class ConnectionOptions {
             _resultValue.mfa = mfa;
             _resultValue.name = name;
             _resultValue.nonPersistentAttrs = nonPersistentAttrs;
+            _resultValue.oidcMetadata = oidcMetadata;
             _resultValue.passkeyOptions = passkeyOptions;
             _resultValue.passwordComplexityOptions = passwordComplexityOptions;
             _resultValue.passwordDictionary = passwordDictionary;

@@ -1024,10 +1024,14 @@ import (
 type Connection struct {
 	pulumi.CustomResourceState
 
-	// Configure the purpose of a connection to be used for authentication during login.
+	// Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
 	Authentication ConnectionAuthenticationOutput `pulumi:"authentication"`
-	// Configure the purpose of a connection to be used for connected accounts and Token Vault.
+	// Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
 	ConnectedAccounts ConnectionConnectedAccountsOutput `pulumi:"connectedAccounts"`
+	// Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `tokenVaultXaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+	CrossAppAccessRequestingApp ConnectionCrossAppAccessRequestingAppOutput `pulumi:"crossAppAccessRequestingApp"`
+	// Resource App settings that apply to this connection. (EA only)
+	CrossAppAccessResourceApp ConnectionCrossAppAccessResourceAppPtrOutput `pulumi:"crossAppAccessResourceApp"`
 	// Name used in login screen.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Indicates whether the connection is domain level.
@@ -1079,10 +1083,14 @@ func GetConnection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Connection resources.
 type connectionState struct {
-	// Configure the purpose of a connection to be used for authentication during login.
+	// Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
 	Authentication *ConnectionAuthentication `pulumi:"authentication"`
-	// Configure the purpose of a connection to be used for connected accounts and Token Vault.
+	// Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
 	ConnectedAccounts *ConnectionConnectedAccounts `pulumi:"connectedAccounts"`
+	// Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `tokenVaultXaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+	CrossAppAccessRequestingApp *ConnectionCrossAppAccessRequestingApp `pulumi:"crossAppAccessRequestingApp"`
+	// Resource App settings that apply to this connection. (EA only)
+	CrossAppAccessResourceApp *ConnectionCrossAppAccessResourceApp `pulumi:"crossAppAccessResourceApp"`
 	// Name used in login screen.
 	DisplayName *string `pulumi:"displayName"`
 	// Indicates whether the connection is domain level.
@@ -1102,10 +1110,14 @@ type connectionState struct {
 }
 
 type ConnectionState struct {
-	// Configure the purpose of a connection to be used for authentication during login.
+	// Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
 	Authentication ConnectionAuthenticationPtrInput
-	// Configure the purpose of a connection to be used for connected accounts and Token Vault.
+	// Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
 	ConnectedAccounts ConnectionConnectedAccountsPtrInput
+	// Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `tokenVaultXaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+	CrossAppAccessRequestingApp ConnectionCrossAppAccessRequestingAppPtrInput
+	// Resource App settings that apply to this connection. (EA only)
+	CrossAppAccessResourceApp ConnectionCrossAppAccessResourceAppPtrInput
 	// Name used in login screen.
 	DisplayName pulumi.StringPtrInput
 	// Indicates whether the connection is domain level.
@@ -1129,10 +1141,14 @@ func (ConnectionState) ElementType() reflect.Type {
 }
 
 type connectionArgs struct {
-	// Configure the purpose of a connection to be used for authentication during login.
+	// Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
 	Authentication *ConnectionAuthentication `pulumi:"authentication"`
-	// Configure the purpose of a connection to be used for connected accounts and Token Vault.
+	// Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
 	ConnectedAccounts *ConnectionConnectedAccounts `pulumi:"connectedAccounts"`
+	// Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `tokenVaultXaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+	CrossAppAccessRequestingApp *ConnectionCrossAppAccessRequestingApp `pulumi:"crossAppAccessRequestingApp"`
+	// Resource App settings that apply to this connection. (EA only)
+	CrossAppAccessResourceApp *ConnectionCrossAppAccessResourceApp `pulumi:"crossAppAccessResourceApp"`
 	// Name used in login screen.
 	DisplayName *string `pulumi:"displayName"`
 	// Indicates whether the connection is domain level.
@@ -1153,10 +1169,14 @@ type connectionArgs struct {
 
 // The set of arguments for constructing a Connection resource.
 type ConnectionArgs struct {
-	// Configure the purpose of a connection to be used for authentication during login.
+	// Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
 	Authentication ConnectionAuthenticationPtrInput
-	// Configure the purpose of a connection to be used for connected accounts and Token Vault.
+	// Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
 	ConnectedAccounts ConnectionConnectedAccountsPtrInput
+	// Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `tokenVaultXaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+	CrossAppAccessRequestingApp ConnectionCrossAppAccessRequestingAppPtrInput
+	// Resource App settings that apply to this connection. (EA only)
+	CrossAppAccessResourceApp ConnectionCrossAppAccessResourceAppPtrInput
 	// Name used in login screen.
 	DisplayName pulumi.StringPtrInput
 	// Indicates whether the connection is domain level.
@@ -1262,14 +1282,24 @@ func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) Con
 	return o
 }
 
-// Configure the purpose of a connection to be used for authentication during login.
+// Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
 func (o ConnectionOutput) Authentication() ConnectionAuthenticationOutput {
 	return o.ApplyT(func(v *Connection) ConnectionAuthenticationOutput { return v.Authentication }).(ConnectionAuthenticationOutput)
 }
 
-// Configure the purpose of a connection to be used for connected accounts and Token Vault.
+// Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
 func (o ConnectionOutput) ConnectedAccounts() ConnectionConnectedAccountsOutput {
 	return o.ApplyT(func(v *Connection) ConnectionConnectedAccountsOutput { return v.ConnectedAccounts }).(ConnectionConnectedAccountsOutput)
+}
+
+// Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `tokenVaultXaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+func (o ConnectionOutput) CrossAppAccessRequestingApp() ConnectionCrossAppAccessRequestingAppOutput {
+	return o.ApplyT(func(v *Connection) ConnectionCrossAppAccessRequestingAppOutput { return v.CrossAppAccessRequestingApp }).(ConnectionCrossAppAccessRequestingAppOutput)
+}
+
+// Resource App settings that apply to this connection. (EA only)
+func (o ConnectionOutput) CrossAppAccessResourceApp() ConnectionCrossAppAccessResourceAppPtrOutput {
+	return o.ApplyT(func(v *Connection) ConnectionCrossAppAccessResourceAppPtrOutput { return v.CrossAppAccessResourceApp }).(ConnectionCrossAppAccessResourceAppPtrOutput)
 }
 
 // Name used in login screen.

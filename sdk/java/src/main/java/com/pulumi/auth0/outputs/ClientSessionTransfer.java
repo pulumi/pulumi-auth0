@@ -26,7 +26,7 @@ public final class ClientSessionTransfer {
      */
     private @Nullable Boolean canCreateSessionTransferToken;
     /**
-     * @return Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+     * @return Configuration for delegation (impersonation) access using Session Transfer Tokens.
      * 
      */
     private @Nullable ClientSessionTransferDelegation delegation;
@@ -65,7 +65,7 @@ public final class ClientSessionTransfer {
         return Optional.ofNullable(this.canCreateSessionTransferToken);
     }
     /**
-     * @return Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+     * @return Configuration for delegation (impersonation) access using Session Transfer Tokens.
      * 
      */
     public Optional<ClientSessionTransferDelegation> delegation() {

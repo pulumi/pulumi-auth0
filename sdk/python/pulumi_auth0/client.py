@@ -42,6 +42,7 @@ class ClientArgs:
                  fedcm_login: pulumi.Input[Optional['ClientFedcmLoginArgs']] = None,
                  form_template: pulumi.Input[Optional[_builtins.str]] = None,
                  grant_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 identity_assertion_authorization_grant: pulumi.Input[Optional['ClientIdentityAssertionAuthorizationGrantArgs']] = None,
                  initiate_login_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  is_first_party: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_token_endpoint_ip_header_trusted: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -94,6 +95,7 @@ class ClientArgs:
         :param pulumi.Input['ClientFedcmLoginArgs'] fedcm_login: Federated Credential Management (FedCM) configuration. (EA only)
         :param pulumi.Input[_builtins.str] form_template: HTML form template to be used for WS-Federation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Types of grants that this client is authorized to use.
+        :param pulumi.Input['ClientIdentityAssertionAuthorizationGrantArgs'] identity_assertion_authorization_grant: Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
         :param pulumi.Input[_builtins.str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
         :param pulumi.Input[_builtins.bool] is_first_party: Indicates whether this client is a first-party client.
         :param pulumi.Input[_builtins.bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
@@ -166,6 +168,8 @@ class ClientArgs:
             pulumi.set(__self__, "form_template", form_template)
         if grant_types is not None:
             pulumi.set(__self__, "grant_types", grant_types)
+        if identity_assertion_authorization_grant is not None:
+            pulumi.set(__self__, "identity_assertion_authorization_grant", identity_assertion_authorization_grant)
         if initiate_login_uri is not None:
             pulumi.set(__self__, "initiate_login_uri", initiate_login_uri)
         if is_first_party is not None:
@@ -477,6 +481,18 @@ class ClientArgs:
     @grant_types.setter
     def grant_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "grant_types", value)
+
+    @_builtins.property
+    @pulumi.getter(name="identityAssertionAuthorizationGrant")
+    def identity_assertion_authorization_grant(self) -> pulumi.Input[Optional['ClientIdentityAssertionAuthorizationGrantArgs']]:
+        """
+        Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+        """
+        return pulumi.get(self, "identity_assertion_authorization_grant")
+
+    @identity_assertion_authorization_grant.setter
+    def identity_assertion_authorization_grant(self, value: pulumi.Input[Optional['ClientIdentityAssertionAuthorizationGrantArgs']]):
+        pulumi.set(self, "identity_assertion_authorization_grant", value)
 
     @_builtins.property
     @pulumi.getter(name="initiateLoginUri")
@@ -841,6 +857,7 @@ class _ClientState:
                  fedcm_login: pulumi.Input[Optional['ClientFedcmLoginArgs']] = None,
                  form_template: pulumi.Input[Optional[_builtins.str]] = None,
                  grant_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 identity_assertion_authorization_grant: pulumi.Input[Optional['ClientIdentityAssertionAuthorizationGrantArgs']] = None,
                  initiate_login_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  is_first_party: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_token_endpoint_ip_header_trusted: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -899,6 +916,7 @@ class _ClientState:
         :param pulumi.Input['ClientFedcmLoginArgs'] fedcm_login: Federated Credential Management (FedCM) configuration. (EA only)
         :param pulumi.Input[_builtins.str] form_template: HTML form template to be used for WS-Federation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Types of grants that this client is authorized to use.
+        :param pulumi.Input['ClientIdentityAssertionAuthorizationGrantArgs'] identity_assertion_authorization_grant: Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
         :param pulumi.Input[_builtins.str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
         :param pulumi.Input[_builtins.bool] is_first_party: Indicates whether this client is a first-party client.
         :param pulumi.Input[_builtins.bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
@@ -981,6 +999,8 @@ class _ClientState:
             pulumi.set(__self__, "form_template", form_template)
         if grant_types is not None:
             pulumi.set(__self__, "grant_types", grant_types)
+        if identity_assertion_authorization_grant is not None:
+            pulumi.set(__self__, "identity_assertion_authorization_grant", identity_assertion_authorization_grant)
         if initiate_login_uri is not None:
             pulumi.set(__self__, "initiate_login_uri", initiate_login_uri)
         if is_first_party is not None:
@@ -1344,6 +1364,18 @@ class _ClientState:
     @grant_types.setter
     def grant_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "grant_types", value)
+
+    @_builtins.property
+    @pulumi.getter(name="identityAssertionAuthorizationGrant")
+    def identity_assertion_authorization_grant(self) -> pulumi.Input[Optional['ClientIdentityAssertionAuthorizationGrantArgs']]:
+        """
+        Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+        """
+        return pulumi.get(self, "identity_assertion_authorization_grant")
+
+    @identity_assertion_authorization_grant.setter
+    def identity_assertion_authorization_grant(self, value: pulumi.Input[Optional['ClientIdentityAssertionAuthorizationGrantArgs']]):
+        pulumi.set(self, "identity_assertion_authorization_grant", value)
 
     @_builtins.property
     @pulumi.getter(name="initiateLoginUri")
@@ -1731,6 +1763,7 @@ class Client(pulumi.CustomResource):
                  fedcm_login: pulumi.Input[Optional[Union['ClientFedcmLoginArgs', 'ClientFedcmLoginArgsDict']]] = None,
                  form_template: pulumi.Input[Optional[_builtins.str]] = None,
                  grant_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 identity_assertion_authorization_grant: pulumi.Input[Optional[Union['ClientIdentityAssertionAuthorizationGrantArgs', 'ClientIdentityAssertionAuthorizationGrantArgsDict']]] = None,
                  initiate_login_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  is_first_party: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_token_endpoint_ip_header_trusted: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1797,6 +1830,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Union['ClientFedcmLoginArgs', 'ClientFedcmLoginArgsDict']] fedcm_login: Federated Credential Management (FedCM) configuration. (EA only)
         :param pulumi.Input[_builtins.str] form_template: HTML form template to be used for WS-Federation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Types of grants that this client is authorized to use.
+        :param pulumi.Input[Union['ClientIdentityAssertionAuthorizationGrantArgs', 'ClientIdentityAssertionAuthorizationGrantArgsDict']] identity_assertion_authorization_grant: Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
         :param pulumi.Input[_builtins.str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
         :param pulumi.Input[_builtins.bool] is_first_party: Indicates whether this client is a first-party client.
         :param pulumi.Input[_builtins.bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
@@ -1881,6 +1915,7 @@ class Client(pulumi.CustomResource):
                  fedcm_login: pulumi.Input[Optional[Union['ClientFedcmLoginArgs', 'ClientFedcmLoginArgsDict']]] = None,
                  form_template: pulumi.Input[Optional[_builtins.str]] = None,
                  grant_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 identity_assertion_authorization_grant: pulumi.Input[Optional[Union['ClientIdentityAssertionAuthorizationGrantArgs', 'ClientIdentityAssertionAuthorizationGrantArgsDict']]] = None,
                  initiate_login_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  is_first_party: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_token_endpoint_ip_header_trusted: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1941,6 +1976,7 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["fedcm_login"] = fedcm_login
             __props__.__dict__["form_template"] = form_template
             __props__.__dict__["grant_types"] = grant_types
+            __props__.__dict__["identity_assertion_authorization_grant"] = identity_assertion_authorization_grant
             __props__.__dict__["initiate_login_uri"] = initiate_login_uri
             __props__.__dict__["is_first_party"] = is_first_party
             __props__.__dict__["is_token_endpoint_ip_header_trusted"] = is_token_endpoint_ip_header_trusted
@@ -2012,6 +2048,7 @@ class Client(pulumi.CustomResource):
             fedcm_login: pulumi.Input[Optional[Union['ClientFedcmLoginArgs', 'ClientFedcmLoginArgsDict']]] = None,
             form_template: pulumi.Input[Optional[_builtins.str]] = None,
             grant_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            identity_assertion_authorization_grant: pulumi.Input[Optional[Union['ClientIdentityAssertionAuthorizationGrantArgs', 'ClientIdentityAssertionAuthorizationGrantArgsDict']]] = None,
             initiate_login_uri: pulumi.Input[Optional[_builtins.str]] = None,
             is_first_party: pulumi.Input[Optional[_builtins.bool]] = None,
             is_token_endpoint_ip_header_trusted: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -2074,6 +2111,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Union['ClientFedcmLoginArgs', 'ClientFedcmLoginArgsDict']] fedcm_login: Federated Credential Management (FedCM) configuration. (EA only)
         :param pulumi.Input[_builtins.str] form_template: HTML form template to be used for WS-Federation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Types of grants that this client is authorized to use.
+        :param pulumi.Input[Union['ClientIdentityAssertionAuthorizationGrantArgs', 'ClientIdentityAssertionAuthorizationGrantArgsDict']] identity_assertion_authorization_grant: Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
         :param pulumi.Input[_builtins.str] initiate_login_uri: Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
         :param pulumi.Input[_builtins.bool] is_first_party: Indicates whether this client is a first-party client.
         :param pulumi.Input[_builtins.bool] is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
@@ -2133,6 +2171,7 @@ class Client(pulumi.CustomResource):
         __props__.__dict__["fedcm_login"] = fedcm_login
         __props__.__dict__["form_template"] = form_template
         __props__.__dict__["grant_types"] = grant_types
+        __props__.__dict__["identity_assertion_authorization_grant"] = identity_assertion_authorization_grant
         __props__.__dict__["initiate_login_uri"] = initiate_login_uri
         __props__.__dict__["is_first_party"] = is_first_party
         __props__.__dict__["is_token_endpoint_ip_header_trusted"] = is_token_endpoint_ip_header_trusted
@@ -2364,6 +2403,14 @@ class Client(pulumi.CustomResource):
         Types of grants that this client is authorized to use.
         """
         return pulumi.get(self, "grant_types")
+
+    @_builtins.property
+    @pulumi.getter(name="identityAssertionAuthorizationGrant")
+    def identity_assertion_authorization_grant(self) -> pulumi.Output[Optional['outputs.ClientIdentityAssertionAuthorizationGrant']]:
+        """
+        Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+        """
+        return pulumi.get(self, "identity_assertion_authorization_grant")
 
     @_builtins.property
     @pulumi.getter(name="initiateLoginUri")

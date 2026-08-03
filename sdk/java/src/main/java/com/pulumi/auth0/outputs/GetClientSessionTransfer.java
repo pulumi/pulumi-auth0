@@ -25,7 +25,7 @@ public final class GetClientSessionTransfer {
      */
     private Boolean canCreateSessionTransferToken;
     /**
-     * @return Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+     * @return Configuration for delegation (impersonation) access using Session Transfer Tokens.
      * 
      */
     private List<GetClientSessionTransferDelegation> delegations;
@@ -64,7 +64,7 @@ public final class GetClientSessionTransfer {
         return this.canCreateSessionTransferToken;
     }
     /**
-     * @return Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+     * @return Configuration for delegation (impersonation) access using Session Transfer Tokens.
      * 
      */
     public List<GetClientSessionTransferDelegation> delegations() {

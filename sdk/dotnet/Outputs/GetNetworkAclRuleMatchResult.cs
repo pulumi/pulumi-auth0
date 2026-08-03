@@ -18,6 +18,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<int> Asns;
         /// <summary>
+        /// Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `TenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+        /// </summary>
+        public readonly ImmutableArray<string> Auth0Manageds;
+        /// <summary>
         /// Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
         /// </summary>
         public readonly ImmutableArray<string> ConnectingIpv4Cidrs;
@@ -62,6 +66,8 @@ namespace Pulumi.Auth0.Outputs
         private GetNetworkAclRuleMatchResult(
             ImmutableArray<int> asns,
 
+            ImmutableArray<string> auth0Manageds,
+
             ImmutableArray<string> connectingIpv4Cidrs,
 
             ImmutableArray<string> connectingIpv6Cidrs,
@@ -83,6 +89,7 @@ namespace Pulumi.Auth0.Outputs
             ImmutableArray<string> userAgents)
         {
             Asns = asns;
+            Auth0Manageds = auth0Manageds;
             ConnectingIpv4Cidrs = connectingIpv4Cidrs;
             ConnectingIpv6Cidrs = connectingIpv6Cidrs;
             GeoCountryCodes = geoCountryCodes;

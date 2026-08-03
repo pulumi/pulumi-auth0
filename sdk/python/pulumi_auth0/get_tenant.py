@@ -27,7 +27,7 @@ class GetTenantResult:
     """
     A collection of values returned by getTenant.
     """
-    def __init__(__self__, acr_values_supporteds=None, allow_organization_name_in_authentication_api=None, allowed_logout_urls=None, client_id_metadata_document_supported=None, customize_mfa_in_postlogin_action=None, default_audience=None, default_directory=None, default_redirection_uri=None, default_token_quotas=None, disable_acr_values_supported=None, domain=None, dynamic_client_registration_security_mode=None, enabled_locales=None, ephemeral_session_lifetime=None, error_pages=None, flags=None, friendly_name=None, id=None, idle_ephemeral_session_lifetime=None, idle_session_lifetime=None, management_api_identifier=None, mtls=None, oidc_logouts=None, phone_consolidated_experience=None, picture_url=None, pushed_authorization_requests_supported=None, resource_parameter_profile=None, sandbox_version=None, session_cookies=None, session_lifetime=None, sessions=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, support_email=None, support_url=None):
+    def __init__(__self__, acr_values_supporteds=None, allow_organization_name_in_authentication_api=None, allowed_logout_urls=None, client_id_metadata_document_supported=None, country_codes=None, customize_mfa_in_postlogin_action=None, default_audience=None, default_directory=None, default_redirection_uri=None, default_token_quotas=None, disable_acr_values_supported=None, domain=None, dynamic_client_registration_security_mode=None, enabled_locales=None, ephemeral_session_lifetime=None, error_pages=None, flags=None, friendly_name=None, id=None, idle_ephemeral_session_lifetime=None, idle_session_lifetime=None, management_api_identifier=None, mtls=None, oidc_logouts=None, phone_consolidated_experience=None, picture_url=None, pushed_authorization_requests_supported=None, resource_parameter_profile=None, sandbox_version=None, session_cookies=None, session_lifetime=None, sessions=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, support_email=None, support_url=None):
         if acr_values_supporteds and not isinstance(acr_values_supporteds, list):
             raise TypeError("Expected argument 'acr_values_supporteds' to be a list")
         pulumi.set(__self__, "acr_values_supporteds", acr_values_supporteds)
@@ -40,6 +40,9 @@ class GetTenantResult:
         if client_id_metadata_document_supported and not isinstance(client_id_metadata_document_supported, bool):
             raise TypeError("Expected argument 'client_id_metadata_document_supported' to be a bool")
         pulumi.set(__self__, "client_id_metadata_document_supported", client_id_metadata_document_supported)
+        if country_codes and not isinstance(country_codes, list):
+            raise TypeError("Expected argument 'country_codes' to be a list")
+        pulumi.set(__self__, "country_codes", country_codes)
         if customize_mfa_in_postlogin_action and not isinstance(customize_mfa_in_postlogin_action, bool):
             raise TypeError("Expected argument 'customize_mfa_in_postlogin_action' to be a bool")
         pulumi.set(__self__, "customize_mfa_in_postlogin_action", customize_mfa_in_postlogin_action)
@@ -162,6 +165,14 @@ class GetTenantResult:
         Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
         """
         return pulumi.get(self, "client_id_metadata_document_supported")
+
+    @_builtins.property
+    @pulumi.getter(name="countryCodes")
+    def country_codes(self) -> Sequence['outputs.GetTenantCountryCodeResult']:
+        """
+        Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
+        """
+        return pulumi.get(self, "country_codes")
 
     @_builtins.property
     @pulumi.getter(name="customizeMfaInPostloginAction")
@@ -414,6 +425,7 @@ class AwaitableGetTenantResult(GetTenantResult):
             allow_organization_name_in_authentication_api=self.allow_organization_name_in_authentication_api,
             allowed_logout_urls=self.allowed_logout_urls,
             client_id_metadata_document_supported=self.client_id_metadata_document_supported,
+            country_codes=self.country_codes,
             customize_mfa_in_postlogin_action=self.customize_mfa_in_postlogin_action,
             default_audience=self.default_audience,
             default_directory=self.default_directory,
@@ -468,6 +480,7 @@ def get_tenant(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTenan
         allow_organization_name_in_authentication_api=pulumi.get(__ret__, 'allow_organization_name_in_authentication_api'),
         allowed_logout_urls=pulumi.get(__ret__, 'allowed_logout_urls'),
         client_id_metadata_document_supported=pulumi.get(__ret__, 'client_id_metadata_document_supported'),
+        country_codes=pulumi.get(__ret__, 'country_codes'),
         customize_mfa_in_postlogin_action=pulumi.get(__ret__, 'customize_mfa_in_postlogin_action'),
         default_audience=pulumi.get(__ret__, 'default_audience'),
         default_directory=pulumi.get(__ret__, 'default_directory'),
@@ -519,6 +532,7 @@ def get_tenant_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOu
         allow_organization_name_in_authentication_api=pulumi.get(__response__, 'allow_organization_name_in_authentication_api'),
         allowed_logout_urls=pulumi.get(__response__, 'allowed_logout_urls'),
         client_id_metadata_document_supported=pulumi.get(__response__, 'client_id_metadata_document_supported'),
+        country_codes=pulumi.get(__response__, 'country_codes'),
         customize_mfa_in_postlogin_action=pulumi.get(__response__, 'customize_mfa_in_postlogin_action'),
         default_audience=pulumi.get(__response__, 'default_audience'),
         default_directory=pulumi.get(__response__, 'default_directory'),

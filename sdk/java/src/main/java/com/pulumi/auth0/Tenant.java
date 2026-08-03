@@ -6,6 +6,7 @@ package com.pulumi.auth0;
 import com.pulumi.auth0.TenantArgs;
 import com.pulumi.auth0.Utilities;
 import com.pulumi.auth0.inputs.TenantState;
+import com.pulumi.auth0.outputs.TenantCountryCodes;
 import com.pulumi.auth0.outputs.TenantDefaultTokenQuota;
 import com.pulumi.auth0.outputs.TenantErrorPage;
 import com.pulumi.auth0.outputs.TenantFlags;
@@ -45,6 +46,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.auth0.inputs.TenantSessionCookieArgs;
  * import com.pulumi.auth0.inputs.TenantSessionsArgs;
  * import com.pulumi.auth0.inputs.TenantErrorPageArgs;
+ * import com.pulumi.auth0.inputs.TenantCountryCodesArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -86,6 +88,12 @@ import javax.annotation.Nullable;
  *                 .html("<html></html>")
  *                 .showLogLink(false)
  *                 .url("https://example.com/error")
+ *                 .build())
+ *             .countryCodes(TenantCountryCodesArgs.builder()
+ *                 .lists(                
+ *                     "US",
+ *                     "CA")
+ *                 .mode("allow")
  *                 .build())
  *             .build());
  * 
@@ -165,6 +173,20 @@ public class Tenant extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> clientIdMetadataDocumentSupported() {
         return this.clientIdMetadataDocumentSupported;
+    }
+    /**
+     * Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
+     * 
+     */
+    @Export(name="countryCodes", refs={TenantCountryCodes.class}, tree="[0]")
+    private Output</* @Nullable */ TenantCountryCodes> countryCodes;
+
+    /**
+     * @return Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
+     * 
+     */
+    public Output<Optional<TenantCountryCodes>> countryCodes() {
+        return Codegen.optional(this.countryCodes);
     }
     /**
      * Whether to enable flexible factors for MFA in the PostLogin action.

@@ -72,6 +72,8 @@ type GetClientsArgs struct {
 	AppTypes []string `pulumi:"appTypes"`
 	// Filter clients by CIMD external client ID URL.
 	ExternalClientId *string `pulumi:"externalClientId"`
+	// Set this to avoid persisting the sensitive `clientSecret` value of each client into state, in which case `clientSecret` will contain an empty string.
+	HideClientSecret *bool `pulumi:"hideClientSecret"`
 	// Filter clients by first party status.
 	IsFirstParty *bool `pulumi:"isFirstParty"`
 	// Filter clients by name (partial matches supported).
@@ -86,6 +88,8 @@ type GetClientsResult struct {
 	Clients []GetClientsClient `pulumi:"clients"`
 	// Filter clients by CIMD external client ID URL.
 	ExternalClientId *string `pulumi:"externalClientId"`
+	// Set this to avoid persisting the sensitive `clientSecret` value of each client into state, in which case `clientSecret` will contain an empty string.
+	HideClientSecret *bool `pulumi:"hideClientSecret"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Filter clients by first party status.
@@ -109,6 +113,8 @@ type GetClientsOutputArgs struct {
 	AppTypes pulumi.StringArrayInput `pulumi:"appTypes"`
 	// Filter clients by CIMD external client ID URL.
 	ExternalClientId pulumi.StringPtrInput `pulumi:"externalClientId"`
+	// Set this to avoid persisting the sensitive `clientSecret` value of each client into state, in which case `clientSecret` will contain an empty string.
+	HideClientSecret pulumi.BoolPtrInput `pulumi:"hideClientSecret"`
 	// Filter clients by first party status.
 	IsFirstParty pulumi.BoolPtrInput `pulumi:"isFirstParty"`
 	// Filter clients by name (partial matches supported).
@@ -147,6 +153,11 @@ func (o GetClientsResultOutput) Clients() GetClientsClientArrayOutput {
 // Filter clients by CIMD external client ID URL.
 func (o GetClientsResultOutput) ExternalClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClientsResult) *string { return v.ExternalClientId }).(pulumi.StringPtrOutput)
+}
+
+// Set this to avoid persisting the sensitive `clientSecret` value of each client into state, in which case `clientSecret` will contain an empty string.
+func (o GetClientsResultOutput) HideClientSecret() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetClientsResult) *bool { return v.HideClientSecret }).(pulumi.BoolPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

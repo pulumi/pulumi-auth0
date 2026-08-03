@@ -56,14 +56,14 @@ public final class ClientSessionTransferArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+     * Configuration for delegation (impersonation) access using Session Transfer Tokens.
      * 
      */
     @Import(name="delegation")
     private @Nullable Output<ClientSessionTransferDelegationArgs> delegation;
 
     /**
-     * @return Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+     * @return Configuration for delegation (impersonation) access using Session Transfer Tokens.
      * 
      */
     public Optional<Output<ClientSessionTransferDelegationArgs>> delegation() {
@@ -201,7 +201,7 @@ public final class ClientSessionTransferArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param delegation Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+         * @param delegation Configuration for delegation (impersonation) access using Session Transfer Tokens.
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class ClientSessionTransferArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param delegation Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+         * @param delegation Configuration for delegation (impersonation) access using Session Transfer Tokens.
          * 
          * @return builder
          * 

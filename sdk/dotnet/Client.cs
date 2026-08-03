@@ -176,6 +176,12 @@ namespace Pulumi.Auth0
         public Output<ImmutableArray<string>> GrantTypes { get; private set; } = null!;
 
         /// <summary>
+        /// Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+        /// </summary>
+        [Output("identityAssertionAuthorizationGrant")]
+        public Output<Outputs.ClientIdentityAssertionAuthorizationGrant?> IdentityAssertionAuthorizationGrant { get; private set; } = null!;
+
+        /// <summary>
         /// Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
         /// </summary>
         [Output("initiateLoginUri")]
@@ -583,6 +589,12 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
+        /// Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+        /// </summary>
+        [Input("identityAssertionAuthorizationGrant")]
+        public Input<Inputs.ClientIdentityAssertionAuthorizationGrantArgs>? IdentityAssertionAuthorizationGrant { get; set; }
+
+        /// <summary>
         /// Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
         /// </summary>
         [Input("initiateLoginUri")]
@@ -978,6 +990,12 @@ namespace Pulumi.Auth0
             get => _grantTypes ?? (_grantTypes = new InputList<string>());
             set => _grantTypes = value;
         }
+
+        /// <summary>
+        /// Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+        /// </summary>
+        [Input("identityAssertionAuthorizationGrant")]
+        public Input<Inputs.ClientIdentityAssertionAuthorizationGrantGetArgs>? IdentityAssertionAuthorizationGrant { get; set; }
 
         /// <summary>
         /// Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.

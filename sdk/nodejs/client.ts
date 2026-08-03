@@ -148,6 +148,10 @@ export class Client extends pulumi.CustomResource {
      */
     declare public readonly grantTypes: pulumi.Output<string[]>;
     /**
+     * Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+     */
+    declare public readonly identityAssertionAuthorizationGrant: pulumi.Output<outputs.ClientIdentityAssertionAuthorizationGrant | undefined>;
+    /**
      * Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
      */
     declare public readonly initiateLoginUri: pulumi.Output<string | undefined>;
@@ -305,6 +309,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["fedcmLogin"] = state?.fedcmLogin;
             resourceInputs["formTemplate"] = state?.formTemplate;
             resourceInputs["grantTypes"] = state?.grantTypes;
+            resourceInputs["identityAssertionAuthorizationGrant"] = state?.identityAssertionAuthorizationGrant;
             resourceInputs["initiateLoginUri"] = state?.initiateLoginUri;
             resourceInputs["isFirstParty"] = state?.isFirstParty;
             resourceInputs["isTokenEndpointIpHeaderTrusted"] = state?.isTokenEndpointIpHeaderTrusted;
@@ -358,6 +363,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["fedcmLogin"] = args?.fedcmLogin;
             resourceInputs["formTemplate"] = args?.formTemplate;
             resourceInputs["grantTypes"] = args?.grantTypes;
+            resourceInputs["identityAssertionAuthorizationGrant"] = args?.identityAssertionAuthorizationGrant;
             resourceInputs["initiateLoginUri"] = args?.initiateLoginUri;
             resourceInputs["isFirstParty"] = args?.isFirstParty;
             resourceInputs["isTokenEndpointIpHeaderTrusted"] = args?.isTokenEndpointIpHeaderTrusted;
@@ -504,6 +510,10 @@ export interface ClientState {
      * Types of grants that this client is authorized to use.
      */
     grantTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+     */
+    identityAssertionAuthorizationGrant?: pulumi.Input<inputs.ClientIdentityAssertionAuthorizationGrant | undefined>;
     /**
      * Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
      */
@@ -713,6 +723,10 @@ export interface ClientArgs {
      * Types of grants that this client is authorized to use.
      */
     grantTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+     */
+    identityAssertionAuthorizationGrant?: pulumi.Input<inputs.ClientIdentityAssertionAuthorizationGrant | undefined>;
     /**
      * Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
      */

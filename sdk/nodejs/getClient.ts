@@ -30,6 +30,7 @@ export function getClient(args?: GetClientArgs, opts?: pulumi.InvokeOptions): Pr
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("auth0:index/getClient:getClient", {
         "clientId": args.clientId,
+        "hideClientSecret": args.hideClientSecret,
         "name": args.name,
     }, opts);
 }
@@ -42,6 +43,10 @@ export interface GetClientArgs {
      * The ID of the client. If not provided, `name` must be set.
      */
     clientId?: string;
+    /**
+     * Set this to avoid persisting the sensitive `clientSecret` value into state, in which case `clientSecret` will contain an empty string.
+     */
+    hideClientSecret?: boolean;
     /**
      * The name of the client. If not provided, `clientId` must be set.
      */
@@ -97,7 +102,7 @@ export interface GetClientResult {
      */
     readonly clientMetadata: {[key: string]: string};
     /**
-     * Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string.
+     * Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. Set `hideClientSecret` to `true` to avoid persisting this value into Terraform state.
      */
     readonly clientSecret: string;
     /**
@@ -161,9 +166,17 @@ export interface GetClientResult {
      */
     readonly grantTypes: string[];
     /**
+     * Set this to avoid persisting the sensitive `clientSecret` value into state, in which case `clientSecret` will contain an empty string.
+     */
+    readonly hideClientSecret?: boolean;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+     */
+    readonly identityAssertionAuthorizationGrants: outputs.GetClientIdentityAssertionAuthorizationGrant[];
     /**
      * Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
      */
@@ -314,6 +327,7 @@ export function getClientOutput(args?: GetClientOutputArgs, opts?: pulumi.Invoke
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("auth0:index/getClient:getClient", {
         "clientId": args.clientId,
+        "hideClientSecret": args.hideClientSecret,
         "name": args.name,
     }, opts);
 }
@@ -326,6 +340,10 @@ export interface GetClientOutputArgs {
      * The ID of the client. If not provided, `name` must be set.
      */
     clientId?: pulumi.Input<string | undefined>;
+    /**
+     * Set this to avoid persisting the sensitive `clientSecret` value into state, in which case `clientSecret` will contain an empty string.
+     */
+    hideClientSecret?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the client. If not provided, `clientId` must be set.
      */

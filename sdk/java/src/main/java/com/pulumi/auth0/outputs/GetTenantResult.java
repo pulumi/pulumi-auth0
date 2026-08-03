@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.GetTenantCountryCode;
 import com.pulumi.auth0.outputs.GetTenantDefaultTokenQuota;
 import com.pulumi.auth0.outputs.GetTenantErrorPage;
 import com.pulumi.auth0.outputs.GetTenantFlag;
@@ -40,6 +41,11 @@ public final class GetTenantResult {
      * 
      */
     private Boolean clientIdMetadataDocumentSupported;
+    /**
+     * @return Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
+     * 
+     */
+    private List<GetTenantCountryCode> countryCodes;
     /**
      * @return Whether to enable flexible factors for MFA in the PostLogin action.
      * 
@@ -219,6 +225,13 @@ public final class GetTenantResult {
      */
     public Boolean clientIdMetadataDocumentSupported() {
         return this.clientIdMetadataDocumentSupported;
+    }
+    /**
+     * @return Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
+     * 
+     */
+    public List<GetTenantCountryCode> countryCodes() {
+        return this.countryCodes;
     }
     /**
      * @return Whether to enable flexible factors for MFA in the PostLogin action.
@@ -444,6 +457,7 @@ public final class GetTenantResult {
         private Boolean allowOrganizationNameInAuthenticationApi;
         private List<String> allowedLogoutUrls;
         private Boolean clientIdMetadataDocumentSupported;
+        private List<GetTenantCountryCode> countryCodes;
         private Boolean customizeMfaInPostloginAction;
         private String defaultAudience;
         private String defaultDirectory;
@@ -481,6 +495,7 @@ public final class GetTenantResult {
     	      this.allowOrganizationNameInAuthenticationApi = defaults.allowOrganizationNameInAuthenticationApi;
     	      this.allowedLogoutUrls = defaults.allowedLogoutUrls;
     	      this.clientIdMetadataDocumentSupported = defaults.clientIdMetadataDocumentSupported;
+    	      this.countryCodes = defaults.countryCodes;
     	      this.customizeMfaInPostloginAction = defaults.customizeMfaInPostloginAction;
     	      this.defaultAudience = defaults.defaultAudience;
     	      this.defaultDirectory = defaults.defaultDirectory;
@@ -550,6 +565,17 @@ public final class GetTenantResult {
             }
             this.clientIdMetadataDocumentSupported = clientIdMetadataDocumentSupported;
             return this;
+        }
+        @CustomType.Setter
+        public Builder countryCodes(List<GetTenantCountryCode> countryCodes) {
+            if (countryCodes == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "countryCodes");
+            }
+            this.countryCodes = countryCodes;
+            return this;
+        }
+        public Builder countryCodes(GetTenantCountryCode... countryCodes) {
+            return countryCodes(List.of(countryCodes));
         }
         @CustomType.Setter
         public Builder customizeMfaInPostloginAction(Boolean customizeMfaInPostloginAction) {
@@ -821,6 +847,7 @@ public final class GetTenantResult {
             _resultValue.allowOrganizationNameInAuthenticationApi = allowOrganizationNameInAuthenticationApi;
             _resultValue.allowedLogoutUrls = allowedLogoutUrls;
             _resultValue.clientIdMetadataDocumentSupported = clientIdMetadataDocumentSupported;
+            _resultValue.countryCodes = countryCodes;
             _resultValue.customizeMfaInPostloginAction = customizeMfaInPostloginAction;
             _resultValue.defaultAudience = defaultAudience;
             _resultValue.defaultDirectory = defaultDirectory;

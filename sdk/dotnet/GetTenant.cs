@@ -96,6 +96,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly bool ClientIdMetadataDocumentSupported;
         /// <summary>
+        /// Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetTenantCountryCodeResult> CountryCodes;
+        /// <summary>
         /// Whether to enable flexible factors for MFA in the PostLogin action.
         /// </summary>
         public readonly bool CustomizeMfaInPostloginAction;
@@ -226,6 +230,8 @@ namespace Pulumi.Auth0
 
             bool clientIdMetadataDocumentSupported,
 
+            ImmutableArray<Outputs.GetTenantCountryCodeResult> countryCodes,
+
             bool customizeMfaInPostloginAction,
 
             string defaultAudience,
@@ -290,6 +296,7 @@ namespace Pulumi.Auth0
             AllowOrganizationNameInAuthenticationApi = allowOrganizationNameInAuthenticationApi;
             AllowedLogoutUrls = allowedLogoutUrls;
             ClientIdMetadataDocumentSupported = clientIdMetadataDocumentSupported;
+            CountryCodes = countryCodes;
             CustomizeMfaInPostloginAction = customizeMfaInPostloginAction;
             DefaultAudience = defaultAudience;
             DefaultDirectory = defaultDirectory;

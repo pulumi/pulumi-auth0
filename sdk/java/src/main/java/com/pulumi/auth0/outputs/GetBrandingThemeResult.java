@@ -6,6 +6,7 @@ package com.pulumi.auth0.outputs;
 import com.pulumi.auth0.outputs.GetBrandingThemeBorder;
 import com.pulumi.auth0.outputs.GetBrandingThemeColor;
 import com.pulumi.auth0.outputs.GetBrandingThemeFont;
+import com.pulumi.auth0.outputs.GetBrandingThemeIdentifier;
 import com.pulumi.auth0.outputs.GetBrandingThemePageBackground;
 import com.pulumi.auth0.outputs.GetBrandingThemeWidget;
 import com.pulumi.core.annotations.CustomType;
@@ -29,6 +30,11 @@ public final class GetBrandingThemeResult {
      * 
      */
     private String id;
+    /**
+     * @return Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed
+     * 
+     */
+    private List<GetBrandingThemeIdentifier> identifiers;
     private List<GetBrandingThemePageBackground> pageBackgrounds;
     private List<GetBrandingThemeWidget> widgets;
 
@@ -56,6 +62,13 @@ public final class GetBrandingThemeResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed
+     * 
+     */
+    public List<GetBrandingThemeIdentifier> identifiers() {
+        return this.identifiers;
+    }
     public List<GetBrandingThemePageBackground> pageBackgrounds() {
         return this.pageBackgrounds;
     }
@@ -77,6 +90,7 @@ public final class GetBrandingThemeResult {
         private String displayName;
         private List<GetBrandingThemeFont> fonts;
         private String id;
+        private List<GetBrandingThemeIdentifier> identifiers;
         private List<GetBrandingThemePageBackground> pageBackgrounds;
         private List<GetBrandingThemeWidget> widgets;
         public Builder() {}
@@ -87,6 +101,7 @@ public final class GetBrandingThemeResult {
     	      this.displayName = defaults.displayName;
     	      this.fonts = defaults.fonts;
     	      this.id = defaults.id;
+    	      this.identifiers = defaults.identifiers;
     	      this.pageBackgrounds = defaults.pageBackgrounds;
     	      this.widgets = defaults.widgets;
         }
@@ -141,6 +156,17 @@ public final class GetBrandingThemeResult {
             return this;
         }
         @CustomType.Setter
+        public Builder identifiers(List<GetBrandingThemeIdentifier> identifiers) {
+            if (identifiers == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeResult", "identifiers");
+            }
+            this.identifiers = identifiers;
+            return this;
+        }
+        public Builder identifiers(GetBrandingThemeIdentifier... identifiers) {
+            return identifiers(List.of(identifiers));
+        }
+        @CustomType.Setter
         public Builder pageBackgrounds(List<GetBrandingThemePageBackground> pageBackgrounds) {
             if (pageBackgrounds == null) {
               throw new MissingRequiredPropertyException("GetBrandingThemeResult", "pageBackgrounds");
@@ -169,6 +195,7 @@ public final class GetBrandingThemeResult {
             _resultValue.displayName = displayName;
             _resultValue.fonts = fonts;
             _resultValue.id = id;
+            _resultValue.identifiers = identifiers;
             _resultValue.pageBackgrounds = pageBackgrounds;
             _resultValue.widgets = widgets;
             return _resultValue;

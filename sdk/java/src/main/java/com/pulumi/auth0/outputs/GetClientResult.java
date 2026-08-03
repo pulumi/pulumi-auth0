@@ -8,6 +8,7 @@ import com.pulumi.auth0.outputs.GetClientClientAuthenticationMethod;
 import com.pulumi.auth0.outputs.GetClientDefaultOrganization;
 import com.pulumi.auth0.outputs.GetClientExpressConfiguration;
 import com.pulumi.auth0.outputs.GetClientFedcmLogin;
+import com.pulumi.auth0.outputs.GetClientIdentityAssertionAuthorizationGrant;
 import com.pulumi.auth0.outputs.GetClientJwtConfiguration;
 import com.pulumi.auth0.outputs.GetClientMobile;
 import com.pulumi.auth0.outputs.GetClientMyOrganizationConfiguration;
@@ -86,7 +87,7 @@ public final class GetClientResult {
      */
     private Map<String,String> clientMetadata;
     /**
-     * @return Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string.
+     * @return Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. Set `hideClientSecret` to `true` to avoid persisting this value into Terraform state.
      * 
      */
     private String clientSecret;
@@ -166,10 +167,20 @@ public final class GetClientResult {
      */
     private List<String> grantTypes;
     /**
+     * @return Set this to avoid persisting the sensitive `clientSecret` value into state, in which case `clientSecret` will contain an empty string.
+     * 
+     */
+    private @Nullable Boolean hideClientSecret;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+     * 
+     */
+    private List<GetClientIdentityAssertionAuthorizationGrant> identityAssertionAuthorizationGrants;
     /**
      * @return Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
      * 
@@ -406,7 +417,7 @@ public final class GetClientResult {
         return this.clientMetadata;
     }
     /**
-     * @return Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string.
+     * @return Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. Set `hideClientSecret` to `true` to avoid persisting this value into Terraform state.
      * 
      */
     public String clientSecret() {
@@ -518,11 +529,25 @@ public final class GetClientResult {
         return this.grantTypes;
     }
     /**
+     * @return Set this to avoid persisting the sensitive `clientSecret` value into state, in which case `clientSecret` will contain an empty string.
+     * 
+     */
+    public Optional<Boolean> hideClientSecret() {
+        return Optional.ofNullable(this.hideClientSecret);
+    }
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+     * 
+     */
+    public List<GetClientIdentityAssertionAuthorizationGrant> identityAssertionAuthorizationGrants() {
+        return this.identityAssertionAuthorizationGrants;
     }
     /**
      * @return Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
@@ -781,7 +806,9 @@ public final class GetClientResult {
         private List<GetClientFedcmLogin> fedcmLogins;
         private String formTemplate;
         private List<String> grantTypes;
+        private @Nullable Boolean hideClientSecret;
         private String id;
+        private List<GetClientIdentityAssertionAuthorizationGrant> identityAssertionAuthorizationGrants;
         private String initiateLoginUri;
         private Boolean isFirstParty;
         private Boolean isTokenEndpointIpHeaderTrusted;
@@ -844,7 +871,9 @@ public final class GetClientResult {
     	      this.fedcmLogins = defaults.fedcmLogins;
     	      this.formTemplate = defaults.formTemplate;
     	      this.grantTypes = defaults.grantTypes;
+    	      this.hideClientSecret = defaults.hideClientSecret;
     	      this.id = defaults.id;
+    	      this.identityAssertionAuthorizationGrants = defaults.identityAssertionAuthorizationGrants;
     	      this.initiateLoginUri = defaults.initiateLoginUri;
     	      this.isFirstParty = defaults.isFirstParty;
     	      this.isTokenEndpointIpHeaderTrusted = defaults.isTokenEndpointIpHeaderTrusted;
@@ -1130,12 +1159,29 @@ public final class GetClientResult {
             return grantTypes(List.of(grantTypes));
         }
         @CustomType.Setter
+        public Builder hideClientSecret(@Nullable Boolean hideClientSecret) {
+
+            this.hideClientSecret = hideClientSecret;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetClientResult", "id");
             }
             this.id = id;
             return this;
+        }
+        @CustomType.Setter
+        public Builder identityAssertionAuthorizationGrants(List<GetClientIdentityAssertionAuthorizationGrant> identityAssertionAuthorizationGrants) {
+            if (identityAssertionAuthorizationGrants == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "identityAssertionAuthorizationGrants");
+            }
+            this.identityAssertionAuthorizationGrants = identityAssertionAuthorizationGrants;
+            return this;
+        }
+        public Builder identityAssertionAuthorizationGrants(GetClientIdentityAssertionAuthorizationGrant... identityAssertionAuthorizationGrants) {
+            return identityAssertionAuthorizationGrants(List.of(identityAssertionAuthorizationGrants));
         }
         @CustomType.Setter
         public Builder initiateLoginUri(String initiateLoginUri) {
@@ -1459,7 +1505,9 @@ public final class GetClientResult {
             _resultValue.fedcmLogins = fedcmLogins;
             _resultValue.formTemplate = formTemplate;
             _resultValue.grantTypes = grantTypes;
+            _resultValue.hideClientSecret = hideClientSecret;
             _resultValue.id = id;
+            _resultValue.identityAssertionAuthorizationGrants = identityAssertionAuthorizationGrants;
             _resultValue.initiateLoginUri = initiateLoginUri;
             _resultValue.isFirstParty = isFirstParty;
             _resultValue.isTokenEndpointIpHeaderTrusted = isTokenEndpointIpHeaderTrusted;

@@ -13,6 +13,1320 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetResourceServerAuthorizationPolicy struct {
+	// Identifier of the authorization policy.
+	PolicyId string `pulumi:"policyId"`
+}
+
+// GetResourceServerAuthorizationPolicyInput is an input type that accepts GetResourceServerAuthorizationPolicyArgs and GetResourceServerAuthorizationPolicyOutput values.
+// You can construct a concrete instance of `GetResourceServerAuthorizationPolicyInput` via:
+//
+//	GetResourceServerAuthorizationPolicyArgs{...}
+type GetResourceServerAuthorizationPolicyInput interface {
+	pulumi.Input
+
+	ToGetResourceServerAuthorizationPolicyOutput() GetResourceServerAuthorizationPolicyOutput
+	ToGetResourceServerAuthorizationPolicyOutputWithContext(context.Context) GetResourceServerAuthorizationPolicyOutput
+}
+
+type GetResourceServerAuthorizationPolicyArgs struct {
+	// Identifier of the authorization policy.
+	PolicyId pulumi.StringInput `pulumi:"policyId"`
+}
+
+func (GetResourceServerAuthorizationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerAuthorizationPolicy)(nil)).Elem()
+}
+
+func (i GetResourceServerAuthorizationPolicyArgs) ToGetResourceServerAuthorizationPolicyOutput() GetResourceServerAuthorizationPolicyOutput {
+	return i.ToGetResourceServerAuthorizationPolicyOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerAuthorizationPolicyArgs) ToGetResourceServerAuthorizationPolicyOutputWithContext(ctx context.Context) GetResourceServerAuthorizationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerAuthorizationPolicyOutput)
+}
+
+// GetResourceServerAuthorizationPolicyArrayInput is an input type that accepts GetResourceServerAuthorizationPolicyArray and GetResourceServerAuthorizationPolicyArrayOutput values.
+// You can construct a concrete instance of `GetResourceServerAuthorizationPolicyArrayInput` via:
+//
+//	GetResourceServerAuthorizationPolicyArray{ GetResourceServerAuthorizationPolicyArgs{...} }
+type GetResourceServerAuthorizationPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceServerAuthorizationPolicyArrayOutput() GetResourceServerAuthorizationPolicyArrayOutput
+	ToGetResourceServerAuthorizationPolicyArrayOutputWithContext(context.Context) GetResourceServerAuthorizationPolicyArrayOutput
+}
+
+type GetResourceServerAuthorizationPolicyArray []GetResourceServerAuthorizationPolicyInput
+
+func (GetResourceServerAuthorizationPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerAuthorizationPolicy)(nil)).Elem()
+}
+
+func (i GetResourceServerAuthorizationPolicyArray) ToGetResourceServerAuthorizationPolicyArrayOutput() GetResourceServerAuthorizationPolicyArrayOutput {
+	return i.ToGetResourceServerAuthorizationPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerAuthorizationPolicyArray) ToGetResourceServerAuthorizationPolicyArrayOutputWithContext(ctx context.Context) GetResourceServerAuthorizationPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerAuthorizationPolicyArrayOutput)
+}
+
+type GetResourceServerAuthorizationPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerAuthorizationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerAuthorizationPolicy)(nil)).Elem()
+}
+
+func (o GetResourceServerAuthorizationPolicyOutput) ToGetResourceServerAuthorizationPolicyOutput() GetResourceServerAuthorizationPolicyOutput {
+	return o
+}
+
+func (o GetResourceServerAuthorizationPolicyOutput) ToGetResourceServerAuthorizationPolicyOutputWithContext(ctx context.Context) GetResourceServerAuthorizationPolicyOutput {
+	return o
+}
+
+// Identifier of the authorization policy.
+func (o GetResourceServerAuthorizationPolicyOutput) PolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceServerAuthorizationPolicy) string { return v.PolicyId }).(pulumi.StringOutput)
+}
+
+type GetResourceServerAuthorizationPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerAuthorizationPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerAuthorizationPolicy)(nil)).Elem()
+}
+
+func (o GetResourceServerAuthorizationPolicyArrayOutput) ToGetResourceServerAuthorizationPolicyArrayOutput() GetResourceServerAuthorizationPolicyArrayOutput {
+	return o
+}
+
+func (o GetResourceServerAuthorizationPolicyArrayOutput) ToGetResourceServerAuthorizationPolicyArrayOutputWithContext(ctx context.Context) GetResourceServerAuthorizationPolicyArrayOutput {
+	return o
+}
+
+func (o GetResourceServerAuthorizationPolicyArrayOutput) Index(i pulumi.IntInput) GetResourceServerAuthorizationPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerAuthorizationPolicy {
+		return vs[0].([]GetResourceServerAuthorizationPolicy)[vs[1].(int)]
+	}).(GetResourceServerAuthorizationPolicyOutput)
+}
+
+type GetResourceServerProofOfPossession struct {
+	// Disable proof-of-possession.
+	Disable bool `pulumi:"disable"`
+	// Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
+	Mechanism string `pulumi:"mechanism"`
+	// Indicates whether proof-of-possession is required with this resource server.
+	Required bool `pulumi:"required"`
+	// Specifies which client types require Proof-of-Possession`allClients` or `publicClients` is supported.
+	RequiredFor string `pulumi:"requiredFor"`
+}
+
+// GetResourceServerProofOfPossessionInput is an input type that accepts GetResourceServerProofOfPossessionArgs and GetResourceServerProofOfPossessionOutput values.
+// You can construct a concrete instance of `GetResourceServerProofOfPossessionInput` via:
+//
+//	GetResourceServerProofOfPossessionArgs{...}
+type GetResourceServerProofOfPossessionInput interface {
+	pulumi.Input
+
+	ToGetResourceServerProofOfPossessionOutput() GetResourceServerProofOfPossessionOutput
+	ToGetResourceServerProofOfPossessionOutputWithContext(context.Context) GetResourceServerProofOfPossessionOutput
+}
+
+type GetResourceServerProofOfPossessionArgs struct {
+	// Disable proof-of-possession.
+	Disable pulumi.BoolInput `pulumi:"disable"`
+	// Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
+	Mechanism pulumi.StringInput `pulumi:"mechanism"`
+	// Indicates whether proof-of-possession is required with this resource server.
+	Required pulumi.BoolInput `pulumi:"required"`
+	// Specifies which client types require Proof-of-Possession`allClients` or `publicClients` is supported.
+	RequiredFor pulumi.StringInput `pulumi:"requiredFor"`
+}
+
+func (GetResourceServerProofOfPossessionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerProofOfPossession)(nil)).Elem()
+}
+
+func (i GetResourceServerProofOfPossessionArgs) ToGetResourceServerProofOfPossessionOutput() GetResourceServerProofOfPossessionOutput {
+	return i.ToGetResourceServerProofOfPossessionOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerProofOfPossessionArgs) ToGetResourceServerProofOfPossessionOutputWithContext(ctx context.Context) GetResourceServerProofOfPossessionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerProofOfPossessionOutput)
+}
+
+// GetResourceServerProofOfPossessionArrayInput is an input type that accepts GetResourceServerProofOfPossessionArray and GetResourceServerProofOfPossessionArrayOutput values.
+// You can construct a concrete instance of `GetResourceServerProofOfPossessionArrayInput` via:
+//
+//	GetResourceServerProofOfPossessionArray{ GetResourceServerProofOfPossessionArgs{...} }
+type GetResourceServerProofOfPossessionArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceServerProofOfPossessionArrayOutput() GetResourceServerProofOfPossessionArrayOutput
+	ToGetResourceServerProofOfPossessionArrayOutputWithContext(context.Context) GetResourceServerProofOfPossessionArrayOutput
+}
+
+type GetResourceServerProofOfPossessionArray []GetResourceServerProofOfPossessionInput
+
+func (GetResourceServerProofOfPossessionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerProofOfPossession)(nil)).Elem()
+}
+
+func (i GetResourceServerProofOfPossessionArray) ToGetResourceServerProofOfPossessionArrayOutput() GetResourceServerProofOfPossessionArrayOutput {
+	return i.ToGetResourceServerProofOfPossessionArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerProofOfPossessionArray) ToGetResourceServerProofOfPossessionArrayOutputWithContext(ctx context.Context) GetResourceServerProofOfPossessionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerProofOfPossessionArrayOutput)
+}
+
+type GetResourceServerProofOfPossessionOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerProofOfPossessionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerProofOfPossession)(nil)).Elem()
+}
+
+func (o GetResourceServerProofOfPossessionOutput) ToGetResourceServerProofOfPossessionOutput() GetResourceServerProofOfPossessionOutput {
+	return o
+}
+
+func (o GetResourceServerProofOfPossessionOutput) ToGetResourceServerProofOfPossessionOutputWithContext(ctx context.Context) GetResourceServerProofOfPossessionOutput {
+	return o
+}
+
+// Disable proof-of-possession.
+func (o GetResourceServerProofOfPossessionOutput) Disable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetResourceServerProofOfPossession) bool { return v.Disable }).(pulumi.BoolOutput)
+}
+
+// Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
+func (o GetResourceServerProofOfPossessionOutput) Mechanism() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceServerProofOfPossession) string { return v.Mechanism }).(pulumi.StringOutput)
+}
+
+// Indicates whether proof-of-possession is required with this resource server.
+func (o GetResourceServerProofOfPossessionOutput) Required() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetResourceServerProofOfPossession) bool { return v.Required }).(pulumi.BoolOutput)
+}
+
+// Specifies which client types require Proof-of-Possession`allClients` or `publicClients` is supported.
+func (o GetResourceServerProofOfPossessionOutput) RequiredFor() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceServerProofOfPossession) string { return v.RequiredFor }).(pulumi.StringOutput)
+}
+
+type GetResourceServerProofOfPossessionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerProofOfPossessionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerProofOfPossession)(nil)).Elem()
+}
+
+func (o GetResourceServerProofOfPossessionArrayOutput) ToGetResourceServerProofOfPossessionArrayOutput() GetResourceServerProofOfPossessionArrayOutput {
+	return o
+}
+
+func (o GetResourceServerProofOfPossessionArrayOutput) ToGetResourceServerProofOfPossessionArrayOutputWithContext(ctx context.Context) GetResourceServerProofOfPossessionArrayOutput {
+	return o
+}
+
+func (o GetResourceServerProofOfPossessionArrayOutput) Index(i pulumi.IntInput) GetResourceServerProofOfPossessionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerProofOfPossession {
+		return vs[0].([]GetResourceServerProofOfPossession)[vs[1].(int)]
+	}).(GetResourceServerProofOfPossessionOutput)
+}
+
+type GetResourceServerScopeType struct {
+	// Description of the permission (scope).
+	Description string `pulumi:"description"`
+	// Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
+	Name string `pulumi:"name"`
+}
+
+// GetResourceServerScopeTypeInput is an input type that accepts GetResourceServerScopeTypeArgs and GetResourceServerScopeTypeOutput values.
+// You can construct a concrete instance of `GetResourceServerScopeTypeInput` via:
+//
+//	GetResourceServerScopeTypeArgs{...}
+type GetResourceServerScopeTypeInput interface {
+	pulumi.Input
+
+	ToGetResourceServerScopeTypeOutput() GetResourceServerScopeTypeOutput
+	ToGetResourceServerScopeTypeOutputWithContext(context.Context) GetResourceServerScopeTypeOutput
+}
+
+type GetResourceServerScopeTypeArgs struct {
+	// Description of the permission (scope).
+	Description pulumi.StringInput `pulumi:"description"`
+	// Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetResourceServerScopeTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerScopeType)(nil)).Elem()
+}
+
+func (i GetResourceServerScopeTypeArgs) ToGetResourceServerScopeTypeOutput() GetResourceServerScopeTypeOutput {
+	return i.ToGetResourceServerScopeTypeOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerScopeTypeArgs) ToGetResourceServerScopeTypeOutputWithContext(ctx context.Context) GetResourceServerScopeTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerScopeTypeOutput)
+}
+
+// GetResourceServerScopeTypeArrayInput is an input type that accepts GetResourceServerScopeTypeArray and GetResourceServerScopeTypeArrayOutput values.
+// You can construct a concrete instance of `GetResourceServerScopeTypeArrayInput` via:
+//
+//	GetResourceServerScopeTypeArray{ GetResourceServerScopeTypeArgs{...} }
+type GetResourceServerScopeTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceServerScopeTypeArrayOutput() GetResourceServerScopeTypeArrayOutput
+	ToGetResourceServerScopeTypeArrayOutputWithContext(context.Context) GetResourceServerScopeTypeArrayOutput
+}
+
+type GetResourceServerScopeTypeArray []GetResourceServerScopeTypeInput
+
+func (GetResourceServerScopeTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerScopeType)(nil)).Elem()
+}
+
+func (i GetResourceServerScopeTypeArray) ToGetResourceServerScopeTypeArrayOutput() GetResourceServerScopeTypeArrayOutput {
+	return i.ToGetResourceServerScopeTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerScopeTypeArray) ToGetResourceServerScopeTypeArrayOutputWithContext(ctx context.Context) GetResourceServerScopeTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerScopeTypeArrayOutput)
+}
+
+type GetResourceServerScopeTypeOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerScopeTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerScopeType)(nil)).Elem()
+}
+
+func (o GetResourceServerScopeTypeOutput) ToGetResourceServerScopeTypeOutput() GetResourceServerScopeTypeOutput {
+	return o
+}
+
+func (o GetResourceServerScopeTypeOutput) ToGetResourceServerScopeTypeOutputWithContext(ctx context.Context) GetResourceServerScopeTypeOutput {
+	return o
+}
+
+// Description of the permission (scope).
+func (o GetResourceServerScopeTypeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceServerScopeType) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
+func (o GetResourceServerScopeTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceServerScopeType) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetResourceServerScopeTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerScopeTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerScopeType)(nil)).Elem()
+}
+
+func (o GetResourceServerScopeTypeArrayOutput) ToGetResourceServerScopeTypeArrayOutput() GetResourceServerScopeTypeArrayOutput {
+	return o
+}
+
+func (o GetResourceServerScopeTypeArrayOutput) ToGetResourceServerScopeTypeArrayOutputWithContext(ctx context.Context) GetResourceServerScopeTypeArrayOutput {
+	return o
+}
+
+func (o GetResourceServerScopeTypeArrayOutput) Index(i pulumi.IntInput) GetResourceServerScopeTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerScopeType {
+		return vs[0].([]GetResourceServerScopeType)[vs[1].(int)]
+	}).(GetResourceServerScopeTypeOutput)
+}
+
+type GetResourceServerSubjectTypeAuthorization struct {
+	// Client authorization policies for the resource server.
+	Clients []GetResourceServerSubjectTypeAuthorizationClient `pulumi:"clients"`
+	// User authorization policies for the resource server.
+	Users []GetResourceServerSubjectTypeAuthorizationUser `pulumi:"users"`
+}
+
+// GetResourceServerSubjectTypeAuthorizationInput is an input type that accepts GetResourceServerSubjectTypeAuthorizationArgs and GetResourceServerSubjectTypeAuthorizationOutput values.
+// You can construct a concrete instance of `GetResourceServerSubjectTypeAuthorizationInput` via:
+//
+//	GetResourceServerSubjectTypeAuthorizationArgs{...}
+type GetResourceServerSubjectTypeAuthorizationInput interface {
+	pulumi.Input
+
+	ToGetResourceServerSubjectTypeAuthorizationOutput() GetResourceServerSubjectTypeAuthorizationOutput
+	ToGetResourceServerSubjectTypeAuthorizationOutputWithContext(context.Context) GetResourceServerSubjectTypeAuthorizationOutput
+}
+
+type GetResourceServerSubjectTypeAuthorizationArgs struct {
+	// Client authorization policies for the resource server.
+	Clients GetResourceServerSubjectTypeAuthorizationClientArrayInput `pulumi:"clients"`
+	// User authorization policies for the resource server.
+	Users GetResourceServerSubjectTypeAuthorizationUserArrayInput `pulumi:"users"`
+}
+
+func (GetResourceServerSubjectTypeAuthorizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerSubjectTypeAuthorization)(nil)).Elem()
+}
+
+func (i GetResourceServerSubjectTypeAuthorizationArgs) ToGetResourceServerSubjectTypeAuthorizationOutput() GetResourceServerSubjectTypeAuthorizationOutput {
+	return i.ToGetResourceServerSubjectTypeAuthorizationOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerSubjectTypeAuthorizationArgs) ToGetResourceServerSubjectTypeAuthorizationOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerSubjectTypeAuthorizationOutput)
+}
+
+// GetResourceServerSubjectTypeAuthorizationArrayInput is an input type that accepts GetResourceServerSubjectTypeAuthorizationArray and GetResourceServerSubjectTypeAuthorizationArrayOutput values.
+// You can construct a concrete instance of `GetResourceServerSubjectTypeAuthorizationArrayInput` via:
+//
+//	GetResourceServerSubjectTypeAuthorizationArray{ GetResourceServerSubjectTypeAuthorizationArgs{...} }
+type GetResourceServerSubjectTypeAuthorizationArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceServerSubjectTypeAuthorizationArrayOutput() GetResourceServerSubjectTypeAuthorizationArrayOutput
+	ToGetResourceServerSubjectTypeAuthorizationArrayOutputWithContext(context.Context) GetResourceServerSubjectTypeAuthorizationArrayOutput
+}
+
+type GetResourceServerSubjectTypeAuthorizationArray []GetResourceServerSubjectTypeAuthorizationInput
+
+func (GetResourceServerSubjectTypeAuthorizationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerSubjectTypeAuthorization)(nil)).Elem()
+}
+
+func (i GetResourceServerSubjectTypeAuthorizationArray) ToGetResourceServerSubjectTypeAuthorizationArrayOutput() GetResourceServerSubjectTypeAuthorizationArrayOutput {
+	return i.ToGetResourceServerSubjectTypeAuthorizationArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerSubjectTypeAuthorizationArray) ToGetResourceServerSubjectTypeAuthorizationArrayOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerSubjectTypeAuthorizationArrayOutput)
+}
+
+type GetResourceServerSubjectTypeAuthorizationOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerSubjectTypeAuthorizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerSubjectTypeAuthorization)(nil)).Elem()
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationOutput) ToGetResourceServerSubjectTypeAuthorizationOutput() GetResourceServerSubjectTypeAuthorizationOutput {
+	return o
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationOutput) ToGetResourceServerSubjectTypeAuthorizationOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationOutput {
+	return o
+}
+
+// Client authorization policies for the resource server.
+func (o GetResourceServerSubjectTypeAuthorizationOutput) Clients() GetResourceServerSubjectTypeAuthorizationClientArrayOutput {
+	return o.ApplyT(func(v GetResourceServerSubjectTypeAuthorization) []GetResourceServerSubjectTypeAuthorizationClient {
+		return v.Clients
+	}).(GetResourceServerSubjectTypeAuthorizationClientArrayOutput)
+}
+
+// User authorization policies for the resource server.
+func (o GetResourceServerSubjectTypeAuthorizationOutput) Users() GetResourceServerSubjectTypeAuthorizationUserArrayOutput {
+	return o.ApplyT(func(v GetResourceServerSubjectTypeAuthorization) []GetResourceServerSubjectTypeAuthorizationUser {
+		return v.Users
+	}).(GetResourceServerSubjectTypeAuthorizationUserArrayOutput)
+}
+
+type GetResourceServerSubjectTypeAuthorizationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerSubjectTypeAuthorizationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerSubjectTypeAuthorization)(nil)).Elem()
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationArrayOutput) ToGetResourceServerSubjectTypeAuthorizationArrayOutput() GetResourceServerSubjectTypeAuthorizationArrayOutput {
+	return o
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationArrayOutput) ToGetResourceServerSubjectTypeAuthorizationArrayOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationArrayOutput {
+	return o
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationArrayOutput) Index(i pulumi.IntInput) GetResourceServerSubjectTypeAuthorizationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerSubjectTypeAuthorization {
+		return vs[0].([]GetResourceServerSubjectTypeAuthorization)[vs[1].(int)]
+	}).(GetResourceServerSubjectTypeAuthorizationOutput)
+}
+
+type GetResourceServerSubjectTypeAuthorizationClient struct {
+	// Client flows policy. One of `denyAll`, `requireClientGrant`.
+	Policy string `pulumi:"policy"`
+}
+
+// GetResourceServerSubjectTypeAuthorizationClientInput is an input type that accepts GetResourceServerSubjectTypeAuthorizationClientArgs and GetResourceServerSubjectTypeAuthorizationClientOutput values.
+// You can construct a concrete instance of `GetResourceServerSubjectTypeAuthorizationClientInput` via:
+//
+//	GetResourceServerSubjectTypeAuthorizationClientArgs{...}
+type GetResourceServerSubjectTypeAuthorizationClientInput interface {
+	pulumi.Input
+
+	ToGetResourceServerSubjectTypeAuthorizationClientOutput() GetResourceServerSubjectTypeAuthorizationClientOutput
+	ToGetResourceServerSubjectTypeAuthorizationClientOutputWithContext(context.Context) GetResourceServerSubjectTypeAuthorizationClientOutput
+}
+
+type GetResourceServerSubjectTypeAuthorizationClientArgs struct {
+	// Client flows policy. One of `denyAll`, `requireClientGrant`.
+	Policy pulumi.StringInput `pulumi:"policy"`
+}
+
+func (GetResourceServerSubjectTypeAuthorizationClientArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationClient)(nil)).Elem()
+}
+
+func (i GetResourceServerSubjectTypeAuthorizationClientArgs) ToGetResourceServerSubjectTypeAuthorizationClientOutput() GetResourceServerSubjectTypeAuthorizationClientOutput {
+	return i.ToGetResourceServerSubjectTypeAuthorizationClientOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerSubjectTypeAuthorizationClientArgs) ToGetResourceServerSubjectTypeAuthorizationClientOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationClientOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerSubjectTypeAuthorizationClientOutput)
+}
+
+// GetResourceServerSubjectTypeAuthorizationClientArrayInput is an input type that accepts GetResourceServerSubjectTypeAuthorizationClientArray and GetResourceServerSubjectTypeAuthorizationClientArrayOutput values.
+// You can construct a concrete instance of `GetResourceServerSubjectTypeAuthorizationClientArrayInput` via:
+//
+//	GetResourceServerSubjectTypeAuthorizationClientArray{ GetResourceServerSubjectTypeAuthorizationClientArgs{...} }
+type GetResourceServerSubjectTypeAuthorizationClientArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceServerSubjectTypeAuthorizationClientArrayOutput() GetResourceServerSubjectTypeAuthorizationClientArrayOutput
+	ToGetResourceServerSubjectTypeAuthorizationClientArrayOutputWithContext(context.Context) GetResourceServerSubjectTypeAuthorizationClientArrayOutput
+}
+
+type GetResourceServerSubjectTypeAuthorizationClientArray []GetResourceServerSubjectTypeAuthorizationClientInput
+
+func (GetResourceServerSubjectTypeAuthorizationClientArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerSubjectTypeAuthorizationClient)(nil)).Elem()
+}
+
+func (i GetResourceServerSubjectTypeAuthorizationClientArray) ToGetResourceServerSubjectTypeAuthorizationClientArrayOutput() GetResourceServerSubjectTypeAuthorizationClientArrayOutput {
+	return i.ToGetResourceServerSubjectTypeAuthorizationClientArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerSubjectTypeAuthorizationClientArray) ToGetResourceServerSubjectTypeAuthorizationClientArrayOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationClientArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerSubjectTypeAuthorizationClientArrayOutput)
+}
+
+type GetResourceServerSubjectTypeAuthorizationClientOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerSubjectTypeAuthorizationClientOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationClient)(nil)).Elem()
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationClientOutput) ToGetResourceServerSubjectTypeAuthorizationClientOutput() GetResourceServerSubjectTypeAuthorizationClientOutput {
+	return o
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationClientOutput) ToGetResourceServerSubjectTypeAuthorizationClientOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationClientOutput {
+	return o
+}
+
+// Client flows policy. One of `denyAll`, `requireClientGrant`.
+func (o GetResourceServerSubjectTypeAuthorizationClientOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceServerSubjectTypeAuthorizationClient) string { return v.Policy }).(pulumi.StringOutput)
+}
+
+type GetResourceServerSubjectTypeAuthorizationClientArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerSubjectTypeAuthorizationClientArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerSubjectTypeAuthorizationClient)(nil)).Elem()
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationClientArrayOutput) ToGetResourceServerSubjectTypeAuthorizationClientArrayOutput() GetResourceServerSubjectTypeAuthorizationClientArrayOutput {
+	return o
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationClientArrayOutput) ToGetResourceServerSubjectTypeAuthorizationClientArrayOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationClientArrayOutput {
+	return o
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationClientArrayOutput) Index(i pulumi.IntInput) GetResourceServerSubjectTypeAuthorizationClientOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerSubjectTypeAuthorizationClient {
+		return vs[0].([]GetResourceServerSubjectTypeAuthorizationClient)[vs[1].(int)]
+	}).(GetResourceServerSubjectTypeAuthorizationClientOutput)
+}
+
+type GetResourceServerSubjectTypeAuthorizationUser struct {
+	// User flows policy. One of `allowAll`, `denyAll`, `requireClientGrant`.
+	Policy string `pulumi:"policy"`
+}
+
+// GetResourceServerSubjectTypeAuthorizationUserInput is an input type that accepts GetResourceServerSubjectTypeAuthorizationUserArgs and GetResourceServerSubjectTypeAuthorizationUserOutput values.
+// You can construct a concrete instance of `GetResourceServerSubjectTypeAuthorizationUserInput` via:
+//
+//	GetResourceServerSubjectTypeAuthorizationUserArgs{...}
+type GetResourceServerSubjectTypeAuthorizationUserInput interface {
+	pulumi.Input
+
+	ToGetResourceServerSubjectTypeAuthorizationUserOutput() GetResourceServerSubjectTypeAuthorizationUserOutput
+	ToGetResourceServerSubjectTypeAuthorizationUserOutputWithContext(context.Context) GetResourceServerSubjectTypeAuthorizationUserOutput
+}
+
+type GetResourceServerSubjectTypeAuthorizationUserArgs struct {
+	// User flows policy. One of `allowAll`, `denyAll`, `requireClientGrant`.
+	Policy pulumi.StringInput `pulumi:"policy"`
+}
+
+func (GetResourceServerSubjectTypeAuthorizationUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationUser)(nil)).Elem()
+}
+
+func (i GetResourceServerSubjectTypeAuthorizationUserArgs) ToGetResourceServerSubjectTypeAuthorizationUserOutput() GetResourceServerSubjectTypeAuthorizationUserOutput {
+	return i.ToGetResourceServerSubjectTypeAuthorizationUserOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerSubjectTypeAuthorizationUserArgs) ToGetResourceServerSubjectTypeAuthorizationUserOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerSubjectTypeAuthorizationUserOutput)
+}
+
+// GetResourceServerSubjectTypeAuthorizationUserArrayInput is an input type that accepts GetResourceServerSubjectTypeAuthorizationUserArray and GetResourceServerSubjectTypeAuthorizationUserArrayOutput values.
+// You can construct a concrete instance of `GetResourceServerSubjectTypeAuthorizationUserArrayInput` via:
+//
+//	GetResourceServerSubjectTypeAuthorizationUserArray{ GetResourceServerSubjectTypeAuthorizationUserArgs{...} }
+type GetResourceServerSubjectTypeAuthorizationUserArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceServerSubjectTypeAuthorizationUserArrayOutput() GetResourceServerSubjectTypeAuthorizationUserArrayOutput
+	ToGetResourceServerSubjectTypeAuthorizationUserArrayOutputWithContext(context.Context) GetResourceServerSubjectTypeAuthorizationUserArrayOutput
+}
+
+type GetResourceServerSubjectTypeAuthorizationUserArray []GetResourceServerSubjectTypeAuthorizationUserInput
+
+func (GetResourceServerSubjectTypeAuthorizationUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerSubjectTypeAuthorizationUser)(nil)).Elem()
+}
+
+func (i GetResourceServerSubjectTypeAuthorizationUserArray) ToGetResourceServerSubjectTypeAuthorizationUserArrayOutput() GetResourceServerSubjectTypeAuthorizationUserArrayOutput {
+	return i.ToGetResourceServerSubjectTypeAuthorizationUserArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerSubjectTypeAuthorizationUserArray) ToGetResourceServerSubjectTypeAuthorizationUserArrayOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerSubjectTypeAuthorizationUserArrayOutput)
+}
+
+type GetResourceServerSubjectTypeAuthorizationUserOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerSubjectTypeAuthorizationUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationUser)(nil)).Elem()
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationUserOutput) ToGetResourceServerSubjectTypeAuthorizationUserOutput() GetResourceServerSubjectTypeAuthorizationUserOutput {
+	return o
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationUserOutput) ToGetResourceServerSubjectTypeAuthorizationUserOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationUserOutput {
+	return o
+}
+
+// User flows policy. One of `allowAll`, `denyAll`, `requireClientGrant`.
+func (o GetResourceServerSubjectTypeAuthorizationUserOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceServerSubjectTypeAuthorizationUser) string { return v.Policy }).(pulumi.StringOutput)
+}
+
+type GetResourceServerSubjectTypeAuthorizationUserArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerSubjectTypeAuthorizationUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerSubjectTypeAuthorizationUser)(nil)).Elem()
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationUserArrayOutput) ToGetResourceServerSubjectTypeAuthorizationUserArrayOutput() GetResourceServerSubjectTypeAuthorizationUserArrayOutput {
+	return o
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationUserArrayOutput) ToGetResourceServerSubjectTypeAuthorizationUserArrayOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationUserArrayOutput {
+	return o
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationUserArrayOutput) Index(i pulumi.IntInput) GetResourceServerSubjectTypeAuthorizationUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerSubjectTypeAuthorizationUser {
+		return vs[0].([]GetResourceServerSubjectTypeAuthorizationUser)[vs[1].(int)]
+	}).(GetResourceServerSubjectTypeAuthorizationUserOutput)
+}
+
+type GetResourceServerTokenEncryption struct {
+	// Disable token encryption.
+	Disable bool `pulumi:"disable"`
+	// Authorization details for this resource server.
+	EncryptionKeys []GetResourceServerTokenEncryptionEncryptionKey `pulumi:"encryptionKeys"`
+	// Format of the token encryption. Only `compact-nested-jwe` is supported.
+	Format string `pulumi:"format"`
+}
+
+// GetResourceServerTokenEncryptionInput is an input type that accepts GetResourceServerTokenEncryptionArgs and GetResourceServerTokenEncryptionOutput values.
+// You can construct a concrete instance of `GetResourceServerTokenEncryptionInput` via:
+//
+//	GetResourceServerTokenEncryptionArgs{...}
+type GetResourceServerTokenEncryptionInput interface {
+	pulumi.Input
+
+	ToGetResourceServerTokenEncryptionOutput() GetResourceServerTokenEncryptionOutput
+	ToGetResourceServerTokenEncryptionOutputWithContext(context.Context) GetResourceServerTokenEncryptionOutput
+}
+
+type GetResourceServerTokenEncryptionArgs struct {
+	// Disable token encryption.
+	Disable pulumi.BoolInput `pulumi:"disable"`
+	// Authorization details for this resource server.
+	EncryptionKeys GetResourceServerTokenEncryptionEncryptionKeyArrayInput `pulumi:"encryptionKeys"`
+	// Format of the token encryption. Only `compact-nested-jwe` is supported.
+	Format pulumi.StringInput `pulumi:"format"`
+}
+
+func (GetResourceServerTokenEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerTokenEncryption)(nil)).Elem()
+}
+
+func (i GetResourceServerTokenEncryptionArgs) ToGetResourceServerTokenEncryptionOutput() GetResourceServerTokenEncryptionOutput {
+	return i.ToGetResourceServerTokenEncryptionOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerTokenEncryptionArgs) ToGetResourceServerTokenEncryptionOutputWithContext(ctx context.Context) GetResourceServerTokenEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerTokenEncryptionOutput)
+}
+
+// GetResourceServerTokenEncryptionArrayInput is an input type that accepts GetResourceServerTokenEncryptionArray and GetResourceServerTokenEncryptionArrayOutput values.
+// You can construct a concrete instance of `GetResourceServerTokenEncryptionArrayInput` via:
+//
+//	GetResourceServerTokenEncryptionArray{ GetResourceServerTokenEncryptionArgs{...} }
+type GetResourceServerTokenEncryptionArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceServerTokenEncryptionArrayOutput() GetResourceServerTokenEncryptionArrayOutput
+	ToGetResourceServerTokenEncryptionArrayOutputWithContext(context.Context) GetResourceServerTokenEncryptionArrayOutput
+}
+
+type GetResourceServerTokenEncryptionArray []GetResourceServerTokenEncryptionInput
+
+func (GetResourceServerTokenEncryptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerTokenEncryption)(nil)).Elem()
+}
+
+func (i GetResourceServerTokenEncryptionArray) ToGetResourceServerTokenEncryptionArrayOutput() GetResourceServerTokenEncryptionArrayOutput {
+	return i.ToGetResourceServerTokenEncryptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerTokenEncryptionArray) ToGetResourceServerTokenEncryptionArrayOutputWithContext(ctx context.Context) GetResourceServerTokenEncryptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerTokenEncryptionArrayOutput)
+}
+
+type GetResourceServerTokenEncryptionOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerTokenEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerTokenEncryption)(nil)).Elem()
+}
+
+func (o GetResourceServerTokenEncryptionOutput) ToGetResourceServerTokenEncryptionOutput() GetResourceServerTokenEncryptionOutput {
+	return o
+}
+
+func (o GetResourceServerTokenEncryptionOutput) ToGetResourceServerTokenEncryptionOutputWithContext(ctx context.Context) GetResourceServerTokenEncryptionOutput {
+	return o
+}
+
+// Disable token encryption.
+func (o GetResourceServerTokenEncryptionOutput) Disable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetResourceServerTokenEncryption) bool { return v.Disable }).(pulumi.BoolOutput)
+}
+
+// Authorization details for this resource server.
+func (o GetResourceServerTokenEncryptionOutput) EncryptionKeys() GetResourceServerTokenEncryptionEncryptionKeyArrayOutput {
+	return o.ApplyT(func(v GetResourceServerTokenEncryption) []GetResourceServerTokenEncryptionEncryptionKey {
+		return v.EncryptionKeys
+	}).(GetResourceServerTokenEncryptionEncryptionKeyArrayOutput)
+}
+
+// Format of the token encryption. Only `compact-nested-jwe` is supported.
+func (o GetResourceServerTokenEncryptionOutput) Format() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceServerTokenEncryption) string { return v.Format }).(pulumi.StringOutput)
+}
+
+type GetResourceServerTokenEncryptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerTokenEncryptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerTokenEncryption)(nil)).Elem()
+}
+
+func (o GetResourceServerTokenEncryptionArrayOutput) ToGetResourceServerTokenEncryptionArrayOutput() GetResourceServerTokenEncryptionArrayOutput {
+	return o
+}
+
+func (o GetResourceServerTokenEncryptionArrayOutput) ToGetResourceServerTokenEncryptionArrayOutputWithContext(ctx context.Context) GetResourceServerTokenEncryptionArrayOutput {
+	return o
+}
+
+func (o GetResourceServerTokenEncryptionArrayOutput) Index(i pulumi.IntInput) GetResourceServerTokenEncryptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerTokenEncryption {
+		return vs[0].([]GetResourceServerTokenEncryption)[vs[1].(int)]
+	}).(GetResourceServerTokenEncryptionOutput)
+}
+
+type GetResourceServerTokenEncryptionEncryptionKey struct {
+	// Algorithm used to encrypt the token.
+	Algorithm string `pulumi:"algorithm"`
+	// Key ID.
+	Kid string `pulumi:"kid"`
+	// Name of the encryption key.
+	Name string `pulumi:"name"`
+	// PEM-formatted public key. Must be JSON escaped.
+	Pem string `pulumi:"pem"`
+}
+
+// GetResourceServerTokenEncryptionEncryptionKeyInput is an input type that accepts GetResourceServerTokenEncryptionEncryptionKeyArgs and GetResourceServerTokenEncryptionEncryptionKeyOutput values.
+// You can construct a concrete instance of `GetResourceServerTokenEncryptionEncryptionKeyInput` via:
+//
+//	GetResourceServerTokenEncryptionEncryptionKeyArgs{...}
+type GetResourceServerTokenEncryptionEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToGetResourceServerTokenEncryptionEncryptionKeyOutput() GetResourceServerTokenEncryptionEncryptionKeyOutput
+	ToGetResourceServerTokenEncryptionEncryptionKeyOutputWithContext(context.Context) GetResourceServerTokenEncryptionEncryptionKeyOutput
+}
+
+type GetResourceServerTokenEncryptionEncryptionKeyArgs struct {
+	// Algorithm used to encrypt the token.
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// Key ID.
+	Kid pulumi.StringInput `pulumi:"kid"`
+	// Name of the encryption key.
+	Name pulumi.StringInput `pulumi:"name"`
+	// PEM-formatted public key. Must be JSON escaped.
+	Pem pulumi.StringInput `pulumi:"pem"`
+}
+
+func (GetResourceServerTokenEncryptionEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerTokenEncryptionEncryptionKey)(nil)).Elem()
+}
+
+func (i GetResourceServerTokenEncryptionEncryptionKeyArgs) ToGetResourceServerTokenEncryptionEncryptionKeyOutput() GetResourceServerTokenEncryptionEncryptionKeyOutput {
+	return i.ToGetResourceServerTokenEncryptionEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerTokenEncryptionEncryptionKeyArgs) ToGetResourceServerTokenEncryptionEncryptionKeyOutputWithContext(ctx context.Context) GetResourceServerTokenEncryptionEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerTokenEncryptionEncryptionKeyOutput)
+}
+
+// GetResourceServerTokenEncryptionEncryptionKeyArrayInput is an input type that accepts GetResourceServerTokenEncryptionEncryptionKeyArray and GetResourceServerTokenEncryptionEncryptionKeyArrayOutput values.
+// You can construct a concrete instance of `GetResourceServerTokenEncryptionEncryptionKeyArrayInput` via:
+//
+//	GetResourceServerTokenEncryptionEncryptionKeyArray{ GetResourceServerTokenEncryptionEncryptionKeyArgs{...} }
+type GetResourceServerTokenEncryptionEncryptionKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceServerTokenEncryptionEncryptionKeyArrayOutput() GetResourceServerTokenEncryptionEncryptionKeyArrayOutput
+	ToGetResourceServerTokenEncryptionEncryptionKeyArrayOutputWithContext(context.Context) GetResourceServerTokenEncryptionEncryptionKeyArrayOutput
+}
+
+type GetResourceServerTokenEncryptionEncryptionKeyArray []GetResourceServerTokenEncryptionEncryptionKeyInput
+
+func (GetResourceServerTokenEncryptionEncryptionKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerTokenEncryptionEncryptionKey)(nil)).Elem()
+}
+
+func (i GetResourceServerTokenEncryptionEncryptionKeyArray) ToGetResourceServerTokenEncryptionEncryptionKeyArrayOutput() GetResourceServerTokenEncryptionEncryptionKeyArrayOutput {
+	return i.ToGetResourceServerTokenEncryptionEncryptionKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerTokenEncryptionEncryptionKeyArray) ToGetResourceServerTokenEncryptionEncryptionKeyArrayOutputWithContext(ctx context.Context) GetResourceServerTokenEncryptionEncryptionKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerTokenEncryptionEncryptionKeyArrayOutput)
+}
+
+type GetResourceServerTokenEncryptionEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerTokenEncryptionEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerTokenEncryptionEncryptionKey)(nil)).Elem()
+}
+
+func (o GetResourceServerTokenEncryptionEncryptionKeyOutput) ToGetResourceServerTokenEncryptionEncryptionKeyOutput() GetResourceServerTokenEncryptionEncryptionKeyOutput {
+	return o
+}
+
+func (o GetResourceServerTokenEncryptionEncryptionKeyOutput) ToGetResourceServerTokenEncryptionEncryptionKeyOutputWithContext(ctx context.Context) GetResourceServerTokenEncryptionEncryptionKeyOutput {
+	return o
+}
+
+// Algorithm used to encrypt the token.
+func (o GetResourceServerTokenEncryptionEncryptionKeyOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceServerTokenEncryptionEncryptionKey) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// Key ID.
+func (o GetResourceServerTokenEncryptionEncryptionKeyOutput) Kid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceServerTokenEncryptionEncryptionKey) string { return v.Kid }).(pulumi.StringOutput)
+}
+
+// Name of the encryption key.
+func (o GetResourceServerTokenEncryptionEncryptionKeyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceServerTokenEncryptionEncryptionKey) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// PEM-formatted public key. Must be JSON escaped.
+func (o GetResourceServerTokenEncryptionEncryptionKeyOutput) Pem() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceServerTokenEncryptionEncryptionKey) string { return v.Pem }).(pulumi.StringOutput)
+}
+
+type GetResourceServerTokenEncryptionEncryptionKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerTokenEncryptionEncryptionKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerTokenEncryptionEncryptionKey)(nil)).Elem()
+}
+
+func (o GetResourceServerTokenEncryptionEncryptionKeyArrayOutput) ToGetResourceServerTokenEncryptionEncryptionKeyArrayOutput() GetResourceServerTokenEncryptionEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetResourceServerTokenEncryptionEncryptionKeyArrayOutput) ToGetResourceServerTokenEncryptionEncryptionKeyArrayOutputWithContext(ctx context.Context) GetResourceServerTokenEncryptionEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetResourceServerTokenEncryptionEncryptionKeyArrayOutput) Index(i pulumi.IntInput) GetResourceServerTokenEncryptionEncryptionKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerTokenEncryptionEncryptionKey {
+		return vs[0].([]GetResourceServerTokenEncryptionEncryptionKey)[vs[1].(int)]
+	}).(GetResourceServerTokenEncryptionEncryptionKeyOutput)
+}
+
+type GetRolePermissionType struct {
+	// Description of the permission.
+	Description string `pulumi:"description"`
+	// Name of the permission (scope) configured on the resource server (API).
+	Name string `pulumi:"name"`
+	// Unique identifier for the resource server (API).
+	ResourceServerIdentifier string `pulumi:"resourceServerIdentifier"`
+	// Name of resource server (API) that the permission is associated with.
+	ResourceServerName string `pulumi:"resourceServerName"`
+}
+
+// GetRolePermissionTypeInput is an input type that accepts GetRolePermissionTypeArgs and GetRolePermissionTypeOutput values.
+// You can construct a concrete instance of `GetRolePermissionTypeInput` via:
+//
+//	GetRolePermissionTypeArgs{...}
+type GetRolePermissionTypeInput interface {
+	pulumi.Input
+
+	ToGetRolePermissionTypeOutput() GetRolePermissionTypeOutput
+	ToGetRolePermissionTypeOutputWithContext(context.Context) GetRolePermissionTypeOutput
+}
+
+type GetRolePermissionTypeArgs struct {
+	// Description of the permission.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Name of the permission (scope) configured on the resource server (API).
+	Name pulumi.StringInput `pulumi:"name"`
+	// Unique identifier for the resource server (API).
+	ResourceServerIdentifier pulumi.StringInput `pulumi:"resourceServerIdentifier"`
+	// Name of resource server (API) that the permission is associated with.
+	ResourceServerName pulumi.StringInput `pulumi:"resourceServerName"`
+}
+
+func (GetRolePermissionTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRolePermissionType)(nil)).Elem()
+}
+
+func (i GetRolePermissionTypeArgs) ToGetRolePermissionTypeOutput() GetRolePermissionTypeOutput {
+	return i.ToGetRolePermissionTypeOutputWithContext(context.Background())
+}
+
+func (i GetRolePermissionTypeArgs) ToGetRolePermissionTypeOutputWithContext(ctx context.Context) GetRolePermissionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRolePermissionTypeOutput)
+}
+
+// GetRolePermissionTypeArrayInput is an input type that accepts GetRolePermissionTypeArray and GetRolePermissionTypeArrayOutput values.
+// You can construct a concrete instance of `GetRolePermissionTypeArrayInput` via:
+//
+//	GetRolePermissionTypeArray{ GetRolePermissionTypeArgs{...} }
+type GetRolePermissionTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetRolePermissionTypeArrayOutput() GetRolePermissionTypeArrayOutput
+	ToGetRolePermissionTypeArrayOutputWithContext(context.Context) GetRolePermissionTypeArrayOutput
+}
+
+type GetRolePermissionTypeArray []GetRolePermissionTypeInput
+
+func (GetRolePermissionTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRolePermissionType)(nil)).Elem()
+}
+
+func (i GetRolePermissionTypeArray) ToGetRolePermissionTypeArrayOutput() GetRolePermissionTypeArrayOutput {
+	return i.ToGetRolePermissionTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetRolePermissionTypeArray) ToGetRolePermissionTypeArrayOutputWithContext(ctx context.Context) GetRolePermissionTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRolePermissionTypeArrayOutput)
+}
+
+type GetRolePermissionTypeOutput struct{ *pulumi.OutputState }
+
+func (GetRolePermissionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRolePermissionType)(nil)).Elem()
+}
+
+func (o GetRolePermissionTypeOutput) ToGetRolePermissionTypeOutput() GetRolePermissionTypeOutput {
+	return o
+}
+
+func (o GetRolePermissionTypeOutput) ToGetRolePermissionTypeOutputWithContext(ctx context.Context) GetRolePermissionTypeOutput {
+	return o
+}
+
+// Description of the permission.
+func (o GetRolePermissionTypeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRolePermissionType) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Name of the permission (scope) configured on the resource server (API).
+func (o GetRolePermissionTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRolePermissionType) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Unique identifier for the resource server (API).
+func (o GetRolePermissionTypeOutput) ResourceServerIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRolePermissionType) string { return v.ResourceServerIdentifier }).(pulumi.StringOutput)
+}
+
+// Name of resource server (API) that the permission is associated with.
+func (o GetRolePermissionTypeOutput) ResourceServerName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRolePermissionType) string { return v.ResourceServerName }).(pulumi.StringOutput)
+}
+
+type GetRolePermissionTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRolePermissionTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRolePermissionType)(nil)).Elem()
+}
+
+func (o GetRolePermissionTypeArrayOutput) ToGetRolePermissionTypeArrayOutput() GetRolePermissionTypeArrayOutput {
+	return o
+}
+
+func (o GetRolePermissionTypeArrayOutput) ToGetRolePermissionTypeArrayOutputWithContext(ctx context.Context) GetRolePermissionTypeArrayOutput {
+	return o
+}
+
+func (o GetRolePermissionTypeArrayOutput) Index(i pulumi.IntInput) GetRolePermissionTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRolePermissionType {
+		return vs[0].([]GetRolePermissionType)[vs[1].(int)]
+	}).(GetRolePermissionTypeOutput)
+}
+
+type GetSelfServiceProfileBranding struct {
+	// Configuration settings for colors for branding.
+	Colors []GetSelfServiceProfileBrandingColor `pulumi:"colors"`
+	// URL of logo to display on login page.
+	LogoUrl string `pulumi:"logoUrl"`
+}
+
+// GetSelfServiceProfileBrandingInput is an input type that accepts GetSelfServiceProfileBrandingArgs and GetSelfServiceProfileBrandingOutput values.
+// You can construct a concrete instance of `GetSelfServiceProfileBrandingInput` via:
+//
+//	GetSelfServiceProfileBrandingArgs{...}
+type GetSelfServiceProfileBrandingInput interface {
+	pulumi.Input
+
+	ToGetSelfServiceProfileBrandingOutput() GetSelfServiceProfileBrandingOutput
+	ToGetSelfServiceProfileBrandingOutputWithContext(context.Context) GetSelfServiceProfileBrandingOutput
+}
+
+type GetSelfServiceProfileBrandingArgs struct {
+	// Configuration settings for colors for branding.
+	Colors GetSelfServiceProfileBrandingColorArrayInput `pulumi:"colors"`
+	// URL of logo to display on login page.
+	LogoUrl pulumi.StringInput `pulumi:"logoUrl"`
+}
+
+func (GetSelfServiceProfileBrandingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSelfServiceProfileBranding)(nil)).Elem()
+}
+
+func (i GetSelfServiceProfileBrandingArgs) ToGetSelfServiceProfileBrandingOutput() GetSelfServiceProfileBrandingOutput {
+	return i.ToGetSelfServiceProfileBrandingOutputWithContext(context.Background())
+}
+
+func (i GetSelfServiceProfileBrandingArgs) ToGetSelfServiceProfileBrandingOutputWithContext(ctx context.Context) GetSelfServiceProfileBrandingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSelfServiceProfileBrandingOutput)
+}
+
+// GetSelfServiceProfileBrandingArrayInput is an input type that accepts GetSelfServiceProfileBrandingArray and GetSelfServiceProfileBrandingArrayOutput values.
+// You can construct a concrete instance of `GetSelfServiceProfileBrandingArrayInput` via:
+//
+//	GetSelfServiceProfileBrandingArray{ GetSelfServiceProfileBrandingArgs{...} }
+type GetSelfServiceProfileBrandingArrayInput interface {
+	pulumi.Input
+
+	ToGetSelfServiceProfileBrandingArrayOutput() GetSelfServiceProfileBrandingArrayOutput
+	ToGetSelfServiceProfileBrandingArrayOutputWithContext(context.Context) GetSelfServiceProfileBrandingArrayOutput
+}
+
+type GetSelfServiceProfileBrandingArray []GetSelfServiceProfileBrandingInput
+
+func (GetSelfServiceProfileBrandingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSelfServiceProfileBranding)(nil)).Elem()
+}
+
+func (i GetSelfServiceProfileBrandingArray) ToGetSelfServiceProfileBrandingArrayOutput() GetSelfServiceProfileBrandingArrayOutput {
+	return i.ToGetSelfServiceProfileBrandingArrayOutputWithContext(context.Background())
+}
+
+func (i GetSelfServiceProfileBrandingArray) ToGetSelfServiceProfileBrandingArrayOutputWithContext(ctx context.Context) GetSelfServiceProfileBrandingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSelfServiceProfileBrandingArrayOutput)
+}
+
+type GetSelfServiceProfileBrandingOutput struct{ *pulumi.OutputState }
+
+func (GetSelfServiceProfileBrandingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSelfServiceProfileBranding)(nil)).Elem()
+}
+
+func (o GetSelfServiceProfileBrandingOutput) ToGetSelfServiceProfileBrandingOutput() GetSelfServiceProfileBrandingOutput {
+	return o
+}
+
+func (o GetSelfServiceProfileBrandingOutput) ToGetSelfServiceProfileBrandingOutputWithContext(ctx context.Context) GetSelfServiceProfileBrandingOutput {
+	return o
+}
+
+// Configuration settings for colors for branding.
+func (o GetSelfServiceProfileBrandingOutput) Colors() GetSelfServiceProfileBrandingColorArrayOutput {
+	return o.ApplyT(func(v GetSelfServiceProfileBranding) []GetSelfServiceProfileBrandingColor { return v.Colors }).(GetSelfServiceProfileBrandingColorArrayOutput)
+}
+
+// URL of logo to display on login page.
+func (o GetSelfServiceProfileBrandingOutput) LogoUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSelfServiceProfileBranding) string { return v.LogoUrl }).(pulumi.StringOutput)
+}
+
+type GetSelfServiceProfileBrandingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSelfServiceProfileBrandingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSelfServiceProfileBranding)(nil)).Elem()
+}
+
+func (o GetSelfServiceProfileBrandingArrayOutput) ToGetSelfServiceProfileBrandingArrayOutput() GetSelfServiceProfileBrandingArrayOutput {
+	return o
+}
+
+func (o GetSelfServiceProfileBrandingArrayOutput) ToGetSelfServiceProfileBrandingArrayOutputWithContext(ctx context.Context) GetSelfServiceProfileBrandingArrayOutput {
+	return o
+}
+
+func (o GetSelfServiceProfileBrandingArrayOutput) Index(i pulumi.IntInput) GetSelfServiceProfileBrandingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSelfServiceProfileBranding {
+		return vs[0].([]GetSelfServiceProfileBranding)[vs[1].(int)]
+	}).(GetSelfServiceProfileBrandingOutput)
+}
+
+type GetSelfServiceProfileBrandingColor struct {
+	// Primary button background color in hexadecimal.
+	Primary string `pulumi:"primary"`
+}
+
+// GetSelfServiceProfileBrandingColorInput is an input type that accepts GetSelfServiceProfileBrandingColorArgs and GetSelfServiceProfileBrandingColorOutput values.
+// You can construct a concrete instance of `GetSelfServiceProfileBrandingColorInput` via:
+//
+//	GetSelfServiceProfileBrandingColorArgs{...}
+type GetSelfServiceProfileBrandingColorInput interface {
+	pulumi.Input
+
+	ToGetSelfServiceProfileBrandingColorOutput() GetSelfServiceProfileBrandingColorOutput
+	ToGetSelfServiceProfileBrandingColorOutputWithContext(context.Context) GetSelfServiceProfileBrandingColorOutput
+}
+
+type GetSelfServiceProfileBrandingColorArgs struct {
+	// Primary button background color in hexadecimal.
+	Primary pulumi.StringInput `pulumi:"primary"`
+}
+
+func (GetSelfServiceProfileBrandingColorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSelfServiceProfileBrandingColor)(nil)).Elem()
+}
+
+func (i GetSelfServiceProfileBrandingColorArgs) ToGetSelfServiceProfileBrandingColorOutput() GetSelfServiceProfileBrandingColorOutput {
+	return i.ToGetSelfServiceProfileBrandingColorOutputWithContext(context.Background())
+}
+
+func (i GetSelfServiceProfileBrandingColorArgs) ToGetSelfServiceProfileBrandingColorOutputWithContext(ctx context.Context) GetSelfServiceProfileBrandingColorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSelfServiceProfileBrandingColorOutput)
+}
+
+// GetSelfServiceProfileBrandingColorArrayInput is an input type that accepts GetSelfServiceProfileBrandingColorArray and GetSelfServiceProfileBrandingColorArrayOutput values.
+// You can construct a concrete instance of `GetSelfServiceProfileBrandingColorArrayInput` via:
+//
+//	GetSelfServiceProfileBrandingColorArray{ GetSelfServiceProfileBrandingColorArgs{...} }
+type GetSelfServiceProfileBrandingColorArrayInput interface {
+	pulumi.Input
+
+	ToGetSelfServiceProfileBrandingColorArrayOutput() GetSelfServiceProfileBrandingColorArrayOutput
+	ToGetSelfServiceProfileBrandingColorArrayOutputWithContext(context.Context) GetSelfServiceProfileBrandingColorArrayOutput
+}
+
+type GetSelfServiceProfileBrandingColorArray []GetSelfServiceProfileBrandingColorInput
+
+func (GetSelfServiceProfileBrandingColorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSelfServiceProfileBrandingColor)(nil)).Elem()
+}
+
+func (i GetSelfServiceProfileBrandingColorArray) ToGetSelfServiceProfileBrandingColorArrayOutput() GetSelfServiceProfileBrandingColorArrayOutput {
+	return i.ToGetSelfServiceProfileBrandingColorArrayOutputWithContext(context.Background())
+}
+
+func (i GetSelfServiceProfileBrandingColorArray) ToGetSelfServiceProfileBrandingColorArrayOutputWithContext(ctx context.Context) GetSelfServiceProfileBrandingColorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSelfServiceProfileBrandingColorArrayOutput)
+}
+
+type GetSelfServiceProfileBrandingColorOutput struct{ *pulumi.OutputState }
+
+func (GetSelfServiceProfileBrandingColorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSelfServiceProfileBrandingColor)(nil)).Elem()
+}
+
+func (o GetSelfServiceProfileBrandingColorOutput) ToGetSelfServiceProfileBrandingColorOutput() GetSelfServiceProfileBrandingColorOutput {
+	return o
+}
+
+func (o GetSelfServiceProfileBrandingColorOutput) ToGetSelfServiceProfileBrandingColorOutputWithContext(ctx context.Context) GetSelfServiceProfileBrandingColorOutput {
+	return o
+}
+
+// Primary button background color in hexadecimal.
+func (o GetSelfServiceProfileBrandingColorOutput) Primary() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSelfServiceProfileBrandingColor) string { return v.Primary }).(pulumi.StringOutput)
+}
+
+type GetSelfServiceProfileBrandingColorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSelfServiceProfileBrandingColorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSelfServiceProfileBrandingColor)(nil)).Elem()
+}
+
+func (o GetSelfServiceProfileBrandingColorArrayOutput) ToGetSelfServiceProfileBrandingColorArrayOutput() GetSelfServiceProfileBrandingColorArrayOutput {
+	return o
+}
+
+func (o GetSelfServiceProfileBrandingColorArrayOutput) ToGetSelfServiceProfileBrandingColorArrayOutputWithContext(ctx context.Context) GetSelfServiceProfileBrandingColorArrayOutput {
+	return o
+}
+
+func (o GetSelfServiceProfileBrandingColorArrayOutput) Index(i pulumi.IntInput) GetSelfServiceProfileBrandingColorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSelfServiceProfileBrandingColor {
+		return vs[0].([]GetSelfServiceProfileBrandingColor)[vs[1].(int)]
+	}).(GetSelfServiceProfileBrandingColorOutput)
+}
+
+type GetSelfServiceProfileUserAttribute struct {
+	// A human readable description of the attribute.
+	Description string `pulumi:"description"`
+	// Indicates if this attribute is optional or if it has to be provided by the customer for the application to function.
+	IsOptional bool `pulumi:"isOptional"`
+	// Attribute’s name on Auth0 side
+	Name string `pulumi:"name"`
+}
+
+// GetSelfServiceProfileUserAttributeInput is an input type that accepts GetSelfServiceProfileUserAttributeArgs and GetSelfServiceProfileUserAttributeOutput values.
+// You can construct a concrete instance of `GetSelfServiceProfileUserAttributeInput` via:
+//
+//	GetSelfServiceProfileUserAttributeArgs{...}
+type GetSelfServiceProfileUserAttributeInput interface {
+	pulumi.Input
+
+	ToGetSelfServiceProfileUserAttributeOutput() GetSelfServiceProfileUserAttributeOutput
+	ToGetSelfServiceProfileUserAttributeOutputWithContext(context.Context) GetSelfServiceProfileUserAttributeOutput
+}
+
+type GetSelfServiceProfileUserAttributeArgs struct {
+	// A human readable description of the attribute.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Indicates if this attribute is optional or if it has to be provided by the customer for the application to function.
+	IsOptional pulumi.BoolInput `pulumi:"isOptional"`
+	// Attribute’s name on Auth0 side
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetSelfServiceProfileUserAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSelfServiceProfileUserAttribute)(nil)).Elem()
+}
+
+func (i GetSelfServiceProfileUserAttributeArgs) ToGetSelfServiceProfileUserAttributeOutput() GetSelfServiceProfileUserAttributeOutput {
+	return i.ToGetSelfServiceProfileUserAttributeOutputWithContext(context.Background())
+}
+
+func (i GetSelfServiceProfileUserAttributeArgs) ToGetSelfServiceProfileUserAttributeOutputWithContext(ctx context.Context) GetSelfServiceProfileUserAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSelfServiceProfileUserAttributeOutput)
+}
+
+// GetSelfServiceProfileUserAttributeArrayInput is an input type that accepts GetSelfServiceProfileUserAttributeArray and GetSelfServiceProfileUserAttributeArrayOutput values.
+// You can construct a concrete instance of `GetSelfServiceProfileUserAttributeArrayInput` via:
+//
+//	GetSelfServiceProfileUserAttributeArray{ GetSelfServiceProfileUserAttributeArgs{...} }
+type GetSelfServiceProfileUserAttributeArrayInput interface {
+	pulumi.Input
+
+	ToGetSelfServiceProfileUserAttributeArrayOutput() GetSelfServiceProfileUserAttributeArrayOutput
+	ToGetSelfServiceProfileUserAttributeArrayOutputWithContext(context.Context) GetSelfServiceProfileUserAttributeArrayOutput
+}
+
+type GetSelfServiceProfileUserAttributeArray []GetSelfServiceProfileUserAttributeInput
+
+func (GetSelfServiceProfileUserAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSelfServiceProfileUserAttribute)(nil)).Elem()
+}
+
+func (i GetSelfServiceProfileUserAttributeArray) ToGetSelfServiceProfileUserAttributeArrayOutput() GetSelfServiceProfileUserAttributeArrayOutput {
+	return i.ToGetSelfServiceProfileUserAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i GetSelfServiceProfileUserAttributeArray) ToGetSelfServiceProfileUserAttributeArrayOutputWithContext(ctx context.Context) GetSelfServiceProfileUserAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSelfServiceProfileUserAttributeArrayOutput)
+}
+
+type GetSelfServiceProfileUserAttributeOutput struct{ *pulumi.OutputState }
+
+func (GetSelfServiceProfileUserAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSelfServiceProfileUserAttribute)(nil)).Elem()
+}
+
+func (o GetSelfServiceProfileUserAttributeOutput) ToGetSelfServiceProfileUserAttributeOutput() GetSelfServiceProfileUserAttributeOutput {
+	return o
+}
+
+func (o GetSelfServiceProfileUserAttributeOutput) ToGetSelfServiceProfileUserAttributeOutputWithContext(ctx context.Context) GetSelfServiceProfileUserAttributeOutput {
+	return o
+}
+
+// A human readable description of the attribute.
+func (o GetSelfServiceProfileUserAttributeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSelfServiceProfileUserAttribute) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Indicates if this attribute is optional or if it has to be provided by the customer for the application to function.
+func (o GetSelfServiceProfileUserAttributeOutput) IsOptional() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSelfServiceProfileUserAttribute) bool { return v.IsOptional }).(pulumi.BoolOutput)
+}
+
+// Attribute’s name on Auth0 side
+func (o GetSelfServiceProfileUserAttributeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSelfServiceProfileUserAttribute) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetSelfServiceProfileUserAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSelfServiceProfileUserAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSelfServiceProfileUserAttribute)(nil)).Elem()
+}
+
+func (o GetSelfServiceProfileUserAttributeArrayOutput) ToGetSelfServiceProfileUserAttributeArrayOutput() GetSelfServiceProfileUserAttributeArrayOutput {
+	return o
+}
+
+func (o GetSelfServiceProfileUserAttributeArrayOutput) ToGetSelfServiceProfileUserAttributeArrayOutputWithContext(ctx context.Context) GetSelfServiceProfileUserAttributeArrayOutput {
+	return o
+}
+
+func (o GetSelfServiceProfileUserAttributeArrayOutput) Index(i pulumi.IntInput) GetSelfServiceProfileUserAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSelfServiceProfileUserAttribute {
+		return vs[0].([]GetSelfServiceProfileUserAttribute)[vs[1].(int)]
+	}).(GetSelfServiceProfileUserAttributeOutput)
+}
+
 type GetSigningKeysSigningKey struct {
 	// The public certificate of the signing key.
 	Cert string `pulumi:"cert"`
@@ -180,6 +1494,112 @@ func (o GetSigningKeysSigningKeyArrayOutput) Index(i pulumi.IntInput) GetSigning
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSigningKeysSigningKey {
 		return vs[0].([]GetSigningKeysSigningKey)[vs[1].(int)]
 	}).(GetSigningKeysSigningKeyOutput)
+}
+
+type GetTenantCountryCode struct {
+	// List of ISO 3166-1 alpha-2 country codes.
+	Lists []string `pulumi:"lists"`
+	// Whether the list is an allow-list or deny-list. Available options: `allow`, `deny`.
+	Mode string `pulumi:"mode"`
+}
+
+// GetTenantCountryCodeInput is an input type that accepts GetTenantCountryCodeArgs and GetTenantCountryCodeOutput values.
+// You can construct a concrete instance of `GetTenantCountryCodeInput` via:
+//
+//	GetTenantCountryCodeArgs{...}
+type GetTenantCountryCodeInput interface {
+	pulumi.Input
+
+	ToGetTenantCountryCodeOutput() GetTenantCountryCodeOutput
+	ToGetTenantCountryCodeOutputWithContext(context.Context) GetTenantCountryCodeOutput
+}
+
+type GetTenantCountryCodeArgs struct {
+	// List of ISO 3166-1 alpha-2 country codes.
+	Lists pulumi.StringArrayInput `pulumi:"lists"`
+	// Whether the list is an allow-list or deny-list. Available options: `allow`, `deny`.
+	Mode pulumi.StringInput `pulumi:"mode"`
+}
+
+func (GetTenantCountryCodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantCountryCode)(nil)).Elem()
+}
+
+func (i GetTenantCountryCodeArgs) ToGetTenantCountryCodeOutput() GetTenantCountryCodeOutput {
+	return i.ToGetTenantCountryCodeOutputWithContext(context.Background())
+}
+
+func (i GetTenantCountryCodeArgs) ToGetTenantCountryCodeOutputWithContext(ctx context.Context) GetTenantCountryCodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantCountryCodeOutput)
+}
+
+// GetTenantCountryCodeArrayInput is an input type that accepts GetTenantCountryCodeArray and GetTenantCountryCodeArrayOutput values.
+// You can construct a concrete instance of `GetTenantCountryCodeArrayInput` via:
+//
+//	GetTenantCountryCodeArray{ GetTenantCountryCodeArgs{...} }
+type GetTenantCountryCodeArrayInput interface {
+	pulumi.Input
+
+	ToGetTenantCountryCodeArrayOutput() GetTenantCountryCodeArrayOutput
+	ToGetTenantCountryCodeArrayOutputWithContext(context.Context) GetTenantCountryCodeArrayOutput
+}
+
+type GetTenantCountryCodeArray []GetTenantCountryCodeInput
+
+func (GetTenantCountryCodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantCountryCode)(nil)).Elem()
+}
+
+func (i GetTenantCountryCodeArray) ToGetTenantCountryCodeArrayOutput() GetTenantCountryCodeArrayOutput {
+	return i.ToGetTenantCountryCodeArrayOutputWithContext(context.Background())
+}
+
+func (i GetTenantCountryCodeArray) ToGetTenantCountryCodeArrayOutputWithContext(ctx context.Context) GetTenantCountryCodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantCountryCodeArrayOutput)
+}
+
+type GetTenantCountryCodeOutput struct{ *pulumi.OutputState }
+
+func (GetTenantCountryCodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantCountryCode)(nil)).Elem()
+}
+
+func (o GetTenantCountryCodeOutput) ToGetTenantCountryCodeOutput() GetTenantCountryCodeOutput {
+	return o
+}
+
+func (o GetTenantCountryCodeOutput) ToGetTenantCountryCodeOutputWithContext(ctx context.Context) GetTenantCountryCodeOutput {
+	return o
+}
+
+// List of ISO 3166-1 alpha-2 country codes.
+func (o GetTenantCountryCodeOutput) Lists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTenantCountryCode) []string { return v.Lists }).(pulumi.StringArrayOutput)
+}
+
+// Whether the list is an allow-list or deny-list. Available options: `allow`, `deny`.
+func (o GetTenantCountryCodeOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTenantCountryCode) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+type GetTenantCountryCodeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTenantCountryCodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantCountryCode)(nil)).Elem()
+}
+
+func (o GetTenantCountryCodeArrayOutput) ToGetTenantCountryCodeArrayOutput() GetTenantCountryCodeArrayOutput {
+	return o
+}
+
+func (o GetTenantCountryCodeArrayOutput) ToGetTenantCountryCodeArrayOutputWithContext(ctx context.Context) GetTenantCountryCodeArrayOutput {
+	return o
+}
+
+func (o GetTenantCountryCodeArrayOutput) Index(i pulumi.IntInput) GetTenantCountryCodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantCountryCode {
+		return vs[0].([]GetTenantCountryCode)[vs[1].(int)]
+	}).(GetTenantCountryCodeOutput)
 }
 
 type GetTenantDefaultTokenQuota struct {
@@ -2596,8 +4016,34 @@ func (o GetUserPermissionTypeArrayOutput) Index(i pulumi.IntInput) GetUserPermis
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerAuthorizationPolicyInput)(nil)).Elem(), GetResourceServerAuthorizationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerAuthorizationPolicyArrayInput)(nil)).Elem(), GetResourceServerAuthorizationPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerProofOfPossessionInput)(nil)).Elem(), GetResourceServerProofOfPossessionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerProofOfPossessionArrayInput)(nil)).Elem(), GetResourceServerProofOfPossessionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerScopeTypeInput)(nil)).Elem(), GetResourceServerScopeTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerScopeTypeArrayInput)(nil)).Elem(), GetResourceServerScopeTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationInput)(nil)).Elem(), GetResourceServerSubjectTypeAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationArrayInput)(nil)).Elem(), GetResourceServerSubjectTypeAuthorizationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationClientInput)(nil)).Elem(), GetResourceServerSubjectTypeAuthorizationClientArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationClientArrayInput)(nil)).Elem(), GetResourceServerSubjectTypeAuthorizationClientArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationUserInput)(nil)).Elem(), GetResourceServerSubjectTypeAuthorizationUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationUserArrayInput)(nil)).Elem(), GetResourceServerSubjectTypeAuthorizationUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerTokenEncryptionInput)(nil)).Elem(), GetResourceServerTokenEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerTokenEncryptionArrayInput)(nil)).Elem(), GetResourceServerTokenEncryptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerTokenEncryptionEncryptionKeyInput)(nil)).Elem(), GetResourceServerTokenEncryptionEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerTokenEncryptionEncryptionKeyArrayInput)(nil)).Elem(), GetResourceServerTokenEncryptionEncryptionKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRolePermissionTypeInput)(nil)).Elem(), GetRolePermissionTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRolePermissionTypeArrayInput)(nil)).Elem(), GetRolePermissionTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSelfServiceProfileBrandingInput)(nil)).Elem(), GetSelfServiceProfileBrandingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSelfServiceProfileBrandingArrayInput)(nil)).Elem(), GetSelfServiceProfileBrandingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSelfServiceProfileBrandingColorInput)(nil)).Elem(), GetSelfServiceProfileBrandingColorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSelfServiceProfileBrandingColorArrayInput)(nil)).Elem(), GetSelfServiceProfileBrandingColorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSelfServiceProfileUserAttributeInput)(nil)).Elem(), GetSelfServiceProfileUserAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSelfServiceProfileUserAttributeArrayInput)(nil)).Elem(), GetSelfServiceProfileUserAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSigningKeysSigningKeyInput)(nil)).Elem(), GetSigningKeysSigningKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSigningKeysSigningKeyArrayInput)(nil)).Elem(), GetSigningKeysSigningKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantCountryCodeInput)(nil)).Elem(), GetTenantCountryCodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantCountryCodeArrayInput)(nil)).Elem(), GetTenantCountryCodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaInput)(nil)).Elem(), GetTenantDefaultTokenQuotaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaArrayInput)(nil)).Elem(), GetTenantDefaultTokenQuotaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantDefaultTokenQuotaClientInput)(nil)).Elem(), GetTenantDefaultTokenQuotaClientArgs{})
@@ -2636,8 +4082,34 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserConnectedAccountsConnectedAccountArrayInput)(nil)).Elem(), GetUserConnectedAccountsConnectedAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPermissionTypeInput)(nil)).Elem(), GetUserPermissionTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPermissionTypeArrayInput)(nil)).Elem(), GetUserPermissionTypeArray{})
+	pulumi.RegisterOutputType(GetResourceServerAuthorizationPolicyOutput{})
+	pulumi.RegisterOutputType(GetResourceServerAuthorizationPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceServerProofOfPossessionOutput{})
+	pulumi.RegisterOutputType(GetResourceServerProofOfPossessionArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceServerScopeTypeOutput{})
+	pulumi.RegisterOutputType(GetResourceServerScopeTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceServerSubjectTypeAuthorizationOutput{})
+	pulumi.RegisterOutputType(GetResourceServerSubjectTypeAuthorizationArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceServerSubjectTypeAuthorizationClientOutput{})
+	pulumi.RegisterOutputType(GetResourceServerSubjectTypeAuthorizationClientArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceServerSubjectTypeAuthorizationUserOutput{})
+	pulumi.RegisterOutputType(GetResourceServerSubjectTypeAuthorizationUserArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceServerTokenEncryptionOutput{})
+	pulumi.RegisterOutputType(GetResourceServerTokenEncryptionArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceServerTokenEncryptionEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(GetResourceServerTokenEncryptionEncryptionKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetRolePermissionTypeOutput{})
+	pulumi.RegisterOutputType(GetRolePermissionTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetSelfServiceProfileBrandingOutput{})
+	pulumi.RegisterOutputType(GetSelfServiceProfileBrandingArrayOutput{})
+	pulumi.RegisterOutputType(GetSelfServiceProfileBrandingColorOutput{})
+	pulumi.RegisterOutputType(GetSelfServiceProfileBrandingColorArrayOutput{})
+	pulumi.RegisterOutputType(GetSelfServiceProfileUserAttributeOutput{})
+	pulumi.RegisterOutputType(GetSelfServiceProfileUserAttributeArrayOutput{})
 	pulumi.RegisterOutputType(GetSigningKeysSigningKeyOutput{})
 	pulumi.RegisterOutputType(GetSigningKeysSigningKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetTenantCountryCodeOutput{})
+	pulumi.RegisterOutputType(GetTenantCountryCodeArrayOutput{})
 	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaOutput{})
 	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaArrayOutput{})
 	pulumi.RegisterOutputType(GetTenantDefaultTokenQuotaClientOutput{})
