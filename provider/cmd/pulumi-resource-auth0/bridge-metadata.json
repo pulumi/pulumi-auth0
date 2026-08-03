@@ -219,6 +219,16 @@
                             }
                         }
                     },
+                    "identifiers": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "phone_display": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
                     "page_background": {
                         "maxItemsOne": true
                     },
@@ -392,6 +402,9 @@
                     },
                     "grant_types": {
                         "maxItemsOne": false
+                    },
+                    "identity_assertion_authorization_grant": {
+                        "maxItemsOne": true
                     },
                     "jwt_configuration": {
                         "maxItemsOne": true
@@ -658,6 +671,12 @@
                         "maxItemsOne": true
                     },
                     "connected_accounts": {
+                        "maxItemsOne": true
+                    },
+                    "cross_app_access_requesting_app": {
+                        "maxItemsOne": true
+                    },
+                    "cross_app_access_resource_app": {
                         "maxItemsOne": true
                     },
                     "options": {
@@ -1274,6 +1293,9 @@
                                             "asns": {
                                                 "maxItemsOne": false
                                             },
+                                            "auth0_managed": {
+                                                "maxItemsOne": false
+                                            },
                                             "connecting_ipv4_cidrs": {
                                                 "maxItemsOne": false
                                             },
@@ -1312,6 +1334,9 @@
                                     "elem": {
                                         "fields": {
                                             "asns": {
+                                                "maxItemsOne": false
+                                            },
+                                            "auth0_managed": {
                                                 "maxItemsOne": false
                                             },
                                             "connecting_ipv4_cidrs": {
@@ -1661,6 +1686,16 @@
                     },
                     "allowed_logout_urls": {
                         "maxItemsOne": false
+                    },
+                    "country_codes": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "list": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "default_token_quota": {
                         "maxItemsOne": true,
@@ -2078,6 +2113,16 @@
                             }
                         }
                     },
+                    "identifiers": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "phone_display": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "page_background": {
                         "maxItemsOne": false
                     },
@@ -2287,6 +2332,9 @@
                         }
                     },
                     "grant_types": {
+                        "maxItemsOne": false
+                    },
+                    "identity_assertion_authorization_grant": {
                         "maxItemsOne": false
                     },
                     "jwt_configuration": {
@@ -2500,6 +2548,9 @@
                                 "grant_types": {
                                     "maxItemsOne": false
                                 },
+                                "identity_assertion_authorization_grant": {
+                                    "maxItemsOne": false
+                                },
                                 "my_organization_configuration": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -2585,6 +2636,12 @@
                         "maxItemsOne": false
                     },
                     "connected_accounts": {
+                        "maxItemsOne": false
+                    },
+                    "cross_app_access_requesting_app": {
+                        "maxItemsOne": false
+                    },
+                    "cross_app_access_resource_app": {
                         "maxItemsOne": false
                     },
                     "enabled_clients": {
@@ -3099,6 +3156,9 @@
                                             "asns": {
                                                 "maxItemsOne": false
                                             },
+                                            "auth0_managed": {
+                                                "maxItemsOne": false
+                                            },
                                             "connecting_ipv4_cidrs": {
                                                 "maxItemsOne": false
                                             },
@@ -3137,6 +3197,9 @@
                                     "elem": {
                                         "fields": {
                                             "asns": {
+                                                "maxItemsOne": false
+                                            },
+                                            "auth0_managed": {
                                                 "maxItemsOne": false
                                             },
                                             "connecting_ipv4_cidrs": {
@@ -3430,6 +3493,16 @@
                     },
                     "allowed_logout_urls": {
                         "maxItemsOne": false
+                    },
+                    "country_codes": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "list": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "default_token_quota": {
                         "maxItemsOne": false,
