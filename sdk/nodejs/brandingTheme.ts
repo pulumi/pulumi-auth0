@@ -54,6 +54,10 @@ export class BrandingTheme extends pulumi.CustomResource {
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
     declare public readonly fonts: pulumi.Output<outputs.BrandingThemeFonts>;
+    /**
+     * Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed
+     */
+    declare public readonly identifiers: pulumi.Output<outputs.BrandingThemeIdentifiers>;
     declare public readonly pageBackground: pulumi.Output<outputs.BrandingThemePageBackground>;
     declare public readonly widget: pulumi.Output<outputs.BrandingThemeWidget>;
 
@@ -74,6 +78,7 @@ export class BrandingTheme extends pulumi.CustomResource {
             resourceInputs["colors"] = state?.colors;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["fonts"] = state?.fonts;
+            resourceInputs["identifiers"] = state?.identifiers;
             resourceInputs["pageBackground"] = state?.pageBackground;
             resourceInputs["widget"] = state?.widget;
         } else {
@@ -97,6 +102,7 @@ export class BrandingTheme extends pulumi.CustomResource {
             resourceInputs["colors"] = args?.colors;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["fonts"] = args?.fonts;
+            resourceInputs["identifiers"] = args?.identifiers;
             resourceInputs["pageBackground"] = args?.pageBackground;
             resourceInputs["widget"] = args?.widget;
         }
@@ -116,6 +122,10 @@ export interface BrandingThemeState {
      */
     displayName?: pulumi.Input<string | undefined>;
     fonts?: pulumi.Input<inputs.BrandingThemeFonts | undefined>;
+    /**
+     * Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed
+     */
+    identifiers?: pulumi.Input<inputs.BrandingThemeIdentifiers | undefined>;
     pageBackground?: pulumi.Input<inputs.BrandingThemePageBackground | undefined>;
     widget?: pulumi.Input<inputs.BrandingThemeWidget | undefined>;
 }
@@ -131,6 +141,10 @@ export interface BrandingThemeArgs {
      */
     displayName?: pulumi.Input<string | undefined>;
     fonts: pulumi.Input<inputs.BrandingThemeFonts>;
+    /**
+     * Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed
+     */
+    identifiers?: pulumi.Input<inputs.BrandingThemeIdentifiers | undefined>;
     pageBackground: pulumi.Input<inputs.BrandingThemePageBackground>;
     widget: pulumi.Input<inputs.BrandingThemeWidget>;
 }

@@ -274,6 +274,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<string> NonPersistentAttrs;
         /// <summary>
+        /// Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+        /// </summary>
+        public readonly string? OidcMetadata;
+        /// <summary>
         /// Defines options for the passkey authentication method
         /// </summary>
         public readonly Outputs.ConnectionOptionsPasskeyOptions? PasskeyOptions;
@@ -626,6 +630,8 @@ namespace Pulumi.Auth0.Outputs
 
             ImmutableArray<string> nonPersistentAttrs,
 
+            string? oidcMetadata,
+
             Outputs.ConnectionOptionsPasskeyOptions? passkeyOptions,
 
             Outputs.ConnectionOptionsPasswordComplexityOptions? passwordComplexityOptions,
@@ -801,6 +807,7 @@ namespace Pulumi.Auth0.Outputs
             Mfa = mfa;
             Name = name;
             NonPersistentAttrs = nonPersistentAttrs;
+            OidcMetadata = oidcMetadata;
             PasskeyOptions = passkeyOptions;
             PasswordComplexityOptions = passwordComplexityOptions;
             PasswordDictionary = passwordDictionary;

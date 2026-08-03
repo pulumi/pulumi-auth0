@@ -68,12 +68,16 @@ type LookupConnectionArgs struct {
 
 // A collection of values returned by getConnection.
 type LookupConnectionResult struct {
-	// Configure the purpose of a connection to be used for authentication during login.
+	// Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
 	Authentications []GetConnectionAuthentication `pulumi:"authentications"`
-	// Configure the purpose of a connection to be used for connected accounts and Token Vault.
+	// Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
 	ConnectedAccounts []GetConnectionConnectedAccount `pulumi:"connectedAccounts"`
 	// The ID of the connection. If not provided, `name` must be set.
 	ConnectionId *string `pulumi:"connectionId"`
+	// Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `tokenVaultXaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+	CrossAppAccessRequestingApps []GetConnectionCrossAppAccessRequestingApp `pulumi:"crossAppAccessRequestingApps"`
+	// Resource App settings that apply to this connection. (EA only)
+	CrossAppAccessResourceApps []GetConnectionCrossAppAccessResourceApp `pulumi:"crossAppAccessResourceApps"`
 	// Name used in login screen.
 	DisplayName string `pulumi:"displayName"`
 	// IDs of the clients for which the connection is enabled. Skips populating if `skipEnabledClients` is `true`.
@@ -136,12 +140,12 @@ func (o LookupConnectionResultOutput) ToLookupConnectionResultOutputWithContext(
 	return o
 }
 
-// Configure the purpose of a connection to be used for authentication during login.
+// Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
 func (o LookupConnectionResultOutput) Authentications() GetConnectionAuthenticationArrayOutput {
 	return o.ApplyT(func(v LookupConnectionResult) []GetConnectionAuthentication { return v.Authentications }).(GetConnectionAuthenticationArrayOutput)
 }
 
-// Configure the purpose of a connection to be used for connected accounts and Token Vault.
+// Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
 func (o LookupConnectionResultOutput) ConnectedAccounts() GetConnectionConnectedAccountArrayOutput {
 	return o.ApplyT(func(v LookupConnectionResult) []GetConnectionConnectedAccount { return v.ConnectedAccounts }).(GetConnectionConnectedAccountArrayOutput)
 }
@@ -149,6 +153,20 @@ func (o LookupConnectionResultOutput) ConnectedAccounts() GetConnectionConnected
 // The ID of the connection. If not provided, `name` must be set.
 func (o LookupConnectionResultOutput) ConnectionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConnectionResult) *string { return v.ConnectionId }).(pulumi.StringPtrOutput)
+}
+
+// Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `tokenVaultXaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+func (o LookupConnectionResultOutput) CrossAppAccessRequestingApps() GetConnectionCrossAppAccessRequestingAppArrayOutput {
+	return o.ApplyT(func(v LookupConnectionResult) []GetConnectionCrossAppAccessRequestingApp {
+		return v.CrossAppAccessRequestingApps
+	}).(GetConnectionCrossAppAccessRequestingAppArrayOutput)
+}
+
+// Resource App settings that apply to this connection. (EA only)
+func (o LookupConnectionResultOutput) CrossAppAccessResourceApps() GetConnectionCrossAppAccessResourceAppArrayOutput {
+	return o.ApplyT(func(v LookupConnectionResult) []GetConnectionCrossAppAccessResourceApp {
+		return v.CrossAppAccessResourceApps
+	}).(GetConnectionCrossAppAccessResourceAppArrayOutput)
 }
 
 // Name used in login screen.

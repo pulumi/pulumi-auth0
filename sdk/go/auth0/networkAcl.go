@@ -80,6 +80,51 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Example of auth0_network_acl using Auth0-curated blocklists (Early Access).
+//			//
+//			// The `auth0_managed` field requires the `advanced-breached-password-detection`
+//			// entitlement and the `tenant_acl_curated_blocklists` feature flag on the tenant.
+//			// Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`.
+//			_, err = auth0.NewNetworkAcl(ctx, "block_icloud_relay", &auth0.NetworkAclArgs{
+//				Description: pulumi.String("Block iCloud Private Relay egress proxies"),
+//				Active:      pulumi.Bool(true),
+//				Priority:    pulumi.Int(7),
+//				Rule: &auth0.NetworkAclRuleArgs{
+//					Action: &auth0.NetworkAclRuleActionArgs{
+//						Block: pulumi.Bool(true),
+//					},
+//					Scope: pulumi.String("authentication"),
+//					Match: &auth0.NetworkAclRuleMatchArgs{
+//						Auth0Manageds: pulumi.StringArray{
+//							pulumi.String("auth0.icloud_relay_proxy"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Example using `not_match` to allow all traffic *unless* it comes from a
+//			// low-reputation curated blocklist. `auth0_managed` is accepted on either block.
+//			_, err = auth0.NewNetworkAcl(ctx, "allow_unless_low_reputation", &auth0.NetworkAclArgs{
+//				Description: pulumi.String("Allow traffic unless it is on the low-reputation blocklist"),
+//				Active:      pulumi.Bool(true),
+//				Priority:    pulumi.Int(8),
+//				Rule: &auth0.NetworkAclRuleArgs{
+//					Action: &auth0.NetworkAclRuleActionArgs{
+//						Allow: pulumi.Bool(true),
+//					},
+//					Scope: pulumi.String("authentication"),
+//					NotMatch: &auth0.NetworkAclRuleNotMatchArgs{
+//						Auth0Manageds: pulumi.StringArray{
+//							pulumi.String("auth0.low_reputation"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			// Example of auth0_network_acl with hostname and connecting IP restrictions
 //			_, err = auth0.NewNetworkAcl(ctx, "block_canonical", &auth0.NetworkAclArgs{
 //				Description: pulumi.String("Block canonical domain except from proxy"),

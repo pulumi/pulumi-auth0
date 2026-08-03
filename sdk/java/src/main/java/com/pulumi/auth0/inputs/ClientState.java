@@ -7,6 +7,7 @@ import com.pulumi.auth0.inputs.ClientAddonsArgs;
 import com.pulumi.auth0.inputs.ClientDefaultOrganizationArgs;
 import com.pulumi.auth0.inputs.ClientExpressConfigurationArgs;
 import com.pulumi.auth0.inputs.ClientFedcmLoginArgs;
+import com.pulumi.auth0.inputs.ClientIdentityAssertionAuthorizationGrantArgs;
 import com.pulumi.auth0.inputs.ClientJwtConfigurationArgs;
 import com.pulumi.auth0.inputs.ClientMobileArgs;
 import com.pulumi.auth0.inputs.ClientMyOrganizationConfigurationArgs;
@@ -405,6 +406,21 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<String>>> grantTypes() {
         return Optional.ofNullable(this.grantTypes);
+    }
+
+    /**
+     * Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+     * 
+     */
+    @Import(name="identityAssertionAuthorizationGrant")
+    private @Nullable Output<ClientIdentityAssertionAuthorizationGrantArgs> identityAssertionAuthorizationGrant;
+
+    /**
+     * @return Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+     * 
+     */
+    public Optional<Output<ClientIdentityAssertionAuthorizationGrantArgs>> identityAssertionAuthorizationGrant() {
+        return Optional.ofNullable(this.identityAssertionAuthorizationGrant);
     }
 
     /**
@@ -885,6 +901,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         this.fedcmLogin = $.fedcmLogin;
         this.formTemplate = $.formTemplate;
         this.grantTypes = $.grantTypes;
+        this.identityAssertionAuthorizationGrant = $.identityAssertionAuthorizationGrant;
         this.initiateLoginUri = $.initiateLoginUri;
         this.isFirstParty = $.isFirstParty;
         this.isTokenEndpointIpHeaderTrusted = $.isTokenEndpointIpHeaderTrusted;
@@ -1528,6 +1545,27 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder grantTypes(String... grantTypes) {
             return grantTypes(List.of(grantTypes));
+        }
+
+        /**
+         * @param identityAssertionAuthorizationGrant Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identityAssertionAuthorizationGrant(@Nullable Output<ClientIdentityAssertionAuthorizationGrantArgs> identityAssertionAuthorizationGrant) {
+            $.identityAssertionAuthorizationGrant = identityAssertionAuthorizationGrant;
+            return this;
+        }
+
+        /**
+         * @param identityAssertionAuthorizationGrant Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identityAssertionAuthorizationGrant(ClientIdentityAssertionAuthorizationGrantArgs identityAssertionAuthorizationGrant) {
+            return identityAssertionAuthorizationGrant(Output.of(identityAssertionAuthorizationGrant));
         }
 
         /**

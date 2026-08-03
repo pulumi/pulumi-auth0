@@ -63,6 +63,13 @@ import (
 //					ShowLogLink: pulumi.Bool(false),
 //					Url:         pulumi.String("https://example.com/error"),
 //				},
+//				CountryCodes: &auth0.TenantCountryCodesArgs{
+//					Lists: pulumi.StringArray{
+//						pulumi.String("US"),
+//						pulumi.String("CA"),
+//					},
+//					Mode: pulumi.String("allow"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -96,6 +103,8 @@ type Tenant struct {
 	AllowedLogoutUrls pulumi.StringArrayOutput `pulumi:"allowedLogoutUrls"`
 	// Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
 	ClientIdMetadataDocumentSupported pulumi.BoolOutput `pulumi:"clientIdMetadataDocumentSupported"`
+	// Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
+	CountryCodes TenantCountryCodesPtrOutput `pulumi:"countryCodes"`
 	// Whether to enable flexible factors for MFA in the PostLogin action.
 	CustomizeMfaInPostloginAction pulumi.BoolOutput `pulumi:"customizeMfaInPostloginAction"`
 	// API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
@@ -190,6 +199,8 @@ type tenantState struct {
 	AllowedLogoutUrls []string `pulumi:"allowedLogoutUrls"`
 	// Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
 	ClientIdMetadataDocumentSupported *bool `pulumi:"clientIdMetadataDocumentSupported"`
+	// Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
+	CountryCodes *TenantCountryCodes `pulumi:"countryCodes"`
 	// Whether to enable flexible factors for MFA in the PostLogin action.
 	CustomizeMfaInPostloginAction *bool `pulumi:"customizeMfaInPostloginAction"`
 	// API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
@@ -255,6 +266,8 @@ type TenantState struct {
 	AllowedLogoutUrls pulumi.StringArrayInput
 	// Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
 	ClientIdMetadataDocumentSupported pulumi.BoolPtrInput
+	// Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
+	CountryCodes TenantCountryCodesPtrInput
 	// Whether to enable flexible factors for MFA in the PostLogin action.
 	CustomizeMfaInPostloginAction pulumi.BoolPtrInput
 	// API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
@@ -324,6 +337,8 @@ type tenantArgs struct {
 	AllowedLogoutUrls []string `pulumi:"allowedLogoutUrls"`
 	// Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
 	ClientIdMetadataDocumentSupported *bool `pulumi:"clientIdMetadataDocumentSupported"`
+	// Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
+	CountryCodes *TenantCountryCodes `pulumi:"countryCodes"`
 	// Whether to enable flexible factors for MFA in the PostLogin action.
 	CustomizeMfaInPostloginAction *bool `pulumi:"customizeMfaInPostloginAction"`
 	// API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
@@ -390,6 +405,8 @@ type TenantArgs struct {
 	AllowedLogoutUrls pulumi.StringArrayInput
 	// Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
 	ClientIdMetadataDocumentSupported pulumi.BoolPtrInput
+	// Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
+	CountryCodes TenantCountryCodesPtrInput
 	// Whether to enable flexible factors for MFA in the PostLogin action.
 	CustomizeMfaInPostloginAction pulumi.BoolPtrInput
 	// API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
@@ -551,6 +568,11 @@ func (o TenantOutput) AllowedLogoutUrls() pulumi.StringArrayOutput {
 // Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
 func (o TenantOutput) ClientIdMetadataDocumentSupported() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Tenant) pulumi.BoolOutput { return v.ClientIdMetadataDocumentSupported }).(pulumi.BoolOutput)
+}
+
+// Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
+func (o TenantOutput) CountryCodes() TenantCountryCodesPtrOutput {
+	return o.ApplyT(func(v *Tenant) TenantCountryCodesPtrOutput { return v.CountryCodes }).(TenantCountryCodesPtrOutput)
 }
 
 // Whether to enable flexible factors for MFA in the PostLogin action.

@@ -4,6 +4,7 @@
 package com.pulumi.auth0.inputs;
 
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,6 +31,21 @@ public final class GetClientPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Set this to avoid persisting the sensitive `clientSecret` value into state, in which case `clientSecret` will contain an empty string.
+     * 
+     */
+    @Import(name="hideClientSecret")
+    private @Nullable Boolean hideClientSecret;
+
+    /**
+     * @return Set this to avoid persisting the sensitive `clientSecret` value into state, in which case `clientSecret` will contain an empty string.
+     * 
+     */
+    public Optional<Boolean> hideClientSecret() {
+        return Optional.ofNullable(this.hideClientSecret);
+    }
+
+    /**
      * The name of the client. If not provided, `clientId` must be set.
      * 
      */
@@ -48,6 +64,7 @@ public final class GetClientPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetClientPlainArgs(GetClientPlainArgs $) {
         this.clientId = $.clientId;
+        this.hideClientSecret = $.hideClientSecret;
         this.name = $.name;
     }
 
@@ -77,6 +94,17 @@ public final class GetClientPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder clientId(@Nullable String clientId) {
             $.clientId = clientId;
+            return this;
+        }
+
+        /**
+         * @param hideClientSecret Set this to avoid persisting the sensitive `clientSecret` value into state, in which case `clientSecret` will contain an empty string.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hideClientSecret(@Nullable Boolean hideClientSecret) {
+            $.hideClientSecret = hideClientSecret;
             return this;
         }
 

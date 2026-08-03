@@ -38,6 +38,7 @@ export function getClients(args?: GetClientsArgs, opts?: pulumi.InvokeOptions): 
     return pulumi.runtime.invoke("auth0:index/getClients:getClients", {
         "appTypes": args.appTypes,
         "externalClientId": args.externalClientId,
+        "hideClientSecret": args.hideClientSecret,
         "isFirstParty": args.isFirstParty,
         "nameFilter": args.nameFilter,
     }, opts);
@@ -55,6 +56,10 @@ export interface GetClientsArgs {
      * Filter clients by CIMD external client ID URL.
      */
     externalClientId?: string;
+    /**
+     * Set this to avoid persisting the sensitive `clientSecret` value of each client into state, in which case `clientSecret` will contain an empty string.
+     */
+    hideClientSecret?: boolean;
     /**
      * Filter clients by first party status.
      */
@@ -81,6 +86,10 @@ export interface GetClientsResult {
      * Filter clients by CIMD external client ID URL.
      */
     readonly externalClientId?: string;
+    /**
+     * Set this to avoid persisting the sensitive `clientSecret` value of each client into state, in which case `clientSecret` will contain an empty string.
+     */
+    readonly hideClientSecret?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -126,6 +135,7 @@ export function getClientsOutput(args?: GetClientsOutputArgs, opts?: pulumi.Invo
     return pulumi.runtime.invokeOutput("auth0:index/getClients:getClients", {
         "appTypes": args.appTypes,
         "externalClientId": args.externalClientId,
+        "hideClientSecret": args.hideClientSecret,
         "isFirstParty": args.isFirstParty,
         "nameFilter": args.nameFilter,
     }, opts);
@@ -143,6 +153,10 @@ export interface GetClientsOutputArgs {
      * Filter clients by CIMD external client ID URL.
      */
     externalClientId?: pulumi.Input<string | undefined>;
+    /**
+     * Set this to avoid persisting the sensitive `clientSecret` value of each client into state, in which case `clientSecret` will contain an empty string.
+     */
+    hideClientSecret?: pulumi.Input<boolean | undefined>;
     /**
      * Filter clients by first party status.
      */

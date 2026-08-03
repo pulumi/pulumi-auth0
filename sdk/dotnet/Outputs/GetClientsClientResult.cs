@@ -46,7 +46,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> ClientMetadata;
         /// <summary>
-        /// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string.
+        /// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. Set `HideClientSecret` to `True` to avoid persisting this value into Terraform state.
         /// </summary>
         public readonly string ClientSecret;
         /// <summary>
@@ -77,6 +77,10 @@ namespace Pulumi.Auth0.Outputs
         /// Types of grants that this client is authorized to use.
         /// </summary>
         public readonly ImmutableArray<string> GrantTypes;
+        /// <summary>
+        /// Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClientsClientIdentityAssertionAuthorizationGrantResult> IdentityAssertionAuthorizationGrants;
         /// <summary>
         /// Indicates whether this client is a first-party client.
         /// </summary>
@@ -169,6 +173,8 @@ namespace Pulumi.Auth0.Outputs
 
             ImmutableArray<string> grantTypes,
 
+            ImmutableArray<Outputs.GetClientsClientIdentityAssertionAuthorizationGrantResult> identityAssertionAuthorizationGrants,
+
             bool isFirstParty,
 
             bool isTokenEndpointIpHeaderTrusted,
@@ -215,6 +221,7 @@ namespace Pulumi.Auth0.Outputs
             ExternalMetadataType = externalMetadataType;
             FedcmLogins = fedcmLogins;
             GrantTypes = grantTypes;
+            IdentityAssertionAuthorizationGrants = identityAssertionAuthorizationGrants;
             IsFirstParty = isFirstParty;
             IsTokenEndpointIpHeaderTrusted = isTokenEndpointIpHeaderTrusted;
             JwksUri = jwksUri;

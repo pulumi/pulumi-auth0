@@ -29,8 +29,10 @@ type BrandingTheme struct {
 	Borders BrandingThemeBordersOutput `pulumi:"borders"`
 	Colors  BrandingThemeColorsOutput  `pulumi:"colors"`
 	// The display name for the branding theme.
-	DisplayName    pulumi.StringPtrOutput            `pulumi:"displayName"`
-	Fonts          BrandingThemeFontsOutput          `pulumi:"fonts"`
+	DisplayName pulumi.StringPtrOutput   `pulumi:"displayName"`
+	Fonts       BrandingThemeFontsOutput `pulumi:"fonts"`
+	// Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed
+	Identifiers    BrandingThemeIdentifiersOutput    `pulumi:"identifiers"`
 	PageBackground BrandingThemePageBackgroundOutput `pulumi:"pageBackground"`
 	Widget         BrandingThemeWidgetOutput         `pulumi:"widget"`
 }
@@ -83,8 +85,10 @@ type brandingThemeState struct {
 	Borders *BrandingThemeBorders `pulumi:"borders"`
 	Colors  *BrandingThemeColors  `pulumi:"colors"`
 	// The display name for the branding theme.
-	DisplayName    *string                      `pulumi:"displayName"`
-	Fonts          *BrandingThemeFonts          `pulumi:"fonts"`
+	DisplayName *string             `pulumi:"displayName"`
+	Fonts       *BrandingThemeFonts `pulumi:"fonts"`
+	// Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed
+	Identifiers    *BrandingThemeIdentifiers    `pulumi:"identifiers"`
 	PageBackground *BrandingThemePageBackground `pulumi:"pageBackground"`
 	Widget         *BrandingThemeWidget         `pulumi:"widget"`
 }
@@ -93,8 +97,10 @@ type BrandingThemeState struct {
 	Borders BrandingThemeBordersPtrInput
 	Colors  BrandingThemeColorsPtrInput
 	// The display name for the branding theme.
-	DisplayName    pulumi.StringPtrInput
-	Fonts          BrandingThemeFontsPtrInput
+	DisplayName pulumi.StringPtrInput
+	Fonts       BrandingThemeFontsPtrInput
+	// Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed
+	Identifiers    BrandingThemeIdentifiersPtrInput
 	PageBackground BrandingThemePageBackgroundPtrInput
 	Widget         BrandingThemeWidgetPtrInput
 }
@@ -107,8 +113,10 @@ type brandingThemeArgs struct {
 	Borders BrandingThemeBorders `pulumi:"borders"`
 	Colors  BrandingThemeColors  `pulumi:"colors"`
 	// The display name for the branding theme.
-	DisplayName    *string                     `pulumi:"displayName"`
-	Fonts          BrandingThemeFonts          `pulumi:"fonts"`
+	DisplayName *string            `pulumi:"displayName"`
+	Fonts       BrandingThemeFonts `pulumi:"fonts"`
+	// Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed
+	Identifiers    *BrandingThemeIdentifiers   `pulumi:"identifiers"`
 	PageBackground BrandingThemePageBackground `pulumi:"pageBackground"`
 	Widget         BrandingThemeWidget         `pulumi:"widget"`
 }
@@ -118,8 +126,10 @@ type BrandingThemeArgs struct {
 	Borders BrandingThemeBordersInput
 	Colors  BrandingThemeColorsInput
 	// The display name for the branding theme.
-	DisplayName    pulumi.StringPtrInput
-	Fonts          BrandingThemeFontsInput
+	DisplayName pulumi.StringPtrInput
+	Fonts       BrandingThemeFontsInput
+	// Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed
+	Identifiers    BrandingThemeIdentifiersPtrInput
 	PageBackground BrandingThemePageBackgroundInput
 	Widget         BrandingThemeWidgetInput
 }
@@ -226,6 +236,11 @@ func (o BrandingThemeOutput) DisplayName() pulumi.StringPtrOutput {
 
 func (o BrandingThemeOutput) Fonts() BrandingThemeFontsOutput {
 	return o.ApplyT(func(v *BrandingTheme) BrandingThemeFontsOutput { return v.Fonts }).(BrandingThemeFontsOutput)
+}
+
+// Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed
+func (o BrandingThemeOutput) Identifiers() BrandingThemeIdentifiersOutput {
+	return o.ApplyT(func(v *BrandingTheme) BrandingThemeIdentifiersOutput { return v.Identifiers }).(BrandingThemeIdentifiersOutput)
 }
 
 func (o BrandingThemeOutput) PageBackground() BrandingThemePageBackgroundOutput {

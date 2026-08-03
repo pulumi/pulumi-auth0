@@ -953,16 +953,28 @@ namespace Pulumi.Auth0
     public partial class Connection : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Configure the purpose of a connection to be used for authentication during login.
+        /// Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `Active` to `False` explicitly to deactivate it.
         /// </summary>
         [Output("authentication")]
         public Output<Outputs.ConnectionAuthentication> Authentication { get; private set; } = null!;
 
         /// <summary>
-        /// Configure the purpose of a connection to be used for connected accounts and Token Vault.
+        /// Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `Active` to `False` explicitly to deactivate it.
         /// </summary>
         [Output("connectedAccounts")]
         public Output<Outputs.ConnectionConnectedAccounts> ConnectedAccounts { get; private set; } = null!;
+
+        /// <summary>
+        /// Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `TokenVaultXaa` flag to be enabled on your tenant. Only supported on `Oidc` and `Okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `Active` to `False` explicitly to deactivate it. (EA Only)
+        /// </summary>
+        [Output("crossAppAccessRequestingApp")]
+        public Output<Outputs.ConnectionCrossAppAccessRequestingApp> CrossAppAccessRequestingApp { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource App settings that apply to this connection. (EA only)
+        /// </summary>
+        [Output("crossAppAccessResourceApp")]
+        public Output<Outputs.ConnectionCrossAppAccessResourceApp?> CrossAppAccessResourceApp { get; private set; } = null!;
 
         /// <summary>
         /// Name used in login screen.
@@ -1059,16 +1071,28 @@ namespace Pulumi.Auth0
     public sealed class ConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configure the purpose of a connection to be used for authentication during login.
+        /// Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `Active` to `False` explicitly to deactivate it.
         /// </summary>
         [Input("authentication")]
         public Input<Inputs.ConnectionAuthenticationArgs>? Authentication { get; set; }
 
         /// <summary>
-        /// Configure the purpose of a connection to be used for connected accounts and Token Vault.
+        /// Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `Active` to `False` explicitly to deactivate it.
         /// </summary>
         [Input("connectedAccounts")]
         public Input<Inputs.ConnectionConnectedAccountsArgs>? ConnectedAccounts { get; set; }
+
+        /// <summary>
+        /// Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `TokenVaultXaa` flag to be enabled on your tenant. Only supported on `Oidc` and `Okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `Active` to `False` explicitly to deactivate it. (EA Only)
+        /// </summary>
+        [Input("crossAppAccessRequestingApp")]
+        public Input<Inputs.ConnectionCrossAppAccessRequestingAppArgs>? CrossAppAccessRequestingApp { get; set; }
+
+        /// <summary>
+        /// Resource App settings that apply to this connection. (EA only)
+        /// </summary>
+        [Input("crossAppAccessResourceApp")]
+        public Input<Inputs.ConnectionCrossAppAccessResourceAppArgs>? CrossAppAccessResourceApp { get; set; }
 
         /// <summary>
         /// Name used in login screen.
@@ -1139,16 +1163,28 @@ namespace Pulumi.Auth0
     public sealed class ConnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configure the purpose of a connection to be used for authentication during login.
+        /// Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `Active` to `False` explicitly to deactivate it.
         /// </summary>
         [Input("authentication")]
         public Input<Inputs.ConnectionAuthenticationGetArgs>? Authentication { get; set; }
 
         /// <summary>
-        /// Configure the purpose of a connection to be used for connected accounts and Token Vault.
+        /// Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `Active` to `False` explicitly to deactivate it.
         /// </summary>
         [Input("connectedAccounts")]
         public Input<Inputs.ConnectionConnectedAccountsGetArgs>? ConnectedAccounts { get; set; }
+
+        /// <summary>
+        /// Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `TokenVaultXaa` flag to be enabled on your tenant. Only supported on `Oidc` and `Okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `Active` to `False` explicitly to deactivate it. (EA Only)
+        /// </summary>
+        [Input("crossAppAccessRequestingApp")]
+        public Input<Inputs.ConnectionCrossAppAccessRequestingAppGetArgs>? CrossAppAccessRequestingApp { get; set; }
+
+        /// <summary>
+        /// Resource App settings that apply to this connection. (EA only)
+        /// </summary>
+        [Input("crossAppAccessResourceApp")]
+        public Input<Inputs.ConnectionCrossAppAccessResourceAppGetArgs>? CrossAppAccessResourceApp { get; set; }
 
         /// <summary>
         /// Name used in login screen.

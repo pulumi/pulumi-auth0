@@ -48,6 +48,21 @@ public final class GetClientsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Set this to avoid persisting the sensitive `clientSecret` value of each client into state, in which case `clientSecret` will contain an empty string.
+     * 
+     */
+    @Import(name="hideClientSecret")
+    private @Nullable Output<Boolean> hideClientSecret;
+
+    /**
+     * @return Set this to avoid persisting the sensitive `clientSecret` value of each client into state, in which case `clientSecret` will contain an empty string.
+     * 
+     */
+    public Optional<Output<Boolean>> hideClientSecret() {
+        return Optional.ofNullable(this.hideClientSecret);
+    }
+
+    /**
      * Filter clients by first party status.
      * 
      */
@@ -82,6 +97,7 @@ public final class GetClientsArgs extends com.pulumi.resources.InvokeArgs {
     private GetClientsArgs(GetClientsArgs $) {
         this.appTypes = $.appTypes;
         this.externalClientId = $.externalClientId;
+        this.hideClientSecret = $.hideClientSecret;
         this.isFirstParty = $.isFirstParty;
         this.nameFilter = $.nameFilter;
     }
@@ -154,6 +170,27 @@ public final class GetClientsArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder externalClientId(String externalClientId) {
             return externalClientId(Output.of(externalClientId));
+        }
+
+        /**
+         * @param hideClientSecret Set this to avoid persisting the sensitive `clientSecret` value of each client into state, in which case `clientSecret` will contain an empty string.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hideClientSecret(@Nullable Output<Boolean> hideClientSecret) {
+            $.hideClientSecret = hideClientSecret;
+            return this;
+        }
+
+        /**
+         * @param hideClientSecret Set this to avoid persisting the sensitive `clientSecret` value of each client into state, in which case `clientSecret` will contain an empty string.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hideClientSecret(Boolean hideClientSecret) {
+            return hideClientSecret(Output.of(hideClientSecret));
         }
 
         /**

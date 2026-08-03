@@ -5,6 +5,7 @@ package com.pulumi.auth0.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -31,6 +32,21 @@ public final class GetClientArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Set this to avoid persisting the sensitive `clientSecret` value into state, in which case `clientSecret` will contain an empty string.
+     * 
+     */
+    @Import(name="hideClientSecret")
+    private @Nullable Output<Boolean> hideClientSecret;
+
+    /**
+     * @return Set this to avoid persisting the sensitive `clientSecret` value into state, in which case `clientSecret` will contain an empty string.
+     * 
+     */
+    public Optional<Output<Boolean>> hideClientSecret() {
+        return Optional.ofNullable(this.hideClientSecret);
+    }
+
+    /**
      * The name of the client. If not provided, `clientId` must be set.
      * 
      */
@@ -49,6 +65,7 @@ public final class GetClientArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetClientArgs(GetClientArgs $) {
         this.clientId = $.clientId;
+        this.hideClientSecret = $.hideClientSecret;
         this.name = $.name;
     }
 
@@ -89,6 +106,27 @@ public final class GetClientArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder clientId(String clientId) {
             return clientId(Output.of(clientId));
+        }
+
+        /**
+         * @param hideClientSecret Set this to avoid persisting the sensitive `clientSecret` value into state, in which case `clientSecret` will contain an empty string.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hideClientSecret(@Nullable Output<Boolean> hideClientSecret) {
+            $.hideClientSecret = hideClientSecret;
+            return this;
+        }
+
+        /**
+         * @param hideClientSecret Set this to avoid persisting the sensitive `clientSecret` value into state, in which case `clientSecret` will contain an empty string.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hideClientSecret(Boolean hideClientSecret) {
+            return hideClientSecret(Output.of(hideClientSecret));
         }
 
         /**

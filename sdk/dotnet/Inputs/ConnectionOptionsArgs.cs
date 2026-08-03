@@ -483,6 +483,12 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
+        /// Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+        /// </summary>
+        [Input("oidcMetadata")]
+        public Input<string>? OidcMetadata { get; set; }
+
+        /// <summary>
         /// Defines options for the passkey authentication method
         /// </summary>
         [Input("passkeyOptions")]

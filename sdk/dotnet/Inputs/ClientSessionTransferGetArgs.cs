@@ -33,7 +33,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool>? CanCreateSessionTransferToken { get; set; }
 
         /// <summary>
-        /// Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+        /// Configuration for delegation (impersonation) access using Session Transfer Tokens.
         /// </summary>
         [Input("delegation")]
         public Input<Inputs.ClientSessionTransferDelegationGetArgs>? Delegation { get; set; }

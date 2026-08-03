@@ -360,6 +360,11 @@ public final class GetConnectionOption {
      */
     private List<String> nonPersistentAttrs;
     /**
+     * @return Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+     * 
+     */
+    private String oidcMetadata;
+    /**
      * @return Defines options for the passkey authentication method
      * 
      */
@@ -1092,6 +1097,13 @@ public final class GetConnectionOption {
         return this.nonPersistentAttrs;
     }
     /**
+     * @return Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+     * 
+     */
+    public String oidcMetadata() {
+        return this.oidcMetadata;
+    }
+    /**
      * @return Defines options for the passkey authentication method
      * 
      */
@@ -1551,6 +1563,7 @@ public final class GetConnectionOption {
         private List<GetConnectionOptionMfa> mfas;
         private String name;
         private List<String> nonPersistentAttrs;
+        private String oidcMetadata;
         private List<GetConnectionOptionPasskeyOption> passkeyOptions;
         private List<GetConnectionOptionPasswordComplexityOption> passwordComplexityOptions;
         private List<GetConnectionOptionPasswordDictionary> passwordDictionaries;
@@ -1674,6 +1687,7 @@ public final class GetConnectionOption {
     	      this.mfas = defaults.mfas;
     	      this.name = defaults.name;
     	      this.nonPersistentAttrs = defaults.nonPersistentAttrs;
+    	      this.oidcMetadata = defaults.oidcMetadata;
     	      this.passkeyOptions = defaults.passkeyOptions;
     	      this.passwordComplexityOptions = defaults.passwordComplexityOptions;
     	      this.passwordDictionaries = defaults.passwordDictionaries;
@@ -2300,6 +2314,14 @@ public final class GetConnectionOption {
             return nonPersistentAttrs(List.of(nonPersistentAttrs));
         }
         @CustomType.Setter
+        public Builder oidcMetadata(String oidcMetadata) {
+            if (oidcMetadata == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "oidcMetadata");
+            }
+            this.oidcMetadata = oidcMetadata;
+            return this;
+        }
+        @CustomType.Setter
         public Builder passkeyOptions(List<GetConnectionOptionPasskeyOption> passkeyOptions) {
             if (passkeyOptions == null) {
               throw new MissingRequiredPropertyException("GetConnectionOption", "passkeyOptions");
@@ -2839,6 +2861,7 @@ public final class GetConnectionOption {
             _resultValue.mfas = mfas;
             _resultValue.name = name;
             _resultValue.nonPersistentAttrs = nonPersistentAttrs;
+            _resultValue.oidcMetadata = oidcMetadata;
             _resultValue.passkeyOptions = passkeyOptions;
             _resultValue.passwordComplexityOptions = passwordComplexityOptions;
             _resultValue.passwordDictionaries = passwordDictionaries;

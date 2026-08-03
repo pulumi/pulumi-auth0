@@ -88,6 +88,43 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Example of auth0_network_acl using Auth0-curated blocklists (Early Access).
+ *         //
+ *         // The `auth0_managed` field requires the `advanced-breached-password-detection`
+ *         // entitlement and the `tenant_acl_curated_blocklists` feature flag on the tenant.
+ *         // Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`.
+ *         var blockIcloudRelay = new NetworkAcl("blockIcloudRelay", NetworkAclArgs.builder()
+ *             .description("Block iCloud Private Relay egress proxies")
+ *             .active(true)
+ *             .priority(7)
+ *             .rule(NetworkAclRuleArgs.builder()
+ *                 .action(NetworkAclRuleActionArgs.builder()
+ *                     .block(true)
+ *                     .build())
+ *                 .scope("authentication")
+ *                 .match(NetworkAclRuleMatchArgs.builder()
+ *                     .auth0Manageds("auth0.icloud_relay_proxy")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         // Example using `not_match` to allow all traffic *unless* it comes from a
+ *         // low-reputation curated blocklist. `auth0_managed` is accepted on either block.
+ *         var allowUnlessLowReputation = new NetworkAcl("allowUnlessLowReputation", NetworkAclArgs.builder()
+ *             .description("Allow traffic unless it is on the low-reputation blocklist")
+ *             .active(true)
+ *             .priority(8)
+ *             .rule(NetworkAclRuleArgs.builder()
+ *                 .action(NetworkAclRuleActionArgs.builder()
+ *                     .allow(true)
+ *                     .build())
+ *                 .scope("authentication")
+ *                 .notMatch(NetworkAclRuleNotMatchArgs.builder()
+ *                     .auth0Manageds("auth0.low_reputation")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
  *         // Example of auth0_network_acl with hostname and connecting IP restrictions
  *         var blockCanonical = new NetworkAcl("blockCanonical", NetworkAclArgs.builder()
  *             .description("Block canonical domain except from proxy")

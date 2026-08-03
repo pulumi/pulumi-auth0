@@ -754,13 +754,21 @@ export class Connection extends pulumi.CustomResource {
     }
 
     /**
-     * Configure the purpose of a connection to be used for authentication during login.
+     * Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
      */
     declare public readonly authentication: pulumi.Output<outputs.ConnectionAuthentication>;
     /**
-     * Configure the purpose of a connection to be used for connected accounts and Token Vault.
+     * Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
      */
     declare public readonly connectedAccounts: pulumi.Output<outputs.ConnectionConnectedAccounts>;
+    /**
+     * Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `tokenVaultXaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+     */
+    declare public readonly crossAppAccessRequestingApp: pulumi.Output<outputs.ConnectionCrossAppAccessRequestingApp>;
+    /**
+     * Resource App settings that apply to this connection. (EA only)
+     */
+    declare public readonly crossAppAccessResourceApp: pulumi.Output<outputs.ConnectionCrossAppAccessResourceApp | undefined>;
     /**
      * Name used in login screen.
      */
@@ -809,6 +817,8 @@ export class Connection extends pulumi.CustomResource {
             const state = argsOrState as ConnectionState | undefined;
             resourceInputs["authentication"] = state?.authentication;
             resourceInputs["connectedAccounts"] = state?.connectedAccounts;
+            resourceInputs["crossAppAccessRequestingApp"] = state?.crossAppAccessRequestingApp;
+            resourceInputs["crossAppAccessResourceApp"] = state?.crossAppAccessResourceApp;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["isDomainConnection"] = state?.isDomainConnection;
             resourceInputs["metadata"] = state?.metadata;
@@ -824,6 +834,8 @@ export class Connection extends pulumi.CustomResource {
             }
             resourceInputs["authentication"] = args?.authentication;
             resourceInputs["connectedAccounts"] = args?.connectedAccounts;
+            resourceInputs["crossAppAccessRequestingApp"] = args?.crossAppAccessRequestingApp;
+            resourceInputs["crossAppAccessResourceApp"] = args?.crossAppAccessResourceApp;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["isDomainConnection"] = args?.isDomainConnection;
             resourceInputs["metadata"] = args?.metadata;
@@ -843,13 +855,21 @@ export class Connection extends pulumi.CustomResource {
  */
 export interface ConnectionState {
     /**
-     * Configure the purpose of a connection to be used for authentication during login.
+     * Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
      */
     authentication?: pulumi.Input<inputs.ConnectionAuthentication | undefined>;
     /**
-     * Configure the purpose of a connection to be used for connected accounts and Token Vault.
+     * Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
      */
     connectedAccounts?: pulumi.Input<inputs.ConnectionConnectedAccounts | undefined>;
+    /**
+     * Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `tokenVaultXaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+     */
+    crossAppAccessRequestingApp?: pulumi.Input<inputs.ConnectionCrossAppAccessRequestingApp | undefined>;
+    /**
+     * Resource App settings that apply to this connection. (EA only)
+     */
+    crossAppAccessResourceApp?: pulumi.Input<inputs.ConnectionCrossAppAccessResourceApp | undefined>;
     /**
      * Name used in login screen.
      */
@@ -889,13 +909,21 @@ export interface ConnectionState {
  */
 export interface ConnectionArgs {
     /**
-     * Configure the purpose of a connection to be used for authentication during login.
+     * Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
      */
     authentication?: pulumi.Input<inputs.ConnectionAuthentication | undefined>;
     /**
-     * Configure the purpose of a connection to be used for connected accounts and Token Vault.
+     * Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
      */
     connectedAccounts?: pulumi.Input<inputs.ConnectionConnectedAccounts | undefined>;
+    /**
+     * Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `tokenVaultXaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+     */
+    crossAppAccessRequestingApp?: pulumi.Input<inputs.ConnectionCrossAppAccessRequestingApp | undefined>;
+    /**
+     * Resource App settings that apply to this connection. (EA only)
+     */
+    crossAppAccessResourceApp?: pulumi.Input<inputs.ConnectionCrossAppAccessResourceApp | undefined>;
     /**
      * Name used in login screen.
      */

@@ -220,6 +220,39 @@ class NetworkAcl(pulumi.CustomResource):
                     "ipv6_cidrs": ["2001:db8::/32"],
                 },
             })
+        # Example of auth0_network_acl using Auth0-curated blocklists (Early Access).
+        #
+        # The `auth0_managed` field requires the `advanced-breached-password-detection`
+        # entitlement and the `tenant_acl_curated_blocklists` feature flag on the tenant.
+        # Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`.
+        block_icloud_relay = auth0.NetworkAcl("block_icloud_relay",
+            description="Block iCloud Private Relay egress proxies",
+            active=True,
+            priority=7,
+            rule={
+                "action": {
+                    "block": True,
+                },
+                "scope": "authentication",
+                "match": {
+                    "auth0_manageds": ["auth0.icloud_relay_proxy"],
+                },
+            })
+        # Example using `not_match` to allow all traffic *unless* it comes from a
+        # low-reputation curated blocklist. `auth0_managed` is accepted on either block.
+        allow_unless_low_reputation = auth0.NetworkAcl("allow_unless_low_reputation",
+            description="Allow traffic unless it is on the low-reputation blocklist",
+            active=True,
+            priority=8,
+            rule={
+                "action": {
+                    "allow": True,
+                },
+                "scope": "authentication",
+                "not_match": {
+                    "auth0_manageds": ["auth0.low_reputation"],
+                },
+            })
         # Example of auth0_network_acl with hostname and connecting IP restrictions
         block_canonical = auth0.NetworkAcl("block_canonical",
             description="Block canonical domain except from proxy",
@@ -315,6 +348,39 @@ class NetworkAcl(pulumi.CustomResource):
                         "10.0.0.0/8",
                     ],
                     "ipv6_cidrs": ["2001:db8::/32"],
+                },
+            })
+        # Example of auth0_network_acl using Auth0-curated blocklists (Early Access).
+        #
+        # The `auth0_managed` field requires the `advanced-breached-password-detection`
+        # entitlement and the `tenant_acl_curated_blocklists` feature flag on the tenant.
+        # Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`.
+        block_icloud_relay = auth0.NetworkAcl("block_icloud_relay",
+            description="Block iCloud Private Relay egress proxies",
+            active=True,
+            priority=7,
+            rule={
+                "action": {
+                    "block": True,
+                },
+                "scope": "authentication",
+                "match": {
+                    "auth0_manageds": ["auth0.icloud_relay_proxy"],
+                },
+            })
+        # Example using `not_match` to allow all traffic *unless* it comes from a
+        # low-reputation curated blocklist. `auth0_managed` is accepted on either block.
+        allow_unless_low_reputation = auth0.NetworkAcl("allow_unless_low_reputation",
+            description="Allow traffic unless it is on the low-reputation blocklist",
+            active=True,
+            priority=8,
+            rule={
+                "action": {
+                    "allow": True,
+                },
+                "scope": "authentication",
+                "not_match": {
+                    "auth0_manageds": ["auth0.low_reputation"],
                 },
             })
         # Example of auth0_network_acl with hostname and connecting IP restrictions

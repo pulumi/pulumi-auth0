@@ -6538,6 +6538,337 @@ func (o BrandingThemeFontsTitlePtrOutput) Size() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
+type BrandingThemeIdentifiers struct {
+	// Login display style. Available options: `unified`, `separate`.
+	LoginDisplay string `pulumi:"loginDisplay"`
+	// Whether OTP autocomplete is enabled.
+	OtpAutocomplete bool `pulumi:"otpAutocomplete"`
+	// Phone number display settings.
+	PhoneDisplay BrandingThemeIdentifiersPhoneDisplay `pulumi:"phoneDisplay"`
+}
+
+// BrandingThemeIdentifiersInput is an input type that accepts BrandingThemeIdentifiersArgs and BrandingThemeIdentifiersOutput values.
+// You can construct a concrete instance of `BrandingThemeIdentifiersInput` via:
+//
+//	BrandingThemeIdentifiersArgs{...}
+type BrandingThemeIdentifiersInput interface {
+	pulumi.Input
+
+	ToBrandingThemeIdentifiersOutput() BrandingThemeIdentifiersOutput
+	ToBrandingThemeIdentifiersOutputWithContext(context.Context) BrandingThemeIdentifiersOutput
+}
+
+type BrandingThemeIdentifiersArgs struct {
+	// Login display style. Available options: `unified`, `separate`.
+	LoginDisplay pulumi.StringInput `pulumi:"loginDisplay"`
+	// Whether OTP autocomplete is enabled.
+	OtpAutocomplete pulumi.BoolInput `pulumi:"otpAutocomplete"`
+	// Phone number display settings.
+	PhoneDisplay BrandingThemeIdentifiersPhoneDisplayInput `pulumi:"phoneDisplay"`
+}
+
+func (BrandingThemeIdentifiersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BrandingThemeIdentifiers)(nil)).Elem()
+}
+
+func (i BrandingThemeIdentifiersArgs) ToBrandingThemeIdentifiersOutput() BrandingThemeIdentifiersOutput {
+	return i.ToBrandingThemeIdentifiersOutputWithContext(context.Background())
+}
+
+func (i BrandingThemeIdentifiersArgs) ToBrandingThemeIdentifiersOutputWithContext(ctx context.Context) BrandingThemeIdentifiersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BrandingThemeIdentifiersOutput)
+}
+
+func (i BrandingThemeIdentifiersArgs) ToBrandingThemeIdentifiersPtrOutput() BrandingThemeIdentifiersPtrOutput {
+	return i.ToBrandingThemeIdentifiersPtrOutputWithContext(context.Background())
+}
+
+func (i BrandingThemeIdentifiersArgs) ToBrandingThemeIdentifiersPtrOutputWithContext(ctx context.Context) BrandingThemeIdentifiersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BrandingThemeIdentifiersOutput).ToBrandingThemeIdentifiersPtrOutputWithContext(ctx)
+}
+
+// BrandingThemeIdentifiersPtrInput is an input type that accepts BrandingThemeIdentifiersArgs, BrandingThemeIdentifiersPtr and BrandingThemeIdentifiersPtrOutput values.
+// You can construct a concrete instance of `BrandingThemeIdentifiersPtrInput` via:
+//
+//	        BrandingThemeIdentifiersArgs{...}
+//
+//	or:
+//
+//	        nil
+type BrandingThemeIdentifiersPtrInput interface {
+	pulumi.Input
+
+	ToBrandingThemeIdentifiersPtrOutput() BrandingThemeIdentifiersPtrOutput
+	ToBrandingThemeIdentifiersPtrOutputWithContext(context.Context) BrandingThemeIdentifiersPtrOutput
+}
+
+type brandingThemeIdentifiersPtrType BrandingThemeIdentifiersArgs
+
+func BrandingThemeIdentifiersPtr(v *BrandingThemeIdentifiersArgs) BrandingThemeIdentifiersPtrInput {
+	return (*brandingThemeIdentifiersPtrType)(v)
+}
+
+func (*brandingThemeIdentifiersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BrandingThemeIdentifiers)(nil)).Elem()
+}
+
+func (i *brandingThemeIdentifiersPtrType) ToBrandingThemeIdentifiersPtrOutput() BrandingThemeIdentifiersPtrOutput {
+	return i.ToBrandingThemeIdentifiersPtrOutputWithContext(context.Background())
+}
+
+func (i *brandingThemeIdentifiersPtrType) ToBrandingThemeIdentifiersPtrOutputWithContext(ctx context.Context) BrandingThemeIdentifiersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BrandingThemeIdentifiersPtrOutput)
+}
+
+type BrandingThemeIdentifiersOutput struct{ *pulumi.OutputState }
+
+func (BrandingThemeIdentifiersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BrandingThemeIdentifiers)(nil)).Elem()
+}
+
+func (o BrandingThemeIdentifiersOutput) ToBrandingThemeIdentifiersOutput() BrandingThemeIdentifiersOutput {
+	return o
+}
+
+func (o BrandingThemeIdentifiersOutput) ToBrandingThemeIdentifiersOutputWithContext(ctx context.Context) BrandingThemeIdentifiersOutput {
+	return o
+}
+
+func (o BrandingThemeIdentifiersOutput) ToBrandingThemeIdentifiersPtrOutput() BrandingThemeIdentifiersPtrOutput {
+	return o.ToBrandingThemeIdentifiersPtrOutputWithContext(context.Background())
+}
+
+func (o BrandingThemeIdentifiersOutput) ToBrandingThemeIdentifiersPtrOutputWithContext(ctx context.Context) BrandingThemeIdentifiersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BrandingThemeIdentifiers) *BrandingThemeIdentifiers {
+		return &v
+	}).(BrandingThemeIdentifiersPtrOutput)
+}
+
+// Login display style. Available options: `unified`, `separate`.
+func (o BrandingThemeIdentifiersOutput) LoginDisplay() pulumi.StringOutput {
+	return o.ApplyT(func(v BrandingThemeIdentifiers) string { return v.LoginDisplay }).(pulumi.StringOutput)
+}
+
+// Whether OTP autocomplete is enabled.
+func (o BrandingThemeIdentifiersOutput) OtpAutocomplete() pulumi.BoolOutput {
+	return o.ApplyT(func(v BrandingThemeIdentifiers) bool { return v.OtpAutocomplete }).(pulumi.BoolOutput)
+}
+
+// Phone number display settings.
+func (o BrandingThemeIdentifiersOutput) PhoneDisplay() BrandingThemeIdentifiersPhoneDisplayOutput {
+	return o.ApplyT(func(v BrandingThemeIdentifiers) BrandingThemeIdentifiersPhoneDisplay { return v.PhoneDisplay }).(BrandingThemeIdentifiersPhoneDisplayOutput)
+}
+
+type BrandingThemeIdentifiersPtrOutput struct{ *pulumi.OutputState }
+
+func (BrandingThemeIdentifiersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BrandingThemeIdentifiers)(nil)).Elem()
+}
+
+func (o BrandingThemeIdentifiersPtrOutput) ToBrandingThemeIdentifiersPtrOutput() BrandingThemeIdentifiersPtrOutput {
+	return o
+}
+
+func (o BrandingThemeIdentifiersPtrOutput) ToBrandingThemeIdentifiersPtrOutputWithContext(ctx context.Context) BrandingThemeIdentifiersPtrOutput {
+	return o
+}
+
+func (o BrandingThemeIdentifiersPtrOutput) Elem() BrandingThemeIdentifiersOutput {
+	return o.ApplyT(func(v *BrandingThemeIdentifiers) BrandingThemeIdentifiers {
+		if v != nil {
+			return *v
+		}
+		var ret BrandingThemeIdentifiers
+		return ret
+	}).(BrandingThemeIdentifiersOutput)
+}
+
+// Login display style. Available options: `unified`, `separate`.
+func (o BrandingThemeIdentifiersPtrOutput) LoginDisplay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BrandingThemeIdentifiers) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LoginDisplay
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether OTP autocomplete is enabled.
+func (o BrandingThemeIdentifiersPtrOutput) OtpAutocomplete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BrandingThemeIdentifiers) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.OtpAutocomplete
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Phone number display settings.
+func (o BrandingThemeIdentifiersPtrOutput) PhoneDisplay() BrandingThemeIdentifiersPhoneDisplayPtrOutput {
+	return o.ApplyT(func(v *BrandingThemeIdentifiers) *BrandingThemeIdentifiersPhoneDisplay {
+		if v == nil {
+			return nil
+		}
+		return &v.PhoneDisplay
+	}).(BrandingThemeIdentifiersPhoneDisplayPtrOutput)
+}
+
+type BrandingThemeIdentifiersPhoneDisplay struct {
+	// Phone number formatting. Available options: `international`, `regional`.
+	Formatting string `pulumi:"formatting"`
+	// Phone number masking. Available options: `maskDigits`, `hideCountryCode`, `showAll`.
+	Masking string `pulumi:"masking"`
+}
+
+// BrandingThemeIdentifiersPhoneDisplayInput is an input type that accepts BrandingThemeIdentifiersPhoneDisplayArgs and BrandingThemeIdentifiersPhoneDisplayOutput values.
+// You can construct a concrete instance of `BrandingThemeIdentifiersPhoneDisplayInput` via:
+//
+//	BrandingThemeIdentifiersPhoneDisplayArgs{...}
+type BrandingThemeIdentifiersPhoneDisplayInput interface {
+	pulumi.Input
+
+	ToBrandingThemeIdentifiersPhoneDisplayOutput() BrandingThemeIdentifiersPhoneDisplayOutput
+	ToBrandingThemeIdentifiersPhoneDisplayOutputWithContext(context.Context) BrandingThemeIdentifiersPhoneDisplayOutput
+}
+
+type BrandingThemeIdentifiersPhoneDisplayArgs struct {
+	// Phone number formatting. Available options: `international`, `regional`.
+	Formatting pulumi.StringInput `pulumi:"formatting"`
+	// Phone number masking. Available options: `maskDigits`, `hideCountryCode`, `showAll`.
+	Masking pulumi.StringInput `pulumi:"masking"`
+}
+
+func (BrandingThemeIdentifiersPhoneDisplayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BrandingThemeIdentifiersPhoneDisplay)(nil)).Elem()
+}
+
+func (i BrandingThemeIdentifiersPhoneDisplayArgs) ToBrandingThemeIdentifiersPhoneDisplayOutput() BrandingThemeIdentifiersPhoneDisplayOutput {
+	return i.ToBrandingThemeIdentifiersPhoneDisplayOutputWithContext(context.Background())
+}
+
+func (i BrandingThemeIdentifiersPhoneDisplayArgs) ToBrandingThemeIdentifiersPhoneDisplayOutputWithContext(ctx context.Context) BrandingThemeIdentifiersPhoneDisplayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BrandingThemeIdentifiersPhoneDisplayOutput)
+}
+
+func (i BrandingThemeIdentifiersPhoneDisplayArgs) ToBrandingThemeIdentifiersPhoneDisplayPtrOutput() BrandingThemeIdentifiersPhoneDisplayPtrOutput {
+	return i.ToBrandingThemeIdentifiersPhoneDisplayPtrOutputWithContext(context.Background())
+}
+
+func (i BrandingThemeIdentifiersPhoneDisplayArgs) ToBrandingThemeIdentifiersPhoneDisplayPtrOutputWithContext(ctx context.Context) BrandingThemeIdentifiersPhoneDisplayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BrandingThemeIdentifiersPhoneDisplayOutput).ToBrandingThemeIdentifiersPhoneDisplayPtrOutputWithContext(ctx)
+}
+
+// BrandingThemeIdentifiersPhoneDisplayPtrInput is an input type that accepts BrandingThemeIdentifiersPhoneDisplayArgs, BrandingThemeIdentifiersPhoneDisplayPtr and BrandingThemeIdentifiersPhoneDisplayPtrOutput values.
+// You can construct a concrete instance of `BrandingThemeIdentifiersPhoneDisplayPtrInput` via:
+//
+//	        BrandingThemeIdentifiersPhoneDisplayArgs{...}
+//
+//	or:
+//
+//	        nil
+type BrandingThemeIdentifiersPhoneDisplayPtrInput interface {
+	pulumi.Input
+
+	ToBrandingThemeIdentifiersPhoneDisplayPtrOutput() BrandingThemeIdentifiersPhoneDisplayPtrOutput
+	ToBrandingThemeIdentifiersPhoneDisplayPtrOutputWithContext(context.Context) BrandingThemeIdentifiersPhoneDisplayPtrOutput
+}
+
+type brandingThemeIdentifiersPhoneDisplayPtrType BrandingThemeIdentifiersPhoneDisplayArgs
+
+func BrandingThemeIdentifiersPhoneDisplayPtr(v *BrandingThemeIdentifiersPhoneDisplayArgs) BrandingThemeIdentifiersPhoneDisplayPtrInput {
+	return (*brandingThemeIdentifiersPhoneDisplayPtrType)(v)
+}
+
+func (*brandingThemeIdentifiersPhoneDisplayPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BrandingThemeIdentifiersPhoneDisplay)(nil)).Elem()
+}
+
+func (i *brandingThemeIdentifiersPhoneDisplayPtrType) ToBrandingThemeIdentifiersPhoneDisplayPtrOutput() BrandingThemeIdentifiersPhoneDisplayPtrOutput {
+	return i.ToBrandingThemeIdentifiersPhoneDisplayPtrOutputWithContext(context.Background())
+}
+
+func (i *brandingThemeIdentifiersPhoneDisplayPtrType) ToBrandingThemeIdentifiersPhoneDisplayPtrOutputWithContext(ctx context.Context) BrandingThemeIdentifiersPhoneDisplayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BrandingThemeIdentifiersPhoneDisplayPtrOutput)
+}
+
+type BrandingThemeIdentifiersPhoneDisplayOutput struct{ *pulumi.OutputState }
+
+func (BrandingThemeIdentifiersPhoneDisplayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BrandingThemeIdentifiersPhoneDisplay)(nil)).Elem()
+}
+
+func (o BrandingThemeIdentifiersPhoneDisplayOutput) ToBrandingThemeIdentifiersPhoneDisplayOutput() BrandingThemeIdentifiersPhoneDisplayOutput {
+	return o
+}
+
+func (o BrandingThemeIdentifiersPhoneDisplayOutput) ToBrandingThemeIdentifiersPhoneDisplayOutputWithContext(ctx context.Context) BrandingThemeIdentifiersPhoneDisplayOutput {
+	return o
+}
+
+func (o BrandingThemeIdentifiersPhoneDisplayOutput) ToBrandingThemeIdentifiersPhoneDisplayPtrOutput() BrandingThemeIdentifiersPhoneDisplayPtrOutput {
+	return o.ToBrandingThemeIdentifiersPhoneDisplayPtrOutputWithContext(context.Background())
+}
+
+func (o BrandingThemeIdentifiersPhoneDisplayOutput) ToBrandingThemeIdentifiersPhoneDisplayPtrOutputWithContext(ctx context.Context) BrandingThemeIdentifiersPhoneDisplayPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BrandingThemeIdentifiersPhoneDisplay) *BrandingThemeIdentifiersPhoneDisplay {
+		return &v
+	}).(BrandingThemeIdentifiersPhoneDisplayPtrOutput)
+}
+
+// Phone number formatting. Available options: `international`, `regional`.
+func (o BrandingThemeIdentifiersPhoneDisplayOutput) Formatting() pulumi.StringOutput {
+	return o.ApplyT(func(v BrandingThemeIdentifiersPhoneDisplay) string { return v.Formatting }).(pulumi.StringOutput)
+}
+
+// Phone number masking. Available options: `maskDigits`, `hideCountryCode`, `showAll`.
+func (o BrandingThemeIdentifiersPhoneDisplayOutput) Masking() pulumi.StringOutput {
+	return o.ApplyT(func(v BrandingThemeIdentifiersPhoneDisplay) string { return v.Masking }).(pulumi.StringOutput)
+}
+
+type BrandingThemeIdentifiersPhoneDisplayPtrOutput struct{ *pulumi.OutputState }
+
+func (BrandingThemeIdentifiersPhoneDisplayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BrandingThemeIdentifiersPhoneDisplay)(nil)).Elem()
+}
+
+func (o BrandingThemeIdentifiersPhoneDisplayPtrOutput) ToBrandingThemeIdentifiersPhoneDisplayPtrOutput() BrandingThemeIdentifiersPhoneDisplayPtrOutput {
+	return o
+}
+
+func (o BrandingThemeIdentifiersPhoneDisplayPtrOutput) ToBrandingThemeIdentifiersPhoneDisplayPtrOutputWithContext(ctx context.Context) BrandingThemeIdentifiersPhoneDisplayPtrOutput {
+	return o
+}
+
+func (o BrandingThemeIdentifiersPhoneDisplayPtrOutput) Elem() BrandingThemeIdentifiersPhoneDisplayOutput {
+	return o.ApplyT(func(v *BrandingThemeIdentifiersPhoneDisplay) BrandingThemeIdentifiersPhoneDisplay {
+		if v != nil {
+			return *v
+		}
+		var ret BrandingThemeIdentifiersPhoneDisplay
+		return ret
+	}).(BrandingThemeIdentifiersPhoneDisplayOutput)
+}
+
+// Phone number formatting. Available options: `international`, `regional`.
+func (o BrandingThemeIdentifiersPhoneDisplayPtrOutput) Formatting() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BrandingThemeIdentifiersPhoneDisplay) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Formatting
+	}).(pulumi.StringPtrOutput)
+}
+
+// Phone number masking. Available options: `maskDigits`, `hideCountryCode`, `showAll`.
+func (o BrandingThemeIdentifiersPhoneDisplayPtrOutput) Masking() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BrandingThemeIdentifiersPhoneDisplay) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Masking
+	}).(pulumi.StringPtrOutput)
+}
+
 type BrandingThemePageBackground struct {
 	// Background color. Defaults to `#000000`.
 	BackgroundColor *string `pulumi:"backgroundColor"`
@@ -16030,6 +16361,143 @@ func (o ClientFedcmLoginGooglePtrOutput) IsEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+type ClientIdentityAssertionAuthorizationGrant struct {
+	// Whether the client can exchange ID-JAGs for access tokens. (EA only)
+	Active bool `pulumi:"active"`
+}
+
+// ClientIdentityAssertionAuthorizationGrantInput is an input type that accepts ClientIdentityAssertionAuthorizationGrantArgs and ClientIdentityAssertionAuthorizationGrantOutput values.
+// You can construct a concrete instance of `ClientIdentityAssertionAuthorizationGrantInput` via:
+//
+//	ClientIdentityAssertionAuthorizationGrantArgs{...}
+type ClientIdentityAssertionAuthorizationGrantInput interface {
+	pulumi.Input
+
+	ToClientIdentityAssertionAuthorizationGrantOutput() ClientIdentityAssertionAuthorizationGrantOutput
+	ToClientIdentityAssertionAuthorizationGrantOutputWithContext(context.Context) ClientIdentityAssertionAuthorizationGrantOutput
+}
+
+type ClientIdentityAssertionAuthorizationGrantArgs struct {
+	// Whether the client can exchange ID-JAGs for access tokens. (EA only)
+	Active pulumi.BoolInput `pulumi:"active"`
+}
+
+func (ClientIdentityAssertionAuthorizationGrantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientIdentityAssertionAuthorizationGrant)(nil)).Elem()
+}
+
+func (i ClientIdentityAssertionAuthorizationGrantArgs) ToClientIdentityAssertionAuthorizationGrantOutput() ClientIdentityAssertionAuthorizationGrantOutput {
+	return i.ToClientIdentityAssertionAuthorizationGrantOutputWithContext(context.Background())
+}
+
+func (i ClientIdentityAssertionAuthorizationGrantArgs) ToClientIdentityAssertionAuthorizationGrantOutputWithContext(ctx context.Context) ClientIdentityAssertionAuthorizationGrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientIdentityAssertionAuthorizationGrantOutput)
+}
+
+func (i ClientIdentityAssertionAuthorizationGrantArgs) ToClientIdentityAssertionAuthorizationGrantPtrOutput() ClientIdentityAssertionAuthorizationGrantPtrOutput {
+	return i.ToClientIdentityAssertionAuthorizationGrantPtrOutputWithContext(context.Background())
+}
+
+func (i ClientIdentityAssertionAuthorizationGrantArgs) ToClientIdentityAssertionAuthorizationGrantPtrOutputWithContext(ctx context.Context) ClientIdentityAssertionAuthorizationGrantPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientIdentityAssertionAuthorizationGrantOutput).ToClientIdentityAssertionAuthorizationGrantPtrOutputWithContext(ctx)
+}
+
+// ClientIdentityAssertionAuthorizationGrantPtrInput is an input type that accepts ClientIdentityAssertionAuthorizationGrantArgs, ClientIdentityAssertionAuthorizationGrantPtr and ClientIdentityAssertionAuthorizationGrantPtrOutput values.
+// You can construct a concrete instance of `ClientIdentityAssertionAuthorizationGrantPtrInput` via:
+//
+//	        ClientIdentityAssertionAuthorizationGrantArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientIdentityAssertionAuthorizationGrantPtrInput interface {
+	pulumi.Input
+
+	ToClientIdentityAssertionAuthorizationGrantPtrOutput() ClientIdentityAssertionAuthorizationGrantPtrOutput
+	ToClientIdentityAssertionAuthorizationGrantPtrOutputWithContext(context.Context) ClientIdentityAssertionAuthorizationGrantPtrOutput
+}
+
+type clientIdentityAssertionAuthorizationGrantPtrType ClientIdentityAssertionAuthorizationGrantArgs
+
+func ClientIdentityAssertionAuthorizationGrantPtr(v *ClientIdentityAssertionAuthorizationGrantArgs) ClientIdentityAssertionAuthorizationGrantPtrInput {
+	return (*clientIdentityAssertionAuthorizationGrantPtrType)(v)
+}
+
+func (*clientIdentityAssertionAuthorizationGrantPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientIdentityAssertionAuthorizationGrant)(nil)).Elem()
+}
+
+func (i *clientIdentityAssertionAuthorizationGrantPtrType) ToClientIdentityAssertionAuthorizationGrantPtrOutput() ClientIdentityAssertionAuthorizationGrantPtrOutput {
+	return i.ToClientIdentityAssertionAuthorizationGrantPtrOutputWithContext(context.Background())
+}
+
+func (i *clientIdentityAssertionAuthorizationGrantPtrType) ToClientIdentityAssertionAuthorizationGrantPtrOutputWithContext(ctx context.Context) ClientIdentityAssertionAuthorizationGrantPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientIdentityAssertionAuthorizationGrantPtrOutput)
+}
+
+type ClientIdentityAssertionAuthorizationGrantOutput struct{ *pulumi.OutputState }
+
+func (ClientIdentityAssertionAuthorizationGrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientIdentityAssertionAuthorizationGrant)(nil)).Elem()
+}
+
+func (o ClientIdentityAssertionAuthorizationGrantOutput) ToClientIdentityAssertionAuthorizationGrantOutput() ClientIdentityAssertionAuthorizationGrantOutput {
+	return o
+}
+
+func (o ClientIdentityAssertionAuthorizationGrantOutput) ToClientIdentityAssertionAuthorizationGrantOutputWithContext(ctx context.Context) ClientIdentityAssertionAuthorizationGrantOutput {
+	return o
+}
+
+func (o ClientIdentityAssertionAuthorizationGrantOutput) ToClientIdentityAssertionAuthorizationGrantPtrOutput() ClientIdentityAssertionAuthorizationGrantPtrOutput {
+	return o.ToClientIdentityAssertionAuthorizationGrantPtrOutputWithContext(context.Background())
+}
+
+func (o ClientIdentityAssertionAuthorizationGrantOutput) ToClientIdentityAssertionAuthorizationGrantPtrOutputWithContext(ctx context.Context) ClientIdentityAssertionAuthorizationGrantPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientIdentityAssertionAuthorizationGrant) *ClientIdentityAssertionAuthorizationGrant {
+		return &v
+	}).(ClientIdentityAssertionAuthorizationGrantPtrOutput)
+}
+
+// Whether the client can exchange ID-JAGs for access tokens. (EA only)
+func (o ClientIdentityAssertionAuthorizationGrantOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClientIdentityAssertionAuthorizationGrant) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+type ClientIdentityAssertionAuthorizationGrantPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientIdentityAssertionAuthorizationGrantPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientIdentityAssertionAuthorizationGrant)(nil)).Elem()
+}
+
+func (o ClientIdentityAssertionAuthorizationGrantPtrOutput) ToClientIdentityAssertionAuthorizationGrantPtrOutput() ClientIdentityAssertionAuthorizationGrantPtrOutput {
+	return o
+}
+
+func (o ClientIdentityAssertionAuthorizationGrantPtrOutput) ToClientIdentityAssertionAuthorizationGrantPtrOutputWithContext(ctx context.Context) ClientIdentityAssertionAuthorizationGrantPtrOutput {
+	return o
+}
+
+func (o ClientIdentityAssertionAuthorizationGrantPtrOutput) Elem() ClientIdentityAssertionAuthorizationGrantOutput {
+	return o.ApplyT(func(v *ClientIdentityAssertionAuthorizationGrant) ClientIdentityAssertionAuthorizationGrant {
+		if v != nil {
+			return *v
+		}
+		var ret ClientIdentityAssertionAuthorizationGrant
+		return ret
+	}).(ClientIdentityAssertionAuthorizationGrantOutput)
+}
+
+// Whether the client can exchange ID-JAGs for access tokens. (EA only)
+func (o ClientIdentityAssertionAuthorizationGrantPtrOutput) Active() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientIdentityAssertionAuthorizationGrant) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Active
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ClientJwtConfiguration struct {
 	// Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
 	Alg *string `pulumi:"alg"`
@@ -18305,7 +18773,7 @@ type ClientSessionTransfer struct {
 	AllowedAuthenticationMethods []string `pulumi:"allowedAuthenticationMethods"`
 	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session*transfer*token
 	CanCreateSessionTransferToken *bool `pulumi:"canCreateSessionTransferToken"`
-	// Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+	// Configuration for delegation (impersonation) access using Session Transfer Tokens.
 	Delegation *ClientSessionTransferDelegation `pulumi:"delegation"`
 	// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
 	EnforceCascadeRevocation *bool `pulumi:"enforceCascadeRevocation"`
@@ -18332,7 +18800,7 @@ type ClientSessionTransferArgs struct {
 	AllowedAuthenticationMethods pulumi.StringArrayInput `pulumi:"allowedAuthenticationMethods"`
 	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session*transfer*token
 	CanCreateSessionTransferToken pulumi.BoolPtrInput `pulumi:"canCreateSessionTransferToken"`
-	// Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+	// Configuration for delegation (impersonation) access using Session Transfer Tokens.
 	Delegation ClientSessionTransferDelegationPtrInput `pulumi:"delegation"`
 	// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
 	EnforceCascadeRevocation pulumi.BoolPtrInput `pulumi:"enforceCascadeRevocation"`
@@ -18433,7 +18901,7 @@ func (o ClientSessionTransferOutput) CanCreateSessionTransferToken() pulumi.Bool
 	return o.ApplyT(func(v ClientSessionTransfer) *bool { return v.CanCreateSessionTransferToken }).(pulumi.BoolPtrOutput)
 }
 
-// Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+// Configuration for delegation (impersonation) access using Session Transfer Tokens.
 func (o ClientSessionTransferOutput) Delegation() ClientSessionTransferDelegationPtrOutput {
 	return o.ApplyT(func(v ClientSessionTransfer) *ClientSessionTransferDelegation { return v.Delegation }).(ClientSessionTransferDelegationPtrOutput)
 }
@@ -18506,7 +18974,7 @@ func (o ClientSessionTransferPtrOutput) CanCreateSessionTransferToken() pulumi.B
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+// Configuration for delegation (impersonation) access using Session Transfer Tokens.
 func (o ClientSessionTransferPtrOutput) Delegation() ClientSessionTransferDelegationPtrOutput {
 	return o.ApplyT(func(v *ClientSessionTransfer) *ClientSessionTransferDelegation {
 		if v == nil {
@@ -18547,9 +19015,9 @@ func (o ClientSessionTransferPtrOutput) EnforceOnlineRefreshTokens() pulumi.Bool
 }
 
 type ClientSessionTransferDelegation struct {
-	// Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
+	// Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`.
 	AllowDelegatedAccess *bool `pulumi:"allowDelegatedAccess"`
-	// Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+	// Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`.
 	EnforceDeviceBinding *string `pulumi:"enforceDeviceBinding"`
 }
 
@@ -18565,9 +19033,9 @@ type ClientSessionTransferDelegationInput interface {
 }
 
 type ClientSessionTransferDelegationArgs struct {
-	// Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
+	// Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`.
 	AllowDelegatedAccess pulumi.BoolPtrInput `pulumi:"allowDelegatedAccess"`
-	// Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+	// Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`.
 	EnforceDeviceBinding pulumi.StringPtrInput `pulumi:"enforceDeviceBinding"`
 }
 
@@ -18648,12 +19116,12 @@ func (o ClientSessionTransferDelegationOutput) ToClientSessionTransferDelegation
 	}).(ClientSessionTransferDelegationPtrOutput)
 }
 
-// Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
+// Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`.
 func (o ClientSessionTransferDelegationOutput) AllowDelegatedAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClientSessionTransferDelegation) *bool { return v.AllowDelegatedAccess }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+// Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`.
 func (o ClientSessionTransferDelegationOutput) EnforceDeviceBinding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientSessionTransferDelegation) *string { return v.EnforceDeviceBinding }).(pulumi.StringPtrOutput)
 }
@@ -18682,7 +19150,7 @@ func (o ClientSessionTransferDelegationPtrOutput) Elem() ClientSessionTransferDe
 	}).(ClientSessionTransferDelegationOutput)
 }
 
-// Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
+// Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`.
 func (o ClientSessionTransferDelegationPtrOutput) AllowDelegatedAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClientSessionTransferDelegation) *bool {
 		if v == nil {
@@ -18692,7 +19160,7 @@ func (o ClientSessionTransferDelegationPtrOutput) AllowDelegatedAccess() pulumi.
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+// Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`.
 func (o ClientSessionTransferDelegationPtrOutput) EnforceDeviceBinding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientSessionTransferDelegation) *string {
 		if v == nil {
@@ -19417,6 +19885,276 @@ func (o ConnectionConnectedAccountsPtrOutput) Active() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+type ConnectionCrossAppAccessRequestingApp struct {
+	Active bool `pulumi:"active"`
+}
+
+// ConnectionCrossAppAccessRequestingAppInput is an input type that accepts ConnectionCrossAppAccessRequestingAppArgs and ConnectionCrossAppAccessRequestingAppOutput values.
+// You can construct a concrete instance of `ConnectionCrossAppAccessRequestingAppInput` via:
+//
+//	ConnectionCrossAppAccessRequestingAppArgs{...}
+type ConnectionCrossAppAccessRequestingAppInput interface {
+	pulumi.Input
+
+	ToConnectionCrossAppAccessRequestingAppOutput() ConnectionCrossAppAccessRequestingAppOutput
+	ToConnectionCrossAppAccessRequestingAppOutputWithContext(context.Context) ConnectionCrossAppAccessRequestingAppOutput
+}
+
+type ConnectionCrossAppAccessRequestingAppArgs struct {
+	Active pulumi.BoolInput `pulumi:"active"`
+}
+
+func (ConnectionCrossAppAccessRequestingAppArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionCrossAppAccessRequestingApp)(nil)).Elem()
+}
+
+func (i ConnectionCrossAppAccessRequestingAppArgs) ToConnectionCrossAppAccessRequestingAppOutput() ConnectionCrossAppAccessRequestingAppOutput {
+	return i.ToConnectionCrossAppAccessRequestingAppOutputWithContext(context.Background())
+}
+
+func (i ConnectionCrossAppAccessRequestingAppArgs) ToConnectionCrossAppAccessRequestingAppOutputWithContext(ctx context.Context) ConnectionCrossAppAccessRequestingAppOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionCrossAppAccessRequestingAppOutput)
+}
+
+func (i ConnectionCrossAppAccessRequestingAppArgs) ToConnectionCrossAppAccessRequestingAppPtrOutput() ConnectionCrossAppAccessRequestingAppPtrOutput {
+	return i.ToConnectionCrossAppAccessRequestingAppPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionCrossAppAccessRequestingAppArgs) ToConnectionCrossAppAccessRequestingAppPtrOutputWithContext(ctx context.Context) ConnectionCrossAppAccessRequestingAppPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionCrossAppAccessRequestingAppOutput).ToConnectionCrossAppAccessRequestingAppPtrOutputWithContext(ctx)
+}
+
+// ConnectionCrossAppAccessRequestingAppPtrInput is an input type that accepts ConnectionCrossAppAccessRequestingAppArgs, ConnectionCrossAppAccessRequestingAppPtr and ConnectionCrossAppAccessRequestingAppPtrOutput values.
+// You can construct a concrete instance of `ConnectionCrossAppAccessRequestingAppPtrInput` via:
+//
+//	        ConnectionCrossAppAccessRequestingAppArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionCrossAppAccessRequestingAppPtrInput interface {
+	pulumi.Input
+
+	ToConnectionCrossAppAccessRequestingAppPtrOutput() ConnectionCrossAppAccessRequestingAppPtrOutput
+	ToConnectionCrossAppAccessRequestingAppPtrOutputWithContext(context.Context) ConnectionCrossAppAccessRequestingAppPtrOutput
+}
+
+type connectionCrossAppAccessRequestingAppPtrType ConnectionCrossAppAccessRequestingAppArgs
+
+func ConnectionCrossAppAccessRequestingAppPtr(v *ConnectionCrossAppAccessRequestingAppArgs) ConnectionCrossAppAccessRequestingAppPtrInput {
+	return (*connectionCrossAppAccessRequestingAppPtrType)(v)
+}
+
+func (*connectionCrossAppAccessRequestingAppPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionCrossAppAccessRequestingApp)(nil)).Elem()
+}
+
+func (i *connectionCrossAppAccessRequestingAppPtrType) ToConnectionCrossAppAccessRequestingAppPtrOutput() ConnectionCrossAppAccessRequestingAppPtrOutput {
+	return i.ToConnectionCrossAppAccessRequestingAppPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionCrossAppAccessRequestingAppPtrType) ToConnectionCrossAppAccessRequestingAppPtrOutputWithContext(ctx context.Context) ConnectionCrossAppAccessRequestingAppPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionCrossAppAccessRequestingAppPtrOutput)
+}
+
+type ConnectionCrossAppAccessRequestingAppOutput struct{ *pulumi.OutputState }
+
+func (ConnectionCrossAppAccessRequestingAppOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionCrossAppAccessRequestingApp)(nil)).Elem()
+}
+
+func (o ConnectionCrossAppAccessRequestingAppOutput) ToConnectionCrossAppAccessRequestingAppOutput() ConnectionCrossAppAccessRequestingAppOutput {
+	return o
+}
+
+func (o ConnectionCrossAppAccessRequestingAppOutput) ToConnectionCrossAppAccessRequestingAppOutputWithContext(ctx context.Context) ConnectionCrossAppAccessRequestingAppOutput {
+	return o
+}
+
+func (o ConnectionCrossAppAccessRequestingAppOutput) ToConnectionCrossAppAccessRequestingAppPtrOutput() ConnectionCrossAppAccessRequestingAppPtrOutput {
+	return o.ToConnectionCrossAppAccessRequestingAppPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionCrossAppAccessRequestingAppOutput) ToConnectionCrossAppAccessRequestingAppPtrOutputWithContext(ctx context.Context) ConnectionCrossAppAccessRequestingAppPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionCrossAppAccessRequestingApp) *ConnectionCrossAppAccessRequestingApp {
+		return &v
+	}).(ConnectionCrossAppAccessRequestingAppPtrOutput)
+}
+
+func (o ConnectionCrossAppAccessRequestingAppOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v ConnectionCrossAppAccessRequestingApp) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+type ConnectionCrossAppAccessRequestingAppPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionCrossAppAccessRequestingAppPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionCrossAppAccessRequestingApp)(nil)).Elem()
+}
+
+func (o ConnectionCrossAppAccessRequestingAppPtrOutput) ToConnectionCrossAppAccessRequestingAppPtrOutput() ConnectionCrossAppAccessRequestingAppPtrOutput {
+	return o
+}
+
+func (o ConnectionCrossAppAccessRequestingAppPtrOutput) ToConnectionCrossAppAccessRequestingAppPtrOutputWithContext(ctx context.Context) ConnectionCrossAppAccessRequestingAppPtrOutput {
+	return o
+}
+
+func (o ConnectionCrossAppAccessRequestingAppPtrOutput) Elem() ConnectionCrossAppAccessRequestingAppOutput {
+	return o.ApplyT(func(v *ConnectionCrossAppAccessRequestingApp) ConnectionCrossAppAccessRequestingApp {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionCrossAppAccessRequestingApp
+		return ret
+	}).(ConnectionCrossAppAccessRequestingAppOutput)
+}
+
+func (o ConnectionCrossAppAccessRequestingAppPtrOutput) Active() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionCrossAppAccessRequestingApp) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Active
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ConnectionCrossAppAccessResourceApp struct {
+	// Whether the connection acts as a Cross App Access resource application. One of `enabled` or `disabled`. (EA only)
+	Status string `pulumi:"status"`
+}
+
+// ConnectionCrossAppAccessResourceAppInput is an input type that accepts ConnectionCrossAppAccessResourceAppArgs and ConnectionCrossAppAccessResourceAppOutput values.
+// You can construct a concrete instance of `ConnectionCrossAppAccessResourceAppInput` via:
+//
+//	ConnectionCrossAppAccessResourceAppArgs{...}
+type ConnectionCrossAppAccessResourceAppInput interface {
+	pulumi.Input
+
+	ToConnectionCrossAppAccessResourceAppOutput() ConnectionCrossAppAccessResourceAppOutput
+	ToConnectionCrossAppAccessResourceAppOutputWithContext(context.Context) ConnectionCrossAppAccessResourceAppOutput
+}
+
+type ConnectionCrossAppAccessResourceAppArgs struct {
+	// Whether the connection acts as a Cross App Access resource application. One of `enabled` or `disabled`. (EA only)
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (ConnectionCrossAppAccessResourceAppArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionCrossAppAccessResourceApp)(nil)).Elem()
+}
+
+func (i ConnectionCrossAppAccessResourceAppArgs) ToConnectionCrossAppAccessResourceAppOutput() ConnectionCrossAppAccessResourceAppOutput {
+	return i.ToConnectionCrossAppAccessResourceAppOutputWithContext(context.Background())
+}
+
+func (i ConnectionCrossAppAccessResourceAppArgs) ToConnectionCrossAppAccessResourceAppOutputWithContext(ctx context.Context) ConnectionCrossAppAccessResourceAppOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionCrossAppAccessResourceAppOutput)
+}
+
+func (i ConnectionCrossAppAccessResourceAppArgs) ToConnectionCrossAppAccessResourceAppPtrOutput() ConnectionCrossAppAccessResourceAppPtrOutput {
+	return i.ToConnectionCrossAppAccessResourceAppPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionCrossAppAccessResourceAppArgs) ToConnectionCrossAppAccessResourceAppPtrOutputWithContext(ctx context.Context) ConnectionCrossAppAccessResourceAppPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionCrossAppAccessResourceAppOutput).ToConnectionCrossAppAccessResourceAppPtrOutputWithContext(ctx)
+}
+
+// ConnectionCrossAppAccessResourceAppPtrInput is an input type that accepts ConnectionCrossAppAccessResourceAppArgs, ConnectionCrossAppAccessResourceAppPtr and ConnectionCrossAppAccessResourceAppPtrOutput values.
+// You can construct a concrete instance of `ConnectionCrossAppAccessResourceAppPtrInput` via:
+//
+//	        ConnectionCrossAppAccessResourceAppArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionCrossAppAccessResourceAppPtrInput interface {
+	pulumi.Input
+
+	ToConnectionCrossAppAccessResourceAppPtrOutput() ConnectionCrossAppAccessResourceAppPtrOutput
+	ToConnectionCrossAppAccessResourceAppPtrOutputWithContext(context.Context) ConnectionCrossAppAccessResourceAppPtrOutput
+}
+
+type connectionCrossAppAccessResourceAppPtrType ConnectionCrossAppAccessResourceAppArgs
+
+func ConnectionCrossAppAccessResourceAppPtr(v *ConnectionCrossAppAccessResourceAppArgs) ConnectionCrossAppAccessResourceAppPtrInput {
+	return (*connectionCrossAppAccessResourceAppPtrType)(v)
+}
+
+func (*connectionCrossAppAccessResourceAppPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionCrossAppAccessResourceApp)(nil)).Elem()
+}
+
+func (i *connectionCrossAppAccessResourceAppPtrType) ToConnectionCrossAppAccessResourceAppPtrOutput() ConnectionCrossAppAccessResourceAppPtrOutput {
+	return i.ToConnectionCrossAppAccessResourceAppPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionCrossAppAccessResourceAppPtrType) ToConnectionCrossAppAccessResourceAppPtrOutputWithContext(ctx context.Context) ConnectionCrossAppAccessResourceAppPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionCrossAppAccessResourceAppPtrOutput)
+}
+
+type ConnectionCrossAppAccessResourceAppOutput struct{ *pulumi.OutputState }
+
+func (ConnectionCrossAppAccessResourceAppOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionCrossAppAccessResourceApp)(nil)).Elem()
+}
+
+func (o ConnectionCrossAppAccessResourceAppOutput) ToConnectionCrossAppAccessResourceAppOutput() ConnectionCrossAppAccessResourceAppOutput {
+	return o
+}
+
+func (o ConnectionCrossAppAccessResourceAppOutput) ToConnectionCrossAppAccessResourceAppOutputWithContext(ctx context.Context) ConnectionCrossAppAccessResourceAppOutput {
+	return o
+}
+
+func (o ConnectionCrossAppAccessResourceAppOutput) ToConnectionCrossAppAccessResourceAppPtrOutput() ConnectionCrossAppAccessResourceAppPtrOutput {
+	return o.ToConnectionCrossAppAccessResourceAppPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionCrossAppAccessResourceAppOutput) ToConnectionCrossAppAccessResourceAppPtrOutputWithContext(ctx context.Context) ConnectionCrossAppAccessResourceAppPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionCrossAppAccessResourceApp) *ConnectionCrossAppAccessResourceApp {
+		return &v
+	}).(ConnectionCrossAppAccessResourceAppPtrOutput)
+}
+
+// Whether the connection acts as a Cross App Access resource application. One of `enabled` or `disabled`. (EA only)
+func (o ConnectionCrossAppAccessResourceAppOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionCrossAppAccessResourceApp) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type ConnectionCrossAppAccessResourceAppPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionCrossAppAccessResourceAppPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionCrossAppAccessResourceApp)(nil)).Elem()
+}
+
+func (o ConnectionCrossAppAccessResourceAppPtrOutput) ToConnectionCrossAppAccessResourceAppPtrOutput() ConnectionCrossAppAccessResourceAppPtrOutput {
+	return o
+}
+
+func (o ConnectionCrossAppAccessResourceAppPtrOutput) ToConnectionCrossAppAccessResourceAppPtrOutputWithContext(ctx context.Context) ConnectionCrossAppAccessResourceAppPtrOutput {
+	return o
+}
+
+func (o ConnectionCrossAppAccessResourceAppPtrOutput) Elem() ConnectionCrossAppAccessResourceAppOutput {
+	return o.ApplyT(func(v *ConnectionCrossAppAccessResourceApp) ConnectionCrossAppAccessResourceApp {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionCrossAppAccessResourceApp
+		return ret
+	}).(ConnectionCrossAppAccessResourceAppOutput)
+}
+
+// Whether the connection acts as a Cross App Access resource application. One of `enabled` or `disabled`. (EA only)
+func (o ConnectionCrossAppAccessResourceAppPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionCrossAppAccessResourceApp) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
 type ConnectionDirectoryMapping struct {
 	// The field location in the Auth0 schema.
 	Auth0 string `pulumi:"auth0"`
@@ -19654,6 +20392,8 @@ type ConnectionOptions struct {
 	Name *string `pulumi:"name"`
 	// If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
 	NonPersistentAttrs []string `pulumi:"nonPersistentAttrs"`
+	// Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+	OidcMetadata *string `pulumi:"oidcMetadata"`
 	// Defines options for the passkey authentication method
 	PasskeyOptions *ConnectionOptionsPasskeyOptions `pulumi:"passkeyOptions"`
 	// Configuration settings for password complexity.
@@ -19908,6 +20648,8 @@ type ConnectionOptionsArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
 	NonPersistentAttrs pulumi.StringArrayInput `pulumi:"nonPersistentAttrs"`
+	// Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+	OidcMetadata pulumi.StringPtrInput `pulumi:"oidcMetadata"`
 	// Defines options for the passkey authentication method
 	PasskeyOptions ConnectionOptionsPasskeyOptionsPtrInput `pulumi:"passkeyOptions"`
 	// Configuration settings for password complexity.
@@ -20422,6 +21164,11 @@ func (o ConnectionOptionsOutput) Name() pulumi.StringPtrOutput {
 // If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
 func (o ConnectionOptionsOutput) NonPersistentAttrs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConnectionOptions) []string { return v.NonPersistentAttrs }).(pulumi.StringArrayOutput)
+}
+
+// Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+func (o ConnectionOptionsOutput) OidcMetadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptions) *string { return v.OidcMetadata }).(pulumi.StringPtrOutput)
 }
 
 // Defines options for the passkey authentication method
@@ -21373,6 +22120,16 @@ func (o ConnectionOptionsPtrOutput) NonPersistentAttrs() pulumi.StringArrayOutpu
 		}
 		return v.NonPersistentAttrs
 	}).(pulumi.StringArrayOutput)
+}
+
+// Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+func (o ConnectionOptionsPtrOutput) OidcMetadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OidcMetadata
+	}).(pulumi.StringPtrOutput)
 }
 
 // Defines options for the passkey authentication method
@@ -36335,6 +37092,8 @@ func (o NetworkAclRuleActionPtrOutput) RedirectUri() pulumi.StringPtrOutput {
 type NetworkAclRuleMatch struct {
 	// ASNs. Must contain between 1 and 10 unique items.
 	Asns []int `pulumi:"asns"`
+	// Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+	Auth0Manageds []string `pulumi:"auth0Manageds"`
 	// Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
 	ConnectingIpv4Cidrs []string `pulumi:"connectingIpv4Cidrs"`
 	// Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
@@ -36371,6 +37130,8 @@ type NetworkAclRuleMatchInput interface {
 type NetworkAclRuleMatchArgs struct {
 	// ASNs. Must contain between 1 and 10 unique items.
 	Asns pulumi.IntArrayInput `pulumi:"asns"`
+	// Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+	Auth0Manageds pulumi.StringArrayInput `pulumi:"auth0Manageds"`
 	// Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
 	ConnectingIpv4Cidrs pulumi.StringArrayInput `pulumi:"connectingIpv4Cidrs"`
 	// Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
@@ -36475,6 +37236,11 @@ func (o NetworkAclRuleMatchOutput) Asns() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v NetworkAclRuleMatch) []int { return v.Asns }).(pulumi.IntArrayOutput)
 }
 
+// Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+func (o NetworkAclRuleMatchOutput) Auth0Manageds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkAclRuleMatch) []string { return v.Auth0Manageds }).(pulumi.StringArrayOutput)
+}
+
 // Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
 func (o NetworkAclRuleMatchOutput) ConnectingIpv4Cidrs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworkAclRuleMatch) []string { return v.ConnectingIpv4Cidrs }).(pulumi.StringArrayOutput)
@@ -36557,6 +37323,16 @@ func (o NetworkAclRuleMatchPtrOutput) Asns() pulumi.IntArrayOutput {
 		}
 		return v.Asns
 	}).(pulumi.IntArrayOutput)
+}
+
+// Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+func (o NetworkAclRuleMatchPtrOutput) Auth0Manageds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkAclRuleMatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Auth0Manageds
+	}).(pulumi.StringArrayOutput)
 }
 
 // Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
@@ -36662,6 +37438,8 @@ func (o NetworkAclRuleMatchPtrOutput) UserAgents() pulumi.StringArrayOutput {
 type NetworkAclRuleNotMatch struct {
 	// ASNs. Must contain between 1 and 10 unique items.
 	Asns []int `pulumi:"asns"`
+	// Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+	Auth0Manageds []string `pulumi:"auth0Manageds"`
 	// Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
 	ConnectingIpv4Cidrs []string `pulumi:"connectingIpv4Cidrs"`
 	// Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
@@ -36698,6 +37476,8 @@ type NetworkAclRuleNotMatchInput interface {
 type NetworkAclRuleNotMatchArgs struct {
 	// ASNs. Must contain between 1 and 10 unique items.
 	Asns pulumi.IntArrayInput `pulumi:"asns"`
+	// Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+	Auth0Manageds pulumi.StringArrayInput `pulumi:"auth0Manageds"`
 	// Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
 	ConnectingIpv4Cidrs pulumi.StringArrayInput `pulumi:"connectingIpv4Cidrs"`
 	// Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
@@ -36802,6 +37582,11 @@ func (o NetworkAclRuleNotMatchOutput) Asns() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v NetworkAclRuleNotMatch) []int { return v.Asns }).(pulumi.IntArrayOutput)
 }
 
+// Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+func (o NetworkAclRuleNotMatchOutput) Auth0Manageds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkAclRuleNotMatch) []string { return v.Auth0Manageds }).(pulumi.StringArrayOutput)
+}
+
 // Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
 func (o NetworkAclRuleNotMatchOutput) ConnectingIpv4Cidrs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworkAclRuleNotMatch) []string { return v.ConnectingIpv4Cidrs }).(pulumi.StringArrayOutput)
@@ -36884,6 +37669,16 @@ func (o NetworkAclRuleNotMatchPtrOutput) Asns() pulumi.IntArrayOutput {
 		}
 		return v.Asns
 	}).(pulumi.IntArrayOutput)
+}
+
+// Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+func (o NetworkAclRuleNotMatchPtrOutput) Auth0Manageds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkAclRuleNotMatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Auth0Manageds
+	}).(pulumi.StringArrayOutput)
 }
 
 // Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
@@ -41761,6 +42556,162 @@ func (o SelfServiceProfileUserAttributeArrayOutput) Index(i pulumi.IntInput) Sel
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SelfServiceProfileUserAttribute {
 		return vs[0].([]SelfServiceProfileUserAttribute)[vs[1].(int)]
 	}).(SelfServiceProfileUserAttributeOutput)
+}
+
+type TenantCountryCodes struct {
+	// List of ISO 3166-1 alpha-2 country codes.
+	Lists []string `pulumi:"lists"`
+	// Whether the list is an allow-list or deny-list. Available options: `allow`, `deny`.
+	Mode string `pulumi:"mode"`
+}
+
+// TenantCountryCodesInput is an input type that accepts TenantCountryCodesArgs and TenantCountryCodesOutput values.
+// You can construct a concrete instance of `TenantCountryCodesInput` via:
+//
+//	TenantCountryCodesArgs{...}
+type TenantCountryCodesInput interface {
+	pulumi.Input
+
+	ToTenantCountryCodesOutput() TenantCountryCodesOutput
+	ToTenantCountryCodesOutputWithContext(context.Context) TenantCountryCodesOutput
+}
+
+type TenantCountryCodesArgs struct {
+	// List of ISO 3166-1 alpha-2 country codes.
+	Lists pulumi.StringArrayInput `pulumi:"lists"`
+	// Whether the list is an allow-list or deny-list. Available options: `allow`, `deny`.
+	Mode pulumi.StringInput `pulumi:"mode"`
+}
+
+func (TenantCountryCodesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantCountryCodes)(nil)).Elem()
+}
+
+func (i TenantCountryCodesArgs) ToTenantCountryCodesOutput() TenantCountryCodesOutput {
+	return i.ToTenantCountryCodesOutputWithContext(context.Background())
+}
+
+func (i TenantCountryCodesArgs) ToTenantCountryCodesOutputWithContext(ctx context.Context) TenantCountryCodesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantCountryCodesOutput)
+}
+
+func (i TenantCountryCodesArgs) ToTenantCountryCodesPtrOutput() TenantCountryCodesPtrOutput {
+	return i.ToTenantCountryCodesPtrOutputWithContext(context.Background())
+}
+
+func (i TenantCountryCodesArgs) ToTenantCountryCodesPtrOutputWithContext(ctx context.Context) TenantCountryCodesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantCountryCodesOutput).ToTenantCountryCodesPtrOutputWithContext(ctx)
+}
+
+// TenantCountryCodesPtrInput is an input type that accepts TenantCountryCodesArgs, TenantCountryCodesPtr and TenantCountryCodesPtrOutput values.
+// You can construct a concrete instance of `TenantCountryCodesPtrInput` via:
+//
+//	        TenantCountryCodesArgs{...}
+//
+//	or:
+//
+//	        nil
+type TenantCountryCodesPtrInput interface {
+	pulumi.Input
+
+	ToTenantCountryCodesPtrOutput() TenantCountryCodesPtrOutput
+	ToTenantCountryCodesPtrOutputWithContext(context.Context) TenantCountryCodesPtrOutput
+}
+
+type tenantCountryCodesPtrType TenantCountryCodesArgs
+
+func TenantCountryCodesPtr(v *TenantCountryCodesArgs) TenantCountryCodesPtrInput {
+	return (*tenantCountryCodesPtrType)(v)
+}
+
+func (*tenantCountryCodesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TenantCountryCodes)(nil)).Elem()
+}
+
+func (i *tenantCountryCodesPtrType) ToTenantCountryCodesPtrOutput() TenantCountryCodesPtrOutput {
+	return i.ToTenantCountryCodesPtrOutputWithContext(context.Background())
+}
+
+func (i *tenantCountryCodesPtrType) ToTenantCountryCodesPtrOutputWithContext(ctx context.Context) TenantCountryCodesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantCountryCodesPtrOutput)
+}
+
+type TenantCountryCodesOutput struct{ *pulumi.OutputState }
+
+func (TenantCountryCodesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantCountryCodes)(nil)).Elem()
+}
+
+func (o TenantCountryCodesOutput) ToTenantCountryCodesOutput() TenantCountryCodesOutput {
+	return o
+}
+
+func (o TenantCountryCodesOutput) ToTenantCountryCodesOutputWithContext(ctx context.Context) TenantCountryCodesOutput {
+	return o
+}
+
+func (o TenantCountryCodesOutput) ToTenantCountryCodesPtrOutput() TenantCountryCodesPtrOutput {
+	return o.ToTenantCountryCodesPtrOutputWithContext(context.Background())
+}
+
+func (o TenantCountryCodesOutput) ToTenantCountryCodesPtrOutputWithContext(ctx context.Context) TenantCountryCodesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TenantCountryCodes) *TenantCountryCodes {
+		return &v
+	}).(TenantCountryCodesPtrOutput)
+}
+
+// List of ISO 3166-1 alpha-2 country codes.
+func (o TenantCountryCodesOutput) Lists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TenantCountryCodes) []string { return v.Lists }).(pulumi.StringArrayOutput)
+}
+
+// Whether the list is an allow-list or deny-list. Available options: `allow`, `deny`.
+func (o TenantCountryCodesOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v TenantCountryCodes) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+type TenantCountryCodesPtrOutput struct{ *pulumi.OutputState }
+
+func (TenantCountryCodesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TenantCountryCodes)(nil)).Elem()
+}
+
+func (o TenantCountryCodesPtrOutput) ToTenantCountryCodesPtrOutput() TenantCountryCodesPtrOutput {
+	return o
+}
+
+func (o TenantCountryCodesPtrOutput) ToTenantCountryCodesPtrOutputWithContext(ctx context.Context) TenantCountryCodesPtrOutput {
+	return o
+}
+
+func (o TenantCountryCodesPtrOutput) Elem() TenantCountryCodesOutput {
+	return o.ApplyT(func(v *TenantCountryCodes) TenantCountryCodes {
+		if v != nil {
+			return *v
+		}
+		var ret TenantCountryCodes
+		return ret
+	}).(TenantCountryCodesOutput)
+}
+
+// List of ISO 3166-1 alpha-2 country codes.
+func (o TenantCountryCodesPtrOutput) Lists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TenantCountryCodes) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Lists
+	}).(pulumi.StringArrayOutput)
+}
+
+// Whether the list is an allow-list or deny-list. Available options: `allow`, `deny`.
+func (o TenantCountryCodesPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TenantCountryCodes) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Mode
+	}).(pulumi.StringPtrOutput)
 }
 
 type TenantDefaultTokenQuota struct {
@@ -50433,6 +51384,227 @@ func (o GetBrandingThemeFontTitleArrayOutput) Index(i pulumi.IntInput) GetBrandi
 	}).(GetBrandingThemeFontTitleOutput)
 }
 
+type GetBrandingThemeIdentifier struct {
+	// Login display style. Available options: `unified`, `separate`.
+	LoginDisplay string `pulumi:"loginDisplay"`
+	// Whether OTP autocomplete is enabled.
+	OtpAutocomplete bool `pulumi:"otpAutocomplete"`
+	// Phone number display settings.
+	PhoneDisplays []GetBrandingThemeIdentifierPhoneDisplay `pulumi:"phoneDisplays"`
+}
+
+// GetBrandingThemeIdentifierInput is an input type that accepts GetBrandingThemeIdentifierArgs and GetBrandingThemeIdentifierOutput values.
+// You can construct a concrete instance of `GetBrandingThemeIdentifierInput` via:
+//
+//	GetBrandingThemeIdentifierArgs{...}
+type GetBrandingThemeIdentifierInput interface {
+	pulumi.Input
+
+	ToGetBrandingThemeIdentifierOutput() GetBrandingThemeIdentifierOutput
+	ToGetBrandingThemeIdentifierOutputWithContext(context.Context) GetBrandingThemeIdentifierOutput
+}
+
+type GetBrandingThemeIdentifierArgs struct {
+	// Login display style. Available options: `unified`, `separate`.
+	LoginDisplay pulumi.StringInput `pulumi:"loginDisplay"`
+	// Whether OTP autocomplete is enabled.
+	OtpAutocomplete pulumi.BoolInput `pulumi:"otpAutocomplete"`
+	// Phone number display settings.
+	PhoneDisplays GetBrandingThemeIdentifierPhoneDisplayArrayInput `pulumi:"phoneDisplays"`
+}
+
+func (GetBrandingThemeIdentifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingThemeIdentifier)(nil)).Elem()
+}
+
+func (i GetBrandingThemeIdentifierArgs) ToGetBrandingThemeIdentifierOutput() GetBrandingThemeIdentifierOutput {
+	return i.ToGetBrandingThemeIdentifierOutputWithContext(context.Background())
+}
+
+func (i GetBrandingThemeIdentifierArgs) ToGetBrandingThemeIdentifierOutputWithContext(ctx context.Context) GetBrandingThemeIdentifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingThemeIdentifierOutput)
+}
+
+// GetBrandingThemeIdentifierArrayInput is an input type that accepts GetBrandingThemeIdentifierArray and GetBrandingThemeIdentifierArrayOutput values.
+// You can construct a concrete instance of `GetBrandingThemeIdentifierArrayInput` via:
+//
+//	GetBrandingThemeIdentifierArray{ GetBrandingThemeIdentifierArgs{...} }
+type GetBrandingThemeIdentifierArrayInput interface {
+	pulumi.Input
+
+	ToGetBrandingThemeIdentifierArrayOutput() GetBrandingThemeIdentifierArrayOutput
+	ToGetBrandingThemeIdentifierArrayOutputWithContext(context.Context) GetBrandingThemeIdentifierArrayOutput
+}
+
+type GetBrandingThemeIdentifierArray []GetBrandingThemeIdentifierInput
+
+func (GetBrandingThemeIdentifierArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingThemeIdentifier)(nil)).Elem()
+}
+
+func (i GetBrandingThemeIdentifierArray) ToGetBrandingThemeIdentifierArrayOutput() GetBrandingThemeIdentifierArrayOutput {
+	return i.ToGetBrandingThemeIdentifierArrayOutputWithContext(context.Background())
+}
+
+func (i GetBrandingThemeIdentifierArray) ToGetBrandingThemeIdentifierArrayOutputWithContext(ctx context.Context) GetBrandingThemeIdentifierArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingThemeIdentifierArrayOutput)
+}
+
+type GetBrandingThemeIdentifierOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingThemeIdentifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingThemeIdentifier)(nil)).Elem()
+}
+
+func (o GetBrandingThemeIdentifierOutput) ToGetBrandingThemeIdentifierOutput() GetBrandingThemeIdentifierOutput {
+	return o
+}
+
+func (o GetBrandingThemeIdentifierOutput) ToGetBrandingThemeIdentifierOutputWithContext(ctx context.Context) GetBrandingThemeIdentifierOutput {
+	return o
+}
+
+// Login display style. Available options: `unified`, `separate`.
+func (o GetBrandingThemeIdentifierOutput) LoginDisplay() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemeIdentifier) string { return v.LoginDisplay }).(pulumi.StringOutput)
+}
+
+// Whether OTP autocomplete is enabled.
+func (o GetBrandingThemeIdentifierOutput) OtpAutocomplete() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBrandingThemeIdentifier) bool { return v.OtpAutocomplete }).(pulumi.BoolOutput)
+}
+
+// Phone number display settings.
+func (o GetBrandingThemeIdentifierOutput) PhoneDisplays() GetBrandingThemeIdentifierPhoneDisplayArrayOutput {
+	return o.ApplyT(func(v GetBrandingThemeIdentifier) []GetBrandingThemeIdentifierPhoneDisplay { return v.PhoneDisplays }).(GetBrandingThemeIdentifierPhoneDisplayArrayOutput)
+}
+
+type GetBrandingThemeIdentifierArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingThemeIdentifierArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingThemeIdentifier)(nil)).Elem()
+}
+
+func (o GetBrandingThemeIdentifierArrayOutput) ToGetBrandingThemeIdentifierArrayOutput() GetBrandingThemeIdentifierArrayOutput {
+	return o
+}
+
+func (o GetBrandingThemeIdentifierArrayOutput) ToGetBrandingThemeIdentifierArrayOutputWithContext(ctx context.Context) GetBrandingThemeIdentifierArrayOutput {
+	return o
+}
+
+func (o GetBrandingThemeIdentifierArrayOutput) Index(i pulumi.IntInput) GetBrandingThemeIdentifierOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBrandingThemeIdentifier {
+		return vs[0].([]GetBrandingThemeIdentifier)[vs[1].(int)]
+	}).(GetBrandingThemeIdentifierOutput)
+}
+
+type GetBrandingThemeIdentifierPhoneDisplay struct {
+	// Phone number formatting. Available options: `international`, `regional`.
+	Formatting string `pulumi:"formatting"`
+	// Phone number masking. Available options: `maskDigits`, `hideCountryCode`, `showAll`.
+	Masking string `pulumi:"masking"`
+}
+
+// GetBrandingThemeIdentifierPhoneDisplayInput is an input type that accepts GetBrandingThemeIdentifierPhoneDisplayArgs and GetBrandingThemeIdentifierPhoneDisplayOutput values.
+// You can construct a concrete instance of `GetBrandingThemeIdentifierPhoneDisplayInput` via:
+//
+//	GetBrandingThemeIdentifierPhoneDisplayArgs{...}
+type GetBrandingThemeIdentifierPhoneDisplayInput interface {
+	pulumi.Input
+
+	ToGetBrandingThemeIdentifierPhoneDisplayOutput() GetBrandingThemeIdentifierPhoneDisplayOutput
+	ToGetBrandingThemeIdentifierPhoneDisplayOutputWithContext(context.Context) GetBrandingThemeIdentifierPhoneDisplayOutput
+}
+
+type GetBrandingThemeIdentifierPhoneDisplayArgs struct {
+	// Phone number formatting. Available options: `international`, `regional`.
+	Formatting pulumi.StringInput `pulumi:"formatting"`
+	// Phone number masking. Available options: `maskDigits`, `hideCountryCode`, `showAll`.
+	Masking pulumi.StringInput `pulumi:"masking"`
+}
+
+func (GetBrandingThemeIdentifierPhoneDisplayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingThemeIdentifierPhoneDisplay)(nil)).Elem()
+}
+
+func (i GetBrandingThemeIdentifierPhoneDisplayArgs) ToGetBrandingThemeIdentifierPhoneDisplayOutput() GetBrandingThemeIdentifierPhoneDisplayOutput {
+	return i.ToGetBrandingThemeIdentifierPhoneDisplayOutputWithContext(context.Background())
+}
+
+func (i GetBrandingThemeIdentifierPhoneDisplayArgs) ToGetBrandingThemeIdentifierPhoneDisplayOutputWithContext(ctx context.Context) GetBrandingThemeIdentifierPhoneDisplayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingThemeIdentifierPhoneDisplayOutput)
+}
+
+// GetBrandingThemeIdentifierPhoneDisplayArrayInput is an input type that accepts GetBrandingThemeIdentifierPhoneDisplayArray and GetBrandingThemeIdentifierPhoneDisplayArrayOutput values.
+// You can construct a concrete instance of `GetBrandingThemeIdentifierPhoneDisplayArrayInput` via:
+//
+//	GetBrandingThemeIdentifierPhoneDisplayArray{ GetBrandingThemeIdentifierPhoneDisplayArgs{...} }
+type GetBrandingThemeIdentifierPhoneDisplayArrayInput interface {
+	pulumi.Input
+
+	ToGetBrandingThemeIdentifierPhoneDisplayArrayOutput() GetBrandingThemeIdentifierPhoneDisplayArrayOutput
+	ToGetBrandingThemeIdentifierPhoneDisplayArrayOutputWithContext(context.Context) GetBrandingThemeIdentifierPhoneDisplayArrayOutput
+}
+
+type GetBrandingThemeIdentifierPhoneDisplayArray []GetBrandingThemeIdentifierPhoneDisplayInput
+
+func (GetBrandingThemeIdentifierPhoneDisplayArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingThemeIdentifierPhoneDisplay)(nil)).Elem()
+}
+
+func (i GetBrandingThemeIdentifierPhoneDisplayArray) ToGetBrandingThemeIdentifierPhoneDisplayArrayOutput() GetBrandingThemeIdentifierPhoneDisplayArrayOutput {
+	return i.ToGetBrandingThemeIdentifierPhoneDisplayArrayOutputWithContext(context.Background())
+}
+
+func (i GetBrandingThemeIdentifierPhoneDisplayArray) ToGetBrandingThemeIdentifierPhoneDisplayArrayOutputWithContext(ctx context.Context) GetBrandingThemeIdentifierPhoneDisplayArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBrandingThemeIdentifierPhoneDisplayArrayOutput)
+}
+
+type GetBrandingThemeIdentifierPhoneDisplayOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingThemeIdentifierPhoneDisplayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBrandingThemeIdentifierPhoneDisplay)(nil)).Elem()
+}
+
+func (o GetBrandingThemeIdentifierPhoneDisplayOutput) ToGetBrandingThemeIdentifierPhoneDisplayOutput() GetBrandingThemeIdentifierPhoneDisplayOutput {
+	return o
+}
+
+func (o GetBrandingThemeIdentifierPhoneDisplayOutput) ToGetBrandingThemeIdentifierPhoneDisplayOutputWithContext(ctx context.Context) GetBrandingThemeIdentifierPhoneDisplayOutput {
+	return o
+}
+
+// Phone number formatting. Available options: `international`, `regional`.
+func (o GetBrandingThemeIdentifierPhoneDisplayOutput) Formatting() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemeIdentifierPhoneDisplay) string { return v.Formatting }).(pulumi.StringOutput)
+}
+
+// Phone number masking. Available options: `maskDigits`, `hideCountryCode`, `showAll`.
+func (o GetBrandingThemeIdentifierPhoneDisplayOutput) Masking() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBrandingThemeIdentifierPhoneDisplay) string { return v.Masking }).(pulumi.StringOutput)
+}
+
+type GetBrandingThemeIdentifierPhoneDisplayArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBrandingThemeIdentifierPhoneDisplayArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBrandingThemeIdentifierPhoneDisplay)(nil)).Elem()
+}
+
+func (o GetBrandingThemeIdentifierPhoneDisplayArrayOutput) ToGetBrandingThemeIdentifierPhoneDisplayArrayOutput() GetBrandingThemeIdentifierPhoneDisplayArrayOutput {
+	return o
+}
+
+func (o GetBrandingThemeIdentifierPhoneDisplayArrayOutput) ToGetBrandingThemeIdentifierPhoneDisplayArrayOutputWithContext(ctx context.Context) GetBrandingThemeIdentifierPhoneDisplayArrayOutput {
+	return o
+}
+
+func (o GetBrandingThemeIdentifierPhoneDisplayArrayOutput) Index(i pulumi.IntInput) GetBrandingThemeIdentifierPhoneDisplayOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBrandingThemeIdentifierPhoneDisplay {
+		return vs[0].([]GetBrandingThemeIdentifierPhoneDisplay)[vs[1].(int)]
+	}).(GetBrandingThemeIdentifierPhoneDisplayOutput)
+}
+
 type GetBrandingThemePageBackground struct {
 	// Background color. Defaults to `#000000`.
 	BackgroundColor string `pulumi:"backgroundColor"`
@@ -56146,6 +57318,103 @@ func (o GetClientGrantsClientGrantArrayOutput) Index(i pulumi.IntInput) GetClien
 	}).(GetClientGrantsClientGrantOutput)
 }
 
+type GetClientIdentityAssertionAuthorizationGrant struct {
+	// Whether the client can exchange ID-JAGs for access tokens. (EA only)
+	Active bool `pulumi:"active"`
+}
+
+// GetClientIdentityAssertionAuthorizationGrantInput is an input type that accepts GetClientIdentityAssertionAuthorizationGrantArgs and GetClientIdentityAssertionAuthorizationGrantOutput values.
+// You can construct a concrete instance of `GetClientIdentityAssertionAuthorizationGrantInput` via:
+//
+//	GetClientIdentityAssertionAuthorizationGrantArgs{...}
+type GetClientIdentityAssertionAuthorizationGrantInput interface {
+	pulumi.Input
+
+	ToGetClientIdentityAssertionAuthorizationGrantOutput() GetClientIdentityAssertionAuthorizationGrantOutput
+	ToGetClientIdentityAssertionAuthorizationGrantOutputWithContext(context.Context) GetClientIdentityAssertionAuthorizationGrantOutput
+}
+
+type GetClientIdentityAssertionAuthorizationGrantArgs struct {
+	// Whether the client can exchange ID-JAGs for access tokens. (EA only)
+	Active pulumi.BoolInput `pulumi:"active"`
+}
+
+func (GetClientIdentityAssertionAuthorizationGrantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientIdentityAssertionAuthorizationGrant)(nil)).Elem()
+}
+
+func (i GetClientIdentityAssertionAuthorizationGrantArgs) ToGetClientIdentityAssertionAuthorizationGrantOutput() GetClientIdentityAssertionAuthorizationGrantOutput {
+	return i.ToGetClientIdentityAssertionAuthorizationGrantOutputWithContext(context.Background())
+}
+
+func (i GetClientIdentityAssertionAuthorizationGrantArgs) ToGetClientIdentityAssertionAuthorizationGrantOutputWithContext(ctx context.Context) GetClientIdentityAssertionAuthorizationGrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientIdentityAssertionAuthorizationGrantOutput)
+}
+
+// GetClientIdentityAssertionAuthorizationGrantArrayInput is an input type that accepts GetClientIdentityAssertionAuthorizationGrantArray and GetClientIdentityAssertionAuthorizationGrantArrayOutput values.
+// You can construct a concrete instance of `GetClientIdentityAssertionAuthorizationGrantArrayInput` via:
+//
+//	GetClientIdentityAssertionAuthorizationGrantArray{ GetClientIdentityAssertionAuthorizationGrantArgs{...} }
+type GetClientIdentityAssertionAuthorizationGrantArrayInput interface {
+	pulumi.Input
+
+	ToGetClientIdentityAssertionAuthorizationGrantArrayOutput() GetClientIdentityAssertionAuthorizationGrantArrayOutput
+	ToGetClientIdentityAssertionAuthorizationGrantArrayOutputWithContext(context.Context) GetClientIdentityAssertionAuthorizationGrantArrayOutput
+}
+
+type GetClientIdentityAssertionAuthorizationGrantArray []GetClientIdentityAssertionAuthorizationGrantInput
+
+func (GetClientIdentityAssertionAuthorizationGrantArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientIdentityAssertionAuthorizationGrant)(nil)).Elem()
+}
+
+func (i GetClientIdentityAssertionAuthorizationGrantArray) ToGetClientIdentityAssertionAuthorizationGrantArrayOutput() GetClientIdentityAssertionAuthorizationGrantArrayOutput {
+	return i.ToGetClientIdentityAssertionAuthorizationGrantArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientIdentityAssertionAuthorizationGrantArray) ToGetClientIdentityAssertionAuthorizationGrantArrayOutputWithContext(ctx context.Context) GetClientIdentityAssertionAuthorizationGrantArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientIdentityAssertionAuthorizationGrantArrayOutput)
+}
+
+type GetClientIdentityAssertionAuthorizationGrantOutput struct{ *pulumi.OutputState }
+
+func (GetClientIdentityAssertionAuthorizationGrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientIdentityAssertionAuthorizationGrant)(nil)).Elem()
+}
+
+func (o GetClientIdentityAssertionAuthorizationGrantOutput) ToGetClientIdentityAssertionAuthorizationGrantOutput() GetClientIdentityAssertionAuthorizationGrantOutput {
+	return o
+}
+
+func (o GetClientIdentityAssertionAuthorizationGrantOutput) ToGetClientIdentityAssertionAuthorizationGrantOutputWithContext(ctx context.Context) GetClientIdentityAssertionAuthorizationGrantOutput {
+	return o
+}
+
+// Whether the client can exchange ID-JAGs for access tokens. (EA only)
+func (o GetClientIdentityAssertionAuthorizationGrantOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientIdentityAssertionAuthorizationGrant) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+type GetClientIdentityAssertionAuthorizationGrantArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientIdentityAssertionAuthorizationGrantArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientIdentityAssertionAuthorizationGrant)(nil)).Elem()
+}
+
+func (o GetClientIdentityAssertionAuthorizationGrantArrayOutput) ToGetClientIdentityAssertionAuthorizationGrantArrayOutput() GetClientIdentityAssertionAuthorizationGrantArrayOutput {
+	return o
+}
+
+func (o GetClientIdentityAssertionAuthorizationGrantArrayOutput) ToGetClientIdentityAssertionAuthorizationGrantArrayOutputWithContext(ctx context.Context) GetClientIdentityAssertionAuthorizationGrantArrayOutput {
+	return o
+}
+
+func (o GetClientIdentityAssertionAuthorizationGrantArrayOutput) Index(i pulumi.IntInput) GetClientIdentityAssertionAuthorizationGrantOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientIdentityAssertionAuthorizationGrant {
+		return vs[0].([]GetClientIdentityAssertionAuthorizationGrant)[vs[1].(int)]
+	}).(GetClientIdentityAssertionAuthorizationGrantOutput)
+}
+
 type GetClientJwtConfiguration struct {
 	// Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
 	Alg string `pulumi:"alg"`
@@ -57691,7 +58960,7 @@ type GetClientSessionTransfer struct {
 	AllowedAuthenticationMethods []string `pulumi:"allowedAuthenticationMethods"`
 	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
 	CanCreateSessionTransferToken bool `pulumi:"canCreateSessionTransferToken"`
-	// Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+	// Configuration for delegation (impersonation) access using Session Transfer Tokens.
 	Delegations []GetClientSessionTransferDelegation `pulumi:"delegations"`
 	// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
 	EnforceCascadeRevocation bool `pulumi:"enforceCascadeRevocation"`
@@ -57718,7 +58987,7 @@ type GetClientSessionTransferArgs struct {
 	AllowedAuthenticationMethods pulumi.StringArrayInput `pulumi:"allowedAuthenticationMethods"`
 	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
 	CanCreateSessionTransferToken pulumi.BoolInput `pulumi:"canCreateSessionTransferToken"`
-	// Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+	// Configuration for delegation (impersonation) access using Session Transfer Tokens.
 	Delegations GetClientSessionTransferDelegationArrayInput `pulumi:"delegations"`
 	// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
 	EnforceCascadeRevocation pulumi.BoolInput `pulumi:"enforceCascadeRevocation"`
@@ -57793,7 +59062,7 @@ func (o GetClientSessionTransferOutput) CanCreateSessionTransferToken() pulumi.B
 	return o.ApplyT(func(v GetClientSessionTransfer) bool { return v.CanCreateSessionTransferToken }).(pulumi.BoolOutput)
 }
 
-// Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+// Configuration for delegation (impersonation) access using Session Transfer Tokens.
 func (o GetClientSessionTransferOutput) Delegations() GetClientSessionTransferDelegationArrayOutput {
 	return o.ApplyT(func(v GetClientSessionTransfer) []GetClientSessionTransferDelegation { return v.Delegations }).(GetClientSessionTransferDelegationArrayOutput)
 }
@@ -57834,9 +59103,9 @@ func (o GetClientSessionTransferArrayOutput) Index(i pulumi.IntInput) GetClientS
 }
 
 type GetClientSessionTransferDelegation struct {
-	// Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
+	// Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`.
 	AllowDelegatedAccess bool `pulumi:"allowDelegatedAccess"`
-	// Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+	// Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`.
 	EnforceDeviceBinding string `pulumi:"enforceDeviceBinding"`
 }
 
@@ -57852,9 +59121,9 @@ type GetClientSessionTransferDelegationInput interface {
 }
 
 type GetClientSessionTransferDelegationArgs struct {
-	// Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
+	// Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`.
 	AllowDelegatedAccess pulumi.BoolInput `pulumi:"allowDelegatedAccess"`
-	// Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+	// Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`.
 	EnforceDeviceBinding pulumi.StringInput `pulumi:"enforceDeviceBinding"`
 }
 
@@ -57909,12 +59178,12 @@ func (o GetClientSessionTransferDelegationOutput) ToGetClientSessionTransferDele
 	return o
 }
 
-// Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
+// Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`.
 func (o GetClientSessionTransferDelegationOutput) AllowDelegatedAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClientSessionTransferDelegation) bool { return v.AllowDelegatedAccess }).(pulumi.BoolOutput)
 }
 
-// Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+// Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`.
 func (o GetClientSessionTransferDelegationOutput) EnforceDeviceBinding() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientSessionTransferDelegation) string { return v.EnforceDeviceBinding }).(pulumi.StringOutput)
 }
@@ -58531,7 +59800,7 @@ type GetClientsClient struct {
 	ClientId *string `pulumi:"clientId"`
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 	ClientMetadata map[string]string `pulumi:"clientMetadata"`
-	// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string.
+	// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. Set `hideClientSecret` to `true` to avoid persisting this value into Terraform state.
 	ClientSecret string `pulumi:"clientSecret"`
 	// Description of the purpose of the client.
 	Description string `pulumi:"description"`
@@ -58547,6 +59816,8 @@ type GetClientsClient struct {
 	FedcmLogins []GetClientsClientFedcmLogin `pulumi:"fedcmLogins"`
 	// Types of grants that this client is authorized to use.
 	GrantTypes []string `pulumi:"grantTypes"`
+	// Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+	IdentityAssertionAuthorizationGrants []GetClientsClientIdentityAssertionAuthorizationGrant `pulumi:"identityAssertionAuthorizationGrants"`
 	// Indicates whether this client is a first-party client.
 	IsFirstParty bool `pulumi:"isFirstParty"`
 	// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `ClientCredentials` resource.
@@ -58606,7 +59877,7 @@ type GetClientsClientArgs struct {
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 	ClientMetadata pulumi.StringMapInput `pulumi:"clientMetadata"`
-	// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string.
+	// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. Set `hideClientSecret` to `true` to avoid persisting this value into Terraform state.
 	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
 	// Description of the purpose of the client.
 	Description pulumi.StringInput `pulumi:"description"`
@@ -58622,6 +59893,8 @@ type GetClientsClientArgs struct {
 	FedcmLogins GetClientsClientFedcmLoginArrayInput `pulumi:"fedcmLogins"`
 	// Types of grants that this client is authorized to use.
 	GrantTypes pulumi.StringArrayInput `pulumi:"grantTypes"`
+	// Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+	IdentityAssertionAuthorizationGrants GetClientsClientIdentityAssertionAuthorizationGrantArrayInput `pulumi:"identityAssertionAuthorizationGrants"`
 	// Indicates whether this client is a first-party client.
 	IsFirstParty pulumi.BoolInput `pulumi:"isFirstParty"`
 	// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `ClientCredentials` resource.
@@ -58744,7 +60017,7 @@ func (o GetClientsClientOutput) ClientMetadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetClientsClient) map[string]string { return v.ClientMetadata }).(pulumi.StringMapOutput)
 }
 
-// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string.
+// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. Set `hideClientSecret` to `true` to avoid persisting this value into Terraform state.
 func (o GetClientsClientOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientsClient) string { return v.ClientSecret }).(pulumi.StringOutput)
 }
@@ -58782,6 +60055,13 @@ func (o GetClientsClientOutput) FedcmLogins() GetClientsClientFedcmLoginArrayOut
 // Types of grants that this client is authorized to use.
 func (o GetClientsClientOutput) GrantTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClientsClient) []string { return v.GrantTypes }).(pulumi.StringArrayOutput)
+}
+
+// Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+func (o GetClientsClientOutput) IdentityAssertionAuthorizationGrants() GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []GetClientsClientIdentityAssertionAuthorizationGrant {
+		return v.IdentityAssertionAuthorizationGrants
+	}).(GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput)
 }
 
 // Indicates whether this client is a first-party client.
@@ -59342,6 +60622,103 @@ func (o GetClientsClientFedcmLoginGoogleArrayOutput) Index(i pulumi.IntInput) Ge
 	}).(GetClientsClientFedcmLoginGoogleOutput)
 }
 
+type GetClientsClientIdentityAssertionAuthorizationGrant struct {
+	// Whether the client can exchange ID-JAGs for access tokens. (EA only)
+	Active bool `pulumi:"active"`
+}
+
+// GetClientsClientIdentityAssertionAuthorizationGrantInput is an input type that accepts GetClientsClientIdentityAssertionAuthorizationGrantArgs and GetClientsClientIdentityAssertionAuthorizationGrantOutput values.
+// You can construct a concrete instance of `GetClientsClientIdentityAssertionAuthorizationGrantInput` via:
+//
+//	GetClientsClientIdentityAssertionAuthorizationGrantArgs{...}
+type GetClientsClientIdentityAssertionAuthorizationGrantInput interface {
+	pulumi.Input
+
+	ToGetClientsClientIdentityAssertionAuthorizationGrantOutput() GetClientsClientIdentityAssertionAuthorizationGrantOutput
+	ToGetClientsClientIdentityAssertionAuthorizationGrantOutputWithContext(context.Context) GetClientsClientIdentityAssertionAuthorizationGrantOutput
+}
+
+type GetClientsClientIdentityAssertionAuthorizationGrantArgs struct {
+	// Whether the client can exchange ID-JAGs for access tokens. (EA only)
+	Active pulumi.BoolInput `pulumi:"active"`
+}
+
+func (GetClientsClientIdentityAssertionAuthorizationGrantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientIdentityAssertionAuthorizationGrant)(nil)).Elem()
+}
+
+func (i GetClientsClientIdentityAssertionAuthorizationGrantArgs) ToGetClientsClientIdentityAssertionAuthorizationGrantOutput() GetClientsClientIdentityAssertionAuthorizationGrantOutput {
+	return i.ToGetClientsClientIdentityAssertionAuthorizationGrantOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientIdentityAssertionAuthorizationGrantArgs) ToGetClientsClientIdentityAssertionAuthorizationGrantOutputWithContext(ctx context.Context) GetClientsClientIdentityAssertionAuthorizationGrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientIdentityAssertionAuthorizationGrantOutput)
+}
+
+// GetClientsClientIdentityAssertionAuthorizationGrantArrayInput is an input type that accepts GetClientsClientIdentityAssertionAuthorizationGrantArray and GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput values.
+// You can construct a concrete instance of `GetClientsClientIdentityAssertionAuthorizationGrantArrayInput` via:
+//
+//	GetClientsClientIdentityAssertionAuthorizationGrantArray{ GetClientsClientIdentityAssertionAuthorizationGrantArgs{...} }
+type GetClientsClientIdentityAssertionAuthorizationGrantArrayInput interface {
+	pulumi.Input
+
+	ToGetClientsClientIdentityAssertionAuthorizationGrantArrayOutput() GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput
+	ToGetClientsClientIdentityAssertionAuthorizationGrantArrayOutputWithContext(context.Context) GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput
+}
+
+type GetClientsClientIdentityAssertionAuthorizationGrantArray []GetClientsClientIdentityAssertionAuthorizationGrantInput
+
+func (GetClientsClientIdentityAssertionAuthorizationGrantArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientIdentityAssertionAuthorizationGrant)(nil)).Elem()
+}
+
+func (i GetClientsClientIdentityAssertionAuthorizationGrantArray) ToGetClientsClientIdentityAssertionAuthorizationGrantArrayOutput() GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput {
+	return i.ToGetClientsClientIdentityAssertionAuthorizationGrantArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientIdentityAssertionAuthorizationGrantArray) ToGetClientsClientIdentityAssertionAuthorizationGrantArrayOutputWithContext(ctx context.Context) GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput)
+}
+
+type GetClientsClientIdentityAssertionAuthorizationGrantOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientIdentityAssertionAuthorizationGrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientIdentityAssertionAuthorizationGrant)(nil)).Elem()
+}
+
+func (o GetClientsClientIdentityAssertionAuthorizationGrantOutput) ToGetClientsClientIdentityAssertionAuthorizationGrantOutput() GetClientsClientIdentityAssertionAuthorizationGrantOutput {
+	return o
+}
+
+func (o GetClientsClientIdentityAssertionAuthorizationGrantOutput) ToGetClientsClientIdentityAssertionAuthorizationGrantOutputWithContext(ctx context.Context) GetClientsClientIdentityAssertionAuthorizationGrantOutput {
+	return o
+}
+
+// Whether the client can exchange ID-JAGs for access tokens. (EA only)
+func (o GetClientsClientIdentityAssertionAuthorizationGrantOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientsClientIdentityAssertionAuthorizationGrant) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+type GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientIdentityAssertionAuthorizationGrant)(nil)).Elem()
+}
+
+func (o GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput) ToGetClientsClientIdentityAssertionAuthorizationGrantArrayOutput() GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput {
+	return o
+}
+
+func (o GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput) ToGetClientsClientIdentityAssertionAuthorizationGrantArrayOutputWithContext(ctx context.Context) GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput {
+	return o
+}
+
+func (o GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput) Index(i pulumi.IntInput) GetClientsClientIdentityAssertionAuthorizationGrantOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientIdentityAssertionAuthorizationGrant {
+		return vs[0].([]GetClientsClientIdentityAssertionAuthorizationGrant)[vs[1].(int)]
+	}).(GetClientsClientIdentityAssertionAuthorizationGrantOutput)
+}
+
 type GetClientsClientMyOrganizationConfiguration struct {
 	// The list of connection strategies that are allowed when creating organizations for this client (e.g. "okta", "samlp").
 	AllowedStrategies []string `pulumi:"allowedStrategies"`
@@ -59803,7 +61180,7 @@ type GetClientsClientSessionTransfer struct {
 	AllowedAuthenticationMethods []string `pulumi:"allowedAuthenticationMethods"`
 	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
 	CanCreateSessionTransferToken bool `pulumi:"canCreateSessionTransferToken"`
-	// Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+	// Configuration for delegation (impersonation) access using Session Transfer Tokens.
 	Delegations []GetClientsClientSessionTransferDelegation `pulumi:"delegations"`
 	// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
 	EnforceCascadeRevocation bool `pulumi:"enforceCascadeRevocation"`
@@ -59830,7 +61207,7 @@ type GetClientsClientSessionTransferArgs struct {
 	AllowedAuthenticationMethods pulumi.StringArrayInput `pulumi:"allowedAuthenticationMethods"`
 	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
 	CanCreateSessionTransferToken pulumi.BoolInput `pulumi:"canCreateSessionTransferToken"`
-	// Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+	// Configuration for delegation (impersonation) access using Session Transfer Tokens.
 	Delegations GetClientsClientSessionTransferDelegationArrayInput `pulumi:"delegations"`
 	// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
 	EnforceCascadeRevocation pulumi.BoolInput `pulumi:"enforceCascadeRevocation"`
@@ -59905,7 +61282,7 @@ func (o GetClientsClientSessionTransferOutput) CanCreateSessionTransferToken() p
 	return o.ApplyT(func(v GetClientsClientSessionTransfer) bool { return v.CanCreateSessionTransferToken }).(pulumi.BoolOutput)
 }
 
-// Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+// Configuration for delegation (impersonation) access using Session Transfer Tokens.
 func (o GetClientsClientSessionTransferOutput) Delegations() GetClientsClientSessionTransferDelegationArrayOutput {
 	return o.ApplyT(func(v GetClientsClientSessionTransfer) []GetClientsClientSessionTransferDelegation {
 		return v.Delegations
@@ -59948,9 +61325,9 @@ func (o GetClientsClientSessionTransferArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetClientsClientSessionTransferDelegation struct {
-	// Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
+	// Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`.
 	AllowDelegatedAccess bool `pulumi:"allowDelegatedAccess"`
-	// Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+	// Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`.
 	EnforceDeviceBinding string `pulumi:"enforceDeviceBinding"`
 }
 
@@ -59966,9 +61343,9 @@ type GetClientsClientSessionTransferDelegationInput interface {
 }
 
 type GetClientsClientSessionTransferDelegationArgs struct {
-	// Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
+	// Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`.
 	AllowDelegatedAccess pulumi.BoolInput `pulumi:"allowDelegatedAccess"`
-	// Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+	// Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`.
 	EnforceDeviceBinding pulumi.StringInput `pulumi:"enforceDeviceBinding"`
 }
 
@@ -60023,12 +61400,12 @@ func (o GetClientsClientSessionTransferDelegationOutput) ToGetClientsClientSessi
 	return o
 }
 
-// Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
+// Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`.
 func (o GetClientsClientSessionTransferDelegationOutput) AllowDelegatedAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClientsClientSessionTransferDelegation) bool { return v.AllowDelegatedAccess }).(pulumi.BoolOutput)
 }
 
-// Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+// Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`.
 func (o GetClientsClientSessionTransferDelegationOutput) EnforceDeviceBinding() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientsClientSessionTransferDelegation) string { return v.EnforceDeviceBinding }).(pulumi.StringOutput)
 }
@@ -60550,6 +61927,197 @@ func (o GetConnectionConnectedAccountArrayOutput) Index(i pulumi.IntInput) GetCo
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionConnectedAccount {
 		return vs[0].([]GetConnectionConnectedAccount)[vs[1].(int)]
 	}).(GetConnectionConnectedAccountOutput)
+}
+
+type GetConnectionCrossAppAccessRequestingApp struct {
+	Active bool `pulumi:"active"`
+}
+
+// GetConnectionCrossAppAccessRequestingAppInput is an input type that accepts GetConnectionCrossAppAccessRequestingAppArgs and GetConnectionCrossAppAccessRequestingAppOutput values.
+// You can construct a concrete instance of `GetConnectionCrossAppAccessRequestingAppInput` via:
+//
+//	GetConnectionCrossAppAccessRequestingAppArgs{...}
+type GetConnectionCrossAppAccessRequestingAppInput interface {
+	pulumi.Input
+
+	ToGetConnectionCrossAppAccessRequestingAppOutput() GetConnectionCrossAppAccessRequestingAppOutput
+	ToGetConnectionCrossAppAccessRequestingAppOutputWithContext(context.Context) GetConnectionCrossAppAccessRequestingAppOutput
+}
+
+type GetConnectionCrossAppAccessRequestingAppArgs struct {
+	Active pulumi.BoolInput `pulumi:"active"`
+}
+
+func (GetConnectionCrossAppAccessRequestingAppArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionCrossAppAccessRequestingApp)(nil)).Elem()
+}
+
+func (i GetConnectionCrossAppAccessRequestingAppArgs) ToGetConnectionCrossAppAccessRequestingAppOutput() GetConnectionCrossAppAccessRequestingAppOutput {
+	return i.ToGetConnectionCrossAppAccessRequestingAppOutputWithContext(context.Background())
+}
+
+func (i GetConnectionCrossAppAccessRequestingAppArgs) ToGetConnectionCrossAppAccessRequestingAppOutputWithContext(ctx context.Context) GetConnectionCrossAppAccessRequestingAppOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionCrossAppAccessRequestingAppOutput)
+}
+
+// GetConnectionCrossAppAccessRequestingAppArrayInput is an input type that accepts GetConnectionCrossAppAccessRequestingAppArray and GetConnectionCrossAppAccessRequestingAppArrayOutput values.
+// You can construct a concrete instance of `GetConnectionCrossAppAccessRequestingAppArrayInput` via:
+//
+//	GetConnectionCrossAppAccessRequestingAppArray{ GetConnectionCrossAppAccessRequestingAppArgs{...} }
+type GetConnectionCrossAppAccessRequestingAppArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionCrossAppAccessRequestingAppArrayOutput() GetConnectionCrossAppAccessRequestingAppArrayOutput
+	ToGetConnectionCrossAppAccessRequestingAppArrayOutputWithContext(context.Context) GetConnectionCrossAppAccessRequestingAppArrayOutput
+}
+
+type GetConnectionCrossAppAccessRequestingAppArray []GetConnectionCrossAppAccessRequestingAppInput
+
+func (GetConnectionCrossAppAccessRequestingAppArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionCrossAppAccessRequestingApp)(nil)).Elem()
+}
+
+func (i GetConnectionCrossAppAccessRequestingAppArray) ToGetConnectionCrossAppAccessRequestingAppArrayOutput() GetConnectionCrossAppAccessRequestingAppArrayOutput {
+	return i.ToGetConnectionCrossAppAccessRequestingAppArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionCrossAppAccessRequestingAppArray) ToGetConnectionCrossAppAccessRequestingAppArrayOutputWithContext(ctx context.Context) GetConnectionCrossAppAccessRequestingAppArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionCrossAppAccessRequestingAppArrayOutput)
+}
+
+type GetConnectionCrossAppAccessRequestingAppOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionCrossAppAccessRequestingAppOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionCrossAppAccessRequestingApp)(nil)).Elem()
+}
+
+func (o GetConnectionCrossAppAccessRequestingAppOutput) ToGetConnectionCrossAppAccessRequestingAppOutput() GetConnectionCrossAppAccessRequestingAppOutput {
+	return o
+}
+
+func (o GetConnectionCrossAppAccessRequestingAppOutput) ToGetConnectionCrossAppAccessRequestingAppOutputWithContext(ctx context.Context) GetConnectionCrossAppAccessRequestingAppOutput {
+	return o
+}
+
+func (o GetConnectionCrossAppAccessRequestingAppOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionCrossAppAccessRequestingApp) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+type GetConnectionCrossAppAccessRequestingAppArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionCrossAppAccessRequestingAppArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionCrossAppAccessRequestingApp)(nil)).Elem()
+}
+
+func (o GetConnectionCrossAppAccessRequestingAppArrayOutput) ToGetConnectionCrossAppAccessRequestingAppArrayOutput() GetConnectionCrossAppAccessRequestingAppArrayOutput {
+	return o
+}
+
+func (o GetConnectionCrossAppAccessRequestingAppArrayOutput) ToGetConnectionCrossAppAccessRequestingAppArrayOutputWithContext(ctx context.Context) GetConnectionCrossAppAccessRequestingAppArrayOutput {
+	return o
+}
+
+func (o GetConnectionCrossAppAccessRequestingAppArrayOutput) Index(i pulumi.IntInput) GetConnectionCrossAppAccessRequestingAppOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionCrossAppAccessRequestingApp {
+		return vs[0].([]GetConnectionCrossAppAccessRequestingApp)[vs[1].(int)]
+	}).(GetConnectionCrossAppAccessRequestingAppOutput)
+}
+
+type GetConnectionCrossAppAccessResourceApp struct {
+	// Whether the connection acts as a Cross App Access resource application. One of `enabled` or `disabled`. (EA only)
+	Status string `pulumi:"status"`
+}
+
+// GetConnectionCrossAppAccessResourceAppInput is an input type that accepts GetConnectionCrossAppAccessResourceAppArgs and GetConnectionCrossAppAccessResourceAppOutput values.
+// You can construct a concrete instance of `GetConnectionCrossAppAccessResourceAppInput` via:
+//
+//	GetConnectionCrossAppAccessResourceAppArgs{...}
+type GetConnectionCrossAppAccessResourceAppInput interface {
+	pulumi.Input
+
+	ToGetConnectionCrossAppAccessResourceAppOutput() GetConnectionCrossAppAccessResourceAppOutput
+	ToGetConnectionCrossAppAccessResourceAppOutputWithContext(context.Context) GetConnectionCrossAppAccessResourceAppOutput
+}
+
+type GetConnectionCrossAppAccessResourceAppArgs struct {
+	// Whether the connection acts as a Cross App Access resource application. One of `enabled` or `disabled`. (EA only)
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetConnectionCrossAppAccessResourceAppArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionCrossAppAccessResourceApp)(nil)).Elem()
+}
+
+func (i GetConnectionCrossAppAccessResourceAppArgs) ToGetConnectionCrossAppAccessResourceAppOutput() GetConnectionCrossAppAccessResourceAppOutput {
+	return i.ToGetConnectionCrossAppAccessResourceAppOutputWithContext(context.Background())
+}
+
+func (i GetConnectionCrossAppAccessResourceAppArgs) ToGetConnectionCrossAppAccessResourceAppOutputWithContext(ctx context.Context) GetConnectionCrossAppAccessResourceAppOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionCrossAppAccessResourceAppOutput)
+}
+
+// GetConnectionCrossAppAccessResourceAppArrayInput is an input type that accepts GetConnectionCrossAppAccessResourceAppArray and GetConnectionCrossAppAccessResourceAppArrayOutput values.
+// You can construct a concrete instance of `GetConnectionCrossAppAccessResourceAppArrayInput` via:
+//
+//	GetConnectionCrossAppAccessResourceAppArray{ GetConnectionCrossAppAccessResourceAppArgs{...} }
+type GetConnectionCrossAppAccessResourceAppArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionCrossAppAccessResourceAppArrayOutput() GetConnectionCrossAppAccessResourceAppArrayOutput
+	ToGetConnectionCrossAppAccessResourceAppArrayOutputWithContext(context.Context) GetConnectionCrossAppAccessResourceAppArrayOutput
+}
+
+type GetConnectionCrossAppAccessResourceAppArray []GetConnectionCrossAppAccessResourceAppInput
+
+func (GetConnectionCrossAppAccessResourceAppArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionCrossAppAccessResourceApp)(nil)).Elem()
+}
+
+func (i GetConnectionCrossAppAccessResourceAppArray) ToGetConnectionCrossAppAccessResourceAppArrayOutput() GetConnectionCrossAppAccessResourceAppArrayOutput {
+	return i.ToGetConnectionCrossAppAccessResourceAppArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionCrossAppAccessResourceAppArray) ToGetConnectionCrossAppAccessResourceAppArrayOutputWithContext(ctx context.Context) GetConnectionCrossAppAccessResourceAppArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionCrossAppAccessResourceAppArrayOutput)
+}
+
+type GetConnectionCrossAppAccessResourceAppOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionCrossAppAccessResourceAppOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionCrossAppAccessResourceApp)(nil)).Elem()
+}
+
+func (o GetConnectionCrossAppAccessResourceAppOutput) ToGetConnectionCrossAppAccessResourceAppOutput() GetConnectionCrossAppAccessResourceAppOutput {
+	return o
+}
+
+func (o GetConnectionCrossAppAccessResourceAppOutput) ToGetConnectionCrossAppAccessResourceAppOutputWithContext(ctx context.Context) GetConnectionCrossAppAccessResourceAppOutput {
+	return o
+}
+
+// Whether the connection acts as a Cross App Access resource application. One of `enabled` or `disabled`. (EA only)
+func (o GetConnectionCrossAppAccessResourceAppOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionCrossAppAccessResourceApp) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetConnectionCrossAppAccessResourceAppArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionCrossAppAccessResourceAppArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionCrossAppAccessResourceApp)(nil)).Elem()
+}
+
+func (o GetConnectionCrossAppAccessResourceAppArrayOutput) ToGetConnectionCrossAppAccessResourceAppArrayOutput() GetConnectionCrossAppAccessResourceAppArrayOutput {
+	return o
+}
+
+func (o GetConnectionCrossAppAccessResourceAppArrayOutput) ToGetConnectionCrossAppAccessResourceAppArrayOutputWithContext(ctx context.Context) GetConnectionCrossAppAccessResourceAppArrayOutput {
+	return o
+}
+
+func (o GetConnectionCrossAppAccessResourceAppArrayOutput) Index(i pulumi.IntInput) GetConnectionCrossAppAccessResourceAppOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionCrossAppAccessResourceApp {
+		return vs[0].([]GetConnectionCrossAppAccessResourceApp)[vs[1].(int)]
+	}).(GetConnectionCrossAppAccessResourceAppOutput)
 }
 
 type GetConnectionDirectoryDefaultMappingMapping struct {
@@ -61106,6 +62674,8 @@ type GetConnectionOption struct {
 	Name string `pulumi:"name"`
 	// If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
 	NonPersistentAttrs []string `pulumi:"nonPersistentAttrs"`
+	// Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+	OidcMetadata string `pulumi:"oidcMetadata"`
 	// Defines options for the passkey authentication method
 	PasskeyOptions []GetConnectionOptionPasskeyOption `pulumi:"passkeyOptions"`
 	// Configuration settings for password complexity.
@@ -61360,6 +62930,8 @@ type GetConnectionOptionArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
 	NonPersistentAttrs pulumi.StringArrayInput `pulumi:"nonPersistentAttrs"`
+	// Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+	OidcMetadata pulumi.StringInput `pulumi:"oidcMetadata"`
 	// Defines options for the passkey authentication method
 	PasskeyOptions GetConnectionOptionPasskeyOptionArrayInput `pulumi:"passkeyOptions"`
 	// Configuration settings for password complexity.
@@ -61850,6 +63422,11 @@ func (o GetConnectionOptionOutput) Name() pulumi.StringOutput {
 // If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
 func (o GetConnectionOptionOutput) NonPersistentAttrs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetConnectionOption) []string { return v.NonPersistentAttrs }).(pulumi.StringArrayOutput)
+}
+
+// Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+func (o GetConnectionOptionOutput) OidcMetadata() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.OidcMetadata }).(pulumi.StringOutput)
 }
 
 // Defines options for the passkey authentication method
@@ -69800,6 +71377,8 @@ func (o GetNetworkAclRuleActionArrayOutput) Index(i pulumi.IntInput) GetNetworkA
 type GetNetworkAclRuleMatch struct {
 	// ASNs. Must contain between 1 and 10 unique items.
 	Asns []int `pulumi:"asns"`
+	// Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+	Auth0Manageds []string `pulumi:"auth0Manageds"`
 	// Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
 	ConnectingIpv4Cidrs []string `pulumi:"connectingIpv4Cidrs"`
 	// Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
@@ -69836,6 +71415,8 @@ type GetNetworkAclRuleMatchInput interface {
 type GetNetworkAclRuleMatchArgs struct {
 	// ASNs. Must contain between 1 and 10 unique items.
 	Asns pulumi.IntArrayInput `pulumi:"asns"`
+	// Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+	Auth0Manageds pulumi.StringArrayInput `pulumi:"auth0Manageds"`
 	// Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
 	ConnectingIpv4Cidrs pulumi.StringArrayInput `pulumi:"connectingIpv4Cidrs"`
 	// Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
@@ -69914,6 +71495,11 @@ func (o GetNetworkAclRuleMatchOutput) Asns() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetNetworkAclRuleMatch) []int { return v.Asns }).(pulumi.IntArrayOutput)
 }
 
+// Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+func (o GetNetworkAclRuleMatchOutput) Auth0Manageds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleMatch) []string { return v.Auth0Manageds }).(pulumi.StringArrayOutput)
+}
+
 // Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
 func (o GetNetworkAclRuleMatchOutput) ConnectingIpv4Cidrs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNetworkAclRuleMatch) []string { return v.ConnectingIpv4Cidrs }).(pulumi.StringArrayOutput)
@@ -69987,6 +71573,8 @@ func (o GetNetworkAclRuleMatchArrayOutput) Index(i pulumi.IntInput) GetNetworkAc
 type GetNetworkAclRuleNotMatch struct {
 	// ASNs. Must contain between 1 and 10 unique items.
 	Asns []int `pulumi:"asns"`
+	// Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+	Auth0Manageds []string `pulumi:"auth0Manageds"`
 	// Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
 	ConnectingIpv4Cidrs []string `pulumi:"connectingIpv4Cidrs"`
 	// Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
@@ -70023,6 +71611,8 @@ type GetNetworkAclRuleNotMatchInput interface {
 type GetNetworkAclRuleNotMatchArgs struct {
 	// ASNs. Must contain between 1 and 10 unique items.
 	Asns pulumi.IntArrayInput `pulumi:"asns"`
+	// Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+	Auth0Manageds pulumi.StringArrayInput `pulumi:"auth0Manageds"`
 	// Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
 	ConnectingIpv4Cidrs pulumi.StringArrayInput `pulumi:"connectingIpv4Cidrs"`
 	// Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
@@ -70099,6 +71689,11 @@ func (o GetNetworkAclRuleNotMatchOutput) ToGetNetworkAclRuleNotMatchOutputWithCo
 // ASNs. Must contain between 1 and 10 unique items.
 func (o GetNetworkAclRuleNotMatchOutput) Asns() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetNetworkAclRuleNotMatch) []int { return v.Asns }).(pulumi.IntArrayOutput)
+}
+
+// Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+func (o GetNetworkAclRuleNotMatchOutput) Auth0Manageds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleNotMatch) []string { return v.Auth0Manageds }).(pulumi.StringArrayOutput)
 }
 
 // Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
@@ -72616,1320 +74211,6 @@ func (o GetResourceServerAuthorizationDetailArrayOutput) Index(i pulumi.IntInput
 	}).(GetResourceServerAuthorizationDetailOutput)
 }
 
-type GetResourceServerAuthorizationPolicy struct {
-	// Identifier of the authorization policy.
-	PolicyId string `pulumi:"policyId"`
-}
-
-// GetResourceServerAuthorizationPolicyInput is an input type that accepts GetResourceServerAuthorizationPolicyArgs and GetResourceServerAuthorizationPolicyOutput values.
-// You can construct a concrete instance of `GetResourceServerAuthorizationPolicyInput` via:
-//
-//	GetResourceServerAuthorizationPolicyArgs{...}
-type GetResourceServerAuthorizationPolicyInput interface {
-	pulumi.Input
-
-	ToGetResourceServerAuthorizationPolicyOutput() GetResourceServerAuthorizationPolicyOutput
-	ToGetResourceServerAuthorizationPolicyOutputWithContext(context.Context) GetResourceServerAuthorizationPolicyOutput
-}
-
-type GetResourceServerAuthorizationPolicyArgs struct {
-	// Identifier of the authorization policy.
-	PolicyId pulumi.StringInput `pulumi:"policyId"`
-}
-
-func (GetResourceServerAuthorizationPolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetResourceServerAuthorizationPolicy)(nil)).Elem()
-}
-
-func (i GetResourceServerAuthorizationPolicyArgs) ToGetResourceServerAuthorizationPolicyOutput() GetResourceServerAuthorizationPolicyOutput {
-	return i.ToGetResourceServerAuthorizationPolicyOutputWithContext(context.Background())
-}
-
-func (i GetResourceServerAuthorizationPolicyArgs) ToGetResourceServerAuthorizationPolicyOutputWithContext(ctx context.Context) GetResourceServerAuthorizationPolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerAuthorizationPolicyOutput)
-}
-
-// GetResourceServerAuthorizationPolicyArrayInput is an input type that accepts GetResourceServerAuthorizationPolicyArray and GetResourceServerAuthorizationPolicyArrayOutput values.
-// You can construct a concrete instance of `GetResourceServerAuthorizationPolicyArrayInput` via:
-//
-//	GetResourceServerAuthorizationPolicyArray{ GetResourceServerAuthorizationPolicyArgs{...} }
-type GetResourceServerAuthorizationPolicyArrayInput interface {
-	pulumi.Input
-
-	ToGetResourceServerAuthorizationPolicyArrayOutput() GetResourceServerAuthorizationPolicyArrayOutput
-	ToGetResourceServerAuthorizationPolicyArrayOutputWithContext(context.Context) GetResourceServerAuthorizationPolicyArrayOutput
-}
-
-type GetResourceServerAuthorizationPolicyArray []GetResourceServerAuthorizationPolicyInput
-
-func (GetResourceServerAuthorizationPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetResourceServerAuthorizationPolicy)(nil)).Elem()
-}
-
-func (i GetResourceServerAuthorizationPolicyArray) ToGetResourceServerAuthorizationPolicyArrayOutput() GetResourceServerAuthorizationPolicyArrayOutput {
-	return i.ToGetResourceServerAuthorizationPolicyArrayOutputWithContext(context.Background())
-}
-
-func (i GetResourceServerAuthorizationPolicyArray) ToGetResourceServerAuthorizationPolicyArrayOutputWithContext(ctx context.Context) GetResourceServerAuthorizationPolicyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerAuthorizationPolicyArrayOutput)
-}
-
-type GetResourceServerAuthorizationPolicyOutput struct{ *pulumi.OutputState }
-
-func (GetResourceServerAuthorizationPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetResourceServerAuthorizationPolicy)(nil)).Elem()
-}
-
-func (o GetResourceServerAuthorizationPolicyOutput) ToGetResourceServerAuthorizationPolicyOutput() GetResourceServerAuthorizationPolicyOutput {
-	return o
-}
-
-func (o GetResourceServerAuthorizationPolicyOutput) ToGetResourceServerAuthorizationPolicyOutputWithContext(ctx context.Context) GetResourceServerAuthorizationPolicyOutput {
-	return o
-}
-
-// Identifier of the authorization policy.
-func (o GetResourceServerAuthorizationPolicyOutput) PolicyId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetResourceServerAuthorizationPolicy) string { return v.PolicyId }).(pulumi.StringOutput)
-}
-
-type GetResourceServerAuthorizationPolicyArrayOutput struct{ *pulumi.OutputState }
-
-func (GetResourceServerAuthorizationPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetResourceServerAuthorizationPolicy)(nil)).Elem()
-}
-
-func (o GetResourceServerAuthorizationPolicyArrayOutput) ToGetResourceServerAuthorizationPolicyArrayOutput() GetResourceServerAuthorizationPolicyArrayOutput {
-	return o
-}
-
-func (o GetResourceServerAuthorizationPolicyArrayOutput) ToGetResourceServerAuthorizationPolicyArrayOutputWithContext(ctx context.Context) GetResourceServerAuthorizationPolicyArrayOutput {
-	return o
-}
-
-func (o GetResourceServerAuthorizationPolicyArrayOutput) Index(i pulumi.IntInput) GetResourceServerAuthorizationPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerAuthorizationPolicy {
-		return vs[0].([]GetResourceServerAuthorizationPolicy)[vs[1].(int)]
-	}).(GetResourceServerAuthorizationPolicyOutput)
-}
-
-type GetResourceServerProofOfPossession struct {
-	// Disable proof-of-possession.
-	Disable bool `pulumi:"disable"`
-	// Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
-	Mechanism string `pulumi:"mechanism"`
-	// Indicates whether proof-of-possession is required with this resource server.
-	Required bool `pulumi:"required"`
-	// Specifies which client types require Proof-of-Possession`allClients` or `publicClients` is supported.
-	RequiredFor string `pulumi:"requiredFor"`
-}
-
-// GetResourceServerProofOfPossessionInput is an input type that accepts GetResourceServerProofOfPossessionArgs and GetResourceServerProofOfPossessionOutput values.
-// You can construct a concrete instance of `GetResourceServerProofOfPossessionInput` via:
-//
-//	GetResourceServerProofOfPossessionArgs{...}
-type GetResourceServerProofOfPossessionInput interface {
-	pulumi.Input
-
-	ToGetResourceServerProofOfPossessionOutput() GetResourceServerProofOfPossessionOutput
-	ToGetResourceServerProofOfPossessionOutputWithContext(context.Context) GetResourceServerProofOfPossessionOutput
-}
-
-type GetResourceServerProofOfPossessionArgs struct {
-	// Disable proof-of-possession.
-	Disable pulumi.BoolInput `pulumi:"disable"`
-	// Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
-	Mechanism pulumi.StringInput `pulumi:"mechanism"`
-	// Indicates whether proof-of-possession is required with this resource server.
-	Required pulumi.BoolInput `pulumi:"required"`
-	// Specifies which client types require Proof-of-Possession`allClients` or `publicClients` is supported.
-	RequiredFor pulumi.StringInput `pulumi:"requiredFor"`
-}
-
-func (GetResourceServerProofOfPossessionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetResourceServerProofOfPossession)(nil)).Elem()
-}
-
-func (i GetResourceServerProofOfPossessionArgs) ToGetResourceServerProofOfPossessionOutput() GetResourceServerProofOfPossessionOutput {
-	return i.ToGetResourceServerProofOfPossessionOutputWithContext(context.Background())
-}
-
-func (i GetResourceServerProofOfPossessionArgs) ToGetResourceServerProofOfPossessionOutputWithContext(ctx context.Context) GetResourceServerProofOfPossessionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerProofOfPossessionOutput)
-}
-
-// GetResourceServerProofOfPossessionArrayInput is an input type that accepts GetResourceServerProofOfPossessionArray and GetResourceServerProofOfPossessionArrayOutput values.
-// You can construct a concrete instance of `GetResourceServerProofOfPossessionArrayInput` via:
-//
-//	GetResourceServerProofOfPossessionArray{ GetResourceServerProofOfPossessionArgs{...} }
-type GetResourceServerProofOfPossessionArrayInput interface {
-	pulumi.Input
-
-	ToGetResourceServerProofOfPossessionArrayOutput() GetResourceServerProofOfPossessionArrayOutput
-	ToGetResourceServerProofOfPossessionArrayOutputWithContext(context.Context) GetResourceServerProofOfPossessionArrayOutput
-}
-
-type GetResourceServerProofOfPossessionArray []GetResourceServerProofOfPossessionInput
-
-func (GetResourceServerProofOfPossessionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetResourceServerProofOfPossession)(nil)).Elem()
-}
-
-func (i GetResourceServerProofOfPossessionArray) ToGetResourceServerProofOfPossessionArrayOutput() GetResourceServerProofOfPossessionArrayOutput {
-	return i.ToGetResourceServerProofOfPossessionArrayOutputWithContext(context.Background())
-}
-
-func (i GetResourceServerProofOfPossessionArray) ToGetResourceServerProofOfPossessionArrayOutputWithContext(ctx context.Context) GetResourceServerProofOfPossessionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerProofOfPossessionArrayOutput)
-}
-
-type GetResourceServerProofOfPossessionOutput struct{ *pulumi.OutputState }
-
-func (GetResourceServerProofOfPossessionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetResourceServerProofOfPossession)(nil)).Elem()
-}
-
-func (o GetResourceServerProofOfPossessionOutput) ToGetResourceServerProofOfPossessionOutput() GetResourceServerProofOfPossessionOutput {
-	return o
-}
-
-func (o GetResourceServerProofOfPossessionOutput) ToGetResourceServerProofOfPossessionOutputWithContext(ctx context.Context) GetResourceServerProofOfPossessionOutput {
-	return o
-}
-
-// Disable proof-of-possession.
-func (o GetResourceServerProofOfPossessionOutput) Disable() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetResourceServerProofOfPossession) bool { return v.Disable }).(pulumi.BoolOutput)
-}
-
-// Mechanism used for proof-of-possession. `mtls` or `dpop` is supported.
-func (o GetResourceServerProofOfPossessionOutput) Mechanism() pulumi.StringOutput {
-	return o.ApplyT(func(v GetResourceServerProofOfPossession) string { return v.Mechanism }).(pulumi.StringOutput)
-}
-
-// Indicates whether proof-of-possession is required with this resource server.
-func (o GetResourceServerProofOfPossessionOutput) Required() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetResourceServerProofOfPossession) bool { return v.Required }).(pulumi.BoolOutput)
-}
-
-// Specifies which client types require Proof-of-Possession`allClients` or `publicClients` is supported.
-func (o GetResourceServerProofOfPossessionOutput) RequiredFor() pulumi.StringOutput {
-	return o.ApplyT(func(v GetResourceServerProofOfPossession) string { return v.RequiredFor }).(pulumi.StringOutput)
-}
-
-type GetResourceServerProofOfPossessionArrayOutput struct{ *pulumi.OutputState }
-
-func (GetResourceServerProofOfPossessionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetResourceServerProofOfPossession)(nil)).Elem()
-}
-
-func (o GetResourceServerProofOfPossessionArrayOutput) ToGetResourceServerProofOfPossessionArrayOutput() GetResourceServerProofOfPossessionArrayOutput {
-	return o
-}
-
-func (o GetResourceServerProofOfPossessionArrayOutput) ToGetResourceServerProofOfPossessionArrayOutputWithContext(ctx context.Context) GetResourceServerProofOfPossessionArrayOutput {
-	return o
-}
-
-func (o GetResourceServerProofOfPossessionArrayOutput) Index(i pulumi.IntInput) GetResourceServerProofOfPossessionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerProofOfPossession {
-		return vs[0].([]GetResourceServerProofOfPossession)[vs[1].(int)]
-	}).(GetResourceServerProofOfPossessionOutput)
-}
-
-type GetResourceServerScopeType struct {
-	// Description of the permission (scope).
-	Description string `pulumi:"description"`
-	// Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
-	Name string `pulumi:"name"`
-}
-
-// GetResourceServerScopeTypeInput is an input type that accepts GetResourceServerScopeTypeArgs and GetResourceServerScopeTypeOutput values.
-// You can construct a concrete instance of `GetResourceServerScopeTypeInput` via:
-//
-//	GetResourceServerScopeTypeArgs{...}
-type GetResourceServerScopeTypeInput interface {
-	pulumi.Input
-
-	ToGetResourceServerScopeTypeOutput() GetResourceServerScopeTypeOutput
-	ToGetResourceServerScopeTypeOutputWithContext(context.Context) GetResourceServerScopeTypeOutput
-}
-
-type GetResourceServerScopeTypeArgs struct {
-	// Description of the permission (scope).
-	Description pulumi.StringInput `pulumi:"description"`
-	// Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GetResourceServerScopeTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetResourceServerScopeType)(nil)).Elem()
-}
-
-func (i GetResourceServerScopeTypeArgs) ToGetResourceServerScopeTypeOutput() GetResourceServerScopeTypeOutput {
-	return i.ToGetResourceServerScopeTypeOutputWithContext(context.Background())
-}
-
-func (i GetResourceServerScopeTypeArgs) ToGetResourceServerScopeTypeOutputWithContext(ctx context.Context) GetResourceServerScopeTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerScopeTypeOutput)
-}
-
-// GetResourceServerScopeTypeArrayInput is an input type that accepts GetResourceServerScopeTypeArray and GetResourceServerScopeTypeArrayOutput values.
-// You can construct a concrete instance of `GetResourceServerScopeTypeArrayInput` via:
-//
-//	GetResourceServerScopeTypeArray{ GetResourceServerScopeTypeArgs{...} }
-type GetResourceServerScopeTypeArrayInput interface {
-	pulumi.Input
-
-	ToGetResourceServerScopeTypeArrayOutput() GetResourceServerScopeTypeArrayOutput
-	ToGetResourceServerScopeTypeArrayOutputWithContext(context.Context) GetResourceServerScopeTypeArrayOutput
-}
-
-type GetResourceServerScopeTypeArray []GetResourceServerScopeTypeInput
-
-func (GetResourceServerScopeTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetResourceServerScopeType)(nil)).Elem()
-}
-
-func (i GetResourceServerScopeTypeArray) ToGetResourceServerScopeTypeArrayOutput() GetResourceServerScopeTypeArrayOutput {
-	return i.ToGetResourceServerScopeTypeArrayOutputWithContext(context.Background())
-}
-
-func (i GetResourceServerScopeTypeArray) ToGetResourceServerScopeTypeArrayOutputWithContext(ctx context.Context) GetResourceServerScopeTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerScopeTypeArrayOutput)
-}
-
-type GetResourceServerScopeTypeOutput struct{ *pulumi.OutputState }
-
-func (GetResourceServerScopeTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetResourceServerScopeType)(nil)).Elem()
-}
-
-func (o GetResourceServerScopeTypeOutput) ToGetResourceServerScopeTypeOutput() GetResourceServerScopeTypeOutput {
-	return o
-}
-
-func (o GetResourceServerScopeTypeOutput) ToGetResourceServerScopeTypeOutputWithContext(ctx context.Context) GetResourceServerScopeTypeOutput {
-	return o
-}
-
-// Description of the permission (scope).
-func (o GetResourceServerScopeTypeOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetResourceServerScopeType) string { return v.Description }).(pulumi.StringOutput)
-}
-
-// Name of the permission (scope). Examples include `read:appointments` or `delete:appointments`.
-func (o GetResourceServerScopeTypeOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetResourceServerScopeType) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type GetResourceServerScopeTypeArrayOutput struct{ *pulumi.OutputState }
-
-func (GetResourceServerScopeTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetResourceServerScopeType)(nil)).Elem()
-}
-
-func (o GetResourceServerScopeTypeArrayOutput) ToGetResourceServerScopeTypeArrayOutput() GetResourceServerScopeTypeArrayOutput {
-	return o
-}
-
-func (o GetResourceServerScopeTypeArrayOutput) ToGetResourceServerScopeTypeArrayOutputWithContext(ctx context.Context) GetResourceServerScopeTypeArrayOutput {
-	return o
-}
-
-func (o GetResourceServerScopeTypeArrayOutput) Index(i pulumi.IntInput) GetResourceServerScopeTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerScopeType {
-		return vs[0].([]GetResourceServerScopeType)[vs[1].(int)]
-	}).(GetResourceServerScopeTypeOutput)
-}
-
-type GetResourceServerSubjectTypeAuthorization struct {
-	// Client authorization policies for the resource server.
-	Clients []GetResourceServerSubjectTypeAuthorizationClient `pulumi:"clients"`
-	// User authorization policies for the resource server.
-	Users []GetResourceServerSubjectTypeAuthorizationUser `pulumi:"users"`
-}
-
-// GetResourceServerSubjectTypeAuthorizationInput is an input type that accepts GetResourceServerSubjectTypeAuthorizationArgs and GetResourceServerSubjectTypeAuthorizationOutput values.
-// You can construct a concrete instance of `GetResourceServerSubjectTypeAuthorizationInput` via:
-//
-//	GetResourceServerSubjectTypeAuthorizationArgs{...}
-type GetResourceServerSubjectTypeAuthorizationInput interface {
-	pulumi.Input
-
-	ToGetResourceServerSubjectTypeAuthorizationOutput() GetResourceServerSubjectTypeAuthorizationOutput
-	ToGetResourceServerSubjectTypeAuthorizationOutputWithContext(context.Context) GetResourceServerSubjectTypeAuthorizationOutput
-}
-
-type GetResourceServerSubjectTypeAuthorizationArgs struct {
-	// Client authorization policies for the resource server.
-	Clients GetResourceServerSubjectTypeAuthorizationClientArrayInput `pulumi:"clients"`
-	// User authorization policies for the resource server.
-	Users GetResourceServerSubjectTypeAuthorizationUserArrayInput `pulumi:"users"`
-}
-
-func (GetResourceServerSubjectTypeAuthorizationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetResourceServerSubjectTypeAuthorization)(nil)).Elem()
-}
-
-func (i GetResourceServerSubjectTypeAuthorizationArgs) ToGetResourceServerSubjectTypeAuthorizationOutput() GetResourceServerSubjectTypeAuthorizationOutput {
-	return i.ToGetResourceServerSubjectTypeAuthorizationOutputWithContext(context.Background())
-}
-
-func (i GetResourceServerSubjectTypeAuthorizationArgs) ToGetResourceServerSubjectTypeAuthorizationOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerSubjectTypeAuthorizationOutput)
-}
-
-// GetResourceServerSubjectTypeAuthorizationArrayInput is an input type that accepts GetResourceServerSubjectTypeAuthorizationArray and GetResourceServerSubjectTypeAuthorizationArrayOutput values.
-// You can construct a concrete instance of `GetResourceServerSubjectTypeAuthorizationArrayInput` via:
-//
-//	GetResourceServerSubjectTypeAuthorizationArray{ GetResourceServerSubjectTypeAuthorizationArgs{...} }
-type GetResourceServerSubjectTypeAuthorizationArrayInput interface {
-	pulumi.Input
-
-	ToGetResourceServerSubjectTypeAuthorizationArrayOutput() GetResourceServerSubjectTypeAuthorizationArrayOutput
-	ToGetResourceServerSubjectTypeAuthorizationArrayOutputWithContext(context.Context) GetResourceServerSubjectTypeAuthorizationArrayOutput
-}
-
-type GetResourceServerSubjectTypeAuthorizationArray []GetResourceServerSubjectTypeAuthorizationInput
-
-func (GetResourceServerSubjectTypeAuthorizationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetResourceServerSubjectTypeAuthorization)(nil)).Elem()
-}
-
-func (i GetResourceServerSubjectTypeAuthorizationArray) ToGetResourceServerSubjectTypeAuthorizationArrayOutput() GetResourceServerSubjectTypeAuthorizationArrayOutput {
-	return i.ToGetResourceServerSubjectTypeAuthorizationArrayOutputWithContext(context.Background())
-}
-
-func (i GetResourceServerSubjectTypeAuthorizationArray) ToGetResourceServerSubjectTypeAuthorizationArrayOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerSubjectTypeAuthorizationArrayOutput)
-}
-
-type GetResourceServerSubjectTypeAuthorizationOutput struct{ *pulumi.OutputState }
-
-func (GetResourceServerSubjectTypeAuthorizationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetResourceServerSubjectTypeAuthorization)(nil)).Elem()
-}
-
-func (o GetResourceServerSubjectTypeAuthorizationOutput) ToGetResourceServerSubjectTypeAuthorizationOutput() GetResourceServerSubjectTypeAuthorizationOutput {
-	return o
-}
-
-func (o GetResourceServerSubjectTypeAuthorizationOutput) ToGetResourceServerSubjectTypeAuthorizationOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationOutput {
-	return o
-}
-
-// Client authorization policies for the resource server.
-func (o GetResourceServerSubjectTypeAuthorizationOutput) Clients() GetResourceServerSubjectTypeAuthorizationClientArrayOutput {
-	return o.ApplyT(func(v GetResourceServerSubjectTypeAuthorization) []GetResourceServerSubjectTypeAuthorizationClient {
-		return v.Clients
-	}).(GetResourceServerSubjectTypeAuthorizationClientArrayOutput)
-}
-
-// User authorization policies for the resource server.
-func (o GetResourceServerSubjectTypeAuthorizationOutput) Users() GetResourceServerSubjectTypeAuthorizationUserArrayOutput {
-	return o.ApplyT(func(v GetResourceServerSubjectTypeAuthorization) []GetResourceServerSubjectTypeAuthorizationUser {
-		return v.Users
-	}).(GetResourceServerSubjectTypeAuthorizationUserArrayOutput)
-}
-
-type GetResourceServerSubjectTypeAuthorizationArrayOutput struct{ *pulumi.OutputState }
-
-func (GetResourceServerSubjectTypeAuthorizationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetResourceServerSubjectTypeAuthorization)(nil)).Elem()
-}
-
-func (o GetResourceServerSubjectTypeAuthorizationArrayOutput) ToGetResourceServerSubjectTypeAuthorizationArrayOutput() GetResourceServerSubjectTypeAuthorizationArrayOutput {
-	return o
-}
-
-func (o GetResourceServerSubjectTypeAuthorizationArrayOutput) ToGetResourceServerSubjectTypeAuthorizationArrayOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationArrayOutput {
-	return o
-}
-
-func (o GetResourceServerSubjectTypeAuthorizationArrayOutput) Index(i pulumi.IntInput) GetResourceServerSubjectTypeAuthorizationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerSubjectTypeAuthorization {
-		return vs[0].([]GetResourceServerSubjectTypeAuthorization)[vs[1].(int)]
-	}).(GetResourceServerSubjectTypeAuthorizationOutput)
-}
-
-type GetResourceServerSubjectTypeAuthorizationClient struct {
-	// Client flows policy. One of `denyAll`, `requireClientGrant`.
-	Policy string `pulumi:"policy"`
-}
-
-// GetResourceServerSubjectTypeAuthorizationClientInput is an input type that accepts GetResourceServerSubjectTypeAuthorizationClientArgs and GetResourceServerSubjectTypeAuthorizationClientOutput values.
-// You can construct a concrete instance of `GetResourceServerSubjectTypeAuthorizationClientInput` via:
-//
-//	GetResourceServerSubjectTypeAuthorizationClientArgs{...}
-type GetResourceServerSubjectTypeAuthorizationClientInput interface {
-	pulumi.Input
-
-	ToGetResourceServerSubjectTypeAuthorizationClientOutput() GetResourceServerSubjectTypeAuthorizationClientOutput
-	ToGetResourceServerSubjectTypeAuthorizationClientOutputWithContext(context.Context) GetResourceServerSubjectTypeAuthorizationClientOutput
-}
-
-type GetResourceServerSubjectTypeAuthorizationClientArgs struct {
-	// Client flows policy. One of `denyAll`, `requireClientGrant`.
-	Policy pulumi.StringInput `pulumi:"policy"`
-}
-
-func (GetResourceServerSubjectTypeAuthorizationClientArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationClient)(nil)).Elem()
-}
-
-func (i GetResourceServerSubjectTypeAuthorizationClientArgs) ToGetResourceServerSubjectTypeAuthorizationClientOutput() GetResourceServerSubjectTypeAuthorizationClientOutput {
-	return i.ToGetResourceServerSubjectTypeAuthorizationClientOutputWithContext(context.Background())
-}
-
-func (i GetResourceServerSubjectTypeAuthorizationClientArgs) ToGetResourceServerSubjectTypeAuthorizationClientOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationClientOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerSubjectTypeAuthorizationClientOutput)
-}
-
-// GetResourceServerSubjectTypeAuthorizationClientArrayInput is an input type that accepts GetResourceServerSubjectTypeAuthorizationClientArray and GetResourceServerSubjectTypeAuthorizationClientArrayOutput values.
-// You can construct a concrete instance of `GetResourceServerSubjectTypeAuthorizationClientArrayInput` via:
-//
-//	GetResourceServerSubjectTypeAuthorizationClientArray{ GetResourceServerSubjectTypeAuthorizationClientArgs{...} }
-type GetResourceServerSubjectTypeAuthorizationClientArrayInput interface {
-	pulumi.Input
-
-	ToGetResourceServerSubjectTypeAuthorizationClientArrayOutput() GetResourceServerSubjectTypeAuthorizationClientArrayOutput
-	ToGetResourceServerSubjectTypeAuthorizationClientArrayOutputWithContext(context.Context) GetResourceServerSubjectTypeAuthorizationClientArrayOutput
-}
-
-type GetResourceServerSubjectTypeAuthorizationClientArray []GetResourceServerSubjectTypeAuthorizationClientInput
-
-func (GetResourceServerSubjectTypeAuthorizationClientArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetResourceServerSubjectTypeAuthorizationClient)(nil)).Elem()
-}
-
-func (i GetResourceServerSubjectTypeAuthorizationClientArray) ToGetResourceServerSubjectTypeAuthorizationClientArrayOutput() GetResourceServerSubjectTypeAuthorizationClientArrayOutput {
-	return i.ToGetResourceServerSubjectTypeAuthorizationClientArrayOutputWithContext(context.Background())
-}
-
-func (i GetResourceServerSubjectTypeAuthorizationClientArray) ToGetResourceServerSubjectTypeAuthorizationClientArrayOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationClientArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerSubjectTypeAuthorizationClientArrayOutput)
-}
-
-type GetResourceServerSubjectTypeAuthorizationClientOutput struct{ *pulumi.OutputState }
-
-func (GetResourceServerSubjectTypeAuthorizationClientOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationClient)(nil)).Elem()
-}
-
-func (o GetResourceServerSubjectTypeAuthorizationClientOutput) ToGetResourceServerSubjectTypeAuthorizationClientOutput() GetResourceServerSubjectTypeAuthorizationClientOutput {
-	return o
-}
-
-func (o GetResourceServerSubjectTypeAuthorizationClientOutput) ToGetResourceServerSubjectTypeAuthorizationClientOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationClientOutput {
-	return o
-}
-
-// Client flows policy. One of `denyAll`, `requireClientGrant`.
-func (o GetResourceServerSubjectTypeAuthorizationClientOutput) Policy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetResourceServerSubjectTypeAuthorizationClient) string { return v.Policy }).(pulumi.StringOutput)
-}
-
-type GetResourceServerSubjectTypeAuthorizationClientArrayOutput struct{ *pulumi.OutputState }
-
-func (GetResourceServerSubjectTypeAuthorizationClientArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetResourceServerSubjectTypeAuthorizationClient)(nil)).Elem()
-}
-
-func (o GetResourceServerSubjectTypeAuthorizationClientArrayOutput) ToGetResourceServerSubjectTypeAuthorizationClientArrayOutput() GetResourceServerSubjectTypeAuthorizationClientArrayOutput {
-	return o
-}
-
-func (o GetResourceServerSubjectTypeAuthorizationClientArrayOutput) ToGetResourceServerSubjectTypeAuthorizationClientArrayOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationClientArrayOutput {
-	return o
-}
-
-func (o GetResourceServerSubjectTypeAuthorizationClientArrayOutput) Index(i pulumi.IntInput) GetResourceServerSubjectTypeAuthorizationClientOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerSubjectTypeAuthorizationClient {
-		return vs[0].([]GetResourceServerSubjectTypeAuthorizationClient)[vs[1].(int)]
-	}).(GetResourceServerSubjectTypeAuthorizationClientOutput)
-}
-
-type GetResourceServerSubjectTypeAuthorizationUser struct {
-	// User flows policy. One of `allowAll`, `denyAll`, `requireClientGrant`.
-	Policy string `pulumi:"policy"`
-}
-
-// GetResourceServerSubjectTypeAuthorizationUserInput is an input type that accepts GetResourceServerSubjectTypeAuthorizationUserArgs and GetResourceServerSubjectTypeAuthorizationUserOutput values.
-// You can construct a concrete instance of `GetResourceServerSubjectTypeAuthorizationUserInput` via:
-//
-//	GetResourceServerSubjectTypeAuthorizationUserArgs{...}
-type GetResourceServerSubjectTypeAuthorizationUserInput interface {
-	pulumi.Input
-
-	ToGetResourceServerSubjectTypeAuthorizationUserOutput() GetResourceServerSubjectTypeAuthorizationUserOutput
-	ToGetResourceServerSubjectTypeAuthorizationUserOutputWithContext(context.Context) GetResourceServerSubjectTypeAuthorizationUserOutput
-}
-
-type GetResourceServerSubjectTypeAuthorizationUserArgs struct {
-	// User flows policy. One of `allowAll`, `denyAll`, `requireClientGrant`.
-	Policy pulumi.StringInput `pulumi:"policy"`
-}
-
-func (GetResourceServerSubjectTypeAuthorizationUserArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationUser)(nil)).Elem()
-}
-
-func (i GetResourceServerSubjectTypeAuthorizationUserArgs) ToGetResourceServerSubjectTypeAuthorizationUserOutput() GetResourceServerSubjectTypeAuthorizationUserOutput {
-	return i.ToGetResourceServerSubjectTypeAuthorizationUserOutputWithContext(context.Background())
-}
-
-func (i GetResourceServerSubjectTypeAuthorizationUserArgs) ToGetResourceServerSubjectTypeAuthorizationUserOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationUserOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerSubjectTypeAuthorizationUserOutput)
-}
-
-// GetResourceServerSubjectTypeAuthorizationUserArrayInput is an input type that accepts GetResourceServerSubjectTypeAuthorizationUserArray and GetResourceServerSubjectTypeAuthorizationUserArrayOutput values.
-// You can construct a concrete instance of `GetResourceServerSubjectTypeAuthorizationUserArrayInput` via:
-//
-//	GetResourceServerSubjectTypeAuthorizationUserArray{ GetResourceServerSubjectTypeAuthorizationUserArgs{...} }
-type GetResourceServerSubjectTypeAuthorizationUserArrayInput interface {
-	pulumi.Input
-
-	ToGetResourceServerSubjectTypeAuthorizationUserArrayOutput() GetResourceServerSubjectTypeAuthorizationUserArrayOutput
-	ToGetResourceServerSubjectTypeAuthorizationUserArrayOutputWithContext(context.Context) GetResourceServerSubjectTypeAuthorizationUserArrayOutput
-}
-
-type GetResourceServerSubjectTypeAuthorizationUserArray []GetResourceServerSubjectTypeAuthorizationUserInput
-
-func (GetResourceServerSubjectTypeAuthorizationUserArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetResourceServerSubjectTypeAuthorizationUser)(nil)).Elem()
-}
-
-func (i GetResourceServerSubjectTypeAuthorizationUserArray) ToGetResourceServerSubjectTypeAuthorizationUserArrayOutput() GetResourceServerSubjectTypeAuthorizationUserArrayOutput {
-	return i.ToGetResourceServerSubjectTypeAuthorizationUserArrayOutputWithContext(context.Background())
-}
-
-func (i GetResourceServerSubjectTypeAuthorizationUserArray) ToGetResourceServerSubjectTypeAuthorizationUserArrayOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationUserArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerSubjectTypeAuthorizationUserArrayOutput)
-}
-
-type GetResourceServerSubjectTypeAuthorizationUserOutput struct{ *pulumi.OutputState }
-
-func (GetResourceServerSubjectTypeAuthorizationUserOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationUser)(nil)).Elem()
-}
-
-func (o GetResourceServerSubjectTypeAuthorizationUserOutput) ToGetResourceServerSubjectTypeAuthorizationUserOutput() GetResourceServerSubjectTypeAuthorizationUserOutput {
-	return o
-}
-
-func (o GetResourceServerSubjectTypeAuthorizationUserOutput) ToGetResourceServerSubjectTypeAuthorizationUserOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationUserOutput {
-	return o
-}
-
-// User flows policy. One of `allowAll`, `denyAll`, `requireClientGrant`.
-func (o GetResourceServerSubjectTypeAuthorizationUserOutput) Policy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetResourceServerSubjectTypeAuthorizationUser) string { return v.Policy }).(pulumi.StringOutput)
-}
-
-type GetResourceServerSubjectTypeAuthorizationUserArrayOutput struct{ *pulumi.OutputState }
-
-func (GetResourceServerSubjectTypeAuthorizationUserArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetResourceServerSubjectTypeAuthorizationUser)(nil)).Elem()
-}
-
-func (o GetResourceServerSubjectTypeAuthorizationUserArrayOutput) ToGetResourceServerSubjectTypeAuthorizationUserArrayOutput() GetResourceServerSubjectTypeAuthorizationUserArrayOutput {
-	return o
-}
-
-func (o GetResourceServerSubjectTypeAuthorizationUserArrayOutput) ToGetResourceServerSubjectTypeAuthorizationUserArrayOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationUserArrayOutput {
-	return o
-}
-
-func (o GetResourceServerSubjectTypeAuthorizationUserArrayOutput) Index(i pulumi.IntInput) GetResourceServerSubjectTypeAuthorizationUserOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerSubjectTypeAuthorizationUser {
-		return vs[0].([]GetResourceServerSubjectTypeAuthorizationUser)[vs[1].(int)]
-	}).(GetResourceServerSubjectTypeAuthorizationUserOutput)
-}
-
-type GetResourceServerTokenEncryption struct {
-	// Disable token encryption.
-	Disable bool `pulumi:"disable"`
-	// Authorization details for this resource server.
-	EncryptionKeys []GetResourceServerTokenEncryptionEncryptionKey `pulumi:"encryptionKeys"`
-	// Format of the token encryption. Only `compact-nested-jwe` is supported.
-	Format string `pulumi:"format"`
-}
-
-// GetResourceServerTokenEncryptionInput is an input type that accepts GetResourceServerTokenEncryptionArgs and GetResourceServerTokenEncryptionOutput values.
-// You can construct a concrete instance of `GetResourceServerTokenEncryptionInput` via:
-//
-//	GetResourceServerTokenEncryptionArgs{...}
-type GetResourceServerTokenEncryptionInput interface {
-	pulumi.Input
-
-	ToGetResourceServerTokenEncryptionOutput() GetResourceServerTokenEncryptionOutput
-	ToGetResourceServerTokenEncryptionOutputWithContext(context.Context) GetResourceServerTokenEncryptionOutput
-}
-
-type GetResourceServerTokenEncryptionArgs struct {
-	// Disable token encryption.
-	Disable pulumi.BoolInput `pulumi:"disable"`
-	// Authorization details for this resource server.
-	EncryptionKeys GetResourceServerTokenEncryptionEncryptionKeyArrayInput `pulumi:"encryptionKeys"`
-	// Format of the token encryption. Only `compact-nested-jwe` is supported.
-	Format pulumi.StringInput `pulumi:"format"`
-}
-
-func (GetResourceServerTokenEncryptionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetResourceServerTokenEncryption)(nil)).Elem()
-}
-
-func (i GetResourceServerTokenEncryptionArgs) ToGetResourceServerTokenEncryptionOutput() GetResourceServerTokenEncryptionOutput {
-	return i.ToGetResourceServerTokenEncryptionOutputWithContext(context.Background())
-}
-
-func (i GetResourceServerTokenEncryptionArgs) ToGetResourceServerTokenEncryptionOutputWithContext(ctx context.Context) GetResourceServerTokenEncryptionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerTokenEncryptionOutput)
-}
-
-// GetResourceServerTokenEncryptionArrayInput is an input type that accepts GetResourceServerTokenEncryptionArray and GetResourceServerTokenEncryptionArrayOutput values.
-// You can construct a concrete instance of `GetResourceServerTokenEncryptionArrayInput` via:
-//
-//	GetResourceServerTokenEncryptionArray{ GetResourceServerTokenEncryptionArgs{...} }
-type GetResourceServerTokenEncryptionArrayInput interface {
-	pulumi.Input
-
-	ToGetResourceServerTokenEncryptionArrayOutput() GetResourceServerTokenEncryptionArrayOutput
-	ToGetResourceServerTokenEncryptionArrayOutputWithContext(context.Context) GetResourceServerTokenEncryptionArrayOutput
-}
-
-type GetResourceServerTokenEncryptionArray []GetResourceServerTokenEncryptionInput
-
-func (GetResourceServerTokenEncryptionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetResourceServerTokenEncryption)(nil)).Elem()
-}
-
-func (i GetResourceServerTokenEncryptionArray) ToGetResourceServerTokenEncryptionArrayOutput() GetResourceServerTokenEncryptionArrayOutput {
-	return i.ToGetResourceServerTokenEncryptionArrayOutputWithContext(context.Background())
-}
-
-func (i GetResourceServerTokenEncryptionArray) ToGetResourceServerTokenEncryptionArrayOutputWithContext(ctx context.Context) GetResourceServerTokenEncryptionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerTokenEncryptionArrayOutput)
-}
-
-type GetResourceServerTokenEncryptionOutput struct{ *pulumi.OutputState }
-
-func (GetResourceServerTokenEncryptionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetResourceServerTokenEncryption)(nil)).Elem()
-}
-
-func (o GetResourceServerTokenEncryptionOutput) ToGetResourceServerTokenEncryptionOutput() GetResourceServerTokenEncryptionOutput {
-	return o
-}
-
-func (o GetResourceServerTokenEncryptionOutput) ToGetResourceServerTokenEncryptionOutputWithContext(ctx context.Context) GetResourceServerTokenEncryptionOutput {
-	return o
-}
-
-// Disable token encryption.
-func (o GetResourceServerTokenEncryptionOutput) Disable() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetResourceServerTokenEncryption) bool { return v.Disable }).(pulumi.BoolOutput)
-}
-
-// Authorization details for this resource server.
-func (o GetResourceServerTokenEncryptionOutput) EncryptionKeys() GetResourceServerTokenEncryptionEncryptionKeyArrayOutput {
-	return o.ApplyT(func(v GetResourceServerTokenEncryption) []GetResourceServerTokenEncryptionEncryptionKey {
-		return v.EncryptionKeys
-	}).(GetResourceServerTokenEncryptionEncryptionKeyArrayOutput)
-}
-
-// Format of the token encryption. Only `compact-nested-jwe` is supported.
-func (o GetResourceServerTokenEncryptionOutput) Format() pulumi.StringOutput {
-	return o.ApplyT(func(v GetResourceServerTokenEncryption) string { return v.Format }).(pulumi.StringOutput)
-}
-
-type GetResourceServerTokenEncryptionArrayOutput struct{ *pulumi.OutputState }
-
-func (GetResourceServerTokenEncryptionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetResourceServerTokenEncryption)(nil)).Elem()
-}
-
-func (o GetResourceServerTokenEncryptionArrayOutput) ToGetResourceServerTokenEncryptionArrayOutput() GetResourceServerTokenEncryptionArrayOutput {
-	return o
-}
-
-func (o GetResourceServerTokenEncryptionArrayOutput) ToGetResourceServerTokenEncryptionArrayOutputWithContext(ctx context.Context) GetResourceServerTokenEncryptionArrayOutput {
-	return o
-}
-
-func (o GetResourceServerTokenEncryptionArrayOutput) Index(i pulumi.IntInput) GetResourceServerTokenEncryptionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerTokenEncryption {
-		return vs[0].([]GetResourceServerTokenEncryption)[vs[1].(int)]
-	}).(GetResourceServerTokenEncryptionOutput)
-}
-
-type GetResourceServerTokenEncryptionEncryptionKey struct {
-	// Algorithm used to encrypt the token.
-	Algorithm string `pulumi:"algorithm"`
-	// Key ID.
-	Kid string `pulumi:"kid"`
-	// Name of the encryption key.
-	Name string `pulumi:"name"`
-	// PEM-formatted public key. Must be JSON escaped.
-	Pem string `pulumi:"pem"`
-}
-
-// GetResourceServerTokenEncryptionEncryptionKeyInput is an input type that accepts GetResourceServerTokenEncryptionEncryptionKeyArgs and GetResourceServerTokenEncryptionEncryptionKeyOutput values.
-// You can construct a concrete instance of `GetResourceServerTokenEncryptionEncryptionKeyInput` via:
-//
-//	GetResourceServerTokenEncryptionEncryptionKeyArgs{...}
-type GetResourceServerTokenEncryptionEncryptionKeyInput interface {
-	pulumi.Input
-
-	ToGetResourceServerTokenEncryptionEncryptionKeyOutput() GetResourceServerTokenEncryptionEncryptionKeyOutput
-	ToGetResourceServerTokenEncryptionEncryptionKeyOutputWithContext(context.Context) GetResourceServerTokenEncryptionEncryptionKeyOutput
-}
-
-type GetResourceServerTokenEncryptionEncryptionKeyArgs struct {
-	// Algorithm used to encrypt the token.
-	Algorithm pulumi.StringInput `pulumi:"algorithm"`
-	// Key ID.
-	Kid pulumi.StringInput `pulumi:"kid"`
-	// Name of the encryption key.
-	Name pulumi.StringInput `pulumi:"name"`
-	// PEM-formatted public key. Must be JSON escaped.
-	Pem pulumi.StringInput `pulumi:"pem"`
-}
-
-func (GetResourceServerTokenEncryptionEncryptionKeyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetResourceServerTokenEncryptionEncryptionKey)(nil)).Elem()
-}
-
-func (i GetResourceServerTokenEncryptionEncryptionKeyArgs) ToGetResourceServerTokenEncryptionEncryptionKeyOutput() GetResourceServerTokenEncryptionEncryptionKeyOutput {
-	return i.ToGetResourceServerTokenEncryptionEncryptionKeyOutputWithContext(context.Background())
-}
-
-func (i GetResourceServerTokenEncryptionEncryptionKeyArgs) ToGetResourceServerTokenEncryptionEncryptionKeyOutputWithContext(ctx context.Context) GetResourceServerTokenEncryptionEncryptionKeyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerTokenEncryptionEncryptionKeyOutput)
-}
-
-// GetResourceServerTokenEncryptionEncryptionKeyArrayInput is an input type that accepts GetResourceServerTokenEncryptionEncryptionKeyArray and GetResourceServerTokenEncryptionEncryptionKeyArrayOutput values.
-// You can construct a concrete instance of `GetResourceServerTokenEncryptionEncryptionKeyArrayInput` via:
-//
-//	GetResourceServerTokenEncryptionEncryptionKeyArray{ GetResourceServerTokenEncryptionEncryptionKeyArgs{...} }
-type GetResourceServerTokenEncryptionEncryptionKeyArrayInput interface {
-	pulumi.Input
-
-	ToGetResourceServerTokenEncryptionEncryptionKeyArrayOutput() GetResourceServerTokenEncryptionEncryptionKeyArrayOutput
-	ToGetResourceServerTokenEncryptionEncryptionKeyArrayOutputWithContext(context.Context) GetResourceServerTokenEncryptionEncryptionKeyArrayOutput
-}
-
-type GetResourceServerTokenEncryptionEncryptionKeyArray []GetResourceServerTokenEncryptionEncryptionKeyInput
-
-func (GetResourceServerTokenEncryptionEncryptionKeyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetResourceServerTokenEncryptionEncryptionKey)(nil)).Elem()
-}
-
-func (i GetResourceServerTokenEncryptionEncryptionKeyArray) ToGetResourceServerTokenEncryptionEncryptionKeyArrayOutput() GetResourceServerTokenEncryptionEncryptionKeyArrayOutput {
-	return i.ToGetResourceServerTokenEncryptionEncryptionKeyArrayOutputWithContext(context.Background())
-}
-
-func (i GetResourceServerTokenEncryptionEncryptionKeyArray) ToGetResourceServerTokenEncryptionEncryptionKeyArrayOutputWithContext(ctx context.Context) GetResourceServerTokenEncryptionEncryptionKeyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerTokenEncryptionEncryptionKeyArrayOutput)
-}
-
-type GetResourceServerTokenEncryptionEncryptionKeyOutput struct{ *pulumi.OutputState }
-
-func (GetResourceServerTokenEncryptionEncryptionKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetResourceServerTokenEncryptionEncryptionKey)(nil)).Elem()
-}
-
-func (o GetResourceServerTokenEncryptionEncryptionKeyOutput) ToGetResourceServerTokenEncryptionEncryptionKeyOutput() GetResourceServerTokenEncryptionEncryptionKeyOutput {
-	return o
-}
-
-func (o GetResourceServerTokenEncryptionEncryptionKeyOutput) ToGetResourceServerTokenEncryptionEncryptionKeyOutputWithContext(ctx context.Context) GetResourceServerTokenEncryptionEncryptionKeyOutput {
-	return o
-}
-
-// Algorithm used to encrypt the token.
-func (o GetResourceServerTokenEncryptionEncryptionKeyOutput) Algorithm() pulumi.StringOutput {
-	return o.ApplyT(func(v GetResourceServerTokenEncryptionEncryptionKey) string { return v.Algorithm }).(pulumi.StringOutput)
-}
-
-// Key ID.
-func (o GetResourceServerTokenEncryptionEncryptionKeyOutput) Kid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetResourceServerTokenEncryptionEncryptionKey) string { return v.Kid }).(pulumi.StringOutput)
-}
-
-// Name of the encryption key.
-func (o GetResourceServerTokenEncryptionEncryptionKeyOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetResourceServerTokenEncryptionEncryptionKey) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// PEM-formatted public key. Must be JSON escaped.
-func (o GetResourceServerTokenEncryptionEncryptionKeyOutput) Pem() pulumi.StringOutput {
-	return o.ApplyT(func(v GetResourceServerTokenEncryptionEncryptionKey) string { return v.Pem }).(pulumi.StringOutput)
-}
-
-type GetResourceServerTokenEncryptionEncryptionKeyArrayOutput struct{ *pulumi.OutputState }
-
-func (GetResourceServerTokenEncryptionEncryptionKeyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetResourceServerTokenEncryptionEncryptionKey)(nil)).Elem()
-}
-
-func (o GetResourceServerTokenEncryptionEncryptionKeyArrayOutput) ToGetResourceServerTokenEncryptionEncryptionKeyArrayOutput() GetResourceServerTokenEncryptionEncryptionKeyArrayOutput {
-	return o
-}
-
-func (o GetResourceServerTokenEncryptionEncryptionKeyArrayOutput) ToGetResourceServerTokenEncryptionEncryptionKeyArrayOutputWithContext(ctx context.Context) GetResourceServerTokenEncryptionEncryptionKeyArrayOutput {
-	return o
-}
-
-func (o GetResourceServerTokenEncryptionEncryptionKeyArrayOutput) Index(i pulumi.IntInput) GetResourceServerTokenEncryptionEncryptionKeyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerTokenEncryptionEncryptionKey {
-		return vs[0].([]GetResourceServerTokenEncryptionEncryptionKey)[vs[1].(int)]
-	}).(GetResourceServerTokenEncryptionEncryptionKeyOutput)
-}
-
-type GetRolePermissionType struct {
-	// Description of the permission.
-	Description string `pulumi:"description"`
-	// Name of the permission (scope) configured on the resource server (API).
-	Name string `pulumi:"name"`
-	// Unique identifier for the resource server (API).
-	ResourceServerIdentifier string `pulumi:"resourceServerIdentifier"`
-	// Name of resource server (API) that the permission is associated with.
-	ResourceServerName string `pulumi:"resourceServerName"`
-}
-
-// GetRolePermissionTypeInput is an input type that accepts GetRolePermissionTypeArgs and GetRolePermissionTypeOutput values.
-// You can construct a concrete instance of `GetRolePermissionTypeInput` via:
-//
-//	GetRolePermissionTypeArgs{...}
-type GetRolePermissionTypeInput interface {
-	pulumi.Input
-
-	ToGetRolePermissionTypeOutput() GetRolePermissionTypeOutput
-	ToGetRolePermissionTypeOutputWithContext(context.Context) GetRolePermissionTypeOutput
-}
-
-type GetRolePermissionTypeArgs struct {
-	// Description of the permission.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Name of the permission (scope) configured on the resource server (API).
-	Name pulumi.StringInput `pulumi:"name"`
-	// Unique identifier for the resource server (API).
-	ResourceServerIdentifier pulumi.StringInput `pulumi:"resourceServerIdentifier"`
-	// Name of resource server (API) that the permission is associated with.
-	ResourceServerName pulumi.StringInput `pulumi:"resourceServerName"`
-}
-
-func (GetRolePermissionTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRolePermissionType)(nil)).Elem()
-}
-
-func (i GetRolePermissionTypeArgs) ToGetRolePermissionTypeOutput() GetRolePermissionTypeOutput {
-	return i.ToGetRolePermissionTypeOutputWithContext(context.Background())
-}
-
-func (i GetRolePermissionTypeArgs) ToGetRolePermissionTypeOutputWithContext(ctx context.Context) GetRolePermissionTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRolePermissionTypeOutput)
-}
-
-// GetRolePermissionTypeArrayInput is an input type that accepts GetRolePermissionTypeArray and GetRolePermissionTypeArrayOutput values.
-// You can construct a concrete instance of `GetRolePermissionTypeArrayInput` via:
-//
-//	GetRolePermissionTypeArray{ GetRolePermissionTypeArgs{...} }
-type GetRolePermissionTypeArrayInput interface {
-	pulumi.Input
-
-	ToGetRolePermissionTypeArrayOutput() GetRolePermissionTypeArrayOutput
-	ToGetRolePermissionTypeArrayOutputWithContext(context.Context) GetRolePermissionTypeArrayOutput
-}
-
-type GetRolePermissionTypeArray []GetRolePermissionTypeInput
-
-func (GetRolePermissionTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRolePermissionType)(nil)).Elem()
-}
-
-func (i GetRolePermissionTypeArray) ToGetRolePermissionTypeArrayOutput() GetRolePermissionTypeArrayOutput {
-	return i.ToGetRolePermissionTypeArrayOutputWithContext(context.Background())
-}
-
-func (i GetRolePermissionTypeArray) ToGetRolePermissionTypeArrayOutputWithContext(ctx context.Context) GetRolePermissionTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRolePermissionTypeArrayOutput)
-}
-
-type GetRolePermissionTypeOutput struct{ *pulumi.OutputState }
-
-func (GetRolePermissionTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRolePermissionType)(nil)).Elem()
-}
-
-func (o GetRolePermissionTypeOutput) ToGetRolePermissionTypeOutput() GetRolePermissionTypeOutput {
-	return o
-}
-
-func (o GetRolePermissionTypeOutput) ToGetRolePermissionTypeOutputWithContext(ctx context.Context) GetRolePermissionTypeOutput {
-	return o
-}
-
-// Description of the permission.
-func (o GetRolePermissionTypeOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRolePermissionType) string { return v.Description }).(pulumi.StringOutput)
-}
-
-// Name of the permission (scope) configured on the resource server (API).
-func (o GetRolePermissionTypeOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRolePermissionType) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Unique identifier for the resource server (API).
-func (o GetRolePermissionTypeOutput) ResourceServerIdentifier() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRolePermissionType) string { return v.ResourceServerIdentifier }).(pulumi.StringOutput)
-}
-
-// Name of resource server (API) that the permission is associated with.
-func (o GetRolePermissionTypeOutput) ResourceServerName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRolePermissionType) string { return v.ResourceServerName }).(pulumi.StringOutput)
-}
-
-type GetRolePermissionTypeArrayOutput struct{ *pulumi.OutputState }
-
-func (GetRolePermissionTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRolePermissionType)(nil)).Elem()
-}
-
-func (o GetRolePermissionTypeArrayOutput) ToGetRolePermissionTypeArrayOutput() GetRolePermissionTypeArrayOutput {
-	return o
-}
-
-func (o GetRolePermissionTypeArrayOutput) ToGetRolePermissionTypeArrayOutputWithContext(ctx context.Context) GetRolePermissionTypeArrayOutput {
-	return o
-}
-
-func (o GetRolePermissionTypeArrayOutput) Index(i pulumi.IntInput) GetRolePermissionTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRolePermissionType {
-		return vs[0].([]GetRolePermissionType)[vs[1].(int)]
-	}).(GetRolePermissionTypeOutput)
-}
-
-type GetSelfServiceProfileBranding struct {
-	// Configuration settings for colors for branding.
-	Colors []GetSelfServiceProfileBrandingColor `pulumi:"colors"`
-	// URL of logo to display on login page.
-	LogoUrl string `pulumi:"logoUrl"`
-}
-
-// GetSelfServiceProfileBrandingInput is an input type that accepts GetSelfServiceProfileBrandingArgs and GetSelfServiceProfileBrandingOutput values.
-// You can construct a concrete instance of `GetSelfServiceProfileBrandingInput` via:
-//
-//	GetSelfServiceProfileBrandingArgs{...}
-type GetSelfServiceProfileBrandingInput interface {
-	pulumi.Input
-
-	ToGetSelfServiceProfileBrandingOutput() GetSelfServiceProfileBrandingOutput
-	ToGetSelfServiceProfileBrandingOutputWithContext(context.Context) GetSelfServiceProfileBrandingOutput
-}
-
-type GetSelfServiceProfileBrandingArgs struct {
-	// Configuration settings for colors for branding.
-	Colors GetSelfServiceProfileBrandingColorArrayInput `pulumi:"colors"`
-	// URL of logo to display on login page.
-	LogoUrl pulumi.StringInput `pulumi:"logoUrl"`
-}
-
-func (GetSelfServiceProfileBrandingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSelfServiceProfileBranding)(nil)).Elem()
-}
-
-func (i GetSelfServiceProfileBrandingArgs) ToGetSelfServiceProfileBrandingOutput() GetSelfServiceProfileBrandingOutput {
-	return i.ToGetSelfServiceProfileBrandingOutputWithContext(context.Background())
-}
-
-func (i GetSelfServiceProfileBrandingArgs) ToGetSelfServiceProfileBrandingOutputWithContext(ctx context.Context) GetSelfServiceProfileBrandingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSelfServiceProfileBrandingOutput)
-}
-
-// GetSelfServiceProfileBrandingArrayInput is an input type that accepts GetSelfServiceProfileBrandingArray and GetSelfServiceProfileBrandingArrayOutput values.
-// You can construct a concrete instance of `GetSelfServiceProfileBrandingArrayInput` via:
-//
-//	GetSelfServiceProfileBrandingArray{ GetSelfServiceProfileBrandingArgs{...} }
-type GetSelfServiceProfileBrandingArrayInput interface {
-	pulumi.Input
-
-	ToGetSelfServiceProfileBrandingArrayOutput() GetSelfServiceProfileBrandingArrayOutput
-	ToGetSelfServiceProfileBrandingArrayOutputWithContext(context.Context) GetSelfServiceProfileBrandingArrayOutput
-}
-
-type GetSelfServiceProfileBrandingArray []GetSelfServiceProfileBrandingInput
-
-func (GetSelfServiceProfileBrandingArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSelfServiceProfileBranding)(nil)).Elem()
-}
-
-func (i GetSelfServiceProfileBrandingArray) ToGetSelfServiceProfileBrandingArrayOutput() GetSelfServiceProfileBrandingArrayOutput {
-	return i.ToGetSelfServiceProfileBrandingArrayOutputWithContext(context.Background())
-}
-
-func (i GetSelfServiceProfileBrandingArray) ToGetSelfServiceProfileBrandingArrayOutputWithContext(ctx context.Context) GetSelfServiceProfileBrandingArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSelfServiceProfileBrandingArrayOutput)
-}
-
-type GetSelfServiceProfileBrandingOutput struct{ *pulumi.OutputState }
-
-func (GetSelfServiceProfileBrandingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSelfServiceProfileBranding)(nil)).Elem()
-}
-
-func (o GetSelfServiceProfileBrandingOutput) ToGetSelfServiceProfileBrandingOutput() GetSelfServiceProfileBrandingOutput {
-	return o
-}
-
-func (o GetSelfServiceProfileBrandingOutput) ToGetSelfServiceProfileBrandingOutputWithContext(ctx context.Context) GetSelfServiceProfileBrandingOutput {
-	return o
-}
-
-// Configuration settings for colors for branding.
-func (o GetSelfServiceProfileBrandingOutput) Colors() GetSelfServiceProfileBrandingColorArrayOutput {
-	return o.ApplyT(func(v GetSelfServiceProfileBranding) []GetSelfServiceProfileBrandingColor { return v.Colors }).(GetSelfServiceProfileBrandingColorArrayOutput)
-}
-
-// URL of logo to display on login page.
-func (o GetSelfServiceProfileBrandingOutput) LogoUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSelfServiceProfileBranding) string { return v.LogoUrl }).(pulumi.StringOutput)
-}
-
-type GetSelfServiceProfileBrandingArrayOutput struct{ *pulumi.OutputState }
-
-func (GetSelfServiceProfileBrandingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSelfServiceProfileBranding)(nil)).Elem()
-}
-
-func (o GetSelfServiceProfileBrandingArrayOutput) ToGetSelfServiceProfileBrandingArrayOutput() GetSelfServiceProfileBrandingArrayOutput {
-	return o
-}
-
-func (o GetSelfServiceProfileBrandingArrayOutput) ToGetSelfServiceProfileBrandingArrayOutputWithContext(ctx context.Context) GetSelfServiceProfileBrandingArrayOutput {
-	return o
-}
-
-func (o GetSelfServiceProfileBrandingArrayOutput) Index(i pulumi.IntInput) GetSelfServiceProfileBrandingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSelfServiceProfileBranding {
-		return vs[0].([]GetSelfServiceProfileBranding)[vs[1].(int)]
-	}).(GetSelfServiceProfileBrandingOutput)
-}
-
-type GetSelfServiceProfileBrandingColor struct {
-	// Primary button background color in hexadecimal.
-	Primary string `pulumi:"primary"`
-}
-
-// GetSelfServiceProfileBrandingColorInput is an input type that accepts GetSelfServiceProfileBrandingColorArgs and GetSelfServiceProfileBrandingColorOutput values.
-// You can construct a concrete instance of `GetSelfServiceProfileBrandingColorInput` via:
-//
-//	GetSelfServiceProfileBrandingColorArgs{...}
-type GetSelfServiceProfileBrandingColorInput interface {
-	pulumi.Input
-
-	ToGetSelfServiceProfileBrandingColorOutput() GetSelfServiceProfileBrandingColorOutput
-	ToGetSelfServiceProfileBrandingColorOutputWithContext(context.Context) GetSelfServiceProfileBrandingColorOutput
-}
-
-type GetSelfServiceProfileBrandingColorArgs struct {
-	// Primary button background color in hexadecimal.
-	Primary pulumi.StringInput `pulumi:"primary"`
-}
-
-func (GetSelfServiceProfileBrandingColorArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSelfServiceProfileBrandingColor)(nil)).Elem()
-}
-
-func (i GetSelfServiceProfileBrandingColorArgs) ToGetSelfServiceProfileBrandingColorOutput() GetSelfServiceProfileBrandingColorOutput {
-	return i.ToGetSelfServiceProfileBrandingColorOutputWithContext(context.Background())
-}
-
-func (i GetSelfServiceProfileBrandingColorArgs) ToGetSelfServiceProfileBrandingColorOutputWithContext(ctx context.Context) GetSelfServiceProfileBrandingColorOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSelfServiceProfileBrandingColorOutput)
-}
-
-// GetSelfServiceProfileBrandingColorArrayInput is an input type that accepts GetSelfServiceProfileBrandingColorArray and GetSelfServiceProfileBrandingColorArrayOutput values.
-// You can construct a concrete instance of `GetSelfServiceProfileBrandingColorArrayInput` via:
-//
-//	GetSelfServiceProfileBrandingColorArray{ GetSelfServiceProfileBrandingColorArgs{...} }
-type GetSelfServiceProfileBrandingColorArrayInput interface {
-	pulumi.Input
-
-	ToGetSelfServiceProfileBrandingColorArrayOutput() GetSelfServiceProfileBrandingColorArrayOutput
-	ToGetSelfServiceProfileBrandingColorArrayOutputWithContext(context.Context) GetSelfServiceProfileBrandingColorArrayOutput
-}
-
-type GetSelfServiceProfileBrandingColorArray []GetSelfServiceProfileBrandingColorInput
-
-func (GetSelfServiceProfileBrandingColorArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSelfServiceProfileBrandingColor)(nil)).Elem()
-}
-
-func (i GetSelfServiceProfileBrandingColorArray) ToGetSelfServiceProfileBrandingColorArrayOutput() GetSelfServiceProfileBrandingColorArrayOutput {
-	return i.ToGetSelfServiceProfileBrandingColorArrayOutputWithContext(context.Background())
-}
-
-func (i GetSelfServiceProfileBrandingColorArray) ToGetSelfServiceProfileBrandingColorArrayOutputWithContext(ctx context.Context) GetSelfServiceProfileBrandingColorArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSelfServiceProfileBrandingColorArrayOutput)
-}
-
-type GetSelfServiceProfileBrandingColorOutput struct{ *pulumi.OutputState }
-
-func (GetSelfServiceProfileBrandingColorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSelfServiceProfileBrandingColor)(nil)).Elem()
-}
-
-func (o GetSelfServiceProfileBrandingColorOutput) ToGetSelfServiceProfileBrandingColorOutput() GetSelfServiceProfileBrandingColorOutput {
-	return o
-}
-
-func (o GetSelfServiceProfileBrandingColorOutput) ToGetSelfServiceProfileBrandingColorOutputWithContext(ctx context.Context) GetSelfServiceProfileBrandingColorOutput {
-	return o
-}
-
-// Primary button background color in hexadecimal.
-func (o GetSelfServiceProfileBrandingColorOutput) Primary() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSelfServiceProfileBrandingColor) string { return v.Primary }).(pulumi.StringOutput)
-}
-
-type GetSelfServiceProfileBrandingColorArrayOutput struct{ *pulumi.OutputState }
-
-func (GetSelfServiceProfileBrandingColorArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSelfServiceProfileBrandingColor)(nil)).Elem()
-}
-
-func (o GetSelfServiceProfileBrandingColorArrayOutput) ToGetSelfServiceProfileBrandingColorArrayOutput() GetSelfServiceProfileBrandingColorArrayOutput {
-	return o
-}
-
-func (o GetSelfServiceProfileBrandingColorArrayOutput) ToGetSelfServiceProfileBrandingColorArrayOutputWithContext(ctx context.Context) GetSelfServiceProfileBrandingColorArrayOutput {
-	return o
-}
-
-func (o GetSelfServiceProfileBrandingColorArrayOutput) Index(i pulumi.IntInput) GetSelfServiceProfileBrandingColorOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSelfServiceProfileBrandingColor {
-		return vs[0].([]GetSelfServiceProfileBrandingColor)[vs[1].(int)]
-	}).(GetSelfServiceProfileBrandingColorOutput)
-}
-
-type GetSelfServiceProfileUserAttribute struct {
-	// A human readable description of the attribute.
-	Description string `pulumi:"description"`
-	// Indicates if this attribute is optional or if it has to be provided by the customer for the application to function.
-	IsOptional bool `pulumi:"isOptional"`
-	// Attribute’s name on Auth0 side
-	Name string `pulumi:"name"`
-}
-
-// GetSelfServiceProfileUserAttributeInput is an input type that accepts GetSelfServiceProfileUserAttributeArgs and GetSelfServiceProfileUserAttributeOutput values.
-// You can construct a concrete instance of `GetSelfServiceProfileUserAttributeInput` via:
-//
-//	GetSelfServiceProfileUserAttributeArgs{...}
-type GetSelfServiceProfileUserAttributeInput interface {
-	pulumi.Input
-
-	ToGetSelfServiceProfileUserAttributeOutput() GetSelfServiceProfileUserAttributeOutput
-	ToGetSelfServiceProfileUserAttributeOutputWithContext(context.Context) GetSelfServiceProfileUserAttributeOutput
-}
-
-type GetSelfServiceProfileUserAttributeArgs struct {
-	// A human readable description of the attribute.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Indicates if this attribute is optional or if it has to be provided by the customer for the application to function.
-	IsOptional pulumi.BoolInput `pulumi:"isOptional"`
-	// Attribute’s name on Auth0 side
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GetSelfServiceProfileUserAttributeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSelfServiceProfileUserAttribute)(nil)).Elem()
-}
-
-func (i GetSelfServiceProfileUserAttributeArgs) ToGetSelfServiceProfileUserAttributeOutput() GetSelfServiceProfileUserAttributeOutput {
-	return i.ToGetSelfServiceProfileUserAttributeOutputWithContext(context.Background())
-}
-
-func (i GetSelfServiceProfileUserAttributeArgs) ToGetSelfServiceProfileUserAttributeOutputWithContext(ctx context.Context) GetSelfServiceProfileUserAttributeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSelfServiceProfileUserAttributeOutput)
-}
-
-// GetSelfServiceProfileUserAttributeArrayInput is an input type that accepts GetSelfServiceProfileUserAttributeArray and GetSelfServiceProfileUserAttributeArrayOutput values.
-// You can construct a concrete instance of `GetSelfServiceProfileUserAttributeArrayInput` via:
-//
-//	GetSelfServiceProfileUserAttributeArray{ GetSelfServiceProfileUserAttributeArgs{...} }
-type GetSelfServiceProfileUserAttributeArrayInput interface {
-	pulumi.Input
-
-	ToGetSelfServiceProfileUserAttributeArrayOutput() GetSelfServiceProfileUserAttributeArrayOutput
-	ToGetSelfServiceProfileUserAttributeArrayOutputWithContext(context.Context) GetSelfServiceProfileUserAttributeArrayOutput
-}
-
-type GetSelfServiceProfileUserAttributeArray []GetSelfServiceProfileUserAttributeInput
-
-func (GetSelfServiceProfileUserAttributeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSelfServiceProfileUserAttribute)(nil)).Elem()
-}
-
-func (i GetSelfServiceProfileUserAttributeArray) ToGetSelfServiceProfileUserAttributeArrayOutput() GetSelfServiceProfileUserAttributeArrayOutput {
-	return i.ToGetSelfServiceProfileUserAttributeArrayOutputWithContext(context.Background())
-}
-
-func (i GetSelfServiceProfileUserAttributeArray) ToGetSelfServiceProfileUserAttributeArrayOutputWithContext(ctx context.Context) GetSelfServiceProfileUserAttributeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSelfServiceProfileUserAttributeArrayOutput)
-}
-
-type GetSelfServiceProfileUserAttributeOutput struct{ *pulumi.OutputState }
-
-func (GetSelfServiceProfileUserAttributeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSelfServiceProfileUserAttribute)(nil)).Elem()
-}
-
-func (o GetSelfServiceProfileUserAttributeOutput) ToGetSelfServiceProfileUserAttributeOutput() GetSelfServiceProfileUserAttributeOutput {
-	return o
-}
-
-func (o GetSelfServiceProfileUserAttributeOutput) ToGetSelfServiceProfileUserAttributeOutputWithContext(ctx context.Context) GetSelfServiceProfileUserAttributeOutput {
-	return o
-}
-
-// A human readable description of the attribute.
-func (o GetSelfServiceProfileUserAttributeOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSelfServiceProfileUserAttribute) string { return v.Description }).(pulumi.StringOutput)
-}
-
-// Indicates if this attribute is optional or if it has to be provided by the customer for the application to function.
-func (o GetSelfServiceProfileUserAttributeOutput) IsOptional() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetSelfServiceProfileUserAttribute) bool { return v.IsOptional }).(pulumi.BoolOutput)
-}
-
-// Attribute’s name on Auth0 side
-func (o GetSelfServiceProfileUserAttributeOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSelfServiceProfileUserAttribute) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type GetSelfServiceProfileUserAttributeArrayOutput struct{ *pulumi.OutputState }
-
-func (GetSelfServiceProfileUserAttributeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSelfServiceProfileUserAttribute)(nil)).Elem()
-}
-
-func (o GetSelfServiceProfileUserAttributeArrayOutput) ToGetSelfServiceProfileUserAttributeArrayOutput() GetSelfServiceProfileUserAttributeArrayOutput {
-	return o
-}
-
-func (o GetSelfServiceProfileUserAttributeArrayOutput) ToGetSelfServiceProfileUserAttributeArrayOutputWithContext(ctx context.Context) GetSelfServiceProfileUserAttributeArrayOutput {
-	return o
-}
-
-func (o GetSelfServiceProfileUserAttributeArrayOutput) Index(i pulumi.IntInput) GetSelfServiceProfileUserAttributeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSelfServiceProfileUserAttribute {
-		return vs[0].([]GetSelfServiceProfileUserAttribute)[vs[1].(int)]
-	}).(GetSelfServiceProfileUserAttributeOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionDependencyInput)(nil)).Elem(), ActionDependencyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionDependencyArrayInput)(nil)).Elem(), ActionDependencyArray{})
@@ -74007,6 +74288,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BrandingThemeFontsSubtitlePtrInput)(nil)).Elem(), BrandingThemeFontsSubtitleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BrandingThemeFontsTitleInput)(nil)).Elem(), BrandingThemeFontsTitleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BrandingThemeFontsTitlePtrInput)(nil)).Elem(), BrandingThemeFontsTitleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BrandingThemeIdentifiersInput)(nil)).Elem(), BrandingThemeIdentifiersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BrandingThemeIdentifiersPtrInput)(nil)).Elem(), BrandingThemeIdentifiersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BrandingThemeIdentifiersPhoneDisplayInput)(nil)).Elem(), BrandingThemeIdentifiersPhoneDisplayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BrandingThemeIdentifiersPhoneDisplayPtrInput)(nil)).Elem(), BrandingThemeIdentifiersPhoneDisplayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BrandingThemePageBackgroundInput)(nil)).Elem(), BrandingThemePageBackgroundArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BrandingThemePageBackgroundPtrInput)(nil)).Elem(), BrandingThemePageBackgroundArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BrandingThemeWidgetInput)(nil)).Elem(), BrandingThemeWidgetArgs{})
@@ -74113,6 +74398,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientFedcmLoginPtrInput)(nil)).Elem(), ClientFedcmLoginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientFedcmLoginGoogleInput)(nil)).Elem(), ClientFedcmLoginGoogleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientFedcmLoginGooglePtrInput)(nil)).Elem(), ClientFedcmLoginGoogleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientIdentityAssertionAuthorizationGrantInput)(nil)).Elem(), ClientIdentityAssertionAuthorizationGrantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientIdentityAssertionAuthorizationGrantPtrInput)(nil)).Elem(), ClientIdentityAssertionAuthorizationGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientJwtConfigurationInput)(nil)).Elem(), ClientJwtConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientJwtConfigurationPtrInput)(nil)).Elem(), ClientJwtConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientMobileInput)(nil)).Elem(), ClientMobileArgs{})
@@ -74155,6 +74442,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionAuthenticationPtrInput)(nil)).Elem(), ConnectionAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionConnectedAccountsInput)(nil)).Elem(), ConnectionConnectedAccountsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionConnectedAccountsPtrInput)(nil)).Elem(), ConnectionConnectedAccountsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionCrossAppAccessRequestingAppInput)(nil)).Elem(), ConnectionCrossAppAccessRequestingAppArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionCrossAppAccessRequestingAppPtrInput)(nil)).Elem(), ConnectionCrossAppAccessRequestingAppArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionCrossAppAccessResourceAppInput)(nil)).Elem(), ConnectionCrossAppAccessResourceAppArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionCrossAppAccessResourceAppPtrInput)(nil)).Elem(), ConnectionCrossAppAccessResourceAppArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionDirectoryMappingInput)(nil)).Elem(), ConnectionDirectoryMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionDirectoryMappingArrayInput)(nil)).Elem(), ConnectionDirectoryMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionOptionsInput)(nil)).Elem(), ConnectionOptionsArgs{})
@@ -74404,6 +74695,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SelfServiceProfileBrandingColorsPtrInput)(nil)).Elem(), SelfServiceProfileBrandingColorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SelfServiceProfileUserAttributeInput)(nil)).Elem(), SelfServiceProfileUserAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SelfServiceProfileUserAttributeArrayInput)(nil)).Elem(), SelfServiceProfileUserAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantCountryCodesInput)(nil)).Elem(), TenantCountryCodesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TenantCountryCodesPtrInput)(nil)).Elem(), TenantCountryCodesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantDefaultTokenQuotaInput)(nil)).Elem(), TenantDefaultTokenQuotaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantDefaultTokenQuotaPtrInput)(nil)).Elem(), TenantDefaultTokenQuotaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantDefaultTokenQuotaClientsInput)(nil)).Elem(), TenantDefaultTokenQuotaClientsArgs{})
@@ -74532,6 +74825,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemeFontSubtitleArrayInput)(nil)).Elem(), GetBrandingThemeFontSubtitleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemeFontTitleInput)(nil)).Elem(), GetBrandingThemeFontTitleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemeFontTitleArrayInput)(nil)).Elem(), GetBrandingThemeFontTitleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemeIdentifierInput)(nil)).Elem(), GetBrandingThemeIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemeIdentifierArrayInput)(nil)).Elem(), GetBrandingThemeIdentifierArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemeIdentifierPhoneDisplayInput)(nil)).Elem(), GetBrandingThemeIdentifierPhoneDisplayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemeIdentifierPhoneDisplayArrayInput)(nil)).Elem(), GetBrandingThemeIdentifierPhoneDisplayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemePageBackgroundInput)(nil)).Elem(), GetBrandingThemePageBackgroundArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemePageBackgroundArrayInput)(nil)).Elem(), GetBrandingThemePageBackgroundArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBrandingThemeWidgetInput)(nil)).Elem(), GetBrandingThemeWidgetArgs{})
@@ -74626,6 +74923,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientFedcmLoginGoogleArrayInput)(nil)).Elem(), GetClientFedcmLoginGoogleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientGrantsClientGrantInput)(nil)).Elem(), GetClientGrantsClientGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientGrantsClientGrantArrayInput)(nil)).Elem(), GetClientGrantsClientGrantArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientIdentityAssertionAuthorizationGrantInput)(nil)).Elem(), GetClientIdentityAssertionAuthorizationGrantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientIdentityAssertionAuthorizationGrantArrayInput)(nil)).Elem(), GetClientIdentityAssertionAuthorizationGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientJwtConfigurationInput)(nil)).Elem(), GetClientJwtConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientJwtConfigurationArrayInput)(nil)).Elem(), GetClientJwtConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientMobileInput)(nil)).Elem(), GetClientMobileArgs{})
@@ -74678,6 +74977,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientFedcmLoginArrayInput)(nil)).Elem(), GetClientsClientFedcmLoginArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientFedcmLoginGoogleInput)(nil)).Elem(), GetClientsClientFedcmLoginGoogleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientFedcmLoginGoogleArrayInput)(nil)).Elem(), GetClientsClientFedcmLoginGoogleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientIdentityAssertionAuthorizationGrantInput)(nil)).Elem(), GetClientsClientIdentityAssertionAuthorizationGrantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientIdentityAssertionAuthorizationGrantArrayInput)(nil)).Elem(), GetClientsClientIdentityAssertionAuthorizationGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientMyOrganizationConfigurationInput)(nil)).Elem(), GetClientsClientMyOrganizationConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientMyOrganizationConfigurationArrayInput)(nil)).Elem(), GetClientsClientMyOrganizationConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutInput)(nil)).Elem(), GetClientsClientOidcLogoutArgs{})
@@ -74700,6 +75001,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionAuthenticationArrayInput)(nil)).Elem(), GetConnectionAuthenticationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionConnectedAccountInput)(nil)).Elem(), GetConnectionConnectedAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionConnectedAccountArrayInput)(nil)).Elem(), GetConnectionConnectedAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionCrossAppAccessRequestingAppInput)(nil)).Elem(), GetConnectionCrossAppAccessRequestingAppArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionCrossAppAccessRequestingAppArrayInput)(nil)).Elem(), GetConnectionCrossAppAccessRequestingAppArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionCrossAppAccessResourceAppInput)(nil)).Elem(), GetConnectionCrossAppAccessResourceAppArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionCrossAppAccessResourceAppArrayInput)(nil)).Elem(), GetConnectionCrossAppAccessResourceAppArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionDirectoryDefaultMappingMappingInput)(nil)).Elem(), GetConnectionDirectoryDefaultMappingMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionDirectoryDefaultMappingMappingArrayInput)(nil)).Elem(), GetConnectionDirectoryDefaultMappingMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionDirectoryMappingInput)(nil)).Elem(), GetConnectionDirectoryMappingArgs{})
@@ -74890,30 +75195,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRateLimitPolicyConfigurationArrayInput)(nil)).Elem(), GetRateLimitPolicyConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerAuthorizationDetailInput)(nil)).Elem(), GetResourceServerAuthorizationDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerAuthorizationDetailArrayInput)(nil)).Elem(), GetResourceServerAuthorizationDetailArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerAuthorizationPolicyInput)(nil)).Elem(), GetResourceServerAuthorizationPolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerAuthorizationPolicyArrayInput)(nil)).Elem(), GetResourceServerAuthorizationPolicyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerProofOfPossessionInput)(nil)).Elem(), GetResourceServerProofOfPossessionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerProofOfPossessionArrayInput)(nil)).Elem(), GetResourceServerProofOfPossessionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerScopeTypeInput)(nil)).Elem(), GetResourceServerScopeTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerScopeTypeArrayInput)(nil)).Elem(), GetResourceServerScopeTypeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationInput)(nil)).Elem(), GetResourceServerSubjectTypeAuthorizationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationArrayInput)(nil)).Elem(), GetResourceServerSubjectTypeAuthorizationArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationClientInput)(nil)).Elem(), GetResourceServerSubjectTypeAuthorizationClientArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationClientArrayInput)(nil)).Elem(), GetResourceServerSubjectTypeAuthorizationClientArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationUserInput)(nil)).Elem(), GetResourceServerSubjectTypeAuthorizationUserArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationUserArrayInput)(nil)).Elem(), GetResourceServerSubjectTypeAuthorizationUserArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerTokenEncryptionInput)(nil)).Elem(), GetResourceServerTokenEncryptionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerTokenEncryptionArrayInput)(nil)).Elem(), GetResourceServerTokenEncryptionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerTokenEncryptionEncryptionKeyInput)(nil)).Elem(), GetResourceServerTokenEncryptionEncryptionKeyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerTokenEncryptionEncryptionKeyArrayInput)(nil)).Elem(), GetResourceServerTokenEncryptionEncryptionKeyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRolePermissionTypeInput)(nil)).Elem(), GetRolePermissionTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRolePermissionTypeArrayInput)(nil)).Elem(), GetRolePermissionTypeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSelfServiceProfileBrandingInput)(nil)).Elem(), GetSelfServiceProfileBrandingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSelfServiceProfileBrandingArrayInput)(nil)).Elem(), GetSelfServiceProfileBrandingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSelfServiceProfileBrandingColorInput)(nil)).Elem(), GetSelfServiceProfileBrandingColorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSelfServiceProfileBrandingColorArrayInput)(nil)).Elem(), GetSelfServiceProfileBrandingColorArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSelfServiceProfileUserAttributeInput)(nil)).Elem(), GetSelfServiceProfileUserAttributeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSelfServiceProfileUserAttributeArrayInput)(nil)).Elem(), GetSelfServiceProfileUserAttributeArray{})
 	pulumi.RegisterOutputType(ActionDependencyOutput{})
 	pulumi.RegisterOutputType(ActionDependencyArrayOutput{})
 	pulumi.RegisterOutputType(ActionModuleTypeOutput{})
@@ -74990,6 +75271,10 @@ func init() {
 	pulumi.RegisterOutputType(BrandingThemeFontsSubtitlePtrOutput{})
 	pulumi.RegisterOutputType(BrandingThemeFontsTitleOutput{})
 	pulumi.RegisterOutputType(BrandingThemeFontsTitlePtrOutput{})
+	pulumi.RegisterOutputType(BrandingThemeIdentifiersOutput{})
+	pulumi.RegisterOutputType(BrandingThemeIdentifiersPtrOutput{})
+	pulumi.RegisterOutputType(BrandingThemeIdentifiersPhoneDisplayOutput{})
+	pulumi.RegisterOutputType(BrandingThemeIdentifiersPhoneDisplayPtrOutput{})
 	pulumi.RegisterOutputType(BrandingThemePageBackgroundOutput{})
 	pulumi.RegisterOutputType(BrandingThemePageBackgroundPtrOutput{})
 	pulumi.RegisterOutputType(BrandingThemeWidgetOutput{})
@@ -75096,6 +75381,8 @@ func init() {
 	pulumi.RegisterOutputType(ClientFedcmLoginPtrOutput{})
 	pulumi.RegisterOutputType(ClientFedcmLoginGoogleOutput{})
 	pulumi.RegisterOutputType(ClientFedcmLoginGooglePtrOutput{})
+	pulumi.RegisterOutputType(ClientIdentityAssertionAuthorizationGrantOutput{})
+	pulumi.RegisterOutputType(ClientIdentityAssertionAuthorizationGrantPtrOutput{})
 	pulumi.RegisterOutputType(ClientJwtConfigurationOutput{})
 	pulumi.RegisterOutputType(ClientJwtConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ClientMobileOutput{})
@@ -75138,6 +75425,10 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionAuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionConnectedAccountsOutput{})
 	pulumi.RegisterOutputType(ConnectionConnectedAccountsPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionCrossAppAccessRequestingAppOutput{})
+	pulumi.RegisterOutputType(ConnectionCrossAppAccessRequestingAppPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionCrossAppAccessResourceAppOutput{})
+	pulumi.RegisterOutputType(ConnectionCrossAppAccessResourceAppPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionDirectoryMappingOutput{})
 	pulumi.RegisterOutputType(ConnectionDirectoryMappingArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionOptionsOutput{})
@@ -75387,6 +75678,8 @@ func init() {
 	pulumi.RegisterOutputType(SelfServiceProfileBrandingColorsPtrOutput{})
 	pulumi.RegisterOutputType(SelfServiceProfileUserAttributeOutput{})
 	pulumi.RegisterOutputType(SelfServiceProfileUserAttributeArrayOutput{})
+	pulumi.RegisterOutputType(TenantCountryCodesOutput{})
+	pulumi.RegisterOutputType(TenantCountryCodesPtrOutput{})
 	pulumi.RegisterOutputType(TenantDefaultTokenQuotaOutput{})
 	pulumi.RegisterOutputType(TenantDefaultTokenQuotaPtrOutput{})
 	pulumi.RegisterOutputType(TenantDefaultTokenQuotaClientsOutput{})
@@ -75515,6 +75808,10 @@ func init() {
 	pulumi.RegisterOutputType(GetBrandingThemeFontSubtitleArrayOutput{})
 	pulumi.RegisterOutputType(GetBrandingThemeFontTitleOutput{})
 	pulumi.RegisterOutputType(GetBrandingThemeFontTitleArrayOutput{})
+	pulumi.RegisterOutputType(GetBrandingThemeIdentifierOutput{})
+	pulumi.RegisterOutputType(GetBrandingThemeIdentifierArrayOutput{})
+	pulumi.RegisterOutputType(GetBrandingThemeIdentifierPhoneDisplayOutput{})
+	pulumi.RegisterOutputType(GetBrandingThemeIdentifierPhoneDisplayArrayOutput{})
 	pulumi.RegisterOutputType(GetBrandingThemePageBackgroundOutput{})
 	pulumi.RegisterOutputType(GetBrandingThemePageBackgroundArrayOutput{})
 	pulumi.RegisterOutputType(GetBrandingThemeWidgetOutput{})
@@ -75609,6 +75906,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClientFedcmLoginGoogleArrayOutput{})
 	pulumi.RegisterOutputType(GetClientGrantsClientGrantOutput{})
 	pulumi.RegisterOutputType(GetClientGrantsClientGrantArrayOutput{})
+	pulumi.RegisterOutputType(GetClientIdentityAssertionAuthorizationGrantOutput{})
+	pulumi.RegisterOutputType(GetClientIdentityAssertionAuthorizationGrantArrayOutput{})
 	pulumi.RegisterOutputType(GetClientJwtConfigurationOutput{})
 	pulumi.RegisterOutputType(GetClientJwtConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetClientMobileOutput{})
@@ -75661,6 +75960,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClientsClientFedcmLoginArrayOutput{})
 	pulumi.RegisterOutputType(GetClientsClientFedcmLoginGoogleOutput{})
 	pulumi.RegisterOutputType(GetClientsClientFedcmLoginGoogleArrayOutput{})
+	pulumi.RegisterOutputType(GetClientsClientIdentityAssertionAuthorizationGrantOutput{})
+	pulumi.RegisterOutputType(GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput{})
 	pulumi.RegisterOutputType(GetClientsClientMyOrganizationConfigurationOutput{})
 	pulumi.RegisterOutputType(GetClientsClientMyOrganizationConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetClientsClientOidcLogoutOutput{})
@@ -75683,6 +75984,10 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectionAuthenticationArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionConnectedAccountOutput{})
 	pulumi.RegisterOutputType(GetConnectionConnectedAccountArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionCrossAppAccessRequestingAppOutput{})
+	pulumi.RegisterOutputType(GetConnectionCrossAppAccessRequestingAppArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionCrossAppAccessResourceAppOutput{})
+	pulumi.RegisterOutputType(GetConnectionCrossAppAccessResourceAppArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionDirectoryDefaultMappingMappingOutput{})
 	pulumi.RegisterOutputType(GetConnectionDirectoryDefaultMappingMappingArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionDirectoryMappingOutput{})
@@ -75873,28 +76178,4 @@ func init() {
 	pulumi.RegisterOutputType(GetRateLimitPolicyConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceServerAuthorizationDetailOutput{})
 	pulumi.RegisterOutputType(GetResourceServerAuthorizationDetailArrayOutput{})
-	pulumi.RegisterOutputType(GetResourceServerAuthorizationPolicyOutput{})
-	pulumi.RegisterOutputType(GetResourceServerAuthorizationPolicyArrayOutput{})
-	pulumi.RegisterOutputType(GetResourceServerProofOfPossessionOutput{})
-	pulumi.RegisterOutputType(GetResourceServerProofOfPossessionArrayOutput{})
-	pulumi.RegisterOutputType(GetResourceServerScopeTypeOutput{})
-	pulumi.RegisterOutputType(GetResourceServerScopeTypeArrayOutput{})
-	pulumi.RegisterOutputType(GetResourceServerSubjectTypeAuthorizationOutput{})
-	pulumi.RegisterOutputType(GetResourceServerSubjectTypeAuthorizationArrayOutput{})
-	pulumi.RegisterOutputType(GetResourceServerSubjectTypeAuthorizationClientOutput{})
-	pulumi.RegisterOutputType(GetResourceServerSubjectTypeAuthorizationClientArrayOutput{})
-	pulumi.RegisterOutputType(GetResourceServerSubjectTypeAuthorizationUserOutput{})
-	pulumi.RegisterOutputType(GetResourceServerSubjectTypeAuthorizationUserArrayOutput{})
-	pulumi.RegisterOutputType(GetResourceServerTokenEncryptionOutput{})
-	pulumi.RegisterOutputType(GetResourceServerTokenEncryptionArrayOutput{})
-	pulumi.RegisterOutputType(GetResourceServerTokenEncryptionEncryptionKeyOutput{})
-	pulumi.RegisterOutputType(GetResourceServerTokenEncryptionEncryptionKeyArrayOutput{})
-	pulumi.RegisterOutputType(GetRolePermissionTypeOutput{})
-	pulumi.RegisterOutputType(GetRolePermissionTypeArrayOutput{})
-	pulumi.RegisterOutputType(GetSelfServiceProfileBrandingOutput{})
-	pulumi.RegisterOutputType(GetSelfServiceProfileBrandingArrayOutput{})
-	pulumi.RegisterOutputType(GetSelfServiceProfileBrandingColorOutput{})
-	pulumi.RegisterOutputType(GetSelfServiceProfileBrandingColorArrayOutput{})
-	pulumi.RegisterOutputType(GetSelfServiceProfileUserAttributeOutput{})
-	pulumi.RegisterOutputType(GetSelfServiceProfileUserAttributeArrayOutput{})
 }

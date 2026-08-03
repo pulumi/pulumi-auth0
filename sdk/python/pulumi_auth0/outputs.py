@@ -54,6 +54,8 @@ __all__ = [
     'BrandingThemeFontsLinks',
     'BrandingThemeFontsSubtitle',
     'BrandingThemeFontsTitle',
+    'BrandingThemeIdentifiers',
+    'BrandingThemeIdentifiersPhoneDisplay',
     'BrandingThemePageBackground',
     'BrandingThemeWidget',
     'BrandingUniversalLogin',
@@ -107,6 +109,7 @@ __all__ = [
     'ClientExpressConfigurationLinkedClient',
     'ClientFedcmLogin',
     'ClientFedcmLoginGoogle',
+    'ClientIdentityAssertionAuthorizationGrant',
     'ClientJwtConfiguration',
     'ClientMobile',
     'ClientMobileAndroid',
@@ -128,6 +131,8 @@ __all__ = [
     'ClientTokenQuotaClientCredentials',
     'ConnectionAuthentication',
     'ConnectionConnectedAccounts',
+    'ConnectionCrossAppAccessRequestingApp',
+    'ConnectionCrossAppAccessResourceApp',
     'ConnectionDirectoryMapping',
     'ConnectionOptions',
     'ConnectionOptionsAttribute',
@@ -253,6 +258,7 @@ __all__ = [
     'SelfServiceProfileBranding',
     'SelfServiceProfileBrandingColors',
     'SelfServiceProfileUserAttribute',
+    'TenantCountryCodes',
     'TenantDefaultTokenQuota',
     'TenantDefaultTokenQuotaClients',
     'TenantDefaultTokenQuotaClientsClientCredentials',
@@ -317,6 +323,8 @@ __all__ = [
     'GetBrandingThemeFontLinkResult',
     'GetBrandingThemeFontSubtitleResult',
     'GetBrandingThemeFontTitleResult',
+    'GetBrandingThemeIdentifierResult',
+    'GetBrandingThemeIdentifierPhoneDisplayResult',
     'GetBrandingThemePageBackgroundResult',
     'GetBrandingThemeWidgetResult',
     'GetBrandingUniversalLoginResult',
@@ -364,6 +372,7 @@ __all__ = [
     'GetClientFedcmLoginResult',
     'GetClientFedcmLoginGoogleResult',
     'GetClientGrantsClientGrantResult',
+    'GetClientIdentityAssertionAuthorizationGrantResult',
     'GetClientJwtConfigurationResult',
     'GetClientMobileResult',
     'GetClientMobileAndroidResult',
@@ -390,6 +399,7 @@ __all__ = [
     'GetClientsClientExpressConfigurationLinkedClientResult',
     'GetClientsClientFedcmLoginResult',
     'GetClientsClientFedcmLoginGoogleResult',
+    'GetClientsClientIdentityAssertionAuthorizationGrantResult',
     'GetClientsClientMyOrganizationConfigurationResult',
     'GetClientsClientOidcLogoutResult',
     'GetClientsClientOidcLogoutBackchannelLogoutInitiatorResult',
@@ -401,6 +411,8 @@ __all__ = [
     'GetClientsClientTokenQuotaClientCredentialResult',
     'GetConnectionAuthenticationResult',
     'GetConnectionConnectedAccountResult',
+    'GetConnectionCrossAppAccessRequestingAppResult',
+    'GetConnectionCrossAppAccessResourceAppResult',
     'GetConnectionDirectoryDefaultMappingMappingResult',
     'GetConnectionDirectoryMappingResult',
     'GetConnectionKeysKeyResult',
@@ -517,6 +529,7 @@ __all__ = [
     'GetSelfServiceProfileBrandingColorResult',
     'GetSelfServiceProfileUserAttributeResult',
     'GetSigningKeysSigningKeyResult',
+    'GetTenantCountryCodeResult',
     'GetTenantDefaultTokenQuotaResult',
     'GetTenantDefaultTokenQuotaClientResult',
     'GetTenantDefaultTokenQuotaClientClientCredentialResult',
@@ -2850,6 +2863,96 @@ class BrandingThemeFontsTitle(dict):
         Title size. Value needs to be between `75` and `150`. Defaults to `150.0`.
         """
         return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class BrandingThemeIdentifiers(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "loginDisplay":
+            suggest = "login_display"
+        elif key == "otpAutocomplete":
+            suggest = "otp_autocomplete"
+        elif key == "phoneDisplay":
+            suggest = "phone_display"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BrandingThemeIdentifiers. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BrandingThemeIdentifiers.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BrandingThemeIdentifiers.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 login_display: _builtins.str,
+                 otp_autocomplete: _builtins.bool,
+                 phone_display: 'outputs.BrandingThemeIdentifiersPhoneDisplay'):
+        """
+        :param _builtins.str login_display: Login display style. Available options: `unified`, `separate`.
+        :param _builtins.bool otp_autocomplete: Whether OTP autocomplete is enabled.
+        :param 'BrandingThemeIdentifiersPhoneDisplayArgs' phone_display: Phone number display settings.
+        """
+        pulumi.set(__self__, "login_display", login_display)
+        pulumi.set(__self__, "otp_autocomplete", otp_autocomplete)
+        pulumi.set(__self__, "phone_display", phone_display)
+
+    @_builtins.property
+    @pulumi.getter(name="loginDisplay")
+    def login_display(self) -> _builtins.str:
+        """
+        Login display style. Available options: `unified`, `separate`.
+        """
+        return pulumi.get(self, "login_display")
+
+    @_builtins.property
+    @pulumi.getter(name="otpAutocomplete")
+    def otp_autocomplete(self) -> _builtins.bool:
+        """
+        Whether OTP autocomplete is enabled.
+        """
+        return pulumi.get(self, "otp_autocomplete")
+
+    @_builtins.property
+    @pulumi.getter(name="phoneDisplay")
+    def phone_display(self) -> 'outputs.BrandingThemeIdentifiersPhoneDisplay':
+        """
+        Phone number display settings.
+        """
+        return pulumi.get(self, "phone_display")
+
+
+@pulumi.output_type
+class BrandingThemeIdentifiersPhoneDisplay(dict):
+    def __init__(__self__, *,
+                 formatting: _builtins.str,
+                 masking: _builtins.str):
+        """
+        :param _builtins.str formatting: Phone number formatting. Available options: `international`, `regional`.
+        :param _builtins.str masking: Phone number masking. Available options: `mask_digits`, `hide_country_code`, `show_all`.
+        """
+        pulumi.set(__self__, "formatting", formatting)
+        pulumi.set(__self__, "masking", masking)
+
+    @_builtins.property
+    @pulumi.getter
+    def formatting(self) -> _builtins.str:
+        """
+        Phone number formatting. Available options: `international`, `regional`.
+        """
+        return pulumi.get(self, "formatting")
+
+    @_builtins.property
+    @pulumi.getter
+    def masking(self) -> _builtins.str:
+        """
+        Phone number masking. Available options: `mask_digits`, `hide_country_code`, `show_all`.
+        """
+        return pulumi.get(self, "masking")
 
 
 @pulumi.output_type
@@ -6312,6 +6415,24 @@ class ClientFedcmLoginGoogle(dict):
 
 
 @pulumi.output_type
+class ClientIdentityAssertionAuthorizationGrant(dict):
+    def __init__(__self__, *,
+                 active: _builtins.bool):
+        """
+        :param _builtins.bool active: Whether the client can exchange ID-JAGs for access tokens. (EA only)
+        """
+        pulumi.set(__self__, "active", active)
+
+    @_builtins.property
+    @pulumi.getter
+    def active(self) -> _builtins.bool:
+        """
+        Whether the client can exchange ID-JAGs for access tokens. (EA only)
+        """
+        return pulumi.get(self, "active")
+
+
+@pulumi.output_type
 class ClientJwtConfiguration(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -6981,7 +7102,7 @@ class ClientSessionTransfer(dict):
         """
         :param _builtins.bool allow_refresh_token: Indicates whether the application is allowed to use a refresh token when using a session*transfer*token session.
         :param _builtins.bool can_create_session_transfer_token: Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session*transfer*token
-        :param 'ClientSessionTransferDelegationArgs' delegation: Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+        :param 'ClientSessionTransferDelegationArgs' delegation: Configuration for delegation (impersonation) access using Session Transfer Tokens.
         :param _builtins.bool enforce_cascade_revocation: Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
         :param _builtins.str enforce_device_binding: Configures the level of device binding enforced when a session*transfer*token is consumed. Can be one of `ip`, `asn` or `none`.
         :param _builtins.bool enforce_online_refresh_tokens: Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
@@ -7026,7 +7147,7 @@ class ClientSessionTransfer(dict):
     @pulumi.getter
     def delegation(self) -> Optional['outputs.ClientSessionTransferDelegation']:
         """
-        Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+        Configuration for delegation (impersonation) access using Session Transfer Tokens.
         """
         return pulumi.get(self, "delegation")
 
@@ -7080,8 +7201,8 @@ class ClientSessionTransferDelegation(dict):
                  allow_delegated_access: Optional[_builtins.bool] = None,
                  enforce_device_binding: Optional[_builtins.str] = None):
         """
-        :param _builtins.bool allow_delegated_access: Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
-        :param _builtins.str enforce_device_binding: Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+        :param _builtins.bool allow_delegated_access: Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`.
+        :param _builtins.str enforce_device_binding: Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`.
         """
         if allow_delegated_access is not None:
             pulumi.set(__self__, "allow_delegated_access", allow_delegated_access)
@@ -7092,7 +7213,7 @@ class ClientSessionTransferDelegation(dict):
     @pulumi.getter(name="allowDelegatedAccess")
     def allow_delegated_access(self) -> Optional[_builtins.bool]:
         """
-        Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
+        Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`.
         """
         return pulumi.get(self, "allow_delegated_access")
 
@@ -7100,7 +7221,7 @@ class ClientSessionTransferDelegation(dict):
     @pulumi.getter(name="enforceDeviceBinding")
     def enforce_device_binding(self) -> Optional[_builtins.str]:
         """
-        Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+        Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`.
         """
         return pulumi.get(self, "enforce_device_binding")
 
@@ -7262,6 +7383,36 @@ class ConnectionConnectedAccounts(dict):
 
 
 @pulumi.output_type
+class ConnectionCrossAppAccessRequestingApp(dict):
+    def __init__(__self__, *,
+                 active: _builtins.bool):
+        pulumi.set(__self__, "active", active)
+
+    @_builtins.property
+    @pulumi.getter
+    def active(self) -> _builtins.bool:
+        return pulumi.get(self, "active")
+
+
+@pulumi.output_type
+class ConnectionCrossAppAccessResourceApp(dict):
+    def __init__(__self__, *,
+                 status: _builtins.str):
+        """
+        :param _builtins.str status: Whether the connection acts as a Cross App Access resource application. One of `enabled` or `disabled`. (EA only)
+        """
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Whether the connection acts as a Cross App Access resource application. One of `enabled` or `disabled`. (EA only)
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
 class ConnectionDirectoryMapping(dict):
     def __init__(__self__, *,
                  auth0: _builtins.str,
@@ -7407,6 +7558,8 @@ class ConnectionOptions(dict):
             suggest = "metadata_xml"
         elif key == "nonPersistentAttrs":
             suggest = "non_persistent_attrs"
+        elif key == "oidcMetadata":
+            suggest = "oidc_metadata"
         elif key == "passkeyOptions":
             suggest = "passkey_options"
         elif key == "passwordComplexityOptions":
@@ -7575,6 +7728,7 @@ class ConnectionOptions(dict):
                  mfa: Optional['outputs.ConnectionOptionsMfa'] = None,
                  name: Optional[_builtins.str] = None,
                  non_persistent_attrs: Optional[Sequence[_builtins.str]] = None,
+                 oidc_metadata: Optional[_builtins.str] = None,
                  passkey_options: Optional['outputs.ConnectionOptionsPasskeyOptions'] = None,
                  password_complexity_options: Optional['outputs.ConnectionOptionsPasswordComplexityOptions'] = None,
                  password_dictionary: Optional['outputs.ConnectionOptionsPasswordDictionary'] = None,
@@ -7696,6 +7850,7 @@ class ConnectionOptions(dict):
         :param 'ConnectionOptionsMfaArgs' mfa: Configuration options for multifactor authentication.
         :param _builtins.str name: The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
         :param Sequence[_builtins.str] non_persistent_attrs: If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
+        :param _builtins.str oidc_metadata: Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
         :param 'ConnectionOptionsPasskeyOptionsArgs' passkey_options: Defines options for the passkey authentication method
         :param 'ConnectionOptionsPasswordComplexityOptionsArgs' password_complexity_options: Configuration settings for password complexity.
         :param 'ConnectionOptionsPasswordDictionaryArgs' password_dictionary: Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
@@ -7882,6 +8037,8 @@ class ConnectionOptions(dict):
             pulumi.set(__self__, "name", name)
         if non_persistent_attrs is not None:
             pulumi.set(__self__, "non_persistent_attrs", non_persistent_attrs)
+        if oidc_metadata is not None:
+            pulumi.set(__self__, "oidc_metadata", oidc_metadata)
         if passkey_options is not None:
             pulumi.set(__self__, "passkey_options", passkey_options)
         if password_complexity_options is not None:
@@ -8512,6 +8669,14 @@ class ConnectionOptions(dict):
         If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
         """
         return pulumi.get(self, "non_persistent_attrs")
+
+    @_builtins.property
+    @pulumi.getter(name="oidcMetadata")
+    def oidc_metadata(self) -> Optional[_builtins.str]:
+        """
+        Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+        """
+        return pulumi.get(self, "oidc_metadata")
 
     @_builtins.property
     @pulumi.getter(name="passkeyOptions")
@@ -13836,7 +14001,9 @@ class NetworkAclRuleMatch(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "connectingIpv4Cidrs":
+        if key == "auth0Manageds":
+            suggest = "auth0_manageds"
+        elif key == "connectingIpv4Cidrs":
             suggest = "connecting_ipv4_cidrs"
         elif key == "connectingIpv6Cidrs":
             suggest = "connecting_ipv6_cidrs"
@@ -13868,6 +14035,7 @@ class NetworkAclRuleMatch(dict):
 
     def __init__(__self__, *,
                  asns: Optional[Sequence[_builtins.int]] = None,
+                 auth0_manageds: Optional[Sequence[_builtins.str]] = None,
                  connecting_ipv4_cidrs: Optional[Sequence[_builtins.str]] = None,
                  connecting_ipv6_cidrs: Optional[Sequence[_builtins.str]] = None,
                  geo_country_codes: Optional[Sequence[_builtins.str]] = None,
@@ -13880,6 +14048,7 @@ class NetworkAclRuleMatch(dict):
                  user_agents: Optional[Sequence[_builtins.str]] = None):
         """
         :param Sequence[_builtins.int] asns: ASNs. Must contain between 1 and 10 unique items.
+        :param Sequence[_builtins.str] auth0_manageds: Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenant_acl_curated_blocklists` feature flag to be enabled on the tenant. (EA Only)
         :param Sequence[_builtins.str] connecting_ipv4_cidrs: Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
         :param Sequence[_builtins.str] connecting_ipv6_cidrs: Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
         :param Sequence[_builtins.str] geo_country_codes: Geo Country Codes. Must contain between 1 and 10 unique items.
@@ -13893,6 +14062,8 @@ class NetworkAclRuleMatch(dict):
         """
         if asns is not None:
             pulumi.set(__self__, "asns", asns)
+        if auth0_manageds is not None:
+            pulumi.set(__self__, "auth0_manageds", auth0_manageds)
         if connecting_ipv4_cidrs is not None:
             pulumi.set(__self__, "connecting_ipv4_cidrs", connecting_ipv4_cidrs)
         if connecting_ipv6_cidrs is not None:
@@ -13921,6 +14092,14 @@ class NetworkAclRuleMatch(dict):
         ASNs. Must contain between 1 and 10 unique items.
         """
         return pulumi.get(self, "asns")
+
+    @_builtins.property
+    @pulumi.getter(name="auth0Manageds")
+    def auth0_manageds(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenant_acl_curated_blocklists` feature flag to be enabled on the tenant. (EA Only)
+        """
+        return pulumi.get(self, "auth0_manageds")
 
     @_builtins.property
     @pulumi.getter(name="connectingIpv4Cidrs")
@@ -14008,7 +14187,9 @@ class NetworkAclRuleNotMatch(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "connectingIpv4Cidrs":
+        if key == "auth0Manageds":
+            suggest = "auth0_manageds"
+        elif key == "connectingIpv4Cidrs":
             suggest = "connecting_ipv4_cidrs"
         elif key == "connectingIpv6Cidrs":
             suggest = "connecting_ipv6_cidrs"
@@ -14040,6 +14221,7 @@ class NetworkAclRuleNotMatch(dict):
 
     def __init__(__self__, *,
                  asns: Optional[Sequence[_builtins.int]] = None,
+                 auth0_manageds: Optional[Sequence[_builtins.str]] = None,
                  connecting_ipv4_cidrs: Optional[Sequence[_builtins.str]] = None,
                  connecting_ipv6_cidrs: Optional[Sequence[_builtins.str]] = None,
                  geo_country_codes: Optional[Sequence[_builtins.str]] = None,
@@ -14052,6 +14234,7 @@ class NetworkAclRuleNotMatch(dict):
                  user_agents: Optional[Sequence[_builtins.str]] = None):
         """
         :param Sequence[_builtins.int] asns: ASNs. Must contain between 1 and 10 unique items.
+        :param Sequence[_builtins.str] auth0_manageds: Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenant_acl_curated_blocklists` feature flag to be enabled on the tenant. (EA Only)
         :param Sequence[_builtins.str] connecting_ipv4_cidrs: Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
         :param Sequence[_builtins.str] connecting_ipv6_cidrs: Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
         :param Sequence[_builtins.str] geo_country_codes: Geo Country Codes. Must contain between 1 and 10 unique items.
@@ -14065,6 +14248,8 @@ class NetworkAclRuleNotMatch(dict):
         """
         if asns is not None:
             pulumi.set(__self__, "asns", asns)
+        if auth0_manageds is not None:
+            pulumi.set(__self__, "auth0_manageds", auth0_manageds)
         if connecting_ipv4_cidrs is not None:
             pulumi.set(__self__, "connecting_ipv4_cidrs", connecting_ipv4_cidrs)
         if connecting_ipv6_cidrs is not None:
@@ -14093,6 +14278,14 @@ class NetworkAclRuleNotMatch(dict):
         ASNs. Must contain between 1 and 10 unique items.
         """
         return pulumi.get(self, "asns")
+
+    @_builtins.property
+    @pulumi.getter(name="auth0Manageds")
+    def auth0_manageds(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenant_acl_curated_blocklists` feature flag to be enabled on the tenant. (EA Only)
+        """
+        return pulumi.get(self, "auth0_manageds")
 
     @_builtins.property
     @pulumi.getter(name="connectingIpv4Cidrs")
@@ -15842,6 +16035,35 @@ class SelfServiceProfileUserAttribute(dict):
         Attribute’s name on Auth0 side
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class TenantCountryCodes(dict):
+    def __init__(__self__, *,
+                 lists: Sequence[_builtins.str],
+                 mode: _builtins.str):
+        """
+        :param Sequence[_builtins.str] lists: List of ISO 3166-1 alpha-2 country codes.
+        :param _builtins.str mode: Whether the list is an allow-list or deny-list. Available options: `allow`, `deny`.
+        """
+        pulumi.set(__self__, "lists", lists)
+        pulumi.set(__self__, "mode", mode)
+
+    @_builtins.property
+    @pulumi.getter
+    def lists(self) -> Sequence[_builtins.str]:
+        """
+        List of ISO 3166-1 alpha-2 country codes.
+        """
+        return pulumi.get(self, "lists")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> _builtins.str:
+        """
+        Whether the list is an allow-list or deny-list. Available options: `allow`, `deny`.
+        """
+        return pulumi.get(self, "mode")
 
 
 @pulumi.output_type
@@ -19248,6 +19470,75 @@ class GetBrandingThemeFontTitleResult(dict):
 
 
 @pulumi.output_type
+class GetBrandingThemeIdentifierResult(dict):
+    def __init__(__self__, *,
+                 login_display: _builtins.str,
+                 otp_autocomplete: _builtins.bool,
+                 phone_displays: Sequence['outputs.GetBrandingThemeIdentifierPhoneDisplayResult']):
+        """
+        :param _builtins.str login_display: Login display style. Available options: `unified`, `separate`.
+        :param _builtins.bool otp_autocomplete: Whether OTP autocomplete is enabled.
+        :param Sequence['GetBrandingThemeIdentifierPhoneDisplayArgs'] phone_displays: Phone number display settings.
+        """
+        pulumi.set(__self__, "login_display", login_display)
+        pulumi.set(__self__, "otp_autocomplete", otp_autocomplete)
+        pulumi.set(__self__, "phone_displays", phone_displays)
+
+    @_builtins.property
+    @pulumi.getter(name="loginDisplay")
+    def login_display(self) -> _builtins.str:
+        """
+        Login display style. Available options: `unified`, `separate`.
+        """
+        return pulumi.get(self, "login_display")
+
+    @_builtins.property
+    @pulumi.getter(name="otpAutocomplete")
+    def otp_autocomplete(self) -> _builtins.bool:
+        """
+        Whether OTP autocomplete is enabled.
+        """
+        return pulumi.get(self, "otp_autocomplete")
+
+    @_builtins.property
+    @pulumi.getter(name="phoneDisplays")
+    def phone_displays(self) -> Sequence['outputs.GetBrandingThemeIdentifierPhoneDisplayResult']:
+        """
+        Phone number display settings.
+        """
+        return pulumi.get(self, "phone_displays")
+
+
+@pulumi.output_type
+class GetBrandingThemeIdentifierPhoneDisplayResult(dict):
+    def __init__(__self__, *,
+                 formatting: _builtins.str,
+                 masking: _builtins.str):
+        """
+        :param _builtins.str formatting: Phone number formatting. Available options: `international`, `regional`.
+        :param _builtins.str masking: Phone number masking. Available options: `mask_digits`, `hide_country_code`, `show_all`.
+        """
+        pulumi.set(__self__, "formatting", formatting)
+        pulumi.set(__self__, "masking", masking)
+
+    @_builtins.property
+    @pulumi.getter
+    def formatting(self) -> _builtins.str:
+        """
+        Phone number formatting. Available options: `international`, `regional`.
+        """
+        return pulumi.get(self, "formatting")
+
+    @_builtins.property
+    @pulumi.getter
+    def masking(self) -> _builtins.str:
+        """
+        Phone number masking. Available options: `mask_digits`, `hide_country_code`, `show_all`.
+        """
+        return pulumi.get(self, "masking")
+
+
+@pulumi.output_type
 class GetBrandingThemePageBackgroundResult(dict):
     def __init__(__self__, *,
                  background_color: _builtins.str,
@@ -21475,6 +21766,24 @@ class GetClientGrantsClientGrantResult(dict):
 
 
 @pulumi.output_type
+class GetClientIdentityAssertionAuthorizationGrantResult(dict):
+    def __init__(__self__, *,
+                 active: _builtins.bool):
+        """
+        :param _builtins.bool active: Whether the client can exchange ID-JAGs for access tokens. (EA only)
+        """
+        pulumi.set(__self__, "active", active)
+
+    @_builtins.property
+    @pulumi.getter
+    def active(self) -> _builtins.bool:
+        """
+        Whether the client can exchange ID-JAGs for access tokens. (EA only)
+        """
+        return pulumi.get(self, "active")
+
+
+@pulumi.output_type
 class GetClientJwtConfigurationResult(dict):
     def __init__(__self__, *,
                  alg: _builtins.str,
@@ -21940,7 +22249,7 @@ class GetClientSessionTransferResult(dict):
         """
         :param _builtins.bool allow_refresh_token: Indicates whether the application is allowed to use a refresh token when using a session_transfer_token session.
         :param _builtins.bool can_create_session_transfer_token: Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
-        :param Sequence['GetClientSessionTransferDelegationArgs'] delegations: Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+        :param Sequence['GetClientSessionTransferDelegationArgs'] delegations: Configuration for delegation (impersonation) access using Session Transfer Tokens.
         :param _builtins.bool enforce_cascade_revocation: Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
         :param _builtins.str enforce_device_binding: Configures the level of device binding enforced when a session_transfer_token is consumed. Can be one of `ip`, `asn` or `none`.
         :param _builtins.bool enforce_online_refresh_tokens: Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
@@ -21978,7 +22287,7 @@ class GetClientSessionTransferResult(dict):
     @pulumi.getter
     def delegations(self) -> Sequence['outputs.GetClientSessionTransferDelegationResult']:
         """
-        Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+        Configuration for delegation (impersonation) access using Session Transfer Tokens.
         """
         return pulumi.get(self, "delegations")
 
@@ -22013,8 +22322,8 @@ class GetClientSessionTransferDelegationResult(dict):
                  allow_delegated_access: _builtins.bool,
                  enforce_device_binding: _builtins.str):
         """
-        :param _builtins.bool allow_delegated_access: Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
-        :param _builtins.str enforce_device_binding: Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+        :param _builtins.bool allow_delegated_access: Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`.
+        :param _builtins.str enforce_device_binding: Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`.
         """
         pulumi.set(__self__, "allow_delegated_access", allow_delegated_access)
         pulumi.set(__self__, "enforce_device_binding", enforce_device_binding)
@@ -22023,7 +22332,7 @@ class GetClientSessionTransferDelegationResult(dict):
     @pulumi.getter(name="allowDelegatedAccess")
     def allow_delegated_access(self) -> _builtins.bool:
         """
-        Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
+        Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`.
         """
         return pulumi.get(self, "allow_delegated_access")
 
@@ -22031,7 +22340,7 @@ class GetClientSessionTransferDelegationResult(dict):
     @pulumi.getter(name="enforceDeviceBinding")
     def enforce_device_binding(self) -> _builtins.str:
         """
-        Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+        Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`.
         """
         return pulumi.get(self, "enforce_device_binding")
 
@@ -22254,6 +22563,7 @@ class GetClientsClientResult(dict):
                  external_metadata_type: _builtins.str,
                  fedcm_logins: Sequence['outputs.GetClientsClientFedcmLoginResult'],
                  grant_types: Sequence[_builtins.str],
+                 identity_assertion_authorization_grants: Sequence['outputs.GetClientsClientIdentityAssertionAuthorizationGrantResult'],
                  is_first_party: _builtins.bool,
                  is_token_endpoint_ip_header_trusted: _builtins.bool,
                  jwks_uri: _builtins.str,
@@ -22278,7 +22588,7 @@ class GetClientsClientResult(dict):
         :param Sequence[_builtins.str] async_approval_notification_channels: List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
         :param Sequence[_builtins.str] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param Mapping[str, _builtins.str] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
-        :param _builtins.str client_secret: Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string.
+        :param _builtins.str client_secret: Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. Set `hide_client_secret` to `true` to avoid persisting this value into Terraform state.
         :param _builtins.str description: Description of the purpose of the client.
         :param Sequence['GetClientsClientExpressConfigurationArgs'] express_configurations: Express Configuration settings for the client. Used with OIN Express Configuration.
         :param _builtins.str external_client_id: The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
@@ -22286,6 +22596,7 @@ class GetClientsClientResult(dict):
         :param _builtins.str external_metadata_type: Type of external metadata. Value is `cimd` for CIMD-registered clients.
         :param Sequence['GetClientsClientFedcmLoginArgs'] fedcm_logins: Federated Credential Management (FedCM) configuration. (EA only)
         :param Sequence[_builtins.str] grant_types: Types of grants that this client is authorized to use.
+        :param Sequence['GetClientsClientIdentityAssertionAuthorizationGrantArgs'] identity_assertion_authorization_grants: Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
         :param _builtins.bool is_first_party: Indicates whether this client is a first-party client.
         :param _builtins.bool is_token_endpoint_ip_header_trusted: Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `client_secret_post` or `client_secret_basic`. Setting this property when creating the resource, will default the authentication method to `client_secret_post`. To change the authentication method to `client_secret_basic` use the `ClientCredentials` resource.
         :param _builtins.str jwks_uri: URL for the JSON Web Key Set (JWKS) containing the public keys used for `private_key_jwt` authentication. Only present for CIMD clients using `private_key_jwt` authentication.
@@ -22317,6 +22628,7 @@ class GetClientsClientResult(dict):
         pulumi.set(__self__, "external_metadata_type", external_metadata_type)
         pulumi.set(__self__, "fedcm_logins", fedcm_logins)
         pulumi.set(__self__, "grant_types", grant_types)
+        pulumi.set(__self__, "identity_assertion_authorization_grants", identity_assertion_authorization_grants)
         pulumi.set(__self__, "is_first_party", is_first_party)
         pulumi.set(__self__, "is_token_endpoint_ip_header_trusted", is_token_endpoint_ip_header_trusted)
         pulumi.set(__self__, "jwks_uri", jwks_uri)
@@ -22396,7 +22708,7 @@ class GetClientsClientResult(dict):
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> _builtins.str:
         """
-        Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string.
+        Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. Set `hide_client_secret` to `true` to avoid persisting this value into Terraform state.
         """
         return pulumi.get(self, "client_secret")
 
@@ -22455,6 +22767,14 @@ class GetClientsClientResult(dict):
         Types of grants that this client is authorized to use.
         """
         return pulumi.get(self, "grant_types")
+
+    @_builtins.property
+    @pulumi.getter(name="identityAssertionAuthorizationGrants")
+    def identity_assertion_authorization_grants(self) -> Sequence['outputs.GetClientsClientIdentityAssertionAuthorizationGrantResult']:
+        """
+        Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+        """
+        return pulumi.get(self, "identity_assertion_authorization_grants")
 
     @_builtins.property
     @pulumi.getter(name="isFirstParty")
@@ -22743,6 +23063,24 @@ class GetClientsClientFedcmLoginGoogleResult(dict):
 
 
 @pulumi.output_type
+class GetClientsClientIdentityAssertionAuthorizationGrantResult(dict):
+    def __init__(__self__, *,
+                 active: _builtins.bool):
+        """
+        :param _builtins.bool active: Whether the client can exchange ID-JAGs for access tokens. (EA only)
+        """
+        pulumi.set(__self__, "active", active)
+
+    @_builtins.property
+    @pulumi.getter
+    def active(self) -> _builtins.bool:
+        """
+        Whether the client can exchange ID-JAGs for access tokens. (EA only)
+        """
+        return pulumi.get(self, "active")
+
+
+@pulumi.output_type
 class GetClientsClientMyOrganizationConfigurationResult(dict):
     def __init__(__self__, *,
                  allowed_strategies: Sequence[_builtins.str],
@@ -22904,7 +23242,7 @@ class GetClientsClientSessionTransferResult(dict):
         """
         :param _builtins.bool allow_refresh_token: Indicates whether the application is allowed to use a refresh token when using a session_transfer_token session.
         :param _builtins.bool can_create_session_transfer_token: Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
-        :param Sequence['GetClientsClientSessionTransferDelegationArgs'] delegations: Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+        :param Sequence['GetClientsClientSessionTransferDelegationArgs'] delegations: Configuration for delegation (impersonation) access using Session Transfer Tokens.
         :param _builtins.bool enforce_cascade_revocation: Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
         :param _builtins.str enforce_device_binding: Configures the level of device binding enforced when a session_transfer_token is consumed. Can be one of `ip`, `asn` or `none`.
         :param _builtins.bool enforce_online_refresh_tokens: Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
@@ -22942,7 +23280,7 @@ class GetClientsClientSessionTransferResult(dict):
     @pulumi.getter
     def delegations(self) -> Sequence['outputs.GetClientsClientSessionTransferDelegationResult']:
         """
-        Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+        Configuration for delegation (impersonation) access using Session Transfer Tokens.
         """
         return pulumi.get(self, "delegations")
 
@@ -22977,8 +23315,8 @@ class GetClientsClientSessionTransferDelegationResult(dict):
                  allow_delegated_access: _builtins.bool,
                  enforce_device_binding: _builtins.str):
         """
-        :param _builtins.bool allow_delegated_access: Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
-        :param _builtins.str enforce_device_binding: Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+        :param _builtins.bool allow_delegated_access: Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`.
+        :param _builtins.str enforce_device_binding: Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`.
         """
         pulumi.set(__self__, "allow_delegated_access", allow_delegated_access)
         pulumi.set(__self__, "enforce_device_binding", enforce_device_binding)
@@ -22987,7 +23325,7 @@ class GetClientsClientSessionTransferDelegationResult(dict):
     @pulumi.getter(name="allowDelegatedAccess")
     def allow_delegated_access(self) -> _builtins.bool:
         """
-        Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
+        Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`.
         """
         return pulumi.get(self, "allow_delegated_access")
 
@@ -22995,7 +23333,7 @@ class GetClientsClientSessionTransferDelegationResult(dict):
     @pulumi.getter(name="enforceDeviceBinding")
     def enforce_device_binding(self) -> _builtins.str:
         """
-        Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+        Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`.
         """
         return pulumi.get(self, "enforce_device_binding")
 
@@ -23098,6 +23436,36 @@ class GetConnectionConnectedAccountResult(dict):
     @pulumi.getter
     def active(self) -> _builtins.bool:
         return pulumi.get(self, "active")
+
+
+@pulumi.output_type
+class GetConnectionCrossAppAccessRequestingAppResult(dict):
+    def __init__(__self__, *,
+                 active: _builtins.bool):
+        pulumi.set(__self__, "active", active)
+
+    @_builtins.property
+    @pulumi.getter
+    def active(self) -> _builtins.bool:
+        return pulumi.get(self, "active")
+
+
+@pulumi.output_type
+class GetConnectionCrossAppAccessResourceAppResult(dict):
+    def __init__(__self__, *,
+                 status: _builtins.str):
+        """
+        :param _builtins.str status: Whether the connection acts as a Cross App Access resource application. One of `enabled` or `disabled`. (EA only)
+        """
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Whether the connection acts as a Cross App Access resource application. One of `enabled` or `disabled`. (EA only)
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type
@@ -23383,6 +23751,7 @@ class GetConnectionOptionResult(dict):
                  mfas: Sequence['outputs.GetConnectionOptionMfaResult'],
                  name: _builtins.str,
                  non_persistent_attrs: Sequence[_builtins.str],
+                 oidc_metadata: _builtins.str,
                  passkey_options: Sequence['outputs.GetConnectionOptionPasskeyOptionResult'],
                  password_complexity_options: Sequence['outputs.GetConnectionOptionPasswordComplexityOptionResult'],
                  password_dictionaries: Sequence['outputs.GetConnectionOptionPasswordDictionaryResult'],
@@ -23504,6 +23873,7 @@ class GetConnectionOptionResult(dict):
         :param Sequence['GetConnectionOptionMfaArgs'] mfas: Configuration options for multifactor authentication.
         :param _builtins.str name: The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
         :param Sequence[_builtins.str] non_persistent_attrs: If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
+        :param _builtins.str oidc_metadata: Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
         :param Sequence['GetConnectionOptionPasskeyOptionArgs'] passkey_options: Defines options for the passkey authentication method
         :param Sequence['GetConnectionOptionPasswordComplexityOptionArgs'] password_complexity_options: Configuration settings for password complexity.
         :param Sequence['GetConnectionOptionPasswordDictionaryArgs'] password_dictionaries: Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
@@ -23625,6 +23995,7 @@ class GetConnectionOptionResult(dict):
         pulumi.set(__self__, "mfas", mfas)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "non_persistent_attrs", non_persistent_attrs)
+        pulumi.set(__self__, "oidc_metadata", oidc_metadata)
         pulumi.set(__self__, "passkey_options", passkey_options)
         pulumi.set(__self__, "password_complexity_options", password_complexity_options)
         pulumi.set(__self__, "password_dictionaries", password_dictionaries)
@@ -24200,6 +24571,14 @@ class GetConnectionOptionResult(dict):
         If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
         """
         return pulumi.get(self, "non_persistent_attrs")
+
+    @_builtins.property
+    @pulumi.getter(name="oidcMetadata")
+    def oidc_metadata(self) -> _builtins.str:
+        """
+        Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+        """
+        return pulumi.get(self, "oidc_metadata")
 
     @_builtins.property
     @pulumi.getter(name="passkeyOptions")
@@ -27127,6 +27506,7 @@ class GetNetworkAclRuleActionResult(dict):
 class GetNetworkAclRuleMatchResult(dict):
     def __init__(__self__, *,
                  asns: Sequence[_builtins.int],
+                 auth0_manageds: Sequence[_builtins.str],
                  connecting_ipv4_cidrs: Sequence[_builtins.str],
                  connecting_ipv6_cidrs: Sequence[_builtins.str],
                  geo_country_codes: Sequence[_builtins.str],
@@ -27139,6 +27519,7 @@ class GetNetworkAclRuleMatchResult(dict):
                  user_agents: Sequence[_builtins.str]):
         """
         :param Sequence[_builtins.int] asns: ASNs. Must contain between 1 and 10 unique items.
+        :param Sequence[_builtins.str] auth0_manageds: Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenant_acl_curated_blocklists` feature flag to be enabled on the tenant. (EA Only)
         :param Sequence[_builtins.str] connecting_ipv4_cidrs: Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
         :param Sequence[_builtins.str] connecting_ipv6_cidrs: Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
         :param Sequence[_builtins.str] geo_country_codes: Geo Country Codes. Must contain between 1 and 10 unique items.
@@ -27151,6 +27532,7 @@ class GetNetworkAclRuleMatchResult(dict):
         :param Sequence[_builtins.str] user_agents: User Agents. Must contain between 1 and 10 unique items.
         """
         pulumi.set(__self__, "asns", asns)
+        pulumi.set(__self__, "auth0_manageds", auth0_manageds)
         pulumi.set(__self__, "connecting_ipv4_cidrs", connecting_ipv4_cidrs)
         pulumi.set(__self__, "connecting_ipv6_cidrs", connecting_ipv6_cidrs)
         pulumi.set(__self__, "geo_country_codes", geo_country_codes)
@@ -27169,6 +27551,14 @@ class GetNetworkAclRuleMatchResult(dict):
         ASNs. Must contain between 1 and 10 unique items.
         """
         return pulumi.get(self, "asns")
+
+    @_builtins.property
+    @pulumi.getter(name="auth0Manageds")
+    def auth0_manageds(self) -> Sequence[_builtins.str]:
+        """
+        Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenant_acl_curated_blocklists` feature flag to be enabled on the tenant. (EA Only)
+        """
+        return pulumi.get(self, "auth0_manageds")
 
     @_builtins.property
     @pulumi.getter(name="connectingIpv4Cidrs")
@@ -27255,6 +27645,7 @@ class GetNetworkAclRuleMatchResult(dict):
 class GetNetworkAclRuleNotMatchResult(dict):
     def __init__(__self__, *,
                  asns: Sequence[_builtins.int],
+                 auth0_manageds: Sequence[_builtins.str],
                  connecting_ipv4_cidrs: Sequence[_builtins.str],
                  connecting_ipv6_cidrs: Sequence[_builtins.str],
                  geo_country_codes: Sequence[_builtins.str],
@@ -27267,6 +27658,7 @@ class GetNetworkAclRuleNotMatchResult(dict):
                  user_agents: Sequence[_builtins.str]):
         """
         :param Sequence[_builtins.int] asns: ASNs. Must contain between 1 and 10 unique items.
+        :param Sequence[_builtins.str] auth0_manageds: Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenant_acl_curated_blocklists` feature flag to be enabled on the tenant. (EA Only)
         :param Sequence[_builtins.str] connecting_ipv4_cidrs: Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
         :param Sequence[_builtins.str] connecting_ipv6_cidrs: Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
         :param Sequence[_builtins.str] geo_country_codes: Geo Country Codes. Must contain between 1 and 10 unique items.
@@ -27279,6 +27671,7 @@ class GetNetworkAclRuleNotMatchResult(dict):
         :param Sequence[_builtins.str] user_agents: User Agents. Must contain between 1 and 10 unique items.
         """
         pulumi.set(__self__, "asns", asns)
+        pulumi.set(__self__, "auth0_manageds", auth0_manageds)
         pulumi.set(__self__, "connecting_ipv4_cidrs", connecting_ipv4_cidrs)
         pulumi.set(__self__, "connecting_ipv6_cidrs", connecting_ipv6_cidrs)
         pulumi.set(__self__, "geo_country_codes", geo_country_codes)
@@ -27297,6 +27690,14 @@ class GetNetworkAclRuleNotMatchResult(dict):
         ASNs. Must contain between 1 and 10 unique items.
         """
         return pulumi.get(self, "asns")
+
+    @_builtins.property
+    @pulumi.getter(name="auth0Manageds")
+    def auth0_manageds(self) -> Sequence[_builtins.str]:
+        """
+        Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenant_acl_curated_blocklists` feature flag to be enabled on the tenant. (EA Only)
+        """
+        return pulumi.get(self, "auth0_manageds")
 
     @_builtins.property
     @pulumi.getter(name="connectingIpv4Cidrs")
@@ -28744,6 +29145,35 @@ class GetSigningKeysSigningKeyResult(dict):
         The cert thumbprint.
         """
         return pulumi.get(self, "thumbprint")
+
+
+@pulumi.output_type
+class GetTenantCountryCodeResult(dict):
+    def __init__(__self__, *,
+                 lists: Sequence[_builtins.str],
+                 mode: _builtins.str):
+        """
+        :param Sequence[_builtins.str] lists: List of ISO 3166-1 alpha-2 country codes.
+        :param _builtins.str mode: Whether the list is an allow-list or deny-list. Available options: `allow`, `deny`.
+        """
+        pulumi.set(__self__, "lists", lists)
+        pulumi.set(__self__, "mode", mode)
+
+    @_builtins.property
+    @pulumi.getter
+    def lists(self) -> Sequence[_builtins.str]:
+        """
+        List of ISO 3166-1 alpha-2 country codes.
+        """
+        return pulumi.get(self, "lists")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> _builtins.str:
+        """
+        Whether the list is an allow-list or deny-list. Available options: `allow`, `deny`.
+        """
+        return pulumi.get(self, "mode")
 
 
 @pulumi.output_type

@@ -1015,6 +1015,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+     * 
+     */
+    @Import(name="oidcMetadata")
+    private @Nullable Output<String> oidcMetadata;
+
+    /**
+     * @return Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+     * 
+     */
+    public Optional<Output<String>> oidcMetadata() {
+        return Optional.ofNullable(this.oidcMetadata);
+    }
+
+    /**
      * Defines options for the passkey authentication method
      * 
      */
@@ -1907,6 +1922,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.mfa = $.mfa;
         this.name = $.name;
         this.nonPersistentAttrs = $.nonPersistentAttrs;
+        this.oidcMetadata = $.oidcMetadata;
         this.passkeyOptions = $.passkeyOptions;
         this.passwordComplexityOptions = $.passwordComplexityOptions;
         this.passwordDictionary = $.passwordDictionary;
@@ -3425,6 +3441,27 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder nonPersistentAttrs(String... nonPersistentAttrs) {
             return nonPersistentAttrs(List.of(nonPersistentAttrs));
+        }
+
+        /**
+         * @param oidcMetadata Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcMetadata(@Nullable Output<String> oidcMetadata) {
+            $.oidcMetadata = oidcMetadata;
+            return this;
+        }
+
+        /**
+         * @param oidcMetadata Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcMetadata(String oidcMetadata) {
+            return oidcMetadata(Output.of(oidcMetadata));
         }
 
         /**

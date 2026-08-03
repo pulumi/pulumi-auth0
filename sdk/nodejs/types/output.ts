@@ -656,6 +656,32 @@ export interface BrandingThemeFontsTitle {
     size?: number;
 }
 
+export interface BrandingThemeIdentifiers {
+    /**
+     * Login display style. Available options: `unified`, `separate`.
+     */
+    loginDisplay: string;
+    /**
+     * Whether OTP autocomplete is enabled.
+     */
+    otpAutocomplete: boolean;
+    /**
+     * Phone number display settings.
+     */
+    phoneDisplay: outputs.BrandingThemeIdentifiersPhoneDisplay;
+}
+
+export interface BrandingThemeIdentifiersPhoneDisplay {
+    /**
+     * Phone number formatting. Available options: `international`, `regional`.
+     */
+    formatting: string;
+    /**
+     * Phone number masking. Available options: `maskDigits`, `hideCountryCode`, `showAll`.
+     */
+    masking: string;
+}
+
 export interface BrandingThemePageBackground {
     /**
      * Background color. Defaults to `#000000`.
@@ -1615,6 +1641,13 @@ export interface ClientFedcmLoginGoogle {
     isEnabled: boolean;
 }
 
+export interface ClientIdentityAssertionAuthorizationGrant {
+    /**
+     * Whether the client can exchange ID-JAGs for access tokens. (EA only)
+     */
+    active: boolean;
+}
+
 export interface ClientJwtConfiguration {
     /**
      * Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
@@ -1786,7 +1819,7 @@ export interface ClientSessionTransfer {
      */
     canCreateSessionTransferToken: boolean;
     /**
-     * Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+     * Configuration for delegation (impersonation) access using Session Transfer Tokens.
      */
     delegation?: outputs.ClientSessionTransferDelegation;
     /**
@@ -1805,11 +1838,11 @@ export interface ClientSessionTransfer {
 
 export interface ClientSessionTransferDelegation {
     /**
-     * Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
+     * Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`.
      */
     allowDelegatedAccess: boolean;
     /**
-     * Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+     * Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`.
      */
     enforceDeviceBinding: string;
 }
@@ -1849,6 +1882,17 @@ export interface ConnectionAuthentication {
 
 export interface ConnectionConnectedAccounts {
     active: boolean;
+}
+
+export interface ConnectionCrossAppAccessRequestingApp {
+    active: boolean;
+}
+
+export interface ConnectionCrossAppAccessResourceApp {
+    /**
+     * Whether the connection acts as a Cross App Access resource application. One of `enabled` or `disabled`. (EA only)
+     */
+    status: string;
 }
 
 export interface ConnectionDirectoryMapping {
@@ -2123,6 +2167,10 @@ export interface ConnectionOptions {
      * If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
      */
     nonPersistentAttrs: string[];
+    /**
+     * Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+     */
+    oidcMetadata: string;
     /**
      * Defines options for the passkey authentication method
      */
@@ -4037,6 +4085,32 @@ export interface GetBrandingThemeFontTitle {
     size: number;
 }
 
+export interface GetBrandingThemeIdentifier {
+    /**
+     * Login display style. Available options: `unified`, `separate`.
+     */
+    loginDisplay: string;
+    /**
+     * Whether OTP autocomplete is enabled.
+     */
+    otpAutocomplete: boolean;
+    /**
+     * Phone number display settings.
+     */
+    phoneDisplays: outputs.GetBrandingThemeIdentifierPhoneDisplay[];
+}
+
+export interface GetBrandingThemeIdentifierPhoneDisplay {
+    /**
+     * Phone number formatting. Available options: `international`, `regional`.
+     */
+    formatting: string;
+    /**
+     * Phone number masking. Available options: `maskDigits`, `hideCountryCode`, `showAll`.
+     */
+    masking: string;
+}
+
 export interface GetBrandingThemePageBackground {
     /**
      * Background color. Defaults to `#000000`.
@@ -4870,6 +4944,13 @@ export interface GetClientGrantsClientGrant {
     subjectType: string;
 }
 
+export interface GetClientIdentityAssertionAuthorizationGrant {
+    /**
+     * Whether the client can exchange ID-JAGs for access tokens. (EA only)
+     */
+    active: boolean;
+}
+
 export interface GetClientJwtConfiguration {
     /**
      * Algorithm used to sign JWTs. Can be one of `HS256`, `RS256`, `PS256`.
@@ -5041,7 +5122,7 @@ export interface GetClientSessionTransfer {
      */
     canCreateSessionTransferToken: boolean;
     /**
-     * Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+     * Configuration for delegation (impersonation) access using Session Transfer Tokens.
      */
     delegations: outputs.GetClientSessionTransferDelegation[];
     /**
@@ -5060,11 +5141,11 @@ export interface GetClientSessionTransfer {
 
 export interface GetClientSessionTransferDelegation {
     /**
-     * Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
+     * Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`.
      */
     allowDelegatedAccess: boolean;
     /**
-     * Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+     * Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`.
      */
     enforceDeviceBinding: string;
 }
@@ -5178,7 +5259,7 @@ export interface GetClientsClient {
      */
     clientMetadata: {[key: string]: string};
     /**
-     * Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string.
+     * Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. Set `hideClientSecret` to `true` to avoid persisting this value into Terraform state.
      */
     clientSecret: string;
     /**
@@ -5209,6 +5290,10 @@ export interface GetClientsClient {
      * Types of grants that this client is authorized to use.
      */
     grantTypes: string[];
+    /**
+     * Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+     */
+    identityAssertionAuthorizationGrants: outputs.GetClientsClientIdentityAssertionAuthorizationGrant[];
     /**
      * Indicates whether this client is a first-party client.
      */
@@ -5328,6 +5413,13 @@ export interface GetClientsClientFedcmLoginGoogle {
     isEnabled: boolean;
 }
 
+export interface GetClientsClientIdentityAssertionAuthorizationGrant {
+    /**
+     * Whether the client can exchange ID-JAGs for access tokens. (EA only)
+     */
+    active: boolean;
+}
+
 export interface GetClientsClientMyOrganizationConfiguration {
     /**
      * The list of connection strategies that are allowed when creating organizations for this client (e.g. "okta", "samlp").
@@ -5395,7 +5487,7 @@ export interface GetClientsClientSessionTransfer {
      */
     canCreateSessionTransferToken: boolean;
     /**
-     * Configuration for delegation (impersonation) access using Session Transfer Tokens. (EA Only)
+     * Configuration for delegation (impersonation) access using Session Transfer Tokens.
      */
     delegations: outputs.GetClientsClientSessionTransferDelegation[];
     /**
@@ -5414,11 +5506,11 @@ export interface GetClientsClientSessionTransfer {
 
 export interface GetClientsClientSessionTransferDelegation {
     /**
-     * Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
+     * Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`.
      */
     allowDelegatedAccess: boolean;
     /**
-     * Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+     * Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`.
      */
     enforceDeviceBinding: string;
 }
@@ -5458,6 +5550,17 @@ export interface GetConnectionAuthentication {
 
 export interface GetConnectionConnectedAccount {
     active: boolean;
+}
+
+export interface GetConnectionCrossAppAccessRequestingApp {
+    active: boolean;
+}
+
+export interface GetConnectionCrossAppAccessResourceApp {
+    /**
+     * Whether the connection acts as a Cross App Access resource application. One of `enabled` or `disabled`. (EA only)
+     */
+    status: string;
 }
 
 export interface GetConnectionDirectoryDefaultMappingMapping {
@@ -5799,6 +5902,10 @@ export interface GetConnectionOption {
      * If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
      */
     nonPersistentAttrs: string[];
+    /**
+     * Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+     */
+    oidcMetadata: string;
     /**
      * Defines options for the passkey authentication method
      */
@@ -6945,6 +7052,10 @@ export interface GetNetworkAclRuleMatch {
      */
     asns: number[];
     /**
+     * Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+     */
+    auth0Manageds: string[];
+    /**
      * Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
      */
     connectingIpv4Cidrs: string[];
@@ -6991,6 +7102,10 @@ export interface GetNetworkAclRuleNotMatch {
      * ASNs. Must contain between 1 and 10 unique items.
      */
     asns: number[];
+    /**
+     * Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+     */
+    auth0Manageds: string[];
     /**
      * Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
      */
@@ -7542,6 +7657,17 @@ export interface GetSigningKeysSigningKey {
      * The cert thumbprint.
      */
     thumbprint: string;
+}
+
+export interface GetTenantCountryCode {
+    /**
+     * List of ISO 3166-1 alpha-2 country codes.
+     */
+    lists: string[];
+    /**
+     * Whether the list is an allow-list or deny-list. Available options: `allow`, `deny`.
+     */
+    mode: string;
 }
 
 export interface GetTenantDefaultTokenQuota {
@@ -8287,6 +8413,10 @@ export interface NetworkAclRuleMatch {
      */
     asns?: number[];
     /**
+     * Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+     */
+    auth0Manageds?: string[];
+    /**
      * Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
      */
     connectingIpv4Cidrs?: string[];
@@ -8333,6 +8463,10 @@ export interface NetworkAclRuleNotMatch {
      * ASNs. Must contain between 1 and 10 unique items.
      */
     asns?: number[];
+    /**
+     * Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+     */
+    auth0Manageds?: string[];
     /**
      * Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
      */
@@ -8827,6 +8961,17 @@ export interface SelfServiceProfileUserAttribute {
      * Attribute’s name on Auth0 side
      */
     name: string;
+}
+
+export interface TenantCountryCodes {
+    /**
+     * List of ISO 3166-1 alpha-2 country codes.
+     */
+    lists: string[];
+    /**
+     * Whether the list is an allow-list or deny-list. Available options: `allow`, `deny`.
+     */
+    mode: string;
 }
 
 export interface TenantDefaultTokenQuota {

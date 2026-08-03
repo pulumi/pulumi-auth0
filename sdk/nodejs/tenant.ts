@@ -47,6 +47,13 @@ import * as utilities from "./utilities";
  *         showLogLink: false,
  *         url: "https://example.com/error",
  *     },
+ *     countryCodes: {
+ *         lists: [
+ *             "US",
+ *             "CA",
+ *         ],
+ *         mode: "allow",
+ *     },
  * });
  * ```
  *
@@ -107,6 +114,10 @@ export class Tenant extends pulumi.CustomResource {
      * Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
      */
     declare public readonly clientIdMetadataDocumentSupported: pulumi.Output<boolean>;
+    /**
+     * Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
+     */
+    declare public readonly countryCodes: pulumi.Output<outputs.TenantCountryCodes | undefined>;
     /**
      * Whether to enable flexible factors for MFA in the PostLogin action.
      */
@@ -233,6 +244,7 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["allowOrganizationNameInAuthenticationApi"] = state?.allowOrganizationNameInAuthenticationApi;
             resourceInputs["allowedLogoutUrls"] = state?.allowedLogoutUrls;
             resourceInputs["clientIdMetadataDocumentSupported"] = state?.clientIdMetadataDocumentSupported;
+            resourceInputs["countryCodes"] = state?.countryCodes;
             resourceInputs["customizeMfaInPostloginAction"] = state?.customizeMfaInPostloginAction;
             resourceInputs["defaultAudience"] = state?.defaultAudience;
             resourceInputs["defaultDirectory"] = state?.defaultDirectory;
@@ -266,6 +278,7 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["allowOrganizationNameInAuthenticationApi"] = args?.allowOrganizationNameInAuthenticationApi;
             resourceInputs["allowedLogoutUrls"] = args?.allowedLogoutUrls;
             resourceInputs["clientIdMetadataDocumentSupported"] = args?.clientIdMetadataDocumentSupported;
+            resourceInputs["countryCodes"] = args?.countryCodes;
             resourceInputs["customizeMfaInPostloginAction"] = args?.customizeMfaInPostloginAction;
             resourceInputs["defaultAudience"] = args?.defaultAudience;
             resourceInputs["defaultDirectory"] = args?.defaultDirectory;
@@ -319,6 +332,10 @@ export interface TenantState {
      * Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
      */
     clientIdMetadataDocumentSupported?: pulumi.Input<boolean | undefined>;
+    /**
+     * Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
+     */
+    countryCodes?: pulumi.Input<inputs.TenantCountryCodes | undefined>;
     /**
      * Whether to enable flexible factors for MFA in the PostLogin action.
      */
@@ -449,6 +466,10 @@ export interface TenantArgs {
      * Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
      */
     clientIdMetadataDocumentSupported?: pulumi.Input<boolean | undefined>;
+    /**
+     * Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
+     */
+    countryCodes?: pulumi.Input<inputs.TenantCountryCodes | undefined>;
     /**
      * Whether to enable flexible factors for MFA in the PostLogin action.
      */

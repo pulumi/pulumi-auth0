@@ -90,6 +90,10 @@ namespace Pulumi.Auth0
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetBrandingThemeIdentifierResult> Identifiers;
         public readonly ImmutableArray<Outputs.GetBrandingThemePageBackgroundResult> PageBackgrounds;
         public readonly ImmutableArray<Outputs.GetBrandingThemeWidgetResult> Widgets;
 
@@ -105,6 +109,8 @@ namespace Pulumi.Auth0
 
             string id,
 
+            ImmutableArray<Outputs.GetBrandingThemeIdentifierResult> identifiers,
+
             ImmutableArray<Outputs.GetBrandingThemePageBackgroundResult> pageBackgrounds,
 
             ImmutableArray<Outputs.GetBrandingThemeWidgetResult> widgets)
@@ -114,6 +120,7 @@ namespace Pulumi.Auth0
             DisplayName = displayName;
             Fonts = fonts;
             Id = id;
+            Identifiers = identifiers;
             PageBackgrounds = pageBackgrounds;
             Widgets = widgets;
         }

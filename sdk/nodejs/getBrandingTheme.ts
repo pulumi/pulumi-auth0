@@ -39,6 +39,10 @@ export interface GetBrandingThemeResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed
+     */
+    readonly identifiers: outputs.GetBrandingThemeIdentifier[];
     readonly pageBackgrounds: outputs.GetBrandingThemePageBackground[];
     readonly widgets: outputs.GetBrandingThemeWidget[];
 }

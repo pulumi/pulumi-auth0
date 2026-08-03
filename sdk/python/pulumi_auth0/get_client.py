@@ -27,7 +27,7 @@ class GetClientResult:
     """
     A collection of values returned by getClient.
     """
-    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, async_approval_notification_channels=None, callbacks=None, client_aliases=None, client_authentication_methods=None, client_id=None, client_metadata=None, client_secret=None, compliance_level=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, default_organizations=None, description=None, encryption_key=None, express_configurations=None, external_client_id=None, external_metadata_created_by=None, external_metadata_type=None, fedcm_logins=None, form_template=None, grant_types=None, id=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwks_uri=None, jwt_configurations=None, logo_uri=None, mobiles=None, my_organization_configurations=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, oidc_logouts=None, organization_discovery_methods=None, organization_require_behavior=None, organization_usage=None, redirection_policy=None, refresh_tokens=None, require_proof_of_possession=None, require_pushed_authorization_requests=None, resource_server_identifier=None, session_transfers=None, signed_request_objects=None, signing_keys=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, sso=None, sso_disabled=None, third_party_security_mode=None, token_endpoint_auth_method=None, token_exchanges=None, token_quotas=None, web_origins=None):
+    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, async_approval_notification_channels=None, callbacks=None, client_aliases=None, client_authentication_methods=None, client_id=None, client_metadata=None, client_secret=None, compliance_level=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, default_organizations=None, description=None, encryption_key=None, express_configurations=None, external_client_id=None, external_metadata_created_by=None, external_metadata_type=None, fedcm_logins=None, form_template=None, grant_types=None, hide_client_secret=None, id=None, identity_assertion_authorization_grants=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwks_uri=None, jwt_configurations=None, logo_uri=None, mobiles=None, my_organization_configurations=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, oidc_logouts=None, organization_discovery_methods=None, organization_require_behavior=None, organization_usage=None, redirection_policy=None, refresh_tokens=None, require_proof_of_possession=None, require_pushed_authorization_requests=None, resource_server_identifier=None, session_transfers=None, signed_request_objects=None, signing_keys=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, sso=None, sso_disabled=None, third_party_security_mode=None, token_endpoint_auth_method=None, token_exchanges=None, token_quotas=None, web_origins=None):
         if addons and not isinstance(addons, list):
             raise TypeError("Expected argument 'addons' to be a list")
         pulumi.set(__self__, "addons", addons)
@@ -109,9 +109,15 @@ class GetClientResult:
         if grant_types and not isinstance(grant_types, list):
             raise TypeError("Expected argument 'grant_types' to be a list")
         pulumi.set(__self__, "grant_types", grant_types)
+        if hide_client_secret and not isinstance(hide_client_secret, bool):
+            raise TypeError("Expected argument 'hide_client_secret' to be a bool")
+        pulumi.set(__self__, "hide_client_secret", hide_client_secret)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if identity_assertion_authorization_grants and not isinstance(identity_assertion_authorization_grants, list):
+            raise TypeError("Expected argument 'identity_assertion_authorization_grants' to be a list")
+        pulumi.set(__self__, "identity_assertion_authorization_grants", identity_assertion_authorization_grants)
         if initiate_login_uri and not isinstance(initiate_login_uri, str):
             raise TypeError("Expected argument 'initiate_login_uri' to be a str")
         pulumi.set(__self__, "initiate_login_uri", initiate_login_uri)
@@ -301,7 +307,7 @@ class GetClientResult:
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> _builtins.str:
         """
-        Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string.
+        Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. Set `hide_client_secret` to `true` to avoid persisting this value into Terraform state.
         """
         return pulumi.get(self, "client_secret")
 
@@ -426,12 +432,28 @@ class GetClientResult:
         return pulumi.get(self, "grant_types")
 
     @_builtins.property
+    @pulumi.getter(name="hideClientSecret")
+    def hide_client_secret(self) -> Optional[_builtins.bool]:
+        """
+        Set this to avoid persisting the sensitive `client_secret` value into state, in which case `client_secret` will contain an empty string.
+        """
+        return pulumi.get(self, "hide_client_secret")
+
+    @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="identityAssertionAuthorizationGrants")
+    def identity_assertion_authorization_grants(self) -> Sequence['outputs.GetClientIdentityAssertionAuthorizationGrantResult']:
+        """
+        Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+        """
+        return pulumi.get(self, "identity_assertion_authorization_grants")
 
     @_builtins.property
     @pulumi.getter(name="initiateLoginUri")
@@ -720,7 +742,9 @@ class AwaitableGetClientResult(GetClientResult):
             fedcm_logins=self.fedcm_logins,
             form_template=self.form_template,
             grant_types=self.grant_types,
+            hide_client_secret=self.hide_client_secret,
             id=self.id,
+            identity_assertion_authorization_grants=self.identity_assertion_authorization_grants,
             initiate_login_uri=self.initiate_login_uri,
             is_first_party=self.is_first_party,
             is_token_endpoint_ip_header_trusted=self.is_token_endpoint_ip_header_trusted,
@@ -756,6 +780,7 @@ class AwaitableGetClientResult(GetClientResult):
 
 
 def get_client(client_id: Optional[_builtins.str] = None,
+               hide_client_secret: Optional[_builtins.bool] = None,
                name: Optional[_builtins.str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClientResult:
     """
@@ -775,10 +800,12 @@ def get_client(client_id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str client_id: The ID of the client. If not provided, `name` must be set.
+    :param _builtins.bool hide_client_secret: Set this to avoid persisting the sensitive `client_secret` value into state, in which case `client_secret` will contain an empty string.
     :param _builtins.str name: The name of the client. If not provided, `client_id` must be set.
     """
     __args__ = dict()
     __args__['clientId'] = client_id
+    __args__['hideClientSecret'] = hide_client_secret
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('auth0:index/getClient:getClient', __args__, opts=opts, typ=GetClientResult).value
@@ -811,7 +838,9 @@ def get_client(client_id: Optional[_builtins.str] = None,
         fedcm_logins=pulumi.get(__ret__, 'fedcm_logins'),
         form_template=pulumi.get(__ret__, 'form_template'),
         grant_types=pulumi.get(__ret__, 'grant_types'),
+        hide_client_secret=pulumi.get(__ret__, 'hide_client_secret'),
         id=pulumi.get(__ret__, 'id'),
+        identity_assertion_authorization_grants=pulumi.get(__ret__, 'identity_assertion_authorization_grants'),
         initiate_login_uri=pulumi.get(__ret__, 'initiate_login_uri'),
         is_first_party=pulumi.get(__ret__, 'is_first_party'),
         is_token_endpoint_ip_header_trusted=pulumi.get(__ret__, 'is_token_endpoint_ip_header_trusted'),
@@ -845,6 +874,7 @@ def get_client(client_id: Optional[_builtins.str] = None,
         token_quotas=pulumi.get(__ret__, 'token_quotas'),
         web_origins=pulumi.get(__ret__, 'web_origins'))
 def get_client_output(client_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      hide_client_secret: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                       name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClientResult]:
     """
@@ -864,10 +894,12 @@ def get_client_output(client_id: pulumi.Input[Optional[Optional[_builtins.str]]]
 
 
     :param _builtins.str client_id: The ID of the client. If not provided, `name` must be set.
+    :param _builtins.bool hide_client_secret: Set this to avoid persisting the sensitive `client_secret` value into state, in which case `client_secret` will contain an empty string.
     :param _builtins.str name: The name of the client. If not provided, `client_id` must be set.
     """
     __args__ = dict()
     __args__['clientId'] = client_id
+    __args__['hideClientSecret'] = hide_client_secret
     __args__['name'] = name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('auth0:index/getClient:getClient', __args__, opts=opts, typ=GetClientResult)
@@ -899,7 +931,9 @@ def get_client_output(client_id: pulumi.Input[Optional[Optional[_builtins.str]]]
         fedcm_logins=pulumi.get(__response__, 'fedcm_logins'),
         form_template=pulumi.get(__response__, 'form_template'),
         grant_types=pulumi.get(__response__, 'grant_types'),
+        hide_client_secret=pulumi.get(__response__, 'hide_client_secret'),
         id=pulumi.get(__response__, 'id'),
+        identity_assertion_authorization_grants=pulumi.get(__response__, 'identity_assertion_authorization_grants'),
         initiate_login_uri=pulumi.get(__response__, 'initiate_login_uri'),
         is_first_party=pulumi.get(__response__, 'is_first_party'),
         is_token_endpoint_ip_header_trusted=pulumi.get(__response__, 'is_token_endpoint_ip_header_trusted'),

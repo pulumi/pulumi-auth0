@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0;
 
+import com.pulumi.auth0.inputs.TenantCountryCodesArgs;
 import com.pulumi.auth0.inputs.TenantDefaultTokenQuotaArgs;
 import com.pulumi.auth0.inputs.TenantErrorPageArgs;
 import com.pulumi.auth0.inputs.TenantFlagsArgs;
@@ -83,6 +84,21 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> clientIdMetadataDocumentSupported() {
         return Optional.ofNullable(this.clientIdMetadataDocumentSupported);
+    }
+
+    /**
+     * Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
+     * 
+     */
+    @Import(name="countryCodes")
+    private @Nullable Output<TenantCountryCodesArgs> countryCodes;
+
+    /**
+     * @return Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
+     * 
+     */
+    public Optional<Output<TenantCountryCodesArgs>> countryCodes() {
+        return Optional.ofNullable(this.countryCodes);
     }
 
     /**
@@ -497,6 +513,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         this.allowOrganizationNameInAuthenticationApi = $.allowOrganizationNameInAuthenticationApi;
         this.allowedLogoutUrls = $.allowedLogoutUrls;
         this.clientIdMetadataDocumentSupported = $.clientIdMetadataDocumentSupported;
+        this.countryCodes = $.countryCodes;
         this.customizeMfaInPostloginAction = $.customizeMfaInPostloginAction;
         this.defaultAudience = $.defaultAudience;
         this.defaultDirectory = $.defaultDirectory;
@@ -646,6 +663,27 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder clientIdMetadataDocumentSupported(Boolean clientIdMetadataDocumentSupported) {
             return clientIdMetadataDocumentSupported(Output.of(clientIdMetadataDocumentSupported));
+        }
+
+        /**
+         * @param countryCodes Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder countryCodes(@Nullable Output<TenantCountryCodesArgs> countryCodes) {
+            $.countryCodes = countryCodes;
+            return this;
+        }
+
+        /**
+         * @param countryCodes Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder countryCodes(TenantCountryCodesArgs countryCodes) {
+            return countryCodes(Output.of(countryCodes));
         }
 
         /**

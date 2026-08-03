@@ -65,6 +65,15 @@ namespace Pulumi.Auth0
     ///             ShowLogLink = false,
     ///             Url = "https://example.com/error",
     ///         },
+    ///         CountryCodes = new Auth0.Inputs.TenantCountryCodesArgs
+    ///         {
+    ///             Lists = new[]
+    ///             {
+    ///                 "US",
+    ///                 "CA",
+    ///             },
+    ///             Mode = "allow",
+    ///         },
     ///     });
     /// 
     /// });
@@ -109,6 +118,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("clientIdMetadataDocumentSupported")]
         public Output<bool> ClientIdMetadataDocumentSupported { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
+        /// </summary>
+        [Output("countryCodes")]
+        public Output<Outputs.TenantCountryCodes?> CountryCodes { get; private set; } = null!;
 
         /// <summary>
         /// Whether to enable flexible factors for MFA in the PostLogin action.
@@ -355,6 +370,12 @@ namespace Pulumi.Auth0
         public Input<bool>? ClientIdMetadataDocumentSupported { get; set; }
 
         /// <summary>
+        /// Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
+        /// </summary>
+        [Input("countryCodes")]
+        public Input<Inputs.TenantCountryCodesArgs>? CountryCodes { get; set; }
+
+        /// <summary>
         /// Whether to enable flexible factors for MFA in the PostLogin action.
         /// </summary>
         [Input("customizeMfaInPostloginAction")]
@@ -565,6 +586,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("clientIdMetadataDocumentSupported")]
         public Input<bool>? ClientIdMetadataDocumentSupported { get; set; }
+
+        /// <summary>
+        /// Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
+        /// </summary>
+        [Input("countryCodes")]
+        public Input<Inputs.TenantCountryCodesGetArgs>? CountryCodes { get; set; }
 
         /// <summary>
         /// Whether to enable flexible factors for MFA in the PostLogin action.

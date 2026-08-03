@@ -45,6 +45,10 @@ export interface GetTenantResult {
      */
     readonly clientIdMetadataDocumentSupported: boolean;
     /**
+     * Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
+     */
+    readonly countryCodes: outputs.GetTenantCountryCode[];
+    /**
      * Whether to enable flexible factors for MFA in the PostLogin action.
      */
     readonly customizeMfaInPostloginAction: boolean;

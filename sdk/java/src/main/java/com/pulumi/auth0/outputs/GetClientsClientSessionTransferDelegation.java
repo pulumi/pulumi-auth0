@@ -12,26 +12,26 @@ import java.util.Objects;
 @CustomType
 public final class GetClientsClientSessionTransferDelegation {
     /**
-     * @return Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
+     * @return Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`.
      * 
      */
     private Boolean allowDelegatedAccess;
     /**
-     * @return Indicates the device binding enforcement for delegation (impersonation) access. If set to &#39;ip&#39;, device binding is enforced by IP. If set to &#39;asn&#39;, device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+     * @return Indicates the device binding enforcement for delegation (impersonation) access. If set to &#39;ip&#39;, device binding is enforced by IP. If set to &#39;asn&#39;, device binding is enforced by ASN. Defaults to `ip`.
      * 
      */
     private String enforceDeviceBinding;
 
     private GetClientsClientSessionTransferDelegation() {}
     /**
-     * @return Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`. (EA Only)
+     * @return Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`.
      * 
      */
     public Boolean allowDelegatedAccess() {
         return this.allowDelegatedAccess;
     }
     /**
-     * @return Indicates the device binding enforcement for delegation (impersonation) access. If set to &#39;ip&#39;, device binding is enforced by IP. If set to &#39;asn&#39;, device binding is enforced by ASN. Defaults to `ip`. (EA Only)
+     * @return Indicates the device binding enforcement for delegation (impersonation) access. If set to &#39;ip&#39;, device binding is enforced by IP. If set to &#39;asn&#39;, device binding is enforced by ASN. Defaults to `ip`.
      * 
      */
     public String enforceDeviceBinding() {

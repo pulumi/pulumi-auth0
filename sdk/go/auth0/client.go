@@ -75,6 +75,8 @@ type Client struct {
 	FormTemplate pulumi.StringPtrOutput `pulumi:"formTemplate"`
 	// Types of grants that this client is authorized to use.
 	GrantTypes pulumi.StringArrayOutput `pulumi:"grantTypes"`
+	// Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+	IdentityAssertionAuthorizationGrant ClientIdentityAssertionAuthorizationGrantPtrOutput `pulumi:"identityAssertionAuthorizationGrant"`
 	// Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
 	InitiateLoginUri pulumi.StringPtrOutput `pulumi:"initiateLoginUri"`
 	// Indicates whether this client is a first-party client.
@@ -225,6 +227,8 @@ type clientState struct {
 	FormTemplate *string `pulumi:"formTemplate"`
 	// Types of grants that this client is authorized to use.
 	GrantTypes []string `pulumi:"grantTypes"`
+	// Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+	IdentityAssertionAuthorizationGrant *ClientIdentityAssertionAuthorizationGrant `pulumi:"identityAssertionAuthorizationGrant"`
 	// Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
 	InitiateLoginUri *string `pulumi:"initiateLoginUri"`
 	// Indicates whether this client is a first-party client.
@@ -339,6 +343,8 @@ type ClientState struct {
 	FormTemplate pulumi.StringPtrInput
 	// Types of grants that this client is authorized to use.
 	GrantTypes pulumi.StringArrayInput
+	// Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+	IdentityAssertionAuthorizationGrant ClientIdentityAssertionAuthorizationGrantPtrInput
 	// Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
 	InitiateLoginUri pulumi.StringPtrInput
 	// Indicates whether this client is a first-party client.
@@ -449,6 +455,8 @@ type clientArgs struct {
 	FormTemplate *string `pulumi:"formTemplate"`
 	// Types of grants that this client is authorized to use.
 	GrantTypes []string `pulumi:"grantTypes"`
+	// Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+	IdentityAssertionAuthorizationGrant *ClientIdentityAssertionAuthorizationGrant `pulumi:"identityAssertionAuthorizationGrant"`
 	// Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
 	InitiateLoginUri *string `pulumi:"initiateLoginUri"`
 	// Indicates whether this client is a first-party client.
@@ -552,6 +560,8 @@ type ClientArgs struct {
 	FormTemplate pulumi.StringPtrInput
 	// Types of grants that this client is authorized to use.
 	GrantTypes pulumi.StringArrayInput
+	// Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+	IdentityAssertionAuthorizationGrant ClientIdentityAssertionAuthorizationGrantPtrInput
 	// Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
 	InitiateLoginUri pulumi.StringPtrInput
 	// Indicates whether this client is a first-party client.
@@ -821,6 +831,13 @@ func (o ClientOutput) FormTemplate() pulumi.StringPtrOutput {
 // Types of grants that this client is authorized to use.
 func (o ClientOutput) GrantTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringArrayOutput { return v.GrantTypes }).(pulumi.StringArrayOutput)
+}
+
+// Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+func (o ClientOutput) IdentityAssertionAuthorizationGrant() ClientIdentityAssertionAuthorizationGrantPtrOutput {
+	return o.ApplyT(func(v *Client) ClientIdentityAssertionAuthorizationGrantPtrOutput {
+		return v.IdentityAssertionAuthorizationGrant
+	}).(ClientIdentityAssertionAuthorizationGrantPtrOutput)
 }
 
 // Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.

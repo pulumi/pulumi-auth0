@@ -60,6 +60,8 @@ func LookupClient(ctx *pulumi.Context, args *LookupClientArgs, opts ...pulumi.In
 type LookupClientArgs struct {
 	// The ID of the client. If not provided, `name` must be set.
 	ClientId *string `pulumi:"clientId"`
+	// Set this to avoid persisting the sensitive `clientSecret` value into state, in which case `clientSecret` will contain an empty string.
+	HideClientSecret *bool `pulumi:"hideClientSecret"`
 	// The name of the client. If not provided, `clientId` must be set.
 	Name *string `pulumi:"name"`
 }
@@ -88,7 +90,7 @@ type LookupClientResult struct {
 	ClientId *string `pulumi:"clientId"`
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 	ClientMetadata map[string]string `pulumi:"clientMetadata"`
-	// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string.
+	// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. Set `hideClientSecret` to `true` to avoid persisting this value into Terraform state.
 	ClientSecret string `pulumi:"clientSecret"`
 	// Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1AdvPkjPar`, `fapi1AdvMtlsPar`.
 	ComplianceLevel string `pulumi:"complianceLevel"`
@@ -120,8 +122,12 @@ type LookupClientResult struct {
 	FormTemplate string `pulumi:"formTemplate"`
 	// Types of grants that this client is authorized to use.
 	GrantTypes []string `pulumi:"grantTypes"`
+	// Set this to avoid persisting the sensitive `clientSecret` value into state, in which case `clientSecret` will contain an empty string.
+	HideClientSecret *bool `pulumi:"hideClientSecret"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+	IdentityAssertionAuthorizationGrants []GetClientIdentityAssertionAuthorizationGrant `pulumi:"identityAssertionAuthorizationGrants"`
 	// Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
 	InitiateLoginUri string `pulumi:"initiateLoginUri"`
 	// Indicates whether this client is a first-party client.
@@ -200,6 +206,8 @@ func LookupClientOutput(ctx *pulumi.Context, args LookupClientOutputArgs, opts .
 type LookupClientOutputArgs struct {
 	// The ID of the client. If not provided, `name` must be set.
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Set this to avoid persisting the sensitive `clientSecret` value into state, in which case `clientSecret` will contain an empty string.
+	HideClientSecret pulumi.BoolPtrInput `pulumi:"hideClientSecret"`
 	// The name of the client. If not provided, `clientId` must be set.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
@@ -278,7 +286,7 @@ func (o LookupClientResultOutput) ClientMetadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupClientResult) map[string]string { return v.ClientMetadata }).(pulumi.StringMapOutput)
 }
 
-// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string.
+// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. Set `hideClientSecret` to `true` to avoid persisting this value into Terraform state.
 func (o LookupClientResultOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientResult) string { return v.ClientSecret }).(pulumi.StringOutput)
 }
@@ -358,9 +366,21 @@ func (o LookupClientResultOutput) GrantTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupClientResult) []string { return v.GrantTypes }).(pulumi.StringArrayOutput)
 }
 
+// Set this to avoid persisting the sensitive `clientSecret` value into state, in which case `clientSecret` will contain an empty string.
+func (o LookupClientResultOutput) HideClientSecret() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupClientResult) *bool { return v.HideClientSecret }).(pulumi.BoolPtrOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupClientResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+func (o LookupClientResultOutput) IdentityAssertionAuthorizationGrants() GetClientIdentityAssertionAuthorizationGrantArrayOutput {
+	return o.ApplyT(func(v LookupClientResult) []GetClientIdentityAssertionAuthorizationGrant {
+		return v.IdentityAssertionAuthorizationGrants
+	}).(GetClientIdentityAssertionAuthorizationGrantArrayOutput)
 }
 
 // Initiate login URI. Must be HTTPS or an empty string. May contain Auth0 dynamic login URI placeholders such as `{organization.metadata.public_login_host}` or `{custom_domain.metadata.public_app_host}`, which are resolved by Auth0 at request time. See https://auth0.com/docs/get-started/applications/application-settings.
