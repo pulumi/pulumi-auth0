@@ -77,7 +77,7 @@ import (
 //
 //				Modules: auth0.ActionModuleTypeArray{
 //					&auth0.ActionModuleTypeArgs{
-//						ModuleId:        myModule.ID(),
+//						ModuleId:        myModule.ID().ToIDOutput().ToStringOutput(),
 //						ModuleVersionId: myModule.VersionId,
 //					},
 //				},

@@ -63,7 +63,7 @@ import (
 //			// A resource for configuring an Auth0 Connection SCIM Configuration, using default values.
 //			// Only one can be specified for a connection.
 //			_, err = auth0.NewConnectionScimConfiguration(ctx, "my_conn_scim_configuration_default", &auth0.ConnectionScimConfigurationArgs{
-//				ConnectionId: myEnterpriseConnection.ID(),
+//				ConnectionId: myEnterpriseConnection.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -71,7 +71,7 @@ import (
 //			// A resource for configuring an Auth0 Connection SCIM Configuration, specifying `user_id_attribute` and `mapping`.
 //			// Only one can be specified for a connection.
 //			_, err = auth0.NewConnectionScimConfiguration(ctx, "my_conn_scim_configuration", &auth0.ConnectionScimConfigurationArgs{
-//				ConnectionId:    myEnterpriseConnection2.ID(),
+//				ConnectionId:    myEnterpriseConnection2.ID().ToIDOutput().ToStringOutput(),
 //				UserIdAttribute: pulumi.String("attribute1"),
 //				Mappings: auth0.ConnectionScimConfigurationMappingArray{
 //					&auth0.ConnectionScimConfigurationMappingArgs{

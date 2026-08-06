@@ -32,9 +32,9 @@ import * as utilities from "./utilities";
  *     moduleId: myModule.id,
  *     versionId: myModule.versionId,
  * });
- * export const versionNumber = myModuleVersion.apply(myModuleVersion => myModuleVersion.versionNumber);
- * export const versionCode = myModuleVersion.apply(myModuleVersion => myModuleVersion.code);
- * export const versionCreatedAt = myModuleVersion.apply(myModuleVersion => myModuleVersion.createdAt);
+ * export const versionNumber = myModuleVersion.versionNumber;
+ * export const versionCode = myModuleVersion.code;
+ * export const versionCreatedAt = myModuleVersion.createdAt;
  * ```
  */
 export function getActionModuleVersion(args: GetActionModuleVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetActionModuleVersionResult> {
@@ -122,9 +122,9 @@ export interface GetActionModuleVersionResult {
  *     moduleId: myModule.id,
  *     versionId: myModule.versionId,
  * });
- * export const versionNumber = myModuleVersion.apply(myModuleVersion => myModuleVersion.versionNumber);
- * export const versionCode = myModuleVersion.apply(myModuleVersion => myModuleVersion.code);
- * export const versionCreatedAt = myModuleVersion.apply(myModuleVersion => myModuleVersion.createdAt);
+ * export const versionNumber = myModuleVersion.versionNumber;
+ * export const versionCode = myModuleVersion.code;
+ * export const versionCreatedAt = myModuleVersion.createdAt;
  * ```
  */
 export function getActionModuleVersionOutput(args: GetActionModuleVersionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetActionModuleVersionResult> {

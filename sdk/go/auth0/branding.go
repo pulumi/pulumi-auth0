@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			invokeFile, err := std.File(ctx, map[string]interface{}{
+//			invokeFile, err := std.File(ctx, map[string]string{
 //				"input": "universal_login_body.html",
 //			}, nil)
 //			if err != nil {

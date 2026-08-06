@@ -68,7 +68,7 @@ import * as utilities from "./utilities";
  * const myModuleActions = auth0.getActionModuleActionsOutput({
  *     moduleId: myModule.id,
  * });
- * export const actionsUsingModule = myModuleActions.apply(myModuleActions => myModuleActions.total);
+ * export const actionsUsingModule = myModuleActions.total;
  * export const actionNames = myModuleActions.apply(myModuleActions => .map(action => (action.actionName)));
  * ```
  */
@@ -172,7 +172,7 @@ export interface GetActionModuleActionsResult {
  * const myModuleActions = auth0.getActionModuleActionsOutput({
  *     moduleId: myModule.id,
  * });
- * export const actionsUsingModule = myModuleActions.apply(myModuleActions => myModuleActions.total);
+ * export const actionsUsingModule = myModuleActions.total;
  * export const actionNames = myModuleActions.apply(myModuleActions => .map(action => (action.actionName)));
  * ```
  */

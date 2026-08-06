@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"coordinates": map[string]interface{}{
+//				"coordinates": map[string]int{
 //					"x": 0,
 //					"y": 0,
 //				},
@@ -60,7 +60,7 @@ import (
 //							},
 //							map[string]interface{}{
 //								"category": "BLOCK",
-//								"config": map[string]interface{}{
+//								"config": map[string]string{
 //									"text": "Continue",
 //								},
 //								"id":   "next_button_3FbA",
@@ -69,7 +69,7 @@ import (
 //						},
 //						"next_node": "$ending",
 //					},
-//					"coordinates": map[string]interface{}{
+//					"coordinates": map[string]int{
 //						"x": 500,
 //						"y": 0,
 //					},
@@ -82,10 +82,10 @@ import (
 //			}
 //			json1 := string(tmpJSON1)
 //			tmpJSON2, err := json.Marshal(map[string]interface{}{
-//				"after_submit": map[string]interface{}{
+//				"after_submit": map[string]string{
 //					"flow_id": "<my_flow_id>",
 //				},
-//				"coordinates": map[string]interface{}{
+//				"coordinates": map[string]int{
 //					"x": 1250,
 //					"y": 0,
 //				},
@@ -95,25 +95,25 @@ import (
 //				return err
 //			}
 //			json2 := string(tmpJSON2)
-//			tmpJSON3, err := json.Marshal(map[string]interface{}{
+//			tmpJSON3, err := json.Marshal(map[string]string{
 //				"css": "h1 {\n  color: white;\n  text-align: center;\n}",
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			json3 := string(tmpJSON3)
-//			tmpJSON4, err := json.Marshal(map[string]interface{}{
+//			tmpJSON4, err := json.Marshal(map[string]map[string]interface{}{
 //				"es": map[string]interface{}{
-//					"components": map[string]interface{}{
-//						"rich_text_uctu": map[string]interface{}{
-//							"config": map[string]interface{}{
+//					"components": map[string]map[string]map[string]string{
+//						"rich_text_uctu": map[string]map[string]string{
+//							"config": map[string]string{
 //								"content": "<h2>Help us verify your personal information</h2><p>We want to learn more about you so that we can validate and protect your account...</p>",
 //							},
 //						},
 //					},
 //					"messages": map[string]interface{}{
 //						"custom": map[string]interface{}{},
-//						"errors": map[string]interface{}{
+//						"errors": map[string]string{
 //							"ERR_ACCEPTANCE_REQUIRED": "Por favor, marca este campo para continuar.",
 //						},
 //					},
@@ -123,7 +123,7 @@ import (
 //				return err
 //			}
 //			json4 := string(tmpJSON4)
-//			tmpJSON5, err := json.Marshal(map[string]interface{}{
+//			tmpJSON5, err := json.Marshal(map[string]string{
 //				"ERR_REQUIRED_PROPERTY": "This field is required for user kyc.",
 //			})
 //			if err != nil {

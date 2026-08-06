@@ -64,7 +64,7 @@ import (
 //				return err
 //			}
 //			_, err = auth0.NewClientGrant(ctx, "my_client_grant", &auth0.ClientGrantArgs{
-//				ClientId: myClient.ID(),
+//				ClientId: myClient.ID().ToIDOutput().ToStringOutput(),
 //				Audience: myResourceServer.Identifier,
 //				AuthorizationDetailsTypes: pulumi.StringArray{
 //					pulumi.String("payment"),
@@ -76,13 +76,13 @@ import (
 //				return err
 //			}
 //			_ = auth0.GetClientGrantsOutput(ctx, auth0.GetClientGrantsOutputArgs{
-//				ClientId: myClient.ID(),
+//				ClientId: myClient.ID().ToIDOutput().ToStringOutput(),
 //			}, nil)
 //			_ = auth0.GetClientGrantsOutput(ctx, auth0.GetClientGrantsOutputArgs{
 //				Audience: myResourceServer.Identifier,
 //			}, nil)
 //			_ = auth0.GetClientGrantsOutput(ctx, auth0.GetClientGrantsOutputArgs{
-//				ClientId: myClient.ID(),
+//				ClientId: myClient.ID().ToIDOutput().ToStringOutput(),
 //				Audience: myResourceServer.Identifier,
 //			}, nil)
 //			return nil

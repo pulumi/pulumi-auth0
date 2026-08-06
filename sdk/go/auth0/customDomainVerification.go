@@ -53,7 +53,7 @@ import (
 //				return err
 //			}
 //			_, err = auth0.NewCustomDomainVerification(ctx, "my_custom_domain_verification", &auth0.CustomDomainVerificationArgs{
-//				CustomDomainId: myCustomDomain.ID(),
+//				CustomDomainId: myCustomDomain.ID().ToIDOutput().ToStringOutput(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				myDomainNameRecord,
 //			}))

@@ -37,8 +37,8 @@ import (
 //					"id":            "update_user_PmSa",
 //					"mask_output":   false,
 //					"params": map[string]interface{}{
-//						"changes": map[string]interface{}{
-//							"user_metadata": map[string]interface{}{
+//						"changes": map[string]map[string]string{
+//							"user_metadata": map[string]string{
 //								"full_name": "{{fields.full_name}}",
 //							},
 //						},

@@ -30,8 +30,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"screen_name": map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]map[string]string{
+//				"screen_name": map[string]string{
 //					"alias": "login_hint",
 //				},
 //			})
@@ -73,13 +73,13 @@ import (
 //				return err
 //			}
 //			myScimConfig, err := auth0.NewConnectionScimConfiguration(ctx, "my_scim_config", &auth0.ConnectionScimConfigurationArgs{
-//				ConnectionId: azureAd.ID(),
+//				ConnectionId: azureAd.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = auth0.NewConnectionScimToken(ctx, "my_scim_token", &auth0.ConnectionScimTokenArgs{
-//				ConnectionId: azureAd.ID(),
+//				ConnectionId: azureAd.ID().ToIDOutput().ToStringOutput(),
 //				Scopes: pulumi.StringArray{
 //					pulumi.String("post:users"),
 //					pulumi.String("get:users"),

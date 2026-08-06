@@ -30,8 +30,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"login": map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]map[string]string{
+//				"login": map[string]string{
 //					"alertListTitle":                "Alerts",
 //					"buttonText":                    "Continue",
 //					"description":                   "Login to",

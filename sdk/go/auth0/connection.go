@@ -37,8 +37,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"screen_name": map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]map[string]string{
+//				"screen_name": map[string]string{
 //					"alias": "login_hint",
 //				},
 //			})
@@ -192,8 +192,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"screen_name": map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]map[string]string{
+//				"screen_name": map[string]string{
 //					"alias": "login_hint",
 //				},
 //			})
@@ -530,8 +530,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"screen_name": map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]map[string]string{
+//				"screen_name": map[string]string{
 //					"alias": "login_hint",
 //				},
 //			})
@@ -594,8 +594,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"screen_name": map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]map[string]string{
+//				"screen_name": map[string]string{
 //					"alias": "login_hint",
 //				},
 //			})
@@ -860,7 +860,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]string{
 //				"name":           "${context.tokenset.name}",
 //				"email":          "${context.tokenset.email}",
 //				"email_verified": "${context.tokenset.email_verified}",
@@ -942,8 +942,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"screen_name": map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]map[string]string{
+//				"screen_name": map[string]string{
 //					"alias": "login_hint",
 //				},
 //			})
@@ -951,7 +951,7 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//			tmpJSON1, err := json.Marshal(map[string]string{
 //				"name":           "${context.tokenset.name}",
 //				"email":          "${context.tokenset.email}",
 //				"email_verified": "${context.tokenset.email_verified}",

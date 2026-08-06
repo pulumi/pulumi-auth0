@@ -55,16 +55,16 @@ import (
 //				return err
 //			}
 //			_, err = auth0.NewOrganizationConnections(ctx, "one-to-many", &auth0.OrganizationConnectionsArgs{
-//				OrganizationId: myOrganization.ID(),
+//				OrganizationId: myOrganization.ID().ToIDOutput().ToStringOutput(),
 //				EnabledConnections: auth0.OrganizationConnectionsEnabledConnectionArray{
 //					&auth0.OrganizationConnectionsEnabledConnectionArgs{
-//						ConnectionId:            myConnection_1.ID(),
+//						ConnectionId:            myConnection_1.ID().ToIDOutput().ToStringOutput(),
 //						AssignMembershipOnLogin: pulumi.Bool(true),
 //						IsSignupEnabled:         pulumi.Bool(false),
 //						ShowAsButton:            pulumi.Bool(true),
 //					},
 //					&auth0.OrganizationConnectionsEnabledConnectionArgs{
-//						ConnectionId:            myConnection_2.ID(),
+//						ConnectionId:            myConnection_2.ID().ToIDOutput().ToStringOutput(),
 //						AssignMembershipOnLogin: pulumi.Bool(true),
 //						IsSignupEnabled:         pulumi.Bool(false),
 //						ShowAsButton:            pulumi.Bool(true),

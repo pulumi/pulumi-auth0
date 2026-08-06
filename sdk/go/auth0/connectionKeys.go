@@ -42,7 +42,7 @@ import (
 //				Name:     pulumi.String("OIDC-Connection"),
 //				Strategy: pulumi.String("oidc"),
 //				Options: &auth0.ConnectionOptionsArgs{
-//					ClientId: myClient.ID(),
+//					ClientId: myClient.ID().ToIDOutput().ToStringOutput(),
 //					Scopes: pulumi.StringArray{
 //						pulumi.String("ext_nested_groups"),
 //						pulumi.String("openid"),
@@ -61,7 +61,7 @@ import (
 //			}
 //			// Resource used to rotate the keys for above OIDC connection
 //			_, err = auth0.NewConnectionKeys(ctx, "my_keys", &auth0.ConnectionKeysArgs{
-//				ConnectionId: oidc.ID(),
+//				ConnectionId: oidc.ID().ToIDOutput().ToStringOutput(),
 //				Triggers: pulumi.StringMap{
 //					"version": pulumi.String("1"),
 //					"date":    pulumi.String("2023-10-01T00:00:00Z"),

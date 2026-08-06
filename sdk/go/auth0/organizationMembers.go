@@ -57,10 +57,10 @@ import (
 //				return err
 //			}
 //			_, err = auth0.NewOrganizationMembers(ctx, "my_members", &auth0.OrganizationMembersArgs{
-//				OrganizationId: myOrg.ID(),
+//				OrganizationId: myOrg.ID().ToIDOutput().ToStringOutput(),
 //				Members: pulumi.StringArray{
-//					user1.ID(),
-//					user2.ID(),
+//					user1.ID().ToIDOutput().ToStringOutput(),
+//					user2.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {

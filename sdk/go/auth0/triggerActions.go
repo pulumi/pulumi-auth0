@@ -66,11 +66,11 @@ import (
 //				Trigger: pulumi.String("post-login"),
 //				Actions: auth0.TriggerActionsActionArray{
 //					&auth0.TriggerActionsActionArgs{
-//						Id:          actionFoo.ID(),
+//						Id:          actionFoo.ID().ToIDOutput().ToStringOutput(),
 //						DisplayName: actionFoo.Name,
 //					},
 //					&auth0.TriggerActionsActionArgs{
-//						Id:          actionBar.ID(),
+//						Id:          actionBar.ID().ToIDOutput().ToStringOutput(),
 //						DisplayName: actionBar.Name,
 //					},
 //				},

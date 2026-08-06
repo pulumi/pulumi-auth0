@@ -46,14 +46,14 @@ import (
 //				return err
 //			}
 //			myDirectory, err := auth0.NewConnectionDirectory(ctx, "my_directory", &auth0.ConnectionDirectoryArgs{
-//				ConnectionId:      myConnection.ID(),
+//				ConnectionId:      myConnection.ID().ToIDOutput().ToStringOutput(),
 //				SynchronizeGroups: pulumi.String("selected"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = auth0.NewConnectionDirectorySynchronizedGroups(ctx, "my_groups", &auth0.ConnectionDirectorySynchronizedGroupsArgs{
-//				ConnectionId: myConnection.ID(),
+//				ConnectionId: myConnection.ID().ToIDOutput().ToStringOutput(),
 //				GroupIds: pulumi.StringArray{
 //					pulumi.String("group1abc"),
 //					pulumi.String("group2def"),
