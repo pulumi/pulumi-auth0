@@ -40,7 +40,7 @@ import (
 //				return err
 //			}
 //			_ = auth0.GetCustomDomainOutput(ctx, auth0.GetCustomDomainOutputArgs{
-//				CustomDomainId: myCustomDomain.ID(),
+//				CustomDomainId: myCustomDomain.ID().ToIDOutput().ToStringOutput(),
 //			}, nil)
 //			return nil
 //		})

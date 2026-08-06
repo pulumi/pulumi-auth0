@@ -77,7 +77,7 @@ import (
 //				return err
 //			}
 //			_, err = auth0.NewClientGrant(ctx, "my_client_grant", &auth0.ClientGrantArgs{
-//				ClientId: myClient.ID(),
+//				ClientId: myClient.ID().ToIDOutput().ToStringOutput(),
 //				Audience: myResourceServer.Identifier,
 //				Scopes: pulumi.StringArray{
 //					pulumi.String("create:foo"),

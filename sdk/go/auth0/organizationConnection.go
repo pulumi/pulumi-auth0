@@ -48,8 +48,8 @@ import (
 //				return err
 //			}
 //			_, err = auth0.NewOrganizationConnection(ctx, "my_org_conn", &auth0.OrganizationConnectionArgs{
-//				OrganizationId:          myOrganization.ID(),
-//				ConnectionId:            myConnection.ID(),
+//				OrganizationId:          myOrganization.ID().ToIDOutput().ToStringOutput(),
+//				ConnectionId:            myConnection.ID().ToIDOutput().ToStringOutput(),
 //				AssignMembershipOnLogin: pulumi.Bool(true),
 //				IsSignupEnabled:         pulumi.Bool(false),
 //				ShowAsButton:            pulumi.Bool(true),

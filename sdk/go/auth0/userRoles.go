@@ -53,9 +53,9 @@ import (
 //				return err
 //			}
 //			_, err = auth0.NewUserRoles(ctx, "user_roles", &auth0.UserRolesArgs{
-//				UserId: user.ID(),
+//				UserId: user.ID().ToIDOutput().ToStringOutput(),
 //				Roles: pulumi.StringArray{
-//					admin.ID(),
+//					admin.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {

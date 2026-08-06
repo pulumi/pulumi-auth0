@@ -35,12 +35,12 @@ import (
 //			resourceServer, err := auth0.NewResourceServer(ctx, "resource_server", &auth0.ResourceServerArgs{
 //				Name:       pulumi.String("Example Resource Server (Managed by Terraform)"),
 //				Identifier: pulumi.String("https://api.example.com"),
-//				Scopes: []map[string]interface{}{
-//					map[string]interface{}{
+//				Scopes: []map[string]string{
+//					{
 //						"value":       "create:foo",
 //						"description": "Create foos",
 //					},
-//					map[string]interface{}{
+//					{
 //						"value":       "create:bar",
 //						"description": "Create bars",
 //					},
@@ -64,7 +64,7 @@ import (
 //				return err
 //			}
 //			_, err = auth0.NewUserPermission(ctx, "user_permission_read", &auth0.UserPermissionArgs{
-//				UserId:                   user.ID(),
+//				UserId:                   user.ID().ToIDOutput().ToStringOutput(),
 //				ResourceServerIdentifier: resourceServer.Identifier,
 //				Permission:               resourceServer.Scopes[0],
 //			})

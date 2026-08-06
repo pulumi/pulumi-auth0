@@ -56,24 +56,24 @@ import (
 //				return err
 //			}
 //			_, err = auth0.NewOrganizationMember(ctx, "my_org_member", &auth0.OrganizationMemberArgs{
-//				OrganizationId: myOrg.ID(),
-//				UserId:         user.ID(),
+//				OrganizationId: myOrg.ID().ToIDOutput().ToStringOutput(),
+//				UserId:         user.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = auth0.NewOrganizationMemberRole(ctx, "role1", &auth0.OrganizationMemberRoleArgs{
-//				OrganizationId: myOrg.ID(),
-//				UserId:         user.ID(),
-//				RoleId:         reader.ID(),
+//				OrganizationId: myOrg.ID().ToIDOutput().ToStringOutput(),
+//				UserId:         user.ID().ToIDOutput().ToStringOutput(),
+//				RoleId:         reader.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = auth0.NewOrganizationMemberRole(ctx, "role2", &auth0.OrganizationMemberRoleArgs{
-//				OrganizationId: myOrg.ID(),
-//				UserId:         user.ID(),
-//				RoleId:         writer.ID(),
+//				OrganizationId: myOrg.ID().ToIDOutput().ToStringOutput(),
+//				UserId:         user.ID().ToIDOutput().ToStringOutput(),
+//				RoleId:         writer.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

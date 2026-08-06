@@ -49,8 +49,8 @@ import (
 //				return err
 //			}
 //			_, err = auth0.NewOrganizationMember(ctx, "my_org_member", &auth0.OrganizationMemberArgs{
-//				OrganizationId: myOrg.ID(),
-//				UserId:         user.ID(),
+//				OrganizationId: myOrg.ID().ToIDOutput().ToStringOutput(),
+//				UserId:         user.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

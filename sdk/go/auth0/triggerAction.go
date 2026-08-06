@@ -48,7 +48,7 @@ import (
 //			}
 //			_, err = auth0.NewTriggerAction(ctx, "post_login_alert_action", &auth0.TriggerActionArgs{
 //				Trigger:  pulumi.String("post-login"),
-//				ActionId: loginAlert.ID(),
+//				ActionId: loginAlert.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

@@ -44,7 +44,7 @@ import (
 //			_, err = auth0.NewTokenExchangeProfile(ctx, "my_token_exchange_profile", &auth0.TokenExchangeProfileArgs{
 //				Name:             pulumi.String("token-exchange-prof"),
 //				SubjectTokenType: pulumi.String("https://acme.com/cis-token"),
-//				ActionId:         myAction.ID(),
+//				ActionId:         myAction.ID().ToIDOutput().ToStringOutput(),
 //				Type:             pulumi.String("custom_authentication"),
 //			})
 //			if err != nil {

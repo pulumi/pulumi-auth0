@@ -46,18 +46,12 @@ import (
 //			}
 //			// Retrieve the latest published version using the module's version_id directly
 //			myModuleVersion := auth0.GetActionModuleVersionOutput(ctx, auth0.GetActionModuleVersionOutputArgs{
-//				ModuleId:  myModule.ID(),
+//				ModuleId:  myModule.ID().ToIDOutput().ToStringOutput(),
 //				VersionId: myModule.VersionId,
 //			}, nil)
-//			ctx.Export("versionNumber", myModuleVersion.ApplyT(func(myModuleVersion auth0.GetActionModuleVersionResult) (*int, error) {
-//				return myModuleVersion.VersionNumber, nil
-//			}).(pulumi.IntPtrOutput))
-//			ctx.Export("versionCode", myModuleVersion.ApplyT(func(myModuleVersion auth0.GetActionModuleVersionResult) (*string, error) {
-//				return myModuleVersion.Code, nil
-//			}).(pulumi.StringPtrOutput))
-//			ctx.Export("versionCreatedAt", myModuleVersion.ApplyT(func(myModuleVersion auth0.GetActionModuleVersionResult) (*string, error) {
-//				return myModuleVersion.CreatedAt, nil
-//			}).(pulumi.StringPtrOutput))
+//			ctx.Export("versionNumber", myModuleVersion.VersionNumber())
+//			ctx.Export("versionCode", myModuleVersion.Code())
+//			ctx.Export("versionCreatedAt", myModuleVersion.CreatedAt())
 //			return nil
 //		})
 //	}

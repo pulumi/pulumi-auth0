@@ -44,14 +44,14 @@ import (
 //				return err
 //			}
 //			myConnScimConfiguration, err := auth0.NewConnectionScimConfiguration(ctx, "my_conn_scim_configuration", &auth0.ConnectionScimConfigurationArgs{
-//				ConnectionId: myEnterpriseConnection.ID(),
+//				ConnectionId: myEnterpriseConnection.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// A data source for an Auth0 Connection SCIM Configuration.
 //			_ = auth0.GetConnectionScimConfigurationOutput(ctx, auth0.GetConnectionScimConfigurationOutputArgs{
-//				ConnectionId: myConnScimConfiguration.ID(),
+//				ConnectionId: myConnScimConfiguration.ID().ToIDOutput().ToStringOutput(),
 //			}, nil)
 //			return nil
 //		})
