@@ -9210,7 +9210,7 @@ class ConnectionOptionsAttributeEmail(dict):
         :param Sequence['ConnectionOptionsAttributeEmailIdentifierArgs'] identifiers: Connection Options Email Attribute Identifier
         :param _builtins.bool profile_required: Defines whether Profile is required
         :param Sequence['ConnectionOptionsAttributeEmailSignupArgs'] signups: Defines signup settings for Email attribute
-        :param _builtins.bool unique: If set to false, it allow multiple accounts with the same email address
+        :param _builtins.bool unique: If set to false, it allow multiple accounts with the same email address. Defaults to `true`. This can only be set when the connection is created: the Auth0 Management API does not allow updating it, so changing it on an existing connection fails at plan time and requires recreating the connection. The API also refuses to add a non-unique email attribute to a connection that does not already have one.
         :param _builtins.str verification_method: Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
         """
         if identifiers is not None:
@@ -9252,7 +9252,7 @@ class ConnectionOptionsAttributeEmail(dict):
     @pulumi.getter
     def unique(self) -> Optional[_builtins.bool]:
         """
-        If set to false, it allow multiple accounts with the same email address
+        If set to false, it allow multiple accounts with the same email address. Defaults to `true`. This can only be set when the connection is created: the Auth0 Management API does not allow updating it, so changing it on an existing connection fails at plan time and requires recreating the connection. The API also refuses to add a non-unique email attribute to a connection that does not already have one.
         """
         return pulumi.get(self, "unique")
 
@@ -25073,7 +25073,7 @@ class GetConnectionOptionAttributeEmailResult(dict):
         :param Sequence['GetConnectionOptionAttributeEmailIdentifierArgs'] identifiers: Connection Options Email Attribute Identifier
         :param _builtins.bool profile_required: Defines whether Profile is required
         :param Sequence['GetConnectionOptionAttributeEmailSignupArgs'] signups: Defines signup settings for Email attribute
-        :param _builtins.bool unique: If set to false, it allow multiple accounts with the same email address
+        :param _builtins.bool unique: If set to false, it allow multiple accounts with the same email address. Defaults to `true`. This can only be set when the connection is created: the Auth0 Management API does not allow updating it, so changing it on an existing connection fails at plan time and requires recreating the connection. The API also refuses to add a non-unique email attribute to a connection that does not already have one.
         :param _builtins.str verification_method: Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
         """
         pulumi.set(__self__, "identifiers", identifiers)
@@ -25110,7 +25110,7 @@ class GetConnectionOptionAttributeEmailResult(dict):
     @pulumi.getter
     def unique(self) -> _builtins.bool:
         """
-        If set to false, it allow multiple accounts with the same email address
+        If set to false, it allow multiple accounts with the same email address. Defaults to `true`. This can only be set when the connection is created: the Auth0 Management API does not allow updating it, so changing it on an existing connection fails at plan time and requires recreating the connection. The API also refuses to add a non-unique email attribute to a connection that does not already have one.
         """
         return pulumi.get(self, "unique")
 

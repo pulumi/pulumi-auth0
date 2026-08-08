@@ -22804,7 +22804,7 @@ type ConnectionOptionsAttributeEmail struct {
 	ProfileRequired *bool `pulumi:"profileRequired"`
 	// Defines signup settings for Email attribute
 	Signups []ConnectionOptionsAttributeEmailSignup `pulumi:"signups"`
-	// If set to false, it allow multiple accounts with the same email address
+	// If set to false, it allow multiple accounts with the same email address. Defaults to `true`. This can only be set when the connection is created: the Auth0 Management API does not allow updating it, so changing it on an existing connection fails at plan time and requires recreating the connection. The API also refuses to add a non-unique email attribute to a connection that does not already have one.
 	Unique *bool `pulumi:"unique"`
 	// Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
 	VerificationMethod *string `pulumi:"verificationMethod"`
@@ -22828,7 +22828,7 @@ type ConnectionOptionsAttributeEmailArgs struct {
 	ProfileRequired pulumi.BoolPtrInput `pulumi:"profileRequired"`
 	// Defines signup settings for Email attribute
 	Signups ConnectionOptionsAttributeEmailSignupArrayInput `pulumi:"signups"`
-	// If set to false, it allow multiple accounts with the same email address
+	// If set to false, it allow multiple accounts with the same email address. Defaults to `true`. This can only be set when the connection is created: the Auth0 Management API does not allow updating it, so changing it on an existing connection fails at plan time and requires recreating the connection. The API also refuses to add a non-unique email attribute to a connection that does not already have one.
 	Unique pulumi.BoolPtrInput `pulumi:"unique"`
 	// Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
 	VerificationMethod pulumi.StringPtrInput `pulumi:"verificationMethod"`
@@ -22902,7 +22902,7 @@ func (o ConnectionOptionsAttributeEmailOutput) Signups() ConnectionOptionsAttrib
 	return o.ApplyT(func(v ConnectionOptionsAttributeEmail) []ConnectionOptionsAttributeEmailSignup { return v.Signups }).(ConnectionOptionsAttributeEmailSignupArrayOutput)
 }
 
-// If set to false, it allow multiple accounts with the same email address
+// If set to false, it allow multiple accounts with the same email address. Defaults to `true`. This can only be set when the connection is created: the Auth0 Management API does not allow updating it, so changing it on an existing connection fails at plan time and requires recreating the connection. The API also refuses to add a non-unique email attribute to a connection that does not already have one.
 func (o ConnectionOptionsAttributeEmailOutput) Unique() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptionsAttributeEmail) *bool { return v.Unique }).(pulumi.BoolPtrOutput)
 }
@@ -63850,7 +63850,7 @@ type GetConnectionOptionAttributeEmail struct {
 	ProfileRequired bool `pulumi:"profileRequired"`
 	// Defines signup settings for Email attribute
 	Signups []GetConnectionOptionAttributeEmailSignup `pulumi:"signups"`
-	// If set to false, it allow multiple accounts with the same email address
+	// If set to false, it allow multiple accounts with the same email address. Defaults to `true`. This can only be set when the connection is created: the Auth0 Management API does not allow updating it, so changing it on an existing connection fails at plan time and requires recreating the connection. The API also refuses to add a non-unique email attribute to a connection that does not already have one.
 	Unique bool `pulumi:"unique"`
 	// Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
 	VerificationMethod string `pulumi:"verificationMethod"`
@@ -63874,7 +63874,7 @@ type GetConnectionOptionAttributeEmailArgs struct {
 	ProfileRequired pulumi.BoolInput `pulumi:"profileRequired"`
 	// Defines signup settings for Email attribute
 	Signups GetConnectionOptionAttributeEmailSignupArrayInput `pulumi:"signups"`
-	// If set to false, it allow multiple accounts with the same email address
+	// If set to false, it allow multiple accounts with the same email address. Defaults to `true`. This can only be set when the connection is created: the Auth0 Management API does not allow updating it, so changing it on an existing connection fails at plan time and requires recreating the connection. The API also refuses to add a non-unique email attribute to a connection that does not already have one.
 	Unique pulumi.BoolInput `pulumi:"unique"`
 	// Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
 	VerificationMethod pulumi.StringInput `pulumi:"verificationMethod"`
@@ -63948,7 +63948,7 @@ func (o GetConnectionOptionAttributeEmailOutput) Signups() GetConnectionOptionAt
 	return o.ApplyT(func(v GetConnectionOptionAttributeEmail) []GetConnectionOptionAttributeEmailSignup { return v.Signups }).(GetConnectionOptionAttributeEmailSignupArrayOutput)
 }
 
-// If set to false, it allow multiple accounts with the same email address
+// If set to false, it allow multiple accounts with the same email address. Defaults to `true`. This can only be set when the connection is created: the Auth0 Management API does not allow updating it, so changing it on an existing connection fails at plan time and requires recreating the connection. The API also refuses to add a non-unique email attribute to a connection that does not already have one.
 func (o GetConnectionOptionAttributeEmailOutput) Unique() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetConnectionOptionAttributeEmail) bool { return v.Unique }).(pulumi.BoolOutput)
 }
