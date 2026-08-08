@@ -31,7 +31,7 @@ public final class ConnectionOptionsAttributeEmail {
      */
     private @Nullable List<ConnectionOptionsAttributeEmailSignup> signups;
     /**
-     * @return If set to false, it allow multiple accounts with the same email address
+     * @return If set to false, it allow multiple accounts with the same email address. Defaults to `true`. This can only be set when the connection is created: the Auth0 Management API does not allow updating it, so changing it on an existing connection fails at plan time and requires recreating the connection. The API also refuses to add a non-unique email attribute to a connection that does not already have one.
      * 
      */
     private @Nullable Boolean unique;
@@ -64,7 +64,7 @@ public final class ConnectionOptionsAttributeEmail {
         return this.signups == null ? List.of() : this.signups;
     }
     /**
-     * @return If set to false, it allow multiple accounts with the same email address
+     * @return If set to false, it allow multiple accounts with the same email address. Defaults to `true`. This can only be set when the connection is created: the Auth0 Management API does not allow updating it, so changing it on an existing connection fails at plan time and requires recreating the connection. The API also refuses to add a non-unique email attribute to a connection that does not already have one.
      * 
      */
     public Optional<Boolean> unique() {

@@ -11881,7 +11881,7 @@ class ConnectionOptionsAttributeEmailArgsDict(TypedDict):
     """
     unique: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    If set to false, it allow multiple accounts with the same email address
+    If set to false, it allow multiple accounts with the same email address. Defaults to `true`. This can only be set when the connection is created: the Auth0 Management API does not allow updating it, so changing it on an existing connection fails at plan time and requires recreating the connection. The API also refuses to add a non-unique email attribute to a connection that does not already have one.
     """
     verification_method: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -11900,7 +11900,7 @@ class ConnectionOptionsAttributeEmailArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailIdentifierArgs']]] identifiers: Connection Options Email Attribute Identifier
         :param pulumi.Input[_builtins.bool] profile_required: Defines whether Profile is required
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeEmailSignupArgs']]] signups: Defines signup settings for Email attribute
-        :param pulumi.Input[_builtins.bool] unique: If set to false, it allow multiple accounts with the same email address
+        :param pulumi.Input[_builtins.bool] unique: If set to false, it allow multiple accounts with the same email address. Defaults to `true`. This can only be set when the connection is created: the Auth0 Management API does not allow updating it, so changing it on an existing connection fails at plan time and requires recreating the connection. The API also refuses to add a non-unique email attribute to a connection that does not already have one.
         :param pulumi.Input[_builtins.str] verification_method: Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
         """
         if identifiers is not None:
@@ -11954,7 +11954,7 @@ class ConnectionOptionsAttributeEmailArgs:
     @pulumi.getter
     def unique(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        If set to false, it allow multiple accounts with the same email address
+        If set to false, it allow multiple accounts with the same email address. Defaults to `true`. This can only be set when the connection is created: the Auth0 Management API does not allow updating it, so changing it on an existing connection fails at plan time and requires recreating the connection. The API also refuses to add a non-unique email attribute to a connection that does not already have one.
         """
         return pulumi.get(self, "unique")
 

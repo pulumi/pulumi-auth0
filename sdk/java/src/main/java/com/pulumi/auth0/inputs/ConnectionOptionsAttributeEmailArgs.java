@@ -65,14 +65,14 @@ public final class ConnectionOptionsAttributeEmailArgs extends com.pulumi.resour
     }
 
     /**
-     * If set to false, it allow multiple accounts with the same email address
+     * If set to false, it allow multiple accounts with the same email address. Defaults to `true`. This can only be set when the connection is created: the Auth0 Management API does not allow updating it, so changing it on an existing connection fails at plan time and requires recreating the connection. The API also refuses to add a non-unique email attribute to a connection that does not already have one.
      * 
      */
     @Import(name="unique")
     private @Nullable Output<Boolean> unique;
 
     /**
-     * @return If set to false, it allow multiple accounts with the same email address
+     * @return If set to false, it allow multiple accounts with the same email address. Defaults to `true`. This can only be set when the connection is created: the Auth0 Management API does not allow updating it, so changing it on an existing connection fails at plan time and requires recreating the connection. The API also refuses to add a non-unique email attribute to a connection that does not already have one.
      * 
      */
     public Optional<Output<Boolean>> unique() {
@@ -206,7 +206,7 @@ public final class ConnectionOptionsAttributeEmailArgs extends com.pulumi.resour
         }
 
         /**
-         * @param unique If set to false, it allow multiple accounts with the same email address
+         * @param unique If set to false, it allow multiple accounts with the same email address. Defaults to `true`. This can only be set when the connection is created: the Auth0 Management API does not allow updating it, so changing it on an existing connection fails at plan time and requires recreating the connection. The API also refuses to add a non-unique email attribute to a connection that does not already have one.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class ConnectionOptionsAttributeEmailArgs extends com.pulumi.resour
         }
 
         /**
-         * @param unique If set to false, it allow multiple accounts with the same email address
+         * @param unique If set to false, it allow multiple accounts with the same email address. Defaults to `true`. This can only be set when the connection is created: the Auth0 Management API does not allow updating it, so changing it on an existing connection fails at plan time and requires recreating the connection. The API also refuses to add a non-unique email attribute to a connection that does not already have one.
          * 
          * @return builder
          * 

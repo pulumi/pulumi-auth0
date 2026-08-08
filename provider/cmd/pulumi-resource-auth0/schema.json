@@ -3513,7 +3513,7 @@
                 },
                 "unique": {
                     "type": "boolean",
-                    "description": "If set to false, it allow multiple accounts with the same email address\n"
+                    "description": "If set to false, it allow multiple accounts with the same email address. Defaults to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e. This can only be set when the connection is created: the Auth0 Management API does not allow updating it, so changing it on an existing connection fails at plan time and requires recreating the connection. The API also refuses to add a non-unique email attribute to a connection that does not already have one.\n"
                 },
                 "verificationMethod": {
                     "type": "string",
@@ -12129,7 +12129,7 @@
                 },
                 "unique": {
                     "type": "boolean",
-                    "description": "If set to false, it allow multiple accounts with the same email address\n"
+                    "description": "If set to false, it allow multiple accounts with the same email address. Defaults to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\" pulumi-lang-hcl=\"`true`\"\u003e`true`\u003c/span\u003e. This can only be set when the connection is created: the Auth0 Management API does not allow updating it, so changing it on an existing connection fails at plan time and requires recreating the connection. The API also refuses to add a non-unique email attribute to a connection that does not already have one.\n"
                 },
                 "verificationMethod": {
                     "type": "string",
