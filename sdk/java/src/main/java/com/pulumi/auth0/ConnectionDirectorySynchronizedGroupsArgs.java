@@ -3,12 +3,15 @@
 
 package com.pulumi.auth0;
 
+import com.pulumi.auth0.inputs.ConnectionDirectorySynchronizedGroupsGroupArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ConnectionDirectorySynchronizedGroupsArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,14 +19,14 @@ public final class ConnectionDirectorySynchronizedGroupsArgs extends com.pulumi.
     public static final ConnectionDirectorySynchronizedGroupsArgs Empty = new ConnectionDirectorySynchronizedGroupsArgs();
 
     /**
-     * ID of the connection for which to manage synchronized groups. (EA only)
+     * ID of the connection for which to manage synchronized groups.
      * 
      */
     @Import(name="connectionId", required=true)
     private Output<String> connectionId;
 
     /**
-     * @return ID of the connection for which to manage synchronized groups. (EA only)
+     * @return ID of the connection for which to manage synchronized groups.
      * 
      */
     public Output<String> connectionId() {
@@ -31,18 +34,41 @@ public final class ConnectionDirectorySynchronizedGroupsArgs extends com.pulumi.
     }
 
     /**
-     * List of Google Workspace Directory group IDs to synchronize. (EA only)
+     * IDs of the Google Workspace Directory groups to synchronize.
+     * 
+     * @deprecated
+     * Use `groups` instead, which exposes each group&#39;s name, email and member count alongside its ID.
      * 
      */
-    @Import(name="groupIds", required=true)
-    private Output<List<String>> groupIds;
+    @Deprecated /* Use `groups` instead, which exposes each group's name, email and member count alongside its ID. */
+    @Import(name="groupIds")
+    private @Nullable Output<List<String>> groupIds;
 
     /**
-     * @return List of Google Workspace Directory group IDs to synchronize. (EA only)
+     * @return IDs of the Google Workspace Directory groups to synchronize.
+     * 
+     * @deprecated
+     * Use `groups` instead, which exposes each group&#39;s name, email and member count alongside its ID.
      * 
      */
-    public Output<List<String>> groupIds() {
-        return this.groupIds;
+    @Deprecated /* Use `groups` instead, which exposes each group's name, email and member count alongside its ID. */
+    public Optional<Output<List<String>>> groupIds() {
+        return Optional.ofNullable(this.groupIds);
+    }
+
+    /**
+     * Google Workspace Directory groups to synchronize.
+     * 
+     */
+    @Import(name="groups")
+    private @Nullable Output<List<ConnectionDirectorySynchronizedGroupsGroupArgs>> groups;
+
+    /**
+     * @return Google Workspace Directory groups to synchronize.
+     * 
+     */
+    public Optional<Output<List<ConnectionDirectorySynchronizedGroupsGroupArgs>>> groups() {
+        return Optional.ofNullable(this.groups);
     }
 
     private ConnectionDirectorySynchronizedGroupsArgs() {}
@@ -50,6 +76,7 @@ public final class ConnectionDirectorySynchronizedGroupsArgs extends com.pulumi.
     private ConnectionDirectorySynchronizedGroupsArgs(ConnectionDirectorySynchronizedGroupsArgs $) {
         this.connectionId = $.connectionId;
         this.groupIds = $.groupIds;
+        this.groups = $.groups;
     }
 
     public static Builder builder() {
@@ -71,7 +98,7 @@ public final class ConnectionDirectorySynchronizedGroupsArgs extends com.pulumi.
         }
 
         /**
-         * @param connectionId ID of the connection for which to manage synchronized groups. (EA only)
+         * @param connectionId ID of the connection for which to manage synchronized groups.
          * 
          * @return builder
          * 
@@ -82,7 +109,7 @@ public final class ConnectionDirectorySynchronizedGroupsArgs extends com.pulumi.
         }
 
         /**
-         * @param connectionId ID of the connection for which to manage synchronized groups. (EA only)
+         * @param connectionId ID of the connection for which to manage synchronized groups.
          * 
          * @return builder
          * 
@@ -92,42 +119,82 @@ public final class ConnectionDirectorySynchronizedGroupsArgs extends com.pulumi.
         }
 
         /**
-         * @param groupIds List of Google Workspace Directory group IDs to synchronize. (EA only)
+         * @param groupIds IDs of the Google Workspace Directory groups to synchronize.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use `groups` instead, which exposes each group&#39;s name, email and member count alongside its ID.
+         * 
          */
-        public Builder groupIds(Output<List<String>> groupIds) {
+        @Deprecated /* Use `groups` instead, which exposes each group's name, email and member count alongside its ID. */
+        public Builder groupIds(@Nullable Output<List<String>> groupIds) {
             $.groupIds = groupIds;
             return this;
         }
 
         /**
-         * @param groupIds List of Google Workspace Directory group IDs to synchronize. (EA only)
+         * @param groupIds IDs of the Google Workspace Directory groups to synchronize.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use `groups` instead, which exposes each group&#39;s name, email and member count alongside its ID.
+         * 
          */
+        @Deprecated /* Use `groups` instead, which exposes each group's name, email and member count alongside its ID. */
         public Builder groupIds(List<String> groupIds) {
             return groupIds(Output.of(groupIds));
         }
 
         /**
-         * @param groupIds List of Google Workspace Directory group IDs to synchronize. (EA only)
+         * @param groupIds IDs of the Google Workspace Directory groups to synchronize.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Use `groups` instead, which exposes each group&#39;s name, email and member count alongside its ID.
+         * 
+         */
+        @Deprecated /* Use `groups` instead, which exposes each group's name, email and member count alongside its ID. */
+        public Builder groupIds(String... groupIds) {
+            return groupIds(List.of(groupIds));
+        }
+
+        /**
+         * @param groups Google Workspace Directory groups to synchronize.
          * 
          * @return builder
          * 
          */
-        public Builder groupIds(String... groupIds) {
-            return groupIds(List.of(groupIds));
+        public Builder groups(@Nullable Output<List<ConnectionDirectorySynchronizedGroupsGroupArgs>> groups) {
+            $.groups = groups;
+            return this;
+        }
+
+        /**
+         * @param groups Google Workspace Directory groups to synchronize.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groups(List<ConnectionDirectorySynchronizedGroupsGroupArgs> groups) {
+            return groups(Output.of(groups));
+        }
+
+        /**
+         * @param groups Google Workspace Directory groups to synchronize.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groups(ConnectionDirectorySynchronizedGroupsGroupArgs... groups) {
+            return groups(List.of(groups));
         }
 
         public ConnectionDirectorySynchronizedGroupsArgs build() {
             if ($.connectionId == null) {
                 throw new MissingRequiredPropertyException("ConnectionDirectorySynchronizedGroupsArgs", "connectionId");
-            }
-            if ($.groupIds == null) {
-                throw new MissingRequiredPropertyException("ConnectionDirectorySynchronizedGroupsArgs", "groupIds");
             }
             return $;
         }

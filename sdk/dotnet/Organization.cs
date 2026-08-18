@@ -73,6 +73,12 @@ namespace Pulumi.Auth0
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// Controls whether this organization's app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `auth0.ClientGrant`'s `OrganizationUsage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
+        /// </summary>
+        [Output("isAppEntitlementActive")]
+        public Output<bool> IsAppEntitlementActive { get; private set; } = null!;
+
+        /// <summary>
         /// Metadata associated with the organization. Maximum of 10 metadata properties allowed.
         /// </summary>
         [Output("metadata")]
@@ -154,6 +160,12 @@ namespace Pulumi.Auth0
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        /// <summary>
+        /// Controls whether this organization's app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `auth0.ClientGrant`'s `OrganizationUsage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
+        /// </summary>
+        [Input("isAppEntitlementActive")]
+        public Input<bool>? IsAppEntitlementActive { get; set; }
+
         [Input("metadata")]
         private InputMap<string>? _metadata;
 
@@ -203,6 +215,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// Controls whether this organization's app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `auth0.ClientGrant`'s `OrganizationUsage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
+        /// </summary>
+        [Input("isAppEntitlementActive")]
+        public Input<bool>? IsAppEntitlementActive { get; set; }
 
         [Input("metadata")]
         private InputMap<string>? _metadata;

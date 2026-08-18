@@ -17,6 +17,8 @@ import com.pulumi.auth0.inputs.GetActionPlainArgs;
 import com.pulumi.auth0.inputs.GetBrandingPhoneNotificationTemplateArgs;
 import com.pulumi.auth0.inputs.GetBrandingPhoneNotificationTemplatePlainArgs;
 import com.pulumi.auth0.inputs.GetClientArgs;
+import com.pulumi.auth0.inputs.GetClientGrantOrganizationsArgs;
+import com.pulumi.auth0.inputs.GetClientGrantOrganizationsPlainArgs;
 import com.pulumi.auth0.inputs.GetClientGrantsArgs;
 import com.pulumi.auth0.inputs.GetClientGrantsPlainArgs;
 import com.pulumi.auth0.inputs.GetClientPlainArgs;
@@ -51,7 +53,17 @@ import com.pulumi.auth0.inputs.GetFormPlainArgs;
 import com.pulumi.auth0.inputs.GetNetworkAclArgs;
 import com.pulumi.auth0.inputs.GetNetworkAclPlainArgs;
 import com.pulumi.auth0.inputs.GetOrganizationArgs;
+import com.pulumi.auth0.inputs.GetOrganizationClientArgs;
+import com.pulumi.auth0.inputs.GetOrganizationClientPlainArgs;
+import com.pulumi.auth0.inputs.GetOrganizationClientsArgs;
+import com.pulumi.auth0.inputs.GetOrganizationClientsPlainArgs;
 import com.pulumi.auth0.inputs.GetOrganizationPlainArgs;
+import com.pulumi.auth0.inputs.GetOrganizationRoleGroupsArgs;
+import com.pulumi.auth0.inputs.GetOrganizationRoleGroupsPlainArgs;
+import com.pulumi.auth0.inputs.GetOrganizationRoleMembersArgs;
+import com.pulumi.auth0.inputs.GetOrganizationRoleMembersPlainArgs;
+import com.pulumi.auth0.inputs.GetOrganizationsArgs;
+import com.pulumi.auth0.inputs.GetOrganizationsPlainArgs;
 import com.pulumi.auth0.inputs.GetPhoneNotificationTemplateArgs;
 import com.pulumi.auth0.inputs.GetPhoneNotificationTemplatePlainArgs;
 import com.pulumi.auth0.inputs.GetPhoneProviderArgs;
@@ -77,6 +89,8 @@ import com.pulumi.auth0.inputs.GetUserAttributeProfileArgs;
 import com.pulumi.auth0.inputs.GetUserAttributeProfilePlainArgs;
 import com.pulumi.auth0.inputs.GetUserConnectedAccountsArgs;
 import com.pulumi.auth0.inputs.GetUserConnectedAccountsPlainArgs;
+import com.pulumi.auth0.inputs.GetUserOrganizationsArgs;
+import com.pulumi.auth0.inputs.GetUserOrganizationsPlainArgs;
 import com.pulumi.auth0.inputs.GetUserPlainArgs;
 import com.pulumi.auth0.outputs.GetActionModuleActionsResult;
 import com.pulumi.auth0.outputs.GetActionModuleResult;
@@ -87,6 +101,7 @@ import com.pulumi.auth0.outputs.GetAttackProtectionResult;
 import com.pulumi.auth0.outputs.GetBrandingPhoneNotificationTemplateResult;
 import com.pulumi.auth0.outputs.GetBrandingResult;
 import com.pulumi.auth0.outputs.GetBrandingThemeResult;
+import com.pulumi.auth0.outputs.GetClientGrantOrganizationsResult;
 import com.pulumi.auth0.outputs.GetClientGrantsResult;
 import com.pulumi.auth0.outputs.GetClientResult;
 import com.pulumi.auth0.outputs.GetClientsResult;
@@ -104,7 +119,12 @@ import com.pulumi.auth0.outputs.GetFlowResult;
 import com.pulumi.auth0.outputs.GetFlowVaultConnectionResult;
 import com.pulumi.auth0.outputs.GetFormResult;
 import com.pulumi.auth0.outputs.GetNetworkAclResult;
+import com.pulumi.auth0.outputs.GetOrganizationClientResult;
+import com.pulumi.auth0.outputs.GetOrganizationClientsResult;
 import com.pulumi.auth0.outputs.GetOrganizationResult;
+import com.pulumi.auth0.outputs.GetOrganizationRoleGroupsResult;
+import com.pulumi.auth0.outputs.GetOrganizationRoleMembersResult;
+import com.pulumi.auth0.outputs.GetOrganizationsResult;
 import com.pulumi.auth0.outputs.GetOutboundIpsResult;
 import com.pulumi.auth0.outputs.GetPagesResult;
 import com.pulumi.auth0.outputs.GetPhoneNotificationTemplateResult;
@@ -121,6 +141,7 @@ import com.pulumi.auth0.outputs.GetTenantResult;
 import com.pulumi.auth0.outputs.GetTokenExchangeProfileResult;
 import com.pulumi.auth0.outputs.GetUserAttributeProfileResult;
 import com.pulumi.auth0.outputs.GetUserConnectedAccountsResult;
+import com.pulumi.auth0.outputs.GetUserOrganizationsResult;
 import com.pulumi.auth0.outputs.GetUserResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
@@ -2095,6 +2116,206 @@ public final class Auth0Functions {
         return Deployment.getInstance().invokeAsync("auth0:index/getClient:getClient", TypeShape.of(GetClientResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Data source to retrieve all organizations associated with a specific client grant (EA only).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetClientGrantOrganizationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myClientGrantOrganizations = Auth0Functions.getClientGrantOrganizations(GetClientGrantOrganizationsArgs.builder()
+     *             .clientGrantId("cgr_XXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetClientGrantOrganizationsResult> getClientGrantOrganizations(GetClientGrantOrganizationsArgs args) {
+        return getClientGrantOrganizations(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve all organizations associated with a specific client grant (EA only).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetClientGrantOrganizationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myClientGrantOrganizations = Auth0Functions.getClientGrantOrganizations(GetClientGrantOrganizationsArgs.builder()
+     *             .clientGrantId("cgr_XXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetClientGrantOrganizationsResult> getClientGrantOrganizationsPlain(GetClientGrantOrganizationsPlainArgs args) {
+        return getClientGrantOrganizationsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve all organizations associated with a specific client grant (EA only).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetClientGrantOrganizationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myClientGrantOrganizations = Auth0Functions.getClientGrantOrganizations(GetClientGrantOrganizationsArgs.builder()
+     *             .clientGrantId("cgr_XXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetClientGrantOrganizationsResult> getClientGrantOrganizations(GetClientGrantOrganizationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getClientGrantOrganizations:getClientGrantOrganizations", TypeShape.of(GetClientGrantOrganizationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve all organizations associated with a specific client grant (EA only).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetClientGrantOrganizationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myClientGrantOrganizations = Auth0Functions.getClientGrantOrganizations(GetClientGrantOrganizationsArgs.builder()
+     *             .clientGrantId("cgr_XXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetClientGrantOrganizationsResult> getClientGrantOrganizations(GetClientGrantOrganizationsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getClientGrantOrganizations:getClientGrantOrganizations", TypeShape.of(GetClientGrantOrganizationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve all organizations associated with a specific client grant (EA only).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetClientGrantOrganizationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myClientGrantOrganizations = Auth0Functions.getClientGrantOrganizations(GetClientGrantOrganizationsArgs.builder()
+     *             .clientGrantId("cgr_XXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetClientGrantOrganizationsResult> getClientGrantOrganizationsPlain(GetClientGrantOrganizationsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getClientGrantOrganizations:getClientGrantOrganizations", TypeShape.of(GetClientGrantOrganizationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Data source to retrieve a client grants based on clientId and/or audience
      * 
      * ## Example Usage
@@ -3860,9 +4081,7 @@ public final class Auth0Functions {
         return Deployment.getInstance().invokeAsync("auth0:index/getConnectionDirectoryDefaultMapping:getConnectionDirectoryDefaultMapping", TypeShape.of(GetConnectionDirectoryDefaultMappingResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve the selected synchronized group IDs for a connection&#39;s directory provisioning configuration.
-     * 
-     * &gt; This data source is only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
+     * Data source to retrieve the selected synchronized groups for a connection&#39;s directory provisioning configuration.
      * 
      * ## Example Usage
      * 
@@ -3902,9 +4121,7 @@ public final class Auth0Functions {
         return getConnectionDirectorySynchronizedGroups(args, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve the selected synchronized group IDs for a connection&#39;s directory provisioning configuration.
-     * 
-     * &gt; This data source is only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
+     * Data source to retrieve the selected synchronized groups for a connection&#39;s directory provisioning configuration.
      * 
      * ## Example Usage
      * 
@@ -3944,9 +4161,7 @@ public final class Auth0Functions {
         return getConnectionDirectorySynchronizedGroupsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Data source to retrieve the selected synchronized group IDs for a connection&#39;s directory provisioning configuration.
-     * 
-     * &gt; This data source is only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
+     * Data source to retrieve the selected synchronized groups for a connection&#39;s directory provisioning configuration.
      * 
      * ## Example Usage
      * 
@@ -3986,9 +4201,7 @@ public final class Auth0Functions {
         return Deployment.getInstance().invoke("auth0:index/getConnectionDirectorySynchronizedGroups:getConnectionDirectorySynchronizedGroups", TypeShape.of(GetConnectionDirectorySynchronizedGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve the selected synchronized group IDs for a connection&#39;s directory provisioning configuration.
-     * 
-     * &gt; This data source is only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
+     * Data source to retrieve the selected synchronized groups for a connection&#39;s directory provisioning configuration.
      * 
      * ## Example Usage
      * 
@@ -4028,9 +4241,7 @@ public final class Auth0Functions {
         return Deployment.getInstance().invoke("auth0:index/getConnectionDirectorySynchronizedGroups:getConnectionDirectorySynchronizedGroups", TypeShape.of(GetConnectionDirectorySynchronizedGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source to retrieve the selected synchronized group IDs for a connection&#39;s directory provisioning configuration.
-     * 
-     * &gt; This data source is only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
+     * Data source to retrieve the selected synchronized groups for a connection&#39;s directory provisioning configuration.
      * 
      * ## Example Usage
      * 
@@ -7015,6 +7226,1153 @@ public final class Auth0Functions {
         return Deployment.getInstance().invokeAsync("auth0:index/getOrganization:getOrganization", TypeShape.of(GetOrganizationResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Data source to retrieve a specific client (application) association for an organization, by `organizationId` and `clientId` (EA only).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationClientArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myOrgClient = Auth0Functions.getOrganizationClient(GetOrganizationClientArgs.builder()
+     *             .organizationId("org_XXXXX")
+     *             .clientId("clientXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationClientResult> getOrganizationClient(GetOrganizationClientArgs args) {
+        return getOrganizationClient(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific client (application) association for an organization, by `organizationId` and `clientId` (EA only).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationClientArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myOrgClient = Auth0Functions.getOrganizationClient(GetOrganizationClientArgs.builder()
+     *             .organizationId("org_XXXXX")
+     *             .clientId("clientXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetOrganizationClientResult> getOrganizationClientPlain(GetOrganizationClientPlainArgs args) {
+        return getOrganizationClientPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific client (application) association for an organization, by `organizationId` and `clientId` (EA only).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationClientArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myOrgClient = Auth0Functions.getOrganizationClient(GetOrganizationClientArgs.builder()
+     *             .organizationId("org_XXXXX")
+     *             .clientId("clientXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationClientResult> getOrganizationClient(GetOrganizationClientArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getOrganizationClient:getOrganizationClient", TypeShape.of(GetOrganizationClientResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific client (application) association for an organization, by `organizationId` and `clientId` (EA only).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationClientArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myOrgClient = Auth0Functions.getOrganizationClient(GetOrganizationClientArgs.builder()
+     *             .organizationId("org_XXXXX")
+     *             .clientId("clientXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationClientResult> getOrganizationClient(GetOrganizationClientArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getOrganizationClient:getOrganizationClient", TypeShape.of(GetOrganizationClientResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific client (application) association for an organization, by `organizationId` and `clientId` (EA only).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationClientArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myOrgClient = Auth0Functions.getOrganizationClient(GetOrganizationClientArgs.builder()
+     *             .organizationId("org_XXXXX")
+     *             .clientId("clientXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetOrganizationClientResult> getOrganizationClientPlain(GetOrganizationClientPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getOrganizationClient:getOrganizationClient", TypeShape.of(GetOrganizationClientResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve all client (application) associations for a specific organization (EA only).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationClientsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myOrgClients = Auth0Functions.getOrganizationClients(GetOrganizationClientsArgs.builder()
+     *             .organizationId("org_XXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationClientsResult> getOrganizationClients(GetOrganizationClientsArgs args) {
+        return getOrganizationClients(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve all client (application) associations for a specific organization (EA only).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationClientsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myOrgClients = Auth0Functions.getOrganizationClients(GetOrganizationClientsArgs.builder()
+     *             .organizationId("org_XXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetOrganizationClientsResult> getOrganizationClientsPlain(GetOrganizationClientsPlainArgs args) {
+        return getOrganizationClientsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve all client (application) associations for a specific organization (EA only).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationClientsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myOrgClients = Auth0Functions.getOrganizationClients(GetOrganizationClientsArgs.builder()
+     *             .organizationId("org_XXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationClientsResult> getOrganizationClients(GetOrganizationClientsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getOrganizationClients:getOrganizationClients", TypeShape.of(GetOrganizationClientsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve all client (application) associations for a specific organization (EA only).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationClientsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myOrgClients = Auth0Functions.getOrganizationClients(GetOrganizationClientsArgs.builder()
+     *             .organizationId("org_XXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationClientsResult> getOrganizationClients(GetOrganizationClientsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getOrganizationClients:getOrganizationClients", TypeShape.of(GetOrganizationClientsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve all client (application) associations for a specific organization (EA only).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationClientsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myOrgClients = Auth0Functions.getOrganizationClients(GetOrganizationClientsArgs.builder()
+     *             .organizationId("org_XXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetOrganizationClientsResult> getOrganizationClientsPlain(GetOrganizationClientsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getOrganizationClients:getOrganizationClients", TypeShape.of(GetOrganizationClientsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve the groups assigned to a specific role within the context of an organization. For the members with a direct role assignment, use `auth0.getOrganizationRoleMembers`. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationRoleGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // The groups assigned to an organization-level role.
+     *         final var myRoleGroups = Auth0Functions.getOrganizationRoleGroups(GetOrganizationRoleGroupsArgs.builder()
+     *             .organizationId("org_abcdefghkijklmn")
+     *             .roleId("rol_abcdefghkijklmn")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationRoleGroupsResult> getOrganizationRoleGroups(GetOrganizationRoleGroupsArgs args) {
+        return getOrganizationRoleGroups(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve the groups assigned to a specific role within the context of an organization. For the members with a direct role assignment, use `auth0.getOrganizationRoleMembers`. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationRoleGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // The groups assigned to an organization-level role.
+     *         final var myRoleGroups = Auth0Functions.getOrganizationRoleGroups(GetOrganizationRoleGroupsArgs.builder()
+     *             .organizationId("org_abcdefghkijklmn")
+     *             .roleId("rol_abcdefghkijklmn")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetOrganizationRoleGroupsResult> getOrganizationRoleGroupsPlain(GetOrganizationRoleGroupsPlainArgs args) {
+        return getOrganizationRoleGroupsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve the groups assigned to a specific role within the context of an organization. For the members with a direct role assignment, use `auth0.getOrganizationRoleMembers`. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationRoleGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // The groups assigned to an organization-level role.
+     *         final var myRoleGroups = Auth0Functions.getOrganizationRoleGroups(GetOrganizationRoleGroupsArgs.builder()
+     *             .organizationId("org_abcdefghkijklmn")
+     *             .roleId("rol_abcdefghkijklmn")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationRoleGroupsResult> getOrganizationRoleGroups(GetOrganizationRoleGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getOrganizationRoleGroups:getOrganizationRoleGroups", TypeShape.of(GetOrganizationRoleGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve the groups assigned to a specific role within the context of an organization. For the members with a direct role assignment, use `auth0.getOrganizationRoleMembers`. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationRoleGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // The groups assigned to an organization-level role.
+     *         final var myRoleGroups = Auth0Functions.getOrganizationRoleGroups(GetOrganizationRoleGroupsArgs.builder()
+     *             .organizationId("org_abcdefghkijklmn")
+     *             .roleId("rol_abcdefghkijklmn")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationRoleGroupsResult> getOrganizationRoleGroups(GetOrganizationRoleGroupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getOrganizationRoleGroups:getOrganizationRoleGroups", TypeShape.of(GetOrganizationRoleGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve the groups assigned to a specific role within the context of an organization. For the members with a direct role assignment, use `auth0.getOrganizationRoleMembers`. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationRoleGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // The groups assigned to an organization-level role.
+     *         final var myRoleGroups = Auth0Functions.getOrganizationRoleGroups(GetOrganizationRoleGroupsArgs.builder()
+     *             .organizationId("org_abcdefghkijklmn")
+     *             .roleId("rol_abcdefghkijklmn")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetOrganizationRoleGroupsResult> getOrganizationRoleGroupsPlain(GetOrganizationRoleGroupsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getOrganizationRoleGroups:getOrganizationRoleGroups", TypeShape.of(GetOrganizationRoleGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve the organization members assigned a specific role within the context of an organization. Only members with a direct role assignment are returned; for the groups assigned to the role, use `auth0.getOrganizationRoleGroups`. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationRoleMembersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // The organization members with a direct assignment of an organization-level role.
+     *         final var myRoleMembers = Auth0Functions.getOrganizationRoleMembers(GetOrganizationRoleMembersArgs.builder()
+     *             .organizationId("org_abcdefghkijklmn")
+     *             .roleId("rol_abcdefghkijklmn")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationRoleMembersResult> getOrganizationRoleMembers(GetOrganizationRoleMembersArgs args) {
+        return getOrganizationRoleMembers(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve the organization members assigned a specific role within the context of an organization. Only members with a direct role assignment are returned; for the groups assigned to the role, use `auth0.getOrganizationRoleGroups`. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationRoleMembersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // The organization members with a direct assignment of an organization-level role.
+     *         final var myRoleMembers = Auth0Functions.getOrganizationRoleMembers(GetOrganizationRoleMembersArgs.builder()
+     *             .organizationId("org_abcdefghkijklmn")
+     *             .roleId("rol_abcdefghkijklmn")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetOrganizationRoleMembersResult> getOrganizationRoleMembersPlain(GetOrganizationRoleMembersPlainArgs args) {
+        return getOrganizationRoleMembersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve the organization members assigned a specific role within the context of an organization. Only members with a direct role assignment are returned; for the groups assigned to the role, use `auth0.getOrganizationRoleGroups`. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationRoleMembersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // The organization members with a direct assignment of an organization-level role.
+     *         final var myRoleMembers = Auth0Functions.getOrganizationRoleMembers(GetOrganizationRoleMembersArgs.builder()
+     *             .organizationId("org_abcdefghkijklmn")
+     *             .roleId("rol_abcdefghkijklmn")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationRoleMembersResult> getOrganizationRoleMembers(GetOrganizationRoleMembersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getOrganizationRoleMembers:getOrganizationRoleMembers", TypeShape.of(GetOrganizationRoleMembersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve the organization members assigned a specific role within the context of an organization. Only members with a direct role assignment are returned; for the groups assigned to the role, use `auth0.getOrganizationRoleGroups`. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationRoleMembersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // The organization members with a direct assignment of an organization-level role.
+     *         final var myRoleMembers = Auth0Functions.getOrganizationRoleMembers(GetOrganizationRoleMembersArgs.builder()
+     *             .organizationId("org_abcdefghkijklmn")
+     *             .roleId("rol_abcdefghkijklmn")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationRoleMembersResult> getOrganizationRoleMembers(GetOrganizationRoleMembersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getOrganizationRoleMembers:getOrganizationRoleMembers", TypeShape.of(GetOrganizationRoleMembersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve the organization members assigned a specific role within the context of an organization. Only members with a direct role assignment are returned; for the groups assigned to the role, use `auth0.getOrganizationRoleGroups`. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationRoleMembersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // The organization members with a direct assignment of an organization-level role.
+     *         final var myRoleMembers = Auth0Functions.getOrganizationRoleMembers(GetOrganizationRoleMembersArgs.builder()
+     *             .organizationId("org_abcdefghkijklmn")
+     *             .roleId("rol_abcdefghkijklmn")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetOrganizationRoleMembersResult> getOrganizationRoleMembersPlain(GetOrganizationRoleMembersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getOrganizationRoleMembers:getOrganizationRoleMembers", TypeShape.of(GetOrganizationRoleMembersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve all organizations of the tenant. Optionally set `includeClientAssociationFor` to also return each organization&#39;s entitlement to a given client (application).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An empty data source block retrieves every organization of the tenant.
+     *         final var myOrganizations = Auth0Functions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .build());
+     * 
+     *         // Setting include_client_association_for additionally returns, for every organization
+     *         // associated with that client (application), the details of the association.
+     *         final var myOrganizationsWithClientAssociation = Auth0Functions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .includeClientAssociationFor("AaiyAPdpYdesoKnqjj8HJqRn4T5titww")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationsResult> getOrganizations() {
+        return getOrganizations(GetOrganizationsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve all organizations of the tenant. Optionally set `includeClientAssociationFor` to also return each organization&#39;s entitlement to a given client (application).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An empty data source block retrieves every organization of the tenant.
+     *         final var myOrganizations = Auth0Functions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .build());
+     * 
+     *         // Setting include_client_association_for additionally returns, for every organization
+     *         // associated with that client (application), the details of the association.
+     *         final var myOrganizationsWithClientAssociation = Auth0Functions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .includeClientAssociationFor("AaiyAPdpYdesoKnqjj8HJqRn4T5titww")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetOrganizationsResult> getOrganizationsPlain() {
+        return getOrganizationsPlain(GetOrganizationsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve all organizations of the tenant. Optionally set `includeClientAssociationFor` to also return each organization&#39;s entitlement to a given client (application).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An empty data source block retrieves every organization of the tenant.
+     *         final var myOrganizations = Auth0Functions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .build());
+     * 
+     *         // Setting include_client_association_for additionally returns, for every organization
+     *         // associated with that client (application), the details of the association.
+     *         final var myOrganizationsWithClientAssociation = Auth0Functions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .includeClientAssociationFor("AaiyAPdpYdesoKnqjj8HJqRn4T5titww")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationsResult> getOrganizations(GetOrganizationsArgs args) {
+        return getOrganizations(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve all organizations of the tenant. Optionally set `includeClientAssociationFor` to also return each organization&#39;s entitlement to a given client (application).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An empty data source block retrieves every organization of the tenant.
+     *         final var myOrganizations = Auth0Functions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .build());
+     * 
+     *         // Setting include_client_association_for additionally returns, for every organization
+     *         // associated with that client (application), the details of the association.
+     *         final var myOrganizationsWithClientAssociation = Auth0Functions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .includeClientAssociationFor("AaiyAPdpYdesoKnqjj8HJqRn4T5titww")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetOrganizationsResult> getOrganizationsPlain(GetOrganizationsPlainArgs args) {
+        return getOrganizationsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve all organizations of the tenant. Optionally set `includeClientAssociationFor` to also return each organization&#39;s entitlement to a given client (application).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An empty data source block retrieves every organization of the tenant.
+     *         final var myOrganizations = Auth0Functions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .build());
+     * 
+     *         // Setting include_client_association_for additionally returns, for every organization
+     *         // associated with that client (application), the details of the association.
+     *         final var myOrganizationsWithClientAssociation = Auth0Functions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .includeClientAssociationFor("AaiyAPdpYdesoKnqjj8HJqRn4T5titww")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationsResult> getOrganizations(GetOrganizationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getOrganizations:getOrganizations", TypeShape.of(GetOrganizationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve all organizations of the tenant. Optionally set `includeClientAssociationFor` to also return each organization&#39;s entitlement to a given client (application).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An empty data source block retrieves every organization of the tenant.
+     *         final var myOrganizations = Auth0Functions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .build());
+     * 
+     *         // Setting include_client_association_for additionally returns, for every organization
+     *         // associated with that client (application), the details of the association.
+     *         final var myOrganizationsWithClientAssociation = Auth0Functions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .includeClientAssociationFor("AaiyAPdpYdesoKnqjj8HJqRn4T5titww")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetOrganizationsResult> getOrganizations(GetOrganizationsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getOrganizations:getOrganizations", TypeShape.of(GetOrganizationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve all organizations of the tenant. Optionally set `includeClientAssociationFor` to also return each organization&#39;s entitlement to a given client (application).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetOrganizationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An empty data source block retrieves every organization of the tenant.
+     *         final var myOrganizations = Auth0Functions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .build());
+     * 
+     *         // Setting include_client_association_for additionally returns, for every organization
+     *         // associated with that client (application), the details of the association.
+     *         final var myOrganizationsWithClientAssociation = Auth0Functions.getOrganizations(GetOrganizationsArgs.builder()
+     *             .includeClientAssociationFor("AaiyAPdpYdesoKnqjj8HJqRn4T5titww")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetOrganizationsResult> getOrganizationsPlain(GetOrganizationsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getOrganizations:getOrganizations", TypeShape.of(GetOrganizationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Use this data source to retrieve Auth0&#39;s outbound IP ranges for allowlisting purposes.
      * 
      */
@@ -8480,6 +9838,15 @@ public final class Auth0Functions {
      *             .roleId("abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
+     *         // An organization-level Auth0 Role loaded using the role name. Several
+     *         // organizations can own a role of the same name, so the type and the ID of the
+     *         // organization owning it are needed to find the right one. (EA only)
+     *         final var some-organization-role-by-name = Auth0Functions.getRole(GetRoleArgs.builder()
+     *             .name("my-organization-role")
+     *             .type("organization")
+     *             .ownerId("org_abcdefghkijklmn")
+     *             .build());
+     * 
      *     }
      * }
      * }
@@ -8524,6 +9891,15 @@ public final class Auth0Functions {
      *         // An Auth0 Role loaded using its ID.
      *         final var some-role-by-id = Auth0Functions.getRole(GetRoleArgs.builder()
      *             .roleId("abcdefghkijklmnopqrstuvwxyz0123456789")
+     *             .build());
+     * 
+     *         // An organization-level Auth0 Role loaded using the role name. Several
+     *         // organizations can own a role of the same name, so the type and the ID of the
+     *         // organization owning it are needed to find the right one. (EA only)
+     *         final var some-organization-role-by-name = Auth0Functions.getRole(GetRoleArgs.builder()
+     *             .name("my-organization-role")
+     *             .type("organization")
+     *             .ownerId("org_abcdefghkijklmn")
      *             .build());
      * 
      *     }
@@ -8572,6 +9948,15 @@ public final class Auth0Functions {
      *             .roleId("abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
+     *         // An organization-level Auth0 Role loaded using the role name. Several
+     *         // organizations can own a role of the same name, so the type and the ID of the
+     *         // organization owning it are needed to find the right one. (EA only)
+     *         final var some-organization-role-by-name = Auth0Functions.getRole(GetRoleArgs.builder()
+     *             .name("my-organization-role")
+     *             .type("organization")
+     *             .ownerId("org_abcdefghkijklmn")
+     *             .build());
+     * 
      *     }
      * }
      * }
@@ -8616,6 +10001,15 @@ public final class Auth0Functions {
      *         // An Auth0 Role loaded using its ID.
      *         final var some-role-by-id = Auth0Functions.getRole(GetRoleArgs.builder()
      *             .roleId("abcdefghkijklmnopqrstuvwxyz0123456789")
+     *             .build());
+     * 
+     *         // An organization-level Auth0 Role loaded using the role name. Several
+     *         // organizations can own a role of the same name, so the type and the ID of the
+     *         // organization owning it are needed to find the right one. (EA only)
+     *         final var some-organization-role-by-name = Auth0Functions.getRole(GetRoleArgs.builder()
+     *             .name("my-organization-role")
+     *             .type("organization")
+     *             .ownerId("org_abcdefghkijklmn")
      *             .build());
      * 
      *     }
@@ -8664,6 +10058,15 @@ public final class Auth0Functions {
      *             .roleId("abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
+     *         // An organization-level Auth0 Role loaded using the role name. Several
+     *         // organizations can own a role of the same name, so the type and the ID of the
+     *         // organization owning it are needed to find the right one. (EA only)
+     *         final var some-organization-role-by-name = Auth0Functions.getRole(GetRoleArgs.builder()
+     *             .name("my-organization-role")
+     *             .type("organization")
+     *             .ownerId("org_abcdefghkijklmn")
+     *             .build());
+     * 
      *     }
      * }
      * }
@@ -8710,6 +10113,15 @@ public final class Auth0Functions {
      *             .roleId("abcdefghkijklmnopqrstuvwxyz0123456789")
      *             .build());
      * 
+     *         // An organization-level Auth0 Role loaded using the role name. Several
+     *         // organizations can own a role of the same name, so the type and the ID of the
+     *         // organization owning it are needed to find the right one. (EA only)
+     *         final var some-organization-role-by-name = Auth0Functions.getRole(GetRoleArgs.builder()
+     *             .name("my-organization-role")
+     *             .type("organization")
+     *             .ownerId("org_abcdefghkijklmn")
+     *             .build());
+     * 
      *     }
      * }
      * }
@@ -8754,6 +10166,15 @@ public final class Auth0Functions {
      *         // An Auth0 Role loaded using its ID.
      *         final var some-role-by-id = Auth0Functions.getRole(GetRoleArgs.builder()
      *             .roleId("abcdefghkijklmnopqrstuvwxyz0123456789")
+     *             .build());
+     * 
+     *         // An organization-level Auth0 Role loaded using the role name. Several
+     *         // organizations can own a role of the same name, so the type and the ID of the
+     *         // organization owning it are needed to find the right one. (EA only)
+     *         final var some-organization-role-by-name = Auth0Functions.getRole(GetRoleArgs.builder()
+     *             .name("my-organization-role")
+     *             .type("organization")
+     *             .ownerId("org_abcdefghkijklmn")
      *             .build());
      * 
      *     }
@@ -9629,5 +11050,205 @@ public final class Auth0Functions {
      */
     public static CompletableFuture<GetUserConnectedAccountsResult> getUserConnectedAccountsPlain(GetUserConnectedAccountsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getUserConnectedAccounts:getUserConnectedAccounts", TypeShape.of(GetUserConnectedAccountsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve all organization memberships for a specific Auth0 user (EA only).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetUserOrganizationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myUserOrganizations = Auth0Functions.getUserOrganizations(GetUserOrganizationsArgs.builder()
+     *             .userId("auth0|XXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetUserOrganizationsResult> getUserOrganizations(GetUserOrganizationsArgs args) {
+        return getUserOrganizations(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve all organization memberships for a specific Auth0 user (EA only).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetUserOrganizationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myUserOrganizations = Auth0Functions.getUserOrganizations(GetUserOrganizationsArgs.builder()
+     *             .userId("auth0|XXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetUserOrganizationsResult> getUserOrganizationsPlain(GetUserOrganizationsPlainArgs args) {
+        return getUserOrganizationsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve all organization memberships for a specific Auth0 user (EA only).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetUserOrganizationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myUserOrganizations = Auth0Functions.getUserOrganizations(GetUserOrganizationsArgs.builder()
+     *             .userId("auth0|XXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetUserOrganizationsResult> getUserOrganizations(GetUserOrganizationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getUserOrganizations:getUserOrganizations", TypeShape.of(GetUserOrganizationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve all organization memberships for a specific Auth0 user (EA only).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetUserOrganizationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myUserOrganizations = Auth0Functions.getUserOrganizations(GetUserOrganizationsArgs.builder()
+     *             .userId("auth0|XXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetUserOrganizationsResult> getUserOrganizations(GetUserOrganizationsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getUserOrganizations:getUserOrganizations", TypeShape.of(GetUserOrganizationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve all organization memberships for a specific Auth0 user (EA only).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetUserOrganizationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myUserOrganizations = Auth0Functions.getUserOrganizations(GetUserOrganizationsArgs.builder()
+     *             .userId("auth0|XXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetUserOrganizationsResult> getUserOrganizationsPlain(GetUserOrganizationsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getUserOrganizations:getUserOrganizations", TypeShape.of(GetUserOrganizationsResult.class), args, Utilities.withVersion(options));
     }
 }

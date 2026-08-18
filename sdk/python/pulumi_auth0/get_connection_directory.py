@@ -149,7 +149,7 @@ class GetConnectionDirectoryResult:
     @pulumi.getter(name="synchronizeGroups")
     def synchronize_groups(self) -> _builtins.str:
         """
-        Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+        Group synchronization configuration. Valid values are: off, all, selected.
         """
         return pulumi.get(self, "synchronize_groups")
 

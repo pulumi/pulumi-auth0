@@ -65,14 +65,14 @@ public final class ConnectionDirectoryArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+     * Group synchronization configuration. Valid values are: off, all, selected.
      * 
      */
     @Import(name="synchronizeGroups")
     private @Nullable Output<String> synchronizeGroups;
 
     /**
-     * @return Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+     * @return Group synchronization configuration. Valid values are: off, all, selected.
      * 
      */
     public Optional<Output<String>> synchronizeGroups() {
@@ -180,7 +180,7 @@ public final class ConnectionDirectoryArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param synchronizeGroups Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+         * @param synchronizeGroups Group synchronization configuration. Valid values are: off, all, selected.
          * 
          * @return builder
          * 
@@ -191,7 +191,7 @@ public final class ConnectionDirectoryArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param synchronizeGroups Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+         * @param synchronizeGroups Group synchronization configuration. Valid values are: off, all, selected.
          * 
          * @return builder
          * 

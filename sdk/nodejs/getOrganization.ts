@@ -88,6 +88,10 @@ export interface GetOrganizationResult {
      */
     readonly id: string;
     /**
+     * Controls whether this organization's app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `auth0.ClientGrant`'s `organizationUsage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
+     */
+    readonly isAppEntitlementActive: boolean;
+    /**
      * User ID(s) that are members of the organization. Skips populating if `skipMembers` is `true`.
      */
     readonly members: string[];

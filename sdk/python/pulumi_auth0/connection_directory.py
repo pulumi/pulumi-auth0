@@ -31,7 +31,7 @@ class ConnectionDirectoryArgs:
         :param pulumi.Input[_builtins.str] connection_id: ID of the connection for this directory provisioning configuration.
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionDirectoryMappingArgs']]] mappings: Mapping between Auth0 attributes and IDP user attributes. Defaults to default mapping for the connection type if not specified.
         :param pulumi.Input[_builtins.bool] synchronize_automatically: Whether periodic automatic synchronization is enabled. Defaults to false.
-        :param pulumi.Input[_builtins.str] synchronize_groups: Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+        :param pulumi.Input[_builtins.str] synchronize_groups: Group synchronization configuration. Valid values are: off, all, selected.
         """
         pulumi.set(__self__, "connection_id", connection_id)
         if mappings is not None:
@@ -81,7 +81,7 @@ class ConnectionDirectoryArgs:
     @pulumi.getter(name="synchronizeGroups")
     def synchronize_groups(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+        Group synchronization configuration. Valid values are: off, all, selected.
         """
         return pulumi.get(self, "synchronize_groups")
 
@@ -116,7 +116,7 @@ class _ConnectionDirectoryState:
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionDirectoryMappingArgs']]] mappings: Mapping between Auth0 attributes and IDP user attributes. Defaults to default mapping for the connection type if not specified.
         :param pulumi.Input[_builtins.str] strategy: Strategy of the connection for this directory provisioning configuration.
         :param pulumi.Input[_builtins.bool] synchronize_automatically: Whether periodic automatic synchronization is enabled. Defaults to false.
-        :param pulumi.Input[_builtins.str] synchronize_groups: Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+        :param pulumi.Input[_builtins.str] synchronize_groups: Group synchronization configuration. Valid values are: off, all, selected.
         :param pulumi.Input[_builtins.str] updated_at: The timestamp at which the directory provisioning configuration was last updated.
         """
         if connection_id is not None:
@@ -254,7 +254,7 @@ class _ConnectionDirectoryState:
     @pulumi.getter(name="synchronizeGroups")
     def synchronize_groups(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+        Group synchronization configuration. Valid values are: off, all, selected.
         """
         return pulumi.get(self, "synchronize_groups")
 
@@ -348,7 +348,7 @@ class ConnectionDirectory(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] connection_id: ID of the connection for this directory provisioning configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionDirectoryMappingArgs', 'ConnectionDirectoryMappingArgsDict']]]] mappings: Mapping between Auth0 attributes and IDP user attributes. Defaults to default mapping for the connection type if not specified.
         :param pulumi.Input[_builtins.bool] synchronize_automatically: Whether periodic automatic synchronization is enabled. Defaults to false.
-        :param pulumi.Input[_builtins.str] synchronize_groups: Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+        :param pulumi.Input[_builtins.str] synchronize_groups: Group synchronization configuration. Valid values are: off, all, selected.
         """
         ...
     @overload
@@ -491,7 +491,7 @@ class ConnectionDirectory(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionDirectoryMappingArgs', 'ConnectionDirectoryMappingArgsDict']]]] mappings: Mapping between Auth0 attributes and IDP user attributes. Defaults to default mapping for the connection type if not specified.
         :param pulumi.Input[_builtins.str] strategy: Strategy of the connection for this directory provisioning configuration.
         :param pulumi.Input[_builtins.bool] synchronize_automatically: Whether periodic automatic synchronization is enabled. Defaults to false.
-        :param pulumi.Input[_builtins.str] synchronize_groups: Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+        :param pulumi.Input[_builtins.str] synchronize_groups: Group synchronization configuration. Valid values are: off, all, selected.
         :param pulumi.Input[_builtins.str] updated_at: The timestamp at which the directory provisioning configuration was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -587,7 +587,7 @@ class ConnectionDirectory(pulumi.CustomResource):
     @pulumi.getter(name="synchronizeGroups")
     def synchronize_groups(self) -> pulumi.Output[_builtins.str]:
         """
-        Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+        Group synchronization configuration. Valid values are: off, all, selected.
         """
         return pulumi.get(self, "synchronize_groups")
 

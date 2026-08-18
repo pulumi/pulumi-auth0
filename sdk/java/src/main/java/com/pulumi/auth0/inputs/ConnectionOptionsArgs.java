@@ -1735,14 +1735,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+     * Enabling this when using the connectionScope parameter, uses space as a delimiter for scopes when calling the IdP&#39;s API.
      * 
      */
     @Import(name="useOauthSpecScope")
     private @Nullable Output<Boolean> useOauthSpecScope;
 
     /**
-     * @return Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+     * @return Enabling this when using the connectionScope parameter, uses space as a delimiter for scopes when calling the IdP&#39;s API.
      * 
      */
     public Optional<Output<Boolean>> useOauthSpecScope() {
@@ -4482,7 +4482,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param useOauthSpecScope Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+         * @param useOauthSpecScope Enabling this when using the connectionScope parameter, uses space as a delimiter for scopes when calling the IdP&#39;s API.
          * 
          * @return builder
          * 
@@ -4493,7 +4493,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param useOauthSpecScope Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+         * @param useOauthSpecScope Enabling this when using the connectionScope parameter, uses space as a delimiter for scopes when calling the IdP&#39;s API.
          * 
          * @return builder
          * 

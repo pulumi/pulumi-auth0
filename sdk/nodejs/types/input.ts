@@ -1566,6 +1566,75 @@ export interface ClientCredentialsTlsClientAuthCredential {
     updatedAt?: pulumi.Input<string | undefined>;
 }
 
+export interface ClientCredentialsTokenVaultPrivilegedAccess {
+    /**
+     * Credentials the privileged worker may authenticate with. A maximum of 2 client credentials can be set.
+     */
+    credentials: pulumi.Input<pulumi.Input<inputs.ClientCredentialsTokenVaultPrivilegedAccessCredential>[]>;
+    /**
+     * Pins the connections, and the scopes within them, that the privileged worker may request tokens for. A maximum of 5 grants can be set, with a maximum of 20 scopes in total across all of them. Omit every `grants` block to clear the grants already configured.
+     */
+    grants?: pulumi.Input<pulumi.Input<inputs.ClientCredentialsTokenVaultPrivilegedAccessGrant>[] | undefined>;
+    /**
+     * Permitted IPv4 or IPv6 addresses, or CIDR ranges, from which the privileged worker may request tokens. A maximum of 10 entries can be set. Set to `[]` to clear the entries already configured.
+     */
+    ipAllowlists: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ClientCredentialsTokenVaultPrivilegedAccessCredential {
+    /**
+     * Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.
+     */
+    algorithm?: pulumi.Input<string | undefined>;
+    /**
+     * The ISO 8601 formatted date the credential was created.
+     */
+    createdAt?: pulumi.Input<string | undefined>;
+    /**
+     * Credential type. Supported types: `publicKey`.
+     */
+    credentialType: pulumi.Input<string>;
+    /**
+     * The ISO 8601 formatted date representing the expiration of the credential. It is not possible to set this to never expire after it has been set. Recreate the certificate if needed.
+     */
+    expiresAt?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the client credential.
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * The key identifier of the credential, generated on creation.
+     */
+    keyId?: pulumi.Input<string | undefined>;
+    /**
+     * Friendly name for a credential.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expiresAt` is set the credential expiry will be set to the explicit `expiresAt` value.
+     */
+    parseExpiryFromCert?: pulumi.Input<boolean | undefined>;
+    /**
+     * PEM-formatted public key (SPKI and PKCS1) or X509 certificate. Must be JSON escaped.
+     */
+    pem: pulumi.Input<string>;
+    /**
+     * The ISO 8601 formatted date the credential was updated.
+     */
+    updatedAt?: pulumi.Input<string | undefined>;
+}
+
+export interface ClientCredentialsTokenVaultPrivilegedAccessGrant {
+    /**
+     * Name of the connection the grant applies to. The connection does not need to exist when the grant is configured; it is validated at runtime.
+     */
+    connection: pulumi.Input<string>;
+    /**
+     * Scopes the privileged worker may request on the connection.
+     */
+    scopes: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface ClientDefaultOrganization {
     /**
      * If set, the `defaultOrganization` will be removed.
@@ -1904,6 +1973,25 @@ export interface ConnectionDirectoryMapping {
      * The field location in the IDP schema.
      */
     idp: pulumi.Input<string>;
+}
+
+export interface ConnectionDirectorySynchronizedGroupsGroup {
+    /**
+     * Number of direct members in the Google Workspace Directory group.
+     */
+    directMembersCount?: pulumi.Input<number | undefined>;
+    /**
+     * Google Workspace Directory group email.
+     */
+    email?: pulumi.Input<string | undefined>;
+    /**
+     * Google Workspace Directory group ID.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * Google Workspace Directory group name.
+     */
+    name?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectionOptions {
@@ -2360,7 +2448,7 @@ export interface ConnectionOptions {
      */
     useKerberos?: pulumi.Input<boolean | undefined>;
     /**
-     * Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+     * Enabling this when using the connectionScope parameter, uses space as a delimiter for scopes when calling the IdP's API.
      */
     useOauthSpecScope?: pulumi.Input<boolean | undefined>;
     /**
@@ -3915,6 +4003,17 @@ export interface OrganizationBranding {
      * URL of logo to display on login page.
      */
     logoUrl?: pulumi.Input<string | undefined>;
+}
+
+export interface OrganizationClientsClient {
+    /**
+     * The ID of the client (application) to associate with the organization.
+     */
+    clientId: pulumi.Input<string>;
+    /**
+     * Whether this client is used for member access to the organization.
+     */
+    useForMemberAccess?: pulumi.Input<boolean | undefined>;
 }
 
 export interface OrganizationConnectionsEnabledConnection {

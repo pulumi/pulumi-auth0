@@ -86,6 +86,12 @@ namespace Pulumi.Auth0
         [Output("tlsClientAuth")]
         public Output<Outputs.ClientCredentialsTlsClientAuth?> TlsClientAuth { get; private set; } = null!;
 
+        /// <summary>
+        /// Configures the client as a Token Vault privileged worker, allowing it to request Token Vault tokens on behalf of other users. This is an Early Access feature and must be enabled for your tenant.
+        /// </summary>
+        [Output("tokenVaultPrivilegedAccess")]
+        public Output<Outputs.ClientCredentialsTokenVaultPrivilegedAccess?> TokenVaultPrivilegedAccess { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a ClientCredentials resource with the given unique name, arguments, and options.
@@ -212,6 +218,12 @@ namespace Pulumi.Auth0
         [Input("tlsClientAuth")]
         public Input<Inputs.ClientCredentialsTlsClientAuthArgs>? TlsClientAuth { get; set; }
 
+        /// <summary>
+        /// Configures the client as a Token Vault privileged worker, allowing it to request Token Vault tokens on behalf of other users. This is an Early Access feature and must be enabled for your tenant.
+        /// </summary>
+        [Input("tokenVaultPrivilegedAccess")]
+        public Input<Inputs.ClientCredentialsTokenVaultPrivilegedAccessArgs>? TokenVaultPrivilegedAccess { get; set; }
+
         public ClientCredentialsArgs()
         {
         }
@@ -294,6 +306,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("tlsClientAuth")]
         public Input<Inputs.ClientCredentialsTlsClientAuthGetArgs>? TlsClientAuth { get; set; }
+
+        /// <summary>
+        /// Configures the client as a Token Vault privileged worker, allowing it to request Token Vault tokens on behalf of other users. This is an Early Access feature and must be enabled for your tenant.
+        /// </summary>
+        [Input("tokenVaultPrivilegedAccess")]
+        public Input<Inputs.ClientCredentialsTokenVaultPrivilegedAccessGetArgs>? TokenVaultPrivilegedAccess { get; set; }
 
         public ClientCredentialsState()
         {

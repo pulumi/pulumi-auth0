@@ -82,6 +82,10 @@ export class Organization extends pulumi.CustomResource {
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
     /**
+     * Controls whether this organization's app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `auth0.ClientGrant`'s `organizationUsage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
+     */
+    declare public readonly isAppEntitlementActive: pulumi.Output<boolean>;
+    /**
      * Metadata associated with the organization. Maximum of 10 metadata properties allowed.
      */
     declare public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
@@ -113,6 +117,7 @@ export class Organization extends pulumi.CustomResource {
             const state = argsOrState as OrganizationState | undefined;
             resourceInputs["branding"] = state?.branding;
             resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["isAppEntitlementActive"] = state?.isAppEntitlementActive;
             resourceInputs["metadata"] = state?.metadata;
             resourceInputs["name"] = state?.name;
             resourceInputs["thirdPartyClientAccess"] = state?.thirdPartyClientAccess;
@@ -121,6 +126,7 @@ export class Organization extends pulumi.CustomResource {
             const args = argsOrState as OrganizationArgs | undefined;
             resourceInputs["branding"] = args?.branding;
             resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["isAppEntitlementActive"] = args?.isAppEntitlementActive;
             resourceInputs["metadata"] = args?.metadata;
             resourceInputs["name"] = args?.name;
             resourceInputs["thirdPartyClientAccess"] = args?.thirdPartyClientAccess;
@@ -143,6 +149,10 @@ export interface OrganizationState {
      * Friendly name of this organization.
      */
     displayName?: pulumi.Input<string | undefined>;
+    /**
+     * Controls whether this organization's app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `auth0.ClientGrant`'s `organizationUsage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
+     */
+    isAppEntitlementActive?: pulumi.Input<boolean | undefined>;
     /**
      * Metadata associated with the organization. Maximum of 10 metadata properties allowed.
      */
@@ -173,6 +183,10 @@ export interface OrganizationArgs {
      * Friendly name of this organization.
      */
     displayName?: pulumi.Input<string | undefined>;
+    /**
+     * Controls whether this organization's app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `auth0.ClientGrant`'s `organizationUsage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
+     */
+    isAppEntitlementActive?: pulumi.Input<boolean | undefined>;
     /**
      * Metadata associated with the organization. Maximum of 10 metadata properties allowed.
      */

@@ -51,6 +51,8 @@ type ClientCredentials struct {
 	SignedRequestObject ClientCredentialsSignedRequestObjectPtrOutput `pulumi:"signedRequestObject"`
 	// Defines `tlsClientAuth` client authentication method.
 	TlsClientAuth ClientCredentialsTlsClientAuthPtrOutput `pulumi:"tlsClientAuth"`
+	// Configures the client as a Token Vault privileged worker, allowing it to request Token Vault tokens on behalf of other users. This is an Early Access feature and must be enabled for your tenant.
+	TokenVaultPrivilegedAccess ClientCredentialsTokenVaultPrivilegedAccessPtrOutput `pulumi:"tokenVaultPrivilegedAccess"`
 }
 
 // NewClientCredentials registers a new resource with the given unique name, arguments, and options.
@@ -116,6 +118,8 @@ type clientCredentialsState struct {
 	SignedRequestObject *ClientCredentialsSignedRequestObject `pulumi:"signedRequestObject"`
 	// Defines `tlsClientAuth` client authentication method.
 	TlsClientAuth *ClientCredentialsTlsClientAuth `pulumi:"tlsClientAuth"`
+	// Configures the client as a Token Vault privileged worker, allowing it to request Token Vault tokens on behalf of other users. This is an Early Access feature and must be enabled for your tenant.
+	TokenVaultPrivilegedAccess *ClientCredentialsTokenVaultPrivilegedAccess `pulumi:"tokenVaultPrivilegedAccess"`
 }
 
 type ClientCredentialsState struct {
@@ -138,6 +142,8 @@ type ClientCredentialsState struct {
 	SignedRequestObject ClientCredentialsSignedRequestObjectPtrInput
 	// Defines `tlsClientAuth` client authentication method.
 	TlsClientAuth ClientCredentialsTlsClientAuthPtrInput
+	// Configures the client as a Token Vault privileged worker, allowing it to request Token Vault tokens on behalf of other users. This is an Early Access feature and must be enabled for your tenant.
+	TokenVaultPrivilegedAccess ClientCredentialsTokenVaultPrivilegedAccessPtrInput
 }
 
 func (ClientCredentialsState) ElementType() reflect.Type {
@@ -164,6 +170,8 @@ type clientCredentialsArgs struct {
 	SignedRequestObject *ClientCredentialsSignedRequestObject `pulumi:"signedRequestObject"`
 	// Defines `tlsClientAuth` client authentication method.
 	TlsClientAuth *ClientCredentialsTlsClientAuth `pulumi:"tlsClientAuth"`
+	// Configures the client as a Token Vault privileged worker, allowing it to request Token Vault tokens on behalf of other users. This is an Early Access feature and must be enabled for your tenant.
+	TokenVaultPrivilegedAccess *ClientCredentialsTokenVaultPrivilegedAccess `pulumi:"tokenVaultPrivilegedAccess"`
 }
 
 // The set of arguments for constructing a ClientCredentials resource.
@@ -187,6 +195,8 @@ type ClientCredentialsArgs struct {
 	SignedRequestObject ClientCredentialsSignedRequestObjectPtrInput
 	// Defines `tlsClientAuth` client authentication method.
 	TlsClientAuth ClientCredentialsTlsClientAuthPtrInput
+	// Configures the client as a Token Vault privileged worker, allowing it to request Token Vault tokens on behalf of other users. This is an Early Access feature and must be enabled for your tenant.
+	TokenVaultPrivilegedAccess ClientCredentialsTokenVaultPrivilegedAccessPtrInput
 }
 
 func (ClientCredentialsArgs) ElementType() reflect.Type {
@@ -322,6 +332,13 @@ func (o ClientCredentialsOutput) SignedRequestObject() ClientCredentialsSignedRe
 // Defines `tlsClientAuth` client authentication method.
 func (o ClientCredentialsOutput) TlsClientAuth() ClientCredentialsTlsClientAuthPtrOutput {
 	return o.ApplyT(func(v *ClientCredentials) ClientCredentialsTlsClientAuthPtrOutput { return v.TlsClientAuth }).(ClientCredentialsTlsClientAuthPtrOutput)
+}
+
+// Configures the client as a Token Vault privileged worker, allowing it to request Token Vault tokens on behalf of other users. This is an Early Access feature and must be enabled for your tenant.
+func (o ClientCredentialsOutput) TokenVaultPrivilegedAccess() ClientCredentialsTokenVaultPrivilegedAccessPtrOutput {
+	return o.ApplyT(func(v *ClientCredentials) ClientCredentialsTokenVaultPrivilegedAccessPtrOutput {
+		return v.TokenVaultPrivilegedAccess
+	}).(ClientCredentialsTokenVaultPrivilegedAccessPtrOutput)
 }
 
 type ClientCredentialsArrayOutput struct{ *pulumi.OutputState }

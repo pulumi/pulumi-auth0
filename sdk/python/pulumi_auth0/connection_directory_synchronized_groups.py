@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ConnectionDirectorySynchronizedGroupsArgs', 'ConnectionDirectorySynchronizedGroups']
 
@@ -20,21 +22,29 @@ __all__ = ['ConnectionDirectorySynchronizedGroupsArgs', 'ConnectionDirectorySync
 class ConnectionDirectorySynchronizedGroupsArgs:
     def __init__(__self__, *,
                  connection_id: pulumi.Input[_builtins.str],
-                 group_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+                 group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 groups: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionDirectorySynchronizedGroupsGroupArgs']]]] = None):
         """
         The set of arguments for constructing a ConnectionDirectorySynchronizedGroups resource.
 
-        :param pulumi.Input[_builtins.str] connection_id: ID of the connection for which to manage synchronized groups. (EA only)
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] group_ids: List of Google Workspace Directory group IDs to synchronize. (EA only)
+        :param pulumi.Input[_builtins.str] connection_id: ID of the connection for which to manage synchronized groups.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] group_ids: IDs of the Google Workspace Directory groups to synchronize.
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionDirectorySynchronizedGroupsGroupArgs']]] groups: Google Workspace Directory groups to synchronize.
         """
         pulumi.set(__self__, "connection_id", connection_id)
-        pulumi.set(__self__, "group_ids", group_ids)
+        if group_ids is not None:
+            warnings.warn("""Use `groups` instead, which exposes each group's name, email and member count alongside its ID.""", DeprecationWarning)
+            pulumi.log.warn("""group_ids is deprecated: Use `groups` instead, which exposes each group's name, email and member count alongside its ID.""")
+        if group_ids is not None:
+            pulumi.set(__self__, "group_ids", group_ids)
+        if groups is not None:
+            pulumi.set(__self__, "groups", groups)
 
     @_builtins.property
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> pulumi.Input[_builtins.str]:
         """
-        ID of the connection for which to manage synchronized groups. (EA only)
+        ID of the connection for which to manage synchronized groups.
         """
         return pulumi.get(self, "connection_id")
 
@@ -44,38 +54,58 @@ class ConnectionDirectorySynchronizedGroupsArgs:
 
     @_builtins.property
     @pulumi.getter(name="groupIds")
-    def group_ids(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+    @_utilities.deprecated("""Use `groups` instead, which exposes each group's name, email and member count alongside its ID.""")
+    def group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of Google Workspace Directory group IDs to synchronize. (EA only)
+        IDs of the Google Workspace Directory groups to synchronize.
         """
         return pulumi.get(self, "group_ids")
 
     @group_ids.setter
-    def group_ids(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+    def group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "group_ids", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionDirectorySynchronizedGroupsGroupArgs']]]]:
+        """
+        Google Workspace Directory groups to synchronize.
+        """
+        return pulumi.get(self, "groups")
+
+    @groups.setter
+    def groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionDirectorySynchronizedGroupsGroupArgs']]]]):
+        pulumi.set(self, "groups", value)
 
 
 @pulumi.input_type
 class _ConnectionDirectorySynchronizedGroupsState:
     def __init__(__self__, *,
                  connection_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 groups: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionDirectorySynchronizedGroupsGroupArgs']]]] = None):
         """
         Input properties used for looking up and filtering ConnectionDirectorySynchronizedGroups resources.
 
-        :param pulumi.Input[_builtins.str] connection_id: ID of the connection for which to manage synchronized groups. (EA only)
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] group_ids: List of Google Workspace Directory group IDs to synchronize. (EA only)
+        :param pulumi.Input[_builtins.str] connection_id: ID of the connection for which to manage synchronized groups.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] group_ids: IDs of the Google Workspace Directory groups to synchronize.
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionDirectorySynchronizedGroupsGroupArgs']]] groups: Google Workspace Directory groups to synchronize.
         """
         if connection_id is not None:
             pulumi.set(__self__, "connection_id", connection_id)
         if group_ids is not None:
+            warnings.warn("""Use `groups` instead, which exposes each group's name, email and member count alongside its ID.""", DeprecationWarning)
+            pulumi.log.warn("""group_ids is deprecated: Use `groups` instead, which exposes each group's name, email and member count alongside its ID.""")
+        if group_ids is not None:
             pulumi.set(__self__, "group_ids", group_ids)
+        if groups is not None:
+            pulumi.set(__self__, "groups", groups)
 
     @_builtins.property
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        ID of the connection for which to manage synchronized groups. (EA only)
+        ID of the connection for which to manage synchronized groups.
         """
         return pulumi.get(self, "connection_id")
 
@@ -85,15 +115,28 @@ class _ConnectionDirectorySynchronizedGroupsState:
 
     @_builtins.property
     @pulumi.getter(name="groupIds")
+    @_utilities.deprecated("""Use `groups` instead, which exposes each group's name, email and member count alongside its ID.""")
     def group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of Google Workspace Directory group IDs to synchronize. (EA only)
+        IDs of the Google Workspace Directory groups to synchronize.
         """
         return pulumi.get(self, "group_ids")
 
     @group_ids.setter
     def group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "group_ids", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionDirectorySynchronizedGroupsGroupArgs']]]]:
+        """
+        Google Workspace Directory groups to synchronize.
+        """
+        return pulumi.get(self, "groups")
+
+    @groups.setter
+    def groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionDirectorySynchronizedGroupsGroupArgs']]]]):
+        pulumi.set(self, "groups", value)
 
 
 @pulumi.type_token("auth0:index/connectionDirectorySynchronizedGroups:ConnectionDirectorySynchronizedGroups")
@@ -104,11 +147,10 @@ class ConnectionDirectorySynchronizedGroups(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionDirectorySynchronizedGroupsGroupArgs', 'ConnectionDirectorySynchronizedGroupsGroupArgsDict']]]]] = None,
                  __props__=None):
         """
-        With this resource, you can manage the set of Google Workspace group IDs synchronized via directory provisioning for an Auth0 connection. (EA only)
-
-        > This resource is only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
+        With this resource, you can manage the set of Google Workspace groups synchronized via directory provisioning for an Auth0 connection.
 
         ## Example Usage
 
@@ -132,10 +174,16 @@ class ConnectionDirectorySynchronizedGroups(pulumi.CustomResource):
             synchronize_groups="selected")
         my_groups = auth0.ConnectionDirectorySynchronizedGroups("my_groups",
             connection_id=my_connection.id,
-            group_ids=[
-                "group1abc",
-                "group2def",
-                "group3ghi",
+            groups=[
+                {
+                    "id": "group1",
+                },
+                {
+                    "id": "group2",
+                    "name": "test",
+                    "email": "test@test.com",
+                    "direct_members_count": 123,
+                },
             ],
             opts = pulumi.ResourceOptions(depends_on=[my_directory]))
         ```
@@ -149,8 +197,9 @@ class ConnectionDirectorySynchronizedGroups(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] connection_id: ID of the connection for which to manage synchronized groups. (EA only)
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] group_ids: List of Google Workspace Directory group IDs to synchronize. (EA only)
+        :param pulumi.Input[_builtins.str] connection_id: ID of the connection for which to manage synchronized groups.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] group_ids: IDs of the Google Workspace Directory groups to synchronize.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionDirectorySynchronizedGroupsGroupArgs', 'ConnectionDirectorySynchronizedGroupsGroupArgsDict']]]] groups: Google Workspace Directory groups to synchronize.
         """
         ...
     @overload
@@ -159,9 +208,7 @@ class ConnectionDirectorySynchronizedGroups(pulumi.CustomResource):
                  args: ConnectionDirectorySynchronizedGroupsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        With this resource, you can manage the set of Google Workspace group IDs synchronized via directory provisioning for an Auth0 connection. (EA only)
-
-        > This resource is only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
+        With this resource, you can manage the set of Google Workspace groups synchronized via directory provisioning for an Auth0 connection.
 
         ## Example Usage
 
@@ -185,10 +232,16 @@ class ConnectionDirectorySynchronizedGroups(pulumi.CustomResource):
             synchronize_groups="selected")
         my_groups = auth0.ConnectionDirectorySynchronizedGroups("my_groups",
             connection_id=my_connection.id,
-            group_ids=[
-                "group1abc",
-                "group2def",
-                "group3ghi",
+            groups=[
+                {
+                    "id": "group1",
+                },
+                {
+                    "id": "group2",
+                    "name": "test",
+                    "email": "test@test.com",
+                    "direct_members_count": 123,
+                },
             ],
             opts = pulumi.ResourceOptions(depends_on=[my_directory]))
         ```
@@ -217,6 +270,7 @@ class ConnectionDirectorySynchronizedGroups(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionDirectorySynchronizedGroupsGroupArgs', 'ConnectionDirectorySynchronizedGroupsGroupArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -229,9 +283,8 @@ class ConnectionDirectorySynchronizedGroups(pulumi.CustomResource):
             if connection_id is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_id'")
             __props__.__dict__["connection_id"] = connection_id
-            if group_ids is None and not opts.urn:
-                raise TypeError("Missing required property 'group_ids'")
             __props__.__dict__["group_ids"] = group_ids
+            __props__.__dict__["groups"] = groups
         super(ConnectionDirectorySynchronizedGroups, __self__).__init__(
             'auth0:index/connectionDirectorySynchronizedGroups:ConnectionDirectorySynchronizedGroups',
             resource_name,
@@ -243,7 +296,8 @@ class ConnectionDirectorySynchronizedGroups(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             connection_id: pulumi.Input[Optional[_builtins.str]] = None,
-            group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ConnectionDirectorySynchronizedGroups':
+            group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionDirectorySynchronizedGroupsGroupArgs', 'ConnectionDirectorySynchronizedGroupsGroupArgsDict']]]]] = None) -> 'ConnectionDirectorySynchronizedGroups':
         """
         Get an existing ConnectionDirectorySynchronizedGroups resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -251,8 +305,9 @@ class ConnectionDirectorySynchronizedGroups(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] connection_id: ID of the connection for which to manage synchronized groups. (EA only)
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] group_ids: List of Google Workspace Directory group IDs to synchronize. (EA only)
+        :param pulumi.Input[_builtins.str] connection_id: ID of the connection for which to manage synchronized groups.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] group_ids: IDs of the Google Workspace Directory groups to synchronize.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionDirectorySynchronizedGroupsGroupArgs', 'ConnectionDirectorySynchronizedGroupsGroupArgsDict']]]] groups: Google Workspace Directory groups to synchronize.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -260,21 +315,31 @@ class ConnectionDirectorySynchronizedGroups(pulumi.CustomResource):
 
         __props__.__dict__["connection_id"] = connection_id
         __props__.__dict__["group_ids"] = group_ids
+        __props__.__dict__["groups"] = groups
         return ConnectionDirectorySynchronizedGroups(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> pulumi.Output[_builtins.str]:
         """
-        ID of the connection for which to manage synchronized groups. (EA only)
+        ID of the connection for which to manage synchronized groups.
         """
         return pulumi.get(self, "connection_id")
 
     @_builtins.property
     @pulumi.getter(name="groupIds")
-    def group_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:
+    @_utilities.deprecated("""Use `groups` instead, which exposes each group's name, email and member count alongside its ID.""")
+    def group_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        List of Google Workspace Directory group IDs to synchronize. (EA only)
+        IDs of the Google Workspace Directory groups to synchronize.
         """
         return pulumi.get(self, "group_ids")
+
+    @_builtins.property
+    @pulumi.getter
+    def groups(self) -> pulumi.Output[Optional[Sequence['outputs.ConnectionDirectorySynchronizedGroupsGroup']]]:
+        """
+        Google Workspace Directory groups to synchronize.
+        """
+        return pulumi.get(self, "groups")
 

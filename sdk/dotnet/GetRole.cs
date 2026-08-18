@@ -36,6 +36,16 @@ namespace Pulumi.Auth0
         ///         RoleId = "abcdefghkijklmnopqrstuvwxyz0123456789",
         ///     });
         /// 
+        ///     // An organization-level Auth0 Role loaded using the role name. Several
+        ///     // organizations can own a role of the same name, so the type and the ID of the
+        ///     // organization owning it are needed to find the right one. (EA only)
+        ///     var some_organization_role_by_name = Auth0.GetRole.Invoke(new()
+        ///     {
+        ///         Name = "my-organization-role",
+        ///         Type = "organization",
+        ///         OwnerId = "org_abcdefghkijklmn",
+        ///     });
+        /// 
         /// });
         /// ```
         /// </summary>
@@ -65,6 +75,16 @@ namespace Pulumi.Auth0
         ///     var some_role_by_id = Auth0.GetRole.Invoke(new()
         ///     {
         ///         RoleId = "abcdefghkijklmnopqrstuvwxyz0123456789",
+        ///     });
+        /// 
+        ///     // An organization-level Auth0 Role loaded using the role name. Several
+        ///     // organizations can own a role of the same name, so the type and the ID of the
+        ///     // organization owning it are needed to find the right one. (EA only)
+        ///     var some_organization_role_by_name = Auth0.GetRole.Invoke(new()
+        ///     {
+        ///         Name = "my-organization-role",
+        ///         Type = "organization",
+        ///         OwnerId = "org_abcdefghkijklmn",
         ///     });
         /// 
         /// });
@@ -98,6 +118,16 @@ namespace Pulumi.Auth0
         ///         RoleId = "abcdefghkijklmnopqrstuvwxyz0123456789",
         ///     });
         /// 
+        ///     // An organization-level Auth0 Role loaded using the role name. Several
+        ///     // organizations can own a role of the same name, so the type and the ID of the
+        ///     // organization owning it are needed to find the right one. (EA only)
+        ///     var some_organization_role_by_name = Auth0.GetRole.Invoke(new()
+        ///     {
+        ///         Name = "my-organization-role",
+        ///         Type = "organization",
+        ///         OwnerId = "org_abcdefghkijklmn",
+        ///     });
+        /// 
         /// });
         /// ```
         /// </summary>
@@ -113,6 +143,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
+
+        /// <summary>
+        /// The ID of the organization owning the role. Only used to narrow down the search when looking the role up by `Name`, alongside a `Type` of `Organization`. (EA only)
+        /// </summary>
+        [Input("ownerId")]
+        public string? OwnerId { get; set; }
 
         /// <summary>
         /// The ID of the role. If not provided, `Name` must be set.
@@ -132,6 +168,12 @@ namespace Pulumi.Auth0
         [Input("skipUsers")]
         public bool? SkipUsers { get; set; }
 
+        /// <summary>
+        /// The type of the role, either `Tenant` or `Organization`. Only used to narrow down the search when looking the role up by `Name`. (EA only)
+        /// </summary>
+        [Input("type")]
+        public string? Type { get; set; }
+
         public GetRoleArgs()
         {
         }
@@ -145,6 +187,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The ID of the organization owning the role. Only used to narrow down the search when looking the role up by `Name`, alongside a `Type` of `Organization`. (EA only)
+        /// </summary>
+        [Input("ownerId")]
+        public Input<string>? OwnerId { get; set; }
 
         /// <summary>
         /// The ID of the role. If not provided, `Name` must be set.
@@ -163,6 +211,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("skipUsers")]
         public Input<bool>? SkipUsers { get; set; }
+
+        /// <summary>
+        /// The type of the role, either `Tenant` or `Organization`. Only used to narrow down the search when looking the role up by `Name`. (EA only)
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public GetRoleInvokeArgs()
         {
@@ -187,6 +241,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string? Name;
         /// <summary>
+        /// The ID of the organization owning the role. Only used to narrow down the search when looking the role up by `Name`, alongside a `Type` of `Organization`. (EA only)
+        /// </summary>
+        public readonly string? OwnerId;
+        /// <summary>
         /// Configuration settings for permissions (scopes) attached to the role. Skips populating if `SkipPermissions` is `True`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRolePermissionResult> Permissions;
@@ -203,6 +261,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly bool? SkipUsers;
         /// <summary>
+        /// The type of the role, either `Tenant` or `Organization`. Only used to narrow down the search when looking the role up by `Name`. (EA only)
+        /// </summary>
+        public readonly string? Type;
+        /// <summary>
         /// List of user IDs assigned to this role. Retrieves a maximum of 1000 user IDs. Skips populating if `SkipUsers` is `True`.
         /// </summary>
         public readonly ImmutableArray<string> Users;
@@ -215,6 +277,8 @@ namespace Pulumi.Auth0
 
             string? name,
 
+            string? ownerId,
+
             ImmutableArray<Outputs.GetRolePermissionResult> permissions,
 
             string? roleId,
@@ -223,15 +287,19 @@ namespace Pulumi.Auth0
 
             bool? skipUsers,
 
+            string? type,
+
             ImmutableArray<string> users)
         {
             Description = description;
             Id = id;
             Name = name;
+            OwnerId = ownerId;
             Permissions = permissions;
             RoleId = roleId;
             SkipPermissions = skipPermissions;
             SkipUsers = skipUsers;
+            Type = type;
             Users = users;
         }
     }

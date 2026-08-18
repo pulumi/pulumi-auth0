@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetConnectionDirectorySynchronizedGroupsArgs extends com.pulumi.resources.InvokeArgs {
@@ -15,24 +17,40 @@ public final class GetConnectionDirectorySynchronizedGroupsArgs extends com.pulu
     public static final GetConnectionDirectorySynchronizedGroupsArgs Empty = new GetConnectionDirectorySynchronizedGroupsArgs();
 
     /**
-     * ID of the connection for which to manage synchronized groups. (EA only)
+     * ID of the connection for which to manage synchronized groups.
      * 
      */
     @Import(name="connectionId", required=true)
     private Output<String> connectionId;
 
     /**
-     * @return ID of the connection for which to manage synchronized groups. (EA only)
+     * @return ID of the connection for which to manage synchronized groups.
      * 
      */
     public Output<String> connectionId() {
         return this.connectionId;
     }
 
+    /**
+     * Filter the synchronized groups by a prefix search on a single field. Only `name` and `email` are searchable, and only as a prefix, so the term must take the form `name:&lt;value&gt;*` or `email:&lt;value&gt;*` (for example `name:engineering*`). Returns all synchronized groups when omitted.
+     * 
+     */
+    @Import(name="query")
+    private @Nullable Output<String> query;
+
+    /**
+     * @return Filter the synchronized groups by a prefix search on a single field. Only `name` and `email` are searchable, and only as a prefix, so the term must take the form `name:&lt;value&gt;*` or `email:&lt;value&gt;*` (for example `name:engineering*`). Returns all synchronized groups when omitted.
+     * 
+     */
+    public Optional<Output<String>> query() {
+        return Optional.ofNullable(this.query);
+    }
+
     private GetConnectionDirectorySynchronizedGroupsArgs() {}
 
     private GetConnectionDirectorySynchronizedGroupsArgs(GetConnectionDirectorySynchronizedGroupsArgs $) {
         this.connectionId = $.connectionId;
+        this.query = $.query;
     }
 
     public static Builder builder() {
@@ -54,7 +72,7 @@ public final class GetConnectionDirectorySynchronizedGroupsArgs extends com.pulu
         }
 
         /**
-         * @param connectionId ID of the connection for which to manage synchronized groups. (EA only)
+         * @param connectionId ID of the connection for which to manage synchronized groups.
          * 
          * @return builder
          * 
@@ -65,13 +83,34 @@ public final class GetConnectionDirectorySynchronizedGroupsArgs extends com.pulu
         }
 
         /**
-         * @param connectionId ID of the connection for which to manage synchronized groups. (EA only)
+         * @param connectionId ID of the connection for which to manage synchronized groups.
          * 
          * @return builder
          * 
          */
         public Builder connectionId(String connectionId) {
             return connectionId(Output.of(connectionId));
+        }
+
+        /**
+         * @param query Filter the synchronized groups by a prefix search on a single field. Only `name` and `email` are searchable, and only as a prefix, so the term must take the form `name:&lt;value&gt;*` or `email:&lt;value&gt;*` (for example `name:engineering*`). Returns all synchronized groups when omitted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder query(@Nullable Output<String> query) {
+            $.query = query;
+            return this;
+        }
+
+        /**
+         * @param query Filter the synchronized groups by a prefix search on a single field. Only `name` and `email` are searchable, and only as a prefix, so the term must take the form `name:&lt;value&gt;*` or `email:&lt;value&gt;*` (for example `name:engineering*`). Returns all synchronized groups when omitted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder query(String query) {
+            return query(Output.of(query));
         }
 
         public GetConnectionDirectorySynchronizedGroupsArgs build() {

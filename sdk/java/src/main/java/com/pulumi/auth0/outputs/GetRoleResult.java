@@ -31,6 +31,11 @@ public final class GetRoleResult {
      */
     private @Nullable String name;
     /**
+     * @return The ID of the organization owning the role. Only used to narrow down the search when looking the role up by `name`, alongside a `type` of `organization`. (EA only)
+     * 
+     */
+    private @Nullable String ownerId;
+    /**
      * @return Configuration settings for permissions (scopes) attached to the role. Skips populating if `skipPermissions` is `true`.
      * 
      */
@@ -50,6 +55,11 @@ public final class GetRoleResult {
      * 
      */
     private @Nullable Boolean skipUsers;
+    /**
+     * @return The type of the role, either `tenant` or `organization`. Only used to narrow down the search when looking the role up by `name`. (EA only)
+     * 
+     */
+    private @Nullable String type;
     /**
      * @return List of user IDs assigned to this role. Retrieves a maximum of 1000 user IDs. Skips populating if `skipUsers` is `true`.
      * 
@@ -77,6 +87,13 @@ public final class GetRoleResult {
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
+    }
+    /**
+     * @return The ID of the organization owning the role. Only used to narrow down the search when looking the role up by `name`, alongside a `type` of `organization`. (EA only)
+     * 
+     */
+    public Optional<String> ownerId() {
+        return Optional.ofNullable(this.ownerId);
     }
     /**
      * @return Configuration settings for permissions (scopes) attached to the role. Skips populating if `skipPermissions` is `true`.
@@ -107,6 +124,13 @@ public final class GetRoleResult {
         return Optional.ofNullable(this.skipUsers);
     }
     /**
+     * @return The type of the role, either `tenant` or `organization`. Only used to narrow down the search when looking the role up by `name`. (EA only)
+     * 
+     */
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
+    }
+    /**
      * @return List of user IDs assigned to this role. Retrieves a maximum of 1000 user IDs. Skips populating if `skipUsers` is `true`.
      * 
      */
@@ -126,10 +150,12 @@ public final class GetRoleResult {
         private String description;
         private String id;
         private @Nullable String name;
+        private @Nullable String ownerId;
         private List<GetRolePermission> permissions;
         private @Nullable String roleId;
         private @Nullable Boolean skipPermissions;
         private @Nullable Boolean skipUsers;
+        private @Nullable String type;
         private List<String> users;
         public Builder() {}
         public Builder(GetRoleResult defaults) {
@@ -137,10 +163,12 @@ public final class GetRoleResult {
     	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
+    	      this.ownerId = defaults.ownerId;
     	      this.permissions = defaults.permissions;
     	      this.roleId = defaults.roleId;
     	      this.skipPermissions = defaults.skipPermissions;
     	      this.skipUsers = defaults.skipUsers;
+    	      this.type = defaults.type;
     	      this.users = defaults.users;
         }
 
@@ -164,6 +192,12 @@ public final class GetRoleResult {
         public Builder name(@Nullable String name) {
 
             this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ownerId(@Nullable String ownerId) {
+
+            this.ownerId = ownerId;
             return this;
         }
         @CustomType.Setter
@@ -196,6 +230,12 @@ public final class GetRoleResult {
             return this;
         }
         @CustomType.Setter
+        public Builder type(@Nullable String type) {
+
+            this.type = type;
+            return this;
+        }
+        @CustomType.Setter
         public Builder users(List<String> users) {
             if (users == null) {
               throw new MissingRequiredPropertyException("GetRoleResult", "users");
@@ -211,10 +251,12 @@ public final class GetRoleResult {
             _resultValue.description = description;
             _resultValue.id = id;
             _resultValue.name = name;
+            _resultValue.ownerId = ownerId;
             _resultValue.permissions = permissions;
             _resultValue.roleId = roleId;
             _resultValue.skipPermissions = skipPermissions;
             _resultValue.skipUsers = skipUsers;
+            _resultValue.type = type;
             _resultValue.users = users;
             return _resultValue;
         }

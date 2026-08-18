@@ -466,7 +466,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool? UseKerberos;
         /// <summary>
-        /// Determines the `Scopes` format: `True` makes it a space-separated string (per OAuth2 specification); `False` makes it an array.
+        /// Enabling this when using the ConnectionScope parameter, uses space as a delimiter for scopes when calling the IdP's API.
         /// </summary>
         public readonly bool? UseOauthSpecScope;
         /// <summary>

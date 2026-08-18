@@ -27,6 +27,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.auth0.Role;
  * import com.pulumi.auth0.RoleArgs;
+ * import com.pulumi.auth0.Organization;
+ * import com.pulumi.auth0.OrganizationArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -43,6 +45,20 @@ import javax.annotation.Nullable;
  *         var myRole = new Role("myRole", RoleArgs.builder()
  *             .name("My Role - (Managed by Terraform)")
  *             .description("Role Description...")
+ *             .build());
+ * 
+ *         var myOrganization = new Organization("myOrganization", OrganizationArgs.builder()
+ *             .name("my-organization")
+ *             .displayName("My Organization")
+ *             .build());
+ * 
+ *         // A role scoped to a single organization. Changing type or owner_id afterwards
+ *         // replaces the role, as neither can be updated. (EA only)
+ *         var myOrganizationRole = new Role("myOrganizationRole", RoleArgs.builder()
+ *             .name("My Organization Role - (Managed by Terraform)")
+ *             .description("Organization Role Description...")
+ *             .type("organization")
+ *             .ownerId(myOrganization.id())
  *             .build());
  * 
  *     }
@@ -90,6 +106,34 @@ public class Role extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * The ID of the organization owning the role. Only applicable when `type` is `organization`, and required in that case. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+     * 
+     */
+    @Export(name="ownerId", refs={String.class}, tree="[0]")
+    private Output<String> ownerId;
+
+    /**
+     * @return The ID of the organization owning the role. Only applicable when `type` is `organization`, and required in that case. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+     * 
+     */
+    public Output<String> ownerId() {
+        return this.ownerId;
+    }
+    /**
+     * The type of the role. Defaults to `tenant`, for a role available across the whole tenant. Set to `organization` to scope the role to a single organization, in which case `ownerId` must also be set. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+     * 
+     */
+    @Export(name="type", refs={String.class}, tree="[0]")
+    private Output<String> type;
+
+    /**
+     * @return The type of the role. Defaults to `tenant`, for a role available across the whole tenant. Set to `organization` to scope the role to a single organization, in which case `ownerId` must also be set. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+     * 
+     */
+    public Output<String> type() {
+        return this.type;
     }
 
     /**

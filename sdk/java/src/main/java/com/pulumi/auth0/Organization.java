@@ -12,6 +12,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -109,6 +110,20 @@ public class Organization extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> displayName() {
         return Codegen.optional(this.displayName);
+    }
+    /**
+     * Controls whether this organization&#39;s app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `auth0.ClientGrant`&#39;s `organizationUsage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
+     * 
+     */
+    @Export(name="isAppEntitlementActive", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> isAppEntitlementActive;
+
+    /**
+     * @return Controls whether this organization&#39;s app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `auth0.ClientGrant`&#39;s `organizationUsage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
+     * 
+     */
+    public Output<Boolean> isAppEntitlementActive() {
+        return this.isAppEntitlementActive;
     }
     /**
      * Metadata associated with the organization. Maximum of 10 metadata properties allowed.

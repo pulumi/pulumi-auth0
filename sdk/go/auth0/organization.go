@@ -70,6 +70,8 @@ type Organization struct {
 	Branding OrganizationBrandingOutput `pulumi:"branding"`
 	// Friendly name of this organization.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// Controls whether this organization's app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `ClientGrant`'s `organizationUsage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
+	IsAppEntitlementActive pulumi.BoolOutput `pulumi:"isAppEntitlementActive"`
 	// Metadata associated with the organization. Maximum of 10 metadata properties allowed.
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// The name of this organization.
@@ -114,6 +116,8 @@ type organizationState struct {
 	Branding *OrganizationBranding `pulumi:"branding"`
 	// Friendly name of this organization.
 	DisplayName *string `pulumi:"displayName"`
+	// Controls whether this organization's app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `ClientGrant`'s `organizationUsage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
+	IsAppEntitlementActive *bool `pulumi:"isAppEntitlementActive"`
 	// Metadata associated with the organization. Maximum of 10 metadata properties allowed.
 	Metadata map[string]string `pulumi:"metadata"`
 	// The name of this organization.
@@ -129,6 +133,8 @@ type OrganizationState struct {
 	Branding OrganizationBrandingPtrInput
 	// Friendly name of this organization.
 	DisplayName pulumi.StringPtrInput
+	// Controls whether this organization's app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `ClientGrant`'s `organizationUsage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
+	IsAppEntitlementActive pulumi.BoolPtrInput
 	// Metadata associated with the organization. Maximum of 10 metadata properties allowed.
 	Metadata pulumi.StringMapInput
 	// The name of this organization.
@@ -148,6 +154,8 @@ type organizationArgs struct {
 	Branding *OrganizationBranding `pulumi:"branding"`
 	// Friendly name of this organization.
 	DisplayName *string `pulumi:"displayName"`
+	// Controls whether this organization's app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `ClientGrant`'s `organizationUsage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
+	IsAppEntitlementActive *bool `pulumi:"isAppEntitlementActive"`
 	// Metadata associated with the organization. Maximum of 10 metadata properties allowed.
 	Metadata map[string]string `pulumi:"metadata"`
 	// The name of this organization.
@@ -164,6 +172,8 @@ type OrganizationArgs struct {
 	Branding OrganizationBrandingPtrInput
 	// Friendly name of this organization.
 	DisplayName pulumi.StringPtrInput
+	// Controls whether this organization's app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `ClientGrant`'s `organizationUsage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
+	IsAppEntitlementActive pulumi.BoolPtrInput
 	// Metadata associated with the organization. Maximum of 10 metadata properties allowed.
 	Metadata pulumi.StringMapInput
 	// The name of this organization.
@@ -269,6 +279,11 @@ func (o OrganizationOutput) Branding() OrganizationBrandingOutput {
 // Friendly name of this organization.
 func (o OrganizationOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Controls whether this organization's app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `ClientGrant`'s `organizationUsage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
+func (o OrganizationOutput) IsAppEntitlementActive() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Organization) pulumi.BoolOutput { return v.IsAppEntitlementActive }).(pulumi.BoolOutput)
 }
 
 // Metadata associated with the organization. Maximum of 10 metadata properties allowed.

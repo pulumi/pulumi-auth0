@@ -6,18 +6,18 @@ package com.pulumi.auth0;
 import com.pulumi.auth0.ConnectionDirectorySynchronizedGroupsArgs;
 import com.pulumi.auth0.Utilities;
 import com.pulumi.auth0.inputs.ConnectionDirectorySynchronizedGroupsState;
+import com.pulumi.auth0.outputs.ConnectionDirectorySynchronizedGroupsGroup;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * With this resource, you can manage the set of Google Workspace group IDs synchronized via directory provisioning for an Auth0 connection. (EA only)
- * 
- * &gt; This resource is only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
+ * With this resource, you can manage the set of Google Workspace groups synchronized via directory provisioning for an Auth0 connection.
  * 
  * ## Example Usage
  * 
@@ -35,6 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.auth0.ConnectionDirectoryArgs;
  * import com.pulumi.auth0.ConnectionDirectorySynchronizedGroups;
  * import com.pulumi.auth0.ConnectionDirectorySynchronizedGroupsArgs;
+ * import com.pulumi.auth0.inputs.ConnectionDirectorySynchronizedGroupsGroupArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -43,12 +44,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var myConnection = new Connection("myConnection", ConnectionArgs.builder()
  *             .name("My-Google-Workspace-Connection")
  *             .strategy("google-apps")
@@ -69,16 +70,22 @@ import javax.annotation.Nullable;
  * 
  *         var myGroups = new ConnectionDirectorySynchronizedGroups("myGroups", ConnectionDirectorySynchronizedGroupsArgs.builder()
  *             .connectionId(myConnection.id())
- *             .groupIds(            
- *                 "group1abc",
- *                 "group2def",
- *                 "group3ghi")
+ *             .groups(            
+ *                 ConnectionDirectorySynchronizedGroupsGroupArgs.builder()
+ *                     .id("group1")
+ *                     .build(),
+ *                 ConnectionDirectorySynchronizedGroupsGroupArgs.builder()
+ *                     .id("group2")
+ *                     .name("test")
+ *                     .email("test}{@literal @}{@code test.com")
+ *                     .directMembersCount(123)
+ *                     .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(myDirectory)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -92,32 +99,50 @@ import javax.annotation.Nullable;
 @ResourceType(type="auth0:index/connectionDirectorySynchronizedGroups:ConnectionDirectorySynchronizedGroups")
 public class ConnectionDirectorySynchronizedGroups extends com.pulumi.resources.CustomResource {
     /**
-     * ID of the connection for which to manage synchronized groups. (EA only)
+     * ID of the connection for which to manage synchronized groups.
      * 
      */
     @Export(name="connectionId", refs={String.class}, tree="[0]")
     private Output<String> connectionId;
 
     /**
-     * @return ID of the connection for which to manage synchronized groups. (EA only)
+     * @return ID of the connection for which to manage synchronized groups.
      * 
      */
     public Output<String> connectionId() {
         return this.connectionId;
     }
     /**
-     * List of Google Workspace Directory group IDs to synchronize. (EA only)
+     * IDs of the Google Workspace Directory groups to synchronize.
+     * 
+     * @deprecated
+     * Use `groups` instead, which exposes each group&#39;s name, email and member count alongside its ID.
      * 
      */
+    @Deprecated /* Use `groups` instead, which exposes each group's name, email and member count alongside its ID. */
     @Export(name="groupIds", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> groupIds;
+    private Output</* @Nullable */ List<String>> groupIds;
 
     /**
-     * @return List of Google Workspace Directory group IDs to synchronize. (EA only)
+     * @return IDs of the Google Workspace Directory groups to synchronize.
      * 
      */
-    public Output<List<String>> groupIds() {
-        return this.groupIds;
+    public Output<Optional<List<String>>> groupIds() {
+        return Codegen.optional(this.groupIds);
+    }
+    /**
+     * Google Workspace Directory groups to synchronize.
+     * 
+     */
+    @Export(name="groups", refs={List.class,ConnectionDirectorySynchronizedGroupsGroup.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ConnectionDirectorySynchronizedGroupsGroup>> groups;
+
+    /**
+     * @return Google Workspace Directory groups to synchronize.
+     * 
+     */
+    public Output<Optional<List<ConnectionDirectorySynchronizedGroupsGroup>>> groups() {
+        return Codegen.optional(this.groups);
     }
 
     /**

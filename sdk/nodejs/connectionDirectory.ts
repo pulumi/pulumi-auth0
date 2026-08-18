@@ -130,7 +130,7 @@ export class ConnectionDirectory extends pulumi.CustomResource {
      */
     declare public readonly synchronizeAutomatically: pulumi.Output<boolean>;
     /**
-     * Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+     * Group synchronization configuration. Valid values are: off, all, selected.
      */
     declare public readonly synchronizeGroups: pulumi.Output<string>;
     /**
@@ -225,7 +225,7 @@ export interface ConnectionDirectoryState {
      */
     synchronizeAutomatically?: pulumi.Input<boolean | undefined>;
     /**
-     * Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+     * Group synchronization configuration. Valid values are: off, all, selected.
      */
     synchronizeGroups?: pulumi.Input<string | undefined>;
     /**
@@ -251,7 +251,7 @@ export interface ConnectionDirectoryArgs {
      */
     synchronizeAutomatically?: pulumi.Input<boolean | undefined>;
     /**
-     * Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+     * Group synchronization configuration. Valid values are: off, all, selected.
      */
     synchronizeGroups?: pulumi.Input<string | undefined>;
 }

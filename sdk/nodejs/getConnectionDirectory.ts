@@ -82,7 +82,7 @@ export interface GetConnectionDirectoryResult {
      */
     readonly synchronizeAutomatically: boolean;
     /**
-     * Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+     * Group synchronization configuration. Valid values are: off, all, selected.
      */
     readonly synchronizeGroups: string;
     /**

@@ -10,6 +10,7 @@ import com.pulumi.auth0.outputs.ClientCredentialsPrivateKeyJwt;
 import com.pulumi.auth0.outputs.ClientCredentialsSelfSignedTlsClientAuth;
 import com.pulumi.auth0.outputs.ClientCredentialsSignedRequestObject;
 import com.pulumi.auth0.outputs.ClientCredentialsTlsClientAuth;
+import com.pulumi.auth0.outputs.ClientCredentialsTokenVaultPrivilegedAccess;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -169,6 +170,20 @@ public class ClientCredentials extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ClientCredentialsTlsClientAuth>> tlsClientAuth() {
         return Codegen.optional(this.tlsClientAuth);
+    }
+    /**
+     * Configures the client as a Token Vault privileged worker, allowing it to request Token Vault tokens on behalf of other users. This is an Early Access feature and must be enabled for your tenant.
+     * 
+     */
+    @Export(name="tokenVaultPrivilegedAccess", refs={ClientCredentialsTokenVaultPrivilegedAccess.class}, tree="[0]")
+    private Output</* @Nullable */ ClientCredentialsTokenVaultPrivilegedAccess> tokenVaultPrivilegedAccess;
+
+    /**
+     * @return Configures the client as a Token Vault privileged worker, allowing it to request Token Vault tokens on behalf of other users. This is an Early Access feature and must be enabled for your tenant.
+     * 
+     */
+    public Output<Optional<ClientCredentialsTokenVaultPrivilegedAccess>> tokenVaultPrivilegedAccess() {
+        return Codegen.optional(this.tokenVaultPrivilegedAccess);
     }
 
     /**

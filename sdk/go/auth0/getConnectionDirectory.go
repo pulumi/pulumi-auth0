@@ -76,7 +76,7 @@ type LookupConnectionDirectoryResult struct {
 	Strategy string `pulumi:"strategy"`
 	// Whether periodic automatic synchronization is enabled. Defaults to false.
 	SynchronizeAutomatically bool `pulumi:"synchronizeAutomatically"`
-	// Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+	// Group synchronization configuration. Valid values are: off, all, selected.
 	SynchronizeGroups string `pulumi:"synchronizeGroups"`
 	// The timestamp at which the directory provisioning configuration was last updated.
 	UpdatedAt string `pulumi:"updatedAt"`
@@ -166,7 +166,7 @@ func (o LookupConnectionDirectoryResultOutput) SynchronizeAutomatically() pulumi
 	return o.ApplyT(func(v LookupConnectionDirectoryResult) bool { return v.SynchronizeAutomatically }).(pulumi.BoolOutput)
 }
 
-// Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+// Group synchronization configuration. Valid values are: off, all, selected.
 func (o LookupConnectionDirectoryResultOutput) SynchronizeGroups() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionDirectoryResult) string { return v.SynchronizeGroups }).(pulumi.StringOutput)
 }

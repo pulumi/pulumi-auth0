@@ -12,9 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// With this resource, you can manage the set of Google Workspace group IDs synchronized via directory provisioning for an Auth0 connection. (EA only)
-//
-// > This resource is only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
+// With this resource, you can manage the set of Google Workspace groups synchronized via directory provisioning for an Auth0 connection.
 //
 // ## Example Usage
 //
@@ -54,10 +52,16 @@ import (
 //			}
 //			_, err = auth0.NewConnectionDirectorySynchronizedGroups(ctx, "my_groups", &auth0.ConnectionDirectorySynchronizedGroupsArgs{
 //				ConnectionId: myConnection.ID().ToIDOutput().ToStringOutput(),
-//				GroupIds: pulumi.StringArray{
-//					pulumi.String("group1abc"),
-//					pulumi.String("group2def"),
-//					pulumi.String("group3ghi"),
+//				Groups: auth0.ConnectionDirectorySynchronizedGroupsGroupArray{
+//					&auth0.ConnectionDirectorySynchronizedGroupsGroupArgs{
+//						Id: pulumi.String("group1"),
+//					},
+//					&auth0.ConnectionDirectorySynchronizedGroupsGroupArgs{
+//						Id:                 pulumi.String("group2"),
+//						Name:               pulumi.String("test"),
+//						Email:              pulumi.String("test@test.com"),
+//						DirectMembersCount: pulumi.Int(123),
+//					},
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				myDirectory,
@@ -79,10 +83,14 @@ import (
 type ConnectionDirectorySynchronizedGroups struct {
 	pulumi.CustomResourceState
 
-	// ID of the connection for which to manage synchronized groups. (EA only)
+	// ID of the connection for which to manage synchronized groups.
 	ConnectionId pulumi.StringOutput `pulumi:"connectionId"`
-	// List of Google Workspace Directory group IDs to synchronize. (EA only)
+	// IDs of the Google Workspace Directory groups to synchronize.
+	//
+	// Deprecated: Use `groups` instead, which exposes each group's name, email and member count alongside its ID.
 	GroupIds pulumi.StringArrayOutput `pulumi:"groupIds"`
+	// Google Workspace Directory groups to synchronize.
+	Groups ConnectionDirectorySynchronizedGroupsGroupArrayOutput `pulumi:"groups"`
 }
 
 // NewConnectionDirectorySynchronizedGroups registers a new resource with the given unique name, arguments, and options.
@@ -94,9 +102,6 @@ func NewConnectionDirectorySynchronizedGroups(ctx *pulumi.Context,
 
 	if args.ConnectionId == nil {
 		return nil, errors.New("invalid value for required argument 'ConnectionId'")
-	}
-	if args.GroupIds == nil {
-		return nil, errors.New("invalid value for required argument 'GroupIds'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ConnectionDirectorySynchronizedGroups
@@ -121,17 +126,25 @@ func GetConnectionDirectorySynchronizedGroups(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ConnectionDirectorySynchronizedGroups resources.
 type connectionDirectorySynchronizedGroupsState struct {
-	// ID of the connection for which to manage synchronized groups. (EA only)
+	// ID of the connection for which to manage synchronized groups.
 	ConnectionId *string `pulumi:"connectionId"`
-	// List of Google Workspace Directory group IDs to synchronize. (EA only)
+	// IDs of the Google Workspace Directory groups to synchronize.
+	//
+	// Deprecated: Use `groups` instead, which exposes each group's name, email and member count alongside its ID.
 	GroupIds []string `pulumi:"groupIds"`
+	// Google Workspace Directory groups to synchronize.
+	Groups []ConnectionDirectorySynchronizedGroupsGroup `pulumi:"groups"`
 }
 
 type ConnectionDirectorySynchronizedGroupsState struct {
-	// ID of the connection for which to manage synchronized groups. (EA only)
+	// ID of the connection for which to manage synchronized groups.
 	ConnectionId pulumi.StringPtrInput
-	// List of Google Workspace Directory group IDs to synchronize. (EA only)
+	// IDs of the Google Workspace Directory groups to synchronize.
+	//
+	// Deprecated: Use `groups` instead, which exposes each group's name, email and member count alongside its ID.
 	GroupIds pulumi.StringArrayInput
+	// Google Workspace Directory groups to synchronize.
+	Groups ConnectionDirectorySynchronizedGroupsGroupArrayInput
 }
 
 func (ConnectionDirectorySynchronizedGroupsState) ElementType() reflect.Type {
@@ -139,18 +152,26 @@ func (ConnectionDirectorySynchronizedGroupsState) ElementType() reflect.Type {
 }
 
 type connectionDirectorySynchronizedGroupsArgs struct {
-	// ID of the connection for which to manage synchronized groups. (EA only)
+	// ID of the connection for which to manage synchronized groups.
 	ConnectionId string `pulumi:"connectionId"`
-	// List of Google Workspace Directory group IDs to synchronize. (EA only)
+	// IDs of the Google Workspace Directory groups to synchronize.
+	//
+	// Deprecated: Use `groups` instead, which exposes each group's name, email and member count alongside its ID.
 	GroupIds []string `pulumi:"groupIds"`
+	// Google Workspace Directory groups to synchronize.
+	Groups []ConnectionDirectorySynchronizedGroupsGroup `pulumi:"groups"`
 }
 
 // The set of arguments for constructing a ConnectionDirectorySynchronizedGroups resource.
 type ConnectionDirectorySynchronizedGroupsArgs struct {
-	// ID of the connection for which to manage synchronized groups. (EA only)
+	// ID of the connection for which to manage synchronized groups.
 	ConnectionId pulumi.StringInput
-	// List of Google Workspace Directory group IDs to synchronize. (EA only)
+	// IDs of the Google Workspace Directory groups to synchronize.
+	//
+	// Deprecated: Use `groups` instead, which exposes each group's name, email and member count alongside its ID.
 	GroupIds pulumi.StringArrayInput
+	// Google Workspace Directory groups to synchronize.
+	Groups ConnectionDirectorySynchronizedGroupsGroupArrayInput
 }
 
 func (ConnectionDirectorySynchronizedGroupsArgs) ElementType() reflect.Type {
@@ -240,14 +261,23 @@ func (o ConnectionDirectorySynchronizedGroupsOutput) ToConnectionDirectorySynchr
 	return o
 }
 
-// ID of the connection for which to manage synchronized groups. (EA only)
+// ID of the connection for which to manage synchronized groups.
 func (o ConnectionDirectorySynchronizedGroupsOutput) ConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionDirectorySynchronizedGroups) pulumi.StringOutput { return v.ConnectionId }).(pulumi.StringOutput)
 }
 
-// List of Google Workspace Directory group IDs to synchronize. (EA only)
+// IDs of the Google Workspace Directory groups to synchronize.
+//
+// Deprecated: Use `groups` instead, which exposes each group's name, email and member count alongside its ID.
 func (o ConnectionDirectorySynchronizedGroupsOutput) GroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConnectionDirectorySynchronizedGroups) pulumi.StringArrayOutput { return v.GroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Google Workspace Directory groups to synchronize.
+func (o ConnectionDirectorySynchronizedGroupsOutput) Groups() ConnectionDirectorySynchronizedGroupsGroupArrayOutput {
+	return o.ApplyT(func(v *ConnectionDirectorySynchronizedGroups) ConnectionDirectorySynchronizedGroupsGroupArrayOutput {
+		return v.Groups
+	}).(ConnectionDirectorySynchronizedGroupsGroupArrayOutput)
 }
 
 type ConnectionDirectorySynchronizedGroupsArrayOutput struct{ *pulumi.OutputState }

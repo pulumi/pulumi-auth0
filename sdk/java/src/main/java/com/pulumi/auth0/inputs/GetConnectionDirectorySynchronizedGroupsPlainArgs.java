@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetConnectionDirectorySynchronizedGroupsPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -14,24 +16,40 @@ public final class GetConnectionDirectorySynchronizedGroupsPlainArgs extends com
     public static final GetConnectionDirectorySynchronizedGroupsPlainArgs Empty = new GetConnectionDirectorySynchronizedGroupsPlainArgs();
 
     /**
-     * ID of the connection for which to manage synchronized groups. (EA only)
+     * ID of the connection for which to manage synchronized groups.
      * 
      */
     @Import(name="connectionId", required=true)
     private String connectionId;
 
     /**
-     * @return ID of the connection for which to manage synchronized groups. (EA only)
+     * @return ID of the connection for which to manage synchronized groups.
      * 
      */
     public String connectionId() {
         return this.connectionId;
     }
 
+    /**
+     * Filter the synchronized groups by a prefix search on a single field. Only `name` and `email` are searchable, and only as a prefix, so the term must take the form `name:&lt;value&gt;*` or `email:&lt;value&gt;*` (for example `name:engineering*`). Returns all synchronized groups when omitted.
+     * 
+     */
+    @Import(name="query")
+    private @Nullable String query;
+
+    /**
+     * @return Filter the synchronized groups by a prefix search on a single field. Only `name` and `email` are searchable, and only as a prefix, so the term must take the form `name:&lt;value&gt;*` or `email:&lt;value&gt;*` (for example `name:engineering*`). Returns all synchronized groups when omitted.
+     * 
+     */
+    public Optional<String> query() {
+        return Optional.ofNullable(this.query);
+    }
+
     private GetConnectionDirectorySynchronizedGroupsPlainArgs() {}
 
     private GetConnectionDirectorySynchronizedGroupsPlainArgs(GetConnectionDirectorySynchronizedGroupsPlainArgs $) {
         this.connectionId = $.connectionId;
+        this.query = $.query;
     }
 
     public static Builder builder() {
@@ -53,13 +71,24 @@ public final class GetConnectionDirectorySynchronizedGroupsPlainArgs extends com
         }
 
         /**
-         * @param connectionId ID of the connection for which to manage synchronized groups. (EA only)
+         * @param connectionId ID of the connection for which to manage synchronized groups.
          * 
          * @return builder
          * 
          */
         public Builder connectionId(String connectionId) {
             $.connectionId = connectionId;
+            return this;
+        }
+
+        /**
+         * @param query Filter the synchronized groups by a prefix search on a single field. Only `name` and `email` are searchable, and only as a prefix, so the term must take the form `name:&lt;value&gt;*` or `email:&lt;value&gt;*` (for example `name:engineering*`). Returns all synchronized groups when omitted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder query(@Nullable String query) {
+            $.query = query;
             return this;
         }
 

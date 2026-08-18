@@ -89,8 +89,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NetworkAcl{}
 	case "auth0:index/organization:Organization":
 		r = &Organization{}
+	case "auth0:index/organizationClient:OrganizationClient":
+		r = &OrganizationClient{}
 	case "auth0:index/organizationClientGrant:OrganizationClientGrant":
 		r = &OrganizationClientGrant{}
+	case "auth0:index/organizationClients:OrganizationClients":
+		r = &OrganizationClients{}
 	case "auth0:index/organizationConnection:OrganizationConnection":
 		r = &OrganizationConnection{}
 	case "auth0:index/organizationConnections:OrganizationConnections":
@@ -376,7 +380,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"auth0",
+		"index/organizationClient",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
 		"index/organizationClientGrant",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/organizationClients",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -29,7 +29,8 @@ class ClientCredentialsArgs:
                  private_key_jwt: pulumi.Input[Optional['ClientCredentialsPrivateKeyJwtArgs']] = None,
                  self_signed_tls_client_auth: pulumi.Input[Optional['ClientCredentialsSelfSignedTlsClientAuthArgs']] = None,
                  signed_request_object: pulumi.Input[Optional['ClientCredentialsSignedRequestObjectArgs']] = None,
-                 tls_client_auth: pulumi.Input[Optional['ClientCredentialsTlsClientAuthArgs']] = None):
+                 tls_client_auth: pulumi.Input[Optional['ClientCredentialsTlsClientAuthArgs']] = None,
+                 token_vault_privileged_access: pulumi.Input[Optional['ClientCredentialsTokenVaultPrivilegedAccessArgs']] = None):
         """
         The set of arguments for constructing a ClientCredentials resource.
 
@@ -43,6 +44,7 @@ class ClientCredentialsArgs:
         :param pulumi.Input['ClientCredentialsSelfSignedTlsClientAuthArgs'] self_signed_tls_client_auth: Defines `tls_client_auth` client authentication method.
         :param pulumi.Input['ClientCredentialsSignedRequestObjectArgs'] signed_request_object: Configuration for JWT-secured Authorization Requests(JAR).
         :param pulumi.Input['ClientCredentialsTlsClientAuthArgs'] tls_client_auth: Defines `tls_client_auth` client authentication method.
+        :param pulumi.Input['ClientCredentialsTokenVaultPrivilegedAccessArgs'] token_vault_privileged_access: Configures the client as a Token Vault privileged worker, allowing it to request Token Vault tokens on behalf of other users. This is an Early Access feature and must be enabled for your tenant.
         """
         pulumi.set(__self__, "client_id", client_id)
         if authentication_method is not None:
@@ -61,6 +63,8 @@ class ClientCredentialsArgs:
             pulumi.set(__self__, "signed_request_object", signed_request_object)
         if tls_client_auth is not None:
             pulumi.set(__self__, "tls_client_auth", tls_client_auth)
+        if token_vault_privileged_access is not None:
+            pulumi.set(__self__, "token_vault_privileged_access", token_vault_privileged_access)
 
     @_builtins.property
     @pulumi.getter(name="clientId")
@@ -171,6 +175,18 @@ class ClientCredentialsArgs:
     def tls_client_auth(self, value: pulumi.Input[Optional['ClientCredentialsTlsClientAuthArgs']]):
         pulumi.set(self, "tls_client_auth", value)
 
+    @_builtins.property
+    @pulumi.getter(name="tokenVaultPrivilegedAccess")
+    def token_vault_privileged_access(self) -> pulumi.Input[Optional['ClientCredentialsTokenVaultPrivilegedAccessArgs']]:
+        """
+        Configures the client as a Token Vault privileged worker, allowing it to request Token Vault tokens on behalf of other users. This is an Early Access feature and must be enabled for your tenant.
+        """
+        return pulumi.get(self, "token_vault_privileged_access")
+
+    @token_vault_privileged_access.setter
+    def token_vault_privileged_access(self, value: pulumi.Input[Optional['ClientCredentialsTokenVaultPrivilegedAccessArgs']]):
+        pulumi.set(self, "token_vault_privileged_access", value)
+
 
 @pulumi.input_type
 class _ClientCredentialsState:
@@ -183,7 +199,8 @@ class _ClientCredentialsState:
                  private_key_jwt: pulumi.Input[Optional['ClientCredentialsPrivateKeyJwtArgs']] = None,
                  self_signed_tls_client_auth: pulumi.Input[Optional['ClientCredentialsSelfSignedTlsClientAuthArgs']] = None,
                  signed_request_object: pulumi.Input[Optional['ClientCredentialsSignedRequestObjectArgs']] = None,
-                 tls_client_auth: pulumi.Input[Optional['ClientCredentialsTlsClientAuthArgs']] = None):
+                 tls_client_auth: pulumi.Input[Optional['ClientCredentialsTlsClientAuthArgs']] = None,
+                 token_vault_privileged_access: pulumi.Input[Optional['ClientCredentialsTokenVaultPrivilegedAccessArgs']] = None):
         """
         Input properties used for looking up and filtering ClientCredentials resources.
 
@@ -197,6 +214,7 @@ class _ClientCredentialsState:
         :param pulumi.Input['ClientCredentialsSelfSignedTlsClientAuthArgs'] self_signed_tls_client_auth: Defines `tls_client_auth` client authentication method.
         :param pulumi.Input['ClientCredentialsSignedRequestObjectArgs'] signed_request_object: Configuration for JWT-secured Authorization Requests(JAR).
         :param pulumi.Input['ClientCredentialsTlsClientAuthArgs'] tls_client_auth: Defines `tls_client_auth` client authentication method.
+        :param pulumi.Input['ClientCredentialsTokenVaultPrivilegedAccessArgs'] token_vault_privileged_access: Configures the client as a Token Vault privileged worker, allowing it to request Token Vault tokens on behalf of other users. This is an Early Access feature and must be enabled for your tenant.
         """
         if authentication_method is not None:
             pulumi.set(__self__, "authentication_method", authentication_method)
@@ -216,6 +234,8 @@ class _ClientCredentialsState:
             pulumi.set(__self__, "signed_request_object", signed_request_object)
         if tls_client_auth is not None:
             pulumi.set(__self__, "tls_client_auth", tls_client_auth)
+        if token_vault_privileged_access is not None:
+            pulumi.set(__self__, "token_vault_privileged_access", token_vault_privileged_access)
 
     @_builtins.property
     @pulumi.getter(name="authenticationMethod")
@@ -326,6 +346,18 @@ class _ClientCredentialsState:
     def tls_client_auth(self, value: pulumi.Input[Optional['ClientCredentialsTlsClientAuthArgs']]):
         pulumi.set(self, "tls_client_auth", value)
 
+    @_builtins.property
+    @pulumi.getter(name="tokenVaultPrivilegedAccess")
+    def token_vault_privileged_access(self) -> pulumi.Input[Optional['ClientCredentialsTokenVaultPrivilegedAccessArgs']]:
+        """
+        Configures the client as a Token Vault privileged worker, allowing it to request Token Vault tokens on behalf of other users. This is an Early Access feature and must be enabled for your tenant.
+        """
+        return pulumi.get(self, "token_vault_privileged_access")
+
+    @token_vault_privileged_access.setter
+    def token_vault_privileged_access(self, value: pulumi.Input[Optional['ClientCredentialsTokenVaultPrivilegedAccessArgs']]):
+        pulumi.set(self, "token_vault_privileged_access", value)
+
 
 @pulumi.type_token("auth0:index/clientCredentials:ClientCredentials")
 class ClientCredentials(pulumi.CustomResource):
@@ -342,6 +374,7 @@ class ClientCredentials(pulumi.CustomResource):
                  self_signed_tls_client_auth: pulumi.Input[Optional[Union['ClientCredentialsSelfSignedTlsClientAuthArgs', 'ClientCredentialsSelfSignedTlsClientAuthArgsDict']]] = None,
                  signed_request_object: pulumi.Input[Optional[Union['ClientCredentialsSignedRequestObjectArgs', 'ClientCredentialsSignedRequestObjectArgsDict']]] = None,
                  tls_client_auth: pulumi.Input[Optional[Union['ClientCredentialsTlsClientAuthArgs', 'ClientCredentialsTlsClientAuthArgsDict']]] = None,
+                 token_vault_privileged_access: pulumi.Input[Optional[Union['ClientCredentialsTokenVaultPrivilegedAccessArgs', 'ClientCredentialsTokenVaultPrivilegedAccessArgsDict']]] = None,
                  __props__=None):
         """
         With this resource, you can configure the method to use when making requests to any endpoint that requires this client to authenticate.
@@ -375,6 +408,7 @@ class ClientCredentials(pulumi.CustomResource):
         :param pulumi.Input[Union['ClientCredentialsSelfSignedTlsClientAuthArgs', 'ClientCredentialsSelfSignedTlsClientAuthArgsDict']] self_signed_tls_client_auth: Defines `tls_client_auth` client authentication method.
         :param pulumi.Input[Union['ClientCredentialsSignedRequestObjectArgs', 'ClientCredentialsSignedRequestObjectArgsDict']] signed_request_object: Configuration for JWT-secured Authorization Requests(JAR).
         :param pulumi.Input[Union['ClientCredentialsTlsClientAuthArgs', 'ClientCredentialsTlsClientAuthArgsDict']] tls_client_auth: Defines `tls_client_auth` client authentication method.
+        :param pulumi.Input[Union['ClientCredentialsTokenVaultPrivilegedAccessArgs', 'ClientCredentialsTokenVaultPrivilegedAccessArgsDict']] token_vault_privileged_access: Configures the client as a Token Vault privileged worker, allowing it to request Token Vault tokens on behalf of other users. This is an Early Access feature and must be enabled for your tenant.
         """
         ...
     @overload
@@ -426,6 +460,7 @@ class ClientCredentials(pulumi.CustomResource):
                  self_signed_tls_client_auth: pulumi.Input[Optional[Union['ClientCredentialsSelfSignedTlsClientAuthArgs', 'ClientCredentialsSelfSignedTlsClientAuthArgsDict']]] = None,
                  signed_request_object: pulumi.Input[Optional[Union['ClientCredentialsSignedRequestObjectArgs', 'ClientCredentialsSignedRequestObjectArgsDict']]] = None,
                  tls_client_auth: pulumi.Input[Optional[Union['ClientCredentialsTlsClientAuthArgs', 'ClientCredentialsTlsClientAuthArgsDict']]] = None,
+                 token_vault_privileged_access: pulumi.Input[Optional[Union['ClientCredentialsTokenVaultPrivilegedAccessArgs', 'ClientCredentialsTokenVaultPrivilegedAccessArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -446,6 +481,7 @@ class ClientCredentials(pulumi.CustomResource):
             __props__.__dict__["self_signed_tls_client_auth"] = self_signed_tls_client_auth
             __props__.__dict__["signed_request_object"] = signed_request_object
             __props__.__dict__["tls_client_auth"] = tls_client_auth
+            __props__.__dict__["token_vault_privileged_access"] = token_vault_privileged_access
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["clientSecret", "clientSecretWo"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ClientCredentials, __self__).__init__(
@@ -466,7 +502,8 @@ class ClientCredentials(pulumi.CustomResource):
             private_key_jwt: pulumi.Input[Optional[Union['ClientCredentialsPrivateKeyJwtArgs', 'ClientCredentialsPrivateKeyJwtArgsDict']]] = None,
             self_signed_tls_client_auth: pulumi.Input[Optional[Union['ClientCredentialsSelfSignedTlsClientAuthArgs', 'ClientCredentialsSelfSignedTlsClientAuthArgsDict']]] = None,
             signed_request_object: pulumi.Input[Optional[Union['ClientCredentialsSignedRequestObjectArgs', 'ClientCredentialsSignedRequestObjectArgsDict']]] = None,
-            tls_client_auth: pulumi.Input[Optional[Union['ClientCredentialsTlsClientAuthArgs', 'ClientCredentialsTlsClientAuthArgsDict']]] = None) -> 'ClientCredentials':
+            tls_client_auth: pulumi.Input[Optional[Union['ClientCredentialsTlsClientAuthArgs', 'ClientCredentialsTlsClientAuthArgsDict']]] = None,
+            token_vault_privileged_access: pulumi.Input[Optional[Union['ClientCredentialsTokenVaultPrivilegedAccessArgs', 'ClientCredentialsTokenVaultPrivilegedAccessArgsDict']]] = None) -> 'ClientCredentials':
         """
         Get an existing ClientCredentials resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -484,6 +521,7 @@ class ClientCredentials(pulumi.CustomResource):
         :param pulumi.Input[Union['ClientCredentialsSelfSignedTlsClientAuthArgs', 'ClientCredentialsSelfSignedTlsClientAuthArgsDict']] self_signed_tls_client_auth: Defines `tls_client_auth` client authentication method.
         :param pulumi.Input[Union['ClientCredentialsSignedRequestObjectArgs', 'ClientCredentialsSignedRequestObjectArgsDict']] signed_request_object: Configuration for JWT-secured Authorization Requests(JAR).
         :param pulumi.Input[Union['ClientCredentialsTlsClientAuthArgs', 'ClientCredentialsTlsClientAuthArgsDict']] tls_client_auth: Defines `tls_client_auth` client authentication method.
+        :param pulumi.Input[Union['ClientCredentialsTokenVaultPrivilegedAccessArgs', 'ClientCredentialsTokenVaultPrivilegedAccessArgsDict']] token_vault_privileged_access: Configures the client as a Token Vault privileged worker, allowing it to request Token Vault tokens on behalf of other users. This is an Early Access feature and must be enabled for your tenant.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -498,6 +536,7 @@ class ClientCredentials(pulumi.CustomResource):
         __props__.__dict__["self_signed_tls_client_auth"] = self_signed_tls_client_auth
         __props__.__dict__["signed_request_object"] = signed_request_object
         __props__.__dict__["tls_client_auth"] = tls_client_auth
+        __props__.__dict__["token_vault_privileged_access"] = token_vault_privileged_access
         return ClientCredentials(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -572,4 +611,12 @@ class ClientCredentials(pulumi.CustomResource):
         Defines `tls_client_auth` client authentication method.
         """
         return pulumi.get(self, "tls_client_auth")
+
+    @_builtins.property
+    @pulumi.getter(name="tokenVaultPrivilegedAccess")
+    def token_vault_privileged_access(self) -> pulumi.Output[Optional['outputs.ClientCredentialsTokenVaultPrivilegedAccess']]:
+        """
+        Configures the client as a Token Vault privileged worker, allowing it to request Token Vault tokens on behalf of other users. This is an Early Access feature and must be enabled for your tenant.
+        """
+        return pulumi.get(self, "token_vault_privileged_access")
 

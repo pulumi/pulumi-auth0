@@ -64,7 +64,7 @@ public final class GetConnectionDirectoryResult {
      */
     private Boolean synchronizeAutomatically;
     /**
-     * @return Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+     * @return Group synchronization configuration. Valid values are: off, all, selected.
      * 
      */
     private String synchronizeGroups;
@@ -146,7 +146,7 @@ public final class GetConnectionDirectoryResult {
         return this.synchronizeAutomatically;
     }
     /**
-     * @return Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+     * @return Group synchronization configuration. Valid values are: off, all, selected.
      * 
      */
     public String synchronizeGroups() {

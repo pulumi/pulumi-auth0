@@ -23,6 +23,14 @@ import * as utilities from "./utilities";
  * const some_role_by_id = auth0.getRole({
  *     roleId: "abcdefghkijklmnopqrstuvwxyz0123456789",
  * });
+ * // An organization-level Auth0 Role loaded using the role name. Several
+ * // organizations can own a role of the same name, so the type and the ID of the
+ * // organization owning it are needed to find the right one. (EA only)
+ * const some_organization_role_by_name = auth0.getRole({
+ *     name: "my-organization-role",
+ *     type: "organization",
+ *     ownerId: "org_abcdefghkijklmn",
+ * });
  * ```
  */
 export function getRole(args?: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleResult> {
@@ -30,9 +38,11 @@ export function getRole(args?: GetRoleArgs, opts?: pulumi.InvokeOptions): Promis
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("auth0:index/getRole:getRole", {
         "name": args.name,
+        "ownerId": args.ownerId,
         "roleId": args.roleId,
         "skipPermissions": args.skipPermissions,
         "skipUsers": args.skipUsers,
+        "type": args.type,
     }, opts);
 }
 
@@ -45,6 +55,10 @@ export interface GetRoleArgs {
      */
     name?: string;
     /**
+     * The ID of the organization owning the role. Only used to narrow down the search when looking the role up by `name`, alongside a `type` of `organization`. (EA only)
+     */
+    ownerId?: string;
+    /**
      * The ID of the role. If not provided, `name` must be set.
      */
     roleId?: string;
@@ -56,6 +70,10 @@ export interface GetRoleArgs {
      * Whether to skip users assigned to this role (max 1000). Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/users.
      */
     skipUsers?: boolean;
+    /**
+     * The type of the role, either `tenant` or `organization`. Only used to narrow down the search when looking the role up by `name`. (EA only)
+     */
+    type?: string;
 }
 
 /**
@@ -75,6 +93,10 @@ export interface GetRoleResult {
      */
     readonly name?: string;
     /**
+     * The ID of the organization owning the role. Only used to narrow down the search when looking the role up by `name`, alongside a `type` of `organization`. (EA only)
+     */
+    readonly ownerId?: string;
+    /**
      * Configuration settings for permissions (scopes) attached to the role. Skips populating if `skipPermissions` is `true`.
      */
     readonly permissions: outputs.GetRolePermission[];
@@ -90,6 +112,10 @@ export interface GetRoleResult {
      * Whether to skip users assigned to this role (max 1000). Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/users.
      */
     readonly skipUsers?: boolean;
+    /**
+     * The type of the role, either `tenant` or `organization`. Only used to narrow down the search when looking the role up by `name`. (EA only)
+     */
+    readonly type?: string;
     /**
      * List of user IDs assigned to this role. Retrieves a maximum of 1000 user IDs. Skips populating if `skipUsers` is `true`.
      */
@@ -112,6 +138,14 @@ export interface GetRoleResult {
  * const some_role_by_id = auth0.getRole({
  *     roleId: "abcdefghkijklmnopqrstuvwxyz0123456789",
  * });
+ * // An organization-level Auth0 Role loaded using the role name. Several
+ * // organizations can own a role of the same name, so the type and the ID of the
+ * // organization owning it are needed to find the right one. (EA only)
+ * const some_organization_role_by_name = auth0.getRole({
+ *     name: "my-organization-role",
+ *     type: "organization",
+ *     ownerId: "org_abcdefghkijklmn",
+ * });
  * ```
  */
 export function getRoleOutput(args?: GetRoleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRoleResult> {
@@ -119,9 +153,11 @@ export function getRoleOutput(args?: GetRoleOutputArgs, opts?: pulumi.InvokeOutp
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("auth0:index/getRole:getRole", {
         "name": args.name,
+        "ownerId": args.ownerId,
         "roleId": args.roleId,
         "skipPermissions": args.skipPermissions,
         "skipUsers": args.skipUsers,
+        "type": args.type,
     }, opts);
 }
 
@@ -134,6 +170,10 @@ export interface GetRoleOutputArgs {
      */
     name?: pulumi.Input<string | undefined>;
     /**
+     * The ID of the organization owning the role. Only used to narrow down the search when looking the role up by `name`, alongside a `type` of `organization`. (EA only)
+     */
+    ownerId?: pulumi.Input<string | undefined>;
+    /**
      * The ID of the role. If not provided, `name` must be set.
      */
     roleId?: pulumi.Input<string | undefined>;
@@ -145,4 +185,8 @@ export interface GetRoleOutputArgs {
      * Whether to skip users assigned to this role (max 1000). Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/users.
      */
     skipUsers?: pulumi.Input<boolean | undefined>;
+    /**
+     * The type of the role, either `tenant` or `organization`. Only used to narrow down the search when looking the role up by `name`. (EA only)
+     */
+    type?: pulumi.Input<string | undefined>;
 }

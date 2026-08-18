@@ -2,12 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Data source to retrieve the selected synchronized group IDs for a connection's directory provisioning configuration.
- *
- * > This data source is only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
+ * Data source to retrieve the selected synchronized groups for a connection's directory provisioning configuration.
  *
  * ## Example Usage
  *
@@ -24,6 +24,7 @@ export function getConnectionDirectorySynchronizedGroups(args: GetConnectionDire
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("auth0:index/getConnectionDirectorySynchronizedGroups:getConnectionDirectorySynchronizedGroups", {
         "connectionId": args.connectionId,
+        "query": args.query,
     }, opts);
 }
 
@@ -32,9 +33,13 @@ export function getConnectionDirectorySynchronizedGroups(args: GetConnectionDire
  */
 export interface GetConnectionDirectorySynchronizedGroupsArgs {
     /**
-     * ID of the connection for which to manage synchronized groups. (EA only)
+     * ID of the connection for which to manage synchronized groups.
      */
     connectionId: string;
+    /**
+     * Filter the synchronized groups by a prefix search on a single field. Only `name` and `email` are searchable, and only as a prefix, so the term must take the form `name:<value>*` or `email:<value>*` (for example `name:engineering*`). Returns all synchronized groups when omitted.
+     */
+    query?: string;
 }
 
 /**
@@ -42,22 +47,28 @@ export interface GetConnectionDirectorySynchronizedGroupsArgs {
  */
 export interface GetConnectionDirectorySynchronizedGroupsResult {
     /**
-     * ID of the connection for which to manage synchronized groups. (EA only)
+     * ID of the connection for which to manage synchronized groups.
      */
     readonly connectionId: string;
     /**
-     * List of Google Workspace Directory group IDs to synchronize. (EA only)
+     * IDs of the synchronized Google Workspace Directory groups. Limited to the groups matching `query`, when one is given.
      */
     readonly groupIds: string[];
+    /**
+     * Details of the synchronized Google Workspace Directory groups. Limited to the groups matching `query`, when one is given.
+     */
+    readonly groups: outputs.GetConnectionDirectorySynchronizedGroupsGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Filter the synchronized groups by a prefix search on a single field. Only `name` and `email` are searchable, and only as a prefix, so the term must take the form `name:<value>*` or `email:<value>*` (for example `name:engineering*`). Returns all synchronized groups when omitted.
+     */
+    readonly query?: string;
 }
 /**
- * Data source to retrieve the selected synchronized group IDs for a connection's directory provisioning configuration.
- *
- * > This data source is only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
+ * Data source to retrieve the selected synchronized groups for a connection's directory provisioning configuration.
  *
  * ## Example Usage
  *
@@ -74,6 +85,7 @@ export function getConnectionDirectorySynchronizedGroupsOutput(args: GetConnecti
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("auth0:index/getConnectionDirectorySynchronizedGroups:getConnectionDirectorySynchronizedGroups", {
         "connectionId": args.connectionId,
+        "query": args.query,
     }, opts);
 }
 
@@ -82,7 +94,11 @@ export function getConnectionDirectorySynchronizedGroupsOutput(args: GetConnecti
  */
 export interface GetConnectionDirectorySynchronizedGroupsOutputArgs {
     /**
-     * ID of the connection for which to manage synchronized groups. (EA only)
+     * ID of the connection for which to manage synchronized groups.
      */
     connectionId: pulumi.Input<string>;
+    /**
+     * Filter the synchronized groups by a prefix search on a single field. Only `name` and `email` are searchable, and only as a prefix, so the term must take the form `name:<value>*` or `email:<value>*` (for example `name:engineering*`). Returns all synchronized groups when omitted.
+     */
+    query?: pulumi.Input<string | undefined>;
 }

@@ -20,12 +20,16 @@ __all__ = ['RoleArgs', 'Role']
 class RoleArgs:
     def __init__(__self__, *,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 name: pulumi.Input[Optional[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Role resource.
 
         :param pulumi.Input[_builtins.str] description: The description of the role.
         :param pulumi.Input[_builtins.str] name: The name of the role.
+        :param pulumi.Input[_builtins.str] owner_id: The ID of the organization owning the role. Only applicable when `type` is `organization`, and required in that case. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+        :param pulumi.Input[_builtins.str] type: The type of the role. Defaults to `tenant`, for a role available across the whole tenant. Set to `organization` to scope the role to a single organization, in which case `owner_id` must also be set. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
         """
         if description is None:
             description = 'Managed by Pulumi'
@@ -33,6 +37,10 @@ class RoleArgs:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if owner_id is not None:
+            pulumi.set(__self__, "owner_id", owner_id)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter
@@ -57,18 +65,46 @@ class RoleArgs:
     @name.setter
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ownerId")
+    def owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the organization owning the role. Only applicable when `type` is `organization`, and required in that case. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+        """
+        return pulumi.get(self, "owner_id")
+
+    @owner_id.setter
+    def owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "owner_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of the role. Defaults to `tenant`, for a role available across the whole tenant. Set to `organization` to scope the role to a single organization, in which case `owner_id` must also be set. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class _RoleState:
     def __init__(__self__, *,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 name: pulumi.Input[Optional[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Role resources.
 
         :param pulumi.Input[_builtins.str] description: The description of the role.
         :param pulumi.Input[_builtins.str] name: The name of the role.
+        :param pulumi.Input[_builtins.str] owner_id: The ID of the organization owning the role. Only applicable when `type` is `organization`, and required in that case. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+        :param pulumi.Input[_builtins.str] type: The type of the role. Defaults to `tenant`, for a role available across the whole tenant. Set to `organization` to scope the role to a single organization, in which case `owner_id` must also be set. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
         """
         if description is None:
             description = 'Managed by Pulumi'
@@ -76,6 +112,10 @@ class _RoleState:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if owner_id is not None:
+            pulumi.set(__self__, "owner_id", owner_id)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter
@@ -100,6 +140,30 @@ class _RoleState:
     @name.setter
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ownerId")
+    def owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the organization owning the role. Only applicable when `type` is `organization`, and required in that case. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+        """
+        return pulumi.get(self, "owner_id")
+
+    @owner_id.setter
+    def owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "owner_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of the role. Defaults to `tenant`, for a role available across the whole tenant. Set to `organization` to scope the role to a single organization, in which case `owner_id` must also be set. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.type_token("auth0:index/role:Role")
@@ -110,6 +174,8 @@ class Role(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         With this resource, you can create and manage collections of permissions that can be assigned to users, which are otherwise known as roles. Permissions (scopes) are created on `ResourceServer`, then associated with roles and optionally, users using this resource.
@@ -123,6 +189,16 @@ class Role(pulumi.CustomResource):
         my_role = auth0.Role("my_role",
             name="My Role - (Managed by Terraform)",
             description="Role Description...")
+        my_organization = auth0.Organization("my_organization",
+            name="my-organization",
+            display_name="My Organization")
+        # A role scoped to a single organization. Changing type or owner_id afterwards
+        # replaces the role, as neither can be updated. (EA only)
+        my_organization_role = auth0.Role("my_organization_role",
+            name="My Organization Role - (Managed by Terraform)",
+            description="Organization Role Description...",
+            type="organization",
+            owner_id=my_organization.id)
         ```
 
         ## Import
@@ -140,6 +216,8 @@ class Role(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the role.
         :param pulumi.Input[_builtins.str] name: The name of the role.
+        :param pulumi.Input[_builtins.str] owner_id: The ID of the organization owning the role. Only applicable when `type` is `organization`, and required in that case. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+        :param pulumi.Input[_builtins.str] type: The type of the role. Defaults to `tenant`, for a role available across the whole tenant. Set to `organization` to scope the role to a single organization, in which case `owner_id` must also be set. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
         """
         ...
     @overload
@@ -159,6 +237,16 @@ class Role(pulumi.CustomResource):
         my_role = auth0.Role("my_role",
             name="My Role - (Managed by Terraform)",
             description="Role Description...")
+        my_organization = auth0.Organization("my_organization",
+            name="my-organization",
+            display_name="My Organization")
+        # A role scoped to a single organization. Changing type or owner_id afterwards
+        # replaces the role, as neither can be updated. (EA only)
+        my_organization_role = auth0.Role("my_organization_role",
+            name="My Organization Role - (Managed by Terraform)",
+            description="Organization Role Description...",
+            type="organization",
+            owner_id=my_organization.id)
         ```
 
         ## Import
@@ -189,6 +277,8 @@ class Role(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -202,6 +292,8 @@ class Role(pulumi.CustomResource):
                 description = 'Managed by Pulumi'
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
+            __props__.__dict__["owner_id"] = owner_id
+            __props__.__dict__["type"] = type
         super(Role, __self__).__init__(
             'auth0:index/role:Role',
             resource_name,
@@ -213,7 +305,9 @@ class Role(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Role':
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Role':
         """
         Get an existing Role resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -223,6 +317,8 @@ class Role(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the role.
         :param pulumi.Input[_builtins.str] name: The name of the role.
+        :param pulumi.Input[_builtins.str] owner_id: The ID of the organization owning the role. Only applicable when `type` is `organization`, and required in that case. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+        :param pulumi.Input[_builtins.str] type: The type of the role. Defaults to `tenant`, for a role available across the whole tenant. Set to `organization` to scope the role to a single organization, in which case `owner_id` must also be set. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -230,6 +326,8 @@ class Role(pulumi.CustomResource):
 
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
+        __props__.__dict__["owner_id"] = owner_id
+        __props__.__dict__["type"] = type
         return Role(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -247,4 +345,20 @@ class Role(pulumi.CustomResource):
         The name of the role.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="ownerId")
+    def owner_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the organization owning the role. Only applicable when `type` is `organization`, and required in that case. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+        """
+        return pulumi.get(self, "owner_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The type of the role. Defaults to `tenant`, for a role available across the whole tenant. Set to `organization` to scope the role to a single organization, in which case `owner_id` must also be set. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+        """
+        return pulumi.get(self, "type")
 
