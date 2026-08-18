@@ -648,6 +648,29 @@
                                 }
                             }
                         }
+                    },
+                    "token_vault_privileged_access": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "credentials": {
+                                    "maxItemsOne": false
+                                },
+                                "grants": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "scopes": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "ip_allowlist": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -933,6 +956,9 @@
                 "majorVersion": 3,
                 "fields": {
                     "group_ids": {
+                        "maxItemsOne": false
+                    },
+                    "groups": {
                         "maxItemsOne": false
                     }
                 }
@@ -1396,9 +1422,27 @@
                     }
                 }
             },
+            "auth0_organization_client": {
+                "current": "auth0:index/organizationClient:OrganizationClient",
+                "majorVersion": 3,
+                "fields": {
+                    "grant_types": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "auth0_organization_client_grant": {
                 "current": "auth0:index/organizationClientGrant:OrganizationClientGrant",
                 "majorVersion": 3
+            },
+            "auth0_organization_clients": {
+                "current": "auth0:index/organizationClients:OrganizationClients",
+                "majorVersion": 3,
+                "fields": {
+                    "clients": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "auth0_organization_connection": {
                 "current": "auth0:index/organizationConnection:OrganizationConnection",
@@ -2483,6 +2527,32 @@
                     }
                 }
             },
+            "auth0_client_grant_organizations": {
+                "current": "auth0:index/getClientGrantOrganizations:getClientGrantOrganizations",
+                "majorVersion": 3,
+                "fields": {
+                    "organizations": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "branding": {
+                                    "maxItemsOne": false
+                                },
+                                "token_quota": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "client_credentials": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "auth0_client_grants": {
                 "current": "auth0:index/getClientGrants:getClientGrants",
                 "majorVersion": 3,
@@ -2898,6 +2968,9 @@
                 "fields": {
                     "group_ids": {
                         "maxItemsOne": false
+                    },
+                    "groups": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -3268,6 +3341,78 @@
                     }
                 }
             },
+            "auth0_organization_client": {
+                "current": "auth0:index/getOrganizationClient:getOrganizationClient",
+                "majorVersion": 3,
+                "fields": {
+                    "grant_types": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "auth0_organization_clients": {
+                "current": "auth0:index/getOrganizationClients:getOrganizationClients",
+                "majorVersion": 3,
+                "fields": {
+                    "clients": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "grant_types": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "auth0_organization_role_groups": {
+                "current": "auth0:index/getOrganizationRoleGroups:getOrganizationRoleGroups",
+                "majorVersion": 3,
+                "fields": {
+                    "groups": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "auth0_organization_role_members": {
+                "current": "auth0:index/getOrganizationRoleMembers:getOrganizationRoleMembers",
+                "majorVersion": 3,
+                "fields": {
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "auth0_organizations": {
+                "current": "auth0:index/getOrganizations:getOrganizations",
+                "majorVersion": 3,
+                "fields": {
+                    "organizations": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "branding": {
+                                    "maxItemsOne": false
+                                },
+                                "client": {
+                                    "maxItemsOne": false
+                                },
+                                "token_quota": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "client_credentials": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "auth0_outbound_ips": {
                 "current": "auth0:index/getOutboundIps:getOutboundIps",
                 "majorVersion": 3,
@@ -3632,6 +3777,32 @@
                             "fields": {
                                 "scopes": {
                                     "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "auth0_user_organizations": {
+                "current": "auth0:index/getUserOrganizations:getUserOrganizations",
+                "majorVersion": 3,
+                "fields": {
+                    "organizations": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "branding": {
+                                    "maxItemsOne": false
+                                },
+                                "token_quota": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "client_credentials": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
