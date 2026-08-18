@@ -200,6 +200,11 @@ export const getClient: typeof import("./getClient").getClient = null as any;
 export const getClientOutput: typeof import("./getClient").getClientOutput = null as any;
 utilities.lazyLoad(exports, ["getClient","getClientOutput"], () => require("./getClient"));
 
+export { GetClientGrantOrganizationsArgs, GetClientGrantOrganizationsResult, GetClientGrantOrganizationsOutputArgs } from "./getClientGrantOrganizations";
+export const getClientGrantOrganizations: typeof import("./getClientGrantOrganizations").getClientGrantOrganizations = null as any;
+export const getClientGrantOrganizationsOutput: typeof import("./getClientGrantOrganizations").getClientGrantOrganizationsOutput = null as any;
+utilities.lazyLoad(exports, ["getClientGrantOrganizations","getClientGrantOrganizationsOutput"], () => require("./getClientGrantOrganizations"));
+
 export { GetClientGrantsArgs, GetClientGrantsResult, GetClientGrantsOutputArgs } from "./getClientGrants";
 export const getClientGrants: typeof import("./getClientGrants").getClientGrants = null as any;
 export const getClientGrantsOutput: typeof import("./getClientGrants").getClientGrantsOutput = null as any;
@@ -284,6 +289,31 @@ export { GetOrganizationArgs, GetOrganizationResult, GetOrganizationOutputArgs }
 export const getOrganization: typeof import("./getOrganization").getOrganization = null as any;
 export const getOrganizationOutput: typeof import("./getOrganization").getOrganizationOutput = null as any;
 utilities.lazyLoad(exports, ["getOrganization","getOrganizationOutput"], () => require("./getOrganization"));
+
+export { GetOrganizationClientArgs, GetOrganizationClientResult, GetOrganizationClientOutputArgs } from "./getOrganizationClient";
+export const getOrganizationClient: typeof import("./getOrganizationClient").getOrganizationClient = null as any;
+export const getOrganizationClientOutput: typeof import("./getOrganizationClient").getOrganizationClientOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationClient","getOrganizationClientOutput"], () => require("./getOrganizationClient"));
+
+export { GetOrganizationClientsArgs, GetOrganizationClientsResult, GetOrganizationClientsOutputArgs } from "./getOrganizationClients";
+export const getOrganizationClients: typeof import("./getOrganizationClients").getOrganizationClients = null as any;
+export const getOrganizationClientsOutput: typeof import("./getOrganizationClients").getOrganizationClientsOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationClients","getOrganizationClientsOutput"], () => require("./getOrganizationClients"));
+
+export { GetOrganizationRoleGroupsArgs, GetOrganizationRoleGroupsResult, GetOrganizationRoleGroupsOutputArgs } from "./getOrganizationRoleGroups";
+export const getOrganizationRoleGroups: typeof import("./getOrganizationRoleGroups").getOrganizationRoleGroups = null as any;
+export const getOrganizationRoleGroupsOutput: typeof import("./getOrganizationRoleGroups").getOrganizationRoleGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationRoleGroups","getOrganizationRoleGroupsOutput"], () => require("./getOrganizationRoleGroups"));
+
+export { GetOrganizationRoleMembersArgs, GetOrganizationRoleMembersResult, GetOrganizationRoleMembersOutputArgs } from "./getOrganizationRoleMembers";
+export const getOrganizationRoleMembers: typeof import("./getOrganizationRoleMembers").getOrganizationRoleMembers = null as any;
+export const getOrganizationRoleMembersOutput: typeof import("./getOrganizationRoleMembers").getOrganizationRoleMembersOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationRoleMembers","getOrganizationRoleMembersOutput"], () => require("./getOrganizationRoleMembers"));
+
+export { GetOrganizationsArgs, GetOrganizationsResult, GetOrganizationsOutputArgs } from "./getOrganizations";
+export const getOrganizations: typeof import("./getOrganizations").getOrganizations = null as any;
+export const getOrganizationsOutput: typeof import("./getOrganizations").getOrganizationsOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizations","getOrganizationsOutput"], () => require("./getOrganizations"));
 
 export { GetOutboundIpsResult } from "./getOutboundIps";
 export const getOutboundIps: typeof import("./getOutboundIps").getOutboundIps = null as any;
@@ -370,6 +400,11 @@ export const getUserConnectedAccounts: typeof import("./getUserConnectedAccounts
 export const getUserConnectedAccountsOutput: typeof import("./getUserConnectedAccounts").getUserConnectedAccountsOutput = null as any;
 utilities.lazyLoad(exports, ["getUserConnectedAccounts","getUserConnectedAccountsOutput"], () => require("./getUserConnectedAccounts"));
 
+export { GetUserOrganizationsArgs, GetUserOrganizationsResult, GetUserOrganizationsOutputArgs } from "./getUserOrganizations";
+export const getUserOrganizations: typeof import("./getUserOrganizations").getUserOrganizations = null as any;
+export const getUserOrganizationsOutput: typeof import("./getUserOrganizations").getUserOrganizationsOutput = null as any;
+utilities.lazyLoad(exports, ["getUserOrganizations","getUserOrganizationsOutput"], () => require("./getUserOrganizations"));
+
 export { GuardianArgs, GuardianState } from "./guardian";
 export type Guardian = import("./guardian").Guardian;
 export const Guardian: typeof import("./guardian").Guardian = null as any;
@@ -395,10 +430,20 @@ export type Organization = import("./organization").Organization;
 export const Organization: typeof import("./organization").Organization = null as any;
 utilities.lazyLoad(exports, ["Organization"], () => require("./organization"));
 
+export { OrganizationClientArgs, OrganizationClientState } from "./organizationClient";
+export type OrganizationClient = import("./organizationClient").OrganizationClient;
+export const OrganizationClient: typeof import("./organizationClient").OrganizationClient = null as any;
+utilities.lazyLoad(exports, ["OrganizationClient"], () => require("./organizationClient"));
+
 export { OrganizationClientGrantArgs, OrganizationClientGrantState } from "./organizationClientGrant";
 export type OrganizationClientGrant = import("./organizationClientGrant").OrganizationClientGrant;
 export const OrganizationClientGrant: typeof import("./organizationClientGrant").OrganizationClientGrant = null as any;
 utilities.lazyLoad(exports, ["OrganizationClientGrant"], () => require("./organizationClientGrant"));
+
+export { OrganizationClientsArgs, OrganizationClientsState } from "./organizationClients";
+export type OrganizationClients = import("./organizationClients").OrganizationClients;
+export const OrganizationClients: typeof import("./organizationClients").OrganizationClients = null as any;
+utilities.lazyLoad(exports, ["OrganizationClients"], () => require("./organizationClients"));
 
 export { OrganizationConnectionArgs, OrganizationConnectionState } from "./organizationConnection";
 export type OrganizationConnection = import("./organizationConnection").OrganizationConnection;
@@ -690,8 +735,12 @@ const _module = {
                 return new NetworkAcl(name, <any>undefined, { urn })
             case "auth0:index/organization:Organization":
                 return new Organization(name, <any>undefined, { urn })
+            case "auth0:index/organizationClient:OrganizationClient":
+                return new OrganizationClient(name, <any>undefined, { urn })
             case "auth0:index/organizationClientGrant:OrganizationClientGrant":
                 return new OrganizationClientGrant(name, <any>undefined, { urn })
+            case "auth0:index/organizationClients:OrganizationClients":
+                return new OrganizationClients(name, <any>undefined, { urn })
             case "auth0:index/organizationConnection:OrganizationConnection":
                 return new OrganizationConnection(name, <any>undefined, { urn })
             case "auth0:index/organizationConnections:OrganizationConnections":
@@ -813,7 +862,9 @@ pulumi.runtime.registerResourceModule("auth0", "index/hook", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/logStream", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/networkAcl", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/organization", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/organizationClient", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/organizationClientGrant", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/organizationClients", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/organizationConnection", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/organizationConnections", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/organizationDiscoveryDomain", _module)

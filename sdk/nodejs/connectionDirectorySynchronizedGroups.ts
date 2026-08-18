@@ -2,12 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * With this resource, you can manage the set of Google Workspace group IDs synchronized via directory provisioning for an Auth0 connection. (EA only)
- *
- * > This resource is only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
+ * With this resource, you can manage the set of Google Workspace groups synchronized via directory provisioning for an Auth0 connection.
  *
  * ## Example Usage
  *
@@ -33,10 +33,16 @@ import * as utilities from "./utilities";
  * });
  * const myGroups = new auth0.ConnectionDirectorySynchronizedGroups("my_groups", {
  *     connectionId: myConnection.id,
- *     groupIds: [
- *         "group1abc",
- *         "group2def",
- *         "group3ghi",
+ *     groups: [
+ *         {
+ *             id: "group1",
+ *         },
+ *         {
+ *             id: "group2",
+ *             name: "test",
+ *             email: "test@test.com",
+ *             directMembersCount: 123,
+ *         },
  *     ],
  * }, {
  *     dependsOn: [myDirectory],
@@ -78,13 +84,19 @@ export class ConnectionDirectorySynchronizedGroups extends pulumi.CustomResource
     }
 
     /**
-     * ID of the connection for which to manage synchronized groups. (EA only)
+     * ID of the connection for which to manage synchronized groups.
      */
     declare public readonly connectionId: pulumi.Output<string>;
     /**
-     * List of Google Workspace Directory group IDs to synchronize. (EA only)
+     * IDs of the Google Workspace Directory groups to synchronize.
+     *
+     * @deprecated Use `groups` instead, which exposes each group's name, email and member count alongside its ID.
      */
-    declare public readonly groupIds: pulumi.Output<string[]>;
+    declare public readonly groupIds: pulumi.Output<string[] | undefined>;
+    /**
+     * Google Workspace Directory groups to synchronize.
+     */
+    declare public readonly groups: pulumi.Output<outputs.ConnectionDirectorySynchronizedGroupsGroup[] | undefined>;
 
     /**
      * Create a ConnectionDirectorySynchronizedGroups resource with the given unique name, arguments, and options.
@@ -101,16 +113,15 @@ export class ConnectionDirectorySynchronizedGroups extends pulumi.CustomResource
             const state = argsOrState as ConnectionDirectorySynchronizedGroupsState | undefined;
             resourceInputs["connectionId"] = state?.connectionId;
             resourceInputs["groupIds"] = state?.groupIds;
+            resourceInputs["groups"] = state?.groups;
         } else {
             const args = argsOrState as ConnectionDirectorySynchronizedGroupsArgs | undefined;
             if (args?.connectionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectionId'");
             }
-            if (args?.groupIds === undefined && !opts.urn) {
-                throw new Error("Missing required property 'groupIds'");
-            }
             resourceInputs["connectionId"] = args?.connectionId;
             resourceInputs["groupIds"] = args?.groupIds;
+            resourceInputs["groups"] = args?.groups;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ConnectionDirectorySynchronizedGroups.__pulumiType, name, resourceInputs, opts);
@@ -122,13 +133,19 @@ export class ConnectionDirectorySynchronizedGroups extends pulumi.CustomResource
  */
 export interface ConnectionDirectorySynchronizedGroupsState {
     /**
-     * ID of the connection for which to manage synchronized groups. (EA only)
+     * ID of the connection for which to manage synchronized groups.
      */
     connectionId?: pulumi.Input<string | undefined>;
     /**
-     * List of Google Workspace Directory group IDs to synchronize. (EA only)
+     * IDs of the Google Workspace Directory groups to synchronize.
+     *
+     * @deprecated Use `groups` instead, which exposes each group's name, email and member count alongside its ID.
      */
     groupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Google Workspace Directory groups to synchronize.
+     */
+    groups?: pulumi.Input<pulumi.Input<inputs.ConnectionDirectorySynchronizedGroupsGroup>[] | undefined>;
 }
 
 /**
@@ -136,11 +153,17 @@ export interface ConnectionDirectorySynchronizedGroupsState {
  */
 export interface ConnectionDirectorySynchronizedGroupsArgs {
     /**
-     * ID of the connection for which to manage synchronized groups. (EA only)
+     * ID of the connection for which to manage synchronized groups.
      */
     connectionId: pulumi.Input<string>;
     /**
-     * List of Google Workspace Directory group IDs to synchronize. (EA only)
+     * IDs of the Google Workspace Directory groups to synchronize.
+     *
+     * @deprecated Use `groups` instead, which exposes each group's name, email and member count alongside its ID.
      */
-    groupIds: pulumi.Input<pulumi.Input<string>[]>;
+    groupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Google Workspace Directory groups to synchronize.
+     */
+    groups?: pulumi.Input<pulumi.Input<inputs.ConnectionDirectorySynchronizedGroupsGroup>[] | undefined>;
 }

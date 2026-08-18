@@ -34,6 +34,24 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			myOrganization, err := auth0.NewOrganization(ctx, "my_organization", &auth0.OrganizationArgs{
+//				Name:        pulumi.String("my-organization"),
+//				DisplayName: pulumi.String("My Organization"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// A role scoped to a single organization. Changing type or owner_id afterwards
+//			// replaces the role, as neither can be updated. (EA only)
+//			_, err = auth0.NewRole(ctx, "my_organization_role", &auth0.RoleArgs{
+//				Name:        pulumi.String("My Organization Role - (Managed by Terraform)"),
+//				Description: pulumi.String("Organization Role Description..."),
+//				Type:        pulumi.String("organization"),
+//				OwnerId:     myOrganization.ID().ToIDOutput().ToStringOutput(),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -56,6 +74,10 @@ type Role struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The name of the role.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the organization owning the role. Only applicable when `type` is `organization`, and required in that case. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+	OwnerId pulumi.StringOutput `pulumi:"ownerId"`
+	// The type of the role. Defaults to `tenant`, for a role available across the whole tenant. Set to `organization` to scope the role to a single organization, in which case `ownerId` must also be set. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+	Type pulumi.StringOutput `pulumi:"type"`
 }
 
 // NewRole registers a new resource with the given unique name, arguments, and options.
@@ -95,6 +117,10 @@ type roleState struct {
 	Description *string `pulumi:"description"`
 	// The name of the role.
 	Name *string `pulumi:"name"`
+	// The ID of the organization owning the role. Only applicable when `type` is `organization`, and required in that case. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+	OwnerId *string `pulumi:"ownerId"`
+	// The type of the role. Defaults to `tenant`, for a role available across the whole tenant. Set to `organization` to scope the role to a single organization, in which case `ownerId` must also be set. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+	Type *string `pulumi:"type"`
 }
 
 type RoleState struct {
@@ -102,6 +128,10 @@ type RoleState struct {
 	Description pulumi.StringPtrInput
 	// The name of the role.
 	Name pulumi.StringPtrInput
+	// The ID of the organization owning the role. Only applicable when `type` is `organization`, and required in that case. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+	OwnerId pulumi.StringPtrInput
+	// The type of the role. Defaults to `tenant`, for a role available across the whole tenant. Set to `organization` to scope the role to a single organization, in which case `ownerId` must also be set. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+	Type pulumi.StringPtrInput
 }
 
 func (RoleState) ElementType() reflect.Type {
@@ -113,6 +143,10 @@ type roleArgs struct {
 	Description *string `pulumi:"description"`
 	// The name of the role.
 	Name *string `pulumi:"name"`
+	// The ID of the organization owning the role. Only applicable when `type` is `organization`, and required in that case. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+	OwnerId *string `pulumi:"ownerId"`
+	// The type of the role. Defaults to `tenant`, for a role available across the whole tenant. Set to `organization` to scope the role to a single organization, in which case `ownerId` must also be set. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a Role resource.
@@ -121,6 +155,10 @@ type RoleArgs struct {
 	Description pulumi.StringPtrInput
 	// The name of the role.
 	Name pulumi.StringPtrInput
+	// The ID of the organization owning the role. Only applicable when `type` is `organization`, and required in that case. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+	OwnerId pulumi.StringPtrInput
+	// The type of the role. Defaults to `tenant`, for a role available across the whole tenant. Set to `organization` to scope the role to a single organization, in which case `ownerId` must also be set. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+	Type pulumi.StringPtrInput
 }
 
 func (RoleArgs) ElementType() reflect.Type {
@@ -218,6 +256,16 @@ func (o RoleOutput) Description() pulumi.StringOutput {
 // The name of the role.
 func (o RoleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the organization owning the role. Only applicable when `type` is `organization`, and required in that case. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+func (o RoleOutput) OwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.OwnerId }).(pulumi.StringOutput)
+}
+
+// The type of the role. Defaults to `tenant`, for a role available across the whole tenant. Set to `organization` to scope the role to a single organization, in which case `ownerId` must also be set. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+func (o RoleOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 type RoleArrayOutput struct{ *pulumi.OutputState }

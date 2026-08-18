@@ -23,6 +23,7 @@ class OrganizationArgs:
     def __init__(__self__, *,
                  branding: pulumi.Input[Optional['OrganizationBrandingArgs']] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_app_entitlement_active: pulumi.Input[Optional[_builtins.bool]] = None,
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  third_party_client_access: pulumi.Input[Optional[_builtins.str]] = None,
@@ -32,6 +33,7 @@ class OrganizationArgs:
 
         :param pulumi.Input['OrganizationBrandingArgs'] branding: Defines how to style the login pages.
         :param pulumi.Input[_builtins.str] display_name: Friendly name of this organization.
+        :param pulumi.Input[_builtins.bool] is_app_entitlement_active: Controls whether this organization's app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `ClientGrant`'s `organization_usage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata associated with the organization. Maximum of 10 metadata properties allowed.
         :param pulumi.Input[_builtins.str] name: The name of this organization.
         :param pulumi.Input[_builtins.str] third_party_client_access: Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
@@ -41,6 +43,8 @@ class OrganizationArgs:
             pulumi.set(__self__, "branding", branding)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if is_app_entitlement_active is not None:
+            pulumi.set(__self__, "is_app_entitlement_active", is_app_entitlement_active)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
         if name is not None:
@@ -73,6 +77,18 @@ class OrganizationArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isAppEntitlementActive")
+    def is_app_entitlement_active(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Controls whether this organization's app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `ClientGrant`'s `organization_usage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
+        """
+        return pulumi.get(self, "is_app_entitlement_active")
+
+    @is_app_entitlement_active.setter
+    def is_app_entitlement_active(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "is_app_entitlement_active", value)
 
     @_builtins.property
     @pulumi.getter
@@ -128,6 +144,7 @@ class _OrganizationState:
     def __init__(__self__, *,
                  branding: pulumi.Input[Optional['OrganizationBrandingArgs']] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_app_entitlement_active: pulumi.Input[Optional[_builtins.bool]] = None,
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  third_party_client_access: pulumi.Input[Optional[_builtins.str]] = None,
@@ -137,6 +154,7 @@ class _OrganizationState:
 
         :param pulumi.Input['OrganizationBrandingArgs'] branding: Defines how to style the login pages.
         :param pulumi.Input[_builtins.str] display_name: Friendly name of this organization.
+        :param pulumi.Input[_builtins.bool] is_app_entitlement_active: Controls whether this organization's app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `ClientGrant`'s `organization_usage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata associated with the organization. Maximum of 10 metadata properties allowed.
         :param pulumi.Input[_builtins.str] name: The name of this organization.
         :param pulumi.Input[_builtins.str] third_party_client_access: Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
@@ -146,6 +164,8 @@ class _OrganizationState:
             pulumi.set(__self__, "branding", branding)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if is_app_entitlement_active is not None:
+            pulumi.set(__self__, "is_app_entitlement_active", is_app_entitlement_active)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
         if name is not None:
@@ -178,6 +198,18 @@ class _OrganizationState:
     @display_name.setter
     def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isAppEntitlementActive")
+    def is_app_entitlement_active(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Controls whether this organization's app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `ClientGrant`'s `organization_usage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
+        """
+        return pulumi.get(self, "is_app_entitlement_active")
+
+    @is_app_entitlement_active.setter
+    def is_app_entitlement_active(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "is_app_entitlement_active", value)
 
     @_builtins.property
     @pulumi.getter
@@ -236,6 +268,7 @@ class Organization(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  branding: pulumi.Input[Optional[Union['OrganizationBrandingArgs', 'OrganizationBrandingArgsDict']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_app_entitlement_active: pulumi.Input[Optional[_builtins.bool]] = None,
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  third_party_client_access: pulumi.Input[Optional[_builtins.str]] = None,
@@ -284,6 +317,7 @@ class Organization(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['OrganizationBrandingArgs', 'OrganizationBrandingArgsDict']] branding: Defines how to style the login pages.
         :param pulumi.Input[_builtins.str] display_name: Friendly name of this organization.
+        :param pulumi.Input[_builtins.bool] is_app_entitlement_active: Controls whether this organization's app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `ClientGrant`'s `organization_usage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata associated with the organization. Maximum of 10 metadata properties allowed.
         :param pulumi.Input[_builtins.str] name: The name of this organization.
         :param pulumi.Input[_builtins.str] third_party_client_access: Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
@@ -351,6 +385,7 @@ class Organization(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  branding: pulumi.Input[Optional[Union['OrganizationBrandingArgs', 'OrganizationBrandingArgsDict']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_app_entitlement_active: pulumi.Input[Optional[_builtins.bool]] = None,
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  third_party_client_access: pulumi.Input[Optional[_builtins.str]] = None,
@@ -366,6 +401,7 @@ class Organization(pulumi.CustomResource):
 
             __props__.__dict__["branding"] = branding
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["is_app_entitlement_active"] = is_app_entitlement_active
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["name"] = name
             __props__.__dict__["third_party_client_access"] = third_party_client_access
@@ -382,6 +418,7 @@ class Organization(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             branding: pulumi.Input[Optional[Union['OrganizationBrandingArgs', 'OrganizationBrandingArgsDict']]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            is_app_entitlement_active: pulumi.Input[Optional[_builtins.bool]] = None,
             metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             third_party_client_access: pulumi.Input[Optional[_builtins.str]] = None,
@@ -395,6 +432,7 @@ class Organization(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['OrganizationBrandingArgs', 'OrganizationBrandingArgsDict']] branding: Defines how to style the login pages.
         :param pulumi.Input[_builtins.str] display_name: Friendly name of this organization.
+        :param pulumi.Input[_builtins.bool] is_app_entitlement_active: Controls whether this organization's app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `ClientGrant`'s `organization_usage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata associated with the organization. Maximum of 10 metadata properties allowed.
         :param pulumi.Input[_builtins.str] name: The name of this organization.
         :param pulumi.Input[_builtins.str] third_party_client_access: Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
@@ -406,6 +444,7 @@ class Organization(pulumi.CustomResource):
 
         __props__.__dict__["branding"] = branding
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["is_app_entitlement_active"] = is_app_entitlement_active
         __props__.__dict__["metadata"] = metadata
         __props__.__dict__["name"] = name
         __props__.__dict__["third_party_client_access"] = third_party_client_access
@@ -427,6 +466,14 @@ class Organization(pulumi.CustomResource):
         Friendly name of this organization.
         """
         return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="isAppEntitlementActive")
+    def is_app_entitlement_active(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Controls whether this organization's app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `ClientGrant`'s `organization_usage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
+        """
+        return pulumi.get(self, "is_app_entitlement_active")
 
     @_builtins.property
     @pulumi.getter

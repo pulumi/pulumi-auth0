@@ -1447,7 +1447,7 @@ export interface ClientCredentialsSelfSignedTlsClientAuthCredential {
     /**
      * Credential type. Supported types: `x509Cert`.
      */
-    credentialType?: string;
+    credentialType: string;
     /**
      * The ISO 8601 formatted date representing the expiration of the credential.
      */
@@ -1564,6 +1564,75 @@ export interface ClientCredentialsTlsClientAuthCredential {
      * The ISO 8601 formatted date the credential was updated.
      */
     updatedAt: string;
+}
+
+export interface ClientCredentialsTokenVaultPrivilegedAccess {
+    /**
+     * Credentials the privileged worker may authenticate with. A maximum of 2 client credentials can be set.
+     */
+    credentials: outputs.ClientCredentialsTokenVaultPrivilegedAccessCredential[];
+    /**
+     * Pins the connections, and the scopes within them, that the privileged worker may request tokens for. A maximum of 5 grants can be set, with a maximum of 20 scopes in total across all of them. Omit every `grants` block to clear the grants already configured.
+     */
+    grants?: outputs.ClientCredentialsTokenVaultPrivilegedAccessGrant[];
+    /**
+     * Permitted IPv4 or IPv6 addresses, or CIDR ranges, from which the privileged worker may request tokens. A maximum of 10 entries can be set. Set to `[]` to clear the entries already configured.
+     */
+    ipAllowlists: string[];
+}
+
+export interface ClientCredentialsTokenVaultPrivilegedAccessCredential {
+    /**
+     * Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.
+     */
+    algorithm?: string;
+    /**
+     * The ISO 8601 formatted date the credential was created.
+     */
+    createdAt: string;
+    /**
+     * Credential type. Supported types: `publicKey`.
+     */
+    credentialType: string;
+    /**
+     * The ISO 8601 formatted date representing the expiration of the credential. It is not possible to set this to never expire after it has been set. Recreate the certificate if needed.
+     */
+    expiresAt: string;
+    /**
+     * The ID of the client credential.
+     */
+    id: string;
+    /**
+     * The key identifier of the credential, generated on creation.
+     */
+    keyId: string;
+    /**
+     * Friendly name for a credential.
+     */
+    name?: string;
+    /**
+     * Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expiresAt` is set the credential expiry will be set to the explicit `expiresAt` value.
+     */
+    parseExpiryFromCert?: boolean;
+    /**
+     * PEM-formatted public key (SPKI and PKCS1) or X509 certificate. Must be JSON escaped.
+     */
+    pem: string;
+    /**
+     * The ISO 8601 formatted date the credential was updated.
+     */
+    updatedAt: string;
+}
+
+export interface ClientCredentialsTokenVaultPrivilegedAccessGrant {
+    /**
+     * Name of the connection the grant applies to. The connection does not need to exist when the grant is configured; it is validated at runtime.
+     */
+    connection: string;
+    /**
+     * Scopes the privileged worker may request on the connection.
+     */
+    scopes: string[];
 }
 
 export interface ClientDefaultOrganization {
@@ -1904,6 +1973,25 @@ export interface ConnectionDirectoryMapping {
      * The field location in the IDP schema.
      */
     idp: string;
+}
+
+export interface ConnectionDirectorySynchronizedGroupsGroup {
+    /**
+     * Number of direct members in the Google Workspace Directory group.
+     */
+    directMembersCount?: number;
+    /**
+     * Google Workspace Directory group email.
+     */
+    email?: string;
+    /**
+     * Google Workspace Directory group ID.
+     */
+    id: string;
+    /**
+     * Google Workspace Directory group name.
+     */
+    name?: string;
 }
 
 export interface ConnectionOptions {
@@ -2360,7 +2448,7 @@ export interface ConnectionOptions {
      */
     useKerberos?: boolean;
     /**
-     * Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+     * Enabling this when using the connectionScope parameter, uses space as a delimiter for scopes when calling the IdP's API.
      */
     useOauthSpecScope?: boolean;
     /**
@@ -4913,6 +5001,74 @@ export interface GetClientFedcmLoginGoogle {
     isEnabled: boolean;
 }
 
+export interface GetClientGrantOrganizationsOrganization {
+    /**
+     * How to style the login pages for this organization.
+     */
+    brandings: outputs.GetClientGrantOrganizationsOrganizationBranding[];
+    /**
+     * Friendly name of the organization.
+     */
+    displayName: string;
+    /**
+     * Whether this organization's app entitlement is active (EA only).
+     */
+    isAppEntitlementActive: boolean;
+    /**
+     * Metadata associated with the organization.
+     */
+    metadata: {[key: string]: string};
+    /**
+     * The name of the organization.
+     */
+    name: string;
+    /**
+     * The ID of the organization.
+     */
+    organizationId: string;
+    /**
+     * Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`.
+     */
+    thirdPartyClientAccess: string;
+    /**
+     * The token quota configuration for this organization.
+     */
+    tokenQuotas: outputs.GetClientGrantOrganizationsOrganizationTokenQuota[];
+}
+
+export interface GetClientGrantOrganizationsOrganizationBranding {
+    /**
+     * Color scheme used to customize the login pages.
+     */
+    colors: {[key: string]: string};
+    /**
+     * URL of logo to display on login page.
+     */
+    logoUrl: string;
+}
+
+export interface GetClientGrantOrganizationsOrganizationTokenQuota {
+    /**
+     * The token quota configuration for client credentials.
+     */
+    clientCredentials: outputs.GetClientGrantOrganizationsOrganizationTokenQuotaClientCredential[];
+}
+
+export interface GetClientGrantOrganizationsOrganizationTokenQuotaClientCredential {
+    /**
+     * Whether the quota is enforced.
+     */
+    enforce: boolean;
+    /**
+     * Maximum number of issued tokens per day.
+     */
+    perDay: number;
+    /**
+     * Maximum number of issued tokens per hour.
+     */
+    perHour: number;
+}
+
 export interface GetClientGrantsClientGrant {
     /**
      * When enabled, all scopes configured on the resource server are allowed for this client grant. EA Only.
@@ -5585,6 +5741,25 @@ export interface GetConnectionDirectoryMapping {
     idp: string;
 }
 
+export interface GetConnectionDirectorySynchronizedGroupsGroup {
+    /**
+     * Number of direct members in the Google Workspace Directory group.
+     */
+    directMembersCount: number;
+    /**
+     * Google Workspace Directory group email.
+     */
+    email: string;
+    /**
+     * Google Workspace Directory group ID.
+     */
+    id: string;
+    /**
+     * Google Workspace Directory group name.
+     */
+    name: string;
+}
+
 export interface GetConnectionKeysKey {
     /**
      * The signing key algorithm.
@@ -6095,7 +6270,7 @@ export interface GetConnectionOption {
      */
     useKerberos: boolean;
     /**
-     * Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+     * Enabling this when using the connectionScope parameter, uses space as a delimiter for scopes when calling the IdP's API.
      */
     useOauthSpecScope: boolean;
     /**
@@ -7159,6 +7334,41 @@ export interface GetOrganizationBranding {
     logoUrl: string;
 }
 
+export interface GetOrganizationClientsClient {
+    /**
+     * The type of the associated client application.
+     */
+    appType: string;
+    /**
+     * The ID of the client (application) to associate with the organization.
+     */
+    clientId: string;
+    /**
+     * The grant types enabled for the associated client.
+     */
+    grantTypes: string[];
+    /**
+     * Whether the associated client is a first-party client (`true`) or not (`false`).
+     */
+    isFirstParty: boolean;
+    /**
+     * The URI of the associated client's logo.
+     */
+    logoUri: string;
+    /**
+     * The name of the associated client.
+     */
+    name: string;
+    /**
+     * How the associated client handles organizations during authentication. Available values are `deny`, `allow` or `require`. This is a read-only reflection of the client's own `organizationUsage` setting and is managed on the `auth0.Client` resource, not here.
+     */
+    organizationUsage: string;
+    /**
+     * Whether this client is used for member access to the organization. An association starts out with this turned off and it has to be activated explicitly.
+     */
+    useForMemberAccess: boolean;
+}
+
 export interface GetOrganizationConnection {
     /**
      * When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
@@ -7190,6 +7400,60 @@ export interface GetOrganizationConnection {
     showAsButton: boolean;
 }
 
+export interface GetOrganizationRoleGroupsGroup {
+    /**
+     * The ID of the connection the group belongs to, if it is a connection group.
+     */
+    connectionId: string;
+    /**
+     * ISO 8601 timestamp when the group was created.
+     */
+    createdAt: string;
+    /**
+     * The description of the group.
+     */
+    description: string;
+    /**
+     * The external identifier of the group, often used for SCIM synchronization.
+     */
+    externalId: string;
+    /**
+     * The unique identifier for the group.
+     */
+    id: string;
+    /**
+     * The name of the group.
+     */
+    name: string;
+    /**
+     * The ID of the organization the group belongs to, if it is an organization group.
+     */
+    organizationId: string;
+    /**
+     * ISO 8601 timestamp when the group was last updated.
+     */
+    updatedAt: string;
+}
+
+export interface GetOrganizationRoleMembersMember {
+    /**
+     * The email address of the user.
+     */
+    email: string;
+    /**
+     * The name of the user.
+     */
+    name: string;
+    /**
+     * The URL to a picture for the user.
+     */
+    picture: string;
+    /**
+     * The ID of the user.
+     */
+    userId: string;
+}
+
 export interface GetOrganizationTokenQuota {
     /**
      * The token quota configuration for client credentials.
@@ -7208,6 +7472,85 @@ export interface GetOrganizationTokenQuotaClientCredential {
     perDay: number;
     /**
      * Maximum number of issued tokens per hour
+     */
+    perHour: number;
+}
+
+export interface GetOrganizationsOrganization {
+    /**
+     * How to style the login pages for this organization.
+     */
+    brandings: outputs.GetOrganizationsOrganizationBranding[];
+    /**
+     * The organization's association with the client passed as `includeClientAssociationFor`. Empty for organizations that have no association with that client (EA only).
+     */
+    clients: outputs.GetOrganizationsOrganizationClient[];
+    /**
+     * Friendly name of the organization.
+     */
+    displayName: string;
+    /**
+     * Whether this organization's app entitlement is active (EA only).
+     */
+    isAppEntitlementActive: boolean;
+    /**
+     * Metadata associated with the organization.
+     */
+    metadata: {[key: string]: string};
+    /**
+     * The name of the organization.
+     */
+    name: string;
+    /**
+     * The ID of the organization.
+     */
+    organizationId: string;
+    /**
+     * Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`.
+     */
+    thirdPartyClientAccess: string;
+    /**
+     * The token quota configuration for this organization.
+     */
+    tokenQuotas: outputs.GetOrganizationsOrganizationTokenQuota[];
+}
+
+export interface GetOrganizationsOrganizationBranding {
+    /**
+     * Color scheme used to customize the login pages.
+     */
+    colors: {[key: string]: string};
+    /**
+     * URL of logo to display on login page.
+     */
+    logoUrl: string;
+}
+
+export interface GetOrganizationsOrganizationClient {
+    /**
+     * Whether organization members can log in via this client.
+     */
+    useForMemberAccess: boolean;
+}
+
+export interface GetOrganizationsOrganizationTokenQuota {
+    /**
+     * The token quota configuration for client credentials.
+     */
+    clientCredentials: outputs.GetOrganizationsOrganizationTokenQuotaClientCredential[];
+}
+
+export interface GetOrganizationsOrganizationTokenQuotaClientCredential {
+    /**
+     * Whether the quota is enforced.
+     */
+    enforce: boolean;
+    /**
+     * Maximum number of issued tokens per day.
+     */
+    perDay: number;
+    /**
+     * Maximum number of issued tokens per hour.
      */
     perHour: number;
 }
@@ -8032,6 +8375,74 @@ export interface GetUserConnectedAccountsConnectedAccount {
     strategy: string;
 }
 
+export interface GetUserOrganizationsOrganization {
+    /**
+     * How to style the login pages for this organization.
+     */
+    brandings: outputs.GetUserOrganizationsOrganizationBranding[];
+    /**
+     * Friendly name of the organization.
+     */
+    displayName: string;
+    /**
+     * Whether this organization's app entitlement is active (EA only).
+     */
+    isAppEntitlementActive: boolean;
+    /**
+     * Metadata associated with the organization.
+     */
+    metadata: {[key: string]: string};
+    /**
+     * The name of the organization.
+     */
+    name: string;
+    /**
+     * The ID of the organization.
+     */
+    organizationId: string;
+    /**
+     * Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`.
+     */
+    thirdPartyClientAccess: string;
+    /**
+     * The token quota configuration for this organization.
+     */
+    tokenQuotas: outputs.GetUserOrganizationsOrganizationTokenQuota[];
+}
+
+export interface GetUserOrganizationsOrganizationBranding {
+    /**
+     * Color scheme used to customize the login pages.
+     */
+    colors: {[key: string]: string};
+    /**
+     * URL of logo to display on login page.
+     */
+    logoUrl: string;
+}
+
+export interface GetUserOrganizationsOrganizationTokenQuota {
+    /**
+     * The token quota configuration for client credentials.
+     */
+    clientCredentials: outputs.GetUserOrganizationsOrganizationTokenQuotaClientCredential[];
+}
+
+export interface GetUserOrganizationsOrganizationTokenQuotaClientCredential {
+    /**
+     * Whether the quota is enforced.
+     */
+    enforce: boolean;
+    /**
+     * Maximum number of issued tokens per day.
+     */
+    perDay: number;
+    /**
+     * Maximum number of issued tokens per hour.
+     */
+    perHour: number;
+}
+
 export interface GetUserPermission {
     /**
      * Description of the permission.
@@ -8518,6 +8929,17 @@ export interface OrganizationBranding {
      * URL of logo to display on login page.
      */
     logoUrl?: string;
+}
+
+export interface OrganizationClientsClient {
+    /**
+     * The ID of the client (application) to associate with the organization.
+     */
+    clientId: string;
+    /**
+     * Whether this client is used for member access to the organization.
+     */
+    useForMemberAccess?: boolean;
 }
 
 export interface OrganizationConnectionsEnabledConnection {

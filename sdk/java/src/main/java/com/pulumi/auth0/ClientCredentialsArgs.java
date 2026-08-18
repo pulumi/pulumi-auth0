@@ -7,6 +7,7 @@ import com.pulumi.auth0.inputs.ClientCredentialsPrivateKeyJwtArgs;
 import com.pulumi.auth0.inputs.ClientCredentialsSelfSignedTlsClientAuthArgs;
 import com.pulumi.auth0.inputs.ClientCredentialsSignedRequestObjectArgs;
 import com.pulumi.auth0.inputs.ClientCredentialsTlsClientAuthArgs;
+import com.pulumi.auth0.inputs.ClientCredentialsTokenVaultPrivilegedAccessArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -158,6 +159,21 @@ public final class ClientCredentialsArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.tlsClientAuth);
     }
 
+    /**
+     * Configures the client as a Token Vault privileged worker, allowing it to request Token Vault tokens on behalf of other users. This is an Early Access feature and must be enabled for your tenant.
+     * 
+     */
+    @Import(name="tokenVaultPrivilegedAccess")
+    private @Nullable Output<ClientCredentialsTokenVaultPrivilegedAccessArgs> tokenVaultPrivilegedAccess;
+
+    /**
+     * @return Configures the client as a Token Vault privileged worker, allowing it to request Token Vault tokens on behalf of other users. This is an Early Access feature and must be enabled for your tenant.
+     * 
+     */
+    public Optional<Output<ClientCredentialsTokenVaultPrivilegedAccessArgs>> tokenVaultPrivilegedAccess() {
+        return Optional.ofNullable(this.tokenVaultPrivilegedAccess);
+    }
+
     private ClientCredentialsArgs() {}
 
     private ClientCredentialsArgs(ClientCredentialsArgs $) {
@@ -170,6 +186,7 @@ public final class ClientCredentialsArgs extends com.pulumi.resources.ResourceAr
         this.selfSignedTlsClientAuth = $.selfSignedTlsClientAuth;
         this.signedRequestObject = $.signedRequestObject;
         this.tlsClientAuth = $.tlsClientAuth;
+        this.tokenVaultPrivilegedAccess = $.tokenVaultPrivilegedAccess;
     }
 
     public static Builder builder() {
@@ -379,6 +396,27 @@ public final class ClientCredentialsArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder tlsClientAuth(ClientCredentialsTlsClientAuthArgs tlsClientAuth) {
             return tlsClientAuth(Output.of(tlsClientAuth));
+        }
+
+        /**
+         * @param tokenVaultPrivilegedAccess Configures the client as a Token Vault privileged worker, allowing it to request Token Vault tokens on behalf of other users. This is an Early Access feature and must be enabled for your tenant.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenVaultPrivilegedAccess(@Nullable Output<ClientCredentialsTokenVaultPrivilegedAccessArgs> tokenVaultPrivilegedAccess) {
+            $.tokenVaultPrivilegedAccess = tokenVaultPrivilegedAccess;
+            return this;
+        }
+
+        /**
+         * @param tokenVaultPrivilegedAccess Configures the client as a Token Vault privileged worker, allowing it to request Token Vault tokens on behalf of other users. This is an Early Access feature and must be enabled for your tenant.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenVaultPrivilegedAccess(ClientCredentialsTokenVaultPrivilegedAccessArgs tokenVaultPrivilegedAccess) {
+            return tokenVaultPrivilegedAccess(Output.of(tokenVaultPrivilegedAccess));
         }
 
         public ClientCredentialsArgs build() {

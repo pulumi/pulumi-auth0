@@ -104,6 +104,9 @@ __all__ = [
     'ClientCredentialsSignedRequestObjectCredential',
     'ClientCredentialsTlsClientAuth',
     'ClientCredentialsTlsClientAuthCredential',
+    'ClientCredentialsTokenVaultPrivilegedAccess',
+    'ClientCredentialsTokenVaultPrivilegedAccessCredential',
+    'ClientCredentialsTokenVaultPrivilegedAccessGrant',
     'ClientDefaultOrganization',
     'ClientExpressConfiguration',
     'ClientExpressConfigurationLinkedClient',
@@ -134,6 +137,7 @@ __all__ = [
     'ConnectionCrossAppAccessRequestingApp',
     'ConnectionCrossAppAccessResourceApp',
     'ConnectionDirectoryMapping',
+    'ConnectionDirectorySynchronizedGroupsGroup',
     'ConnectionOptions',
     'ConnectionOptionsAttribute',
     'ConnectionOptionsAttributeEmail',
@@ -228,6 +232,7 @@ __all__ = [
     'NetworkAclRuleMatch',
     'NetworkAclRuleNotMatch',
     'OrganizationBranding',
+    'OrganizationClientsClient',
     'OrganizationConnectionsEnabledConnection',
     'OrganizationDiscoveryDomainsDiscoveryDomain',
     'OrganizationTokenQuota',
@@ -371,6 +376,10 @@ __all__ = [
     'GetClientExpressConfigurationLinkedClientResult',
     'GetClientFedcmLoginResult',
     'GetClientFedcmLoginGoogleResult',
+    'GetClientGrantOrganizationsOrganizationResult',
+    'GetClientGrantOrganizationsOrganizationBrandingResult',
+    'GetClientGrantOrganizationsOrganizationTokenQuotaResult',
+    'GetClientGrantOrganizationsOrganizationTokenQuotaClientCredentialResult',
     'GetClientGrantsClientGrantResult',
     'GetClientIdentityAssertionAuthorizationGrantResult',
     'GetClientJwtConfigurationResult',
@@ -415,6 +424,7 @@ __all__ = [
     'GetConnectionCrossAppAccessResourceAppResult',
     'GetConnectionDirectoryDefaultMappingMappingResult',
     'GetConnectionDirectoryMappingResult',
+    'GetConnectionDirectorySynchronizedGroupsGroupResult',
     'GetConnectionKeysKeyResult',
     'GetConnectionOptionResult',
     'GetConnectionOptionAttributeResult',
@@ -496,9 +506,17 @@ __all__ = [
     'GetNetworkAclRuleMatchResult',
     'GetNetworkAclRuleNotMatchResult',
     'GetOrganizationBrandingResult',
+    'GetOrganizationClientsClientResult',
     'GetOrganizationConnectionResult',
+    'GetOrganizationRoleGroupsGroupResult',
+    'GetOrganizationRoleMembersMemberResult',
     'GetOrganizationTokenQuotaResult',
     'GetOrganizationTokenQuotaClientCredentialResult',
+    'GetOrganizationsOrganizationResult',
+    'GetOrganizationsOrganizationBrandingResult',
+    'GetOrganizationsOrganizationClientResult',
+    'GetOrganizationsOrganizationTokenQuotaResult',
+    'GetOrganizationsOrganizationTokenQuotaClientCredentialResult',
     'GetOutboundIpsChangelogResult',
     'GetOutboundIpsRegionResult',
     'GetPagesChangePasswordResult',
@@ -548,6 +566,10 @@ __all__ = [
     'GetUserAttributeProfileUserIdResult',
     'GetUserAttributeProfileUserIdStrategyOverrideResult',
     'GetUserConnectedAccountsConnectedAccountResult',
+    'GetUserOrganizationsOrganizationResult',
+    'GetUserOrganizationsOrganizationBrandingResult',
+    'GetUserOrganizationsOrganizationTokenQuotaResult',
+    'GetUserOrganizationsOrganizationTokenQuotaClientCredentialResult',
     'GetUserPermissionResult',
 ]
 
@@ -6118,6 +6140,245 @@ class ClientCredentialsTlsClientAuthCredential(dict):
 
 
 @pulumi.output_type
+class ClientCredentialsTokenVaultPrivilegedAccess(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipAllowlists":
+            suggest = "ip_allowlists"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientCredentialsTokenVaultPrivilegedAccess. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientCredentialsTokenVaultPrivilegedAccess.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientCredentialsTokenVaultPrivilegedAccess.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 credentials: Sequence['outputs.ClientCredentialsTokenVaultPrivilegedAccessCredential'],
+                 ip_allowlists: Sequence[_builtins.str],
+                 grants: Optional[Sequence['outputs.ClientCredentialsTokenVaultPrivilegedAccessGrant']] = None):
+        """
+        :param Sequence['ClientCredentialsTokenVaultPrivilegedAccessCredentialArgs'] credentials: Credentials the privileged worker may authenticate with. A maximum of 2 client credentials can be set.
+        :param Sequence[_builtins.str] ip_allowlists: Permitted IPv4 or IPv6 addresses, or CIDR ranges, from which the privileged worker may request tokens. A maximum of 10 entries can be set. Set to `[]` to clear the entries already configured.
+        :param Sequence['ClientCredentialsTokenVaultPrivilegedAccessGrantArgs'] grants: Pins the connections, and the scopes within them, that the privileged worker may request tokens for. A maximum of 5 grants can be set, with a maximum of 20 scopes in total across all of them. Omit every `grants` block to clear the grants already configured.
+        """
+        pulumi.set(__self__, "credentials", credentials)
+        pulumi.set(__self__, "ip_allowlists", ip_allowlists)
+        if grants is not None:
+            pulumi.set(__self__, "grants", grants)
+
+    @_builtins.property
+    @pulumi.getter
+    def credentials(self) -> Sequence['outputs.ClientCredentialsTokenVaultPrivilegedAccessCredential']:
+        """
+        Credentials the privileged worker may authenticate with. A maximum of 2 client credentials can be set.
+        """
+        return pulumi.get(self, "credentials")
+
+    @_builtins.property
+    @pulumi.getter(name="ipAllowlists")
+    def ip_allowlists(self) -> Sequence[_builtins.str]:
+        """
+        Permitted IPv4 or IPv6 addresses, or CIDR ranges, from which the privileged worker may request tokens. A maximum of 10 entries can be set. Set to `[]` to clear the entries already configured.
+        """
+        return pulumi.get(self, "ip_allowlists")
+
+    @_builtins.property
+    @pulumi.getter
+    def grants(self) -> Optional[Sequence['outputs.ClientCredentialsTokenVaultPrivilegedAccessGrant']]:
+        """
+        Pins the connections, and the scopes within them, that the privileged worker may request tokens for. A maximum of 5 grants can be set, with a maximum of 20 scopes in total across all of them. Omit every `grants` block to clear the grants already configured.
+        """
+        return pulumi.get(self, "grants")
+
+
+@pulumi.output_type
+class ClientCredentialsTokenVaultPrivilegedAccessCredential(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "credentialType":
+            suggest = "credential_type"
+        elif key == "createdAt":
+            suggest = "created_at"
+        elif key == "expiresAt":
+            suggest = "expires_at"
+        elif key == "keyId":
+            suggest = "key_id"
+        elif key == "parseExpiryFromCert":
+            suggest = "parse_expiry_from_cert"
+        elif key == "updatedAt":
+            suggest = "updated_at"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientCredentialsTokenVaultPrivilegedAccessCredential. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientCredentialsTokenVaultPrivilegedAccessCredential.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientCredentialsTokenVaultPrivilegedAccessCredential.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 credential_type: _builtins.str,
+                 pem: _builtins.str,
+                 algorithm: Optional[_builtins.str] = None,
+                 created_at: Optional[_builtins.str] = None,
+                 expires_at: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None,
+                 key_id: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 parse_expiry_from_cert: Optional[_builtins.bool] = None,
+                 updated_at: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str credential_type: Credential type. Supported types: `public_key`.
+        :param _builtins.str pem: PEM-formatted public key (SPKI and PKCS1) or X509 certificate. Must be JSON escaped.
+        :param _builtins.str algorithm: Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.
+        :param _builtins.str created_at: The ISO 8601 formatted date the credential was created.
+        :param _builtins.str expires_at: The ISO 8601 formatted date representing the expiration of the credential. It is not possible to set this to never expire after it has been set. Recreate the certificate if needed.
+        :param _builtins.str id: The ID of the client credential.
+        :param _builtins.str key_id: The key identifier of the credential, generated on creation.
+        :param _builtins.str name: Friendly name for a credential.
+        :param _builtins.bool parse_expiry_from_cert: Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expires_at` is set the credential expiry will be set to the explicit `expires_at` value.
+        :param _builtins.str updated_at: The ISO 8601 formatted date the credential was updated.
+        """
+        pulumi.set(__self__, "credential_type", credential_type)
+        pulumi.set(__self__, "pem", pem)
+        if algorithm is not None:
+            pulumi.set(__self__, "algorithm", algorithm)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if expires_at is not None:
+            pulumi.set(__self__, "expires_at", expires_at)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if key_id is not None:
+            pulumi.set(__self__, "key_id", key_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parse_expiry_from_cert is not None:
+            pulumi.set(__self__, "parse_expiry_from_cert", parse_expiry_from_cert)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter(name="credentialType")
+    def credential_type(self) -> _builtins.str:
+        """
+        Credential type. Supported types: `public_key`.
+        """
+        return pulumi.get(self, "credential_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def pem(self) -> _builtins.str:
+        """
+        PEM-formatted public key (SPKI and PKCS1) or X509 certificate. Must be JSON escaped.
+        """
+        return pulumi.get(self, "pem")
+
+    @_builtins.property
+    @pulumi.getter
+    def algorithm(self) -> Optional[_builtins.str]:
+        """
+        Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.
+        """
+        return pulumi.get(self, "algorithm")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[_builtins.str]:
+        """
+        The ISO 8601 formatted date the credential was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> Optional[_builtins.str]:
+        """
+        The ISO 8601 formatted date representing the expiration of the credential. It is not possible to set this to never expire after it has been set. Recreate the certificate if needed.
+        """
+        return pulumi.get(self, "expires_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the client credential.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> Optional[_builtins.str]:
+        """
+        The key identifier of the credential, generated on creation.
+        """
+        return pulumi.get(self, "key_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Friendly name for a credential.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="parseExpiryFromCert")
+    def parse_expiry_from_cert(self) -> Optional[_builtins.bool]:
+        """
+        Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expires_at` is set the credential expiry will be set to the explicit `expires_at` value.
+        """
+        return pulumi.get(self, "parse_expiry_from_cert")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[_builtins.str]:
+        """
+        The ISO 8601 formatted date the credential was updated.
+        """
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class ClientCredentialsTokenVaultPrivilegedAccessGrant(dict):
+    def __init__(__self__, *,
+                 connection: _builtins.str,
+                 scopes: Sequence[_builtins.str]):
+        """
+        :param _builtins.str connection: Name of the connection the grant applies to. The connection does not need to exist when the grant is configured; it is validated at runtime.
+        :param Sequence[_builtins.str] scopes: Scopes the privileged worker may request on the connection.
+        """
+        pulumi.set(__self__, "connection", connection)
+        pulumi.set(__self__, "scopes", scopes)
+
+    @_builtins.property
+    @pulumi.getter
+    def connection(self) -> _builtins.str:
+        """
+        Name of the connection the grant applies to. The connection does not need to exist when the grant is configured; it is validated at runtime.
+        """
+        return pulumi.get(self, "connection")
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> Sequence[_builtins.str]:
+        """
+        Scopes the privileged worker may request on the connection.
+        """
+        return pulumi.get(self, "scopes")
+
+
+@pulumi.output_type
 class ClientDefaultOrganization(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -7442,6 +7703,77 @@ class ConnectionDirectoryMapping(dict):
 
 
 @pulumi.output_type
+class ConnectionDirectorySynchronizedGroupsGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "directMembersCount":
+            suggest = "direct_members_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionDirectorySynchronizedGroupsGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionDirectorySynchronizedGroupsGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionDirectorySynchronizedGroupsGroup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 direct_members_count: Optional[_builtins.int] = None,
+                 email: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str id: Google Workspace Directory group ID.
+        :param _builtins.int direct_members_count: Number of direct members in the Google Workspace Directory group.
+        :param _builtins.str email: Google Workspace Directory group email.
+        :param _builtins.str name: Google Workspace Directory group name.
+        """
+        pulumi.set(__self__, "id", id)
+        if direct_members_count is not None:
+            pulumi.set(__self__, "direct_members_count", direct_members_count)
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Google Workspace Directory group ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="directMembersCount")
+    def direct_members_count(self) -> Optional[_builtins.int]:
+        """
+        Number of direct members in the Google Workspace Directory group.
+        """
+        return pulumi.get(self, "direct_members_count")
+
+    @_builtins.property
+    @pulumi.getter
+    def email(self) -> Optional[_builtins.str]:
+        """
+        Google Workspace Directory group email.
+        """
+        return pulumi.get(self, "email")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Google Workspace Directory group name.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class ConnectionOptions(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -7898,7 +8230,7 @@ class ConnectionOptions(dict):
         :param _builtins.str upstream_params: You can pass provider-specific parameters to an identity provider during authentication. The values can either be static per connection or dynamic per user.
         :param _builtins.bool use_cert_auth: Indicates whether to use cert auth or not.
         :param _builtins.bool use_kerberos: Indicates whether to use Kerberos or not.
-        :param _builtins.bool use_oauth_spec_scope: Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+        :param _builtins.bool use_oauth_spec_scope: Enabling this when using the connection_scope parameter, uses space as a delimiter for scopes when calling the IdP's API.
         :param _builtins.bool use_wsfed: Whether to use WS-Fed.
         :param _builtins.str user_authorization_url: URL used to obtain user authorization.
         :param _builtins.str user_id_attribute: Attribute in the token that will be mapped to the user_id property in Auth0.
@@ -9058,7 +9390,7 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="useOauthSpecScope")
     def use_oauth_spec_scope(self) -> Optional[_builtins.bool]:
         """
-        Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+        Enabling this when using the connection_scope parameter, uses space as a delimiter for scopes when calling the IdP's API.
         """
         return pulumi.get(self, "use_oauth_spec_scope")
 
@@ -14414,6 +14746,55 @@ class OrganizationBranding(dict):
         URL of logo to display on login page.
         """
         return pulumi.get(self, "logo_url")
+
+
+@pulumi.output_type
+class OrganizationClientsClient(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+        elif key == "useForMemberAccess":
+            suggest = "use_for_member_access"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OrganizationClientsClient. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OrganizationClientsClient.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OrganizationClientsClient.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_id: _builtins.str,
+                 use_for_member_access: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str client_id: The ID of the client (application) to associate with the organization.
+        :param _builtins.bool use_for_member_access: Whether this client is used for member access to the organization.
+        """
+        pulumi.set(__self__, "client_id", client_id)
+        if use_for_member_access is not None:
+            pulumi.set(__self__, "use_for_member_access", use_for_member_access)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> _builtins.str:
+        """
+        The ID of the client (application) to associate with the organization.
+        """
+        return pulumi.get(self, "client_id")
+
+    @_builtins.property
+    @pulumi.getter(name="useForMemberAccess")
+    def use_for_member_access(self) -> Optional[_builtins.bool]:
+        """
+        Whether this client is used for member access to the organization.
+        """
+        return pulumi.get(self, "use_for_member_access")
 
 
 @pulumi.output_type
@@ -21682,6 +22063,188 @@ class GetClientFedcmLoginGoogleResult(dict):
 
 
 @pulumi.output_type
+class GetClientGrantOrganizationsOrganizationResult(dict):
+    def __init__(__self__, *,
+                 brandings: Sequence['outputs.GetClientGrantOrganizationsOrganizationBrandingResult'],
+                 display_name: _builtins.str,
+                 is_app_entitlement_active: _builtins.bool,
+                 metadata: Mapping[str, _builtins.str],
+                 name: _builtins.str,
+                 organization_id: _builtins.str,
+                 third_party_client_access: _builtins.str,
+                 token_quotas: Sequence['outputs.GetClientGrantOrganizationsOrganizationTokenQuotaResult']):
+        """
+        :param Sequence['GetClientGrantOrganizationsOrganizationBrandingArgs'] brandings: How to style the login pages for this organization.
+        :param _builtins.str display_name: Friendly name of the organization.
+        :param _builtins.bool is_app_entitlement_active: Whether this organization's app entitlement is active (EA only).
+        :param Mapping[str, _builtins.str] metadata: Metadata associated with the organization.
+        :param _builtins.str name: The name of the organization.
+        :param _builtins.str organization_id: The ID of the organization.
+        :param _builtins.str third_party_client_access: Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`.
+        :param Sequence['GetClientGrantOrganizationsOrganizationTokenQuotaArgs'] token_quotas: The token quota configuration for this organization.
+        """
+        pulumi.set(__self__, "brandings", brandings)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "is_app_entitlement_active", is_app_entitlement_active)
+        pulumi.set(__self__, "metadata", metadata)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "organization_id", organization_id)
+        pulumi.set(__self__, "third_party_client_access", third_party_client_access)
+        pulumi.set(__self__, "token_quotas", token_quotas)
+
+    @_builtins.property
+    @pulumi.getter
+    def brandings(self) -> Sequence['outputs.GetClientGrantOrganizationsOrganizationBrandingResult']:
+        """
+        How to style the login pages for this organization.
+        """
+        return pulumi.get(self, "brandings")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        Friendly name of the organization.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="isAppEntitlementActive")
+    def is_app_entitlement_active(self) -> _builtins.bool:
+        """
+        Whether this organization's app entitlement is active (EA only).
+        """
+        return pulumi.get(self, "is_app_entitlement_active")
+
+    @_builtins.property
+    @pulumi.getter
+    def metadata(self) -> Mapping[str, _builtins.str]:
+        """
+        Metadata associated with the organization.
+        """
+        return pulumi.get(self, "metadata")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the organization.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> _builtins.str:
+        """
+        The ID of the organization.
+        """
+        return pulumi.get(self, "organization_id")
+
+    @_builtins.property
+    @pulumi.getter(name="thirdPartyClientAccess")
+    def third_party_client_access(self) -> _builtins.str:
+        """
+        Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`.
+        """
+        return pulumi.get(self, "third_party_client_access")
+
+    @_builtins.property
+    @pulumi.getter(name="tokenQuotas")
+    def token_quotas(self) -> Sequence['outputs.GetClientGrantOrganizationsOrganizationTokenQuotaResult']:
+        """
+        The token quota configuration for this organization.
+        """
+        return pulumi.get(self, "token_quotas")
+
+
+@pulumi.output_type
+class GetClientGrantOrganizationsOrganizationBrandingResult(dict):
+    def __init__(__self__, *,
+                 colors: Mapping[str, _builtins.str],
+                 logo_url: _builtins.str):
+        """
+        :param Mapping[str, _builtins.str] colors: Color scheme used to customize the login pages.
+        :param _builtins.str logo_url: URL of logo to display on login page.
+        """
+        pulumi.set(__self__, "colors", colors)
+        pulumi.set(__self__, "logo_url", logo_url)
+
+    @_builtins.property
+    @pulumi.getter
+    def colors(self) -> Mapping[str, _builtins.str]:
+        """
+        Color scheme used to customize the login pages.
+        """
+        return pulumi.get(self, "colors")
+
+    @_builtins.property
+    @pulumi.getter(name="logoUrl")
+    def logo_url(self) -> _builtins.str:
+        """
+        URL of logo to display on login page.
+        """
+        return pulumi.get(self, "logo_url")
+
+
+@pulumi.output_type
+class GetClientGrantOrganizationsOrganizationTokenQuotaResult(dict):
+    def __init__(__self__, *,
+                 client_credentials: Sequence['outputs.GetClientGrantOrganizationsOrganizationTokenQuotaClientCredentialResult']):
+        """
+        :param Sequence['GetClientGrantOrganizationsOrganizationTokenQuotaClientCredentialArgs'] client_credentials: The token quota configuration for client credentials.
+        """
+        pulumi.set(__self__, "client_credentials", client_credentials)
+
+    @_builtins.property
+    @pulumi.getter(name="clientCredentials")
+    def client_credentials(self) -> Sequence['outputs.GetClientGrantOrganizationsOrganizationTokenQuotaClientCredentialResult']:
+        """
+        The token quota configuration for client credentials.
+        """
+        return pulumi.get(self, "client_credentials")
+
+
+@pulumi.output_type
+class GetClientGrantOrganizationsOrganizationTokenQuotaClientCredentialResult(dict):
+    def __init__(__self__, *,
+                 enforce: _builtins.bool,
+                 per_day: _builtins.int,
+                 per_hour: _builtins.int):
+        """
+        :param _builtins.bool enforce: Whether the quota is enforced.
+        :param _builtins.int per_day: Maximum number of issued tokens per day.
+        :param _builtins.int per_hour: Maximum number of issued tokens per hour.
+        """
+        pulumi.set(__self__, "enforce", enforce)
+        pulumi.set(__self__, "per_day", per_day)
+        pulumi.set(__self__, "per_hour", per_hour)
+
+    @_builtins.property
+    @pulumi.getter
+    def enforce(self) -> _builtins.bool:
+        """
+        Whether the quota is enforced.
+        """
+        return pulumi.get(self, "enforce")
+
+    @_builtins.property
+    @pulumi.getter(name="perDay")
+    def per_day(self) -> _builtins.int:
+        """
+        Maximum number of issued tokens per day.
+        """
+        return pulumi.get(self, "per_day")
+
+    @_builtins.property
+    @pulumi.getter(name="perHour")
+    def per_hour(self) -> _builtins.int:
+        """
+        Maximum number of issued tokens per hour.
+        """
+        return pulumi.get(self, "per_hour")
+
+
+@pulumi.output_type
 class GetClientGrantsClientGrantResult(dict):
     def __init__(__self__, *,
                  allow_all_scopes: _builtins.bool,
@@ -23527,6 +24090,57 @@ class GetConnectionDirectoryMappingResult(dict):
 
 
 @pulumi.output_type
+class GetConnectionDirectorySynchronizedGroupsGroupResult(dict):
+    def __init__(__self__, *,
+                 direct_members_count: _builtins.int,
+                 email: _builtins.str,
+                 id: _builtins.str,
+                 name: _builtins.str):
+        """
+        :param _builtins.int direct_members_count: Number of direct members in the Google Workspace Directory group.
+        :param _builtins.str email: Google Workspace Directory group email.
+        :param _builtins.str id: Google Workspace Directory group ID.
+        :param _builtins.str name: Google Workspace Directory group name.
+        """
+        pulumi.set(__self__, "direct_members_count", direct_members_count)
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="directMembersCount")
+    def direct_members_count(self) -> _builtins.int:
+        """
+        Number of direct members in the Google Workspace Directory group.
+        """
+        return pulumi.get(self, "direct_members_count")
+
+    @_builtins.property
+    @pulumi.getter
+    def email(self) -> _builtins.str:
+        """
+        Google Workspace Directory group email.
+        """
+        return pulumi.get(self, "email")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Google Workspace Directory group ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Google Workspace Directory group name.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class GetConnectionKeysKeyResult(dict):
     def __init__(__self__, *,
                  algorithm: _builtins.str,
@@ -23921,7 +24535,7 @@ class GetConnectionOptionResult(dict):
         :param _builtins.str upstream_params: You can pass provider-specific parameters to an identity provider during authentication. The values can either be static per connection or dynamic per user.
         :param _builtins.bool use_cert_auth: Indicates whether to use cert auth or not.
         :param _builtins.bool use_kerberos: Indicates whether to use Kerberos or not.
-        :param _builtins.bool use_oauth_spec_scope: Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+        :param _builtins.bool use_oauth_spec_scope: Enabling this when using the connection_scope parameter, uses space as a delimiter for scopes when calling the IdP's API.
         :param _builtins.bool use_wsfed: Whether to use WS-Fed.
         :param _builtins.str user_authorization_url: URL used to obtain user authorization.
         :param _builtins.str user_id_attribute: Attribute in the token that will be mapped to the user_id property in Auth0.
@@ -24960,7 +25574,7 @@ class GetConnectionOptionResult(dict):
     @pulumi.getter(name="useOauthSpecScope")
     def use_oauth_spec_scope(self) -> _builtins.bool:
         """
-        Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+        Enabling this when using the connection_scope parameter, uses space as a delimiter for scopes when calling the IdP's API.
         """
         return pulumi.get(self, "use_oauth_spec_scope")
 
@@ -27810,6 +28424,101 @@ class GetOrganizationBrandingResult(dict):
 
 
 @pulumi.output_type
+class GetOrganizationClientsClientResult(dict):
+    def __init__(__self__, *,
+                 app_type: _builtins.str,
+                 client_id: _builtins.str,
+                 grant_types: Sequence[_builtins.str],
+                 is_first_party: _builtins.bool,
+                 logo_uri: _builtins.str,
+                 name: _builtins.str,
+                 organization_usage: _builtins.str,
+                 use_for_member_access: _builtins.bool):
+        """
+        :param _builtins.str app_type: The type of the associated client application.
+        :param _builtins.str client_id: The ID of the client (application) to associate with the organization.
+        :param Sequence[_builtins.str] grant_types: The grant types enabled for the associated client.
+        :param _builtins.bool is_first_party: Whether the associated client is a first-party client (`true`) or not (`false`).
+        :param _builtins.str logo_uri: The URI of the associated client's logo.
+        :param _builtins.str name: The name of the associated client.
+        :param _builtins.str organization_usage: How the associated client handles organizations during authentication. Available values are `deny`, `allow` or `require`. This is a read-only reflection of the client's own `organization_usage` setting and is managed on the `Client` resource, not here.
+        :param _builtins.bool use_for_member_access: Whether this client is used for member access to the organization. An association starts out with this turned off and it has to be activated explicitly.
+        """
+        pulumi.set(__self__, "app_type", app_type)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "grant_types", grant_types)
+        pulumi.set(__self__, "is_first_party", is_first_party)
+        pulumi.set(__self__, "logo_uri", logo_uri)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "organization_usage", organization_usage)
+        pulumi.set(__self__, "use_for_member_access", use_for_member_access)
+
+    @_builtins.property
+    @pulumi.getter(name="appType")
+    def app_type(self) -> _builtins.str:
+        """
+        The type of the associated client application.
+        """
+        return pulumi.get(self, "app_type")
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> _builtins.str:
+        """
+        The ID of the client (application) to associate with the organization.
+        """
+        return pulumi.get(self, "client_id")
+
+    @_builtins.property
+    @pulumi.getter(name="grantTypes")
+    def grant_types(self) -> Sequence[_builtins.str]:
+        """
+        The grant types enabled for the associated client.
+        """
+        return pulumi.get(self, "grant_types")
+
+    @_builtins.property
+    @pulumi.getter(name="isFirstParty")
+    def is_first_party(self) -> _builtins.bool:
+        """
+        Whether the associated client is a first-party client (`true`) or not (`false`).
+        """
+        return pulumi.get(self, "is_first_party")
+
+    @_builtins.property
+    @pulumi.getter(name="logoUri")
+    def logo_uri(self) -> _builtins.str:
+        """
+        The URI of the associated client's logo.
+        """
+        return pulumi.get(self, "logo_uri")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the associated client.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationUsage")
+    def organization_usage(self) -> _builtins.str:
+        """
+        How the associated client handles organizations during authentication. Available values are `deny`, `allow` or `require`. This is a read-only reflection of the client's own `organization_usage` setting and is managed on the `Client` resource, not here.
+        """
+        return pulumi.get(self, "organization_usage")
+
+    @_builtins.property
+    @pulumi.getter(name="useForMemberAccess")
+    def use_for_member_access(self) -> _builtins.bool:
+        """
+        Whether this client is used for member access to the organization. An association starts out with this turned off and it has to be activated explicitly.
+        """
+        return pulumi.get(self, "use_for_member_access")
+
+
+@pulumi.output_type
 class GetOrganizationConnectionResult(dict):
     def __init__(__self__, *,
                  assign_membership_on_login: _builtins.bool,
@@ -27894,6 +28603,152 @@ class GetOrganizationConnectionResult(dict):
 
 
 @pulumi.output_type
+class GetOrganizationRoleGroupsGroupResult(dict):
+    def __init__(__self__, *,
+                 connection_id: _builtins.str,
+                 created_at: _builtins.str,
+                 description: _builtins.str,
+                 external_id: _builtins.str,
+                 id: _builtins.str,
+                 name: _builtins.str,
+                 organization_id: _builtins.str,
+                 updated_at: _builtins.str):
+        """
+        :param _builtins.str connection_id: The ID of the connection the group belongs to, if it is a connection group.
+        :param _builtins.str created_at: ISO 8601 timestamp when the group was created.
+        :param _builtins.str description: The description of the group.
+        :param _builtins.str external_id: The external identifier of the group, often used for SCIM synchronization.
+        :param _builtins.str id: The unique identifier for the group.
+        :param _builtins.str name: The name of the group.
+        :param _builtins.str organization_id: The ID of the organization the group belongs to, if it is an organization group.
+        :param _builtins.str updated_at: ISO 8601 timestamp when the group was last updated.
+        """
+        pulumi.set(__self__, "connection_id", connection_id)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "external_id", external_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "organization_id", organization_id)
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> _builtins.str:
+        """
+        The ID of the connection the group belongs to, if it is a connection group.
+        """
+        return pulumi.get(self, "connection_id")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        ISO 8601 timestamp when the group was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The description of the group.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> _builtins.str:
+        """
+        The external identifier of the group, often used for SCIM synchronization.
+        """
+        return pulumi.get(self, "external_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The unique identifier for the group.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the group.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> _builtins.str:
+        """
+        The ID of the organization the group belongs to, if it is an organization group.
+        """
+        return pulumi.get(self, "organization_id")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        ISO 8601 timestamp when the group was last updated.
+        """
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GetOrganizationRoleMembersMemberResult(dict):
+    def __init__(__self__, *,
+                 email: _builtins.str,
+                 name: _builtins.str,
+                 picture: _builtins.str,
+                 user_id: _builtins.str):
+        """
+        :param _builtins.str email: The email address of the user.
+        :param _builtins.str name: The name of the user.
+        :param _builtins.str picture: The URL to a picture for the user.
+        :param _builtins.str user_id: The ID of the user.
+        """
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "picture", picture)
+        pulumi.set(__self__, "user_id", user_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def email(self) -> _builtins.str:
+        """
+        The email address of the user.
+        """
+        return pulumi.get(self, "email")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the user.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def picture(self) -> _builtins.str:
+        """
+        The URL to a picture for the user.
+        """
+        return pulumi.get(self, "picture")
+
+    @_builtins.property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> _builtins.str:
+        """
+        The ID of the user.
+        """
+        return pulumi.get(self, "user_id")
+
+
+@pulumi.output_type
 class GetOrganizationTokenQuotaResult(dict):
     def __init__(__self__, *,
                  client_credentials: Sequence['outputs.GetOrganizationTokenQuotaClientCredentialResult']):
@@ -27947,6 +28802,217 @@ class GetOrganizationTokenQuotaClientCredentialResult(dict):
     def per_hour(self) -> _builtins.int:
         """
         Maximum number of issued tokens per hour
+        """
+        return pulumi.get(self, "per_hour")
+
+
+@pulumi.output_type
+class GetOrganizationsOrganizationResult(dict):
+    def __init__(__self__, *,
+                 brandings: Sequence['outputs.GetOrganizationsOrganizationBrandingResult'],
+                 clients: Sequence['outputs.GetOrganizationsOrganizationClientResult'],
+                 display_name: _builtins.str,
+                 is_app_entitlement_active: _builtins.bool,
+                 metadata: Mapping[str, _builtins.str],
+                 name: _builtins.str,
+                 organization_id: _builtins.str,
+                 third_party_client_access: _builtins.str,
+                 token_quotas: Sequence['outputs.GetOrganizationsOrganizationTokenQuotaResult']):
+        """
+        :param Sequence['GetOrganizationsOrganizationBrandingArgs'] brandings: How to style the login pages for this organization.
+        :param Sequence['GetOrganizationsOrganizationClientArgs'] clients: The organization's association with the client passed as `include_client_association_for`. Empty for organizations that have no association with that client (EA only).
+        :param _builtins.str display_name: Friendly name of the organization.
+        :param _builtins.bool is_app_entitlement_active: Whether this organization's app entitlement is active (EA only).
+        :param Mapping[str, _builtins.str] metadata: Metadata associated with the organization.
+        :param _builtins.str name: The name of the organization.
+        :param _builtins.str organization_id: The ID of the organization.
+        :param _builtins.str third_party_client_access: Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`.
+        :param Sequence['GetOrganizationsOrganizationTokenQuotaArgs'] token_quotas: The token quota configuration for this organization.
+        """
+        pulumi.set(__self__, "brandings", brandings)
+        pulumi.set(__self__, "clients", clients)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "is_app_entitlement_active", is_app_entitlement_active)
+        pulumi.set(__self__, "metadata", metadata)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "organization_id", organization_id)
+        pulumi.set(__self__, "third_party_client_access", third_party_client_access)
+        pulumi.set(__self__, "token_quotas", token_quotas)
+
+    @_builtins.property
+    @pulumi.getter
+    def brandings(self) -> Sequence['outputs.GetOrganizationsOrganizationBrandingResult']:
+        """
+        How to style the login pages for this organization.
+        """
+        return pulumi.get(self, "brandings")
+
+    @_builtins.property
+    @pulumi.getter
+    def clients(self) -> Sequence['outputs.GetOrganizationsOrganizationClientResult']:
+        """
+        The organization's association with the client passed as `include_client_association_for`. Empty for organizations that have no association with that client (EA only).
+        """
+        return pulumi.get(self, "clients")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        Friendly name of the organization.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="isAppEntitlementActive")
+    def is_app_entitlement_active(self) -> _builtins.bool:
+        """
+        Whether this organization's app entitlement is active (EA only).
+        """
+        return pulumi.get(self, "is_app_entitlement_active")
+
+    @_builtins.property
+    @pulumi.getter
+    def metadata(self) -> Mapping[str, _builtins.str]:
+        """
+        Metadata associated with the organization.
+        """
+        return pulumi.get(self, "metadata")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the organization.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> _builtins.str:
+        """
+        The ID of the organization.
+        """
+        return pulumi.get(self, "organization_id")
+
+    @_builtins.property
+    @pulumi.getter(name="thirdPartyClientAccess")
+    def third_party_client_access(self) -> _builtins.str:
+        """
+        Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`.
+        """
+        return pulumi.get(self, "third_party_client_access")
+
+    @_builtins.property
+    @pulumi.getter(name="tokenQuotas")
+    def token_quotas(self) -> Sequence['outputs.GetOrganizationsOrganizationTokenQuotaResult']:
+        """
+        The token quota configuration for this organization.
+        """
+        return pulumi.get(self, "token_quotas")
+
+
+@pulumi.output_type
+class GetOrganizationsOrganizationBrandingResult(dict):
+    def __init__(__self__, *,
+                 colors: Mapping[str, _builtins.str],
+                 logo_url: _builtins.str):
+        """
+        :param Mapping[str, _builtins.str] colors: Color scheme used to customize the login pages.
+        :param _builtins.str logo_url: URL of logo to display on login page.
+        """
+        pulumi.set(__self__, "colors", colors)
+        pulumi.set(__self__, "logo_url", logo_url)
+
+    @_builtins.property
+    @pulumi.getter
+    def colors(self) -> Mapping[str, _builtins.str]:
+        """
+        Color scheme used to customize the login pages.
+        """
+        return pulumi.get(self, "colors")
+
+    @_builtins.property
+    @pulumi.getter(name="logoUrl")
+    def logo_url(self) -> _builtins.str:
+        """
+        URL of logo to display on login page.
+        """
+        return pulumi.get(self, "logo_url")
+
+
+@pulumi.output_type
+class GetOrganizationsOrganizationClientResult(dict):
+    def __init__(__self__, *,
+                 use_for_member_access: _builtins.bool):
+        """
+        :param _builtins.bool use_for_member_access: Whether organization members can log in via this client.
+        """
+        pulumi.set(__self__, "use_for_member_access", use_for_member_access)
+
+    @_builtins.property
+    @pulumi.getter(name="useForMemberAccess")
+    def use_for_member_access(self) -> _builtins.bool:
+        """
+        Whether organization members can log in via this client.
+        """
+        return pulumi.get(self, "use_for_member_access")
+
+
+@pulumi.output_type
+class GetOrganizationsOrganizationTokenQuotaResult(dict):
+    def __init__(__self__, *,
+                 client_credentials: Sequence['outputs.GetOrganizationsOrganizationTokenQuotaClientCredentialResult']):
+        """
+        :param Sequence['GetOrganizationsOrganizationTokenQuotaClientCredentialArgs'] client_credentials: The token quota configuration for client credentials.
+        """
+        pulumi.set(__self__, "client_credentials", client_credentials)
+
+    @_builtins.property
+    @pulumi.getter(name="clientCredentials")
+    def client_credentials(self) -> Sequence['outputs.GetOrganizationsOrganizationTokenQuotaClientCredentialResult']:
+        """
+        The token quota configuration for client credentials.
+        """
+        return pulumi.get(self, "client_credentials")
+
+
+@pulumi.output_type
+class GetOrganizationsOrganizationTokenQuotaClientCredentialResult(dict):
+    def __init__(__self__, *,
+                 enforce: _builtins.bool,
+                 per_day: _builtins.int,
+                 per_hour: _builtins.int):
+        """
+        :param _builtins.bool enforce: Whether the quota is enforced.
+        :param _builtins.int per_day: Maximum number of issued tokens per day.
+        :param _builtins.int per_hour: Maximum number of issued tokens per hour.
+        """
+        pulumi.set(__self__, "enforce", enforce)
+        pulumi.set(__self__, "per_day", per_day)
+        pulumi.set(__self__, "per_hour", per_hour)
+
+    @_builtins.property
+    @pulumi.getter
+    def enforce(self) -> _builtins.bool:
+        """
+        Whether the quota is enforced.
+        """
+        return pulumi.get(self, "enforce")
+
+    @_builtins.property
+    @pulumi.getter(name="perDay")
+    def per_day(self) -> _builtins.int:
+        """
+        Maximum number of issued tokens per day.
+        """
+        return pulumi.get(self, "per_day")
+
+    @_builtins.property
+    @pulumi.getter(name="perHour")
+    def per_hour(self) -> _builtins.int:
+        """
+        Maximum number of issued tokens per hour.
         """
         return pulumi.get(self, "per_hour")
 
@@ -30147,6 +31213,188 @@ class GetUserConnectedAccountsConnectedAccountResult(dict):
         The authentication strategy used by the connection.
         """
         return pulumi.get(self, "strategy")
+
+
+@pulumi.output_type
+class GetUserOrganizationsOrganizationResult(dict):
+    def __init__(__self__, *,
+                 brandings: Sequence['outputs.GetUserOrganizationsOrganizationBrandingResult'],
+                 display_name: _builtins.str,
+                 is_app_entitlement_active: _builtins.bool,
+                 metadata: Mapping[str, _builtins.str],
+                 name: _builtins.str,
+                 organization_id: _builtins.str,
+                 third_party_client_access: _builtins.str,
+                 token_quotas: Sequence['outputs.GetUserOrganizationsOrganizationTokenQuotaResult']):
+        """
+        :param Sequence['GetUserOrganizationsOrganizationBrandingArgs'] brandings: How to style the login pages for this organization.
+        :param _builtins.str display_name: Friendly name of the organization.
+        :param _builtins.bool is_app_entitlement_active: Whether this organization's app entitlement is active (EA only).
+        :param Mapping[str, _builtins.str] metadata: Metadata associated with the organization.
+        :param _builtins.str name: The name of the organization.
+        :param _builtins.str organization_id: The ID of the organization.
+        :param _builtins.str third_party_client_access: Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`.
+        :param Sequence['GetUserOrganizationsOrganizationTokenQuotaArgs'] token_quotas: The token quota configuration for this organization.
+        """
+        pulumi.set(__self__, "brandings", brandings)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "is_app_entitlement_active", is_app_entitlement_active)
+        pulumi.set(__self__, "metadata", metadata)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "organization_id", organization_id)
+        pulumi.set(__self__, "third_party_client_access", third_party_client_access)
+        pulumi.set(__self__, "token_quotas", token_quotas)
+
+    @_builtins.property
+    @pulumi.getter
+    def brandings(self) -> Sequence['outputs.GetUserOrganizationsOrganizationBrandingResult']:
+        """
+        How to style the login pages for this organization.
+        """
+        return pulumi.get(self, "brandings")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        Friendly name of the organization.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="isAppEntitlementActive")
+    def is_app_entitlement_active(self) -> _builtins.bool:
+        """
+        Whether this organization's app entitlement is active (EA only).
+        """
+        return pulumi.get(self, "is_app_entitlement_active")
+
+    @_builtins.property
+    @pulumi.getter
+    def metadata(self) -> Mapping[str, _builtins.str]:
+        """
+        Metadata associated with the organization.
+        """
+        return pulumi.get(self, "metadata")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the organization.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> _builtins.str:
+        """
+        The ID of the organization.
+        """
+        return pulumi.get(self, "organization_id")
+
+    @_builtins.property
+    @pulumi.getter(name="thirdPartyClientAccess")
+    def third_party_client_access(self) -> _builtins.str:
+        """
+        Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`.
+        """
+        return pulumi.get(self, "third_party_client_access")
+
+    @_builtins.property
+    @pulumi.getter(name="tokenQuotas")
+    def token_quotas(self) -> Sequence['outputs.GetUserOrganizationsOrganizationTokenQuotaResult']:
+        """
+        The token quota configuration for this organization.
+        """
+        return pulumi.get(self, "token_quotas")
+
+
+@pulumi.output_type
+class GetUserOrganizationsOrganizationBrandingResult(dict):
+    def __init__(__self__, *,
+                 colors: Mapping[str, _builtins.str],
+                 logo_url: _builtins.str):
+        """
+        :param Mapping[str, _builtins.str] colors: Color scheme used to customize the login pages.
+        :param _builtins.str logo_url: URL of logo to display on login page.
+        """
+        pulumi.set(__self__, "colors", colors)
+        pulumi.set(__self__, "logo_url", logo_url)
+
+    @_builtins.property
+    @pulumi.getter
+    def colors(self) -> Mapping[str, _builtins.str]:
+        """
+        Color scheme used to customize the login pages.
+        """
+        return pulumi.get(self, "colors")
+
+    @_builtins.property
+    @pulumi.getter(name="logoUrl")
+    def logo_url(self) -> _builtins.str:
+        """
+        URL of logo to display on login page.
+        """
+        return pulumi.get(self, "logo_url")
+
+
+@pulumi.output_type
+class GetUserOrganizationsOrganizationTokenQuotaResult(dict):
+    def __init__(__self__, *,
+                 client_credentials: Sequence['outputs.GetUserOrganizationsOrganizationTokenQuotaClientCredentialResult']):
+        """
+        :param Sequence['GetUserOrganizationsOrganizationTokenQuotaClientCredentialArgs'] client_credentials: The token quota configuration for client credentials.
+        """
+        pulumi.set(__self__, "client_credentials", client_credentials)
+
+    @_builtins.property
+    @pulumi.getter(name="clientCredentials")
+    def client_credentials(self) -> Sequence['outputs.GetUserOrganizationsOrganizationTokenQuotaClientCredentialResult']:
+        """
+        The token quota configuration for client credentials.
+        """
+        return pulumi.get(self, "client_credentials")
+
+
+@pulumi.output_type
+class GetUserOrganizationsOrganizationTokenQuotaClientCredentialResult(dict):
+    def __init__(__self__, *,
+                 enforce: _builtins.bool,
+                 per_day: _builtins.int,
+                 per_hour: _builtins.int):
+        """
+        :param _builtins.bool enforce: Whether the quota is enforced.
+        :param _builtins.int per_day: Maximum number of issued tokens per day.
+        :param _builtins.int per_hour: Maximum number of issued tokens per hour.
+        """
+        pulumi.set(__self__, "enforce", enforce)
+        pulumi.set(__self__, "per_day", per_day)
+        pulumi.set(__self__, "per_hour", per_hour)
+
+    @_builtins.property
+    @pulumi.getter
+    def enforce(self) -> _builtins.bool:
+        """
+        Whether the quota is enforced.
+        """
+        return pulumi.get(self, "enforce")
+
+    @_builtins.property
+    @pulumi.getter(name="perDay")
+    def per_day(self) -> _builtins.int:
+        """
+        Maximum number of issued tokens per day.
+        """
+        return pulumi.get(self, "per_day")
+
+    @_builtins.property
+    @pulumi.getter(name="perHour")
+    def per_hour(self) -> _builtins.int:
+        """
+        Maximum number of issued tokens per hour.
+        """
+        return pulumi.get(self, "per_hour")
 
 
 @pulumi.output_type

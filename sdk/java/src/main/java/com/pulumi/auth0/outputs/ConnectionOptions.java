@@ -601,7 +601,7 @@ public final class ConnectionOptions {
      */
     private @Nullable Boolean useKerberos;
     /**
-     * @return Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+     * @return Enabling this when using the connectionScope parameter, uses space as a delimiter for scopes when calling the IdP&#39;s API.
      * 
      */
     private @Nullable Boolean useOauthSpecScope;
@@ -1434,7 +1434,7 @@ public final class ConnectionOptions {
         return Optional.ofNullable(this.useKerberos);
     }
     /**
-     * @return Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+     * @return Enabling this when using the connectionScope parameter, uses space as a delimiter for scopes when calling the IdP&#39;s API.
      * 
      */
     public Optional<Boolean> useOauthSpecScope() {

@@ -11,9 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Data source to retrieve the selected synchronized group IDs for a connection's directory provisioning configuration.
-//
-// > This data source is only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
+// Data source to retrieve the selected synchronized groups for a connection's directory provisioning configuration.
 //
 // ## Example Usage
 //
@@ -52,18 +50,24 @@ func LookupConnectionDirectorySynchronizedGroups(ctx *pulumi.Context, args *Look
 
 // A collection of arguments for invoking getConnectionDirectorySynchronizedGroups.
 type LookupConnectionDirectorySynchronizedGroupsArgs struct {
-	// ID of the connection for which to manage synchronized groups. (EA only)
+	// ID of the connection for which to manage synchronized groups.
 	ConnectionId string `pulumi:"connectionId"`
+	// Filter the synchronized groups by a prefix search on a single field. Only `name` and `email` are searchable, and only as a prefix, so the term must take the form `name:<value>*` or `email:<value>*` (for example `name:engineering*`). Returns all synchronized groups when omitted.
+	Query *string `pulumi:"query"`
 }
 
 // A collection of values returned by getConnectionDirectorySynchronizedGroups.
 type LookupConnectionDirectorySynchronizedGroupsResult struct {
-	// ID of the connection for which to manage synchronized groups. (EA only)
+	// ID of the connection for which to manage synchronized groups.
 	ConnectionId string `pulumi:"connectionId"`
-	// List of Google Workspace Directory group IDs to synchronize. (EA only)
+	// IDs of the synchronized Google Workspace Directory groups. Limited to the groups matching `query`, when one is given.
 	GroupIds []string `pulumi:"groupIds"`
+	// Details of the synchronized Google Workspace Directory groups. Limited to the groups matching `query`, when one is given.
+	Groups []GetConnectionDirectorySynchronizedGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// Filter the synchronized groups by a prefix search on a single field. Only `name` and `email` are searchable, and only as a prefix, so the term must take the form `name:<value>*` or `email:<value>*` (for example `name:engineering*`). Returns all synchronized groups when omitted.
+	Query *string `pulumi:"query"`
 }
 
 func LookupConnectionDirectorySynchronizedGroupsOutput(ctx *pulumi.Context, args LookupConnectionDirectorySynchronizedGroupsOutputArgs, opts ...pulumi.InvokeOption) LookupConnectionDirectorySynchronizedGroupsResultOutput {
@@ -77,8 +81,10 @@ func LookupConnectionDirectorySynchronizedGroupsOutput(ctx *pulumi.Context, args
 
 // A collection of arguments for invoking getConnectionDirectorySynchronizedGroups.
 type LookupConnectionDirectorySynchronizedGroupsOutputArgs struct {
-	// ID of the connection for which to manage synchronized groups. (EA only)
+	// ID of the connection for which to manage synchronized groups.
 	ConnectionId pulumi.StringInput `pulumi:"connectionId"`
+	// Filter the synchronized groups by a prefix search on a single field. Only `name` and `email` are searchable, and only as a prefix, so the term must take the form `name:<value>*` or `email:<value>*` (for example `name:engineering*`). Returns all synchronized groups when omitted.
+	Query pulumi.StringPtrInput `pulumi:"query"`
 }
 
 func (LookupConnectionDirectorySynchronizedGroupsOutputArgs) ElementType() reflect.Type {
@@ -100,19 +106,31 @@ func (o LookupConnectionDirectorySynchronizedGroupsResultOutput) ToLookupConnect
 	return o
 }
 
-// ID of the connection for which to manage synchronized groups. (EA only)
+// ID of the connection for which to manage synchronized groups.
 func (o LookupConnectionDirectorySynchronizedGroupsResultOutput) ConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionDirectorySynchronizedGroupsResult) string { return v.ConnectionId }).(pulumi.StringOutput)
 }
 
-// List of Google Workspace Directory group IDs to synchronize. (EA only)
+// IDs of the synchronized Google Workspace Directory groups. Limited to the groups matching `query`, when one is given.
 func (o LookupConnectionDirectorySynchronizedGroupsResultOutput) GroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupConnectionDirectorySynchronizedGroupsResult) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Details of the synchronized Google Workspace Directory groups. Limited to the groups matching `query`, when one is given.
+func (o LookupConnectionDirectorySynchronizedGroupsResultOutput) Groups() GetConnectionDirectorySynchronizedGroupsGroupArrayOutput {
+	return o.ApplyT(func(v LookupConnectionDirectorySynchronizedGroupsResult) []GetConnectionDirectorySynchronizedGroupsGroup {
+		return v.Groups
+	}).(GetConnectionDirectorySynchronizedGroupsGroupArrayOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
 func (o LookupConnectionDirectorySynchronizedGroupsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionDirectorySynchronizedGroupsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Filter the synchronized groups by a prefix search on a single field. Only `name` and `email` are searchable, and only as a prefix, so the term must take the form `name:<value>*` or `email:<value>*` (for example `name:engineering*`). Returns all synchronized groups when omitted.
+func (o LookupConnectionDirectorySynchronizedGroupsResultOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupConnectionDirectorySynchronizedGroupsResult) *string { return v.Query }).(pulumi.StringPtrOutput)
 }
 
 func init() {

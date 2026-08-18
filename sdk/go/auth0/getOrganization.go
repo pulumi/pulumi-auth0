@@ -82,6 +82,8 @@ type LookupOrganizationResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// Controls whether this organization's app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `ClientGrant`'s `organizationUsage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
+	IsAppEntitlementActive bool `pulumi:"isAppEntitlementActive"`
 	// User ID(s) that are members of the organization. Skips populating if `skipMembers` is `true`.
 	Members []string `pulumi:"members"`
 	// Metadata associated with the organization. Maximum of 10 metadata properties allowed.
@@ -167,6 +169,11 @@ func (o LookupOrganizationResultOutput) DisplayName() pulumi.StringOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupOrganizationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Controls whether this organization's app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `ClientGrant`'s `organizationUsage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
+func (o LookupOrganizationResultOutput) IsAppEntitlementActive() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) bool { return v.IsAppEntitlementActive }).(pulumi.BoolOutput)
 }
 
 // User ID(s) that are members of the organization. Skips populating if `skipMembers` is `true`.

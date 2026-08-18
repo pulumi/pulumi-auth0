@@ -805,7 +805,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool>? UseKerberos { get; set; }
 
         /// <summary>
-        /// Determines the `Scopes` format: `True` makes it a space-separated string (per OAuth2 specification); `False` makes it an array.
+        /// Enabling this when using the ConnectionScope parameter, uses space as a delimiter for scopes when calling the IdP's API.
         /// </summary>
         [Input("useOauthSpecScope")]
         public Input<bool>? UseOauthSpecScope { get; set; }

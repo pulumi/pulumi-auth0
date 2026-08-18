@@ -12,9 +12,7 @@ namespace Pulumi.Auth0
     public static class GetConnectionDirectorySynchronizedGroups
     {
         /// <summary>
-        /// Data source to retrieve the selected synchronized group IDs for a connection's directory provisioning configuration.
-        /// 
-        /// &gt; This data source is only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
+        /// Data source to retrieve the selected synchronized groups for a connection's directory provisioning configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -38,9 +36,7 @@ namespace Pulumi.Auth0
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectionDirectorySynchronizedGroupsResult>("auth0:index/getConnectionDirectorySynchronizedGroups:getConnectionDirectorySynchronizedGroups", args ?? new GetConnectionDirectorySynchronizedGroupsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve the selected synchronized group IDs for a connection's directory provisioning configuration.
-        /// 
-        /// &gt; This data source is only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
+        /// Data source to retrieve the selected synchronized groups for a connection's directory provisioning configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -64,9 +60,7 @@ namespace Pulumi.Auth0
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectionDirectorySynchronizedGroupsResult>("auth0:index/getConnectionDirectorySynchronizedGroups:getConnectionDirectorySynchronizedGroups", args ?? new GetConnectionDirectorySynchronizedGroupsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Data source to retrieve the selected synchronized group IDs for a connection's directory provisioning configuration.
-        /// 
-        /// &gt; This data source is only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
+        /// Data source to retrieve the selected synchronized groups for a connection's directory provisioning configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -94,10 +88,16 @@ namespace Pulumi.Auth0
     public sealed class GetConnectionDirectorySynchronizedGroupsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// ID of the connection for which to manage synchronized groups. (EA only)
+        /// ID of the connection for which to manage synchronized groups.
         /// </summary>
         [Input("connectionId", required: true)]
         public string ConnectionId { get; set; } = null!;
+
+        /// <summary>
+        /// Filter the synchronized groups by a prefix search on a single field. Only `Name` and `Email` are searchable, and only as a prefix, so the term must take the form `name:&lt;value&gt;*` or `email:&lt;value&gt;*` (for example `name:engineering*`). Returns all synchronized groups when omitted.
+        /// </summary>
+        [Input("query")]
+        public string? Query { get; set; }
 
         public GetConnectionDirectorySynchronizedGroupsArgs()
         {
@@ -108,10 +108,16 @@ namespace Pulumi.Auth0
     public sealed class GetConnectionDirectorySynchronizedGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// ID of the connection for which to manage synchronized groups. (EA only)
+        /// ID of the connection for which to manage synchronized groups.
         /// </summary>
         [Input("connectionId", required: true)]
         public Input<string> ConnectionId { get; set; } = null!;
+
+        /// <summary>
+        /// Filter the synchronized groups by a prefix search on a single field. Only `Name` and `Email` are searchable, and only as a prefix, so the term must take the form `name:&lt;value&gt;*` or `email:&lt;value&gt;*` (for example `name:engineering*`). Returns all synchronized groups when omitted.
+        /// </summary>
+        [Input("query")]
+        public Input<string>? Query { get; set; }
 
         public GetConnectionDirectorySynchronizedGroupsInvokeArgs()
         {
@@ -124,17 +130,25 @@ namespace Pulumi.Auth0
     public sealed class GetConnectionDirectorySynchronizedGroupsResult
     {
         /// <summary>
-        /// ID of the connection for which to manage synchronized groups. (EA only)
+        /// ID of the connection for which to manage synchronized groups.
         /// </summary>
         public readonly string ConnectionId;
         /// <summary>
-        /// List of Google Workspace Directory group IDs to synchronize. (EA only)
+        /// IDs of the synchronized Google Workspace Directory groups. Limited to the groups matching `Query`, when one is given.
         /// </summary>
         public readonly ImmutableArray<string> GroupIds;
+        /// <summary>
+        /// Details of the synchronized Google Workspace Directory groups. Limited to the groups matching `Query`, when one is given.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetConnectionDirectorySynchronizedGroupsGroupResult> Groups;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Filter the synchronized groups by a prefix search on a single field. Only `Name` and `Email` are searchable, and only as a prefix, so the term must take the form `name:&lt;value&gt;*` or `email:&lt;value&gt;*` (for example `name:engineering*`). Returns all synchronized groups when omitted.
+        /// </summary>
+        public readonly string? Query;
 
         [OutputConstructor]
         private GetConnectionDirectorySynchronizedGroupsResult(
@@ -142,11 +156,17 @@ namespace Pulumi.Auth0
 
             ImmutableArray<string> groupIds,
 
-            string id)
+            ImmutableArray<Outputs.GetConnectionDirectorySynchronizedGroupsGroupResult> groups,
+
+            string id,
+
+            string? query)
         {
             ConnectionId = connectionId;
             GroupIds = groupIds;
+            Groups = groups;
             Id = id;
+            Query = query;
         }
     }
 }

@@ -13,6 +13,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
 
 __all__ = [
     'GetConnectionDirectorySynchronizedGroupsResult',
@@ -26,22 +27,28 @@ class GetConnectionDirectorySynchronizedGroupsResult:
     """
     A collection of values returned by getConnectionDirectorySynchronizedGroups.
     """
-    def __init__(__self__, connection_id=None, group_ids=None, id=None):
+    def __init__(__self__, connection_id=None, group_ids=None, groups=None, id=None, query=None):
         if connection_id and not isinstance(connection_id, str):
             raise TypeError("Expected argument 'connection_id' to be a str")
         pulumi.set(__self__, "connection_id", connection_id)
         if group_ids and not isinstance(group_ids, list):
             raise TypeError("Expected argument 'group_ids' to be a list")
         pulumi.set(__self__, "group_ids", group_ids)
+        if groups and not isinstance(groups, list):
+            raise TypeError("Expected argument 'groups' to be a list")
+        pulumi.set(__self__, "groups", groups)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if query and not isinstance(query, str):
+            raise TypeError("Expected argument 'query' to be a str")
+        pulumi.set(__self__, "query", query)
 
     @_builtins.property
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> _builtins.str:
         """
-        ID of the connection for which to manage synchronized groups. (EA only)
+        ID of the connection for which to manage synchronized groups.
         """
         return pulumi.get(self, "connection_id")
 
@@ -49,9 +56,17 @@ class GetConnectionDirectorySynchronizedGroupsResult:
     @pulumi.getter(name="groupIds")
     def group_ids(self) -> Sequence[_builtins.str]:
         """
-        List of Google Workspace Directory group IDs to synchronize. (EA only)
+        IDs of the synchronized Google Workspace Directory groups. Limited to the groups matching `query`, when one is given.
         """
         return pulumi.get(self, "group_ids")
+
+    @_builtins.property
+    @pulumi.getter
+    def groups(self) -> Sequence['outputs.GetConnectionDirectorySynchronizedGroupsGroupResult']:
+        """
+        Details of the synchronized Google Workspace Directory groups. Limited to the groups matching `query`, when one is given.
+        """
+        return pulumi.get(self, "groups")
 
     @_builtins.property
     @pulumi.getter
@@ -60,6 +75,14 @@ class GetConnectionDirectorySynchronizedGroupsResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def query(self) -> Optional[_builtins.str]:
+        """
+        Filter the synchronized groups by a prefix search on a single field. Only `name` and `email` are searchable, and only as a prefix, so the term must take the form `name:<value>*` or `email:<value>*` (for example `name:engineering*`). Returns all synchronized groups when omitted.
+        """
+        return pulumi.get(self, "query")
 
 
 class AwaitableGetConnectionDirectorySynchronizedGroupsResult(GetConnectionDirectorySynchronizedGroupsResult):
@@ -70,15 +93,16 @@ class AwaitableGetConnectionDirectorySynchronizedGroupsResult(GetConnectionDirec
         return GetConnectionDirectorySynchronizedGroupsResult(
             connection_id=self.connection_id,
             group_ids=self.group_ids,
-            id=self.id)
+            groups=self.groups,
+            id=self.id,
+            query=self.query)
 
 
 def get_connection_directory_synchronized_groups(connection_id: Optional[_builtins.str] = None,
+                                                 query: Optional[_builtins.str] = None,
                                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConnectionDirectorySynchronizedGroupsResult:
     """
-    Data source to retrieve the selected synchronized group IDs for a connection's directory provisioning configuration.
-
-    > This data source is only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
+    Data source to retrieve the selected synchronized groups for a connection's directory provisioning configuration.
 
     ## Example Usage
 
@@ -90,23 +114,26 @@ def get_connection_directory_synchronized_groups(connection_id: Optional[_builti
     ```
 
 
-    :param _builtins.str connection_id: ID of the connection for which to manage synchronized groups. (EA only)
+    :param _builtins.str connection_id: ID of the connection for which to manage synchronized groups.
+    :param _builtins.str query: Filter the synchronized groups by a prefix search on a single field. Only `name` and `email` are searchable, and only as a prefix, so the term must take the form `name:<value>*` or `email:<value>*` (for example `name:engineering*`). Returns all synchronized groups when omitted.
     """
     __args__ = dict()
     __args__['connectionId'] = connection_id
+    __args__['query'] = query
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('auth0:index/getConnectionDirectorySynchronizedGroups:getConnectionDirectorySynchronizedGroups', __args__, opts=opts, typ=GetConnectionDirectorySynchronizedGroupsResult).value
 
     return AwaitableGetConnectionDirectorySynchronizedGroupsResult(
         connection_id=pulumi.get(__ret__, 'connection_id'),
         group_ids=pulumi.get(__ret__, 'group_ids'),
-        id=pulumi.get(__ret__, 'id'))
+        groups=pulumi.get(__ret__, 'groups'),
+        id=pulumi.get(__ret__, 'id'),
+        query=pulumi.get(__ret__, 'query'))
 def get_connection_directory_synchronized_groups_output(connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                        query: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectionDirectorySynchronizedGroupsResult]:
     """
-    Data source to retrieve the selected synchronized group IDs for a connection's directory provisioning configuration.
-
-    > This data source is only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
+    Data source to retrieve the selected synchronized groups for a connection's directory provisioning configuration.
 
     ## Example Usage
 
@@ -118,13 +145,17 @@ def get_connection_directory_synchronized_groups_output(connection_id: pulumi.In
     ```
 
 
-    :param _builtins.str connection_id: ID of the connection for which to manage synchronized groups. (EA only)
+    :param _builtins.str connection_id: ID of the connection for which to manage synchronized groups.
+    :param _builtins.str query: Filter the synchronized groups by a prefix search on a single field. Only `name` and `email` are searchable, and only as a prefix, so the term must take the form `name:<value>*` or `email:<value>*` (for example `name:engineering*`). Returns all synchronized groups when omitted.
     """
     __args__ = dict()
     __args__['connectionId'] = connection_id
+    __args__['query'] = query
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('auth0:index/getConnectionDirectorySynchronizedGroups:getConnectionDirectorySynchronizedGroups', __args__, opts=opts, typ=GetConnectionDirectorySynchronizedGroupsResult)
     return __ret__.apply(lambda __response__: GetConnectionDirectorySynchronizedGroupsResult(
         connection_id=pulumi.get(__response__, 'connection_id'),
         group_ids=pulumi.get(__response__, 'group_ids'),
-        id=pulumi.get(__response__, 'id')))
+        groups=pulumi.get(__response__, 'groups'),
+        id=pulumi.get(__response__, 'id'),
+        query=pulumi.get(__response__, 'query')))

@@ -46,11 +46,43 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The ID of the organization owning the role. Only applicable when `type` is `organization`, and required in that case. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+     * 
+     */
+    @Import(name="ownerId")
+    private @Nullable Output<String> ownerId;
+
+    /**
+     * @return The ID of the organization owning the role. Only applicable when `type` is `organization`, and required in that case. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+     * 
+     */
+    public Optional<Output<String>> ownerId() {
+        return Optional.ofNullable(this.ownerId);
+    }
+
+    /**
+     * The type of the role. Defaults to `tenant`, for a role available across the whole tenant. Set to `organization` to scope the role to a single organization, in which case `ownerId` must also be set. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return The type of the role. Defaults to `tenant`, for a role available across the whole tenant. Set to `organization` to scope the role to a single organization, in which case `ownerId` must also be set. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
     private RoleState() {}
 
     private RoleState(RoleState $) {
         this.description = $.description;
         this.name = $.name;
+        this.ownerId = $.ownerId;
+        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -111,6 +143,48 @@ public final class RoleState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param ownerId The ID of the organization owning the role. Only applicable when `type` is `organization`, and required in that case. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ownerId(@Nullable Output<String> ownerId) {
+            $.ownerId = ownerId;
+            return this;
+        }
+
+        /**
+         * @param ownerId The ID of the organization owning the role. Only applicable when `type` is `organization`, and required in that case. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ownerId(String ownerId) {
+            return ownerId(Output.of(ownerId));
+        }
+
+        /**
+         * @param type The type of the role. Defaults to `tenant`, for a role available across the whole tenant. Set to `organization` to scope the role to a single organization, in which case `ownerId` must also be set. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type The type of the role. Defaults to `tenant`, for a role available across the whole tenant. Set to `organization` to scope the role to a single organization, in which case `ownerId` must also be set. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
         }
 
         public RoleState build() {

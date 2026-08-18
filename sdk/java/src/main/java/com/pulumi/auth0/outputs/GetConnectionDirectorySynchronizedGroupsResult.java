@@ -3,44 +3,64 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.GetConnectionDirectorySynchronizedGroupsGroup;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetConnectionDirectorySynchronizedGroupsResult {
     /**
-     * @return ID of the connection for which to manage synchronized groups. (EA only)
+     * @return ID of the connection for which to manage synchronized groups.
      * 
      */
     private String connectionId;
     /**
-     * @return List of Google Workspace Directory group IDs to synchronize. (EA only)
+     * @return IDs of the synchronized Google Workspace Directory groups. Limited to the groups matching `query`, when one is given.
      * 
      */
     private List<String> groupIds;
+    /**
+     * @return Details of the synchronized Google Workspace Directory groups. Limited to the groups matching `query`, when one is given.
+     * 
+     */
+    private List<GetConnectionDirectorySynchronizedGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return Filter the synchronized groups by a prefix search on a single field. Only `name` and `email` are searchable, and only as a prefix, so the term must take the form `name:&lt;value&gt;*` or `email:&lt;value&gt;*` (for example `name:engineering*`). Returns all synchronized groups when omitted.
+     * 
+     */
+    private @Nullable String query;
 
     private GetConnectionDirectorySynchronizedGroupsResult() {}
     /**
-     * @return ID of the connection for which to manage synchronized groups. (EA only)
+     * @return ID of the connection for which to manage synchronized groups.
      * 
      */
     public String connectionId() {
         return this.connectionId;
     }
     /**
-     * @return List of Google Workspace Directory group IDs to synchronize. (EA only)
+     * @return IDs of the synchronized Google Workspace Directory groups. Limited to the groups matching `query`, when one is given.
      * 
      */
     public List<String> groupIds() {
         return this.groupIds;
+    }
+    /**
+     * @return Details of the synchronized Google Workspace Directory groups. Limited to the groups matching `query`, when one is given.
+     * 
+     */
+    public List<GetConnectionDirectorySynchronizedGroupsGroup> groups() {
+        return this.groups;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -48,6 +68,13 @@ public final class GetConnectionDirectorySynchronizedGroupsResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return Filter the synchronized groups by a prefix search on a single field. Only `name` and `email` are searchable, and only as a prefix, so the term must take the form `name:&lt;value&gt;*` or `email:&lt;value&gt;*` (for example `name:engineering*`). Returns all synchronized groups when omitted.
+     * 
+     */
+    public Optional<String> query() {
+        return Optional.ofNullable(this.query);
     }
 
     public static Builder builder() {
@@ -61,13 +88,17 @@ public final class GetConnectionDirectorySynchronizedGroupsResult {
     public static final class Builder {
         private String connectionId;
         private List<String> groupIds;
+        private List<GetConnectionDirectorySynchronizedGroupsGroup> groups;
         private String id;
+        private @Nullable String query;
         public Builder() {}
         public Builder(GetConnectionDirectorySynchronizedGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connectionId = defaults.connectionId;
     	      this.groupIds = defaults.groupIds;
+    	      this.groups = defaults.groups;
     	      this.id = defaults.id;
+    	      this.query = defaults.query;
         }
 
         @CustomType.Setter
@@ -90,6 +121,17 @@ public final class GetConnectionDirectorySynchronizedGroupsResult {
             return groupIds(List.of(groupIds));
         }
         @CustomType.Setter
+        public Builder groups(List<GetConnectionDirectorySynchronizedGroupsGroup> groups) {
+            if (groups == null) {
+              throw new MissingRequiredPropertyException("GetConnectionDirectorySynchronizedGroupsResult", "groups");
+            }
+            this.groups = groups;
+            return this;
+        }
+        public Builder groups(GetConnectionDirectorySynchronizedGroupsGroup... groups) {
+            return groups(List.of(groups));
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetConnectionDirectorySynchronizedGroupsResult", "id");
@@ -97,11 +139,19 @@ public final class GetConnectionDirectorySynchronizedGroupsResult {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
+        public Builder query(@Nullable String query) {
+
+            this.query = query;
+            return this;
+        }
         public GetConnectionDirectorySynchronizedGroupsResult build() {
             final var _resultValue = new GetConnectionDirectorySynchronizedGroupsResult();
             _resultValue.connectionId = connectionId;
             _resultValue.groupIds = groupIds;
+            _resultValue.groups = groups;
             _resultValue.id = id;
+            _resultValue.query = query;
             return _resultValue;
         }
     }

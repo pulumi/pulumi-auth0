@@ -235,14 +235,14 @@ public class ConnectionDirectory extends com.pulumi.resources.CustomResource {
         return this.synchronizeAutomatically;
     }
     /**
-     * Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+     * Group synchronization configuration. Valid values are: off, all, selected.
      * 
      */
     @Export(name="synchronizeGroups", refs={String.class}, tree="[0]")
     private Output<String> synchronizeGroups;
 
     /**
-     * @return Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+     * @return Group synchronization configuration. Valid values are: off, all, selected.
      * 
      */
     public Output<String> synchronizeGroups() {

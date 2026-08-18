@@ -17,6 +17,18 @@ import * as utilities from "./utilities";
  *     name: "My Role - (Managed by Terraform)",
  *     description: "Role Description...",
  * });
+ * const myOrganization = new auth0.Organization("my_organization", {
+ *     name: "my-organization",
+ *     displayName: "My Organization",
+ * });
+ * // A role scoped to a single organization. Changing type or owner_id afterwards
+ * // replaces the role, as neither can be updated. (EA only)
+ * const myOrganizationRole = new auth0.Role("my_organization_role", {
+ *     name: "My Organization Role - (Managed by Terraform)",
+ *     description: "Organization Role Description...",
+ *     type: "organization",
+ *     ownerId: myOrganization.id,
+ * });
  * ```
  *
  * ## Import
@@ -65,6 +77,14 @@ export class Role extends pulumi.CustomResource {
      * The name of the role.
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * The ID of the organization owning the role. Only applicable when `type` is `organization`, and required in that case. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+     */
+    declare public readonly ownerId: pulumi.Output<string>;
+    /**
+     * The type of the role. Defaults to `tenant`, for a role available across the whole tenant. Set to `organization` to scope the role to a single organization, in which case `ownerId` must also be set. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+     */
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a Role resource with the given unique name, arguments, and options.
@@ -81,10 +101,14 @@ export class Role extends pulumi.CustomResource {
             const state = argsOrState as RoleState | undefined;
             resourceInputs["description"] = state?.description;
             resourceInputs["name"] = state?.name;
+            resourceInputs["ownerId"] = state?.ownerId;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as RoleArgs | undefined;
             resourceInputs["description"] = (args?.description) ?? "Managed by Pulumi";
             resourceInputs["name"] = args?.name;
+            resourceInputs["ownerId"] = args?.ownerId;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Role.__pulumiType, name, resourceInputs, opts);
@@ -103,6 +127,14 @@ export interface RoleState {
      * The name of the role.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the organization owning the role. Only applicable when `type` is `organization`, and required in that case. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+     */
+    ownerId?: pulumi.Input<string | undefined>;
+    /**
+     * The type of the role. Defaults to `tenant`, for a role available across the whole tenant. Set to `organization` to scope the role to a single organization, in which case `ownerId` must also be set. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+     */
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -117,4 +149,12 @@ export interface RoleArgs {
      * The name of the role.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the organization owning the role. Only applicable when `type` is `organization`, and required in that case. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+     */
+    ownerId?: pulumi.Input<string | undefined>;
+    /**
+     * The type of the role. Defaults to `tenant`, for a role available across the whole tenant. Set to `organization` to scope the role to a single organization, in which case `ownerId` must also be set. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+     */
+    type?: pulumi.Input<string | undefined>;
 }

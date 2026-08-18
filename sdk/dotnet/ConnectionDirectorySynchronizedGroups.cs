@@ -10,9 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Auth0
 {
     /// <summary>
-    /// With this resource, you can manage the set of Google Workspace group IDs synchronized via directory provisioning for an Auth0 connection. (EA only)
-    /// 
-    /// &gt; This resource is only available for [EA](https://auth0.com/docs/troubleshoot/product-lifecycle/product-release-stages#early-access) users.
+    /// With this resource, you can manage the set of Google Workspace groups synchronized via directory provisioning for an Auth0 connection.
     /// 
     /// ## Example Usage
     /// 
@@ -48,11 +46,19 @@ namespace Pulumi.Auth0
     ///     var myGroups = new Auth0.ConnectionDirectorySynchronizedGroups("my_groups", new()
     ///     {
     ///         ConnectionId = myConnection.Id,
-    ///         GroupIds = new[]
+    ///         Groups = new[]
     ///         {
-    ///             "group1abc",
-    ///             "group2def",
-    ///             "group3ghi",
+    ///             new Auth0.Inputs.ConnectionDirectorySynchronizedGroupsGroupArgs
+    ///             {
+    ///                 Id = "group1",
+    ///             },
+    ///             new Auth0.Inputs.ConnectionDirectorySynchronizedGroupsGroupArgs
+    ///             {
+    ///                 Id = "group2",
+    ///                 Name = "test",
+    ///                 Email = "test@test.com",
+    ///                 DirectMembersCount = 123,
+    ///             },
     ///         },
     ///     }, new CustomResourceOptions
     ///     {
@@ -75,16 +81,22 @@ namespace Pulumi.Auth0
     public partial class ConnectionDirectorySynchronizedGroups : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// ID of the connection for which to manage synchronized groups. (EA only)
+        /// ID of the connection for which to manage synchronized groups.
         /// </summary>
         [Output("connectionId")]
         public Output<string> ConnectionId { get; private set; } = null!;
 
         /// <summary>
-        /// List of Google Workspace Directory group IDs to synchronize. (EA only)
+        /// IDs of the Google Workspace Directory groups to synchronize.
         /// </summary>
         [Output("groupIds")]
         public Output<ImmutableArray<string>> GroupIds { get; private set; } = null!;
+
+        /// <summary>
+        /// Google Workspace Directory groups to synchronize.
+        /// </summary>
+        [Output("groups")]
+        public Output<ImmutableArray<Outputs.ConnectionDirectorySynchronizedGroupsGroup>> Groups { get; private set; } = null!;
 
 
         /// <summary>
@@ -133,21 +145,34 @@ namespace Pulumi.Auth0
     public sealed class ConnectionDirectorySynchronizedGroupsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID of the connection for which to manage synchronized groups. (EA only)
+        /// ID of the connection for which to manage synchronized groups.
         /// </summary>
         [Input("connectionId", required: true)]
         public Input<string> ConnectionId { get; set; } = null!;
 
-        [Input("groupIds", required: true)]
+        [Input("groupIds")]
         private InputList<string>? _groupIds;
 
         /// <summary>
-        /// List of Google Workspace Directory group IDs to synchronize. (EA only)
+        /// IDs of the Google Workspace Directory groups to synchronize.
         /// </summary>
+        [Obsolete(@"Use `Groups` instead, which exposes each group's name, email and member count alongside its ID.")]
         public InputList<string> GroupIds
         {
             get => _groupIds ?? (_groupIds = new InputList<string>());
             set => _groupIds = value;
+        }
+
+        [Input("groups")]
+        private InputList<Inputs.ConnectionDirectorySynchronizedGroupsGroupArgs>? _groups;
+
+        /// <summary>
+        /// Google Workspace Directory groups to synchronize.
+        /// </summary>
+        public InputList<Inputs.ConnectionDirectorySynchronizedGroupsGroupArgs> Groups
+        {
+            get => _groups ?? (_groups = new InputList<Inputs.ConnectionDirectorySynchronizedGroupsGroupArgs>());
+            set => _groups = value;
         }
 
         public ConnectionDirectorySynchronizedGroupsArgs()
@@ -159,7 +184,7 @@ namespace Pulumi.Auth0
     public sealed class ConnectionDirectorySynchronizedGroupsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID of the connection for which to manage synchronized groups. (EA only)
+        /// ID of the connection for which to manage synchronized groups.
         /// </summary>
         [Input("connectionId")]
         public Input<string>? ConnectionId { get; set; }
@@ -168,12 +193,25 @@ namespace Pulumi.Auth0
         private InputList<string>? _groupIds;
 
         /// <summary>
-        /// List of Google Workspace Directory group IDs to synchronize. (EA only)
+        /// IDs of the Google Workspace Directory groups to synchronize.
         /// </summary>
+        [Obsolete(@"Use `Groups` instead, which exposes each group's name, email and member count alongside its ID.")]
         public InputList<string> GroupIds
         {
             get => _groupIds ?? (_groupIds = new InputList<string>());
             set => _groupIds = value;
+        }
+
+        [Input("groups")]
+        private InputList<Inputs.ConnectionDirectorySynchronizedGroupsGroupGetArgs>? _groups;
+
+        /// <summary>
+        /// Google Workspace Directory groups to synchronize.
+        /// </summary>
+        public InputList<Inputs.ConnectionDirectorySynchronizedGroupsGroupGetArgs> Groups
+        {
+            get => _groups ?? (_groups = new InputList<Inputs.ConnectionDirectorySynchronizedGroupsGroupGetArgs>());
+            set => _groups = value;
         }
 
         public ConnectionDirectorySynchronizedGroupsState()

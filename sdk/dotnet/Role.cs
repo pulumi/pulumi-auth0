@@ -28,6 +28,22 @@ namespace Pulumi.Auth0
     ///         Description = "Role Description...",
     ///     });
     /// 
+    ///     var myOrganization = new Auth0.Organization("my_organization", new()
+    ///     {
+    ///         Name = "my-organization",
+    ///         DisplayName = "My Organization",
+    ///     });
+    /// 
+    ///     // A role scoped to a single organization. Changing type or owner_id afterwards
+    ///     // replaces the role, as neither can be updated. (EA only)
+    ///     var myOrganizationRole = new Auth0.Role("my_organization_role", new()
+    ///     {
+    ///         Name = "My Organization Role - (Managed by Terraform)",
+    ///         Description = "Organization Role Description...",
+    ///         Type = "organization",
+    ///         OwnerId = myOrganization.Id,
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -55,6 +71,18 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the organization owning the role. Only applicable when `Type` is `Organization`, and required in that case. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+        /// </summary>
+        [Output("ownerId")]
+        public Output<string> OwnerId { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of the role. Defaults to `Tenant`, for a role available across the whole tenant. Set to `Organization` to scope the role to a single organization, in which case `OwnerId` must also be set. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
 
 
         /// <summary>
@@ -114,6 +142,18 @@ namespace Pulumi.Auth0
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID of the organization owning the role. Only applicable when `Type` is `Organization`, and required in that case. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+        /// </summary>
+        [Input("ownerId")]
+        public Input<string>? OwnerId { get; set; }
+
+        /// <summary>
+        /// The type of the role. Defaults to `Tenant`, for a role available across the whole tenant. Set to `Organization` to scope the role to a single organization, in which case `OwnerId` must also be set. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
         public RoleArgs()
         {
             Description = "Managed by Pulumi";
@@ -134,6 +174,18 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The ID of the organization owning the role. Only applicable when `Type` is `Organization`, and required in that case. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+        /// </summary>
+        [Input("ownerId")]
+        public Input<string>? OwnerId { get; set; }
+
+        /// <summary>
+        /// The type of the role. Defaults to `Tenant`, for a role available across the whole tenant. Set to `Organization` to scope the role to a single organization, in which case `OwnerId` must also be set. The Management API only accepts this field on creation, so changing it forces a new role to be created. (EA only)
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public RoleState()
         {

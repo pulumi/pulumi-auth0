@@ -45,6 +45,7 @@ from .get_branding import *
 from .get_branding_phone_notification_template import *
 from .get_branding_theme import *
 from .get_client import *
+from .get_client_grant_organizations import *
 from .get_client_grants import *
 from .get_clients import *
 from .get_connection import *
@@ -62,6 +63,11 @@ from .get_flow_vault_connection import *
 from .get_form import *
 from .get_network_acl import *
 from .get_organization import *
+from .get_organization_client import *
+from .get_organization_clients import *
+from .get_organization_role_groups import *
+from .get_organization_role_members import *
+from .get_organizations import *
 from .get_outbound_ips import *
 from .get_pages import *
 from .get_phone_notification_template import *
@@ -79,12 +85,15 @@ from .get_token_exchange_profile import *
 from .get_user import *
 from .get_user_attribute_profile import *
 from .get_user_connected_accounts import *
+from .get_user_organizations import *
 from .guardian import *
 from .hook import *
 from .log_stream import *
 from .network_acl import *
 from .organization import *
+from .organization_client import *
 from .organization_client_grant import *
+from .organization_clients import *
 from .organization_connection import *
 from .organization_connections import *
 from .organization_discovery_domain import *
@@ -414,10 +423,26 @@ _utilities.register(
  },
  {
   "pkg": "auth0",
+  "mod": "index/organizationClient",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/organizationClient:OrganizationClient": "OrganizationClient"
+  }
+ },
+ {
+  "pkg": "auth0",
   "mod": "index/organizationClientGrant",
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/organizationClientGrant:OrganizationClientGrant": "OrganizationClientGrant"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/organizationClients",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/organizationClients:OrganizationClients": "OrganizationClients"
   }
  },
  {

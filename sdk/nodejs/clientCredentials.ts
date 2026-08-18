@@ -90,6 +90,10 @@ export class ClientCredentials extends pulumi.CustomResource {
      * Defines `tlsClientAuth` client authentication method.
      */
     declare public readonly tlsClientAuth: pulumi.Output<outputs.ClientCredentialsTlsClientAuth | undefined>;
+    /**
+     * Configures the client as a Token Vault privileged worker, allowing it to request Token Vault tokens on behalf of other users. This is an Early Access feature and must be enabled for your tenant.
+     */
+    declare public readonly tokenVaultPrivilegedAccess: pulumi.Output<outputs.ClientCredentialsTokenVaultPrivilegedAccess | undefined>;
 
     /**
      * Create a ClientCredentials resource with the given unique name, arguments, and options.
@@ -113,6 +117,7 @@ export class ClientCredentials extends pulumi.CustomResource {
             resourceInputs["selfSignedTlsClientAuth"] = state?.selfSignedTlsClientAuth;
             resourceInputs["signedRequestObject"] = state?.signedRequestObject;
             resourceInputs["tlsClientAuth"] = state?.tlsClientAuth;
+            resourceInputs["tokenVaultPrivilegedAccess"] = state?.tokenVaultPrivilegedAccess;
         } else {
             const args = argsOrState as ClientCredentialsArgs | undefined;
             if (args?.clientId === undefined && !opts.urn) {
@@ -127,6 +132,7 @@ export class ClientCredentials extends pulumi.CustomResource {
             resourceInputs["selfSignedTlsClientAuth"] = args?.selfSignedTlsClientAuth;
             resourceInputs["signedRequestObject"] = args?.signedRequestObject;
             resourceInputs["tlsClientAuth"] = args?.tlsClientAuth;
+            resourceInputs["tokenVaultPrivilegedAccess"] = args?.tokenVaultPrivilegedAccess;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["clientSecret", "clientSecretWo"] };
@@ -176,6 +182,10 @@ export interface ClientCredentialsState {
      * Defines `tlsClientAuth` client authentication method.
      */
     tlsClientAuth?: pulumi.Input<inputs.ClientCredentialsTlsClientAuth | undefined>;
+    /**
+     * Configures the client as a Token Vault privileged worker, allowing it to request Token Vault tokens on behalf of other users. This is an Early Access feature and must be enabled for your tenant.
+     */
+    tokenVaultPrivilegedAccess?: pulumi.Input<inputs.ClientCredentialsTokenVaultPrivilegedAccess | undefined>;
 }
 
 /**
@@ -219,4 +229,8 @@ export interface ClientCredentialsArgs {
      * Defines `tlsClientAuth` client authentication method.
      */
     tlsClientAuth?: pulumi.Input<inputs.ClientCredentialsTlsClientAuth | undefined>;
+    /**
+     * Configures the client as a Token Vault privileged worker, allowing it to request Token Vault tokens on behalf of other users. This is an Early Access feature and must be enabled for your tenant.
+     */
+    tokenVaultPrivilegedAccess?: pulumi.Input<inputs.ClientCredentialsTokenVaultPrivilegedAccess | undefined>;
 }

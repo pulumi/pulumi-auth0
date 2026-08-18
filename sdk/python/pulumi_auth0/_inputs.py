@@ -191,6 +191,12 @@ __all__ = [
     'ClientCredentialsTlsClientAuthArgsDict',
     'ClientCredentialsTlsClientAuthCredentialArgs',
     'ClientCredentialsTlsClientAuthCredentialArgsDict',
+    'ClientCredentialsTokenVaultPrivilegedAccessArgs',
+    'ClientCredentialsTokenVaultPrivilegedAccessArgsDict',
+    'ClientCredentialsTokenVaultPrivilegedAccessCredentialArgs',
+    'ClientCredentialsTokenVaultPrivilegedAccessCredentialArgsDict',
+    'ClientCredentialsTokenVaultPrivilegedAccessGrantArgs',
+    'ClientCredentialsTokenVaultPrivilegedAccessGrantArgsDict',
     'ClientDefaultOrganizationArgs',
     'ClientDefaultOrganizationArgsDict',
     'ClientExpressConfigurationArgs',
@@ -251,6 +257,8 @@ __all__ = [
     'ConnectionCrossAppAccessResourceAppArgsDict',
     'ConnectionDirectoryMappingArgs',
     'ConnectionDirectoryMappingArgsDict',
+    'ConnectionDirectorySynchronizedGroupsGroupArgs',
+    'ConnectionDirectorySynchronizedGroupsGroupArgsDict',
     'ConnectionOptionsArgs',
     'ConnectionOptionsArgsDict',
     'ConnectionOptionsAttributeArgs',
@@ -439,6 +447,8 @@ __all__ = [
     'NetworkAclRuleNotMatchArgsDict',
     'OrganizationBrandingArgs',
     'OrganizationBrandingArgsDict',
+    'OrganizationClientsClientArgs',
+    'OrganizationClientsClientArgsDict',
     'OrganizationConnectionsEnabledConnectionArgs',
     'OrganizationConnectionsEnabledConnectionArgsDict',
     'OrganizationDiscoveryDomainsDiscoveryDomainArgs',
@@ -7772,6 +7782,327 @@ class ClientCredentialsTlsClientAuthCredentialArgs:
         pulumi.set(self, "updated_at", value)
 
 
+class ClientCredentialsTokenVaultPrivilegedAccessArgsDict(TypedDict):
+    credentials: pulumi.Input[Sequence[pulumi.Input['ClientCredentialsTokenVaultPrivilegedAccessCredentialArgsDict']]]
+    """
+    Credentials the privileged worker may authenticate with. A maximum of 2 client credentials can be set.
+    """
+    ip_allowlists: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Permitted IPv4 or IPv6 addresses, or CIDR ranges, from which the privileged worker may request tokens. A maximum of 10 entries can be set. Set to `[]` to clear the entries already configured.
+    """
+    grants: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClientCredentialsTokenVaultPrivilegedAccessGrantArgsDict']]]]]
+    """
+    Pins the connections, and the scopes within them, that the privileged worker may request tokens for. A maximum of 5 grants can be set, with a maximum of 20 scopes in total across all of them. Omit every `grants` block to clear the grants already configured.
+    """
+
+@pulumi.input_type
+class ClientCredentialsTokenVaultPrivilegedAccessArgs:
+    def __init__(__self__, *,
+                 credentials: pulumi.Input[Sequence[pulumi.Input['ClientCredentialsTokenVaultPrivilegedAccessCredentialArgs']]],
+                 ip_allowlists: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 grants: pulumi.Input[Optional[Sequence[pulumi.Input['ClientCredentialsTokenVaultPrivilegedAccessGrantArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ClientCredentialsTokenVaultPrivilegedAccessCredentialArgs']]] credentials: Credentials the privileged worker may authenticate with. A maximum of 2 client credentials can be set.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_allowlists: Permitted IPv4 or IPv6 addresses, or CIDR ranges, from which the privileged worker may request tokens. A maximum of 10 entries can be set. Set to `[]` to clear the entries already configured.
+        :param pulumi.Input[Sequence[pulumi.Input['ClientCredentialsTokenVaultPrivilegedAccessGrantArgs']]] grants: Pins the connections, and the scopes within them, that the privileged worker may request tokens for. A maximum of 5 grants can be set, with a maximum of 20 scopes in total across all of them. Omit every `grants` block to clear the grants already configured.
+        """
+        pulumi.set(__self__, "credentials", credentials)
+        pulumi.set(__self__, "ip_allowlists", ip_allowlists)
+        if grants is not None:
+            pulumi.set(__self__, "grants", grants)
+
+    @_builtins.property
+    @pulumi.getter
+    def credentials(self) -> pulumi.Input[Sequence[pulumi.Input['ClientCredentialsTokenVaultPrivilegedAccessCredentialArgs']]]:
+        """
+        Credentials the privileged worker may authenticate with. A maximum of 2 client credentials can be set.
+        """
+        return pulumi.get(self, "credentials")
+
+    @credentials.setter
+    def credentials(self, value: pulumi.Input[Sequence[pulumi.Input['ClientCredentialsTokenVaultPrivilegedAccessCredentialArgs']]]):
+        pulumi.set(self, "credentials", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipAllowlists")
+    def ip_allowlists(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        Permitted IPv4 or IPv6 addresses, or CIDR ranges, from which the privileged worker may request tokens. A maximum of 10 entries can be set. Set to `[]` to clear the entries already configured.
+        """
+        return pulumi.get(self, "ip_allowlists")
+
+    @ip_allowlists.setter
+    def ip_allowlists(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "ip_allowlists", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClientCredentialsTokenVaultPrivilegedAccessGrantArgs']]]]:
+        """
+        Pins the connections, and the scopes within them, that the privileged worker may request tokens for. A maximum of 5 grants can be set, with a maximum of 20 scopes in total across all of them. Omit every `grants` block to clear the grants already configured.
+        """
+        return pulumi.get(self, "grants")
+
+    @grants.setter
+    def grants(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClientCredentialsTokenVaultPrivilegedAccessGrantArgs']]]]):
+        pulumi.set(self, "grants", value)
+
+
+class ClientCredentialsTokenVaultPrivilegedAccessCredentialArgsDict(TypedDict):
+    credential_type: pulumi.Input[_builtins.str]
+    """
+    Credential type. Supported types: `public_key`.
+    """
+    pem: pulumi.Input[_builtins.str]
+    """
+    PEM-formatted public key (SPKI and PKCS1) or X509 certificate. Must be JSON escaped.
+    """
+    algorithm: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.
+    """
+    created_at: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ISO 8601 formatted date the credential was created.
+    """
+    expires_at: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ISO 8601 formatted date representing the expiration of the credential. It is not possible to set this to never expire after it has been set. Recreate the certificate if needed.
+    """
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ID of the client credential.
+    """
+    key_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The key identifier of the credential, generated on creation.
+    """
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Friendly name for a credential.
+    """
+    parse_expiry_from_cert: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expires_at` is set the credential expiry will be set to the explicit `expires_at` value.
+    """
+    updated_at: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ISO 8601 formatted date the credential was updated.
+    """
+
+@pulumi.input_type
+class ClientCredentialsTokenVaultPrivilegedAccessCredentialArgs:
+    def __init__(__self__, *,
+                 credential_type: pulumi.Input[_builtins.str],
+                 pem: pulumi.Input[_builtins.str],
+                 algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parse_expiry_from_cert: pulumi.Input[Optional[_builtins.bool]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] credential_type: Credential type. Supported types: `public_key`.
+        :param pulumi.Input[_builtins.str] pem: PEM-formatted public key (SPKI and PKCS1) or X509 certificate. Must be JSON escaped.
+        :param pulumi.Input[_builtins.str] algorithm: Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.
+        :param pulumi.Input[_builtins.str] created_at: The ISO 8601 formatted date the credential was created.
+        :param pulumi.Input[_builtins.str] expires_at: The ISO 8601 formatted date representing the expiration of the credential. It is not possible to set this to never expire after it has been set. Recreate the certificate if needed.
+        :param pulumi.Input[_builtins.str] id: The ID of the client credential.
+        :param pulumi.Input[_builtins.str] key_id: The key identifier of the credential, generated on creation.
+        :param pulumi.Input[_builtins.str] name: Friendly name for a credential.
+        :param pulumi.Input[_builtins.bool] parse_expiry_from_cert: Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expires_at` is set the credential expiry will be set to the explicit `expires_at` value.
+        :param pulumi.Input[_builtins.str] updated_at: The ISO 8601 formatted date the credential was updated.
+        """
+        pulumi.set(__self__, "credential_type", credential_type)
+        pulumi.set(__self__, "pem", pem)
+        if algorithm is not None:
+            pulumi.set(__self__, "algorithm", algorithm)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if expires_at is not None:
+            pulumi.set(__self__, "expires_at", expires_at)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if key_id is not None:
+            pulumi.set(__self__, "key_id", key_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parse_expiry_from_cert is not None:
+            pulumi.set(__self__, "parse_expiry_from_cert", parse_expiry_from_cert)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter(name="credentialType")
+    def credential_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Credential type. Supported types: `public_key`.
+        """
+        return pulumi.get(self, "credential_type")
+
+    @credential_type.setter
+    def credential_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "credential_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def pem(self) -> pulumi.Input[_builtins.str]:
+        """
+        PEM-formatted public key (SPKI and PKCS1) or X509 certificate. Must be JSON escaped.
+        """
+        return pulumi.get(self, "pem")
+
+    @pem.setter
+    def pem(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "pem", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Algorithm which will be used with the credential. Can be one of `RS256`, `RS384`, `PS256`. If not specified, `RS256` will be used.
+        """
+        return pulumi.get(self, "algorithm")
+
+    @algorithm.setter
+    def algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "algorithm", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ISO 8601 formatted date the credential was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ISO 8601 formatted date representing the expiration of the credential. It is not possible to set this to never expire after it has been set. Recreate the certificate if needed.
+        """
+        return pulumi.get(self, "expires_at")
+
+    @expires_at.setter
+    def expires_at(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "expires_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the client credential.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The key identifier of the credential, generated on creation.
+        """
+        return pulumi.get(self, "key_id")
+
+    @key_id.setter
+    def key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "key_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Friendly name for a credential.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="parseExpiryFromCert")
+    def parse_expiry_from_cert(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Parse expiry from x509 certificate. If true, attempts to parse the expiry date from the provided PEM. If also the `expires_at` is set the credential expiry will be set to the explicit `expires_at` value.
+        """
+        return pulumi.get(self, "parse_expiry_from_cert")
+
+    @parse_expiry_from_cert.setter
+    def parse_expiry_from_cert(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "parse_expiry_from_cert", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ISO 8601 formatted date the credential was updated.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+
+class ClientCredentialsTokenVaultPrivilegedAccessGrantArgsDict(TypedDict):
+    connection: pulumi.Input[_builtins.str]
+    """
+    Name of the connection the grant applies to. The connection does not need to exist when the grant is configured; it is validated at runtime.
+    """
+    scopes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Scopes the privileged worker may request on the connection.
+    """
+
+@pulumi.input_type
+class ClientCredentialsTokenVaultPrivilegedAccessGrantArgs:
+    def __init__(__self__, *,
+                 connection: pulumi.Input[_builtins.str],
+                 scopes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[_builtins.str] connection: Name of the connection the grant applies to. The connection does not need to exist when the grant is configured; it is validated at runtime.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Scopes the privileged worker may request on the connection.
+        """
+        pulumi.set(__self__, "connection", connection)
+        pulumi.set(__self__, "scopes", scopes)
+
+    @_builtins.property
+    @pulumi.getter
+    def connection(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the connection the grant applies to. The connection does not need to exist when the grant is configured; it is validated at runtime.
+        """
+        return pulumi.get(self, "connection")
+
+    @connection.setter
+    def connection(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "connection", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        Scopes the privileged worker may request on the connection.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "scopes", value)
+
+
 class ClientDefaultOrganizationArgsDict(TypedDict):
     disable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -9368,6 +9699,94 @@ class ConnectionDirectoryMappingArgs:
         pulumi.set(self, "idp", value)
 
 
+class ConnectionDirectorySynchronizedGroupsGroupArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.str]
+    """
+    Google Workspace Directory group ID.
+    """
+    direct_members_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Number of direct members in the Google Workspace Directory group.
+    """
+    email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Google Workspace Directory group email.
+    """
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Google Workspace Directory group name.
+    """
+
+@pulumi.input_type
+class ConnectionDirectorySynchronizedGroupsGroupArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[_builtins.str],
+                 direct_members_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] id: Google Workspace Directory group ID.
+        :param pulumi.Input[_builtins.int] direct_members_count: Number of direct members in the Google Workspace Directory group.
+        :param pulumi.Input[_builtins.str] email: Google Workspace Directory group email.
+        :param pulumi.Input[_builtins.str] name: Google Workspace Directory group name.
+        """
+        pulumi.set(__self__, "id", id)
+        if direct_members_count is not None:
+            pulumi.set(__self__, "direct_members_count", direct_members_count)
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Google Workspace Directory group ID.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="directMembersCount")
+    def direct_members_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of direct members in the Google Workspace Directory group.
+        """
+        return pulumi.get(self, "direct_members_count")
+
+    @direct_members_count.setter
+    def direct_members_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "direct_members_count", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def email(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Google Workspace Directory group email.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "email", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Google Workspace Directory group name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+
 class ConnectionOptionsArgsDict(TypedDict):
     access_token_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -9823,7 +10242,7 @@ class ConnectionOptionsArgsDict(TypedDict):
     """
     use_oauth_spec_scope: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+    Enabling this when using the connection_scope parameter, uses space as a delimiter for scopes when calling the IdP's API.
     """
     use_wsfed: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -10092,7 +10511,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[_builtins.str] upstream_params: You can pass provider-specific parameters to an identity provider during authentication. The values can either be static per connection or dynamic per user.
         :param pulumi.Input[_builtins.bool] use_cert_auth: Indicates whether to use cert auth or not.
         :param pulumi.Input[_builtins.bool] use_kerberos: Indicates whether to use Kerberos or not.
-        :param pulumi.Input[_builtins.bool] use_oauth_spec_scope: Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+        :param pulumi.Input[_builtins.bool] use_oauth_spec_scope: Enabling this when using the connection_scope parameter, uses space as a delimiter for scopes when calling the IdP's API.
         :param pulumi.Input[_builtins.bool] use_wsfed: Whether to use WS-Fed.
         :param pulumi.Input[_builtins.str] user_authorization_url: URL used to obtain user authorization.
         :param pulumi.Input[_builtins.str] user_id_attribute: Attribute in the token that will be mapped to the user_id property in Auth0.
@@ -11704,7 +12123,7 @@ class ConnectionOptionsArgs:
     @pulumi.getter(name="useOauthSpecScope")
     def use_oauth_spec_scope(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Determines the `scopes` format: `true` makes it a space-separated string (per OAuth2 specification); `false` makes it an array.
+        Enabling this when using the connection_scope parameter, uses space as a delimiter for scopes when calling the IdP's API.
         """
         return pulumi.get(self, "use_oauth_spec_scope")
 
@@ -18328,6 +18747,54 @@ class OrganizationBrandingArgs:
     @logo_url.setter
     def logo_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logo_url", value)
+
+
+class OrganizationClientsClientArgsDict(TypedDict):
+    client_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the client (application) to associate with the organization.
+    """
+    use_for_member_access: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether this client is used for member access to the organization.
+    """
+
+@pulumi.input_type
+class OrganizationClientsClientArgs:
+    def __init__(__self__, *,
+                 client_id: pulumi.Input[_builtins.str],
+                 use_for_member_access: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.str] client_id: The ID of the client (application) to associate with the organization.
+        :param pulumi.Input[_builtins.bool] use_for_member_access: Whether this client is used for member access to the organization.
+        """
+        pulumi.set(__self__, "client_id", client_id)
+        if use_for_member_access is not None:
+            pulumi.set(__self__, "use_for_member_access", use_for_member_access)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of the client (application) to associate with the organization.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "client_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="useForMemberAccess")
+    def use_for_member_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether this client is used for member access to the organization.
+        """
+        return pulumi.get(self, "use_for_member_access")
+
+    @use_for_member_access.setter
+    def use_for_member_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "use_for_member_access", value)
 
 
 class OrganizationConnectionsEnabledConnectionArgsDict(TypedDict):

@@ -7,6 +7,7 @@ import com.pulumi.auth0.inputs.OrganizationBrandingArgs;
 import com.pulumi.auth0.inputs.OrganizationTokenQuotaArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -46,6 +47,21 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> displayName() {
         return Optional.ofNullable(this.displayName);
+    }
+
+    /**
+     * Controls whether this organization&#39;s app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `auth0.ClientGrant`&#39;s `organizationUsage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
+     * 
+     */
+    @Import(name="isAppEntitlementActive")
+    private @Nullable Output<Boolean> isAppEntitlementActive;
+
+    /**
+     * @return Controls whether this organization&#39;s app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `auth0.ClientGrant`&#39;s `organizationUsage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
+     * 
+     */
+    public Optional<Output<Boolean>> isAppEntitlementActive() {
+        return Optional.ofNullable(this.isAppEntitlementActive);
     }
 
     /**
@@ -113,6 +129,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     private OrganizationState(OrganizationState $) {
         this.branding = $.branding;
         this.displayName = $.displayName;
+        this.isAppEntitlementActive = $.isAppEntitlementActive;
         this.metadata = $.metadata;
         this.name = $.name;
         this.thirdPartyClientAccess = $.thirdPartyClientAccess;
@@ -177,6 +194,27 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param isAppEntitlementActive Controls whether this organization&#39;s app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `auth0.ClientGrant`&#39;s `organizationUsage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isAppEntitlementActive(@Nullable Output<Boolean> isAppEntitlementActive) {
+            $.isAppEntitlementActive = isAppEntitlementActive;
+            return this;
+        }
+
+        /**
+         * @param isAppEntitlementActive Controls whether this organization&#39;s app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `auth0.ClientGrant`&#39;s `organizationUsage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isAppEntitlementActive(Boolean isAppEntitlementActive) {
+            return isAppEntitlementActive(Output.of(isAppEntitlementActive));
         }
 
         /**

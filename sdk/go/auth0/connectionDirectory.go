@@ -116,7 +116,7 @@ type ConnectionDirectory struct {
 	Strategy pulumi.StringOutput `pulumi:"strategy"`
 	// Whether periodic automatic synchronization is enabled. Defaults to false.
 	SynchronizeAutomatically pulumi.BoolOutput `pulumi:"synchronizeAutomatically"`
-	// Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+	// Group synchronization configuration. Valid values are: off, all, selected.
 	SynchronizeGroups pulumi.StringOutput `pulumi:"synchronizeGroups"`
 	// The timestamp at which the directory provisioning configuration was last updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
@@ -173,7 +173,7 @@ type connectionDirectoryState struct {
 	Strategy *string `pulumi:"strategy"`
 	// Whether periodic automatic synchronization is enabled. Defaults to false.
 	SynchronizeAutomatically *bool `pulumi:"synchronizeAutomatically"`
-	// Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+	// Group synchronization configuration. Valid values are: off, all, selected.
 	SynchronizeGroups *string `pulumi:"synchronizeGroups"`
 	// The timestamp at which the directory provisioning configuration was last updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
@@ -198,7 +198,7 @@ type ConnectionDirectoryState struct {
 	Strategy pulumi.StringPtrInput
 	// Whether periodic automatic synchronization is enabled. Defaults to false.
 	SynchronizeAutomatically pulumi.BoolPtrInput
-	// Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+	// Group synchronization configuration. Valid values are: off, all, selected.
 	SynchronizeGroups pulumi.StringPtrInput
 	// The timestamp at which the directory provisioning configuration was last updated.
 	UpdatedAt pulumi.StringPtrInput
@@ -215,7 +215,7 @@ type connectionDirectoryArgs struct {
 	Mappings []ConnectionDirectoryMapping `pulumi:"mappings"`
 	// Whether periodic automatic synchronization is enabled. Defaults to false.
 	SynchronizeAutomatically *bool `pulumi:"synchronizeAutomatically"`
-	// Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+	// Group synchronization configuration. Valid values are: off, all, selected.
 	SynchronizeGroups *string `pulumi:"synchronizeGroups"`
 }
 
@@ -227,7 +227,7 @@ type ConnectionDirectoryArgs struct {
 	Mappings ConnectionDirectoryMappingArrayInput
 	// Whether periodic automatic synchronization is enabled. Defaults to false.
 	SynchronizeAutomatically pulumi.BoolPtrInput
-	// Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+	// Group synchronization configuration. Valid values are: off, all, selected.
 	SynchronizeGroups pulumi.StringPtrInput
 }
 
@@ -363,7 +363,7 @@ func (o ConnectionDirectoryOutput) SynchronizeAutomatically() pulumi.BoolOutput 
 	return o.ApplyT(func(v *ConnectionDirectory) pulumi.BoolOutput { return v.SynchronizeAutomatically }).(pulumi.BoolOutput)
 }
 
-// Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+// Group synchronization configuration. Valid values are: off, all, selected.
 func (o ConnectionDirectoryOutput) SynchronizeGroups() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionDirectory) pulumi.StringOutput { return v.SynchronizeGroups }).(pulumi.StringOutput)
 }

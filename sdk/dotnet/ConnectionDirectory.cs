@@ -147,7 +147,7 @@ namespace Pulumi.Auth0
         public Output<bool> SynchronizeAutomatically { get; private set; } = null!;
 
         /// <summary>
-        /// Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+        /// Group synchronization configuration. Valid values are: off, all, selected.
         /// </summary>
         [Output("synchronizeGroups")]
         public Output<string> SynchronizeGroups { get; private set; } = null!;
@@ -229,7 +229,7 @@ namespace Pulumi.Auth0
         public Input<bool>? SynchronizeAutomatically { get; set; }
 
         /// <summary>
-        /// Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+        /// Group synchronization configuration. Valid values are: off, all, selected.
         /// </summary>
         [Input("synchronizeGroups")]
         public Input<string>? SynchronizeGroups { get; set; }
@@ -303,7 +303,7 @@ namespace Pulumi.Auth0
         public Input<bool>? SynchronizeAutomatically { get; set; }
 
         /// <summary>
-        /// Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+        /// Group synchronization configuration. Valid values are: off, all, selected.
         /// </summary>
         [Input("synchronizeGroups")]
         public Input<string>? SynchronizeGroups { get; set; }

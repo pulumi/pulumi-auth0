@@ -27,7 +27,7 @@ class GetOrganizationResult:
     """
     A collection of values returned by getOrganization.
     """
-    def __init__(__self__, brandings=None, client_grants=None, connections=None, display_name=None, id=None, members=None, metadata=None, name=None, organization_id=None, skip_client_grants=None, skip_connections=None, skip_members=None, third_party_client_access=None, token_quotas=None):
+    def __init__(__self__, brandings=None, client_grants=None, connections=None, display_name=None, id=None, is_app_entitlement_active=None, members=None, metadata=None, name=None, organization_id=None, skip_client_grants=None, skip_connections=None, skip_members=None, third_party_client_access=None, token_quotas=None):
         if brandings and not isinstance(brandings, list):
             raise TypeError("Expected argument 'brandings' to be a list")
         pulumi.set(__self__, "brandings", brandings)
@@ -43,6 +43,9 @@ class GetOrganizationResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if is_app_entitlement_active and not isinstance(is_app_entitlement_active, bool):
+            raise TypeError("Expected argument 'is_app_entitlement_active' to be a bool")
+        pulumi.set(__self__, "is_app_entitlement_active", is_app_entitlement_active)
         if members and not isinstance(members, list):
             raise TypeError("Expected argument 'members' to be a list")
         pulumi.set(__self__, "members", members)
@@ -110,6 +113,14 @@ class GetOrganizationResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="isAppEntitlementActive")
+    def is_app_entitlement_active(self) -> _builtins.bool:
+        """
+        Controls whether this organization's app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `ClientGrant`'s `organization_usage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
+        """
+        return pulumi.get(self, "is_app_entitlement_active")
 
     @_builtins.property
     @pulumi.getter
@@ -195,6 +206,7 @@ class AwaitableGetOrganizationResult(GetOrganizationResult):
             connections=self.connections,
             display_name=self.display_name,
             id=self.id,
+            is_app_entitlement_active=self.is_app_entitlement_active,
             members=self.members,
             metadata=self.metadata,
             name=self.name,
@@ -249,6 +261,7 @@ def get_organization(name: Optional[_builtins.str] = None,
         connections=pulumi.get(__ret__, 'connections'),
         display_name=pulumi.get(__ret__, 'display_name'),
         id=pulumi.get(__ret__, 'id'),
+        is_app_entitlement_active=pulumi.get(__ret__, 'is_app_entitlement_active'),
         members=pulumi.get(__ret__, 'members'),
         metadata=pulumi.get(__ret__, 'metadata'),
         name=pulumi.get(__ret__, 'name'),
@@ -300,6 +313,7 @@ def get_organization_output(name: pulumi.Input[Optional[Optional[_builtins.str]]
         connections=pulumi.get(__response__, 'connections'),
         display_name=pulumi.get(__response__, 'display_name'),
         id=pulumi.get(__response__, 'id'),
+        is_app_entitlement_active=pulumi.get(__response__, 'is_app_entitlement_active'),
         members=pulumi.get(__response__, 'members'),
         metadata=pulumi.get(__response__, 'metadata'),
         name=pulumi.get(__response__, 'name'),

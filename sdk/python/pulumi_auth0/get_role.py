@@ -27,7 +27,7 @@ class GetRoleResult:
     """
     A collection of values returned by getRole.
     """
-    def __init__(__self__, description=None, id=None, name=None, permissions=None, role_id=None, skip_permissions=None, skip_users=None, users=None):
+    def __init__(__self__, description=None, id=None, name=None, owner_id=None, permissions=None, role_id=None, skip_permissions=None, skip_users=None, type=None, users=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -37,6 +37,9 @@ class GetRoleResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if owner_id and not isinstance(owner_id, str):
+            raise TypeError("Expected argument 'owner_id' to be a str")
+        pulumi.set(__self__, "owner_id", owner_id)
         if permissions and not isinstance(permissions, list):
             raise TypeError("Expected argument 'permissions' to be a list")
         pulumi.set(__self__, "permissions", permissions)
@@ -49,6 +52,9 @@ class GetRoleResult:
         if skip_users and not isinstance(skip_users, bool):
             raise TypeError("Expected argument 'skip_users' to be a bool")
         pulumi.set(__self__, "skip_users", skip_users)
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        pulumi.set(__self__, "type", type)
         if users and not isinstance(users, list):
             raise TypeError("Expected argument 'users' to be a list")
         pulumi.set(__self__, "users", users)
@@ -76,6 +82,14 @@ class GetRoleResult:
         The name of the role. If not provided, `role_id` must be set.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="ownerId")
+    def owner_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the organization owning the role. Only used to narrow down the search when looking the role up by `name`, alongside a `type` of `organization`. (EA only)
+        """
+        return pulumi.get(self, "owner_id")
 
     @_builtins.property
     @pulumi.getter
@@ -111,6 +125,14 @@ class GetRoleResult:
 
     @_builtins.property
     @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        The type of the role, either `tenant` or `organization`. Only used to narrow down the search when looking the role up by `name`. (EA only)
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
     def users(self) -> Sequence[_builtins.str]:
         """
         List of user IDs assigned to this role. Retrieves a maximum of 1000 user IDs. Skips populating if `skip_users` is `true`.
@@ -127,17 +149,21 @@ class AwaitableGetRoleResult(GetRoleResult):
             description=self.description,
             id=self.id,
             name=self.name,
+            owner_id=self.owner_id,
             permissions=self.permissions,
             role_id=self.role_id,
             skip_permissions=self.skip_permissions,
             skip_users=self.skip_users,
+            type=self.type,
             users=self.users)
 
 
 def get_role(name: Optional[_builtins.str] = None,
+             owner_id: Optional[_builtins.str] = None,
              role_id: Optional[_builtins.str] = None,
              skip_permissions: Optional[_builtins.bool] = None,
              skip_users: Optional[_builtins.bool] = None,
+             type: Optional[_builtins.str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRoleResult:
     """
     Data source to retrieve a specific Auth0 role by `role_id` or `name`.
@@ -152,19 +178,29 @@ def get_role(name: Optional[_builtins.str] = None,
     some_role_by_name = auth0.get_role(name="my-role")
     # An Auth0 Role loaded using its ID.
     some_role_by_id = auth0.get_role(role_id="abcdefghkijklmnopqrstuvwxyz0123456789")
+    # An organization-level Auth0 Role loaded using the role name. Several
+    # organizations can own a role of the same name, so the type and the ID of the
+    # organization owning it are needed to find the right one. (EA only)
+    some_organization_role_by_name = auth0.get_role(name="my-organization-role",
+        type="organization",
+        owner_id="org_abcdefghkijklmn")
     ```
 
 
     :param _builtins.str name: The name of the role. If not provided, `role_id` must be set.
+    :param _builtins.str owner_id: The ID of the organization owning the role. Only used to narrow down the search when looking the role up by `name`, alongside a `type` of `organization`. (EA only)
     :param _builtins.str role_id: The ID of the role. If not provided, `name` must be set.
     :param _builtins.bool skip_permissions: Whether to skip role permissions. Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/permissions.
     :param _builtins.bool skip_users: Whether to skip users assigned to this role (max 1000). Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/users.
+    :param _builtins.str type: The type of the role, either `tenant` or `organization`. Only used to narrow down the search when looking the role up by `name`. (EA only)
     """
     __args__ = dict()
     __args__['name'] = name
+    __args__['ownerId'] = owner_id
     __args__['roleId'] = role_id
     __args__['skipPermissions'] = skip_permissions
     __args__['skipUsers'] = skip_users
+    __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('auth0:index/getRole:getRole', __args__, opts=opts, typ=GetRoleResult).value
 
@@ -172,15 +208,19 @@ def get_role(name: Optional[_builtins.str] = None,
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
+        owner_id=pulumi.get(__ret__, 'owner_id'),
         permissions=pulumi.get(__ret__, 'permissions'),
         role_id=pulumi.get(__ret__, 'role_id'),
         skip_permissions=pulumi.get(__ret__, 'skip_permissions'),
         skip_users=pulumi.get(__ret__, 'skip_users'),
+        type=pulumi.get(__ret__, 'type'),
         users=pulumi.get(__ret__, 'users'))
 def get_role_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    owner_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     role_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     skip_permissions: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                     skip_users: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                    type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRoleResult]:
     """
     Data source to retrieve a specific Auth0 role by `role_id` or `name`.
@@ -195,27 +235,39 @@ def get_role_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None
     some_role_by_name = auth0.get_role(name="my-role")
     # An Auth0 Role loaded using its ID.
     some_role_by_id = auth0.get_role(role_id="abcdefghkijklmnopqrstuvwxyz0123456789")
+    # An organization-level Auth0 Role loaded using the role name. Several
+    # organizations can own a role of the same name, so the type and the ID of the
+    # organization owning it are needed to find the right one. (EA only)
+    some_organization_role_by_name = auth0.get_role(name="my-organization-role",
+        type="organization",
+        owner_id="org_abcdefghkijklmn")
     ```
 
 
     :param _builtins.str name: The name of the role. If not provided, `role_id` must be set.
+    :param _builtins.str owner_id: The ID of the organization owning the role. Only used to narrow down the search when looking the role up by `name`, alongside a `type` of `organization`. (EA only)
     :param _builtins.str role_id: The ID of the role. If not provided, `name` must be set.
     :param _builtins.bool skip_permissions: Whether to skip role permissions. Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/permissions.
     :param _builtins.bool skip_users: Whether to skip users assigned to this role (max 1000). Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/users.
+    :param _builtins.str type: The type of the role, either `tenant` or `organization`. Only used to narrow down the search when looking the role up by `name`. (EA only)
     """
     __args__ = dict()
     __args__['name'] = name
+    __args__['ownerId'] = owner_id
     __args__['roleId'] = role_id
     __args__['skipPermissions'] = skip_permissions
     __args__['skipUsers'] = skip_users
+    __args__['type'] = type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('auth0:index/getRole:getRole', __args__, opts=opts, typ=GetRoleResult)
     return __ret__.apply(lambda __response__: GetRoleResult(
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
+        owner_id=pulumi.get(__response__, 'owner_id'),
         permissions=pulumi.get(__response__, 'permissions'),
         role_id=pulumi.get(__response__, 'role_id'),
         skip_permissions=pulumi.get(__response__, 'skip_permissions'),
         skip_users=pulumi.get(__response__, 'skip_users'),
+        type=pulumi.get(__response__, 'type'),
         users=pulumi.get(__response__, 'users')))

@@ -158,7 +158,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly bool SynchronizeAutomatically;
         /// <summary>
-        /// Group synchronization configuration. Valid values are: off, all, selected. (EA only)
+        /// Group synchronization configuration. Valid values are: off, all, selected.
         /// </summary>
         public readonly string SynchronizeGroups;
         /// <summary>

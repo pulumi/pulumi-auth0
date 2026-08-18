@@ -207,6 +207,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// Controls whether this organization's app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `auth0.ClientGrant`'s `OrganizationUsage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
+        /// </summary>
+        public readonly bool IsAppEntitlementActive;
+        /// <summary>
         /// User ID(s) that are members of the organization. Skips populating if `SkipMembers` is `True`.
         /// </summary>
         public readonly ImmutableArray<string> Members;
@@ -255,6 +259,8 @@ namespace Pulumi.Auth0
 
             string id,
 
+            bool isAppEntitlementActive,
+
             ImmutableArray<string> members,
 
             ImmutableDictionary<string, string> metadata,
@@ -278,6 +284,7 @@ namespace Pulumi.Auth0
             Connections = connections;
             DisplayName = displayName;
             Id = id;
+            IsAppEntitlementActive = isAppEntitlementActive;
             Members = members;
             Metadata = metadata;
             Name = name;

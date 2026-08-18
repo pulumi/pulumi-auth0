@@ -31,6 +31,21 @@ public final class GetRolePlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * The ID of the organization owning the role. Only used to narrow down the search when looking the role up by `name`, alongside a `type` of `organization`. (EA only)
+     * 
+     */
+    @Import(name="ownerId")
+    private @Nullable String ownerId;
+
+    /**
+     * @return The ID of the organization owning the role. Only used to narrow down the search when looking the role up by `name`, alongside a `type` of `organization`. (EA only)
+     * 
+     */
+    public Optional<String> ownerId() {
+        return Optional.ofNullable(this.ownerId);
+    }
+
+    /**
      * The ID of the role. If not provided, `name` must be set.
      * 
      */
@@ -75,13 +90,30 @@ public final class GetRolePlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.skipUsers);
     }
 
+    /**
+     * The type of the role, either `tenant` or `organization`. Only used to narrow down the search when looking the role up by `name`. (EA only)
+     * 
+     */
+    @Import(name="type")
+    private @Nullable String type;
+
+    /**
+     * @return The type of the role, either `tenant` or `organization`. Only used to narrow down the search when looking the role up by `name`. (EA only)
+     * 
+     */
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
+    }
+
     private GetRolePlainArgs() {}
 
     private GetRolePlainArgs(GetRolePlainArgs $) {
         this.name = $.name;
+        this.ownerId = $.ownerId;
         this.roleId = $.roleId;
         this.skipPermissions = $.skipPermissions;
         this.skipUsers = $.skipUsers;
+        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -110,6 +142,17 @@ public final class GetRolePlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder name(@Nullable String name) {
             $.name = name;
+            return this;
+        }
+
+        /**
+         * @param ownerId The ID of the organization owning the role. Only used to narrow down the search when looking the role up by `name`, alongside a `type` of `organization`. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ownerId(@Nullable String ownerId) {
+            $.ownerId = ownerId;
             return this;
         }
 
@@ -143,6 +186,17 @@ public final class GetRolePlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder skipUsers(@Nullable Boolean skipUsers) {
             $.skipUsers = skipUsers;
+            return this;
+        }
+
+        /**
+         * @param type The type of the role, either `tenant` or `organization`. Only used to narrow down the search when looking the role up by `name`. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable String type) {
+            $.type = type;
             return this;
         }
 

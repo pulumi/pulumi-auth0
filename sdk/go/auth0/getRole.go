@@ -41,6 +41,17 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// An organization-level Auth0 Role loaded using the role name. Several
+//			// organizations can own a role of the same name, so the type and the ID of the
+//			// organization owning it are needed to find the right one. (EA only)
+//			_, err = auth0.GetRole(ctx, &auth0.LookupRoleArgs{
+//				Name:    pulumi.StringRef("my-organization-role"),
+//				Type:    pulumi.StringRef("organization"),
+//				OwnerId: pulumi.StringRef("org_abcdefghkijklmn"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -60,12 +71,16 @@ func LookupRole(ctx *pulumi.Context, args *LookupRoleArgs, opts ...pulumi.Invoke
 type LookupRoleArgs struct {
 	// The name of the role. If not provided, `roleId` must be set.
 	Name *string `pulumi:"name"`
+	// The ID of the organization owning the role. Only used to narrow down the search when looking the role up by `name`, alongside a `type` of `organization`. (EA only)
+	OwnerId *string `pulumi:"ownerId"`
 	// The ID of the role. If not provided, `name` must be set.
 	RoleId *string `pulumi:"roleId"`
 	// Whether to skip role permissions. Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/permissions.
 	SkipPermissions *bool `pulumi:"skipPermissions"`
 	// Whether to skip users assigned to this role (max 1000). Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/users.
 	SkipUsers *bool `pulumi:"skipUsers"`
+	// The type of the role, either `tenant` or `organization`. Only used to narrow down the search when looking the role up by `name`. (EA only)
+	Type *string `pulumi:"type"`
 }
 
 // A collection of values returned by getRole.
@@ -76,6 +91,8 @@ type LookupRoleResult struct {
 	Id string `pulumi:"id"`
 	// The name of the role. If not provided, `roleId` must be set.
 	Name *string `pulumi:"name"`
+	// The ID of the organization owning the role. Only used to narrow down the search when looking the role up by `name`, alongside a `type` of `organization`. (EA only)
+	OwnerId *string `pulumi:"ownerId"`
 	// Configuration settings for permissions (scopes) attached to the role. Skips populating if `skipPermissions` is `true`.
 	Permissions []GetRolePermissionType `pulumi:"permissions"`
 	// The ID of the role. If not provided, `name` must be set.
@@ -84,6 +101,8 @@ type LookupRoleResult struct {
 	SkipPermissions *bool `pulumi:"skipPermissions"`
 	// Whether to skip users assigned to this role (max 1000). Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/users.
 	SkipUsers *bool `pulumi:"skipUsers"`
+	// The type of the role, either `tenant` or `organization`. Only used to narrow down the search when looking the role up by `name`. (EA only)
+	Type *string `pulumi:"type"`
 	// List of user IDs assigned to this role. Retrieves a maximum of 1000 user IDs. Skips populating if `skipUsers` is `true`.
 	Users []string `pulumi:"users"`
 }
@@ -101,12 +120,16 @@ func LookupRoleOutput(ctx *pulumi.Context, args LookupRoleOutputArgs, opts ...pu
 type LookupRoleOutputArgs struct {
 	// The name of the role. If not provided, `roleId` must be set.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The ID of the organization owning the role. Only used to narrow down the search when looking the role up by `name`, alongside a `type` of `organization`. (EA only)
+	OwnerId pulumi.StringPtrInput `pulumi:"ownerId"`
 	// The ID of the role. If not provided, `name` must be set.
 	RoleId pulumi.StringPtrInput `pulumi:"roleId"`
 	// Whether to skip role permissions. Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/permissions.
 	SkipPermissions pulumi.BoolPtrInput `pulumi:"skipPermissions"`
 	// Whether to skip users assigned to this role (max 1000). Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/users.
 	SkipUsers pulumi.BoolPtrInput `pulumi:"skipUsers"`
+	// The type of the role, either `tenant` or `organization`. Only used to narrow down the search when looking the role up by `name`. (EA only)
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (LookupRoleOutputArgs) ElementType() reflect.Type {
@@ -143,6 +166,11 @@ func (o LookupRoleResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRoleResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the organization owning the role. Only used to narrow down the search when looking the role up by `name`, alongside a `type` of `organization`. (EA only)
+func (o LookupRoleResultOutput) OwnerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupRoleResult) *string { return v.OwnerId }).(pulumi.StringPtrOutput)
+}
+
 // Configuration settings for permissions (scopes) attached to the role. Skips populating if `skipPermissions` is `true`.
 func (o LookupRoleResultOutput) Permissions() GetRolePermissionTypeArrayOutput {
 	return o.ApplyT(func(v LookupRoleResult) []GetRolePermissionType { return v.Permissions }).(GetRolePermissionTypeArrayOutput)
@@ -161,6 +189,11 @@ func (o LookupRoleResultOutput) SkipPermissions() pulumi.BoolPtrOutput {
 // Whether to skip users assigned to this role (max 1000). Setting this to `true` will skip paginated API calls to /api/v2/roles/{id}/users.
 func (o LookupRoleResultOutput) SkipUsers() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupRoleResult) *bool { return v.SkipUsers }).(pulumi.BoolPtrOutput)
+}
+
+// The type of the role, either `tenant` or `organization`. Only used to narrow down the search when looking the role up by `name`. (EA only)
+func (o LookupRoleResultOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupRoleResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 // List of user IDs assigned to this role. Retrieves a maximum of 1000 user IDs. Skips populating if `skipUsers` is `true`.

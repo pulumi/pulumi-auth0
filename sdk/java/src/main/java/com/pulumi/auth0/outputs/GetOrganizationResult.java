@@ -44,6 +44,11 @@ public final class GetOrganizationResult {
      */
     private String id;
     /**
+     * @return Controls whether this organization&#39;s app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `auth0.ClientGrant`&#39;s `organizationUsage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
+     * 
+     */
+    private Boolean isAppEntitlementActive;
+    /**
      * @return User ID(s) that are members of the organization. Skips populating if `skipMembers` is `true`.
      * 
      */
@@ -126,6 +131,13 @@ public final class GetOrganizationResult {
         return this.id;
     }
     /**
+     * @return Controls whether this organization&#39;s app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `auth0.ClientGrant`&#39;s `organizationUsage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
+     * 
+     */
+    public Boolean isAppEntitlementActive() {
+        return this.isAppEntitlementActive;
+    }
+    /**
      * @return User ID(s) that are members of the organization. Skips populating if `skipMembers` is `true`.
      * 
      */
@@ -203,6 +215,7 @@ public final class GetOrganizationResult {
         private List<GetOrganizationConnection> connections;
         private String displayName;
         private String id;
+        private Boolean isAppEntitlementActive;
         private List<String> members;
         private Map<String,String> metadata;
         private @Nullable String name;
@@ -220,6 +233,7 @@ public final class GetOrganizationResult {
     	      this.connections = defaults.connections;
     	      this.displayName = defaults.displayName;
     	      this.id = defaults.id;
+    	      this.isAppEntitlementActive = defaults.isAppEntitlementActive;
     	      this.members = defaults.members;
     	      this.metadata = defaults.metadata;
     	      this.name = defaults.name;
@@ -278,6 +292,14 @@ public final class GetOrganizationResult {
               throw new MissingRequiredPropertyException("GetOrganizationResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isAppEntitlementActive(Boolean isAppEntitlementActive) {
+            if (isAppEntitlementActive == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationResult", "isAppEntitlementActive");
+            }
+            this.isAppEntitlementActive = isAppEntitlementActive;
             return this;
         }
         @CustomType.Setter
@@ -355,6 +377,7 @@ public final class GetOrganizationResult {
             _resultValue.connections = connections;
             _resultValue.displayName = displayName;
             _resultValue.id = id;
+            _resultValue.isAppEntitlementActive = isAppEntitlementActive;
             _resultValue.members = members;
             _resultValue.metadata = metadata;
             _resultValue.name = name;
