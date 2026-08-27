@@ -75,12 +75,8 @@ type LookupRateLimitPolicyResult struct {
 }
 
 func LookupRateLimitPolicyOutput(ctx *pulumi.Context, args LookupRateLimitPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupRateLimitPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRateLimitPolicyResultOutput, error) {
-			args := v.(LookupRateLimitPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("auth0:index/getRateLimitPolicy:getRateLimitPolicy", args, LookupRateLimitPolicyResultOutput{}, options).(LookupRateLimitPolicyResultOutput), nil
-		}).(LookupRateLimitPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getRateLimitPolicy:getRateLimitPolicy", args, LookupRateLimitPolicyResultOutput{}, options).(LookupRateLimitPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getRateLimitPolicy.

@@ -96,12 +96,8 @@ type GetActionModuleVersionResult struct {
 }
 
 func GetActionModuleVersionOutput(ctx *pulumi.Context, args GetActionModuleVersionOutputArgs, opts ...pulumi.InvokeOption) GetActionModuleVersionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetActionModuleVersionResultOutput, error) {
-			args := v.(GetActionModuleVersionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("auth0:index/getActionModuleVersion:getActionModuleVersion", args, GetActionModuleVersionResultOutput{}, options).(GetActionModuleVersionResultOutput), nil
-		}).(GetActionModuleVersionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getActionModuleVersion:getActionModuleVersion", args, GetActionModuleVersionResultOutput{}, options).(GetActionModuleVersionResultOutput)
 }
 
 // A collection of arguments for invoking getActionModuleVersion.

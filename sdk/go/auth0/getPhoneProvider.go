@@ -47,12 +47,8 @@ type LookupPhoneProviderResult struct {
 }
 
 func LookupPhoneProviderOutput(ctx *pulumi.Context, args LookupPhoneProviderOutputArgs, opts ...pulumi.InvokeOption) LookupPhoneProviderResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPhoneProviderResultOutput, error) {
-			args := v.(LookupPhoneProviderArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("auth0:index/getPhoneProvider:getPhoneProvider", args, LookupPhoneProviderResultOutput{}, options).(LookupPhoneProviderResultOutput), nil
-		}).(LookupPhoneProviderResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getPhoneProvider:getPhoneProvider", args, LookupPhoneProviderResultOutput{}, options).(LookupPhoneProviderResultOutput)
 }
 
 // A collection of arguments for invoking getPhoneProvider.

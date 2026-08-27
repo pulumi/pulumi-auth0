@@ -45,12 +45,8 @@ type LookupUserAttributeProfileResult struct {
 }
 
 func LookupUserAttributeProfileOutput(ctx *pulumi.Context, args LookupUserAttributeProfileOutputArgs, opts ...pulumi.InvokeOption) LookupUserAttributeProfileResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupUserAttributeProfileResultOutput, error) {
-			args := v.(LookupUserAttributeProfileArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("auth0:index/getUserAttributeProfile:getUserAttributeProfile", args, LookupUserAttributeProfileResultOutput{}, options).(LookupUserAttributeProfileResultOutput), nil
-		}).(LookupUserAttributeProfileResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getUserAttributeProfile:getUserAttributeProfile", args, LookupUserAttributeProfileResultOutput{}, options).(LookupUserAttributeProfileResultOutput)
 }
 
 // A collection of arguments for invoking getUserAttributeProfile.

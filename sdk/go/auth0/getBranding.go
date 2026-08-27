@@ -63,10 +63,8 @@ type LookupBrandingResult struct {
 }
 
 func LookupBrandingOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupBrandingResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (LookupBrandingResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("auth0:index/getBranding:getBranding", nil, LookupBrandingResultOutput{}, options).(LookupBrandingResultOutput), nil
-	}).(LookupBrandingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getBranding:getBranding", nil, LookupBrandingResultOutput{}, options).(LookupBrandingResultOutput)
 }
 
 // A collection of values returned by getBranding.

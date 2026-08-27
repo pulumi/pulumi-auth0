@@ -66,12 +66,8 @@ type LookupConnectionKeysResult struct {
 }
 
 func LookupConnectionKeysOutput(ctx *pulumi.Context, args LookupConnectionKeysOutputArgs, opts ...pulumi.InvokeOption) LookupConnectionKeysResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConnectionKeysResultOutput, error) {
-			args := v.(LookupConnectionKeysArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("auth0:index/getConnectionKeys:getConnectionKeys", args, LookupConnectionKeysResultOutput{}, options).(LookupConnectionKeysResultOutput), nil
-		}).(LookupConnectionKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getConnectionKeys:getConnectionKeys", args, LookupConnectionKeysResultOutput{}, options).(LookupConnectionKeysResultOutput)
 }
 
 // A collection of arguments for invoking getConnectionKeys.

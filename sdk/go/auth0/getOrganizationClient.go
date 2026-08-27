@@ -82,12 +82,8 @@ type LookupOrganizationClientResult struct {
 }
 
 func LookupOrganizationClientOutput(ctx *pulumi.Context, args LookupOrganizationClientOutputArgs, opts ...pulumi.InvokeOption) LookupOrganizationClientResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOrganizationClientResultOutput, error) {
-			args := v.(LookupOrganizationClientArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("auth0:index/getOrganizationClient:getOrganizationClient", args, LookupOrganizationClientResultOutput{}, options).(LookupOrganizationClientResultOutput), nil
-		}).(LookupOrganizationClientResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getOrganizationClient:getOrganizationClient", args, LookupOrganizationClientResultOutput{}, options).(LookupOrganizationClientResultOutput)
 }
 
 // A collection of arguments for invoking getOrganizationClient.

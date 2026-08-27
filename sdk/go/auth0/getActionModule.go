@@ -81,12 +81,8 @@ type LookupActionModuleResult struct {
 }
 
 func LookupActionModuleOutput(ctx *pulumi.Context, args LookupActionModuleOutputArgs, opts ...pulumi.InvokeOption) LookupActionModuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupActionModuleResultOutput, error) {
-			args := v.(LookupActionModuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("auth0:index/getActionModule:getActionModule", args, LookupActionModuleResultOutput{}, options).(LookupActionModuleResultOutput), nil
-		}).(LookupActionModuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getActionModule:getActionModule", args, LookupActionModuleResultOutput{}, options).(LookupActionModuleResultOutput)
 }
 
 // A collection of arguments for invoking getActionModule.

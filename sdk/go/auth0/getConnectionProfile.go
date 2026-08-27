@@ -77,12 +77,8 @@ type LookupConnectionProfileResult struct {
 }
 
 func LookupConnectionProfileOutput(ctx *pulumi.Context, args LookupConnectionProfileOutputArgs, opts ...pulumi.InvokeOption) LookupConnectionProfileResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConnectionProfileResultOutput, error) {
-			args := v.(LookupConnectionProfileArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("auth0:index/getConnectionProfile:getConnectionProfile", args, LookupConnectionProfileResultOutput{}, options).(LookupConnectionProfileResultOutput), nil
-		}).(LookupConnectionProfileResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getConnectionProfile:getConnectionProfile", args, LookupConnectionProfileResultOutput{}, options).(LookupConnectionProfileResultOutput)
 }
 
 // A collection of arguments for invoking getConnectionProfile.

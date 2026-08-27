@@ -76,12 +76,8 @@ type LookupFlowVaultConnectionResult struct {
 }
 
 func LookupFlowVaultConnectionOutput(ctx *pulumi.Context, args LookupFlowVaultConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupFlowVaultConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFlowVaultConnectionResultOutput, error) {
-			args := v.(LookupFlowVaultConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("auth0:index/getFlowVaultConnection:getFlowVaultConnection", args, LookupFlowVaultConnectionResultOutput{}, options).(LookupFlowVaultConnectionResultOutput), nil
-		}).(LookupFlowVaultConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getFlowVaultConnection:getFlowVaultConnection", args, LookupFlowVaultConnectionResultOutput{}, options).(LookupFlowVaultConnectionResultOutput)
 }
 
 // A collection of arguments for invoking getFlowVaultConnection.

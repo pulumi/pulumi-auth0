@@ -20,6 +20,76 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Example:
+//			resourceServer, err := auth0.NewResourceServer(ctx, "resource_server", &auth0.ResourceServerArgs{
+//				Name:       pulumi.String("test"),
+//				Identifier: pulumi.String("test.example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			resourceServerScopes, err := auth0.NewResourceServerScopes(ctx, "resource_server_scopes", &auth0.ResourceServerScopesArgs{
+//				ResourceServerIdentifier: resourceServer.Identifier,
+//				Scopes: auth0.ResourceServerScopesScopeArray{
+//					&auth0.ResourceServerScopesScopeArgs{
+//						Name: pulumi.String("store:create"),
+//					},
+//					&auth0.ResourceServerScopesScopeArgs{
+//						Name: pulumi.String("store:read"),
+//					},
+//					&auth0.ResourceServerScopesScopeArgs{
+//						Name: pulumi.String("store:update"),
+//					},
+//					&auth0.ResourceServerScopesScopeArgs{
+//						Name: pulumi.String("store:delete"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myRole, err := auth0.NewRole(ctx, "my_role", &auth0.RoleArgs{
+//				Name: pulumi.String("My Role"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			var forResult0 []map[string]interface{}
+//			for _, entry := range scopes {
+//				forResult0 = append(forResult0, map[string]interface{}{
+//					"name":                     entry.Name,
+//					"resourceServerIdentifier": identifier,
+//				})
+//			}
+//			_, err = auth0.NewRolePermissions(ctx, "my_role_perms", &auth0.RolePermissionsArgs{
+//				Permissions: pulumi.All(resourceServerScopes.Scopes, resourceServer.Identifier).ApplyT(func(_args []interface{}) ([]map[string]interface{}, error) {
+//					scopes := _args[0].([]auth0.ResourceServerScopesScope)
+//					identifier := _args[1].(string)
+//					return forResult0, nil
+//				}).(pulumi.ArrayOutput),
+//				RoleId: myRole.ID().ToIDOutput().ToStringOutput(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // # This resource can be imported by specifying the role ID

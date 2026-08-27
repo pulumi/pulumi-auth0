@@ -71,12 +71,8 @@ type GetOrganizationRoleMembersResult struct {
 }
 
 func GetOrganizationRoleMembersOutput(ctx *pulumi.Context, args GetOrganizationRoleMembersOutputArgs, opts ...pulumi.InvokeOption) GetOrganizationRoleMembersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetOrganizationRoleMembersResultOutput, error) {
-			args := v.(GetOrganizationRoleMembersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("auth0:index/getOrganizationRoleMembers:getOrganizationRoleMembers", args, GetOrganizationRoleMembersResultOutput{}, options).(GetOrganizationRoleMembersResultOutput), nil
-		}).(GetOrganizationRoleMembersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getOrganizationRoleMembers:getOrganizationRoleMembers", args, GetOrganizationRoleMembersResultOutput{}, options).(GetOrganizationRoleMembersResultOutput)
 }
 
 // A collection of arguments for invoking getOrganizationRoleMembers.

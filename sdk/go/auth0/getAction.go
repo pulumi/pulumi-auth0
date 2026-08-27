@@ -59,12 +59,8 @@ type LookupActionResult struct {
 }
 
 func LookupActionOutput(ctx *pulumi.Context, args LookupActionOutputArgs, opts ...pulumi.InvokeOption) LookupActionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupActionResultOutput, error) {
-			args := v.(LookupActionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("auth0:index/getAction:getAction", args, LookupActionResultOutput{}, options).(LookupActionResultOutput), nil
-		}).(LookupActionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getAction:getAction", args, LookupActionResultOutput{}, options).(LookupActionResultOutput)
 }
 
 // A collection of arguments for invoking getAction.

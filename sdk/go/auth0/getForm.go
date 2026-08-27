@@ -78,12 +78,8 @@ type LookupFormResult struct {
 }
 
 func LookupFormOutput(ctx *pulumi.Context, args LookupFormOutputArgs, opts ...pulumi.InvokeOption) LookupFormResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFormResultOutput, error) {
-			args := v.(LookupFormArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("auth0:index/getForm:getForm", args, LookupFormResultOutput{}, options).(LookupFormResultOutput), nil
-		}).(LookupFormResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getForm:getForm", args, LookupFormResultOutput{}, options).(LookupFormResultOutput)
 }
 
 // A collection of arguments for invoking getForm.

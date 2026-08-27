@@ -83,12 +83,8 @@ type LookupConnectionDirectoryResult struct {
 }
 
 func LookupConnectionDirectoryOutput(ctx *pulumi.Context, args LookupConnectionDirectoryOutputArgs, opts ...pulumi.InvokeOption) LookupConnectionDirectoryResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConnectionDirectoryResultOutput, error) {
-			args := v.(LookupConnectionDirectoryArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("auth0:index/getConnectionDirectory:getConnectionDirectory", args, LookupConnectionDirectoryResultOutput{}, options).(LookupConnectionDirectoryResultOutput), nil
-		}).(LookupConnectionDirectoryResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getConnectionDirectory:getConnectionDirectory", args, LookupConnectionDirectoryResultOutput{}, options).(LookupConnectionDirectoryResultOutput)
 }
 
 // A collection of arguments for invoking getConnectionDirectory.

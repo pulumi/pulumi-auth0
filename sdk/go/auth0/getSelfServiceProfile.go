@@ -78,12 +78,8 @@ type LookupSelfServiceProfileResult struct {
 }
 
 func LookupSelfServiceProfileOutput(ctx *pulumi.Context, args LookupSelfServiceProfileOutputArgs, opts ...pulumi.InvokeOption) LookupSelfServiceProfileResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSelfServiceProfileResultOutput, error) {
-			args := v.(LookupSelfServiceProfileArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("auth0:index/getSelfServiceProfile:getSelfServiceProfile", args, LookupSelfServiceProfileResultOutput{}, options).(LookupSelfServiceProfileResultOutput), nil
-		}).(LookupSelfServiceProfileResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getSelfServiceProfile:getSelfServiceProfile", args, LookupSelfServiceProfileResultOutput{}, options).(LookupSelfServiceProfileResultOutput)
 }
 
 // A collection of arguments for invoking getSelfServiceProfile.

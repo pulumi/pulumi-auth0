@@ -125,12 +125,8 @@ type GetClientGrantsResult struct {
 }
 
 func GetClientGrantsOutput(ctx *pulumi.Context, args GetClientGrantsOutputArgs, opts ...pulumi.InvokeOption) GetClientGrantsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetClientGrantsResultOutput, error) {
-			args := v.(GetClientGrantsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("auth0:index/getClientGrants:getClientGrants", args, GetClientGrantsResultOutput{}, options).(GetClientGrantsResultOutput), nil
-		}).(GetClientGrantsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getClientGrants:getClientGrants", args, GetClientGrantsResultOutput{}, options).(GetClientGrantsResultOutput)
 }
 
 // A collection of arguments for invoking getClientGrants.

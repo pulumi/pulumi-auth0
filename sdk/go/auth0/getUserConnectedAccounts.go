@@ -39,12 +39,8 @@ type GetUserConnectedAccountsResult struct {
 }
 
 func GetUserConnectedAccountsOutput(ctx *pulumi.Context, args GetUserConnectedAccountsOutputArgs, opts ...pulumi.InvokeOption) GetUserConnectedAccountsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetUserConnectedAccountsResultOutput, error) {
-			args := v.(GetUserConnectedAccountsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("auth0:index/getUserConnectedAccounts:getUserConnectedAccounts", args, GetUserConnectedAccountsResultOutput{}, options).(GetUserConnectedAccountsResultOutput), nil
-		}).(GetUserConnectedAccountsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getUserConnectedAccounts:getUserConnectedAccounts", args, GetUserConnectedAccountsResultOutput{}, options).(GetUserConnectedAccountsResultOutput)
 }
 
 // A collection of arguments for invoking getUserConnectedAccounts.

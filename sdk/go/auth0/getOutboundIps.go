@@ -35,10 +35,8 @@ type GetOutboundIpsResult struct {
 }
 
 func GetOutboundIpsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetOutboundIpsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetOutboundIpsResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("auth0:index/getOutboundIps:getOutboundIps", nil, GetOutboundIpsResultOutput{}, options).(GetOutboundIpsResultOutput), nil
-	}).(GetOutboundIpsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getOutboundIps:getOutboundIps", nil, GetOutboundIpsResultOutput{}, options).(GetOutboundIpsResultOutput)
 }
 
 // A collection of values returned by getOutboundIps.
