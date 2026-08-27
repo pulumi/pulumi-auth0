@@ -74,12 +74,8 @@ type LookupTokenExchangeProfileResult struct {
 }
 
 func LookupTokenExchangeProfileOutput(ctx *pulumi.Context, args LookupTokenExchangeProfileOutputArgs, opts ...pulumi.InvokeOption) LookupTokenExchangeProfileResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTokenExchangeProfileResultOutput, error) {
-			args := v.(LookupTokenExchangeProfileArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("auth0:index/getTokenExchangeProfile:getTokenExchangeProfile", args, LookupTokenExchangeProfileResultOutput{}, options).(LookupTokenExchangeProfileResultOutput), nil
-		}).(LookupTokenExchangeProfileResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getTokenExchangeProfile:getTokenExchangeProfile", args, LookupTokenExchangeProfileResultOutput{}, options).(LookupTokenExchangeProfileResultOutput)
 }
 
 // A collection of arguments for invoking getTokenExchangeProfile.

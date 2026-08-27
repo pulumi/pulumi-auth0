@@ -63,10 +63,8 @@ type LookupAttackProtectionResult struct {
 }
 
 func LookupAttackProtectionOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupAttackProtectionResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (LookupAttackProtectionResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("auth0:index/getAttackProtection:getAttackProtection", nil, LookupAttackProtectionResultOutput{}, options).(LookupAttackProtectionResultOutput), nil
-	}).(LookupAttackProtectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getAttackProtection:getAttackProtection", nil, LookupAttackProtectionResultOutput{}, options).(LookupAttackProtectionResultOutput)
 }
 
 // A collection of values returned by getAttackProtection.

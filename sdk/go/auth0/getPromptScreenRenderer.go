@@ -55,12 +55,8 @@ type LookupPromptScreenRendererResult struct {
 }
 
 func LookupPromptScreenRendererOutput(ctx *pulumi.Context, args LookupPromptScreenRendererOutputArgs, opts ...pulumi.InvokeOption) LookupPromptScreenRendererResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPromptScreenRendererResultOutput, error) {
-			args := v.(LookupPromptScreenRendererArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("auth0:index/getPromptScreenRenderer:getPromptScreenRenderer", args, LookupPromptScreenRendererResultOutput{}, options).(LookupPromptScreenRendererResultOutput), nil
-		}).(LookupPromptScreenRendererResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getPromptScreenRenderer:getPromptScreenRenderer", args, LookupPromptScreenRendererResultOutput{}, options).(LookupPromptScreenRendererResultOutput)
 }
 
 // A collection of arguments for invoking getPromptScreenRenderer.

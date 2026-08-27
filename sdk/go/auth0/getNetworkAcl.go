@@ -70,12 +70,8 @@ type LookupNetworkAclResult struct {
 }
 
 func LookupNetworkAclOutput(ctx *pulumi.Context, args LookupNetworkAclOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkAclResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNetworkAclResultOutput, error) {
-			args := v.(LookupNetworkAclArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("auth0:index/getNetworkAcl:getNetworkAcl", args, LookupNetworkAclResultOutput{}, options).(LookupNetworkAclResultOutput), nil
-		}).(LookupNetworkAclResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getNetworkAcl:getNetworkAcl", args, LookupNetworkAclResultOutput{}, options).(LookupNetworkAclResultOutput)
 }
 
 // A collection of arguments for invoking getNetworkAcl.

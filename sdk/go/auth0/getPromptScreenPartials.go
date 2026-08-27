@@ -67,12 +67,8 @@ type LookupPromptScreenPartialsResult struct {
 }
 
 func LookupPromptScreenPartialsOutput(ctx *pulumi.Context, args LookupPromptScreenPartialsOutputArgs, opts ...pulumi.InvokeOption) LookupPromptScreenPartialsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPromptScreenPartialsResultOutput, error) {
-			args := v.(LookupPromptScreenPartialsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("auth0:index/getPromptScreenPartials:getPromptScreenPartials", args, LookupPromptScreenPartialsResultOutput{}, options).(LookupPromptScreenPartialsResultOutput), nil
-		}).(LookupPromptScreenPartialsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getPromptScreenPartials:getPromptScreenPartials", args, LookupPromptScreenPartialsResultOutput{}, options).(LookupPromptScreenPartialsResultOutput)
 }
 
 // A collection of arguments for invoking getPromptScreenPartials.

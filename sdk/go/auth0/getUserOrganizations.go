@@ -65,12 +65,8 @@ type GetUserOrganizationsResult struct {
 }
 
 func GetUserOrganizationsOutput(ctx *pulumi.Context, args GetUserOrganizationsOutputArgs, opts ...pulumi.InvokeOption) GetUserOrganizationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetUserOrganizationsResultOutput, error) {
-			args := v.(GetUserOrganizationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("auth0:index/getUserOrganizations:getUserOrganizations", args, GetUserOrganizationsResultOutput{}, options).(GetUserOrganizationsResultOutput), nil
-		}).(GetUserOrganizationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getUserOrganizations:getUserOrganizations", args, GetUserOrganizationsResultOutput{}, options).(GetUserOrganizationsResultOutput)
 }
 
 // A collection of arguments for invoking getUserOrganizations.

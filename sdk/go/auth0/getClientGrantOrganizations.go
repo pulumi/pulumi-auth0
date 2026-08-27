@@ -65,12 +65,8 @@ type GetClientGrantOrganizationsResult struct {
 }
 
 func GetClientGrantOrganizationsOutput(ctx *pulumi.Context, args GetClientGrantOrganizationsOutputArgs, opts ...pulumi.InvokeOption) GetClientGrantOrganizationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetClientGrantOrganizationsResultOutput, error) {
-			args := v.(GetClientGrantOrganizationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("auth0:index/getClientGrantOrganizations:getClientGrantOrganizations", args, GetClientGrantOrganizationsResultOutput{}, options).(GetClientGrantOrganizationsResultOutput), nil
-		}).(GetClientGrantOrganizationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getClientGrantOrganizations:getClientGrantOrganizations", args, GetClientGrantOrganizationsResultOutput{}, options).(GetClientGrantOrganizationsResultOutput)
 }
 
 // A collection of arguments for invoking getClientGrantOrganizations.

@@ -65,12 +65,8 @@ type GetConnectionDirectoryDefaultMappingResult struct {
 }
 
 func GetConnectionDirectoryDefaultMappingOutput(ctx *pulumi.Context, args GetConnectionDirectoryDefaultMappingOutputArgs, opts ...pulumi.InvokeOption) GetConnectionDirectoryDefaultMappingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetConnectionDirectoryDefaultMappingResultOutput, error) {
-			args := v.(GetConnectionDirectoryDefaultMappingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("auth0:index/getConnectionDirectoryDefaultMapping:getConnectionDirectoryDefaultMapping", args, GetConnectionDirectoryDefaultMappingResultOutput{}, options).(GetConnectionDirectoryDefaultMappingResultOutput), nil
-		}).(GetConnectionDirectoryDefaultMappingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getConnectionDirectoryDefaultMapping:getConnectionDirectoryDefaultMapping", args, GetConnectionDirectoryDefaultMappingResultOutput{}, options).(GetConnectionDirectoryDefaultMappingResultOutput)
 }
 
 // A collection of arguments for invoking getConnectionDirectoryDefaultMapping.

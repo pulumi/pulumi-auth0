@@ -62,10 +62,8 @@ type LookupBrandingThemeResult struct {
 }
 
 func LookupBrandingThemeOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupBrandingThemeResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (LookupBrandingThemeResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("auth0:index/getBrandingTheme:getBrandingTheme", nil, LookupBrandingThemeResultOutput{}, options).(LookupBrandingThemeResultOutput), nil
-	}).(LookupBrandingThemeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getBrandingTheme:getBrandingTheme", nil, LookupBrandingThemeResultOutput{}, options).(LookupBrandingThemeResultOutput)
 }
 
 // A collection of values returned by getBrandingTheme.

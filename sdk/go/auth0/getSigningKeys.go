@@ -33,10 +33,8 @@ type GetSigningKeysResult struct {
 }
 
 func GetSigningKeysOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetSigningKeysResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetSigningKeysResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("auth0:index/getSigningKeys:getSigningKeys", nil, GetSigningKeysResultOutput{}, options).(GetSigningKeysResultOutput), nil
-	}).(GetSigningKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getSigningKeys:getSigningKeys", nil, GetSigningKeysResultOutput{}, options).(GetSigningKeysResultOutput)
 }
 
 // A collection of values returned by getSigningKeys.

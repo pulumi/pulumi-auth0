@@ -121,10 +121,8 @@ type LookupTenantResult struct {
 }
 
 func LookupTenantOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupTenantResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (LookupTenantResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("auth0:index/getTenant:getTenant", nil, LookupTenantResultOutput{}, options).(LookupTenantResultOutput), nil
-	}).(LookupTenantResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getTenant:getTenant", nil, LookupTenantResultOutput{}, options).(LookupTenantResultOutput)
 }
 
 // A collection of values returned by getTenant.

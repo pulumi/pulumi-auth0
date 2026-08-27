@@ -71,12 +71,8 @@ type LookupConnectionDirectorySynchronizedGroupsResult struct {
 }
 
 func LookupConnectionDirectorySynchronizedGroupsOutput(ctx *pulumi.Context, args LookupConnectionDirectorySynchronizedGroupsOutputArgs, opts ...pulumi.InvokeOption) LookupConnectionDirectorySynchronizedGroupsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConnectionDirectorySynchronizedGroupsResultOutput, error) {
-			args := v.(LookupConnectionDirectorySynchronizedGroupsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("auth0:index/getConnectionDirectorySynchronizedGroups:getConnectionDirectorySynchronizedGroups", args, LookupConnectionDirectorySynchronizedGroupsResultOutput{}, options).(LookupConnectionDirectorySynchronizedGroupsResultOutput), nil
-		}).(LookupConnectionDirectorySynchronizedGroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getConnectionDirectorySynchronizedGroups:getConnectionDirectorySynchronizedGroups", args, LookupConnectionDirectorySynchronizedGroupsResultOutput{}, options).(LookupConnectionDirectorySynchronizedGroupsResultOutput)
 }
 
 // A collection of arguments for invoking getConnectionDirectorySynchronizedGroups.

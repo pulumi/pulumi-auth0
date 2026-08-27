@@ -79,12 +79,8 @@ type LookupBrandingPhoneNotificationTemplateResult struct {
 }
 
 func LookupBrandingPhoneNotificationTemplateOutput(ctx *pulumi.Context, args LookupBrandingPhoneNotificationTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupBrandingPhoneNotificationTemplateResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupBrandingPhoneNotificationTemplateResultOutput, error) {
-			args := v.(LookupBrandingPhoneNotificationTemplateArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("auth0:index/getBrandingPhoneNotificationTemplate:getBrandingPhoneNotificationTemplate", args, LookupBrandingPhoneNotificationTemplateResultOutput{}, options).(LookupBrandingPhoneNotificationTemplateResultOutput), nil
-		}).(LookupBrandingPhoneNotificationTemplateResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getBrandingPhoneNotificationTemplate:getBrandingPhoneNotificationTemplate", args, LookupBrandingPhoneNotificationTemplateResultOutput{}, options).(LookupBrandingPhoneNotificationTemplateResultOutput)
 }
 
 // A collection of arguments for invoking getBrandingPhoneNotificationTemplate.

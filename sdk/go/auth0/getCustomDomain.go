@@ -96,12 +96,8 @@ type LookupCustomDomainResult struct {
 }
 
 func LookupCustomDomainOutput(ctx *pulumi.Context, args LookupCustomDomainOutputArgs, opts ...pulumi.InvokeOption) LookupCustomDomainResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCustomDomainResultOutput, error) {
-			args := v.(LookupCustomDomainArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("auth0:index/getCustomDomain:getCustomDomain", args, LookupCustomDomainResultOutput{}, options).(LookupCustomDomainResultOutput), nil
-		}).(LookupCustomDomainResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getCustomDomain:getCustomDomain", args, LookupCustomDomainResultOutput{}, options).(LookupCustomDomainResultOutput)
 }
 
 // A collection of arguments for invoking getCustomDomain.

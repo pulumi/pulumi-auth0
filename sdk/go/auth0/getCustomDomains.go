@@ -89,12 +89,8 @@ type GetCustomDomainsResult struct {
 }
 
 func GetCustomDomainsOutput(ctx *pulumi.Context, args GetCustomDomainsOutputArgs, opts ...pulumi.InvokeOption) GetCustomDomainsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCustomDomainsResultOutput, error) {
-			args := v.(GetCustomDomainsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("auth0:index/getCustomDomains:getCustomDomains", args, GetCustomDomainsResultOutput{}, options).(GetCustomDomainsResultOutput), nil
-		}).(GetCustomDomainsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("auth0:index/getCustomDomains:getCustomDomains", args, GetCustomDomainsResultOutput{}, options).(GetCustomDomainsResultOutput)
 }
 
 // A collection of arguments for invoking getCustomDomains.
