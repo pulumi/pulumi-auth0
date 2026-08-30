@@ -7,6 +7,7 @@ import com.pulumi.auth0.ConnectionProfileArgs;
 import com.pulumi.auth0.Utilities;
 import com.pulumi.auth0.inputs.ConnectionProfileState;
 import com.pulumi.auth0.outputs.ConnectionProfileConnectionConfig;
+import com.pulumi.auth0.outputs.ConnectionProfileCrossAppAccessResourceApp;
 import com.pulumi.auth0.outputs.ConnectionProfileOrganization;
 import com.pulumi.auth0.outputs.ConnectionProfileStrategyOverrides;
 import com.pulumi.core.Output;
@@ -33,6 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.auth0.ConnectionProfile;
  * import com.pulumi.auth0.ConnectionProfileArgs;
  * import com.pulumi.auth0.inputs.ConnectionProfileOrganizationArgs;
+ * import com.pulumi.auth0.inputs.ConnectionProfileCrossAppAccessResourceAppArgs;
+ * import com.pulumi.auth0.inputs.ConnectionProfileCrossAppAccessResourceAppStatusArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -56,6 +59,14 @@ import javax.annotation.Nullable;
  *             .enabledFeatures(            
  *                 "scim",
  *                 "universal_logout")
+ *             .crossAppAccessResourceApp(ConnectionProfileCrossAppAccessResourceAppArgs.builder()
+ *                 .status(ConnectionProfileCrossAppAccessResourceAppStatusArgs.builder()
+ *                     .defaultValue("enabled")
+ *                     .allowedValues(                    
+ *                         "enabled",
+ *                         "disabled")
+ *                     .build())
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -103,6 +114,20 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> connectionNamePrefixTemplate() {
         return Codegen.optional(this.connectionNamePrefixTemplate);
+    }
+    /**
+     * Configures the connection profile as a Cross-App Access (XAA) resource application, controlling whether organization admins may enable XAA on their identity providers. Requires the `myOrgsCrossAppAccessResourceApp` tenant flag to be enabled (EA only). Note: this is distinct from, and unrelated to, `crossAppAccessResourceApp` on `auth0.Connection`, which uses a flat `status` string rather than this nested `status` block.
+     * 
+     */
+    @Export(name="crossAppAccessResourceApp", refs={ConnectionProfileCrossAppAccessResourceApp.class}, tree="[0]")
+    private Output</* @Nullable */ ConnectionProfileCrossAppAccessResourceApp> crossAppAccessResourceApp;
+
+    /**
+     * @return Configures the connection profile as a Cross-App Access (XAA) resource application, controlling whether organization admins may enable XAA on their identity providers. Requires the `myOrgsCrossAppAccessResourceApp` tenant flag to be enabled (EA only). Note: this is distinct from, and unrelated to, `crossAppAccessResourceApp` on `auth0.Connection`, which uses a flat `status` string rather than this nested `status` block.
+     * 
+     */
+    public Output<Optional<ConnectionProfileCrossAppAccessResourceApp>> crossAppAccessResourceApp() {
+        return Codegen.optional(this.crossAppAccessResourceApp);
     }
     /**
      * List of enabled features for the connection profile.

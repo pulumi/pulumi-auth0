@@ -30,6 +30,7 @@ export function getConnection(args?: GetConnectionArgs, opts?: pulumi.InvokeOpti
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("auth0:index/getConnection:getConnection", {
         "connectionId": args.connectionId,
+        "hideClientSecret": args.hideClientSecret,
         "name": args.name,
         "skipEnabledClients": args.skipEnabledClients,
     }, opts);
@@ -43,6 +44,10 @@ export interface GetConnectionArgs {
      * The ID of the connection. If not provided, `name` must be set.
      */
     connectionId?: string;
+    /**
+     * Set this to avoid persisting the sensitive `options.client_secret` value in state; it will be stored as an empty string.
+     */
+    hideClientSecret?: boolean;
     /**
      * The name of the connection. If not provided, `connectionId` must be set.
      */
@@ -85,6 +90,10 @@ export interface GetConnectionResult {
      * IDs of the clients for which the connection is enabled. Skips populating if `skipEnabledClients` is `true`.
      */
     readonly enabledClients: string[];
+    /**
+     * Set this to avoid persisting the sensitive `options.client_secret` value in state; it will be stored as an empty string.
+     */
+    readonly hideClientSecret?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -146,6 +155,7 @@ export function getConnectionOutput(args?: GetConnectionOutputArgs, opts?: pulum
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("auth0:index/getConnection:getConnection", {
         "connectionId": args.connectionId,
+        "hideClientSecret": args.hideClientSecret,
         "name": args.name,
         "skipEnabledClients": args.skipEnabledClients,
     }, opts);
@@ -159,6 +169,10 @@ export interface GetConnectionOutputArgs {
      * The ID of the connection. If not provided, `name` must be set.
      */
     connectionId?: pulumi.Input<string | undefined>;
+    /**
+     * Set this to avoid persisting the sensitive `options.client_secret` value in state; it will be stored as an empty string.
+     */
+    hideClientSecret?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the connection. If not provided, `connectionId` must be set.
      */

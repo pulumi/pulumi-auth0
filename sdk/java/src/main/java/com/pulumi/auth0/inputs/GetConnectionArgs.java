@@ -32,6 +32,21 @@ public final class GetConnectionArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Set this to avoid persisting the sensitive `options.client_secret` value in state; it will be stored as an empty string.
+     * 
+     */
+    @Import(name="hideClientSecret")
+    private @Nullable Output<Boolean> hideClientSecret;
+
+    /**
+     * @return Set this to avoid persisting the sensitive `options.client_secret` value in state; it will be stored as an empty string.
+     * 
+     */
+    public Optional<Output<Boolean>> hideClientSecret() {
+        return Optional.ofNullable(this.hideClientSecret);
+    }
+
+    /**
      * The name of the connection. If not provided, `connectionId` must be set.
      * 
      */
@@ -65,6 +80,7 @@ public final class GetConnectionArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetConnectionArgs(GetConnectionArgs $) {
         this.connectionId = $.connectionId;
+        this.hideClientSecret = $.hideClientSecret;
         this.name = $.name;
         this.skipEnabledClients = $.skipEnabledClients;
     }
@@ -106,6 +122,27 @@ public final class GetConnectionArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder connectionId(String connectionId) {
             return connectionId(Output.of(connectionId));
+        }
+
+        /**
+         * @param hideClientSecret Set this to avoid persisting the sensitive `options.client_secret` value in state; it will be stored as an empty string.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hideClientSecret(@Nullable Output<Boolean> hideClientSecret) {
+            $.hideClientSecret = hideClientSecret;
+            return this;
+        }
+
+        /**
+         * @param hideClientSecret Set this to avoid persisting the sensitive `options.client_secret` value in state; it will be stored as an empty string.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hideClientSecret(Boolean hideClientSecret) {
+            return hideClientSecret(Output.of(hideClientSecret));
         }
 
         /**

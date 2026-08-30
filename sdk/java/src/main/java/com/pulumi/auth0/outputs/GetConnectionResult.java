@@ -56,6 +56,11 @@ public final class GetConnectionResult {
      */
     private List<String> enabledClients;
     /**
+     * @return Set this to avoid persisting the sensitive `options.client_secret` value in state; it will be stored as an empty string.
+     * 
+     */
+    private @Nullable Boolean hideClientSecret;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -152,6 +157,13 @@ public final class GetConnectionResult {
         return this.enabledClients;
     }
     /**
+     * @return Set this to avoid persisting the sensitive `options.client_secret` value in state; it will be stored as an empty string.
+     * 
+     */
+    public Optional<Boolean> hideClientSecret() {
+        return Optional.ofNullable(this.hideClientSecret);
+    }
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -231,6 +243,7 @@ public final class GetConnectionResult {
         private List<GetConnectionCrossAppAccessResourceApp> crossAppAccessResourceApps;
         private String displayName;
         private List<String> enabledClients;
+        private @Nullable Boolean hideClientSecret;
         private String id;
         private Boolean isDomainConnection;
         private Map<String,String> metadata;
@@ -250,6 +263,7 @@ public final class GetConnectionResult {
     	      this.crossAppAccessResourceApps = defaults.crossAppAccessResourceApps;
     	      this.displayName = defaults.displayName;
     	      this.enabledClients = defaults.enabledClients;
+    	      this.hideClientSecret = defaults.hideClientSecret;
     	      this.id = defaults.id;
     	      this.isDomainConnection = defaults.isDomainConnection;
     	      this.metadata = defaults.metadata;
@@ -329,6 +343,12 @@ public final class GetConnectionResult {
         }
         public Builder enabledClients(String... enabledClients) {
             return enabledClients(List.of(enabledClients));
+        }
+        @CustomType.Setter
+        public Builder hideClientSecret(@Nullable Boolean hideClientSecret) {
+
+            this.hideClientSecret = hideClientSecret;
+            return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -413,6 +433,7 @@ public final class GetConnectionResult {
             _resultValue.crossAppAccessResourceApps = crossAppAccessResourceApps;
             _resultValue.displayName = displayName;
             _resultValue.enabledClients = enabledClients;
+            _resultValue.hideClientSecret = hideClientSecret;
             _resultValue.id = id;
             _resultValue.isDomainConnection = isDomainConnection;
             _resultValue.metadata = metadata;

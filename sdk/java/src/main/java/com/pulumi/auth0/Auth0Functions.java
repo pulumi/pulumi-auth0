@@ -4500,6 +4500,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.ConnectionProfile;
      * import com.pulumi.auth0.ConnectionProfileArgs;
      * import com.pulumi.auth0.inputs.ConnectionProfileOrganizationArgs;
+     * import com.pulumi.auth0.inputs.ConnectionProfileCrossAppAccessResourceAppArgs;
+     * import com.pulumi.auth0.inputs.ConnectionProfileCrossAppAccessResourceAppStatusArgs;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionProfileArgs;
      * import java.util.ArrayList;
@@ -4525,6 +4527,14 @@ public final class Auth0Functions {
      *             .enabledFeatures(            
      *                 "scim",
      *                 "universal_logout")
+     *             .crossAppAccessResourceApp(ConnectionProfileCrossAppAccessResourceAppArgs.builder()
+     *                 .status(ConnectionProfileCrossAppAccessResourceAppStatusArgs.builder()
+     *                     .defaultValue("enabled")
+     *                     .allowedValues(                    
+     *                         "enabled",
+     *                         "disabled")
+     *                     .build())
+     *                 .build())
      *             .build());
      * 
      *         final var myProfileDs = Auth0Functions.getConnectionProfile(GetConnectionProfileArgs.builder()
@@ -4555,6 +4565,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.ConnectionProfile;
      * import com.pulumi.auth0.ConnectionProfileArgs;
      * import com.pulumi.auth0.inputs.ConnectionProfileOrganizationArgs;
+     * import com.pulumi.auth0.inputs.ConnectionProfileCrossAppAccessResourceAppArgs;
+     * import com.pulumi.auth0.inputs.ConnectionProfileCrossAppAccessResourceAppStatusArgs;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionProfileArgs;
      * import java.util.ArrayList;
@@ -4580,6 +4592,14 @@ public final class Auth0Functions {
      *             .enabledFeatures(            
      *                 "scim",
      *                 "universal_logout")
+     *             .crossAppAccessResourceApp(ConnectionProfileCrossAppAccessResourceAppArgs.builder()
+     *                 .status(ConnectionProfileCrossAppAccessResourceAppStatusArgs.builder()
+     *                     .defaultValue("enabled")
+     *                     .allowedValues(                    
+     *                         "enabled",
+     *                         "disabled")
+     *                     .build())
+     *                 .build())
      *             .build());
      * 
      *         final var myProfileDs = Auth0Functions.getConnectionProfile(GetConnectionProfileArgs.builder()
@@ -4610,6 +4630,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.ConnectionProfile;
      * import com.pulumi.auth0.ConnectionProfileArgs;
      * import com.pulumi.auth0.inputs.ConnectionProfileOrganizationArgs;
+     * import com.pulumi.auth0.inputs.ConnectionProfileCrossAppAccessResourceAppArgs;
+     * import com.pulumi.auth0.inputs.ConnectionProfileCrossAppAccessResourceAppStatusArgs;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionProfileArgs;
      * import java.util.ArrayList;
@@ -4635,6 +4657,14 @@ public final class Auth0Functions {
      *             .enabledFeatures(            
      *                 "scim",
      *                 "universal_logout")
+     *             .crossAppAccessResourceApp(ConnectionProfileCrossAppAccessResourceAppArgs.builder()
+     *                 .status(ConnectionProfileCrossAppAccessResourceAppStatusArgs.builder()
+     *                     .defaultValue("enabled")
+     *                     .allowedValues(                    
+     *                         "enabled",
+     *                         "disabled")
+     *                     .build())
+     *                 .build())
      *             .build());
      * 
      *         final var myProfileDs = Auth0Functions.getConnectionProfile(GetConnectionProfileArgs.builder()
@@ -4665,6 +4695,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.ConnectionProfile;
      * import com.pulumi.auth0.ConnectionProfileArgs;
      * import com.pulumi.auth0.inputs.ConnectionProfileOrganizationArgs;
+     * import com.pulumi.auth0.inputs.ConnectionProfileCrossAppAccessResourceAppArgs;
+     * import com.pulumi.auth0.inputs.ConnectionProfileCrossAppAccessResourceAppStatusArgs;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionProfileArgs;
      * import java.util.ArrayList;
@@ -4690,6 +4722,14 @@ public final class Auth0Functions {
      *             .enabledFeatures(            
      *                 "scim",
      *                 "universal_logout")
+     *             .crossAppAccessResourceApp(ConnectionProfileCrossAppAccessResourceAppArgs.builder()
+     *                 .status(ConnectionProfileCrossAppAccessResourceAppStatusArgs.builder()
+     *                     .defaultValue("enabled")
+     *                     .allowedValues(                    
+     *                         "enabled",
+     *                         "disabled")
+     *                     .build())
+     *                 .build())
      *             .build());
      * 
      *         final var myProfileDs = Auth0Functions.getConnectionProfile(GetConnectionProfileArgs.builder()
@@ -4720,6 +4760,8 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.ConnectionProfile;
      * import com.pulumi.auth0.ConnectionProfileArgs;
      * import com.pulumi.auth0.inputs.ConnectionProfileOrganizationArgs;
+     * import com.pulumi.auth0.inputs.ConnectionProfileCrossAppAccessResourceAppArgs;
+     * import com.pulumi.auth0.inputs.ConnectionProfileCrossAppAccessResourceAppStatusArgs;
      * import com.pulumi.auth0.Auth0Functions;
      * import com.pulumi.auth0.inputs.GetConnectionProfileArgs;
      * import java.util.ArrayList;
@@ -4745,6 +4787,14 @@ public final class Auth0Functions {
      *             .enabledFeatures(            
      *                 "scim",
      *                 "universal_logout")
+     *             .crossAppAccessResourceApp(ConnectionProfileCrossAppAccessResourceAppArgs.builder()
+     *                 .status(ConnectionProfileCrossAppAccessResourceAppStatusArgs.builder()
+     *                     .defaultValue("enabled")
+     *                     .allowedValues(                    
+     *                         "enabled",
+     *                         "disabled")
+     *                     .build())
+     *                 .build())
      *             .build());
      * 
      *         final var myProfileDs = Auth0Functions.getConnectionProfile(GetConnectionProfileArgs.builder()

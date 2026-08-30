@@ -27,7 +27,7 @@ class GetConnectionResult:
     """
     A collection of values returned by getConnection.
     """
-    def __init__(__self__, authentications=None, connected_accounts=None, connection_id=None, cross_app_access_requesting_apps=None, cross_app_access_resource_apps=None, display_name=None, enabled_clients=None, id=None, is_domain_connection=None, metadata=None, name=None, options=None, realms=None, show_as_button=None, skip_enabled_clients=None, strategy=None):
+    def __init__(__self__, authentications=None, connected_accounts=None, connection_id=None, cross_app_access_requesting_apps=None, cross_app_access_resource_apps=None, display_name=None, enabled_clients=None, hide_client_secret=None, id=None, is_domain_connection=None, metadata=None, name=None, options=None, realms=None, show_as_button=None, skip_enabled_clients=None, strategy=None):
         if authentications and not isinstance(authentications, list):
             raise TypeError("Expected argument 'authentications' to be a list")
         pulumi.set(__self__, "authentications", authentications)
@@ -49,6 +49,9 @@ class GetConnectionResult:
         if enabled_clients and not isinstance(enabled_clients, list):
             raise TypeError("Expected argument 'enabled_clients' to be a list")
         pulumi.set(__self__, "enabled_clients", enabled_clients)
+        if hide_client_secret and not isinstance(hide_client_secret, bool):
+            raise TypeError("Expected argument 'hide_client_secret' to be a bool")
+        pulumi.set(__self__, "hide_client_secret", hide_client_secret)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -132,6 +135,14 @@ class GetConnectionResult:
         IDs of the clients for which the connection is enabled. Skips populating if `skip_enabled_clients` is `true`.
         """
         return pulumi.get(self, "enabled_clients")
+
+    @_builtins.property
+    @pulumi.getter(name="hideClientSecret")
+    def hide_client_secret(self) -> Optional[_builtins.bool]:
+        """
+        Set this to avoid persisting the sensitive `options.client_secret` value in state; it will be stored as an empty string.
+        """
+        return pulumi.get(self, "hide_client_secret")
 
     @_builtins.property
     @pulumi.getter
@@ -219,6 +230,7 @@ class AwaitableGetConnectionResult(GetConnectionResult):
             cross_app_access_resource_apps=self.cross_app_access_resource_apps,
             display_name=self.display_name,
             enabled_clients=self.enabled_clients,
+            hide_client_secret=self.hide_client_secret,
             id=self.id,
             is_domain_connection=self.is_domain_connection,
             metadata=self.metadata,
@@ -231,6 +243,7 @@ class AwaitableGetConnectionResult(GetConnectionResult):
 
 
 def get_connection(connection_id: Optional[_builtins.str] = None,
+                   hide_client_secret: Optional[_builtins.bool] = None,
                    name: Optional[_builtins.str] = None,
                    skip_enabled_clients: Optional[_builtins.bool] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConnectionResult:
@@ -251,11 +264,13 @@ def get_connection(connection_id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str connection_id: The ID of the connection. If not provided, `name` must be set.
+    :param _builtins.bool hide_client_secret: Set this to avoid persisting the sensitive `options.client_secret` value in state; it will be stored as an empty string.
     :param _builtins.str name: The name of the connection. If not provided, `connection_id` must be set.
     :param _builtins.bool skip_enabled_clients: Whether to skip enabled clients for this connection. Setting this to `true` will skip additional paginated API calls to /api/v2/connections/{id}/clients. Default: `false`.
     """
     __args__ = dict()
     __args__['connectionId'] = connection_id
+    __args__['hideClientSecret'] = hide_client_secret
     __args__['name'] = name
     __args__['skipEnabledClients'] = skip_enabled_clients
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -269,6 +284,7 @@ def get_connection(connection_id: Optional[_builtins.str] = None,
         cross_app_access_resource_apps=pulumi.get(__ret__, 'cross_app_access_resource_apps'),
         display_name=pulumi.get(__ret__, 'display_name'),
         enabled_clients=pulumi.get(__ret__, 'enabled_clients'),
+        hide_client_secret=pulumi.get(__ret__, 'hide_client_secret'),
         id=pulumi.get(__ret__, 'id'),
         is_domain_connection=pulumi.get(__ret__, 'is_domain_connection'),
         metadata=pulumi.get(__ret__, 'metadata'),
@@ -279,6 +295,7 @@ def get_connection(connection_id: Optional[_builtins.str] = None,
         skip_enabled_clients=pulumi.get(__ret__, 'skip_enabled_clients'),
         strategy=pulumi.get(__ret__, 'strategy'))
 def get_connection_output(connection_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          hide_client_secret: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                           name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           skip_enabled_clients: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectionResult]:
@@ -299,11 +316,13 @@ def get_connection_output(connection_id: pulumi.Input[Optional[Optional[_builtin
 
 
     :param _builtins.str connection_id: The ID of the connection. If not provided, `name` must be set.
+    :param _builtins.bool hide_client_secret: Set this to avoid persisting the sensitive `options.client_secret` value in state; it will be stored as an empty string.
     :param _builtins.str name: The name of the connection. If not provided, `connection_id` must be set.
     :param _builtins.bool skip_enabled_clients: Whether to skip enabled clients for this connection. Setting this to `true` will skip additional paginated API calls to /api/v2/connections/{id}/clients. Default: `false`.
     """
     __args__ = dict()
     __args__['connectionId'] = connection_id
+    __args__['hideClientSecret'] = hide_client_secret
     __args__['name'] = name
     __args__['skipEnabledClients'] = skip_enabled_clients
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -316,6 +335,7 @@ def get_connection_output(connection_id: pulumi.Input[Optional[Optional[_builtin
         cross_app_access_resource_apps=pulumi.get(__response__, 'cross_app_access_resource_apps'),
         display_name=pulumi.get(__response__, 'display_name'),
         enabled_clients=pulumi.get(__response__, 'enabled_clients'),
+        hide_client_secret=pulumi.get(__response__, 'hide_client_secret'),
         id=pulumi.get(__response__, 'id'),
         is_domain_connection=pulumi.get(__response__, 'is_domain_connection'),
         metadata=pulumi.get(__response__, 'metadata'),

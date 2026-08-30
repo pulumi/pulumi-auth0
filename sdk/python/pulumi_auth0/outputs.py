@@ -118,6 +118,7 @@ __all__ = [
     'ClientMobileAndroid',
     'ClientMobileIos',
     'ClientMyOrganizationConfiguration',
+    'ClientMyOrganizationConfigurationThirdPartyClientAccess',
     'ClientNativeSocialLogin',
     'ClientNativeSocialLoginApple',
     'ClientNativeSocialLoginFacebook',
@@ -182,6 +183,8 @@ __all__ = [
     'ConnectionOptionsValidation',
     'ConnectionOptionsValidationUsername',
     'ConnectionProfileConnectionConfig',
+    'ConnectionProfileCrossAppAccessResourceApp',
+    'ConnectionProfileCrossAppAccessResourceAppStatus',
     'ConnectionProfileOrganization',
     'ConnectionProfileStrategyOverrides',
     'ConnectionProfileStrategyOverridesAd',
@@ -387,6 +390,7 @@ __all__ = [
     'GetClientMobileAndroidResult',
     'GetClientMobileIoResult',
     'GetClientMyOrganizationConfigurationResult',
+    'GetClientMyOrganizationConfigurationThirdPartyClientAccessResult',
     'GetClientNativeSocialLoginResult',
     'GetClientNativeSocialLoginAppleResult',
     'GetClientNativeSocialLoginFacebookResult',
@@ -410,6 +414,7 @@ __all__ = [
     'GetClientsClientFedcmLoginGoogleResult',
     'GetClientsClientIdentityAssertionAuthorizationGrantResult',
     'GetClientsClientMyOrganizationConfigurationResult',
+    'GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessResult',
     'GetClientsClientOidcLogoutResult',
     'GetClientsClientOidcLogoutBackchannelLogoutInitiatorResult',
     'GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataResult',
@@ -470,6 +475,8 @@ __all__ = [
     'GetConnectionOptionValidationResult',
     'GetConnectionOptionValidationUsernameResult',
     'GetConnectionProfileConnectionConfigResult',
+    'GetConnectionProfileCrossAppAccessResourceAppResult',
+    'GetConnectionProfileCrossAppAccessResourceAppStatusResult',
     'GetConnectionProfileOrganizationResult',
     'GetConnectionProfileStrategyOverrideResult',
     'GetConnectionProfileStrategyOverrideAdResult',
@@ -6891,6 +6898,8 @@ class ClientMyOrganizationConfiguration(dict):
             suggest = "connection_profile_id"
         elif key == "invitationLandingClientId":
             suggest = "invitation_landing_client_id"
+        elif key == "thirdPartyClientAccess":
+            suggest = "third_party_client_access"
         elif key == "userAttributeProfileId":
             suggest = "user_attribute_profile_id"
 
@@ -6910,12 +6919,14 @@ class ClientMyOrganizationConfiguration(dict):
                  connection_deletion_behavior: Optional[_builtins.str] = None,
                  connection_profile_id: Optional[_builtins.str] = None,
                  invitation_landing_client_id: Optional[_builtins.str] = None,
+                 third_party_client_access: Optional['outputs.ClientMyOrganizationConfigurationThirdPartyClientAccess'] = None,
                  user_attribute_profile_id: Optional[_builtins.str] = None):
         """
         :param Sequence[_builtins.str] allowed_strategies: The list of connection strategies that are allowed when creating organizations for this client (e.g. "okta", "samlp").
         :param _builtins.str connection_deletion_behavior: Controls the behavior when deleting connections associated with organizations for this client. Possible values: `allow`, `allow_if_empty`.
         :param _builtins.str connection_profile_id: The ID of the connection profile to use when creating organizations for this client.
         :param _builtins.str invitation_landing_client_id: The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
+        :param 'ClientMyOrganizationConfigurationThirdPartyClientAccessArgs' third_party_client_access: Configures third-party client access to organizations created for this client through the My Organization API. Requires the `my_orgs_third_party_client_support` 	 (EA Only)
         :param _builtins.str user_attribute_profile_id: The ID of the user attribute profile to use when creating organizations for this client.
         """
         if allowed_strategies is not None:
@@ -6926,6 +6937,8 @@ class ClientMyOrganizationConfiguration(dict):
             pulumi.set(__self__, "connection_profile_id", connection_profile_id)
         if invitation_landing_client_id is not None:
             pulumi.set(__self__, "invitation_landing_client_id", invitation_landing_client_id)
+        if third_party_client_access is not None:
+            pulumi.set(__self__, "third_party_client_access", third_party_client_access)
         if user_attribute_profile_id is not None:
             pulumi.set(__self__, "user_attribute_profile_id", user_attribute_profile_id)
 
@@ -6962,12 +6975,69 @@ class ClientMyOrganizationConfiguration(dict):
         return pulumi.get(self, "invitation_landing_client_id")
 
     @_builtins.property
+    @pulumi.getter(name="thirdPartyClientAccess")
+    def third_party_client_access(self) -> Optional['outputs.ClientMyOrganizationConfigurationThirdPartyClientAccess']:
+        """
+        Configures third-party client access to organizations created for this client through the My Organization API. Requires the `my_orgs_third_party_client_support` 	 (EA Only)
+        """
+        return pulumi.get(self, "third_party_client_access")
+
+    @_builtins.property
     @pulumi.getter(name="userAttributeProfileId")
     def user_attribute_profile_id(self) -> Optional[_builtins.str]:
         """
         The ID of the user attribute profile to use when creating organizations for this client.
         """
         return pulumi.get(self, "user_attribute_profile_id")
+
+
+@pulumi.output_type
+class ClientMyOrganizationConfigurationThirdPartyClientAccess(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedValues":
+            suggest = "allowed_values"
+        elif key == "defaultValue":
+            suggest = "default_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientMyOrganizationConfigurationThirdPartyClientAccess. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientMyOrganizationConfigurationThirdPartyClientAccess.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientMyOrganizationConfigurationThirdPartyClientAccess.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_values: Sequence[_builtins.str],
+                 default_value: Optional[_builtins.str] = None):
+        """
+        :param Sequence[_builtins.str] allowed_values: The third-party client access values that can be set on organizations created for this client through the My Organization API. Required whenever this block is set — the API rejects the block without it. Possible values: `allow`, `block`. Unlike `ConnectionProfile`'s `cross_app_access_resource_app`, a single value is accepted here. (EA Only)
+        :param _builtins.str default_value: The default third-party client access value applied to organizations created for this client. The API currently only accepts "block"; "allow" is rejected with a 400 error, so this is exposed as computed-only rather than user-settable. (EA Only)
+        """
+        pulumi.set(__self__, "allowed_values", allowed_values)
+        if default_value is not None:
+            pulumi.set(__self__, "default_value", default_value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedValues")
+    def allowed_values(self) -> Sequence[_builtins.str]:
+        """
+        The third-party client access values that can be set on organizations created for this client through the My Organization API. Required whenever this block is set — the API rejects the block without it. Possible values: `allow`, `block`. Unlike `ConnectionProfile`'s `cross_app_access_resource_app`, a single value is accepted here. (EA Only)
+        """
+        return pulumi.get(self, "allowed_values")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> Optional[_builtins.str]:
+        """
+        The default third-party client access value applied to organizations created for this client. The API currently only accepts "block"; "allow" is rejected with a 400 error, so this is exposed as computed-only rather than user-settable. (EA Only)
+        """
+        return pulumi.get(self, "default_value")
 
 
 @pulumi.output_type
@@ -8182,7 +8252,7 @@ class ConnectionOptions(dict):
         :param 'ConnectionOptionsMfaArgs' mfa: Configuration options for multifactor authentication.
         :param _builtins.str name: The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
         :param Sequence[_builtins.str] non_persistent_attrs: If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
-        :param _builtins.str oidc_metadata: Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+        :param _builtins.str oidc_metadata: Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. On oidc and okta, Auth0 defaults any omitted `claims_parameter_supported`, `request_parameter_supported`, `request_uri_parameter_supported`, `require_request_uri_registration` field to false. Those defaults are not tracked in provider until set to true explisitly. (EA only)
         :param 'ConnectionOptionsPasskeyOptionsArgs' passkey_options: Defines options for the passkey authentication method
         :param 'ConnectionOptionsPasswordComplexityOptionsArgs' password_complexity_options: Configuration settings for password complexity.
         :param 'ConnectionOptionsPasswordDictionaryArgs' password_dictionary: Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
@@ -9006,7 +9076,7 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="oidcMetadata")
     def oidc_metadata(self) -> Optional[_builtins.str]:
         """
-        Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+        Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. On oidc and okta, Auth0 defaults any omitted `claims_parameter_supported`, `request_parameter_supported`, `request_uri_parameter_supported`, `require_request_uri_registration` field to false. Those defaults are not tracked in provider until set to true explisitly. (EA only)
         """
         return pulumi.get(self, "oidc_metadata")
 
@@ -11234,6 +11304,73 @@ class ConnectionOptionsValidationUsername(dict):
 class ConnectionProfileConnectionConfig(dict):
     def __init__(__self__):
         pass
+
+
+@pulumi.output_type
+class ConnectionProfileCrossAppAccessResourceApp(dict):
+    def __init__(__self__, *,
+                 status: 'outputs.ConnectionProfileCrossAppAccessResourceAppStatus'):
+        """
+        :param 'ConnectionProfileCrossAppAccessResourceAppStatusArgs' status: The Cross App Access resource app status configuration.
+        """
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> 'outputs.ConnectionProfileCrossAppAccessResourceAppStatus':
+        """
+        The Cross App Access resource app status configuration.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class ConnectionProfileCrossAppAccessResourceAppStatus(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultValue":
+            suggest = "default_value"
+        elif key == "allowedValues":
+            suggest = "allowed_values"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionProfileCrossAppAccessResourceAppStatus. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionProfileCrossAppAccessResourceAppStatus.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionProfileCrossAppAccessResourceAppStatus.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_value: _builtins.str,
+                 allowed_values: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str default_value: Default status value for organizations that don't have an explicit override. Either `enabled` or `disabled`.
+        :param Sequence[_builtins.str] allowed_values: Status values organizations are allowed to set. When specified, must contain both "enabled" and "disabled" — the API enforces a minimum of 2 unique values drawn from a 2-value enum, so any non-empty list must be the full pair. Omit entirely to leave it unrestricted.
+        """
+        pulumi.set(__self__, "default_value", default_value)
+        if allowed_values is not None:
+            pulumi.set(__self__, "allowed_values", allowed_values)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> _builtins.str:
+        """
+        Default status value for organizations that don't have an explicit override. Either `enabled` or `disabled`.
+        """
+        return pulumi.get(self, "default_value")
+
+    @_builtins.property
+    @pulumi.getter(name="allowedValues")
+    def allowed_values(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Status values organizations are allowed to set. When specified, must contain both "enabled" and "disabled" — the API enforces a minimum of 2 unique values drawn from a 2-value enum, so any non-empty list must be the full pair. Omit entirely to leave it unrestricted.
+        """
+        return pulumi.get(self, "allowed_values")
 
 
 @pulumi.output_type
@@ -22471,18 +22608,21 @@ class GetClientMyOrganizationConfigurationResult(dict):
                  connection_deletion_behavior: _builtins.str,
                  connection_profile_id: _builtins.str,
                  invitation_landing_client_id: _builtins.str,
+                 third_party_client_accesses: Sequence['outputs.GetClientMyOrganizationConfigurationThirdPartyClientAccessResult'],
                  user_attribute_profile_id: _builtins.str):
         """
         :param Sequence[_builtins.str] allowed_strategies: The list of connection strategies that are allowed when creating organizations for this client (e.g. "okta", "samlp").
         :param _builtins.str connection_deletion_behavior: Controls the behavior when deleting connections associated with organizations for this client. Possible values: `allow`, `allow_if_empty`.
         :param _builtins.str connection_profile_id: The ID of the connection profile to use when creating organizations for this client.
         :param _builtins.str invitation_landing_client_id: The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
+        :param Sequence['GetClientMyOrganizationConfigurationThirdPartyClientAccessArgs'] third_party_client_accesses: Configures third-party client access to organizations created for this client through the My Organization API. Requires the `my_orgs_third_party_client_support` 	 (EA Only)
         :param _builtins.str user_attribute_profile_id: The ID of the user attribute profile to use when creating organizations for this client.
         """
         pulumi.set(__self__, "allowed_strategies", allowed_strategies)
         pulumi.set(__self__, "connection_deletion_behavior", connection_deletion_behavior)
         pulumi.set(__self__, "connection_profile_id", connection_profile_id)
         pulumi.set(__self__, "invitation_landing_client_id", invitation_landing_client_id)
+        pulumi.set(__self__, "third_party_client_accesses", third_party_client_accesses)
         pulumi.set(__self__, "user_attribute_profile_id", user_attribute_profile_id)
 
     @_builtins.property
@@ -22518,12 +22658,49 @@ class GetClientMyOrganizationConfigurationResult(dict):
         return pulumi.get(self, "invitation_landing_client_id")
 
     @_builtins.property
+    @pulumi.getter(name="thirdPartyClientAccesses")
+    def third_party_client_accesses(self) -> Sequence['outputs.GetClientMyOrganizationConfigurationThirdPartyClientAccessResult']:
+        """
+        Configures third-party client access to organizations created for this client through the My Organization API. Requires the `my_orgs_third_party_client_support` 	 (EA Only)
+        """
+        return pulumi.get(self, "third_party_client_accesses")
+
+    @_builtins.property
     @pulumi.getter(name="userAttributeProfileId")
     def user_attribute_profile_id(self) -> _builtins.str:
         """
         The ID of the user attribute profile to use when creating organizations for this client.
         """
         return pulumi.get(self, "user_attribute_profile_id")
+
+
+@pulumi.output_type
+class GetClientMyOrganizationConfigurationThirdPartyClientAccessResult(dict):
+    def __init__(__self__, *,
+                 allowed_values: Sequence[_builtins.str],
+                 default_value: _builtins.str):
+        """
+        :param Sequence[_builtins.str] allowed_values: The third-party client access values that can be set on organizations created for this client through the My Organization API. Required whenever this block is set — the API rejects the block without it. Possible values: `allow`, `block`. Unlike `ConnectionProfile`'s `cross_app_access_resource_app`, a single value is accepted here. (EA Only)
+        :param _builtins.str default_value: The default third-party client access value applied to organizations created for this client. The API currently only accepts "block"; "allow" is rejected with a 400 error, so this is exposed as computed-only rather than user-settable. (EA Only)
+        """
+        pulumi.set(__self__, "allowed_values", allowed_values)
+        pulumi.set(__self__, "default_value", default_value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedValues")
+    def allowed_values(self) -> Sequence[_builtins.str]:
+        """
+        The third-party client access values that can be set on organizations created for this client through the My Organization API. Required whenever this block is set — the API rejects the block without it. Possible values: `allow`, `block`. Unlike `ConnectionProfile`'s `cross_app_access_resource_app`, a single value is accepted here. (EA Only)
+        """
+        return pulumi.get(self, "allowed_values")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> _builtins.str:
+        """
+        The default third-party client access value applied to organizations created for this client. The API currently only accepts "block"; "allow" is rejected with a 400 error, so this is exposed as computed-only rather than user-settable. (EA Only)
+        """
+        return pulumi.get(self, "default_value")
 
 
 @pulumi.output_type
@@ -23650,18 +23827,21 @@ class GetClientsClientMyOrganizationConfigurationResult(dict):
                  connection_deletion_behavior: _builtins.str,
                  connection_profile_id: _builtins.str,
                  invitation_landing_client_id: _builtins.str,
+                 third_party_client_accesses: Sequence['outputs.GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessResult'],
                  user_attribute_profile_id: _builtins.str):
         """
         :param Sequence[_builtins.str] allowed_strategies: The list of connection strategies that are allowed when creating organizations for this client (e.g. "okta", "samlp").
         :param _builtins.str connection_deletion_behavior: Controls the behavior when deleting connections associated with organizations for this client. Possible values: `allow`, `allow_if_empty`.
         :param _builtins.str connection_profile_id: The ID of the connection profile to use when creating organizations for this client.
         :param _builtins.str invitation_landing_client_id: The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
+        :param Sequence['GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArgs'] third_party_client_accesses: Configures third-party client access to organizations created for this client through the My Organization API. Requires the `my_orgs_third_party_client_support` 	 (EA Only)
         :param _builtins.str user_attribute_profile_id: The ID of the user attribute profile to use when creating organizations for this client.
         """
         pulumi.set(__self__, "allowed_strategies", allowed_strategies)
         pulumi.set(__self__, "connection_deletion_behavior", connection_deletion_behavior)
         pulumi.set(__self__, "connection_profile_id", connection_profile_id)
         pulumi.set(__self__, "invitation_landing_client_id", invitation_landing_client_id)
+        pulumi.set(__self__, "third_party_client_accesses", third_party_client_accesses)
         pulumi.set(__self__, "user_attribute_profile_id", user_attribute_profile_id)
 
     @_builtins.property
@@ -23697,12 +23877,49 @@ class GetClientsClientMyOrganizationConfigurationResult(dict):
         return pulumi.get(self, "invitation_landing_client_id")
 
     @_builtins.property
+    @pulumi.getter(name="thirdPartyClientAccesses")
+    def third_party_client_accesses(self) -> Sequence['outputs.GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessResult']:
+        """
+        Configures third-party client access to organizations created for this client through the My Organization API. Requires the `my_orgs_third_party_client_support` 	 (EA Only)
+        """
+        return pulumi.get(self, "third_party_client_accesses")
+
+    @_builtins.property
     @pulumi.getter(name="userAttributeProfileId")
     def user_attribute_profile_id(self) -> _builtins.str:
         """
         The ID of the user attribute profile to use when creating organizations for this client.
         """
         return pulumi.get(self, "user_attribute_profile_id")
+
+
+@pulumi.output_type
+class GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessResult(dict):
+    def __init__(__self__, *,
+                 allowed_values: Sequence[_builtins.str],
+                 default_value: _builtins.str):
+        """
+        :param Sequence[_builtins.str] allowed_values: The third-party client access values that can be set on organizations created for this client through the My Organization API. Required whenever this block is set — the API rejects the block without it. Possible values: `allow`, `block`. Unlike `ConnectionProfile`'s `cross_app_access_resource_app`, a single value is accepted here. (EA Only)
+        :param _builtins.str default_value: The default third-party client access value applied to organizations created for this client. The API currently only accepts "block"; "allow" is rejected with a 400 error, so this is exposed as computed-only rather than user-settable. (EA Only)
+        """
+        pulumi.set(__self__, "allowed_values", allowed_values)
+        pulumi.set(__self__, "default_value", default_value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedValues")
+    def allowed_values(self) -> Sequence[_builtins.str]:
+        """
+        The third-party client access values that can be set on organizations created for this client through the My Organization API. Required whenever this block is set — the API rejects the block without it. Possible values: `allow`, `block`. Unlike `ConnectionProfile`'s `cross_app_access_resource_app`, a single value is accepted here. (EA Only)
+        """
+        return pulumi.get(self, "allowed_values")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> _builtins.str:
+        """
+        The default third-party client access value applied to organizations created for this client. The API currently only accepts "block"; "allow" is rejected with a 400 error, so this is exposed as computed-only rather than user-settable. (EA Only)
+        """
+        return pulumi.get(self, "default_value")
 
 
 @pulumi.output_type
@@ -24487,7 +24704,7 @@ class GetConnectionOptionResult(dict):
         :param Sequence['GetConnectionOptionMfaArgs'] mfas: Configuration options for multifactor authentication.
         :param _builtins.str name: The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
         :param Sequence[_builtins.str] non_persistent_attrs: If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
-        :param _builtins.str oidc_metadata: Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+        :param _builtins.str oidc_metadata: Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. On oidc and okta, Auth0 defaults any omitted `claims_parameter_supported`, `request_parameter_supported`, `request_uri_parameter_supported`, `require_request_uri_registration` field to false. Those defaults are not tracked in provider until set to true explisitly. (EA only)
         :param Sequence['GetConnectionOptionPasskeyOptionArgs'] passkey_options: Defines options for the passkey authentication method
         :param Sequence['GetConnectionOptionPasswordComplexityOptionArgs'] password_complexity_options: Configuration settings for password complexity.
         :param Sequence['GetConnectionOptionPasswordDictionaryArgs'] password_dictionaries: Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
@@ -25190,7 +25407,7 @@ class GetConnectionOptionResult(dict):
     @pulumi.getter(name="oidcMetadata")
     def oidc_metadata(self) -> _builtins.str:
         """
-        Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+        Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. On oidc and okta, Auth0 defaults any omitted `claims_parameter_supported`, `request_parameter_supported`, `request_uri_parameter_supported`, `require_request_uri_registration` field to false. Those defaults are not tracked in provider until set to true explisitly. (EA only)
         """
         return pulumi.get(self, "oidc_metadata")
 
@@ -26926,6 +27143,53 @@ class GetConnectionOptionValidationUsernameResult(dict):
 class GetConnectionProfileConnectionConfigResult(dict):
     def __init__(__self__):
         pass
+
+
+@pulumi.output_type
+class GetConnectionProfileCrossAppAccessResourceAppResult(dict):
+    def __init__(__self__, *,
+                 statuses: Sequence['outputs.GetConnectionProfileCrossAppAccessResourceAppStatusResult']):
+        """
+        :param Sequence['GetConnectionProfileCrossAppAccessResourceAppStatusArgs'] statuses: The Cross App Access resource app status configuration.
+        """
+        pulumi.set(__self__, "statuses", statuses)
+
+    @_builtins.property
+    @pulumi.getter
+    def statuses(self) -> Sequence['outputs.GetConnectionProfileCrossAppAccessResourceAppStatusResult']:
+        """
+        The Cross App Access resource app status configuration.
+        """
+        return pulumi.get(self, "statuses")
+
+
+@pulumi.output_type
+class GetConnectionProfileCrossAppAccessResourceAppStatusResult(dict):
+    def __init__(__self__, *,
+                 allowed_values: Sequence[_builtins.str],
+                 default_value: _builtins.str):
+        """
+        :param Sequence[_builtins.str] allowed_values: Status values organizations are allowed to set.
+        :param _builtins.str default_value: Default status value for organizations that don't have an explicit override.
+        """
+        pulumi.set(__self__, "allowed_values", allowed_values)
+        pulumi.set(__self__, "default_value", default_value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedValues")
+    def allowed_values(self) -> Sequence[_builtins.str]:
+        """
+        Status values organizations are allowed to set.
+        """
+        return pulumi.get(self, "allowed_values")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> _builtins.str:
+        """
+        Default status value for organizations that don't have an explicit override.
+        """
+        return pulumi.get(self, "default_value")
 
 
 @pulumi.output_type

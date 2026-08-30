@@ -38,6 +38,15 @@ import (
 //					pulumi.String("scim"),
 //					pulumi.String("universal_logout"),
 //				},
+//				CrossAppAccessResourceApp: &auth0.ConnectionProfileCrossAppAccessResourceAppArgs{
+//					Status: &auth0.ConnectionProfileCrossAppAccessResourceAppStatusArgs{
+//						DefaultValue: pulumi.String("enabled"),
+//						AllowedValues: pulumi.StringArray{
+//							pulumi.String("enabled"),
+//							pulumi.String("disabled"),
+//						},
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -67,13 +76,14 @@ type LookupConnectionProfileArgs struct {
 
 // A collection of values returned by getConnectionProfile.
 type LookupConnectionProfileResult struct {
-	ConnectionConfigs            []GetConnectionProfileConnectionConfig `pulumi:"connectionConfigs"`
-	ConnectionNamePrefixTemplate string                                 `pulumi:"connectionNamePrefixTemplate"`
-	EnabledFeatures              []string                               `pulumi:"enabledFeatures"`
-	Id                           string                                 `pulumi:"id"`
-	Name                         string                                 `pulumi:"name"`
-	Organizations                []GetConnectionProfileOrganization     `pulumi:"organizations"`
-	StrategyOverrides            []GetConnectionProfileStrategyOverride `pulumi:"strategyOverrides"`
+	ConnectionConfigs            []GetConnectionProfileConnectionConfig          `pulumi:"connectionConfigs"`
+	ConnectionNamePrefixTemplate string                                          `pulumi:"connectionNamePrefixTemplate"`
+	CrossAppAccessResourceApps   []GetConnectionProfileCrossAppAccessResourceApp `pulumi:"crossAppAccessResourceApps"`
+	EnabledFeatures              []string                                        `pulumi:"enabledFeatures"`
+	Id                           string                                          `pulumi:"id"`
+	Name                         string                                          `pulumi:"name"`
+	Organizations                []GetConnectionProfileOrganization              `pulumi:"organizations"`
+	StrategyOverrides            []GetConnectionProfileStrategyOverride          `pulumi:"strategyOverrides"`
 }
 
 func LookupConnectionProfileOutput(ctx *pulumi.Context, args LookupConnectionProfileOutputArgs, opts ...pulumi.InvokeOption) LookupConnectionProfileResultOutput {
@@ -113,6 +123,12 @@ func (o LookupConnectionProfileResultOutput) ConnectionConfigs() GetConnectionPr
 
 func (o LookupConnectionProfileResultOutput) ConnectionNamePrefixTemplate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionProfileResult) string { return v.ConnectionNamePrefixTemplate }).(pulumi.StringOutput)
+}
+
+func (o LookupConnectionProfileResultOutput) CrossAppAccessResourceApps() GetConnectionProfileCrossAppAccessResourceAppArrayOutput {
+	return o.ApplyT(func(v LookupConnectionProfileResult) []GetConnectionProfileCrossAppAccessResourceApp {
+		return v.CrossAppAccessResourceApps
+	}).(GetConnectionProfileCrossAppAccessResourceAppArrayOutput)
 }
 
 func (o LookupConnectionProfileResultOutput) EnabledFeatures() pulumi.StringArrayOutput {

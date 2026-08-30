@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.GetClientMyOrganizationConfigurationThirdPartyClientAccess;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -31,6 +32,11 @@ public final class GetClientMyOrganizationConfiguration {
      * 
      */
     private String invitationLandingClientId;
+    /**
+     * @return Configures third-party client access to organizations created for this client through the My Organization API. Requires the `myOrgsThirdPartyClientSupport` 	 (EA Only)
+     * 
+     */
+    private List<GetClientMyOrganizationConfigurationThirdPartyClientAccess> thirdPartyClientAccesses;
     /**
      * @return The ID of the user attribute profile to use when creating organizations for this client.
      * 
@@ -67,6 +73,13 @@ public final class GetClientMyOrganizationConfiguration {
         return this.invitationLandingClientId;
     }
     /**
+     * @return Configures third-party client access to organizations created for this client through the My Organization API. Requires the `myOrgsThirdPartyClientSupport` 	 (EA Only)
+     * 
+     */
+    public List<GetClientMyOrganizationConfigurationThirdPartyClientAccess> thirdPartyClientAccesses() {
+        return this.thirdPartyClientAccesses;
+    }
+    /**
      * @return The ID of the user attribute profile to use when creating organizations for this client.
      * 
      */
@@ -87,6 +100,7 @@ public final class GetClientMyOrganizationConfiguration {
         private String connectionDeletionBehavior;
         private String connectionProfileId;
         private String invitationLandingClientId;
+        private List<GetClientMyOrganizationConfigurationThirdPartyClientAccess> thirdPartyClientAccesses;
         private String userAttributeProfileId;
         public Builder() {}
         public Builder(GetClientMyOrganizationConfiguration defaults) {
@@ -95,6 +109,7 @@ public final class GetClientMyOrganizationConfiguration {
     	      this.connectionDeletionBehavior = defaults.connectionDeletionBehavior;
     	      this.connectionProfileId = defaults.connectionProfileId;
     	      this.invitationLandingClientId = defaults.invitationLandingClientId;
+    	      this.thirdPartyClientAccesses = defaults.thirdPartyClientAccesses;
     	      this.userAttributeProfileId = defaults.userAttributeProfileId;
         }
 
@@ -134,6 +149,17 @@ public final class GetClientMyOrganizationConfiguration {
             return this;
         }
         @CustomType.Setter
+        public Builder thirdPartyClientAccesses(List<GetClientMyOrganizationConfigurationThirdPartyClientAccess> thirdPartyClientAccesses) {
+            if (thirdPartyClientAccesses == null) {
+              throw new MissingRequiredPropertyException("GetClientMyOrganizationConfiguration", "thirdPartyClientAccesses");
+            }
+            this.thirdPartyClientAccesses = thirdPartyClientAccesses;
+            return this;
+        }
+        public Builder thirdPartyClientAccesses(GetClientMyOrganizationConfigurationThirdPartyClientAccess... thirdPartyClientAccesses) {
+            return thirdPartyClientAccesses(List.of(thirdPartyClientAccesses));
+        }
+        @CustomType.Setter
         public Builder userAttributeProfileId(String userAttributeProfileId) {
             if (userAttributeProfileId == null) {
               throw new MissingRequiredPropertyException("GetClientMyOrganizationConfiguration", "userAttributeProfileId");
@@ -147,6 +173,7 @@ public final class GetClientMyOrganizationConfiguration {
             _resultValue.connectionDeletionBehavior = connectionDeletionBehavior;
             _resultValue.connectionProfileId = connectionProfileId;
             _resultValue.invitationLandingClientId = invitationLandingClientId;
+            _resultValue.thirdPartyClientAccesses = thirdPartyClientAccesses;
             _resultValue.userAttributeProfileId = userAttributeProfileId;
             return _resultValue;
         }

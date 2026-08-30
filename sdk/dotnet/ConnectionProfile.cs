@@ -36,6 +36,18 @@ namespace Pulumi.Auth0
     ///             "scim",
     ///             "universal_logout",
     ///         },
+    ///         CrossAppAccessResourceApp = new Auth0.Inputs.ConnectionProfileCrossAppAccessResourceAppArgs
+    ///         {
+    ///             Status = new Auth0.Inputs.ConnectionProfileCrossAppAccessResourceAppStatusArgs
+    ///             {
+    ///                 DefaultValue = "enabled",
+    ///                 AllowedValues = new[]
+    ///                 {
+    ///                     "enabled",
+    ///                     "disabled",
+    ///                 },
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -65,6 +77,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("connectionNamePrefixTemplate")]
         public Output<string?> ConnectionNamePrefixTemplate { get; private set; } = null!;
+
+        /// <summary>
+        /// Configures the connection profile as a Cross-App Access (XAA) resource application, controlling whether organization admins may enable XAA on their identity providers. Requires the `MyOrgsCrossAppAccessResourceApp` tenant flag to be enabled (EA only). Note: this is distinct from, and unrelated to, `CrossAppAccessResourceApp` on `auth0.Connection`, which uses a flat `Status` string rather than this nested `Status` block.
+        /// </summary>
+        [Output("crossAppAccessResourceApp")]
+        public Output<Outputs.ConnectionProfileCrossAppAccessResourceApp?> CrossAppAccessResourceApp { get; private set; } = null!;
 
         /// <summary>
         /// List of enabled features for the connection profile.
@@ -148,6 +166,12 @@ namespace Pulumi.Auth0
         [Input("connectionNamePrefixTemplate")]
         public Input<string>? ConnectionNamePrefixTemplate { get; set; }
 
+        /// <summary>
+        /// Configures the connection profile as a Cross-App Access (XAA) resource application, controlling whether organization admins may enable XAA on their identity providers. Requires the `MyOrgsCrossAppAccessResourceApp` tenant flag to be enabled (EA only). Note: this is distinct from, and unrelated to, `CrossAppAccessResourceApp` on `auth0.Connection`, which uses a flat `Status` string rather than this nested `Status` block.
+        /// </summary>
+        [Input("crossAppAccessResourceApp")]
+        public Input<Inputs.ConnectionProfileCrossAppAccessResourceAppArgs>? CrossAppAccessResourceApp { get; set; }
+
         [Input("enabledFeatures")]
         private InputList<string>? _enabledFeatures;
 
@@ -197,6 +221,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("connectionNamePrefixTemplate")]
         public Input<string>? ConnectionNamePrefixTemplate { get; set; }
+
+        /// <summary>
+        /// Configures the connection profile as a Cross-App Access (XAA) resource application, controlling whether organization admins may enable XAA on their identity providers. Requires the `MyOrgsCrossAppAccessResourceApp` tenant flag to be enabled (EA only). Note: this is distinct from, and unrelated to, `CrossAppAccessResourceApp` on `auth0.Connection`, which uses a flat `Status` string rather than this nested `Status` block.
+        /// </summary>
+        [Input("crossAppAccessResourceApp")]
+        public Input<Inputs.ConnectionProfileCrossAppAccessResourceAppGetArgs>? CrossAppAccessResourceApp { get; set; }
 
         [Input("enabledFeatures")]
         private InputList<string>? _enabledFeatures;

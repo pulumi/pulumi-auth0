@@ -1775,9 +1775,24 @@ export interface ClientMyOrganizationConfiguration {
      */
     invitationLandingClientId?: pulumi.Input<string | undefined>;
     /**
+     * Configures third-party client access to organizations created for this client through the My Organization API. Requires the `myOrgsThirdPartyClientSupport` 	 (EA Only)
+     */
+    thirdPartyClientAccess?: pulumi.Input<inputs.ClientMyOrganizationConfigurationThirdPartyClientAccess | undefined>;
+    /**
      * The ID of the user attribute profile to use when creating organizations for this client.
      */
     userAttributeProfileId?: pulumi.Input<string | undefined>;
+}
+
+export interface ClientMyOrganizationConfigurationThirdPartyClientAccess {
+    /**
+     * The third-party client access values that can be set on organizations created for this client through the My Organization API. Required whenever this block is set — the API rejects the block without it. Possible values: `allow`, `block`. Unlike `auth0.ConnectionProfile`'s `crossAppAccessResourceApp`, a single value is accepted here. (EA Only)
+     */
+    allowedValues: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The default third-party client access value applied to organizations created for this client. The API currently only accepts "block"; "allow" is rejected with a 400 error, so this is exposed as computed-only rather than user-settable. (EA Only)
+     */
+    defaultValue?: pulumi.Input<string | undefined>;
 }
 
 export interface ClientNativeSocialLogin {
@@ -2256,7 +2271,7 @@ export interface ConnectionOptions {
      */
     nonPersistentAttrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+     * Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. On oidc and okta, Auth0 defaults any omitted `claimsParameterSupported`, `requestParameterSupported`, `requestUriParameterSupported`, `requireRequestUriRegistration` field to false. Those defaults are not tracked in provider until set to true explisitly. (EA only)
      */
     oidcMetadata?: pulumi.Input<string | undefined>;
     /**
@@ -2951,6 +2966,24 @@ export interface ConnectionOptionsValidationUsername {
 }
 
 export interface ConnectionProfileConnectionConfig {
+}
+
+export interface ConnectionProfileCrossAppAccessResourceApp {
+    /**
+     * The Cross App Access resource app status configuration.
+     */
+    status: pulumi.Input<inputs.ConnectionProfileCrossAppAccessResourceAppStatus>;
+}
+
+export interface ConnectionProfileCrossAppAccessResourceAppStatus {
+    /**
+     * Status values organizations are allowed to set. When specified, must contain both "enabled" and "disabled" — the API enforces a minimum of 2 unique values drawn from a 2-value enum, so any non-empty list must be the full pair. Omit entirely to leave it unrestricted.
+     */
+    allowedValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Default status value for organizations that don't have an explicit override. Either `enabled` or `disabled`.
+     */
+    defaultValue: pulumi.Input<string>;
 }
 
 export interface ConnectionProfileOrganization {

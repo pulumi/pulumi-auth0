@@ -27,13 +27,16 @@ class GetConnectionProfileResult:
     """
     A collection of values returned by getConnectionProfile.
     """
-    def __init__(__self__, connection_configs=None, connection_name_prefix_template=None, enabled_features=None, id=None, name=None, organizations=None, strategy_overrides=None):
+    def __init__(__self__, connection_configs=None, connection_name_prefix_template=None, cross_app_access_resource_apps=None, enabled_features=None, id=None, name=None, organizations=None, strategy_overrides=None):
         if connection_configs and not isinstance(connection_configs, list):
             raise TypeError("Expected argument 'connection_configs' to be a list")
         pulumi.set(__self__, "connection_configs", connection_configs)
         if connection_name_prefix_template and not isinstance(connection_name_prefix_template, str):
             raise TypeError("Expected argument 'connection_name_prefix_template' to be a str")
         pulumi.set(__self__, "connection_name_prefix_template", connection_name_prefix_template)
+        if cross_app_access_resource_apps and not isinstance(cross_app_access_resource_apps, list):
+            raise TypeError("Expected argument 'cross_app_access_resource_apps' to be a list")
+        pulumi.set(__self__, "cross_app_access_resource_apps", cross_app_access_resource_apps)
         if enabled_features and not isinstance(enabled_features, list):
             raise TypeError("Expected argument 'enabled_features' to be a list")
         pulumi.set(__self__, "enabled_features", enabled_features)
@@ -59,6 +62,11 @@ class GetConnectionProfileResult:
     @pulumi.getter(name="connectionNamePrefixTemplate")
     def connection_name_prefix_template(self) -> _builtins.str:
         return pulumi.get(self, "connection_name_prefix_template")
+
+    @_builtins.property
+    @pulumi.getter(name="crossAppAccessResourceApps")
+    def cross_app_access_resource_apps(self) -> Sequence['outputs.GetConnectionProfileCrossAppAccessResourceAppResult']:
+        return pulumi.get(self, "cross_app_access_resource_apps")
 
     @_builtins.property
     @pulumi.getter(name="enabledFeatures")
@@ -94,6 +102,7 @@ class AwaitableGetConnectionProfileResult(GetConnectionProfileResult):
         return GetConnectionProfileResult(
             connection_configs=self.connection_configs,
             connection_name_prefix_template=self.connection_name_prefix_template,
+            cross_app_access_resource_apps=self.cross_app_access_resource_apps,
             enabled_features=self.enabled_features,
             id=self.id,
             name=self.name,
@@ -122,7 +131,16 @@ def get_connection_profile(id: Optional[_builtins.str] = None,
         enabled_features=[
             "scim",
             "universal_logout",
-        ])
+        ],
+        cross_app_access_resource_app={
+            "status": {
+                "default_value": "enabled",
+                "allowed_values": [
+                    "enabled",
+                    "disabled",
+                ],
+            },
+        })
     my_profile_ds = auth0.get_connection_profile_output(id=my_profile.id)
     ```
     """
@@ -134,6 +152,7 @@ def get_connection_profile(id: Optional[_builtins.str] = None,
     return AwaitableGetConnectionProfileResult(
         connection_configs=pulumi.get(__ret__, 'connection_configs'),
         connection_name_prefix_template=pulumi.get(__ret__, 'connection_name_prefix_template'),
+        cross_app_access_resource_apps=pulumi.get(__ret__, 'cross_app_access_resource_apps'),
         enabled_features=pulumi.get(__ret__, 'enabled_features'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
@@ -160,7 +179,16 @@ def get_connection_profile_output(id: pulumi.Input[Optional[_builtins.str]] = No
         enabled_features=[
             "scim",
             "universal_logout",
-        ])
+        ],
+        cross_app_access_resource_app={
+            "status": {
+                "default_value": "enabled",
+                "allowed_values": [
+                    "enabled",
+                    "disabled",
+                ],
+            },
+        })
     my_profile_ds = auth0.get_connection_profile_output(id=my_profile.id)
     ```
     """
@@ -171,6 +199,7 @@ def get_connection_profile_output(id: pulumi.Input[Optional[_builtins.str]] = No
     return __ret__.apply(lambda __response__: GetConnectionProfileResult(
         connection_configs=pulumi.get(__response__, 'connection_configs'),
         connection_name_prefix_template=pulumi.get(__response__, 'connection_name_prefix_template'),
+        cross_app_access_resource_apps=pulumi.get(__response__, 'cross_app_access_resource_apps'),
         enabled_features=pulumi.get(__response__, 'enabled_features'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),

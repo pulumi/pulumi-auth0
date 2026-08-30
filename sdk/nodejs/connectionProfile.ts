@@ -26,6 +26,15 @@ import * as utilities from "./utilities";
  *         "scim",
  *         "universal_logout",
  *     ],
+ *     crossAppAccessResourceApp: {
+ *         status: {
+ *             defaultValue: "enabled",
+ *             allowedValues: [
+ *                 "enabled",
+ *                 "disabled",
+ *             ],
+ *         },
+ *     },
  * });
  * ```
  *
@@ -76,6 +85,10 @@ export class ConnectionProfile extends pulumi.CustomResource {
      */
     declare public readonly connectionNamePrefixTemplate: pulumi.Output<string | undefined>;
     /**
+     * Configures the connection profile as a Cross-App Access (XAA) resource application, controlling whether organization admins may enable XAA on their identity providers. Requires the `myOrgsCrossAppAccessResourceApp` tenant flag to be enabled (EA only). Note: this is distinct from, and unrelated to, `crossAppAccessResourceApp` on `auth0.Connection`, which uses a flat `status` string rather than this nested `status` block.
+     */
+    declare public readonly crossAppAccessResourceApp: pulumi.Output<outputs.ConnectionProfileCrossAppAccessResourceApp | undefined>;
+    /**
      * List of enabled features for the connection profile.
      */
     declare public readonly enabledFeatures: pulumi.Output<string[]>;
@@ -107,6 +120,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             const state = argsOrState as ConnectionProfileState | undefined;
             resourceInputs["connectionConfig"] = state?.connectionConfig;
             resourceInputs["connectionNamePrefixTemplate"] = state?.connectionNamePrefixTemplate;
+            resourceInputs["crossAppAccessResourceApp"] = state?.crossAppAccessResourceApp;
             resourceInputs["enabledFeatures"] = state?.enabledFeatures;
             resourceInputs["name"] = state?.name;
             resourceInputs["organization"] = state?.organization;
@@ -115,6 +129,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             const args = argsOrState as ConnectionProfileArgs | undefined;
             resourceInputs["connectionConfig"] = args?.connectionConfig;
             resourceInputs["connectionNamePrefixTemplate"] = args?.connectionNamePrefixTemplate;
+            resourceInputs["crossAppAccessResourceApp"] = args?.crossAppAccessResourceApp;
             resourceInputs["enabledFeatures"] = args?.enabledFeatures;
             resourceInputs["name"] = args?.name;
             resourceInputs["organization"] = args?.organization;
@@ -137,6 +152,10 @@ export interface ConnectionProfileState {
      * Template for generating connection names from the profile.
      */
     connectionNamePrefixTemplate?: pulumi.Input<string | undefined>;
+    /**
+     * Configures the connection profile as a Cross-App Access (XAA) resource application, controlling whether organization admins may enable XAA on their identity providers. Requires the `myOrgsCrossAppAccessResourceApp` tenant flag to be enabled (EA only). Note: this is distinct from, and unrelated to, `crossAppAccessResourceApp` on `auth0.Connection`, which uses a flat `status` string rather than this nested `status` block.
+     */
+    crossAppAccessResourceApp?: pulumi.Input<inputs.ConnectionProfileCrossAppAccessResourceApp | undefined>;
     /**
      * List of enabled features for the connection profile.
      */
@@ -167,6 +186,10 @@ export interface ConnectionProfileArgs {
      * Template for generating connection names from the profile.
      */
     connectionNamePrefixTemplate?: pulumi.Input<string | undefined>;
+    /**
+     * Configures the connection profile as a Cross-App Access (XAA) resource application, controlling whether organization admins may enable XAA on their identity providers. Requires the `myOrgsCrossAppAccessResourceApp` tenant flag to be enabled (EA only). Note: this is distinct from, and unrelated to, `crossAppAccessResourceApp` on `auth0.Connection`, which uses a flat `status` string rather than this nested `status` block.
+     */
+    crossAppAccessResourceApp?: pulumi.Input<inputs.ConnectionProfileCrossAppAccessResourceApp | undefined>;
     /**
      * List of enabled features for the connection profile.
      */
