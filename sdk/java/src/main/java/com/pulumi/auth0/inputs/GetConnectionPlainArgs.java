@@ -31,6 +31,21 @@ public final class GetConnectionPlainArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
+     * Set this to avoid persisting the sensitive `options.client_secret` value in state; it will be stored as an empty string.
+     * 
+     */
+    @Import(name="hideClientSecret")
+    private @Nullable Boolean hideClientSecret;
+
+    /**
+     * @return Set this to avoid persisting the sensitive `options.client_secret` value in state; it will be stored as an empty string.
+     * 
+     */
+    public Optional<Boolean> hideClientSecret() {
+        return Optional.ofNullable(this.hideClientSecret);
+    }
+
+    /**
      * The name of the connection. If not provided, `connectionId` must be set.
      * 
      */
@@ -64,6 +79,7 @@ public final class GetConnectionPlainArgs extends com.pulumi.resources.InvokeArg
 
     private GetConnectionPlainArgs(GetConnectionPlainArgs $) {
         this.connectionId = $.connectionId;
+        this.hideClientSecret = $.hideClientSecret;
         this.name = $.name;
         this.skipEnabledClients = $.skipEnabledClients;
     }
@@ -94,6 +110,17 @@ public final class GetConnectionPlainArgs extends com.pulumi.resources.InvokeArg
          */
         public Builder connectionId(@Nullable String connectionId) {
             $.connectionId = connectionId;
+            return this;
+        }
+
+        /**
+         * @param hideClientSecret Set this to avoid persisting the sensitive `options.client_secret` value in state; it will be stored as an empty string.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hideClientSecret(@Nullable Boolean hideClientSecret) {
+            $.hideClientSecret = hideClientSecret;
             return this;
         }
 

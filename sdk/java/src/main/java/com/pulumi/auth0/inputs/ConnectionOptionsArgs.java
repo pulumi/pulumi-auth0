@@ -1015,14 +1015,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+     * Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. On oidc and okta, Auth0 defaults any omitted `claimsParameterSupported`, `requestParameterSupported`, `requestUriParameterSupported`, `requireRequestUriRegistration` field to false. Those defaults are not tracked in provider until set to true explisitly. (EA only)
      * 
      */
     @Import(name="oidcMetadata")
     private @Nullable Output<String> oidcMetadata;
 
     /**
-     * @return Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+     * @return Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. On oidc and okta, Auth0 defaults any omitted `claimsParameterSupported`, `requestParameterSupported`, `requestUriParameterSupported`, `requireRequestUriRegistration` field to false. Those defaults are not tracked in provider until set to true explisitly. (EA only)
      * 
      */
     public Optional<Output<String>> oidcMetadata() {
@@ -3444,7 +3444,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param oidcMetadata Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+         * @param oidcMetadata Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. On oidc and okta, Auth0 defaults any omitted `claimsParameterSupported`, `requestParameterSupported`, `requestUriParameterSupported`, `requireRequestUriRegistration` field to false. Those defaults are not tracked in provider until set to true explisitly. (EA only)
          * 
          * @return builder
          * 
@@ -3455,7 +3455,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param oidcMetadata Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+         * @param oidcMetadata Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. On oidc and okta, Auth0 defaults any omitted `claimsParameterSupported`, `requestParameterSupported`, `requestUriParameterSupported`, `requireRequestUriRegistration` field to false. Those defaults are not tracked in provider until set to true explisitly. (EA only)
          * 
          * @return builder
          * 

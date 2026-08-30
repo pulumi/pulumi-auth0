@@ -38,6 +38,18 @@ namespace Pulumi.Auth0
         ///             "scim",
         ///             "universal_logout",
         ///         },
+        ///         CrossAppAccessResourceApp = new Auth0.Inputs.ConnectionProfileCrossAppAccessResourceAppArgs
+        ///         {
+        ///             Status = new Auth0.Inputs.ConnectionProfileCrossAppAccessResourceAppStatusArgs
+        ///             {
+        ///                 DefaultValue = "enabled",
+        ///                 AllowedValues = new[]
+        ///                 {
+        ///                     "enabled",
+        ///                     "disabled",
+        ///                 },
+        ///             },
+        ///         },
         ///     });
         /// 
         ///     var myProfileDs = Auth0.GetConnectionProfile.Invoke(new()
@@ -78,6 +90,18 @@ namespace Pulumi.Auth0
         ///             "scim",
         ///             "universal_logout",
         ///         },
+        ///         CrossAppAccessResourceApp = new Auth0.Inputs.ConnectionProfileCrossAppAccessResourceAppArgs
+        ///         {
+        ///             Status = new Auth0.Inputs.ConnectionProfileCrossAppAccessResourceAppStatusArgs
+        ///             {
+        ///                 DefaultValue = "enabled",
+        ///                 AllowedValues = new[]
+        ///                 {
+        ///                     "enabled",
+        ///                     "disabled",
+        ///                 },
+        ///             },
+        ///         },
         ///     });
         /// 
         ///     var myProfileDs = Auth0.GetConnectionProfile.Invoke(new()
@@ -117,6 +141,18 @@ namespace Pulumi.Auth0
         ///         {
         ///             "scim",
         ///             "universal_logout",
+        ///         },
+        ///         CrossAppAccessResourceApp = new Auth0.Inputs.ConnectionProfileCrossAppAccessResourceAppArgs
+        ///         {
+        ///             Status = new Auth0.Inputs.ConnectionProfileCrossAppAccessResourceAppStatusArgs
+        ///             {
+        ///                 DefaultValue = "enabled",
+        ///                 AllowedValues = new[]
+        ///                 {
+        ///                     "enabled",
+        ///                     "disabled",
+        ///                 },
+        ///             },
         ///         },
         ///     });
         /// 
@@ -161,6 +197,7 @@ namespace Pulumi.Auth0
     {
         public readonly ImmutableArray<Outputs.GetConnectionProfileConnectionConfigResult> ConnectionConfigs;
         public readonly string ConnectionNamePrefixTemplate;
+        public readonly ImmutableArray<Outputs.GetConnectionProfileCrossAppAccessResourceAppResult> CrossAppAccessResourceApps;
         public readonly ImmutableArray<string> EnabledFeatures;
         public readonly string Id;
         public readonly string Name;
@@ -172,6 +209,8 @@ namespace Pulumi.Auth0
             ImmutableArray<Outputs.GetConnectionProfileConnectionConfigResult> connectionConfigs,
 
             string connectionNamePrefixTemplate,
+
+            ImmutableArray<Outputs.GetConnectionProfileCrossAppAccessResourceAppResult> crossAppAccessResourceApps,
 
             ImmutableArray<string> enabledFeatures,
 
@@ -185,6 +224,7 @@ namespace Pulumi.Auth0
         {
             ConnectionConfigs = connectionConfigs;
             ConnectionNamePrefixTemplate = connectionNamePrefixTemplate;
+            CrossAppAccessResourceApps = crossAppAccessResourceApps;
             EnabledFeatures = enabledFeatures;
             Id = id;
             Name = name;

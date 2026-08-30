@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.GetConnectionProfileConnectionConfig;
+import com.pulumi.auth0.outputs.GetConnectionProfileCrossAppAccessResourceApp;
 import com.pulumi.auth0.outputs.GetConnectionProfileOrganization;
 import com.pulumi.auth0.outputs.GetConnectionProfileStrategyOverride;
 import com.pulumi.core.annotations.CustomType;
@@ -16,6 +17,7 @@ import java.util.Objects;
 public final class GetConnectionProfileResult {
     private List<GetConnectionProfileConnectionConfig> connectionConfigs;
     private String connectionNamePrefixTemplate;
+    private List<GetConnectionProfileCrossAppAccessResourceApp> crossAppAccessResourceApps;
     private List<String> enabledFeatures;
     private String id;
     private String name;
@@ -28,6 +30,9 @@ public final class GetConnectionProfileResult {
     }
     public String connectionNamePrefixTemplate() {
         return this.connectionNamePrefixTemplate;
+    }
+    public List<GetConnectionProfileCrossAppAccessResourceApp> crossAppAccessResourceApps() {
+        return this.crossAppAccessResourceApps;
     }
     public List<String> enabledFeatures() {
         return this.enabledFeatures;
@@ -56,6 +61,7 @@ public final class GetConnectionProfileResult {
     public static final class Builder {
         private List<GetConnectionProfileConnectionConfig> connectionConfigs;
         private String connectionNamePrefixTemplate;
+        private List<GetConnectionProfileCrossAppAccessResourceApp> crossAppAccessResourceApps;
         private List<String> enabledFeatures;
         private String id;
         private String name;
@@ -66,6 +72,7 @@ public final class GetConnectionProfileResult {
     	      Objects.requireNonNull(defaults);
     	      this.connectionConfigs = defaults.connectionConfigs;
     	      this.connectionNamePrefixTemplate = defaults.connectionNamePrefixTemplate;
+    	      this.crossAppAccessResourceApps = defaults.crossAppAccessResourceApps;
     	      this.enabledFeatures = defaults.enabledFeatures;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
@@ -91,6 +98,17 @@ public final class GetConnectionProfileResult {
             }
             this.connectionNamePrefixTemplate = connectionNamePrefixTemplate;
             return this;
+        }
+        @CustomType.Setter
+        public Builder crossAppAccessResourceApps(List<GetConnectionProfileCrossAppAccessResourceApp> crossAppAccessResourceApps) {
+            if (crossAppAccessResourceApps == null) {
+              throw new MissingRequiredPropertyException("GetConnectionProfileResult", "crossAppAccessResourceApps");
+            }
+            this.crossAppAccessResourceApps = crossAppAccessResourceApps;
+            return this;
+        }
+        public Builder crossAppAccessResourceApps(GetConnectionProfileCrossAppAccessResourceApp... crossAppAccessResourceApps) {
+            return crossAppAccessResourceApps(List.of(crossAppAccessResourceApps));
         }
         @CustomType.Setter
         public Builder enabledFeatures(List<String> enabledFeatures) {
@@ -145,6 +163,7 @@ public final class GetConnectionProfileResult {
             final var _resultValue = new GetConnectionProfileResult();
             _resultValue.connectionConfigs = connectionConfigs;
             _resultValue.connectionNamePrefixTemplate = connectionNamePrefixTemplate;
+            _resultValue.crossAppAccessResourceApps = crossAppAccessResourceApps;
             _resultValue.enabledFeatures = enabledFeatures;
             _resultValue.id = id;
             _resultValue.name = name;

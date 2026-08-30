@@ -483,7 +483,7 @@ namespace Pulumi.Auth0.Inputs
         }
 
         /// <summary>
-        /// Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+        /// Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. On oidc and okta, Auth0 defaults any omitted `ClaimsParameterSupported`, `RequestParameterSupported`, `RequestUriParameterSupported`, `RequireRequestUriRegistration` field to false. Those defaults are not tracked in provider until set to true explisitly. (EA only)
         /// </summary>
         [Input("oidcMetadata")]
         public Input<string>? OidcMetadata { get; set; }

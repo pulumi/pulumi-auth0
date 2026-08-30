@@ -4,6 +4,7 @@
 package com.pulumi.auth0.inputs;
 
 import com.pulumi.auth0.inputs.ConnectionProfileConnectionConfigArgs;
+import com.pulumi.auth0.inputs.ConnectionProfileCrossAppAccessResourceAppArgs;
 import com.pulumi.auth0.inputs.ConnectionProfileOrganizationArgs;
 import com.pulumi.auth0.inputs.ConnectionProfileStrategyOverridesArgs;
 import com.pulumi.core.Output;
@@ -47,6 +48,21 @@ public final class ConnectionProfileState extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<String>> connectionNamePrefixTemplate() {
         return Optional.ofNullable(this.connectionNamePrefixTemplate);
+    }
+
+    /**
+     * Configures the connection profile as a Cross-App Access (XAA) resource application, controlling whether organization admins may enable XAA on their identity providers. Requires the `myOrgsCrossAppAccessResourceApp` tenant flag to be enabled (EA only). Note: this is distinct from, and unrelated to, `crossAppAccessResourceApp` on `auth0.Connection`, which uses a flat `status` string rather than this nested `status` block.
+     * 
+     */
+    @Import(name="crossAppAccessResourceApp")
+    private @Nullable Output<ConnectionProfileCrossAppAccessResourceAppArgs> crossAppAccessResourceApp;
+
+    /**
+     * @return Configures the connection profile as a Cross-App Access (XAA) resource application, controlling whether organization admins may enable XAA on their identity providers. Requires the `myOrgsCrossAppAccessResourceApp` tenant flag to be enabled (EA only). Note: this is distinct from, and unrelated to, `crossAppAccessResourceApp` on `auth0.Connection`, which uses a flat `status` string rather than this nested `status` block.
+     * 
+     */
+    public Optional<Output<ConnectionProfileCrossAppAccessResourceAppArgs>> crossAppAccessResourceApp() {
+        return Optional.ofNullable(this.crossAppAccessResourceApp);
     }
 
     /**
@@ -114,6 +130,7 @@ public final class ConnectionProfileState extends com.pulumi.resources.ResourceA
     private ConnectionProfileState(ConnectionProfileState $) {
         this.connectionConfig = $.connectionConfig;
         this.connectionNamePrefixTemplate = $.connectionNamePrefixTemplate;
+        this.crossAppAccessResourceApp = $.crossAppAccessResourceApp;
         this.enabledFeatures = $.enabledFeatures;
         this.name = $.name;
         this.organization = $.organization;
@@ -178,6 +195,27 @@ public final class ConnectionProfileState extends com.pulumi.resources.ResourceA
          */
         public Builder connectionNamePrefixTemplate(String connectionNamePrefixTemplate) {
             return connectionNamePrefixTemplate(Output.of(connectionNamePrefixTemplate));
+        }
+
+        /**
+         * @param crossAppAccessResourceApp Configures the connection profile as a Cross-App Access (XAA) resource application, controlling whether organization admins may enable XAA on their identity providers. Requires the `myOrgsCrossAppAccessResourceApp` tenant flag to be enabled (EA only). Note: this is distinct from, and unrelated to, `crossAppAccessResourceApp` on `auth0.Connection`, which uses a flat `status` string rather than this nested `status` block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAppAccessResourceApp(@Nullable Output<ConnectionProfileCrossAppAccessResourceAppArgs> crossAppAccessResourceApp) {
+            $.crossAppAccessResourceApp = crossAppAccessResourceApp;
+            return this;
+        }
+
+        /**
+         * @param crossAppAccessResourceApp Configures the connection profile as a Cross-App Access (XAA) resource application, controlling whether organization admins may enable XAA on their identity providers. Requires the `myOrgsCrossAppAccessResourceApp` tenant flag to be enabled (EA only). Note: this is distinct from, and unrelated to, `crossAppAccessResourceApp` on `auth0.Connection`, which uses a flat `status` string rather than this nested `status` block.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossAppAccessResourceApp(ConnectionProfileCrossAppAccessResourceAppArgs crossAppAccessResourceApp) {
+            return crossAppAccessResourceApp(Output.of(crossAppAccessResourceApp));
         }
 
         /**

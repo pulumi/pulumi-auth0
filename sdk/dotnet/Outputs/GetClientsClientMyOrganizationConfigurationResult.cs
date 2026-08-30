@@ -30,6 +30,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string InvitationLandingClientId;
         /// <summary>
+        /// Configures third-party client access to organizations created for this client through the My Organization API. Requires the `MyOrgsThirdPartyClientSupport` 	 (EA Only)
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessResult> ThirdPartyClientAccesses;
+        /// <summary>
         /// The ID of the user attribute profile to use when creating organizations for this client.
         /// </summary>
         public readonly string UserAttributeProfileId;
@@ -44,12 +48,15 @@ namespace Pulumi.Auth0.Outputs
 
             string invitationLandingClientId,
 
+            ImmutableArray<Outputs.GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessResult> thirdPartyClientAccesses,
+
             string userAttributeProfileId)
         {
             AllowedStrategies = allowedStrategies;
             ConnectionDeletionBehavior = connectionDeletionBehavior;
             ConnectionProfileId = connectionProfileId;
             InvitationLandingClientId = invitationLandingClientId;
+            ThirdPartyClientAccesses = thirdPartyClientAccesses;
             UserAttributeProfileId = userAttributeProfileId;
         }
     }

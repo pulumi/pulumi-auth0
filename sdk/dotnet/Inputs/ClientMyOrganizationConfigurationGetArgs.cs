@@ -43,6 +43,12 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? InvitationLandingClientId { get; set; }
 
         /// <summary>
+        /// Configures third-party client access to organizations created for this client through the My Organization API. Requires the `MyOrgsThirdPartyClientSupport` 	 (EA Only)
+        /// </summary>
+        [Input("thirdPartyClientAccess")]
+        public Input<Inputs.ClientMyOrganizationConfigurationThirdPartyClientAccessGetArgs>? ThirdPartyClientAccess { get; set; }
+
+        /// <summary>
         /// The ID of the user attribute profile to use when creating organizations for this client.
         /// </summary>
         [Input("userAttributeProfileId")]

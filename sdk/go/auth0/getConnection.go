@@ -60,6 +60,8 @@ func LookupConnection(ctx *pulumi.Context, args *LookupConnectionArgs, opts ...p
 type LookupConnectionArgs struct {
 	// The ID of the connection. If not provided, `name` must be set.
 	ConnectionId *string `pulumi:"connectionId"`
+	// Set this to avoid persisting the sensitive `options.client_secret` value in state; it will be stored as an empty string.
+	HideClientSecret *bool `pulumi:"hideClientSecret"`
 	// The name of the connection. If not provided, `connectionId` must be set.
 	Name *string `pulumi:"name"`
 	// Whether to skip enabled clients for this connection. Setting this to `true` will skip additional paginated API calls to /api/v2/connections/{id}/clients. Default: `false`.
@@ -82,6 +84,8 @@ type LookupConnectionResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// IDs of the clients for which the connection is enabled. Skips populating if `skipEnabledClients` is `true`.
 	EnabledClients []string `pulumi:"enabledClients"`
+	// Set this to avoid persisting the sensitive `options.client_secret` value in state; it will be stored as an empty string.
+	HideClientSecret *bool `pulumi:"hideClientSecret"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Indicates whether the connection is domain level.
@@ -111,6 +115,8 @@ func LookupConnectionOutput(ctx *pulumi.Context, args LookupConnectionOutputArgs
 type LookupConnectionOutputArgs struct {
 	// The ID of the connection. If not provided, `name` must be set.
 	ConnectionId pulumi.StringPtrInput `pulumi:"connectionId"`
+	// Set this to avoid persisting the sensitive `options.client_secret` value in state; it will be stored as an empty string.
+	HideClientSecret pulumi.BoolPtrInput `pulumi:"hideClientSecret"`
 	// The name of the connection. If not provided, `connectionId` must be set.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Whether to skip enabled clients for this connection. Setting this to `true` will skip additional paginated API calls to /api/v2/connections/{id}/clients. Default: `false`.
@@ -173,6 +179,11 @@ func (o LookupConnectionResultOutput) DisplayName() pulumi.StringOutput {
 // IDs of the clients for which the connection is enabled. Skips populating if `skipEnabledClients` is `true`.
 func (o LookupConnectionResultOutput) EnabledClients() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupConnectionResult) []string { return v.EnabledClients }).(pulumi.StringArrayOutput)
+}
+
+// Set this to avoid persisting the sensitive `options.client_secret` value in state; it will be stored as an empty string.
+func (o LookupConnectionResultOutput) HideClientSecret() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupConnectionResult) *bool { return v.HideClientSecret }).(pulumi.BoolPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

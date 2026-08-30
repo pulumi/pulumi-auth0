@@ -23,6 +23,7 @@ class ConnectionProfileArgs:
     def __init__(__self__, *,
                  connection_config: pulumi.Input[Optional['ConnectionProfileConnectionConfigArgs']] = None,
                  connection_name_prefix_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_app_access_resource_app: pulumi.Input[Optional['ConnectionProfileCrossAppAccessResourceAppArgs']] = None,
                  enabled_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  organization: pulumi.Input[Optional['ConnectionProfileOrganizationArgs']] = None,
@@ -32,6 +33,7 @@ class ConnectionProfileArgs:
 
         :param pulumi.Input['ConnectionProfileConnectionConfigArgs'] connection_config: Connection configuration for the profile.
         :param pulumi.Input[_builtins.str] connection_name_prefix_template: Template for generating connection names from the profile.
+        :param pulumi.Input['ConnectionProfileCrossAppAccessResourceAppArgs'] cross_app_access_resource_app: Configures the connection profile as a Cross-App Access (XAA) resource application, controlling whether organization admins may enable XAA on their identity providers. Requires the `my_orgs_cross_app_access_resource_app` tenant flag to be enabled (EA only). Note: this is distinct from, and unrelated to, `cross_app_access_resource_app` on `Connection`, which uses a flat `status` string rather than this nested `status` block.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enabled_features: List of enabled features for the connection profile.
         :param pulumi.Input[_builtins.str] name: Name of the connection profile.
         :param pulumi.Input['ConnectionProfileOrganizationArgs'] organization: Organization associated with the connection profile.
@@ -41,6 +43,8 @@ class ConnectionProfileArgs:
             pulumi.set(__self__, "connection_config", connection_config)
         if connection_name_prefix_template is not None:
             pulumi.set(__self__, "connection_name_prefix_template", connection_name_prefix_template)
+        if cross_app_access_resource_app is not None:
+            pulumi.set(__self__, "cross_app_access_resource_app", cross_app_access_resource_app)
         if enabled_features is not None:
             pulumi.set(__self__, "enabled_features", enabled_features)
         if name is not None:
@@ -73,6 +77,18 @@ class ConnectionProfileArgs:
     @connection_name_prefix_template.setter
     def connection_name_prefix_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_name_prefix_template", value)
+
+    @_builtins.property
+    @pulumi.getter(name="crossAppAccessResourceApp")
+    def cross_app_access_resource_app(self) -> pulumi.Input[Optional['ConnectionProfileCrossAppAccessResourceAppArgs']]:
+        """
+        Configures the connection profile as a Cross-App Access (XAA) resource application, controlling whether organization admins may enable XAA on their identity providers. Requires the `my_orgs_cross_app_access_resource_app` tenant flag to be enabled (EA only). Note: this is distinct from, and unrelated to, `cross_app_access_resource_app` on `Connection`, which uses a flat `status` string rather than this nested `status` block.
+        """
+        return pulumi.get(self, "cross_app_access_resource_app")
+
+    @cross_app_access_resource_app.setter
+    def cross_app_access_resource_app(self, value: pulumi.Input[Optional['ConnectionProfileCrossAppAccessResourceAppArgs']]):
+        pulumi.set(self, "cross_app_access_resource_app", value)
 
     @_builtins.property
     @pulumi.getter(name="enabledFeatures")
@@ -128,6 +144,7 @@ class _ConnectionProfileState:
     def __init__(__self__, *,
                  connection_config: pulumi.Input[Optional['ConnectionProfileConnectionConfigArgs']] = None,
                  connection_name_prefix_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_app_access_resource_app: pulumi.Input[Optional['ConnectionProfileCrossAppAccessResourceAppArgs']] = None,
                  enabled_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  organization: pulumi.Input[Optional['ConnectionProfileOrganizationArgs']] = None,
@@ -137,6 +154,7 @@ class _ConnectionProfileState:
 
         :param pulumi.Input['ConnectionProfileConnectionConfigArgs'] connection_config: Connection configuration for the profile.
         :param pulumi.Input[_builtins.str] connection_name_prefix_template: Template for generating connection names from the profile.
+        :param pulumi.Input['ConnectionProfileCrossAppAccessResourceAppArgs'] cross_app_access_resource_app: Configures the connection profile as a Cross-App Access (XAA) resource application, controlling whether organization admins may enable XAA on their identity providers. Requires the `my_orgs_cross_app_access_resource_app` tenant flag to be enabled (EA only). Note: this is distinct from, and unrelated to, `cross_app_access_resource_app` on `Connection`, which uses a flat `status` string rather than this nested `status` block.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enabled_features: List of enabled features for the connection profile.
         :param pulumi.Input[_builtins.str] name: Name of the connection profile.
         :param pulumi.Input['ConnectionProfileOrganizationArgs'] organization: Organization associated with the connection profile.
@@ -146,6 +164,8 @@ class _ConnectionProfileState:
             pulumi.set(__self__, "connection_config", connection_config)
         if connection_name_prefix_template is not None:
             pulumi.set(__self__, "connection_name_prefix_template", connection_name_prefix_template)
+        if cross_app_access_resource_app is not None:
+            pulumi.set(__self__, "cross_app_access_resource_app", cross_app_access_resource_app)
         if enabled_features is not None:
             pulumi.set(__self__, "enabled_features", enabled_features)
         if name is not None:
@@ -178,6 +198,18 @@ class _ConnectionProfileState:
     @connection_name_prefix_template.setter
     def connection_name_prefix_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_name_prefix_template", value)
+
+    @_builtins.property
+    @pulumi.getter(name="crossAppAccessResourceApp")
+    def cross_app_access_resource_app(self) -> pulumi.Input[Optional['ConnectionProfileCrossAppAccessResourceAppArgs']]:
+        """
+        Configures the connection profile as a Cross-App Access (XAA) resource application, controlling whether organization admins may enable XAA on their identity providers. Requires the `my_orgs_cross_app_access_resource_app` tenant flag to be enabled (EA only). Note: this is distinct from, and unrelated to, `cross_app_access_resource_app` on `Connection`, which uses a flat `status` string rather than this nested `status` block.
+        """
+        return pulumi.get(self, "cross_app_access_resource_app")
+
+    @cross_app_access_resource_app.setter
+    def cross_app_access_resource_app(self, value: pulumi.Input[Optional['ConnectionProfileCrossAppAccessResourceAppArgs']]):
+        pulumi.set(self, "cross_app_access_resource_app", value)
 
     @_builtins.property
     @pulumi.getter(name="enabledFeatures")
@@ -236,6 +268,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_config: pulumi.Input[Optional[Union['ConnectionProfileConnectionConfigArgs', 'ConnectionProfileConnectionConfigArgsDict']]] = None,
                  connection_name_prefix_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_app_access_resource_app: pulumi.Input[Optional[Union['ConnectionProfileCrossAppAccessResourceAppArgs', 'ConnectionProfileCrossAppAccessResourceAppArgsDict']]] = None,
                  enabled_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  organization: pulumi.Input[Optional[Union['ConnectionProfileOrganizationArgs', 'ConnectionProfileOrganizationArgsDict']]] = None,
@@ -260,7 +293,16 @@ class ConnectionProfile(pulumi.CustomResource):
             enabled_features=[
                 "scim",
                 "universal_logout",
-            ])
+            ],
+            cross_app_access_resource_app={
+                "status": {
+                    "default_value": "enabled",
+                    "allowed_values": [
+                        "enabled",
+                        "disabled",
+                    ],
+                },
+            })
         ```
 
         ## Import
@@ -278,6 +320,7 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ConnectionProfileConnectionConfigArgs', 'ConnectionProfileConnectionConfigArgsDict']] connection_config: Connection configuration for the profile.
         :param pulumi.Input[_builtins.str] connection_name_prefix_template: Template for generating connection names from the profile.
+        :param pulumi.Input[Union['ConnectionProfileCrossAppAccessResourceAppArgs', 'ConnectionProfileCrossAppAccessResourceAppArgsDict']] cross_app_access_resource_app: Configures the connection profile as a Cross-App Access (XAA) resource application, controlling whether organization admins may enable XAA on their identity providers. Requires the `my_orgs_cross_app_access_resource_app` tenant flag to be enabled (EA only). Note: this is distinct from, and unrelated to, `cross_app_access_resource_app` on `Connection`, which uses a flat `status` string rather than this nested `status` block.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enabled_features: List of enabled features for the connection profile.
         :param pulumi.Input[_builtins.str] name: Name of the connection profile.
         :param pulumi.Input[Union['ConnectionProfileOrganizationArgs', 'ConnectionProfileOrganizationArgsDict']] organization: Organization associated with the connection profile.
@@ -308,7 +351,16 @@ class ConnectionProfile(pulumi.CustomResource):
             enabled_features=[
                 "scim",
                 "universal_logout",
-            ])
+            ],
+            cross_app_access_resource_app={
+                "status": {
+                    "default_value": "enabled",
+                    "allowed_values": [
+                        "enabled",
+                        "disabled",
+                    ],
+                },
+            })
         ```
 
         ## Import
@@ -339,6 +391,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_config: pulumi.Input[Optional[Union['ConnectionProfileConnectionConfigArgs', 'ConnectionProfileConnectionConfigArgsDict']]] = None,
                  connection_name_prefix_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_app_access_resource_app: pulumi.Input[Optional[Union['ConnectionProfileCrossAppAccessResourceAppArgs', 'ConnectionProfileCrossAppAccessResourceAppArgsDict']]] = None,
                  enabled_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  organization: pulumi.Input[Optional[Union['ConnectionProfileOrganizationArgs', 'ConnectionProfileOrganizationArgsDict']]] = None,
@@ -354,6 +407,7 @@ class ConnectionProfile(pulumi.CustomResource):
 
             __props__.__dict__["connection_config"] = connection_config
             __props__.__dict__["connection_name_prefix_template"] = connection_name_prefix_template
+            __props__.__dict__["cross_app_access_resource_app"] = cross_app_access_resource_app
             __props__.__dict__["enabled_features"] = enabled_features
             __props__.__dict__["name"] = name
             __props__.__dict__["organization"] = organization
@@ -370,6 +424,7 @@ class ConnectionProfile(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             connection_config: pulumi.Input[Optional[Union['ConnectionProfileConnectionConfigArgs', 'ConnectionProfileConnectionConfigArgsDict']]] = None,
             connection_name_prefix_template: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_app_access_resource_app: pulumi.Input[Optional[Union['ConnectionProfileCrossAppAccessResourceAppArgs', 'ConnectionProfileCrossAppAccessResourceAppArgsDict']]] = None,
             enabled_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             organization: pulumi.Input[Optional[Union['ConnectionProfileOrganizationArgs', 'ConnectionProfileOrganizationArgsDict']]] = None,
@@ -383,6 +438,7 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ConnectionProfileConnectionConfigArgs', 'ConnectionProfileConnectionConfigArgsDict']] connection_config: Connection configuration for the profile.
         :param pulumi.Input[_builtins.str] connection_name_prefix_template: Template for generating connection names from the profile.
+        :param pulumi.Input[Union['ConnectionProfileCrossAppAccessResourceAppArgs', 'ConnectionProfileCrossAppAccessResourceAppArgsDict']] cross_app_access_resource_app: Configures the connection profile as a Cross-App Access (XAA) resource application, controlling whether organization admins may enable XAA on their identity providers. Requires the `my_orgs_cross_app_access_resource_app` tenant flag to be enabled (EA only). Note: this is distinct from, and unrelated to, `cross_app_access_resource_app` on `Connection`, which uses a flat `status` string rather than this nested `status` block.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enabled_features: List of enabled features for the connection profile.
         :param pulumi.Input[_builtins.str] name: Name of the connection profile.
         :param pulumi.Input[Union['ConnectionProfileOrganizationArgs', 'ConnectionProfileOrganizationArgsDict']] organization: Organization associated with the connection profile.
@@ -394,6 +450,7 @@ class ConnectionProfile(pulumi.CustomResource):
 
         __props__.__dict__["connection_config"] = connection_config
         __props__.__dict__["connection_name_prefix_template"] = connection_name_prefix_template
+        __props__.__dict__["cross_app_access_resource_app"] = cross_app_access_resource_app
         __props__.__dict__["enabled_features"] = enabled_features
         __props__.__dict__["name"] = name
         __props__.__dict__["organization"] = organization
@@ -415,6 +472,14 @@ class ConnectionProfile(pulumi.CustomResource):
         Template for generating connection names from the profile.
         """
         return pulumi.get(self, "connection_name_prefix_template")
+
+    @_builtins.property
+    @pulumi.getter(name="crossAppAccessResourceApp")
+    def cross_app_access_resource_app(self) -> pulumi.Output[Optional['outputs.ConnectionProfileCrossAppAccessResourceApp']]:
+        """
+        Configures the connection profile as a Cross-App Access (XAA) resource application, controlling whether organization admins may enable XAA on their identity providers. Requires the `my_orgs_cross_app_access_resource_app` tenant flag to be enabled (EA only). Note: this is distinct from, and unrelated to, `cross_app_access_resource_app` on `Connection`, which uses a flat `status` string rather than this nested `status` block.
+        """
+        return pulumi.get(self, "cross_app_access_resource_app")
 
     @_builtins.property
     @pulumi.getter(name="enabledFeatures")

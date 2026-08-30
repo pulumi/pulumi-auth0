@@ -115,6 +115,12 @@ namespace Pulumi.Auth0
         public string? ConnectionId { get; set; }
 
         /// <summary>
+        /// Set this to avoid persisting the sensitive `options.client_secret` value in state; it will be stored as an empty string.
+        /// </summary>
+        [Input("hideClientSecret")]
+        public bool? HideClientSecret { get; set; }
+
+        /// <summary>
         /// The name of the connection. If not provided, `ConnectionId` must be set.
         /// </summary>
         [Input("name")]
@@ -139,6 +145,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("connectionId")]
         public Input<string>? ConnectionId { get; set; }
+
+        /// <summary>
+        /// Set this to avoid persisting the sensitive `options.client_secret` value in state; it will be stored as an empty string.
+        /// </summary>
+        [Input("hideClientSecret")]
+        public Input<bool>? HideClientSecret { get; set; }
 
         /// <summary>
         /// The name of the connection. If not provided, `ConnectionId` must be set.
@@ -190,6 +202,10 @@ namespace Pulumi.Auth0
         /// IDs of the clients for which the connection is enabled. Skips populating if `SkipEnabledClients` is `True`.
         /// </summary>
         public readonly ImmutableArray<string> EnabledClients;
+        /// <summary>
+        /// Set this to avoid persisting the sensitive `options.client_secret` value in state; it will be stored as an empty string.
+        /// </summary>
+        public readonly bool? HideClientSecret;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -243,6 +259,8 @@ namespace Pulumi.Auth0
 
             ImmutableArray<string> enabledClients,
 
+            bool? hideClientSecret,
+
             string id,
 
             bool isDomainConnection,
@@ -268,6 +286,7 @@ namespace Pulumi.Auth0
             CrossAppAccessResourceApps = crossAppAccessResourceApps;
             DisplayName = displayName;
             EnabledClients = enabledClients;
+            HideClientSecret = hideClientSecret;
             Id = id;
             IsDomainConnection = isDomainConnection;
             Metadata = metadata;

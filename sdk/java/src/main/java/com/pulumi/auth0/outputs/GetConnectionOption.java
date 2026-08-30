@@ -360,7 +360,7 @@ public final class GetConnectionOption {
      */
     private List<String> nonPersistentAttrs;
     /**
-     * @return Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+     * @return Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. On oidc and okta, Auth0 defaults any omitted `claimsParameterSupported`, `requestParameterSupported`, `requestUriParameterSupported`, `requireRequestUriRegistration` field to false. Those defaults are not tracked in provider until set to true explisitly. (EA only)
      * 
      */
     private String oidcMetadata;
@@ -1097,7 +1097,7 @@ public final class GetConnectionOption {
         return this.nonPersistentAttrs;
     }
     /**
-     * @return Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. (EA only)
+     * @return Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. On oidc and okta, Auth0 defaults any omitted `claimsParameterSupported`, `requestParameterSupported`, `requestUriParameterSupported`, `requireRequestUriRegistration` field to false. Those defaults are not tracked in provider until set to true explisitly. (EA only)
      * 
      */
     public String oidcMetadata() {

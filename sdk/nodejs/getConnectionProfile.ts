@@ -26,6 +26,15 @@ import * as utilities from "./utilities";
  *         "scim",
  *         "universal_logout",
  *     ],
+ *     crossAppAccessResourceApp: {
+ *         status: {
+ *             defaultValue: "enabled",
+ *             allowedValues: [
+ *                 "enabled",
+ *                 "disabled",
+ *             ],
+ *         },
+ *     },
  * });
  * const myProfileDs = auth0.getConnectionProfileOutput({
  *     id: myProfile.id,
@@ -52,6 +61,7 @@ export interface GetConnectionProfileArgs {
 export interface GetConnectionProfileResult {
     readonly connectionConfigs: outputs.GetConnectionProfileConnectionConfig[];
     readonly connectionNamePrefixTemplate: string;
+    readonly crossAppAccessResourceApps: outputs.GetConnectionProfileCrossAppAccessResourceApp[];
     readonly enabledFeatures: string[];
     readonly id: string;
     readonly name: string;
@@ -78,6 +88,15 @@ export interface GetConnectionProfileResult {
  *         "scim",
  *         "universal_logout",
  *     ],
+ *     crossAppAccessResourceApp: {
+ *         status: {
+ *             defaultValue: "enabled",
+ *             allowedValues: [
+ *                 "enabled",
+ *                 "disabled",
+ *             ],
+ *         },
+ *     },
  * });
  * const myProfileDs = auth0.getConnectionProfileOutput({
  *     id: myProfile.id,

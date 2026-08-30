@@ -38,6 +38,15 @@ import (
 //					pulumi.String("scim"),
 //					pulumi.String("universal_logout"),
 //				},
+//				CrossAppAccessResourceApp: &auth0.ConnectionProfileCrossAppAccessResourceAppArgs{
+//					Status: &auth0.ConnectionProfileCrossAppAccessResourceAppStatusArgs{
+//						DefaultValue: pulumi.String("enabled"),
+//						AllowedValues: pulumi.StringArray{
+//							pulumi.String("enabled"),
+//							pulumi.String("disabled"),
+//						},
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -64,6 +73,8 @@ type ConnectionProfile struct {
 	ConnectionConfig ConnectionProfileConnectionConfigOutput `pulumi:"connectionConfig"`
 	// Template for generating connection names from the profile.
 	ConnectionNamePrefixTemplate pulumi.StringPtrOutput `pulumi:"connectionNamePrefixTemplate"`
+	// Configures the connection profile as a Cross-App Access (XAA) resource application, controlling whether organization admins may enable XAA on their identity providers. Requires the `myOrgsCrossAppAccessResourceApp` tenant flag to be enabled (EA only). Note: this is distinct from, and unrelated to, `crossAppAccessResourceApp` on `Connection`, which uses a flat `status` string rather than this nested `status` block.
+	CrossAppAccessResourceApp ConnectionProfileCrossAppAccessResourceAppPtrOutput `pulumi:"crossAppAccessResourceApp"`
 	// List of enabled features for the connection profile.
 	EnabledFeatures pulumi.StringArrayOutput `pulumi:"enabledFeatures"`
 	// Name of the connection profile.
@@ -108,6 +119,8 @@ type connectionProfileState struct {
 	ConnectionConfig *ConnectionProfileConnectionConfig `pulumi:"connectionConfig"`
 	// Template for generating connection names from the profile.
 	ConnectionNamePrefixTemplate *string `pulumi:"connectionNamePrefixTemplate"`
+	// Configures the connection profile as a Cross-App Access (XAA) resource application, controlling whether organization admins may enable XAA on their identity providers. Requires the `myOrgsCrossAppAccessResourceApp` tenant flag to be enabled (EA only). Note: this is distinct from, and unrelated to, `crossAppAccessResourceApp` on `Connection`, which uses a flat `status` string rather than this nested `status` block.
+	CrossAppAccessResourceApp *ConnectionProfileCrossAppAccessResourceApp `pulumi:"crossAppAccessResourceApp"`
 	// List of enabled features for the connection profile.
 	EnabledFeatures []string `pulumi:"enabledFeatures"`
 	// Name of the connection profile.
@@ -123,6 +136,8 @@ type ConnectionProfileState struct {
 	ConnectionConfig ConnectionProfileConnectionConfigPtrInput
 	// Template for generating connection names from the profile.
 	ConnectionNamePrefixTemplate pulumi.StringPtrInput
+	// Configures the connection profile as a Cross-App Access (XAA) resource application, controlling whether organization admins may enable XAA on their identity providers. Requires the `myOrgsCrossAppAccessResourceApp` tenant flag to be enabled (EA only). Note: this is distinct from, and unrelated to, `crossAppAccessResourceApp` on `Connection`, which uses a flat `status` string rather than this nested `status` block.
+	CrossAppAccessResourceApp ConnectionProfileCrossAppAccessResourceAppPtrInput
 	// List of enabled features for the connection profile.
 	EnabledFeatures pulumi.StringArrayInput
 	// Name of the connection profile.
@@ -142,6 +157,8 @@ type connectionProfileArgs struct {
 	ConnectionConfig *ConnectionProfileConnectionConfig `pulumi:"connectionConfig"`
 	// Template for generating connection names from the profile.
 	ConnectionNamePrefixTemplate *string `pulumi:"connectionNamePrefixTemplate"`
+	// Configures the connection profile as a Cross-App Access (XAA) resource application, controlling whether organization admins may enable XAA on their identity providers. Requires the `myOrgsCrossAppAccessResourceApp` tenant flag to be enabled (EA only). Note: this is distinct from, and unrelated to, `crossAppAccessResourceApp` on `Connection`, which uses a flat `status` string rather than this nested `status` block.
+	CrossAppAccessResourceApp *ConnectionProfileCrossAppAccessResourceApp `pulumi:"crossAppAccessResourceApp"`
 	// List of enabled features for the connection profile.
 	EnabledFeatures []string `pulumi:"enabledFeatures"`
 	// Name of the connection profile.
@@ -158,6 +175,8 @@ type ConnectionProfileArgs struct {
 	ConnectionConfig ConnectionProfileConnectionConfigPtrInput
 	// Template for generating connection names from the profile.
 	ConnectionNamePrefixTemplate pulumi.StringPtrInput
+	// Configures the connection profile as a Cross-App Access (XAA) resource application, controlling whether organization admins may enable XAA on their identity providers. Requires the `myOrgsCrossAppAccessResourceApp` tenant flag to be enabled (EA only). Note: this is distinct from, and unrelated to, `crossAppAccessResourceApp` on `Connection`, which uses a flat `status` string rather than this nested `status` block.
+	CrossAppAccessResourceApp ConnectionProfileCrossAppAccessResourceAppPtrInput
 	// List of enabled features for the connection profile.
 	EnabledFeatures pulumi.StringArrayInput
 	// Name of the connection profile.
@@ -263,6 +282,13 @@ func (o ConnectionProfileOutput) ConnectionConfig() ConnectionProfileConnectionC
 // Template for generating connection names from the profile.
 func (o ConnectionProfileOutput) ConnectionNamePrefixTemplate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringPtrOutput { return v.ConnectionNamePrefixTemplate }).(pulumi.StringPtrOutput)
+}
+
+// Configures the connection profile as a Cross-App Access (XAA) resource application, controlling whether organization admins may enable XAA on their identity providers. Requires the `myOrgsCrossAppAccessResourceApp` tenant flag to be enabled (EA only). Note: this is distinct from, and unrelated to, `crossAppAccessResourceApp` on `Connection`, which uses a flat `status` string rather than this nested `status` block.
+func (o ConnectionProfileOutput) CrossAppAccessResourceApp() ConnectionProfileCrossAppAccessResourceAppPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfile) ConnectionProfileCrossAppAccessResourceAppPtrOutput {
+		return v.CrossAppAccessResourceApp
+	}).(ConnectionProfileCrossAppAccessResourceAppPtrOutput)
 }
 
 // List of enabled features for the connection profile.

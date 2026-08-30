@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.inputs;
 
+import com.pulumi.auth0.inputs.ClientMyOrganizationConfigurationThirdPartyClientAccessArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -77,6 +78,21 @@ public final class ClientMyOrganizationConfigurationArgs extends com.pulumi.reso
     }
 
     /**
+     * Configures third-party client access to organizations created for this client through the My Organization API. Requires the `myOrgsThirdPartyClientSupport` 	 (EA Only)
+     * 
+     */
+    @Import(name="thirdPartyClientAccess")
+    private @Nullable Output<ClientMyOrganizationConfigurationThirdPartyClientAccessArgs> thirdPartyClientAccess;
+
+    /**
+     * @return Configures third-party client access to organizations created for this client through the My Organization API. Requires the `myOrgsThirdPartyClientSupport` 	 (EA Only)
+     * 
+     */
+    public Optional<Output<ClientMyOrganizationConfigurationThirdPartyClientAccessArgs>> thirdPartyClientAccess() {
+        return Optional.ofNullable(this.thirdPartyClientAccess);
+    }
+
+    /**
      * The ID of the user attribute profile to use when creating organizations for this client.
      * 
      */
@@ -98,6 +114,7 @@ public final class ClientMyOrganizationConfigurationArgs extends com.pulumi.reso
         this.connectionDeletionBehavior = $.connectionDeletionBehavior;
         this.connectionProfileId = $.connectionProfileId;
         this.invitationLandingClientId = $.invitationLandingClientId;
+        this.thirdPartyClientAccess = $.thirdPartyClientAccess;
         this.userAttributeProfileId = $.userAttributeProfileId;
     }
 
@@ -211,6 +228,27 @@ public final class ClientMyOrganizationConfigurationArgs extends com.pulumi.reso
          */
         public Builder invitationLandingClientId(String invitationLandingClientId) {
             return invitationLandingClientId(Output.of(invitationLandingClientId));
+        }
+
+        /**
+         * @param thirdPartyClientAccess Configures third-party client access to organizations created for this client through the My Organization API. Requires the `myOrgsThirdPartyClientSupport` 	 (EA Only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder thirdPartyClientAccess(@Nullable Output<ClientMyOrganizationConfigurationThirdPartyClientAccessArgs> thirdPartyClientAccess) {
+            $.thirdPartyClientAccess = thirdPartyClientAccess;
+            return this;
+        }
+
+        /**
+         * @param thirdPartyClientAccess Configures third-party client access to organizations created for this client through the My Organization API. Requires the `myOrgsThirdPartyClientSupport` 	 (EA Only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder thirdPartyClientAccess(ClientMyOrganizationConfigurationThirdPartyClientAccessArgs thirdPartyClientAccess) {
+            return thirdPartyClientAccess(Output.of(thirdPartyClientAccess));
         }
 
         /**

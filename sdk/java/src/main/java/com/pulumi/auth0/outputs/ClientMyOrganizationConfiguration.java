@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.ClientMyOrganizationConfigurationThirdPartyClientAccess;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
@@ -32,6 +33,11 @@ public final class ClientMyOrganizationConfiguration {
      * 
      */
     private @Nullable String invitationLandingClientId;
+    /**
+     * @return Configures third-party client access to organizations created for this client through the My Organization API. Requires the `myOrgsThirdPartyClientSupport` 	 (EA Only)
+     * 
+     */
+    private @Nullable ClientMyOrganizationConfigurationThirdPartyClientAccess thirdPartyClientAccess;
     /**
      * @return The ID of the user attribute profile to use when creating organizations for this client.
      * 
@@ -68,6 +74,13 @@ public final class ClientMyOrganizationConfiguration {
         return Optional.ofNullable(this.invitationLandingClientId);
     }
     /**
+     * @return Configures third-party client access to organizations created for this client through the My Organization API. Requires the `myOrgsThirdPartyClientSupport` 	 (EA Only)
+     * 
+     */
+    public Optional<ClientMyOrganizationConfigurationThirdPartyClientAccess> thirdPartyClientAccess() {
+        return Optional.ofNullable(this.thirdPartyClientAccess);
+    }
+    /**
      * @return The ID of the user attribute profile to use when creating organizations for this client.
      * 
      */
@@ -88,6 +101,7 @@ public final class ClientMyOrganizationConfiguration {
         private @Nullable String connectionDeletionBehavior;
         private @Nullable String connectionProfileId;
         private @Nullable String invitationLandingClientId;
+        private @Nullable ClientMyOrganizationConfigurationThirdPartyClientAccess thirdPartyClientAccess;
         private @Nullable String userAttributeProfileId;
         public Builder() {}
         public Builder(ClientMyOrganizationConfiguration defaults) {
@@ -96,6 +110,7 @@ public final class ClientMyOrganizationConfiguration {
     	      this.connectionDeletionBehavior = defaults.connectionDeletionBehavior;
     	      this.connectionProfileId = defaults.connectionProfileId;
     	      this.invitationLandingClientId = defaults.invitationLandingClientId;
+    	      this.thirdPartyClientAccess = defaults.thirdPartyClientAccess;
     	      this.userAttributeProfileId = defaults.userAttributeProfileId;
         }
 
@@ -127,6 +142,12 @@ public final class ClientMyOrganizationConfiguration {
             return this;
         }
         @CustomType.Setter
+        public Builder thirdPartyClientAccess(@Nullable ClientMyOrganizationConfigurationThirdPartyClientAccess thirdPartyClientAccess) {
+
+            this.thirdPartyClientAccess = thirdPartyClientAccess;
+            return this;
+        }
+        @CustomType.Setter
         public Builder userAttributeProfileId(@Nullable String userAttributeProfileId) {
 
             this.userAttributeProfileId = userAttributeProfileId;
@@ -138,6 +159,7 @@ public final class ClientMyOrganizationConfiguration {
             _resultValue.connectionDeletionBehavior = connectionDeletionBehavior;
             _resultValue.connectionProfileId = connectionProfileId;
             _resultValue.invitationLandingClientId = invitationLandingClientId;
+            _resultValue.thirdPartyClientAccess = thirdPartyClientAccess;
             _resultValue.userAttributeProfileId = userAttributeProfileId;
             return _resultValue;
         }
