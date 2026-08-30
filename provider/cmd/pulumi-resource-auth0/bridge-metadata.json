@@ -435,6 +435,16 @@
                             "fields": {
                                 "allowed_strategies": {
                                     "maxItemsOne": false
+                                },
+                                "third_party_client_access": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "allowed_values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -973,6 +983,23 @@
                 "fields": {
                     "connection_config": {
                         "maxItemsOne": true
+                    },
+                    "cross_app_access_resource_app": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "status": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "allowed_values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "enabled_features": {
                         "maxItemsOne": false
@@ -2410,6 +2437,16 @@
                             "fields": {
                                 "allowed_strategies": {
                                     "maxItemsOne": false
+                                },
+                                "third_party_client_access": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "allowed_values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -2627,6 +2664,16 @@
                                         "fields": {
                                             "allowed_strategies": {
                                                 "maxItemsOne": false
+                                            },
+                                            "third_party_client_access": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "allowed_values": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -2989,6 +3036,23 @@
                 "fields": {
                     "connection_config": {
                         "maxItemsOne": false
+                    },
+                    "cross_app_access_resource_app": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "status": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "allowed_values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "enabled_features": {
                         "maxItemsOne": false
