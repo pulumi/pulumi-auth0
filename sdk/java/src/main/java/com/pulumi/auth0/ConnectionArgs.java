@@ -12,6 +12,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -160,6 +161,38 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The strategy&#39;s client secret (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. Bump `optionsClientSecretWoVersion` to rotate it. Conflicts with `options.client_secret`.
+     * 
+     */
+    @Import(name="optionsClientSecretWo")
+    private @Nullable Output<String> optionsClientSecretWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The strategy&#39;s client secret (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. Bump `optionsClientSecretWoVersion` to rotate it. Conflicts with `options.client_secret`.
+     * 
+     */
+    public Optional<Output<String>> optionsClientSecretWo() {
+        return Optional.ofNullable(this.optionsClientSecretWo);
+    }
+
+    /**
+     * Version counter for `optionsClientSecretWo`, required whenever the write-only secret is set. Must be a positive integer starting at `1`. This value signals rotation intent, though the secret is resent even for other config updates.
+     * 
+     */
+    @Import(name="optionsClientSecretWoVersion")
+    private @Nullable Output<Integer> optionsClientSecretWoVersion;
+
+    /**
+     * @return Version counter for `optionsClientSecretWo`, required whenever the write-only secret is set. Must be a positive integer starting at `1`. This value signals rotation intent, though the secret is resent even for other config updates.
+     * 
+     */
+    public Optional<Output<Integer>> optionsClientSecretWoVersion() {
+        return Optional.ofNullable(this.optionsClientSecretWoVersion);
+    }
+
+    /**
      * Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
      * 
      */
@@ -216,6 +249,8 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         this.metadata = $.metadata;
         this.name = $.name;
         this.options = $.options;
+        this.optionsClientSecretWo = $.optionsClientSecretWo;
+        this.optionsClientSecretWoVersion = $.optionsClientSecretWoVersion;
         this.realms = $.realms;
         this.showAsButton = $.showAsButton;
         this.strategy = $.strategy;
@@ -426,6 +461,50 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder options(ConnectionOptionsArgs options) {
             return options(Output.of(options));
+        }
+
+        /**
+         * @param optionsClientSecretWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The strategy&#39;s client secret (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. Bump `optionsClientSecretWoVersion` to rotate it. Conflicts with `options.client_secret`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder optionsClientSecretWo(@Nullable Output<String> optionsClientSecretWo) {
+            $.optionsClientSecretWo = optionsClientSecretWo;
+            return this;
+        }
+
+        /**
+         * @param optionsClientSecretWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The strategy&#39;s client secret (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. Bump `optionsClientSecretWoVersion` to rotate it. Conflicts with `options.client_secret`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder optionsClientSecretWo(String optionsClientSecretWo) {
+            return optionsClientSecretWo(Output.of(optionsClientSecretWo));
+        }
+
+        /**
+         * @param optionsClientSecretWoVersion Version counter for `optionsClientSecretWo`, required whenever the write-only secret is set. Must be a positive integer starting at `1`. This value signals rotation intent, though the secret is resent even for other config updates.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder optionsClientSecretWoVersion(@Nullable Output<Integer> optionsClientSecretWoVersion) {
+            $.optionsClientSecretWoVersion = optionsClientSecretWoVersion;
+            return this;
+        }
+
+        /**
+         * @param optionsClientSecretWoVersion Version counter for `optionsClientSecretWo`, required whenever the write-only secret is set. Must be a positive integer starting at `1`. This value signals rotation intent, though the secret is resent even for other config updates.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder optionsClientSecretWoVersion(Integer optionsClientSecretWoVersion) {
+            return optionsClientSecretWoVersion(Output.of(optionsClientSecretWoVersion));
         }
 
         /**

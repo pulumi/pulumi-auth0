@@ -80,6 +80,8 @@ type LookupClientResult struct {
 	AppType string `pulumi:"appType"`
 	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
 	AsyncApprovalNotificationChannels []string `pulumi:"asyncApprovalNotificationChannels"`
+	// Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
+	B2bIntegrationConfigurations []GetClientB2bIntegrationConfiguration `pulumi:"b2bIntegrationConfigurations"`
 	// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
 	Callbacks []string `pulumi:"callbacks"`
 	// List of audiences/realms for SAML protocol. Used by the wsfed addon.
@@ -154,7 +156,7 @@ type LookupClientResult struct {
 	OidcConformant bool `pulumi:"oidcConformant"`
 	// Configure OIDC logout for the Client
 	OidcLogouts []GetClientOidcLogout `pulumi:"oidcLogouts"`
-	// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+	// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
 	OrganizationDiscoveryMethods []string `pulumi:"organizationDiscoveryMethods"`
 	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
 	OrganizationRequireBehavior string `pulumi:"organizationRequireBehavior"`
@@ -255,6 +257,13 @@ func (o LookupClientResultOutput) AppType() pulumi.StringOutput {
 // List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
 func (o LookupClientResultOutput) AsyncApprovalNotificationChannels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupClientResult) []string { return v.AsyncApprovalNotificationChannels }).(pulumi.StringArrayOutput)
+}
+
+// Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
+func (o LookupClientResultOutput) B2bIntegrationConfigurations() GetClientB2bIntegrationConfigurationArrayOutput {
+	return o.ApplyT(func(v LookupClientResult) []GetClientB2bIntegrationConfiguration {
+		return v.B2bIntegrationConfigurations
+	}).(GetClientB2bIntegrationConfigurationArrayOutput)
 }
 
 // URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
@@ -446,7 +455,7 @@ func (o LookupClientResultOutput) OidcLogouts() GetClientOidcLogoutArrayOutput {
 	return o.ApplyT(func(v LookupClientResult) []GetClientOidcLogout { return v.OidcLogouts }).(GetClientOidcLogoutArrayOutput)
 }
 
-// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
 func (o LookupClientResultOutput) OrganizationDiscoveryMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupClientResult) []string { return v.OrganizationDiscoveryMethods }).(pulumi.StringArrayOutput)
 }

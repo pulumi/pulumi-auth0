@@ -163,6 +163,8 @@ __all__ = [
     'ClientAddonsZendeskArgsDict',
     'ClientAddonsZoomArgs',
     'ClientAddonsZoomArgsDict',
+    'ClientB2bIntegrationConfigurationArgs',
+    'ClientB2bIntegrationConfigurationArgsDict',
     'ClientCimdDefaultOrganizationArgs',
     'ClientCimdDefaultOrganizationArgsDict',
     'ClientCimdJwtConfigurationArgs',
@@ -449,8 +451,16 @@ __all__ = [
     'NetworkAclRuleActionArgsDict',
     'NetworkAclRuleMatchArgs',
     'NetworkAclRuleMatchArgsDict',
+    'NetworkAclRuleMatchHttpMessageSignatureArgs',
+    'NetworkAclRuleMatchHttpMessageSignatureArgsDict',
+    'NetworkAclRuleMatchHttpMessageSignatureKeyArgs',
+    'NetworkAclRuleMatchHttpMessageSignatureKeyArgsDict',
     'NetworkAclRuleNotMatchArgs',
     'NetworkAclRuleNotMatchArgsDict',
+    'NetworkAclRuleNotMatchHttpMessageSignatureArgs',
+    'NetworkAclRuleNotMatchHttpMessageSignatureArgsDict',
+    'NetworkAclRuleNotMatchHttpMessageSignatureKeyArgs',
+    'NetworkAclRuleNotMatchHttpMessageSignatureKeyArgsDict',
     'OrganizationBrandingArgs',
     'OrganizationBrandingArgsDict',
     'OrganizationClientsClientArgs',
@@ -6495,6 +6505,55 @@ class ClientAddonsZoomArgs:
         pulumi.set(self, "account", value)
 
 
+class ClientB2bIntegrationConfigurationArgsDict(TypedDict):
+    integration_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The type of integration used to connect to this B2B integration client. One of custom*auth*server, third_party, application
+    """
+    sso_profiles: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    ID of the self-service SSO profile (an `SelfServiceProfile` id, in `ssp_...` format) linked to this B2B integration client. Maximum 1.
+    """
+
+@pulumi.input_type
+class ClientB2bIntegrationConfigurationArgs:
+    def __init__(__self__, *,
+                 integration_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 sso_profiles: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] integration_type: The type of integration used to connect to this B2B integration client. One of custom*auth*server, third_party, application
+        :param pulumi.Input[_builtins.str] sso_profiles: ID of the self-service SSO profile (an `SelfServiceProfile` id, in `ssp_...` format) linked to this B2B integration client. Maximum 1.
+        """
+        if integration_type is not None:
+            pulumi.set(__self__, "integration_type", integration_type)
+        if sso_profiles is not None:
+            pulumi.set(__self__, "sso_profiles", sso_profiles)
+
+    @_builtins.property
+    @pulumi.getter(name="integrationType")
+    def integration_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of integration used to connect to this B2B integration client. One of custom*auth*server, third_party, application
+        """
+        return pulumi.get(self, "integration_type")
+
+    @integration_type.setter
+    def integration_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "integration_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ssoProfiles")
+    def sso_profiles(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        ID of the self-service SSO profile (an `SelfServiceProfile` id, in `ssp_...` format) linked to this B2B integration client. Maximum 1.
+        """
+        return pulumi.get(self, "sso_profiles")
+
+    @sso_profiles.setter
+    def sso_profiles(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "sso_profiles", value)
+
+
 class ClientCimdDefaultOrganizationArgsDict(TypedDict):
     flows: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
     """
@@ -9916,7 +9975,7 @@ class ConnectionOptionsArgsDict(TypedDict):
     """
     client_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The strategy's client secret.
+    The strategy's client secret. **Note:** For better security, consider using `options_client_secret_wo` instead to avoid storing the secret in Terraform state.
     """
     community_base_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -10485,7 +10544,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[_builtins.str] authorization_endpoint: Authorization endpoint.
         :param pulumi.Input[_builtins.bool] brute_force_protection: Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
         :param pulumi.Input[_builtins.str] client_id: The strategy's client ID.
-        :param pulumi.Input[_builtins.str] client_secret: The strategy's client secret.
+        :param pulumi.Input[_builtins.str] client_secret: The strategy's client secret. **Note:** For better security, consider using `options_client_secret_wo` instead to avoid storing the secret in Terraform state.
         :param pulumi.Input[_builtins.str] community_base_url: Salesforce community base URL.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] configuration: A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
         :param pulumi.Input['ConnectionOptionsConnectionSettingsArgs'] connection_settings: Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
@@ -10997,7 +11056,7 @@ class ConnectionOptionsArgs:
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The strategy's client secret.
+        The strategy's client secret. **Note:** For better security, consider using `options_client_secret_wo` instead to avoid storing the secret in Terraform state.
         """
         return pulumi.get(self, "client_secret")
 
@@ -18169,6 +18228,10 @@ class NetworkAclRuleArgsDict(TypedDict):
     """
     The configuration for the Network ACL Rule
     """
+    match_all: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    When true, the rule unconditionally matches all traffic regardless of any other criteria. Mutually exclusive with match and not_match.
+    """
     not_match: NotRequired[pulumi.Input[Optional['NetworkAclRuleNotMatchArgsDict']]]
     """
     The configuration for the Network ACL Rule
@@ -18180,17 +18243,21 @@ class NetworkAclRuleArgs:
                  action: pulumi.Input['NetworkAclRuleActionArgs'],
                  scope: pulumi.Input[_builtins.str],
                  match: pulumi.Input[Optional['NetworkAclRuleMatchArgs']] = None,
+                 match_all: pulumi.Input[Optional[_builtins.bool]] = None,
                  not_match: pulumi.Input[Optional['NetworkAclRuleNotMatchArgs']] = None):
         """
         :param pulumi.Input['NetworkAclRuleActionArgs'] action: The action configuration for the Network ACL Rule. Only one action type (block, allow, log, or redirect) should be specified.
         :param pulumi.Input[_builtins.str] scope: The scope of the Network ACL Rule
         :param pulumi.Input['NetworkAclRuleMatchArgs'] match: The configuration for the Network ACL Rule
+        :param pulumi.Input[_builtins.bool] match_all: When true, the rule unconditionally matches all traffic regardless of any other criteria. Mutually exclusive with match and not_match.
         :param pulumi.Input['NetworkAclRuleNotMatchArgs'] not_match: The configuration for the Network ACL Rule
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "scope", scope)
         if match is not None:
             pulumi.set(__self__, "match", match)
+        if match_all is not None:
+            pulumi.set(__self__, "match_all", match_all)
         if not_match is not None:
             pulumi.set(__self__, "not_match", not_match)
 
@@ -18229,6 +18296,18 @@ class NetworkAclRuleArgs:
     @match.setter
     def match(self, value: pulumi.Input[Optional['NetworkAclRuleMatchArgs']]):
         pulumi.set(self, "match", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchAll")
+    def match_all(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When true, the rule unconditionally matches all traffic regardless of any other criteria. Mutually exclusive with match and not_match.
+        """
+        return pulumi.get(self, "match_all")
+
+    @match_all.setter
+    def match_all(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "match_all", value)
 
     @_builtins.property
     @pulumi.getter(name="notMatch")
@@ -18381,6 +18460,10 @@ class NetworkAclRuleMatchArgsDict(TypedDict):
     """
     Hostnames. Must contain between 1 and 20 unique items.
     """
+    http_message_signature: NotRequired[pulumi.Input[Optional['NetworkAclRuleMatchHttpMessageSignatureArgsDict']]]
+    """
+    Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
+    """
     ipv4_cidrs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
@@ -18412,6 +18495,7 @@ class NetworkAclRuleMatchArgs:
                  geo_country_codes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  geo_subdivision_codes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 http_message_signature: pulumi.Input[Optional['NetworkAclRuleMatchHttpMessageSignatureArgs']] = None,
                  ipv4_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ipv6_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ja3_fingerprints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -18425,6 +18509,7 @@ class NetworkAclRuleMatchArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] geo_country_codes: Geo Country Codes. Must contain between 1 and 10 unique items.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] geo_subdivision_codes: Geo Subdivision Codes. Must contain between 1 and 10 unique items.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Hostnames. Must contain between 1 and 20 unique items.
+        :param pulumi.Input['NetworkAclRuleMatchHttpMessageSignatureArgs'] http_message_signature: Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4_cidrs: IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv6_cidrs: IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ja3_fingerprints: JA3 Fingerprints. Must contain between 1 and 10 unique items.
@@ -18445,6 +18530,8 @@ class NetworkAclRuleMatchArgs:
             pulumi.set(__self__, "geo_subdivision_codes", geo_subdivision_codes)
         if hostnames is not None:
             pulumi.set(__self__, "hostnames", hostnames)
+        if http_message_signature is not None:
+            pulumi.set(__self__, "http_message_signature", http_message_signature)
         if ipv4_cidrs is not None:
             pulumi.set(__self__, "ipv4_cidrs", ipv4_cidrs)
         if ipv6_cidrs is not None:
@@ -18541,6 +18628,18 @@ class NetworkAclRuleMatchArgs:
         pulumi.set(self, "hostnames", value)
 
     @_builtins.property
+    @pulumi.getter(name="httpMessageSignature")
+    def http_message_signature(self) -> pulumi.Input[Optional['NetworkAclRuleMatchHttpMessageSignatureArgs']]:
+        """
+        Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
+        """
+        return pulumi.get(self, "http_message_signature")
+
+    @http_message_signature.setter
+    def http_message_signature(self, value: pulumi.Input[Optional['NetworkAclRuleMatchHttpMessageSignatureArgs']]):
+        pulumi.set(self, "http_message_signature", value)
+
+    @_builtins.property
     @pulumi.getter(name="ipv4Cidrs")
     def ipv4_cidrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -18601,6 +18700,62 @@ class NetworkAclRuleMatchArgs:
         pulumi.set(self, "user_agents", value)
 
 
+class NetworkAclRuleMatchHttpMessageSignatureArgsDict(TypedDict):
+    keys: pulumi.Input[Sequence[pulumi.Input['NetworkAclRuleMatchHttpMessageSignatureKeyArgsDict']]]
+    """
+    List of Network ACL key references. A request matches if its signature is verified by any of these keys.
+    """
+
+@pulumi.input_type
+class NetworkAclRuleMatchHttpMessageSignatureArgs:
+    def __init__(__self__, *,
+                 keys: pulumi.Input[Sequence[pulumi.Input['NetworkAclRuleMatchHttpMessageSignatureKeyArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkAclRuleMatchHttpMessageSignatureKeyArgs']]] keys: List of Network ACL key references. A request matches if its signature is verified by any of these keys.
+        """
+        pulumi.set(__self__, "keys", keys)
+
+    @_builtins.property
+    @pulumi.getter
+    def keys(self) -> pulumi.Input[Sequence[pulumi.Input['NetworkAclRuleMatchHttpMessageSignatureKeyArgs']]]:
+        """
+        List of Network ACL key references. A request matches if its signature is verified by any of these keys.
+        """
+        return pulumi.get(self, "keys")
+
+    @keys.setter
+    def keys(self, value: pulumi.Input[Sequence[pulumi.Input['NetworkAclRuleMatchHttpMessageSignatureKeyArgs']]]):
+        pulumi.set(self, "keys", value)
+
+
+class NetworkAclRuleMatchHttpMessageSignatureKeyArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.str]
+    """
+    The ID of the referenced Network ACL key.
+    """
+
+@pulumi.input_type
+class NetworkAclRuleMatchHttpMessageSignatureKeyArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] id: The ID of the referenced Network ACL key.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of the referenced Network ACL key.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "id", value)
+
+
 class NetworkAclRuleNotMatchArgsDict(TypedDict):
     asns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
@@ -18629,6 +18784,10 @@ class NetworkAclRuleNotMatchArgsDict(TypedDict):
     hostnames: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Hostnames. Must contain between 1 and 20 unique items.
+    """
+    http_message_signature: NotRequired[pulumi.Input[Optional['NetworkAclRuleNotMatchHttpMessageSignatureArgsDict']]]
+    """
+    Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
     """
     ipv4_cidrs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
@@ -18661,6 +18820,7 @@ class NetworkAclRuleNotMatchArgs:
                  geo_country_codes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  geo_subdivision_codes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 http_message_signature: pulumi.Input[Optional['NetworkAclRuleNotMatchHttpMessageSignatureArgs']] = None,
                  ipv4_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ipv6_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ja3_fingerprints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -18674,6 +18834,7 @@ class NetworkAclRuleNotMatchArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] geo_country_codes: Geo Country Codes. Must contain between 1 and 10 unique items.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] geo_subdivision_codes: Geo Subdivision Codes. Must contain between 1 and 10 unique items.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: Hostnames. Must contain between 1 and 20 unique items.
+        :param pulumi.Input['NetworkAclRuleNotMatchHttpMessageSignatureArgs'] http_message_signature: Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4_cidrs: IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv6_cidrs: IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ja3_fingerprints: JA3 Fingerprints. Must contain between 1 and 10 unique items.
@@ -18694,6 +18855,8 @@ class NetworkAclRuleNotMatchArgs:
             pulumi.set(__self__, "geo_subdivision_codes", geo_subdivision_codes)
         if hostnames is not None:
             pulumi.set(__self__, "hostnames", hostnames)
+        if http_message_signature is not None:
+            pulumi.set(__self__, "http_message_signature", http_message_signature)
         if ipv4_cidrs is not None:
             pulumi.set(__self__, "ipv4_cidrs", ipv4_cidrs)
         if ipv6_cidrs is not None:
@@ -18790,6 +18953,18 @@ class NetworkAclRuleNotMatchArgs:
         pulumi.set(self, "hostnames", value)
 
     @_builtins.property
+    @pulumi.getter(name="httpMessageSignature")
+    def http_message_signature(self) -> pulumi.Input[Optional['NetworkAclRuleNotMatchHttpMessageSignatureArgs']]:
+        """
+        Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
+        """
+        return pulumi.get(self, "http_message_signature")
+
+    @http_message_signature.setter
+    def http_message_signature(self, value: pulumi.Input[Optional['NetworkAclRuleNotMatchHttpMessageSignatureArgs']]):
+        pulumi.set(self, "http_message_signature", value)
+
+    @_builtins.property
     @pulumi.getter(name="ipv4Cidrs")
     def ipv4_cidrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -18848,6 +19023,62 @@ class NetworkAclRuleNotMatchArgs:
     @user_agents.setter
     def user_agents(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "user_agents", value)
+
+
+class NetworkAclRuleNotMatchHttpMessageSignatureArgsDict(TypedDict):
+    keys: pulumi.Input[Sequence[pulumi.Input['NetworkAclRuleNotMatchHttpMessageSignatureKeyArgsDict']]]
+    """
+    List of Network ACL key references. A request matches if its signature is verified by any of these keys.
+    """
+
+@pulumi.input_type
+class NetworkAclRuleNotMatchHttpMessageSignatureArgs:
+    def __init__(__self__, *,
+                 keys: pulumi.Input[Sequence[pulumi.Input['NetworkAclRuleNotMatchHttpMessageSignatureKeyArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkAclRuleNotMatchHttpMessageSignatureKeyArgs']]] keys: List of Network ACL key references. A request matches if its signature is verified by any of these keys.
+        """
+        pulumi.set(__self__, "keys", keys)
+
+    @_builtins.property
+    @pulumi.getter
+    def keys(self) -> pulumi.Input[Sequence[pulumi.Input['NetworkAclRuleNotMatchHttpMessageSignatureKeyArgs']]]:
+        """
+        List of Network ACL key references. A request matches if its signature is verified by any of these keys.
+        """
+        return pulumi.get(self, "keys")
+
+    @keys.setter
+    def keys(self, value: pulumi.Input[Sequence[pulumi.Input['NetworkAclRuleNotMatchHttpMessageSignatureKeyArgs']]]):
+        pulumi.set(self, "keys", value)
+
+
+class NetworkAclRuleNotMatchHttpMessageSignatureKeyArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.str]
+    """
+    The ID of the referenced Network ACL key.
+    """
+
+@pulumi.input_type
+class NetworkAclRuleNotMatchHttpMessageSignatureKeyArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] id: The ID of the referenced Network ACL key.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of the referenced Network ACL key.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "id", value)
 
 
 class OrganizationBrandingArgsDict(TypedDict):

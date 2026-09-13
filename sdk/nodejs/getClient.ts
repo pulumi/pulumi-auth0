@@ -82,6 +82,10 @@ export interface GetClientResult {
      */
     readonly asyncApprovalNotificationChannels: string[];
     /**
+     * Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
+     */
+    readonly b2bIntegrationConfigurations: outputs.GetClientB2bIntegrationConfiguration[];
+    /**
      * URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
      */
     readonly callbacks: string[];
@@ -230,7 +234,7 @@ export interface GetClientResult {
      */
     readonly oidcLogouts: outputs.GetClientOidcLogout[];
     /**
-     * Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+     * Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
      */
     readonly organizationDiscoveryMethods: string[];
     /**

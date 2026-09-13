@@ -101,7 +101,7 @@ public final class ConnectionOptions {
      */
     private @Nullable String clientId;
     /**
-     * @return The strategy&#39;s client secret.
+     * @return The strategy&#39;s client secret. **Note:** For better security, consider using `optionsClientSecretWo` instead to avoid storing the secret in Terraform state.
      * 
      */
     private @Nullable String clientSecret;
@@ -734,7 +734,7 @@ public final class ConnectionOptions {
         return Optional.ofNullable(this.clientId);
     }
     /**
-     * @return The strategy&#39;s client secret.
+     * @return The strategy&#39;s client secret. **Note:** For better security, consider using `optionsClientSecretWo` instead to avoid storing the secret in Terraform state.
      * 
      */
     public Optional<String> clientSecret() {

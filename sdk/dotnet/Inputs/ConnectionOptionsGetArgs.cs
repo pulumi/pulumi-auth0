@@ -118,7 +118,7 @@ namespace Pulumi.Auth0.Inputs
         private Input<string>? _clientSecret;
 
         /// <summary>
-        /// The strategy's client secret.
+        /// The strategy's client secret. **Note:** For better security, consider using `OptionsClientSecretWo` instead to avoid storing the secret in Terraform state.
         /// </summary>
         public Input<string>? ClientSecret
         {

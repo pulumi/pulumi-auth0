@@ -100,7 +100,7 @@ public final class GetConnectionOption {
      */
     private String clientId;
     /**
-     * @return The strategy&#39;s client secret.
+     * @return The strategy&#39;s client secret. **Note:** For better security, consider using `optionsClientSecretWo` instead to avoid storing the secret in Terraform state.
      * 
      */
     private String clientSecret;
@@ -733,7 +733,7 @@ public final class GetConnectionOption {
         return this.clientId;
     }
     /**
-     * @return The strategy&#39;s client secret.
+     * @return The strategy&#39;s client secret. **Note:** For better security, consider using `optionsClientSecretWo` instead to avoid storing the secret in Terraform state.
      * 
      */
     public String clientSecret() {

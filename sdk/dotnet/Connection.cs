@@ -17,6 +17,12 @@ namespace Pulumi.Auth0
     /// 
     /// &gt; When updating the `Options` parameter, ensure that all nested fields within the `Options` schema are explicitly defined. Failing to do so may result in the loss of existing configurations.
     /// 
+    /// &gt; When `OptionsClientSecretWo` (write-only) is set, `pulumi preview -refresh=false` may report a
+    /// non-empty plan for unrelated optional `Options` fields (e.g. `+ scripts = {}`). This is an upstream
+    /// limitation of the Terraform Plugin SDK (hashicorp/terraform-plugin-sdk#1612)
+    /// that only surfaces without a refresh; a normal `pulumi preview`/`Apply` (which refreshes) is
+    /// unaffected and idempotent.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Auth0 Connection
@@ -127,6 +133,36 @@ namespace Pulumi.Auth0
     ///                 ChallengeUi = "both",
     ///                 LocalEnrollmentEnabled = true,
     ///                 ProgressiveEnrollmentEnabled = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // The strategy's client secret can be set as a write-only argument so it is never persisted to
+    ///     // Terraform state. It can be sourced from an ephemeral value (e.g. a secrets manager) and is
+    ///     // mutually exclusive with `options.client_secret`. Bump `options_client_secret_wo_version` to
+    ///     // rotate the secret.
+    ///     //
+    ///     // NOTE: Write-only arguments require Terraform 1.11 or later.
+    ///     var myConnectionWriteOnlySecret = new Auth0.Connection("my_connection_write_only_secret", new()
+    ///     {
+    ///         Name = "Example-Connection-Write-Only-Secret",
+    ///         Strategy = "oidc",
+    ///         OptionsClientSecretWo = connectionClientSecret,
+    ///         OptionsClientSecretWoVersion = 1,
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             ClientId = "1234567",
+    ///             Type = "back_channel",
+    ///             Issuer = "https://www.paypalobjects.com",
+    ///             JwksUri = "https://api.paypal.com/v1/oauth2/certs",
+    ///             DiscoveryUrl = "https://www.paypalobjects.com/.well-known/openid-configuration",
+    ///             TokenEndpoint = "https://api.paypal.com/v1/oauth2/token",
+    ///             UserinfoEndpoint = "https://api.paypal.com/v1/oauth2/token/userinfo",
+    ///             AuthorizationEndpoint = "https://www.paypal.com/signin/authorize",
+    ///             Scopes = new[]
+    ///             {
+    ///                 "openid",
+    ///                 "email",
     ///             },
     ///         },
     ///     });
@@ -1007,6 +1043,19 @@ namespace Pulumi.Auth0
         public Output<Outputs.ConnectionOptions> Options { get; private set; } = null!;
 
         /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The strategy's client secret (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. Bump `OptionsClientSecretWoVersion` to rotate it. Conflicts with `options.client_secret`.
+        /// </summary>
+        [Output("optionsClientSecretWo")]
+        public Output<string?> OptionsClientSecretWo { get; private set; } = null!;
+
+        /// <summary>
+        /// Version counter for `OptionsClientSecretWo`, required whenever the write-only secret is set. Must be a positive integer starting at `1`. This value signals rotation intent, though the secret is resent even for other config updates.
+        /// </summary>
+        [Output("optionsClientSecretWoVersion")]
+        public Output<int?> OptionsClientSecretWoVersion { get; private set; } = null!;
+
+        /// <summary>
         /// Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         /// </summary>
         [Output("realms")]
@@ -1047,6 +1096,10 @@ namespace Pulumi.Auth0
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "optionsClientSecretWo",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -1129,6 +1182,29 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("options")]
         public Input<Inputs.ConnectionOptionsArgs>? Options { get; set; }
+
+        [Input("optionsClientSecretWo")]
+        private Input<string>? _optionsClientSecretWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The strategy's client secret (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. Bump `OptionsClientSecretWoVersion` to rotate it. Conflicts with `options.client_secret`.
+        /// </summary>
+        public Input<string>? OptionsClientSecretWo
+        {
+            get => _optionsClientSecretWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _optionsClientSecretWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Version counter for `OptionsClientSecretWo`, required whenever the write-only secret is set. Must be a positive integer starting at `1`. This value signals rotation intent, though the secret is resent even for other config updates.
+        /// </summary>
+        [Input("optionsClientSecretWoVersion")]
+        public Input<int>? OptionsClientSecretWoVersion { get; set; }
 
         [Input("realms")]
         private InputList<string>? _realms;
@@ -1221,6 +1297,29 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("options")]
         public Input<Inputs.ConnectionOptionsGetArgs>? Options { get; set; }
+
+        [Input("optionsClientSecretWo")]
+        private Input<string>? _optionsClientSecretWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The strategy's client secret (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. Bump `OptionsClientSecretWoVersion` to rotate it. Conflicts with `options.client_secret`.
+        /// </summary>
+        public Input<string>? OptionsClientSecretWo
+        {
+            get => _optionsClientSecretWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _optionsClientSecretWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Version counter for `OptionsClientSecretWo`, required whenever the write-only secret is set. Must be a positive integer starting at `1`. This value signals rotation intent, though the secret is resent even for other config updates.
+        /// </summary>
+        [Input("optionsClientSecretWoVersion")]
+        public Input<int>? OptionsClientSecretWoVersion { get; set; }
 
         [Input("realms")]
         private InputList<string>? _realms;

@@ -72,6 +72,10 @@ export class Client extends pulumi.CustomResource {
      */
     declare public readonly asyncApprovalNotificationChannels: pulumi.Output<string[] | undefined>;
     /**
+     * Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
+     */
+    declare public readonly b2bIntegrationConfiguration: pulumi.Output<outputs.ClientB2bIntegrationConfiguration | undefined>;
+    /**
      * URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
      */
     declare public readonly callbacks: pulumi.Output<string[]>;
@@ -80,9 +84,9 @@ export class Client extends pulumi.CustomResource {
      */
     declare public readonly clientAliases: pulumi.Output<string[] | undefined>;
     /**
-     * The ID of the client.
+     * The ID of the client. If not provided, Auth0 will generate one automatically. Use this to specify a custom client ID for migration or tenant-copy scenarios. Requires feature flag to be enabled on the tenant.
      */
-    declare public /*out*/ readonly clientId: pulumi.Output<string>;
+    declare public readonly clientId: pulumi.Output<string>;
     /**
      * Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
      */
@@ -206,9 +210,9 @@ export class Client extends pulumi.CustomResource {
      */
     declare public readonly oidcLogout: pulumi.Output<outputs.ClientOidcLogout | undefined>;
     /**
-     * Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+     * Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
      */
-    declare public readonly organizationDiscoveryMethods: pulumi.Output<string[] | undefined>;
+    declare public readonly organizationDiscoveryMethods: pulumi.Output<string[]>;
     /**
      * Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
      */
@@ -290,6 +294,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["allowedOrigins"] = state?.allowedOrigins;
             resourceInputs["appType"] = state?.appType;
             resourceInputs["asyncApprovalNotificationChannels"] = state?.asyncApprovalNotificationChannels;
+            resourceInputs["b2bIntegrationConfiguration"] = state?.b2bIntegrationConfiguration;
             resourceInputs["callbacks"] = state?.callbacks;
             resourceInputs["clientAliases"] = state?.clientAliases;
             resourceInputs["clientId"] = state?.clientId;
@@ -348,8 +353,10 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["allowedOrigins"] = args?.allowedOrigins;
             resourceInputs["appType"] = args?.appType;
             resourceInputs["asyncApprovalNotificationChannels"] = args?.asyncApprovalNotificationChannels;
+            resourceInputs["b2bIntegrationConfiguration"] = args?.b2bIntegrationConfiguration;
             resourceInputs["callbacks"] = args?.callbacks;
             resourceInputs["clientAliases"] = args?.clientAliases;
+            resourceInputs["clientId"] = args?.clientId;
             resourceInputs["clientMetadata"] = args?.clientMetadata;
             resourceInputs["complianceLevel"] = args?.complianceLevel;
             resourceInputs["crossOriginAuth"] = args?.crossOriginAuth;
@@ -392,7 +399,6 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["tokenExchange"] = args?.tokenExchange;
             resourceInputs["tokenQuota"] = args?.tokenQuota;
             resourceInputs["webOrigins"] = args?.webOrigins;
-            resourceInputs["clientId"] = undefined /*out*/;
             resourceInputs["externalClientId"] = undefined /*out*/;
             resourceInputs["externalMetadataCreatedBy"] = undefined /*out*/;
             resourceInputs["externalMetadataType"] = undefined /*out*/;
@@ -435,6 +441,10 @@ export interface ClientState {
      */
     asyncApprovalNotificationChannels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
+     */
+    b2bIntegrationConfiguration?: pulumi.Input<inputs.ClientB2bIntegrationConfiguration | undefined>;
+    /**
      * URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
      */
     callbacks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -443,7 +453,7 @@ export interface ClientState {
      */
     clientAliases?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The ID of the client.
+     * The ID of the client. If not provided, Auth0 will generate one automatically. Use this to specify a custom client ID for migration or tenant-copy scenarios. Requires feature flag to be enabled on the tenant.
      */
     clientId?: pulumi.Input<string | undefined>;
     /**
@@ -569,7 +579,7 @@ export interface ClientState {
      */
     oidcLogout?: pulumi.Input<inputs.ClientOidcLogout | undefined>;
     /**
-     * Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+     * Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
      */
     organizationDiscoveryMethods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -664,6 +674,10 @@ export interface ClientArgs {
      */
     asyncApprovalNotificationChannels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
+     */
+    b2bIntegrationConfiguration?: pulumi.Input<inputs.ClientB2bIntegrationConfiguration | undefined>;
+    /**
      * URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
      */
     callbacks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -671,6 +685,10 @@ export interface ClientArgs {
      * List of audiences/realms for SAML protocol. Used by the wsfed addon.
      */
     clientAliases?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The ID of the client. If not provided, Auth0 will generate one automatically. Use this to specify a custom client ID for migration or tenant-copy scenarios. Requires feature flag to be enabled on the tenant.
+     */
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
      */
@@ -778,7 +796,7 @@ export interface ClientArgs {
      */
     oidcLogout?: pulumi.Input<inputs.ClientOidcLogout | undefined>;
     /**
-     * Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+     * Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
      */
     organizationDiscoveryMethods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**

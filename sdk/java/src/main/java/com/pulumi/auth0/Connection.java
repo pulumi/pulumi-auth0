@@ -16,6 +16,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +30,12 @@ import javax.annotation.Nullable;
  * creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
  * 
  * &gt; When updating the `options` parameter, ensure that all nested fields within the `options` schema are explicitly defined. Failing to do so may result in the loss of existing configurations.
+ * 
+ * &gt; When `optionsClientSecretWo` (write-only) is set, `pulumi preview -refresh=false` may report a
+ * non-empty plan for unrelated optional `options` fields (e.g. `+ scripts = {}`). This is an upstream
+ * limitation of the Terraform Plugin SDK (hashicorp/terraform-plugin-sdk#1612)
+ * that only surfaces without a refresh; a normal `pulumi preview`/`apply` (which refreshes) is
+ * unaffected and idempotent.
  * 
  * ## Example Usage
  * 
@@ -141,6 +148,32 @@ import javax.annotation.Nullable;
  *                     .localEnrollmentEnabled(true)
  *                     .progressiveEnrollmentEnabled(true)
  *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         // The strategy's client secret can be set as a write-only argument so it is never persisted to
+ *         // Terraform state. It can be sourced from an ephemeral value (e.g. a secrets manager) and is
+ *         // mutually exclusive with `options.client_secret`. Bump `options_client_secret_wo_version` to
+ *         // rotate the secret.
+ *         //
+ *         // NOTE: Write-only arguments require Terraform 1.11 or later.
+ *         var myConnectionWriteOnlySecret = new Connection("myConnectionWriteOnlySecret", ConnectionArgs.builder()
+ *             .name("Example-Connection-Write-Only-Secret")
+ *             .strategy("oidc")
+ *             .optionsClientSecretWo(connectionClientSecret)
+ *             .optionsClientSecretWoVersion(1)
+ *             .options(ConnectionOptionsArgs.builder()
+ *                 .clientId("1234567")
+ *                 .type("back_channel")
+ *                 .issuer("https://www.paypalobjects.com")
+ *                 .jwksUri("https://api.paypal.com/v1/oauth2/certs")
+ *                 .discoveryUrl("https://www.paypalobjects.com/.well-known/openid-configuration")
+ *                 .tokenEndpoint("https://api.paypal.com/v1/oauth2/token")
+ *                 .userinfoEndpoint("https://api.paypal.com/v1/oauth2/token/userinfo")
+ *                 .authorizationEndpoint("https://www.paypal.com/signin/authorize")
+ *                 .scopes(                
+ *                     "openid",
+ *                     "email")
  *                 .build())
  *             .build());
  * 
@@ -1246,6 +1279,36 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.options;
     }
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The strategy&#39;s client secret (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. Bump `optionsClientSecretWoVersion` to rotate it. Conflicts with `options.client_secret`.
+     * 
+     */
+    @Export(name="optionsClientSecretWo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> optionsClientSecretWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The strategy&#39;s client secret (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. Bump `optionsClientSecretWoVersion` to rotate it. Conflicts with `options.client_secret`.
+     * 
+     */
+    public Output<Optional<String>> optionsClientSecretWo() {
+        return Codegen.optional(this.optionsClientSecretWo);
+    }
+    /**
+     * Version counter for `optionsClientSecretWo`, required whenever the write-only secret is set. Must be a positive integer starting at `1`. This value signals rotation intent, though the secret is resent even for other config updates.
+     * 
+     */
+    @Export(name="optionsClientSecretWoVersion", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> optionsClientSecretWoVersion;
+
+    /**
+     * @return Version counter for `optionsClientSecretWo`, required whenever the write-only secret is set. Must be a positive integer starting at `1`. This value signals rotation intent, though the secret is resent even for other config updates.
+     * 
+     */
+    public Output<Optional<Integer>> optionsClientSecretWoVersion() {
+        return Codegen.optional(this.optionsClientSecretWoVersion);
+    }
+    /**
      * Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
      * 
      */
@@ -1327,6 +1390,9 @@ public class Connection extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "optionsClientSecretWo"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

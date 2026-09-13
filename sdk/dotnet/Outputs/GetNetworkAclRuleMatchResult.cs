@@ -42,6 +42,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Hostnames;
         /// <summary>
+        /// Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetNetworkAclRuleMatchHttpMessageSignatureResult> HttpMessageSignatures;
+        /// <summary>
         /// IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
         /// </summary>
         public readonly ImmutableArray<string> Ipv4Cidrs;
@@ -78,6 +82,8 @@ namespace Pulumi.Auth0.Outputs
 
             ImmutableArray<string> hostnames,
 
+            ImmutableArray<Outputs.GetNetworkAclRuleMatchHttpMessageSignatureResult> httpMessageSignatures,
+
             ImmutableArray<string> ipv4Cidrs,
 
             ImmutableArray<string> ipv6Cidrs,
@@ -95,6 +101,7 @@ namespace Pulumi.Auth0.Outputs
             GeoCountryCodes = geoCountryCodes;
             GeoSubdivisionCodes = geoSubdivisionCodes;
             Hostnames = hostnames;
+            HttpMessageSignatures = httpMessageSignatures;
             Ipv4Cidrs = ipv4Cidrs;
             Ipv6Cidrs = ipv6Cidrs;
             Ja3Fingerprints = ja3Fingerprints;

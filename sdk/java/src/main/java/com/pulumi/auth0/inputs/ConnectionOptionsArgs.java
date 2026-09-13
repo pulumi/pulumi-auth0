@@ -235,14 +235,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The strategy&#39;s client secret.
+     * The strategy&#39;s client secret. **Note:** For better security, consider using `optionsClientSecretWo` instead to avoid storing the secret in Terraform state.
      * 
      */
     @Import(name="clientSecret")
     private @Nullable Output<String> clientSecret;
 
     /**
-     * @return The strategy&#39;s client secret.
+     * @return The strategy&#39;s client secret. **Note:** For better security, consider using `optionsClientSecretWo` instead to avoid storing the secret in Terraform state.
      * 
      */
     public Optional<Output<String>> clientSecret() {
@@ -2302,7 +2302,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param clientSecret The strategy&#39;s client secret.
+         * @param clientSecret The strategy&#39;s client secret. **Note:** For better security, consider using `optionsClientSecretWo` instead to avoid storing the secret in Terraform state.
          * 
          * @return builder
          * 
@@ -2313,7 +2313,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param clientSecret The strategy&#39;s client secret.
+         * @param clientSecret The strategy&#39;s client secret. **Note:** For better security, consider using `optionsClientSecretWo` instead to avoid storing the secret in Terraform state.
          * 
          * @return builder
          * 

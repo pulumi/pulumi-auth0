@@ -8,6 +8,7 @@ import com.pulumi.auth0.outputs.NetworkAclRuleMatch;
 import com.pulumi.auth0.outputs.NetworkAclRuleNotMatch;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -25,6 +26,11 @@ public final class NetworkAclRule {
      * 
      */
     private @Nullable NetworkAclRuleMatch match;
+    /**
+     * @return When true, the rule unconditionally matches all traffic regardless of any other criteria. Mutually exclusive with match and not_match.
+     * 
+     */
+    private @Nullable Boolean matchAll;
     /**
      * @return The configuration for the Network ACL Rule
      * 
@@ -52,6 +58,13 @@ public final class NetworkAclRule {
         return Optional.ofNullable(this.match);
     }
     /**
+     * @return When true, the rule unconditionally matches all traffic regardless of any other criteria. Mutually exclusive with match and not_match.
+     * 
+     */
+    public Optional<Boolean> matchAll() {
+        return Optional.ofNullable(this.matchAll);
+    }
+    /**
      * @return The configuration for the Network ACL Rule
      * 
      */
@@ -77,6 +90,7 @@ public final class NetworkAclRule {
     public static final class Builder {
         private NetworkAclRuleAction action;
         private @Nullable NetworkAclRuleMatch match;
+        private @Nullable Boolean matchAll;
         private @Nullable NetworkAclRuleNotMatch notMatch;
         private String scope;
         public Builder() {}
@@ -84,6 +98,7 @@ public final class NetworkAclRule {
     	      Objects.requireNonNull(defaults);
     	      this.action = defaults.action;
     	      this.match = defaults.match;
+    	      this.matchAll = defaults.matchAll;
     	      this.notMatch = defaults.notMatch;
     	      this.scope = defaults.scope;
         }
@@ -100,6 +115,12 @@ public final class NetworkAclRule {
         public Builder match(@Nullable NetworkAclRuleMatch match) {
 
             this.match = match;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder matchAll(@Nullable Boolean matchAll) {
+
+            this.matchAll = matchAll;
             return this;
         }
         @CustomType.Setter
@@ -120,6 +141,7 @@ public final class NetworkAclRule {
             final var _resultValue = new NetworkAclRule();
             _resultValue.action = action;
             _resultValue.match = match;
+            _resultValue.matchAll = matchAll;
             _resultValue.notMatch = notMatch;
             _resultValue.scope = scope;
             return _resultValue;

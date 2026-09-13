@@ -1288,6 +1288,17 @@ export interface ClientAddonsZoom {
     account?: string;
 }
 
+export interface ClientB2bIntegrationConfiguration {
+    /**
+     * The type of integration used to connect to this B2B integration client. One of custom*auth*server, third_party, application
+     */
+    integrationType?: string;
+    /**
+     * ID of the self-service SSO profile (an `auth0.SelfServiceProfile` id, in `ssp_...` format) linked to this B2B integration client. Maximum 1.
+     */
+    ssoProfiles?: string;
+}
+
 export interface ClientCimdDefaultOrganization {
     /**
      * Definition of the flow that needs to be configured. Eg. client_credentials
@@ -2063,7 +2074,7 @@ export interface ConnectionOptions {
      */
     clientId?: string;
     /**
-     * The strategy's client secret.
+     * The strategy's client secret. **Note:** For better security, consider using `optionsClientSecretWo` instead to avoid storing the secret in Terraform state.
      */
     clientSecret?: string;
     /**
@@ -4838,6 +4849,17 @@ export interface GetClientAddonZoom {
     account: string;
 }
 
+export interface GetClientB2bIntegrationConfiguration {
+    /**
+     * The type of integration used to connect to this B2B integration client. One of custom_auth_server, third_party, application
+     */
+    integrationType: string;
+    /**
+     * ID of the self-service SSO profile (an `auth0.SelfServiceProfile` id, in `ssp_...` format) linked to this B2B integration client. Maximum 1.
+     */
+    ssoProfiles: string[];
+}
+
 export interface GetClientClientAuthenticationMethod {
     /**
      * If this is defined, the client is enabled to use the Private Key JWT authentication method.
@@ -5451,6 +5473,10 @@ export interface GetClientsClient {
      */
     asyncApprovalNotificationChannels: string[];
     /**
+     * Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
+     */
+    b2bIntegrationConfigurations: outputs.GetClientsClientB2bIntegrationConfiguration[];
+    /**
      * URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
      */
     callbacks: string[];
@@ -5523,7 +5549,7 @@ export interface GetClientsClient {
      */
     oidcLogouts: outputs.GetClientsClientOidcLogout[];
     /**
-     * Methods for discovering organizations during the pre_login_prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+     * Methods for discovering organizations during the pre_login_prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
      */
     organizationDiscoveryMethods: string[];
     /**
@@ -5555,6 +5581,17 @@ export interface GetClientsClient {
      * URLs that represent valid web origins for use with web message response mode.
      */
     webOrigins: string[];
+}
+
+export interface GetClientsClientB2bIntegrationConfiguration {
+    /**
+     * The type of integration used to connect to this B2B integration client. One of custom_auth_server, third_party, application
+     */
+    integrationType: string;
+    /**
+     * ID of the self-service SSO profile (an `auth0.SelfServiceProfile` id, in `ssp_...` format) linked to this B2B integration client. Maximum 1.
+     */
+    ssoProfiles: string[];
 }
 
 export interface GetClientsClientExpressConfiguration {
@@ -5933,7 +5970,7 @@ export interface GetConnectionOption {
      */
     clientId: string;
     /**
-     * The strategy's client secret.
+     * The strategy's client secret. **Note:** For better security, consider using `optionsClientSecretWo` instead to avoid storing the secret in Terraform state.
      */
     clientSecret: string;
     /**
@@ -7266,6 +7303,10 @@ export interface GetNetworkAclRule {
      */
     actions: outputs.GetNetworkAclRuleAction[];
     /**
+     * When true, the rule unconditionally matches all traffic regardless of any other criteria. Mutually exclusive with match and not_match.
+     */
+    matchAll: boolean;
+    /**
      * The configuration for the Network ACL Rule
      */
     matches: outputs.GetNetworkAclRuleMatch[];
@@ -7332,6 +7373,10 @@ export interface GetNetworkAclRuleMatch {
      */
     hostnames: string[];
     /**
+     * Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
+     */
+    httpMessageSignatures: outputs.GetNetworkAclRuleMatchHttpMessageSignature[];
+    /**
      * IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
      */
     ipv4Cidrs: string[];
@@ -7351,6 +7396,20 @@ export interface GetNetworkAclRuleMatch {
      * User Agents. Must contain between 1 and 10 unique items.
      */
     userAgents: string[];
+}
+
+export interface GetNetworkAclRuleMatchHttpMessageSignature {
+    /**
+     * List of Network ACL key references. A request matches if its signature is verified by any of these keys.
+     */
+    keys: outputs.GetNetworkAclRuleMatchHttpMessageSignatureKey[];
+}
+
+export interface GetNetworkAclRuleMatchHttpMessageSignatureKey {
+    /**
+     * The ID of the referenced Network ACL key.
+     */
+    id: string;
 }
 
 export interface GetNetworkAclRuleNotMatch {
@@ -7383,6 +7442,10 @@ export interface GetNetworkAclRuleNotMatch {
      */
     hostnames: string[];
     /**
+     * Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
+     */
+    httpMessageSignatures: outputs.GetNetworkAclRuleNotMatchHttpMessageSignature[];
+    /**
      * IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
      */
     ipv4Cidrs: string[];
@@ -7402,6 +7465,20 @@ export interface GetNetworkAclRuleNotMatch {
      * User Agents. Must contain between 1 and 10 unique items.
      */
     userAgents: string[];
+}
+
+export interface GetNetworkAclRuleNotMatchHttpMessageSignature {
+    /**
+     * List of Network ACL key references. A request matches if its signature is verified by any of these keys.
+     */
+    keys: outputs.GetNetworkAclRuleNotMatchHttpMessageSignatureKey[];
+}
+
+export interface GetNetworkAclRuleNotMatchHttpMessageSignatureKey {
+    /**
+     * The ID of the referenced Network ACL key.
+     */
+    id: string;
 }
 
 export interface GetOrganizationBranding {
@@ -8867,6 +8944,10 @@ export interface NetworkAclRule {
      */
     match?: outputs.NetworkAclRuleMatch;
     /**
+     * When true, the rule unconditionally matches all traffic regardless of any other criteria. Mutually exclusive with match and not_match.
+     */
+    matchAll?: boolean;
+    /**
      * The configuration for the Network ACL Rule
      */
     notMatch?: outputs.NetworkAclRuleNotMatch;
@@ -8929,6 +9010,10 @@ export interface NetworkAclRuleMatch {
      */
     hostnames?: string[];
     /**
+     * Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
+     */
+    httpMessageSignature?: outputs.NetworkAclRuleMatchHttpMessageSignature;
+    /**
      * IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
      */
     ipv4Cidrs?: string[];
@@ -8948,6 +9033,20 @@ export interface NetworkAclRuleMatch {
      * User Agents. Must contain between 1 and 10 unique items.
      */
     userAgents?: string[];
+}
+
+export interface NetworkAclRuleMatchHttpMessageSignature {
+    /**
+     * List of Network ACL key references. A request matches if its signature is verified by any of these keys.
+     */
+    keys: outputs.NetworkAclRuleMatchHttpMessageSignatureKey[];
+}
+
+export interface NetworkAclRuleMatchHttpMessageSignatureKey {
+    /**
+     * The ID of the referenced Network ACL key.
+     */
+    id: string;
 }
 
 export interface NetworkAclRuleNotMatch {
@@ -8980,6 +9079,10 @@ export interface NetworkAclRuleNotMatch {
      */
     hostnames?: string[];
     /**
+     * Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
+     */
+    httpMessageSignature?: outputs.NetworkAclRuleNotMatchHttpMessageSignature;
+    /**
      * IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
      */
     ipv4Cidrs?: string[];
@@ -8999,6 +9102,20 @@ export interface NetworkAclRuleNotMatch {
      * User Agents. Must contain between 1 and 10 unique items.
      */
     userAgents?: string[];
+}
+
+export interface NetworkAclRuleNotMatchHttpMessageSignature {
+    /**
+     * List of Network ACL key references. A request matches if its signature is verified by any of these keys.
+     */
+    keys: outputs.NetworkAclRuleNotMatchHttpMessageSignatureKey[];
+}
+
+export interface NetworkAclRuleNotMatchHttpMessageSignatureKey {
+    /**
+     * The ID of the referenced Network ACL key.
+     */
+    id: string;
 }
 
 export interface OrganizationBranding {

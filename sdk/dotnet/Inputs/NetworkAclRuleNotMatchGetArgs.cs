@@ -96,6 +96,12 @@ namespace Pulumi.Auth0.Inputs
             set => _hostnames = value;
         }
 
+        /// <summary>
+        /// Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
+        /// </summary>
+        [Input("httpMessageSignature")]
+        public Input<Inputs.NetworkAclRuleNotMatchHttpMessageSignatureGetArgs>? HttpMessageSignature { get; set; }
+
         [Input("ipv4Cidrs")]
         private InputList<string>? _ipv4Cidrs;
 

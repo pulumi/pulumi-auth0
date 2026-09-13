@@ -66,7 +66,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? ClientId;
         /// <summary>
-        /// The strategy's client secret.
+        /// The strategy's client secret. **Note:** For better security, consider using `OptionsClientSecretWo` instead to avoid storing the secret in Terraform state.
         /// </summary>
         public readonly string? ClientSecret;
         /// <summary>

@@ -364,6 +364,16 @@
                     "async_approval_notification_channels": {
                         "maxItemsOne": false
                     },
+                    "b2b_integration_configuration": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "sso_profiles": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
                     "callbacks": {
                         "maxItemsOne": false
                     },
@@ -1364,6 +1374,16 @@
                                             "hostnames": {
                                                 "maxItemsOne": false
                                             },
+                                            "http_message_signature": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "keys": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "ipv4_cidrs": {
                                                 "maxItemsOne": false
                                             },
@@ -1407,6 +1427,16 @@
                                             "hostnames": {
                                                 "maxItemsOne": false
                                             },
+                                            "http_message_signature": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "keys": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "ipv4_cidrs": {
                                                 "maxItemsOne": false
                                             },
@@ -1429,6 +1459,10 @@
                         }
                     }
                 }
+            },
+            "auth0_network_acl_key": {
+                "current": "auth0:index/networkAclKey:NetworkAclKey",
+                "majorVersion": 3
             },
             "auth0_organization": {
                 "current": "auth0:index/organization:Organization",
@@ -2329,6 +2363,16 @@
                     "async_approval_notification_channels": {
                         "maxItemsOne": false
                     },
+                    "b2b_integration_configuration": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "sso_profiles": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "callbacks": {
                         "maxItemsOne": false
                     },
@@ -2628,6 +2672,16 @@
                                 },
                                 "async_approval_notification_channels": {
                                     "maxItemsOne": false
+                                },
+                                "b2b_integration_configuration": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "sso_profiles": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "callbacks": {
                                     "maxItemsOne": false
@@ -3311,6 +3365,16 @@
                                             "hostnames": {
                                                 "maxItemsOne": false
                                             },
+                                            "http_message_signature": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "keys": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "ipv4_cidrs": {
                                                 "maxItemsOne": false
                                             },
@@ -3354,6 +3418,16 @@
                                             "hostnames": {
                                                 "maxItemsOne": false
                                             },
+                                            "http_message_signature": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "keys": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "ipv4_cidrs": {
                                                 "maxItemsOne": false
                                             },
@@ -3376,6 +3450,10 @@
                         }
                     }
                 }
+            },
+            "auth0_network_acl_key": {
+                "current": "auth0:index/getNetworkAclKey:getNetworkAclKey",
+                "majorVersion": 3
             },
             "auth0_organization": {
                 "current": "auth0:index/getOrganization:getOrganization",

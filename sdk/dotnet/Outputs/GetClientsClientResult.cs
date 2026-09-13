@@ -34,6 +34,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AsyncApprovalNotificationChannels;
         /// <summary>
+        /// Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClientsClientB2bIntegrationConfigurationResult> B2bIntegrationConfigurations;
+        /// <summary>
         /// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         /// </summary>
         public readonly ImmutableArray<string> Callbacks;
@@ -106,7 +110,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClientsClientOidcLogoutResult> OidcLogouts;
         /// <summary>
-        /// Methods for discovering organizations during the pre_login_prompt. Can include `Email` (allows users to find their organization by entering their email address) and/or `OrganizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `OrganizationRequireBehavior` is set to `PreLoginPrompt`.
+        /// Methods for discovering organizations during the pre_login_prompt. Can include `Email` (allows users to find their organization by entering their email address) and/or `OrganizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `OrganizationRequireBehavior` is set to `PreLoginPrompt`. For clients that set `B2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
         /// </summary>
         public readonly ImmutableArray<string> OrganizationDiscoveryMethods;
         /// <summary>
@@ -150,6 +154,8 @@ namespace Pulumi.Auth0.Outputs
             string appType,
 
             ImmutableArray<string> asyncApprovalNotificationChannels,
+
+            ImmutableArray<Outputs.GetClientsClientB2bIntegrationConfigurationResult> b2bIntegrationConfigurations,
 
             ImmutableArray<string> callbacks,
 
@@ -210,6 +216,7 @@ namespace Pulumi.Auth0.Outputs
             AllowedOrigins = allowedOrigins;
             AppType = appType;
             AsyncApprovalNotificationChannels = asyncApprovalNotificationChannels;
+            B2bIntegrationConfigurations = b2bIntegrationConfigurations;
             Callbacks = callbacks;
             ClientId = clientId;
             ClientMetadata = clientMetadata;

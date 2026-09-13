@@ -9,6 +9,7 @@ import com.pulumi.auth0.inputs.NetworkAclRuleNotMatchArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -50,6 +51,21 @@ public final class NetworkAclRuleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * When true, the rule unconditionally matches all traffic regardless of any other criteria. Mutually exclusive with match and not_match.
+     * 
+     */
+    @Import(name="matchAll")
+    private @Nullable Output<Boolean> matchAll;
+
+    /**
+     * @return When true, the rule unconditionally matches all traffic regardless of any other criteria. Mutually exclusive with match and not_match.
+     * 
+     */
+    public Optional<Output<Boolean>> matchAll() {
+        return Optional.ofNullable(this.matchAll);
+    }
+
+    /**
      * The configuration for the Network ACL Rule
      * 
      */
@@ -84,6 +100,7 @@ public final class NetworkAclRuleArgs extends com.pulumi.resources.ResourceArgs 
     private NetworkAclRuleArgs(NetworkAclRuleArgs $) {
         this.action = $.action;
         this.match = $.match;
+        this.matchAll = $.matchAll;
         this.notMatch = $.notMatch;
         this.scope = $.scope;
     }
@@ -146,6 +163,27 @@ public final class NetworkAclRuleArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder match(NetworkAclRuleMatchArgs match) {
             return match(Output.of(match));
+        }
+
+        /**
+         * @param matchAll When true, the rule unconditionally matches all traffic regardless of any other criteria. Mutually exclusive with match and not_match.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder matchAll(@Nullable Output<Boolean> matchAll) {
+            $.matchAll = matchAll;
+            return this;
+        }
+
+        /**
+         * @param matchAll When true, the rule unconditionally matches all traffic regardless of any other criteria. Mutually exclusive with match and not_match.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder matchAll(Boolean matchAll) {
+            return matchAll(Output.of(matchAll));
         }
 
         /**

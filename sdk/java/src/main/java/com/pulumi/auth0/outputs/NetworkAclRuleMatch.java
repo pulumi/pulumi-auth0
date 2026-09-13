@@ -3,11 +3,13 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.NetworkAclRuleMatchHttpMessageSignature;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -47,6 +49,11 @@ public final class NetworkAclRuleMatch {
      * 
      */
     private @Nullable List<String> hostnames;
+    /**
+     * @return Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
+     * 
+     */
+    private @Nullable NetworkAclRuleMatchHttpMessageSignature httpMessageSignature;
     /**
      * @return IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
      * 
@@ -124,6 +131,13 @@ public final class NetworkAclRuleMatch {
         return this.hostnames == null ? List.of() : this.hostnames;
     }
     /**
+     * @return Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
+     * 
+     */
+    public Optional<NetworkAclRuleMatchHttpMessageSignature> httpMessageSignature() {
+        return Optional.ofNullable(this.httpMessageSignature);
+    }
+    /**
      * @return IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
      * 
      */
@@ -175,6 +189,7 @@ public final class NetworkAclRuleMatch {
         private @Nullable List<String> geoCountryCodes;
         private @Nullable List<String> geoSubdivisionCodes;
         private @Nullable List<String> hostnames;
+        private @Nullable NetworkAclRuleMatchHttpMessageSignature httpMessageSignature;
         private @Nullable List<String> ipv4Cidrs;
         private @Nullable List<String> ipv6Cidrs;
         private @Nullable List<String> ja3Fingerprints;
@@ -190,6 +205,7 @@ public final class NetworkAclRuleMatch {
     	      this.geoCountryCodes = defaults.geoCountryCodes;
     	      this.geoSubdivisionCodes = defaults.geoSubdivisionCodes;
     	      this.hostnames = defaults.hostnames;
+    	      this.httpMessageSignature = defaults.httpMessageSignature;
     	      this.ipv4Cidrs = defaults.ipv4Cidrs;
     	      this.ipv6Cidrs = defaults.ipv6Cidrs;
     	      this.ja3Fingerprints = defaults.ja3Fingerprints;
@@ -261,6 +277,12 @@ public final class NetworkAclRuleMatch {
             return hostnames(List.of(hostnames));
         }
         @CustomType.Setter
+        public Builder httpMessageSignature(@Nullable NetworkAclRuleMatchHttpMessageSignature httpMessageSignature) {
+
+            this.httpMessageSignature = httpMessageSignature;
+            return this;
+        }
+        @CustomType.Setter
         public Builder ipv4Cidrs(@Nullable List<String> ipv4Cidrs) {
 
             this.ipv4Cidrs = ipv4Cidrs;
@@ -314,6 +336,7 @@ public final class NetworkAclRuleMatch {
             _resultValue.geoCountryCodes = geoCountryCodes;
             _resultValue.geoSubdivisionCodes = geoSubdivisionCodes;
             _resultValue.hostnames = hostnames;
+            _resultValue.httpMessageSignature = httpMessageSignature;
             _resultValue.ipv4Cidrs = ipv4Cidrs;
             _resultValue.ipv6Cidrs = ipv6Cidrs;
             _resultValue.ja3Fingerprints = ja3Fingerprints;

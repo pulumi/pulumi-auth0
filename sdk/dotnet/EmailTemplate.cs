@@ -119,7 +119,7 @@ namespace Pulumi.Auth0
         public Output<string> Syntax { get; private set; } = null!;
 
         /// <summary>
-        /// Template name. Options include `VerifyEmail`, `VerifyEmailByCode`, `ResetEmail`, `ResetEmailByCode`, `WelcomeEmail`, `BlockedAccount`, `StolenCredentials`, `EnrollmentEmail`, `MfaOobCode`, `UserInvitation`, `ChangePassword` (legacy), `PasswordReset` (legacy), or `AsyncApproval`.
+        /// Template name. Options include `VerifyEmail`, `VerifyEmailByCode`, `ResetEmail`, `ResetEmailByCode`, `WelcomeEmail`, `BlockedAccount`, `StolenCredentials`, `EnrollmentEmail`, `MfaOobCode`, `UserInvitation`, `ChangePassword` (legacy), `PasswordReset` (legacy), `AsyncApproval`, or `AuthEmailByCode`.
         /// </summary>
         [Output("template")]
         public Output<string> Template { get; private set; } = null!;
@@ -219,7 +219,7 @@ namespace Pulumi.Auth0
         public Input<string> Syntax { get; set; } = null!;
 
         /// <summary>
-        /// Template name. Options include `VerifyEmail`, `VerifyEmailByCode`, `ResetEmail`, `ResetEmailByCode`, `WelcomeEmail`, `BlockedAccount`, `StolenCredentials`, `EnrollmentEmail`, `MfaOobCode`, `UserInvitation`, `ChangePassword` (legacy), `PasswordReset` (legacy), or `AsyncApproval`.
+        /// Template name. Options include `VerifyEmail`, `VerifyEmailByCode`, `ResetEmail`, `ResetEmailByCode`, `WelcomeEmail`, `BlockedAccount`, `StolenCredentials`, `EnrollmentEmail`, `MfaOobCode`, `UserInvitation`, `ChangePassword` (legacy), `PasswordReset` (legacy), `AsyncApproval`, or `AuthEmailByCode`.
         /// </summary>
         [Input("template", required: true)]
         public Input<string> Template { get; set; } = null!;
@@ -281,7 +281,7 @@ namespace Pulumi.Auth0
         public Input<string>? Syntax { get; set; }
 
         /// <summary>
-        /// Template name. Options include `VerifyEmail`, `VerifyEmailByCode`, `ResetEmail`, `ResetEmailByCode`, `WelcomeEmail`, `BlockedAccount`, `StolenCredentials`, `EnrollmentEmail`, `MfaOobCode`, `UserInvitation`, `ChangePassword` (legacy), `PasswordReset` (legacy), or `AsyncApproval`.
+        /// Template name. Options include `VerifyEmail`, `VerifyEmailByCode`, `ResetEmail`, `ResetEmailByCode`, `WelcomeEmail`, `BlockedAccount`, `StolenCredentials`, `EnrollmentEmail`, `MfaOobCode`, `UserInvitation`, `ChangePassword` (legacy), `PasswordReset` (legacy), `AsyncApproval`, or `AuthEmailByCode`.
         /// </summary>
         [Input("template")]
         public Input<string>? Template { get; set; }

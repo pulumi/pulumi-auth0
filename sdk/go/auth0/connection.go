@@ -19,6 +19,12 @@ import (
 //
 // > When updating the `options` parameter, ensure that all nested fields within the `options` schema are explicitly defined. Failing to do so may result in the loss of existing configurations.
 //
+// > When `optionsClientSecretWo` (write-only) is set, `pulumi preview -refresh=false` may report a
+// non-empty plan for unrelated optional `options` fields (e.g. `+ scripts = {}`). This is an upstream
+// limitation of the Terraform Plugin SDK (hashicorp/terraform-plugin-sdk#1612)
+// that only surfaces without a refresh; a normal `pulumi preview`/`apply` (which refreshes) is
+// unaffected and idempotent.
+//
 // ## Example Usage
 //
 // ### Auth0 Connection
@@ -115,6 +121,35 @@ import (
 //						ChallengeUi:                  pulumi.String("both"),
 //						LocalEnrollmentEnabled:       pulumi.Bool(true),
 //						ProgressiveEnrollmentEnabled: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// The strategy's client secret can be set as a write-only argument so it is never persisted to
+//			// Terraform state. It can be sourced from an ephemeral value (e.g. a secrets manager) and is
+//			// mutually exclusive with `options.client_secret`. Bump `options_client_secret_wo_version` to
+//			// rotate the secret.
+//			//
+//			// NOTE: Write-only arguments require Terraform 1.11 or later.
+//			_, err = auth0.NewConnection(ctx, "my_connection_write_only_secret", &auth0.ConnectionArgs{
+//				Name:                         pulumi.String("Example-Connection-Write-Only-Secret"),
+//				Strategy:                     pulumi.String("oidc"),
+//				OptionsClientSecretWo:        pulumi.Any(connectionClientSecret),
+//				OptionsClientSecretWoVersion: pulumi.Int(1),
+//				Options: &auth0.ConnectionOptionsArgs{
+//					ClientId:              pulumi.String("1234567"),
+//					Type:                  pulumi.String("back_channel"),
+//					Issuer:                pulumi.String("https://www.paypalobjects.com"),
+//					JwksUri:               pulumi.String("https://api.paypal.com/v1/oauth2/certs"),
+//					DiscoveryUrl:          pulumi.String("https://www.paypalobjects.com/.well-known/openid-configuration"),
+//					TokenEndpoint:         pulumi.String("https://api.paypal.com/v1/oauth2/token"),
+//					UserinfoEndpoint:      pulumi.String("https://api.paypal.com/v1/oauth2/token/userinfo"),
+//					AuthorizationEndpoint: pulumi.String("https://www.paypal.com/signin/authorize"),
+//					Scopes: pulumi.StringArray{
+//						pulumi.String("openid"),
+//						pulumi.String("email"),
 //					},
 //				},
 //			})
@@ -1042,6 +1077,11 @@ type Connection struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configuration settings for connection options.
 	Options ConnectionOptionsOutput `pulumi:"options"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The strategy's client secret (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. Bump `optionsClientSecretWoVersion` to rotate it. Conflicts with `options.client_secret`.
+	OptionsClientSecretWo pulumi.StringPtrOutput `pulumi:"optionsClientSecretWo"`
+	// Version counter for `optionsClientSecretWo`, required whenever the write-only secret is set. Must be a positive integer starting at `1`. This value signals rotation intent, though the secret is resent even for other config updates.
+	OptionsClientSecretWoVersion pulumi.IntPtrOutput `pulumi:"optionsClientSecretWoVersion"`
 	// Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
 	Realms pulumi.StringArrayOutput `pulumi:"realms"`
 	// Display connection as a button. Only available on enterprise connections.
@@ -1060,6 +1100,13 @@ func NewConnection(ctx *pulumi.Context,
 	if args.Strategy == nil {
 		return nil, errors.New("invalid value for required argument 'Strategy'")
 	}
+	if args.OptionsClientSecretWo != nil {
+		args.OptionsClientSecretWo = pulumi.ToSecret(args.OptionsClientSecretWo).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"optionsClientSecretWo",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Connection
 	err := ctx.RegisterResource("auth0:index/connection:Connection", name, args, &resource, opts...)
@@ -1101,6 +1148,11 @@ type connectionState struct {
 	Name *string `pulumi:"name"`
 	// Configuration settings for connection options.
 	Options *ConnectionOptions `pulumi:"options"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The strategy's client secret (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. Bump `optionsClientSecretWoVersion` to rotate it. Conflicts with `options.client_secret`.
+	OptionsClientSecretWo *string `pulumi:"optionsClientSecretWo"`
+	// Version counter for `optionsClientSecretWo`, required whenever the write-only secret is set. Must be a positive integer starting at `1`. This value signals rotation intent, though the secret is resent even for other config updates.
+	OptionsClientSecretWoVersion *int `pulumi:"optionsClientSecretWoVersion"`
 	// Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
 	Realms []string `pulumi:"realms"`
 	// Display connection as a button. Only available on enterprise connections.
@@ -1128,6 +1180,11 @@ type ConnectionState struct {
 	Name pulumi.StringPtrInput
 	// Configuration settings for connection options.
 	Options ConnectionOptionsPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The strategy's client secret (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. Bump `optionsClientSecretWoVersion` to rotate it. Conflicts with `options.client_secret`.
+	OptionsClientSecretWo pulumi.StringPtrInput
+	// Version counter for `optionsClientSecretWo`, required whenever the write-only secret is set. Must be a positive integer starting at `1`. This value signals rotation intent, though the secret is resent even for other config updates.
+	OptionsClientSecretWoVersion pulumi.IntPtrInput
 	// Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
 	Realms pulumi.StringArrayInput
 	// Display connection as a button. Only available on enterprise connections.
@@ -1159,6 +1216,11 @@ type connectionArgs struct {
 	Name *string `pulumi:"name"`
 	// Configuration settings for connection options.
 	Options *ConnectionOptions `pulumi:"options"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The strategy's client secret (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. Bump `optionsClientSecretWoVersion` to rotate it. Conflicts with `options.client_secret`.
+	OptionsClientSecretWo *string `pulumi:"optionsClientSecretWo"`
+	// Version counter for `optionsClientSecretWo`, required whenever the write-only secret is set. Must be a positive integer starting at `1`. This value signals rotation intent, though the secret is resent even for other config updates.
+	OptionsClientSecretWoVersion *int `pulumi:"optionsClientSecretWoVersion"`
 	// Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
 	Realms []string `pulumi:"realms"`
 	// Display connection as a button. Only available on enterprise connections.
@@ -1187,6 +1249,11 @@ type ConnectionArgs struct {
 	Name pulumi.StringPtrInput
 	// Configuration settings for connection options.
 	Options ConnectionOptionsPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The strategy's client secret (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. Bump `optionsClientSecretWoVersion` to rotate it. Conflicts with `options.client_secret`.
+	OptionsClientSecretWo pulumi.StringPtrInput
+	// Version counter for `optionsClientSecretWo`, required whenever the write-only secret is set. Must be a positive integer starting at `1`. This value signals rotation intent, though the secret is resent even for other config updates.
+	OptionsClientSecretWoVersion pulumi.IntPtrInput
 	// Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
 	Realms pulumi.StringArrayInput
 	// Display connection as a button. Only available on enterprise connections.
@@ -1325,6 +1392,17 @@ func (o ConnectionOutput) Name() pulumi.StringOutput {
 // Configuration settings for connection options.
 func (o ConnectionOutput) Options() ConnectionOptionsOutput {
 	return o.ApplyT(func(v *Connection) ConnectionOptionsOutput { return v.Options }).(ConnectionOptionsOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The strategy's client secret (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. Bump `optionsClientSecretWoVersion` to rotate it. Conflicts with `options.client_secret`.
+func (o ConnectionOutput) OptionsClientSecretWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.OptionsClientSecretWo }).(pulumi.StringPtrOutput)
+}
+
+// Version counter for `optionsClientSecretWo`, required whenever the write-only secret is set. Must be a positive integer starting at `1`. This value signals rotation intent, though the secret is resent even for other config updates.
+func (o ConnectionOutput) OptionsClientSecretWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Connection) pulumi.IntPtrOutput { return v.OptionsClientSecretWoVersion }).(pulumi.IntPtrOutput)
 }
 
 // Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
