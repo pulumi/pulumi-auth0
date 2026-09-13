@@ -51,6 +51,8 @@ import com.pulumi.auth0.inputs.GetFlowVaultConnectionPlainArgs;
 import com.pulumi.auth0.inputs.GetFormArgs;
 import com.pulumi.auth0.inputs.GetFormPlainArgs;
 import com.pulumi.auth0.inputs.GetNetworkAclArgs;
+import com.pulumi.auth0.inputs.GetNetworkAclKeyArgs;
+import com.pulumi.auth0.inputs.GetNetworkAclKeyPlainArgs;
 import com.pulumi.auth0.inputs.GetNetworkAclPlainArgs;
 import com.pulumi.auth0.inputs.GetOrganizationArgs;
 import com.pulumi.auth0.inputs.GetOrganizationClientArgs;
@@ -118,6 +120,7 @@ import com.pulumi.auth0.outputs.GetEventStreamResult;
 import com.pulumi.auth0.outputs.GetFlowResult;
 import com.pulumi.auth0.outputs.GetFlowVaultConnectionResult;
 import com.pulumi.auth0.outputs.GetFormResult;
+import com.pulumi.auth0.outputs.GetNetworkAclKeyResult;
 import com.pulumi.auth0.outputs.GetNetworkAclResult;
 import com.pulumi.auth0.outputs.GetOrganizationClientResult;
 import com.pulumi.auth0.outputs.GetOrganizationClientsResult;
@@ -6952,6 +6955,206 @@ public final class Auth0Functions {
      */
     public static CompletableFuture<GetNetworkAclResult> getNetworkAclPlain(GetNetworkAclPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getNetworkAcl:getNetworkAcl", TypeShape.of(GetNetworkAclResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieve a Network ACL key by its ID. The `value` field is not available via this data source (it is write-only on the resource). (EA Only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetNetworkAclKeyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKey = Auth0Functions.getNetworkAclKey(GetNetworkAclKeyArgs.builder()
+     *             .id("key_<replace_with_key_id>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNetworkAclKeyResult> getNetworkAclKey(GetNetworkAclKeyArgs args) {
+        return getNetworkAclKey(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieve a Network ACL key by its ID. The `value` field is not available via this data source (it is write-only on the resource). (EA Only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetNetworkAclKeyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKey = Auth0Functions.getNetworkAclKey(GetNetworkAclKeyArgs.builder()
+     *             .id("key_<replace_with_key_id>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetNetworkAclKeyResult> getNetworkAclKeyPlain(GetNetworkAclKeyPlainArgs args) {
+        return getNetworkAclKeyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieve a Network ACL key by its ID. The `value` field is not available via this data source (it is write-only on the resource). (EA Only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetNetworkAclKeyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKey = Auth0Functions.getNetworkAclKey(GetNetworkAclKeyArgs.builder()
+     *             .id("key_<replace_with_key_id>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNetworkAclKeyResult> getNetworkAclKey(GetNetworkAclKeyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getNetworkAclKey:getNetworkAclKey", TypeShape.of(GetNetworkAclKeyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieve a Network ACL key by its ID. The `value` field is not available via this data source (it is write-only on the resource). (EA Only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetNetworkAclKeyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKey = Auth0Functions.getNetworkAclKey(GetNetworkAclKeyArgs.builder()
+     *             .id("key_<replace_with_key_id>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNetworkAclKeyResult> getNetworkAclKey(GetNetworkAclKeyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getNetworkAclKey:getNetworkAclKey", TypeShape.of(GetNetworkAclKeyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieve a Network ACL key by its ID. The `value` field is not available via this data source (it is write-only on the resource). (EA Only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetNetworkAclKeyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKey = Auth0Functions.getNetworkAclKey(GetNetworkAclKeyArgs.builder()
+     *             .id("key_<replace_with_key_id>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetNetworkAclKeyResult> getNetworkAclKeyPlain(GetNetworkAclKeyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getNetworkAclKey:getNetworkAclKey", TypeShape.of(GetNetworkAclKeyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source to retrieve a specific Auth0 organization by `organizationId` or `name`.

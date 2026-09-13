@@ -27,7 +27,7 @@ class GetClientResult:
     """
     A collection of values returned by getClient.
     """
-    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, async_approval_notification_channels=None, callbacks=None, client_aliases=None, client_authentication_methods=None, client_id=None, client_metadata=None, client_secret=None, compliance_level=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, default_organizations=None, description=None, encryption_key=None, express_configurations=None, external_client_id=None, external_metadata_created_by=None, external_metadata_type=None, fedcm_logins=None, form_template=None, grant_types=None, hide_client_secret=None, id=None, identity_assertion_authorization_grants=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwks_uri=None, jwt_configurations=None, logo_uri=None, mobiles=None, my_organization_configurations=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, oidc_logouts=None, organization_discovery_methods=None, organization_require_behavior=None, organization_usage=None, redirection_policy=None, refresh_tokens=None, require_proof_of_possession=None, require_pushed_authorization_requests=None, resource_server_identifier=None, session_transfers=None, signed_request_objects=None, signing_keys=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, sso=None, sso_disabled=None, third_party_security_mode=None, token_endpoint_auth_method=None, token_exchanges=None, token_quotas=None, web_origins=None):
+    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, async_approval_notification_channels=None, b2b_integration_configurations=None, callbacks=None, client_aliases=None, client_authentication_methods=None, client_id=None, client_metadata=None, client_secret=None, compliance_level=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, default_organizations=None, description=None, encryption_key=None, express_configurations=None, external_client_id=None, external_metadata_created_by=None, external_metadata_type=None, fedcm_logins=None, form_template=None, grant_types=None, hide_client_secret=None, id=None, identity_assertion_authorization_grants=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwks_uri=None, jwt_configurations=None, logo_uri=None, mobiles=None, my_organization_configurations=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, oidc_logouts=None, organization_discovery_methods=None, organization_require_behavior=None, organization_usage=None, redirection_policy=None, refresh_tokens=None, require_proof_of_possession=None, require_pushed_authorization_requests=None, resource_server_identifier=None, session_transfers=None, signed_request_objects=None, signing_keys=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, sso=None, sso_disabled=None, third_party_security_mode=None, token_endpoint_auth_method=None, token_exchanges=None, token_quotas=None, web_origins=None):
         if addons and not isinstance(addons, list):
             raise TypeError("Expected argument 'addons' to be a list")
         pulumi.set(__self__, "addons", addons)
@@ -46,6 +46,9 @@ class GetClientResult:
         if async_approval_notification_channels and not isinstance(async_approval_notification_channels, list):
             raise TypeError("Expected argument 'async_approval_notification_channels' to be a list")
         pulumi.set(__self__, "async_approval_notification_channels", async_approval_notification_channels)
+        if b2b_integration_configurations and not isinstance(b2b_integration_configurations, list):
+            raise TypeError("Expected argument 'b2b_integration_configurations' to be a list")
+        pulumi.set(__self__, "b2b_integration_configurations", b2b_integration_configurations)
         if callbacks and not isinstance(callbacks, list):
             raise TypeError("Expected argument 'callbacks' to be a list")
         pulumi.set(__self__, "callbacks", callbacks)
@@ -262,6 +265,14 @@ class GetClientResult:
         List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
         """
         return pulumi.get(self, "async_approval_notification_channels")
+
+    @_builtins.property
+    @pulumi.getter(name="b2bIntegrationConfigurations")
+    def b2b_integration_configurations(self) -> Sequence['outputs.GetClientB2bIntegrationConfigurationResult']:
+        """
+        Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
+        """
+        return pulumi.get(self, "b2b_integration_configurations")
 
     @_builtins.property
     @pulumi.getter
@@ -563,7 +574,7 @@ class GetClientResult:
     @pulumi.getter(name="organizationDiscoveryMethods")
     def organization_discovery_methods(self) -> Sequence[_builtins.str]:
         """
-        Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
+        Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`. For clients that set `b2b_integration_configuration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
         """
         return pulumi.get(self, "organization_discovery_methods")
 
@@ -721,6 +732,7 @@ class AwaitableGetClientResult(GetClientResult):
             allowed_origins=self.allowed_origins,
             app_type=self.app_type,
             async_approval_notification_channels=self.async_approval_notification_channels,
+            b2b_integration_configurations=self.b2b_integration_configurations,
             callbacks=self.callbacks,
             client_aliases=self.client_aliases,
             client_authentication_methods=self.client_authentication_methods,
@@ -817,6 +829,7 @@ def get_client(client_id: Optional[_builtins.str] = None,
         allowed_origins=pulumi.get(__ret__, 'allowed_origins'),
         app_type=pulumi.get(__ret__, 'app_type'),
         async_approval_notification_channels=pulumi.get(__ret__, 'async_approval_notification_channels'),
+        b2b_integration_configurations=pulumi.get(__ret__, 'b2b_integration_configurations'),
         callbacks=pulumi.get(__ret__, 'callbacks'),
         client_aliases=pulumi.get(__ret__, 'client_aliases'),
         client_authentication_methods=pulumi.get(__ret__, 'client_authentication_methods'),
@@ -910,6 +923,7 @@ def get_client_output(client_id: pulumi.Input[Optional[Optional[_builtins.str]]]
         allowed_origins=pulumi.get(__response__, 'allowed_origins'),
         app_type=pulumi.get(__response__, 'app_type'),
         async_approval_notification_channels=pulumi.get(__response__, 'async_approval_notification_channels'),
+        b2b_integration_configurations=pulumi.get(__response__, 'b2b_integration_configurations'),
         callbacks=pulumi.get(__response__, 'callbacks'),
         client_aliases=pulumi.get(__response__, 'client_aliases'),
         client_authentication_methods=pulumi.get(__response__, 'client_authentication_methods'),

@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.GetClientAddon;
+import com.pulumi.auth0.outputs.GetClientB2bIntegrationConfiguration;
 import com.pulumi.auth0.outputs.GetClientClientAuthenticationMethod;
 import com.pulumi.auth0.outputs.GetClientDefaultOrganization;
 import com.pulumi.auth0.outputs.GetClientExpressConfiguration;
@@ -61,6 +62,11 @@ public final class GetClientResult {
      * 
      */
     private List<String> asyncApprovalNotificationChannels;
+    /**
+     * @return Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
+     * 
+     */
+    private List<GetClientB2bIntegrationConfiguration> b2bIntegrationConfigurations;
     /**
      * @return URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
      * 
@@ -247,7 +253,7 @@ public final class GetClientResult {
      */
     private List<GetClientOidcLogout> oidcLogouts;
     /**
-     * @return Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+     * @return Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
      * 
      */
     private List<String> organizationDiscoveryMethods;
@@ -380,6 +386,13 @@ public final class GetClientResult {
      */
     public List<String> asyncApprovalNotificationChannels() {
         return this.asyncApprovalNotificationChannels;
+    }
+    /**
+     * @return Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
+     * 
+     */
+    public List<GetClientB2bIntegrationConfiguration> b2bIntegrationConfigurations() {
+        return this.b2bIntegrationConfigurations;
     }
     /**
      * @return URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
@@ -641,7 +654,7 @@ public final class GetClientResult {
         return this.oidcLogouts;
     }
     /**
-     * @return Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+     * @return Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
      * 
      */
     public List<String> organizationDiscoveryMethods() {
@@ -785,6 +798,7 @@ public final class GetClientResult {
         private List<String> allowedOrigins;
         private String appType;
         private List<String> asyncApprovalNotificationChannels;
+        private List<GetClientB2bIntegrationConfiguration> b2bIntegrationConfigurations;
         private List<String> callbacks;
         private List<String> clientAliases;
         private List<GetClientClientAuthenticationMethod> clientAuthenticationMethods;
@@ -850,6 +864,7 @@ public final class GetClientResult {
     	      this.allowedOrigins = defaults.allowedOrigins;
     	      this.appType = defaults.appType;
     	      this.asyncApprovalNotificationChannels = defaults.asyncApprovalNotificationChannels;
+    	      this.b2bIntegrationConfigurations = defaults.b2bIntegrationConfigurations;
     	      this.callbacks = defaults.callbacks;
     	      this.clientAliases = defaults.clientAliases;
     	      this.clientAuthenticationMethods = defaults.clientAuthenticationMethods;
@@ -970,6 +985,17 @@ public final class GetClientResult {
         }
         public Builder asyncApprovalNotificationChannels(String... asyncApprovalNotificationChannels) {
             return asyncApprovalNotificationChannels(List.of(asyncApprovalNotificationChannels));
+        }
+        @CustomType.Setter
+        public Builder b2bIntegrationConfigurations(List<GetClientB2bIntegrationConfiguration> b2bIntegrationConfigurations) {
+            if (b2bIntegrationConfigurations == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "b2bIntegrationConfigurations");
+            }
+            this.b2bIntegrationConfigurations = b2bIntegrationConfigurations;
+            return this;
+        }
+        public Builder b2bIntegrationConfigurations(GetClientB2bIntegrationConfiguration... b2bIntegrationConfigurations) {
+            return b2bIntegrationConfigurations(List.of(b2bIntegrationConfigurations));
         }
         @CustomType.Setter
         public Builder callbacks(List<String> callbacks) {
@@ -1484,6 +1510,7 @@ public final class GetClientResult {
             _resultValue.allowedOrigins = allowedOrigins;
             _resultValue.appType = appType;
             _resultValue.asyncApprovalNotificationChannels = asyncApprovalNotificationChannels;
+            _resultValue.b2bIntegrationConfigurations = b2bIntegrationConfigurations;
             _resultValue.callbacks = callbacks;
             _resultValue.clientAliases = clientAliases;
             _resultValue.clientAuthenticationMethods = clientAuthenticationMethods;

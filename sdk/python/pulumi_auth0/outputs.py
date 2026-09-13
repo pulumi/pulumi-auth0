@@ -90,6 +90,7 @@ __all__ = [
     'ClientAddonsWsfed',
     'ClientAddonsZendesk',
     'ClientAddonsZoom',
+    'ClientB2bIntegrationConfiguration',
     'ClientCimdDefaultOrganization',
     'ClientCimdJwtConfiguration',
     'ClientCimdRefreshToken',
@@ -233,7 +234,11 @@ __all__ = [
     'NetworkAclRule',
     'NetworkAclRuleAction',
     'NetworkAclRuleMatch',
+    'NetworkAclRuleMatchHttpMessageSignature',
+    'NetworkAclRuleMatchHttpMessageSignatureKey',
     'NetworkAclRuleNotMatch',
+    'NetworkAclRuleNotMatchHttpMessageSignature',
+    'NetworkAclRuleNotMatchHttpMessageSignatureKey',
     'OrganizationBranding',
     'OrganizationClientsClient',
     'OrganizationConnectionsEnabledConnection',
@@ -367,6 +372,7 @@ __all__ = [
     'GetClientAddonWsfedResult',
     'GetClientAddonZendeskResult',
     'GetClientAddonZoomResult',
+    'GetClientB2bIntegrationConfigurationResult',
     'GetClientClientAuthenticationMethodResult',
     'GetClientClientAuthenticationMethodPrivateKeyJwtResult',
     'GetClientClientAuthenticationMethodPrivateKeyJwtCredentialResult',
@@ -408,6 +414,7 @@ __all__ = [
     'GetClientTokenQuotaResult',
     'GetClientTokenQuotaClientCredentialResult',
     'GetClientsClientResult',
+    'GetClientsClientB2bIntegrationConfigurationResult',
     'GetClientsClientExpressConfigurationResult',
     'GetClientsClientExpressConfigurationLinkedClientResult',
     'GetClientsClientFedcmLoginResult',
@@ -511,7 +518,11 @@ __all__ = [
     'GetNetworkAclRuleResult',
     'GetNetworkAclRuleActionResult',
     'GetNetworkAclRuleMatchResult',
+    'GetNetworkAclRuleMatchHttpMessageSignatureResult',
+    'GetNetworkAclRuleMatchHttpMessageSignatureKeyResult',
     'GetNetworkAclRuleNotMatchResult',
+    'GetNetworkAclRuleNotMatchHttpMessageSignatureResult',
+    'GetNetworkAclRuleNotMatchHttpMessageSignatureKeyResult',
     'GetOrganizationBrandingResult',
     'GetOrganizationClientsClientResult',
     'GetOrganizationConnectionResult',
@@ -5153,6 +5164,56 @@ class ClientAddonsZoom(dict):
 
 
 @pulumi.output_type
+class ClientB2bIntegrationConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "integrationType":
+            suggest = "integration_type"
+        elif key == "ssoProfiles":
+            suggest = "sso_profiles"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientB2bIntegrationConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientB2bIntegrationConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientB2bIntegrationConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 integration_type: Optional[_builtins.str] = None,
+                 sso_profiles: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str integration_type: The type of integration used to connect to this B2B integration client. One of custom*auth*server, third_party, application
+        :param _builtins.str sso_profiles: ID of the self-service SSO profile (an `SelfServiceProfile` id, in `ssp_...` format) linked to this B2B integration client. Maximum 1.
+        """
+        if integration_type is not None:
+            pulumi.set(__self__, "integration_type", integration_type)
+        if sso_profiles is not None:
+            pulumi.set(__self__, "sso_profiles", sso_profiles)
+
+    @_builtins.property
+    @pulumi.getter(name="integrationType")
+    def integration_type(self) -> Optional[_builtins.str]:
+        """
+        The type of integration used to connect to this B2B integration client. One of custom*auth*server, third_party, application
+        """
+        return pulumi.get(self, "integration_type")
+
+    @_builtins.property
+    @pulumi.getter(name="ssoProfiles")
+    def sso_profiles(self) -> Optional[_builtins.str]:
+        """
+        ID of the self-service SSO profile (an `SelfServiceProfile` id, in `ssp_...` format) linked to this B2B integration client. Maximum 1.
+        """
+        return pulumi.get(self, "sso_profiles")
+
+
+@pulumi.output_type
 class ClientCimdDefaultOrganization(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -8200,7 +8261,7 @@ class ConnectionOptions(dict):
         :param _builtins.str authorization_endpoint: Authorization endpoint.
         :param _builtins.bool brute_force_protection: Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
         :param _builtins.str client_id: The strategy's client ID.
-        :param _builtins.str client_secret: The strategy's client secret.
+        :param _builtins.str client_secret: The strategy's client secret. **Note:** For better security, consider using `options_client_secret_wo` instead to avoid storing the secret in Terraform state.
         :param _builtins.str community_base_url: Salesforce community base URL.
         :param Mapping[str, _builtins.str] configuration: A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
         :param 'ConnectionOptionsConnectionSettingsArgs' connection_settings: Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
@@ -8660,7 +8721,7 @@ class ConnectionOptions(dict):
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[_builtins.str]:
         """
-        The strategy's client secret.
+        The strategy's client secret. **Note:** For better security, consider using `options_client_secret_wo` instead to avoid storing the secret in Terraform state.
         """
         return pulumi.get(self, "client_secret")
 
@@ -14316,7 +14377,9 @@ class NetworkAclRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "notMatch":
+        if key == "matchAll":
+            suggest = "match_all"
+        elif key == "notMatch":
             suggest = "not_match"
 
         if suggest:
@@ -14334,17 +14397,21 @@ class NetworkAclRule(dict):
                  action: 'outputs.NetworkAclRuleAction',
                  scope: _builtins.str,
                  match: Optional['outputs.NetworkAclRuleMatch'] = None,
+                 match_all: Optional[_builtins.bool] = None,
                  not_match: Optional['outputs.NetworkAclRuleNotMatch'] = None):
         """
         :param 'NetworkAclRuleActionArgs' action: The action configuration for the Network ACL Rule. Only one action type (block, allow, log, or redirect) should be specified.
         :param _builtins.str scope: The scope of the Network ACL Rule
         :param 'NetworkAclRuleMatchArgs' match: The configuration for the Network ACL Rule
+        :param _builtins.bool match_all: When true, the rule unconditionally matches all traffic regardless of any other criteria. Mutually exclusive with match and not_match.
         :param 'NetworkAclRuleNotMatchArgs' not_match: The configuration for the Network ACL Rule
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "scope", scope)
         if match is not None:
             pulumi.set(__self__, "match", match)
+        if match_all is not None:
+            pulumi.set(__self__, "match_all", match_all)
         if not_match is not None:
             pulumi.set(__self__, "not_match", not_match)
 
@@ -14371,6 +14438,14 @@ class NetworkAclRule(dict):
         The configuration for the Network ACL Rule
         """
         return pulumi.get(self, "match")
+
+    @_builtins.property
+    @pulumi.getter(name="matchAll")
+    def match_all(self) -> Optional[_builtins.bool]:
+        """
+        When true, the rule unconditionally matches all traffic regardless of any other criteria. Mutually exclusive with match and not_match.
+        """
+        return pulumi.get(self, "match_all")
 
     @_builtins.property
     @pulumi.getter(name="notMatch")
@@ -14480,6 +14555,8 @@ class NetworkAclRuleMatch(dict):
             suggest = "geo_country_codes"
         elif key == "geoSubdivisionCodes":
             suggest = "geo_subdivision_codes"
+        elif key == "httpMessageSignature":
+            suggest = "http_message_signature"
         elif key == "ipv4Cidrs":
             suggest = "ipv4_cidrs"
         elif key == "ipv6Cidrs":
@@ -14510,6 +14587,7 @@ class NetworkAclRuleMatch(dict):
                  geo_country_codes: Optional[Sequence[_builtins.str]] = None,
                  geo_subdivision_codes: Optional[Sequence[_builtins.str]] = None,
                  hostnames: Optional[Sequence[_builtins.str]] = None,
+                 http_message_signature: Optional['outputs.NetworkAclRuleMatchHttpMessageSignature'] = None,
                  ipv4_cidrs: Optional[Sequence[_builtins.str]] = None,
                  ipv6_cidrs: Optional[Sequence[_builtins.str]] = None,
                  ja3_fingerprints: Optional[Sequence[_builtins.str]] = None,
@@ -14523,6 +14601,7 @@ class NetworkAclRuleMatch(dict):
         :param Sequence[_builtins.str] geo_country_codes: Geo Country Codes. Must contain between 1 and 10 unique items.
         :param Sequence[_builtins.str] geo_subdivision_codes: Geo Subdivision Codes. Must contain between 1 and 10 unique items.
         :param Sequence[_builtins.str] hostnames: Hostnames. Must contain between 1 and 20 unique items.
+        :param 'NetworkAclRuleMatchHttpMessageSignatureArgs' http_message_signature: Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
         :param Sequence[_builtins.str] ipv4_cidrs: IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
         :param Sequence[_builtins.str] ipv6_cidrs: IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
         :param Sequence[_builtins.str] ja3_fingerprints: JA3 Fingerprints. Must contain between 1 and 10 unique items.
@@ -14543,6 +14622,8 @@ class NetworkAclRuleMatch(dict):
             pulumi.set(__self__, "geo_subdivision_codes", geo_subdivision_codes)
         if hostnames is not None:
             pulumi.set(__self__, "hostnames", hostnames)
+        if http_message_signature is not None:
+            pulumi.set(__self__, "http_message_signature", http_message_signature)
         if ipv4_cidrs is not None:
             pulumi.set(__self__, "ipv4_cidrs", ipv4_cidrs)
         if ipv6_cidrs is not None:
@@ -14609,6 +14690,14 @@ class NetworkAclRuleMatch(dict):
         Hostnames. Must contain between 1 and 20 unique items.
         """
         return pulumi.get(self, "hostnames")
+
+    @_builtins.property
+    @pulumi.getter(name="httpMessageSignature")
+    def http_message_signature(self) -> Optional['outputs.NetworkAclRuleMatchHttpMessageSignature']:
+        """
+        Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
+        """
+        return pulumi.get(self, "http_message_signature")
 
     @_builtins.property
     @pulumi.getter(name="ipv4Cidrs")
@@ -14652,6 +14741,42 @@ class NetworkAclRuleMatch(dict):
 
 
 @pulumi.output_type
+class NetworkAclRuleMatchHttpMessageSignature(dict):
+    def __init__(__self__, *,
+                 keys: Sequence['outputs.NetworkAclRuleMatchHttpMessageSignatureKey']):
+        """
+        :param Sequence['NetworkAclRuleMatchHttpMessageSignatureKeyArgs'] keys: List of Network ACL key references. A request matches if its signature is verified by any of these keys.
+        """
+        pulumi.set(__self__, "keys", keys)
+
+    @_builtins.property
+    @pulumi.getter
+    def keys(self) -> Sequence['outputs.NetworkAclRuleMatchHttpMessageSignatureKey']:
+        """
+        List of Network ACL key references. A request matches if its signature is verified by any of these keys.
+        """
+        return pulumi.get(self, "keys")
+
+
+@pulumi.output_type
+class NetworkAclRuleMatchHttpMessageSignatureKey(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: The ID of the referenced Network ACL key.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the referenced Network ACL key.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
 class NetworkAclRuleNotMatch(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -14666,6 +14791,8 @@ class NetworkAclRuleNotMatch(dict):
             suggest = "geo_country_codes"
         elif key == "geoSubdivisionCodes":
             suggest = "geo_subdivision_codes"
+        elif key == "httpMessageSignature":
+            suggest = "http_message_signature"
         elif key == "ipv4Cidrs":
             suggest = "ipv4_cidrs"
         elif key == "ipv6Cidrs":
@@ -14696,6 +14823,7 @@ class NetworkAclRuleNotMatch(dict):
                  geo_country_codes: Optional[Sequence[_builtins.str]] = None,
                  geo_subdivision_codes: Optional[Sequence[_builtins.str]] = None,
                  hostnames: Optional[Sequence[_builtins.str]] = None,
+                 http_message_signature: Optional['outputs.NetworkAclRuleNotMatchHttpMessageSignature'] = None,
                  ipv4_cidrs: Optional[Sequence[_builtins.str]] = None,
                  ipv6_cidrs: Optional[Sequence[_builtins.str]] = None,
                  ja3_fingerprints: Optional[Sequence[_builtins.str]] = None,
@@ -14709,6 +14837,7 @@ class NetworkAclRuleNotMatch(dict):
         :param Sequence[_builtins.str] geo_country_codes: Geo Country Codes. Must contain between 1 and 10 unique items.
         :param Sequence[_builtins.str] geo_subdivision_codes: Geo Subdivision Codes. Must contain between 1 and 10 unique items.
         :param Sequence[_builtins.str] hostnames: Hostnames. Must contain between 1 and 20 unique items.
+        :param 'NetworkAclRuleNotMatchHttpMessageSignatureArgs' http_message_signature: Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
         :param Sequence[_builtins.str] ipv4_cidrs: IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
         :param Sequence[_builtins.str] ipv6_cidrs: IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
         :param Sequence[_builtins.str] ja3_fingerprints: JA3 Fingerprints. Must contain between 1 and 10 unique items.
@@ -14729,6 +14858,8 @@ class NetworkAclRuleNotMatch(dict):
             pulumi.set(__self__, "geo_subdivision_codes", geo_subdivision_codes)
         if hostnames is not None:
             pulumi.set(__self__, "hostnames", hostnames)
+        if http_message_signature is not None:
+            pulumi.set(__self__, "http_message_signature", http_message_signature)
         if ipv4_cidrs is not None:
             pulumi.set(__self__, "ipv4_cidrs", ipv4_cidrs)
         if ipv6_cidrs is not None:
@@ -14797,6 +14928,14 @@ class NetworkAclRuleNotMatch(dict):
         return pulumi.get(self, "hostnames")
 
     @_builtins.property
+    @pulumi.getter(name="httpMessageSignature")
+    def http_message_signature(self) -> Optional['outputs.NetworkAclRuleNotMatchHttpMessageSignature']:
+        """
+        Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
+        """
+        return pulumi.get(self, "http_message_signature")
+
+    @_builtins.property
     @pulumi.getter(name="ipv4Cidrs")
     def ipv4_cidrs(self) -> Optional[Sequence[_builtins.str]]:
         """
@@ -14835,6 +14974,42 @@ class NetworkAclRuleNotMatch(dict):
         User Agents. Must contain between 1 and 10 unique items.
         """
         return pulumi.get(self, "user_agents")
+
+
+@pulumi.output_type
+class NetworkAclRuleNotMatchHttpMessageSignature(dict):
+    def __init__(__self__, *,
+                 keys: Sequence['outputs.NetworkAclRuleNotMatchHttpMessageSignatureKey']):
+        """
+        :param Sequence['NetworkAclRuleNotMatchHttpMessageSignatureKeyArgs'] keys: List of Network ACL key references. A request matches if its signature is verified by any of these keys.
+        """
+        pulumi.set(__self__, "keys", keys)
+
+    @_builtins.property
+    @pulumi.getter
+    def keys(self) -> Sequence['outputs.NetworkAclRuleNotMatchHttpMessageSignatureKey']:
+        """
+        List of Network ACL key references. A request matches if its signature is verified by any of these keys.
+        """
+        return pulumi.get(self, "keys")
+
+
+@pulumi.output_type
+class NetworkAclRuleNotMatchHttpMessageSignatureKey(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: The ID of the referenced Network ACL key.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the referenced Network ACL key.
+        """
+        return pulumi.get(self, "id")
 
 
 @pulumi.output_type
@@ -21676,6 +21851,35 @@ class GetClientAddonZoomResult(dict):
 
 
 @pulumi.output_type
+class GetClientB2bIntegrationConfigurationResult(dict):
+    def __init__(__self__, *,
+                 integration_type: _builtins.str,
+                 sso_profiles: Sequence[_builtins.str]):
+        """
+        :param _builtins.str integration_type: The type of integration used to connect to this B2B integration client. One of custom_auth_server, third_party, application
+        :param Sequence[_builtins.str] sso_profiles: ID of the self-service SSO profile (an `SelfServiceProfile` id, in `ssp_...` format) linked to this B2B integration client. Maximum 1.
+        """
+        pulumi.set(__self__, "integration_type", integration_type)
+        pulumi.set(__self__, "sso_profiles", sso_profiles)
+
+    @_builtins.property
+    @pulumi.getter(name="integrationType")
+    def integration_type(self) -> _builtins.str:
+        """
+        The type of integration used to connect to this B2B integration client. One of custom_auth_server, third_party, application
+        """
+        return pulumi.get(self, "integration_type")
+
+    @_builtins.property
+    @pulumi.getter(name="ssoProfiles")
+    def sso_profiles(self) -> Sequence[_builtins.str]:
+        """
+        ID of the self-service SSO profile (an `SelfServiceProfile` id, in `ssp_...` format) linked to this B2B integration client. Maximum 1.
+        """
+        return pulumi.get(self, "sso_profiles")
+
+
+@pulumi.output_type
 class GetClientClientAuthenticationMethodResult(dict):
     def __init__(__self__, *,
                  private_key_jwts: Sequence['outputs.GetClientClientAuthenticationMethodPrivateKeyJwtResult'],
@@ -23293,6 +23497,7 @@ class GetClientsClientResult(dict):
                  allowed_origins: Sequence[_builtins.str],
                  app_type: _builtins.str,
                  async_approval_notification_channels: Sequence[_builtins.str],
+                 b2b_integration_configurations: Sequence['outputs.GetClientsClientB2bIntegrationConfigurationResult'],
                  callbacks: Sequence[_builtins.str],
                  client_metadata: Mapping[str, _builtins.str],
                  client_secret: _builtins.str,
@@ -23326,6 +23531,7 @@ class GetClientsClientResult(dict):
         :param Sequence[_builtins.str] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
         :param _builtins.str app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `express_configuration`
         :param Sequence[_builtins.str] async_approval_notification_channels: List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
+        :param Sequence['GetClientsClientB2bIntegrationConfigurationArgs'] b2b_integration_configurations: Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
         :param Sequence[_builtins.str] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param Mapping[str, _builtins.str] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
         :param _builtins.str client_secret: Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. Set `hide_client_secret` to `true` to avoid persisting this value into Terraform state.
@@ -23342,7 +23548,7 @@ class GetClientsClientResult(dict):
         :param _builtins.str jwks_uri: URL for the JSON Web Key Set (JWKS) containing the public keys used for `private_key_jwt` authentication. Only present for CIMD clients using `private_key_jwt` authentication.
         :param Sequence['GetClientsClientMyOrganizationConfigurationArgs'] my_organization_configurations: Configuration for self-service organization features, controlling how organizations are created and managed for this client.
         :param Sequence['GetClientsClientOidcLogoutArgs'] oidc_logouts: Configure OIDC logout for the Client
-        :param Sequence[_builtins.str] organization_discovery_methods: Methods for discovering organizations during the pre_login_prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
+        :param Sequence[_builtins.str] organization_discovery_methods: Methods for discovering organizations during the pre_login_prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`. For clients that set `b2b_integration_configuration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
         :param _builtins.str redirection_policy: Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allow_always` or `open_redirect_protection`.
         :param _builtins.str resource_server_identifier: The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
         :param _builtins.str skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
@@ -23358,6 +23564,7 @@ class GetClientsClientResult(dict):
         pulumi.set(__self__, "allowed_origins", allowed_origins)
         pulumi.set(__self__, "app_type", app_type)
         pulumi.set(__self__, "async_approval_notification_channels", async_approval_notification_channels)
+        pulumi.set(__self__, "b2b_integration_configurations", b2b_integration_configurations)
         pulumi.set(__self__, "callbacks", callbacks)
         pulumi.set(__self__, "client_metadata", client_metadata)
         pulumi.set(__self__, "client_secret", client_secret)
@@ -23427,6 +23634,14 @@ class GetClientsClientResult(dict):
         List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
         """
         return pulumi.get(self, "async_approval_notification_channels")
+
+    @_builtins.property
+    @pulumi.getter(name="b2bIntegrationConfigurations")
+    def b2b_integration_configurations(self) -> Sequence['outputs.GetClientsClientB2bIntegrationConfigurationResult']:
+        """
+        Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
+        """
+        return pulumi.get(self, "b2b_integration_configurations")
 
     @_builtins.property
     @pulumi.getter
@@ -23560,7 +23775,7 @@ class GetClientsClientResult(dict):
     @pulumi.getter(name="organizationDiscoveryMethods")
     def organization_discovery_methods(self) -> Sequence[_builtins.str]:
         """
-        Methods for discovering organizations during the pre_login_prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
+        Methods for discovering organizations during the pre_login_prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`. For clients that set `b2b_integration_configuration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
         """
         return pulumi.get(self, "organization_discovery_methods")
 
@@ -23640,6 +23855,35 @@ class GetClientsClientResult(dict):
         The name of the client. If not provided, `client_id` must be set.
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetClientsClientB2bIntegrationConfigurationResult(dict):
+    def __init__(__self__, *,
+                 integration_type: _builtins.str,
+                 sso_profiles: Sequence[_builtins.str]):
+        """
+        :param _builtins.str integration_type: The type of integration used to connect to this B2B integration client. One of custom_auth_server, third_party, application
+        :param Sequence[_builtins.str] sso_profiles: ID of the self-service SSO profile (an `SelfServiceProfile` id, in `ssp_...` format) linked to this B2B integration client. Maximum 1.
+        """
+        pulumi.set(__self__, "integration_type", integration_type)
+        pulumi.set(__self__, "sso_profiles", sso_profiles)
+
+    @_builtins.property
+    @pulumi.getter(name="integrationType")
+    def integration_type(self) -> _builtins.str:
+        """
+        The type of integration used to connect to this B2B integration client. One of custom_auth_server, third_party, application
+        """
+        return pulumi.get(self, "integration_type")
+
+    @_builtins.property
+    @pulumi.getter(name="ssoProfiles")
+    def sso_profiles(self) -> Sequence[_builtins.str]:
+        """
+        ID of the self-service SSO profile (an `SelfServiceProfile` id, in `ssp_...` format) linked to this B2B integration client. Maximum 1.
+        """
+        return pulumi.get(self, "sso_profiles")
 
 
 @pulumi.output_type
@@ -24652,7 +24896,7 @@ class GetConnectionOptionResult(dict):
         :param _builtins.str authorization_endpoint: Authorization endpoint.
         :param _builtins.bool brute_force_protection: Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
         :param _builtins.str client_id: The strategy's client ID.
-        :param _builtins.str client_secret: The strategy's client secret.
+        :param _builtins.str client_secret: The strategy's client secret. **Note:** For better security, consider using `options_client_secret_wo` instead to avoid storing the secret in Terraform state.
         :param _builtins.str community_base_url: Salesforce community base URL.
         :param Mapping[str, _builtins.str] configuration: A case-sensitive map of key value pairs used as configuration variables for the `custom_script`.
         :param Sequence['GetConnectionOptionConnectionSettingArgs'] connection_settings: Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
@@ -24991,7 +25235,7 @@ class GetConnectionOptionResult(dict):
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> _builtins.str:
         """
-        The strategy's client secret.
+        The strategy's client secret. **Note:** For better security, consider using `options_client_secret_wo` instead to avoid storing the secret in Terraform state.
         """
         return pulumi.get(self, "client_secret")
 
@@ -28271,16 +28515,19 @@ class GetFormMessageResult(dict):
 class GetNetworkAclRuleResult(dict):
     def __init__(__self__, *,
                  actions: Sequence['outputs.GetNetworkAclRuleActionResult'],
+                 match_all: _builtins.bool,
                  matches: Sequence['outputs.GetNetworkAclRuleMatchResult'],
                  not_matches: Sequence['outputs.GetNetworkAclRuleNotMatchResult'],
                  scope: _builtins.str):
         """
         :param Sequence['GetNetworkAclRuleActionArgs'] actions: The action configuration for the Network ACL Rule. Only one action type (block, allow, log, or redirect) should be specified.
+        :param _builtins.bool match_all: When true, the rule unconditionally matches all traffic regardless of any other criteria. Mutually exclusive with match and not_match.
         :param Sequence['GetNetworkAclRuleMatchArgs'] matches: The configuration for the Network ACL Rule
         :param Sequence['GetNetworkAclRuleNotMatchArgs'] not_matches: The configuration for the Network ACL Rule
         :param _builtins.str scope: The scope of the Network ACL Rule
         """
         pulumi.set(__self__, "actions", actions)
+        pulumi.set(__self__, "match_all", match_all)
         pulumi.set(__self__, "matches", matches)
         pulumi.set(__self__, "not_matches", not_matches)
         pulumi.set(__self__, "scope", scope)
@@ -28292,6 +28539,14 @@ class GetNetworkAclRuleResult(dict):
         The action configuration for the Network ACL Rule. Only one action type (block, allow, log, or redirect) should be specified.
         """
         return pulumi.get(self, "actions")
+
+    @_builtins.property
+    @pulumi.getter(name="matchAll")
+    def match_all(self) -> _builtins.bool:
+        """
+        When true, the rule unconditionally matches all traffic regardless of any other criteria. Mutually exclusive with match and not_match.
+        """
+        return pulumi.get(self, "match_all")
 
     @_builtins.property
     @pulumi.getter
@@ -28390,6 +28645,7 @@ class GetNetworkAclRuleMatchResult(dict):
                  geo_country_codes: Sequence[_builtins.str],
                  geo_subdivision_codes: Sequence[_builtins.str],
                  hostnames: Sequence[_builtins.str],
+                 http_message_signatures: Sequence['outputs.GetNetworkAclRuleMatchHttpMessageSignatureResult'],
                  ipv4_cidrs: Sequence[_builtins.str],
                  ipv6_cidrs: Sequence[_builtins.str],
                  ja3_fingerprints: Sequence[_builtins.str],
@@ -28403,6 +28659,7 @@ class GetNetworkAclRuleMatchResult(dict):
         :param Sequence[_builtins.str] geo_country_codes: Geo Country Codes. Must contain between 1 and 10 unique items.
         :param Sequence[_builtins.str] geo_subdivision_codes: Geo Subdivision Codes. Must contain between 1 and 10 unique items.
         :param Sequence[_builtins.str] hostnames: Hostnames. Must contain between 1 and 20 unique items.
+        :param Sequence['GetNetworkAclRuleMatchHttpMessageSignatureArgs'] http_message_signatures: Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
         :param Sequence[_builtins.str] ipv4_cidrs: IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
         :param Sequence[_builtins.str] ipv6_cidrs: IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
         :param Sequence[_builtins.str] ja3_fingerprints: JA3 Fingerprints. Must contain between 1 and 10 unique items.
@@ -28416,6 +28673,7 @@ class GetNetworkAclRuleMatchResult(dict):
         pulumi.set(__self__, "geo_country_codes", geo_country_codes)
         pulumi.set(__self__, "geo_subdivision_codes", geo_subdivision_codes)
         pulumi.set(__self__, "hostnames", hostnames)
+        pulumi.set(__self__, "http_message_signatures", http_message_signatures)
         pulumi.set(__self__, "ipv4_cidrs", ipv4_cidrs)
         pulumi.set(__self__, "ipv6_cidrs", ipv6_cidrs)
         pulumi.set(__self__, "ja3_fingerprints", ja3_fingerprints)
@@ -28477,6 +28735,14 @@ class GetNetworkAclRuleMatchResult(dict):
         Hostnames. Must contain between 1 and 20 unique items.
         """
         return pulumi.get(self, "hostnames")
+
+    @_builtins.property
+    @pulumi.getter(name="httpMessageSignatures")
+    def http_message_signatures(self) -> Sequence['outputs.GetNetworkAclRuleMatchHttpMessageSignatureResult']:
+        """
+        Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
+        """
+        return pulumi.get(self, "http_message_signatures")
 
     @_builtins.property
     @pulumi.getter(name="ipv4Cidrs")
@@ -28520,6 +28786,42 @@ class GetNetworkAclRuleMatchResult(dict):
 
 
 @pulumi.output_type
+class GetNetworkAclRuleMatchHttpMessageSignatureResult(dict):
+    def __init__(__self__, *,
+                 keys: Sequence['outputs.GetNetworkAclRuleMatchHttpMessageSignatureKeyResult']):
+        """
+        :param Sequence['GetNetworkAclRuleMatchHttpMessageSignatureKeyArgs'] keys: List of Network ACL key references. A request matches if its signature is verified by any of these keys.
+        """
+        pulumi.set(__self__, "keys", keys)
+
+    @_builtins.property
+    @pulumi.getter
+    def keys(self) -> Sequence['outputs.GetNetworkAclRuleMatchHttpMessageSignatureKeyResult']:
+        """
+        List of Network ACL key references. A request matches if its signature is verified by any of these keys.
+        """
+        return pulumi.get(self, "keys")
+
+
+@pulumi.output_type
+class GetNetworkAclRuleMatchHttpMessageSignatureKeyResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: The ID of the referenced Network ACL key.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the referenced Network ACL key.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
 class GetNetworkAclRuleNotMatchResult(dict):
     def __init__(__self__, *,
                  asns: Sequence[_builtins.int],
@@ -28529,6 +28831,7 @@ class GetNetworkAclRuleNotMatchResult(dict):
                  geo_country_codes: Sequence[_builtins.str],
                  geo_subdivision_codes: Sequence[_builtins.str],
                  hostnames: Sequence[_builtins.str],
+                 http_message_signatures: Sequence['outputs.GetNetworkAclRuleNotMatchHttpMessageSignatureResult'],
                  ipv4_cidrs: Sequence[_builtins.str],
                  ipv6_cidrs: Sequence[_builtins.str],
                  ja3_fingerprints: Sequence[_builtins.str],
@@ -28542,6 +28845,7 @@ class GetNetworkAclRuleNotMatchResult(dict):
         :param Sequence[_builtins.str] geo_country_codes: Geo Country Codes. Must contain between 1 and 10 unique items.
         :param Sequence[_builtins.str] geo_subdivision_codes: Geo Subdivision Codes. Must contain between 1 and 10 unique items.
         :param Sequence[_builtins.str] hostnames: Hostnames. Must contain between 1 and 20 unique items.
+        :param Sequence['GetNetworkAclRuleNotMatchHttpMessageSignatureArgs'] http_message_signatures: Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
         :param Sequence[_builtins.str] ipv4_cidrs: IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
         :param Sequence[_builtins.str] ipv6_cidrs: IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
         :param Sequence[_builtins.str] ja3_fingerprints: JA3 Fingerprints. Must contain between 1 and 10 unique items.
@@ -28555,6 +28859,7 @@ class GetNetworkAclRuleNotMatchResult(dict):
         pulumi.set(__self__, "geo_country_codes", geo_country_codes)
         pulumi.set(__self__, "geo_subdivision_codes", geo_subdivision_codes)
         pulumi.set(__self__, "hostnames", hostnames)
+        pulumi.set(__self__, "http_message_signatures", http_message_signatures)
         pulumi.set(__self__, "ipv4_cidrs", ipv4_cidrs)
         pulumi.set(__self__, "ipv6_cidrs", ipv6_cidrs)
         pulumi.set(__self__, "ja3_fingerprints", ja3_fingerprints)
@@ -28618,6 +28923,14 @@ class GetNetworkAclRuleNotMatchResult(dict):
         return pulumi.get(self, "hostnames")
 
     @_builtins.property
+    @pulumi.getter(name="httpMessageSignatures")
+    def http_message_signatures(self) -> Sequence['outputs.GetNetworkAclRuleNotMatchHttpMessageSignatureResult']:
+        """
+        Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
+        """
+        return pulumi.get(self, "http_message_signatures")
+
+    @_builtins.property
     @pulumi.getter(name="ipv4Cidrs")
     def ipv4_cidrs(self) -> Sequence[_builtins.str]:
         """
@@ -28656,6 +28969,42 @@ class GetNetworkAclRuleNotMatchResult(dict):
         User Agents. Must contain between 1 and 10 unique items.
         """
         return pulumi.get(self, "user_agents")
+
+
+@pulumi.output_type
+class GetNetworkAclRuleNotMatchHttpMessageSignatureResult(dict):
+    def __init__(__self__, *,
+                 keys: Sequence['outputs.GetNetworkAclRuleNotMatchHttpMessageSignatureKeyResult']):
+        """
+        :param Sequence['GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArgs'] keys: List of Network ACL key references. A request matches if its signature is verified by any of these keys.
+        """
+        pulumi.set(__self__, "keys", keys)
+
+    @_builtins.property
+    @pulumi.getter
+    def keys(self) -> Sequence['outputs.GetNetworkAclRuleNotMatchHttpMessageSignatureKeyResult']:
+        """
+        List of Network ACL key references. A request matches if its signature is verified by any of these keys.
+        """
+        return pulumi.get(self, "keys")
+
+
+@pulumi.output_type
+class GetNetworkAclRuleNotMatchHttpMessageSignatureKeyResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: The ID of the referenced Network ACL key.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the referenced Network ACL key.
+        """
+        return pulumi.get(self, "id")
 
 
 @pulumi.output_type

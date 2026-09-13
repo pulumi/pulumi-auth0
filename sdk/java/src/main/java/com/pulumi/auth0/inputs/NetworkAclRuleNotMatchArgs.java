@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.inputs;
 
+import com.pulumi.auth0.inputs.NetworkAclRuleNotMatchHttpMessageSignatureArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
@@ -123,6 +124,21 @@ public final class NetworkAclRuleNotMatchArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
+     * 
+     */
+    @Import(name="httpMessageSignature")
+    private @Nullable Output<NetworkAclRuleNotMatchHttpMessageSignatureArgs> httpMessageSignature;
+
+    /**
+     * @return Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
+     * 
+     */
+    public Optional<Output<NetworkAclRuleNotMatchHttpMessageSignatureArgs>> httpMessageSignature() {
+        return Optional.ofNullable(this.httpMessageSignature);
+    }
+
+    /**
      * IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
      * 
      */
@@ -207,6 +223,7 @@ public final class NetworkAclRuleNotMatchArgs extends com.pulumi.resources.Resou
         this.geoCountryCodes = $.geoCountryCodes;
         this.geoSubdivisionCodes = $.geoSubdivisionCodes;
         this.hostnames = $.hostnames;
+        this.httpMessageSignature = $.httpMessageSignature;
         this.ipv4Cidrs = $.ipv4Cidrs;
         this.ipv6Cidrs = $.ipv6Cidrs;
         this.ja3Fingerprints = $.ja3Fingerprints;
@@ -447,6 +464,27 @@ public final class NetworkAclRuleNotMatchArgs extends com.pulumi.resources.Resou
          */
         public Builder hostnames(String... hostnames) {
             return hostnames(List.of(hostnames));
+        }
+
+        /**
+         * @param httpMessageSignature Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpMessageSignature(@Nullable Output<NetworkAclRuleNotMatchHttpMessageSignatureArgs> httpMessageSignature) {
+            $.httpMessageSignature = httpMessageSignature;
+            return this;
+        }
+
+        /**
+         * @param httpMessageSignature Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpMessageSignature(NetworkAclRuleNotMatchHttpMessageSignatureArgs httpMessageSignature) {
+            return httpMessageSignature(Output.of(httpMessageSignature));
         }
 
         /**

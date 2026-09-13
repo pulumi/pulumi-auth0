@@ -25,6 +25,12 @@ namespace Pulumi.Auth0.Inputs
         public Input<Inputs.NetworkAclRuleMatchGetArgs>? Match { get; set; }
 
         /// <summary>
+        /// When true, the rule unconditionally matches all traffic regardless of any other criteria. Mutually exclusive with match and not_match.
+        /// </summary>
+        [Input("matchAll")]
+        public Input<bool>? MatchAll { get; set; }
+
+        /// <summary>
         /// The configuration for the Network ACL Rule
         /// </summary>
         [Input("notMatch")]

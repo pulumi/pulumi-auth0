@@ -1288,6 +1288,17 @@ export interface ClientAddonsZoom {
     account?: pulumi.Input<string | undefined>;
 }
 
+export interface ClientB2bIntegrationConfiguration {
+    /**
+     * The type of integration used to connect to this B2B integration client. One of custom*auth*server, third_party, application
+     */
+    integrationType?: pulumi.Input<string | undefined>;
+    /**
+     * ID of the self-service SSO profile (an `auth0.SelfServiceProfile` id, in `ssp_...` format) linked to this B2B integration client. Maximum 1.
+     */
+    ssoProfiles?: pulumi.Input<string | undefined>;
+}
+
 export interface ClientCimdDefaultOrganization {
     /**
      * Definition of the flow that needs to be configured. Eg. client_credentials
@@ -2063,7 +2074,7 @@ export interface ConnectionOptions {
      */
     clientId?: pulumi.Input<string | undefined>;
     /**
-     * The strategy's client secret.
+     * The strategy's client secret. **Note:** For better security, consider using `optionsClientSecretWo` instead to avoid storing the secret in Terraform state.
      */
     clientSecret?: pulumi.Input<string | undefined>;
     /**
@@ -3893,6 +3904,10 @@ export interface NetworkAclRule {
      */
     match?: pulumi.Input<inputs.NetworkAclRuleMatch | undefined>;
     /**
+     * When true, the rule unconditionally matches all traffic regardless of any other criteria. Mutually exclusive with match and not_match.
+     */
+    matchAll?: pulumi.Input<boolean | undefined>;
+    /**
      * The configuration for the Network ACL Rule
      */
     notMatch?: pulumi.Input<inputs.NetworkAclRuleNotMatch | undefined>;
@@ -3955,6 +3970,10 @@ export interface NetworkAclRuleMatch {
      */
     hostnames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
+     */
+    httpMessageSignature?: pulumi.Input<inputs.NetworkAclRuleMatchHttpMessageSignature | undefined>;
+    /**
      * IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
      */
     ipv4Cidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -3974,6 +3993,20 @@ export interface NetworkAclRuleMatch {
      * User Agents. Must contain between 1 and 10 unique items.
      */
     userAgents?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface NetworkAclRuleMatchHttpMessageSignature {
+    /**
+     * List of Network ACL key references. A request matches if its signature is verified by any of these keys.
+     */
+    keys: pulumi.Input<pulumi.Input<inputs.NetworkAclRuleMatchHttpMessageSignatureKey>[]>;
+}
+
+export interface NetworkAclRuleMatchHttpMessageSignatureKey {
+    /**
+     * The ID of the referenced Network ACL key.
+     */
+    id: pulumi.Input<string>;
 }
 
 export interface NetworkAclRuleNotMatch {
@@ -4006,6 +4039,10 @@ export interface NetworkAclRuleNotMatch {
      */
     hostnames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
+     */
+    httpMessageSignature?: pulumi.Input<inputs.NetworkAclRuleNotMatchHttpMessageSignature | undefined>;
+    /**
      * IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
      */
     ipv4Cidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -4025,6 +4062,20 @@ export interface NetworkAclRuleNotMatch {
      * User Agents. Must contain between 1 and 10 unique items.
      */
     userAgents?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface NetworkAclRuleNotMatchHttpMessageSignature {
+    /**
+     * List of Network ACL key references. A request matches if its signature is verified by any of these keys.
+     */
+    keys: pulumi.Input<pulumi.Input<inputs.NetworkAclRuleNotMatchHttpMessageSignatureKey>[]>;
+}
+
+export interface NetworkAclRuleNotMatchHttpMessageSignatureKey {
+    /**
+     * The ID of the referenced Network ACL key.
+     */
+    id: pulumi.Input<string>;
 }
 
 export interface OrganizationBranding {

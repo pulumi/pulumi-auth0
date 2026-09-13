@@ -31,6 +31,8 @@ class ConnectionArgs:
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  options: pulumi.Input[Optional['ConnectionOptionsArgs']] = None,
+                 options_client_secret_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 options_client_secret_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  realms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  show_as_button: pulumi.Input[Optional[_builtins.bool]] = None):
         """
@@ -46,6 +48,9 @@ class ConnectionArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
         :param pulumi.Input[_builtins.str] name: Name of the connection. This value is immutable and changing it requires the creation of a new resource.
         :param pulumi.Input['ConnectionOptionsArgs'] options: Configuration settings for connection options.
+        :param pulumi.Input[_builtins.str] options_client_secret_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The strategy's client secret (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. Bump `options_client_secret_wo_version` to rotate it. Conflicts with `options.client_secret`.
+        :param pulumi.Input[_builtins.int] options_client_secret_wo_version: Version counter for `options_client_secret_wo`, required whenever the write-only secret is set. Must be a positive integer starting at `1`. This value signals rotation intent, though the secret is resent even for other config updates.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         :param pulumi.Input[_builtins.bool] show_as_button: Display connection as a button. Only available on enterprise connections.
         """
@@ -68,6 +73,10 @@ class ConnectionArgs:
             pulumi.set(__self__, "name", name)
         if options is not None:
             pulumi.set(__self__, "options", options)
+        if options_client_secret_wo is not None:
+            pulumi.set(__self__, "options_client_secret_wo", options_client_secret_wo)
+        if options_client_secret_wo_version is not None:
+            pulumi.set(__self__, "options_client_secret_wo_version", options_client_secret_wo_version)
         if realms is not None:
             pulumi.set(__self__, "realms", realms)
         if show_as_button is not None:
@@ -194,6 +203,31 @@ class ConnectionArgs:
         pulumi.set(self, "options", value)
 
     @_builtins.property
+    @pulumi.getter(name="optionsClientSecretWo")
+    def options_client_secret_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The strategy's client secret (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. Bump `options_client_secret_wo_version` to rotate it. Conflicts with `options.client_secret`.
+        """
+        return pulumi.get(self, "options_client_secret_wo")
+
+    @options_client_secret_wo.setter
+    def options_client_secret_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "options_client_secret_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="optionsClientSecretWoVersion")
+    def options_client_secret_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Version counter for `options_client_secret_wo`, required whenever the write-only secret is set. Must be a positive integer starting at `1`. This value signals rotation intent, though the secret is resent even for other config updates.
+        """
+        return pulumi.get(self, "options_client_secret_wo_version")
+
+    @options_client_secret_wo_version.setter
+    def options_client_secret_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "options_client_secret_wo_version", value)
+
+    @_builtins.property
     @pulumi.getter
     def realms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -230,6 +264,8 @@ class _ConnectionState:
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  options: pulumi.Input[Optional['ConnectionOptionsArgs']] = None,
+                 options_client_secret_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 options_client_secret_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  realms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  show_as_button: pulumi.Input[Optional[_builtins.bool]] = None,
                  strategy: pulumi.Input[Optional[_builtins.str]] = None):
@@ -245,6 +281,9 @@ class _ConnectionState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
         :param pulumi.Input[_builtins.str] name: Name of the connection. This value is immutable and changing it requires the creation of a new resource.
         :param pulumi.Input['ConnectionOptionsArgs'] options: Configuration settings for connection options.
+        :param pulumi.Input[_builtins.str] options_client_secret_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The strategy's client secret (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. Bump `options_client_secret_wo_version` to rotate it. Conflicts with `options.client_secret`.
+        :param pulumi.Input[_builtins.int] options_client_secret_wo_version: Version counter for `options_client_secret_wo`, required whenever the write-only secret is set. Must be a positive integer starting at `1`. This value signals rotation intent, though the secret is resent even for other config updates.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         :param pulumi.Input[_builtins.bool] show_as_button: Display connection as a button. Only available on enterprise connections.
         :param pulumi.Input[_builtins.str] strategy: Type of the connection, which indicates the identity provider.
@@ -267,6 +306,10 @@ class _ConnectionState:
             pulumi.set(__self__, "name", name)
         if options is not None:
             pulumi.set(__self__, "options", options)
+        if options_client_secret_wo is not None:
+            pulumi.set(__self__, "options_client_secret_wo", options_client_secret_wo)
+        if options_client_secret_wo_version is not None:
+            pulumi.set(__self__, "options_client_secret_wo_version", options_client_secret_wo_version)
         if realms is not None:
             pulumi.set(__self__, "realms", realms)
         if show_as_button is not None:
@@ -383,6 +426,31 @@ class _ConnectionState:
         pulumi.set(self, "options", value)
 
     @_builtins.property
+    @pulumi.getter(name="optionsClientSecretWo")
+    def options_client_secret_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The strategy's client secret (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. Bump `options_client_secret_wo_version` to rotate it. Conflicts with `options.client_secret`.
+        """
+        return pulumi.get(self, "options_client_secret_wo")
+
+    @options_client_secret_wo.setter
+    def options_client_secret_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "options_client_secret_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="optionsClientSecretWoVersion")
+    def options_client_secret_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Version counter for `options_client_secret_wo`, required whenever the write-only secret is set. Must be a positive integer starting at `1`. This value signals rotation intent, though the secret is resent even for other config updates.
+        """
+        return pulumi.get(self, "options_client_secret_wo_version")
+
+    @options_client_secret_wo_version.setter
+    def options_client_secret_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "options_client_secret_wo_version", value)
+
+    @_builtins.property
     @pulumi.getter
     def realms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -434,6 +502,8 @@ class Connection(pulumi.CustomResource):
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  options: pulumi.Input[Optional[Union['ConnectionOptionsArgs', 'ConnectionOptionsArgsDict']]] = None,
+                 options_client_secret_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 options_client_secret_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  realms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  show_as_button: pulumi.Input[Optional[_builtins.bool]] = None,
                  strategy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -445,6 +515,12 @@ class Connection(pulumi.CustomResource):
         creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
 
         > When updating the `options` parameter, ensure that all nested fields within the `options` schema are explicitly defined. Failing to do so may result in the loss of existing configurations.
+
+        > When `options_client_secret_wo` (write-only) is set, `pulumi preview -refresh=false` may report a
+        non-empty plan for unrelated optional `options` fields (e.g. `+ scripts = {}`). This is an upstream
+        limitation of the Terraform Plugin SDK (hashicorp/terraform-plugin-sdk#1612)
+        that only surfaces without a refresh; a normal `pulumi preview`/`apply` (which refreshes) is
+        unaffected and idempotent.
 
         ## Example Usage
 
@@ -528,6 +604,31 @@ class Connection(pulumi.CustomResource):
                     "local_enrollment_enabled": True,
                     "progressive_enrollment_enabled": True,
                 },
+            })
+        # The strategy's client secret can be set as a write-only argument so it is never persisted to
+        # Terraform state. It can be sourced from an ephemeral value (e.g. a secrets manager) and is
+        # mutually exclusive with `options.client_secret`. Bump `options_client_secret_wo_version` to
+        # rotate the secret.
+        #
+        # NOTE: Write-only arguments require Terraform 1.11 or later.
+        my_connection_write_only_secret = auth0.Connection("my_connection_write_only_secret",
+            name="Example-Connection-Write-Only-Secret",
+            strategy="oidc",
+            options_client_secret_wo=connection_client_secret,
+            options_client_secret_wo_version=1,
+            options={
+                "client_id": "1234567",
+                "type": "back_channel",
+                "issuer": "https://www.paypalobjects.com",
+                "jwks_uri": "https://api.paypal.com/v1/oauth2/certs",
+                "discovery_url": "https://www.paypalobjects.com/.well-known/openid-configuration",
+                "token_endpoint": "https://api.paypal.com/v1/oauth2/token",
+                "userinfo_endpoint": "https://api.paypal.com/v1/oauth2/token/userinfo",
+                "authorization_endpoint": "https://www.paypal.com/signin/authorize",
+                "scopes": [
+                    "openid",
+                    "email",
+                ],
             })
         ```
 
@@ -1160,6 +1261,9 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
         :param pulumi.Input[_builtins.str] name: Name of the connection. This value is immutable and changing it requires the creation of a new resource.
         :param pulumi.Input[Union['ConnectionOptionsArgs', 'ConnectionOptionsArgsDict']] options: Configuration settings for connection options.
+        :param pulumi.Input[_builtins.str] options_client_secret_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The strategy's client secret (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. Bump `options_client_secret_wo_version` to rotate it. Conflicts with `options.client_secret`.
+        :param pulumi.Input[_builtins.int] options_client_secret_wo_version: Version counter for `options_client_secret_wo`, required whenever the write-only secret is set. Must be a positive integer starting at `1`. This value signals rotation intent, though the secret is resent even for other config updates.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         :param pulumi.Input[_builtins.bool] show_as_button: Display connection as a button. Only available on enterprise connections.
         :param pulumi.Input[_builtins.str] strategy: Type of the connection, which indicates the identity provider.
@@ -1177,6 +1281,12 @@ class Connection(pulumi.CustomResource):
         creation of multiple connections per strategy, the additional connections may not be visible in the Auth0 dashboard.
 
         > When updating the `options` parameter, ensure that all nested fields within the `options` schema are explicitly defined. Failing to do so may result in the loss of existing configurations.
+
+        > When `options_client_secret_wo` (write-only) is set, `pulumi preview -refresh=false` may report a
+        non-empty plan for unrelated optional `options` fields (e.g. `+ scripts = {}`). This is an upstream
+        limitation of the Terraform Plugin SDK (hashicorp/terraform-plugin-sdk#1612)
+        that only surfaces without a refresh; a normal `pulumi preview`/`apply` (which refreshes) is
+        unaffected and idempotent.
 
         ## Example Usage
 
@@ -1260,6 +1370,31 @@ class Connection(pulumi.CustomResource):
                     "local_enrollment_enabled": True,
                     "progressive_enrollment_enabled": True,
                 },
+            })
+        # The strategy's client secret can be set as a write-only argument so it is never persisted to
+        # Terraform state. It can be sourced from an ephemeral value (e.g. a secrets manager) and is
+        # mutually exclusive with `options.client_secret`. Bump `options_client_secret_wo_version` to
+        # rotate the secret.
+        #
+        # NOTE: Write-only arguments require Terraform 1.11 or later.
+        my_connection_write_only_secret = auth0.Connection("my_connection_write_only_secret",
+            name="Example-Connection-Write-Only-Secret",
+            strategy="oidc",
+            options_client_secret_wo=connection_client_secret,
+            options_client_secret_wo_version=1,
+            options={
+                "client_id": "1234567",
+                "type": "back_channel",
+                "issuer": "https://www.paypalobjects.com",
+                "jwks_uri": "https://api.paypal.com/v1/oauth2/certs",
+                "discovery_url": "https://www.paypalobjects.com/.well-known/openid-configuration",
+                "token_endpoint": "https://api.paypal.com/v1/oauth2/token",
+                "userinfo_endpoint": "https://api.paypal.com/v1/oauth2/token/userinfo",
+                "authorization_endpoint": "https://www.paypal.com/signin/authorize",
+                "scopes": [
+                    "openid",
+                    "email",
+                ],
             })
         ```
 
@@ -1905,6 +2040,8 @@ class Connection(pulumi.CustomResource):
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  options: pulumi.Input[Optional[Union['ConnectionOptionsArgs', 'ConnectionOptionsArgsDict']]] = None,
+                 options_client_secret_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 options_client_secret_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  realms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  show_as_button: pulumi.Input[Optional[_builtins.bool]] = None,
                  strategy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1926,11 +2063,15 @@ class Connection(pulumi.CustomResource):
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["name"] = name
             __props__.__dict__["options"] = options
+            __props__.__dict__["options_client_secret_wo"] = None if options_client_secret_wo is None else pulumi.Output.secret(options_client_secret_wo)
+            __props__.__dict__["options_client_secret_wo_version"] = options_client_secret_wo_version
             __props__.__dict__["realms"] = realms
             __props__.__dict__["show_as_button"] = show_as_button
             if strategy is None and not opts.urn:
                 raise TypeError("Missing required property 'strategy'")
             __props__.__dict__["strategy"] = strategy
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["optionsClientSecretWo"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Connection, __self__).__init__(
             'auth0:index/connection:Connection',
             resource_name,
@@ -1950,6 +2091,8 @@ class Connection(pulumi.CustomResource):
             metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             options: pulumi.Input[Optional[Union['ConnectionOptionsArgs', 'ConnectionOptionsArgsDict']]] = None,
+            options_client_secret_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            options_client_secret_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             realms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             show_as_button: pulumi.Input[Optional[_builtins.bool]] = None,
             strategy: pulumi.Input[Optional[_builtins.str]] = None) -> 'Connection':
@@ -1969,6 +2112,9 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
         :param pulumi.Input[_builtins.str] name: Name of the connection. This value is immutable and changing it requires the creation of a new resource.
         :param pulumi.Input[Union['ConnectionOptionsArgs', 'ConnectionOptionsArgsDict']] options: Configuration settings for connection options.
+        :param pulumi.Input[_builtins.str] options_client_secret_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The strategy's client secret (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. Bump `options_client_secret_wo_version` to rotate it. Conflicts with `options.client_secret`.
+        :param pulumi.Input[_builtins.int] options_client_secret_wo_version: Version counter for `options_client_secret_wo`, required whenever the write-only secret is set. Must be a positive integer starting at `1`. This value signals rotation intent, though the secret is resent even for other config updates.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] realms: Defines the realms for which the connection will be used (e.g., email domains). If not specified, the connection name is added as the realm.
         :param pulumi.Input[_builtins.bool] show_as_button: Display connection as a button. Only available on enterprise connections.
         :param pulumi.Input[_builtins.str] strategy: Type of the connection, which indicates the identity provider.
@@ -1986,6 +2132,8 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["metadata"] = metadata
         __props__.__dict__["name"] = name
         __props__.__dict__["options"] = options
+        __props__.__dict__["options_client_secret_wo"] = options_client_secret_wo
+        __props__.__dict__["options_client_secret_wo_version"] = options_client_secret_wo_version
         __props__.__dict__["realms"] = realms
         __props__.__dict__["show_as_button"] = show_as_button
         __props__.__dict__["strategy"] = strategy
@@ -2062,6 +2210,23 @@ class Connection(pulumi.CustomResource):
         Configuration settings for connection options.
         """
         return pulumi.get(self, "options")
+
+    @_builtins.property
+    @pulumi.getter(name="optionsClientSecretWo")
+    def options_client_secret_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The strategy's client secret (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. Bump `options_client_secret_wo_version` to rotate it. Conflicts with `options.client_secret`.
+        """
+        return pulumi.get(self, "options_client_secret_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="optionsClientSecretWoVersion")
+    def options_client_secret_wo_version(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Version counter for `options_client_secret_wo`, required whenever the write-only secret is set. Must be a positive integer starting at `1`. This value signals rotation intent, though the secret is resent even for other config updates.
+        """
+        return pulumi.get(self, "options_client_secret_wo_version")
 
     @_builtins.property
     @pulumi.getter

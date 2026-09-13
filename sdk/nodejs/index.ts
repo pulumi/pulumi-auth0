@@ -285,6 +285,11 @@ export const getNetworkAcl: typeof import("./getNetworkAcl").getNetworkAcl = nul
 export const getNetworkAclOutput: typeof import("./getNetworkAcl").getNetworkAclOutput = null as any;
 utilities.lazyLoad(exports, ["getNetworkAcl","getNetworkAclOutput"], () => require("./getNetworkAcl"));
 
+export { GetNetworkAclKeyArgs, GetNetworkAclKeyResult, GetNetworkAclKeyOutputArgs } from "./getNetworkAclKey";
+export const getNetworkAclKey: typeof import("./getNetworkAclKey").getNetworkAclKey = null as any;
+export const getNetworkAclKeyOutput: typeof import("./getNetworkAclKey").getNetworkAclKeyOutput = null as any;
+utilities.lazyLoad(exports, ["getNetworkAclKey","getNetworkAclKeyOutput"], () => require("./getNetworkAclKey"));
+
 export { GetOrganizationArgs, GetOrganizationResult, GetOrganizationOutputArgs } from "./getOrganization";
 export const getOrganization: typeof import("./getOrganization").getOrganization = null as any;
 export const getOrganizationOutput: typeof import("./getOrganization").getOrganizationOutput = null as any;
@@ -424,6 +429,11 @@ export { NetworkAclArgs, NetworkAclState } from "./networkAcl";
 export type NetworkAcl = import("./networkAcl").NetworkAcl;
 export const NetworkAcl: typeof import("./networkAcl").NetworkAcl = null as any;
 utilities.lazyLoad(exports, ["NetworkAcl"], () => require("./networkAcl"));
+
+export { NetworkAclKeyArgs, NetworkAclKeyState } from "./networkAclKey";
+export type NetworkAclKey = import("./networkAclKey").NetworkAclKey;
+export const NetworkAclKey: typeof import("./networkAclKey").NetworkAclKey = null as any;
+utilities.lazyLoad(exports, ["NetworkAclKey"], () => require("./networkAclKey"));
 
 export { OrganizationArgs, OrganizationState } from "./organization";
 export type Organization = import("./organization").Organization;
@@ -733,6 +743,8 @@ const _module = {
                 return new LogStream(name, <any>undefined, { urn })
             case "auth0:index/networkAcl:NetworkAcl":
                 return new NetworkAcl(name, <any>undefined, { urn })
+            case "auth0:index/networkAclKey:NetworkAclKey":
+                return new NetworkAclKey(name, <any>undefined, { urn })
             case "auth0:index/organization:Organization":
                 return new Organization(name, <any>undefined, { urn })
             case "auth0:index/organizationClient:OrganizationClient":
@@ -861,6 +873,7 @@ pulumi.runtime.registerResourceModule("auth0", "index/guardian", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/hook", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/logStream", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/networkAcl", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/networkAclKey", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/organization", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/organizationClient", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/organizationClientGrant", _module)

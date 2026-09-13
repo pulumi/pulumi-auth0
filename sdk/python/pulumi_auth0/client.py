@@ -27,8 +27,10 @@ class ClientArgs:
                  allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  app_type: pulumi.Input[Optional[_builtins.str]] = None,
                  async_approval_notification_channels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 b2b_integration_configuration: pulumi.Input[Optional['ClientB2bIntegrationConfigurationArgs']] = None,
                  callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  client_aliases: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
                  client_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  compliance_level: pulumi.Input[Optional[_builtins.str]] = None,
                  cross_origin_auth: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -80,8 +82,10 @@ class ClientArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
         :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `express_configuration`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] async_approval_notification_channels: List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
+        :param pulumi.Input['ClientB2bIntegrationConfigurationArgs'] b2b_integration_configuration: Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
+        :param pulumi.Input[_builtins.str] client_id: The ID of the client. If not provided, Auth0 will generate one automatically. Use this to specify a custom client ID for migration or tenant-copy scenarios. Requires feature flag to be enabled on the tenant.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
         :param pulumi.Input[_builtins.str] compliance_level: Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1_adv_pkj_par`, `fapi1_adv_mtls_par`.
         :param pulumi.Input[_builtins.bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
@@ -108,7 +112,7 @@ class ClientArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oidc_backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         :param pulumi.Input[_builtins.bool] oidc_conformant: Indicates whether this client will conform to strict OIDC specifications.
         :param pulumi.Input['ClientOidcLogoutArgs'] oidc_logout: Configure OIDC logout for the Client
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] organization_discovery_methods: Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] organization_discovery_methods: Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`. For clients that set `b2b_integration_configuration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
         :param pulumi.Input[_builtins.str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[_builtins.str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input[_builtins.str] redirection_policy: Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allow_always` or `open_redirect_protection`.
@@ -136,10 +140,14 @@ class ClientArgs:
             pulumi.set(__self__, "app_type", app_type)
         if async_approval_notification_channels is not None:
             pulumi.set(__self__, "async_approval_notification_channels", async_approval_notification_channels)
+        if b2b_integration_configuration is not None:
+            pulumi.set(__self__, "b2b_integration_configuration", b2b_integration_configuration)
         if callbacks is not None:
             pulumi.set(__self__, "callbacks", callbacks)
         if client_aliases is not None:
             pulumi.set(__self__, "client_aliases", client_aliases)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
         if client_metadata is not None:
             pulumi.set(__self__, "client_metadata", client_metadata)
         if compliance_level is not None:
@@ -303,6 +311,18 @@ class ClientArgs:
         pulumi.set(self, "async_approval_notification_channels", value)
 
     @_builtins.property
+    @pulumi.getter(name="b2bIntegrationConfiguration")
+    def b2b_integration_configuration(self) -> pulumi.Input[Optional['ClientB2bIntegrationConfigurationArgs']]:
+        """
+        Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
+        """
+        return pulumi.get(self, "b2b_integration_configuration")
+
+    @b2b_integration_configuration.setter
+    def b2b_integration_configuration(self, value: pulumi.Input[Optional['ClientB2bIntegrationConfigurationArgs']]):
+        pulumi.set(self, "b2b_integration_configuration", value)
+
+    @_builtins.property
     @pulumi.getter
     def callbacks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -325,6 +345,18 @@ class ClientArgs:
     @client_aliases.setter
     def client_aliases(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "client_aliases", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the client. If not provided, Auth0 will generate one automatically. Use this to specify a custom client ID for migration or tenant-copy scenarios. Requires feature flag to be enabled on the tenant.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientMetadata")
@@ -643,7 +675,7 @@ class ClientArgs:
     @pulumi.getter(name="organizationDiscoveryMethods")
     def organization_discovery_methods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
+        Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`. For clients that set `b2b_integration_configuration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
         """
         return pulumi.get(self, "organization_discovery_methods")
 
@@ -838,6 +870,7 @@ class _ClientState:
                  allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  app_type: pulumi.Input[Optional[_builtins.str]] = None,
                  async_approval_notification_channels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 b2b_integration_configuration: pulumi.Input[Optional['ClientB2bIntegrationConfigurationArgs']] = None,
                  callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  client_aliases: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  client_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -897,9 +930,10 @@ class _ClientState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
         :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `express_configuration`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] async_approval_notification_channels: List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
+        :param pulumi.Input['ClientB2bIntegrationConfigurationArgs'] b2b_integration_configuration: Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
-        :param pulumi.Input[_builtins.str] client_id: The ID of the client.
+        :param pulumi.Input[_builtins.str] client_id: The ID of the client. If not provided, Auth0 will generate one automatically. Use this to specify a custom client ID for migration or tenant-copy scenarios. Requires feature flag to be enabled on the tenant.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
         :param pulumi.Input[_builtins.str] compliance_level: Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1_adv_pkj_par`, `fapi1_adv_mtls_par`.
         :param pulumi.Input[_builtins.bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
@@ -930,7 +964,7 @@ class _ClientState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oidc_backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         :param pulumi.Input[_builtins.bool] oidc_conformant: Indicates whether this client will conform to strict OIDC specifications.
         :param pulumi.Input['ClientOidcLogoutArgs'] oidc_logout: Configure OIDC logout for the Client
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] organization_discovery_methods: Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] organization_discovery_methods: Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`. For clients that set `b2b_integration_configuration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
         :param pulumi.Input[_builtins.str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[_builtins.str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input[_builtins.str] redirection_policy: Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allow_always` or `open_redirect_protection`.
@@ -959,6 +993,8 @@ class _ClientState:
             pulumi.set(__self__, "app_type", app_type)
         if async_approval_notification_channels is not None:
             pulumi.set(__self__, "async_approval_notification_channels", async_approval_notification_channels)
+        if b2b_integration_configuration is not None:
+            pulumi.set(__self__, "b2b_integration_configuration", b2b_integration_configuration)
         if callbacks is not None:
             pulumi.set(__self__, "callbacks", callbacks)
         if client_aliases is not None:
@@ -1138,6 +1174,18 @@ class _ClientState:
         pulumi.set(self, "async_approval_notification_channels", value)
 
     @_builtins.property
+    @pulumi.getter(name="b2bIntegrationConfiguration")
+    def b2b_integration_configuration(self) -> pulumi.Input[Optional['ClientB2bIntegrationConfigurationArgs']]:
+        """
+        Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
+        """
+        return pulumi.get(self, "b2b_integration_configuration")
+
+    @b2b_integration_configuration.setter
+    def b2b_integration_configuration(self, value: pulumi.Input[Optional['ClientB2bIntegrationConfigurationArgs']]):
+        pulumi.set(self, "b2b_integration_configuration", value)
+
+    @_builtins.property
     @pulumi.getter
     def callbacks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -1165,7 +1213,7 @@ class _ClientState:
     @pulumi.getter(name="clientId")
     def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the client.
+        The ID of the client. If not provided, Auth0 will generate one automatically. Use this to specify a custom client ID for migration or tenant-copy scenarios. Requires feature flag to be enabled on the tenant.
         """
         return pulumi.get(self, "client_id")
 
@@ -1538,7 +1586,7 @@ class _ClientState:
     @pulumi.getter(name="organizationDiscoveryMethods")
     def organization_discovery_methods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
+        Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`. For clients that set `b2b_integration_configuration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
         """
         return pulumi.get(self, "organization_discovery_methods")
 
@@ -1748,8 +1796,10 @@ class Client(pulumi.CustomResource):
                  allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  app_type: pulumi.Input[Optional[_builtins.str]] = None,
                  async_approval_notification_channels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 b2b_integration_configuration: pulumi.Input[Optional[Union['ClientB2bIntegrationConfigurationArgs', 'ClientB2bIntegrationConfigurationArgsDict']]] = None,
                  callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  client_aliases: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
                  client_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  compliance_level: pulumi.Input[Optional[_builtins.str]] = None,
                  cross_origin_auth: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1815,8 +1865,10 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
         :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `express_configuration`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] async_approval_notification_channels: List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
+        :param pulumi.Input[Union['ClientB2bIntegrationConfigurationArgs', 'ClientB2bIntegrationConfigurationArgsDict']] b2b_integration_configuration: Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
+        :param pulumi.Input[_builtins.str] client_id: The ID of the client. If not provided, Auth0 will generate one automatically. Use this to specify a custom client ID for migration or tenant-copy scenarios. Requires feature flag to be enabled on the tenant.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
         :param pulumi.Input[_builtins.str] compliance_level: Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1_adv_pkj_par`, `fapi1_adv_mtls_par`.
         :param pulumi.Input[_builtins.bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
@@ -1843,7 +1895,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oidc_backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         :param pulumi.Input[_builtins.bool] oidc_conformant: Indicates whether this client will conform to strict OIDC specifications.
         :param pulumi.Input[Union['ClientOidcLogoutArgs', 'ClientOidcLogoutArgsDict']] oidc_logout: Configure OIDC logout for the Client
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] organization_discovery_methods: Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] organization_discovery_methods: Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`. For clients that set `b2b_integration_configuration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
         :param pulumi.Input[_builtins.str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[_builtins.str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input[_builtins.str] redirection_policy: Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allow_always` or `open_redirect_protection`.
@@ -1900,8 +1952,10 @@ class Client(pulumi.CustomResource):
                  allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  app_type: pulumi.Input[Optional[_builtins.str]] = None,
                  async_approval_notification_channels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 b2b_integration_configuration: pulumi.Input[Optional[Union['ClientB2bIntegrationConfigurationArgs', 'ClientB2bIntegrationConfigurationArgsDict']]] = None,
                  callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  client_aliases: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
                  client_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  compliance_level: pulumi.Input[Optional[_builtins.str]] = None,
                  cross_origin_auth: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1959,8 +2013,10 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["allowed_origins"] = allowed_origins
             __props__.__dict__["app_type"] = app_type
             __props__.__dict__["async_approval_notification_channels"] = async_approval_notification_channels
+            __props__.__dict__["b2b_integration_configuration"] = b2b_integration_configuration
             __props__.__dict__["callbacks"] = callbacks
             __props__.__dict__["client_aliases"] = client_aliases
+            __props__.__dict__["client_id"] = client_id
             __props__.__dict__["client_metadata"] = client_metadata
             __props__.__dict__["compliance_level"] = compliance_level
             __props__.__dict__["cross_origin_auth"] = cross_origin_auth
@@ -2005,7 +2061,6 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["token_exchange"] = token_exchange
             __props__.__dict__["token_quota"] = token_quota
             __props__.__dict__["web_origins"] = web_origins
-            __props__.__dict__["client_id"] = None
             __props__.__dict__["external_client_id"] = None
             __props__.__dict__["external_metadata_created_by"] = None
             __props__.__dict__["external_metadata_type"] = None
@@ -2029,6 +2084,7 @@ class Client(pulumi.CustomResource):
             allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             app_type: pulumi.Input[Optional[_builtins.str]] = None,
             async_approval_notification_channels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            b2b_integration_configuration: pulumi.Input[Optional[Union['ClientB2bIntegrationConfigurationArgs', 'ClientB2bIntegrationConfigurationArgsDict']]] = None,
             callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             client_aliases: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             client_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2092,9 +2148,10 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
         :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `express_configuration`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] async_approval_notification_channels: List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
+        :param pulumi.Input[Union['ClientB2bIntegrationConfigurationArgs', 'ClientB2bIntegrationConfigurationArgsDict']] b2b_integration_configuration: Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] client_aliases: List of audiences/realms for SAML protocol. Used by the wsfed addon.
-        :param pulumi.Input[_builtins.str] client_id: The ID of the client.
+        :param pulumi.Input[_builtins.str] client_id: The ID of the client. If not provided, Auth0 will generate one automatically. Use this to specify a custom client ID for migration or tenant-copy scenarios. Requires feature flag to be enabled on the tenant.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
         :param pulumi.Input[_builtins.str] compliance_level: Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1_adv_pkj_par`, `fapi1_adv_mtls_par`.
         :param pulumi.Input[_builtins.bool] cross_origin_auth: Whether this client can be used to make cross-origin authentication requests (`true`) or it is not allowed to make such requests (`false`).
@@ -2125,7 +2182,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oidc_backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         :param pulumi.Input[_builtins.bool] oidc_conformant: Indicates whether this client will conform to strict OIDC specifications.
         :param pulumi.Input[Union['ClientOidcLogoutArgs', 'ClientOidcLogoutArgsDict']] oidc_logout: Configure OIDC logout for the Client
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] organization_discovery_methods: Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] organization_discovery_methods: Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`. For clients that set `b2b_integration_configuration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
         :param pulumi.Input[_builtins.str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[_builtins.str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input[_builtins.str] redirection_policy: Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allow_always` or `open_redirect_protection`.
@@ -2152,6 +2209,7 @@ class Client(pulumi.CustomResource):
         __props__.__dict__["allowed_origins"] = allowed_origins
         __props__.__dict__["app_type"] = app_type
         __props__.__dict__["async_approval_notification_channels"] = async_approval_notification_channels
+        __props__.__dict__["b2b_integration_configuration"] = b2b_integration_configuration
         __props__.__dict__["callbacks"] = callbacks
         __props__.__dict__["client_aliases"] = client_aliases
         __props__.__dict__["client_id"] = client_id
@@ -2253,6 +2311,14 @@ class Client(pulumi.CustomResource):
         return pulumi.get(self, "async_approval_notification_channels")
 
     @_builtins.property
+    @pulumi.getter(name="b2bIntegrationConfiguration")
+    def b2b_integration_configuration(self) -> pulumi.Output[Optional['outputs.ClientB2bIntegrationConfiguration']]:
+        """
+        Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
+        """
+        return pulumi.get(self, "b2b_integration_configuration")
+
+    @_builtins.property
     @pulumi.getter
     def callbacks(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
@@ -2272,7 +2338,7 @@ class Client(pulumi.CustomResource):
     @pulumi.getter(name="clientId")
     def client_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the client.
+        The ID of the client. If not provided, Auth0 will generate one automatically. Use this to specify a custom client ID for migration or tenant-copy scenarios. Requires feature flag to be enabled on the tenant.
         """
         return pulumi.get(self, "client_id")
 
@@ -2519,9 +2585,9 @@ class Client(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="organizationDiscoveryMethods")
-    def organization_discovery_methods(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+    def organization_discovery_methods(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
+        Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`. For clients that set `b2b_integration_configuration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
         """
         return pulumi.get(self, "organization_discovery_methods")
 

@@ -22,6 +22,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly Outputs.NetworkAclRuleMatch? Match;
         /// <summary>
+        /// When true, the rule unconditionally matches all traffic regardless of any other criteria. Mutually exclusive with match and not_match.
+        /// </summary>
+        public readonly bool? MatchAll;
+        /// <summary>
         /// The configuration for the Network ACL Rule
         /// </summary>
         public readonly Outputs.NetworkAclRuleNotMatch? NotMatch;
@@ -36,12 +40,15 @@ namespace Pulumi.Auth0.Outputs
 
             Outputs.NetworkAclRuleMatch? match,
 
+            bool? matchAll,
+
             Outputs.NetworkAclRuleNotMatch? notMatch,
 
             string scope)
         {
             Action = action;
             Match = match;
+            MatchAll = matchAll;
             NotMatch = notMatch;
             Scope = scope;
         }

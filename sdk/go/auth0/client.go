@@ -37,11 +37,13 @@ type Client struct {
 	AppType pulumi.StringPtrOutput `pulumi:"appType"`
 	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
 	AsyncApprovalNotificationChannels pulumi.StringArrayOutput `pulumi:"asyncApprovalNotificationChannels"`
+	// Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
+	B2bIntegrationConfiguration ClientB2bIntegrationConfigurationPtrOutput `pulumi:"b2bIntegrationConfiguration"`
 	// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
 	Callbacks pulumi.StringArrayOutput `pulumi:"callbacks"`
 	// List of audiences/realms for SAML protocol. Used by the wsfed addon.
 	ClientAliases pulumi.StringArrayOutput `pulumi:"clientAliases"`
-	// The ID of the client.
+	// The ID of the client. If not provided, Auth0 will generate one automatically. Use this to specify a custom client ID for migration or tenant-copy scenarios. Requires feature flag to be enabled on the tenant.
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 	ClientMetadata pulumi.StringMapOutput `pulumi:"clientMetadata"`
@@ -105,7 +107,7 @@ type Client struct {
 	OidcConformant pulumi.BoolOutput `pulumi:"oidcConformant"`
 	// Configure OIDC logout for the Client
 	OidcLogout ClientOidcLogoutPtrOutput `pulumi:"oidcLogout"`
-	// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+	// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
 	OrganizationDiscoveryMethods pulumi.StringArrayOutput `pulumi:"organizationDiscoveryMethods"`
 	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
 	OrganizationRequireBehavior pulumi.StringOutput `pulumi:"organizationRequireBehavior"`
@@ -189,11 +191,13 @@ type clientState struct {
 	AppType *string `pulumi:"appType"`
 	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
 	AsyncApprovalNotificationChannels []string `pulumi:"asyncApprovalNotificationChannels"`
+	// Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
+	B2bIntegrationConfiguration *ClientB2bIntegrationConfiguration `pulumi:"b2bIntegrationConfiguration"`
 	// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
 	Callbacks []string `pulumi:"callbacks"`
 	// List of audiences/realms for SAML protocol. Used by the wsfed addon.
 	ClientAliases []string `pulumi:"clientAliases"`
-	// The ID of the client.
+	// The ID of the client. If not provided, Auth0 will generate one automatically. Use this to specify a custom client ID for migration or tenant-copy scenarios. Requires feature flag to be enabled on the tenant.
 	ClientId *string `pulumi:"clientId"`
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 	ClientMetadata map[string]string `pulumi:"clientMetadata"`
@@ -257,7 +261,7 @@ type clientState struct {
 	OidcConformant *bool `pulumi:"oidcConformant"`
 	// Configure OIDC logout for the Client
 	OidcLogout *ClientOidcLogout `pulumi:"oidcLogout"`
-	// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+	// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
 	OrganizationDiscoveryMethods []string `pulumi:"organizationDiscoveryMethods"`
 	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
 	OrganizationRequireBehavior *string `pulumi:"organizationRequireBehavior"`
@@ -305,11 +309,13 @@ type ClientState struct {
 	AppType pulumi.StringPtrInput
 	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
 	AsyncApprovalNotificationChannels pulumi.StringArrayInput
+	// Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
+	B2bIntegrationConfiguration ClientB2bIntegrationConfigurationPtrInput
 	// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
 	Callbacks pulumi.StringArrayInput
 	// List of audiences/realms for SAML protocol. Used by the wsfed addon.
 	ClientAliases pulumi.StringArrayInput
-	// The ID of the client.
+	// The ID of the client. If not provided, Auth0 will generate one automatically. Use this to specify a custom client ID for migration or tenant-copy scenarios. Requires feature flag to be enabled on the tenant.
 	ClientId pulumi.StringPtrInput
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 	ClientMetadata pulumi.StringMapInput
@@ -373,7 +379,7 @@ type ClientState struct {
 	OidcConformant pulumi.BoolPtrInput
 	// Configure OIDC logout for the Client
 	OidcLogout ClientOidcLogoutPtrInput
-	// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+	// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
 	OrganizationDiscoveryMethods pulumi.StringArrayInput
 	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
 	OrganizationRequireBehavior pulumi.StringPtrInput
@@ -425,10 +431,14 @@ type clientArgs struct {
 	AppType *string `pulumi:"appType"`
 	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
 	AsyncApprovalNotificationChannels []string `pulumi:"asyncApprovalNotificationChannels"`
+	// Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
+	B2bIntegrationConfiguration *ClientB2bIntegrationConfiguration `pulumi:"b2bIntegrationConfiguration"`
 	// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
 	Callbacks []string `pulumi:"callbacks"`
 	// List of audiences/realms for SAML protocol. Used by the wsfed addon.
 	ClientAliases []string `pulumi:"clientAliases"`
+	// The ID of the client. If not provided, Auth0 will generate one automatically. Use this to specify a custom client ID for migration or tenant-copy scenarios. Requires feature flag to be enabled on the tenant.
+	ClientId *string `pulumi:"clientId"`
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 	ClientMetadata map[string]string `pulumi:"clientMetadata"`
 	// Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1AdvPkjPar`, `fapi1AdvMtlsPar`.
@@ -483,7 +493,7 @@ type clientArgs struct {
 	OidcConformant *bool `pulumi:"oidcConformant"`
 	// Configure OIDC logout for the Client
 	OidcLogout *ClientOidcLogout `pulumi:"oidcLogout"`
-	// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+	// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
 	OrganizationDiscoveryMethods []string `pulumi:"organizationDiscoveryMethods"`
 	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
 	OrganizationRequireBehavior *string `pulumi:"organizationRequireBehavior"`
@@ -530,10 +540,14 @@ type ClientArgs struct {
 	AppType pulumi.StringPtrInput
 	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
 	AsyncApprovalNotificationChannels pulumi.StringArrayInput
+	// Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
+	B2bIntegrationConfiguration ClientB2bIntegrationConfigurationPtrInput
 	// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
 	Callbacks pulumi.StringArrayInput
 	// List of audiences/realms for SAML protocol. Used by the wsfed addon.
 	ClientAliases pulumi.StringArrayInput
+	// The ID of the client. If not provided, Auth0 will generate one automatically. Use this to specify a custom client ID for migration or tenant-copy scenarios. Requires feature flag to be enabled on the tenant.
+	ClientId pulumi.StringPtrInput
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 	ClientMetadata pulumi.StringMapInput
 	// Defines the compliance level for this client, which may restrict it's capabilities. Can be one of `none`, `fapi1AdvPkjPar`, `fapi1AdvMtlsPar`.
@@ -588,7 +602,7 @@ type ClientArgs struct {
 	OidcConformant pulumi.BoolPtrInput
 	// Configure OIDC logout for the Client
 	OidcLogout ClientOidcLogoutPtrInput
-	// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+	// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
 	OrganizationDiscoveryMethods pulumi.StringArrayInput
 	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
 	OrganizationRequireBehavior pulumi.StringPtrInput
@@ -738,6 +752,11 @@ func (o ClientOutput) AsyncApprovalNotificationChannels() pulumi.StringArrayOutp
 	return o.ApplyT(func(v *Client) pulumi.StringArrayOutput { return v.AsyncApprovalNotificationChannels }).(pulumi.StringArrayOutput)
 }
 
+// Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
+func (o ClientOutput) B2bIntegrationConfiguration() ClientB2bIntegrationConfigurationPtrOutput {
+	return o.ApplyT(func(v *Client) ClientB2bIntegrationConfigurationPtrOutput { return v.B2bIntegrationConfiguration }).(ClientB2bIntegrationConfigurationPtrOutput)
+}
+
 // URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
 func (o ClientOutput) Callbacks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringArrayOutput { return v.Callbacks }).(pulumi.StringArrayOutput)
@@ -748,7 +767,7 @@ func (o ClientOutput) ClientAliases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringArrayOutput { return v.ClientAliases }).(pulumi.StringArrayOutput)
 }
 
-// The ID of the client.
+// The ID of the client. If not provided, Auth0 will generate one automatically. Use this to specify a custom client ID for migration or tenant-copy scenarios. Requires feature flag to be enabled on the tenant.
 func (o ClientOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
 }
@@ -907,7 +926,7 @@ func (o ClientOutput) OidcLogout() ClientOidcLogoutPtrOutput {
 	return o.ApplyT(func(v *Client) ClientOidcLogoutPtrOutput { return v.OidcLogout }).(ClientOidcLogoutPtrOutput)
 }
 
-// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
 func (o ClientOutput) OrganizationDiscoveryMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringArrayOutput { return v.OrganizationDiscoveryMethods }).(pulumi.StringArrayOutput)
 }

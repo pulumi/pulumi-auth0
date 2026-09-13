@@ -8,6 +8,7 @@ import com.pulumi.auth0.outputs.GetNetworkAclRuleMatch;
 import com.pulumi.auth0.outputs.GetNetworkAclRuleNotMatch;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -19,6 +20,11 @@ public final class GetNetworkAclRule {
      * 
      */
     private List<GetNetworkAclRuleAction> actions;
+    /**
+     * @return When true, the rule unconditionally matches all traffic regardless of any other criteria. Mutually exclusive with match and not_match.
+     * 
+     */
+    private Boolean matchAll;
     /**
      * @return The configuration for the Network ACL Rule
      * 
@@ -42,6 +48,13 @@ public final class GetNetworkAclRule {
      */
     public List<GetNetworkAclRuleAction> actions() {
         return this.actions;
+    }
+    /**
+     * @return When true, the rule unconditionally matches all traffic regardless of any other criteria. Mutually exclusive with match and not_match.
+     * 
+     */
+    public Boolean matchAll() {
+        return this.matchAll;
     }
     /**
      * @return The configuration for the Network ACL Rule
@@ -75,6 +88,7 @@ public final class GetNetworkAclRule {
     @CustomType.Builder
     public static final class Builder {
         private List<GetNetworkAclRuleAction> actions;
+        private Boolean matchAll;
         private List<GetNetworkAclRuleMatch> matches;
         private List<GetNetworkAclRuleNotMatch> notMatches;
         private String scope;
@@ -82,6 +96,7 @@ public final class GetNetworkAclRule {
         public Builder(GetNetworkAclRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.actions = defaults.actions;
+    	      this.matchAll = defaults.matchAll;
     	      this.matches = defaults.matches;
     	      this.notMatches = defaults.notMatches;
     	      this.scope = defaults.scope;
@@ -97,6 +112,14 @@ public final class GetNetworkAclRule {
         }
         public Builder actions(GetNetworkAclRuleAction... actions) {
             return actions(List.of(actions));
+        }
+        @CustomType.Setter
+        public Builder matchAll(Boolean matchAll) {
+            if (matchAll == null) {
+              throw new MissingRequiredPropertyException("GetNetworkAclRule", "matchAll");
+            }
+            this.matchAll = matchAll;
+            return this;
         }
         @CustomType.Setter
         public Builder matches(List<GetNetworkAclRuleMatch> matches) {
@@ -131,6 +154,7 @@ public final class GetNetworkAclRule {
         public GetNetworkAclRule build() {
             final var _resultValue = new GetNetworkAclRule();
             _resultValue.actions = actions;
+            _resultValue.matchAll = matchAll;
             _resultValue.matches = matches;
             _resultValue.notMatches = notMatches;
             _resultValue.scope = scope;

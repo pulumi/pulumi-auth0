@@ -62,6 +62,12 @@ namespace Pulumi.Auth0
         public Output<ImmutableArray<string>> AsyncApprovalNotificationChannels { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
+        /// </summary>
+        [Output("b2bIntegrationConfiguration")]
+        public Output<Outputs.ClientB2bIntegrationConfiguration?> B2bIntegrationConfiguration { get; private set; } = null!;
+
+        /// <summary>
         /// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         /// </summary>
         [Output("callbacks")]
@@ -74,7 +80,7 @@ namespace Pulumi.Auth0
         public Output<ImmutableArray<string>> ClientAliases { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the client.
+        /// The ID of the client. If not provided, Auth0 will generate one automatically. Use this to specify a custom client ID for migration or tenant-copy scenarios. Requires feature flag to be enabled on the tenant.
         /// </summary>
         [Output("clientId")]
         public Output<string> ClientId { get; private set; } = null!;
@@ -260,7 +266,7 @@ namespace Pulumi.Auth0
         public Output<Outputs.ClientOidcLogout?> OidcLogout { get; private set; } = null!;
 
         /// <summary>
-        /// Methods for discovering organizations during the pre*login*prompt. Can include `Email` (allows users to find their organization by entering their email address) and/or `OrganizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `OrganizationRequireBehavior` is set to `PreLoginPrompt`.
+        /// Methods for discovering organizations during the pre*login*prompt. Can include `Email` (allows users to find their organization by entering their email address) and/or `OrganizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `OrganizationRequireBehavior` is set to `PreLoginPrompt`. For clients that set `B2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
         /// </summary>
         [Output("organizationDiscoveryMethods")]
         public Output<ImmutableArray<string>> OrganizationDiscoveryMethods { get; private set; } = null!;
@@ -468,6 +474,12 @@ namespace Pulumi.Auth0
             set => _asyncApprovalNotificationChannels = value;
         }
 
+        /// <summary>
+        /// Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
+        /// </summary>
+        [Input("b2bIntegrationConfiguration")]
+        public Input<Inputs.ClientB2bIntegrationConfigurationArgs>? B2bIntegrationConfiguration { get; set; }
+
         [Input("callbacks")]
         private InputList<string>? _callbacks;
 
@@ -491,6 +503,12 @@ namespace Pulumi.Auth0
             get => _clientAliases ?? (_clientAliases = new InputList<string>());
             set => _clientAliases = value;
         }
+
+        /// <summary>
+        /// The ID of the client. If not provided, Auth0 will generate one automatically. Use this to specify a custom client ID for migration or tenant-copy scenarios. Requires feature flag to be enabled on the tenant.
+        /// </summary>
+        [Input("clientId")]
+        public Input<string>? ClientId { get; set; }
 
         [Input("clientMetadata")]
         private InputMap<string>? _clientMetadata;
@@ -677,7 +695,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _organizationDiscoveryMethods;
 
         /// <summary>
-        /// Methods for discovering organizations during the pre*login*prompt. Can include `Email` (allows users to find their organization by entering their email address) and/or `OrganizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `OrganizationRequireBehavior` is set to `PreLoginPrompt`.
+        /// Methods for discovering organizations during the pre*login*prompt. Can include `Email` (allows users to find their organization by entering their email address) and/or `OrganizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `OrganizationRequireBehavior` is set to `PreLoginPrompt`. For clients that set `B2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
         /// </summary>
         public InputList<string> OrganizationDiscoveryMethods
         {
@@ -847,6 +865,12 @@ namespace Pulumi.Auth0
             set => _asyncApprovalNotificationChannels = value;
         }
 
+        /// <summary>
+        /// Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
+        /// </summary>
+        [Input("b2bIntegrationConfiguration")]
+        public Input<Inputs.ClientB2bIntegrationConfigurationGetArgs>? B2bIntegrationConfiguration { get; set; }
+
         [Input("callbacks")]
         private InputList<string>? _callbacks;
 
@@ -872,7 +896,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// The ID of the client.
+        /// The ID of the client. If not provided, Auth0 will generate one automatically. Use this to specify a custom client ID for migration or tenant-copy scenarios. Requires feature flag to be enabled on the tenant.
         /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
@@ -1086,7 +1110,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _organizationDiscoveryMethods;
 
         /// <summary>
-        /// Methods for discovering organizations during the pre*login*prompt. Can include `Email` (allows users to find their organization by entering their email address) and/or `OrganizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `OrganizationRequireBehavior` is set to `PreLoginPrompt`.
+        /// Methods for discovering organizations during the pre*login*prompt. Can include `Email` (allows users to find their organization by entering their email address) and/or `OrganizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `OrganizationRequireBehavior` is set to `PreLoginPrompt`. For clients that set `B2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
         /// </summary>
         public InputList<string> OrganizationDiscoveryMethods
         {

@@ -13,6 +13,1522 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetNetworkAclRuleAction struct {
+	// If true, allows the request. When using allow action, no other properties should be set.
+	Allow bool `pulumi:"allow"`
+	// If true, blocks the request. When using block action, no other properties should be set.
+	Block bool `pulumi:"block"`
+	// If true, logs the request. When using log action, no other properties should be set.
+	Log bool `pulumi:"log"`
+	// If true, redirects the request. When using redirect action, redirectUri must also be specified.
+	Redirect bool `pulumi:"redirect"`
+	// The URI to redirect to when redirect is true. Required when redirect is true. Must be between 1 and 2000 characters.
+	RedirectUri string `pulumi:"redirectUri"`
+}
+
+// GetNetworkAclRuleActionInput is an input type that accepts GetNetworkAclRuleActionArgs and GetNetworkAclRuleActionOutput values.
+// You can construct a concrete instance of `GetNetworkAclRuleActionInput` via:
+//
+//	GetNetworkAclRuleActionArgs{...}
+type GetNetworkAclRuleActionInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclRuleActionOutput() GetNetworkAclRuleActionOutput
+	ToGetNetworkAclRuleActionOutputWithContext(context.Context) GetNetworkAclRuleActionOutput
+}
+
+type GetNetworkAclRuleActionArgs struct {
+	// If true, allows the request. When using allow action, no other properties should be set.
+	Allow pulumi.BoolInput `pulumi:"allow"`
+	// If true, blocks the request. When using block action, no other properties should be set.
+	Block pulumi.BoolInput `pulumi:"block"`
+	// If true, logs the request. When using log action, no other properties should be set.
+	Log pulumi.BoolInput `pulumi:"log"`
+	// If true, redirects the request. When using redirect action, redirectUri must also be specified.
+	Redirect pulumi.BoolInput `pulumi:"redirect"`
+	// The URI to redirect to when redirect is true. Required when redirect is true. Must be between 1 and 2000 characters.
+	RedirectUri pulumi.StringInput `pulumi:"redirectUri"`
+}
+
+func (GetNetworkAclRuleActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclRuleAction)(nil)).Elem()
+}
+
+func (i GetNetworkAclRuleActionArgs) ToGetNetworkAclRuleActionOutput() GetNetworkAclRuleActionOutput {
+	return i.ToGetNetworkAclRuleActionOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclRuleActionArgs) ToGetNetworkAclRuleActionOutputWithContext(ctx context.Context) GetNetworkAclRuleActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclRuleActionOutput)
+}
+
+// GetNetworkAclRuleActionArrayInput is an input type that accepts GetNetworkAclRuleActionArray and GetNetworkAclRuleActionArrayOutput values.
+// You can construct a concrete instance of `GetNetworkAclRuleActionArrayInput` via:
+//
+//	GetNetworkAclRuleActionArray{ GetNetworkAclRuleActionArgs{...} }
+type GetNetworkAclRuleActionArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclRuleActionArrayOutput() GetNetworkAclRuleActionArrayOutput
+	ToGetNetworkAclRuleActionArrayOutputWithContext(context.Context) GetNetworkAclRuleActionArrayOutput
+}
+
+type GetNetworkAclRuleActionArray []GetNetworkAclRuleActionInput
+
+func (GetNetworkAclRuleActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclRuleAction)(nil)).Elem()
+}
+
+func (i GetNetworkAclRuleActionArray) ToGetNetworkAclRuleActionArrayOutput() GetNetworkAclRuleActionArrayOutput {
+	return i.ToGetNetworkAclRuleActionArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclRuleActionArray) ToGetNetworkAclRuleActionArrayOutputWithContext(ctx context.Context) GetNetworkAclRuleActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclRuleActionArrayOutput)
+}
+
+type GetNetworkAclRuleActionOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclRuleActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclRuleAction)(nil)).Elem()
+}
+
+func (o GetNetworkAclRuleActionOutput) ToGetNetworkAclRuleActionOutput() GetNetworkAclRuleActionOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleActionOutput) ToGetNetworkAclRuleActionOutputWithContext(ctx context.Context) GetNetworkAclRuleActionOutput {
+	return o
+}
+
+// If true, allows the request. When using allow action, no other properties should be set.
+func (o GetNetworkAclRuleActionOutput) Allow() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleAction) bool { return v.Allow }).(pulumi.BoolOutput)
+}
+
+// If true, blocks the request. When using block action, no other properties should be set.
+func (o GetNetworkAclRuleActionOutput) Block() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleAction) bool { return v.Block }).(pulumi.BoolOutput)
+}
+
+// If true, logs the request. When using log action, no other properties should be set.
+func (o GetNetworkAclRuleActionOutput) Log() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleAction) bool { return v.Log }).(pulumi.BoolOutput)
+}
+
+// If true, redirects the request. When using redirect action, redirectUri must also be specified.
+func (o GetNetworkAclRuleActionOutput) Redirect() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleAction) bool { return v.Redirect }).(pulumi.BoolOutput)
+}
+
+// The URI to redirect to when redirect is true. Required when redirect is true. Must be between 1 and 2000 characters.
+func (o GetNetworkAclRuleActionOutput) RedirectUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleAction) string { return v.RedirectUri }).(pulumi.StringOutput)
+}
+
+type GetNetworkAclRuleActionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclRuleActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclRuleAction)(nil)).Elem()
+}
+
+func (o GetNetworkAclRuleActionArrayOutput) ToGetNetworkAclRuleActionArrayOutput() GetNetworkAclRuleActionArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleActionArrayOutput) ToGetNetworkAclRuleActionArrayOutputWithContext(ctx context.Context) GetNetworkAclRuleActionArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleActionArrayOutput) Index(i pulumi.IntInput) GetNetworkAclRuleActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkAclRuleAction {
+		return vs[0].([]GetNetworkAclRuleAction)[vs[1].(int)]
+	}).(GetNetworkAclRuleActionOutput)
+}
+
+type GetNetworkAclRuleMatch struct {
+	// ASNs. Must contain between 1 and 10 unique items.
+	Asns []int `pulumi:"asns"`
+	// Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+	Auth0Manageds []string `pulumi:"auth0Manageds"`
+	// Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+	ConnectingIpv4Cidrs []string `pulumi:"connectingIpv4Cidrs"`
+	// Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+	ConnectingIpv6Cidrs []string `pulumi:"connectingIpv6Cidrs"`
+	// Geo Country Codes. Must contain between 1 and 10 unique items.
+	GeoCountryCodes []string `pulumi:"geoCountryCodes"`
+	// Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+	GeoSubdivisionCodes []string `pulumi:"geoSubdivisionCodes"`
+	// Hostnames. Must contain between 1 and 20 unique items.
+	Hostnames []string `pulumi:"hostnames"`
+	// Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
+	HttpMessageSignatures []GetNetworkAclRuleMatchHttpMessageSignature `pulumi:"httpMessageSignatures"`
+	// IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+	Ipv4Cidrs []string `pulumi:"ipv4Cidrs"`
+	// IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+	Ipv6Cidrs []string `pulumi:"ipv6Cidrs"`
+	// JA3 Fingerprints. Must contain between 1 and 10 unique items.
+	Ja3Fingerprints []string `pulumi:"ja3Fingerprints"`
+	// JA4 Fingerprints. Must contain between 1 and 10 unique items.
+	Ja4Fingerprints []string `pulumi:"ja4Fingerprints"`
+	// User Agents. Must contain between 1 and 10 unique items.
+	UserAgents []string `pulumi:"userAgents"`
+}
+
+// GetNetworkAclRuleMatchInput is an input type that accepts GetNetworkAclRuleMatchArgs and GetNetworkAclRuleMatchOutput values.
+// You can construct a concrete instance of `GetNetworkAclRuleMatchInput` via:
+//
+//	GetNetworkAclRuleMatchArgs{...}
+type GetNetworkAclRuleMatchInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclRuleMatchOutput() GetNetworkAclRuleMatchOutput
+	ToGetNetworkAclRuleMatchOutputWithContext(context.Context) GetNetworkAclRuleMatchOutput
+}
+
+type GetNetworkAclRuleMatchArgs struct {
+	// ASNs. Must contain between 1 and 10 unique items.
+	Asns pulumi.IntArrayInput `pulumi:"asns"`
+	// Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+	Auth0Manageds pulumi.StringArrayInput `pulumi:"auth0Manageds"`
+	// Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+	ConnectingIpv4Cidrs pulumi.StringArrayInput `pulumi:"connectingIpv4Cidrs"`
+	// Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+	ConnectingIpv6Cidrs pulumi.StringArrayInput `pulumi:"connectingIpv6Cidrs"`
+	// Geo Country Codes. Must contain between 1 and 10 unique items.
+	GeoCountryCodes pulumi.StringArrayInput `pulumi:"geoCountryCodes"`
+	// Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+	GeoSubdivisionCodes pulumi.StringArrayInput `pulumi:"geoSubdivisionCodes"`
+	// Hostnames. Must contain between 1 and 20 unique items.
+	Hostnames pulumi.StringArrayInput `pulumi:"hostnames"`
+	// Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
+	HttpMessageSignatures GetNetworkAclRuleMatchHttpMessageSignatureArrayInput `pulumi:"httpMessageSignatures"`
+	// IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+	Ipv4Cidrs pulumi.StringArrayInput `pulumi:"ipv4Cidrs"`
+	// IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+	Ipv6Cidrs pulumi.StringArrayInput `pulumi:"ipv6Cidrs"`
+	// JA3 Fingerprints. Must contain between 1 and 10 unique items.
+	Ja3Fingerprints pulumi.StringArrayInput `pulumi:"ja3Fingerprints"`
+	// JA4 Fingerprints. Must contain between 1 and 10 unique items.
+	Ja4Fingerprints pulumi.StringArrayInput `pulumi:"ja4Fingerprints"`
+	// User Agents. Must contain between 1 and 10 unique items.
+	UserAgents pulumi.StringArrayInput `pulumi:"userAgents"`
+}
+
+func (GetNetworkAclRuleMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclRuleMatch)(nil)).Elem()
+}
+
+func (i GetNetworkAclRuleMatchArgs) ToGetNetworkAclRuleMatchOutput() GetNetworkAclRuleMatchOutput {
+	return i.ToGetNetworkAclRuleMatchOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclRuleMatchArgs) ToGetNetworkAclRuleMatchOutputWithContext(ctx context.Context) GetNetworkAclRuleMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclRuleMatchOutput)
+}
+
+// GetNetworkAclRuleMatchArrayInput is an input type that accepts GetNetworkAclRuleMatchArray and GetNetworkAclRuleMatchArrayOutput values.
+// You can construct a concrete instance of `GetNetworkAclRuleMatchArrayInput` via:
+//
+//	GetNetworkAclRuleMatchArray{ GetNetworkAclRuleMatchArgs{...} }
+type GetNetworkAclRuleMatchArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclRuleMatchArrayOutput() GetNetworkAclRuleMatchArrayOutput
+	ToGetNetworkAclRuleMatchArrayOutputWithContext(context.Context) GetNetworkAclRuleMatchArrayOutput
+}
+
+type GetNetworkAclRuleMatchArray []GetNetworkAclRuleMatchInput
+
+func (GetNetworkAclRuleMatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclRuleMatch)(nil)).Elem()
+}
+
+func (i GetNetworkAclRuleMatchArray) ToGetNetworkAclRuleMatchArrayOutput() GetNetworkAclRuleMatchArrayOutput {
+	return i.ToGetNetworkAclRuleMatchArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclRuleMatchArray) ToGetNetworkAclRuleMatchArrayOutputWithContext(ctx context.Context) GetNetworkAclRuleMatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclRuleMatchArrayOutput)
+}
+
+type GetNetworkAclRuleMatchOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclRuleMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclRuleMatch)(nil)).Elem()
+}
+
+func (o GetNetworkAclRuleMatchOutput) ToGetNetworkAclRuleMatchOutput() GetNetworkAclRuleMatchOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleMatchOutput) ToGetNetworkAclRuleMatchOutputWithContext(ctx context.Context) GetNetworkAclRuleMatchOutput {
+	return o
+}
+
+// ASNs. Must contain between 1 and 10 unique items.
+func (o GetNetworkAclRuleMatchOutput) Asns() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleMatch) []int { return v.Asns }).(pulumi.IntArrayOutput)
+}
+
+// Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+func (o GetNetworkAclRuleMatchOutput) Auth0Manageds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleMatch) []string { return v.Auth0Manageds }).(pulumi.StringArrayOutput)
+}
+
+// Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+func (o GetNetworkAclRuleMatchOutput) ConnectingIpv4Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleMatch) []string { return v.ConnectingIpv4Cidrs }).(pulumi.StringArrayOutput)
+}
+
+// Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+func (o GetNetworkAclRuleMatchOutput) ConnectingIpv6Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleMatch) []string { return v.ConnectingIpv6Cidrs }).(pulumi.StringArrayOutput)
+}
+
+// Geo Country Codes. Must contain between 1 and 10 unique items.
+func (o GetNetworkAclRuleMatchOutput) GeoCountryCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleMatch) []string { return v.GeoCountryCodes }).(pulumi.StringArrayOutput)
+}
+
+// Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+func (o GetNetworkAclRuleMatchOutput) GeoSubdivisionCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleMatch) []string { return v.GeoSubdivisionCodes }).(pulumi.StringArrayOutput)
+}
+
+// Hostnames. Must contain between 1 and 20 unique items.
+func (o GetNetworkAclRuleMatchOutput) Hostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleMatch) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
+}
+
+// Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
+func (o GetNetworkAclRuleMatchOutput) HttpMessageSignatures() GetNetworkAclRuleMatchHttpMessageSignatureArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleMatch) []GetNetworkAclRuleMatchHttpMessageSignature {
+		return v.HttpMessageSignatures
+	}).(GetNetworkAclRuleMatchHttpMessageSignatureArrayOutput)
+}
+
+// IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+func (o GetNetworkAclRuleMatchOutput) Ipv4Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleMatch) []string { return v.Ipv4Cidrs }).(pulumi.StringArrayOutput)
+}
+
+// IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+func (o GetNetworkAclRuleMatchOutput) Ipv6Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleMatch) []string { return v.Ipv6Cidrs }).(pulumi.StringArrayOutput)
+}
+
+// JA3 Fingerprints. Must contain between 1 and 10 unique items.
+func (o GetNetworkAclRuleMatchOutput) Ja3Fingerprints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleMatch) []string { return v.Ja3Fingerprints }).(pulumi.StringArrayOutput)
+}
+
+// JA4 Fingerprints. Must contain between 1 and 10 unique items.
+func (o GetNetworkAclRuleMatchOutput) Ja4Fingerprints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleMatch) []string { return v.Ja4Fingerprints }).(pulumi.StringArrayOutput)
+}
+
+// User Agents. Must contain between 1 and 10 unique items.
+func (o GetNetworkAclRuleMatchOutput) UserAgents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleMatch) []string { return v.UserAgents }).(pulumi.StringArrayOutput)
+}
+
+type GetNetworkAclRuleMatchArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclRuleMatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclRuleMatch)(nil)).Elem()
+}
+
+func (o GetNetworkAclRuleMatchArrayOutput) ToGetNetworkAclRuleMatchArrayOutput() GetNetworkAclRuleMatchArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleMatchArrayOutput) ToGetNetworkAclRuleMatchArrayOutputWithContext(ctx context.Context) GetNetworkAclRuleMatchArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleMatchArrayOutput) Index(i pulumi.IntInput) GetNetworkAclRuleMatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkAclRuleMatch {
+		return vs[0].([]GetNetworkAclRuleMatch)[vs[1].(int)]
+	}).(GetNetworkAclRuleMatchOutput)
+}
+
+type GetNetworkAclRuleMatchHttpMessageSignature struct {
+	// List of Network ACL key references. A request matches if its signature is verified by any of these keys.
+	Keys []GetNetworkAclRuleMatchHttpMessageSignatureKey `pulumi:"keys"`
+}
+
+// GetNetworkAclRuleMatchHttpMessageSignatureInput is an input type that accepts GetNetworkAclRuleMatchHttpMessageSignatureArgs and GetNetworkAclRuleMatchHttpMessageSignatureOutput values.
+// You can construct a concrete instance of `GetNetworkAclRuleMatchHttpMessageSignatureInput` via:
+//
+//	GetNetworkAclRuleMatchHttpMessageSignatureArgs{...}
+type GetNetworkAclRuleMatchHttpMessageSignatureInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclRuleMatchHttpMessageSignatureOutput() GetNetworkAclRuleMatchHttpMessageSignatureOutput
+	ToGetNetworkAclRuleMatchHttpMessageSignatureOutputWithContext(context.Context) GetNetworkAclRuleMatchHttpMessageSignatureOutput
+}
+
+type GetNetworkAclRuleMatchHttpMessageSignatureArgs struct {
+	// List of Network ACL key references. A request matches if its signature is verified by any of these keys.
+	Keys GetNetworkAclRuleMatchHttpMessageSignatureKeyArrayInput `pulumi:"keys"`
+}
+
+func (GetNetworkAclRuleMatchHttpMessageSignatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclRuleMatchHttpMessageSignature)(nil)).Elem()
+}
+
+func (i GetNetworkAclRuleMatchHttpMessageSignatureArgs) ToGetNetworkAclRuleMatchHttpMessageSignatureOutput() GetNetworkAclRuleMatchHttpMessageSignatureOutput {
+	return i.ToGetNetworkAclRuleMatchHttpMessageSignatureOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclRuleMatchHttpMessageSignatureArgs) ToGetNetworkAclRuleMatchHttpMessageSignatureOutputWithContext(ctx context.Context) GetNetworkAclRuleMatchHttpMessageSignatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclRuleMatchHttpMessageSignatureOutput)
+}
+
+// GetNetworkAclRuleMatchHttpMessageSignatureArrayInput is an input type that accepts GetNetworkAclRuleMatchHttpMessageSignatureArray and GetNetworkAclRuleMatchHttpMessageSignatureArrayOutput values.
+// You can construct a concrete instance of `GetNetworkAclRuleMatchHttpMessageSignatureArrayInput` via:
+//
+//	GetNetworkAclRuleMatchHttpMessageSignatureArray{ GetNetworkAclRuleMatchHttpMessageSignatureArgs{...} }
+type GetNetworkAclRuleMatchHttpMessageSignatureArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclRuleMatchHttpMessageSignatureArrayOutput() GetNetworkAclRuleMatchHttpMessageSignatureArrayOutput
+	ToGetNetworkAclRuleMatchHttpMessageSignatureArrayOutputWithContext(context.Context) GetNetworkAclRuleMatchHttpMessageSignatureArrayOutput
+}
+
+type GetNetworkAclRuleMatchHttpMessageSignatureArray []GetNetworkAclRuleMatchHttpMessageSignatureInput
+
+func (GetNetworkAclRuleMatchHttpMessageSignatureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclRuleMatchHttpMessageSignature)(nil)).Elem()
+}
+
+func (i GetNetworkAclRuleMatchHttpMessageSignatureArray) ToGetNetworkAclRuleMatchHttpMessageSignatureArrayOutput() GetNetworkAclRuleMatchHttpMessageSignatureArrayOutput {
+	return i.ToGetNetworkAclRuleMatchHttpMessageSignatureArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclRuleMatchHttpMessageSignatureArray) ToGetNetworkAclRuleMatchHttpMessageSignatureArrayOutputWithContext(ctx context.Context) GetNetworkAclRuleMatchHttpMessageSignatureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclRuleMatchHttpMessageSignatureArrayOutput)
+}
+
+type GetNetworkAclRuleMatchHttpMessageSignatureOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclRuleMatchHttpMessageSignatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclRuleMatchHttpMessageSignature)(nil)).Elem()
+}
+
+func (o GetNetworkAclRuleMatchHttpMessageSignatureOutput) ToGetNetworkAclRuleMatchHttpMessageSignatureOutput() GetNetworkAclRuleMatchHttpMessageSignatureOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleMatchHttpMessageSignatureOutput) ToGetNetworkAclRuleMatchHttpMessageSignatureOutputWithContext(ctx context.Context) GetNetworkAclRuleMatchHttpMessageSignatureOutput {
+	return o
+}
+
+// List of Network ACL key references. A request matches if its signature is verified by any of these keys.
+func (o GetNetworkAclRuleMatchHttpMessageSignatureOutput) Keys() GetNetworkAclRuleMatchHttpMessageSignatureKeyArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleMatchHttpMessageSignature) []GetNetworkAclRuleMatchHttpMessageSignatureKey {
+		return v.Keys
+	}).(GetNetworkAclRuleMatchHttpMessageSignatureKeyArrayOutput)
+}
+
+type GetNetworkAclRuleMatchHttpMessageSignatureArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclRuleMatchHttpMessageSignatureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclRuleMatchHttpMessageSignature)(nil)).Elem()
+}
+
+func (o GetNetworkAclRuleMatchHttpMessageSignatureArrayOutput) ToGetNetworkAclRuleMatchHttpMessageSignatureArrayOutput() GetNetworkAclRuleMatchHttpMessageSignatureArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleMatchHttpMessageSignatureArrayOutput) ToGetNetworkAclRuleMatchHttpMessageSignatureArrayOutputWithContext(ctx context.Context) GetNetworkAclRuleMatchHttpMessageSignatureArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleMatchHttpMessageSignatureArrayOutput) Index(i pulumi.IntInput) GetNetworkAclRuleMatchHttpMessageSignatureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkAclRuleMatchHttpMessageSignature {
+		return vs[0].([]GetNetworkAclRuleMatchHttpMessageSignature)[vs[1].(int)]
+	}).(GetNetworkAclRuleMatchHttpMessageSignatureOutput)
+}
+
+type GetNetworkAclRuleMatchHttpMessageSignatureKey struct {
+	// The ID of the referenced Network ACL key.
+	Id string `pulumi:"id"`
+}
+
+// GetNetworkAclRuleMatchHttpMessageSignatureKeyInput is an input type that accepts GetNetworkAclRuleMatchHttpMessageSignatureKeyArgs and GetNetworkAclRuleMatchHttpMessageSignatureKeyOutput values.
+// You can construct a concrete instance of `GetNetworkAclRuleMatchHttpMessageSignatureKeyInput` via:
+//
+//	GetNetworkAclRuleMatchHttpMessageSignatureKeyArgs{...}
+type GetNetworkAclRuleMatchHttpMessageSignatureKeyInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclRuleMatchHttpMessageSignatureKeyOutput() GetNetworkAclRuleMatchHttpMessageSignatureKeyOutput
+	ToGetNetworkAclRuleMatchHttpMessageSignatureKeyOutputWithContext(context.Context) GetNetworkAclRuleMatchHttpMessageSignatureKeyOutput
+}
+
+type GetNetworkAclRuleMatchHttpMessageSignatureKeyArgs struct {
+	// The ID of the referenced Network ACL key.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetNetworkAclRuleMatchHttpMessageSignatureKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclRuleMatchHttpMessageSignatureKey)(nil)).Elem()
+}
+
+func (i GetNetworkAclRuleMatchHttpMessageSignatureKeyArgs) ToGetNetworkAclRuleMatchHttpMessageSignatureKeyOutput() GetNetworkAclRuleMatchHttpMessageSignatureKeyOutput {
+	return i.ToGetNetworkAclRuleMatchHttpMessageSignatureKeyOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclRuleMatchHttpMessageSignatureKeyArgs) ToGetNetworkAclRuleMatchHttpMessageSignatureKeyOutputWithContext(ctx context.Context) GetNetworkAclRuleMatchHttpMessageSignatureKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclRuleMatchHttpMessageSignatureKeyOutput)
+}
+
+// GetNetworkAclRuleMatchHttpMessageSignatureKeyArrayInput is an input type that accepts GetNetworkAclRuleMatchHttpMessageSignatureKeyArray and GetNetworkAclRuleMatchHttpMessageSignatureKeyArrayOutput values.
+// You can construct a concrete instance of `GetNetworkAclRuleMatchHttpMessageSignatureKeyArrayInput` via:
+//
+//	GetNetworkAclRuleMatchHttpMessageSignatureKeyArray{ GetNetworkAclRuleMatchHttpMessageSignatureKeyArgs{...} }
+type GetNetworkAclRuleMatchHttpMessageSignatureKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclRuleMatchHttpMessageSignatureKeyArrayOutput() GetNetworkAclRuleMatchHttpMessageSignatureKeyArrayOutput
+	ToGetNetworkAclRuleMatchHttpMessageSignatureKeyArrayOutputWithContext(context.Context) GetNetworkAclRuleMatchHttpMessageSignatureKeyArrayOutput
+}
+
+type GetNetworkAclRuleMatchHttpMessageSignatureKeyArray []GetNetworkAclRuleMatchHttpMessageSignatureKeyInput
+
+func (GetNetworkAclRuleMatchHttpMessageSignatureKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclRuleMatchHttpMessageSignatureKey)(nil)).Elem()
+}
+
+func (i GetNetworkAclRuleMatchHttpMessageSignatureKeyArray) ToGetNetworkAclRuleMatchHttpMessageSignatureKeyArrayOutput() GetNetworkAclRuleMatchHttpMessageSignatureKeyArrayOutput {
+	return i.ToGetNetworkAclRuleMatchHttpMessageSignatureKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclRuleMatchHttpMessageSignatureKeyArray) ToGetNetworkAclRuleMatchHttpMessageSignatureKeyArrayOutputWithContext(ctx context.Context) GetNetworkAclRuleMatchHttpMessageSignatureKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclRuleMatchHttpMessageSignatureKeyArrayOutput)
+}
+
+type GetNetworkAclRuleMatchHttpMessageSignatureKeyOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclRuleMatchHttpMessageSignatureKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclRuleMatchHttpMessageSignatureKey)(nil)).Elem()
+}
+
+func (o GetNetworkAclRuleMatchHttpMessageSignatureKeyOutput) ToGetNetworkAclRuleMatchHttpMessageSignatureKeyOutput() GetNetworkAclRuleMatchHttpMessageSignatureKeyOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleMatchHttpMessageSignatureKeyOutput) ToGetNetworkAclRuleMatchHttpMessageSignatureKeyOutputWithContext(ctx context.Context) GetNetworkAclRuleMatchHttpMessageSignatureKeyOutput {
+	return o
+}
+
+// The ID of the referenced Network ACL key.
+func (o GetNetworkAclRuleMatchHttpMessageSignatureKeyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleMatchHttpMessageSignatureKey) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetNetworkAclRuleMatchHttpMessageSignatureKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclRuleMatchHttpMessageSignatureKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclRuleMatchHttpMessageSignatureKey)(nil)).Elem()
+}
+
+func (o GetNetworkAclRuleMatchHttpMessageSignatureKeyArrayOutput) ToGetNetworkAclRuleMatchHttpMessageSignatureKeyArrayOutput() GetNetworkAclRuleMatchHttpMessageSignatureKeyArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleMatchHttpMessageSignatureKeyArrayOutput) ToGetNetworkAclRuleMatchHttpMessageSignatureKeyArrayOutputWithContext(ctx context.Context) GetNetworkAclRuleMatchHttpMessageSignatureKeyArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleMatchHttpMessageSignatureKeyArrayOutput) Index(i pulumi.IntInput) GetNetworkAclRuleMatchHttpMessageSignatureKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkAclRuleMatchHttpMessageSignatureKey {
+		return vs[0].([]GetNetworkAclRuleMatchHttpMessageSignatureKey)[vs[1].(int)]
+	}).(GetNetworkAclRuleMatchHttpMessageSignatureKeyOutput)
+}
+
+type GetNetworkAclRuleNotMatch struct {
+	// ASNs. Must contain between 1 and 10 unique items.
+	Asns []int `pulumi:"asns"`
+	// Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+	Auth0Manageds []string `pulumi:"auth0Manageds"`
+	// Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+	ConnectingIpv4Cidrs []string `pulumi:"connectingIpv4Cidrs"`
+	// Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+	ConnectingIpv6Cidrs []string `pulumi:"connectingIpv6Cidrs"`
+	// Geo Country Codes. Must contain between 1 and 10 unique items.
+	GeoCountryCodes []string `pulumi:"geoCountryCodes"`
+	// Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+	GeoSubdivisionCodes []string `pulumi:"geoSubdivisionCodes"`
+	// Hostnames. Must contain between 1 and 20 unique items.
+	Hostnames []string `pulumi:"hostnames"`
+	// Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
+	HttpMessageSignatures []GetNetworkAclRuleNotMatchHttpMessageSignature `pulumi:"httpMessageSignatures"`
+	// IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+	Ipv4Cidrs []string `pulumi:"ipv4Cidrs"`
+	// IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+	Ipv6Cidrs []string `pulumi:"ipv6Cidrs"`
+	// JA3 Fingerprints. Must contain between 1 and 10 unique items.
+	Ja3Fingerprints []string `pulumi:"ja3Fingerprints"`
+	// JA4 Fingerprints. Must contain between 1 and 10 unique items.
+	Ja4Fingerprints []string `pulumi:"ja4Fingerprints"`
+	// User Agents. Must contain between 1 and 10 unique items.
+	UserAgents []string `pulumi:"userAgents"`
+}
+
+// GetNetworkAclRuleNotMatchInput is an input type that accepts GetNetworkAclRuleNotMatchArgs and GetNetworkAclRuleNotMatchOutput values.
+// You can construct a concrete instance of `GetNetworkAclRuleNotMatchInput` via:
+//
+//	GetNetworkAclRuleNotMatchArgs{...}
+type GetNetworkAclRuleNotMatchInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclRuleNotMatchOutput() GetNetworkAclRuleNotMatchOutput
+	ToGetNetworkAclRuleNotMatchOutputWithContext(context.Context) GetNetworkAclRuleNotMatchOutput
+}
+
+type GetNetworkAclRuleNotMatchArgs struct {
+	// ASNs. Must contain between 1 and 10 unique items.
+	Asns pulumi.IntArrayInput `pulumi:"asns"`
+	// Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+	Auth0Manageds pulumi.StringArrayInput `pulumi:"auth0Manageds"`
+	// Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+	ConnectingIpv4Cidrs pulumi.StringArrayInput `pulumi:"connectingIpv4Cidrs"`
+	// Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+	ConnectingIpv6Cidrs pulumi.StringArrayInput `pulumi:"connectingIpv6Cidrs"`
+	// Geo Country Codes. Must contain between 1 and 10 unique items.
+	GeoCountryCodes pulumi.StringArrayInput `pulumi:"geoCountryCodes"`
+	// Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+	GeoSubdivisionCodes pulumi.StringArrayInput `pulumi:"geoSubdivisionCodes"`
+	// Hostnames. Must contain between 1 and 20 unique items.
+	Hostnames pulumi.StringArrayInput `pulumi:"hostnames"`
+	// Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
+	HttpMessageSignatures GetNetworkAclRuleNotMatchHttpMessageSignatureArrayInput `pulumi:"httpMessageSignatures"`
+	// IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+	Ipv4Cidrs pulumi.StringArrayInput `pulumi:"ipv4Cidrs"`
+	// IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+	Ipv6Cidrs pulumi.StringArrayInput `pulumi:"ipv6Cidrs"`
+	// JA3 Fingerprints. Must contain between 1 and 10 unique items.
+	Ja3Fingerprints pulumi.StringArrayInput `pulumi:"ja3Fingerprints"`
+	// JA4 Fingerprints. Must contain between 1 and 10 unique items.
+	Ja4Fingerprints pulumi.StringArrayInput `pulumi:"ja4Fingerprints"`
+	// User Agents. Must contain between 1 and 10 unique items.
+	UserAgents pulumi.StringArrayInput `pulumi:"userAgents"`
+}
+
+func (GetNetworkAclRuleNotMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclRuleNotMatch)(nil)).Elem()
+}
+
+func (i GetNetworkAclRuleNotMatchArgs) ToGetNetworkAclRuleNotMatchOutput() GetNetworkAclRuleNotMatchOutput {
+	return i.ToGetNetworkAclRuleNotMatchOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclRuleNotMatchArgs) ToGetNetworkAclRuleNotMatchOutputWithContext(ctx context.Context) GetNetworkAclRuleNotMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclRuleNotMatchOutput)
+}
+
+// GetNetworkAclRuleNotMatchArrayInput is an input type that accepts GetNetworkAclRuleNotMatchArray and GetNetworkAclRuleNotMatchArrayOutput values.
+// You can construct a concrete instance of `GetNetworkAclRuleNotMatchArrayInput` via:
+//
+//	GetNetworkAclRuleNotMatchArray{ GetNetworkAclRuleNotMatchArgs{...} }
+type GetNetworkAclRuleNotMatchArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclRuleNotMatchArrayOutput() GetNetworkAclRuleNotMatchArrayOutput
+	ToGetNetworkAclRuleNotMatchArrayOutputWithContext(context.Context) GetNetworkAclRuleNotMatchArrayOutput
+}
+
+type GetNetworkAclRuleNotMatchArray []GetNetworkAclRuleNotMatchInput
+
+func (GetNetworkAclRuleNotMatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclRuleNotMatch)(nil)).Elem()
+}
+
+func (i GetNetworkAclRuleNotMatchArray) ToGetNetworkAclRuleNotMatchArrayOutput() GetNetworkAclRuleNotMatchArrayOutput {
+	return i.ToGetNetworkAclRuleNotMatchArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclRuleNotMatchArray) ToGetNetworkAclRuleNotMatchArrayOutputWithContext(ctx context.Context) GetNetworkAclRuleNotMatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclRuleNotMatchArrayOutput)
+}
+
+type GetNetworkAclRuleNotMatchOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclRuleNotMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclRuleNotMatch)(nil)).Elem()
+}
+
+func (o GetNetworkAclRuleNotMatchOutput) ToGetNetworkAclRuleNotMatchOutput() GetNetworkAclRuleNotMatchOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleNotMatchOutput) ToGetNetworkAclRuleNotMatchOutputWithContext(ctx context.Context) GetNetworkAclRuleNotMatchOutput {
+	return o
+}
+
+// ASNs. Must contain between 1 and 10 unique items.
+func (o GetNetworkAclRuleNotMatchOutput) Asns() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleNotMatch) []int { return v.Asns }).(pulumi.IntArrayOutput)
+}
+
+// Auth0-curated blocklists to match against. Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`; the set is validated by the Management API and may grow. Requires the `advanced-breached-password-detection` entitlement and the `tenantAclCuratedBlocklists` feature flag to be enabled on the tenant. (EA Only)
+func (o GetNetworkAclRuleNotMatchOutput) Auth0Manageds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleNotMatch) []string { return v.Auth0Manageds }).(pulumi.StringArrayOutput)
+}
+
+// Connecting IPv4 CIDRs. Must contain between 1 and 20 unique items. Can be IPv4 addresses or CIDR blocks.
+func (o GetNetworkAclRuleNotMatchOutput) ConnectingIpv4Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleNotMatch) []string { return v.ConnectingIpv4Cidrs }).(pulumi.StringArrayOutput)
+}
+
+// Connecting IPv6 CIDRs. Must contain between 1 and 20 unique items. Can be IPv6 addresses or CIDR blocks.
+func (o GetNetworkAclRuleNotMatchOutput) ConnectingIpv6Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleNotMatch) []string { return v.ConnectingIpv6Cidrs }).(pulumi.StringArrayOutput)
+}
+
+// Geo Country Codes. Must contain between 1 and 10 unique items.
+func (o GetNetworkAclRuleNotMatchOutput) GeoCountryCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleNotMatch) []string { return v.GeoCountryCodes }).(pulumi.StringArrayOutput)
+}
+
+// Geo Subdivision Codes. Must contain between 1 and 10 unique items.
+func (o GetNetworkAclRuleNotMatchOutput) GeoSubdivisionCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleNotMatch) []string { return v.GeoSubdivisionCodes }).(pulumi.StringArrayOutput)
+}
+
+// Hostnames. Must contain between 1 and 20 unique items.
+func (o GetNetworkAclRuleNotMatchOutput) Hostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleNotMatch) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
+}
+
+// Match requests that carry an HTTP Message Signature verified by one of the listed Network ACL keys. (EA Only)
+func (o GetNetworkAclRuleNotMatchOutput) HttpMessageSignatures() GetNetworkAclRuleNotMatchHttpMessageSignatureArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleNotMatch) []GetNetworkAclRuleNotMatchHttpMessageSignature {
+		return v.HttpMessageSignatures
+	}).(GetNetworkAclRuleNotMatchHttpMessageSignatureArrayOutput)
+}
+
+// IPv4 CIDRs. Must contain between 1 and 10 unique items. Can be IPv4 addresses or CIDR blocks.
+func (o GetNetworkAclRuleNotMatchOutput) Ipv4Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleNotMatch) []string { return v.Ipv4Cidrs }).(pulumi.StringArrayOutput)
+}
+
+// IPv6 CIDRs. Must contain between 1 and 10 unique items. Can be IPv6 addresses or CIDR blocks.
+func (o GetNetworkAclRuleNotMatchOutput) Ipv6Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleNotMatch) []string { return v.Ipv6Cidrs }).(pulumi.StringArrayOutput)
+}
+
+// JA3 Fingerprints. Must contain between 1 and 10 unique items.
+func (o GetNetworkAclRuleNotMatchOutput) Ja3Fingerprints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleNotMatch) []string { return v.Ja3Fingerprints }).(pulumi.StringArrayOutput)
+}
+
+// JA4 Fingerprints. Must contain between 1 and 10 unique items.
+func (o GetNetworkAclRuleNotMatchOutput) Ja4Fingerprints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleNotMatch) []string { return v.Ja4Fingerprints }).(pulumi.StringArrayOutput)
+}
+
+// User Agents. Must contain between 1 and 10 unique items.
+func (o GetNetworkAclRuleNotMatchOutput) UserAgents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleNotMatch) []string { return v.UserAgents }).(pulumi.StringArrayOutput)
+}
+
+type GetNetworkAclRuleNotMatchArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclRuleNotMatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclRuleNotMatch)(nil)).Elem()
+}
+
+func (o GetNetworkAclRuleNotMatchArrayOutput) ToGetNetworkAclRuleNotMatchArrayOutput() GetNetworkAclRuleNotMatchArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleNotMatchArrayOutput) ToGetNetworkAclRuleNotMatchArrayOutputWithContext(ctx context.Context) GetNetworkAclRuleNotMatchArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleNotMatchArrayOutput) Index(i pulumi.IntInput) GetNetworkAclRuleNotMatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkAclRuleNotMatch {
+		return vs[0].([]GetNetworkAclRuleNotMatch)[vs[1].(int)]
+	}).(GetNetworkAclRuleNotMatchOutput)
+}
+
+type GetNetworkAclRuleNotMatchHttpMessageSignature struct {
+	// List of Network ACL key references. A request matches if its signature is verified by any of these keys.
+	Keys []GetNetworkAclRuleNotMatchHttpMessageSignatureKey `pulumi:"keys"`
+}
+
+// GetNetworkAclRuleNotMatchHttpMessageSignatureInput is an input type that accepts GetNetworkAclRuleNotMatchHttpMessageSignatureArgs and GetNetworkAclRuleNotMatchHttpMessageSignatureOutput values.
+// You can construct a concrete instance of `GetNetworkAclRuleNotMatchHttpMessageSignatureInput` via:
+//
+//	GetNetworkAclRuleNotMatchHttpMessageSignatureArgs{...}
+type GetNetworkAclRuleNotMatchHttpMessageSignatureInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclRuleNotMatchHttpMessageSignatureOutput() GetNetworkAclRuleNotMatchHttpMessageSignatureOutput
+	ToGetNetworkAclRuleNotMatchHttpMessageSignatureOutputWithContext(context.Context) GetNetworkAclRuleNotMatchHttpMessageSignatureOutput
+}
+
+type GetNetworkAclRuleNotMatchHttpMessageSignatureArgs struct {
+	// List of Network ACL key references. A request matches if its signature is verified by any of these keys.
+	Keys GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArrayInput `pulumi:"keys"`
+}
+
+func (GetNetworkAclRuleNotMatchHttpMessageSignatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclRuleNotMatchHttpMessageSignature)(nil)).Elem()
+}
+
+func (i GetNetworkAclRuleNotMatchHttpMessageSignatureArgs) ToGetNetworkAclRuleNotMatchHttpMessageSignatureOutput() GetNetworkAclRuleNotMatchHttpMessageSignatureOutput {
+	return i.ToGetNetworkAclRuleNotMatchHttpMessageSignatureOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclRuleNotMatchHttpMessageSignatureArgs) ToGetNetworkAclRuleNotMatchHttpMessageSignatureOutputWithContext(ctx context.Context) GetNetworkAclRuleNotMatchHttpMessageSignatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclRuleNotMatchHttpMessageSignatureOutput)
+}
+
+// GetNetworkAclRuleNotMatchHttpMessageSignatureArrayInput is an input type that accepts GetNetworkAclRuleNotMatchHttpMessageSignatureArray and GetNetworkAclRuleNotMatchHttpMessageSignatureArrayOutput values.
+// You can construct a concrete instance of `GetNetworkAclRuleNotMatchHttpMessageSignatureArrayInput` via:
+//
+//	GetNetworkAclRuleNotMatchHttpMessageSignatureArray{ GetNetworkAclRuleNotMatchHttpMessageSignatureArgs{...} }
+type GetNetworkAclRuleNotMatchHttpMessageSignatureArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclRuleNotMatchHttpMessageSignatureArrayOutput() GetNetworkAclRuleNotMatchHttpMessageSignatureArrayOutput
+	ToGetNetworkAclRuleNotMatchHttpMessageSignatureArrayOutputWithContext(context.Context) GetNetworkAclRuleNotMatchHttpMessageSignatureArrayOutput
+}
+
+type GetNetworkAclRuleNotMatchHttpMessageSignatureArray []GetNetworkAclRuleNotMatchHttpMessageSignatureInput
+
+func (GetNetworkAclRuleNotMatchHttpMessageSignatureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclRuleNotMatchHttpMessageSignature)(nil)).Elem()
+}
+
+func (i GetNetworkAclRuleNotMatchHttpMessageSignatureArray) ToGetNetworkAclRuleNotMatchHttpMessageSignatureArrayOutput() GetNetworkAclRuleNotMatchHttpMessageSignatureArrayOutput {
+	return i.ToGetNetworkAclRuleNotMatchHttpMessageSignatureArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclRuleNotMatchHttpMessageSignatureArray) ToGetNetworkAclRuleNotMatchHttpMessageSignatureArrayOutputWithContext(ctx context.Context) GetNetworkAclRuleNotMatchHttpMessageSignatureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclRuleNotMatchHttpMessageSignatureArrayOutput)
+}
+
+type GetNetworkAclRuleNotMatchHttpMessageSignatureOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclRuleNotMatchHttpMessageSignatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclRuleNotMatchHttpMessageSignature)(nil)).Elem()
+}
+
+func (o GetNetworkAclRuleNotMatchHttpMessageSignatureOutput) ToGetNetworkAclRuleNotMatchHttpMessageSignatureOutput() GetNetworkAclRuleNotMatchHttpMessageSignatureOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleNotMatchHttpMessageSignatureOutput) ToGetNetworkAclRuleNotMatchHttpMessageSignatureOutputWithContext(ctx context.Context) GetNetworkAclRuleNotMatchHttpMessageSignatureOutput {
+	return o
+}
+
+// List of Network ACL key references. A request matches if its signature is verified by any of these keys.
+func (o GetNetworkAclRuleNotMatchHttpMessageSignatureOutput) Keys() GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleNotMatchHttpMessageSignature) []GetNetworkAclRuleNotMatchHttpMessageSignatureKey {
+		return v.Keys
+	}).(GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArrayOutput)
+}
+
+type GetNetworkAclRuleNotMatchHttpMessageSignatureArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclRuleNotMatchHttpMessageSignatureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclRuleNotMatchHttpMessageSignature)(nil)).Elem()
+}
+
+func (o GetNetworkAclRuleNotMatchHttpMessageSignatureArrayOutput) ToGetNetworkAclRuleNotMatchHttpMessageSignatureArrayOutput() GetNetworkAclRuleNotMatchHttpMessageSignatureArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleNotMatchHttpMessageSignatureArrayOutput) ToGetNetworkAclRuleNotMatchHttpMessageSignatureArrayOutputWithContext(ctx context.Context) GetNetworkAclRuleNotMatchHttpMessageSignatureArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleNotMatchHttpMessageSignatureArrayOutput) Index(i pulumi.IntInput) GetNetworkAclRuleNotMatchHttpMessageSignatureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkAclRuleNotMatchHttpMessageSignature {
+		return vs[0].([]GetNetworkAclRuleNotMatchHttpMessageSignature)[vs[1].(int)]
+	}).(GetNetworkAclRuleNotMatchHttpMessageSignatureOutput)
+}
+
+type GetNetworkAclRuleNotMatchHttpMessageSignatureKey struct {
+	// The ID of the referenced Network ACL key.
+	Id string `pulumi:"id"`
+}
+
+// GetNetworkAclRuleNotMatchHttpMessageSignatureKeyInput is an input type that accepts GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArgs and GetNetworkAclRuleNotMatchHttpMessageSignatureKeyOutput values.
+// You can construct a concrete instance of `GetNetworkAclRuleNotMatchHttpMessageSignatureKeyInput` via:
+//
+//	GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArgs{...}
+type GetNetworkAclRuleNotMatchHttpMessageSignatureKeyInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclRuleNotMatchHttpMessageSignatureKeyOutput() GetNetworkAclRuleNotMatchHttpMessageSignatureKeyOutput
+	ToGetNetworkAclRuleNotMatchHttpMessageSignatureKeyOutputWithContext(context.Context) GetNetworkAclRuleNotMatchHttpMessageSignatureKeyOutput
+}
+
+type GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArgs struct {
+	// The ID of the referenced Network ACL key.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclRuleNotMatchHttpMessageSignatureKey)(nil)).Elem()
+}
+
+func (i GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArgs) ToGetNetworkAclRuleNotMatchHttpMessageSignatureKeyOutput() GetNetworkAclRuleNotMatchHttpMessageSignatureKeyOutput {
+	return i.ToGetNetworkAclRuleNotMatchHttpMessageSignatureKeyOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArgs) ToGetNetworkAclRuleNotMatchHttpMessageSignatureKeyOutputWithContext(ctx context.Context) GetNetworkAclRuleNotMatchHttpMessageSignatureKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclRuleNotMatchHttpMessageSignatureKeyOutput)
+}
+
+// GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArrayInput is an input type that accepts GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArray and GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArrayOutput values.
+// You can construct a concrete instance of `GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArrayInput` via:
+//
+//	GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArray{ GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArgs{...} }
+type GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclRuleNotMatchHttpMessageSignatureKeyArrayOutput() GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArrayOutput
+	ToGetNetworkAclRuleNotMatchHttpMessageSignatureKeyArrayOutputWithContext(context.Context) GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArrayOutput
+}
+
+type GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArray []GetNetworkAclRuleNotMatchHttpMessageSignatureKeyInput
+
+func (GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclRuleNotMatchHttpMessageSignatureKey)(nil)).Elem()
+}
+
+func (i GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArray) ToGetNetworkAclRuleNotMatchHttpMessageSignatureKeyArrayOutput() GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArrayOutput {
+	return i.ToGetNetworkAclRuleNotMatchHttpMessageSignatureKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArray) ToGetNetworkAclRuleNotMatchHttpMessageSignatureKeyArrayOutputWithContext(ctx context.Context) GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArrayOutput)
+}
+
+type GetNetworkAclRuleNotMatchHttpMessageSignatureKeyOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclRuleNotMatchHttpMessageSignatureKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclRuleNotMatchHttpMessageSignatureKey)(nil)).Elem()
+}
+
+func (o GetNetworkAclRuleNotMatchHttpMessageSignatureKeyOutput) ToGetNetworkAclRuleNotMatchHttpMessageSignatureKeyOutput() GetNetworkAclRuleNotMatchHttpMessageSignatureKeyOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleNotMatchHttpMessageSignatureKeyOutput) ToGetNetworkAclRuleNotMatchHttpMessageSignatureKeyOutputWithContext(ctx context.Context) GetNetworkAclRuleNotMatchHttpMessageSignatureKeyOutput {
+	return o
+}
+
+// The ID of the referenced Network ACL key.
+func (o GetNetworkAclRuleNotMatchHttpMessageSignatureKeyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAclRuleNotMatchHttpMessageSignatureKey) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclRuleNotMatchHttpMessageSignatureKey)(nil)).Elem()
+}
+
+func (o GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArrayOutput) ToGetNetworkAclRuleNotMatchHttpMessageSignatureKeyArrayOutput() GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArrayOutput) ToGetNetworkAclRuleNotMatchHttpMessageSignatureKeyArrayOutputWithContext(ctx context.Context) GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArrayOutput) Index(i pulumi.IntInput) GetNetworkAclRuleNotMatchHttpMessageSignatureKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkAclRuleNotMatchHttpMessageSignatureKey {
+		return vs[0].([]GetNetworkAclRuleNotMatchHttpMessageSignatureKey)[vs[1].(int)]
+	}).(GetNetworkAclRuleNotMatchHttpMessageSignatureKeyOutput)
+}
+
+type GetOrganizationBranding struct {
+	// Color scheme used to customize the login pages.
+	Colors map[string]string `pulumi:"colors"`
+	// URL of logo to display on login page.
+	LogoUrl string `pulumi:"logoUrl"`
+}
+
+// GetOrganizationBrandingInput is an input type that accepts GetOrganizationBrandingArgs and GetOrganizationBrandingOutput values.
+// You can construct a concrete instance of `GetOrganizationBrandingInput` via:
+//
+//	GetOrganizationBrandingArgs{...}
+type GetOrganizationBrandingInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBrandingOutput() GetOrganizationBrandingOutput
+	ToGetOrganizationBrandingOutputWithContext(context.Context) GetOrganizationBrandingOutput
+}
+
+type GetOrganizationBrandingArgs struct {
+	// Color scheme used to customize the login pages.
+	Colors pulumi.StringMapInput `pulumi:"colors"`
+	// URL of logo to display on login page.
+	LogoUrl pulumi.StringInput `pulumi:"logoUrl"`
+}
+
+func (GetOrganizationBrandingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBranding)(nil)).Elem()
+}
+
+func (i GetOrganizationBrandingArgs) ToGetOrganizationBrandingOutput() GetOrganizationBrandingOutput {
+	return i.ToGetOrganizationBrandingOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBrandingArgs) ToGetOrganizationBrandingOutputWithContext(ctx context.Context) GetOrganizationBrandingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBrandingOutput)
+}
+
+// GetOrganizationBrandingArrayInput is an input type that accepts GetOrganizationBrandingArray and GetOrganizationBrandingArrayOutput values.
+// You can construct a concrete instance of `GetOrganizationBrandingArrayInput` via:
+//
+//	GetOrganizationBrandingArray{ GetOrganizationBrandingArgs{...} }
+type GetOrganizationBrandingArrayInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBrandingArrayOutput() GetOrganizationBrandingArrayOutput
+	ToGetOrganizationBrandingArrayOutputWithContext(context.Context) GetOrganizationBrandingArrayOutput
+}
+
+type GetOrganizationBrandingArray []GetOrganizationBrandingInput
+
+func (GetOrganizationBrandingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBranding)(nil)).Elem()
+}
+
+func (i GetOrganizationBrandingArray) ToGetOrganizationBrandingArrayOutput() GetOrganizationBrandingArrayOutput {
+	return i.ToGetOrganizationBrandingArrayOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBrandingArray) ToGetOrganizationBrandingArrayOutputWithContext(ctx context.Context) GetOrganizationBrandingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBrandingArrayOutput)
+}
+
+type GetOrganizationBrandingOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBrandingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBranding)(nil)).Elem()
+}
+
+func (o GetOrganizationBrandingOutput) ToGetOrganizationBrandingOutput() GetOrganizationBrandingOutput {
+	return o
+}
+
+func (o GetOrganizationBrandingOutput) ToGetOrganizationBrandingOutputWithContext(ctx context.Context) GetOrganizationBrandingOutput {
+	return o
+}
+
+// Color scheme used to customize the login pages.
+func (o GetOrganizationBrandingOutput) Colors() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetOrganizationBranding) map[string]string { return v.Colors }).(pulumi.StringMapOutput)
+}
+
+// URL of logo to display on login page.
+func (o GetOrganizationBrandingOutput) LogoUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBranding) string { return v.LogoUrl }).(pulumi.StringOutput)
+}
+
+type GetOrganizationBrandingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBrandingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBranding)(nil)).Elem()
+}
+
+func (o GetOrganizationBrandingArrayOutput) ToGetOrganizationBrandingArrayOutput() GetOrganizationBrandingArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBrandingArrayOutput) ToGetOrganizationBrandingArrayOutputWithContext(ctx context.Context) GetOrganizationBrandingArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBrandingArrayOutput) Index(i pulumi.IntInput) GetOrganizationBrandingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationBranding {
+		return vs[0].([]GetOrganizationBranding)[vs[1].(int)]
+	}).(GetOrganizationBrandingOutput)
+}
+
+type GetOrganizationClientsClient struct {
+	// The type of the associated client application.
+	AppType string `pulumi:"appType"`
+	// The ID of the client (application) to associate with the organization.
+	ClientId string `pulumi:"clientId"`
+	// The grant types enabled for the associated client.
+	GrantTypes []string `pulumi:"grantTypes"`
+	// Whether the associated client is a first-party client (`true`) or not (`false`).
+	IsFirstParty bool `pulumi:"isFirstParty"`
+	// The URI of the associated client's logo.
+	LogoUri string `pulumi:"logoUri"`
+	// The name of the associated client.
+	Name string `pulumi:"name"`
+	// How the associated client handles organizations during authentication. Available values are `deny`, `allow` or `require`. This is a read-only reflection of the client's own `organizationUsage` setting and is managed on the `Client` resource, not here.
+	OrganizationUsage string `pulumi:"organizationUsage"`
+	// Whether this client is used for member access to the organization. An association starts out with this turned off and it has to be activated explicitly.
+	UseForMemberAccess bool `pulumi:"useForMemberAccess"`
+}
+
+// GetOrganizationClientsClientInput is an input type that accepts GetOrganizationClientsClientArgs and GetOrganizationClientsClientOutput values.
+// You can construct a concrete instance of `GetOrganizationClientsClientInput` via:
+//
+//	GetOrganizationClientsClientArgs{...}
+type GetOrganizationClientsClientInput interface {
+	pulumi.Input
+
+	ToGetOrganizationClientsClientOutput() GetOrganizationClientsClientOutput
+	ToGetOrganizationClientsClientOutputWithContext(context.Context) GetOrganizationClientsClientOutput
+}
+
+type GetOrganizationClientsClientArgs struct {
+	// The type of the associated client application.
+	AppType pulumi.StringInput `pulumi:"appType"`
+	// The ID of the client (application) to associate with the organization.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// The grant types enabled for the associated client.
+	GrantTypes pulumi.StringArrayInput `pulumi:"grantTypes"`
+	// Whether the associated client is a first-party client (`true`) or not (`false`).
+	IsFirstParty pulumi.BoolInput `pulumi:"isFirstParty"`
+	// The URI of the associated client's logo.
+	LogoUri pulumi.StringInput `pulumi:"logoUri"`
+	// The name of the associated client.
+	Name pulumi.StringInput `pulumi:"name"`
+	// How the associated client handles organizations during authentication. Available values are `deny`, `allow` or `require`. This is a read-only reflection of the client's own `organizationUsage` setting and is managed on the `Client` resource, not here.
+	OrganizationUsage pulumi.StringInput `pulumi:"organizationUsage"`
+	// Whether this client is used for member access to the organization. An association starts out with this turned off and it has to be activated explicitly.
+	UseForMemberAccess pulumi.BoolInput `pulumi:"useForMemberAccess"`
+}
+
+func (GetOrganizationClientsClientArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationClientsClient)(nil)).Elem()
+}
+
+func (i GetOrganizationClientsClientArgs) ToGetOrganizationClientsClientOutput() GetOrganizationClientsClientOutput {
+	return i.ToGetOrganizationClientsClientOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationClientsClientArgs) ToGetOrganizationClientsClientOutputWithContext(ctx context.Context) GetOrganizationClientsClientOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationClientsClientOutput)
+}
+
+// GetOrganizationClientsClientArrayInput is an input type that accepts GetOrganizationClientsClientArray and GetOrganizationClientsClientArrayOutput values.
+// You can construct a concrete instance of `GetOrganizationClientsClientArrayInput` via:
+//
+//	GetOrganizationClientsClientArray{ GetOrganizationClientsClientArgs{...} }
+type GetOrganizationClientsClientArrayInput interface {
+	pulumi.Input
+
+	ToGetOrganizationClientsClientArrayOutput() GetOrganizationClientsClientArrayOutput
+	ToGetOrganizationClientsClientArrayOutputWithContext(context.Context) GetOrganizationClientsClientArrayOutput
+}
+
+type GetOrganizationClientsClientArray []GetOrganizationClientsClientInput
+
+func (GetOrganizationClientsClientArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationClientsClient)(nil)).Elem()
+}
+
+func (i GetOrganizationClientsClientArray) ToGetOrganizationClientsClientArrayOutput() GetOrganizationClientsClientArrayOutput {
+	return i.ToGetOrganizationClientsClientArrayOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationClientsClientArray) ToGetOrganizationClientsClientArrayOutputWithContext(ctx context.Context) GetOrganizationClientsClientArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationClientsClientArrayOutput)
+}
+
+type GetOrganizationClientsClientOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationClientsClientOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationClientsClient)(nil)).Elem()
+}
+
+func (o GetOrganizationClientsClientOutput) ToGetOrganizationClientsClientOutput() GetOrganizationClientsClientOutput {
+	return o
+}
+
+func (o GetOrganizationClientsClientOutput) ToGetOrganizationClientsClientOutputWithContext(ctx context.Context) GetOrganizationClientsClientOutput {
+	return o
+}
+
+// The type of the associated client application.
+func (o GetOrganizationClientsClientOutput) AppType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationClientsClient) string { return v.AppType }).(pulumi.StringOutput)
+}
+
+// The ID of the client (application) to associate with the organization.
+func (o GetOrganizationClientsClientOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationClientsClient) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The grant types enabled for the associated client.
+func (o GetOrganizationClientsClientOutput) GrantTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetOrganizationClientsClient) []string { return v.GrantTypes }).(pulumi.StringArrayOutput)
+}
+
+// Whether the associated client is a first-party client (`true`) or not (`false`).
+func (o GetOrganizationClientsClientOutput) IsFirstParty() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOrganizationClientsClient) bool { return v.IsFirstParty }).(pulumi.BoolOutput)
+}
+
+// The URI of the associated client's logo.
+func (o GetOrganizationClientsClientOutput) LogoUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationClientsClient) string { return v.LogoUri }).(pulumi.StringOutput)
+}
+
+// The name of the associated client.
+func (o GetOrganizationClientsClientOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationClientsClient) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// How the associated client handles organizations during authentication. Available values are `deny`, `allow` or `require`. This is a read-only reflection of the client's own `organizationUsage` setting and is managed on the `Client` resource, not here.
+func (o GetOrganizationClientsClientOutput) OrganizationUsage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationClientsClient) string { return v.OrganizationUsage }).(pulumi.StringOutput)
+}
+
+// Whether this client is used for member access to the organization. An association starts out with this turned off and it has to be activated explicitly.
+func (o GetOrganizationClientsClientOutput) UseForMemberAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOrganizationClientsClient) bool { return v.UseForMemberAccess }).(pulumi.BoolOutput)
+}
+
+type GetOrganizationClientsClientArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationClientsClientArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationClientsClient)(nil)).Elem()
+}
+
+func (o GetOrganizationClientsClientArrayOutput) ToGetOrganizationClientsClientArrayOutput() GetOrganizationClientsClientArrayOutput {
+	return o
+}
+
+func (o GetOrganizationClientsClientArrayOutput) ToGetOrganizationClientsClientArrayOutputWithContext(ctx context.Context) GetOrganizationClientsClientArrayOutput {
+	return o
+}
+
+func (o GetOrganizationClientsClientArrayOutput) Index(i pulumi.IntInput) GetOrganizationClientsClientOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationClientsClient {
+		return vs[0].([]GetOrganizationClientsClient)[vs[1].(int)]
+	}).(GetOrganizationClientsClientOutput)
+}
+
+type GetOrganizationConnectionType struct {
+	// When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
+	AssignMembershipOnLogin bool `pulumi:"assignMembershipOnLogin"`
+	// The ID of the enabled connection on the organization.
+	ConnectionId string `pulumi:"connectionId"`
+	// Whether the connection is enabled for the organization.
+	IsEnabled bool `pulumi:"isEnabled"`
+	// Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
+	IsSignupEnabled bool `pulumi:"isSignupEnabled"`
+	// The access level for this organization connection. Can be `none`, `readonly`, `limited`, or `full`.
+	OrganizationAccessLevel string `pulumi:"organizationAccessLevel"`
+	// Name of the connection in the scope of this organization.
+	OrganizationConnectionName string `pulumi:"organizationConnectionName"`
+	// Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.
+	ShowAsButton bool `pulumi:"showAsButton"`
+}
+
+// GetOrganizationConnectionTypeInput is an input type that accepts GetOrganizationConnectionTypeArgs and GetOrganizationConnectionTypeOutput values.
+// You can construct a concrete instance of `GetOrganizationConnectionTypeInput` via:
+//
+//	GetOrganizationConnectionTypeArgs{...}
+type GetOrganizationConnectionTypeInput interface {
+	pulumi.Input
+
+	ToGetOrganizationConnectionTypeOutput() GetOrganizationConnectionTypeOutput
+	ToGetOrganizationConnectionTypeOutputWithContext(context.Context) GetOrganizationConnectionTypeOutput
+}
+
+type GetOrganizationConnectionTypeArgs struct {
+	// When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
+	AssignMembershipOnLogin pulumi.BoolInput `pulumi:"assignMembershipOnLogin"`
+	// The ID of the enabled connection on the organization.
+	ConnectionId pulumi.StringInput `pulumi:"connectionId"`
+	// Whether the connection is enabled for the organization.
+	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
+	// Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
+	IsSignupEnabled pulumi.BoolInput `pulumi:"isSignupEnabled"`
+	// The access level for this organization connection. Can be `none`, `readonly`, `limited`, or `full`.
+	OrganizationAccessLevel pulumi.StringInput `pulumi:"organizationAccessLevel"`
+	// Name of the connection in the scope of this organization.
+	OrganizationConnectionName pulumi.StringInput `pulumi:"organizationConnectionName"`
+	// Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.
+	ShowAsButton pulumi.BoolInput `pulumi:"showAsButton"`
+}
+
+func (GetOrganizationConnectionTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationConnectionType)(nil)).Elem()
+}
+
+func (i GetOrganizationConnectionTypeArgs) ToGetOrganizationConnectionTypeOutput() GetOrganizationConnectionTypeOutput {
+	return i.ToGetOrganizationConnectionTypeOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationConnectionTypeArgs) ToGetOrganizationConnectionTypeOutputWithContext(ctx context.Context) GetOrganizationConnectionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationConnectionTypeOutput)
+}
+
+// GetOrganizationConnectionTypeArrayInput is an input type that accepts GetOrganizationConnectionTypeArray and GetOrganizationConnectionTypeArrayOutput values.
+// You can construct a concrete instance of `GetOrganizationConnectionTypeArrayInput` via:
+//
+//	GetOrganizationConnectionTypeArray{ GetOrganizationConnectionTypeArgs{...} }
+type GetOrganizationConnectionTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetOrganizationConnectionTypeArrayOutput() GetOrganizationConnectionTypeArrayOutput
+	ToGetOrganizationConnectionTypeArrayOutputWithContext(context.Context) GetOrganizationConnectionTypeArrayOutput
+}
+
+type GetOrganizationConnectionTypeArray []GetOrganizationConnectionTypeInput
+
+func (GetOrganizationConnectionTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationConnectionType)(nil)).Elem()
+}
+
+func (i GetOrganizationConnectionTypeArray) ToGetOrganizationConnectionTypeArrayOutput() GetOrganizationConnectionTypeArrayOutput {
+	return i.ToGetOrganizationConnectionTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationConnectionTypeArray) ToGetOrganizationConnectionTypeArrayOutputWithContext(ctx context.Context) GetOrganizationConnectionTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationConnectionTypeArrayOutput)
+}
+
+type GetOrganizationConnectionTypeOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationConnectionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationConnectionType)(nil)).Elem()
+}
+
+func (o GetOrganizationConnectionTypeOutput) ToGetOrganizationConnectionTypeOutput() GetOrganizationConnectionTypeOutput {
+	return o
+}
+
+func (o GetOrganizationConnectionTypeOutput) ToGetOrganizationConnectionTypeOutputWithContext(ctx context.Context) GetOrganizationConnectionTypeOutput {
+	return o
+}
+
+// When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
+func (o GetOrganizationConnectionTypeOutput) AssignMembershipOnLogin() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOrganizationConnectionType) bool { return v.AssignMembershipOnLogin }).(pulumi.BoolOutput)
+}
+
+// The ID of the enabled connection on the organization.
+func (o GetOrganizationConnectionTypeOutput) ConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationConnectionType) string { return v.ConnectionId }).(pulumi.StringOutput)
+}
+
+// Whether the connection is enabled for the organization.
+func (o GetOrganizationConnectionTypeOutput) IsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOrganizationConnectionType) bool { return v.IsEnabled }).(pulumi.BoolOutput)
+}
+
+// Determines whether organization sign-up should be enabled for this organization connection. Only applicable for database connections. Note: `isSignupEnabled` can only be `true` if `assignMembershipOnLogin` is `true`.
+func (o GetOrganizationConnectionTypeOutput) IsSignupEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOrganizationConnectionType) bool { return v.IsSignupEnabled }).(pulumi.BoolOutput)
+}
+
+// The access level for this organization connection. Can be `none`, `readonly`, `limited`, or `full`.
+func (o GetOrganizationConnectionTypeOutput) OrganizationAccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationConnectionType) string { return v.OrganizationAccessLevel }).(pulumi.StringOutput)
+}
+
+// Name of the connection in the scope of this organization.
+func (o GetOrganizationConnectionTypeOutput) OrganizationConnectionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationConnectionType) string { return v.OrganizationConnectionName }).(pulumi.StringOutput)
+}
+
+// Determines whether a connection should be displayed on this organization's login prompt. Only applicable for enterprise connections.
+func (o GetOrganizationConnectionTypeOutput) ShowAsButton() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOrganizationConnectionType) bool { return v.ShowAsButton }).(pulumi.BoolOutput)
+}
+
+type GetOrganizationConnectionTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationConnectionTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationConnectionType)(nil)).Elem()
+}
+
+func (o GetOrganizationConnectionTypeArrayOutput) ToGetOrganizationConnectionTypeArrayOutput() GetOrganizationConnectionTypeArrayOutput {
+	return o
+}
+
+func (o GetOrganizationConnectionTypeArrayOutput) ToGetOrganizationConnectionTypeArrayOutputWithContext(ctx context.Context) GetOrganizationConnectionTypeArrayOutput {
+	return o
+}
+
+func (o GetOrganizationConnectionTypeArrayOutput) Index(i pulumi.IntInput) GetOrganizationConnectionTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationConnectionType {
+		return vs[0].([]GetOrganizationConnectionType)[vs[1].(int)]
+	}).(GetOrganizationConnectionTypeOutput)
+}
+
+type GetOrganizationRoleGroupsGroup struct {
+	// The ID of the connection the group belongs to, if it is a connection group.
+	ConnectionId string `pulumi:"connectionId"`
+	// ISO 8601 timestamp when the group was created.
+	CreatedAt string `pulumi:"createdAt"`
+	// The description of the group.
+	Description string `pulumi:"description"`
+	// The external identifier of the group, often used for SCIM synchronization.
+	ExternalId string `pulumi:"externalId"`
+	// The unique identifier for the group.
+	Id string `pulumi:"id"`
+	// The name of the group.
+	Name string `pulumi:"name"`
+	// The ID of the organization the group belongs to, if it is an organization group.
+	OrganizationId string `pulumi:"organizationId"`
+	// ISO 8601 timestamp when the group was last updated.
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetOrganizationRoleGroupsGroupInput is an input type that accepts GetOrganizationRoleGroupsGroupArgs and GetOrganizationRoleGroupsGroupOutput values.
+// You can construct a concrete instance of `GetOrganizationRoleGroupsGroupInput` via:
+//
+//	GetOrganizationRoleGroupsGroupArgs{...}
+type GetOrganizationRoleGroupsGroupInput interface {
+	pulumi.Input
+
+	ToGetOrganizationRoleGroupsGroupOutput() GetOrganizationRoleGroupsGroupOutput
+	ToGetOrganizationRoleGroupsGroupOutputWithContext(context.Context) GetOrganizationRoleGroupsGroupOutput
+}
+
+type GetOrganizationRoleGroupsGroupArgs struct {
+	// The ID of the connection the group belongs to, if it is a connection group.
+	ConnectionId pulumi.StringInput `pulumi:"connectionId"`
+	// ISO 8601 timestamp when the group was created.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// The description of the group.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The external identifier of the group, often used for SCIM synchronization.
+	ExternalId pulumi.StringInput `pulumi:"externalId"`
+	// The unique identifier for the group.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The ID of the organization the group belongs to, if it is an organization group.
+	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+	// ISO 8601 timestamp when the group was last updated.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetOrganizationRoleGroupsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationRoleGroupsGroup)(nil)).Elem()
+}
+
+func (i GetOrganizationRoleGroupsGroupArgs) ToGetOrganizationRoleGroupsGroupOutput() GetOrganizationRoleGroupsGroupOutput {
+	return i.ToGetOrganizationRoleGroupsGroupOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationRoleGroupsGroupArgs) ToGetOrganizationRoleGroupsGroupOutputWithContext(ctx context.Context) GetOrganizationRoleGroupsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationRoleGroupsGroupOutput)
+}
+
+// GetOrganizationRoleGroupsGroupArrayInput is an input type that accepts GetOrganizationRoleGroupsGroupArray and GetOrganizationRoleGroupsGroupArrayOutput values.
+// You can construct a concrete instance of `GetOrganizationRoleGroupsGroupArrayInput` via:
+//
+//	GetOrganizationRoleGroupsGroupArray{ GetOrganizationRoleGroupsGroupArgs{...} }
+type GetOrganizationRoleGroupsGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetOrganizationRoleGroupsGroupArrayOutput() GetOrganizationRoleGroupsGroupArrayOutput
+	ToGetOrganizationRoleGroupsGroupArrayOutputWithContext(context.Context) GetOrganizationRoleGroupsGroupArrayOutput
+}
+
+type GetOrganizationRoleGroupsGroupArray []GetOrganizationRoleGroupsGroupInput
+
+func (GetOrganizationRoleGroupsGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationRoleGroupsGroup)(nil)).Elem()
+}
+
+func (i GetOrganizationRoleGroupsGroupArray) ToGetOrganizationRoleGroupsGroupArrayOutput() GetOrganizationRoleGroupsGroupArrayOutput {
+	return i.ToGetOrganizationRoleGroupsGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationRoleGroupsGroupArray) ToGetOrganizationRoleGroupsGroupArrayOutputWithContext(ctx context.Context) GetOrganizationRoleGroupsGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationRoleGroupsGroupArrayOutput)
+}
+
+type GetOrganizationRoleGroupsGroupOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationRoleGroupsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationRoleGroupsGroup)(nil)).Elem()
+}
+
+func (o GetOrganizationRoleGroupsGroupOutput) ToGetOrganizationRoleGroupsGroupOutput() GetOrganizationRoleGroupsGroupOutput {
+	return o
+}
+
+func (o GetOrganizationRoleGroupsGroupOutput) ToGetOrganizationRoleGroupsGroupOutputWithContext(ctx context.Context) GetOrganizationRoleGroupsGroupOutput {
+	return o
+}
+
+// The ID of the connection the group belongs to, if it is a connection group.
+func (o GetOrganizationRoleGroupsGroupOutput) ConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationRoleGroupsGroup) string { return v.ConnectionId }).(pulumi.StringOutput)
+}
+
+// ISO 8601 timestamp when the group was created.
+func (o GetOrganizationRoleGroupsGroupOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationRoleGroupsGroup) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The description of the group.
+func (o GetOrganizationRoleGroupsGroupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationRoleGroupsGroup) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The external identifier of the group, often used for SCIM synchronization.
+func (o GetOrganizationRoleGroupsGroupOutput) ExternalId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationRoleGroupsGroup) string { return v.ExternalId }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the group.
+func (o GetOrganizationRoleGroupsGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationRoleGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the group.
+func (o GetOrganizationRoleGroupsGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationRoleGroupsGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the organization the group belongs to, if it is an organization group.
+func (o GetOrganizationRoleGroupsGroupOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationRoleGroupsGroup) string { return v.OrganizationId }).(pulumi.StringOutput)
+}
+
+// ISO 8601 timestamp when the group was last updated.
+func (o GetOrganizationRoleGroupsGroupOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationRoleGroupsGroup) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetOrganizationRoleGroupsGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationRoleGroupsGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationRoleGroupsGroup)(nil)).Elem()
+}
+
+func (o GetOrganizationRoleGroupsGroupArrayOutput) ToGetOrganizationRoleGroupsGroupArrayOutput() GetOrganizationRoleGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetOrganizationRoleGroupsGroupArrayOutput) ToGetOrganizationRoleGroupsGroupArrayOutputWithContext(ctx context.Context) GetOrganizationRoleGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetOrganizationRoleGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetOrganizationRoleGroupsGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationRoleGroupsGroup {
+		return vs[0].([]GetOrganizationRoleGroupsGroup)[vs[1].(int)]
+	}).(GetOrganizationRoleGroupsGroupOutput)
+}
+
 type GetOrganizationRoleMembersMember struct {
 	// The email address of the user.
 	Email string `pulumi:"email"`
@@ -7398,6 +8914,28 @@ func (o GetUserPermissionTypeArrayOutput) Index(i pulumi.IntInput) GetUserPermis
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAclRuleActionInput)(nil)).Elem(), GetNetworkAclRuleActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAclRuleActionArrayInput)(nil)).Elem(), GetNetworkAclRuleActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAclRuleMatchInput)(nil)).Elem(), GetNetworkAclRuleMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAclRuleMatchArrayInput)(nil)).Elem(), GetNetworkAclRuleMatchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAclRuleMatchHttpMessageSignatureInput)(nil)).Elem(), GetNetworkAclRuleMatchHttpMessageSignatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAclRuleMatchHttpMessageSignatureArrayInput)(nil)).Elem(), GetNetworkAclRuleMatchHttpMessageSignatureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAclRuleMatchHttpMessageSignatureKeyInput)(nil)).Elem(), GetNetworkAclRuleMatchHttpMessageSignatureKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAclRuleMatchHttpMessageSignatureKeyArrayInput)(nil)).Elem(), GetNetworkAclRuleMatchHttpMessageSignatureKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAclRuleNotMatchInput)(nil)).Elem(), GetNetworkAclRuleNotMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAclRuleNotMatchArrayInput)(nil)).Elem(), GetNetworkAclRuleNotMatchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAclRuleNotMatchHttpMessageSignatureInput)(nil)).Elem(), GetNetworkAclRuleNotMatchHttpMessageSignatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAclRuleNotMatchHttpMessageSignatureArrayInput)(nil)).Elem(), GetNetworkAclRuleNotMatchHttpMessageSignatureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAclRuleNotMatchHttpMessageSignatureKeyInput)(nil)).Elem(), GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArrayInput)(nil)).Elem(), GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBrandingInput)(nil)).Elem(), GetOrganizationBrandingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBrandingArrayInput)(nil)).Elem(), GetOrganizationBrandingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationClientsClientInput)(nil)).Elem(), GetOrganizationClientsClientArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationClientsClientArrayInput)(nil)).Elem(), GetOrganizationClientsClientArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationConnectionTypeInput)(nil)).Elem(), GetOrganizationConnectionTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationConnectionTypeArrayInput)(nil)).Elem(), GetOrganizationConnectionTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationRoleGroupsGroupInput)(nil)).Elem(), GetOrganizationRoleGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationRoleGroupsGroupArrayInput)(nil)).Elem(), GetOrganizationRoleGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationRoleMembersMemberInput)(nil)).Elem(), GetOrganizationRoleMembersMemberArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationRoleMembersMemberArrayInput)(nil)).Elem(), GetOrganizationRoleMembersMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationTokenQuotaInput)(nil)).Elem(), GetOrganizationTokenQuotaArgs{})
@@ -7522,6 +9060,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserOrganizationsOrganizationTokenQuotaClientCredentialArrayInput)(nil)).Elem(), GetUserOrganizationsOrganizationTokenQuotaClientCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPermissionTypeInput)(nil)).Elem(), GetUserPermissionTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPermissionTypeArrayInput)(nil)).Elem(), GetUserPermissionTypeArray{})
+	pulumi.RegisterOutputType(GetNetworkAclRuleActionOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclRuleActionArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclRuleMatchOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclRuleMatchArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclRuleMatchHttpMessageSignatureOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclRuleMatchHttpMessageSignatureArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclRuleMatchHttpMessageSignatureKeyOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclRuleMatchHttpMessageSignatureKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclRuleNotMatchOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclRuleNotMatchArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclRuleNotMatchHttpMessageSignatureOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclRuleNotMatchHttpMessageSignatureArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclRuleNotMatchHttpMessageSignatureKeyOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclRuleNotMatchHttpMessageSignatureKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBrandingOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBrandingArrayOutput{})
+	pulumi.RegisterOutputType(GetOrganizationClientsClientOutput{})
+	pulumi.RegisterOutputType(GetOrganizationClientsClientArrayOutput{})
+	pulumi.RegisterOutputType(GetOrganizationConnectionTypeOutput{})
+	pulumi.RegisterOutputType(GetOrganizationConnectionTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetOrganizationRoleGroupsGroupOutput{})
+	pulumi.RegisterOutputType(GetOrganizationRoleGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationRoleMembersMemberOutput{})
 	pulumi.RegisterOutputType(GetOrganizationRoleMembersMemberArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationTokenQuotaOutput{})

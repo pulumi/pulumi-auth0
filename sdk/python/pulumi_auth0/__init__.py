@@ -62,6 +62,7 @@ from .get_flow import *
 from .get_flow_vault_connection import *
 from .get_form import *
 from .get_network_acl import *
+from .get_network_acl_key import *
 from .get_organization import *
 from .get_organization_client import *
 from .get_organization_clients import *
@@ -90,6 +91,7 @@ from .guardian import *
 from .hook import *
 from .log_stream import *
 from .network_acl import *
+from .network_acl_key import *
 from .organization import *
 from .organization_client import *
 from .organization_client_grant import *
@@ -411,6 +413,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/networkAcl:NetworkAcl": "NetworkAcl"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/networkAclKey",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/networkAclKey:NetworkAclKey": "NetworkAclKey"
   }
  },
  {

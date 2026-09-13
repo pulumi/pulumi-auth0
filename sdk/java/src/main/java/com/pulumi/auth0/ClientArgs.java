@@ -4,6 +4,7 @@
 package com.pulumi.auth0;
 
 import com.pulumi.auth0.inputs.ClientAddonsArgs;
+import com.pulumi.auth0.inputs.ClientB2bIntegrationConfigurationArgs;
 import com.pulumi.auth0.inputs.ClientDefaultOrganizationArgs;
 import com.pulumi.auth0.inputs.ClientExpressConfigurationArgs;
 import com.pulumi.auth0.inputs.ClientFedcmLoginArgs;
@@ -124,6 +125,21 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
+     * 
+     */
+    @Import(name="b2bIntegrationConfiguration")
+    private @Nullable Output<ClientB2bIntegrationConfigurationArgs> b2bIntegrationConfiguration;
+
+    /**
+     * @return Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
+     * 
+     */
+    public Optional<Output<ClientB2bIntegrationConfigurationArgs>> b2bIntegrationConfiguration() {
+        return Optional.ofNullable(this.b2bIntegrationConfiguration);
+    }
+
+    /**
      * URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
      * 
      */
@@ -151,6 +167,21 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<String>>> clientAliases() {
         return Optional.ofNullable(this.clientAliases);
+    }
+
+    /**
+     * The ID of the client. If not provided, Auth0 will generate one automatically. Use this to specify a custom client ID for migration or tenant-copy scenarios. Requires feature flag to be enabled on the tenant.
+     * 
+     */
+    @Import(name="clientId")
+    private @Nullable Output<String> clientId;
+
+    /**
+     * @return The ID of the client. If not provided, Auth0 will generate one automatically. Use this to specify a custom client ID for migration or tenant-copy scenarios. Requires feature flag to be enabled on the tenant.
+     * 
+     */
+    public Optional<Output<String>> clientId() {
+        return Optional.ofNullable(this.clientId);
     }
 
     /**
@@ -552,14 +583,14 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+     * Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
      * 
      */
     @Import(name="organizationDiscoveryMethods")
     private @Nullable Output<List<String>> organizationDiscoveryMethods;
 
     /**
-     * @return Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+     * @return Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
      * 
      */
     public Optional<Output<List<String>>> organizationDiscoveryMethods() {
@@ -792,8 +823,10 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         this.allowedOrigins = $.allowedOrigins;
         this.appType = $.appType;
         this.asyncApprovalNotificationChannels = $.asyncApprovalNotificationChannels;
+        this.b2bIntegrationConfiguration = $.b2bIntegrationConfiguration;
         this.callbacks = $.callbacks;
         this.clientAliases = $.clientAliases;
+        this.clientId = $.clientId;
         this.clientMetadata = $.clientMetadata;
         this.complianceLevel = $.complianceLevel;
         this.crossOriginAuth = $.crossOriginAuth;
@@ -1023,6 +1056,27 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param b2bIntegrationConfiguration Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder b2bIntegrationConfiguration(@Nullable Output<ClientB2bIntegrationConfigurationArgs> b2bIntegrationConfiguration) {
+            $.b2bIntegrationConfiguration = b2bIntegrationConfiguration;
+            return this;
+        }
+
+        /**
+         * @param b2bIntegrationConfiguration Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder b2bIntegrationConfiguration(ClientB2bIntegrationConfigurationArgs b2bIntegrationConfiguration) {
+            return b2bIntegrationConfiguration(Output.of(b2bIntegrationConfiguration));
+        }
+
+        /**
          * @param callbacks URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
          * 
          * @return builder
@@ -1082,6 +1136,27 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder clientAliases(String... clientAliases) {
             return clientAliases(List.of(clientAliases));
+        }
+
+        /**
+         * @param clientId The ID of the client. If not provided, Auth0 will generate one automatically. Use this to specify a custom client ID for migration or tenant-copy scenarios. Requires feature flag to be enabled on the tenant.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientId(@Nullable Output<String> clientId) {
+            $.clientId = clientId;
+            return this;
+        }
+
+        /**
+         * @param clientId The ID of the client. If not provided, Auth0 will generate one automatically. Use this to specify a custom client ID for migration or tenant-copy scenarios. Requires feature flag to be enabled on the tenant.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientId(String clientId) {
+            return clientId(Output.of(clientId));
         }
 
         /**
@@ -1663,7 +1738,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param organizationDiscoveryMethods Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+         * @param organizationDiscoveryMethods Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
          * 
          * @return builder
          * 
@@ -1674,7 +1749,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param organizationDiscoveryMethods Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+         * @param organizationDiscoveryMethods Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
          * 
          * @return builder
          * 
@@ -1684,7 +1759,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param organizationDiscoveryMethods Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
+         * @param organizationDiscoveryMethods Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
          * 
          * @return builder
          * 
