@@ -25,9 +25,6 @@ namespace Pulumi.Auth0
     /// {
     ///     var azureAd = new Auth0.Connection("azure_ad", new()
     ///     {
-    ///         Name = "Acceptance-Test-Azure-AD",
-    ///         Strategy = "waad",
-    ///         ShowAsButton = true,
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             IdentityApi = "microsoft-identity-platform-v2.0",
@@ -62,6 +59,9 @@ namespace Pulumi.Auth0
     ///                 },
     ///             }),
     ///         },
+    ///         Name = "Acceptance-Test-Azure-AD",
+    ///         Strategy = "waad",
+    ///         ShowAsButton = true,
     ///     });
     /// 
     ///     var myScimConfig = new Auth0.ConnectionScimConfiguration("my_scim_config", new()

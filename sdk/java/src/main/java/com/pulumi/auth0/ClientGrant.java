@@ -32,10 +32,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.auth0.ClientArgs;
  * import com.pulumi.auth0.ResourceServer;
  * import com.pulumi.auth0.ResourceServerArgs;
- * import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
  * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationArgs;
  * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationUserArgs;
  * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationClientArgs;
+ * import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
  * import com.pulumi.auth0.ResourceServerScopes;
  * import com.pulumi.auth0.ResourceServerScopesArgs;
  * import com.pulumi.auth0.inputs.ResourceServerScopesScopeArgs;
@@ -61,15 +61,6 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var myResourceServer = new ResourceServer("myResourceServer", ResourceServerArgs.builder()
- *             .name("Example Resource Server - Client Grant (Managed by Terraform)")
- *             .identifier("https://api.example.com/client-grant")
- *             .authorizationDetails(            
- *                 ResourceServerAuthorizationDetailArgs.builder()
- *                     .type("payment")
- *                     .build(),
- *                 ResourceServerAuthorizationDetailArgs.builder()
- *                     .type("shipping")
- *                     .build())
  *             .subjectTypeAuthorization(ResourceServerSubjectTypeAuthorizationArgs.builder()
  *                 .user(ResourceServerSubjectTypeAuthorizationUserArgs.builder()
  *                     .policy("allow_all")
@@ -78,10 +69,18 @@ import javax.annotation.Nullable;
  *                     .policy("require_client_grant")
  *                     .build())
  *                 .build())
+ *             .authorizationDetails(            
+ *                 ResourceServerAuthorizationDetailArgs.builder()
+ *                     .type("payment")
+ *                     .build(),
+ *                 ResourceServerAuthorizationDetailArgs.builder()
+ *                     .type("shipping")
+ *                     .build())
+ *             .name("Example Resource Server - Client Grant (Managed by Terraform)")
+ *             .identifier("https://api.example.com/client-grant")
  *             .build());
  * 
  *         var myScopes = new ResourceServerScopes("myScopes", ResourceServerScopesArgs.builder()
- *             .resourceServerIdentifier(myResourceServer.identifier())
  *             .scopes(            
  *                 ResourceServerScopesScopeArgs.builder()
  *                     .name("read:foo")
@@ -91,6 +90,7 @@ import javax.annotation.Nullable;
  *                     .name("create:foo")
  *                     .description("Can create Foo")
  *                     .build())
+ *             .resourceServerIdentifier(myResourceServer.identifier())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(myResourceServer)
  *                 .build());

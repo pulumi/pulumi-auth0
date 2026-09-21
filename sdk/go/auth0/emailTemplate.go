@@ -29,14 +29,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			myEmailProvider, err := auth0.NewEmailProvider(ctx, "my_email_provider", &auth0.EmailProviderArgs{
-//				Name:               pulumi.String("ses"),
-//				Enabled:            pulumi.Bool(true),
-//				DefaultFromAddress: pulumi.String("accounts@example.com"),
 //				Credentials: &auth0.EmailProviderCredentialsArgs{
 //					AccessKeyId:     pulumi.String("AKIAXXXXXXXXXXXXXXXX"),
 //					SecretAccessKey: pulumi.String("7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
 //					Region:          pulumi.String("us-east-1"),
 //				},
+//				Name:               pulumi.String("ses"),
+//				Enabled:            pulumi.Bool(true),
+//				DefaultFromAddress: pulumi.String("accounts@example.com"),
 //			})
 //			if err != nil {
 //				return err

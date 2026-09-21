@@ -16,16 +16,10 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const myProfile = new auth0.ConnectionProfile("my_profile", {
- *     name: "My-Profile",
  *     organization: {
  *         showAsButton: "optional",
  *         assignMembershipOnLogin: "required",
  *     },
- *     connectionNamePrefixTemplate: "template1",
- *     enabledFeatures: [
- *         "scim",
- *         "universal_logout",
- *     ],
  *     crossAppAccessResourceApp: {
  *         status: {
  *             defaultValue: "enabled",
@@ -35,6 +29,12 @@ import * as utilities from "./utilities";
  *             ],
  *         },
  *     },
+ *     name: "My-Profile",
+ *     connectionNamePrefixTemplate: "template1",
+ *     enabledFeatures: [
+ *         "scim",
+ *         "universal_logout",
+ *     ],
  * });
  * const myProfileDs = auth0.getConnectionProfileOutput({
  *     id: myProfile.id,
@@ -78,16 +78,10 @@ export interface GetConnectionProfileResult {
  * import * as auth0 from "@pulumi/auth0";
  *
  * const myProfile = new auth0.ConnectionProfile("my_profile", {
- *     name: "My-Profile",
  *     organization: {
  *         showAsButton: "optional",
  *         assignMembershipOnLogin: "required",
  *     },
- *     connectionNamePrefixTemplate: "template1",
- *     enabledFeatures: [
- *         "scim",
- *         "universal_logout",
- *     ],
  *     crossAppAccessResourceApp: {
  *         status: {
  *             defaultValue: "enabled",
@@ -97,6 +91,12 @@ export interface GetConnectionProfileResult {
  *             ],
  *         },
  *     },
+ *     name: "My-Profile",
+ *     connectionNamePrefixTemplate: "template1",
+ *     enabledFeatures: [
+ *         "scim",
+ *         "universal_logout",
+ *     ],
  * });
  * const myProfileDs = auth0.getConnectionProfileOutput({
  *     id: myProfile.id,

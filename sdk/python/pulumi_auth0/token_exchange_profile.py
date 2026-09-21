@@ -217,16 +217,16 @@ class TokenExchangeProfile(pulumi.CustomResource):
         # Below action is created with custom-token-exchange as supported_triggers
         # This action is then linked using the action_id param to the token-exchange profile
         my_action = auth0.Action("my_action",
+            supported_triggers={
+                "id": "custom-token-exchange",
+                "version": "v1",
+            },
             name="TokenExchange-Action",
             code=\"\"\"exports.onExecuteCustomTokenExchange = async (event, api) => {
         \\tconsole.log(\\"foo\\")
         };\\"
         \"\"\",
-            deploy=True,
-            supported_triggers={
-                "id": "custom-token-exchange",
-                "version": "v1",
-            })
+            deploy=True)
         my_token_exchange_profile = auth0.TokenExchangeProfile("my_token_exchange_profile",
             name="token-exchange-prof",
             subject_token_type="https://acme.com/cis-token",
@@ -270,16 +270,16 @@ class TokenExchangeProfile(pulumi.CustomResource):
         # Below action is created with custom-token-exchange as supported_triggers
         # This action is then linked using the action_id param to the token-exchange profile
         my_action = auth0.Action("my_action",
+            supported_triggers={
+                "id": "custom-token-exchange",
+                "version": "v1",
+            },
             name="TokenExchange-Action",
             code=\"\"\"exports.onExecuteCustomTokenExchange = async (event, api) => {
         \\tconsole.log(\\"foo\\")
         };\\"
         \"\"\",
-            deploy=True,
-            supported_triggers={
-                "id": "custom-token-exchange",
-                "version": "v1",
-            })
+            deploy=True)
         my_token_exchange_profile = auth0.TokenExchangeProfile("my_token_exchange_profile",
             name="token-exchange-prof",
             subject_token_type="https://acme.com/cis-token",

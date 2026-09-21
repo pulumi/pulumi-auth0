@@ -30,19 +30,6 @@ namespace Pulumi.Auth0
     /// 
     ///     var myResourceServer = new Auth0.ResourceServer("my_resource_server", new()
     ///     {
-    ///         Name = "Example Resource Server - Client Grant (Managed by Terraform)",
-    ///         Identifier = "https://api.example.com/client-grant",
-    ///         AuthorizationDetails = new[]
-    ///         {
-    ///             new Auth0.Inputs.ResourceServerAuthorizationDetailArgs
-    ///             {
-    ///                 Type = "payment",
-    ///             },
-    ///             new Auth0.Inputs.ResourceServerAuthorizationDetailArgs
-    ///             {
-    ///                 Type = "shipping",
-    ///             },
-    ///         },
     ///         SubjectTypeAuthorization = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationArgs
     ///         {
     ///             User = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationUserArgs
@@ -54,11 +41,23 @@ namespace Pulumi.Auth0
     ///                 Policy = "require_client_grant",
     ///             },
     ///         },
+    ///         AuthorizationDetails = new[]
+    ///         {
+    ///             new Auth0.Inputs.ResourceServerAuthorizationDetailArgs
+    ///             {
+    ///                 Type = "payment",
+    ///             },
+    ///             new Auth0.Inputs.ResourceServerAuthorizationDetailArgs
+    ///             {
+    ///                 Type = "shipping",
+    ///             },
+    ///         },
+    ///         Name = "Example Resource Server - Client Grant (Managed by Terraform)",
+    ///         Identifier = "https://api.example.com/client-grant",
     ///     });
     /// 
     ///     var myScopes = new Auth0.ResourceServerScopes("my_scopes", new()
     ///     {
-    ///         ResourceServerIdentifier = myResourceServer.Identifier,
     ///         Scopes = new[]
     ///         {
     ///             new Auth0.Inputs.ResourceServerScopesScopeArgs
@@ -72,6 +71,7 @@ namespace Pulumi.Auth0
     ///                 Description = "Can create Foo",
     ///             },
     ///         },
+    ///         ResourceServerIdentifier = myResourceServer.Identifier,
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =

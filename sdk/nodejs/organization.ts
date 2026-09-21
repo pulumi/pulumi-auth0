@@ -22,9 +22,6 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const myOrganization = new auth0.Organization("my_organization", {
- *     name: "auth0-inc",
- *     displayName: "Auth0 Inc.",
- *     thirdPartyClientAccess: "block",
  *     branding: {
  *         logoUrl: "https://example.com/assets/icons/icon.png",
  *         colors: {
@@ -32,6 +29,9 @@ import * as utilities from "./utilities";
  *             page_background: "#e1e1e1",
  *         },
  *     },
+ *     name: "auth0-inc",
+ *     displayName: "Auth0 Inc.",
+ *     thirdPartyClientAccess: "block",
  * });
  * ```
  *

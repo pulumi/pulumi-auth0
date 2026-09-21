@@ -476,7 +476,7 @@ class CustomDomain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomDomainCertificateArgs', 'CustomDomainCertificateArgsDict']]]]] = None,
+            certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomDomainCertificateArgs', 'CustomDomainCertificateArgsDict', 'outputs.CustomDomainCertificate']]]]] = None,
             custom_client_ip_header: pulumi.Input[Optional[_builtins.str]] = None,
             domain: pulumi.Input[Optional[_builtins.str]] = None,
             domain_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -487,7 +487,7 @@ class CustomDomain(pulumi.CustomResource):
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tls_policy: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
-            verifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomDomainVerificationArgs', 'CustomDomainVerificationArgsDict']]]]] = None) -> 'CustomDomain':
+            verifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomDomainVerificationArgs', 'CustomDomainVerificationArgsDict', 'outputs.CustomDomainVerification']]]]] = None) -> 'CustomDomain':
         """
         Get an existing CustomDomain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -495,7 +495,7 @@ class CustomDomain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomDomainCertificateArgs', 'CustomDomainCertificateArgsDict']]]] certificates: The Custom Domain certificate.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomDomainCertificateArgs', 'CustomDomainCertificateArgsDict', 'outputs.CustomDomainCertificate']]]] certificates: The Custom Domain certificate.
         :param pulumi.Input[_builtins.str] custom_client_ip_header: The HTTP header to fetch the client's IP address. Cannot be set on auth0_managed domains.
         :param pulumi.Input[_builtins.str] domain: Name of the custom domain.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] domain_metadata: Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
@@ -506,7 +506,7 @@ class CustomDomain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] status: Configuration status for the custom domain. Options include `disabled`, `pending`, `pending_verification`, `ready` and `failed`.
         :param pulumi.Input[_builtins.str] tls_policy: TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on self_managed domains.
         :param pulumi.Input[_builtins.str] type: Provisioning type for the custom domain. Options include `auth0_managed_certs` and `self_managed_certs`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomDomainVerificationArgs', 'CustomDomainVerificationArgsDict']]]] verifications: Configuration settings for verification.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CustomDomainVerificationArgs', 'CustomDomainVerificationArgsDict', 'outputs.CustomDomainVerification']]]] verifications: Configuration settings for verification.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

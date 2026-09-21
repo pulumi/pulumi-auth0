@@ -34,9 +34,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewOrganization(ctx, "my_organization", &auth0.OrganizationArgs{
-//				Name:                   pulumi.String("auth0-inc"),
-//				DisplayName:            pulumi.String("Auth0 Inc."),
-//				ThirdPartyClientAccess: pulumi.String("block"),
 //				Branding: &auth0.OrganizationBrandingArgs{
 //					LogoUrl: pulumi.String("https://example.com/assets/icons/icon.png"),
 //					Colors: pulumi.StringMap{
@@ -44,6 +41,9 @@ import (
 //						"page_background": pulumi.String("#e1e1e1"),
 //					},
 //				},
+//				Name:                   pulumi.String("auth0-inc"),
+//				DisplayName:            pulumi.String("Auth0 Inc."),
+//				ThirdPartyClientAccess: pulumi.String("block"),
 //			})
 //			if err != nil {
 //				return err

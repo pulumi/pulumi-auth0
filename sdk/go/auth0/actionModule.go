@@ -29,6 +29,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			myModule, err := auth0.NewActionModule(ctx, "my_module", &auth0.ActionModuleArgs{
+//				Dependencies: auth0.ActionModuleDependencyArray{
+//					&auth0.ActionModuleDependencyArgs{
+//						Name:    pulumi.String("lodash"),
+//						Version: pulumi.String("4.17.21"),
+//					},
+//				},
+//				Secrets: auth0.ActionModuleSecretArray{
+//					&auth0.ActionModuleSecretArgs{
+//						Name:  pulumi.String("API_KEY"),
+//						Value: pulumi.String("my-secret-api-key"),
+//					},
+//				},
 //				Name:    pulumi.String("My Shared Module"),
 //				Publish: pulumi.Bool(true),
 //				Code: pulumi.String(`/**
@@ -46,24 +58,22 @@ import (
 //
 // `),
 //
-//		Dependencies: auth0.ActionModuleDependencyArray{
-//			&auth0.ActionModuleDependencyArgs{
-//				Name:    pulumi.String("lodash"),
-//				Version: pulumi.String("4.17.21"),
-//			},
-//		},
-//		Secrets: auth0.ActionModuleSecretArray{
-//			&auth0.ActionModuleSecretArgs{
-//				Name:  pulumi.String("API_KEY"),
-//				Value: pulumi.String("my-secret-api-key"),
-//			},
-//		},
 //	})
 //	if err != nil {
 //		return err
 //	}
 //	// Use the module in an action by referencing its id and version_id.
 //	_, err = auth0.NewAction(ctx, "my_action", &auth0.ActionArgs{
+//		SupportedTriggers: &auth0.ActionSupportedTriggersArgs{
+//			Id:      pulumi.String("post-login"),
+//			Version: pulumi.String("v3"),
+//		},
+//		Modules: auth0.ActionModuleTypeArray{
+//			&auth0.ActionModuleTypeArgs{
+//				ModuleId:        myModule.ID().ToIDOutput().ToStringOutput(),
+//				ModuleVersionId: myModule.VersionId,
+//			},
+//		},
 //		Name:    pulumi.String("My Action"),
 //		Runtime: pulumi.String("node22"),
 //		Deploy:  pulumi.Bool(true),
@@ -75,16 +85,6 @@ import (
 //
 // `),
 //
-//				Modules: auth0.ActionModuleTypeArray{
-//					&auth0.ActionModuleTypeArgs{
-//						ModuleId:        myModule.ID().ToIDOutput().ToStringOutput(),
-//						ModuleVersionId: myModule.VersionId,
-//					},
-//				},
-//				SupportedTriggers: &auth0.ActionSupportedTriggersArgs{
-//					Id:      pulumi.String("post-login"),
-//					Version: pulumi.String("v3"),
-//				},
 //			})
 //			if err != nil {
 //				return err

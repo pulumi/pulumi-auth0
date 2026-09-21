@@ -20,16 +20,16 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const loginAlert = new auth0.Action("login_alert", {
+ *     supportedTriggers: {
+ *         id: "post-login",
+ *         version: "v3",
+ *     },
  *     name: "Alert after login",
  *     code: `exports.onContinuePostLogin = async (event, api) => {
  *   console.log(\\"foo\\");
  * };\\"
  * `,
  *     deploy: true,
- *     supportedTriggers: {
- *         id: "post-login",
- *         version: "v3",
- *     },
  * });
  * const postLoginAlertAction = new auth0.TriggerAction("post_login_alert_action", {
  *     trigger: "post-login",

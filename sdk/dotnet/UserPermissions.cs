@@ -28,8 +28,6 @@ namespace Pulumi.Auth0
     /// {
     ///     var resourceServer = new Auth0.ResourceServer("resource_server", new()
     ///     {
-    ///         Name = "Example Resource Server (Managed by Terraform)",
-    ///         Identifier = "https://api.example.com",
     ///         Scopes = new[]
     ///         {
     ///             
@@ -43,6 +41,8 @@ namespace Pulumi.Auth0
     ///                 { "description", "Read foos" },
     ///             },
     ///         },
+    ///         Name = "Example Resource Server (Managed by Terraform)",
+    ///         Identifier = "https://api.example.com",
     ///     });
     /// 
     ///     var user = new Auth0.User("user", new()
@@ -60,7 +60,6 @@ namespace Pulumi.Auth0
     /// 
     ///     var allUserPermissions = new Auth0.UserPermissions("all_user_permissions", new()
     ///     {
-    ///         UserId = user.Id,
     ///         Permissions = new[]
     ///         {
     ///             new Auth0.Inputs.UserPermissionsPermissionArgs
@@ -74,6 +73,7 @@ namespace Pulumi.Auth0
     ///                 ResourceServerIdentifier = resourceServer.Identifier,
     ///             },
     ///         },
+    ///         UserId = user.Id,
     ///     });
     /// 
     /// });

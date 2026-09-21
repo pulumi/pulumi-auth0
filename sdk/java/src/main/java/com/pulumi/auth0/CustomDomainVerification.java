@@ -34,6 +34,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.auth0.CustomDomainVerification;
  * import com.pulumi.auth0.CustomDomainVerificationArgs;
  * import com.pulumi.resources.CustomResourceOptions;
+ * import com.pulumi.resources.CustomTimeouts;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -67,6 +68,9 @@ import javax.annotation.Nullable;
  *             .customDomainId(myCustomDomain.id())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(myDomainNameRecord)
+ *                 .customTimeouts(CustomTimeouts.builder()
+ *                     .create(CustomTimeouts.parseTimeoutString("15m"))
+ *                 .build())
  *                 .build());
  * 
  *     }

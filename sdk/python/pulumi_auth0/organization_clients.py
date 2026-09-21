@@ -104,7 +104,7 @@ class OrganizationClients(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 clients: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationClientsClientArgs', 'OrganizationClientsClientArgsDict']]]]] = None,
+                 clients: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationClientsClientArgs', 'OrganizationClientsClientArgsDict', 'outputs.OrganizationClientsClient']]]]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -125,7 +125,6 @@ class OrganizationClients(pulumi.CustomResource):
         # Use this instead of auth0_organization_client when you want Terraform to own the full
         # set of associations; do not use both resources on the same organization.
         my_org_clients = auth0.OrganizationClients("my_org_clients",
-            organization_id=my_organization.id,
             clients=[
                 {
                     "client_id": my_client.id,
@@ -134,7 +133,8 @@ class OrganizationClients(pulumi.CustomResource):
                 {
                     "client_id": my_other_client.id,
                 },
-            ])
+            ],
+            organization_id=my_organization.id)
         ```
 
         ## Import
@@ -150,7 +150,7 @@ class OrganizationClients(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationClientsClientArgs', 'OrganizationClientsClientArgsDict']]]] clients: The clients (applications) associated with the organization.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationClientsClientArgs', 'OrganizationClientsClientArgsDict', 'outputs.OrganizationClientsClient']]]] clients: The clients (applications) associated with the organization.
         :param pulumi.Input[_builtins.str] organization_id: The ID of the organization to associate the clients (applications) with.
         """
         ...
@@ -177,7 +177,6 @@ class OrganizationClients(pulumi.CustomResource):
         # Use this instead of auth0_organization_client when you want Terraform to own the full
         # set of associations; do not use both resources on the same organization.
         my_org_clients = auth0.OrganizationClients("my_org_clients",
-            organization_id=my_organization.id,
             clients=[
                 {
                     "client_id": my_client.id,
@@ -186,7 +185,8 @@ class OrganizationClients(pulumi.CustomResource):
                 {
                     "client_id": my_other_client.id,
                 },
-            ])
+            ],
+            organization_id=my_organization.id)
         ```
 
         ## Import
@@ -215,7 +215,7 @@ class OrganizationClients(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 clients: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationClientsClientArgs', 'OrganizationClientsClientArgsDict']]]]] = None,
+                 clients: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationClientsClientArgs', 'OrganizationClientsClientArgsDict', 'outputs.OrganizationClientsClient']]]]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -242,7 +242,7 @@ class OrganizationClients(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            clients: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationClientsClientArgs', 'OrganizationClientsClientArgsDict']]]]] = None,
+            clients: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationClientsClientArgs', 'OrganizationClientsClientArgsDict', 'outputs.OrganizationClientsClient']]]]] = None,
             organization_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'OrganizationClients':
         """
         Get an existing OrganizationClients resource's state with the given name, id, and optional extra
@@ -251,7 +251,7 @@ class OrganizationClients(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationClientsClientArgs', 'OrganizationClientsClientArgsDict']]]] clients: The clients (applications) associated with the organization.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationClientsClientArgs', 'OrganizationClientsClientArgsDict', 'outputs.OrganizationClientsClient']]]] clients: The clients (applications) associated with the organization.
         :param pulumi.Input[_builtins.str] organization_id: The ID of the organization to associate the clients (applications) with.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

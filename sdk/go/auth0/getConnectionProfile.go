@@ -28,15 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			myProfile, err := auth0.NewConnectionProfile(ctx, "my_profile", &auth0.ConnectionProfileArgs{
-//				Name: pulumi.String("My-Profile"),
 //				Organization: &auth0.ConnectionProfileOrganizationArgs{
 //					ShowAsButton:            pulumi.String("optional"),
 //					AssignMembershipOnLogin: pulumi.String("required"),
-//				},
-//				ConnectionNamePrefixTemplate: pulumi.String("template1"),
-//				EnabledFeatures: pulumi.StringArray{
-//					pulumi.String("scim"),
-//					pulumi.String("universal_logout"),
 //				},
 //				CrossAppAccessResourceApp: &auth0.ConnectionProfileCrossAppAccessResourceAppArgs{
 //					Status: &auth0.ConnectionProfileCrossAppAccessResourceAppStatusArgs{
@@ -46,6 +40,12 @@ import (
 //							pulumi.String("disabled"),
 //						},
 //					},
+//				},
+//				Name:                         pulumi.String("My-Profile"),
+//				ConnectionNamePrefixTemplate: pulumi.String("template1"),
+//				EnabledFeatures: pulumi.StringArray{
+//					pulumi.String("scim"),
+//					pulumi.String("universal_logout"),
 //				},
 //			})
 //			if err != nil {

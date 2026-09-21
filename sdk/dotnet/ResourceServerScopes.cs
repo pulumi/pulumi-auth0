@@ -35,7 +35,6 @@ namespace Pulumi.Auth0
     /// 
     ///     var myApiScopes = new Auth0.ResourceServerScopes("my_api_scopes", new()
     ///     {
-    ///         ResourceServerIdentifier = myApi.Identifier,
     ///         Scopes = new[]
     ///         {
     ///             new Auth0.Inputs.ResourceServerScopesScopeArgs
@@ -49,6 +48,7 @@ namespace Pulumi.Auth0
     ///                 Description = "Ability to read appointments",
     ///             },
     ///         },
+    ///         ResourceServerIdentifier = myApi.Identifier,
     ///     });
     /// 
     /// });

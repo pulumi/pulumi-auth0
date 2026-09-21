@@ -200,8 +200,8 @@ class PhoneProvider(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configuration: pulumi.Input[Optional[Union['PhoneProviderConfigurationArgs', 'PhoneProviderConfigurationArgsDict']]] = None,
-                 credentials: pulumi.Input[Optional[Union['PhoneProviderCredentialsArgs', 'PhoneProviderCredentialsArgsDict']]] = None,
+                 configuration: pulumi.Input[Optional[Union['PhoneProviderConfigurationArgs', 'PhoneProviderConfigurationArgsDict', 'outputs.PhoneProviderConfiguration']]] = None,
+                 credentials: pulumi.Input[Optional[Union['PhoneProviderCredentialsArgs', 'PhoneProviderCredentialsArgsDict', 'outputs.PhoneProviderCredentials']]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -226,8 +226,6 @@ class PhoneProvider(pulumi.CustomResource):
 
         # This is an example on how to set up the phone provider with Twilio.
         twilio_phone_provider = auth0.PhoneProvider("twilio_phone_provider",
-            name="twilio",
-            disabled=False,
             credentials={
                 "auth_token": "secretAuthToken",
             },
@@ -239,10 +237,16 @@ class PhoneProvider(pulumi.CustomResource):
                 "default_from": "+1234567890",
                 "sid": "ACXXXXXXXXXXXXXXXX",
                 "mssid": "MSXXXXXXXXXXXXXXXX",
-            })
+            },
+            name="twilio",
+            disabled=False)
         # This is an example on how to set up the phone provider with a custom action.
         # Make sure a corresponding action exists with custom-phone-provider as supported triggers
         send_custom_phone = auth0.Action("send_custom_phone",
+            supported_triggers={
+                "id": "custom-phone-provider",
+                "version": "v1",
+            },
             name="Custom Phone Provider",
             runtime="node22",
             deploy=True,
@@ -255,14 +259,8 @@ class PhoneProvider(pulumi.CustomResource):
             // Code goes here
             return;
         };
-        \"\"\",
-            supported_triggers={
-                "id": "custom-phone-provider",
-                "version": "v1",
-            })
+        \"\"\")
         custom_phone_provider = auth0.PhoneProvider("custom_phone_provider",
-            name="custom",
-            disabled=False,
             configuration={
                 "delivery_methods": [
                     "text",
@@ -270,6 +268,8 @@ class PhoneProvider(pulumi.CustomResource):
                 ],
             },
             credentials={},
+            name="custom",
+            disabled=False,
             opts = pulumi.ResourceOptions(depends_on=[send_custom_phone]))
         ```
 
@@ -286,8 +286,8 @@ class PhoneProvider(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['PhoneProviderConfigurationArgs', 'PhoneProviderConfigurationArgsDict']] configuration: Specific phone provider settings.
-        :param pulumi.Input[Union['PhoneProviderCredentialsArgs', 'PhoneProviderCredentialsArgsDict']] credentials: Provider credentials required to use authenticate to the provider.
+        :param pulumi.Input[Union['PhoneProviderConfigurationArgs', 'PhoneProviderConfigurationArgsDict', 'outputs.PhoneProviderConfiguration']] configuration: Specific phone provider settings.
+        :param pulumi.Input[Union['PhoneProviderCredentialsArgs', 'PhoneProviderCredentialsArgsDict', 'outputs.PhoneProviderCredentials']] credentials: Provider credentials required to use authenticate to the provider.
         :param pulumi.Input[_builtins.bool] disabled: Indicates whether the phone provider is enabled (false) or disabled (true).
         :param pulumi.Input[_builtins.str] name: Name of the phone provider. Options include `twilio`, `custom`.
         """
@@ -318,8 +318,6 @@ class PhoneProvider(pulumi.CustomResource):
 
         # This is an example on how to set up the phone provider with Twilio.
         twilio_phone_provider = auth0.PhoneProvider("twilio_phone_provider",
-            name="twilio",
-            disabled=False,
             credentials={
                 "auth_token": "secretAuthToken",
             },
@@ -331,10 +329,16 @@ class PhoneProvider(pulumi.CustomResource):
                 "default_from": "+1234567890",
                 "sid": "ACXXXXXXXXXXXXXXXX",
                 "mssid": "MSXXXXXXXXXXXXXXXX",
-            })
+            },
+            name="twilio",
+            disabled=False)
         # This is an example on how to set up the phone provider with a custom action.
         # Make sure a corresponding action exists with custom-phone-provider as supported triggers
         send_custom_phone = auth0.Action("send_custom_phone",
+            supported_triggers={
+                "id": "custom-phone-provider",
+                "version": "v1",
+            },
             name="Custom Phone Provider",
             runtime="node22",
             deploy=True,
@@ -347,14 +351,8 @@ class PhoneProvider(pulumi.CustomResource):
             // Code goes here
             return;
         };
-        \"\"\",
-            supported_triggers={
-                "id": "custom-phone-provider",
-                "version": "v1",
-            })
+        \"\"\")
         custom_phone_provider = auth0.PhoneProvider("custom_phone_provider",
-            name="custom",
-            disabled=False,
             configuration={
                 "delivery_methods": [
                     "text",
@@ -362,6 +360,8 @@ class PhoneProvider(pulumi.CustomResource):
                 ],
             },
             credentials={},
+            name="custom",
+            disabled=False,
             opts = pulumi.ResourceOptions(depends_on=[send_custom_phone]))
         ```
 
@@ -391,8 +391,8 @@ class PhoneProvider(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configuration: pulumi.Input[Optional[Union['PhoneProviderConfigurationArgs', 'PhoneProviderConfigurationArgsDict']]] = None,
-                 credentials: pulumi.Input[Optional[Union['PhoneProviderCredentialsArgs', 'PhoneProviderCredentialsArgsDict']]] = None,
+                 configuration: pulumi.Input[Optional[Union['PhoneProviderConfigurationArgs', 'PhoneProviderConfigurationArgsDict', 'outputs.PhoneProviderConfiguration']]] = None,
+                 credentials: pulumi.Input[Optional[Union['PhoneProviderCredentialsArgs', 'PhoneProviderCredentialsArgsDict', 'outputs.PhoneProviderCredentials']]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -425,8 +425,8 @@ class PhoneProvider(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             channel: pulumi.Input[Optional[_builtins.str]] = None,
-            configuration: pulumi.Input[Optional[Union['PhoneProviderConfigurationArgs', 'PhoneProviderConfigurationArgsDict']]] = None,
-            credentials: pulumi.Input[Optional[Union['PhoneProviderCredentialsArgs', 'PhoneProviderCredentialsArgsDict']]] = None,
+            configuration: pulumi.Input[Optional[Union['PhoneProviderConfigurationArgs', 'PhoneProviderConfigurationArgsDict', 'outputs.PhoneProviderConfiguration']]] = None,
+            credentials: pulumi.Input[Optional[Union['PhoneProviderCredentialsArgs', 'PhoneProviderCredentialsArgsDict', 'outputs.PhoneProviderCredentials']]] = None,
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             tenant: pulumi.Input[Optional[_builtins.str]] = None) -> 'PhoneProvider':
@@ -438,8 +438,8 @@ class PhoneProvider(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] channel: The channel of the phone provider.
-        :param pulumi.Input[Union['PhoneProviderConfigurationArgs', 'PhoneProviderConfigurationArgsDict']] configuration: Specific phone provider settings.
-        :param pulumi.Input[Union['PhoneProviderCredentialsArgs', 'PhoneProviderCredentialsArgsDict']] credentials: Provider credentials required to use authenticate to the provider.
+        :param pulumi.Input[Union['PhoneProviderConfigurationArgs', 'PhoneProviderConfigurationArgsDict', 'outputs.PhoneProviderConfiguration']] configuration: Specific phone provider settings.
+        :param pulumi.Input[Union['PhoneProviderCredentialsArgs', 'PhoneProviderCredentialsArgsDict', 'outputs.PhoneProviderCredentials']] credentials: Provider credentials required to use authenticate to the provider.
         :param pulumi.Input[_builtins.bool] disabled: Indicates whether the phone provider is enabled (false) or disabled (true).
         :param pulumi.Input[_builtins.str] name: Name of the phone provider. Options include `twilio`, `custom`.
         :param pulumi.Input[_builtins.str] tenant: The tenant of the phone provider.

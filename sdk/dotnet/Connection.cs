@@ -39,50 +39,8 @@ namespace Pulumi.Auth0
     ///     // This is an example of an Auth0 connection.
     ///     var myConnection = new Auth0.Connection("my_connection", new()
     ///     {
-    ///         Name = "Example-Connection",
-    ///         IsDomainConnection = true,
-    ///         Strategy = "auth0",
-    ///         Metadata = 
-    ///         {
-    ///             { "key1", "foo" },
-    ///             { "key2", "bar" },
-    ///         },
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
-    ///             PasswordPolicy = "excellent",
-    ///             BruteForceProtection = true,
-    ///             StrategyVersion = 2,
-    ///             EnabledDatabaseCustomization = true,
-    ///             ImportMode = false,
-    ///             RequiresUsername = true,
-    ///             DisableSignup = false,
-    ///             CustomScripts = 
-    ///             {
-    ///                 { "get_user", @"        function getByEmail(email, callback) {
-    ///           return callback(new Error(\""Whoops!\""));
-    ///         }
-    /// " },
-    ///             },
-    ///             Configuration = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///                 { "bar", "baz" },
-    ///             },
-    ///             UpstreamParams = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///             {
-    ///                 ["screen_name"] = new Dictionary&lt;string, object?&gt;
-    ///                 {
-    ///                     ["alias"] = "login_hint",
-    ///                 },
-    ///             }),
-    ///             PasswordHistories = new[]
-    ///             {
-    ///                 new Auth0.Inputs.ConnectionOptionsPasswordHistoryArgs
-    ///                 {
-    ///                     Enable = true,
-    ///                     Size = 3,
-    ///                 },
-    ///             },
     ///             PasswordNoPersonalInfo = new Auth0.Inputs.ConnectionOptionsPasswordNoPersonalInfoArgs
     ///             {
     ///                 Enable = true,
@@ -114,6 +72,12 @@ namespace Pulumi.Auth0
     ///                 Active = true,
     ///                 ReturnEnrollSettings = true,
     ///             },
+    ///             PasskeyOptions = new Auth0.Inputs.ConnectionOptionsPasskeyOptionsArgs
+    ///             {
+    ///                 ChallengeUi = "both",
+    ///                 LocalEnrollmentEnabled = true,
+    ///                 ProgressiveEnrollmentEnabled = true,
+    ///             },
     ///             AuthenticationMethods = new[]
     ///             {
     ///                 new Auth0.Inputs.ConnectionOptionsAuthenticationMethodArgs
@@ -128,12 +92,48 @@ namespace Pulumi.Auth0
     ///                     },
     ///                 },
     ///             },
-    ///             PasskeyOptions = new Auth0.Inputs.ConnectionOptionsPasskeyOptionsArgs
+    ///             PasswordHistories = new[]
     ///             {
-    ///                 ChallengeUi = "both",
-    ///                 LocalEnrollmentEnabled = true,
-    ///                 ProgressiveEnrollmentEnabled = true,
+    ///                 new Auth0.Inputs.ConnectionOptionsPasswordHistoryArgs
+    ///                 {
+    ///                     Enable = true,
+    ///                     Size = 3,
+    ///                 },
     ///             },
+    ///             PasswordPolicy = "excellent",
+    ///             BruteForceProtection = true,
+    ///             StrategyVersion = 2,
+    ///             EnabledDatabaseCustomization = true,
+    ///             ImportMode = false,
+    ///             RequiresUsername = true,
+    ///             DisableSignup = false,
+    ///             CustomScripts = 
+    ///             {
+    ///                 { "get_user", @"        function getByEmail(email, callback) {
+    ///           return callback(new Error(\""Whoops!\""));
+    ///         }
+    /// " },
+    ///             },
+    ///             Configuration = 
+    ///             {
+    ///                 { "foo", "bar" },
+    ///                 { "bar", "baz" },
+    ///             },
+    ///             UpstreamParams = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["screen_name"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["alias"] = "login_hint",
+    ///                 },
+    ///             }),
+    ///         },
+    ///         Name = "Example-Connection",
+    ///         IsDomainConnection = true,
+    ///         Strategy = "auth0",
+    ///         Metadata = 
+    ///         {
+    ///             { "key1", "foo" },
+    ///             { "key2", "bar" },
     ///         },
     ///     });
     /// 
@@ -145,10 +145,6 @@ namespace Pulumi.Auth0
     ///     // NOTE: Write-only arguments require Terraform 1.11 or later.
     ///     var myConnectionWriteOnlySecret = new Auth0.Connection("my_connection_write_only_secret", new()
     ///     {
-    ///         Name = "Example-Connection-Write-Only-Secret",
-    ///         Strategy = "oidc",
-    ///         OptionsClientSecretWo = connectionClientSecret,
-    ///         OptionsClientSecretWoVersion = 1,
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             ClientId = "1234567",
@@ -165,6 +161,10 @@ namespace Pulumi.Auth0
     ///                 "email",
     ///             },
     ///         },
+    ///         Name = "Example-Connection-Write-Only-Secret",
+    ///         Strategy = "oidc",
+    ///         OptionsClientSecretWo = connectionClientSecret,
+    ///         OptionsClientSecretWoVersion = 1,
     ///     });
     /// 
     /// });
@@ -185,8 +185,6 @@ namespace Pulumi.Auth0
     ///     // This is an example of a Google OAuth2 connection.
     ///     var googleOauth2 = new Auth0.Connection("google_oauth2", new()
     ///     {
-    ///         Name = "Google-OAuth2-Connection",
-    ///         Strategy = "google-oauth2",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             ClientId = "&lt;client-id&gt;",
@@ -210,6 +208,8 @@ namespace Pulumi.Auth0
     ///                 "gender",
     ///             },
     ///         },
+    ///         Name = "Google-OAuth2-Connection",
+    ///         Strategy = "google-oauth2",
     ///     });
     /// 
     /// });
@@ -228,10 +228,6 @@ namespace Pulumi.Auth0
     /// {
     ///     var googleApps = new Auth0.Connection("google_apps", new()
     ///     {
-    ///         Name = "connection-google-apps",
-    ///         IsDomainConnection = false,
-    ///         Strategy = "google-apps",
-    ///         ShowAsButton = false,
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             ClientId = "",
@@ -264,6 +260,10 @@ namespace Pulumi.Auth0
     ///                 "gender",
     ///             },
     ///         },
+    ///         Name = "connection-google-apps",
+    ///         IsDomainConnection = false,
+    ///         Strategy = "google-apps",
+    ///         ShowAsButton = false,
     ///     });
     /// 
     /// });
@@ -282,8 +282,6 @@ namespace Pulumi.Auth0
     ///     // This is an example of a Facebook connection.
     ///     var facebook = new Auth0.Connection("facebook", new()
     ///     {
-    ///         Name = "Facebook-Connection",
-    ///         Strategy = "facebook",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             ClientId = "&lt;client-id&gt;",
@@ -302,6 +300,8 @@ namespace Pulumi.Auth0
     ///                 "gender",
     ///             },
     ///         },
+    ///         Name = "Facebook-Connection",
+    ///         Strategy = "facebook",
     ///     });
     /// 
     /// });
@@ -320,8 +320,6 @@ namespace Pulumi.Auth0
     ///     // This is an example of an Apple connection.
     ///     var apple = new Auth0.Connection("apple", new()
     ///     {
-    ///         Name = "Apple-Connection",
-    ///         Strategy = "apple",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             ClientId = "&lt;client-id&gt;",
@@ -342,6 +340,8 @@ namespace Pulumi.Auth0
     ///                 "gender",
     ///             },
     ///         },
+    ///         Name = "Apple-Connection",
+    ///         Strategy = "apple",
     ///     });
     /// 
     /// });
@@ -360,8 +360,6 @@ namespace Pulumi.Auth0
     ///     // This is an example of an LinkedIn connection.
     ///     var linkedin = new Auth0.Connection("linkedin", new()
     ///     {
-    ///         Name = "Linkedin-Connection",
-    ///         Strategy = "linkedin",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             ClientId = "&lt;client-id&gt;",
@@ -380,6 +378,8 @@ namespace Pulumi.Auth0
     ///                 "gender",
     ///             },
     ///         },
+    ///         Name = "Linkedin-Connection",
+    ///         Strategy = "linkedin",
     ///     });
     /// 
     /// });
@@ -398,8 +398,6 @@ namespace Pulumi.Auth0
     ///     // This is an example of an GitHub connection.
     ///     var github = new Auth0.Connection("github", new()
     ///     {
-    ///         Name = "GitHub-Connection",
-    ///         Strategy = "github",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             ClientId = "&lt;client-id&gt;",
@@ -418,6 +416,8 @@ namespace Pulumi.Auth0
     ///                 "gender",
     ///             },
     ///         },
+    ///         Name = "GitHub-Connection",
+    ///         Strategy = "github",
     ///     });
     /// 
     /// });
@@ -436,8 +436,6 @@ namespace Pulumi.Auth0
     ///     // This is an example of an SalesForce connection.
     ///     var salesforce = new Auth0.Connection("salesforce", new()
     ///     {
-    ///         Name = "Salesforce-Connection",
-    ///         Strategy = "salesforce",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             ClientId = "&lt;client-id&gt;",
@@ -455,6 +453,8 @@ namespace Pulumi.Auth0
     ///                 "gender",
     ///             },
     ///         },
+    ///         Name = "Salesforce-Connection",
+    ///         Strategy = "salesforce",
     ///     });
     /// 
     /// });
@@ -475,23 +475,8 @@ namespace Pulumi.Auth0
     ///     // This is an example of an OAuth2 connection.
     ///     var oauth2 = new Auth0.Connection("oauth2", new()
     ///     {
-    ///         Name = "OAuth2-Connection",
-    ///         Strategy = "oauth2",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
-    ///             ClientId = "&lt;client-id&gt;",
-    ///             ClientSecret = "&lt;client-secret&gt;",
-    ///             StrategyVersion = 2,
-    ///             Scopes = new[]
-    ///             {
-    ///                 "basic_profile",
-    ///                 "profile",
-    ///                 "email",
-    ///             },
-    ///             TokenEndpoint = "https://auth.example.com/oauth2/token",
-    ///             AuthorizationEndpoint = "https://auth.example.com/oauth2/authorize",
-    ///             PkceEnabled = true,
-    ///             IconUrl = "https://auth.example.com/assets/logo.png",
     ///             CustomHeaders = new[]
     ///             {
     ///                 new Auth0.Inputs.ConnectionOptionsCustomHeaderArgs
@@ -505,6 +490,19 @@ namespace Pulumi.Auth0
     ///                     Value = "bar",
     ///                 },
     ///             },
+    ///             ClientId = "&lt;client-id&gt;",
+    ///             ClientSecret = "&lt;client-secret&gt;",
+    ///             StrategyVersion = 2,
+    ///             Scopes = new[]
+    ///             {
+    ///                 "basic_profile",
+    ///                 "profile",
+    ///                 "email",
+    ///             },
+    ///             TokenEndpoint = "https://auth.example.com/oauth2/token",
+    ///             AuthorizationEndpoint = "https://auth.example.com/oauth2/authorize",
+    ///             PkceEnabled = true,
+    ///             IconUrl = "https://auth.example.com/assets/logo.png",
     ///             Scripts = 
     ///             {
     ///                 { "fetchUserProfile", @"        function fetchUserProfile(accessToken, context, callback) {
@@ -519,6 +517,8 @@ namespace Pulumi.Auth0
     ///                 "gender",
     ///             },
     ///         },
+    ///         Name = "OAuth2-Connection",
+    ///         Strategy = "oauth2",
     ///     });
     /// 
     /// });
@@ -537,10 +537,6 @@ namespace Pulumi.Auth0
     /// {
     ///     var ad = new Auth0.Connection("ad", new()
     ///     {
-    ///         Name = "connection-active-directory",
-    ///         DisplayName = "Active Directory Connection",
-    ///         Strategy = "ad",
-    ///         ShowAsButton = true,
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             DisableSelfServiceChangePassword = true,
@@ -575,6 +571,10 @@ namespace Pulumi.Auth0
     ///             UseKerberos = false,
     ///             DisableCache = false,
     ///         },
+    ///         Name = "connection-active-directory",
+    ///         DisplayName = "Active Directory Connection",
+    ///         Strategy = "ad",
+    ///         ShowAsButton = true,
     ///     });
     /// 
     /// });
@@ -593,9 +593,6 @@ namespace Pulumi.Auth0
     /// {
     ///     var azureAd = new Auth0.Connection("azure_ad", new()
     ///     {
-    ///         Name = "connection-azure-ad",
-    ///         Strategy = "waad",
-    ///         ShowAsButton = true,
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             IdentityApi = "azure-active-directory-v1.0",
@@ -638,6 +635,9 @@ namespace Pulumi.Auth0
     ///                 "gender",
     ///             },
     ///         },
+    ///         Name = "connection-azure-ad",
+    ///         Strategy = "waad",
+    ///         ShowAsButton = true,
     ///     });
     /// 
     /// });
@@ -658,10 +658,13 @@ namespace Pulumi.Auth0
     ///     // This is an example of an Email connection.
     ///     var passwordlessEmail = new Auth0.Connection("passwordless_email", new()
     ///     {
-    ///         Strategy = "email",
-    ///         Name = "email",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
+    ///             Totp = new Auth0.Inputs.ConnectionOptionsTotpArgs
+    ///             {
+    ///                 TimeStep = 300,
+    ///                 Length = 6,
+    ///             },
     ///             Name = "email",
     ///             From = "{{ application.name }} &lt;root@auth0.com&gt;",
     ///             Subject = "Welcome to {{ application.name }}",
@@ -676,12 +679,9 @@ namespace Pulumi.Auth0
     ///                 { "scope", "openid email profile offline_access" },
     ///                 { "response_type", "code" },
     ///             },
-    ///             Totp = new Auth0.Inputs.ConnectionOptionsTotpArgs
-    ///             {
-    ///                 TimeStep = 300,
-    ///                 Length = 6,
-    ///             },
     ///         },
+    ///         Strategy = "email",
+    ///         Name = "email",
     ///     });
     /// 
     /// });
@@ -701,10 +701,32 @@ namespace Pulumi.Auth0
     ///     // This is an example of a SAML connection.
     ///     var samlp = new Auth0.Connection("samlp", new()
     ///     {
-    ///         Name = "SAML-Connection",
-    ///         Strategy = "samlp",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
+    ///             SigningKey = new Auth0.Inputs.ConnectionOptionsSigningKeyArgs
+    ///             {
+    ///                 Key = @"-----BEGIN PRIVATE KEY-----
+    /// ...{your private key here}...
+    /// -----END PRIVATE KEY-----",
+    ///                 Cert = @"-----BEGIN CERTIFICATE-----
+    /// ...{your public key cert here}...
+    /// -----END CERTIFICATE-----",
+    ///             },
+    ///             DecryptionKey = new Auth0.Inputs.ConnectionOptionsDecryptionKeyArgs
+    ///             {
+    ///                 Key = @"-----BEGIN PRIVATE KEY-----
+    /// ...{your private key here}...
+    /// -----END PRIVATE KEY-----",
+    ///                 Cert = @"-----BEGIN CERTIFICATE-----
+    /// ...{your public key cert here}...
+    /// -----END CERTIFICATE-----",
+    ///             },
+    ///             IdpInitiated = new Auth0.Inputs.ConnectionOptionsIdpInitiatedArgs
+    ///             {
+    ///                 ClientId = "client_id",
+    ///                 ClientProtocol = "samlp",
+    ///                 ClientAuthorizeQuery = "type=code&amp;timeout=30",
+    ///             },
     ///             Debug = false,
     ///             SigningCert = "&lt;signing-certificate&gt;",
     ///             SignInEndpoint = "https://saml.provider/sign_in",
@@ -757,31 +779,9 @@ namespace Pulumi.Auth0
     ///                 },
     ///                 ["family_name"] = "surname",
     ///             }),
-    ///             SigningKey = new Auth0.Inputs.ConnectionOptionsSigningKeyArgs
-    ///             {
-    ///                 Key = @"-----BEGIN PRIVATE KEY-----
-    /// ...{your private key here}...
-    /// -----END PRIVATE KEY-----",
-    ///                 Cert = @"-----BEGIN CERTIFICATE-----
-    /// ...{your public key cert here}...
-    /// -----END CERTIFICATE-----",
-    ///             },
-    ///             DecryptionKey = new Auth0.Inputs.ConnectionOptionsDecryptionKeyArgs
-    ///             {
-    ///                 Key = @"-----BEGIN PRIVATE KEY-----
-    /// ...{your private key here}...
-    /// -----END PRIVATE KEY-----",
-    ///                 Cert = @"-----BEGIN CERTIFICATE-----
-    /// ...{your public key cert here}...
-    /// -----END CERTIFICATE-----",
-    ///             },
-    ///             IdpInitiated = new Auth0.Inputs.ConnectionOptionsIdpInitiatedArgs
-    ///             {
-    ///                 ClientId = "client_id",
-    ///                 ClientProtocol = "samlp",
-    ///                 ClientAuthorizeQuery = "type=code&amp;timeout=30",
-    ///             },
     ///         },
+    ///         Name = "SAML-Connection",
+    ///         Strategy = "samlp",
     ///     });
     /// 
     /// });
@@ -800,8 +800,6 @@ namespace Pulumi.Auth0
     ///     // This is an example of a WindowsLive connection.
     ///     var windowslive = new Auth0.Connection("windowslive", new()
     ///     {
-    ///         Name = "Windowslive-Connection",
-    ///         Strategy = "windowslive",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             ClientId = "&lt;client-id&gt;",
@@ -819,6 +817,8 @@ namespace Pulumi.Auth0
     ///                 "gender",
     ///             },
     ///         },
+    ///         Name = "Windowslive-Connection",
+    ///         Strategy = "windowslive",
     ///     });
     /// 
     /// });
@@ -838,12 +838,27 @@ namespace Pulumi.Auth0
     ///     // This is an example of an OIDC connection.
     ///     var oidc = new Auth0.Connection("oidc", new()
     ///     {
-    ///         Name = "oidc-connection",
-    ///         DisplayName = "OIDC Connection",
-    ///         Strategy = "oidc",
-    ///         ShowAsButton = false,
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
+    ///             ConnectionSettings = new Auth0.Inputs.ConnectionOptionsConnectionSettingsArgs
+    ///             {
+    ///                 Pkce = "auto",
+    ///             },
+    ///             AttributeMap = new Auth0.Inputs.ConnectionOptionsAttributeMapArgs
+    ///             {
+    ///                 MappingMode = "use_map",
+    ///                 UserinfoScope = "openid email profile groups",
+    ///                 Attributes = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["name"] = "${context.tokenset.name}",
+    ///                     ["email"] = "${context.tokenset.email}",
+    ///                     ["email_verified"] = "${context.tokenset.email_verified}",
+    ///                     ["nickname"] = "${context.tokenset.nickname}",
+    ///                     ["picture"] = "${context.tokenset.picture}",
+    ///                     ["given_name"] = "${context.tokenset.given_name}",
+    ///                     ["family_name"] = "${context.tokenset.family_name}",
+    ///                 }),
+    ///             },
     ///             ClientId = "1234567",
     ///             ClientSecret = "1234567",
     ///             DomainAliases = new[]
@@ -871,26 +886,11 @@ namespace Pulumi.Auth0
     ///                 "ethnicity",
     ///                 "gender",
     ///             },
-    ///             ConnectionSettings = new Auth0.Inputs.ConnectionOptionsConnectionSettingsArgs
-    ///             {
-    ///                 Pkce = "auto",
-    ///             },
-    ///             AttributeMap = new Auth0.Inputs.ConnectionOptionsAttributeMapArgs
-    ///             {
-    ///                 MappingMode = "use_map",
-    ///                 UserinfoScope = "openid email profile groups",
-    ///                 Attributes = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///                 {
-    ///                     ["name"] = "${context.tokenset.name}",
-    ///                     ["email"] = "${context.tokenset.email}",
-    ///                     ["email_verified"] = "${context.tokenset.email_verified}",
-    ///                     ["nickname"] = "${context.tokenset.nickname}",
-    ///                     ["picture"] = "${context.tokenset.picture}",
-    ///                     ["given_name"] = "${context.tokenset.given_name}",
-    ///                     ["family_name"] = "${context.tokenset.family_name}",
-    ///                 }),
-    ///             },
     ///         },
+    ///         Name = "oidc-connection",
+    ///         DisplayName = "OIDC Connection",
+    ///         Strategy = "oidc",
+    ///         ShowAsButton = false,
     ///     });
     /// 
     /// });
@@ -913,12 +913,27 @@ namespace Pulumi.Auth0
     ///     // This is an example of an Okta Workforce connection.
     ///     var okta = new Auth0.Connection("okta", new()
     ///     {
-    ///         Name = "okta-connection",
-    ///         DisplayName = "Okta Workforce Connection",
-    ///         Strategy = "okta",
-    ///         ShowAsButton = false,
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
+    ///             ConnectionSettings = new Auth0.Inputs.ConnectionOptionsConnectionSettingsArgs
+    ///             {
+    ///                 Pkce = "auto",
+    ///             },
+    ///             AttributeMap = new Auth0.Inputs.ConnectionOptionsAttributeMapArgs
+    ///             {
+    ///                 MappingMode = "basic_profile",
+    ///                 UserinfoScope = "openid email profile groups",
+    ///                 Attributes = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["name"] = "${context.tokenset.name}",
+    ///                     ["email"] = "${context.tokenset.email}",
+    ///                     ["email_verified"] = "${context.tokenset.email_verified}",
+    ///                     ["nickname"] = "${context.tokenset.nickname}",
+    ///                     ["picture"] = "${context.tokenset.picture}",
+    ///                     ["given_name"] = "${context.tokenset.given_name}",
+    ///                     ["family_name"] = "${context.tokenset.family_name}",
+    ///                 }),
+    ///             },
     ///             ClientId = "1234567",
     ///             ClientSecret = "1234567",
     ///             Domain = "example.okta.com",
@@ -950,26 +965,11 @@ namespace Pulumi.Auth0
     ///                     ["alias"] = "login_hint",
     ///                 },
     ///             }),
-    ///             ConnectionSettings = new Auth0.Inputs.ConnectionOptionsConnectionSettingsArgs
-    ///             {
-    ///                 Pkce = "auto",
-    ///             },
-    ///             AttributeMap = new Auth0.Inputs.ConnectionOptionsAttributeMapArgs
-    ///             {
-    ///                 MappingMode = "basic_profile",
-    ///                 UserinfoScope = "openid email profile groups",
-    ///                 Attributes = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///                 {
-    ///                     ["name"] = "${context.tokenset.name}",
-    ///                     ["email"] = "${context.tokenset.email}",
-    ///                     ["email_verified"] = "${context.tokenset.email_verified}",
-    ///                     ["nickname"] = "${context.tokenset.nickname}",
-    ///                     ["picture"] = "${context.tokenset.picture}",
-    ///                     ["given_name"] = "${context.tokenset.given_name}",
-    ///                     ["family_name"] = "${context.tokenset.family_name}",
-    ///                 }),
-    ///             },
     ///         },
+    ///         Name = "okta-connection",
+    ///         DisplayName = "Okta Workforce Connection",
+    ///         Strategy = "okta",
+    ///         ShowAsButton = false,
     ///     });
     /// 
     /// });

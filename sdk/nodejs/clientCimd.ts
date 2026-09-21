@@ -19,6 +19,19 @@ import * as utilities from "./utilities";
  *
  * const minimalClient = new auth0.ClientCimd("minimal_client", {externalClientId: "https://mcp-agent1.example.com/oauth/metadata.json"});
  * const myMcpAgent = new auth0.ClientCimd("my_mcp_agent", {
+ *     jwtConfiguration: {
+ *         lifetimeInSeconds: 300,
+ *         alg: "RS256",
+ *     },
+ *     refreshToken: {
+ *         rotationType: "rotating",
+ *         expirationType: "expiring",
+ *         tokenLifetime: 2592000,
+ *         idleTokenLifetime: 1296000,
+ *         infiniteTokenLifetime: false,
+ *         infiniteIdleTokenLifetime: false,
+ *         leeway: 0,
+ *     },
  *     externalClientId: "https://mcp-agent2.example.com/.well-known/client.json",
  *     externalClientIdVersion: 1,
  *     description: "MCP Agent - Production",
@@ -32,19 +45,6 @@ import * as utilities from "./utilities";
  *     ],
  *     clientMetadata: {
  *         environment: "production",
- *     },
- *     jwtConfiguration: {
- *         lifetimeInSeconds: 300,
- *         alg: "RS256",
- *     },
- *     refreshToken: {
- *         rotationType: "rotating",
- *         expirationType: "expiring",
- *         tokenLifetime: 2592000,
- *         idleTokenLifetime: 1296000,
- *         infiniteTokenLifetime: false,
- *         infiniteIdleTokenLifetime: false,
- *         leeway: 0,
  *     },
  * });
  * ```

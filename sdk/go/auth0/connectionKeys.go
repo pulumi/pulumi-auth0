@@ -39,8 +39,6 @@ import (
 //				return err
 //			}
 //			oidc, err := auth0.NewConnection(ctx, "oidc", &auth0.ConnectionArgs{
-//				Name:     pulumi.String("OIDC-Connection"),
-//				Strategy: pulumi.String("oidc"),
 //				Options: &auth0.ConnectionOptionsArgs{
 //					ClientId: myClient.ID().ToIDOutput().ToStringOutput(),
 //					Scopes: pulumi.StringArray{
@@ -55,6 +53,8 @@ import (
 //					TokenEndpointAuthMethod:     pulumi.String("private_key_jwt"),
 //					TokenEndpointAuthSigningAlg: pulumi.String("RS256"),
 //				},
+//				Name:     pulumi.String("OIDC-Connection"),
+//				Strategy: pulumi.String("oidc"),
 //			})
 //			if err != nil {
 //				return err

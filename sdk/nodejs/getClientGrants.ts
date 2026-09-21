@@ -17,22 +17,22 @@ import * as utilities from "./utilities";
  *
  * const myClient = new auth0.Client("my_client", {name: "Example Application (Managed by Terraform)"});
  * const myResourceServer = new auth0.ResourceServer("my_resource_server", {
- *     name: "Example Resource Server (Managed by Terraform)",
- *     identifier: "https://api.example.com/client-grant",
- *     authorizationDetails: [{
- *         type: "payment",
- *     }],
  *     subjectTypeAuthorization: {
  *         user: {
  *             policy: "allow_all",
  *         },
  *     },
+ *     authorizationDetails: [{
+ *         type: "payment",
+ *     }],
+ *     name: "Example Resource Server (Managed by Terraform)",
+ *     identifier: "https://api.example.com/client-grant",
  * });
  * const myScopes = new auth0.ResourceServerScopes("my_scopes", {
- *     resourceServerIdentifier: myResourceServer.identifier,
  *     scopes: [{
  *         name: "create:foo",
  *     }],
+ *     resourceServerIdentifier: myResourceServer.identifier,
  * }, {
  *     dependsOn: [myResourceServer],
  * });
@@ -119,22 +119,22 @@ export interface GetClientGrantsResult {
  *
  * const myClient = new auth0.Client("my_client", {name: "Example Application (Managed by Terraform)"});
  * const myResourceServer = new auth0.ResourceServer("my_resource_server", {
- *     name: "Example Resource Server (Managed by Terraform)",
- *     identifier: "https://api.example.com/client-grant",
- *     authorizationDetails: [{
- *         type: "payment",
- *     }],
  *     subjectTypeAuthorization: {
  *         user: {
  *             policy: "allow_all",
  *         },
  *     },
+ *     authorizationDetails: [{
+ *         type: "payment",
+ *     }],
+ *     name: "Example Resource Server (Managed by Terraform)",
+ *     identifier: "https://api.example.com/client-grant",
  * });
  * const myScopes = new auth0.ResourceServerScopes("my_scopes", {
- *     resourceServerIdentifier: myResourceServer.identifier,
  *     scopes: [{
  *         name: "create:foo",
  *     }],
+ *     resourceServerIdentifier: myResourceServer.identifier,
  * }, {
  *     dependsOn: [myResourceServer],
  * });

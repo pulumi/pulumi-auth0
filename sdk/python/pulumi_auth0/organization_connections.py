@@ -104,7 +104,7 @@ class OrganizationConnections(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enabled_connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationConnectionsEnabledConnectionArgs', 'OrganizationConnectionsEnabledConnectionArgsDict']]]]] = None,
+                 enabled_connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationConnectionsEnabledConnectionArgs', 'OrganizationConnectionsEnabledConnectionArgsDict', 'outputs.OrganizationConnectionsEnabledConnection']]]]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -131,7 +131,6 @@ class OrganizationConnections(pulumi.CustomResource):
             name="my-organization",
             display_name="My Organization")
         one_to_many = auth0.OrganizationConnections("one-to-many",
-            organization_id=my_organization.id,
             enabled_connections=[
                 {
                     "connection_id": my_connection_1.id,
@@ -145,7 +144,8 @@ class OrganizationConnections(pulumi.CustomResource):
                     "is_signup_enabled": False,
                     "show_as_button": True,
                 },
-            ])
+            ],
+            organization_id=my_organization.id)
         ```
 
         ## Import
@@ -161,7 +161,7 @@ class OrganizationConnections(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationConnectionsEnabledConnectionArgs', 'OrganizationConnectionsEnabledConnectionArgsDict']]]] enabled_connections: Connections that are enabled for the organization.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationConnectionsEnabledConnectionArgs', 'OrganizationConnectionsEnabledConnectionArgsDict', 'outputs.OrganizationConnectionsEnabledConnection']]]] enabled_connections: Connections that are enabled for the organization.
         :param pulumi.Input[_builtins.str] organization_id: ID of the organization on which to enable the connections.
         """
         ...
@@ -194,7 +194,6 @@ class OrganizationConnections(pulumi.CustomResource):
             name="my-organization",
             display_name="My Organization")
         one_to_many = auth0.OrganizationConnections("one-to-many",
-            organization_id=my_organization.id,
             enabled_connections=[
                 {
                     "connection_id": my_connection_1.id,
@@ -208,7 +207,8 @@ class OrganizationConnections(pulumi.CustomResource):
                     "is_signup_enabled": False,
                     "show_as_button": True,
                 },
-            ])
+            ],
+            organization_id=my_organization.id)
         ```
 
         ## Import
@@ -237,7 +237,7 @@ class OrganizationConnections(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enabled_connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationConnectionsEnabledConnectionArgs', 'OrganizationConnectionsEnabledConnectionArgsDict']]]]] = None,
+                 enabled_connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationConnectionsEnabledConnectionArgs', 'OrganizationConnectionsEnabledConnectionArgsDict', 'outputs.OrganizationConnectionsEnabledConnection']]]]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -264,7 +264,7 @@ class OrganizationConnections(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            enabled_connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationConnectionsEnabledConnectionArgs', 'OrganizationConnectionsEnabledConnectionArgsDict']]]]] = None,
+            enabled_connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationConnectionsEnabledConnectionArgs', 'OrganizationConnectionsEnabledConnectionArgsDict', 'outputs.OrganizationConnectionsEnabledConnection']]]]] = None,
             organization_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'OrganizationConnections':
         """
         Get an existing OrganizationConnections resource's state with the given name, id, and optional extra
@@ -273,7 +273,7 @@ class OrganizationConnections(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationConnectionsEnabledConnectionArgs', 'OrganizationConnectionsEnabledConnectionArgsDict']]]] enabled_connections: Connections that are enabled for the organization.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationConnectionsEnabledConnectionArgs', 'OrganizationConnectionsEnabledConnectionArgsDict', 'outputs.OrganizationConnectionsEnabledConnection']]]] enabled_connections: Connections that are enabled for the organization.
         :param pulumi.Input[_builtins.str] organization_id: ID of the organization on which to enable the connections.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -29,14 +29,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewRateLimitPolicy(ctx, "noisy_app", &auth0.RateLimitPolicyArgs{
-//				Resource:         pulumi.String("oauth_authentication_api"),
-//				Consumer:         pulumi.String("client"),
-//				ConsumerSelector: pulumi.String("client_id:abc123"),
 //				Configuration: &auth0.RateLimitPolicyConfigurationArgs{
 //					Action:      pulumi.String("redirect"),
 //					Limit:       pulumi.Int(1000),
 //					RedirectUri: pulumi.String("https://example.com/rate-limited"),
 //				},
+//				Resource:         pulumi.String("oauth_authentication_api"),
+//				Consumer:         pulumi.String("client"),
+//				ConsumerSelector: pulumi.String("client_id:abc123"),
 //			})
 //			if err != nil {
 //				return err

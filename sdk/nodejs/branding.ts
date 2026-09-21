@@ -17,7 +17,6 @@ import * as utilities from "./utilities";
  * import * as std from "@pulumi/std";
  *
  * const myBrand = new auth0.Branding("my_brand", {
- *     logoUrl: "https://mycompany.org/logo.png",
  *     colors: {
  *         primary: "#0059d6",
  *         pageBackground: "#000000",
@@ -27,6 +26,7 @@ import * as utilities from "./utilities";
  *             input: "universal_login_body.html",
  *         }).result,
  *     },
+ *     logoUrl: "https://mycompany.org/logo.png",
  * });
  * ```
  *

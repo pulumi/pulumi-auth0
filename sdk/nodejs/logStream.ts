@@ -20,6 +20,16 @@ import * as utilities from "./utilities";
  *
  * // This is an example of an http log stream.
  * const myWebhook = new auth0.LogStream("my_webhook", {
+ *     sink: {
+ *         httpEndpoint: "https://example.com/logs",
+ *         httpContentType: "application/json",
+ *         httpContentFormat: "JSONOBJECT",
+ *         httpAuthorization: "AKIAXXXXXXXXXXXXXXXX",
+ *         httpCustomHeaders: [{
+ *             header: "foo",
+ *             value: "bar",
+ *         }],
+ *     },
  *     name: "HTTP log stream",
  *     type: "http",
  *     filters: [
@@ -32,37 +42,27 @@ import * as utilities from "./utilities";
  *             name: "auth.signup.fail",
  *         },
  *     ],
- *     sink: {
- *         httpEndpoint: "https://example.com/logs",
- *         httpContentType: "application/json",
- *         httpContentFormat: "JSONOBJECT",
- *         httpAuthorization: "AKIAXXXXXXXXXXXXXXXX",
- *         httpCustomHeaders: [{
- *             header: "foo",
- *             value: "bar",
- *         }],
- *     },
  * });
  * // This is an example of an Amazon EventBridge log stream.
  * const exampleAws = new auth0.LogStream("example_aws", {
- *     name: "AWS Eventbridge",
- *     type: "eventbridge",
- *     status: "active",
  *     sink: {
  *         awsAccountId: "my_account_id",
  *         awsRegion: "us-east-2",
  *     },
+ *     name: "AWS Eventbridge",
+ *     type: "eventbridge",
+ *     status: "active",
  * });
  * // This is an example of a Datadog log stream using a write-only API key
  * // (recommended for security). The key is never stored in Terraform state.
  * const datadogSecure = new auth0.LogStream("datadog_secure", {
- *     name: "Datadog (write-only key)",
- *     type: "datadog",
  *     sink: {
  *         datadogRegion: "us",
  *         datadogApiKeyWo: "AKIAXXXXXXXXXXXXXXXX",
  *         datadogApiKeyWoVersion: 1,
  *     },
+ *     name: "Datadog (write-only key)",
+ *     type: "datadog",
  * });
  * ```
  *

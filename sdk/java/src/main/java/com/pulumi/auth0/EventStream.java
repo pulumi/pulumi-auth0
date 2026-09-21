@@ -52,61 +52,61 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         // Creates an event stream of type eventbridge
  *         var myEventStreamEventBridge = new EventStream("myEventStreamEventBridge", EventStreamArgs.builder()
+ *             .eventbridgeConfiguration(EventStreamEventbridgeConfigurationArgs.builder()
+ *                 .awsAccountId("242849305777")
+ *                 .awsRegion("us-east-1")
+ *                 .build())
  *             .name("my-eventbridge")
  *             .destinationType("eventbridge")
  *             .subscriptions(            
  *                 "user.created",
  *                 "user.updated")
- *             .eventbridgeConfiguration(EventStreamEventbridgeConfigurationArgs.builder()
- *                 .awsAccountId("242849305777")
- *                 .awsRegion("us-east-1")
- *                 .build())
  *             .build());
  * 
  *         // Creates an event stream of type webhook in a disabled state
  *         var myEventStreamWebhook = new EventStream("myEventStreamWebhook", EventStreamArgs.builder()
+ *             .webhookConfiguration(EventStreamWebhookConfigurationArgs.builder()
+ *                 .webhookAuthorization(EventStreamWebhookConfigurationWebhookAuthorizationArgs.builder()
+ *                     .method("bearer")
+ *                     .token("123456789")
+ *                     .build())
+ *                 .webhookEndpoint("https://eof28wtn4v4506o.m.pipedream.net")
+ *                 .build())
  *             .name("my-webhook")
  *             .destinationType("webhook")
  *             .status("disabled")
  *             .subscriptions(            
  *                 "user.created",
  *                 "user.updated")
- *             .webhookConfiguration(EventStreamWebhookConfigurationArgs.builder()
- *                 .webhookEndpoint("https://eof28wtn4v4506o.m.pipedream.net")
- *                 .webhookAuthorization(EventStreamWebhookConfigurationWebhookAuthorizationArgs.builder()
- *                     .method("bearer")
- *                     .token("123456789")
- *                     .build())
- *                 .build())
  *             .build());
  * 
  *         final var webhookToken = config.require("webhookToken");
  *         var myEventStreamWebhookSecure = new EventStream("myEventStreamWebhookSecure", EventStreamArgs.builder()
- *             .name("my-webhook-secure")
- *             .destinationType("webhook")
- *             .subscriptions(            
- *                 "user.created",
- *                 "user.updated")
  *             .webhookConfiguration(EventStreamWebhookConfigurationArgs.builder()
- *                 .webhookEndpoint("https://eof28wtn4v4506o.m.pipedream.net")
  *                 .webhookAuthorization(EventStreamWebhookConfigurationWebhookAuthorizationArgs.builder()
  *                     .method("bearer")
  *                     .tokenWo(webhookToken)
  *                     .tokenWoVersion(1)
  *                     .build())
+ *                 .webhookEndpoint("https://eof28wtn4v4506o.m.pipedream.net")
  *                 .build())
+ *             .name("my-webhook-secure")
+ *             .destinationType("webhook")
+ *             .subscriptions(            
+ *                 "user.created",
+ *                 "user.updated")
  *             .build());
  * 
  *         // Creates an event stream of type action
  *         var myEventStreamAction = new EventStream("myEventStreamAction", EventStreamArgs.builder()
+ *             .actionConfiguration(EventStreamActionConfigurationArgs.builder()
+ *                 .actionId(myAction.id())
+ *                 .build())
  *             .name("my-action-stream")
  *             .destinationType("action")
  *             .subscriptions(            
  *                 "user.created",
  *                 "user.updated")
- *             .actionConfiguration(EventStreamActionConfigurationArgs.builder()
- *                 .actionId(myAction.id())
- *                 .build())
  *             .build());
  * 
  *     }

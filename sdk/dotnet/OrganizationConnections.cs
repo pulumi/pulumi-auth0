@@ -47,7 +47,6 @@ namespace Pulumi.Auth0
     /// 
     ///     var one_to_many = new Auth0.OrganizationConnections("one-to-many", new()
     ///     {
-    ///         OrganizationId = myOrganization.Id,
     ///         EnabledConnections = new[]
     ///         {
     ///             new Auth0.Inputs.OrganizationConnectionsEnabledConnectionArgs
@@ -65,6 +64,7 @@ namespace Pulumi.Auth0
     ///                 ShowAsButton = true,
     ///             },
     ///         },
+    ///         OrganizationId = myOrganization.Id,
     ///     });
     /// 
     /// });

@@ -29,8 +29,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			myConnection, err := auth0.NewConnection(ctx, "my_connection", &auth0.ConnectionArgs{
-//				Name:     pulumi.String("My-Google-Workspace-Connection"),
-//				Strategy: pulumi.String("google-apps"),
 //				Options: &auth0.ConnectionOptionsArgs{
 //					ClientId:        pulumi.String("..."),
 //					ClientSecret:    pulumi.String("..."),
@@ -39,6 +37,8 @@ import (
 //					ApiEnableUsers:  pulumi.Bool(true),
 //					ApiEnableGroups: pulumi.Bool(true),
 //				},
+//				Name:     pulumi.String("My-Google-Workspace-Connection"),
+//				Strategy: pulumi.String("google-apps"),
 //			})
 //			if err != nil {
 //				return err
@@ -51,7 +51,6 @@ import (
 //				return err
 //			}
 //			_, err = auth0.NewConnectionDirectorySynchronizedGroups(ctx, "my_groups", &auth0.ConnectionDirectorySynchronizedGroupsArgs{
-//				ConnectionId: myConnection.ID().ToIDOutput().ToStringOutput(),
 //				Groups: auth0.ConnectionDirectorySynchronizedGroupsGroupArray{
 //					&auth0.ConnectionDirectorySynchronizedGroupsGroupArgs{
 //						Id: pulumi.String("group1"),
@@ -63,6 +62,7 @@ import (
 //						DirectMembersCount: pulumi.Int(123),
 //					},
 //				},
+//				ConnectionId: myConnection.ID().ToIDOutput().ToStringOutput(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				myDirectory,
 //			}))

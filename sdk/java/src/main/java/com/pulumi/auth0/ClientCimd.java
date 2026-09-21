@@ -59,17 +59,6 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var myMcpAgent = new ClientCimd("myMcpAgent", ClientCimdArgs.builder()
- *             .externalClientId("https://mcp-agent2.example.com/.well-known/client.json")
- *             .externalClientIdVersion(1)
- *             .description("MCP Agent - Production")
- *             .appType("spa")
- *             .oidcConformant(true)
- *             .allowedOrigins("https://mcp-agent2.example.com")
- *             .webOrigins("https://mcp-agent2.example.com")
- *             .grantTypes(            
- *                 "authorization_code",
- *                 "refresh_token")
- *             .clientMetadata(Map.of("environment", "production"))
  *             .jwtConfiguration(ClientCimdJwtConfigurationArgs.builder()
  *                 .lifetimeInSeconds(300)
  *                 .alg("RS256")
@@ -83,6 +72,17 @@ import javax.annotation.Nullable;
  *                 .infiniteIdleTokenLifetime(false)
  *                 .leeway(0)
  *                 .build())
+ *             .externalClientId("https://mcp-agent2.example.com/.well-known/client.json")
+ *             .externalClientIdVersion(1)
+ *             .description("MCP Agent - Production")
+ *             .appType("spa")
+ *             .oidcConformant(true)
+ *             .allowedOrigins("https://mcp-agent2.example.com")
+ *             .webOrigins("https://mcp-agent2.example.com")
+ *             .grantTypes(            
+ *                 "authorization_code",
+ *                 "refresh_token")
+ *             .clientMetadata(Map.of("environment", "production"))
  *             .build());
  * 
  *     }

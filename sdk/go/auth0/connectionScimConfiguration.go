@@ -29,9 +29,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			myEnterpriseConnection, err := auth0.NewConnection(ctx, "my_enterprise_connection", &auth0.ConnectionArgs{
-//				Name:        pulumi.String("my-enterprise-connection"),
-//				DisplayName: pulumi.String("My Enterprise Connection"),
-//				Strategy:    pulumi.String("okta"),
 //				Options: &auth0.ConnectionOptionsArgs{
 //					ClientId:              pulumi.String("1234567"),
 //					ClientSecret:          pulumi.String("1234567"),
@@ -40,14 +37,14 @@ import (
 //					TokenEndpoint:         pulumi.String("https://example.okta.com/oauth2/v1/token"),
 //					AuthorizationEndpoint: pulumi.String("https://example.okta.com/oauth2/v1/authorize"),
 //				},
+//				Name:        pulumi.String("my-enterprise-connection"),
+//				DisplayName: pulumi.String("My Enterprise Connection"),
+//				Strategy:    pulumi.String("okta"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			myEnterpriseConnection2, err := auth0.NewConnection(ctx, "my_enterprise_connection_2", &auth0.ConnectionArgs{
-//				Name:        pulumi.String("my-enterprise-connection-2"),
-//				DisplayName: pulumi.String("My Enterprise Connection 2"),
-//				Strategy:    pulumi.String("okta"),
 //				Options: &auth0.ConnectionOptionsArgs{
 //					ClientId:              pulumi.String("1234567"),
 //					ClientSecret:          pulumi.String("1234567"),
@@ -56,6 +53,9 @@ import (
 //					TokenEndpoint:         pulumi.String("https://example.okta.com/oauth2/v1/token"),
 //					AuthorizationEndpoint: pulumi.String("https://example.okta.com/oauth2/v1/authorize"),
 //				},
+//				Name:        pulumi.String("my-enterprise-connection-2"),
+//				DisplayName: pulumi.String("My Enterprise Connection 2"),
+//				Strategy:    pulumi.String("okta"),
 //			})
 //			if err != nil {
 //				return err
@@ -71,8 +71,6 @@ import (
 //			// A resource for configuring an Auth0 Connection SCIM Configuration, specifying `user_id_attribute` and `mapping`.
 //			// Only one can be specified for a connection.
 //			_, err = auth0.NewConnectionScimConfiguration(ctx, "my_conn_scim_configuration", &auth0.ConnectionScimConfigurationArgs{
-//				ConnectionId:    myEnterpriseConnection2.ID().ToIDOutput().ToStringOutput(),
-//				UserIdAttribute: pulumi.String("attribute1"),
 //				Mappings: auth0.ConnectionScimConfigurationMappingArray{
 //					&auth0.ConnectionScimConfigurationMappingArgs{
 //						Auth0: pulumi.String("auth0_attribute1"),
@@ -83,6 +81,8 @@ import (
 //						Scim:  pulumi.String("sacim_attribute2"),
 //					},
 //				},
+//				ConnectionId:    myEnterpriseConnection2.ID().ToIDOutput().ToStringOutput(),
+//				UserIdAttribute: pulumi.String("attribute1"),
 //			})
 //			if err != nil {
 //				return err

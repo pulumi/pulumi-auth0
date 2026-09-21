@@ -51,8 +51,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var myConnection = new Connection("myConnection", ConnectionArgs.builder()
- *             .name("My-Google-Workspace-Connection")
- *             .strategy("google-apps")
  *             .options(ConnectionOptionsArgs.builder()
  *                 .clientId("...")
  *                 .clientSecret("...")
@@ -61,6 +59,8 @@ import javax.annotation.Nullable;
  *                 .apiEnableUsers(true)
  *                 .apiEnableGroups(true)
  *                 .build())
+ *             .name("My-Google-Workspace-Connection")
+ *             .strategy("google-apps")
  *             .build());
  * 
  *         var myDirectory = new ConnectionDirectory("myDirectory", ConnectionDirectoryArgs.builder()
@@ -69,7 +69,6 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var myGroups = new ConnectionDirectorySynchronizedGroups("myGroups", ConnectionDirectorySynchronizedGroupsArgs.builder()
- *             .connectionId(myConnection.id())
  *             .groups(            
  *                 ConnectionDirectorySynchronizedGroupsGroupArgs.builder()
  *                     .id("group1")
@@ -80,6 +79,7 @@ import javax.annotation.Nullable;
  *                     .email("test}{@literal @}{@code test.com")
  *                     .directMembersCount(123)
  *                     .build())
+ *             .connectionId(myConnection.id())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(myDirectory)
  *                 .build());

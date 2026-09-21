@@ -16,9 +16,19 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const myEnterpriseConnection = new auth0.Connection("my_enterprise_connection", {
+ *     options: {
+ *         clientId: "1234567",
+ *         clientSecret: "1234567",
+ *         issuer: "https://example.okta.com",
+ *         jwksUri: "https://example.okta.com/oauth2/v1/keys",
+ *         tokenEndpoint: "https://example.okta.com/oauth2/v1/token",
+ *         authorizationEndpoint: "https://example.okta.com/oauth2/v1/authorize",
+ *     },
  *     name: "my-enterprise-connection",
  *     displayName: "My Enterprise Connection",
  *     strategy: "okta",
+ * });
+ * const myEnterpriseConnection2 = new auth0.Connection("my_enterprise_connection_2", {
  *     options: {
  *         clientId: "1234567",
  *         clientSecret: "1234567",
@@ -27,19 +37,9 @@ import * as utilities from "./utilities";
  *         tokenEndpoint: "https://example.okta.com/oauth2/v1/token",
  *         authorizationEndpoint: "https://example.okta.com/oauth2/v1/authorize",
  *     },
- * });
- * const myEnterpriseConnection2 = new auth0.Connection("my_enterprise_connection_2", {
  *     name: "my-enterprise-connection-2",
  *     displayName: "My Enterprise Connection 2",
  *     strategy: "okta",
- *     options: {
- *         clientId: "1234567",
- *         clientSecret: "1234567",
- *         issuer: "https://example.okta.com",
- *         jwksUri: "https://example.okta.com/oauth2/v1/keys",
- *         tokenEndpoint: "https://example.okta.com/oauth2/v1/token",
- *         authorizationEndpoint: "https://example.okta.com/oauth2/v1/authorize",
- *     },
  * });
  * // A resource for configuring an Auth0 Connection SCIM Configuration, using default values.
  * // Only one can be specified for a connection.
@@ -47,8 +47,6 @@ import * as utilities from "./utilities";
  * // A resource for configuring an Auth0 Connection SCIM Configuration, specifying `user_id_attribute` and `mapping`.
  * // Only one can be specified for a connection.
  * const myConnScimConfiguration = new auth0.ConnectionScimConfiguration("my_conn_scim_configuration", {
- *     connectionId: myEnterpriseConnection2.id,
- *     userIdAttribute: "attribute1",
  *     mappings: [
  *         {
  *             auth0: "auth0_attribute1",
@@ -59,6 +57,8 @@ import * as utilities from "./utilities";
  *             scim: "sacim_attribute2",
  *         },
  *     ],
+ *     connectionId: myEnterpriseConnection2.id,
+ *     userIdAttribute: "attribute1",
  * });
  * ```
  *

@@ -31,19 +31,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewTenant(ctx, "my_tenant", &auth0.TenantArgs{
-//				FriendlyName: pulumi.String("Tenant Name"),
-//				PictureUrl:   pulumi.String("http://example.com/logo.png"),
-//				SupportEmail: pulumi.String("support@example.com"),
-//				SupportUrl:   pulumi.String("http://example.com/support"),
-//				AllowedLogoutUrls: pulumi.StringArray{
-//					pulumi.String("http://example.com/logout"),
-//				},
-//				SessionLifetime: pulumi.Float64(8760),
-//				SandboxVersion:  pulumi.String("22"),
-//				EnabledLocales: pulumi.StringArray{
-//					pulumi.String("en"),
-//				},
-//				DefaultRedirectionUri: pulumi.String("https://example.com/login"),
 //				Flags: &auth0.TenantFlagsArgs{
 //					DisableClickjackProtectionHeaders:  pulumi.Bool(true),
 //					EnablePublicSignupUserExistsError:  pulumi.Bool(true),
@@ -70,6 +57,19 @@ import (
 //					},
 //					Mode: pulumi.String("allow"),
 //				},
+//				FriendlyName: pulumi.String("Tenant Name"),
+//				PictureUrl:   pulumi.String("http://example.com/logo.png"),
+//				SupportEmail: pulumi.String("support@example.com"),
+//				SupportUrl:   pulumi.String("http://example.com/support"),
+//				AllowedLogoutUrls: pulumi.StringArray{
+//					pulumi.String("http://example.com/logout"),
+//				},
+//				SessionLifetime: pulumi.Float64(8760),
+//				SandboxVersion:  pulumi.String("22"),
+//				EnabledLocales: pulumi.StringArray{
+//					pulumi.String("en"),
+//				},
+//				DefaultRedirectionUri: pulumi.String("https://example.com/login"),
 //			})
 //			if err != nil {
 //				return err

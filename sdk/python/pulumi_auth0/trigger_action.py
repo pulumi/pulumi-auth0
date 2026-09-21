@@ -154,16 +154,16 @@ class TriggerAction(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         login_alert = auth0.Action("login_alert",
+            supported_triggers={
+                "id": "post-login",
+                "version": "v3",
+            },
             name="Alert after login",
             code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
           console.log(\\"foo\\");
         };\\"
         \"\"\",
-            deploy=True,
-            supported_triggers={
-                "id": "post-login",
-                "version": "v3",
-            })
+            deploy=True)
         post_login_alert_action = auth0.TriggerAction("post_login_alert_action",
             trigger="post-login",
             action_id=login_alert.id)
@@ -210,16 +210,16 @@ class TriggerAction(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         login_alert = auth0.Action("login_alert",
+            supported_triggers={
+                "id": "post-login",
+                "version": "v3",
+            },
             name="Alert after login",
             code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
           console.log(\\"foo\\");
         };\\"
         \"\"\",
-            deploy=True,
-            supported_triggers={
-                "id": "post-login",
-                "version": "v3",
-            })
+            deploy=True)
         post_login_alert_action = auth0.TriggerAction("post_login_alert_action",
             trigger="post-login",
             action_id=login_alert.id)

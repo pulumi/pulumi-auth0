@@ -18,28 +18,28 @@ import * as utilities from "./utilities";
  * // Phone Notification Template - OTP Enrollment
  * // Configure the OTP enrollment phone notification template with SMS and voice support.
  * const otpEnrollment = new auth0.BrandingPhoneNotificationTemplate("otp_enrollment", {
- *     type: "otp_enroll",
- *     disabled: false,
  *     content: {
- *         from: "+1234567890",
  *         body: {
  *             text: "Your enrollment code is: @{code}",
  *             voice: "Your enrollment code is @{code}",
  *         },
+ *         from: "+1234567890",
  *     },
+ *     type: "otp_enroll",
+ *     disabled: false,
  * });
  * // Phone Notification Template - OTP Verification
  * // Configure the OTP verification phone notification template.
  * const otpVerification = new auth0.BrandingPhoneNotificationTemplate("otp_verification", {
- *     type: "otp_verify",
- *     disabled: false,
  *     content: {
- *         from: "+1234567890",
  *         body: {
  *             text: "Your verification code is: @{code}",
  *             voice: "Your verification code is @{code}",
  *         },
+ *         from: "+1234567890",
  *     },
+ *     type: "otp_verify",
+ *     disabled: false,
  * });
  * ```
  *

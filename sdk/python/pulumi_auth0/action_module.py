@@ -282,10 +282,10 @@ class ActionModule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  code: pulumi.Input[Optional[_builtins.str]] = None,
-                 dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleDependencyArgs', 'ActionModuleDependencyArgsDict']]]]] = None,
+                 dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleDependencyArgs', 'ActionModuleDependencyArgsDict', 'outputs.ActionModuleDependency']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  publish: pulumi.Input[Optional[_builtins.bool]] = None,
-                 secrets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleSecretArgs', 'ActionModuleSecretArgsDict']]]]] = None,
+                 secrets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleSecretArgs', 'ActionModuleSecretArgsDict', 'outputs.ActionModuleSecret']]]]] = None,
                  __props__=None):
         """
         Action Modules are reusable code packages that can be shared across multiple actions. They allow you to write common functionality once and use it in any action that needs it.
@@ -297,6 +297,14 @@ class ActionModule(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         my_module = auth0.ActionModule("my_module",
+            dependencies=[{
+                "name": "lodash",
+                "version": "4.17.21",
+            }],
+            secrets=[{
+                "name": "API_KEY",
+                "value": "my-secret-api-key",
+            }],
             name="My Shared Module",
             publish=True,
             code=\"\"\"/**
@@ -310,17 +318,17 @@ class ActionModule(pulumi.CustomResource):
             return date.toISOString();
           }
         };
-        \"\"\",
-            dependencies=[{
-                "name": "lodash",
-                "version": "4.17.21",
-            }],
-            secrets=[{
-                "name": "API_KEY",
-                "value": "my-secret-api-key",
-            }])
+        \"\"\")
         # Use the module in an action by referencing its id and version_id.
         my_action = auth0.Action("my_action",
+            supported_triggers={
+                "id": "post-login",
+                "version": "v3",
+            },
+            modules=[{
+                "module_id": my_module.id,
+                "module_version_id": my_module.version_id,
+            }],
             name="My Action",
             runtime="node22",
             deploy=True,
@@ -329,25 +337,17 @@ class ActionModule(pulumi.CustomResource):
         exports.onExecutePostLogin = async (event, api) => {
           console.log(myModule.greet(event.user.name));
         };
-        \"\"\",
-            modules=[{
-                "module_id": my_module.id,
-                "module_version_id": my_module.version_id,
-            }],
-            supported_triggers={
-                "id": "post-login",
-                "version": "v3",
-            })
+        \"\"\")
         ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] code: The source code of the action module.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionModuleDependencyArgs', 'ActionModuleDependencyArgsDict']]]] dependencies: List of third party npm modules, and their versions, that this action module depends on.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionModuleDependencyArgs', 'ActionModuleDependencyArgsDict', 'outputs.ActionModuleDependency']]]] dependencies: List of third party npm modules, and their versions, that this action module depends on.
         :param pulumi.Input[_builtins.str] name: The name of the action module.
         :param pulumi.Input[_builtins.bool] publish: Publishing a module will create a new immutable version of the module from the current draft. Actions using this module can then reference the published version.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionModuleSecretArgs', 'ActionModuleSecretArgsDict']]]] secrets: List of secrets that are included in the action module. Partial management of secrets is not supported.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionModuleSecretArgs', 'ActionModuleSecretArgsDict', 'outputs.ActionModuleSecret']]]] secrets: List of secrets that are included in the action module. Partial management of secrets is not supported.
         """
         ...
     @overload
@@ -365,6 +365,14 @@ class ActionModule(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         my_module = auth0.ActionModule("my_module",
+            dependencies=[{
+                "name": "lodash",
+                "version": "4.17.21",
+            }],
+            secrets=[{
+                "name": "API_KEY",
+                "value": "my-secret-api-key",
+            }],
             name="My Shared Module",
             publish=True,
             code=\"\"\"/**
@@ -378,17 +386,17 @@ class ActionModule(pulumi.CustomResource):
             return date.toISOString();
           }
         };
-        \"\"\",
-            dependencies=[{
-                "name": "lodash",
-                "version": "4.17.21",
-            }],
-            secrets=[{
-                "name": "API_KEY",
-                "value": "my-secret-api-key",
-            }])
+        \"\"\")
         # Use the module in an action by referencing its id and version_id.
         my_action = auth0.Action("my_action",
+            supported_triggers={
+                "id": "post-login",
+                "version": "v3",
+            },
+            modules=[{
+                "module_id": my_module.id,
+                "module_version_id": my_module.version_id,
+            }],
             name="My Action",
             runtime="node22",
             deploy=True,
@@ -397,15 +405,7 @@ class ActionModule(pulumi.CustomResource):
         exports.onExecutePostLogin = async (event, api) => {
           console.log(myModule.greet(event.user.name));
         };
-        \"\"\",
-            modules=[{
-                "module_id": my_module.id,
-                "module_version_id": my_module.version_id,
-            }],
-            supported_triggers={
-                "id": "post-login",
-                "version": "v3",
-            })
+        \"\"\")
         ```
 
 
@@ -425,10 +425,10 @@ class ActionModule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  code: pulumi.Input[Optional[_builtins.str]] = None,
-                 dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleDependencyArgs', 'ActionModuleDependencyArgsDict']]]]] = None,
+                 dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleDependencyArgs', 'ActionModuleDependencyArgsDict', 'outputs.ActionModuleDependency']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  publish: pulumi.Input[Optional[_builtins.bool]] = None,
-                 secrets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleSecretArgs', 'ActionModuleSecretArgsDict']]]]] = None,
+                 secrets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleSecretArgs', 'ActionModuleSecretArgsDict', 'outputs.ActionModuleSecret']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -463,12 +463,12 @@ class ActionModule(pulumi.CustomResource):
             actions_using_module_total: pulumi.Input[Optional[_builtins.int]] = None,
             all_changes_published: pulumi.Input[Optional[_builtins.bool]] = None,
             code: pulumi.Input[Optional[_builtins.str]] = None,
-            dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleDependencyArgs', 'ActionModuleDependencyArgsDict']]]]] = None,
+            dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleDependencyArgs', 'ActionModuleDependencyArgsDict', 'outputs.ActionModuleDependency']]]]] = None,
             latest_version_number: pulumi.Input[Optional[_builtins.int]] = None,
-            latest_versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleLatestVersionArgs', 'ActionModuleLatestVersionArgsDict']]]]] = None,
+            latest_versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleLatestVersionArgs', 'ActionModuleLatestVersionArgsDict', 'outputs.ActionModuleLatestVersion']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             publish: pulumi.Input[Optional[_builtins.bool]] = None,
-            secrets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleSecretArgs', 'ActionModuleSecretArgsDict']]]]] = None,
+            secrets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleSecretArgs', 'ActionModuleSecretArgsDict', 'outputs.ActionModuleSecret']]]]] = None,
             version_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ActionModule':
         """
         Get an existing ActionModule resource's state with the given name, id, and optional extra
@@ -480,12 +480,12 @@ class ActionModule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] actions_using_module_total: The number of deployed actions using this module.
         :param pulumi.Input[_builtins.bool] all_changes_published: Whether all draft changes have been published as a version.
         :param pulumi.Input[_builtins.str] code: The source code of the action module.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionModuleDependencyArgs', 'ActionModuleDependencyArgsDict']]]] dependencies: List of third party npm modules, and their versions, that this action module depends on.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionModuleDependencyArgs', 'ActionModuleDependencyArgsDict', 'outputs.ActionModuleDependency']]]] dependencies: List of third party npm modules, and their versions, that this action module depends on.
         :param pulumi.Input[_builtins.int] latest_version_number: The version number of the latest published version.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionModuleLatestVersionArgs', 'ActionModuleLatestVersionArgsDict']]]] latest_versions: The latest published version of the action module.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionModuleLatestVersionArgs', 'ActionModuleLatestVersionArgsDict', 'outputs.ActionModuleLatestVersion']]]] latest_versions: The latest published version of the action module.
         :param pulumi.Input[_builtins.str] name: The name of the action module.
         :param pulumi.Input[_builtins.bool] publish: Publishing a module will create a new immutable version of the module from the current draft. Actions using this module can then reference the published version.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionModuleSecretArgs', 'ActionModuleSecretArgsDict']]]] secrets: List of secrets that are included in the action module. Partial management of secrets is not supported.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionModuleSecretArgs', 'ActionModuleSecretArgsDict', 'outputs.ActionModuleSecret']]]] secrets: List of secrets that are included in the action module. Partial management of secrets is not supported.
         :param pulumi.Input[_builtins.str] version_id: Version ID of the module. This value is available if `publish` is set to true.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

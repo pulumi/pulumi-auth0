@@ -97,7 +97,7 @@ class ResourceServerScopes(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  resource_server_identifier: pulumi.Input[Optional[_builtins.str]] = None,
-                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceServerScopesScopeArgs', 'ResourceServerScopesScopeArgsDict']]]]] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceServerScopesScopeArgs', 'ResourceServerScopesScopeArgsDict', 'outputs.ResourceServerScopesScope']]]]] = None,
                  __props__=None):
         """
         With this resource, you can manage scopes (permissions) associated with a resource server (API).
@@ -117,7 +117,6 @@ class ResourceServerScopes(pulumi.CustomResource):
             name="Example Resource Server (Managed by Terraform)",
             identifier="https://api.example.com")
         my_api_scopes = auth0.ResourceServerScopes("my_api_scopes",
-            resource_server_identifier=my_api.identifier,
             scopes=[
                 {
                     "name": "create:appointments",
@@ -127,7 +126,8 @@ class ResourceServerScopes(pulumi.CustomResource):
                     "name": "read:appointments",
                     "description": "Ability to read appointments",
                 },
-            ])
+            ],
+            resource_server_identifier=my_api.identifier)
         ```
 
         ## Import
@@ -169,7 +169,6 @@ class ResourceServerScopes(pulumi.CustomResource):
             name="Example Resource Server (Managed by Terraform)",
             identifier="https://api.example.com")
         my_api_scopes = auth0.ResourceServerScopes("my_api_scopes",
-            resource_server_identifier=my_api.identifier,
             scopes=[
                 {
                     "name": "create:appointments",
@@ -179,7 +178,8 @@ class ResourceServerScopes(pulumi.CustomResource):
                     "name": "read:appointments",
                     "description": "Ability to read appointments",
                 },
-            ])
+            ],
+            resource_server_identifier=my_api.identifier)
         ```
 
         ## Import
@@ -209,7 +209,7 @@ class ResourceServerScopes(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  resource_server_identifier: pulumi.Input[Optional[_builtins.str]] = None,
-                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceServerScopesScopeArgs', 'ResourceServerScopesScopeArgsDict']]]]] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceServerScopesScopeArgs', 'ResourceServerScopesScopeArgsDict', 'outputs.ResourceServerScopesScope']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -236,7 +236,7 @@ class ResourceServerScopes(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             resource_server_identifier: pulumi.Input[Optional[_builtins.str]] = None,
-            scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceServerScopesScopeArgs', 'ResourceServerScopesScopeArgsDict']]]]] = None) -> 'ResourceServerScopes':
+            scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceServerScopesScopeArgs', 'ResourceServerScopesScopeArgsDict', 'outputs.ResourceServerScopesScope']]]]] = None) -> 'ResourceServerScopes':
         """
         Get an existing ResourceServerScopes resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

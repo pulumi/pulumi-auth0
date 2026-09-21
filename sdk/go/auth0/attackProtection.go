@@ -30,14 +30,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewAttackProtection(ctx, "my_protection", &auth0.AttackProtectionArgs{
 //				SuspiciousIpThrottling: &auth0.AttackProtectionSuspiciousIpThrottlingArgs{
-//					Enabled: pulumi.Bool(true),
-//					Shields: pulumi.StringArray{
-//						pulumi.String("admin_notification"),
-//						pulumi.String("block"),
-//					},
-//					Allowlists: pulumi.StringArray{
-//						pulumi.String("192.168.1.1"),
-//					},
 //					PreLogin: &auth0.AttackProtectionSuspiciousIpThrottlingPreLoginArgs{
 //						MaxAttempts: pulumi.Int(100),
 //						Rate:        pulumi.Int(864000),
@@ -45,6 +37,14 @@ import (
 //					PreUserRegistration: &auth0.AttackProtectionSuspiciousIpThrottlingPreUserRegistrationArgs{
 //						MaxAttempts: pulumi.Int(50),
 //						Rate:        pulumi.Int(1200),
+//					},
+//					Enabled: pulumi.Bool(true),
+//					Shields: pulumi.StringArray{
+//						pulumi.String("admin_notification"),
+//						pulumi.String("block"),
+//					},
+//					Allowlists: pulumi.StringArray{
+//						pulumi.String("192.168.1.1"),
 //					},
 //				},
 //				BruteForceProtection: &auth0.AttackProtectionBruteForceProtectionArgs{
@@ -60,15 +60,6 @@ import (
 //					},
 //				},
 //				BreachedPasswordDetection: &auth0.AttackProtectionBreachedPasswordDetectionArgs{
-//					AdminNotificationFrequencies: pulumi.StringArray{
-//						pulumi.String("daily"),
-//					},
-//					Enabled: pulumi.Bool(true),
-//					Method:  pulumi.String("standard"),
-//					Shields: pulumi.StringArray{
-//						pulumi.String("admin_notification"),
-//						pulumi.String("block"),
-//					},
 //					PreUserRegistration: &auth0.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs{
 //						Shields: pulumi.StringArray{
 //							pulumi.String("admin_notification"),
@@ -80,6 +71,15 @@ import (
 //							pulumi.String("admin_notification"),
 //							pulumi.String("block"),
 //						},
+//					},
+//					AdminNotificationFrequencies: pulumi.StringArray{
+//						pulumi.String("daily"),
+//					},
+//					Enabled: pulumi.Bool(true),
+//					Method:  pulumi.String("standard"),
+//					Shields: pulumi.StringArray{
+//						pulumi.String("admin_notification"),
+//						pulumi.String("block"),
 //					},
 //				},
 //				BotDetection: &auth0.AttackProtectionBotDetectionArgs{
@@ -105,11 +105,11 @@ import (
 //			// Example 1: reCAPTCHA v2
 //			_, err = auth0.NewAttackProtection(ctx, "captcha_recaptcha_v2", &auth0.AttackProtectionArgs{
 //				Captcha: &auth0.AttackProtectionCaptchaArgs{
-//					ActiveProviderId: pulumi.String("recaptcha_v2"),
 //					RecaptchaV2: &auth0.AttackProtectionCaptchaRecaptchaV2Args{
 //						SiteKey: pulumi.String(recaptchaV2SiteKey),
 //						Secret:  pulumi.String(recaptchaV2Secret),
 //					},
+//					ActiveProviderId: pulumi.String("recaptcha_v2"),
 //				},
 //			})
 //			if err != nil {
@@ -124,12 +124,12 @@ import (
 //			// Example 2: reCAPTCHA Enterprise
 //			_, err = auth0.NewAttackProtection(ctx, "captcha_recaptcha_enterprise", &auth0.AttackProtectionArgs{
 //				Captcha: &auth0.AttackProtectionCaptchaArgs{
-//					ActiveProviderId: pulumi.String("recaptcha_enterprise"),
 //					RecaptchaEnterprise: &auth0.AttackProtectionCaptchaRecaptchaEnterpriseArgs{
 //						SiteKey:   pulumi.String(recaptchaEnterpriseSiteKey),
 //						ApiKey:    pulumi.String(recaptchaEnterpriseApiKey),
 //						ProjectId: pulumi.String(recaptchaEnterpriseProjectId),
 //					},
+//					ActiveProviderId: pulumi.String("recaptcha_enterprise"),
 //				},
 //			})
 //			if err != nil {
@@ -142,11 +142,11 @@ import (
 //			// Example 3: hCaptcha
 //			_, err = auth0.NewAttackProtection(ctx, "captcha_hcaptcha", &auth0.AttackProtectionArgs{
 //				Captcha: &auth0.AttackProtectionCaptchaArgs{
-//					ActiveProviderId: pulumi.String("hcaptcha"),
 //					Hcaptcha: &auth0.AttackProtectionCaptchaHcaptchaArgs{
 //						SiteKey: pulumi.String(hcaptchaSiteKey),
 //						Secret:  pulumi.String(hcaptchaSecret),
 //					},
+//					ActiveProviderId: pulumi.String("hcaptcha"),
 //				},
 //			})
 //			if err != nil {
@@ -159,11 +159,11 @@ import (
 //			// Example 4: Friendly Captcha
 //			_, err = auth0.NewAttackProtection(ctx, "captcha_friendly_captcha", &auth0.AttackProtectionArgs{
 //				Captcha: &auth0.AttackProtectionCaptchaArgs{
-//					ActiveProviderId: pulumi.String("friendly_captcha"),
 //					FriendlyCaptcha: &auth0.AttackProtectionCaptchaFriendlyCaptchaArgs{
 //						SiteKey: pulumi.String(friendlyCaptchaSiteKey),
 //						Secret:  pulumi.String(friendlyCaptchaSecret),
 //					},
+//					ActiveProviderId: pulumi.String("friendly_captcha"),
 //				},
 //			})
 //			if err != nil {
@@ -176,7 +176,6 @@ import (
 //			// Example 5: Arkose Labs
 //			_, err = auth0.NewAttackProtection(ctx, "captcha_arkose", &auth0.AttackProtectionArgs{
 //				Captcha: &auth0.AttackProtectionCaptchaArgs{
-//					ActiveProviderId: pulumi.String("arkose"),
 //					Arkose: &auth0.AttackProtectionCaptchaArkoseArgs{
 //						SiteKey:         pulumi.String(arkoseSiteKey),
 //						Secret:          pulumi.String(arkoseSecret),
@@ -184,6 +183,7 @@ import (
 //						VerifySubdomain: pulumi.String("verify.example.com"),
 //						FailOpen:        pulumi.Bool(false),
 //					},
+//					ActiveProviderId: pulumi.String("arkose"),
 //				},
 //			})
 //			if err != nil {

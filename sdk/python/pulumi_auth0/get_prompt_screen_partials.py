@@ -76,7 +76,7 @@ class AwaitableGetPromptScreenPartialsResult(GetPromptScreenPartialsResult):
 
 
 def get_prompt_screen_partials(prompt_type: Optional[_builtins.str] = None,
-                               screen_partials: Optional[Sequence[Union['GetPromptScreenPartialsScreenPartialArgs', 'GetPromptScreenPartialsScreenPartialArgsDict']]] = None,
+                               screen_partials: Optional[Sequence[Union['GetPromptScreenPartialsScreenPartialArgs', 'GetPromptScreenPartialsScreenPartialArgsDict', 'outputs.GetPromptScreenPartialsScreenPartialResult']]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPromptScreenPartialsResult:
     """
     Data source to retrieve a specific Auth0 prompt screen partials by `prompt_type`.
@@ -92,7 +92,7 @@ def get_prompt_screen_partials(prompt_type: Optional[_builtins.str] = None,
 
 
     :param _builtins.str prompt_type: The type of prompt to customize.
-    :param Sequence[Union['GetPromptScreenPartialsScreenPartialArgs', 'GetPromptScreenPartialsScreenPartialArgsDict']] screen_partials: The screen partials associated with the prompt type.
+    :param Sequence[Union['GetPromptScreenPartialsScreenPartialArgs', 'GetPromptScreenPartialsScreenPartialArgsDict', 'outputs.GetPromptScreenPartialsScreenPartialResult']] screen_partials: The screen partials associated with the prompt type.
     """
     __args__ = dict()
     __args__['promptType'] = prompt_type
@@ -105,7 +105,7 @@ def get_prompt_screen_partials(prompt_type: Optional[_builtins.str] = None,
         prompt_type=pulumi.get(__ret__, 'prompt_type'),
         screen_partials=pulumi.get(__ret__, 'screen_partials'))
 def get_prompt_screen_partials_output(prompt_type: pulumi.Input[Optional[_builtins.str]] = None,
-                                      screen_partials: pulumi.Input[Optional[Optional[Sequence[Union['GetPromptScreenPartialsScreenPartialArgs', 'GetPromptScreenPartialsScreenPartialArgsDict']]]]] = None,
+                                      screen_partials: pulumi.Input[Optional[Optional[Sequence[Union['GetPromptScreenPartialsScreenPartialArgs', 'GetPromptScreenPartialsScreenPartialArgsDict', 'outputs.GetPromptScreenPartialsScreenPartialResult']]]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPromptScreenPartialsResult]:
     """
     Data source to retrieve a specific Auth0 prompt screen partials by `prompt_type`.
@@ -121,7 +121,7 @@ def get_prompt_screen_partials_output(prompt_type: pulumi.Input[Optional[_builti
 
 
     :param _builtins.str prompt_type: The type of prompt to customize.
-    :param Sequence[Union['GetPromptScreenPartialsScreenPartialArgs', 'GetPromptScreenPartialsScreenPartialArgsDict']] screen_partials: The screen partials associated with the prompt type.
+    :param Sequence[Union['GetPromptScreenPartialsScreenPartialArgs', 'GetPromptScreenPartialsScreenPartialArgsDict', 'outputs.GetPromptScreenPartialsScreenPartialResult']] screen_partials: The screen partials associated with the prompt type.
     """
     __args__ = dict()
     __args__['promptType'] = prompt_type

@@ -30,13 +30,13 @@ import (
 //			// Below action is created with custom-token-exchange as supported_triggers
 //			// This action is then linked using the action_id param to the token-exchange profile
 //			myAction, err := auth0.NewAction(ctx, "my_action", &auth0.ActionArgs{
-//				Name:   pulumi.String("TokenExchange-Action"),
-//				Code:   pulumi.String("exports.onExecuteCustomTokenExchange = async (event, api) => {\n\\tconsole.log(\\\"foo\\\")\n};\\\"\n"),
-//				Deploy: pulumi.Bool(true),
 //				SupportedTriggers: &auth0.ActionSupportedTriggersArgs{
 //					Id:      pulumi.String("custom-token-exchange"),
 //					Version: pulumi.String("v1"),
 //				},
+//				Name:   pulumi.String("TokenExchange-Action"),
+//				Code:   pulumi.String("exports.onExecuteCustomTokenExchange = async (event, api) => {\n\\tconsole.log(\\\"foo\\\")\n};\\\"\n"),
+//				Deploy: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

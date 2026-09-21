@@ -46,14 +46,14 @@ import (
 //			}
 //			// Create a Client by referencing the newly created organisation or by reference an existing one.
 //			myTestClient, err := auth0.NewClient(ctx, "my_test_client", &auth0.ClientArgs{
-//				Name:              pulumi.String("test_client"),
-//				OrganizationUsage: pulumi.String("allow"),
 //				DefaultOrganization: &auth0.ClientDefaultOrganizationArgs{
 //					OrganizationId: myOrganization.ID().ToIDOutput().ToStringOutput(),
 //					Flows: pulumi.StringArray{
 //						pulumi.String("client_credentials"),
 //					},
 //				},
+//				Name:              pulumi.String("test_client"),
+//				OrganizationUsage: pulumi.String("allow"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				myOrganization,
 //				newResourceServer,

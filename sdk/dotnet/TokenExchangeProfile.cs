@@ -26,17 +26,17 @@ namespace Pulumi.Auth0
     ///     // This action is then linked using the action_id param to the token-exchange profile
     ///     var myAction = new Auth0.Action("my_action", new()
     ///     {
+    ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
+    ///         {
+    ///             Id = "custom-token-exchange",
+    ///             Version = "v1",
+    ///         },
     ///         Name = "TokenExchange-Action",
     ///         Code = @"exports.onExecuteCustomTokenExchange = async (event, api) =&gt; {
     /// \tconsole.log(\""foo\"")
     /// };\""
     /// ",
     ///         Deploy = true,
-    ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
-    ///         {
-    ///             Id = "custom-token-exchange",
-    ///             Version = "v1",
-    ///         },
     ///     });
     /// 
     ///     var myTokenExchangeProfile = new Auth0.TokenExchangeProfile("my_token_exchange_profile", new()

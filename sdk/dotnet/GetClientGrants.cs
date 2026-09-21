@@ -31,15 +31,6 @@ namespace Pulumi.Auth0
         /// 
         ///     var myResourceServer = new Auth0.ResourceServer("my_resource_server", new()
         ///     {
-        ///         Name = "Example Resource Server (Managed by Terraform)",
-        ///         Identifier = "https://api.example.com/client-grant",
-        ///         AuthorizationDetails = new[]
-        ///         {
-        ///             new Auth0.Inputs.ResourceServerAuthorizationDetailArgs
-        ///             {
-        ///                 Type = "payment",
-        ///             },
-        ///         },
         ///         SubjectTypeAuthorization = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationArgs
         ///         {
         ///             User = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationUserArgs
@@ -47,11 +38,19 @@ namespace Pulumi.Auth0
         ///                 Policy = "allow_all",
         ///             },
         ///         },
+        ///         AuthorizationDetails = new[]
+        ///         {
+        ///             new Auth0.Inputs.ResourceServerAuthorizationDetailArgs
+        ///             {
+        ///                 Type = "payment",
+        ///             },
+        ///         },
+        ///         Name = "Example Resource Server (Managed by Terraform)",
+        ///         Identifier = "https://api.example.com/client-grant",
         ///     });
         /// 
         ///     var myScopes = new Auth0.ResourceServerScopes("my_scopes", new()
         ///     {
-        ///         ResourceServerIdentifier = myResourceServer.Identifier,
         ///         Scopes = new[]
         ///         {
         ///             new Auth0.Inputs.ResourceServerScopesScopeArgs
@@ -59,6 +58,7 @@ namespace Pulumi.Auth0
         ///                 Name = "create:foo",
         ///             },
         ///         },
+        ///         ResourceServerIdentifier = myResourceServer.Identifier,
         ///     }, new CustomResourceOptions
         ///     {
         ///         DependsOn =
@@ -121,15 +121,6 @@ namespace Pulumi.Auth0
         /// 
         ///     var myResourceServer = new Auth0.ResourceServer("my_resource_server", new()
         ///     {
-        ///         Name = "Example Resource Server (Managed by Terraform)",
-        ///         Identifier = "https://api.example.com/client-grant",
-        ///         AuthorizationDetails = new[]
-        ///         {
-        ///             new Auth0.Inputs.ResourceServerAuthorizationDetailArgs
-        ///             {
-        ///                 Type = "payment",
-        ///             },
-        ///         },
         ///         SubjectTypeAuthorization = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationArgs
         ///         {
         ///             User = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationUserArgs
@@ -137,11 +128,19 @@ namespace Pulumi.Auth0
         ///                 Policy = "allow_all",
         ///             },
         ///         },
+        ///         AuthorizationDetails = new[]
+        ///         {
+        ///             new Auth0.Inputs.ResourceServerAuthorizationDetailArgs
+        ///             {
+        ///                 Type = "payment",
+        ///             },
+        ///         },
+        ///         Name = "Example Resource Server (Managed by Terraform)",
+        ///         Identifier = "https://api.example.com/client-grant",
         ///     });
         /// 
         ///     var myScopes = new Auth0.ResourceServerScopes("my_scopes", new()
         ///     {
-        ///         ResourceServerIdentifier = myResourceServer.Identifier,
         ///         Scopes = new[]
         ///         {
         ///             new Auth0.Inputs.ResourceServerScopesScopeArgs
@@ -149,6 +148,7 @@ namespace Pulumi.Auth0
         ///                 Name = "create:foo",
         ///             },
         ///         },
+        ///         ResourceServerIdentifier = myResourceServer.Identifier,
         ///     }, new CustomResourceOptions
         ///     {
         ///         DependsOn =
@@ -211,15 +211,6 @@ namespace Pulumi.Auth0
         /// 
         ///     var myResourceServer = new Auth0.ResourceServer("my_resource_server", new()
         ///     {
-        ///         Name = "Example Resource Server (Managed by Terraform)",
-        ///         Identifier = "https://api.example.com/client-grant",
-        ///         AuthorizationDetails = new[]
-        ///         {
-        ///             new Auth0.Inputs.ResourceServerAuthorizationDetailArgs
-        ///             {
-        ///                 Type = "payment",
-        ///             },
-        ///         },
         ///         SubjectTypeAuthorization = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationArgs
         ///         {
         ///             User = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationUserArgs
@@ -227,11 +218,19 @@ namespace Pulumi.Auth0
         ///                 Policy = "allow_all",
         ///             },
         ///         },
+        ///         AuthorizationDetails = new[]
+        ///         {
+        ///             new Auth0.Inputs.ResourceServerAuthorizationDetailArgs
+        ///             {
+        ///                 Type = "payment",
+        ///             },
+        ///         },
+        ///         Name = "Example Resource Server (Managed by Terraform)",
+        ///         Identifier = "https://api.example.com/client-grant",
         ///     });
         /// 
         ///     var myScopes = new Auth0.ResourceServerScopes("my_scopes", new()
         ///     {
-        ///         ResourceServerIdentifier = myResourceServer.Identifier,
         ///         Scopes = new[]
         ///         {
         ///             new Auth0.Inputs.ResourceServerScopesScopeArgs
@@ -239,6 +238,7 @@ namespace Pulumi.Auth0
         ///                 Name = "create:foo",
         ///             },
         ///         },
+        ///         ResourceServerIdentifier = myResourceServer.Identifier,
         ///     }, new CustomResourceOptions
         ///     {
         ///         DependsOn =

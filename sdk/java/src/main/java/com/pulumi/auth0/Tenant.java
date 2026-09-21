@@ -61,15 +61,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var myTenant = new Tenant("myTenant", TenantArgs.builder()
- *             .friendlyName("Tenant Name")
- *             .pictureUrl("http://example.com/logo.png")
- *             .supportEmail("support}{@literal @}{@code example.com")
- *             .supportUrl("http://example.com/support")
- *             .allowedLogoutUrls("http://example.com/logout")
- *             .sessionLifetime(8760.0)
- *             .sandboxVersion("22")
- *             .enabledLocales("en")
- *             .defaultRedirectionUri("https://example.com/login")
  *             .flags(TenantFlagsArgs.builder()
  *                 .disableClickjackProtectionHeaders(true)
  *                 .enablePublicSignupUserExistsError(true)
@@ -95,6 +86,15 @@ import javax.annotation.Nullable;
  *                     "CA")
  *                 .mode("allow")
  *                 .build())
+ *             .friendlyName("Tenant Name")
+ *             .pictureUrl("http://example.com/logo.png")
+ *             .supportEmail("support}{@literal @}{@code example.com")
+ *             .supportUrl("http://example.com/support")
+ *             .allowedLogoutUrls("http://example.com/logout")
+ *             .sessionLifetime(8760.0)
+ *             .sandboxVersion("22")
+ *             .enabledLocales("en")
+ *             .defaultRedirectionUri("https://example.com/login")
  *             .build());
  * 
  *     }}{@code

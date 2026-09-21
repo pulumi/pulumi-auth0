@@ -47,29 +47,29 @@ import javax.annotation.Nullable;
  *         // Phone Notification Template - OTP Enrollment
  *         // Configure the OTP enrollment phone notification template with SMS and voice support.
  *         var otpEnrollment = new BrandingPhoneNotificationTemplate("otpEnrollment", BrandingPhoneNotificationTemplateArgs.builder()
- *             .type("otp_enroll")
- *             .disabled(false)
  *             .content(BrandingPhoneNotificationTemplateContentArgs.builder()
- *                 .from("+1234567890")
  *                 .body(BrandingPhoneNotificationTemplateContentBodyArgs.builder()
  *                     .text("Your enrollment code is: }{@literal @}{{@code code}}{@code ")
  *                     .voice("Your enrollment code is }{@literal @}{{@code code}}{@code ")
  *                     .build())
+ *                 .from("+1234567890")
  *                 .build())
+ *             .type("otp_enroll")
+ *             .disabled(false)
  *             .build());
  * 
  *         // Phone Notification Template - OTP Verification
  *         // Configure the OTP verification phone notification template.
  *         var otpVerification = new BrandingPhoneNotificationTemplate("otpVerification", BrandingPhoneNotificationTemplateArgs.builder()
- *             .type("otp_verify")
- *             .disabled(false)
  *             .content(BrandingPhoneNotificationTemplateContentArgs.builder()
- *                 .from("+1234567890")
  *                 .body(BrandingPhoneNotificationTemplateContentBodyArgs.builder()
  *                     .text("Your verification code is: }{@literal @}{{@code code}}{@code ")
  *                     .voice("Your verification code is }{@literal @}{{@code code}}{@code ")
  *                     .build())
+ *                 .from("+1234567890")
  *                 .build())
+ *             .type("otp_verify")
+ *             .disabled(false)
  *             .build());
  * 
  *     }}{@code

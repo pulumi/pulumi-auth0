@@ -200,11 +200,11 @@ class EmailProvider(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 credentials: pulumi.Input[Optional[Union['EmailProviderCredentialsArgs', 'EmailProviderCredentialsArgsDict']]] = None,
+                 credentials: pulumi.Input[Optional[Union['EmailProviderCredentialsArgs', 'EmailProviderCredentialsArgsDict', 'outputs.EmailProviderCredentials']]] = None,
                  default_from_address: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 settings: pulumi.Input[Optional[Union['EmailProviderSettingsArgs', 'EmailProviderSettingsArgsDict']]] = None,
+                 settings: pulumi.Input[Optional[Union['EmailProviderSettingsArgs', 'EmailProviderSettingsArgsDict', 'outputs.EmailProviderSettings']]] = None,
                  __props__=None):
         """
         With Auth0, you can have standard welcome, password reset, and account verification email-based workflows built right into Auth0. This resource allows you to configure email providers, so you can route all emails that are part of Auth0's authentication workflows through the supported high-volume email service of your choice.
@@ -222,54 +222,58 @@ class EmailProvider(pulumi.CustomResource):
 
         # This is an example on how to set up the email provider with Amazon SES.
         amazon_ses_email_provider = auth0.EmailProvider("amazon_ses_email_provider",
-            name="ses",
-            enabled=True,
-            default_from_address="accounts@example.com",
             credentials={
                 "access_key_id": "AKIAXXXXXXXXXXXXXXXX",
                 "secret_access_key": "7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 "region": "us-east-1",
-            })
+            },
+            name="ses",
+            enabled=True,
+            default_from_address="accounts@example.com")
         # This is an example on how to set up the email provider with SMTP.
         smtp_email_provider = auth0.EmailProvider("smtp_email_provider",
-            name="smtp",
-            enabled=True,
-            default_from_address="accounts@example.com",
             credentials={
                 "smtp_host": "your.smtp.host.com",
                 "smtp_port": 583,
                 "smtp_user": "SMTP Username",
                 "smtp_pass": "SMTP Password",
-            })
+            },
+            name="smtp",
+            enabled=True,
+            default_from_address="accounts@example.com")
         # This is an example on how to set up the email provider with Sendgrid.
         sendgrid_email_provider = auth0.EmailProvider("sendgrid_email_provider",
-            name="sendgrid",
-            enabled=True,
-            default_from_address="accounts@example.com",
             credentials={
                 "api_key": "secretAPIKey",
-            })
+            },
+            name="sendgrid",
+            enabled=True,
+            default_from_address="accounts@example.com")
         # This is an example on how to set up the email provider with Azure CS.
         azure_cs_email_provider = auth0.EmailProvider("azure_cs_email_provider",
-            name="azure_cs",
-            enabled=True,
-            default_from_address="accounts@example.com",
             credentials={
                 "azure_cs_connection_string": "azure_cs_connection_string",
-            })
+            },
+            name="azure_cs",
+            enabled=True,
+            default_from_address="accounts@example.com")
         # This is an example on how to set up the email provider with MS365.
         ms365_email_provider = auth0.EmailProvider("ms365_email_provider",
-            name="ms365",
-            enabled=True,
-            default_from_address="accounts@example.com",
             credentials={
                 "ms365_tenant_id": "ms365_tenant_id",
                 "ms365_client_id": "ms365_client_id",
                 "ms365_client_secret": "ms365_client_secret",
-            })
+            },
+            name="ms365",
+            enabled=True,
+            default_from_address="accounts@example.com")
         # Below is an example of how to set up a custom email provider.
         # The action with custom-email-provider as supported_triggers is a prerequisite.
         custom_email_provider_action = auth0.Action("custom_email_provider_action",
+            supported_triggers={
+                "id": "custom-email-provider",
+                "version": "v1",
+            },
             name="custom-email-provider-action",
             runtime="node22",
             deploy=True,
@@ -284,16 +288,12 @@ class EmailProvider(pulumi.CustomResource):
           console.log(event);
           return;
          };
-        \"\"\",
-            supported_triggers={
-                "id": "custom-email-provider",
-                "version": "v1",
-            })
+        \"\"\")
         custom_email_provider = auth0.EmailProvider("custom_email_provider",
+            credentials={},
             name="custom",
             enabled=True,
             default_from_address="accounts@example.com",
-            credentials={},
             opts = pulumi.ResourceOptions(depends_on=[custom_email_provider_action]))
         ```
 
@@ -313,11 +313,11 @@ class EmailProvider(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['EmailProviderCredentialsArgs', 'EmailProviderCredentialsArgsDict']] credentials: Configuration settings for the credentials for the email provider.
+        :param pulumi.Input[Union['EmailProviderCredentialsArgs', 'EmailProviderCredentialsArgsDict', 'outputs.EmailProviderCredentials']] credentials: Configuration settings for the credentials for the email provider.
         :param pulumi.Input[_builtins.str] default_from_address: Email address to use as the sender when no other "from" address is specified.
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether the email provider is enabled.
         :param pulumi.Input[_builtins.str] name: Name of the email provider. Options include `azure_cs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
-        :param pulumi.Input[Union['EmailProviderSettingsArgs', 'EmailProviderSettingsArgsDict']] settings: Specific email provider settings.
+        :param pulumi.Input[Union['EmailProviderSettingsArgs', 'EmailProviderSettingsArgsDict', 'outputs.EmailProviderSettings']] settings: Specific email provider settings.
         """
         ...
     @overload
@@ -341,54 +341,58 @@ class EmailProvider(pulumi.CustomResource):
 
         # This is an example on how to set up the email provider with Amazon SES.
         amazon_ses_email_provider = auth0.EmailProvider("amazon_ses_email_provider",
-            name="ses",
-            enabled=True,
-            default_from_address="accounts@example.com",
             credentials={
                 "access_key_id": "AKIAXXXXXXXXXXXXXXXX",
                 "secret_access_key": "7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 "region": "us-east-1",
-            })
+            },
+            name="ses",
+            enabled=True,
+            default_from_address="accounts@example.com")
         # This is an example on how to set up the email provider with SMTP.
         smtp_email_provider = auth0.EmailProvider("smtp_email_provider",
-            name="smtp",
-            enabled=True,
-            default_from_address="accounts@example.com",
             credentials={
                 "smtp_host": "your.smtp.host.com",
                 "smtp_port": 583,
                 "smtp_user": "SMTP Username",
                 "smtp_pass": "SMTP Password",
-            })
+            },
+            name="smtp",
+            enabled=True,
+            default_from_address="accounts@example.com")
         # This is an example on how to set up the email provider with Sendgrid.
         sendgrid_email_provider = auth0.EmailProvider("sendgrid_email_provider",
-            name="sendgrid",
-            enabled=True,
-            default_from_address="accounts@example.com",
             credentials={
                 "api_key": "secretAPIKey",
-            })
+            },
+            name="sendgrid",
+            enabled=True,
+            default_from_address="accounts@example.com")
         # This is an example on how to set up the email provider with Azure CS.
         azure_cs_email_provider = auth0.EmailProvider("azure_cs_email_provider",
-            name="azure_cs",
-            enabled=True,
-            default_from_address="accounts@example.com",
             credentials={
                 "azure_cs_connection_string": "azure_cs_connection_string",
-            })
+            },
+            name="azure_cs",
+            enabled=True,
+            default_from_address="accounts@example.com")
         # This is an example on how to set up the email provider with MS365.
         ms365_email_provider = auth0.EmailProvider("ms365_email_provider",
-            name="ms365",
-            enabled=True,
-            default_from_address="accounts@example.com",
             credentials={
                 "ms365_tenant_id": "ms365_tenant_id",
                 "ms365_client_id": "ms365_client_id",
                 "ms365_client_secret": "ms365_client_secret",
-            })
+            },
+            name="ms365",
+            enabled=True,
+            default_from_address="accounts@example.com")
         # Below is an example of how to set up a custom email provider.
         # The action with custom-email-provider as supported_triggers is a prerequisite.
         custom_email_provider_action = auth0.Action("custom_email_provider_action",
+            supported_triggers={
+                "id": "custom-email-provider",
+                "version": "v1",
+            },
             name="custom-email-provider-action",
             runtime="node22",
             deploy=True,
@@ -403,16 +407,12 @@ class EmailProvider(pulumi.CustomResource):
           console.log(event);
           return;
          };
-        \"\"\",
-            supported_triggers={
-                "id": "custom-email-provider",
-                "version": "v1",
-            })
+        \"\"\")
         custom_email_provider = auth0.EmailProvider("custom_email_provider",
+            credentials={},
             name="custom",
             enabled=True,
             default_from_address="accounts@example.com",
-            credentials={},
             opts = pulumi.ResourceOptions(depends_on=[custom_email_provider_action]))
         ```
 
@@ -445,11 +445,11 @@ class EmailProvider(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 credentials: pulumi.Input[Optional[Union['EmailProviderCredentialsArgs', 'EmailProviderCredentialsArgsDict']]] = None,
+                 credentials: pulumi.Input[Optional[Union['EmailProviderCredentialsArgs', 'EmailProviderCredentialsArgsDict', 'outputs.EmailProviderCredentials']]] = None,
                  default_from_address: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 settings: pulumi.Input[Optional[Union['EmailProviderSettingsArgs', 'EmailProviderSettingsArgsDict']]] = None,
+                 settings: pulumi.Input[Optional[Union['EmailProviderSettingsArgs', 'EmailProviderSettingsArgsDict', 'outputs.EmailProviderSettings']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -478,11 +478,11 @@ class EmailProvider(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            credentials: pulumi.Input[Optional[Union['EmailProviderCredentialsArgs', 'EmailProviderCredentialsArgsDict']]] = None,
+            credentials: pulumi.Input[Optional[Union['EmailProviderCredentialsArgs', 'EmailProviderCredentialsArgsDict', 'outputs.EmailProviderCredentials']]] = None,
             default_from_address: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            settings: pulumi.Input[Optional[Union['EmailProviderSettingsArgs', 'EmailProviderSettingsArgsDict']]] = None) -> 'EmailProvider':
+            settings: pulumi.Input[Optional[Union['EmailProviderSettingsArgs', 'EmailProviderSettingsArgsDict', 'outputs.EmailProviderSettings']]] = None) -> 'EmailProvider':
         """
         Get an existing EmailProvider resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -490,11 +490,11 @@ class EmailProvider(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['EmailProviderCredentialsArgs', 'EmailProviderCredentialsArgsDict']] credentials: Configuration settings for the credentials for the email provider.
+        :param pulumi.Input[Union['EmailProviderCredentialsArgs', 'EmailProviderCredentialsArgsDict', 'outputs.EmailProviderCredentials']] credentials: Configuration settings for the credentials for the email provider.
         :param pulumi.Input[_builtins.str] default_from_address: Email address to use as the sender when no other "from" address is specified.
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether the email provider is enabled.
         :param pulumi.Input[_builtins.str] name: Name of the email provider. Options include `azure_cs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
-        :param pulumi.Input[Union['EmailProviderSettingsArgs', 'EmailProviderSettingsArgsDict']] settings: Specific email provider settings.
+        :param pulumi.Input[Union['EmailProviderSettingsArgs', 'EmailProviderSettingsArgsDict', 'outputs.EmailProviderSettings']] settings: Specific email provider settings.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -136,7 +136,7 @@ class PromptScreenPartial(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 insertion_points: pulumi.Input[Optional[Union['PromptScreenPartialInsertionPointsArgs', 'PromptScreenPartialInsertionPointsArgsDict']]] = None,
+                 insertion_points: pulumi.Input[Optional[Union['PromptScreenPartialInsertionPointsArgs', 'PromptScreenPartialInsertionPointsArgsDict', 'outputs.PromptScreenPartialInsertionPoints']]] = None,
                  prompt_type: pulumi.Input[Optional[_builtins.str]] = None,
                  screen_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -155,18 +155,18 @@ class PromptScreenPartial(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         login = auth0.PromptScreenPartial("login",
-            prompt_type="login",
-            screen_name="login",
             insertion_points={
                 "form_content_start": "<div>Form Content Start</div>",
                 "form_content_end": "<div>Form Content End</div>",
-            })
+            },
+            prompt_type="login",
+            screen_name="login")
         customized_consent = auth0.PromptScreenPartial("customized-consent",
-            prompt_type="customized-consent",
-            screen_name="customized-consent",
             insertion_points={
                 "form_content": "<div>Form Content</div>",
-            })
+            },
+            prompt_type="customized-consent",
+            screen_name="customized-consent")
         ```
 
         ## Import
@@ -186,7 +186,7 @@ class PromptScreenPartial(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['PromptScreenPartialInsertionPointsArgs', 'PromptScreenPartialInsertionPointsArgsDict']] insertion_points: The insertion points for the partials.
+        :param pulumi.Input[Union['PromptScreenPartialInsertionPointsArgs', 'PromptScreenPartialInsertionPointsArgsDict', 'outputs.PromptScreenPartialInsertionPoints']] insertion_points: The insertion points for the partials.
         :param pulumi.Input[_builtins.str] prompt_type: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`.
         :param pulumi.Input[_builtins.str] screen_name: The name of the screen associated with the partials
         """
@@ -211,18 +211,18 @@ class PromptScreenPartial(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         login = auth0.PromptScreenPartial("login",
-            prompt_type="login",
-            screen_name="login",
             insertion_points={
                 "form_content_start": "<div>Form Content Start</div>",
                 "form_content_end": "<div>Form Content End</div>",
-            })
+            },
+            prompt_type="login",
+            screen_name="login")
         customized_consent = auth0.PromptScreenPartial("customized-consent",
-            prompt_type="customized-consent",
-            screen_name="customized-consent",
             insertion_points={
                 "form_content": "<div>Form Content</div>",
-            })
+            },
+            prompt_type="customized-consent",
+            screen_name="customized-consent")
         ```
 
         ## Import
@@ -255,7 +255,7 @@ class PromptScreenPartial(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 insertion_points: pulumi.Input[Optional[Union['PromptScreenPartialInsertionPointsArgs', 'PromptScreenPartialInsertionPointsArgsDict']]] = None,
+                 insertion_points: pulumi.Input[Optional[Union['PromptScreenPartialInsertionPointsArgs', 'PromptScreenPartialInsertionPointsArgsDict', 'outputs.PromptScreenPartialInsertionPoints']]] = None,
                  prompt_type: pulumi.Input[Optional[_builtins.str]] = None,
                  screen_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -284,7 +284,7 @@ class PromptScreenPartial(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            insertion_points: pulumi.Input[Optional[Union['PromptScreenPartialInsertionPointsArgs', 'PromptScreenPartialInsertionPointsArgsDict']]] = None,
+            insertion_points: pulumi.Input[Optional[Union['PromptScreenPartialInsertionPointsArgs', 'PromptScreenPartialInsertionPointsArgsDict', 'outputs.PromptScreenPartialInsertionPoints']]] = None,
             prompt_type: pulumi.Input[Optional[_builtins.str]] = None,
             screen_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'PromptScreenPartial':
         """
@@ -294,7 +294,7 @@ class PromptScreenPartial(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['PromptScreenPartialInsertionPointsArgs', 'PromptScreenPartialInsertionPointsArgsDict']] insertion_points: The insertion points for the partials.
+        :param pulumi.Input[Union['PromptScreenPartialInsertionPointsArgs', 'PromptScreenPartialInsertionPointsArgsDict', 'outputs.PromptScreenPartialInsertionPoints']] insertion_points: The insertion points for the partials.
         :param pulumi.Input[_builtins.str] prompt_type: The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`.
         :param pulumi.Input[_builtins.str] screen_name: The name of the screen associated with the partials
         """

@@ -54,35 +54,7 @@ import (
 //			json0 := string(tmpJSON0)
 //			// This is an example of an Auth0 connection.
 //			_, err = auth0.NewConnection(ctx, "my_connection", &auth0.ConnectionArgs{
-//				Name:               pulumi.String("Example-Connection"),
-//				IsDomainConnection: pulumi.Bool(true),
-//				Strategy:           pulumi.String("auth0"),
-//				Metadata: pulumi.StringMap{
-//					"key1": pulumi.String("foo"),
-//					"key2": pulumi.String("bar"),
-//				},
 //				Options: &auth0.ConnectionOptionsArgs{
-//					PasswordPolicy:               pulumi.String("excellent"),
-//					BruteForceProtection:         pulumi.Bool(true),
-//					StrategyVersion:              pulumi.Int(2),
-//					EnabledDatabaseCustomization: pulumi.Bool(true),
-//					ImportMode:                   pulumi.Bool(false),
-//					RequiresUsername:             pulumi.Bool(true),
-//					DisableSignup:                pulumi.Bool(false),
-//					CustomScripts: pulumi.StringMap{
-//						"get_user": pulumi.String("        function getByEmail(email, callback) {\n          return callback(new Error(\\\"Whoops!\\\"));\n        }\n"),
-//					},
-//					Configuration: pulumi.StringMap{
-//						"foo": pulumi.String("bar"),
-//						"bar": pulumi.String("baz"),
-//					},
-//					UpstreamParams: pulumi.String(json0),
-//					PasswordHistories: auth0.ConnectionOptionsPasswordHistoryArray{
-//						&auth0.ConnectionOptionsPasswordHistoryArgs{
-//							Enable: pulumi.Bool(true),
-//							Size:   pulumi.Int(3),
-//						},
-//					},
 //					PasswordNoPersonalInfo: &auth0.ConnectionOptionsPasswordNoPersonalInfoArgs{
 //						Enable: pulumi.Bool(true),
 //					},
@@ -107,6 +79,11 @@ import (
 //						Active:               pulumi.Bool(true),
 //						ReturnEnrollSettings: pulumi.Bool(true),
 //					},
+//					PasskeyOptions: &auth0.ConnectionOptionsPasskeyOptionsArgs{
+//						ChallengeUi:                  pulumi.String("both"),
+//						LocalEnrollmentEnabled:       pulumi.Bool(true),
+//						ProgressiveEnrollmentEnabled: pulumi.Bool(true),
+//					},
 //					AuthenticationMethods: auth0.ConnectionOptionsAuthenticationMethodArray{
 //						&auth0.ConnectionOptionsAuthenticationMethodArgs{
 //							Passkey: &auth0.ConnectionOptionsAuthenticationMethodPasskeyArgs{
@@ -117,11 +94,34 @@ import (
 //							},
 //						},
 //					},
-//					PasskeyOptions: &auth0.ConnectionOptionsPasskeyOptionsArgs{
-//						ChallengeUi:                  pulumi.String("both"),
-//						LocalEnrollmentEnabled:       pulumi.Bool(true),
-//						ProgressiveEnrollmentEnabled: pulumi.Bool(true),
+//					PasswordHistories: auth0.ConnectionOptionsPasswordHistoryArray{
+//						&auth0.ConnectionOptionsPasswordHistoryArgs{
+//							Enable: pulumi.Bool(true),
+//							Size:   pulumi.Int(3),
+//						},
 //					},
+//					PasswordPolicy:               pulumi.String("excellent"),
+//					BruteForceProtection:         pulumi.Bool(true),
+//					StrategyVersion:              pulumi.Int(2),
+//					EnabledDatabaseCustomization: pulumi.Bool(true),
+//					ImportMode:                   pulumi.Bool(false),
+//					RequiresUsername:             pulumi.Bool(true),
+//					DisableSignup:                pulumi.Bool(false),
+//					CustomScripts: pulumi.StringMap{
+//						"get_user": pulumi.String("        function getByEmail(email, callback) {\n          return callback(new Error(\\\"Whoops!\\\"));\n        }\n"),
+//					},
+//					Configuration: pulumi.StringMap{
+//						"foo": pulumi.String("bar"),
+//						"bar": pulumi.String("baz"),
+//					},
+//					UpstreamParams: pulumi.String(json0),
+//				},
+//				Name:               pulumi.String("Example-Connection"),
+//				IsDomainConnection: pulumi.Bool(true),
+//				Strategy:           pulumi.String("auth0"),
+//				Metadata: pulumi.StringMap{
+//					"key1": pulumi.String("foo"),
+//					"key2": pulumi.String("bar"),
 //				},
 //			})
 //			if err != nil {
@@ -134,10 +134,6 @@ import (
 //			//
 //			// NOTE: Write-only arguments require Terraform 1.11 or later.
 //			_, err = auth0.NewConnection(ctx, "my_connection_write_only_secret", &auth0.ConnectionArgs{
-//				Name:                         pulumi.String("Example-Connection-Write-Only-Secret"),
-//				Strategy:                     pulumi.String("oidc"),
-//				OptionsClientSecretWo:        pulumi.Any(connectionClientSecret),
-//				OptionsClientSecretWoVersion: pulumi.Int(1),
 //				Options: &auth0.ConnectionOptionsArgs{
 //					ClientId:              pulumi.String("1234567"),
 //					Type:                  pulumi.String("back_channel"),
@@ -152,6 +148,10 @@ import (
 //						pulumi.String("email"),
 //					},
 //				},
+//				Name:                         pulumi.String("Example-Connection-Write-Only-Secret"),
+//				Strategy:                     pulumi.String("oidc"),
+//				OptionsClientSecretWo:        pulumi.Any(connectionClientSecret),
+//				OptionsClientSecretWoVersion: pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err
@@ -180,8 +180,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// This is an example of a Google OAuth2 connection.
 //			_, err := auth0.NewConnection(ctx, "google_oauth2", &auth0.ConnectionArgs{
-//				Name:     pulumi.String("Google-OAuth2-Connection"),
-//				Strategy: pulumi.String("google-oauth2"),
 //				Options: &auth0.ConnectionOptionsArgs{
 //					ClientId:     pulumi.String("<client-id>"),
 //					ClientSecret: pulumi.String("<client-secret>"),
@@ -201,6 +199,8 @@ import (
 //						pulumi.String("gender"),
 //					},
 //				},
+//				Name:     pulumi.String("Google-OAuth2-Connection"),
+//				Strategy: pulumi.String("google-oauth2"),
 //			})
 //			if err != nil {
 //				return err
@@ -237,10 +237,6 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = auth0.NewConnection(ctx, "google_apps", &auth0.ConnectionArgs{
-//				Name:               pulumi.String("connection-google-apps"),
-//				IsDomainConnection: pulumi.Bool(false),
-//				Strategy:           pulumi.String("google-apps"),
-//				ShowAsButton:       pulumi.Bool(false),
 //				Options: &auth0.ConnectionOptionsArgs{
 //					ClientId:     pulumi.String(""),
 //					ClientSecret: pulumi.String(""),
@@ -263,6 +259,10 @@ import (
 //						pulumi.String("gender"),
 //					},
 //				},
+//				Name:               pulumi.String("connection-google-apps"),
+//				IsDomainConnection: pulumi.Bool(false),
+//				Strategy:           pulumi.String("google-apps"),
+//				ShowAsButton:       pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -289,8 +289,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// This is an example of a Facebook connection.
 //			_, err := auth0.NewConnection(ctx, "facebook", &auth0.ConnectionArgs{
-//				Name:     pulumi.String("Facebook-Connection"),
-//				Strategy: pulumi.String("facebook"),
 //				Options: &auth0.ConnectionOptionsArgs{
 //					ClientId:     pulumi.String("<client-id>"),
 //					ClientSecret: pulumi.String("<client-secret>"),
@@ -306,6 +304,8 @@ import (
 //						pulumi.String("gender"),
 //					},
 //				},
+//				Name:     pulumi.String("Facebook-Connection"),
+//				Strategy: pulumi.String("facebook"),
 //			})
 //			if err != nil {
 //				return err
@@ -332,8 +332,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// This is an example of an Apple connection.
 //			_, err := auth0.NewConnection(ctx, "apple", &auth0.ConnectionArgs{
-//				Name:     pulumi.String("Apple-Connection"),
-//				Strategy: pulumi.String("apple"),
 //				Options: &auth0.ConnectionOptionsArgs{
 //					ClientId:     pulumi.String("<client-id>"),
 //					ClientSecret: pulumi.String("-----BEGIN PRIVATE KEY-----\nMIHBAgEAMA0GCSqGSIb3DQEBAQUABIGsMIGpAgEAA\n-----END PRIVATE KEY-----"),
@@ -349,6 +347,8 @@ import (
 //						pulumi.String("gender"),
 //					},
 //				},
+//				Name:     pulumi.String("Apple-Connection"),
+//				Strategy: pulumi.String("apple"),
 //			})
 //			if err != nil {
 //				return err
@@ -375,8 +375,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// This is an example of an LinkedIn connection.
 //			_, err := auth0.NewConnection(ctx, "linkedin", &auth0.ConnectionArgs{
-//				Name:     pulumi.String("Linkedin-Connection"),
-//				Strategy: pulumi.String("linkedin"),
 //				Options: &auth0.ConnectionOptionsArgs{
 //					ClientId:        pulumi.String("<client-id>"),
 //					ClientSecret:    pulumi.String("<client-secret>"),
@@ -392,6 +390,8 @@ import (
 //						pulumi.String("gender"),
 //					},
 //				},
+//				Name:     pulumi.String("Linkedin-Connection"),
+//				Strategy: pulumi.String("linkedin"),
 //			})
 //			if err != nil {
 //				return err
@@ -418,8 +418,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// This is an example of an GitHub connection.
 //			_, err := auth0.NewConnection(ctx, "github", &auth0.ConnectionArgs{
-//				Name:     pulumi.String("GitHub-Connection"),
-//				Strategy: pulumi.String("github"),
 //				Options: &auth0.ConnectionOptionsArgs{
 //					ClientId:     pulumi.String("<client-id>"),
 //					ClientSecret: pulumi.String("<client-secret>"),
@@ -435,6 +433,8 @@ import (
 //						pulumi.String("gender"),
 //					},
 //				},
+//				Name:     pulumi.String("GitHub-Connection"),
+//				Strategy: pulumi.String("github"),
 //			})
 //			if err != nil {
 //				return err
@@ -461,8 +461,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// This is an example of an SalesForce connection.
 //			_, err := auth0.NewConnection(ctx, "salesforce", &auth0.ConnectionArgs{
-//				Name:     pulumi.String("Salesforce-Connection"),
-//				Strategy: pulumi.String("salesforce"),
 //				Options: &auth0.ConnectionOptionsArgs{
 //					ClientId:         pulumi.String("<client-id>"),
 //					ClientSecret:     pulumi.String("<client-secret>"),
@@ -477,6 +475,8 @@ import (
 //						pulumi.String("gender"),
 //					},
 //				},
+//				Name:     pulumi.String("Salesforce-Connection"),
+//				Strategy: pulumi.String("salesforce"),
 //			})
 //			if err != nil {
 //				return err
@@ -505,9 +505,17 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// This is an example of an OAuth2 connection.
 //			_, err := auth0.NewConnection(ctx, "oauth2", &auth0.ConnectionArgs{
-//				Name:     pulumi.String("OAuth2-Connection"),
-//				Strategy: pulumi.String("oauth2"),
 //				Options: &auth0.ConnectionOptionsArgs{
+//					CustomHeaders: auth0.ConnectionOptionsCustomHeaderArray{
+//						&auth0.ConnectionOptionsCustomHeaderArgs{
+//							Header: pulumi.String("bar"),
+//							Value:  pulumi.String("foo"),
+//						},
+//						&auth0.ConnectionOptionsCustomHeaderArgs{
+//							Header: pulumi.String("foo"),
+//							Value:  pulumi.String("bar"),
+//						},
+//					},
 //					ClientId:        pulumi.String("<client-id>"),
 //					ClientSecret:    pulumi.String("<client-secret>"),
 //					StrategyVersion: pulumi.Int(2),
@@ -520,16 +528,6 @@ import (
 //					AuthorizationEndpoint: pulumi.String("https://auth.example.com/oauth2/authorize"),
 //					PkceEnabled:           pulumi.Bool(true),
 //					IconUrl:               pulumi.String("https://auth.example.com/assets/logo.png"),
-//					CustomHeaders: auth0.ConnectionOptionsCustomHeaderArray{
-//						&auth0.ConnectionOptionsCustomHeaderArgs{
-//							Header: pulumi.String("bar"),
-//							Value:  pulumi.String("foo"),
-//						},
-//						&auth0.ConnectionOptionsCustomHeaderArgs{
-//							Header: pulumi.String("foo"),
-//							Value:  pulumi.String("bar"),
-//						},
-//					},
 //					Scripts: pulumi.StringMap{
 //						"fetchUserProfile": pulumi.String("        function fetchUserProfile(accessToken, context, callback) {\n          return callback(new Error(\\\"Whoops!\\\"));\n        }\n"),
 //					},
@@ -539,6 +537,8 @@ import (
 //						pulumi.String("gender"),
 //					},
 //				},
+//				Name:     pulumi.String("OAuth2-Connection"),
+//				Strategy: pulumi.String("oauth2"),
 //			})
 //			if err != nil {
 //				return err
@@ -575,10 +575,6 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = auth0.NewConnection(ctx, "ad", &auth0.ConnectionArgs{
-//				Name:         pulumi.String("connection-active-directory"),
-//				DisplayName:  pulumi.String("Active Directory Connection"),
-//				Strategy:     pulumi.String("ad"),
-//				ShowAsButton: pulumi.Bool(true),
 //				Options: &auth0.ConnectionOptionsArgs{
 //					DisableSelfServiceChangePassword: pulumi.Bool(true),
 //					BruteForceProtection:             pulumi.Bool(true),
@@ -603,6 +599,10 @@ import (
 //					UseKerberos:    pulumi.Bool(false),
 //					DisableCache:   pulumi.Bool(false),
 //				},
+//				Name:         pulumi.String("connection-active-directory"),
+//				DisplayName:  pulumi.String("Active Directory Connection"),
+//				Strategy:     pulumi.String("ad"),
+//				ShowAsButton: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -639,9 +639,6 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = auth0.NewConnection(ctx, "azure_ad", &auth0.ConnectionArgs{
-//				Name:         pulumi.String("connection-azure-ad"),
-//				Strategy:     pulumi.String("waad"),
-//				ShowAsButton: pulumi.Bool(true),
 //				Options: &auth0.ConnectionOptionsArgs{
 //					IdentityApi:     pulumi.String("azure-active-directory-v1.0"),
 //					ClientId:        pulumi.String("123456"),
@@ -674,6 +671,9 @@ import (
 //						pulumi.String("gender"),
 //					},
 //				},
+//				Name:         pulumi.String("connection-azure-ad"),
+//				Strategy:     pulumi.String("waad"),
+//				ShowAsButton: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -702,9 +702,11 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// This is an example of an Email connection.
 //			_, err := auth0.NewConnection(ctx, "passwordless_email", &auth0.ConnectionArgs{
-//				Strategy: pulumi.String("email"),
-//				Name:     pulumi.String("email"),
 //				Options: &auth0.ConnectionOptionsArgs{
+//					Totp: &auth0.ConnectionOptionsTotpArgs{
+//						TimeStep: pulumi.Int(300),
+//						Length:   pulumi.Int(6),
+//					},
 //					Name:                  pulumi.String("email"),
 //					From:                  pulumi.String("{{ application.name }} <root@auth0.com>"),
 //					Subject:               pulumi.String("Welcome to {{ application.name }}"),
@@ -718,11 +720,9 @@ import (
 //						"scope":         pulumi.String("openid email profile offline_access"),
 //						"response_type": pulumi.String("code"),
 //					},
-//					Totp: &auth0.ConnectionOptionsTotpArgs{
-//						TimeStep: pulumi.Int(300),
-//						Length:   pulumi.Int(6),
-//					},
 //				},
+//				Strategy: pulumi.String("email"),
+//				Name:     pulumi.String("email"),
 //			})
 //			if err != nil {
 //				return err
@@ -766,9 +766,20 @@ import (
 //			json0 := string(tmpJSON0)
 //			// This is an example of a SAML connection.
 //			_, err = auth0.NewConnection(ctx, "samlp", &auth0.ConnectionArgs{
-//				Name:     pulumi.String("SAML-Connection"),
-//				Strategy: pulumi.String("samlp"),
 //				Options: &auth0.ConnectionOptionsArgs{
+//					SigningKey: &auth0.ConnectionOptionsSigningKeyArgs{
+//						Key:  pulumi.String("-----BEGIN PRIVATE KEY-----\n...{your private key here}...\n-----END PRIVATE KEY-----"),
+//						Cert: pulumi.String("-----BEGIN CERTIFICATE-----\n...{your public key cert here}...\n-----END CERTIFICATE-----"),
+//					},
+//					DecryptionKey: &auth0.ConnectionOptionsDecryptionKeyArgs{
+//						Key:  pulumi.String("-----BEGIN PRIVATE KEY-----\n...{your private key here}...\n-----END PRIVATE KEY-----"),
+//						Cert: pulumi.String("-----BEGIN CERTIFICATE-----\n...{your public key cert here}...\n-----END CERTIFICATE-----"),
+//					},
+//					IdpInitiated: &auth0.ConnectionOptionsIdpInitiatedArgs{
+//						ClientId:             pulumi.String("client_id"),
+//						ClientProtocol:       pulumi.String("samlp"),
+//						ClientAuthorizeQuery: pulumi.String("type=code&timeout=30"),
+//					},
 //					Debug:                       pulumi.Bool(false),
 //					SigningCert:                 pulumi.String("<signing-certificate>"),
 //					SignInEndpoint:              pulumi.String("https://saml.provider/sign_in"),
@@ -813,20 +824,9 @@ import (
 //
 //					MetadataUrl: pulumi.String("https://saml.provider/imi/ns/FederationMetadata.xml"),
 //					FieldsMap:   pulumi.String(json0),
-//					SigningKey: &auth0.ConnectionOptionsSigningKeyArgs{
-//						Key:  pulumi.String("-----BEGIN PRIVATE KEY-----\n...{your private key here}...\n-----END PRIVATE KEY-----"),
-//						Cert: pulumi.String("-----BEGIN CERTIFICATE-----\n...{your public key cert here}...\n-----END CERTIFICATE-----"),
-//					},
-//					DecryptionKey: &auth0.ConnectionOptionsDecryptionKeyArgs{
-//						Key:  pulumi.String("-----BEGIN PRIVATE KEY-----\n...{your private key here}...\n-----END PRIVATE KEY-----"),
-//						Cert: pulumi.String("-----BEGIN CERTIFICATE-----\n...{your public key cert here}...\n-----END CERTIFICATE-----"),
-//					},
-//					IdpInitiated: &auth0.ConnectionOptionsIdpInitiatedArgs{
-//						ClientId:             pulumi.String("client_id"),
-//						ClientProtocol:       pulumi.String("samlp"),
-//						ClientAuthorizeQuery: pulumi.String("type=code&timeout=30"),
-//					},
 //				},
+//				Name:     pulumi.String("SAML-Connection"),
+//				Strategy: pulumi.String("samlp"),
 //			})
 //			if err != nil {
 //				return err
@@ -853,8 +853,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// This is an example of a WindowsLive connection.
 //			_, err := auth0.NewConnection(ctx, "windowslive", &auth0.ConnectionArgs{
-//				Name:     pulumi.String("Windowslive-Connection"),
-//				Strategy: pulumi.String("windowslive"),
 //				Options: &auth0.ConnectionOptionsArgs{
 //					ClientId:        pulumi.String("<client-id>"),
 //					ClientSecret:    pulumi.String("<client-secret>"),
@@ -869,6 +867,8 @@ import (
 //						pulumi.String("gender"),
 //					},
 //				},
+//				Name:     pulumi.String("Windowslive-Connection"),
+//				Strategy: pulumi.String("windowslive"),
 //			})
 //			if err != nil {
 //				return err
@@ -910,11 +910,15 @@ import (
 //			json0 := string(tmpJSON0)
 //			// This is an example of an OIDC connection.
 //			_, err = auth0.NewConnection(ctx, "oidc", &auth0.ConnectionArgs{
-//				Name:         pulumi.String("oidc-connection"),
-//				DisplayName:  pulumi.String("OIDC Connection"),
-//				Strategy:     pulumi.String("oidc"),
-//				ShowAsButton: pulumi.Bool(false),
 //				Options: &auth0.ConnectionOptionsArgs{
+//					ConnectionSettings: &auth0.ConnectionOptionsConnectionSettingsArgs{
+//						Pkce: pulumi.String("auto"),
+//					},
+//					AttributeMap: &auth0.ConnectionOptionsAttributeMapArgs{
+//						MappingMode:   pulumi.String("use_map"),
+//						UserinfoScope: pulumi.String("openid email profile groups"),
+//						Attributes:    pulumi.String(json0),
+//					},
 //					ClientId:     pulumi.String("1234567"),
 //					ClientSecret: pulumi.String("1234567"),
 //					DomainAliases: pulumi.StringArray{
@@ -939,15 +943,11 @@ import (
 //						pulumi.String("ethnicity"),
 //						pulumi.String("gender"),
 //					},
-//					ConnectionSettings: &auth0.ConnectionOptionsConnectionSettingsArgs{
-//						Pkce: pulumi.String("auto"),
-//					},
-//					AttributeMap: &auth0.ConnectionOptionsAttributeMapArgs{
-//						MappingMode:   pulumi.String("use_map"),
-//						UserinfoScope: pulumi.String("openid email profile groups"),
-//						Attributes:    pulumi.String(json0),
-//					},
 //				},
+//				Name:         pulumi.String("oidc-connection"),
+//				DisplayName:  pulumi.String("OIDC Connection"),
+//				Strategy:     pulumi.String("oidc"),
+//				ShowAsButton: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -977,16 +977,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string]map[string]string{
-//				"screen_name": map[string]string{
-//					"alias": "login_hint",
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			json0 := string(tmpJSON0)
-//			tmpJSON1, err := json.Marshal(map[string]string{
+//			tmpJSON0, err := json.Marshal(map[string]string{
 //				"name":           "${context.tokenset.name}",
 //				"email":          "${context.tokenset.email}",
 //				"email_verified": "${context.tokenset.email_verified}",
@@ -998,14 +989,27 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			json0 := string(tmpJSON0)
+//			tmpJSON1, err := json.Marshal(map[string]map[string]string{
+//				"screen_name": map[string]string{
+//					"alias": "login_hint",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			json1 := string(tmpJSON1)
 //			// This is an example of an Okta Workforce connection.
 //			_, err = auth0.NewConnection(ctx, "okta", &auth0.ConnectionArgs{
-//				Name:         pulumi.String("okta-connection"),
-//				DisplayName:  pulumi.String("Okta Workforce Connection"),
-//				Strategy:     pulumi.String("okta"),
-//				ShowAsButton: pulumi.Bool(false),
 //				Options: &auth0.ConnectionOptionsArgs{
+//					ConnectionSettings: &auth0.ConnectionOptionsConnectionSettingsArgs{
+//						Pkce: pulumi.String("auto"),
+//					},
+//					AttributeMap: &auth0.ConnectionOptionsAttributeMapArgs{
+//						MappingMode:   pulumi.String("basic_profile"),
+//						UserinfoScope: pulumi.String("openid email profile groups"),
+//						Attributes:    pulumi.String(json0),
+//					},
 //					ClientId:     pulumi.String("1234567"),
 //					ClientSecret: pulumi.String("1234567"),
 //					Domain:       pulumi.String("example.okta.com"),
@@ -1027,16 +1031,12 @@ import (
 //						pulumi.String("ethnicity"),
 //						pulumi.String("gender"),
 //					},
-//					UpstreamParams: pulumi.String(json0),
-//					ConnectionSettings: &auth0.ConnectionOptionsConnectionSettingsArgs{
-//						Pkce: pulumi.String("auto"),
-//					},
-//					AttributeMap: &auth0.ConnectionOptionsAttributeMapArgs{
-//						MappingMode:   pulumi.String("basic_profile"),
-//						UserinfoScope: pulumi.String("openid email profile groups"),
-//						Attributes:    pulumi.String(json1),
-//					},
+//					UpstreamParams: pulumi.String(json1),
 //				},
+//				Name:         pulumi.String("okta-connection"),
+//				DisplayName:  pulumi.String("Okta Workforce Connection"),
+//				Strategy:     pulumi.String("okta"),
+//				ShowAsButton: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err

@@ -23,7 +23,6 @@ namespace Pulumi.Auth0
     /// using System.Linq;
     /// using Pulumi;
     /// using Auth0 = Pulumi.Auth0;
-    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -36,7 +35,6 @@ namespace Pulumi.Auth0
     /// 
     ///     var resourceServerScopes = new Auth0.ResourceServerScopes("resource_server_scopes", new()
     ///     {
-    ///         ResourceServerIdentifier = resourceServer.Identifier,
     ///         Scopes = new[]
     ///         {
     ///             new Auth0.Inputs.ResourceServerScopesScopeArgs
@@ -56,6 +54,7 @@ namespace Pulumi.Auth0
     ///                 Name = "store:delete",
     ///             },
     ///         },
+    ///         ResourceServerIdentifier = resourceServer.Identifier,
     ///     });
     /// 
     ///     var myRole = new Auth0.Role("my_role", new()
@@ -69,13 +68,15 @@ namespace Pulumi.Auth0
     ///     }).ToList());
     /// 
     ///     var myRolePerm = new List&lt;Auth0.RolePermission&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; Std.Toset.Invoke(new()
+    ///     foreach (var range in scopesList.ToDictionary(item =&gt; {
+    ///         var entry = item.Value;
+    ///         return entry;
+    ///     }, item =&gt; {
+    ///         var entry = item.Value;
+    ///         return entry;
+    ///     }).Select(pair =&gt; new { pair.Key, pair.Value }))
     ///     {
-    ///         Input = scopesList,
-    ///     }).Result; rangeIndex++)
-    ///     {
-    ///         var range = new { Value = rangeIndex };
-    ///         myRolePerm.Add(new Auth0.RolePermission($"my_role_perm-{range.Value}", new()
+    ///         myRolePerm.Add(new Auth0.RolePermission($"my_role_perm-{range.Key}", new()
     ///         {
     ///             RoleId = myRole.Id,
     ///             ResourceServerIdentifier = resourceServer.Identifier,

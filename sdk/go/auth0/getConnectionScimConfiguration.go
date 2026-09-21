@@ -28,9 +28,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			myEnterpriseConnection, err := auth0.NewConnection(ctx, "my_enterprise_connection", &auth0.ConnectionArgs{
-//				Name:        pulumi.String("my-enterprise-connection"),
-//				DisplayName: pulumi.String("My Enterprise Connection"),
-//				Strategy:    pulumi.String("okta"),
 //				Options: &auth0.ConnectionOptionsArgs{
 //					ClientId:              pulumi.String("1234567"),
 //					ClientSecret:          pulumi.String("1234567"),
@@ -39,6 +36,9 @@ import (
 //					TokenEndpoint:         pulumi.String("https://example.okta.com/oauth2/v1/token"),
 //					AuthorizationEndpoint: pulumi.String("https://example.okta.com/oauth2/v1/authorize"),
 //				},
+//				Name:        pulumi.String("my-enterprise-connection"),
+//				DisplayName: pulumi.String("My Enterprise Connection"),
+//				Strategy:    pulumi.String("okta"),
 //			})
 //			if err != nil {
 //				return err

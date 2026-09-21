@@ -2334,9 +2334,9 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.ClientArgs;
      * import com.pulumi.auth0.ResourceServer;
      * import com.pulumi.auth0.ResourceServerArgs;
-     * import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
      * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationArgs;
      * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationUserArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
      * import com.pulumi.auth0.ResourceServerScopes;
      * import com.pulumi.auth0.ResourceServerScopesArgs;
      * import com.pulumi.auth0.inputs.ResourceServerScopesScopeArgs;
@@ -2363,23 +2363,23 @@ public final class Auth0Functions {
      *             .build());
      * 
      *         var myResourceServer = new ResourceServer("myResourceServer", ResourceServerArgs.builder()
-     *             .name("Example Resource Server (Managed by Terraform)")
-     *             .identifier("https://api.example.com/client-grant")
-     *             .authorizationDetails(ResourceServerAuthorizationDetailArgs.builder()
-     *                 .type("payment")
-     *                 .build())
      *             .subjectTypeAuthorization(ResourceServerSubjectTypeAuthorizationArgs.builder()
      *                 .user(ResourceServerSubjectTypeAuthorizationUserArgs.builder()
      *                     .policy("allow_all")
      *                     .build())
      *                 .build())
+     *             .authorizationDetails(ResourceServerAuthorizationDetailArgs.builder()
+     *                 .type("payment")
+     *                 .build())
+     *             .name("Example Resource Server (Managed by Terraform)")
+     *             .identifier("https://api.example.com/client-grant")
      *             .build());
      * 
      *         var myScopes = new ResourceServerScopes("myScopes", ResourceServerScopesArgs.builder()
-     *             .resourceServerIdentifier(myResourceServer.identifier())
      *             .scopes(ResourceServerScopesScopeArgs.builder()
      *                 .name("create:foo")
      *                 .build())
+     *             .resourceServerIdentifier(myResourceServer.identifier())
      *             .build(), CustomResourceOptions.builder()
      *                 .dependsOn(myResourceServer)
      *                 .build());
@@ -2430,9 +2430,9 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.ClientArgs;
      * import com.pulumi.auth0.ResourceServer;
      * import com.pulumi.auth0.ResourceServerArgs;
-     * import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
      * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationArgs;
      * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationUserArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
      * import com.pulumi.auth0.ResourceServerScopes;
      * import com.pulumi.auth0.ResourceServerScopesArgs;
      * import com.pulumi.auth0.inputs.ResourceServerScopesScopeArgs;
@@ -2459,23 +2459,23 @@ public final class Auth0Functions {
      *             .build());
      * 
      *         var myResourceServer = new ResourceServer("myResourceServer", ResourceServerArgs.builder()
-     *             .name("Example Resource Server (Managed by Terraform)")
-     *             .identifier("https://api.example.com/client-grant")
-     *             .authorizationDetails(ResourceServerAuthorizationDetailArgs.builder()
-     *                 .type("payment")
-     *                 .build())
      *             .subjectTypeAuthorization(ResourceServerSubjectTypeAuthorizationArgs.builder()
      *                 .user(ResourceServerSubjectTypeAuthorizationUserArgs.builder()
      *                     .policy("allow_all")
      *                     .build())
      *                 .build())
+     *             .authorizationDetails(ResourceServerAuthorizationDetailArgs.builder()
+     *                 .type("payment")
+     *                 .build())
+     *             .name("Example Resource Server (Managed by Terraform)")
+     *             .identifier("https://api.example.com/client-grant")
      *             .build());
      * 
      *         var myScopes = new ResourceServerScopes("myScopes", ResourceServerScopesArgs.builder()
-     *             .resourceServerIdentifier(myResourceServer.identifier())
      *             .scopes(ResourceServerScopesScopeArgs.builder()
      *                 .name("create:foo")
      *                 .build())
+     *             .resourceServerIdentifier(myResourceServer.identifier())
      *             .build(), CustomResourceOptions.builder()
      *                 .dependsOn(myResourceServer)
      *                 .build());
@@ -2526,9 +2526,9 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.ClientArgs;
      * import com.pulumi.auth0.ResourceServer;
      * import com.pulumi.auth0.ResourceServerArgs;
-     * import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
      * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationArgs;
      * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationUserArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
      * import com.pulumi.auth0.ResourceServerScopes;
      * import com.pulumi.auth0.ResourceServerScopesArgs;
      * import com.pulumi.auth0.inputs.ResourceServerScopesScopeArgs;
@@ -2555,23 +2555,23 @@ public final class Auth0Functions {
      *             .build());
      * 
      *         var myResourceServer = new ResourceServer("myResourceServer", ResourceServerArgs.builder()
-     *             .name("Example Resource Server (Managed by Terraform)")
-     *             .identifier("https://api.example.com/client-grant")
-     *             .authorizationDetails(ResourceServerAuthorizationDetailArgs.builder()
-     *                 .type("payment")
-     *                 .build())
      *             .subjectTypeAuthorization(ResourceServerSubjectTypeAuthorizationArgs.builder()
      *                 .user(ResourceServerSubjectTypeAuthorizationUserArgs.builder()
      *                     .policy("allow_all")
      *                     .build())
      *                 .build())
+     *             .authorizationDetails(ResourceServerAuthorizationDetailArgs.builder()
+     *                 .type("payment")
+     *                 .build())
+     *             .name("Example Resource Server (Managed by Terraform)")
+     *             .identifier("https://api.example.com/client-grant")
      *             .build());
      * 
      *         var myScopes = new ResourceServerScopes("myScopes", ResourceServerScopesArgs.builder()
-     *             .resourceServerIdentifier(myResourceServer.identifier())
      *             .scopes(ResourceServerScopesScopeArgs.builder()
      *                 .name("create:foo")
      *                 .build())
+     *             .resourceServerIdentifier(myResourceServer.identifier())
      *             .build(), CustomResourceOptions.builder()
      *                 .dependsOn(myResourceServer)
      *                 .build());
@@ -2622,9 +2622,9 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.ClientArgs;
      * import com.pulumi.auth0.ResourceServer;
      * import com.pulumi.auth0.ResourceServerArgs;
-     * import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
      * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationArgs;
      * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationUserArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
      * import com.pulumi.auth0.ResourceServerScopes;
      * import com.pulumi.auth0.ResourceServerScopesArgs;
      * import com.pulumi.auth0.inputs.ResourceServerScopesScopeArgs;
@@ -2651,23 +2651,23 @@ public final class Auth0Functions {
      *             .build());
      * 
      *         var myResourceServer = new ResourceServer("myResourceServer", ResourceServerArgs.builder()
-     *             .name("Example Resource Server (Managed by Terraform)")
-     *             .identifier("https://api.example.com/client-grant")
-     *             .authorizationDetails(ResourceServerAuthorizationDetailArgs.builder()
-     *                 .type("payment")
-     *                 .build())
      *             .subjectTypeAuthorization(ResourceServerSubjectTypeAuthorizationArgs.builder()
      *                 .user(ResourceServerSubjectTypeAuthorizationUserArgs.builder()
      *                     .policy("allow_all")
      *                     .build())
      *                 .build())
+     *             .authorizationDetails(ResourceServerAuthorizationDetailArgs.builder()
+     *                 .type("payment")
+     *                 .build())
+     *             .name("Example Resource Server (Managed by Terraform)")
+     *             .identifier("https://api.example.com/client-grant")
      *             .build());
      * 
      *         var myScopes = new ResourceServerScopes("myScopes", ResourceServerScopesArgs.builder()
-     *             .resourceServerIdentifier(myResourceServer.identifier())
      *             .scopes(ResourceServerScopesScopeArgs.builder()
      *                 .name("create:foo")
      *                 .build())
+     *             .resourceServerIdentifier(myResourceServer.identifier())
      *             .build(), CustomResourceOptions.builder()
      *                 .dependsOn(myResourceServer)
      *                 .build());
@@ -2718,9 +2718,9 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.ClientArgs;
      * import com.pulumi.auth0.ResourceServer;
      * import com.pulumi.auth0.ResourceServerArgs;
-     * import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
      * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationArgs;
      * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationUserArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
      * import com.pulumi.auth0.ResourceServerScopes;
      * import com.pulumi.auth0.ResourceServerScopesArgs;
      * import com.pulumi.auth0.inputs.ResourceServerScopesScopeArgs;
@@ -2747,23 +2747,23 @@ public final class Auth0Functions {
      *             .build());
      * 
      *         var myResourceServer = new ResourceServer("myResourceServer", ResourceServerArgs.builder()
-     *             .name("Example Resource Server (Managed by Terraform)")
-     *             .identifier("https://api.example.com/client-grant")
-     *             .authorizationDetails(ResourceServerAuthorizationDetailArgs.builder()
-     *                 .type("payment")
-     *                 .build())
      *             .subjectTypeAuthorization(ResourceServerSubjectTypeAuthorizationArgs.builder()
      *                 .user(ResourceServerSubjectTypeAuthorizationUserArgs.builder()
      *                     .policy("allow_all")
      *                     .build())
      *                 .build())
+     *             .authorizationDetails(ResourceServerAuthorizationDetailArgs.builder()
+     *                 .type("payment")
+     *                 .build())
+     *             .name("Example Resource Server (Managed by Terraform)")
+     *             .identifier("https://api.example.com/client-grant")
      *             .build());
      * 
      *         var myScopes = new ResourceServerScopes("myScopes", ResourceServerScopesArgs.builder()
-     *             .resourceServerIdentifier(myResourceServer.identifier())
      *             .scopes(ResourceServerScopesScopeArgs.builder()
      *                 .name("create:foo")
      *                 .build())
+     *             .resourceServerIdentifier(myResourceServer.identifier())
      *             .build(), CustomResourceOptions.builder()
      *                 .dependsOn(myResourceServer)
      *                 .build());
@@ -2814,9 +2814,9 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.ClientArgs;
      * import com.pulumi.auth0.ResourceServer;
      * import com.pulumi.auth0.ResourceServerArgs;
-     * import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
      * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationArgs;
      * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationUserArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
      * import com.pulumi.auth0.ResourceServerScopes;
      * import com.pulumi.auth0.ResourceServerScopesArgs;
      * import com.pulumi.auth0.inputs.ResourceServerScopesScopeArgs;
@@ -2843,23 +2843,23 @@ public final class Auth0Functions {
      *             .build());
      * 
      *         var myResourceServer = new ResourceServer("myResourceServer", ResourceServerArgs.builder()
-     *             .name("Example Resource Server (Managed by Terraform)")
-     *             .identifier("https://api.example.com/client-grant")
-     *             .authorizationDetails(ResourceServerAuthorizationDetailArgs.builder()
-     *                 .type("payment")
-     *                 .build())
      *             .subjectTypeAuthorization(ResourceServerSubjectTypeAuthorizationArgs.builder()
      *                 .user(ResourceServerSubjectTypeAuthorizationUserArgs.builder()
      *                     .policy("allow_all")
      *                     .build())
      *                 .build())
+     *             .authorizationDetails(ResourceServerAuthorizationDetailArgs.builder()
+     *                 .type("payment")
+     *                 .build())
+     *             .name("Example Resource Server (Managed by Terraform)")
+     *             .identifier("https://api.example.com/client-grant")
      *             .build());
      * 
      *         var myScopes = new ResourceServerScopes("myScopes", ResourceServerScopesArgs.builder()
-     *             .resourceServerIdentifier(myResourceServer.identifier())
      *             .scopes(ResourceServerScopesScopeArgs.builder()
      *                 .name("create:foo")
      *                 .build())
+     *             .resourceServerIdentifier(myResourceServer.identifier())
      *             .build(), CustomResourceOptions.builder()
      *                 .dependsOn(myResourceServer)
      *                 .build());
@@ -2910,9 +2910,9 @@ public final class Auth0Functions {
      * import com.pulumi.auth0.ClientArgs;
      * import com.pulumi.auth0.ResourceServer;
      * import com.pulumi.auth0.ResourceServerArgs;
-     * import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
      * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationArgs;
      * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationUserArgs;
+     * import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
      * import com.pulumi.auth0.ResourceServerScopes;
      * import com.pulumi.auth0.ResourceServerScopesArgs;
      * import com.pulumi.auth0.inputs.ResourceServerScopesScopeArgs;
@@ -2939,23 +2939,23 @@ public final class Auth0Functions {
      *             .build());
      * 
      *         var myResourceServer = new ResourceServer("myResourceServer", ResourceServerArgs.builder()
-     *             .name("Example Resource Server (Managed by Terraform)")
-     *             .identifier("https://api.example.com/client-grant")
-     *             .authorizationDetails(ResourceServerAuthorizationDetailArgs.builder()
-     *                 .type("payment")
-     *                 .build())
      *             .subjectTypeAuthorization(ResourceServerSubjectTypeAuthorizationArgs.builder()
      *                 .user(ResourceServerSubjectTypeAuthorizationUserArgs.builder()
      *                     .policy("allow_all")
      *                     .build())
      *                 .build())
+     *             .authorizationDetails(ResourceServerAuthorizationDetailArgs.builder()
+     *                 .type("payment")
+     *                 .build())
+     *             .name("Example Resource Server (Managed by Terraform)")
+     *             .identifier("https://api.example.com/client-grant")
      *             .build());
      * 
      *         var myScopes = new ResourceServerScopes("myScopes", ResourceServerScopesArgs.builder()
-     *             .resourceServerIdentifier(myResourceServer.identifier())
      *             .scopes(ResourceServerScopesScopeArgs.builder()
      *                 .name("create:foo")
      *                 .build())
+     *             .resourceServerIdentifier(myResourceServer.identifier())
      *             .build(), CustomResourceOptions.builder()
      *                 .dependsOn(myResourceServer)
      *                 .build());
@@ -4521,15 +4521,10 @@ public final class Auth0Functions {
      * 
      *     public static void stack(Context ctx) {
      *         var myProfile = new ConnectionProfile("myProfile", ConnectionProfileArgs.builder()
-     *             .name("My-Profile")
      *             .organization(ConnectionProfileOrganizationArgs.builder()
      *                 .showAsButton("optional")
      *                 .assignMembershipOnLogin("required")
      *                 .build())
-     *             .connectionNamePrefixTemplate("template1")
-     *             .enabledFeatures(            
-     *                 "scim",
-     *                 "universal_logout")
      *             .crossAppAccessResourceApp(ConnectionProfileCrossAppAccessResourceAppArgs.builder()
      *                 .status(ConnectionProfileCrossAppAccessResourceAppStatusArgs.builder()
      *                     .defaultValue("enabled")
@@ -4538,6 +4533,11 @@ public final class Auth0Functions {
      *                         "disabled")
      *                     .build())
      *                 .build())
+     *             .name("My-Profile")
+     *             .connectionNamePrefixTemplate("template1")
+     *             .enabledFeatures(            
+     *                 "scim",
+     *                 "universal_logout")
      *             .build());
      * 
      *         final var myProfileDs = Auth0Functions.getConnectionProfile(GetConnectionProfileArgs.builder()
@@ -4586,15 +4586,10 @@ public final class Auth0Functions {
      * 
      *     public static void stack(Context ctx) {
      *         var myProfile = new ConnectionProfile("myProfile", ConnectionProfileArgs.builder()
-     *             .name("My-Profile")
      *             .organization(ConnectionProfileOrganizationArgs.builder()
      *                 .showAsButton("optional")
      *                 .assignMembershipOnLogin("required")
      *                 .build())
-     *             .connectionNamePrefixTemplate("template1")
-     *             .enabledFeatures(            
-     *                 "scim",
-     *                 "universal_logout")
      *             .crossAppAccessResourceApp(ConnectionProfileCrossAppAccessResourceAppArgs.builder()
      *                 .status(ConnectionProfileCrossAppAccessResourceAppStatusArgs.builder()
      *                     .defaultValue("enabled")
@@ -4603,6 +4598,11 @@ public final class Auth0Functions {
      *                         "disabled")
      *                     .build())
      *                 .build())
+     *             .name("My-Profile")
+     *             .connectionNamePrefixTemplate("template1")
+     *             .enabledFeatures(            
+     *                 "scim",
+     *                 "universal_logout")
      *             .build());
      * 
      *         final var myProfileDs = Auth0Functions.getConnectionProfile(GetConnectionProfileArgs.builder()
@@ -4651,15 +4651,10 @@ public final class Auth0Functions {
      * 
      *     public static void stack(Context ctx) {
      *         var myProfile = new ConnectionProfile("myProfile", ConnectionProfileArgs.builder()
-     *             .name("My-Profile")
      *             .organization(ConnectionProfileOrganizationArgs.builder()
      *                 .showAsButton("optional")
      *                 .assignMembershipOnLogin("required")
      *                 .build())
-     *             .connectionNamePrefixTemplate("template1")
-     *             .enabledFeatures(            
-     *                 "scim",
-     *                 "universal_logout")
      *             .crossAppAccessResourceApp(ConnectionProfileCrossAppAccessResourceAppArgs.builder()
      *                 .status(ConnectionProfileCrossAppAccessResourceAppStatusArgs.builder()
      *                     .defaultValue("enabled")
@@ -4668,6 +4663,11 @@ public final class Auth0Functions {
      *                         "disabled")
      *                     .build())
      *                 .build())
+     *             .name("My-Profile")
+     *             .connectionNamePrefixTemplate("template1")
+     *             .enabledFeatures(            
+     *                 "scim",
+     *                 "universal_logout")
      *             .build());
      * 
      *         final var myProfileDs = Auth0Functions.getConnectionProfile(GetConnectionProfileArgs.builder()
@@ -4716,15 +4716,10 @@ public final class Auth0Functions {
      * 
      *     public static void stack(Context ctx) {
      *         var myProfile = new ConnectionProfile("myProfile", ConnectionProfileArgs.builder()
-     *             .name("My-Profile")
      *             .organization(ConnectionProfileOrganizationArgs.builder()
      *                 .showAsButton("optional")
      *                 .assignMembershipOnLogin("required")
      *                 .build())
-     *             .connectionNamePrefixTemplate("template1")
-     *             .enabledFeatures(            
-     *                 "scim",
-     *                 "universal_logout")
      *             .crossAppAccessResourceApp(ConnectionProfileCrossAppAccessResourceAppArgs.builder()
      *                 .status(ConnectionProfileCrossAppAccessResourceAppStatusArgs.builder()
      *                     .defaultValue("enabled")
@@ -4733,6 +4728,11 @@ public final class Auth0Functions {
      *                         "disabled")
      *                     .build())
      *                 .build())
+     *             .name("My-Profile")
+     *             .connectionNamePrefixTemplate("template1")
+     *             .enabledFeatures(            
+     *                 "scim",
+     *                 "universal_logout")
      *             .build());
      * 
      *         final var myProfileDs = Auth0Functions.getConnectionProfile(GetConnectionProfileArgs.builder()
@@ -4781,15 +4781,10 @@ public final class Auth0Functions {
      * 
      *     public static void stack(Context ctx) {
      *         var myProfile = new ConnectionProfile("myProfile", ConnectionProfileArgs.builder()
-     *             .name("My-Profile")
      *             .organization(ConnectionProfileOrganizationArgs.builder()
      *                 .showAsButton("optional")
      *                 .assignMembershipOnLogin("required")
      *                 .build())
-     *             .connectionNamePrefixTemplate("template1")
-     *             .enabledFeatures(            
-     *                 "scim",
-     *                 "universal_logout")
      *             .crossAppAccessResourceApp(ConnectionProfileCrossAppAccessResourceAppArgs.builder()
      *                 .status(ConnectionProfileCrossAppAccessResourceAppStatusArgs.builder()
      *                     .defaultValue("enabled")
@@ -4798,6 +4793,11 @@ public final class Auth0Functions {
      *                         "disabled")
      *                     .build())
      *                 .build())
+     *             .name("My-Profile")
+     *             .connectionNamePrefixTemplate("template1")
+     *             .enabledFeatures(            
+     *                 "scim",
+     *                 "universal_logout")
      *             .build());
      * 
      *         final var myProfileDs = Auth0Functions.getConnectionProfile(GetConnectionProfileArgs.builder()
@@ -4846,9 +4846,6 @@ public final class Auth0Functions {
      * 
      *     public static void stack(Context ctx) {
      *         var myEnterpriseConnection = new Connection("myEnterpriseConnection", ConnectionArgs.builder()
-     *             .name("my-enterprise-connection")
-     *             .displayName("My Enterprise Connection")
-     *             .strategy("okta")
      *             .options(ConnectionOptionsArgs.builder()
      *                 .clientId("1234567")
      *                 .clientSecret("1234567")
@@ -4857,6 +4854,9 @@ public final class Auth0Functions {
      *                 .tokenEndpoint("https://example.okta.com/oauth2/v1/token")
      *                 .authorizationEndpoint("https://example.okta.com/oauth2/v1/authorize")
      *                 .build())
+     *             .name("my-enterprise-connection")
+     *             .displayName("My Enterprise Connection")
+     *             .strategy("okta")
      *             .build());
      * 
      *         var myConnScimConfiguration = new ConnectionScimConfiguration("myConnScimConfiguration", ConnectionScimConfigurationArgs.builder()
@@ -4910,9 +4910,6 @@ public final class Auth0Functions {
      * 
      *     public static void stack(Context ctx) {
      *         var myEnterpriseConnection = new Connection("myEnterpriseConnection", ConnectionArgs.builder()
-     *             .name("my-enterprise-connection")
-     *             .displayName("My Enterprise Connection")
-     *             .strategy("okta")
      *             .options(ConnectionOptionsArgs.builder()
      *                 .clientId("1234567")
      *                 .clientSecret("1234567")
@@ -4921,6 +4918,9 @@ public final class Auth0Functions {
      *                 .tokenEndpoint("https://example.okta.com/oauth2/v1/token")
      *                 .authorizationEndpoint("https://example.okta.com/oauth2/v1/authorize")
      *                 .build())
+     *             .name("my-enterprise-connection")
+     *             .displayName("My Enterprise Connection")
+     *             .strategy("okta")
      *             .build());
      * 
      *         var myConnScimConfiguration = new ConnectionScimConfiguration("myConnScimConfiguration", ConnectionScimConfigurationArgs.builder()
@@ -4974,9 +4974,6 @@ public final class Auth0Functions {
      * 
      *     public static void stack(Context ctx) {
      *         var myEnterpriseConnection = new Connection("myEnterpriseConnection", ConnectionArgs.builder()
-     *             .name("my-enterprise-connection")
-     *             .displayName("My Enterprise Connection")
-     *             .strategy("okta")
      *             .options(ConnectionOptionsArgs.builder()
      *                 .clientId("1234567")
      *                 .clientSecret("1234567")
@@ -4985,6 +4982,9 @@ public final class Auth0Functions {
      *                 .tokenEndpoint("https://example.okta.com/oauth2/v1/token")
      *                 .authorizationEndpoint("https://example.okta.com/oauth2/v1/authorize")
      *                 .build())
+     *             .name("my-enterprise-connection")
+     *             .displayName("My Enterprise Connection")
+     *             .strategy("okta")
      *             .build());
      * 
      *         var myConnScimConfiguration = new ConnectionScimConfiguration("myConnScimConfiguration", ConnectionScimConfigurationArgs.builder()
@@ -5038,9 +5038,6 @@ public final class Auth0Functions {
      * 
      *     public static void stack(Context ctx) {
      *         var myEnterpriseConnection = new Connection("myEnterpriseConnection", ConnectionArgs.builder()
-     *             .name("my-enterprise-connection")
-     *             .displayName("My Enterprise Connection")
-     *             .strategy("okta")
      *             .options(ConnectionOptionsArgs.builder()
      *                 .clientId("1234567")
      *                 .clientSecret("1234567")
@@ -5049,6 +5046,9 @@ public final class Auth0Functions {
      *                 .tokenEndpoint("https://example.okta.com/oauth2/v1/token")
      *                 .authorizationEndpoint("https://example.okta.com/oauth2/v1/authorize")
      *                 .build())
+     *             .name("my-enterprise-connection")
+     *             .displayName("My Enterprise Connection")
+     *             .strategy("okta")
      *             .build());
      * 
      *         var myConnScimConfiguration = new ConnectionScimConfiguration("myConnScimConfiguration", ConnectionScimConfigurationArgs.builder()
@@ -5102,9 +5102,6 @@ public final class Auth0Functions {
      * 
      *     public static void stack(Context ctx) {
      *         var myEnterpriseConnection = new Connection("myEnterpriseConnection", ConnectionArgs.builder()
-     *             .name("my-enterprise-connection")
-     *             .displayName("My Enterprise Connection")
-     *             .strategy("okta")
      *             .options(ConnectionOptionsArgs.builder()
      *                 .clientId("1234567")
      *                 .clientSecret("1234567")
@@ -5113,6 +5110,9 @@ public final class Auth0Functions {
      *                 .tokenEndpoint("https://example.okta.com/oauth2/v1/token")
      *                 .authorizationEndpoint("https://example.okta.com/oauth2/v1/authorize")
      *                 .build())
+     *             .name("my-enterprise-connection")
+     *             .displayName("My Enterprise Connection")
+     *             .strategy("okta")
      *             .build());
      * 
      *         var myConnScimConfiguration = new ConnectionScimConfiguration("myConnScimConfiguration", ConnectionScimConfigurationArgs.builder()

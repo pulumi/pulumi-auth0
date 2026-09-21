@@ -34,16 +34,12 @@ namespace Pulumi.Auth0
     ///     // Reference the key in a Network ACL rule to allow only signed requests.
     ///     var allowSignedOnly = new Auth0.NetworkAcl("allow_signed_only", new()
     ///     {
-    ///         Description = "Block requests without a valid HMAC signature",
-    ///         Active = true,
-    ///         Priority = 99,
     ///         Rule = new Auth0.Inputs.NetworkAclRuleArgs
     ///         {
     ///             Action = new Auth0.Inputs.NetworkAclRuleActionArgs
     ///             {
     ///                 Block = true,
     ///             },
-    ///             Scope = "tenant",
     ///             NotMatch = new Auth0.Inputs.NetworkAclRuleNotMatchArgs
     ///             {
     ///                 HttpMessageSignature = new Auth0.Inputs.NetworkAclRuleNotMatchHttpMessageSignatureArgs
@@ -57,7 +53,11 @@ namespace Pulumi.Auth0
     ///                     },
     ///                 },
     ///             },
+    ///             Scope = "tenant",
     ///         },
+    ///         Description = "Block requests without a valid HMAC signature",
+    ///         Active = true,
+    ///         Priority = 99,
     ///     });
     /// 
     /// });

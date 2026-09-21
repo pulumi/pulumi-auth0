@@ -266,13 +266,13 @@ class Organization(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 branding: pulumi.Input[Optional[Union['OrganizationBrandingArgs', 'OrganizationBrandingArgsDict']]] = None,
+                 branding: pulumi.Input[Optional[Union['OrganizationBrandingArgs', 'OrganizationBrandingArgsDict', 'outputs.OrganizationBranding']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  is_app_entitlement_active: pulumi.Input[Optional[_builtins.bool]] = None,
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  third_party_client_access: pulumi.Input[Optional[_builtins.str]] = None,
-                 token_quota: pulumi.Input[Optional[Union['OrganizationTokenQuotaArgs', 'OrganizationTokenQuotaArgsDict']]] = None,
+                 token_quota: pulumi.Input[Optional[Union['OrganizationTokenQuotaArgs', 'OrganizationTokenQuotaArgsDict', 'outputs.OrganizationTokenQuota']]] = None,
                  __props__=None):
         """
         The Organizations feature represents a broad update to the Auth0 platform that allows our business-to-business (B2B) customers to better manage their partners and customers, and to customize the ways that end-users access their applications. Auth0 customers can use Organizations to:
@@ -290,16 +290,16 @@ class Organization(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         my_organization = auth0.Organization("my_organization",
-            name="auth0-inc",
-            display_name="Auth0 Inc.",
-            third_party_client_access="block",
             branding={
                 "logo_url": "https://example.com/assets/icons/icon.png",
                 "colors": {
                     "primary": "#f2f2f2",
                     "page_background": "#e1e1e1",
                 },
-            })
+            },
+            name="auth0-inc",
+            display_name="Auth0 Inc.",
+            third_party_client_access="block")
         ```
 
         ## Import
@@ -315,13 +315,13 @@ class Organization(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['OrganizationBrandingArgs', 'OrganizationBrandingArgsDict']] branding: Defines how to style the login pages.
+        :param pulumi.Input[Union['OrganizationBrandingArgs', 'OrganizationBrandingArgsDict', 'outputs.OrganizationBranding']] branding: Defines how to style the login pages.
         :param pulumi.Input[_builtins.str] display_name: Friendly name of this organization.
         :param pulumi.Input[_builtins.bool] is_app_entitlement_active: Controls whether this organization's app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `ClientGrant`'s `organization_usage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata associated with the organization. Maximum of 10 metadata properties allowed.
         :param pulumi.Input[_builtins.str] name: The name of this organization.
         :param pulumi.Input[_builtins.str] third_party_client_access: Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
-        :param pulumi.Input[Union['OrganizationTokenQuotaArgs', 'OrganizationTokenQuotaArgsDict']] token_quota: The token quota configuration.
+        :param pulumi.Input[Union['OrganizationTokenQuotaArgs', 'OrganizationTokenQuotaArgsDict', 'outputs.OrganizationTokenQuota']] token_quota: The token quota configuration.
         """
         ...
     @overload
@@ -345,16 +345,16 @@ class Organization(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         my_organization = auth0.Organization("my_organization",
-            name="auth0-inc",
-            display_name="Auth0 Inc.",
-            third_party_client_access="block",
             branding={
                 "logo_url": "https://example.com/assets/icons/icon.png",
                 "colors": {
                     "primary": "#f2f2f2",
                     "page_background": "#e1e1e1",
                 },
-            })
+            },
+            name="auth0-inc",
+            display_name="Auth0 Inc.",
+            third_party_client_access="block")
         ```
 
         ## Import
@@ -383,13 +383,13 @@ class Organization(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 branding: pulumi.Input[Optional[Union['OrganizationBrandingArgs', 'OrganizationBrandingArgsDict']]] = None,
+                 branding: pulumi.Input[Optional[Union['OrganizationBrandingArgs', 'OrganizationBrandingArgsDict', 'outputs.OrganizationBranding']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  is_app_entitlement_active: pulumi.Input[Optional[_builtins.bool]] = None,
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  third_party_client_access: pulumi.Input[Optional[_builtins.str]] = None,
-                 token_quota: pulumi.Input[Optional[Union['OrganizationTokenQuotaArgs', 'OrganizationTokenQuotaArgsDict']]] = None,
+                 token_quota: pulumi.Input[Optional[Union['OrganizationTokenQuotaArgs', 'OrganizationTokenQuotaArgsDict', 'outputs.OrganizationTokenQuota']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -416,13 +416,13 @@ class Organization(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            branding: pulumi.Input[Optional[Union['OrganizationBrandingArgs', 'OrganizationBrandingArgsDict']]] = None,
+            branding: pulumi.Input[Optional[Union['OrganizationBrandingArgs', 'OrganizationBrandingArgsDict', 'outputs.OrganizationBranding']]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             is_app_entitlement_active: pulumi.Input[Optional[_builtins.bool]] = None,
             metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             third_party_client_access: pulumi.Input[Optional[_builtins.str]] = None,
-            token_quota: pulumi.Input[Optional[Union['OrganizationTokenQuotaArgs', 'OrganizationTokenQuotaArgsDict']]] = None) -> 'Organization':
+            token_quota: pulumi.Input[Optional[Union['OrganizationTokenQuotaArgs', 'OrganizationTokenQuotaArgsDict', 'outputs.OrganizationTokenQuota']]] = None) -> 'Organization':
         """
         Get an existing Organization resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -430,13 +430,13 @@ class Organization(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['OrganizationBrandingArgs', 'OrganizationBrandingArgsDict']] branding: Defines how to style the login pages.
+        :param pulumi.Input[Union['OrganizationBrandingArgs', 'OrganizationBrandingArgsDict', 'outputs.OrganizationBranding']] branding: Defines how to style the login pages.
         :param pulumi.Input[_builtins.str] display_name: Friendly name of this organization.
         :param pulumi.Input[_builtins.bool] is_app_entitlement_active: Controls whether this organization's app entitlement is active, determining whether members of this organization can access applications associated with it (EA only). This is distinct from `ClientGrant`'s `organization_usage` attribute, which controls whether organizations can be used with client credentials exchanges for a given client grant.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata associated with the organization. Maximum of 10 metadata properties allowed.
         :param pulumi.Input[_builtins.str] name: The name of this organization.
         :param pulumi.Input[_builtins.str] third_party_client_access: Controls whether this organization can be used in user flows with third-party clients. Available values are `allow` or `block`. Defaults to `block`.
-        :param pulumi.Input[Union['OrganizationTokenQuotaArgs', 'OrganizationTokenQuotaArgsDict']] token_quota: The token quota configuration.
+        :param pulumi.Input[Union['OrganizationTokenQuotaArgs', 'OrganizationTokenQuotaArgsDict', 'outputs.OrganizationTokenQuota']] token_quota: The token quota configuration.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

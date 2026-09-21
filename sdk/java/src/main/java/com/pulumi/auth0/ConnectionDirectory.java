@@ -48,9 +48,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var googleWorkspace = new Connection("googleWorkspace", ConnectionArgs.builder()
- *             .name("google-workspace-connection")
- *             .displayName("Google Workspace")
- *             .strategy("google-apps")
  *             .options(ConnectionOptionsArgs.builder()
  *                 .clientId("your-google-client-id")
  *                 .clientSecret("your-google-client-secret")
@@ -58,6 +55,9 @@ import javax.annotation.Nullable;
  *                 .apiEnableUsers(true)
  *                 .apiEnableGroups(true)
  *                 .build())
+ *             .name("google-workspace-connection")
+ *             .displayName("Google Workspace")
+ *             .strategy("google-apps")
  *             .build());
  * 
  *         // Configure directory provisioning with default settings
@@ -67,8 +67,6 @@ import javax.annotation.Nullable;
  * 
  *         // Configure directory provisioning with custom mapping and auto-sync enabled
  *         var custom = new ConnectionDirectory("custom", ConnectionDirectoryArgs.builder()
- *             .connectionId(googleWorkspace.id())
- *             .synchronizeAutomatically(true)
  *             .mappings(            
  *                 ConnectionDirectoryMappingArgs.builder()
  *                     .auth0("email")
@@ -86,6 +84,8 @@ import javax.annotation.Nullable;
  *                     .auth0("external_id")
  *                     .idp("id")
  *                     .build())
+ *             .connectionId(googleWorkspace.id())
+ *             .synchronizeAutomatically(true)
  *             .build());
  * 
  *         // Configure directory provisioning with selective group synchronization

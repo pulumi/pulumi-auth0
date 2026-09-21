@@ -26,6 +26,14 @@ namespace Pulumi.Auth0
     /// {
     ///     var mySelfServiceProfile = new Auth0.SelfServiceProfile("my_self_service_profile", new()
     ///     {
+    ///         Branding = new Auth0.Inputs.SelfServiceProfileBrandingArgs
+    ///         {
+    ///             Colors = new Auth0.Inputs.SelfServiceProfileBrandingColorsArgs
+    ///             {
+    ///                 Primary = "#0059d6",
+    ///             },
+    ///             LogoUrl = "https://mycompany.org/v2/logo.png",
+    ///         },
     ///         UserAttributes = new[]
     ///         {
     ///             new Auth0.Inputs.SelfServiceProfileUserAttributeArgs
@@ -33,14 +41,6 @@ namespace Pulumi.Auth0
     ///                 Name = "sample-name",
     ///                 Description = "sample-description",
     ///                 IsOptional = true,
-    ///             },
-    ///         },
-    ///         Branding = new Auth0.Inputs.SelfServiceProfileBrandingArgs
-    ///         {
-    ///             LogoUrl = "https://mycompany.org/v2/logo.png",
-    ///             Colors = new Auth0.Inputs.SelfServiceProfileBrandingColorsArgs
-    ///             {
-    ///                 Primary = "#0059d6",
     ///             },
     ///         },
     ///     });

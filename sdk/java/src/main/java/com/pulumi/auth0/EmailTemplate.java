@@ -48,14 +48,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var myEmailProvider = new EmailProvider("myEmailProvider", EmailProviderArgs.builder()
- *             .name("ses")
- *             .enabled(true)
- *             .defaultFromAddress("accounts}{@literal @}{@code example.com")
  *             .credentials(EmailProviderCredentialsArgs.builder()
  *                 .accessKeyId("AKIAXXXXXXXXXXXXXXXX")
  *                 .secretAccessKey("7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
  *                 .region("us-east-1")
  *                 .build())
+ *             .name("ses")
+ *             .enabled(true)
+ *             .defaultFromAddress("accounts}{@literal @}{@code example.com")
  *             .build());
  * 
  *         var myEmailTemplate = new EmailTemplate("myEmailTemplate", EmailTemplateArgs.builder()

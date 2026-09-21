@@ -342,14 +342,14 @@ class EmailTemplate(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         my_email_provider = auth0.EmailProvider("my_email_provider",
-            name="ses",
-            enabled=True,
-            default_from_address="accounts@example.com",
             credentials={
                 "access_key_id": "AKIAXXXXXXXXXXXXXXXX",
                 "secret_access_key": "7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 "region": "us-east-1",
-            })
+            },
+            name="ses",
+            enabled=True,
+            default_from_address="accounts@example.com")
         my_email_template = auth0.EmailTemplate("my_email_template",
             template="welcome_email",
             body="<html><body><h1>Welcome!</h1></body></html>",
@@ -408,14 +408,14 @@ class EmailTemplate(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         my_email_provider = auth0.EmailProvider("my_email_provider",
-            name="ses",
-            enabled=True,
-            default_from_address="accounts@example.com",
             credentials={
                 "access_key_id": "AKIAXXXXXXXXXXXXXXXX",
                 "secret_access_key": "7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 "region": "us-east-1",
-            })
+            },
+            name="ses",
+            enabled=True,
+            default_from_address="accounts@example.com")
         my_email_template = auth0.EmailTemplate("my_email_template",
             template="welcome_email",
             body="<html><body><h1>Welcome!</h1></body></html>",

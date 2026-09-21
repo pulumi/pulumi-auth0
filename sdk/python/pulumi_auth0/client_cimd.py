@@ -764,19 +764,19 @@ class ClientCimd(pulumi.CustomResource):
                  allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  app_type: pulumi.Input[Optional[_builtins.str]] = None,
                  client_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 default_organization: pulumi.Input[Optional[Union['ClientCimdDefaultOrganizationArgs', 'ClientCimdDefaultOrganizationArgsDict']]] = None,
+                 default_organization: pulumi.Input[Optional[Union['ClientCimdDefaultOrganizationArgs', 'ClientCimdDefaultOrganizationArgsDict', 'outputs.ClientCimdDefaultOrganization']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  external_client_id: pulumi.Input[Optional[_builtins.str]] = None,
                  external_client_id_version: pulumi.Input[Optional[_builtins.int]] = None,
                  grant_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 jwt_configuration: pulumi.Input[Optional[Union['ClientCimdJwtConfigurationArgs', 'ClientCimdJwtConfigurationArgsDict']]] = None,
+                 jwt_configuration: pulumi.Input[Optional[Union['ClientCimdJwtConfigurationArgs', 'ClientCimdJwtConfigurationArgsDict', 'outputs.ClientCimdJwtConfiguration']]] = None,
                  oidc_conformant: pulumi.Input[Optional[_builtins.bool]] = None,
                  organization_discovery_methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  redirection_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 refresh_token: pulumi.Input[Optional[Union['ClientCimdRefreshTokenArgs', 'ClientCimdRefreshTokenArgsDict']]] = None,
+                 refresh_token: pulumi.Input[Optional[Union['ClientCimdRefreshTokenArgs', 'ClientCimdRefreshTokenArgsDict', 'outputs.ClientCimdRefreshToken']]] = None,
                  require_proof_of_possession: pulumi.Input[Optional[_builtins.bool]] = None,
                  skip_non_verifiable_callback_uri_confirmation_prompt: pulumi.Input[Optional[_builtins.bool]] = None,
-                 token_quota: pulumi.Input[Optional[Union['ClientCimdTokenQuotaArgs', 'ClientCimdTokenQuotaArgsDict']]] = None,
+                 token_quota: pulumi.Input[Optional[Union['ClientCimdTokenQuotaArgs', 'ClientCimdTokenQuotaArgsDict', 'outputs.ClientCimdTokenQuota']]] = None,
                  web_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -792,6 +792,19 @@ class ClientCimd(pulumi.CustomResource):
 
         minimal_client = auth0.ClientCimd("minimal_client", external_client_id="https://mcp-agent1.example.com/oauth/metadata.json")
         my_mcp_agent = auth0.ClientCimd("my_mcp_agent",
+            jwt_configuration={
+                "lifetime_in_seconds": 300,
+                "alg": "RS256",
+            },
+            refresh_token={
+                "rotation_type": "rotating",
+                "expiration_type": "expiring",
+                "token_lifetime": 2592000,
+                "idle_token_lifetime": 1296000,
+                "infinite_token_lifetime": False,
+                "infinite_idle_token_lifetime": False,
+                "leeway": 0,
+            },
             external_client_id="https://mcp-agent2.example.com/.well-known/client.json",
             external_client_id_version=1,
             description="MCP Agent - Production",
@@ -805,19 +818,6 @@ class ClientCimd(pulumi.CustomResource):
             ],
             client_metadata={
                 "environment": "production",
-            },
-            jwt_configuration={
-                "lifetime_in_seconds": 300,
-                "alg": "RS256",
-            },
-            refresh_token={
-                "rotation_type": "rotating",
-                "expiration_type": "expiring",
-                "token_lifetime": 2592000,
-                "idle_token_lifetime": 1296000,
-                "infinite_token_lifetime": False,
-                "infinite_idle_token_lifetime": False,
-                "leeway": 0,
             })
         ```
 
@@ -838,19 +838,19 @@ class ClientCimd(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
         :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. CIMD clients only support `native`, `spa`, and `regular_web`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
-        :param pulumi.Input[Union['ClientCimdDefaultOrganizationArgs', 'ClientCimdDefaultOrganizationArgsDict']] default_organization: Configure and associate an organization with the Client
+        :param pulumi.Input[Union['ClientCimdDefaultOrganizationArgs', 'ClientCimdDefaultOrganizationArgsDict', 'outputs.ClientCimdDefaultOrganization']] default_organization: Configure and associate an organization with the Client
         :param pulumi.Input[_builtins.str] description: Description of the purpose of the client.
         :param pulumi.Input[_builtins.str] external_client_id: The HTTPS URL of the Client ID Metadata Document. Must include a path component (e.g. `https://app.example.com/client.json`). This value is immutable after creation.
         :param pulumi.Input[_builtins.int] external_client_id_version: Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Types of grants that this client is authorized to use. CIMD clients support `authorization_code` and `refresh_token`.
-        :param pulumi.Input[Union['ClientCimdJwtConfigurationArgs', 'ClientCimdJwtConfigurationArgsDict']] jwt_configuration: Configuration settings for the JWTs issued for this client.
+        :param pulumi.Input[Union['ClientCimdJwtConfigurationArgs', 'ClientCimdJwtConfigurationArgsDict', 'outputs.ClientCimdJwtConfiguration']] jwt_configuration: Configuration settings for the JWTs issued for this client.
         :param pulumi.Input[_builtins.bool] oidc_conformant: Whether this client conforms to strict OIDC specifications. Must be `true` for CIMD clients.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] organization_discovery_methods: Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
         :param pulumi.Input[_builtins.str] redirection_policy: Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.
-        :param pulumi.Input[Union['ClientCimdRefreshTokenArgs', 'ClientCimdRefreshTokenArgsDict']] refresh_token: Configuration settings for the refresh tokens issued for this client.
+        :param pulumi.Input[Union['ClientCimdRefreshTokenArgs', 'ClientCimdRefreshTokenArgsDict', 'outputs.ClientCimdRefreshToken']] refresh_token: Configuration settings for the refresh tokens issued for this client.
         :param pulumi.Input[_builtins.bool] require_proof_of_possession: Makes the use of Proof-of-Possession mandatory for this client.
         :param pulumi.Input[_builtins.bool] skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it.
-        :param pulumi.Input[Union['ClientCimdTokenQuotaArgs', 'ClientCimdTokenQuotaArgsDict']] token_quota: The token quota configuration.
+        :param pulumi.Input[Union['ClientCimdTokenQuotaArgs', 'ClientCimdTokenQuotaArgsDict', 'outputs.ClientCimdTokenQuota']] token_quota: The token quota configuration.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] web_origins: URLs that represent valid web origins for use with web message response mode.
         """
         ...
@@ -872,6 +872,19 @@ class ClientCimd(pulumi.CustomResource):
 
         minimal_client = auth0.ClientCimd("minimal_client", external_client_id="https://mcp-agent1.example.com/oauth/metadata.json")
         my_mcp_agent = auth0.ClientCimd("my_mcp_agent",
+            jwt_configuration={
+                "lifetime_in_seconds": 300,
+                "alg": "RS256",
+            },
+            refresh_token={
+                "rotation_type": "rotating",
+                "expiration_type": "expiring",
+                "token_lifetime": 2592000,
+                "idle_token_lifetime": 1296000,
+                "infinite_token_lifetime": False,
+                "infinite_idle_token_lifetime": False,
+                "leeway": 0,
+            },
             external_client_id="https://mcp-agent2.example.com/.well-known/client.json",
             external_client_id_version=1,
             description="MCP Agent - Production",
@@ -885,19 +898,6 @@ class ClientCimd(pulumi.CustomResource):
             ],
             client_metadata={
                 "environment": "production",
-            },
-            jwt_configuration={
-                "lifetime_in_seconds": 300,
-                "alg": "RS256",
-            },
-            refresh_token={
-                "rotation_type": "rotating",
-                "expiration_type": "expiring",
-                "token_lifetime": 2592000,
-                "idle_token_lifetime": 1296000,
-                "infinite_token_lifetime": False,
-                "infinite_idle_token_lifetime": False,
-                "leeway": 0,
             })
         ```
 
@@ -931,19 +931,19 @@ class ClientCimd(pulumi.CustomResource):
                  allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  app_type: pulumi.Input[Optional[_builtins.str]] = None,
                  client_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 default_organization: pulumi.Input[Optional[Union['ClientCimdDefaultOrganizationArgs', 'ClientCimdDefaultOrganizationArgsDict']]] = None,
+                 default_organization: pulumi.Input[Optional[Union['ClientCimdDefaultOrganizationArgs', 'ClientCimdDefaultOrganizationArgsDict', 'outputs.ClientCimdDefaultOrganization']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  external_client_id: pulumi.Input[Optional[_builtins.str]] = None,
                  external_client_id_version: pulumi.Input[Optional[_builtins.int]] = None,
                  grant_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 jwt_configuration: pulumi.Input[Optional[Union['ClientCimdJwtConfigurationArgs', 'ClientCimdJwtConfigurationArgsDict']]] = None,
+                 jwt_configuration: pulumi.Input[Optional[Union['ClientCimdJwtConfigurationArgs', 'ClientCimdJwtConfigurationArgsDict', 'outputs.ClientCimdJwtConfiguration']]] = None,
                  oidc_conformant: pulumi.Input[Optional[_builtins.bool]] = None,
                  organization_discovery_methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  redirection_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 refresh_token: pulumi.Input[Optional[Union['ClientCimdRefreshTokenArgs', 'ClientCimdRefreshTokenArgsDict']]] = None,
+                 refresh_token: pulumi.Input[Optional[Union['ClientCimdRefreshTokenArgs', 'ClientCimdRefreshTokenArgsDict', 'outputs.ClientCimdRefreshToken']]] = None,
                  require_proof_of_possession: pulumi.Input[Optional[_builtins.bool]] = None,
                  skip_non_verifiable_callback_uri_confirmation_prompt: pulumi.Input[Optional[_builtins.bool]] = None,
-                 token_quota: pulumi.Input[Optional[Union['ClientCimdTokenQuotaArgs', 'ClientCimdTokenQuotaArgsDict']]] = None,
+                 token_quota: pulumi.Input[Optional[Union['ClientCimdTokenQuotaArgs', 'ClientCimdTokenQuotaArgsDict', 'outputs.ClientCimdTokenQuota']]] = None,
                  web_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1001,7 +1001,7 @@ class ClientCimd(pulumi.CustomResource):
             callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             client_id: pulumi.Input[Optional[_builtins.str]] = None,
             client_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            default_organization: pulumi.Input[Optional[Union['ClientCimdDefaultOrganizationArgs', 'ClientCimdDefaultOrganizationArgsDict']]] = None,
+            default_organization: pulumi.Input[Optional[Union['ClientCimdDefaultOrganizationArgs', 'ClientCimdDefaultOrganizationArgsDict', 'outputs.ClientCimdDefaultOrganization']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             external_client_id: pulumi.Input[Optional[_builtins.str]] = None,
             external_client_id_version: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1010,19 +1010,19 @@ class ClientCimd(pulumi.CustomResource):
             grant_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             is_first_party: pulumi.Input[Optional[_builtins.bool]] = None,
             jwks_uri: pulumi.Input[Optional[_builtins.str]] = None,
-            jwt_configuration: pulumi.Input[Optional[Union['ClientCimdJwtConfigurationArgs', 'ClientCimdJwtConfigurationArgsDict']]] = None,
+            jwt_configuration: pulumi.Input[Optional[Union['ClientCimdJwtConfigurationArgs', 'ClientCimdJwtConfigurationArgsDict', 'outputs.ClientCimdJwtConfiguration']]] = None,
             logo_uri: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             oidc_conformant: pulumi.Input[Optional[_builtins.bool]] = None,
             organization_discovery_methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             redirection_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            refresh_token: pulumi.Input[Optional[Union['ClientCimdRefreshTokenArgs', 'ClientCimdRefreshTokenArgsDict']]] = None,
+            refresh_token: pulumi.Input[Optional[Union['ClientCimdRefreshTokenArgs', 'ClientCimdRefreshTokenArgsDict', 'outputs.ClientCimdRefreshToken']]] = None,
             require_proof_of_possession: pulumi.Input[Optional[_builtins.bool]] = None,
             signing_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
             skip_non_verifiable_callback_uri_confirmation_prompt: pulumi.Input[Optional[_builtins.bool]] = None,
             third_party_security_mode: pulumi.Input[Optional[_builtins.str]] = None,
-            token_quota: pulumi.Input[Optional[Union['ClientCimdTokenQuotaArgs', 'ClientCimdTokenQuotaArgsDict']]] = None,
-            validations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClientCimdValidationArgs', 'ClientCimdValidationArgsDict']]]]] = None,
+            token_quota: pulumi.Input[Optional[Union['ClientCimdTokenQuotaArgs', 'ClientCimdTokenQuotaArgsDict', 'outputs.ClientCimdTokenQuota']]] = None,
+            validations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClientCimdValidationArgs', 'ClientCimdValidationArgsDict', 'outputs.ClientCimdValidation']]]]] = None,
             web_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ClientCimd':
         """
         Get an existing ClientCimd resource's state with the given name, id, and optional extra
@@ -1036,7 +1036,7 @@ class ClientCimd(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] callbacks: URLs that Auth0 may call back after authentication. Derived from the CIMD metadata document.
         :param pulumi.Input[_builtins.str] client_id: The ID of the client.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
-        :param pulumi.Input[Union['ClientCimdDefaultOrganizationArgs', 'ClientCimdDefaultOrganizationArgsDict']] default_organization: Configure and associate an organization with the Client
+        :param pulumi.Input[Union['ClientCimdDefaultOrganizationArgs', 'ClientCimdDefaultOrganizationArgsDict', 'outputs.ClientCimdDefaultOrganization']] default_organization: Configure and associate an organization with the Client
         :param pulumi.Input[_builtins.str] description: Description of the purpose of the client.
         :param pulumi.Input[_builtins.str] external_client_id: The HTTPS URL of the Client ID Metadata Document. Must include a path component (e.g. `https://app.example.com/client.json`). This value is immutable after creation.
         :param pulumi.Input[_builtins.int] external_client_id_version: Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.
@@ -1045,19 +1045,19 @@ class ClientCimd(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Types of grants that this client is authorized to use. CIMD clients support `authorization_code` and `refresh_token`.
         :param pulumi.Input[_builtins.bool] is_first_party: Whether this is a first-party client. Always `false` for CIMD clients.
         :param pulumi.Input[_builtins.str] jwks_uri: URL for the JSON Web Key Set (JWKS) containing the public keys used for `private_key_jwt` authentication.
-        :param pulumi.Input[Union['ClientCimdJwtConfigurationArgs', 'ClientCimdJwtConfigurationArgsDict']] jwt_configuration: Configuration settings for the JWTs issued for this client.
+        :param pulumi.Input[Union['ClientCimdJwtConfigurationArgs', 'ClientCimdJwtConfigurationArgsDict', 'outputs.ClientCimdJwtConfiguration']] jwt_configuration: Configuration settings for the JWTs issued for this client.
         :param pulumi.Input[_builtins.str] logo_uri: URL of the logo for this client, derived from the CIMD metadata document.
         :param pulumi.Input[_builtins.str] name: Name of the client, derived from the CIMD metadata document.
         :param pulumi.Input[_builtins.bool] oidc_conformant: Whether this client conforms to strict OIDC specifications. Must be `true` for CIMD clients.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] organization_discovery_methods: Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
         :param pulumi.Input[_builtins.str] redirection_policy: Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.
-        :param pulumi.Input[Union['ClientCimdRefreshTokenArgs', 'ClientCimdRefreshTokenArgsDict']] refresh_token: Configuration settings for the refresh tokens issued for this client.
+        :param pulumi.Input[Union['ClientCimdRefreshTokenArgs', 'ClientCimdRefreshTokenArgsDict', 'outputs.ClientCimdRefreshToken']] refresh_token: Configuration settings for the refresh tokens issued for this client.
         :param pulumi.Input[_builtins.bool] require_proof_of_possession: Makes the use of Proof-of-Possession mandatory for this client.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]] signing_keys: List containing a map of the public cert of the signing key and the public cert of the signing key in PKCS7.
         :param pulumi.Input[_builtins.bool] skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it.
         :param pulumi.Input[_builtins.str] third_party_security_mode: Security mode for third-party clients. `strict` enforces enhanced security controls
-        :param pulumi.Input[Union['ClientCimdTokenQuotaArgs', 'ClientCimdTokenQuotaArgsDict']] token_quota: The token quota configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClientCimdValidationArgs', 'ClientCimdValidationArgsDict']]]] validations: Validation result of the CIMD metadata document.
+        :param pulumi.Input[Union['ClientCimdTokenQuotaArgs', 'ClientCimdTokenQuotaArgsDict', 'outputs.ClientCimdTokenQuota']] token_quota: The token quota configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClientCimdValidationArgs', 'ClientCimdValidationArgsDict', 'outputs.ClientCimdValidation']]]] validations: Validation result of the CIMD metadata document.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] web_origins: URLs that represent valid web origins for use with web message response mode.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

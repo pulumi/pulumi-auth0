@@ -30,17 +30,17 @@ namespace Pulumi.Auth0
     /// {
     ///     var loginAlert = new Auth0.Action("login_alert", new()
     ///     {
+    ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
+    ///         {
+    ///             Id = "post-login",
+    ///             Version = "v3",
+    ///         },
     ///         Name = "Alert after login",
     ///         Code = @"exports.onContinuePostLogin = async (event, api) =&gt; {
     ///   console.log(\""foo\"");
     /// };\""
     /// ",
     ///         Deploy = true,
-    ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
-    ///         {
-    ///             Id = "post-login",
-    ///             Version = "v3",
-    ///         },
     ///     });
     /// 
     ///     var postLoginAlertAction = new Auth0.TriggerAction("post_login_alert_action", new()

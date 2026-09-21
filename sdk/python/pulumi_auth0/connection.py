@@ -493,15 +493,15 @@ class Connection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication: pulumi.Input[Optional[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict']]] = None,
-                 connected_accounts: pulumi.Input[Optional[Union['ConnectionConnectedAccountsArgs', 'ConnectionConnectedAccountsArgsDict']]] = None,
-                 cross_app_access_requesting_app: pulumi.Input[Optional[Union['ConnectionCrossAppAccessRequestingAppArgs', 'ConnectionCrossAppAccessRequestingAppArgsDict']]] = None,
-                 cross_app_access_resource_app: pulumi.Input[Optional[Union['ConnectionCrossAppAccessResourceAppArgs', 'ConnectionCrossAppAccessResourceAppArgsDict']]] = None,
+                 authentication: pulumi.Input[Optional[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict', 'outputs.ConnectionAuthentication']]] = None,
+                 connected_accounts: pulumi.Input[Optional[Union['ConnectionConnectedAccountsArgs', 'ConnectionConnectedAccountsArgsDict', 'outputs.ConnectionConnectedAccounts']]] = None,
+                 cross_app_access_requesting_app: pulumi.Input[Optional[Union['ConnectionCrossAppAccessRequestingAppArgs', 'ConnectionCrossAppAccessRequestingAppArgsDict', 'outputs.ConnectionCrossAppAccessRequestingApp']]] = None,
+                 cross_app_access_resource_app: pulumi.Input[Optional[Union['ConnectionCrossAppAccessResourceAppArgs', 'ConnectionCrossAppAccessResourceAppArgsDict', 'outputs.ConnectionCrossAppAccessResourceApp']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  is_domain_connection: pulumi.Input[Optional[_builtins.bool]] = None,
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 options: pulumi.Input[Optional[Union['ConnectionOptionsArgs', 'ConnectionOptionsArgsDict']]] = None,
+                 options: pulumi.Input[Optional[Union['ConnectionOptionsArgs', 'ConnectionOptionsArgsDict', 'outputs.ConnectionOptions']]] = None,
                  options_client_secret_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  options_client_secret_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  realms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -533,40 +533,7 @@ class Connection(pulumi.CustomResource):
 
         # This is an example of an Auth0 connection.
         my_connection = auth0.Connection("my_connection",
-            name="Example-Connection",
-            is_domain_connection=True,
-            strategy="auth0",
-            metadata={
-                "key1": "foo",
-                "key2": "bar",
-            },
             options={
-                "password_policy": "excellent",
-                "brute_force_protection": True,
-                "strategy_version": 2,
-                "enabled_database_customization": True,
-                "import_mode": False,
-                "requires_username": True,
-                "disable_signup": False,
-                "custom_scripts": {
-                    "get_user": \"\"\"        function getByEmail(email, callback) {
-                  return callback(new Error(\\"Whoops!\\"));
-                }
-        \"\"\",
-                },
-                "configuration": {
-                    "foo": "bar",
-                    "bar": "baz",
-                },
-                "upstream_params": json.dumps({
-                    "screen_name": {
-                        "alias": "login_hint",
-                    },
-                }),
-                "password_histories": [{
-                    "enable": True,
-                    "size": 3,
-                }],
                 "password_no_personal_info": {
                     "enable": True,
                 },
@@ -591,6 +558,11 @@ class Connection(pulumi.CustomResource):
                     "active": True,
                     "return_enroll_settings": True,
                 },
+                "passkey_options": {
+                    "challenge_ui": "both",
+                    "local_enrollment_enabled": True,
+                    "progressive_enrollment_enabled": True,
+                },
                 "authentication_methods": [{
                     "passkey": {
                         "enabled": True,
@@ -599,11 +571,39 @@ class Connection(pulumi.CustomResource):
                         "enabled": True,
                     },
                 }],
-                "passkey_options": {
-                    "challenge_ui": "both",
-                    "local_enrollment_enabled": True,
-                    "progressive_enrollment_enabled": True,
+                "password_histories": [{
+                    "enable": True,
+                    "size": 3,
+                }],
+                "password_policy": "excellent",
+                "brute_force_protection": True,
+                "strategy_version": 2,
+                "enabled_database_customization": True,
+                "import_mode": False,
+                "requires_username": True,
+                "disable_signup": False,
+                "custom_scripts": {
+                    "get_user": \"\"\"        function getByEmail(email, callback) {
+                  return callback(new Error(\\"Whoops!\\"));
+                }
+        \"\"\",
                 },
+                "configuration": {
+                    "foo": "bar",
+                    "bar": "baz",
+                },
+                "upstream_params": json.dumps({
+                    "screen_name": {
+                        "alias": "login_hint",
+                    },
+                }),
+            },
+            name="Example-Connection",
+            is_domain_connection=True,
+            strategy="auth0",
+            metadata={
+                "key1": "foo",
+                "key2": "bar",
             })
         # The strategy's client secret can be set as a write-only argument so it is never persisted to
         # Terraform state. It can be sourced from an ephemeral value (e.g. a secrets manager) and is
@@ -612,10 +612,6 @@ class Connection(pulumi.CustomResource):
         #
         # NOTE: Write-only arguments require Terraform 1.11 or later.
         my_connection_write_only_secret = auth0.Connection("my_connection_write_only_secret",
-            name="Example-Connection-Write-Only-Secret",
-            strategy="oidc",
-            options_client_secret_wo=connection_client_secret,
-            options_client_secret_wo_version=1,
             options={
                 "client_id": "1234567",
                 "type": "back_channel",
@@ -629,7 +625,11 @@ class Connection(pulumi.CustomResource):
                     "openid",
                     "email",
                 ],
-            })
+            },
+            name="Example-Connection-Write-Only-Secret",
+            strategy="oidc",
+            options_client_secret_wo=connection_client_secret,
+            options_client_secret_wo_version=1)
         ```
 
         ### Google OAuth2 Connection
@@ -642,8 +642,6 @@ class Connection(pulumi.CustomResource):
 
         # This is an example of a Google OAuth2 connection.
         google_oauth2 = auth0.Connection("google_oauth2",
-            name="Google-OAuth2-Connection",
-            strategy="google-oauth2",
             options={
                 "client_id": "<client-id>",
                 "client_secret": "<client-secret>",
@@ -662,7 +660,9 @@ class Connection(pulumi.CustomResource):
                     "ethnicity",
                     "gender",
                 ],
-            })
+            },
+            name="Google-OAuth2-Connection",
+            strategy="google-oauth2")
         ```
 
         ### Google Apps
@@ -673,10 +673,6 @@ class Connection(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         google_apps = auth0.Connection("google_apps",
-            name="connection-google-apps",
-            is_domain_connection=False,
-            strategy="google-apps",
-            show_as_button=False,
             options={
                 "client_id": "",
                 "client_secret": "",
@@ -702,7 +698,11 @@ class Connection(pulumi.CustomResource):
                     "ethnicity",
                     "gender",
                 ],
-            })
+            },
+            name="connection-google-apps",
+            is_domain_connection=False,
+            strategy="google-apps",
+            show_as_button=False)
         ```
 
         ### Facebook Connection
@@ -713,8 +713,6 @@ class Connection(pulumi.CustomResource):
 
         # This is an example of a Facebook connection.
         facebook = auth0.Connection("facebook",
-            name="Facebook-Connection",
-            strategy="facebook",
             options={
                 "client_id": "<client-id>",
                 "client_secret": "<client-secret>",
@@ -729,7 +727,9 @@ class Connection(pulumi.CustomResource):
                     "ethnicity",
                     "gender",
                 ],
-            })
+            },
+            name="Facebook-Connection",
+            strategy="facebook")
         ```
 
         ### Apple Connection
@@ -740,8 +740,6 @@ class Connection(pulumi.CustomResource):
 
         # This is an example of an Apple connection.
         apple = auth0.Connection("apple",
-            name="Apple-Connection",
-            strategy="apple",
             options={
                 "client_id": "<client-id>",
                 "client_secret": \"\"\"-----BEGIN PRIVATE KEY-----
@@ -758,7 +756,9 @@ class Connection(pulumi.CustomResource):
                     "ethnicity",
                     "gender",
                 ],
-            })
+            },
+            name="Apple-Connection",
+            strategy="apple")
         ```
 
         ### LinkedIn Connection
@@ -769,8 +769,6 @@ class Connection(pulumi.CustomResource):
 
         # This is an example of an LinkedIn connection.
         linkedin = auth0.Connection("linkedin",
-            name="Linkedin-Connection",
-            strategy="linkedin",
             options={
                 "client_id": "<client-id>",
                 "client_secret": "<client-secret>",
@@ -785,7 +783,9 @@ class Connection(pulumi.CustomResource):
                     "ethnicity",
                     "gender",
                 ],
-            })
+            },
+            name="Linkedin-Connection",
+            strategy="linkedin")
         ```
 
         ### GitHub Connection
@@ -796,8 +796,6 @@ class Connection(pulumi.CustomResource):
 
         # This is an example of an GitHub connection.
         github = auth0.Connection("github",
-            name="GitHub-Connection",
-            strategy="github",
             options={
                 "client_id": "<client-id>",
                 "client_secret": "<client-secret>",
@@ -812,7 +810,9 @@ class Connection(pulumi.CustomResource):
                     "ethnicity",
                     "gender",
                 ],
-            })
+            },
+            name="GitHub-Connection",
+            strategy="github")
         ```
 
         ### SalesForce Connection
@@ -823,8 +823,6 @@ class Connection(pulumi.CustomResource):
 
         # This is an example of an SalesForce connection.
         salesforce = auth0.Connection("salesforce",
-            name="Salesforce-Connection",
-            strategy="salesforce",
             options={
                 "client_id": "<client-id>",
                 "client_secret": "<client-secret>",
@@ -838,7 +836,9 @@ class Connection(pulumi.CustomResource):
                     "ethnicity",
                     "gender",
                 ],
-            })
+            },
+            name="Salesforce-Connection",
+            strategy="salesforce")
         ```
 
         ### OAuth2 Connection
@@ -851,9 +851,17 @@ class Connection(pulumi.CustomResource):
 
         # This is an example of an OAuth2 connection.
         oauth2 = auth0.Connection("oauth2",
-            name="OAuth2-Connection",
-            strategy="oauth2",
             options={
+                "custom_headers": [
+                    {
+                        "header": "bar",
+                        "value": "foo",
+                    },
+                    {
+                        "header": "foo",
+                        "value": "bar",
+                    },
+                ],
                 "client_id": "<client-id>",
                 "client_secret": "<client-secret>",
                 "strategy_version": 2,
@@ -866,16 +874,6 @@ class Connection(pulumi.CustomResource):
                 "authorization_endpoint": "https://auth.example.com/oauth2/authorize",
                 "pkce_enabled": True,
                 "icon_url": "https://auth.example.com/assets/logo.png",
-                "custom_headers": [
-                    {
-                        "header": "bar",
-                        "value": "foo",
-                    },
-                    {
-                        "header": "foo",
-                        "value": "bar",
-                    },
-                ],
                 "scripts": {
                     "fetchUserProfile": \"\"\"        function fetchUserProfile(accessToken, context, callback) {
                   return callback(new Error(\\"Whoops!\\"));
@@ -887,7 +885,9 @@ class Connection(pulumi.CustomResource):
                     "ethnicity",
                     "gender",
                 ],
-            })
+            },
+            name="OAuth2-Connection",
+            strategy="oauth2")
         ```
 
         ### Active Directory (AD)
@@ -898,10 +898,6 @@ class Connection(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         ad = auth0.Connection("ad",
-            name="connection-active-directory",
-            display_name="Active Directory Connection",
-            strategy="ad",
-            show_as_button=True,
             options={
                 "disable_self_service_change_password": True,
                 "brute_force_protection": True,
@@ -929,7 +925,11 @@ class Connection(pulumi.CustomResource):
                 "use_cert_auth": False,
                 "use_kerberos": False,
                 "disable_cache": False,
-            })
+            },
+            name="connection-active-directory",
+            display_name="Active Directory Connection",
+            strategy="ad",
+            show_as_button=True)
         ```
 
         ### Azure AD Connection
@@ -940,9 +940,6 @@ class Connection(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         azure_ad = auth0.Connection("azure_ad",
-            name="connection-azure-ad",
-            strategy="waad",
-            show_as_button=True,
             options={
                 "identity_api": "azure-active-directory-v1.0",
                 "client_id": "123456",
@@ -978,7 +975,10 @@ class Connection(pulumi.CustomResource):
                     "ethnicity",
                     "gender",
                 ],
-            })
+            },
+            name="connection-azure-ad",
+            strategy="waad",
+            show_as_button=True)
         ```
 
         ### Email Connection
@@ -991,9 +991,11 @@ class Connection(pulumi.CustomResource):
 
         # This is an example of an Email connection.
         passwordless_email = auth0.Connection("passwordless_email",
-            strategy="email",
-            name="email",
             options={
+                "totp": {
+                    "time_step": 300,
+                    "length": 6,
+                },
                 "name": "email",
                 "from_": "{{ application.name }} <root@auth0.com>",
                 "subject": "Welcome to {{ application.name }}",
@@ -1007,11 +1009,9 @@ class Connection(pulumi.CustomResource):
                     "scope": "openid email profile offline_access",
                     "response_type": "code",
                 },
-                "totp": {
-                    "time_step": 300,
-                    "length": 6,
-                },
-            })
+            },
+            strategy="email",
+            name="email")
         ```
 
         ### SAML Connection
@@ -1023,9 +1023,28 @@ class Connection(pulumi.CustomResource):
 
         # This is an example of a SAML connection.
         samlp = auth0.Connection("samlp",
-            name="SAML-Connection",
-            strategy="samlp",
             options={
+                "signing_key": {
+                    "key": \"\"\"-----BEGIN PRIVATE KEY-----
+        ...{your private key here}...
+        -----END PRIVATE KEY-----\"\"\",
+                    "cert": \"\"\"-----BEGIN CERTIFICATE-----
+        ...{your public key cert here}...
+        -----END CERTIFICATE-----\"\"\",
+                },
+                "decryption_key": {
+                    "key": \"\"\"-----BEGIN PRIVATE KEY-----
+        ...{your private key here}...
+        -----END PRIVATE KEY-----\"\"\",
+                    "cert": \"\"\"-----BEGIN CERTIFICATE-----
+        ...{your public key cert here}...
+        -----END CERTIFICATE-----\"\"\",
+                },
+                "idp_initiated": {
+                    "client_id": "client_id",
+                    "client_protocol": "samlp",
+                    "client_authorize_query": "type=code&timeout=30",
+                },
                 "debug": False,
                 "signing_cert": "<signing-certificate>",
                 "sign_in_endpoint": "https://saml.provider/sign_in",
@@ -1074,28 +1093,9 @@ class Connection(pulumi.CustomResource):
                     ],
                     "family_name": "surname",
                 }),
-                "signing_key": {
-                    "key": \"\"\"-----BEGIN PRIVATE KEY-----
-        ...{your private key here}...
-        -----END PRIVATE KEY-----\"\"\",
-                    "cert": \"\"\"-----BEGIN CERTIFICATE-----
-        ...{your public key cert here}...
-        -----END CERTIFICATE-----\"\"\",
-                },
-                "decryption_key": {
-                    "key": \"\"\"-----BEGIN PRIVATE KEY-----
-        ...{your private key here}...
-        -----END PRIVATE KEY-----\"\"\",
-                    "cert": \"\"\"-----BEGIN CERTIFICATE-----
-        ...{your public key cert here}...
-        -----END CERTIFICATE-----\"\"\",
-                },
-                "idp_initiated": {
-                    "client_id": "client_id",
-                    "client_protocol": "samlp",
-                    "client_authorize_query": "type=code&timeout=30",
-                },
-            })
+            },
+            name="SAML-Connection",
+            strategy="samlp")
         ```
 
         ### WindowsLive Connection
@@ -1106,8 +1106,6 @@ class Connection(pulumi.CustomResource):
 
         # This is an example of a WindowsLive connection.
         windowslive = auth0.Connection("windowslive",
-            name="Windowslive-Connection",
-            strategy="windowslive",
             options={
                 "client_id": "<client-id>",
                 "client_secret": "<client-secret>",
@@ -1121,7 +1119,9 @@ class Connection(pulumi.CustomResource):
                     "ethnicity",
                     "gender",
                 ],
-            })
+            },
+            name="Windowslive-Connection",
+            strategy="windowslive")
         ```
 
         ### OIDC Connection
@@ -1133,11 +1133,23 @@ class Connection(pulumi.CustomResource):
 
         # This is an example of an OIDC connection.
         oidc = auth0.Connection("oidc",
-            name="oidc-connection",
-            display_name="OIDC Connection",
-            strategy="oidc",
-            show_as_button=False,
             options={
+                "connection_settings": {
+                    "pkce": "auto",
+                },
+                "attribute_map": {
+                    "mapping_mode": "use_map",
+                    "userinfo_scope": "openid email profile groups",
+                    "attributes": json.dumps({
+                        "name": "${context.tokenset.name}",
+                        "email": "${context.tokenset.email}",
+                        "email_verified": "${context.tokenset.email_verified}",
+                        "nickname": "${context.tokenset.nickname}",
+                        "picture": "${context.tokenset.picture}",
+                        "given_name": "${context.tokenset.given_name}",
+                        "family_name": "${context.tokenset.family_name}",
+                    }),
+                },
                 "client_id": "1234567",
                 "client_secret": "1234567",
                 "domain_aliases": ["example.com"],
@@ -1160,23 +1172,11 @@ class Connection(pulumi.CustomResource):
                     "ethnicity",
                     "gender",
                 ],
-                "connection_settings": {
-                    "pkce": "auto",
-                },
-                "attribute_map": {
-                    "mapping_mode": "use_map",
-                    "userinfo_scope": "openid email profile groups",
-                    "attributes": json.dumps({
-                        "name": "${context.tokenset.name}",
-                        "email": "${context.tokenset.email}",
-                        "email_verified": "${context.tokenset.email_verified}",
-                        "nickname": "${context.tokenset.nickname}",
-                        "picture": "${context.tokenset.picture}",
-                        "given_name": "${context.tokenset.given_name}",
-                        "family_name": "${context.tokenset.family_name}",
-                    }),
-                },
-            })
+            },
+            name="oidc-connection",
+            display_name="OIDC Connection",
+            strategy="oidc",
+            show_as_button=False)
         ```
 
         ### Okta Connection
@@ -1191,11 +1191,23 @@ class Connection(pulumi.CustomResource):
 
         # This is an example of an Okta Workforce connection.
         okta = auth0.Connection("okta",
-            name="okta-connection",
-            display_name="Okta Workforce Connection",
-            strategy="okta",
-            show_as_button=False,
             options={
+                "connection_settings": {
+                    "pkce": "auto",
+                },
+                "attribute_map": {
+                    "mapping_mode": "basic_profile",
+                    "userinfo_scope": "openid email profile groups",
+                    "attributes": json.dumps({
+                        "name": "${context.tokenset.name}",
+                        "email": "${context.tokenset.email}",
+                        "email_verified": "${context.tokenset.email_verified}",
+                        "nickname": "${context.tokenset.nickname}",
+                        "picture": "${context.tokenset.picture}",
+                        "given_name": "${context.tokenset.given_name}",
+                        "family_name": "${context.tokenset.family_name}",
+                    }),
+                },
                 "client_id": "1234567",
                 "client_secret": "1234567",
                 "domain": "example.okta.com",
@@ -1220,23 +1232,11 @@ class Connection(pulumi.CustomResource):
                         "alias": "login_hint",
                     },
                 }),
-                "connection_settings": {
-                    "pkce": "auto",
-                },
-                "attribute_map": {
-                    "mapping_mode": "basic_profile",
-                    "userinfo_scope": "openid email profile groups",
-                    "attributes": json.dumps({
-                        "name": "${context.tokenset.name}",
-                        "email": "${context.tokenset.email}",
-                        "email_verified": "${context.tokenset.email_verified}",
-                        "nickname": "${context.tokenset.nickname}",
-                        "picture": "${context.tokenset.picture}",
-                        "given_name": "${context.tokenset.given_name}",
-                        "family_name": "${context.tokenset.family_name}",
-                    }),
-                },
-            })
+            },
+            name="okta-connection",
+            display_name="Okta Workforce Connection",
+            strategy="okta",
+            show_as_button=False)
         ```
 
         ## Import
@@ -1252,15 +1252,15 @@ class Connection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict']] authentication: Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
-        :param pulumi.Input[Union['ConnectionConnectedAccountsArgs', 'ConnectionConnectedAccountsArgsDict']] connected_accounts: Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
-        :param pulumi.Input[Union['ConnectionCrossAppAccessRequestingAppArgs', 'ConnectionCrossAppAccessRequestingAppArgsDict']] cross_app_access_requesting_app: Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `token_vault_xaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
-        :param pulumi.Input[Union['ConnectionCrossAppAccessResourceAppArgs', 'ConnectionCrossAppAccessResourceAppArgsDict']] cross_app_access_resource_app: Resource App settings that apply to this connection. (EA only)
+        :param pulumi.Input[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict', 'outputs.ConnectionAuthentication']] authentication: Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
+        :param pulumi.Input[Union['ConnectionConnectedAccountsArgs', 'ConnectionConnectedAccountsArgsDict', 'outputs.ConnectionConnectedAccounts']] connected_accounts: Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
+        :param pulumi.Input[Union['ConnectionCrossAppAccessRequestingAppArgs', 'ConnectionCrossAppAccessRequestingAppArgsDict', 'outputs.ConnectionCrossAppAccessRequestingApp']] cross_app_access_requesting_app: Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `token_vault_xaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+        :param pulumi.Input[Union['ConnectionCrossAppAccessResourceAppArgs', 'ConnectionCrossAppAccessResourceAppArgsDict', 'outputs.ConnectionCrossAppAccessResourceApp']] cross_app_access_resource_app: Resource App settings that apply to this connection. (EA only)
         :param pulumi.Input[_builtins.str] display_name: Name used in login screen.
         :param pulumi.Input[_builtins.bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
         :param pulumi.Input[_builtins.str] name: Name of the connection. This value is immutable and changing it requires the creation of a new resource.
-        :param pulumi.Input[Union['ConnectionOptionsArgs', 'ConnectionOptionsArgsDict']] options: Configuration settings for connection options.
+        :param pulumi.Input[Union['ConnectionOptionsArgs', 'ConnectionOptionsArgsDict', 'outputs.ConnectionOptions']] options: Configuration settings for connection options.
         :param pulumi.Input[_builtins.str] options_client_secret_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                The strategy's client secret (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. Bump `options_client_secret_wo_version` to rotate it. Conflicts with `options.client_secret`.
         :param pulumi.Input[_builtins.int] options_client_secret_wo_version: Version counter for `options_client_secret_wo`, required whenever the write-only secret is set. Must be a positive integer starting at `1`. This value signals rotation intent, though the secret is resent even for other config updates.
@@ -1299,40 +1299,7 @@ class Connection(pulumi.CustomResource):
 
         # This is an example of an Auth0 connection.
         my_connection = auth0.Connection("my_connection",
-            name="Example-Connection",
-            is_domain_connection=True,
-            strategy="auth0",
-            metadata={
-                "key1": "foo",
-                "key2": "bar",
-            },
             options={
-                "password_policy": "excellent",
-                "brute_force_protection": True,
-                "strategy_version": 2,
-                "enabled_database_customization": True,
-                "import_mode": False,
-                "requires_username": True,
-                "disable_signup": False,
-                "custom_scripts": {
-                    "get_user": \"\"\"        function getByEmail(email, callback) {
-                  return callback(new Error(\\"Whoops!\\"));
-                }
-        \"\"\",
-                },
-                "configuration": {
-                    "foo": "bar",
-                    "bar": "baz",
-                },
-                "upstream_params": json.dumps({
-                    "screen_name": {
-                        "alias": "login_hint",
-                    },
-                }),
-                "password_histories": [{
-                    "enable": True,
-                    "size": 3,
-                }],
                 "password_no_personal_info": {
                     "enable": True,
                 },
@@ -1357,6 +1324,11 @@ class Connection(pulumi.CustomResource):
                     "active": True,
                     "return_enroll_settings": True,
                 },
+                "passkey_options": {
+                    "challenge_ui": "both",
+                    "local_enrollment_enabled": True,
+                    "progressive_enrollment_enabled": True,
+                },
                 "authentication_methods": [{
                     "passkey": {
                         "enabled": True,
@@ -1365,11 +1337,39 @@ class Connection(pulumi.CustomResource):
                         "enabled": True,
                     },
                 }],
-                "passkey_options": {
-                    "challenge_ui": "both",
-                    "local_enrollment_enabled": True,
-                    "progressive_enrollment_enabled": True,
+                "password_histories": [{
+                    "enable": True,
+                    "size": 3,
+                }],
+                "password_policy": "excellent",
+                "brute_force_protection": True,
+                "strategy_version": 2,
+                "enabled_database_customization": True,
+                "import_mode": False,
+                "requires_username": True,
+                "disable_signup": False,
+                "custom_scripts": {
+                    "get_user": \"\"\"        function getByEmail(email, callback) {
+                  return callback(new Error(\\"Whoops!\\"));
+                }
+        \"\"\",
                 },
+                "configuration": {
+                    "foo": "bar",
+                    "bar": "baz",
+                },
+                "upstream_params": json.dumps({
+                    "screen_name": {
+                        "alias": "login_hint",
+                    },
+                }),
+            },
+            name="Example-Connection",
+            is_domain_connection=True,
+            strategy="auth0",
+            metadata={
+                "key1": "foo",
+                "key2": "bar",
             })
         # The strategy's client secret can be set as a write-only argument so it is never persisted to
         # Terraform state. It can be sourced from an ephemeral value (e.g. a secrets manager) and is
@@ -1378,10 +1378,6 @@ class Connection(pulumi.CustomResource):
         #
         # NOTE: Write-only arguments require Terraform 1.11 or later.
         my_connection_write_only_secret = auth0.Connection("my_connection_write_only_secret",
-            name="Example-Connection-Write-Only-Secret",
-            strategy="oidc",
-            options_client_secret_wo=connection_client_secret,
-            options_client_secret_wo_version=1,
             options={
                 "client_id": "1234567",
                 "type": "back_channel",
@@ -1395,7 +1391,11 @@ class Connection(pulumi.CustomResource):
                     "openid",
                     "email",
                 ],
-            })
+            },
+            name="Example-Connection-Write-Only-Secret",
+            strategy="oidc",
+            options_client_secret_wo=connection_client_secret,
+            options_client_secret_wo_version=1)
         ```
 
         ### Google OAuth2 Connection
@@ -1408,8 +1408,6 @@ class Connection(pulumi.CustomResource):
 
         # This is an example of a Google OAuth2 connection.
         google_oauth2 = auth0.Connection("google_oauth2",
-            name="Google-OAuth2-Connection",
-            strategy="google-oauth2",
             options={
                 "client_id": "<client-id>",
                 "client_secret": "<client-secret>",
@@ -1428,7 +1426,9 @@ class Connection(pulumi.CustomResource):
                     "ethnicity",
                     "gender",
                 ],
-            })
+            },
+            name="Google-OAuth2-Connection",
+            strategy="google-oauth2")
         ```
 
         ### Google Apps
@@ -1439,10 +1439,6 @@ class Connection(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         google_apps = auth0.Connection("google_apps",
-            name="connection-google-apps",
-            is_domain_connection=False,
-            strategy="google-apps",
-            show_as_button=False,
             options={
                 "client_id": "",
                 "client_secret": "",
@@ -1468,7 +1464,11 @@ class Connection(pulumi.CustomResource):
                     "ethnicity",
                     "gender",
                 ],
-            })
+            },
+            name="connection-google-apps",
+            is_domain_connection=False,
+            strategy="google-apps",
+            show_as_button=False)
         ```
 
         ### Facebook Connection
@@ -1479,8 +1479,6 @@ class Connection(pulumi.CustomResource):
 
         # This is an example of a Facebook connection.
         facebook = auth0.Connection("facebook",
-            name="Facebook-Connection",
-            strategy="facebook",
             options={
                 "client_id": "<client-id>",
                 "client_secret": "<client-secret>",
@@ -1495,7 +1493,9 @@ class Connection(pulumi.CustomResource):
                     "ethnicity",
                     "gender",
                 ],
-            })
+            },
+            name="Facebook-Connection",
+            strategy="facebook")
         ```
 
         ### Apple Connection
@@ -1506,8 +1506,6 @@ class Connection(pulumi.CustomResource):
 
         # This is an example of an Apple connection.
         apple = auth0.Connection("apple",
-            name="Apple-Connection",
-            strategy="apple",
             options={
                 "client_id": "<client-id>",
                 "client_secret": \"\"\"-----BEGIN PRIVATE KEY-----
@@ -1524,7 +1522,9 @@ class Connection(pulumi.CustomResource):
                     "ethnicity",
                     "gender",
                 ],
-            })
+            },
+            name="Apple-Connection",
+            strategy="apple")
         ```
 
         ### LinkedIn Connection
@@ -1535,8 +1535,6 @@ class Connection(pulumi.CustomResource):
 
         # This is an example of an LinkedIn connection.
         linkedin = auth0.Connection("linkedin",
-            name="Linkedin-Connection",
-            strategy="linkedin",
             options={
                 "client_id": "<client-id>",
                 "client_secret": "<client-secret>",
@@ -1551,7 +1549,9 @@ class Connection(pulumi.CustomResource):
                     "ethnicity",
                     "gender",
                 ],
-            })
+            },
+            name="Linkedin-Connection",
+            strategy="linkedin")
         ```
 
         ### GitHub Connection
@@ -1562,8 +1562,6 @@ class Connection(pulumi.CustomResource):
 
         # This is an example of an GitHub connection.
         github = auth0.Connection("github",
-            name="GitHub-Connection",
-            strategy="github",
             options={
                 "client_id": "<client-id>",
                 "client_secret": "<client-secret>",
@@ -1578,7 +1576,9 @@ class Connection(pulumi.CustomResource):
                     "ethnicity",
                     "gender",
                 ],
-            })
+            },
+            name="GitHub-Connection",
+            strategy="github")
         ```
 
         ### SalesForce Connection
@@ -1589,8 +1589,6 @@ class Connection(pulumi.CustomResource):
 
         # This is an example of an SalesForce connection.
         salesforce = auth0.Connection("salesforce",
-            name="Salesforce-Connection",
-            strategy="salesforce",
             options={
                 "client_id": "<client-id>",
                 "client_secret": "<client-secret>",
@@ -1604,7 +1602,9 @@ class Connection(pulumi.CustomResource):
                     "ethnicity",
                     "gender",
                 ],
-            })
+            },
+            name="Salesforce-Connection",
+            strategy="salesforce")
         ```
 
         ### OAuth2 Connection
@@ -1617,9 +1617,17 @@ class Connection(pulumi.CustomResource):
 
         # This is an example of an OAuth2 connection.
         oauth2 = auth0.Connection("oauth2",
-            name="OAuth2-Connection",
-            strategy="oauth2",
             options={
+                "custom_headers": [
+                    {
+                        "header": "bar",
+                        "value": "foo",
+                    },
+                    {
+                        "header": "foo",
+                        "value": "bar",
+                    },
+                ],
                 "client_id": "<client-id>",
                 "client_secret": "<client-secret>",
                 "strategy_version": 2,
@@ -1632,16 +1640,6 @@ class Connection(pulumi.CustomResource):
                 "authorization_endpoint": "https://auth.example.com/oauth2/authorize",
                 "pkce_enabled": True,
                 "icon_url": "https://auth.example.com/assets/logo.png",
-                "custom_headers": [
-                    {
-                        "header": "bar",
-                        "value": "foo",
-                    },
-                    {
-                        "header": "foo",
-                        "value": "bar",
-                    },
-                ],
                 "scripts": {
                     "fetchUserProfile": \"\"\"        function fetchUserProfile(accessToken, context, callback) {
                   return callback(new Error(\\"Whoops!\\"));
@@ -1653,7 +1651,9 @@ class Connection(pulumi.CustomResource):
                     "ethnicity",
                     "gender",
                 ],
-            })
+            },
+            name="OAuth2-Connection",
+            strategy="oauth2")
         ```
 
         ### Active Directory (AD)
@@ -1664,10 +1664,6 @@ class Connection(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         ad = auth0.Connection("ad",
-            name="connection-active-directory",
-            display_name="Active Directory Connection",
-            strategy="ad",
-            show_as_button=True,
             options={
                 "disable_self_service_change_password": True,
                 "brute_force_protection": True,
@@ -1695,7 +1691,11 @@ class Connection(pulumi.CustomResource):
                 "use_cert_auth": False,
                 "use_kerberos": False,
                 "disable_cache": False,
-            })
+            },
+            name="connection-active-directory",
+            display_name="Active Directory Connection",
+            strategy="ad",
+            show_as_button=True)
         ```
 
         ### Azure AD Connection
@@ -1706,9 +1706,6 @@ class Connection(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         azure_ad = auth0.Connection("azure_ad",
-            name="connection-azure-ad",
-            strategy="waad",
-            show_as_button=True,
             options={
                 "identity_api": "azure-active-directory-v1.0",
                 "client_id": "123456",
@@ -1744,7 +1741,10 @@ class Connection(pulumi.CustomResource):
                     "ethnicity",
                     "gender",
                 ],
-            })
+            },
+            name="connection-azure-ad",
+            strategy="waad",
+            show_as_button=True)
         ```
 
         ### Email Connection
@@ -1757,9 +1757,11 @@ class Connection(pulumi.CustomResource):
 
         # This is an example of an Email connection.
         passwordless_email = auth0.Connection("passwordless_email",
-            strategy="email",
-            name="email",
             options={
+                "totp": {
+                    "time_step": 300,
+                    "length": 6,
+                },
                 "name": "email",
                 "from_": "{{ application.name }} <root@auth0.com>",
                 "subject": "Welcome to {{ application.name }}",
@@ -1773,11 +1775,9 @@ class Connection(pulumi.CustomResource):
                     "scope": "openid email profile offline_access",
                     "response_type": "code",
                 },
-                "totp": {
-                    "time_step": 300,
-                    "length": 6,
-                },
-            })
+            },
+            strategy="email",
+            name="email")
         ```
 
         ### SAML Connection
@@ -1789,9 +1789,28 @@ class Connection(pulumi.CustomResource):
 
         # This is an example of a SAML connection.
         samlp = auth0.Connection("samlp",
-            name="SAML-Connection",
-            strategy="samlp",
             options={
+                "signing_key": {
+                    "key": \"\"\"-----BEGIN PRIVATE KEY-----
+        ...{your private key here}...
+        -----END PRIVATE KEY-----\"\"\",
+                    "cert": \"\"\"-----BEGIN CERTIFICATE-----
+        ...{your public key cert here}...
+        -----END CERTIFICATE-----\"\"\",
+                },
+                "decryption_key": {
+                    "key": \"\"\"-----BEGIN PRIVATE KEY-----
+        ...{your private key here}...
+        -----END PRIVATE KEY-----\"\"\",
+                    "cert": \"\"\"-----BEGIN CERTIFICATE-----
+        ...{your public key cert here}...
+        -----END CERTIFICATE-----\"\"\",
+                },
+                "idp_initiated": {
+                    "client_id": "client_id",
+                    "client_protocol": "samlp",
+                    "client_authorize_query": "type=code&timeout=30",
+                },
                 "debug": False,
                 "signing_cert": "<signing-certificate>",
                 "sign_in_endpoint": "https://saml.provider/sign_in",
@@ -1840,28 +1859,9 @@ class Connection(pulumi.CustomResource):
                     ],
                     "family_name": "surname",
                 }),
-                "signing_key": {
-                    "key": \"\"\"-----BEGIN PRIVATE KEY-----
-        ...{your private key here}...
-        -----END PRIVATE KEY-----\"\"\",
-                    "cert": \"\"\"-----BEGIN CERTIFICATE-----
-        ...{your public key cert here}...
-        -----END CERTIFICATE-----\"\"\",
-                },
-                "decryption_key": {
-                    "key": \"\"\"-----BEGIN PRIVATE KEY-----
-        ...{your private key here}...
-        -----END PRIVATE KEY-----\"\"\",
-                    "cert": \"\"\"-----BEGIN CERTIFICATE-----
-        ...{your public key cert here}...
-        -----END CERTIFICATE-----\"\"\",
-                },
-                "idp_initiated": {
-                    "client_id": "client_id",
-                    "client_protocol": "samlp",
-                    "client_authorize_query": "type=code&timeout=30",
-                },
-            })
+            },
+            name="SAML-Connection",
+            strategy="samlp")
         ```
 
         ### WindowsLive Connection
@@ -1872,8 +1872,6 @@ class Connection(pulumi.CustomResource):
 
         # This is an example of a WindowsLive connection.
         windowslive = auth0.Connection("windowslive",
-            name="Windowslive-Connection",
-            strategy="windowslive",
             options={
                 "client_id": "<client-id>",
                 "client_secret": "<client-secret>",
@@ -1887,7 +1885,9 @@ class Connection(pulumi.CustomResource):
                     "ethnicity",
                     "gender",
                 ],
-            })
+            },
+            name="Windowslive-Connection",
+            strategy="windowslive")
         ```
 
         ### OIDC Connection
@@ -1899,11 +1899,23 @@ class Connection(pulumi.CustomResource):
 
         # This is an example of an OIDC connection.
         oidc = auth0.Connection("oidc",
-            name="oidc-connection",
-            display_name="OIDC Connection",
-            strategy="oidc",
-            show_as_button=False,
             options={
+                "connection_settings": {
+                    "pkce": "auto",
+                },
+                "attribute_map": {
+                    "mapping_mode": "use_map",
+                    "userinfo_scope": "openid email profile groups",
+                    "attributes": json.dumps({
+                        "name": "${context.tokenset.name}",
+                        "email": "${context.tokenset.email}",
+                        "email_verified": "${context.tokenset.email_verified}",
+                        "nickname": "${context.tokenset.nickname}",
+                        "picture": "${context.tokenset.picture}",
+                        "given_name": "${context.tokenset.given_name}",
+                        "family_name": "${context.tokenset.family_name}",
+                    }),
+                },
                 "client_id": "1234567",
                 "client_secret": "1234567",
                 "domain_aliases": ["example.com"],
@@ -1926,23 +1938,11 @@ class Connection(pulumi.CustomResource):
                     "ethnicity",
                     "gender",
                 ],
-                "connection_settings": {
-                    "pkce": "auto",
-                },
-                "attribute_map": {
-                    "mapping_mode": "use_map",
-                    "userinfo_scope": "openid email profile groups",
-                    "attributes": json.dumps({
-                        "name": "${context.tokenset.name}",
-                        "email": "${context.tokenset.email}",
-                        "email_verified": "${context.tokenset.email_verified}",
-                        "nickname": "${context.tokenset.nickname}",
-                        "picture": "${context.tokenset.picture}",
-                        "given_name": "${context.tokenset.given_name}",
-                        "family_name": "${context.tokenset.family_name}",
-                    }),
-                },
-            })
+            },
+            name="oidc-connection",
+            display_name="OIDC Connection",
+            strategy="oidc",
+            show_as_button=False)
         ```
 
         ### Okta Connection
@@ -1957,11 +1957,23 @@ class Connection(pulumi.CustomResource):
 
         # This is an example of an Okta Workforce connection.
         okta = auth0.Connection("okta",
-            name="okta-connection",
-            display_name="Okta Workforce Connection",
-            strategy="okta",
-            show_as_button=False,
             options={
+                "connection_settings": {
+                    "pkce": "auto",
+                },
+                "attribute_map": {
+                    "mapping_mode": "basic_profile",
+                    "userinfo_scope": "openid email profile groups",
+                    "attributes": json.dumps({
+                        "name": "${context.tokenset.name}",
+                        "email": "${context.tokenset.email}",
+                        "email_verified": "${context.tokenset.email_verified}",
+                        "nickname": "${context.tokenset.nickname}",
+                        "picture": "${context.tokenset.picture}",
+                        "given_name": "${context.tokenset.given_name}",
+                        "family_name": "${context.tokenset.family_name}",
+                    }),
+                },
                 "client_id": "1234567",
                 "client_secret": "1234567",
                 "domain": "example.okta.com",
@@ -1986,23 +1998,11 @@ class Connection(pulumi.CustomResource):
                         "alias": "login_hint",
                     },
                 }),
-                "connection_settings": {
-                    "pkce": "auto",
-                },
-                "attribute_map": {
-                    "mapping_mode": "basic_profile",
-                    "userinfo_scope": "openid email profile groups",
-                    "attributes": json.dumps({
-                        "name": "${context.tokenset.name}",
-                        "email": "${context.tokenset.email}",
-                        "email_verified": "${context.tokenset.email_verified}",
-                        "nickname": "${context.tokenset.nickname}",
-                        "picture": "${context.tokenset.picture}",
-                        "given_name": "${context.tokenset.given_name}",
-                        "family_name": "${context.tokenset.family_name}",
-                    }),
-                },
-            })
+            },
+            name="okta-connection",
+            display_name="Okta Workforce Connection",
+            strategy="okta",
+            show_as_button=False)
         ```
 
         ## Import
@@ -2031,15 +2031,15 @@ class Connection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication: pulumi.Input[Optional[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict']]] = None,
-                 connected_accounts: pulumi.Input[Optional[Union['ConnectionConnectedAccountsArgs', 'ConnectionConnectedAccountsArgsDict']]] = None,
-                 cross_app_access_requesting_app: pulumi.Input[Optional[Union['ConnectionCrossAppAccessRequestingAppArgs', 'ConnectionCrossAppAccessRequestingAppArgsDict']]] = None,
-                 cross_app_access_resource_app: pulumi.Input[Optional[Union['ConnectionCrossAppAccessResourceAppArgs', 'ConnectionCrossAppAccessResourceAppArgsDict']]] = None,
+                 authentication: pulumi.Input[Optional[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict', 'outputs.ConnectionAuthentication']]] = None,
+                 connected_accounts: pulumi.Input[Optional[Union['ConnectionConnectedAccountsArgs', 'ConnectionConnectedAccountsArgsDict', 'outputs.ConnectionConnectedAccounts']]] = None,
+                 cross_app_access_requesting_app: pulumi.Input[Optional[Union['ConnectionCrossAppAccessRequestingAppArgs', 'ConnectionCrossAppAccessRequestingAppArgsDict', 'outputs.ConnectionCrossAppAccessRequestingApp']]] = None,
+                 cross_app_access_resource_app: pulumi.Input[Optional[Union['ConnectionCrossAppAccessResourceAppArgs', 'ConnectionCrossAppAccessResourceAppArgsDict', 'outputs.ConnectionCrossAppAccessResourceApp']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  is_domain_connection: pulumi.Input[Optional[_builtins.bool]] = None,
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 options: pulumi.Input[Optional[Union['ConnectionOptionsArgs', 'ConnectionOptionsArgsDict']]] = None,
+                 options: pulumi.Input[Optional[Union['ConnectionOptionsArgs', 'ConnectionOptionsArgsDict', 'outputs.ConnectionOptions']]] = None,
                  options_client_secret_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  options_client_secret_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  realms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -2082,15 +2082,15 @@ class Connection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authentication: pulumi.Input[Optional[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict']]] = None,
-            connected_accounts: pulumi.Input[Optional[Union['ConnectionConnectedAccountsArgs', 'ConnectionConnectedAccountsArgsDict']]] = None,
-            cross_app_access_requesting_app: pulumi.Input[Optional[Union['ConnectionCrossAppAccessRequestingAppArgs', 'ConnectionCrossAppAccessRequestingAppArgsDict']]] = None,
-            cross_app_access_resource_app: pulumi.Input[Optional[Union['ConnectionCrossAppAccessResourceAppArgs', 'ConnectionCrossAppAccessResourceAppArgsDict']]] = None,
+            authentication: pulumi.Input[Optional[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict', 'outputs.ConnectionAuthentication']]] = None,
+            connected_accounts: pulumi.Input[Optional[Union['ConnectionConnectedAccountsArgs', 'ConnectionConnectedAccountsArgsDict', 'outputs.ConnectionConnectedAccounts']]] = None,
+            cross_app_access_requesting_app: pulumi.Input[Optional[Union['ConnectionCrossAppAccessRequestingAppArgs', 'ConnectionCrossAppAccessRequestingAppArgsDict', 'outputs.ConnectionCrossAppAccessRequestingApp']]] = None,
+            cross_app_access_resource_app: pulumi.Input[Optional[Union['ConnectionCrossAppAccessResourceAppArgs', 'ConnectionCrossAppAccessResourceAppArgsDict', 'outputs.ConnectionCrossAppAccessResourceApp']]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             is_domain_connection: pulumi.Input[Optional[_builtins.bool]] = None,
             metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            options: pulumi.Input[Optional[Union['ConnectionOptionsArgs', 'ConnectionOptionsArgsDict']]] = None,
+            options: pulumi.Input[Optional[Union['ConnectionOptionsArgs', 'ConnectionOptionsArgsDict', 'outputs.ConnectionOptions']]] = None,
             options_client_secret_wo: pulumi.Input[Optional[_builtins.str]] = None,
             options_client_secret_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             realms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -2103,15 +2103,15 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict']] authentication: Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
-        :param pulumi.Input[Union['ConnectionConnectedAccountsArgs', 'ConnectionConnectedAccountsArgsDict']] connected_accounts: Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
-        :param pulumi.Input[Union['ConnectionCrossAppAccessRequestingAppArgs', 'ConnectionCrossAppAccessRequestingAppArgsDict']] cross_app_access_requesting_app: Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `token_vault_xaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
-        :param pulumi.Input[Union['ConnectionCrossAppAccessResourceAppArgs', 'ConnectionCrossAppAccessResourceAppArgsDict']] cross_app_access_resource_app: Resource App settings that apply to this connection. (EA only)
+        :param pulumi.Input[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict', 'outputs.ConnectionAuthentication']] authentication: Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
+        :param pulumi.Input[Union['ConnectionConnectedAccountsArgs', 'ConnectionConnectedAccountsArgsDict', 'outputs.ConnectionConnectedAccounts']] connected_accounts: Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
+        :param pulumi.Input[Union['ConnectionCrossAppAccessRequestingAppArgs', 'ConnectionCrossAppAccessRequestingAppArgsDict', 'outputs.ConnectionCrossAppAccessRequestingApp']] cross_app_access_requesting_app: Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `token_vault_xaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+        :param pulumi.Input[Union['ConnectionCrossAppAccessResourceAppArgs', 'ConnectionCrossAppAccessResourceAppArgsDict', 'outputs.ConnectionCrossAppAccessResourceApp']] cross_app_access_resource_app: Resource App settings that apply to this connection. (EA only)
         :param pulumi.Input[_builtins.str] display_name: Name used in login screen.
         :param pulumi.Input[_builtins.bool] is_domain_connection: Indicates whether the connection is domain level.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata associated with the connection, in the form of a map of string values (max 255 chars).
         :param pulumi.Input[_builtins.str] name: Name of the connection. This value is immutable and changing it requires the creation of a new resource.
-        :param pulumi.Input[Union['ConnectionOptionsArgs', 'ConnectionOptionsArgsDict']] options: Configuration settings for connection options.
+        :param pulumi.Input[Union['ConnectionOptionsArgs', 'ConnectionOptionsArgsDict', 'outputs.ConnectionOptions']] options: Configuration settings for connection options.
         :param pulumi.Input[_builtins.str] options_client_secret_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                The strategy's client secret (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. Bump `options_client_secret_wo_version` to rotate it. Conflicts with `options.client_secret`.
         :param pulumi.Input[_builtins.int] options_client_secret_wo_version: Version counter for `options_client_secret_wo`, required whenever the write-only secret is set. Must be a positive integer starting at `1`. This value signals rotation intent, though the secret is resent even for other config updates.

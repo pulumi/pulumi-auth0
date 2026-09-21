@@ -24,20 +24,6 @@ namespace Pulumi.Auth0
     /// {
     ///     var myModule = new Auth0.ActionModule("my_module", new()
     ///     {
-    ///         Name = "My Shared Module",
-    ///         Publish = true,
-    ///         Code = @"/**
-    ///  * A shared utility function that can be used across multiple actions.
-    ///  */
-    /// module.exports = {
-    ///   greet: function(name) {
-    ///     return \""Hello, \"" + name + \""!\"";
-    ///   },
-    ///   formatDate: function(date) {
-    ///     return date.toISOString();
-    ///   }
-    /// };
-    /// ",
     ///         Dependencies = new[]
     ///         {
     ///             new Auth0.Inputs.ActionModuleDependencyArgs
@@ -54,11 +40,38 @@ namespace Pulumi.Auth0
     ///                 Value = "my-secret-api-key",
     ///             },
     ///         },
+    ///         Name = "My Shared Module",
+    ///         Publish = true,
+    ///         Code = @"/**
+    ///  * A shared utility function that can be used across multiple actions.
+    ///  */
+    /// module.exports = {
+    ///   greet: function(name) {
+    ///     return \""Hello, \"" + name + \""!\"";
+    ///   },
+    ///   formatDate: function(date) {
+    ///     return date.toISOString();
+    ///   }
+    /// };
+    /// ",
     ///     });
     /// 
     ///     // Use the module in an action by referencing its id and version_id.
     ///     var myAction = new Auth0.Action("my_action", new()
     ///     {
+    ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
+    ///         {
+    ///             Id = "post-login",
+    ///             Version = "v3",
+    ///         },
+    ///         Modules = new[]
+    ///         {
+    ///             new Auth0.Inputs.ActionModuleArgs
+    ///             {
+    ///                 ModuleId = myModule.Id,
+    ///                 ModuleVersionId = myModule.VersionId,
+    ///             },
+    ///         },
     ///         Name = "My Action",
     ///         Runtime = "node22",
     ///         Deploy = true,
@@ -68,19 +81,6 @@ namespace Pulumi.Auth0
     ///   console.log(myModule.greet(event.user.name));
     /// };
     /// ",
-    ///         Modules = new[]
-    ///         {
-    ///             new Auth0.Inputs.ActionModuleArgs
-    ///             {
-    ///                 ModuleId = myModule.Id,
-    ///                 ModuleVersionId = myModule.VersionId,
-    ///             },
-    ///         },
-    ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
-    ///         {
-    ///             Id = "post-login",
-    ///             Version = "v3",
-    ///         },
     ///     });
     /// 
     /// });

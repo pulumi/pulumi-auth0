@@ -33,8 +33,6 @@ namespace Pulumi.Auth0
     /// 
     ///     var oidc = new Auth0.Connection("oidc", new()
     ///     {
-    ///         Name = "OIDC-Connection",
-    ///         Strategy = "oidc",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             ClientId = myClient.Id,
@@ -51,6 +49,8 @@ namespace Pulumi.Auth0
     ///             TokenEndpointAuthMethod = "private_key_jwt",
     ///             TokenEndpointAuthSigningAlg = "RS256",
     ///         },
+    ///         Name = "OIDC-Connection",
+    ///         Strategy = "oidc",
     ///     });
     /// 
     ///     // Resource used to rotate the keys for above OIDC connection

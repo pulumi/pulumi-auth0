@@ -30,23 +30,20 @@ namespace Pulumi.Auth0
     ///     // This is an example on how to set up the email provider with Amazon SES.
     ///     var amazonSesEmailProvider = new Auth0.EmailProvider("amazon_ses_email_provider", new()
     ///     {
-    ///         Name = "ses",
-    ///         Enabled = true,
-    ///         DefaultFromAddress = "accounts@example.com",
     ///         Credentials = new Auth0.Inputs.EmailProviderCredentialsArgs
     ///         {
     ///             AccessKeyId = "AKIAXXXXXXXXXXXXXXXX",
     ///             SecretAccessKey = "7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     ///             Region = "us-east-1",
     ///         },
+    ///         Name = "ses",
+    ///         Enabled = true,
+    ///         DefaultFromAddress = "accounts@example.com",
     ///     });
     /// 
     ///     // This is an example on how to set up the email provider with SMTP.
     ///     var smtpEmailProvider = new Auth0.EmailProvider("smtp_email_provider", new()
     ///     {
-    ///         Name = "smtp",
-    ///         Enabled = true,
-    ///         DefaultFromAddress = "accounts@example.com",
     ///         Credentials = new Auth0.Inputs.EmailProviderCredentialsArgs
     ///         {
     ///             SmtpHost = "your.smtp.host.com",
@@ -54,50 +51,58 @@ namespace Pulumi.Auth0
     ///             SmtpUser = "SMTP Username",
     ///             SmtpPass = "SMTP Password",
     ///         },
+    ///         Name = "smtp",
+    ///         Enabled = true,
+    ///         DefaultFromAddress = "accounts@example.com",
     ///     });
     /// 
     ///     // This is an example on how to set up the email provider with Sendgrid.
     ///     var sendgridEmailProvider = new Auth0.EmailProvider("sendgrid_email_provider", new()
     ///     {
-    ///         Name = "sendgrid",
-    ///         Enabled = true,
-    ///         DefaultFromAddress = "accounts@example.com",
     ///         Credentials = new Auth0.Inputs.EmailProviderCredentialsArgs
     ///         {
     ///             ApiKey = "secretAPIKey",
     ///         },
+    ///         Name = "sendgrid",
+    ///         Enabled = true,
+    ///         DefaultFromAddress = "accounts@example.com",
     ///     });
     /// 
     ///     // This is an example on how to set up the email provider with Azure CS.
     ///     var azureCsEmailProvider = new Auth0.EmailProvider("azure_cs_email_provider", new()
     ///     {
-    ///         Name = "azure_cs",
-    ///         Enabled = true,
-    ///         DefaultFromAddress = "accounts@example.com",
     ///         Credentials = new Auth0.Inputs.EmailProviderCredentialsArgs
     ///         {
     ///             AzureCsConnectionString = "azure_cs_connection_string",
     ///         },
+    ///         Name = "azure_cs",
+    ///         Enabled = true,
+    ///         DefaultFromAddress = "accounts@example.com",
     ///     });
     /// 
     ///     // This is an example on how to set up the email provider with MS365.
     ///     var ms365EmailProvider = new Auth0.EmailProvider("ms365_email_provider", new()
     ///     {
-    ///         Name = "ms365",
-    ///         Enabled = true,
-    ///         DefaultFromAddress = "accounts@example.com",
     ///         Credentials = new Auth0.Inputs.EmailProviderCredentialsArgs
     ///         {
     ///             Ms365TenantId = "ms365_tenant_id",
     ///             Ms365ClientId = "ms365_client_id",
     ///             Ms365ClientSecret = "ms365_client_secret",
     ///         },
+    ///         Name = "ms365",
+    ///         Enabled = true,
+    ///         DefaultFromAddress = "accounts@example.com",
     ///     });
     /// 
     ///     // Below is an example of how to set up a custom email provider.
     ///     // The action with custom-email-provider as supported_triggers is a prerequisite.
     ///     var customEmailProviderAction = new Auth0.Action("custom_email_provider_action", new()
     ///     {
+    ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
+    ///         {
+    ///             Id = "custom-email-provider",
+    ///             Version = "v1",
+    ///         },
     ///         Name = "custom-email-provider-action",
     ///         Runtime = "node22",
     ///         Deploy = true,
@@ -113,19 +118,14 @@ namespace Pulumi.Auth0
     ///   return;
     ///  };
     /// ",
-    ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
-    ///         {
-    ///             Id = "custom-email-provider",
-    ///             Version = "v1",
-    ///         },
     ///     });
     /// 
     ///     var customEmailProvider = new Auth0.EmailProvider("custom_email_provider", new()
     ///     {
+    ///         Credentials = null,
     ///         Name = "custom",
     ///         Enabled = true,
     ///         DefaultFromAddress = "accounts@example.com",
-    ///         Credentials = null,
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =

@@ -104,7 +104,7 @@ class RolePermissions(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolePermissionsPermissionArgs', 'RolePermissionsPermissionArgsDict']]]]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolePermissionsPermissionArgs', 'RolePermissionsPermissionArgsDict', 'outputs.RolePermissionsPermission']]]]] = None,
                  role_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -125,7 +125,6 @@ class RolePermissions(pulumi.CustomResource):
             name="test",
             identifier="test.example.com")
         resource_server_scopes = auth0.ResourceServerScopes("resource_server_scopes",
-            resource_server_identifier=resource_server.identifier,
             scopes=[
                 {
                     "name": "store:create",
@@ -139,7 +138,8 @@ class RolePermissions(pulumi.CustomResource):
                 {
                     "name": "store:delete",
                 },
-            ])
+            ],
+            resource_server_identifier=resource_server.identifier)
         my_role = auth0.Role("my_role", name="My Role")
         my_role_perms = auth0.RolePermissions("my_role_perms",
             permissions=pulumi.Output.all(
@@ -166,7 +166,7 @@ class RolePermissions(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RolePermissionsPermissionArgs', 'RolePermissionsPermissionArgsDict']]]] permissions: List of API permissions granted to the role.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RolePermissionsPermissionArgs', 'RolePermissionsPermissionArgsDict', 'outputs.RolePermissionsPermission']]]] permissions: List of API permissions granted to the role.
         :param pulumi.Input[_builtins.str] role_id: ID of the role to associate the permission to.
         """
         ...
@@ -193,7 +193,6 @@ class RolePermissions(pulumi.CustomResource):
             name="test",
             identifier="test.example.com")
         resource_server_scopes = auth0.ResourceServerScopes("resource_server_scopes",
-            resource_server_identifier=resource_server.identifier,
             scopes=[
                 {
                     "name": "store:create",
@@ -207,7 +206,8 @@ class RolePermissions(pulumi.CustomResource):
                 {
                     "name": "store:delete",
                 },
-            ])
+            ],
+            resource_server_identifier=resource_server.identifier)
         my_role = auth0.Role("my_role", name="My Role")
         my_role_perms = auth0.RolePermissions("my_role_perms",
             permissions=pulumi.Output.all(
@@ -247,7 +247,7 @@ class RolePermissions(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolePermissionsPermissionArgs', 'RolePermissionsPermissionArgsDict']]]]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolePermissionsPermissionArgs', 'RolePermissionsPermissionArgsDict', 'outputs.RolePermissionsPermission']]]]] = None,
                  role_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -274,7 +274,7 @@ class RolePermissions(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolePermissionsPermissionArgs', 'RolePermissionsPermissionArgsDict']]]]] = None,
+            permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolePermissionsPermissionArgs', 'RolePermissionsPermissionArgsDict', 'outputs.RolePermissionsPermission']]]]] = None,
             role_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'RolePermissions':
         """
         Get an existing RolePermissions resource's state with the given name, id, and optional extra
@@ -283,7 +283,7 @@ class RolePermissions(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RolePermissionsPermissionArgs', 'RolePermissionsPermissionArgsDict']]]] permissions: List of API permissions granted to the role.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RolePermissionsPermissionArgs', 'RolePermissionsPermissionArgsDict', 'outputs.RolePermissionsPermission']]]] permissions: List of API permissions granted to the role.
         :param pulumi.Input[_builtins.str] role_id: ID of the role to associate the permission to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

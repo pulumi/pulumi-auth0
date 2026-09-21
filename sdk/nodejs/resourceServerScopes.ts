@@ -25,7 +25,6 @@ import * as utilities from "./utilities";
  *     identifier: "https://api.example.com",
  * });
  * const myApiScopes = new auth0.ResourceServerScopes("my_api_scopes", {
- *     resourceServerIdentifier: myApi.identifier,
  *     scopes: [
  *         {
  *             name: "create:appointments",
@@ -36,6 +35,7 @@ import * as utilities from "./utilities";
  *             description: "Ability to read appointments",
  *         },
  *     ],
+ *     resourceServerIdentifier: myApi.identifier,
  * });
  * ```
  *

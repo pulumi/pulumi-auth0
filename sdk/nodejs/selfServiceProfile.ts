@@ -18,17 +18,17 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const mySelfServiceProfile = new auth0.SelfServiceProfile("my_self_service_profile", {
+ *     branding: {
+ *         colors: {
+ *             primary: "#0059d6",
+ *         },
+ *         logoUrl: "https://mycompany.org/v2/logo.png",
+ *     },
  *     userAttributes: [{
  *         name: "sample-name",
  *         description: "sample-description",
  *         isOptional: true,
  *     }],
- *     branding: {
- *         logoUrl: "https://mycompany.org/v2/logo.png",
- *         colors: {
- *             primary: "#0059d6",
- *         },
- *     },
  * });
  * ```
  *

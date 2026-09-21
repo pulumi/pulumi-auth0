@@ -31,6 +31,21 @@ namespace Pulumi.Auth0
     /// 
     ///     var myMcpAgent = new Auth0.ClientCimd("my_mcp_agent", new()
     ///     {
+    ///         JwtConfiguration = new Auth0.Inputs.ClientCimdJwtConfigurationArgs
+    ///         {
+    ///             LifetimeInSeconds = 300,
+    ///             Alg = "RS256",
+    ///         },
+    ///         RefreshToken = new Auth0.Inputs.ClientCimdRefreshTokenArgs
+    ///         {
+    ///             RotationType = "rotating",
+    ///             ExpirationType = "expiring",
+    ///             TokenLifetime = 2592000,
+    ///             IdleTokenLifetime = 1296000,
+    ///             InfiniteTokenLifetime = false,
+    ///             InfiniteIdleTokenLifetime = false,
+    ///             Leeway = 0,
+    ///         },
     ///         ExternalClientId = "https://mcp-agent2.example.com/.well-known/client.json",
     ///         ExternalClientIdVersion = 1,
     ///         Description = "MCP Agent - Production",
@@ -52,21 +67,6 @@ namespace Pulumi.Auth0
     ///         ClientMetadata = 
     ///         {
     ///             { "environment", "production" },
-    ///         },
-    ///         JwtConfiguration = new Auth0.Inputs.ClientCimdJwtConfigurationArgs
-    ///         {
-    ///             LifetimeInSeconds = 300,
-    ///             Alg = "RS256",
-    ///         },
-    ///         RefreshToken = new Auth0.Inputs.ClientCimdRefreshTokenArgs
-    ///         {
-    ///             RotationType = "rotating",
-    ///             ExpirationType = "expiring",
-    ///             TokenLifetime = 2592000,
-    ///             IdleTokenLifetime = 1296000,
-    ///             InfiniteTokenLifetime = false,
-    ///             InfiniteIdleTokenLifetime = false,
-    ///             Leeway = 0,
     ///         },
     ///     });
     /// 

@@ -65,24 +65,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         final var config = ctx.config();
  *         var myAction = new Action("myAction", ActionArgs.builder()
- *             .name(StdFunctions.format(Map.ofEntries(
- *                 Map.entry("input", "Test Action %s"),
- *                 Map.entry("args", Arrays.asList(StdFunctions.timestamp(Map.ofEntries(
- *                 )).result()))
- *             )).result())
- *             .runtime("node22")
- *             .deploy(true)
- *             .code("""
- * /**
- *  * Handler that will be called during the execution of a PostLogin flow.
- *  *
- *  * }{@literal @}{@code param }{{@code Event}}{@code  event - Details about the user and the context in which they are logging in.
- *  * }{@literal @}{@code param }{{@code PostLoginAPI}}{@code  api - Interface whose methods can be used to change the behavior of the login.
- *  *}&#47;{@code
- *  exports.onExecutePostLogin = async (event, api) => }{{@code
- *    console.log(event);
- *  }}{@code ;
- *             """)
  *             .supportedTriggers(ActionSupportedTriggersArgs.builder()
  *                 .id("post-login")
  *                 .version("v3")
@@ -105,10 +87,36 @@ import javax.annotation.Nullable;
  *                     .name("BAR")
  *                     .value("Bar")
  *                     .build())
+ *             .name(StdFunctions.format(Map.ofEntries(
+ *                 Map.entry("input", "Test Action %s"),
+ *                 Map.entry("args", Arrays.asList(StdFunctions.timestamp(Map.ofEntries(
+ *                 )).result()))
+ *             )).result())
+ *             .runtime("node22")
+ *             .deploy(true)
+ *             .code("""
+ * /**
+ *  * Handler that will be called during the execution of a PostLogin flow.
+ *  *
+ *  * }{@literal @}{@code param }{{@code Event}}{@code  event - Details about the user and the context in which they are logging in.
+ *  * }{@literal @}{@code param }{{@code PostLoginAPI}}{@code  api - Interface whose methods can be used to change the behavior of the login.
+ *  *}&#47;{@code
+ *  exports.onExecutePostLogin = async (event, api) => }{{@code
+ *    console.log(event);
+ *  }}{@code ;
+ *             """)
  *             .build());
  * 
  *         final var actionApiKey = config.require("actionApiKey");
  *         var mySecureAction = new Action("mySecureAction", ActionArgs.builder()
+ *             .supportedTriggers(ActionSupportedTriggersArgs.builder()
+ *                 .id("post-login")
+ *                 .version("v3")
+ *                 .build())
+ *             .secretsWos(ActionSecretsWoArgs.builder()
+ *                 .name("API_KEY")
+ *                 .value(actionApiKey)
+ *                 .build())
  *             .name(StdFunctions.format(Map.ofEntries(
  *                 Map.entry("input", "Secure Action %s"),
  *                 Map.entry("args", Arrays.asList(StdFunctions.timestamp(Map.ofEntries(
@@ -121,14 +129,6 @@ import javax.annotation.Nullable;
  *   console.log(event);
  * }}{@code ;
  *             """)
- *             .supportedTriggers(ActionSupportedTriggersArgs.builder()
- *                 .id("post-login")
- *                 .version("v3")
- *                 .build())
- *             .secretsWos(ActionSecretsWoArgs.builder()
- *                 .name("API_KEY")
- *                 .value(actionApiKey)
- *                 .build())
  *             .secretsWoVersion(1)
  *             .build());
  * 

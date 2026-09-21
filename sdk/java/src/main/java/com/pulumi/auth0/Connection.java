@@ -51,17 +51,17 @@ import javax.annotation.Nullable;
  * import com.pulumi.auth0.Connection;
  * import com.pulumi.auth0.ConnectionArgs;
  * import com.pulumi.auth0.inputs.ConnectionOptionsArgs;
- * import com.pulumi.auth0.inputs.ConnectionOptionsPasswordHistoryArgs;
  * import com.pulumi.auth0.inputs.ConnectionOptionsPasswordNoPersonalInfoArgs;
  * import com.pulumi.auth0.inputs.ConnectionOptionsPasswordDictionaryArgs;
  * import com.pulumi.auth0.inputs.ConnectionOptionsPasswordComplexityOptionsArgs;
  * import com.pulumi.auth0.inputs.ConnectionOptionsValidationArgs;
  * import com.pulumi.auth0.inputs.ConnectionOptionsValidationUsernameArgs;
  * import com.pulumi.auth0.inputs.ConnectionOptionsMfaArgs;
+ * import com.pulumi.auth0.inputs.ConnectionOptionsPasskeyOptionsArgs;
  * import com.pulumi.auth0.inputs.ConnectionOptionsAuthenticationMethodArgs;
  * import com.pulumi.auth0.inputs.ConnectionOptionsAuthenticationMethodPasskeyArgs;
  * import com.pulumi.auth0.inputs.ConnectionOptionsAuthenticationMethodPasswordArgs;
- * import com.pulumi.auth0.inputs.ConnectionOptionsPasskeyOptionsArgs;
+ * import com.pulumi.auth0.inputs.ConnectionOptionsPasswordHistoryArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -78,40 +78,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // This is an example of an Auth0 connection.
  *         var myConnection = new Connection("myConnection", ConnectionArgs.builder()
- *             .name("Example-Connection")
- *             .isDomainConnection(true)
- *             .strategy("auth0")
- *             .metadata(Map.ofEntries(
- *                 Map.entry("key1", "foo"),
- *                 Map.entry("key2", "bar")
- *             ))
  *             .options(ConnectionOptionsArgs.builder()
- *                 .passwordPolicy("excellent")
- *                 .bruteForceProtection(true)
- *                 .strategyVersion(2)
- *                 .enabledDatabaseCustomization(true)
- *                 .importMode(false)
- *                 .requiresUsername(true)
- *                 .disableSignup(false)
- *                 .customScripts(Map.of("get_user", """
- *         function getByEmail(email, callback) {
- *           return callback(new Error(\"Whoops!\"));
- *         }
- *                 """))
- *                 .configuration(Map.ofEntries(
- *                     Map.entry("foo", "bar"),
- *                     Map.entry("bar", "baz")
- *                 ))
- *                 .upstreamParams(serializeJson(
- *                     jsonObject(
- *                         jsonProperty("screen_name", jsonObject(
- *                             jsonProperty("alias", "login_hint")
- *                         ))
- *                     )))
- *                 .passwordHistories(ConnectionOptionsPasswordHistoryArgs.builder()
- *                     .enable(true)
- *                     .size(3)
- *                     .build())
  *                 .passwordNoPersonalInfo(ConnectionOptionsPasswordNoPersonalInfoArgs.builder()
  *                     .enable(true)
  *                     .build())
@@ -135,6 +102,11 @@ import javax.annotation.Nullable;
  *                     .active(true)
  *                     .returnEnrollSettings(true)
  *                     .build())
+ *                 .passkeyOptions(ConnectionOptionsPasskeyOptionsArgs.builder()
+ *                     .challengeUi("both")
+ *                     .localEnrollmentEnabled(true)
+ *                     .progressiveEnrollmentEnabled(true)
+ *                     .build())
  *                 .authenticationMethods(ConnectionOptionsAuthenticationMethodArgs.builder()
  *                     .passkey(ConnectionOptionsAuthenticationMethodPasskeyArgs.builder()
  *                         .enabled(true)
@@ -143,12 +115,40 @@ import javax.annotation.Nullable;
  *                         .enabled(true)
  *                         .build())
  *                     .build())
- *                 .passkeyOptions(ConnectionOptionsPasskeyOptionsArgs.builder()
- *                     .challengeUi("both")
- *                     .localEnrollmentEnabled(true)
- *                     .progressiveEnrollmentEnabled(true)
+ *                 .passwordHistories(ConnectionOptionsPasswordHistoryArgs.builder()
+ *                     .enable(true)
+ *                     .size(3)
  *                     .build())
+ *                 .passwordPolicy("excellent")
+ *                 .bruteForceProtection(true)
+ *                 .strategyVersion(2)
+ *                 .enabledDatabaseCustomization(true)
+ *                 .importMode(false)
+ *                 .requiresUsername(true)
+ *                 .disableSignup(false)
+ *                 .customScripts(Map.of("get_user", """
+ *         function getByEmail(email, callback) {
+ *           return callback(new Error(\"Whoops!\"));
+ *         }
+ *                 """))
+ *                 .configuration(Map.ofEntries(
+ *                     Map.entry("foo", "bar"),
+ *                     Map.entry("bar", "baz")
+ *                 ))
+ *                 .upstreamParams(serializeJson(
+ *                     jsonObject(
+ *                         jsonProperty("screen_name", jsonObject(
+ *                             jsonProperty("alias", "login_hint")
+ *                         ))
+ *                     )))
  *                 .build())
+ *             .name("Example-Connection")
+ *             .isDomainConnection(true)
+ *             .strategy("auth0")
+ *             .metadata(Map.ofEntries(
+ *                 Map.entry("key1", "foo"),
+ *                 Map.entry("key2", "bar")
+ *             ))
  *             .build());
  * 
  *         // The strategy's client secret can be set as a write-only argument so it is never persisted to
@@ -158,10 +158,6 @@ import javax.annotation.Nullable;
  *         //
  *         // NOTE: Write-only arguments require Terraform 1.11 or later.
  *         var myConnectionWriteOnlySecret = new Connection("myConnectionWriteOnlySecret", ConnectionArgs.builder()
- *             .name("Example-Connection-Write-Only-Secret")
- *             .strategy("oidc")
- *             .optionsClientSecretWo(connectionClientSecret)
- *             .optionsClientSecretWoVersion(1)
  *             .options(ConnectionOptionsArgs.builder()
  *                 .clientId("1234567")
  *                 .type("back_channel")
@@ -175,6 +171,10 @@ import javax.annotation.Nullable;
  *                     "openid",
  *                     "email")
  *                 .build())
+ *             .name("Example-Connection-Write-Only-Secret")
+ *             .strategy("oidc")
+ *             .optionsClientSecretWo(connectionClientSecret)
+ *             .optionsClientSecretWoVersion(1)
  *             .build());
  * 
  *     }
@@ -211,8 +211,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // This is an example of a Google OAuth2 connection.
  *         var googleOauth2 = new Connection("googleOauth2", ConnectionArgs.builder()
- *             .name("Google-OAuth2-Connection")
- *             .strategy("google-oauth2")
  *             .options(ConnectionOptionsArgs.builder()
  *                 .clientId("<client-id>")
  *                 .clientSecret("<client-secret>")
@@ -229,6 +227,8 @@ import javax.annotation.Nullable;
  *                     "ethnicity",
  *                     "gender")
  *                 .build())
+ *             .name("Google-OAuth2-Connection")
+ *             .strategy("google-oauth2")
  *             .build());
  * 
  *     }
@@ -263,10 +263,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var googleApps = new Connection("googleApps", ConnectionArgs.builder()
- *             .name("connection-google-apps")
- *             .isDomainConnection(false)
- *             .strategy("google-apps")
- *             .showAsButton(false)
  *             .options(ConnectionOptionsArgs.builder()
  *                 .clientId("")
  *                 .clientSecret("")
@@ -291,6 +287,10 @@ import javax.annotation.Nullable;
  *                     "ethnicity",
  *                     "gender")
  *                 .build())
+ *             .name("connection-google-apps")
+ *             .isDomainConnection(false)
+ *             .strategy("google-apps")
+ *             .showAsButton(false)
  *             .build());
  * 
  *     }
@@ -325,8 +325,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // This is an example of a Facebook connection.
  *         var facebook = new Connection("facebook", ConnectionArgs.builder()
- *             .name("Facebook-Connection")
- *             .strategy("facebook")
  *             .options(ConnectionOptionsArgs.builder()
  *                 .clientId("<client-id>")
  *                 .clientSecret("<client-secret>")
@@ -340,6 +338,8 @@ import javax.annotation.Nullable;
  *                     "ethnicity",
  *                     "gender")
  *                 .build())
+ *             .name("Facebook-Connection")
+ *             .strategy("facebook")
  *             .build());
  * 
  *     }
@@ -374,8 +374,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // This is an example of an Apple connection.
  *         var apple = new Connection("apple", ConnectionArgs.builder()
- *             .name("Apple-Connection")
- *             .strategy("apple")
  *             .options(ConnectionOptionsArgs.builder()
  *                 .clientId("<client-id>")
  *                 .clientSecret("""
@@ -392,6 +390,8 @@ import javax.annotation.Nullable;
  *                     "ethnicity",
  *                     "gender")
  *                 .build())
+ *             .name("Apple-Connection")
+ *             .strategy("apple")
  *             .build());
  * 
  *     }
@@ -426,8 +426,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // This is an example of an LinkedIn connection.
  *         var linkedin = new Connection("linkedin", ConnectionArgs.builder()
- *             .name("Linkedin-Connection")
- *             .strategy("linkedin")
  *             .options(ConnectionOptionsArgs.builder()
  *                 .clientId("<client-id>")
  *                 .clientSecret("<client-secret>")
@@ -441,6 +439,8 @@ import javax.annotation.Nullable;
  *                     "ethnicity",
  *                     "gender")
  *                 .build())
+ *             .name("Linkedin-Connection")
+ *             .strategy("linkedin")
  *             .build());
  * 
  *     }
@@ -475,8 +475,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // This is an example of an GitHub connection.
  *         var github = new Connection("github", ConnectionArgs.builder()
- *             .name("GitHub-Connection")
- *             .strategy("github")
  *             .options(ConnectionOptionsArgs.builder()
  *                 .clientId("<client-id>")
  *                 .clientSecret("<client-secret>")
@@ -490,6 +488,8 @@ import javax.annotation.Nullable;
  *                     "ethnicity",
  *                     "gender")
  *                 .build())
+ *             .name("GitHub-Connection")
+ *             .strategy("github")
  *             .build());
  * 
  *     }
@@ -524,8 +524,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // This is an example of an SalesForce connection.
  *         var salesforce = new Connection("salesforce", ConnectionArgs.builder()
- *             .name("Salesforce-Connection")
- *             .strategy("salesforce")
  *             .options(ConnectionOptionsArgs.builder()
  *                 .clientId("<client-id>")
  *                 .clientSecret("<client-secret>")
@@ -538,6 +536,8 @@ import javax.annotation.Nullable;
  *                     "ethnicity",
  *                     "gender")
  *                 .build())
+ *             .name("Salesforce-Connection")
+ *             .strategy("salesforce")
  *             .build());
  * 
  *     }
@@ -575,9 +575,16 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // This is an example of an OAuth2 connection.
  *         var oauth2 = new Connection("oauth2", ConnectionArgs.builder()
- *             .name("OAuth2-Connection")
- *             .strategy("oauth2")
  *             .options(ConnectionOptionsArgs.builder()
+ *                 .customHeaders(                
+ *                     ConnectionOptionsCustomHeaderArgs.builder()
+ *                         .header("bar")
+ *                         .value("foo")
+ *                         .build(),
+ *                     ConnectionOptionsCustomHeaderArgs.builder()
+ *                         .header("foo")
+ *                         .value("bar")
+ *                         .build())
  *                 .clientId("<client-id>")
  *                 .clientSecret("<client-secret>")
  *                 .strategyVersion(2)
@@ -589,15 +596,6 @@ import javax.annotation.Nullable;
  *                 .authorizationEndpoint("https://auth.example.com/oauth2/authorize")
  *                 .pkceEnabled(true)
  *                 .iconUrl("https://auth.example.com/assets/logo.png")
- *                 .customHeaders(                
- *                     ConnectionOptionsCustomHeaderArgs.builder()
- *                         .header("bar")
- *                         .value("foo")
- *                         .build(),
- *                     ConnectionOptionsCustomHeaderArgs.builder()
- *                         .header("foo")
- *                         .value("bar")
- *                         .build())
  *                 .scripts(Map.of("fetchUserProfile", """
  *         function fetchUserProfile(accessToken, context, callback) {
  *           return callback(new Error(\"Whoops!\"));
@@ -608,6 +606,8 @@ import javax.annotation.Nullable;
  *                     "ethnicity",
  *                     "gender")
  *                 .build())
+ *             .name("OAuth2-Connection")
+ *             .strategy("oauth2")
  *             .build());
  * 
  *     }
@@ -642,10 +642,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var ad = new Connection("ad", ConnectionArgs.builder()
- *             .name("connection-active-directory")
- *             .displayName("Active Directory Connection")
- *             .strategy("ad")
- *             .showAsButton(true)
  *             .options(ConnectionOptionsArgs.builder()
  *                 .disableSelfServiceChangePassword(true)
  *                 .bruteForceProtection(true)
@@ -672,6 +668,10 @@ import javax.annotation.Nullable;
  *                 .useKerberos(false)
  *                 .disableCache(false)
  *                 .build())
+ *             .name("connection-active-directory")
+ *             .displayName("Active Directory Connection")
+ *             .strategy("ad")
+ *             .showAsButton(true)
  *             .build());
  * 
  *     }
@@ -706,9 +706,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var azureAd = new Connection("azureAd", ConnectionArgs.builder()
- *             .name("connection-azure-ad")
- *             .strategy("waad")
- *             .showAsButton(true)
  *             .options(ConnectionOptionsArgs.builder()
  *                 .identityApi("azure-active-directory-v1.0")
  *                 .clientId("123456")
@@ -743,6 +740,9 @@ import javax.annotation.Nullable;
  *                     "ethnicity",
  *                     "gender")
  *                 .build())
+ *             .name("connection-azure-ad")
+ *             .strategy("waad")
+ *             .showAsButton(true)
  *             .build());
  * 
  *     }
@@ -780,9 +780,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         // This is an example of an Email connection.
  *         var passwordlessEmail = new Connection("passwordlessEmail", ConnectionArgs.builder()
- *             .strategy("email")
- *             .name("email")
  *             .options(ConnectionOptionsArgs.builder()
+ *                 .totp(ConnectionOptionsTotpArgs.builder()
+ *                     .timeStep(300)
+ *                     .length(6)
+ *                     .build())
  *                 .name("email")
  *                 .from("}{{{@code  application.name }}}{@code  <root}{@literal @}{@code auth0.com>")
  *                 .subject("Welcome to }{{{@code  application.name }}}{@code ")
@@ -796,11 +798,9 @@ import javax.annotation.Nullable;
  *                     Map.entry("scope", "openid email profile offline_access"),
  *                     Map.entry("response_type", "code")
  *                 ))
- *                 .totp(ConnectionOptionsTotpArgs.builder()
- *                     .timeStep(300)
- *                     .length(6)
- *                     .build())
  *                 .build())
+ *             .strategy("email")
+ *             .name("email")
  *             .build());
  * 
  *     }}{@code
@@ -839,9 +839,32 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         // This is an example of a SAML connection.
  *         var samlp = new Connection("samlp", ConnectionArgs.builder()
- *             .name("SAML-Connection")
- *             .strategy("samlp")
  *             .options(ConnectionOptionsArgs.builder()
+ *                 .signingKey(ConnectionOptionsSigningKeyArgs.builder()
+ *                     .key("""
+ * -----BEGIN PRIVATE KEY-----
+ * ...}{{@code your private key here}}{@code ...
+ * -----END PRIVATE KEY-----                    """)
+ *                     .cert("""
+ * -----BEGIN CERTIFICATE-----
+ * ...}{{@code your public key cert here}}{@code ...
+ * -----END CERTIFICATE-----                    """)
+ *                     .build())
+ *                 .decryptionKey(ConnectionOptionsDecryptionKeyArgs.builder()
+ *                     .key("""
+ * -----BEGIN PRIVATE KEY-----
+ * ...}{{@code your private key here}}{@code ...
+ * -----END PRIVATE KEY-----                    """)
+ *                     .cert("""
+ * -----BEGIN CERTIFICATE-----
+ * ...}{{@code your public key cert here}}{@code ...
+ * -----END CERTIFICATE-----                    """)
+ *                     .build())
+ *                 .idpInitiated(ConnectionOptionsIdpInitiatedArgs.builder()
+ *                     .clientId("client_id")
+ *                     .clientProtocol("samlp")
+ *                     .clientAuthorizeQuery("type=code&timeout=30")
+ *                     .build())
  *                 .debug(false)
  *                 .signingCert("<signing-certificate>")
  *                 .signInEndpoint("https://saml.provider/sign_in")
@@ -892,32 +915,9 @@ import javax.annotation.Nullable;
  *                         )),
  *                         jsonProperty("family_name", "surname")
  *                     )))
- *                 .signingKey(ConnectionOptionsSigningKeyArgs.builder()
- *                     .key("""
- * -----BEGIN PRIVATE KEY-----
- * ...}{{@code your private key here}}{@code ...
- * -----END PRIVATE KEY-----                    """)
- *                     .cert("""
- * -----BEGIN CERTIFICATE-----
- * ...}{{@code your public key cert here}}{@code ...
- * -----END CERTIFICATE-----                    """)
- *                     .build())
- *                 .decryptionKey(ConnectionOptionsDecryptionKeyArgs.builder()
- *                     .key("""
- * -----BEGIN PRIVATE KEY-----
- * ...}{{@code your private key here}}{@code ...
- * -----END PRIVATE KEY-----                    """)
- *                     .cert("""
- * -----BEGIN CERTIFICATE-----
- * ...}{{@code your public key cert here}}{@code ...
- * -----END CERTIFICATE-----                    """)
- *                     .build())
- *                 .idpInitiated(ConnectionOptionsIdpInitiatedArgs.builder()
- *                     .clientId("client_id")
- *                     .clientProtocol("samlp")
- *                     .clientAuthorizeQuery("type=code&timeout=30")
- *                     .build())
  *                 .build())
+ *             .name("SAML-Connection")
+ *             .strategy("samlp")
  *             .build());
  * 
  *     }}{@code
@@ -952,8 +952,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // This is an example of a WindowsLive connection.
  *         var windowslive = new Connection("windowslive", ConnectionArgs.builder()
- *             .name("Windowslive-Connection")
- *             .strategy("windowslive")
  *             .options(ConnectionOptionsArgs.builder()
  *                 .clientId("<client-id>")
  *                 .clientSecret("<client-secret>")
@@ -966,6 +964,8 @@ import javax.annotation.Nullable;
  *                     "ethnicity",
  *                     "gender")
  *                 .build())
+ *             .name("Windowslive-Connection")
+ *             .strategy("windowslive")
  *             .build());
  * 
  *     }
@@ -1003,11 +1003,24 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // This is an example of an OIDC connection.
  *         var oidc = new Connection("oidc", ConnectionArgs.builder()
- *             .name("oidc-connection")
- *             .displayName("OIDC Connection")
- *             .strategy("oidc")
- *             .showAsButton(false)
  *             .options(ConnectionOptionsArgs.builder()
+ *                 .connectionSettings(ConnectionOptionsConnectionSettingsArgs.builder()
+ *                     .pkce("auto")
+ *                     .build())
+ *                 .attributeMap(ConnectionOptionsAttributeMapArgs.builder()
+ *                     .mappingMode("use_map")
+ *                     .userinfoScope("openid email profile groups")
+ *                     .attributes(serializeJson(
+ *                         jsonObject(
+ *                             jsonProperty("name", "${context.tokenset.name}"),
+ *                             jsonProperty("email", "${context.tokenset.email}"),
+ *                             jsonProperty("email_verified", "${context.tokenset.email_verified}"),
+ *                             jsonProperty("nickname", "${context.tokenset.nickname}"),
+ *                             jsonProperty("picture", "${context.tokenset.picture}"),
+ *                             jsonProperty("given_name", "${context.tokenset.given_name}"),
+ *                             jsonProperty("family_name", "${context.tokenset.family_name}")
+ *                         )))
+ *                     .build())
  *                 .clientId("1234567")
  *                 .clientSecret("1234567")
  *                 .domainAliases("example.com")
@@ -1028,24 +1041,11 @@ import javax.annotation.Nullable;
  *                 .nonPersistentAttrs(                
  *                     "ethnicity",
  *                     "gender")
- *                 .connectionSettings(ConnectionOptionsConnectionSettingsArgs.builder()
- *                     .pkce("auto")
- *                     .build())
- *                 .attributeMap(ConnectionOptionsAttributeMapArgs.builder()
- *                     .mappingMode("use_map")
- *                     .userinfoScope("openid email profile groups")
- *                     .attributes(serializeJson(
- *                         jsonObject(
- *                             jsonProperty("name", "${context.tokenset.name}"),
- *                             jsonProperty("email", "${context.tokenset.email}"),
- *                             jsonProperty("email_verified", "${context.tokenset.email_verified}"),
- *                             jsonProperty("nickname", "${context.tokenset.nickname}"),
- *                             jsonProperty("picture", "${context.tokenset.picture}"),
- *                             jsonProperty("given_name", "${context.tokenset.given_name}"),
- *                             jsonProperty("family_name", "${context.tokenset.family_name}")
- *                         )))
- *                     .build())
  *                 .build())
+ *             .name("oidc-connection")
+ *             .displayName("OIDC Connection")
+ *             .strategy("oidc")
+ *             .showAsButton(false)
  *             .build());
  * 
  *     }
@@ -1086,11 +1086,24 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // This is an example of an Okta Workforce connection.
  *         var okta = new Connection("okta", ConnectionArgs.builder()
- *             .name("okta-connection")
- *             .displayName("Okta Workforce Connection")
- *             .strategy("okta")
- *             .showAsButton(false)
  *             .options(ConnectionOptionsArgs.builder()
+ *                 .connectionSettings(ConnectionOptionsConnectionSettingsArgs.builder()
+ *                     .pkce("auto")
+ *                     .build())
+ *                 .attributeMap(ConnectionOptionsAttributeMapArgs.builder()
+ *                     .mappingMode("basic_profile")
+ *                     .userinfoScope("openid email profile groups")
+ *                     .attributes(serializeJson(
+ *                         jsonObject(
+ *                             jsonProperty("name", "${context.tokenset.name}"),
+ *                             jsonProperty("email", "${context.tokenset.email}"),
+ *                             jsonProperty("email_verified", "${context.tokenset.email_verified}"),
+ *                             jsonProperty("nickname", "${context.tokenset.nickname}"),
+ *                             jsonProperty("picture", "${context.tokenset.picture}"),
+ *                             jsonProperty("given_name", "${context.tokenset.given_name}"),
+ *                             jsonProperty("family_name", "${context.tokenset.family_name}")
+ *                         )))
+ *                     .build())
  *                 .clientId("1234567")
  *                 .clientSecret("1234567")
  *                 .domain("example.okta.com")
@@ -1114,24 +1127,11 @@ import javax.annotation.Nullable;
  *                             jsonProperty("alias", "login_hint")
  *                         ))
  *                     )))
- *                 .connectionSettings(ConnectionOptionsConnectionSettingsArgs.builder()
- *                     .pkce("auto")
- *                     .build())
- *                 .attributeMap(ConnectionOptionsAttributeMapArgs.builder()
- *                     .mappingMode("basic_profile")
- *                     .userinfoScope("openid email profile groups")
- *                     .attributes(serializeJson(
- *                         jsonObject(
- *                             jsonProperty("name", "${context.tokenset.name}"),
- *                             jsonProperty("email", "${context.tokenset.email}"),
- *                             jsonProperty("email_verified", "${context.tokenset.email_verified}"),
- *                             jsonProperty("nickname", "${context.tokenset.nickname}"),
- *                             jsonProperty("picture", "${context.tokenset.picture}"),
- *                             jsonProperty("given_name", "${context.tokenset.given_name}"),
- *                             jsonProperty("family_name", "${context.tokenset.family_name}")
- *                         )))
- *                     .build())
  *                 .build())
+ *             .name("okta-connection")
+ *             .displayName("Okta Workforce Connection")
+ *             .strategy("okta")
+ *             .showAsButton(false)
  *             .build());
  * 
  *     }

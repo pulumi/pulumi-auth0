@@ -38,11 +38,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.auth0.ResourceServerArgs;
  * import com.pulumi.auth0.inputs.ResourceServerTokenEncryptionArgs;
  * import com.pulumi.auth0.inputs.ResourceServerTokenEncryptionEncryptionKeyArgs;
- * import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
  * import com.pulumi.auth0.inputs.ResourceServerProofOfPossessionArgs;
  * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationArgs;
  * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationUserArgs;
  * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationClientArgs;
+ * import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -57,17 +57,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myResourceServer = new ResourceServer("myResourceServer", ResourceServerArgs.builder()
- *             .name("Example Resource Server (Managed by Terraform)")
- *             .identifier("https://api.example.com")
- *             .signingAlg("RS256")
- *             .allowOfflineAccess(true)
- *             .allowOnlineAccess(true)
- *             .allowOnlineAccessWithEphemeralSessions(false)
- *             .tokenLifetime(8600)
- *             .skipConsentForVerifiableFirstPartyClients(true)
- *             .consentPolicy("transactional-authorization-with-mfa")
  *             .tokenEncryption(ResourceServerTokenEncryptionArgs.builder()
- *                 .format("compact-nested-jwe")
  *                 .encryptionKey(ResourceServerTokenEncryptionEncryptionKeyArgs.builder()
  *                     .name("keyname")
  *                     .algorithm("RSA-OAEP-256")
@@ -77,14 +67,8 @@ import javax.annotation.Nullable;
  * -----END CERTIFICATE-----
  *                     """)
  *                     .build())
+ *                 .format("compact-nested-jwe")
  *                 .build())
- *             .authorizationDetails(            
- *                 ResourceServerAuthorizationDetailArgs.builder()
- *                     .type("payment")
- *                     .build(),
- *                 ResourceServerAuthorizationDetailArgs.builder()
- *                     .type("non-payment")
- *                     .build())
  *             .proofOfPossession(ResourceServerProofOfPossessionArgs.builder()
  *                 .mechanism("mtls")
  *                 .required(true)
@@ -97,18 +81,26 @@ import javax.annotation.Nullable;
  *                     .policy("require_client_grant")
  *                     .build())
  *                 .build())
+ *             .authorizationDetails(            
+ *                 ResourceServerAuthorizationDetailArgs.builder()
+ *                     .type("payment")
+ *                     .build(),
+ *                 ResourceServerAuthorizationDetailArgs.builder()
+ *                     .type("non-payment")
+ *                     .build())
+ *             .name("Example Resource Server (Managed by Terraform)")
+ *             .identifier("https://api.example.com")
+ *             .signingAlg("RS256")
+ *             .allowOfflineAccess(true)
+ *             .allowOnlineAccess(true)
+ *             .allowOnlineAccessWithEphemeralSessions(false)
+ *             .tokenLifetime(8600)
+ *             .skipConsentForVerifiableFirstPartyClients(true)
+ *             .consentPolicy("transactional-authorization-with-mfa")
  *             .build());
  * 
  *         // Sample OIN resource server configuration
  *         var oktaOinExpressConfigurationApi = new ResourceServer("oktaOinExpressConfigurationApi", ResourceServerArgs.builder()
- *             .identifier("urn:auth0:express-configure")
- *             .name("Okta OIN Express Configuration API")
- *             .signingAlg("RS256")
- *             .signingSecret(null)
- *             .skipConsentForVerifiableFirstPartyClients(false)
- *             .tokenDialect(null)
- *             .tokenLifetime(86400)
- *             .verificationLocation(null)
  *             .proofOfPossession(ResourceServerProofOfPossessionArgs.builder()
  *                 .disable(true)
  *                 .mechanism(null)
@@ -118,6 +110,14 @@ import javax.annotation.Nullable;
  *                 .disable(true)
  *                 .format(null)
  *                 .build())
+ *             .identifier("urn:auth0:express-configure")
+ *             .name("Okta OIN Express Configuration API")
+ *             .signingAlg("RS256")
+ *             .signingSecret(null)
+ *             .skipConsentForVerifiableFirstPartyClients(false)
+ *             .tokenDialect(null)
+ *             .tokenLifetime(86400)
+ *             .verificationLocation(null)
  *             .build());
  * 
  *     }

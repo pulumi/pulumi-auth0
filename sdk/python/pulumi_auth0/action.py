@@ -377,15 +377,15 @@ class Action(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  code: pulumi.Input[Optional[_builtins.str]] = None,
-                 dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionDependencyArgs', 'ActionDependencyArgsDict']]]]] = None,
+                 dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionDependencyArgs', 'ActionDependencyArgsDict', 'outputs.ActionDependency']]]]] = None,
                  deploy: pulumi.Input[Optional[_builtins.bool]] = None,
-                 modules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleArgs', 'ActionModuleArgsDict']]]]] = None,
+                 modules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleArgs', 'ActionModuleArgsDict', 'outputs.ActionModule']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  runtime: pulumi.Input[Optional[_builtins.str]] = None,
-                 secrets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]]] = None,
+                 secrets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict', 'outputs.ActionSecret']]]]] = None,
                  secrets_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
-                 secrets_wos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionSecretsWoArgs', 'ActionSecretsWoArgsDict']]]]] = None,
-                 supported_triggers: pulumi.Input[Optional[Union['ActionSupportedTriggersArgs', 'ActionSupportedTriggersArgsDict']]] = None,
+                 secrets_wos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionSecretsWoArgs', 'ActionSecretsWoArgsDict', 'outputs.ActionSecretsWo']]]]] = None,
+                 supported_triggers: pulumi.Input[Optional[Union['ActionSupportedTriggersArgs', 'ActionSupportedTriggersArgsDict', 'outputs.ActionSupportedTriggers']]] = None,
                  __props__=None):
         """
         Actions are secure, tenant-specific, versioned functions written in Node.js that execute at certain points during the Auth0 runtime. Actions are used to customize and extend Auth0's capabilities with custom logic.
@@ -407,20 +407,6 @@ class Action(pulumi.CustomResource):
         import pulumi_std as std
 
         my_action = auth0.Action("my_action",
-            name=std.format(input="Test Action %s",
-                args=[std.timestamp()["result"]])["result"],
-            runtime="node22",
-            deploy=True,
-            code=\"\"\"/**
-         * Handler that will be called during the execution of a PostLogin flow.
-         *
-         * @param {Event} event - Details about the user and the context in which they are logging in.
-         * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
-         */
-         exports.onExecutePostLogin = async (event, api) => {
-           console.log(event);
-         };
-        \"\"\",
             supported_triggers={
                 "id": "post-login",
                 "version": "v3",
@@ -444,19 +430,25 @@ class Action(pulumi.CustomResource):
                     "name": "BAR",
                     "value": "Bar",
                 },
-            ])
+            ],
+            name=std.format(input="Test Action %s",
+                args=[std.timestamp()["result"]])["result"],
+            runtime="node22",
+            deploy=True,
+            code=\"\"\"/**
+         * Handler that will be called during the execution of a PostLogin flow.
+         *
+         * @param {Event} event - Details about the user and the context in which they are logging in.
+         * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
+         */
+         exports.onExecutePostLogin = async (event, api) => {
+           console.log(event);
+         };
+        \"\"\")
         config = pulumi.Config()
         # API key passed to the post-login action.
         action_api_key = config.require("actionApiKey")
         my_secure_action = auth0.Action("my_secure_action",
-            name=std.format(input="Secure Action %s",
-                args=[std.timestamp()["result"]])["result"],
-            runtime="node22",
-            deploy=True,
-            code=\"\"\"exports.onExecutePostLogin = async (event, api) => {
-          console.log(event);
-        };
-        \"\"\",
             supported_triggers={
                 "id": "post-login",
                 "version": "v3",
@@ -465,6 +457,14 @@ class Action(pulumi.CustomResource):
                 "name": "API_KEY",
                 "value": action_api_key,
             }],
+            name=std.format(input="Secure Action %s",
+                args=[std.timestamp()["result"]])["result"],
+            runtime="node22",
+            deploy=True,
+            code=\"\"\"exports.onExecutePostLogin = async (event, api) => {
+          console.log(event);
+        };
+        \"\"\",
             secrets_wo_version=1)
         ```
 
@@ -485,15 +485,15 @@ class Action(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] code: The source code of the action.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionDependencyArgs', 'ActionDependencyArgsDict']]]] dependencies: List of third party npm modules, and their versions, that this action depends on.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionDependencyArgs', 'ActionDependencyArgsDict', 'outputs.ActionDependency']]]] dependencies: List of third party npm modules, and their versions, that this action depends on.
         :param pulumi.Input[_builtins.bool] deploy: Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionModuleArgs', 'ActionModuleArgsDict']]]] modules: List of action modules and their versions that this action depends on.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionModuleArgs', 'ActionModuleArgsDict', 'outputs.ActionModule']]]] modules: List of action modules and their versions that this action depends on.
         :param pulumi.Input[_builtins.str] name: The name of the action.
         :param pulumi.Input[_builtins.str] runtime: The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `secrets_wo` instead, which supports write-only values and ephemeral variables.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict', 'outputs.ActionSecret']]]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `secrets_wo` instead, which supports write-only values and ephemeral variables.
         :param pulumi.Input[_builtins.int] secrets_wo_version: Version number for `secrets_wo` changes. Adding, renaming, or removing a `secrets_wo` entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretsWoArgs', 'ActionSecretsWoArgsDict']]]] secrets_wos: List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secrets_wo_version` attribute. To remove all secrets, delete the `secrets_wo` blocks together with the `secrets_wo_version` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
-        :param pulumi.Input[Union['ActionSupportedTriggersArgs', 'ActionSupportedTriggersArgsDict']] supported_triggers: List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretsWoArgs', 'ActionSecretsWoArgsDict', 'outputs.ActionSecretsWo']]]] secrets_wos: List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secrets_wo_version` attribute. To remove all secrets, delete the `secrets_wo` blocks together with the `secrets_wo_version` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
+        :param pulumi.Input[Union['ActionSupportedTriggersArgs', 'ActionSupportedTriggersArgsDict', 'outputs.ActionSupportedTriggers']] supported_triggers: List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
         """
         ...
     @overload
@@ -521,20 +521,6 @@ class Action(pulumi.CustomResource):
         import pulumi_std as std
 
         my_action = auth0.Action("my_action",
-            name=std.format(input="Test Action %s",
-                args=[std.timestamp()["result"]])["result"],
-            runtime="node22",
-            deploy=True,
-            code=\"\"\"/**
-         * Handler that will be called during the execution of a PostLogin flow.
-         *
-         * @param {Event} event - Details about the user and the context in which they are logging in.
-         * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
-         */
-         exports.onExecutePostLogin = async (event, api) => {
-           console.log(event);
-         };
-        \"\"\",
             supported_triggers={
                 "id": "post-login",
                 "version": "v3",
@@ -558,19 +544,25 @@ class Action(pulumi.CustomResource):
                     "name": "BAR",
                     "value": "Bar",
                 },
-            ])
+            ],
+            name=std.format(input="Test Action %s",
+                args=[std.timestamp()["result"]])["result"],
+            runtime="node22",
+            deploy=True,
+            code=\"\"\"/**
+         * Handler that will be called during the execution of a PostLogin flow.
+         *
+         * @param {Event} event - Details about the user and the context in which they are logging in.
+         * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
+         */
+         exports.onExecutePostLogin = async (event, api) => {
+           console.log(event);
+         };
+        \"\"\")
         config = pulumi.Config()
         # API key passed to the post-login action.
         action_api_key = config.require("actionApiKey")
         my_secure_action = auth0.Action("my_secure_action",
-            name=std.format(input="Secure Action %s",
-                args=[std.timestamp()["result"]])["result"],
-            runtime="node22",
-            deploy=True,
-            code=\"\"\"exports.onExecutePostLogin = async (event, api) => {
-          console.log(event);
-        };
-        \"\"\",
             supported_triggers={
                 "id": "post-login",
                 "version": "v3",
@@ -579,6 +571,14 @@ class Action(pulumi.CustomResource):
                 "name": "API_KEY",
                 "value": action_api_key,
             }],
+            name=std.format(input="Secure Action %s",
+                args=[std.timestamp()["result"]])["result"],
+            runtime="node22",
+            deploy=True,
+            code=\"\"\"exports.onExecutePostLogin = async (event, api) => {
+          console.log(event);
+        };
+        \"\"\",
             secrets_wo_version=1)
         ```
 
@@ -612,15 +612,15 @@ class Action(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  code: pulumi.Input[Optional[_builtins.str]] = None,
-                 dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionDependencyArgs', 'ActionDependencyArgsDict']]]]] = None,
+                 dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionDependencyArgs', 'ActionDependencyArgsDict', 'outputs.ActionDependency']]]]] = None,
                  deploy: pulumi.Input[Optional[_builtins.bool]] = None,
-                 modules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleArgs', 'ActionModuleArgsDict']]]]] = None,
+                 modules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleArgs', 'ActionModuleArgsDict', 'outputs.ActionModule']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  runtime: pulumi.Input[Optional[_builtins.str]] = None,
-                 secrets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]]] = None,
+                 secrets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict', 'outputs.ActionSecret']]]]] = None,
                  secrets_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
-                 secrets_wos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionSecretsWoArgs', 'ActionSecretsWoArgsDict']]]]] = None,
-                 supported_triggers: pulumi.Input[Optional[Union['ActionSupportedTriggersArgs', 'ActionSupportedTriggersArgsDict']]] = None,
+                 secrets_wos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionSecretsWoArgs', 'ActionSecretsWoArgsDict', 'outputs.ActionSecretsWo']]]]] = None,
+                 supported_triggers: pulumi.Input[Optional[Union['ActionSupportedTriggersArgs', 'ActionSupportedTriggersArgsDict', 'outputs.ActionSupportedTriggers']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -656,15 +656,15 @@ class Action(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             code: pulumi.Input[Optional[_builtins.str]] = None,
-            dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionDependencyArgs', 'ActionDependencyArgsDict']]]]] = None,
+            dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionDependencyArgs', 'ActionDependencyArgsDict', 'outputs.ActionDependency']]]]] = None,
             deploy: pulumi.Input[Optional[_builtins.bool]] = None,
-            modules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleArgs', 'ActionModuleArgsDict']]]]] = None,
+            modules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleArgs', 'ActionModuleArgsDict', 'outputs.ActionModule']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             runtime: pulumi.Input[Optional[_builtins.str]] = None,
-            secrets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]]] = None,
+            secrets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict', 'outputs.ActionSecret']]]]] = None,
             secrets_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
-            secrets_wos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionSecretsWoArgs', 'ActionSecretsWoArgsDict']]]]] = None,
-            supported_triggers: pulumi.Input[Optional[Union['ActionSupportedTriggersArgs', 'ActionSupportedTriggersArgsDict']]] = None,
+            secrets_wos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionSecretsWoArgs', 'ActionSecretsWoArgsDict', 'outputs.ActionSecretsWo']]]]] = None,
+            supported_triggers: pulumi.Input[Optional[Union['ActionSupportedTriggersArgs', 'ActionSupportedTriggersArgsDict', 'outputs.ActionSupportedTriggers']]] = None,
             version_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Action':
         """
         Get an existing Action resource's state with the given name, id, and optional extra
@@ -674,15 +674,15 @@ class Action(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] code: The source code of the action.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionDependencyArgs', 'ActionDependencyArgsDict']]]] dependencies: List of third party npm modules, and their versions, that this action depends on.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionDependencyArgs', 'ActionDependencyArgsDict', 'outputs.ActionDependency']]]] dependencies: List of third party npm modules, and their versions, that this action depends on.
         :param pulumi.Input[_builtins.bool] deploy: Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger, then the system will begin executing the newly deployed version of the action immediately.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionModuleArgs', 'ActionModuleArgsDict']]]] modules: List of action modules and their versions that this action depends on.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionModuleArgs', 'ActionModuleArgsDict', 'outputs.ActionModule']]]] modules: List of action modules and their versions that this action depends on.
         :param pulumi.Input[_builtins.str] name: The name of the action.
         :param pulumi.Input[_builtins.str] runtime: The Node runtime. Possible values are: `node12`, `node16` (not recommended), `node18`, `node22`
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict']]]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `secrets_wo` instead, which supports write-only values and ephemeral variables.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict', 'outputs.ActionSecret']]]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `secrets_wo` instead, which supports write-only values and ephemeral variables.
         :param pulumi.Input[_builtins.int] secrets_wo_version: Version number for `secrets_wo` changes. Adding, renaming, or removing a `secrets_wo` entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretsWoArgs', 'ActionSecretsWoArgsDict']]]] secrets_wos: List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secrets_wo_version` attribute. To remove all secrets, delete the `secrets_wo` blocks together with the `secrets_wo_version` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
-        :param pulumi.Input[Union['ActionSupportedTriggersArgs', 'ActionSupportedTriggersArgsDict']] supported_triggers: List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretsWoArgs', 'ActionSecretsWoArgsDict', 'outputs.ActionSecretsWo']]]] secrets_wos: List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secrets_wo_version` attribute. To remove all secrets, delete the `secrets_wo` blocks together with the `secrets_wo_version` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
+        :param pulumi.Input[Union['ActionSupportedTriggersArgs', 'ActionSupportedTriggersArgsDict', 'outputs.ActionSupportedTriggers']] supported_triggers: List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
         :param pulumi.Input[_builtins.str] version_id: Version ID of the action. This value is available if `deploy` is set to true.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

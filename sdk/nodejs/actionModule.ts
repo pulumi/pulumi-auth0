@@ -16,6 +16,14 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const myModule = new auth0.ActionModule("my_module", {
+ *     dependencies: [{
+ *         name: "lodash",
+ *         version: "4.17.21",
+ *     }],
+ *     secrets: [{
+ *         name: "API_KEY",
+ *         value: "my-secret-api-key",
+ *     }],
  *     name: "My Shared Module",
  *     publish: true,
  *     code: `/**
@@ -30,17 +38,17 @@ import * as utilities from "./utilities";
  *   }
  * };
  * `,
- *     dependencies: [{
- *         name: "lodash",
- *         version: "4.17.21",
- *     }],
- *     secrets: [{
- *         name: "API_KEY",
- *         value: "my-secret-api-key",
- *     }],
  * });
  * // Use the module in an action by referencing its id and version_id.
  * const myAction = new auth0.Action("my_action", {
+ *     supportedTriggers: {
+ *         id: "post-login",
+ *         version: "v3",
+ *     },
+ *     modules: [{
+ *         moduleId: myModule.id,
+ *         moduleVersionId: myModule.versionId,
+ *     }],
  *     name: "My Action",
  *     runtime: "node22",
  *     deploy: true,
@@ -50,14 +58,6 @@ import * as utilities from "./utilities";
  *   console.log(myModule.greet(event.user.name));
  * };
  * `,
- *     modules: [{
- *         moduleId: myModule.id,
- *         moduleVersionId: myModule.versionId,
- *     }],
- *     supportedTriggers: {
- *         id: "post-login",
- *         version: "v3",
- *     },
  * });
  * ```
  */

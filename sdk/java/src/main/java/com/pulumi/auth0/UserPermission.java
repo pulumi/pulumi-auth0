@@ -49,8 +49,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var resourceServer = new ResourceServer("resourceServer", ResourceServerArgs.builder()
- *             .name("Example Resource Server (Managed by Terraform)")
- *             .identifier("https://api.example.com")
  *             .scopes(Arrays.asList(            
  *                 Map.ofEntries(
  *                     Map.entry("value", "create:foo"),
@@ -60,6 +58,8 @@ import javax.annotation.Nullable;
  *                     Map.entry("value", "create:bar"),
  *                     Map.entry("description", "Create bars")
  *                 )))
+ *             .name("Example Resource Server (Managed by Terraform)")
+ *             .identifier("https://api.example.com")
  *             .build());
  * 
  *         var user = new User("user", UserArgs.builder()

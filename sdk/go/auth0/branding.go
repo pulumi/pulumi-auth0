@@ -35,7 +35,6 @@ import (
 //				return err
 //			}
 //			_, err = auth0.NewBranding(ctx, "my_brand", &auth0.BrandingArgs{
-//				LogoUrl: pulumi.String("https://mycompany.org/logo.png"),
 //				Colors: &auth0.BrandingColorsArgs{
 //					Primary:        pulumi.String("#0059d6"),
 //					PageBackground: pulumi.String("#000000"),
@@ -43,6 +42,7 @@ import (
 //				UniversalLogin: &auth0.BrandingUniversalLoginArgs{
 //					Body: invokeFile.Result,
 //				},
+//				LogoUrl: pulumi.String("https://mycompany.org/logo.png"),
 //			})
 //			if err != nil {
 //				return err

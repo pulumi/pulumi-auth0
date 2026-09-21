@@ -50,9 +50,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var azureAd = new Connection("azureAd", ConnectionArgs.builder()
- *             .name("Acceptance-Test-Azure-AD")
- *             .strategy("waad")
- *             .showAsButton(true)
  *             .options(ConnectionOptionsArgs.builder()
  *                 .identityApi("microsoft-identity-platform-v2.0")
  *                 .clientId("123456")
@@ -81,6 +78,9 @@ import javax.annotation.Nullable;
  *                         ))
  *                     )))
  *                 .build())
+ *             .name("Acceptance-Test-Azure-AD")
+ *             .strategy("waad")
+ *             .showAsButton(true)
  *             .build());
  * 
  *         var myScimConfig = new ConnectionScimConfiguration("myScimConfig", ConnectionScimConfigurationArgs.builder()

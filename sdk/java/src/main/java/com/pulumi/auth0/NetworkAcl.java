@@ -49,14 +49,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Example of auth0_network_acl with match criteria
  *         var myNetworkAclMatch = new NetworkAcl("myNetworkAclMatch", NetworkAclArgs.builder()
- *             .description("Example with match network ACL")
- *             .active(true)
- *             .priority(1)
  *             .rule(NetworkAclRuleArgs.builder()
  *                 .action(NetworkAclRuleActionArgs.builder()
  *                     .allow(true)
  *                     .build())
- *                 .scope("management")
  *                 .match(NetworkAclRuleMatchArgs.builder()
  *                     .geoCountryCodes(                    
  *                         "US",
@@ -65,19 +61,19 @@ import javax.annotation.Nullable;
  *                         "US-NY",
  *                         "CA-ON")
  *                     .build())
+ *                 .scope("management")
  *                 .build())
+ *             .description("Example with match network ACL")
+ *             .active(true)
+ *             .priority(1)
  *             .build());
  * 
  *         // Example of auth0_network_acl with not-match criteria
  *         var myNetworkAclNotMatch = new NetworkAcl("myNetworkAclNotMatch", NetworkAclArgs.builder()
- *             .description("Example with not match network ACL")
- *             .active(true)
- *             .priority(3)
  *             .rule(NetworkAclRuleArgs.builder()
  *                 .action(NetworkAclRuleActionArgs.builder()
  *                     .log(true)
  *                     .build())
- *                 .scope("authentication")
  *                 .notMatch(NetworkAclRuleNotMatchArgs.builder()
  *                     .asns(9876)
  *                     .ipv4Cidrs(                    
@@ -85,7 +81,11 @@ import javax.annotation.Nullable;
  *                         "10.0.0.0/8")
  *                     .ipv6Cidrs("2001:db8::/32")
  *                     .build())
+ *                 .scope("authentication")
  *                 .build())
+ *             .description("Example with not match network ACL")
+ *             .active(true)
+ *             .priority(3)
  *             .build());
  * 
  *         // Example of auth0_network_acl using Auth0-curated blocklists (Early Access).
@@ -94,47 +94,43 @@ import javax.annotation.Nullable;
  *         // entitlement and the `tenant_acl_curated_blocklists` feature flag on the tenant.
  *         // Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`.
  *         var blockIcloudRelay = new NetworkAcl("blockIcloudRelay", NetworkAclArgs.builder()
- *             .description("Block iCloud Private Relay egress proxies")
- *             .active(true)
- *             .priority(7)
  *             .rule(NetworkAclRuleArgs.builder()
  *                 .action(NetworkAclRuleActionArgs.builder()
  *                     .block(true)
  *                     .build())
- *                 .scope("authentication")
  *                 .match(NetworkAclRuleMatchArgs.builder()
  *                     .auth0Manageds("auth0.icloud_relay_proxy")
  *                     .build())
+ *                 .scope("authentication")
  *                 .build())
+ *             .description("Block iCloud Private Relay egress proxies")
+ *             .active(true)
+ *             .priority(7)
  *             .build());
  * 
  *         // Example using `not_match` to allow all traffic *unless* it comes from a
  *         // low-reputation curated blocklist. `auth0_managed` is accepted on either block.
  *         var allowUnlessLowReputation = new NetworkAcl("allowUnlessLowReputation", NetworkAclArgs.builder()
- *             .description("Allow traffic unless it is on the low-reputation blocklist")
- *             .active(true)
- *             .priority(8)
  *             .rule(NetworkAclRuleArgs.builder()
  *                 .action(NetworkAclRuleActionArgs.builder()
  *                     .allow(true)
  *                     .build())
- *                 .scope("authentication")
  *                 .notMatch(NetworkAclRuleNotMatchArgs.builder()
  *                     .auth0Manageds("auth0.low_reputation")
  *                     .build())
+ *                 .scope("authentication")
  *                 .build())
+ *             .description("Allow traffic unless it is on the low-reputation blocklist")
+ *             .active(true)
+ *             .priority(8)
  *             .build());
  * 
  *         // Example of auth0_network_acl with hostname and connecting IP restrictions
  *         var blockCanonical = new NetworkAcl("blockCanonical", NetworkAclArgs.builder()
- *             .description("Block canonical domain except from proxy")
- *             .active(true)
- *             .priority(5)
  *             .rule(NetworkAclRuleArgs.builder()
  *                 .action(NetworkAclRuleActionArgs.builder()
  *                     .block(true)
  *                     .build())
- *                 .scope("tenant")
  *                 .match(NetworkAclRuleMatchArgs.builder()
  *                     .hostnames("mytenant1.us.auth0.com")
  *                     .connectingIpv6Cidrs(                    
@@ -145,7 +141,11 @@ import javax.annotation.Nullable;
  *                     .hostnames("mytenant2.us.auth0.com")
  *                     .connectingIpv4Cidrs("203.0.113.0/24")
  *                     .build())
+ *                 .scope("tenant")
  *                 .build())
+ *             .description("Block canonical domain except from proxy")
+ *             .active(true)
+ *             .priority(5)
  *             .build());
  * 
  *     }

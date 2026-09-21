@@ -24,15 +24,15 @@ namespace Pulumi.Auth0
     /// {
     ///     var noisyApp = new Auth0.RateLimitPolicy("noisy_app", new()
     ///     {
-    ///         Resource = "oauth_authentication_api",
-    ///         Consumer = "client",
-    ///         ConsumerSelector = "client_id:abc123",
     ///         Configuration = new Auth0.Inputs.RateLimitPolicyConfigurationArgs
     ///         {
     ///             Action = "redirect",
     ///             Limit = 1000,
     ///             RedirectUri = "https://example.com/rate-limited",
     ///         },
+    ///         Resource = "oauth_authentication_api",
+    ///         Consumer = "client",
+    ///         ConsumerSelector = "client_id:abc123",
     ///     });
     /// 
     /// });

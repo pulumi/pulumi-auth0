@@ -55,7 +55,6 @@ import (
 //				return err
 //			}
 //			_, err = auth0.NewOrganizationConnections(ctx, "one-to-many", &auth0.OrganizationConnectionsArgs{
-//				OrganizationId: myOrganization.ID().ToIDOutput().ToStringOutput(),
 //				EnabledConnections: auth0.OrganizationConnectionsEnabledConnectionArray{
 //					&auth0.OrganizationConnectionsEnabledConnectionArgs{
 //						ConnectionId:            myConnection_1.ID().ToIDOutput().ToStringOutput(),
@@ -70,6 +69,7 @@ import (
 //						ShowAsButton:            pulumi.Bool(true),
 //					},
 //				},
+//				OrganizationId: myOrganization.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

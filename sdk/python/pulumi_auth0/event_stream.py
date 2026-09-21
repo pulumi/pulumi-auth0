@@ -296,13 +296,13 @@ class EventStream(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action_configuration: pulumi.Input[Optional[Union['EventStreamActionConfigurationArgs', 'EventStreamActionConfigurationArgsDict']]] = None,
+                 action_configuration: pulumi.Input[Optional[Union['EventStreamActionConfigurationArgs', 'EventStreamActionConfigurationArgsDict', 'outputs.EventStreamActionConfiguration']]] = None,
                  destination_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 eventbridge_configuration: pulumi.Input[Optional[Union['EventStreamEventbridgeConfigurationArgs', 'EventStreamEventbridgeConfigurationArgsDict']]] = None,
+                 eventbridge_configuration: pulumi.Input[Optional[Union['EventStreamEventbridgeConfigurationArgs', 'EventStreamEventbridgeConfigurationArgsDict', 'outputs.EventStreamEventbridgeConfiguration']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  subscriptions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 webhook_configuration: pulumi.Input[Optional[Union['EventStreamWebhookConfigurationArgs', 'EventStreamWebhookConfigurationArgsDict']]] = None,
+                 webhook_configuration: pulumi.Input[Optional[Union['EventStreamWebhookConfigurationArgs', 'EventStreamWebhookConfigurationArgsDict', 'outputs.EventStreamWebhookConfiguration']]] = None,
                  __props__=None):
         """
         Allows you to manage Auth0 Event Streams.
@@ -315,61 +315,61 @@ class EventStream(pulumi.CustomResource):
 
         # Creates an event stream of type eventbridge
         my_event_stream_event_bridge = auth0.EventStream("my_event_stream_event_bridge",
+            eventbridge_configuration={
+                "aws_account_id": "242849305777",
+                "aws_region": "us-east-1",
+            },
             name="my-eventbridge",
             destination_type="eventbridge",
             subscriptions=[
                 "user.created",
                 "user.updated",
-            ],
-            eventbridge_configuration={
-                "aws_account_id": "242849305777",
-                "aws_region": "us-east-1",
-            })
+            ])
         # Creates an event stream of type webhook in a disabled state
         my_event_stream_webhook = auth0.EventStream("my_event_stream_webhook",
+            webhook_configuration={
+                "webhook_authorization": {
+                    "method": "bearer",
+                    "token": "123456789",
+                },
+                "webhook_endpoint": "https://eof28wtn4v4506o.m.pipedream.net",
+            },
             name="my-webhook",
             destination_type="webhook",
             status="disabled",
             subscriptions=[
                 "user.created",
                 "user.updated",
-            ],
-            webhook_configuration={
-                "webhook_endpoint": "https://eof28wtn4v4506o.m.pipedream.net",
-                "webhook_authorization": {
-                    "method": "bearer",
-                    "token": "123456789",
-                },
-            })
+            ])
         config = pulumi.Config()
         # The webhook token
         webhook_token = config.require("webhookToken")
         my_event_stream_webhook_secure = auth0.EventStream("my_event_stream_webhook_secure",
-            name="my-webhook-secure",
-            destination_type="webhook",
-            subscriptions=[
-                "user.created",
-                "user.updated",
-            ],
             webhook_configuration={
-                "webhook_endpoint": "https://eof28wtn4v4506o.m.pipedream.net",
                 "webhook_authorization": {
                     "method": "bearer",
                     "token_wo": webhook_token,
                     "token_wo_version": 1,
                 },
-            })
+                "webhook_endpoint": "https://eof28wtn4v4506o.m.pipedream.net",
+            },
+            name="my-webhook-secure",
+            destination_type="webhook",
+            subscriptions=[
+                "user.created",
+                "user.updated",
+            ])
         # Creates an event stream of type action
         my_event_stream_action = auth0.EventStream("my_event_stream_action",
+            action_configuration={
+                "action_id": my_action["id"],
+            },
             name="my-action-stream",
             destination_type="action",
             subscriptions=[
                 "user.created",
                 "user.updated",
-            ],
-            action_configuration={
-                "action_id": my_action["id"],
-            })
+            ])
         ```
 
         ## Import
@@ -385,13 +385,13 @@ class EventStream(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['EventStreamActionConfigurationArgs', 'EventStreamActionConfigurationArgsDict']] action_configuration: Configuration for the Action destination. This block is only applicable when `destination_type` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+        :param pulumi.Input[Union['EventStreamActionConfigurationArgs', 'EventStreamActionConfigurationArgsDict', 'outputs.EventStreamActionConfiguration']] action_configuration: Configuration for the Action destination. This block is only applicable when `destination_type` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
         :param pulumi.Input[_builtins.str] destination_type: The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
-        :param pulumi.Input[Union['EventStreamEventbridgeConfigurationArgs', 'EventStreamEventbridgeConfigurationArgsDict']] eventbridge_configuration: Configuration for the EventBridge destination. This block is only applicable when `destination_type` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+        :param pulumi.Input[Union['EventStreamEventbridgeConfigurationArgs', 'EventStreamEventbridgeConfigurationArgsDict', 'outputs.EventStreamEventbridgeConfiguration']] eventbridge_configuration: Configuration for the EventBridge destination. This block is only applicable when `destination_type` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
         :param pulumi.Input[_builtins.str] name: The name of the event stream.
         :param pulumi.Input[_builtins.str] status: The current status of the event stream. Can be `enabled` or `disabled`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subscriptions: List of event types this stream is subscribed to.
-        :param pulumi.Input[Union['EventStreamWebhookConfigurationArgs', 'EventStreamWebhookConfigurationArgsDict']] webhook_configuration: Configuration for the Webhook destination. This block is only applicable when `destination_type` is set to `webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.
+        :param pulumi.Input[Union['EventStreamWebhookConfigurationArgs', 'EventStreamWebhookConfigurationArgsDict', 'outputs.EventStreamWebhookConfiguration']] webhook_configuration: Configuration for the Webhook destination. This block is only applicable when `destination_type` is set to `webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.
         """
         ...
     @overload
@@ -410,61 +410,61 @@ class EventStream(pulumi.CustomResource):
 
         # Creates an event stream of type eventbridge
         my_event_stream_event_bridge = auth0.EventStream("my_event_stream_event_bridge",
+            eventbridge_configuration={
+                "aws_account_id": "242849305777",
+                "aws_region": "us-east-1",
+            },
             name="my-eventbridge",
             destination_type="eventbridge",
             subscriptions=[
                 "user.created",
                 "user.updated",
-            ],
-            eventbridge_configuration={
-                "aws_account_id": "242849305777",
-                "aws_region": "us-east-1",
-            })
+            ])
         # Creates an event stream of type webhook in a disabled state
         my_event_stream_webhook = auth0.EventStream("my_event_stream_webhook",
+            webhook_configuration={
+                "webhook_authorization": {
+                    "method": "bearer",
+                    "token": "123456789",
+                },
+                "webhook_endpoint": "https://eof28wtn4v4506o.m.pipedream.net",
+            },
             name="my-webhook",
             destination_type="webhook",
             status="disabled",
             subscriptions=[
                 "user.created",
                 "user.updated",
-            ],
-            webhook_configuration={
-                "webhook_endpoint": "https://eof28wtn4v4506o.m.pipedream.net",
-                "webhook_authorization": {
-                    "method": "bearer",
-                    "token": "123456789",
-                },
-            })
+            ])
         config = pulumi.Config()
         # The webhook token
         webhook_token = config.require("webhookToken")
         my_event_stream_webhook_secure = auth0.EventStream("my_event_stream_webhook_secure",
-            name="my-webhook-secure",
-            destination_type="webhook",
-            subscriptions=[
-                "user.created",
-                "user.updated",
-            ],
             webhook_configuration={
-                "webhook_endpoint": "https://eof28wtn4v4506o.m.pipedream.net",
                 "webhook_authorization": {
                     "method": "bearer",
                     "token_wo": webhook_token,
                     "token_wo_version": 1,
                 },
-            })
+                "webhook_endpoint": "https://eof28wtn4v4506o.m.pipedream.net",
+            },
+            name="my-webhook-secure",
+            destination_type="webhook",
+            subscriptions=[
+                "user.created",
+                "user.updated",
+            ])
         # Creates an event stream of type action
         my_event_stream_action = auth0.EventStream("my_event_stream_action",
+            action_configuration={
+                "action_id": my_action["id"],
+            },
             name="my-action-stream",
             destination_type="action",
             subscriptions=[
                 "user.created",
                 "user.updated",
-            ],
-            action_configuration={
-                "action_id": my_action["id"],
-            })
+            ])
         ```
 
         ## Import
@@ -493,13 +493,13 @@ class EventStream(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action_configuration: pulumi.Input[Optional[Union['EventStreamActionConfigurationArgs', 'EventStreamActionConfigurationArgsDict']]] = None,
+                 action_configuration: pulumi.Input[Optional[Union['EventStreamActionConfigurationArgs', 'EventStreamActionConfigurationArgsDict', 'outputs.EventStreamActionConfiguration']]] = None,
                  destination_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 eventbridge_configuration: pulumi.Input[Optional[Union['EventStreamEventbridgeConfigurationArgs', 'EventStreamEventbridgeConfigurationArgsDict']]] = None,
+                 eventbridge_configuration: pulumi.Input[Optional[Union['EventStreamEventbridgeConfigurationArgs', 'EventStreamEventbridgeConfigurationArgsDict', 'outputs.EventStreamEventbridgeConfiguration']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  subscriptions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 webhook_configuration: pulumi.Input[Optional[Union['EventStreamWebhookConfigurationArgs', 'EventStreamWebhookConfigurationArgsDict']]] = None,
+                 webhook_configuration: pulumi.Input[Optional[Union['EventStreamWebhookConfigurationArgs', 'EventStreamWebhookConfigurationArgsDict', 'outputs.EventStreamWebhookConfiguration']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -532,15 +532,15 @@ class EventStream(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action_configuration: pulumi.Input[Optional[Union['EventStreamActionConfigurationArgs', 'EventStreamActionConfigurationArgsDict']]] = None,
+            action_configuration: pulumi.Input[Optional[Union['EventStreamActionConfigurationArgs', 'EventStreamActionConfigurationArgsDict', 'outputs.EventStreamActionConfiguration']]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             destination_type: pulumi.Input[Optional[_builtins.str]] = None,
-            eventbridge_configuration: pulumi.Input[Optional[Union['EventStreamEventbridgeConfigurationArgs', 'EventStreamEventbridgeConfigurationArgsDict']]] = None,
+            eventbridge_configuration: pulumi.Input[Optional[Union['EventStreamEventbridgeConfigurationArgs', 'EventStreamEventbridgeConfigurationArgsDict', 'outputs.EventStreamEventbridgeConfiguration']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             subscriptions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None,
-            webhook_configuration: pulumi.Input[Optional[Union['EventStreamWebhookConfigurationArgs', 'EventStreamWebhookConfigurationArgsDict']]] = None) -> 'EventStream':
+            webhook_configuration: pulumi.Input[Optional[Union['EventStreamWebhookConfigurationArgs', 'EventStreamWebhookConfigurationArgsDict', 'outputs.EventStreamWebhookConfiguration']]] = None) -> 'EventStream':
         """
         Get an existing EventStream resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -548,15 +548,15 @@ class EventStream(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['EventStreamActionConfigurationArgs', 'EventStreamActionConfigurationArgsDict']] action_configuration: Configuration for the Action destination. This block is only applicable when `destination_type` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+        :param pulumi.Input[Union['EventStreamActionConfigurationArgs', 'EventStreamActionConfigurationArgsDict', 'outputs.EventStreamActionConfiguration']] action_configuration: Configuration for the Action destination. This block is only applicable when `destination_type` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
         :param pulumi.Input[_builtins.str] created_at: The ISO 8601 timestamp when the stream was created.
         :param pulumi.Input[_builtins.str] destination_type: The type of event stream destination. Possible values: `eventbridge`, `webhook`, or `action`.
-        :param pulumi.Input[Union['EventStreamEventbridgeConfigurationArgs', 'EventStreamEventbridgeConfigurationArgsDict']] eventbridge_configuration: Configuration for the EventBridge destination. This block is only applicable when `destination_type` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
+        :param pulumi.Input[Union['EventStreamEventbridgeConfigurationArgs', 'EventStreamEventbridgeConfigurationArgsDict', 'outputs.EventStreamEventbridgeConfiguration']] eventbridge_configuration: Configuration for the EventBridge destination. This block is only applicable when `destination_type` is set to `eventbridge`. EventBridge configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
         :param pulumi.Input[_builtins.str] name: The name of the event stream.
         :param pulumi.Input[_builtins.str] status: The current status of the event stream. Can be `enabled` or `disabled`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subscriptions: List of event types this stream is subscribed to.
         :param pulumi.Input[_builtins.str] updated_at: The ISO 8601 timestamp when the stream was last updated.
-        :param pulumi.Input[Union['EventStreamWebhookConfigurationArgs', 'EventStreamWebhookConfigurationArgsDict']] webhook_configuration: Configuration for the Webhook destination. This block is only applicable when `destination_type` is set to `webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.
+        :param pulumi.Input[Union['EventStreamWebhookConfigurationArgs', 'EventStreamWebhookConfigurationArgsDict', 'outputs.EventStreamWebhookConfiguration']] webhook_configuration: Configuration for the Webhook destination. This block is only applicable when `destination_type` is set to `webhook`. Webhook configurations **can** be updated after creation, including the endpoint and authorization fields.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

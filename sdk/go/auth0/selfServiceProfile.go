@@ -30,17 +30,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewSelfServiceProfile(ctx, "my_self_service_profile", &auth0.SelfServiceProfileArgs{
+//				Branding: &auth0.SelfServiceProfileBrandingArgs{
+//					Colors: &auth0.SelfServiceProfileBrandingColorsArgs{
+//						Primary: pulumi.String("#0059d6"),
+//					},
+//					LogoUrl: pulumi.String("https://mycompany.org/v2/logo.png"),
+//				},
 //				UserAttributes: auth0.SelfServiceProfileUserAttributeArray{
 //					&auth0.SelfServiceProfileUserAttributeArgs{
 //						Name:        pulumi.String("sample-name"),
 //						Description: pulumi.String("sample-description"),
 //						IsOptional:  pulumi.Bool(true),
-//					},
-//				},
-//				Branding: &auth0.SelfServiceProfileBrandingArgs{
-//					LogoUrl: pulumi.String("https://mycompany.org/v2/logo.png"),
-//					Colors: &auth0.SelfServiceProfileBrandingColorsArgs{
-//						Primary: pulumi.String("#0059d6"),
 //					},
 //				},
 //			})

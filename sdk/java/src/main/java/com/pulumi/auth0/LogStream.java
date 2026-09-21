@@ -52,6 +52,16 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // This is an example of an http log stream.
  *         var myWebhook = new LogStream("myWebhook", LogStreamArgs.builder()
+ *             .sink(LogStreamSinkArgs.builder()
+ *                 .httpEndpoint("https://example.com/logs")
+ *                 .httpContentType("application/json")
+ *                 .httpContentFormat("JSONOBJECT")
+ *                 .httpAuthorization("AKIAXXXXXXXXXXXXXXXX")
+ *                 .httpCustomHeaders(Map.ofEntries(
+ *                     Map.entry("header", "foo"),
+ *                     Map.entry("value", "bar")
+ *                 ))
+ *                 .build())
  *             .name("HTTP log stream")
  *             .type("http")
  *             .filters(            
@@ -63,39 +73,29 @@ import javax.annotation.Nullable;
  *                     Map.entry("type", "category"),
  *                     Map.entry("name", "auth.signup.fail")
  *                 ))
- *             .sink(LogStreamSinkArgs.builder()
- *                 .httpEndpoint("https://example.com/logs")
- *                 .httpContentType("application/json")
- *                 .httpContentFormat("JSONOBJECT")
- *                 .httpAuthorization("AKIAXXXXXXXXXXXXXXXX")
- *                 .httpCustomHeaders(Map.ofEntries(
- *                     Map.entry("header", "foo"),
- *                     Map.entry("value", "bar")
- *                 ))
- *                 .build())
  *             .build());
  * 
  *         // This is an example of an Amazon EventBridge log stream.
  *         var exampleAws = new LogStream("exampleAws", LogStreamArgs.builder()
- *             .name("AWS Eventbridge")
- *             .type("eventbridge")
- *             .status("active")
  *             .sink(LogStreamSinkArgs.builder()
  *                 .awsAccountId("my_account_id")
  *                 .awsRegion("us-east-2")
  *                 .build())
+ *             .name("AWS Eventbridge")
+ *             .type("eventbridge")
+ *             .status("active")
  *             .build());
  * 
  *         // This is an example of a Datadog log stream using a write-only API key
  *         // (recommended for security). The key is never stored in Terraform state.
  *         var datadogSecure = new LogStream("datadogSecure", LogStreamArgs.builder()
- *             .name("Datadog (write-only key)")
- *             .type("datadog")
  *             .sink(LogStreamSinkArgs.builder()
  *                 .datadogRegion("us")
  *                 .datadogApiKeyWo("AKIAXXXXXXXXXXXXXXXX")
  *                 .datadogApiKeyWoVersion(1)
  *                 .build())
+ *             .name("Datadog (write-only key)")
+ *             .type("datadog")
  *             .build());
  * 
  *     }

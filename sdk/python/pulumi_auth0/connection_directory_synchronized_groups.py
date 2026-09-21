@@ -147,7 +147,7 @@ class ConnectionDirectorySynchronizedGroups(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionDirectorySynchronizedGroupsGroupArgs', 'ConnectionDirectorySynchronizedGroupsGroupArgsDict']]]]] = None,
+                 groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionDirectorySynchronizedGroupsGroupArgs', 'ConnectionDirectorySynchronizedGroupsGroupArgsDict', 'outputs.ConnectionDirectorySynchronizedGroupsGroup']]]]] = None,
                  __props__=None):
         """
         With this resource, you can manage the set of Google Workspace groups synchronized via directory provisioning for an Auth0 connection.
@@ -159,8 +159,6 @@ class ConnectionDirectorySynchronizedGroups(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         my_connection = auth0.Connection("my_connection",
-            name="My-Google-Workspace-Connection",
-            strategy="google-apps",
             options={
                 "client_id": "...",
                 "client_secret": "...",
@@ -168,12 +166,13 @@ class ConnectionDirectorySynchronizedGroups(pulumi.CustomResource):
                 "tenant_domain": "example.com",
                 "api_enable_users": True,
                 "api_enable_groups": True,
-            })
+            },
+            name="My-Google-Workspace-Connection",
+            strategy="google-apps")
         my_directory = auth0.ConnectionDirectory("my_directory",
             connection_id=my_connection.id,
             synchronize_groups="selected")
         my_groups = auth0.ConnectionDirectorySynchronizedGroups("my_groups",
-            connection_id=my_connection.id,
             groups=[
                 {
                     "id": "group1",
@@ -185,6 +184,7 @@ class ConnectionDirectorySynchronizedGroups(pulumi.CustomResource):
                     "direct_members_count": 123,
                 },
             ],
+            connection_id=my_connection.id,
             opts = pulumi.ResourceOptions(depends_on=[my_directory]))
         ```
 
@@ -199,7 +199,7 @@ class ConnectionDirectorySynchronizedGroups(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connection_id: ID of the connection for which to manage synchronized groups.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] group_ids: IDs of the Google Workspace Directory groups to synchronize.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionDirectorySynchronizedGroupsGroupArgs', 'ConnectionDirectorySynchronizedGroupsGroupArgsDict']]]] groups: Google Workspace Directory groups to synchronize.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionDirectorySynchronizedGroupsGroupArgs', 'ConnectionDirectorySynchronizedGroupsGroupArgsDict', 'outputs.ConnectionDirectorySynchronizedGroupsGroup']]]] groups: Google Workspace Directory groups to synchronize.
         """
         ...
     @overload
@@ -217,8 +217,6 @@ class ConnectionDirectorySynchronizedGroups(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         my_connection = auth0.Connection("my_connection",
-            name="My-Google-Workspace-Connection",
-            strategy="google-apps",
             options={
                 "client_id": "...",
                 "client_secret": "...",
@@ -226,12 +224,13 @@ class ConnectionDirectorySynchronizedGroups(pulumi.CustomResource):
                 "tenant_domain": "example.com",
                 "api_enable_users": True,
                 "api_enable_groups": True,
-            })
+            },
+            name="My-Google-Workspace-Connection",
+            strategy="google-apps")
         my_directory = auth0.ConnectionDirectory("my_directory",
             connection_id=my_connection.id,
             synchronize_groups="selected")
         my_groups = auth0.ConnectionDirectorySynchronizedGroups("my_groups",
-            connection_id=my_connection.id,
             groups=[
                 {
                     "id": "group1",
@@ -243,6 +242,7 @@ class ConnectionDirectorySynchronizedGroups(pulumi.CustomResource):
                     "direct_members_count": 123,
                 },
             ],
+            connection_id=my_connection.id,
             opts = pulumi.ResourceOptions(depends_on=[my_directory]))
         ```
 
@@ -270,7 +270,7 @@ class ConnectionDirectorySynchronizedGroups(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionDirectorySynchronizedGroupsGroupArgs', 'ConnectionDirectorySynchronizedGroupsGroupArgsDict']]]]] = None,
+                 groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionDirectorySynchronizedGroupsGroupArgs', 'ConnectionDirectorySynchronizedGroupsGroupArgsDict', 'outputs.ConnectionDirectorySynchronizedGroupsGroup']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -297,7 +297,7 @@ class ConnectionDirectorySynchronizedGroups(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             connection_id: pulumi.Input[Optional[_builtins.str]] = None,
             group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionDirectorySynchronizedGroupsGroupArgs', 'ConnectionDirectorySynchronizedGroupsGroupArgsDict']]]]] = None) -> 'ConnectionDirectorySynchronizedGroups':
+            groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionDirectorySynchronizedGroupsGroupArgs', 'ConnectionDirectorySynchronizedGroupsGroupArgsDict', 'outputs.ConnectionDirectorySynchronizedGroupsGroup']]]]] = None) -> 'ConnectionDirectorySynchronizedGroups':
         """
         Get an existing ConnectionDirectorySynchronizedGroups resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -307,7 +307,7 @@ class ConnectionDirectorySynchronizedGroups(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connection_id: ID of the connection for which to manage synchronized groups.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] group_ids: IDs of the Google Workspace Directory groups to synchronize.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionDirectorySynchronizedGroupsGroupArgs', 'ConnectionDirectorySynchronizedGroupsGroupArgsDict']]]] groups: Google Workspace Directory groups to synchronize.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionDirectorySynchronizedGroupsGroupArgs', 'ConnectionDirectorySynchronizedGroupsGroupArgsDict', 'outputs.ConnectionDirectorySynchronizedGroupsGroup']]]] groups: Google Workspace Directory groups to synchronize.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

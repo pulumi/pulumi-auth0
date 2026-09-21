@@ -56,7 +56,7 @@ import (
 //				CustomDomainId: myCustomDomain.ID().ToIDOutput().ToStringOutput(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				myDomainNameRecord,
-//			}))
+//			}), pulumi.Timeouts(&pulumi.CustomTimeouts{Create: "15m"}))
 //			if err != nil {
 //				return err
 //			}

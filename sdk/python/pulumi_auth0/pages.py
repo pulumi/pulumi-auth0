@@ -170,10 +170,10 @@ class Pages(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 change_password: pulumi.Input[Optional[Union['PagesChangePasswordArgs', 'PagesChangePasswordArgsDict']]] = None,
-                 error: pulumi.Input[Optional[Union['PagesErrorArgs', 'PagesErrorArgsDict']]] = None,
-                 guardian_mfa: pulumi.Input[Optional[Union['PagesGuardianMfaArgs', 'PagesGuardianMfaArgsDict']]] = None,
-                 login: pulumi.Input[Optional[Union['PagesLoginArgs', 'PagesLoginArgsDict']]] = None,
+                 change_password: pulumi.Input[Optional[Union['PagesChangePasswordArgs', 'PagesChangePasswordArgsDict', 'outputs.PagesChangePassword']]] = None,
+                 error: pulumi.Input[Optional[Union['PagesErrorArgs', 'PagesErrorArgsDict', 'outputs.PagesError']]] = None,
+                 guardian_mfa: pulumi.Input[Optional[Union['PagesGuardianMfaArgs', 'PagesGuardianMfaArgsDict', 'outputs.PagesGuardianMfa']]] = None,
+                 login: pulumi.Input[Optional[Union['PagesLoginArgs', 'PagesLoginArgsDict', 'outputs.PagesLogin']]] = None,
                  __props__=None):
         """
         With this resource you can manage custom HTML for the Login, Reset Password, Multi-Factor Authentication and Error pages.
@@ -223,10 +223,10 @@ class Pages(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['PagesChangePasswordArgs', 'PagesChangePasswordArgsDict']] change_password: Configuration settings for customizing the Password Reset page.
-        :param pulumi.Input[Union['PagesErrorArgs', 'PagesErrorArgsDict']] error: Configuration settings for the Error pages.
-        :param pulumi.Input[Union['PagesGuardianMfaArgs', 'PagesGuardianMfaArgsDict']] guardian_mfa: Configuration settings for customizing the Guardian Multi-Factor Authentication page.
-        :param pulumi.Input[Union['PagesLoginArgs', 'PagesLoginArgsDict']] login: Configuration settings for customizing the Login page.
+        :param pulumi.Input[Union['PagesChangePasswordArgs', 'PagesChangePasswordArgsDict', 'outputs.PagesChangePassword']] change_password: Configuration settings for customizing the Password Reset page.
+        :param pulumi.Input[Union['PagesErrorArgs', 'PagesErrorArgsDict', 'outputs.PagesError']] error: Configuration settings for the Error pages.
+        :param pulumi.Input[Union['PagesGuardianMfaArgs', 'PagesGuardianMfaArgsDict', 'outputs.PagesGuardianMfa']] guardian_mfa: Configuration settings for customizing the Guardian Multi-Factor Authentication page.
+        :param pulumi.Input[Union['PagesLoginArgs', 'PagesLoginArgsDict', 'outputs.PagesLogin']] login: Configuration settings for customizing the Login page.
         """
         ...
     @overload
@@ -295,10 +295,10 @@ class Pages(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 change_password: pulumi.Input[Optional[Union['PagesChangePasswordArgs', 'PagesChangePasswordArgsDict']]] = None,
-                 error: pulumi.Input[Optional[Union['PagesErrorArgs', 'PagesErrorArgsDict']]] = None,
-                 guardian_mfa: pulumi.Input[Optional[Union['PagesGuardianMfaArgs', 'PagesGuardianMfaArgsDict']]] = None,
-                 login: pulumi.Input[Optional[Union['PagesLoginArgs', 'PagesLoginArgsDict']]] = None,
+                 change_password: pulumi.Input[Optional[Union['PagesChangePasswordArgs', 'PagesChangePasswordArgsDict', 'outputs.PagesChangePassword']]] = None,
+                 error: pulumi.Input[Optional[Union['PagesErrorArgs', 'PagesErrorArgsDict', 'outputs.PagesError']]] = None,
+                 guardian_mfa: pulumi.Input[Optional[Union['PagesGuardianMfaArgs', 'PagesGuardianMfaArgsDict', 'outputs.PagesGuardianMfa']]] = None,
+                 login: pulumi.Input[Optional[Union['PagesLoginArgs', 'PagesLoginArgsDict', 'outputs.PagesLogin']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -322,10 +322,10 @@ class Pages(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            change_password: pulumi.Input[Optional[Union['PagesChangePasswordArgs', 'PagesChangePasswordArgsDict']]] = None,
-            error: pulumi.Input[Optional[Union['PagesErrorArgs', 'PagesErrorArgsDict']]] = None,
-            guardian_mfa: pulumi.Input[Optional[Union['PagesGuardianMfaArgs', 'PagesGuardianMfaArgsDict']]] = None,
-            login: pulumi.Input[Optional[Union['PagesLoginArgs', 'PagesLoginArgsDict']]] = None) -> 'Pages':
+            change_password: pulumi.Input[Optional[Union['PagesChangePasswordArgs', 'PagesChangePasswordArgsDict', 'outputs.PagesChangePassword']]] = None,
+            error: pulumi.Input[Optional[Union['PagesErrorArgs', 'PagesErrorArgsDict', 'outputs.PagesError']]] = None,
+            guardian_mfa: pulumi.Input[Optional[Union['PagesGuardianMfaArgs', 'PagesGuardianMfaArgsDict', 'outputs.PagesGuardianMfa']]] = None,
+            login: pulumi.Input[Optional[Union['PagesLoginArgs', 'PagesLoginArgsDict', 'outputs.PagesLogin']]] = None) -> 'Pages':
         """
         Get an existing Pages resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -333,10 +333,10 @@ class Pages(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['PagesChangePasswordArgs', 'PagesChangePasswordArgsDict']] change_password: Configuration settings for customizing the Password Reset page.
-        :param pulumi.Input[Union['PagesErrorArgs', 'PagesErrorArgsDict']] error: Configuration settings for the Error pages.
-        :param pulumi.Input[Union['PagesGuardianMfaArgs', 'PagesGuardianMfaArgsDict']] guardian_mfa: Configuration settings for customizing the Guardian Multi-Factor Authentication page.
-        :param pulumi.Input[Union['PagesLoginArgs', 'PagesLoginArgsDict']] login: Configuration settings for customizing the Login page.
+        :param pulumi.Input[Union['PagesChangePasswordArgs', 'PagesChangePasswordArgsDict', 'outputs.PagesChangePassword']] change_password: Configuration settings for customizing the Password Reset page.
+        :param pulumi.Input[Union['PagesErrorArgs', 'PagesErrorArgsDict', 'outputs.PagesError']] error: Configuration settings for the Error pages.
+        :param pulumi.Input[Union['PagesGuardianMfaArgs', 'PagesGuardianMfaArgsDict', 'outputs.PagesGuardianMfa']] guardian_mfa: Configuration settings for customizing the Guardian Multi-Factor Authentication page.
+        :param pulumi.Input[Union['PagesLoginArgs', 'PagesLoginArgsDict', 'outputs.PagesLogin']] login: Configuration settings for customizing the Login page.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

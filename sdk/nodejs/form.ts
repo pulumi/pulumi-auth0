@@ -17,6 +17,15 @@ import * as utilities from "./utilities";
  *
  * // Example:
  * const myForm = new auth0.Form("my_form", {
+ *     languages: [{
+ *         "default": "en",
+ *         primary: "en",
+ *     }],
+ *     messages: [{
+ *         errors: JSON.stringify({
+ *             ERR_REQUIRED_PROPERTY: "This field is required for user kyc.",
+ *         }),
+ *     }],
  *     name: "My KYC Form",
  *     start: JSON.stringify({
  *         coordinates: {
@@ -93,15 +102,6 @@ import * as utilities from "./utilities";
  *             },
  *         },
  *     }),
- *     messages: [{
- *         errors: JSON.stringify({
- *             ERR_REQUIRED_PROPERTY: "This field is required for user kyc.",
- *         }),
- *     }],
- *     languages: [{
- *         "default": "en",
- *         primary: "en",
- *     }],
  * });
  * ```
  *

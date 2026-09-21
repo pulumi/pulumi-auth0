@@ -32,6 +32,9 @@ import * as utilities from "./utilities";
  *     value: myCustomDomain.verifications[0].methods?.[0]?.record,
  * });
  * const myCustomDomainVerification = new auth0.CustomDomainVerification("my_custom_domain_verification", {customDomainId: myCustomDomain.id}, {
+ *     customTimeouts: {
+ *         create: "15m",
+ *     },
  *     dependsOn: [myDomainNameRecord],
  * });
  * ```

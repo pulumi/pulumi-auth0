@@ -16,16 +16,6 @@ import * as utilities from "./utilities";
  * // The following example grants a client the "create:foo" and "create:bar" permissions (scopes).
  * const myClient = new auth0.Client("my_client", {name: "Example Application - Client Grant (Managed by Terraform)"});
  * const myResourceServer = new auth0.ResourceServer("my_resource_server", {
- *     name: "Example Resource Server - Client Grant (Managed by Terraform)",
- *     identifier: "https://api.example.com/client-grant",
- *     authorizationDetails: [
- *         {
- *             type: "payment",
- *         },
- *         {
- *             type: "shipping",
- *         },
- *     ],
  *     subjectTypeAuthorization: {
  *         user: {
  *             policy: "allow_all",
@@ -34,9 +24,18 @@ import * as utilities from "./utilities";
  *             policy: "require_client_grant",
  *         },
  *     },
+ *     authorizationDetails: [
+ *         {
+ *             type: "payment",
+ *         },
+ *         {
+ *             type: "shipping",
+ *         },
+ *     ],
+ *     name: "Example Resource Server - Client Grant (Managed by Terraform)",
+ *     identifier: "https://api.example.com/client-grant",
  * });
  * const myScopes = new auth0.ResourceServerScopes("my_scopes", {
- *     resourceServerIdentifier: myResourceServer.identifier,
  *     scopes: [
  *         {
  *             name: "read:foo",
@@ -47,6 +46,7 @@ import * as utilities from "./utilities";
  *             description: "Can create Foo",
  *         },
  *     ],
+ *     resourceServerIdentifier: myResourceServer.identifier,
  * }, {
  *     dependsOn: [myResourceServer],
  * });

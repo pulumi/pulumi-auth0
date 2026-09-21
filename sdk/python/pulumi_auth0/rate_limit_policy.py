@@ -198,7 +198,7 @@ class RateLimitPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configuration: pulumi.Input[Optional[Union['RateLimitPolicyConfigurationArgs', 'RateLimitPolicyConfigurationArgsDict']]] = None,
+                 configuration: pulumi.Input[Optional[Union['RateLimitPolicyConfigurationArgs', 'RateLimitPolicyConfigurationArgsDict', 'outputs.RateLimitPolicyConfiguration']]] = None,
                  consumer: pulumi.Input[Optional[_builtins.str]] = None,
                  consumer_selector: pulumi.Input[Optional[_builtins.str]] = None,
                  resource: pulumi.Input[Optional[_builtins.str]] = None,
@@ -213,14 +213,14 @@ class RateLimitPolicy(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         noisy_app = auth0.RateLimitPolicy("noisy_app",
-            resource="oauth_authentication_api",
-            consumer="client",
-            consumer_selector="client_id:abc123",
             configuration={
                 "action": "redirect",
                 "limit": 1000,
                 "redirect_uri": "https://example.com/rate-limited",
-            })
+            },
+            resource="oauth_authentication_api",
+            consumer="client",
+            consumer_selector="client_id:abc123")
         ```
 
         ## Import
@@ -239,7 +239,7 @@ class RateLimitPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RateLimitPolicyConfigurationArgs', 'RateLimitPolicyConfigurationArgsDict']] configuration: The throttling configuration applied when the rate limit is reached. (EA only)
+        :param pulumi.Input[Union['RateLimitPolicyConfigurationArgs', 'RateLimitPolicyConfigurationArgsDict', 'outputs.RateLimitPolicyConfiguration']] configuration: The throttling configuration applied when the rate limit is reached. (EA only)
         :param pulumi.Input[_builtins.str] consumer: The consumer category the policy applies to. Valid values are: client
         :param pulumi.Input[_builtins.str] consumer_selector: Identifier or category within the consumer to which the policy applies. Supported values: `client_id:<client_id>`, `client_id:<cimd_uri>`, `cimd_clients`, `third_party_clients`, or `default`. (EA only)
         :param pulumi.Input[_builtins.str] resource: The resource the policy applies to. Valid values are: oauth*authentication*api
@@ -260,14 +260,14 @@ class RateLimitPolicy(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         noisy_app = auth0.RateLimitPolicy("noisy_app",
-            resource="oauth_authentication_api",
-            consumer="client",
-            consumer_selector="client_id:abc123",
             configuration={
                 "action": "redirect",
                 "limit": 1000,
                 "redirect_uri": "https://example.com/rate-limited",
-            })
+            },
+            resource="oauth_authentication_api",
+            consumer="client",
+            consumer_selector="client_id:abc123")
         ```
 
         ## Import
@@ -299,7 +299,7 @@ class RateLimitPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configuration: pulumi.Input[Optional[Union['RateLimitPolicyConfigurationArgs', 'RateLimitPolicyConfigurationArgsDict']]] = None,
+                 configuration: pulumi.Input[Optional[Union['RateLimitPolicyConfigurationArgs', 'RateLimitPolicyConfigurationArgsDict', 'outputs.RateLimitPolicyConfiguration']]] = None,
                  consumer: pulumi.Input[Optional[_builtins.str]] = None,
                  consumer_selector: pulumi.Input[Optional[_builtins.str]] = None,
                  resource: pulumi.Input[Optional[_builtins.str]] = None,
@@ -336,7 +336,7 @@ class RateLimitPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            configuration: pulumi.Input[Optional[Union['RateLimitPolicyConfigurationArgs', 'RateLimitPolicyConfigurationArgsDict']]] = None,
+            configuration: pulumi.Input[Optional[Union['RateLimitPolicyConfigurationArgs', 'RateLimitPolicyConfigurationArgsDict', 'outputs.RateLimitPolicyConfiguration']]] = None,
             consumer: pulumi.Input[Optional[_builtins.str]] = None,
             consumer_selector: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
@@ -349,7 +349,7 @@ class RateLimitPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RateLimitPolicyConfigurationArgs', 'RateLimitPolicyConfigurationArgsDict']] configuration: The throttling configuration applied when the rate limit is reached. (EA only)
+        :param pulumi.Input[Union['RateLimitPolicyConfigurationArgs', 'RateLimitPolicyConfigurationArgsDict', 'outputs.RateLimitPolicyConfiguration']] configuration: The throttling configuration applied when the rate limit is reached. (EA only)
         :param pulumi.Input[_builtins.str] consumer: The consumer category the policy applies to. Valid values are: client
         :param pulumi.Input[_builtins.str] consumer_selector: Identifier or category within the consumer to which the policy applies. Supported values: `client_id:<client_id>`, `client_id:<cimd_uri>`, `cimd_clients`, `third_party_clients`, or `default`. (EA only)
         :param pulumi.Input[_builtins.str] created_at: The date and time when the rate limit policy was created.

@@ -183,8 +183,6 @@ class UserPermission(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         resource_server = auth0.ResourceServer("resource_server",
-            name="Example Resource Server (Managed by Terraform)",
-            identifier="https://api.example.com",
             scopes=[
                 {
                     "value": "create:foo",
@@ -194,7 +192,9 @@ class UserPermission(pulumi.CustomResource):
                     "value": "create:bar",
                     "description": "Create bars",
                 },
-            ])
+            ],
+            name="Example Resource Server (Managed by Terraform)",
+            identifier="https://api.example.com")
         user = auth0.User("user",
             connection_name="Username-Password-Authentication",
             user_id="12345",
@@ -250,8 +250,6 @@ class UserPermission(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         resource_server = auth0.ResourceServer("resource_server",
-            name="Example Resource Server (Managed by Terraform)",
-            identifier="https://api.example.com",
             scopes=[
                 {
                     "value": "create:foo",
@@ -261,7 +259,9 @@ class UserPermission(pulumi.CustomResource):
                     "value": "create:bar",
                     "description": "Create bars",
                 },
-            ])
+            ],
+            name="Example Resource Server (Managed by Terraform)",
+            identifier="https://api.example.com")
         user = auth0.User("user",
             connection_name="Username-Password-Authentication",
             user_id="12345",

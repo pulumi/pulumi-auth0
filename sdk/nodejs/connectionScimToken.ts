@@ -14,9 +14,6 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const azureAd = new auth0.Connection("azure_ad", {
- *     name: "Acceptance-Test-Azure-AD",
- *     strategy: "waad",
- *     showAsButton: true,
  *     options: {
  *         identityApi: "microsoft-identity-platform-v2.0",
  *         clientId: "123456",
@@ -46,6 +43,9 @@ import * as utilities from "./utilities";
  *             },
  *         }),
  *     },
+ *     name: "Acceptance-Test-Azure-AD",
+ *     strategy: "waad",
+ *     showAsButton: true,
  * });
  * const myScimConfig = new auth0.ConnectionScimConfiguration("my_scim_config", {connectionId: azureAd.id});
  * const myScimToken = new auth0.ConnectionScimToken("my_scim_token", {

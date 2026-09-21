@@ -267,11 +267,11 @@ class SelfServiceProfile(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allowed_strategies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 branding: pulumi.Input[Optional[Union['SelfServiceProfileBrandingArgs', 'SelfServiceProfileBrandingArgsDict']]] = None,
+                 branding: pulumi.Input[Optional[Union['SelfServiceProfileBrandingArgs', 'SelfServiceProfileBrandingArgsDict', 'outputs.SelfServiceProfileBranding']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  user_attribute_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 user_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SelfServiceProfileUserAttributeArgs', 'SelfServiceProfileUserAttributeArgsDict']]]]] = None,
+                 user_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SelfServiceProfileUserAttributeArgs', 'SelfServiceProfileUserAttributeArgsDict', 'outputs.SelfServiceProfileUserAttribute']]]]] = None,
                  __props__=None):
         """
         With this resource, you can create and manage Self-Service Profile for a tenant.
@@ -285,17 +285,17 @@ class SelfServiceProfile(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         my_self_service_profile = auth0.SelfServiceProfile("my_self_service_profile",
+            branding={
+                "colors": {
+                    "primary": "#0059d6",
+                },
+                "logo_url": "https://mycompany.org/v2/logo.png",
+            },
             user_attributes=[{
                 "name": "sample-name",
                 "description": "sample-description",
                 "is_optional": True,
-            }],
-            branding={
-                "logo_url": "https://mycompany.org/v2/logo.png",
-                "colors": {
-                    "primary": "#0059d6",
-                },
-            })
+            }])
         ```
 
         ## Import
@@ -311,11 +311,11 @@ class SelfServiceProfile(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_strategies: List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
-        :param pulumi.Input[Union['SelfServiceProfileBrandingArgs', 'SelfServiceProfileBrandingArgsDict']] branding: Field can be used to customize the look and feel of the wizard.
+        :param pulumi.Input[Union['SelfServiceProfileBrandingArgs', 'SelfServiceProfileBrandingArgsDict', 'outputs.SelfServiceProfileBranding']] branding: Field can be used to customize the look and feel of the wizard.
         :param pulumi.Input[_builtins.str] description: The description of the self-service Profile
         :param pulumi.Input[_builtins.str] name: The name of the self-service Profile
         :param pulumi.Input[_builtins.str] user_attribute_profile_id: The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SelfServiceProfileUserAttributeArgs', 'SelfServiceProfileUserAttributeArgsDict']]]] user_attributes: This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SelfServiceProfileUserAttributeArgs', 'SelfServiceProfileUserAttributeArgsDict', 'outputs.SelfServiceProfileUserAttribute']]]] user_attributes: This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
         """
         ...
     @overload
@@ -335,17 +335,17 @@ class SelfServiceProfile(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         my_self_service_profile = auth0.SelfServiceProfile("my_self_service_profile",
+            branding={
+                "colors": {
+                    "primary": "#0059d6",
+                },
+                "logo_url": "https://mycompany.org/v2/logo.png",
+            },
             user_attributes=[{
                 "name": "sample-name",
                 "description": "sample-description",
                 "is_optional": True,
-            }],
-            branding={
-                "logo_url": "https://mycompany.org/v2/logo.png",
-                "colors": {
-                    "primary": "#0059d6",
-                },
-            })
+            }])
         ```
 
         ## Import
@@ -374,11 +374,11 @@ class SelfServiceProfile(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allowed_strategies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 branding: pulumi.Input[Optional[Union['SelfServiceProfileBrandingArgs', 'SelfServiceProfileBrandingArgsDict']]] = None,
+                 branding: pulumi.Input[Optional[Union['SelfServiceProfileBrandingArgs', 'SelfServiceProfileBrandingArgsDict', 'outputs.SelfServiceProfileBranding']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  user_attribute_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 user_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SelfServiceProfileUserAttributeArgs', 'SelfServiceProfileUserAttributeArgsDict']]]]] = None,
+                 user_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SelfServiceProfileUserAttributeArgs', 'SelfServiceProfileUserAttributeArgsDict', 'outputs.SelfServiceProfileUserAttribute']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -407,13 +407,13 @@ class SelfServiceProfile(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             allowed_strategies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            branding: pulumi.Input[Optional[Union['SelfServiceProfileBrandingArgs', 'SelfServiceProfileBrandingArgsDict']]] = None,
+            branding: pulumi.Input[Optional[Union['SelfServiceProfileBrandingArgs', 'SelfServiceProfileBrandingArgsDict', 'outputs.SelfServiceProfileBranding']]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None,
             user_attribute_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
-            user_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SelfServiceProfileUserAttributeArgs', 'SelfServiceProfileUserAttributeArgsDict']]]]] = None) -> 'SelfServiceProfile':
+            user_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SelfServiceProfileUserAttributeArgs', 'SelfServiceProfileUserAttributeArgsDict', 'outputs.SelfServiceProfileUserAttribute']]]]] = None) -> 'SelfServiceProfile':
         """
         Get an existing SelfServiceProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -422,13 +422,13 @@ class SelfServiceProfile(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_strategies: List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
-        :param pulumi.Input[Union['SelfServiceProfileBrandingArgs', 'SelfServiceProfileBrandingArgsDict']] branding: Field can be used to customize the look and feel of the wizard.
+        :param pulumi.Input[Union['SelfServiceProfileBrandingArgs', 'SelfServiceProfileBrandingArgsDict', 'outputs.SelfServiceProfileBranding']] branding: Field can be used to customize the look and feel of the wizard.
         :param pulumi.Input[_builtins.str] created_at: The ISO 8601 formatted date the profile was created.
         :param pulumi.Input[_builtins.str] description: The description of the self-service Profile
         :param pulumi.Input[_builtins.str] name: The name of the self-service Profile
         :param pulumi.Input[_builtins.str] updated_at: The ISO 8601 formatted date the profile was updated.
         :param pulumi.Input[_builtins.str] user_attribute_profile_id: The ID of the user attribute profile to use for this self-service profile. Cannot be used with user_attributes.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SelfServiceProfileUserAttributeArgs', 'SelfServiceProfileUserAttributeArgsDict']]]] user_attributes: This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SelfServiceProfileUserAttributeArgs', 'SelfServiceProfileUserAttributeArgsDict', 'outputs.SelfServiceProfileUserAttribute']]]] user_attributes: This array stores the mapping information that will be shown to the user during the SS-SSO flow. The user will be prompted to map the attributes on their identity provider to ensure the specified attributes get passed to Auth0. Cannot be used with user*attribute*profile*id.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

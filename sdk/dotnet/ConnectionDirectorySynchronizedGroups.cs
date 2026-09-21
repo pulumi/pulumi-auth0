@@ -24,8 +24,6 @@ namespace Pulumi.Auth0
     /// {
     ///     var myConnection = new Auth0.Connection("my_connection", new()
     ///     {
-    ///         Name = "My-Google-Workspace-Connection",
-    ///         Strategy = "google-apps",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             ClientId = "...",
@@ -35,6 +33,8 @@ namespace Pulumi.Auth0
     ///             ApiEnableUsers = true,
     ///             ApiEnableGroups = true,
     ///         },
+    ///         Name = "My-Google-Workspace-Connection",
+    ///         Strategy = "google-apps",
     ///     });
     /// 
     ///     var myDirectory = new Auth0.ConnectionDirectory("my_directory", new()
@@ -45,7 +45,6 @@ namespace Pulumi.Auth0
     /// 
     ///     var myGroups = new Auth0.ConnectionDirectorySynchronizedGroups("my_groups", new()
     ///     {
-    ///         ConnectionId = myConnection.Id,
     ///         Groups = new[]
     ///         {
     ///             new Auth0.Inputs.ConnectionDirectorySynchronizedGroupsGroupArgs
@@ -60,6 +59,7 @@ namespace Pulumi.Auth0
     ///                 DirectMembersCount = 123,
     ///             },
     ///         },
+    ///         ConnectionId = myConnection.Id,
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =

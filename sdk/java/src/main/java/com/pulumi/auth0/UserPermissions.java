@@ -52,8 +52,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var resourceServer = new ResourceServer("resourceServer", ResourceServerArgs.builder()
- *             .name("Example Resource Server (Managed by Terraform)")
- *             .identifier("https://api.example.com")
  *             .scopes(Arrays.asList(            
  *                 Map.ofEntries(
  *                     Map.entry("value", "create:foo"),
@@ -63,6 +61,8 @@ import javax.annotation.Nullable;
  *                     Map.entry("value", "read:foo"),
  *                     Map.entry("description", "Read foos")
  *                 )))
+ *             .name("Example Resource Server (Managed by Terraform)")
+ *             .identifier("https://api.example.com")
  *             .build());
  * 
  *         var user = new User("user", UserArgs.builder()
@@ -78,7 +78,6 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var allUserPermissions = new UserPermissions("allUserPermissions", UserPermissionsArgs.builder()
- *             .userId(user.id())
  *             .permissions(            
  *                 UserPermissionsPermissionArgs.builder()
  *                     .name(resourceServer.scopes()[0])
@@ -88,6 +87,7 @@ import javax.annotation.Nullable;
  *                     .name(resourceServer.scopes()[1])
  *                     .resourceServerIdentifier(resourceServer.identifier())
  *                     .build())
+ *             .userId(user.id())
  *             .build());
  * 
  *     }}{@code

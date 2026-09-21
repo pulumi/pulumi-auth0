@@ -42,6 +42,19 @@ namespace Pulumi.Auth0
         ///     // Use version_id directly from the module resource — no data source needed.
         ///     var myAction1 = new Auth0.Action("my_action_1", new()
         ///     {
+        ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
+        ///         {
+        ///             Id = "post-login",
+        ///             Version = "v3",
+        ///         },
+        ///         Modules = new[]
+        ///         {
+        ///             new Auth0.Inputs.ActionModuleArgs
+        ///             {
+        ///                 ModuleId = myModule.Id,
+        ///                 ModuleVersionId = myModule.VersionId,
+        ///             },
+        ///         },
         ///         Name = "My Action Using Module 1",
         ///         Deploy = true,
         ///         Code = @"const myModule = require('my-module');
@@ -49,6 +62,11 @@ namespace Pulumi.Auth0
         ///   console.log(myModule.greet(event.user.name));
         /// };
         /// ",
+        ///     });
+        /// 
+        ///     // Create another action that uses the same module
+        ///     var myAction2 = new Auth0.Action("my_action_2", new()
+        ///     {
         ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
         ///         {
         ///             Id = "post-login",
@@ -62,11 +80,6 @@ namespace Pulumi.Auth0
         ///                 ModuleVersionId = myModule.VersionId,
         ///             },
         ///         },
-        ///     });
-        /// 
-        ///     // Create another action that uses the same module
-        ///     var myAction2 = new Auth0.Action("my_action_2", new()
-        ///     {
         ///         Name = "My Action Using Module 2",
         ///         Deploy = true,
         ///         Code = @"const myModule = require('my-module');
@@ -74,19 +87,6 @@ namespace Pulumi.Auth0
         ///   api.idToken.setCustomClaim(\""greeting\"", myModule.greet(event.user.name));
         /// };
         /// ",
-        ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
-        ///         {
-        ///             Id = "post-login",
-        ///             Version = "v3",
-        ///         },
-        ///         Modules = new[]
-        ///         {
-        ///             new Auth0.Inputs.ActionModuleArgs
-        ///             {
-        ///                 ModuleId = myModule.Id,
-        ///                 ModuleVersionId = myModule.VersionId,
-        ///             },
-        ///         },
         ///     });
         /// 
         ///     // Retrieve all actions that are using this module
@@ -140,6 +140,19 @@ namespace Pulumi.Auth0
         ///     // Use version_id directly from the module resource — no data source needed.
         ///     var myAction1 = new Auth0.Action("my_action_1", new()
         ///     {
+        ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
+        ///         {
+        ///             Id = "post-login",
+        ///             Version = "v3",
+        ///         },
+        ///         Modules = new[]
+        ///         {
+        ///             new Auth0.Inputs.ActionModuleArgs
+        ///             {
+        ///                 ModuleId = myModule.Id,
+        ///                 ModuleVersionId = myModule.VersionId,
+        ///             },
+        ///         },
         ///         Name = "My Action Using Module 1",
         ///         Deploy = true,
         ///         Code = @"const myModule = require('my-module');
@@ -147,6 +160,11 @@ namespace Pulumi.Auth0
         ///   console.log(myModule.greet(event.user.name));
         /// };
         /// ",
+        ///     });
+        /// 
+        ///     // Create another action that uses the same module
+        ///     var myAction2 = new Auth0.Action("my_action_2", new()
+        ///     {
         ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
         ///         {
         ///             Id = "post-login",
@@ -160,11 +178,6 @@ namespace Pulumi.Auth0
         ///                 ModuleVersionId = myModule.VersionId,
         ///             },
         ///         },
-        ///     });
-        /// 
-        ///     // Create another action that uses the same module
-        ///     var myAction2 = new Auth0.Action("my_action_2", new()
-        ///     {
         ///         Name = "My Action Using Module 2",
         ///         Deploy = true,
         ///         Code = @"const myModule = require('my-module');
@@ -172,19 +185,6 @@ namespace Pulumi.Auth0
         ///   api.idToken.setCustomClaim(\""greeting\"", myModule.greet(event.user.name));
         /// };
         /// ",
-        ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
-        ///         {
-        ///             Id = "post-login",
-        ///             Version = "v3",
-        ///         },
-        ///         Modules = new[]
-        ///         {
-        ///             new Auth0.Inputs.ActionModuleArgs
-        ///             {
-        ///                 ModuleId = myModule.Id,
-        ///                 ModuleVersionId = myModule.VersionId,
-        ///             },
-        ///         },
         ///     });
         /// 
         ///     // Retrieve all actions that are using this module
@@ -238,6 +238,19 @@ namespace Pulumi.Auth0
         ///     // Use version_id directly from the module resource — no data source needed.
         ///     var myAction1 = new Auth0.Action("my_action_1", new()
         ///     {
+        ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
+        ///         {
+        ///             Id = "post-login",
+        ///             Version = "v3",
+        ///         },
+        ///         Modules = new[]
+        ///         {
+        ///             new Auth0.Inputs.ActionModuleArgs
+        ///             {
+        ///                 ModuleId = myModule.Id,
+        ///                 ModuleVersionId = myModule.VersionId,
+        ///             },
+        ///         },
         ///         Name = "My Action Using Module 1",
         ///         Deploy = true,
         ///         Code = @"const myModule = require('my-module');
@@ -245,6 +258,11 @@ namespace Pulumi.Auth0
         ///   console.log(myModule.greet(event.user.name));
         /// };
         /// ",
+        ///     });
+        /// 
+        ///     // Create another action that uses the same module
+        ///     var myAction2 = new Auth0.Action("my_action_2", new()
+        ///     {
         ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
         ///         {
         ///             Id = "post-login",
@@ -258,11 +276,6 @@ namespace Pulumi.Auth0
         ///                 ModuleVersionId = myModule.VersionId,
         ///             },
         ///         },
-        ///     });
-        /// 
-        ///     // Create another action that uses the same module
-        ///     var myAction2 = new Auth0.Action("my_action_2", new()
-        ///     {
         ///         Name = "My Action Using Module 2",
         ///         Deploy = true,
         ///         Code = @"const myModule = require('my-module');
@@ -270,19 +283,6 @@ namespace Pulumi.Auth0
         ///   api.idToken.setCustomClaim(\""greeting\"", myModule.greet(event.user.name));
         /// };
         /// ",
-        ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
-        ///         {
-        ///             Id = "post-login",
-        ///             Version = "v3",
-        ///         },
-        ///         Modules = new[]
-        ///         {
-        ///             new Auth0.Inputs.ActionModuleArgs
-        ///             {
-        ///                 ModuleId = myModule.Id,
-        ///                 ModuleVersionId = myModule.VersionId,
-        ///             },
-        ///         },
         ///     });
         /// 
         ///     // Retrieve all actions that are using this module

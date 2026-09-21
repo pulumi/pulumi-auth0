@@ -40,8 +40,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// This is an example on how to set up the phone provider with Twilio.
 //			_, err := auth0.NewPhoneProvider(ctx, "twilio_phone_provider", &auth0.PhoneProviderArgs{
-//				Name:     pulumi.String("twilio"),
-//				Disabled: pulumi.Bool(false),
 //				Credentials: &auth0.PhoneProviderCredentialsArgs{
 //					AuthToken: pulumi.String("secretAuthToken"),
 //				},
@@ -54,6 +52,8 @@ import (
 //					Sid:         pulumi.String("ACXXXXXXXXXXXXXXXX"),
 //					Mssid:       pulumi.String("MSXXXXXXXXXXXXXXXX"),
 //				},
+//				Name:     pulumi.String("twilio"),
+//				Disabled: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -61,6 +61,10 @@ import (
 //			// This is an example on how to set up the phone provider with a custom action.
 //			// Make sure a corresponding action exists with custom-phone-provider as supported triggers
 //			sendCustomPhone, err := auth0.NewAction(ctx, "send_custom_phone", &auth0.ActionArgs{
+//				SupportedTriggers: &auth0.ActionSupportedTriggersArgs{
+//					Id:      pulumi.String("custom-phone-provider"),
+//					Version: pulumi.String("v1"),
+//				},
 //				Name:    pulumi.String("Custom Phone Provider"),
 //				Runtime: pulumi.String("node22"),
 //				Deploy:  pulumi.Bool(true),
@@ -77,17 +81,11 @@ import (
 //
 // `),
 //
-//				SupportedTriggers: &auth0.ActionSupportedTriggersArgs{
-//					Id:      pulumi.String("custom-phone-provider"),
-//					Version: pulumi.String("v1"),
-//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = auth0.NewPhoneProvider(ctx, "custom_phone_provider", &auth0.PhoneProviderArgs{
-//				Name:     pulumi.String("custom"),
-//				Disabled: pulumi.Bool(false),
 //				Configuration: &auth0.PhoneProviderConfigurationArgs{
 //					DeliveryMethods: pulumi.StringArray{
 //						pulumi.String("text"),
@@ -95,6 +93,8 @@ import (
 //					},
 //				},
 //				Credentials: &auth0.PhoneProviderCredentialsArgs{},
+//				Name:        pulumi.String("custom"),
+//				Disabled:    pulumi.Bool(false),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				sendCustomPhone,
 //			}))

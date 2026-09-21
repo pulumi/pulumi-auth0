@@ -47,23 +47,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myEnterpriseConnection = new Connection("myEnterpriseConnection", ConnectionArgs.builder()
+ *             .options(ConnectionOptionsArgs.builder()
+ *                 .clientId("1234567")
+ *                 .clientSecret("1234567")
+ *                 .issuer("https://example.okta.com")
+ *                 .jwksUri("https://example.okta.com/oauth2/v1/keys")
+ *                 .tokenEndpoint("https://example.okta.com/oauth2/v1/token")
+ *                 .authorizationEndpoint("https://example.okta.com/oauth2/v1/authorize")
+ *                 .build())
  *             .name("my-enterprise-connection")
  *             .displayName("My Enterprise Connection")
  *             .strategy("okta")
- *             .options(ConnectionOptionsArgs.builder()
- *                 .clientId("1234567")
- *                 .clientSecret("1234567")
- *                 .issuer("https://example.okta.com")
- *                 .jwksUri("https://example.okta.com/oauth2/v1/keys")
- *                 .tokenEndpoint("https://example.okta.com/oauth2/v1/token")
- *                 .authorizationEndpoint("https://example.okta.com/oauth2/v1/authorize")
- *                 .build())
  *             .build());
  * 
  *         var myEnterpriseConnection2 = new Connection("myEnterpriseConnection2", ConnectionArgs.builder()
- *             .name("my-enterprise-connection-2")
- *             .displayName("My Enterprise Connection 2")
- *             .strategy("okta")
  *             .options(ConnectionOptionsArgs.builder()
  *                 .clientId("1234567")
  *                 .clientSecret("1234567")
@@ -72,6 +69,9 @@ import javax.annotation.Nullable;
  *                 .tokenEndpoint("https://example.okta.com/oauth2/v1/token")
  *                 .authorizationEndpoint("https://example.okta.com/oauth2/v1/authorize")
  *                 .build())
+ *             .name("my-enterprise-connection-2")
+ *             .displayName("My Enterprise Connection 2")
+ *             .strategy("okta")
  *             .build());
  * 
  *         // A resource for configuring an Auth0 Connection SCIM Configuration, using default values.
@@ -83,8 +83,6 @@ import javax.annotation.Nullable;
  *         // A resource for configuring an Auth0 Connection SCIM Configuration, specifying `user_id_attribute` and `mapping`.
  *         // Only one can be specified for a connection.
  *         var myConnScimConfiguration = new ConnectionScimConfiguration("myConnScimConfiguration", ConnectionScimConfigurationArgs.builder()
- *             .connectionId(myEnterpriseConnection2.id())
- *             .userIdAttribute("attribute1")
  *             .mappings(            
  *                 ConnectionScimConfigurationMappingArgs.builder()
  *                     .auth0("auth0_attribute1")
@@ -94,6 +92,8 @@ import javax.annotation.Nullable;
  *                     .auth0("auth0_attribute2")
  *                     .scim("sacim_attribute2")
  *                     .build())
+ *             .connectionId(myEnterpriseConnection2.id())
+ *             .userIdAttribute("attribute1")
  *             .build());
  * 
  *     }

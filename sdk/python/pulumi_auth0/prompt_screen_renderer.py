@@ -314,7 +314,7 @@ class PromptScreenRenderer(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  context_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  default_head_tags_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 filters: pulumi.Input[Optional[Union['PromptScreenRendererFiltersArgs', 'PromptScreenRendererFiltersArgsDict']]] = None,
+                 filters: pulumi.Input[Optional[Union['PromptScreenRendererFiltersArgs', 'PromptScreenRendererFiltersArgsDict', 'outputs.PromptScreenRendererFilters']]] = None,
                  head_tags: pulumi.Input[Optional[_builtins.str]] = None,
                  prompt_type: pulumi.Input[Optional[_builtins.str]] = None,
                  rendering_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -384,7 +384,7 @@ class PromptScreenRenderer(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] context_configurations: Context values to make available
         :param pulumi.Input[_builtins.bool] default_head_tags_disabled: Override Universal Login default head tags
-        :param pulumi.Input[Union['PromptScreenRendererFiltersArgs', 'PromptScreenRendererFiltersArgsDict']] filters: Optional filters to apply rendering rules to specific entities. `match_type` and at least one of the entity arrays are required.
+        :param pulumi.Input[Union['PromptScreenRendererFiltersArgs', 'PromptScreenRendererFiltersArgsDict', 'outputs.PromptScreenRendererFilters']] filters: Optional filters to apply rendering rules to specific entities. `match_type` and at least one of the entity arrays are required.
         :param pulumi.Input[_builtins.str] head_tags: An array of head tags
         :param pulumi.Input[_builtins.str] prompt_type: The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`, `consent`, `customized-consent`, `email-otp-challenge`, `brute-force-protection`, `confirmation`.
         :param pulumi.Input[_builtins.str] rendering_mode: Rendering modeOptions are: `standard`, `advanced`.
@@ -473,7 +473,7 @@ class PromptScreenRenderer(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  context_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  default_head_tags_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 filters: pulumi.Input[Optional[Union['PromptScreenRendererFiltersArgs', 'PromptScreenRendererFiltersArgsDict']]] = None,
+                 filters: pulumi.Input[Optional[Union['PromptScreenRendererFiltersArgs', 'PromptScreenRendererFiltersArgsDict', 'outputs.PromptScreenRendererFilters']]] = None,
                  head_tags: pulumi.Input[Optional[_builtins.str]] = None,
                  prompt_type: pulumi.Input[Optional[_builtins.str]] = None,
                  rendering_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -513,7 +513,7 @@ class PromptScreenRenderer(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             context_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             default_head_tags_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            filters: pulumi.Input[Optional[Union['PromptScreenRendererFiltersArgs', 'PromptScreenRendererFiltersArgsDict']]] = None,
+            filters: pulumi.Input[Optional[Union['PromptScreenRendererFiltersArgs', 'PromptScreenRendererFiltersArgsDict', 'outputs.PromptScreenRendererFilters']]] = None,
             head_tags: pulumi.Input[Optional[_builtins.str]] = None,
             prompt_type: pulumi.Input[Optional[_builtins.str]] = None,
             rendering_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -529,7 +529,7 @@ class PromptScreenRenderer(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] context_configurations: Context values to make available
         :param pulumi.Input[_builtins.bool] default_head_tags_disabled: Override Universal Login default head tags
-        :param pulumi.Input[Union['PromptScreenRendererFiltersArgs', 'PromptScreenRendererFiltersArgsDict']] filters: Optional filters to apply rendering rules to specific entities. `match_type` and at least one of the entity arrays are required.
+        :param pulumi.Input[Union['PromptScreenRendererFiltersArgs', 'PromptScreenRendererFiltersArgsDict', 'outputs.PromptScreenRendererFilters']] filters: Optional filters to apply rendering rules to specific entities. `match_type` and at least one of the entity arrays are required.
         :param pulumi.Input[_builtins.str] head_tags: An array of head tags
         :param pulumi.Input[_builtins.str] prompt_type: The prompt that you are configuring settings for. Options are: `signup-id`, `signup-password`, `login-id`, `login-password`, `login-passwordless`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `passkeys`, `captcha`, `login`, `signup`, `reset-password`, `mfa`, `mfa-sms`, `mfa-email`, `mfa-push`, `invitation`, `organizations`, `mfa-otp`, `device-flow`, `mfa-phone`, `mfa-voice`, `mfa-recovery-code`, `common`, `email-verification`, `login-email-verification`, `logout`, `mfa-webauthn`, `consent`, `customized-consent`, `email-otp-challenge`, `brute-force-protection`, `confirmation`.
         :param pulumi.Input[_builtins.str] rendering_mode: Rendering modeOptions are: `standard`, `advanced`.

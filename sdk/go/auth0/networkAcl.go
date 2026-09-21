@@ -30,14 +30,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Example of auth0_network_acl with match criteria
 //			_, err := auth0.NewNetworkAcl(ctx, "my_network_acl_match", &auth0.NetworkAclArgs{
-//				Description: pulumi.String("Example with match network ACL"),
-//				Active:      pulumi.Bool(true),
-//				Priority:    pulumi.Int(1),
 //				Rule: &auth0.NetworkAclRuleArgs{
 //					Action: &auth0.NetworkAclRuleActionArgs{
 //						Allow: pulumi.Bool(true),
 //					},
-//					Scope: pulumi.String("management"),
 //					Match: &auth0.NetworkAclRuleMatchArgs{
 //						GeoCountryCodes: pulumi.StringArray{
 //							pulumi.String("US"),
@@ -48,21 +44,21 @@ import (
 //							pulumi.String("CA-ON"),
 //						},
 //					},
+//					Scope: pulumi.String("management"),
 //				},
+//				Description: pulumi.String("Example with match network ACL"),
+//				Active:      pulumi.Bool(true),
+//				Priority:    pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Example of auth0_network_acl with not-match criteria
 //			_, err = auth0.NewNetworkAcl(ctx, "my_network_acl_not_match", &auth0.NetworkAclArgs{
-//				Description: pulumi.String("Example with not match network ACL"),
-//				Active:      pulumi.Bool(true),
-//				Priority:    pulumi.Int(3),
 //				Rule: &auth0.NetworkAclRuleArgs{
 //					Action: &auth0.NetworkAclRuleActionArgs{
 //						Log: pulumi.Bool(true),
 //					},
-//					Scope: pulumi.String("authentication"),
 //					NotMatch: &auth0.NetworkAclRuleNotMatchArgs{
 //						Asns: pulumi.IntArray{
 //							pulumi.Int(9876),
@@ -75,7 +71,11 @@ import (
 //							pulumi.String("2001:db8::/32"),
 //						},
 //					},
+//					Scope: pulumi.String("authentication"),
 //				},
+//				Description: pulumi.String("Example with not match network ACL"),
+//				Active:      pulumi.Bool(true),
+//				Priority:    pulumi.Int(3),
 //			})
 //			if err != nil {
 //				return err
@@ -86,20 +86,20 @@ import (
 //			// entitlement and the `tenant_acl_curated_blocklists` feature flag on the tenant.
 //			// Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`.
 //			_, err = auth0.NewNetworkAcl(ctx, "block_icloud_relay", &auth0.NetworkAclArgs{
-//				Description: pulumi.String("Block iCloud Private Relay egress proxies"),
-//				Active:      pulumi.Bool(true),
-//				Priority:    pulumi.Int(7),
 //				Rule: &auth0.NetworkAclRuleArgs{
 //					Action: &auth0.NetworkAclRuleActionArgs{
 //						Block: pulumi.Bool(true),
 //					},
-//					Scope: pulumi.String("authentication"),
 //					Match: &auth0.NetworkAclRuleMatchArgs{
 //						Auth0Manageds: pulumi.StringArray{
 //							pulumi.String("auth0.icloud_relay_proxy"),
 //						},
 //					},
+//					Scope: pulumi.String("authentication"),
 //				},
+//				Description: pulumi.String("Block iCloud Private Relay egress proxies"),
+//				Active:      pulumi.Bool(true),
+//				Priority:    pulumi.Int(7),
 //			})
 //			if err != nil {
 //				return err
@@ -107,34 +107,30 @@ import (
 //			// Example using `not_match` to allow all traffic *unless* it comes from a
 //			// low-reputation curated blocklist. `auth0_managed` is accepted on either block.
 //			_, err = auth0.NewNetworkAcl(ctx, "allow_unless_low_reputation", &auth0.NetworkAclArgs{
-//				Description: pulumi.String("Allow traffic unless it is on the low-reputation blocklist"),
-//				Active:      pulumi.Bool(true),
-//				Priority:    pulumi.Int(8),
 //				Rule: &auth0.NetworkAclRuleArgs{
 //					Action: &auth0.NetworkAclRuleActionArgs{
 //						Allow: pulumi.Bool(true),
 //					},
-//					Scope: pulumi.String("authentication"),
 //					NotMatch: &auth0.NetworkAclRuleNotMatchArgs{
 //						Auth0Manageds: pulumi.StringArray{
 //							pulumi.String("auth0.low_reputation"),
 //						},
 //					},
+//					Scope: pulumi.String("authentication"),
 //				},
+//				Description: pulumi.String("Allow traffic unless it is on the low-reputation blocklist"),
+//				Active:      pulumi.Bool(true),
+//				Priority:    pulumi.Int(8),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Example of auth0_network_acl with hostname and connecting IP restrictions
 //			_, err = auth0.NewNetworkAcl(ctx, "block_canonical", &auth0.NetworkAclArgs{
-//				Description: pulumi.String("Block canonical domain except from proxy"),
-//				Active:      pulumi.Bool(true),
-//				Priority:    pulumi.Int(5),
 //				Rule: &auth0.NetworkAclRuleArgs{
 //					Action: &auth0.NetworkAclRuleActionArgs{
 //						Block: pulumi.Bool(true),
 //					},
-//					Scope: pulumi.String("tenant"),
 //					Match: &auth0.NetworkAclRuleMatchArgs{
 //						Hostnames: pulumi.StringArray{
 //							pulumi.String("mytenant1.us.auth0.com"),
@@ -152,7 +148,11 @@ import (
 //							pulumi.String("203.0.113.0/24"),
 //						},
 //					},
+//					Scope: pulumi.String("tenant"),
 //				},
+//				Description: pulumi.String("Block canonical domain except from proxy"),
+//				Active:      pulumi.Bool(true),
+//				Priority:    pulumi.Int(5),
 //			})
 //			if err != nil {
 //				return err

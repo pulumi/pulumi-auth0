@@ -35,37 +35,37 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewPromptScreenPartials(ctx, "prompt_screen_partials", &auth0.PromptScreenPartialsArgs{
-//				PromptType: pulumi.String("login-passwordless"),
 //				ScreenPartials: auth0.PromptScreenPartialsScreenPartialArray{
 //					&auth0.PromptScreenPartialsScreenPartialArgs{
-//						ScreenName: pulumi.String("login-passwordless-email-code"),
 //						InsertionPoints: &auth0.PromptScreenPartialsScreenPartialInsertionPointsArgs{
 //							FormContentStart: pulumi.String("<div>Form Content Start</div>"),
 //							FormContentEnd:   pulumi.String("<div>Form Content End</div>"),
 //						},
+//						ScreenName: pulumi.String("login-passwordless-email-code"),
 //					},
 //					&auth0.PromptScreenPartialsScreenPartialArgs{
-//						ScreenName: pulumi.String("login-passwordless-sms-otp"),
 //						InsertionPoints: &auth0.PromptScreenPartialsScreenPartialInsertionPointsArgs{
 //							FormContentStart: pulumi.String("<div>Form Content Start</div>"),
 //							FormContentEnd:   pulumi.String("<div>Form Content End</div>"),
 //						},
+//						ScreenName: pulumi.String("login-passwordless-sms-otp"),
 //					},
 //				},
+//				PromptType: pulumi.String("login-passwordless"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = auth0.NewPromptScreenPartials(ctx, "customized-consent", &auth0.PromptScreenPartialsArgs{
-//				PromptType: pulumi.String("customized-consent"),
 //				ScreenPartials: auth0.PromptScreenPartialsScreenPartialArray{
 //					&auth0.PromptScreenPartialsScreenPartialArgs{
-//						ScreenName: pulumi.String("customized-consent"),
 //						InsertionPoints: &auth0.PromptScreenPartialsScreenPartialInsertionPointsArgs{
 //							FormContent: pulumi.String("<div>Form Content</div>"),
 //						},
+//						ScreenName: pulumi.String("customized-consent"),
 //					},
 //				},
+//				PromptType: pulumi.String("customized-consent"),
 //			})
 //			if err != nil {
 //				return err

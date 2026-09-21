@@ -299,8 +299,8 @@ class Form(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ending: pulumi.Input[Optional[_builtins.str]] = None,
-                 languages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FormLanguageArgs', 'FormLanguageArgsDict']]]]] = None,
-                 messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FormMessageArgs', 'FormMessageArgsDict']]]]] = None,
+                 languages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FormLanguageArgs', 'FormLanguageArgsDict', 'outputs.FormLanguage']]]]] = None,
+                 messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FormMessageArgs', 'FormMessageArgsDict', 'outputs.FormMessage']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  nodes: pulumi.Input[Optional[_builtins.str]] = None,
                  start: pulumi.Input[Optional[_builtins.str]] = None,
@@ -319,6 +319,15 @@ class Form(pulumi.CustomResource):
 
         # Example:
         my_form = auth0.Form("my_form",
+            languages=[{
+                "default": "en",
+                "primary": "en",
+            }],
+            messages=[{
+                "errors": json.dumps({
+                    "ERR_REQUIRED_PROPERTY": "This field is required for user kyc.",
+                }),
+            }],
             name="My KYC Form",
             start=json.dumps({
                 "coordinates": {
@@ -394,16 +403,7 @@ class Form(pulumi.CustomResource):
                         },
                     },
                 },
-            }),
-            messages=[{
-                "errors": json.dumps({
-                    "ERR_REQUIRED_PROPERTY": "This field is required for user kyc.",
-                }),
-            }],
-            languages=[{
-                "default": "en",
-                "primary": "en",
-            }])
+            }))
         ```
 
         ## Import
@@ -420,8 +420,8 @@ class Form(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ending: Submission configuration of the form. (JSON encoded)
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FormLanguageArgs', 'FormLanguageArgsDict']]]] languages: Language specific configuration for the form.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FormMessageArgs', 'FormMessageArgsDict']]]] messages: Message specific configuration for the form.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FormLanguageArgs', 'FormLanguageArgsDict', 'outputs.FormLanguage']]]] languages: Language specific configuration for the form.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FormMessageArgs', 'FormMessageArgsDict', 'outputs.FormMessage']]]] messages: Message specific configuration for the form.
         :param pulumi.Input[_builtins.str] name: Name of the form.
         :param pulumi.Input[_builtins.str] nodes: Nodes of the form. (JSON encoded)
         :param pulumi.Input[_builtins.str] start: Input setup of the form. (JSON encoded)
@@ -446,6 +446,15 @@ class Form(pulumi.CustomResource):
 
         # Example:
         my_form = auth0.Form("my_form",
+            languages=[{
+                "default": "en",
+                "primary": "en",
+            }],
+            messages=[{
+                "errors": json.dumps({
+                    "ERR_REQUIRED_PROPERTY": "This field is required for user kyc.",
+                }),
+            }],
             name="My KYC Form",
             start=json.dumps({
                 "coordinates": {
@@ -521,16 +530,7 @@ class Form(pulumi.CustomResource):
                         },
                     },
                 },
-            }),
-            messages=[{
-                "errors": json.dumps({
-                    "ERR_REQUIRED_PROPERTY": "This field is required for user kyc.",
-                }),
-            }],
-            languages=[{
-                "default": "en",
-                "primary": "en",
-            }])
+            }))
         ```
 
         ## Import
@@ -560,8 +560,8 @@ class Form(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ending: pulumi.Input[Optional[_builtins.str]] = None,
-                 languages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FormLanguageArgs', 'FormLanguageArgsDict']]]]] = None,
-                 messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FormMessageArgs', 'FormMessageArgsDict']]]]] = None,
+                 languages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FormLanguageArgs', 'FormLanguageArgsDict', 'outputs.FormLanguage']]]]] = None,
+                 messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FormMessageArgs', 'FormMessageArgsDict', 'outputs.FormMessage']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  nodes: pulumi.Input[Optional[_builtins.str]] = None,
                  start: pulumi.Input[Optional[_builtins.str]] = None,
@@ -595,8 +595,8 @@ class Form(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             ending: pulumi.Input[Optional[_builtins.str]] = None,
-            languages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FormLanguageArgs', 'FormLanguageArgsDict']]]]] = None,
-            messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FormMessageArgs', 'FormMessageArgsDict']]]]] = None,
+            languages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FormLanguageArgs', 'FormLanguageArgsDict', 'outputs.FormLanguage']]]]] = None,
+            messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FormMessageArgs', 'FormMessageArgsDict', 'outputs.FormMessage']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             nodes: pulumi.Input[Optional[_builtins.str]] = None,
             start: pulumi.Input[Optional[_builtins.str]] = None,
@@ -610,8 +610,8 @@ class Form(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ending: Submission configuration of the form. (JSON encoded)
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FormLanguageArgs', 'FormLanguageArgsDict']]]] languages: Language specific configuration for the form.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FormMessageArgs', 'FormMessageArgsDict']]]] messages: Message specific configuration for the form.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FormLanguageArgs', 'FormLanguageArgsDict', 'outputs.FormLanguage']]]] languages: Language specific configuration for the form.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FormMessageArgs', 'FormMessageArgsDict', 'outputs.FormMessage']]]] messages: Message specific configuration for the form.
         :param pulumi.Input[_builtins.str] name: Name of the form.
         :param pulumi.Input[_builtins.str] nodes: Nodes of the form. (JSON encoded)
         :param pulumi.Input[_builtins.str] start: Input setup of the form. (JSON encoded)

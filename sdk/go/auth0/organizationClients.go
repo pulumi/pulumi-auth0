@@ -51,7 +51,6 @@ import (
 //			// Use this instead of auth0_organization_client when you want Terraform to own the full
 //			// set of associations; do not use both resources on the same organization.
 //			_, err = auth0.NewOrganizationClients(ctx, "my_org_clients", &auth0.OrganizationClientsArgs{
-//				OrganizationId: myOrganization.ID().ToIDOutput().ToStringOutput(),
 //				Clients: auth0.OrganizationClientsClientArray{
 //					&auth0.OrganizationClientsClientArgs{
 //						ClientId:           myClient.ID().ToIDOutput().ToStringOutput(),
@@ -61,6 +60,7 @@ import (
 //						ClientId: myOtherClient.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
+//				OrganizationId: myOrganization.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

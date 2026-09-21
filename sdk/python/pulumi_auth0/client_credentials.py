@@ -370,11 +370,11 @@ class ClientCredentials(pulumi.CustomResource):
                  client_secret: pulumi.Input[Optional[_builtins.str]] = None,
                  client_secret_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  client_secret_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
-                 private_key_jwt: pulumi.Input[Optional[Union['ClientCredentialsPrivateKeyJwtArgs', 'ClientCredentialsPrivateKeyJwtArgsDict']]] = None,
-                 self_signed_tls_client_auth: pulumi.Input[Optional[Union['ClientCredentialsSelfSignedTlsClientAuthArgs', 'ClientCredentialsSelfSignedTlsClientAuthArgsDict']]] = None,
-                 signed_request_object: pulumi.Input[Optional[Union['ClientCredentialsSignedRequestObjectArgs', 'ClientCredentialsSignedRequestObjectArgsDict']]] = None,
-                 tls_client_auth: pulumi.Input[Optional[Union['ClientCredentialsTlsClientAuthArgs', 'ClientCredentialsTlsClientAuthArgsDict']]] = None,
-                 token_vault_privileged_access: pulumi.Input[Optional[Union['ClientCredentialsTokenVaultPrivilegedAccessArgs', 'ClientCredentialsTokenVaultPrivilegedAccessArgsDict']]] = None,
+                 private_key_jwt: pulumi.Input[Optional[Union['ClientCredentialsPrivateKeyJwtArgs', 'ClientCredentialsPrivateKeyJwtArgsDict', 'outputs.ClientCredentialsPrivateKeyJwt']]] = None,
+                 self_signed_tls_client_auth: pulumi.Input[Optional[Union['ClientCredentialsSelfSignedTlsClientAuthArgs', 'ClientCredentialsSelfSignedTlsClientAuthArgsDict', 'outputs.ClientCredentialsSelfSignedTlsClientAuth']]] = None,
+                 signed_request_object: pulumi.Input[Optional[Union['ClientCredentialsSignedRequestObjectArgs', 'ClientCredentialsSignedRequestObjectArgsDict', 'outputs.ClientCredentialsSignedRequestObject']]] = None,
+                 tls_client_auth: pulumi.Input[Optional[Union['ClientCredentialsTlsClientAuthArgs', 'ClientCredentialsTlsClientAuthArgsDict', 'outputs.ClientCredentialsTlsClientAuth']]] = None,
+                 token_vault_privileged_access: pulumi.Input[Optional[Union['ClientCredentialsTokenVaultPrivilegedAccessArgs', 'ClientCredentialsTokenVaultPrivilegedAccessArgsDict', 'outputs.ClientCredentialsTokenVaultPrivilegedAccess']]] = None,
                  __props__=None):
         """
         With this resource, you can configure the method to use when making requests to any endpoint that requires this client to authenticate.
@@ -404,11 +404,11 @@ class ClientCredentials(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] client_secret_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method (write-only). This value is **not** stored in Terraform state. Bump `client_secret_wo_version` to rotate it. Requires Terraform 1.11+.
         :param pulumi.Input[_builtins.int] client_secret_wo_version: Version counter for `client_secret_wo`. Must be a positive integer (starting at `1`). Increment this value to trigger a client secret change when using `client_secret_wo`.
-        :param pulumi.Input[Union['ClientCredentialsPrivateKeyJwtArgs', 'ClientCredentialsPrivateKeyJwtArgsDict']] private_key_jwt: Defines `private_key_jwt` client authentication method.
-        :param pulumi.Input[Union['ClientCredentialsSelfSignedTlsClientAuthArgs', 'ClientCredentialsSelfSignedTlsClientAuthArgsDict']] self_signed_tls_client_auth: Defines `tls_client_auth` client authentication method.
-        :param pulumi.Input[Union['ClientCredentialsSignedRequestObjectArgs', 'ClientCredentialsSignedRequestObjectArgsDict']] signed_request_object: Configuration for JWT-secured Authorization Requests(JAR).
-        :param pulumi.Input[Union['ClientCredentialsTlsClientAuthArgs', 'ClientCredentialsTlsClientAuthArgsDict']] tls_client_auth: Defines `tls_client_auth` client authentication method.
-        :param pulumi.Input[Union['ClientCredentialsTokenVaultPrivilegedAccessArgs', 'ClientCredentialsTokenVaultPrivilegedAccessArgsDict']] token_vault_privileged_access: Configures the client as a Token Vault privileged worker, allowing it to request Token Vault tokens on behalf of other users. This is an Early Access feature and must be enabled for your tenant.
+        :param pulumi.Input[Union['ClientCredentialsPrivateKeyJwtArgs', 'ClientCredentialsPrivateKeyJwtArgsDict', 'outputs.ClientCredentialsPrivateKeyJwt']] private_key_jwt: Defines `private_key_jwt` client authentication method.
+        :param pulumi.Input[Union['ClientCredentialsSelfSignedTlsClientAuthArgs', 'ClientCredentialsSelfSignedTlsClientAuthArgsDict', 'outputs.ClientCredentialsSelfSignedTlsClientAuth']] self_signed_tls_client_auth: Defines `tls_client_auth` client authentication method.
+        :param pulumi.Input[Union['ClientCredentialsSignedRequestObjectArgs', 'ClientCredentialsSignedRequestObjectArgsDict', 'outputs.ClientCredentialsSignedRequestObject']] signed_request_object: Configuration for JWT-secured Authorization Requests(JAR).
+        :param pulumi.Input[Union['ClientCredentialsTlsClientAuthArgs', 'ClientCredentialsTlsClientAuthArgsDict', 'outputs.ClientCredentialsTlsClientAuth']] tls_client_auth: Defines `tls_client_auth` client authentication method.
+        :param pulumi.Input[Union['ClientCredentialsTokenVaultPrivilegedAccessArgs', 'ClientCredentialsTokenVaultPrivilegedAccessArgsDict', 'outputs.ClientCredentialsTokenVaultPrivilegedAccess']] token_vault_privileged_access: Configures the client as a Token Vault privileged worker, allowing it to request Token Vault tokens on behalf of other users. This is an Early Access feature and must be enabled for your tenant.
         """
         ...
     @overload
@@ -456,11 +456,11 @@ class ClientCredentials(pulumi.CustomResource):
                  client_secret: pulumi.Input[Optional[_builtins.str]] = None,
                  client_secret_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  client_secret_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
-                 private_key_jwt: pulumi.Input[Optional[Union['ClientCredentialsPrivateKeyJwtArgs', 'ClientCredentialsPrivateKeyJwtArgsDict']]] = None,
-                 self_signed_tls_client_auth: pulumi.Input[Optional[Union['ClientCredentialsSelfSignedTlsClientAuthArgs', 'ClientCredentialsSelfSignedTlsClientAuthArgsDict']]] = None,
-                 signed_request_object: pulumi.Input[Optional[Union['ClientCredentialsSignedRequestObjectArgs', 'ClientCredentialsSignedRequestObjectArgsDict']]] = None,
-                 tls_client_auth: pulumi.Input[Optional[Union['ClientCredentialsTlsClientAuthArgs', 'ClientCredentialsTlsClientAuthArgsDict']]] = None,
-                 token_vault_privileged_access: pulumi.Input[Optional[Union['ClientCredentialsTokenVaultPrivilegedAccessArgs', 'ClientCredentialsTokenVaultPrivilegedAccessArgsDict']]] = None,
+                 private_key_jwt: pulumi.Input[Optional[Union['ClientCredentialsPrivateKeyJwtArgs', 'ClientCredentialsPrivateKeyJwtArgsDict', 'outputs.ClientCredentialsPrivateKeyJwt']]] = None,
+                 self_signed_tls_client_auth: pulumi.Input[Optional[Union['ClientCredentialsSelfSignedTlsClientAuthArgs', 'ClientCredentialsSelfSignedTlsClientAuthArgsDict', 'outputs.ClientCredentialsSelfSignedTlsClientAuth']]] = None,
+                 signed_request_object: pulumi.Input[Optional[Union['ClientCredentialsSignedRequestObjectArgs', 'ClientCredentialsSignedRequestObjectArgsDict', 'outputs.ClientCredentialsSignedRequestObject']]] = None,
+                 tls_client_auth: pulumi.Input[Optional[Union['ClientCredentialsTlsClientAuthArgs', 'ClientCredentialsTlsClientAuthArgsDict', 'outputs.ClientCredentialsTlsClientAuth']]] = None,
+                 token_vault_privileged_access: pulumi.Input[Optional[Union['ClientCredentialsTokenVaultPrivilegedAccessArgs', 'ClientCredentialsTokenVaultPrivilegedAccessArgsDict', 'outputs.ClientCredentialsTokenVaultPrivilegedAccess']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -499,11 +499,11 @@ class ClientCredentials(pulumi.CustomResource):
             client_secret: pulumi.Input[Optional[_builtins.str]] = None,
             client_secret_wo: pulumi.Input[Optional[_builtins.str]] = None,
             client_secret_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
-            private_key_jwt: pulumi.Input[Optional[Union['ClientCredentialsPrivateKeyJwtArgs', 'ClientCredentialsPrivateKeyJwtArgsDict']]] = None,
-            self_signed_tls_client_auth: pulumi.Input[Optional[Union['ClientCredentialsSelfSignedTlsClientAuthArgs', 'ClientCredentialsSelfSignedTlsClientAuthArgsDict']]] = None,
-            signed_request_object: pulumi.Input[Optional[Union['ClientCredentialsSignedRequestObjectArgs', 'ClientCredentialsSignedRequestObjectArgsDict']]] = None,
-            tls_client_auth: pulumi.Input[Optional[Union['ClientCredentialsTlsClientAuthArgs', 'ClientCredentialsTlsClientAuthArgsDict']]] = None,
-            token_vault_privileged_access: pulumi.Input[Optional[Union['ClientCredentialsTokenVaultPrivilegedAccessArgs', 'ClientCredentialsTokenVaultPrivilegedAccessArgsDict']]] = None) -> 'ClientCredentials':
+            private_key_jwt: pulumi.Input[Optional[Union['ClientCredentialsPrivateKeyJwtArgs', 'ClientCredentialsPrivateKeyJwtArgsDict', 'outputs.ClientCredentialsPrivateKeyJwt']]] = None,
+            self_signed_tls_client_auth: pulumi.Input[Optional[Union['ClientCredentialsSelfSignedTlsClientAuthArgs', 'ClientCredentialsSelfSignedTlsClientAuthArgsDict', 'outputs.ClientCredentialsSelfSignedTlsClientAuth']]] = None,
+            signed_request_object: pulumi.Input[Optional[Union['ClientCredentialsSignedRequestObjectArgs', 'ClientCredentialsSignedRequestObjectArgsDict', 'outputs.ClientCredentialsSignedRequestObject']]] = None,
+            tls_client_auth: pulumi.Input[Optional[Union['ClientCredentialsTlsClientAuthArgs', 'ClientCredentialsTlsClientAuthArgsDict', 'outputs.ClientCredentialsTlsClientAuth']]] = None,
+            token_vault_privileged_access: pulumi.Input[Optional[Union['ClientCredentialsTokenVaultPrivilegedAccessArgs', 'ClientCredentialsTokenVaultPrivilegedAccessArgsDict', 'outputs.ClientCredentialsTokenVaultPrivilegedAccess']]] = None) -> 'ClientCredentials':
         """
         Get an existing ClientCredentials resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -517,11 +517,11 @@ class ClientCredentials(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] client_secret_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                Secret for the client when using `client_secret_post` or `client_secret_basic` authentication method (write-only). This value is **not** stored in Terraform state. Bump `client_secret_wo_version` to rotate it. Requires Terraform 1.11+.
         :param pulumi.Input[_builtins.int] client_secret_wo_version: Version counter for `client_secret_wo`. Must be a positive integer (starting at `1`). Increment this value to trigger a client secret change when using `client_secret_wo`.
-        :param pulumi.Input[Union['ClientCredentialsPrivateKeyJwtArgs', 'ClientCredentialsPrivateKeyJwtArgsDict']] private_key_jwt: Defines `private_key_jwt` client authentication method.
-        :param pulumi.Input[Union['ClientCredentialsSelfSignedTlsClientAuthArgs', 'ClientCredentialsSelfSignedTlsClientAuthArgsDict']] self_signed_tls_client_auth: Defines `tls_client_auth` client authentication method.
-        :param pulumi.Input[Union['ClientCredentialsSignedRequestObjectArgs', 'ClientCredentialsSignedRequestObjectArgsDict']] signed_request_object: Configuration for JWT-secured Authorization Requests(JAR).
-        :param pulumi.Input[Union['ClientCredentialsTlsClientAuthArgs', 'ClientCredentialsTlsClientAuthArgsDict']] tls_client_auth: Defines `tls_client_auth` client authentication method.
-        :param pulumi.Input[Union['ClientCredentialsTokenVaultPrivilegedAccessArgs', 'ClientCredentialsTokenVaultPrivilegedAccessArgsDict']] token_vault_privileged_access: Configures the client as a Token Vault privileged worker, allowing it to request Token Vault tokens on behalf of other users. This is an Early Access feature and must be enabled for your tenant.
+        :param pulumi.Input[Union['ClientCredentialsPrivateKeyJwtArgs', 'ClientCredentialsPrivateKeyJwtArgsDict', 'outputs.ClientCredentialsPrivateKeyJwt']] private_key_jwt: Defines `private_key_jwt` client authentication method.
+        :param pulumi.Input[Union['ClientCredentialsSelfSignedTlsClientAuthArgs', 'ClientCredentialsSelfSignedTlsClientAuthArgsDict', 'outputs.ClientCredentialsSelfSignedTlsClientAuth']] self_signed_tls_client_auth: Defines `tls_client_auth` client authentication method.
+        :param pulumi.Input[Union['ClientCredentialsSignedRequestObjectArgs', 'ClientCredentialsSignedRequestObjectArgsDict', 'outputs.ClientCredentialsSignedRequestObject']] signed_request_object: Configuration for JWT-secured Authorization Requests(JAR).
+        :param pulumi.Input[Union['ClientCredentialsTlsClientAuthArgs', 'ClientCredentialsTlsClientAuthArgsDict', 'outputs.ClientCredentialsTlsClientAuth']] tls_client_auth: Defines `tls_client_auth` client authentication method.
+        :param pulumi.Input[Union['ClientCredentialsTokenVaultPrivilegedAccessArgs', 'ClientCredentialsTokenVaultPrivilegedAccessArgsDict', 'outputs.ClientCredentialsTokenVaultPrivilegedAccess']] token_vault_privileged_access: Configures the client as a Token Vault privileged worker, allowing it to request Token Vault tokens on behalf of other users. This is an Early Access feature and must be enabled for your tenant.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

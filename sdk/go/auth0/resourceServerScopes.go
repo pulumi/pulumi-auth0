@@ -41,7 +41,6 @@ import (
 //				return err
 //			}
 //			_, err = auth0.NewResourceServerScopes(ctx, "my_api_scopes", &auth0.ResourceServerScopesArgs{
-//				ResourceServerIdentifier: myApi.Identifier,
 //				Scopes: auth0.ResourceServerScopesScopeArray{
 //					&auth0.ResourceServerScopesScopeArgs{
 //						Name:        pulumi.String("create:appointments"),
@@ -52,6 +51,7 @@ import (
 //						Description: pulumi.String("Ability to read appointments"),
 //					},
 //				},
+//				ResourceServerIdentifier: myApi.Identifier,
 //			})
 //			if err != nil {
 //				return err

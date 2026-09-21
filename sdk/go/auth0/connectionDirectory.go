@@ -29,9 +29,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			googleWorkspace, err := auth0.NewConnection(ctx, "google_workspace", &auth0.ConnectionArgs{
-//				Name:        pulumi.String("google-workspace-connection"),
-//				DisplayName: pulumi.String("Google Workspace"),
-//				Strategy:    pulumi.String("google-apps"),
 //				Options: &auth0.ConnectionOptionsArgs{
 //					ClientId:        pulumi.String("your-google-client-id"),
 //					ClientSecret:    pulumi.String("your-google-client-secret"),
@@ -39,6 +36,9 @@ import (
 //					ApiEnableUsers:  pulumi.Bool(true),
 //					ApiEnableGroups: pulumi.Bool(true),
 //				},
+//				Name:        pulumi.String("google-workspace-connection"),
+//				DisplayName: pulumi.String("Google Workspace"),
+//				Strategy:    pulumi.String("google-apps"),
 //			})
 //			if err != nil {
 //				return err
@@ -52,8 +52,6 @@ import (
 //			}
 //			// Configure directory provisioning with custom mapping and auto-sync enabled
 //			_, err = auth0.NewConnectionDirectory(ctx, "custom", &auth0.ConnectionDirectoryArgs{
-//				ConnectionId:             googleWorkspace.ID().ToIDOutput().ToStringOutput(),
-//				SynchronizeAutomatically: pulumi.Bool(true),
 //				Mappings: auth0.ConnectionDirectoryMappingArray{
 //					&auth0.ConnectionDirectoryMappingArgs{
 //						Auth0: pulumi.String("email"),
@@ -72,6 +70,8 @@ import (
 //						Idp:   pulumi.String("id"),
 //					},
 //				},
+//				ConnectionId:             googleWorkspace.ID().ToIDOutput().ToStringOutput(),
+//				SynchronizeAutomatically: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

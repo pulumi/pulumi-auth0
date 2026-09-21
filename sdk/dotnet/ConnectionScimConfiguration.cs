@@ -24,9 +24,6 @@ namespace Pulumi.Auth0
     /// {
     ///     var myEnterpriseConnection = new Auth0.Connection("my_enterprise_connection", new()
     ///     {
-    ///         Name = "my-enterprise-connection",
-    ///         DisplayName = "My Enterprise Connection",
-    ///         Strategy = "okta",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             ClientId = "1234567",
@@ -36,13 +33,13 @@ namespace Pulumi.Auth0
     ///             TokenEndpoint = "https://example.okta.com/oauth2/v1/token",
     ///             AuthorizationEndpoint = "https://example.okta.com/oauth2/v1/authorize",
     ///         },
+    ///         Name = "my-enterprise-connection",
+    ///         DisplayName = "My Enterprise Connection",
+    ///         Strategy = "okta",
     ///     });
     /// 
     ///     var myEnterpriseConnection2 = new Auth0.Connection("my_enterprise_connection_2", new()
     ///     {
-    ///         Name = "my-enterprise-connection-2",
-    ///         DisplayName = "My Enterprise Connection 2",
-    ///         Strategy = "okta",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             ClientId = "1234567",
@@ -52,6 +49,9 @@ namespace Pulumi.Auth0
     ///             TokenEndpoint = "https://example.okta.com/oauth2/v1/token",
     ///             AuthorizationEndpoint = "https://example.okta.com/oauth2/v1/authorize",
     ///         },
+    ///         Name = "my-enterprise-connection-2",
+    ///         DisplayName = "My Enterprise Connection 2",
+    ///         Strategy = "okta",
     ///     });
     /// 
     ///     // A resource for configuring an Auth0 Connection SCIM Configuration, using default values.
@@ -65,8 +65,6 @@ namespace Pulumi.Auth0
     ///     // Only one can be specified for a connection.
     ///     var myConnScimConfiguration = new Auth0.ConnectionScimConfiguration("my_conn_scim_configuration", new()
     ///     {
-    ///         ConnectionId = myEnterpriseConnection2.Id,
-    ///         UserIdAttribute = "attribute1",
     ///         Mappings = new[]
     ///         {
     ///             new Auth0.Inputs.ConnectionScimConfigurationMappingArgs
@@ -80,6 +78,8 @@ namespace Pulumi.Auth0
     ///                 Scim = "sacim_attribute2",
     ///             },
     ///         },
+    ///         ConnectionId = myEnterpriseConnection2.Id,
+    ///         UserIdAttribute = "attribute1",
     ///     });
     /// 
     /// });

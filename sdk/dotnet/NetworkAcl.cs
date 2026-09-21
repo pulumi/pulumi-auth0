@@ -25,16 +25,12 @@ namespace Pulumi.Auth0
     ///     // Example of auth0_network_acl with match criteria
     ///     var myNetworkAclMatch = new Auth0.NetworkAcl("my_network_acl_match", new()
     ///     {
-    ///         Description = "Example with match network ACL",
-    ///         Active = true,
-    ///         Priority = 1,
     ///         Rule = new Auth0.Inputs.NetworkAclRuleArgs
     ///         {
     ///             Action = new Auth0.Inputs.NetworkAclRuleActionArgs
     ///             {
     ///                 Allow = true,
     ///             },
-    ///             Scope = "management",
     ///             Match = new Auth0.Inputs.NetworkAclRuleMatchArgs
     ///             {
     ///                 GeoCountryCodes = new[]
@@ -48,22 +44,22 @@ namespace Pulumi.Auth0
     ///                     "CA-ON",
     ///                 },
     ///             },
+    ///             Scope = "management",
     ///         },
+    ///         Description = "Example with match network ACL",
+    ///         Active = true,
+    ///         Priority = 1,
     ///     });
     /// 
     ///     // Example of auth0_network_acl with not-match criteria
     ///     var myNetworkAclNotMatch = new Auth0.NetworkAcl("my_network_acl_not_match", new()
     ///     {
-    ///         Description = "Example with not match network ACL",
-    ///         Active = true,
-    ///         Priority = 3,
     ///         Rule = new Auth0.Inputs.NetworkAclRuleArgs
     ///         {
     ///             Action = new Auth0.Inputs.NetworkAclRuleActionArgs
     ///             {
     ///                 Log = true,
     ///             },
-    ///             Scope = "authentication",
     ///             NotMatch = new Auth0.Inputs.NetworkAclRuleNotMatchArgs
     ///             {
     ///                 Asns = new[]
@@ -80,7 +76,11 @@ namespace Pulumi.Auth0
     ///                     "2001:db8::/32",
     ///                 },
     ///             },
+    ///             Scope = "authentication",
     ///         },
+    ///         Description = "Example with not match network ACL",
+    ///         Active = true,
+    ///         Priority = 3,
     ///     });
     /// 
     ///     // Example of auth0_network_acl using Auth0-curated blocklists (Early Access).
@@ -90,16 +90,12 @@ namespace Pulumi.Auth0
     ///     // Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`.
     ///     var blockIcloudRelay = new Auth0.NetworkAcl("block_icloud_relay", new()
     ///     {
-    ///         Description = "Block iCloud Private Relay egress proxies",
-    ///         Active = true,
-    ///         Priority = 7,
     ///         Rule = new Auth0.Inputs.NetworkAclRuleArgs
     ///         {
     ///             Action = new Auth0.Inputs.NetworkAclRuleActionArgs
     ///             {
     ///                 Block = true,
     ///             },
-    ///             Scope = "authentication",
     ///             Match = new Auth0.Inputs.NetworkAclRuleMatchArgs
     ///             {
     ///                 Auth0Manageds = new[]
@@ -107,23 +103,23 @@ namespace Pulumi.Auth0
     ///                     "auth0.icloud_relay_proxy",
     ///                 },
     ///             },
+    ///             Scope = "authentication",
     ///         },
+    ///         Description = "Block iCloud Private Relay egress proxies",
+    ///         Active = true,
+    ///         Priority = 7,
     ///     });
     /// 
     ///     // Example using `not_match` to allow all traffic *unless* it comes from a
     ///     // low-reputation curated blocklist. `auth0_managed` is accepted on either block.
     ///     var allowUnlessLowReputation = new Auth0.NetworkAcl("allow_unless_low_reputation", new()
     ///     {
-    ///         Description = "Allow traffic unless it is on the low-reputation blocklist",
-    ///         Active = true,
-    ///         Priority = 8,
     ///         Rule = new Auth0.Inputs.NetworkAclRuleArgs
     ///         {
     ///             Action = new Auth0.Inputs.NetworkAclRuleActionArgs
     ///             {
     ///                 Allow = true,
     ///             },
-    ///             Scope = "authentication",
     ///             NotMatch = new Auth0.Inputs.NetworkAclRuleNotMatchArgs
     ///             {
     ///                 Auth0Manageds = new[]
@@ -131,22 +127,22 @@ namespace Pulumi.Auth0
     ///                     "auth0.low_reputation",
     ///                 },
     ///             },
+    ///             Scope = "authentication",
     ///         },
+    ///         Description = "Allow traffic unless it is on the low-reputation blocklist",
+    ///         Active = true,
+    ///         Priority = 8,
     ///     });
     /// 
     ///     // Example of auth0_network_acl with hostname and connecting IP restrictions
     ///     var blockCanonical = new Auth0.NetworkAcl("block_canonical", new()
     ///     {
-    ///         Description = "Block canonical domain except from proxy",
-    ///         Active = true,
-    ///         Priority = 5,
     ///         Rule = new Auth0.Inputs.NetworkAclRuleArgs
     ///         {
     ///             Action = new Auth0.Inputs.NetworkAclRuleActionArgs
     ///             {
     ///                 Block = true,
     ///             },
-    ///             Scope = "tenant",
     ///             Match = new Auth0.Inputs.NetworkAclRuleMatchArgs
     ///             {
     ///                 Hostnames = new[]
@@ -170,7 +166,11 @@ namespace Pulumi.Auth0
     ///                     "203.0.113.0/24",
     ///                 },
     ///             },
+    ///             Scope = "tenant",
     ///         },
+    ///         Description = "Block canonical domain except from proxy",
+    ///         Active = true,
+    ///         Priority = 5,
     ///     });
     /// 
     /// });

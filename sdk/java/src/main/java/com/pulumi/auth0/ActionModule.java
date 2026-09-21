@@ -52,6 +52,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var myModule = new ActionModule("myModule", ActionModuleArgs.builder()
+ *             .dependencies(ActionModuleDependencyArgs.builder()
+ *                 .name("lodash")
+ *                 .version("4.17.21")
+ *                 .build())
+ *             .secrets(ActionModuleSecretArgs.builder()
+ *                 .name("API_KEY")
+ *                 .value("my-secret-api-key")
+ *                 .build())
  *             .name("My Shared Module")
  *             .publish(true)
  *             .code("""
@@ -67,18 +75,18 @@ import javax.annotation.Nullable;
  *   }}{@code
  * }}{@code ;
  *             """)
- *             .dependencies(ActionModuleDependencyArgs.builder()
- *                 .name("lodash")
- *                 .version("4.17.21")
- *                 .build())
- *             .secrets(ActionModuleSecretArgs.builder()
- *                 .name("API_KEY")
- *                 .value("my-secret-api-key")
- *                 .build())
  *             .build());
  * 
  *         // Use the module in an action by referencing its id and version_id.
  *         var myAction = new Action("myAction", ActionArgs.builder()
+ *             .supportedTriggers(ActionSupportedTriggersArgs.builder()
+ *                 .id("post-login")
+ *                 .version("v3")
+ *                 .build())
+ *             .modules(com.pulumi.auth0.inputs.ActionModuleArgs.builder()
+ *                 .moduleId(myModule.id())
+ *                 .moduleVersionId(myModule.versionId())
+ *                 .build())
  *             .name("My Action")
  *             .runtime("node22")
  *             .deploy(true)
@@ -89,14 +97,6 @@ import javax.annotation.Nullable;
  *   console.log(myModule.greet(event.user.name));
  * }}{@code ;
  *             """)
- *             .modules(com.pulumi.auth0.inputs.ActionModuleArgs.builder()
- *                 .moduleId(myModule.id())
- *                 .moduleVersionId(myModule.versionId())
- *                 .build())
- *             .supportedTriggers(ActionSupportedTriggersArgs.builder()
- *                 .id("post-login")
- *                 .version("v3")
- *                 .build())
  *             .build());
  * 
  *     }}{@code

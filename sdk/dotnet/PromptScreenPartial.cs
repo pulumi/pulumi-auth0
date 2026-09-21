@@ -29,23 +29,23 @@ namespace Pulumi.Auth0
     /// {
     ///     var login = new Auth0.PromptScreenPartial("login", new()
     ///     {
-    ///         PromptType = "login",
-    ///         ScreenName = "login",
     ///         InsertionPoints = new Auth0.Inputs.PromptScreenPartialInsertionPointsArgs
     ///         {
     ///             FormContentStart = "&lt;div&gt;Form Content Start&lt;/div&gt;",
     ///             FormContentEnd = "&lt;div&gt;Form Content End&lt;/div&gt;",
     ///         },
+    ///         PromptType = "login",
+    ///         ScreenName = "login",
     ///     });
     /// 
     ///     var customized_consent = new Auth0.PromptScreenPartial("customized-consent", new()
     ///     {
-    ///         PromptType = "customized-consent",
-    ///         ScreenName = "customized-consent",
     ///         InsertionPoints = new Auth0.Inputs.PromptScreenPartialInsertionPointsArgs
     ///         {
     ///             FormContent = "&lt;div&gt;Form Content&lt;/div&gt;",
     ///         },
+    ///         PromptType = "customized-consent",
+    ///         ScreenName = "customized-consent",
     ///     });
     /// 
     /// });

@@ -29,30 +29,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewResourceServer(ctx, "my_resource_server", &auth0.ResourceServerArgs{
-//				Name:                                   pulumi.String("Example Resource Server (Managed by Terraform)"),
-//				Identifier:                             pulumi.String("https://api.example.com"),
-//				SigningAlg:                             pulumi.String("RS256"),
-//				AllowOfflineAccess:                     pulumi.Bool(true),
-//				AllowOnlineAccess:                      pulumi.Bool(true),
-//				AllowOnlineAccessWithEphemeralSessions: pulumi.Bool(false),
-//				TokenLifetime:                          pulumi.Int(8600),
-//				SkipConsentForVerifiableFirstPartyClients: pulumi.Bool(true),
-//				ConsentPolicy: pulumi.String("transactional-authorization-with-mfa"),
 //				TokenEncryption: &auth0.ResourceServerTokenEncryptionArgs{
-//					Format: pulumi.String("compact-nested-jwe"),
 //					EncryptionKey: &auth0.ResourceServerTokenEncryptionEncryptionKeyArgs{
 //						Name:      pulumi.String("keyname"),
 //						Algorithm: pulumi.String("RSA-OAEP-256"),
 //						Pem:       pulumi.String("-----BEGIN CERTIFICATE-----\nMIIFWDCCA0ACCQDXqpBo3R...G9w0BAQsFADBuMQswCQYDVQQGEwJl\n-----END CERTIFICATE-----\n"),
 //					},
-//				},
-//				AuthorizationDetails: auth0.ResourceServerAuthorizationDetailArray{
-//					&auth0.ResourceServerAuthorizationDetailArgs{
-//						Type: pulumi.String("payment"),
-//					},
-//					&auth0.ResourceServerAuthorizationDetailArgs{
-//						Type: pulumi.String("non-payment"),
-//					},
+//					Format: pulumi.String("compact-nested-jwe"),
 //				},
 //				ProofOfPossession: &auth0.ResourceServerProofOfPossessionArgs{
 //					Mechanism: pulumi.String("mtls"),
@@ -66,20 +49,29 @@ import (
 //						Policy: pulumi.String("require_client_grant"),
 //					},
 //				},
+//				AuthorizationDetails: auth0.ResourceServerAuthorizationDetailArray{
+//					&auth0.ResourceServerAuthorizationDetailArgs{
+//						Type: pulumi.String("payment"),
+//					},
+//					&auth0.ResourceServerAuthorizationDetailArgs{
+//						Type: pulumi.String("non-payment"),
+//					},
+//				},
+//				Name:                                   pulumi.String("Example Resource Server (Managed by Terraform)"),
+//				Identifier:                             pulumi.String("https://api.example.com"),
+//				SigningAlg:                             pulumi.String("RS256"),
+//				AllowOfflineAccess:                     pulumi.Bool(true),
+//				AllowOnlineAccess:                      pulumi.Bool(true),
+//				AllowOnlineAccessWithEphemeralSessions: pulumi.Bool(false),
+//				TokenLifetime:                          pulumi.Int(8600),
+//				SkipConsentForVerifiableFirstPartyClients: pulumi.Bool(true),
+//				ConsentPolicy: pulumi.String("transactional-authorization-with-mfa"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Sample OIN resource server configuration
 //			_, err = auth0.NewResourceServer(ctx, "okta_oin_express_configuration_api", &auth0.ResourceServerArgs{
-//				Identifier:    pulumi.String("urn:auth0:express-configure"),
-//				Name:          pulumi.String("Okta OIN Express Configuration API"),
-//				SigningAlg:    pulumi.String("RS256"),
-//				SigningSecret: nil,
-//				SkipConsentForVerifiableFirstPartyClients: pulumi.Bool(false),
-//				TokenDialect:         nil,
-//				TokenLifetime:        pulumi.Int(86400),
-//				VerificationLocation: nil,
 //				ProofOfPossession: &auth0.ResourceServerProofOfPossessionArgs{
 //					Disable:   pulumi.Bool(true),
 //					Mechanism: nil,
@@ -89,6 +81,14 @@ import (
 //					Disable: pulumi.Bool(true),
 //					Format:  nil,
 //				},
+//				Identifier:    pulumi.String("urn:auth0:express-configure"),
+//				Name:          pulumi.String("Okta OIN Express Configuration API"),
+//				SigningAlg:    pulumi.String("RS256"),
+//				SigningSecret: nil,
+//				SkipConsentForVerifiableFirstPartyClients: pulumi.Bool(false),
+//				TokenDialect:         nil,
+//				TokenLifetime:        pulumi.Int(86400),
+//				VerificationLocation: nil,
 //			})
 //			if err != nil {
 //				return err
