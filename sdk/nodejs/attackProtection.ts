@@ -17,12 +17,6 @@ import * as utilities from "./utilities";
  *
  * const myProtection = new auth0.AttackProtection("my_protection", {
  *     suspiciousIpThrottling: {
- *         enabled: true,
- *         shields: [
- *             "admin_notification",
- *             "block",
- *         ],
- *         allowlists: ["192.168.1.1"],
  *         preLogin: {
  *             maxAttempts: 100,
  *             rate: 864000,
@@ -31,6 +25,12 @@ import * as utilities from "./utilities";
  *             maxAttempts: 50,
  *             rate: 1200,
  *         },
+ *         enabled: true,
+ *         shields: [
+ *             "admin_notification",
+ *             "block",
+ *         ],
+ *         allowlists: ["192.168.1.1"],
  *     },
  *     bruteForceProtection: {
  *         allowlists: ["127.0.0.1"],
@@ -43,13 +43,6 @@ import * as utilities from "./utilities";
  *         ],
  *     },
  *     breachedPasswordDetection: {
- *         adminNotificationFrequencies: ["daily"],
- *         enabled: true,
- *         method: "standard",
- *         shields: [
- *             "admin_notification",
- *             "block",
- *         ],
  *         preUserRegistration: {
  *             shields: [
  *                 "admin_notification",
@@ -62,6 +55,13 @@ import * as utilities from "./utilities";
  *                 "block",
  *             ],
  *         },
+ *         adminNotificationFrequencies: ["daily"],
+ *         enabled: true,
+ *         method: "standard",
+ *         shields: [
+ *             "admin_notification",
+ *             "block",
+ *         ],
  *     },
  *     botDetection: {
  *         botDetectionLevel: "medium",
@@ -85,11 +85,11 @@ import * as utilities from "./utilities";
  * const recaptchaV2Secret = config.require("recaptchaV2Secret");
  * // Example 1: reCAPTCHA v2
  * const captchaRecaptchaV2 = new auth0.AttackProtection("captcha_recaptcha_v2", {captcha: {
- *     activeProviderId: "recaptcha_v2",
  *     recaptchaV2: {
  *         siteKey: recaptchaV2SiteKey,
  *         secret: recaptchaV2Secret,
  *     },
+ *     activeProviderId: "recaptcha_v2",
  * }});
  * // Google reCAPTCHA Enterprise site key
  * const recaptchaEnterpriseSiteKey = config.require("recaptchaEnterpriseSiteKey");
@@ -99,12 +99,12 @@ import * as utilities from "./utilities";
  * const recaptchaEnterpriseProjectId = config.require("recaptchaEnterpriseProjectId");
  * // Example 2: reCAPTCHA Enterprise
  * const captchaRecaptchaEnterprise = new auth0.AttackProtection("captcha_recaptcha_enterprise", {captcha: {
- *     activeProviderId: "recaptcha_enterprise",
  *     recaptchaEnterprise: {
  *         siteKey: recaptchaEnterpriseSiteKey,
  *         apiKey: recaptchaEnterpriseApiKey,
  *         projectId: recaptchaEnterpriseProjectId,
  *     },
+ *     activeProviderId: "recaptcha_enterprise",
  * }});
  * // hCaptcha site key
  * const hcaptchaSiteKey = config.require("hcaptchaSiteKey");
@@ -112,11 +112,11 @@ import * as utilities from "./utilities";
  * const hcaptchaSecret = config.require("hcaptchaSecret");
  * // Example 3: hCaptcha
  * const captchaHcaptcha = new auth0.AttackProtection("captcha_hcaptcha", {captcha: {
- *     activeProviderId: "hcaptcha",
  *     hcaptcha: {
  *         siteKey: hcaptchaSiteKey,
  *         secret: hcaptchaSecret,
  *     },
+ *     activeProviderId: "hcaptcha",
  * }});
  * // Friendly Captcha site key
  * const friendlyCaptchaSiteKey = config.require("friendlyCaptchaSiteKey");
@@ -124,11 +124,11 @@ import * as utilities from "./utilities";
  * const friendlyCaptchaSecret = config.require("friendlyCaptchaSecret");
  * // Example 4: Friendly Captcha
  * const captchaFriendlyCaptcha = new auth0.AttackProtection("captcha_friendly_captcha", {captcha: {
- *     activeProviderId: "friendly_captcha",
  *     friendlyCaptcha: {
  *         siteKey: friendlyCaptchaSiteKey,
  *         secret: friendlyCaptchaSecret,
  *     },
+ *     activeProviderId: "friendly_captcha",
  * }});
  * // Arkose Labs site key
  * const arkoseSiteKey = config.require("arkoseSiteKey");
@@ -136,7 +136,6 @@ import * as utilities from "./utilities";
  * const arkoseSecret = config.require("arkoseSecret");
  * // Example 5: Arkose Labs
  * const captchaArkose = new auth0.AttackProtection("captcha_arkose", {captcha: {
- *     activeProviderId: "arkose",
  *     arkose: {
  *         siteKey: arkoseSiteKey,
  *         secret: arkoseSecret,
@@ -144,6 +143,7 @@ import * as utilities from "./utilities";
  *         verifySubdomain: "verify.example.com",
  *         failOpen: false,
  *     },
+ *     activeProviderId: "arkose",
  * }});
  * // ============================================================================
  * // VARIABLES FOR SENSITIVE DATA

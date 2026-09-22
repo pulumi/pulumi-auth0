@@ -25,7 +25,6 @@ namespace Pulumi.Auth0
     /// {
     ///     var myBrand = new Auth0.Branding("my_brand", new()
     ///     {
-    ///         LogoUrl = "https://mycompany.org/logo.png",
     ///         Colors = new Auth0.Inputs.BrandingColorsArgs
     ///         {
     ///             Primary = "#0059d6",
@@ -38,6 +37,7 @@ namespace Pulumi.Auth0
     ///                 Input = "universal_login_body.html",
     ///             }).Result,
     ///         },
+    ///         LogoUrl = "https://mycompany.org/logo.png",
     ///     });
     /// 
     /// });

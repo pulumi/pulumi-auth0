@@ -25,7 +25,6 @@ import * as utilities from "./utilities";
  *     identifier: "test.example.com",
  * });
  * const resourceServerScopes = new auth0.ResourceServerScopes("resource_server_scopes", {
- *     resourceServerIdentifier: resourceServer.identifier,
  *     scopes: [
  *         {
  *             name: "store:create",
@@ -40,6 +39,7 @@ import * as utilities from "./utilities";
  *             name: "store:delete",
  *         },
  *     ],
+ *     resourceServerIdentifier: resourceServer.identifier,
  * });
  * const myRole = new auth0.Role("my_role", {name: "My Role"});
  * const myRolePerms = new auth0.RolePermissions("my_role_perms", {

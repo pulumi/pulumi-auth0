@@ -51,32 +51,32 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var promptScreenPartials = new PromptScreenPartials("promptScreenPartials", PromptScreenPartialsArgs.builder()
- *             .promptType("login-passwordless")
  *             .screenPartials(            
  *                 PromptScreenPartialsScreenPartialArgs.builder()
- *                     .screenName("login-passwordless-email-code")
  *                     .insertionPoints(PromptScreenPartialsScreenPartialInsertionPointsArgs.builder()
  *                         .formContentStart("<div>Form Content Start</div>")
  *                         .formContentEnd("<div>Form Content End</div>")
  *                         .build())
+ *                     .screenName("login-passwordless-email-code")
  *                     .build(),
  *                 PromptScreenPartialsScreenPartialArgs.builder()
- *                     .screenName("login-passwordless-sms-otp")
  *                     .insertionPoints(PromptScreenPartialsScreenPartialInsertionPointsArgs.builder()
  *                         .formContentStart("<div>Form Content Start</div>")
  *                         .formContentEnd("<div>Form Content End</div>")
  *                         .build())
+ *                     .screenName("login-passwordless-sms-otp")
  *                     .build())
+ *             .promptType("login-passwordless")
  *             .build());
  * 
  *         var customized_consent = new PromptScreenPartials("customized-consent", PromptScreenPartialsArgs.builder()
- *             .promptType("customized-consent")
  *             .screenPartials(PromptScreenPartialsScreenPartialArgs.builder()
- *                 .screenName("customized-consent")
  *                 .insertionPoints(PromptScreenPartialsScreenPartialInsertionPointsArgs.builder()
  *                     .formContent("<div>Form Content</div>")
  *                     .build())
+ *                 .screenName("customized-consent")
  *                 .build())
+ *             .promptType("customized-consent")
  *             .build());
  * 
  *     }

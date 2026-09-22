@@ -37,6 +37,19 @@ import (
 //				return err
 //			}
 //			_, err = auth0.NewClientCimd(ctx, "my_mcp_agent", &auth0.ClientCimdArgs{
+//				JwtConfiguration: &auth0.ClientCimdJwtConfigurationArgs{
+//					LifetimeInSeconds: pulumi.Int(300),
+//					Alg:               pulumi.String("RS256"),
+//				},
+//				RefreshToken: &auth0.ClientCimdRefreshTokenArgs{
+//					RotationType:              pulumi.String("rotating"),
+//					ExpirationType:            pulumi.String("expiring"),
+//					TokenLifetime:             pulumi.Int(2592000),
+//					IdleTokenLifetime:         pulumi.Int(1296000),
+//					InfiniteTokenLifetime:     pulumi.Bool(false),
+//					InfiniteIdleTokenLifetime: pulumi.Bool(false),
+//					Leeway:                    pulumi.Int(0),
+//				},
 //				ExternalClientId:        pulumi.String("https://mcp-agent2.example.com/.well-known/client.json"),
 //				ExternalClientIdVersion: pulumi.Int(1),
 //				Description:             pulumi.String("MCP Agent - Production"),
@@ -54,19 +67,6 @@ import (
 //				},
 //				ClientMetadata: pulumi.StringMap{
 //					"environment": pulumi.String("production"),
-//				},
-//				JwtConfiguration: &auth0.ClientCimdJwtConfigurationArgs{
-//					LifetimeInSeconds: pulumi.Int(300),
-//					Alg:               pulumi.String("RS256"),
-//				},
-//				RefreshToken: &auth0.ClientCimdRefreshTokenArgs{
-//					RotationType:              pulumi.String("rotating"),
-//					ExpirationType:            pulumi.String("expiring"),
-//					TokenLifetime:             pulumi.Int(2592000),
-//					IdleTokenLifetime:         pulumi.Int(1296000),
-//					InfiniteTokenLifetime:     pulumi.Bool(false),
-//					InfiniteIdleTokenLifetime: pulumi.Bool(false),
-//					Leeway:                    pulumi.Int(0),
 //				},
 //			})
 //			if err != nil {

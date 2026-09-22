@@ -16,7 +16,6 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
- * import * as std from "@pulumi/std";
  *
  * // Example:
  * const resourceServer = new auth0.ResourceServer("resource_server", {
@@ -24,7 +23,6 @@ import * as utilities from "./utilities";
  *     identifier: "test.example.com",
  * });
  * const resourceServerScopes = new auth0.ResourceServerScopes("resource_server_scopes", {
- *     resourceServerIdentifier: resourceServer.identifier,
  *     scopes: [
  *         {
  *             name: "store:create",
@@ -39,19 +37,20 @@ import * as utilities from "./utilities";
  *             name: "store:delete",
  *         },
  *     ],
+ *     resourceServerIdentifier: resourceServer.identifier,
  * });
  * const myRole = new auth0.Role("my_role", {name: "My Role"});
  * const scopesList = resourceServerScopes.scopes.apply(scopes => scopes.map(scope => (scope.name)));
- * const myRolePerm: auth0.RolePermission[] = [];
- * for (let range = 0; range < std.toset({
- *     input: scopesList,
- * }).result; range++) {
- *     myRolePerm.push(new auth0.RolePermission(`my_role_perm-${range}`, {
- *         roleId: myRole.id,
- *         resourceServerIdentifier: resourceServer.identifier,
- *         permission: range,
- *     }));
- * }
+ * const myRolePerm: {[key: string]: auth0.RolePermission} = {};
+ * pulumi.all(scopesList.reduce((__obj, entry) => ({ ...__obj, [entry]: entry }), {})).apply(rangeBody => {
+ *     for (const range of Object.entries(rangeBody).sort().map(([k, v]) => ({key: k, value: v}))) {
+ *         myRolePerm[range.key] = new auth0.RolePermission(`my_role_perm-${range.key}`, {
+ *             roleId: myRole.id,
+ *             resourceServerIdentifier: resourceServer.identifier,
+ *             permission: range.value,
+ *         });
+ *     }
+ * });
  * ```
  *
  * ## Import

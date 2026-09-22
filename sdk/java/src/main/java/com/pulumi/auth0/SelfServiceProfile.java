@@ -33,9 +33,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.auth0.SelfServiceProfile;
  * import com.pulumi.auth0.SelfServiceProfileArgs;
- * import com.pulumi.auth0.inputs.SelfServiceProfileUserAttributeArgs;
  * import com.pulumi.auth0.inputs.SelfServiceProfileBrandingArgs;
  * import com.pulumi.auth0.inputs.SelfServiceProfileBrandingColorsArgs;
+ * import com.pulumi.auth0.inputs.SelfServiceProfileUserAttributeArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -50,16 +50,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var mySelfServiceProfile = new SelfServiceProfile("mySelfServiceProfile", SelfServiceProfileArgs.builder()
+ *             .branding(SelfServiceProfileBrandingArgs.builder()
+ *                 .colors(SelfServiceProfileBrandingColorsArgs.builder()
+ *                     .primary("#0059d6")
+ *                     .build())
+ *                 .logoUrl("https://mycompany.org/v2/logo.png")
+ *                 .build())
  *             .userAttributes(SelfServiceProfileUserAttributeArgs.builder()
  *                 .name("sample-name")
  *                 .description("sample-description")
  *                 .isOptional(true)
- *                 .build())
- *             .branding(SelfServiceProfileBrandingArgs.builder()
- *                 .logoUrl("https://mycompany.org/v2/logo.png")
- *                 .colors(SelfServiceProfileBrandingColorsArgs.builder()
- *                     .primary("#0059d6")
- *                     .build())
  *                 .build())
  *             .build());
  * 

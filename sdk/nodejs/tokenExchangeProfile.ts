@@ -16,16 +16,16 @@ import * as utilities from "./utilities";
  * // Below action is created with custom-token-exchange as supported_triggers
  * // This action is then linked using the action_id param to the token-exchange profile
  * const myAction = new auth0.Action("my_action", {
+ *     supportedTriggers: {
+ *         id: "custom-token-exchange",
+ *         version: "v1",
+ *     },
  *     name: "TokenExchange-Action",
  *     code: `exports.onExecuteCustomTokenExchange = async (event, api) => {
  * \\tconsole.log(\\"foo\\")
  * };\\"
  * `,
  *     deploy: true,
- *     supportedTriggers: {
- *         id: "custom-token-exchange",
- *         version: "v1",
- *     },
  * });
  * const myTokenExchangeProfile = new auth0.TokenExchangeProfile("my_token_exchange_profile", {
  *     name: "token-exchange-prof",

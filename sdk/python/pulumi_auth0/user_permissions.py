@@ -104,7 +104,7 @@ class UserPermissions(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserPermissionsPermissionArgs', 'UserPermissionsPermissionArgsDict']]]]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserPermissionsPermissionArgs', 'UserPermissionsPermissionArgsDict', 'outputs.UserPermissionsPermission']]]]] = None,
                  user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -121,8 +121,6 @@ class UserPermissions(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         resource_server = auth0.ResourceServer("resource_server",
-            name="Example Resource Server (Managed by Terraform)",
-            identifier="https://api.example.com",
             scopes=[
                 {
                     "value": "create:foo",
@@ -132,7 +130,9 @@ class UserPermissions(pulumi.CustomResource):
                     "value": "read:foo",
                     "description": "Read foos",
                 },
-            ])
+            ],
+            name="Example Resource Server (Managed by Terraform)",
+            identifier="https://api.example.com")
         user = auth0.User("user",
             connection_name="Username-Password-Authentication",
             user_id="12345",
@@ -144,7 +144,6 @@ class UserPermissions(pulumi.CustomResource):
             password="passpass$12$12",
             picture="https://www.example.com/a-valid-picture-url.jpg")
         all_user_permissions = auth0.UserPermissions("all_user_permissions",
-            user_id=user.id,
             permissions=[
                 {
                     "name": resource_server.scopes[0],
@@ -154,7 +153,8 @@ class UserPermissions(pulumi.CustomResource):
                     "name": resource_server.scopes[1],
                     "resource_server_identifier": resource_server.identifier,
                 },
-            ])
+            ],
+            user_id=user.id)
         ```
 
         ## Import
@@ -170,7 +170,7 @@ class UserPermissions(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserPermissionsPermissionArgs', 'UserPermissionsPermissionArgsDict']]]] permissions: List of API permissions granted to the user.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserPermissionsPermissionArgs', 'UserPermissionsPermissionArgsDict', 'outputs.UserPermissionsPermission']]]] permissions: List of API permissions granted to the user.
         :param pulumi.Input[_builtins.str] user_id: ID of the user to associate the permission to.
         """
         ...
@@ -193,8 +193,6 @@ class UserPermissions(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         resource_server = auth0.ResourceServer("resource_server",
-            name="Example Resource Server (Managed by Terraform)",
-            identifier="https://api.example.com",
             scopes=[
                 {
                     "value": "create:foo",
@@ -204,7 +202,9 @@ class UserPermissions(pulumi.CustomResource):
                     "value": "read:foo",
                     "description": "Read foos",
                 },
-            ])
+            ],
+            name="Example Resource Server (Managed by Terraform)",
+            identifier="https://api.example.com")
         user = auth0.User("user",
             connection_name="Username-Password-Authentication",
             user_id="12345",
@@ -216,7 +216,6 @@ class UserPermissions(pulumi.CustomResource):
             password="passpass$12$12",
             picture="https://www.example.com/a-valid-picture-url.jpg")
         all_user_permissions = auth0.UserPermissions("all_user_permissions",
-            user_id=user.id,
             permissions=[
                 {
                     "name": resource_server.scopes[0],
@@ -226,7 +225,8 @@ class UserPermissions(pulumi.CustomResource):
                     "name": resource_server.scopes[1],
                     "resource_server_identifier": resource_server.identifier,
                 },
-            ])
+            ],
+            user_id=user.id)
         ```
 
         ## Import
@@ -255,7 +255,7 @@ class UserPermissions(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserPermissionsPermissionArgs', 'UserPermissionsPermissionArgsDict']]]]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserPermissionsPermissionArgs', 'UserPermissionsPermissionArgsDict', 'outputs.UserPermissionsPermission']]]]] = None,
                  user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -282,7 +282,7 @@ class UserPermissions(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserPermissionsPermissionArgs', 'UserPermissionsPermissionArgsDict']]]]] = None,
+            permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserPermissionsPermissionArgs', 'UserPermissionsPermissionArgsDict', 'outputs.UserPermissionsPermission']]]]] = None,
             user_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'UserPermissions':
         """
         Get an existing UserPermissions resource's state with the given name, id, and optional extra
@@ -291,7 +291,7 @@ class UserPermissions(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserPermissionsPermissionArgs', 'UserPermissionsPermissionArgsDict']]]] permissions: List of API permissions granted to the user.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserPermissionsPermissionArgs', 'UserPermissionsPermissionArgsDict', 'outputs.UserPermissionsPermission']]]] permissions: List of API permissions granted to the user.
         :param pulumi.Input[_builtins.str] user_id: ID of the user to associate the permission to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

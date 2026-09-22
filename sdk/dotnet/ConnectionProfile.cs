@@ -24,17 +24,10 @@ namespace Pulumi.Auth0
     /// {
     ///     var myProfile = new Auth0.ConnectionProfile("my_profile", new()
     ///     {
-    ///         Name = "My-Profile",
     ///         Organization = new Auth0.Inputs.ConnectionProfileOrganizationArgs
     ///         {
     ///             ShowAsButton = "optional",
     ///             AssignMembershipOnLogin = "required",
-    ///         },
-    ///         ConnectionNamePrefixTemplate = "template1",
-    ///         EnabledFeatures = new[]
-    ///         {
-    ///             "scim",
-    ///             "universal_logout",
     ///         },
     ///         CrossAppAccessResourceApp = new Auth0.Inputs.ConnectionProfileCrossAppAccessResourceAppArgs
     ///         {
@@ -47,6 +40,13 @@ namespace Pulumi.Auth0
     ///                     "disabled",
     ///                 },
     ///             },
+    ///         },
+    ///         Name = "My-Profile",
+    ///         ConnectionNamePrefixTemplate = "template1",
+    ///         EnabledFeatures = new[]
+    ///         {
+    ///             "scim",
+    ///             "universal_logout",
     ///         },
     ///     });
     /// 

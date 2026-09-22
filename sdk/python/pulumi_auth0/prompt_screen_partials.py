@@ -98,7 +98,7 @@ class PromptScreenPartials(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  prompt_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 screen_partials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PromptScreenPartialsScreenPartialArgs', 'PromptScreenPartialsScreenPartialArgsDict']]]]] = None,
+                 screen_partials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PromptScreenPartialsScreenPartialArgs', 'PromptScreenPartialsScreenPartialArgsDict', 'outputs.PromptScreenPartialsScreenPartial']]]]] = None,
                  __props__=None):
         """
         With this resource, you can manage a customized sign up and login experience by adding custom content, form elements and css/javascript. You can read more about this [here](https://auth0.com/docs/customize/universal-login-pages/customize-signup-and-login-prompts).
@@ -115,31 +115,31 @@ class PromptScreenPartials(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         prompt_screen_partials = auth0.PromptScreenPartials("prompt_screen_partials",
-            prompt_type="login-passwordless",
             screen_partials=[
                 {
-                    "screen_name": "login-passwordless-email-code",
                     "insertion_points": {
                         "form_content_start": "<div>Form Content Start</div>",
                         "form_content_end": "<div>Form Content End</div>",
                     },
+                    "screen_name": "login-passwordless-email-code",
                 },
                 {
-                    "screen_name": "login-passwordless-sms-otp",
                     "insertion_points": {
                         "form_content_start": "<div>Form Content Start</div>",
                         "form_content_end": "<div>Form Content End</div>",
                     },
+                    "screen_name": "login-passwordless-sms-otp",
                 },
-            ])
+            ],
+            prompt_type="login-passwordless")
         customized_consent = auth0.PromptScreenPartials("customized-consent",
-            prompt_type="customized-consent",
             screen_partials=[{
-                "screen_name": "customized-consent",
                 "insertion_points": {
                     "form_content": "<div>Form Content</div>",
                 },
-            }])
+                "screen_name": "customized-consent",
+            }],
+            prompt_type="customized-consent")
         ```
 
         ## Import
@@ -178,31 +178,31 @@ class PromptScreenPartials(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         prompt_screen_partials = auth0.PromptScreenPartials("prompt_screen_partials",
-            prompt_type="login-passwordless",
             screen_partials=[
                 {
-                    "screen_name": "login-passwordless-email-code",
                     "insertion_points": {
                         "form_content_start": "<div>Form Content Start</div>",
                         "form_content_end": "<div>Form Content End</div>",
                     },
+                    "screen_name": "login-passwordless-email-code",
                 },
                 {
-                    "screen_name": "login-passwordless-sms-otp",
                     "insertion_points": {
                         "form_content_start": "<div>Form Content Start</div>",
                         "form_content_end": "<div>Form Content End</div>",
                     },
+                    "screen_name": "login-passwordless-sms-otp",
                 },
-            ])
+            ],
+            prompt_type="login-passwordless")
         customized_consent = auth0.PromptScreenPartials("customized-consent",
-            prompt_type="customized-consent",
             screen_partials=[{
-                "screen_name": "customized-consent",
                 "insertion_points": {
                     "form_content": "<div>Form Content</div>",
                 },
-            }])
+                "screen_name": "customized-consent",
+            }],
+            prompt_type="customized-consent")
         ```
 
         ## Import
@@ -232,7 +232,7 @@ class PromptScreenPartials(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  prompt_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 screen_partials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PromptScreenPartialsScreenPartialArgs', 'PromptScreenPartialsScreenPartialArgsDict']]]]] = None,
+                 screen_partials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PromptScreenPartialsScreenPartialArgs', 'PromptScreenPartialsScreenPartialArgsDict', 'outputs.PromptScreenPartialsScreenPartial']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -257,7 +257,7 @@ class PromptScreenPartials(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             prompt_type: pulumi.Input[Optional[_builtins.str]] = None,
-            screen_partials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PromptScreenPartialsScreenPartialArgs', 'PromptScreenPartialsScreenPartialArgsDict']]]]] = None) -> 'PromptScreenPartials':
+            screen_partials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PromptScreenPartialsScreenPartialArgs', 'PromptScreenPartialsScreenPartialArgsDict', 'outputs.PromptScreenPartialsScreenPartial']]]]] = None) -> 'PromptScreenPartials':
         """
         Get an existing PromptScreenPartials resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

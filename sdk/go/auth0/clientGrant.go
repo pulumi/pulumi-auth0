@@ -36,16 +36,6 @@ import (
 //				return err
 //			}
 //			myResourceServer, err := auth0.NewResourceServer(ctx, "my_resource_server", &auth0.ResourceServerArgs{
-//				Name:       pulumi.String("Example Resource Server - Client Grant (Managed by Terraform)"),
-//				Identifier: pulumi.String("https://api.example.com/client-grant"),
-//				AuthorizationDetails: auth0.ResourceServerAuthorizationDetailArray{
-//					&auth0.ResourceServerAuthorizationDetailArgs{
-//						Type: pulumi.String("payment"),
-//					},
-//					&auth0.ResourceServerAuthorizationDetailArgs{
-//						Type: pulumi.String("shipping"),
-//					},
-//				},
 //				SubjectTypeAuthorization: &auth0.ResourceServerSubjectTypeAuthorizationArgs{
 //					User: &auth0.ResourceServerSubjectTypeAuthorizationUserArgs{
 //						Policy: pulumi.String("allow_all"),
@@ -54,12 +44,21 @@ import (
 //						Policy: pulumi.String("require_client_grant"),
 //					},
 //				},
+//				AuthorizationDetails: auth0.ResourceServerAuthorizationDetailArray{
+//					&auth0.ResourceServerAuthorizationDetailArgs{
+//						Type: pulumi.String("payment"),
+//					},
+//					&auth0.ResourceServerAuthorizationDetailArgs{
+//						Type: pulumi.String("shipping"),
+//					},
+//				},
+//				Name:       pulumi.String("Example Resource Server - Client Grant (Managed by Terraform)"),
+//				Identifier: pulumi.String("https://api.example.com/client-grant"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = auth0.NewResourceServerScopes(ctx, "my_scopes", &auth0.ResourceServerScopesArgs{
-//				ResourceServerIdentifier: myResourceServer.Identifier,
 //				Scopes: auth0.ResourceServerScopesScopeArray{
 //					&auth0.ResourceServerScopesScopeArgs{
 //						Name:        pulumi.String("read:foo"),
@@ -70,6 +69,7 @@ import (
 //						Description: pulumi.String("Can create Foo"),
 //					},
 //				},
+//				ResourceServerIdentifier: myResourceServer.Identifier,
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				myResourceServer,
 //			}))

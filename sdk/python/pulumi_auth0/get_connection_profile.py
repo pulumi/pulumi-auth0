@@ -122,16 +122,10 @@ def get_connection_profile(id: Optional[_builtins.str] = None,
     import pulumi_auth0 as auth0
 
     my_profile = auth0.ConnectionProfile("my_profile",
-        name="My-Profile",
         organization={
             "show_as_button": "optional",
             "assign_membership_on_login": "required",
         },
-        connection_name_prefix_template="template1",
-        enabled_features=[
-            "scim",
-            "universal_logout",
-        ],
         cross_app_access_resource_app={
             "status": {
                 "default_value": "enabled",
@@ -140,7 +134,13 @@ def get_connection_profile(id: Optional[_builtins.str] = None,
                     "disabled",
                 ],
             },
-        })
+        },
+        name="My-Profile",
+        connection_name_prefix_template="template1",
+        enabled_features=[
+            "scim",
+            "universal_logout",
+        ])
     my_profile_ds = auth0.get_connection_profile_output(id=my_profile.id)
     ```
     """
@@ -170,16 +170,10 @@ def get_connection_profile_output(id: pulumi.Input[Optional[_builtins.str]] = No
     import pulumi_auth0 as auth0
 
     my_profile = auth0.ConnectionProfile("my_profile",
-        name="My-Profile",
         organization={
             "show_as_button": "optional",
             "assign_membership_on_login": "required",
         },
-        connection_name_prefix_template="template1",
-        enabled_features=[
-            "scim",
-            "universal_logout",
-        ],
         cross_app_access_resource_app={
             "status": {
                 "default_value": "enabled",
@@ -188,7 +182,13 @@ def get_connection_profile_output(id: pulumi.Input[Optional[_builtins.str]] = No
                     "disabled",
                 ],
             },
-        })
+        },
+        name="My-Profile",
+        connection_name_prefix_template="template1",
+        enabled_features=[
+            "scim",
+            "universal_logout",
+        ])
     my_profile_ds = auth0.get_connection_profile_output(id=my_profile.id)
     ```
     """

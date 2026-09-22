@@ -24,9 +24,6 @@ namespace Pulumi.Auth0
     /// {
     ///     var googleWorkspace = new Auth0.Connection("google_workspace", new()
     ///     {
-    ///         Name = "google-workspace-connection",
-    ///         DisplayName = "Google Workspace",
-    ///         Strategy = "google-apps",
     ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
     ///         {
     ///             ClientId = "your-google-client-id",
@@ -35,6 +32,9 @@ namespace Pulumi.Auth0
     ///             ApiEnableUsers = true,
     ///             ApiEnableGroups = true,
     ///         },
+    ///         Name = "google-workspace-connection",
+    ///         DisplayName = "Google Workspace",
+    ///         Strategy = "google-apps",
     ///     });
     /// 
     ///     // Configure directory provisioning with default settings
@@ -46,8 +46,6 @@ namespace Pulumi.Auth0
     ///     // Configure directory provisioning with custom mapping and auto-sync enabled
     ///     var custom = new Auth0.ConnectionDirectory("custom", new()
     ///     {
-    ///         ConnectionId = googleWorkspace.Id,
-    ///         SynchronizeAutomatically = true,
     ///         Mappings = new[]
     ///         {
     ///             new Auth0.Inputs.ConnectionDirectoryMappingArgs
@@ -71,6 +69,8 @@ namespace Pulumi.Auth0
     ///                 Idp = "id",
     ///             },
     ///         },
+    ///         ConnectionId = googleWorkspace.Id,
+    ///         SynchronizeAutomatically = true,
     ///     });
     /// 
     ///     // Configure directory provisioning with selective group synchronization

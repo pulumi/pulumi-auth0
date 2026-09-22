@@ -113,21 +113,21 @@ def get_client_grants(audience: Optional[_builtins.str] = None,
 
     my_client = auth0.Client("my_client", name="Example Application (Managed by Terraform)")
     my_resource_server = auth0.ResourceServer("my_resource_server",
-        name="Example Resource Server (Managed by Terraform)",
-        identifier="https://api.example.com/client-grant",
-        authorization_details=[{
-            "type": "payment",
-        }],
         subject_type_authorization={
             "user": {
                 "policy": "allow_all",
             },
-        })
+        },
+        authorization_details=[{
+            "type": "payment",
+        }],
+        name="Example Resource Server (Managed by Terraform)",
+        identifier="https://api.example.com/client-grant")
     my_scopes = auth0.ResourceServerScopes("my_scopes",
-        resource_server_identifier=my_resource_server.identifier,
         scopes=[{
             "name": "create:foo",
         }],
+        resource_server_identifier=my_resource_server.identifier,
         opts = pulumi.ResourceOptions(depends_on=[my_resource_server]))
     my_client_grant = auth0.ClientGrant("my_client_grant",
         client_id=my_client.id,
@@ -174,21 +174,21 @@ def get_client_grants_output(audience: pulumi.Input[Optional[Optional[_builtins.
 
     my_client = auth0.Client("my_client", name="Example Application (Managed by Terraform)")
     my_resource_server = auth0.ResourceServer("my_resource_server",
-        name="Example Resource Server (Managed by Terraform)",
-        identifier="https://api.example.com/client-grant",
-        authorization_details=[{
-            "type": "payment",
-        }],
         subject_type_authorization={
             "user": {
                 "policy": "allow_all",
             },
-        })
+        },
+        authorization_details=[{
+            "type": "payment",
+        }],
+        name="Example Resource Server (Managed by Terraform)",
+        identifier="https://api.example.com/client-grant")
     my_scopes = auth0.ResourceServerScopes("my_scopes",
-        resource_server_identifier=my_resource_server.identifier,
         scopes=[{
             "name": "create:foo",
         }],
+        resource_server_identifier=my_resource_server.identifier,
         opts = pulumi.ResourceOptions(depends_on=[my_resource_server]))
     my_client_grant = auth0.ClientGrant("my_client_grant",
         client_id=my_client.id,

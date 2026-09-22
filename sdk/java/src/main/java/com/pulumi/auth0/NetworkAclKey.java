@@ -58,14 +58,10 @@ import javax.annotation.Nullable;
  * 
  *         // Reference the key in a Network ACL rule to allow only signed requests.
  *         var allowSignedOnly = new NetworkAcl("allowSignedOnly", NetworkAclArgs.builder()
- *             .description("Block requests without a valid HMAC signature")
- *             .active(true)
- *             .priority(99)
  *             .rule(NetworkAclRuleArgs.builder()
  *                 .action(NetworkAclRuleActionArgs.builder()
  *                     .block(true)
  *                     .build())
- *                 .scope("tenant")
  *                 .notMatch(NetworkAclRuleNotMatchArgs.builder()
  *                     .httpMessageSignature(NetworkAclRuleNotMatchHttpMessageSignatureArgs.builder()
  *                         .keys(NetworkAclRuleNotMatchHttpMessageSignatureKeyArgs.builder()
@@ -73,7 +69,11 @@ import javax.annotation.Nullable;
  *                             .build())
  *                         .build())
  *                     .build())
+ *                 .scope("tenant")
  *                 .build())
+ *             .description("Block requests without a valid HMAC signature")
+ *             .active(true)
+ *             .priority(99)
  *             .build());
  * 
  *     }

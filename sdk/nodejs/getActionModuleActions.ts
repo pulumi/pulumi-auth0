@@ -30,6 +30,14 @@ import * as utilities from "./utilities";
  * // Create an action that uses the module.
  * // Use version_id directly from the module resource — no data source needed.
  * const myAction1 = new auth0.Action("my_action_1", {
+ *     supportedTriggers: {
+ *         id: "post-login",
+ *         version: "v3",
+ *     },
+ *     modules: [{
+ *         moduleId: myModule.id,
+ *         moduleVersionId: myModule.versionId,
+ *     }],
  *     name: "My Action Using Module 1",
  *     deploy: true,
  *     code: `const myModule = require('my-module');
@@ -37,6 +45,9 @@ import * as utilities from "./utilities";
  *   console.log(myModule.greet(event.user.name));
  * };
  * `,
+ * });
+ * // Create another action that uses the same module
+ * const myAction2 = new auth0.Action("my_action_2", {
  *     supportedTriggers: {
  *         id: "post-login",
  *         version: "v3",
@@ -45,9 +56,6 @@ import * as utilities from "./utilities";
  *         moduleId: myModule.id,
  *         moduleVersionId: myModule.versionId,
  *     }],
- * });
- * // Create another action that uses the same module
- * const myAction2 = new auth0.Action("my_action_2", {
  *     name: "My Action Using Module 2",
  *     deploy: true,
  *     code: `const myModule = require('my-module');
@@ -55,14 +63,6 @@ import * as utilities from "./utilities";
  *   api.idToken.setCustomClaim(\\"greeting\\", myModule.greet(event.user.name));
  * };
  * `,
- *     supportedTriggers: {
- *         id: "post-login",
- *         version: "v3",
- *     },
- *     modules: [{
- *         moduleId: myModule.id,
- *         moduleVersionId: myModule.versionId,
- *     }],
  * });
  * // Retrieve all actions that are using this module
  * const myModuleActions = auth0.getActionModuleActionsOutput({
@@ -134,6 +134,14 @@ export interface GetActionModuleActionsResult {
  * // Create an action that uses the module.
  * // Use version_id directly from the module resource — no data source needed.
  * const myAction1 = new auth0.Action("my_action_1", {
+ *     supportedTriggers: {
+ *         id: "post-login",
+ *         version: "v3",
+ *     },
+ *     modules: [{
+ *         moduleId: myModule.id,
+ *         moduleVersionId: myModule.versionId,
+ *     }],
  *     name: "My Action Using Module 1",
  *     deploy: true,
  *     code: `const myModule = require('my-module');
@@ -141,6 +149,9 @@ export interface GetActionModuleActionsResult {
  *   console.log(myModule.greet(event.user.name));
  * };
  * `,
+ * });
+ * // Create another action that uses the same module
+ * const myAction2 = new auth0.Action("my_action_2", {
  *     supportedTriggers: {
  *         id: "post-login",
  *         version: "v3",
@@ -149,9 +160,6 @@ export interface GetActionModuleActionsResult {
  *         moduleId: myModule.id,
  *         moduleVersionId: myModule.versionId,
  *     }],
- * });
- * // Create another action that uses the same module
- * const myAction2 = new auth0.Action("my_action_2", {
  *     name: "My Action Using Module 2",
  *     deploy: true,
  *     code: `const myModule = require('my-module');
@@ -159,14 +167,6 @@ export interface GetActionModuleActionsResult {
  *   api.idToken.setCustomClaim(\\"greeting\\", myModule.greet(event.user.name));
  * };
  * `,
- *     supportedTriggers: {
- *         id: "post-login",
- *         version: "v3",
- *     },
- *     modules: [{
- *         moduleId: myModule.id,
- *         moduleVersionId: myModule.versionId,
- *     }],
  * });
  * // Retrieve all actions that are using this module
  * const myModuleActions = auth0.getActionModuleActionsOutput({

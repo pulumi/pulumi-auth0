@@ -61,11 +61,6 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         var myProtection = new AttackProtection("myProtection", AttackProtectionArgs.builder()
  *             .suspiciousIpThrottling(AttackProtectionSuspiciousIpThrottlingArgs.builder()
- *                 .enabled(true)
- *                 .shields(                
- *                     "admin_notification",
- *                     "block")
- *                 .allowlists("192.168.1.1")
  *                 .preLogin(AttackProtectionSuspiciousIpThrottlingPreLoginArgs.builder()
  *                     .maxAttempts(100)
  *                     .rate(864000)
@@ -74,6 +69,11 @@ import javax.annotation.Nullable;
  *                     .maxAttempts(50)
  *                     .rate(1200)
  *                     .build())
+ *                 .enabled(true)
+ *                 .shields(                
+ *                     "admin_notification",
+ *                     "block")
+ *                 .allowlists("192.168.1.1")
  *                 .build())
  *             .bruteForceProtection(AttackProtectionBruteForceProtectionArgs.builder()
  *                 .allowlists("127.0.0.1")
@@ -85,12 +85,6 @@ import javax.annotation.Nullable;
  *                     "user_notification")
  *                 .build())
  *             .breachedPasswordDetection(AttackProtectionBreachedPasswordDetectionArgs.builder()
- *                 .adminNotificationFrequencies("daily")
- *                 .enabled(true)
- *                 .method("standard")
- *                 .shields(                
- *                     "admin_notification",
- *                     "block")
  *                 .preUserRegistration(AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs.builder()
  *                     .shields(                    
  *                         "admin_notification",
@@ -101,6 +95,12 @@ import javax.annotation.Nullable;
  *                         "admin_notification",
  *                         "block")
  *                     .build())
+ *                 .adminNotificationFrequencies("daily")
+ *                 .enabled(true)
+ *                 .method("standard")
+ *                 .shields(                
+ *                     "admin_notification",
+ *                     "block")
  *                 .build())
  *             .botDetection(AttackProtectionBotDetectionArgs.builder()
  *                 .botDetectionLevel("medium")
@@ -122,11 +122,11 @@ import javax.annotation.Nullable;
  *         // Example 1: reCAPTCHA v2
  *         var captchaRecaptchaV2 = new AttackProtection("captchaRecaptchaV2", AttackProtectionArgs.builder()
  *             .captcha(AttackProtectionCaptchaArgs.builder()
- *                 .activeProviderId("recaptcha_v2")
  *                 .recaptchaV2(AttackProtectionCaptchaRecaptchaV2Args.builder()
  *                     .siteKey(recaptchaV2SiteKey)
  *                     .secret(recaptchaV2Secret)
  *                     .build())
+ *                 .activeProviderId("recaptcha_v2")
  *                 .build())
  *             .build());
  * 
@@ -136,12 +136,12 @@ import javax.annotation.Nullable;
  *         // Example 2: reCAPTCHA Enterprise
  *         var captchaRecaptchaEnterprise = new AttackProtection("captchaRecaptchaEnterprise", AttackProtectionArgs.builder()
  *             .captcha(AttackProtectionCaptchaArgs.builder()
- *                 .activeProviderId("recaptcha_enterprise")
  *                 .recaptchaEnterprise(AttackProtectionCaptchaRecaptchaEnterpriseArgs.builder()
  *                     .siteKey(recaptchaEnterpriseSiteKey)
  *                     .apiKey(recaptchaEnterpriseApiKey)
  *                     .projectId(recaptchaEnterpriseProjectId)
  *                     .build())
+ *                 .activeProviderId("recaptcha_enterprise")
  *                 .build())
  *             .build());
  * 
@@ -150,11 +150,11 @@ import javax.annotation.Nullable;
  *         // Example 3: hCaptcha
  *         var captchaHcaptcha = new AttackProtection("captchaHcaptcha", AttackProtectionArgs.builder()
  *             .captcha(AttackProtectionCaptchaArgs.builder()
- *                 .activeProviderId("hcaptcha")
  *                 .hcaptcha(AttackProtectionCaptchaHcaptchaArgs.builder()
  *                     .siteKey(hcaptchaSiteKey)
  *                     .secret(hcaptchaSecret)
  *                     .build())
+ *                 .activeProviderId("hcaptcha")
  *                 .build())
  *             .build());
  * 
@@ -163,11 +163,11 @@ import javax.annotation.Nullable;
  *         // Example 4: Friendly Captcha
  *         var captchaFriendlyCaptcha = new AttackProtection("captchaFriendlyCaptcha", AttackProtectionArgs.builder()
  *             .captcha(AttackProtectionCaptchaArgs.builder()
- *                 .activeProviderId("friendly_captcha")
  *                 .friendlyCaptcha(AttackProtectionCaptchaFriendlyCaptchaArgs.builder()
  *                     .siteKey(friendlyCaptchaSiteKey)
  *                     .secret(friendlyCaptchaSecret)
  *                     .build())
+ *                 .activeProviderId("friendly_captcha")
  *                 .build())
  *             .build());
  * 
@@ -176,7 +176,6 @@ import javax.annotation.Nullable;
  *         // Example 5: Arkose Labs
  *         var captchaArkose = new AttackProtection("captchaArkose", AttackProtectionArgs.builder()
  *             .captcha(AttackProtectionCaptchaArgs.builder()
- *                 .activeProviderId("arkose")
  *                 .arkose(AttackProtectionCaptchaArkoseArgs.builder()
  *                     .siteKey(arkoseSiteKey)
  *                     .secret(arkoseSecret)
@@ -184,6 +183,7 @@ import javax.annotation.Nullable;
  *                     .verifySubdomain("verify.example.com")
  *                     .failOpen(false)
  *                     .build())
+ *                 .activeProviderId("arkose")
  *                 .build())
  *             .build());
  * 

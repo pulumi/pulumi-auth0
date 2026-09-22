@@ -28,21 +28,6 @@ namespace Pulumi.Auth0
     ///     // This is an example of an http log stream.
     ///     var myWebhook = new Auth0.LogStream("my_webhook", new()
     ///     {
-    ///         Name = "HTTP log stream",
-    ///         Type = "http",
-    ///         Filters = new[]
-    ///         {
-    ///             
-    ///             {
-    ///                 { "type", "category" },
-    ///                 { "name", "auth.login.fail" },
-    ///             },
-    ///             
-    ///             {
-    ///                 { "type", "category" },
-    ///                 { "name", "auth.signup.fail" },
-    ///             },
-    ///         },
     ///         Sink = new Auth0.Inputs.LogStreamSinkArgs
     ///         {
     ///             HttpEndpoint = "https://example.com/logs",
@@ -58,33 +43,48 @@ namespace Pulumi.Auth0
     ///                 },
     ///             },
     ///         },
+    ///         Name = "HTTP log stream",
+    ///         Type = "http",
+    ///         Filters = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "type", "category" },
+    ///                 { "name", "auth.login.fail" },
+    ///             },
+    ///             
+    ///             {
+    ///                 { "type", "category" },
+    ///                 { "name", "auth.signup.fail" },
+    ///             },
+    ///         },
     ///     });
     /// 
     ///     // This is an example of an Amazon EventBridge log stream.
     ///     var exampleAws = new Auth0.LogStream("example_aws", new()
     ///     {
-    ///         Name = "AWS Eventbridge",
-    ///         Type = "eventbridge",
-    ///         Status = "active",
     ///         Sink = new Auth0.Inputs.LogStreamSinkArgs
     ///         {
     ///             AwsAccountId = "my_account_id",
     ///             AwsRegion = "us-east-2",
     ///         },
+    ///         Name = "AWS Eventbridge",
+    ///         Type = "eventbridge",
+    ///         Status = "active",
     ///     });
     /// 
     ///     // This is an example of a Datadog log stream using a write-only API key
     ///     // (recommended for security). The key is never stored in Terraform state.
     ///     var datadogSecure = new Auth0.LogStream("datadog_secure", new()
     ///     {
-    ///         Name = "Datadog (write-only key)",
-    ///         Type = "datadog",
     ///         Sink = new Auth0.Inputs.LogStreamSinkArgs
     ///         {
     ///             DatadogRegion = "us",
     ///             DatadogApiKeyWo = "AKIAXXXXXXXXXXXXXXXX",
     ///             DatadogApiKeyWoVersion = 1,
     ///         },
+    ///         Name = "Datadog (write-only key)",
+    ///         Type = "datadog",
     ///     });
     /// 
     /// });

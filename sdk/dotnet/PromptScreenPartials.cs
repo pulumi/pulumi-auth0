@@ -29,44 +29,44 @@ namespace Pulumi.Auth0
     /// {
     ///     var promptScreenPartials = new Auth0.PromptScreenPartials("prompt_screen_partials", new()
     ///     {
-    ///         PromptType = "login-passwordless",
     ///         ScreenPartials = new[]
     ///         {
     ///             new Auth0.Inputs.PromptScreenPartialsScreenPartialArgs
     ///             {
-    ///                 ScreenName = "login-passwordless-email-code",
     ///                 InsertionPoints = new Auth0.Inputs.PromptScreenPartialsScreenPartialInsertionPointsArgs
     ///                 {
     ///                     FormContentStart = "&lt;div&gt;Form Content Start&lt;/div&gt;",
     ///                     FormContentEnd = "&lt;div&gt;Form Content End&lt;/div&gt;",
     ///                 },
+    ///                 ScreenName = "login-passwordless-email-code",
     ///             },
     ///             new Auth0.Inputs.PromptScreenPartialsScreenPartialArgs
     ///             {
-    ///                 ScreenName = "login-passwordless-sms-otp",
     ///                 InsertionPoints = new Auth0.Inputs.PromptScreenPartialsScreenPartialInsertionPointsArgs
     ///                 {
     ///                     FormContentStart = "&lt;div&gt;Form Content Start&lt;/div&gt;",
     ///                     FormContentEnd = "&lt;div&gt;Form Content End&lt;/div&gt;",
     ///                 },
+    ///                 ScreenName = "login-passwordless-sms-otp",
     ///             },
     ///         },
+    ///         PromptType = "login-passwordless",
     ///     });
     /// 
     ///     var customized_consent = new Auth0.PromptScreenPartials("customized-consent", new()
     ///     {
-    ///         PromptType = "customized-consent",
     ///         ScreenPartials = new[]
     ///         {
     ///             new Auth0.Inputs.PromptScreenPartialsScreenPartialArgs
     ///             {
-    ///                 ScreenName = "customized-consent",
     ///                 InsertionPoints = new Auth0.Inputs.PromptScreenPartialsScreenPartialInsertionPointsArgs
     ///                 {
     ///                     FormContent = "&lt;div&gt;Form Content&lt;/div&gt;",
     ///                 },
+    ///                 ScreenName = "customized-consent",
     ///             },
     ///         },
+    ///         PromptType = "customized-consent",
     ///     });
     /// 
     /// });

@@ -50,6 +50,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var loginAlert = new Action("loginAlert", ActionArgs.builder()
+ *             .supportedTriggers(ActionSupportedTriggersArgs.builder()
+ *                 .id("post-login")
+ *                 .version("v3")
+ *                 .build())
  *             .name("Alert after login")
  *             .code("""
  * exports.onContinuePostLogin = async (event, api) => {
@@ -57,10 +61,6 @@ import javax.annotation.Nullable;
  * };\"
  *             """)
  *             .deploy(true)
- *             .supportedTriggers(ActionSupportedTriggersArgs.builder()
- *                 .id("post-login")
- *                 .version("v3")
- *                 .build())
  *             .build());
  * 
  *         var postLoginAlertAction = new TriggerAction("postLoginAlertAction", TriggerActionArgs.builder()

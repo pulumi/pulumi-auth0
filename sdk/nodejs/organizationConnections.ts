@@ -33,7 +33,6 @@ import * as utilities from "./utilities";
  *     displayName: "My Organization",
  * });
  * const one_to_many = new auth0.OrganizationConnections("one-to-many", {
- *     organizationId: myOrganization.id,
  *     enabledConnections: [
  *         {
  *             connectionId: myConnection_1.id,
@@ -48,6 +47,7 @@ import * as utilities from "./utilities";
  *             showAsButton: true,
  *         },
  *     ],
+ *     organizationId: myOrganization.id,
  * });
  * ```
  *

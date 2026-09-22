@@ -169,7 +169,7 @@ class NetworkAcl(pulumi.CustomResource):
                  active: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
-                 rule: pulumi.Input[Optional[Union['NetworkAclRuleArgs', 'NetworkAclRuleArgsDict']]] = None,
+                 rule: pulumi.Input[Optional[Union['NetworkAclRuleArgs', 'NetworkAclRuleArgsDict', 'outputs.NetworkAclRule']]] = None,
                  __props__=None):
         """
         With this resource, you can create and manage NetworkACLs for a tenant.
@@ -182,14 +182,10 @@ class NetworkAcl(pulumi.CustomResource):
 
         # Example of auth0_network_acl with match criteria
         my_network_acl_match = auth0.NetworkAcl("my_network_acl_match",
-            description="Example with match network ACL",
-            active=True,
-            priority=1,
             rule={
                 "action": {
                     "allow": True,
                 },
-                "scope": "management",
                 "match": {
                     "geo_country_codes": [
                         "US",
@@ -200,17 +196,17 @@ class NetworkAcl(pulumi.CustomResource):
                         "CA-ON",
                     ],
                 },
-            })
+                "scope": "management",
+            },
+            description="Example with match network ACL",
+            active=True,
+            priority=1)
         # Example of auth0_network_acl with not-match criteria
         my_network_acl_not_match = auth0.NetworkAcl("my_network_acl_not_match",
-            description="Example with not match network ACL",
-            active=True,
-            priority=3,
             rule={
                 "action": {
                     "log": True,
                 },
-                "scope": "authentication",
                 "not_match": {
                     "asns": [9876],
                     "ipv4_cidrs": [
@@ -219,50 +215,50 @@ class NetworkAcl(pulumi.CustomResource):
                     ],
                     "ipv6_cidrs": ["2001:db8::/32"],
                 },
-            })
+                "scope": "authentication",
+            },
+            description="Example with not match network ACL",
+            active=True,
+            priority=3)
         # Example of auth0_network_acl using Auth0-curated blocklists (Early Access).
         #
         # The `auth0_managed` field requires the `advanced-breached-password-detection`
         # entitlement and the `tenant_acl_curated_blocklists` feature flag on the tenant.
         # Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`.
         block_icloud_relay = auth0.NetworkAcl("block_icloud_relay",
-            description="Block iCloud Private Relay egress proxies",
-            active=True,
-            priority=7,
             rule={
                 "action": {
                     "block": True,
                 },
-                "scope": "authentication",
                 "match": {
                     "auth0_manageds": ["auth0.icloud_relay_proxy"],
                 },
-            })
+                "scope": "authentication",
+            },
+            description="Block iCloud Private Relay egress proxies",
+            active=True,
+            priority=7)
         # Example using `not_match` to allow all traffic *unless* it comes from a
         # low-reputation curated blocklist. `auth0_managed` is accepted on either block.
         allow_unless_low_reputation = auth0.NetworkAcl("allow_unless_low_reputation",
-            description="Allow traffic unless it is on the low-reputation blocklist",
-            active=True,
-            priority=8,
             rule={
                 "action": {
                     "allow": True,
                 },
-                "scope": "authentication",
                 "not_match": {
                     "auth0_manageds": ["auth0.low_reputation"],
                 },
-            })
+                "scope": "authentication",
+            },
+            description="Allow traffic unless it is on the low-reputation blocklist",
+            active=True,
+            priority=8)
         # Example of auth0_network_acl with hostname and connecting IP restrictions
         block_canonical = auth0.NetworkAcl("block_canonical",
-            description="Block canonical domain except from proxy",
-            active=True,
-            priority=5,
             rule={
                 "action": {
                     "block": True,
                 },
-                "scope": "tenant",
                 "match": {
                     "hostnames": ["mytenant1.us.auth0.com"],
                     "connecting_ipv6_cidrs": [
@@ -274,7 +270,11 @@ class NetworkAcl(pulumi.CustomResource):
                     "hostnames": ["mytenant2.us.auth0.com"],
                     "connecting_ipv4_cidrs": ["203.0.113.0/24"],
                 },
-            })
+                "scope": "tenant",
+            },
+            description="Block canonical domain except from proxy",
+            active=True,
+            priority=5)
         ```
 
         ## Import
@@ -293,7 +293,7 @@ class NetworkAcl(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] active: Whether the Network ACL is active
         :param pulumi.Input[_builtins.str] description: The description of the Network ACL
         :param pulumi.Input[_builtins.int] priority: The priority of the Network ACL. Must be unique between 1 and 10.
-        :param pulumi.Input[Union['NetworkAclRuleArgs', 'NetworkAclRuleArgsDict']] rule: The rule of the Network ACL
+        :param pulumi.Input[Union['NetworkAclRuleArgs', 'NetworkAclRuleArgsDict', 'outputs.NetworkAclRule']] rule: The rule of the Network ACL
         """
         ...
     @overload
@@ -312,14 +312,10 @@ class NetworkAcl(pulumi.CustomResource):
 
         # Example of auth0_network_acl with match criteria
         my_network_acl_match = auth0.NetworkAcl("my_network_acl_match",
-            description="Example with match network ACL",
-            active=True,
-            priority=1,
             rule={
                 "action": {
                     "allow": True,
                 },
-                "scope": "management",
                 "match": {
                     "geo_country_codes": [
                         "US",
@@ -330,17 +326,17 @@ class NetworkAcl(pulumi.CustomResource):
                         "CA-ON",
                     ],
                 },
-            })
+                "scope": "management",
+            },
+            description="Example with match network ACL",
+            active=True,
+            priority=1)
         # Example of auth0_network_acl with not-match criteria
         my_network_acl_not_match = auth0.NetworkAcl("my_network_acl_not_match",
-            description="Example with not match network ACL",
-            active=True,
-            priority=3,
             rule={
                 "action": {
                     "log": True,
                 },
-                "scope": "authentication",
                 "not_match": {
                     "asns": [9876],
                     "ipv4_cidrs": [
@@ -349,50 +345,50 @@ class NetworkAcl(pulumi.CustomResource):
                     ],
                     "ipv6_cidrs": ["2001:db8::/32"],
                 },
-            })
+                "scope": "authentication",
+            },
+            description="Example with not match network ACL",
+            active=True,
+            priority=3)
         # Example of auth0_network_acl using Auth0-curated blocklists (Early Access).
         #
         # The `auth0_managed` field requires the `advanced-breached-password-detection`
         # entitlement and the `tenant_acl_curated_blocklists` feature flag on the tenant.
         # Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`.
         block_icloud_relay = auth0.NetworkAcl("block_icloud_relay",
-            description="Block iCloud Private Relay egress proxies",
-            active=True,
-            priority=7,
             rule={
                 "action": {
                     "block": True,
                 },
-                "scope": "authentication",
                 "match": {
                     "auth0_manageds": ["auth0.icloud_relay_proxy"],
                 },
-            })
+                "scope": "authentication",
+            },
+            description="Block iCloud Private Relay egress proxies",
+            active=True,
+            priority=7)
         # Example using `not_match` to allow all traffic *unless* it comes from a
         # low-reputation curated blocklist. `auth0_managed` is accepted on either block.
         allow_unless_low_reputation = auth0.NetworkAcl("allow_unless_low_reputation",
-            description="Allow traffic unless it is on the low-reputation blocklist",
-            active=True,
-            priority=8,
             rule={
                 "action": {
                     "allow": True,
                 },
-                "scope": "authentication",
                 "not_match": {
                     "auth0_manageds": ["auth0.low_reputation"],
                 },
-            })
+                "scope": "authentication",
+            },
+            description="Allow traffic unless it is on the low-reputation blocklist",
+            active=True,
+            priority=8)
         # Example of auth0_network_acl with hostname and connecting IP restrictions
         block_canonical = auth0.NetworkAcl("block_canonical",
-            description="Block canonical domain except from proxy",
-            active=True,
-            priority=5,
             rule={
                 "action": {
                     "block": True,
                 },
-                "scope": "tenant",
                 "match": {
                     "hostnames": ["mytenant1.us.auth0.com"],
                     "connecting_ipv6_cidrs": [
@@ -404,7 +400,11 @@ class NetworkAcl(pulumi.CustomResource):
                     "hostnames": ["mytenant2.us.auth0.com"],
                     "connecting_ipv4_cidrs": ["203.0.113.0/24"],
                 },
-            })
+                "scope": "tenant",
+            },
+            description="Block canonical domain except from proxy",
+            active=True,
+            priority=5)
         ```
 
         ## Import
@@ -436,7 +436,7 @@ class NetworkAcl(pulumi.CustomResource):
                  active: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
-                 rule: pulumi.Input[Optional[Union['NetworkAclRuleArgs', 'NetworkAclRuleArgsDict']]] = None,
+                 rule: pulumi.Input[Optional[Union['NetworkAclRuleArgs', 'NetworkAclRuleArgsDict', 'outputs.NetworkAclRule']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -471,7 +471,7 @@ class NetworkAcl(pulumi.CustomResource):
             active: pulumi.Input[Optional[_builtins.bool]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             priority: pulumi.Input[Optional[_builtins.int]] = None,
-            rule: pulumi.Input[Optional[Union['NetworkAclRuleArgs', 'NetworkAclRuleArgsDict']]] = None) -> 'NetworkAcl':
+            rule: pulumi.Input[Optional[Union['NetworkAclRuleArgs', 'NetworkAclRuleArgsDict', 'outputs.NetworkAclRule']]] = None) -> 'NetworkAcl':
         """
         Get an existing NetworkAcl resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -482,7 +482,7 @@ class NetworkAcl(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] active: Whether the Network ACL is active
         :param pulumi.Input[_builtins.str] description: The description of the Network ACL
         :param pulumi.Input[_builtins.int] priority: The priority of the Network ACL. Must be unique between 1 and 10.
-        :param pulumi.Input[Union['NetworkAclRuleArgs', 'NetworkAclRuleArgsDict']] rule: The rule of the Network ACL
+        :param pulumi.Input[Union['NetworkAclRuleArgs', 'NetworkAclRuleArgsDict', 'outputs.NetworkAclRule']] rule: The rule of the Network ACL
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

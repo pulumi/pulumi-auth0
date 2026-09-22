@@ -19,8 +19,6 @@ import * as utilities from "./utilities";
  *
  * const myClient = new auth0.Client("my_client", {name: "My-Auth0-Client"});
  * const oidc = new auth0.Connection("oidc", {
- *     name: "OIDC-Connection",
- *     strategy: "oidc",
  *     options: {
  *         clientId: myClient.id,
  *         scopes: [
@@ -35,6 +33,8 @@ import * as utilities from "./utilities";
  *         tokenEndpointAuthMethod: "private_key_jwt",
  *         tokenEndpointAuthSigningAlg: "RS256",
  *     },
+ *     name: "OIDC-Connection",
+ *     strategy: "oidc",
  * });
  * // Resource used to rotate the keys for above OIDC connection
  * const myKeys = new auth0.ConnectionKeys("my_keys", {

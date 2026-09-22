@@ -49,20 +49,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var login = new PromptScreenPartial("login", PromptScreenPartialArgs.builder()
- *             .promptType("login")
- *             .screenName("login")
  *             .insertionPoints(PromptScreenPartialInsertionPointsArgs.builder()
  *                 .formContentStart("<div>Form Content Start</div>")
  *                 .formContentEnd("<div>Form Content End</div>")
  *                 .build())
+ *             .promptType("login")
+ *             .screenName("login")
  *             .build());
  * 
  *         var customized_consent = new PromptScreenPartial("customized-consent", PromptScreenPartialArgs.builder()
- *             .promptType("customized-consent")
- *             .screenName("customized-consent")
  *             .insertionPoints(PromptScreenPartialInsertionPointsArgs.builder()
  *                 .formContent("<div>Form Content</div>")
  *                 .build())
+ *             .promptType("customized-consent")
+ *             .screenName("customized-consent")
  *             .build());
  * 
  *     }

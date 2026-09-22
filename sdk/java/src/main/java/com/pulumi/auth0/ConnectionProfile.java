@@ -50,15 +50,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myProfile = new ConnectionProfile("myProfile", ConnectionProfileArgs.builder()
- *             .name("My-Profile")
  *             .organization(ConnectionProfileOrganizationArgs.builder()
  *                 .showAsButton("optional")
  *                 .assignMembershipOnLogin("required")
  *                 .build())
- *             .connectionNamePrefixTemplate("template1")
- *             .enabledFeatures(            
- *                 "scim",
- *                 "universal_logout")
  *             .crossAppAccessResourceApp(ConnectionProfileCrossAppAccessResourceAppArgs.builder()
  *                 .status(ConnectionProfileCrossAppAccessResourceAppStatusArgs.builder()
  *                     .defaultValue("enabled")
@@ -67,6 +62,11 @@ import javax.annotation.Nullable;
  *                         "disabled")
  *                     .build())
  *                 .build())
+ *             .name("My-Profile")
+ *             .connectionNamePrefixTemplate("template1")
+ *             .enabledFeatures(            
+ *                 "scim",
+ *                 "universal_logout")
  *             .build());
  * 
  *     }

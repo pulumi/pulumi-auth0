@@ -68,7 +68,6 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var one_to_many = new OrganizationConnections("one-to-many", OrganizationConnectionsArgs.builder()
- *             .organizationId(myOrganization.id())
  *             .enabledConnections(            
  *                 OrganizationConnectionsEnabledConnectionArgs.builder()
  *                     .connectionId(myConnection_1.id())
@@ -82,6 +81,7 @@ import javax.annotation.Nullable;
  *                     .isSignupEnabled(false)
  *                     .showAsButton(true)
  *                     .build())
+ *             .organizationId(myOrganization.id())
  *             .build());
  * 
  *     }

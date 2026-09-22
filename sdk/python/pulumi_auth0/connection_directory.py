@@ -282,7 +282,7 @@ class ConnectionDirectory(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionDirectoryMappingArgs', 'ConnectionDirectoryMappingArgsDict']]]]] = None,
+                 mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionDirectoryMappingArgs', 'ConnectionDirectoryMappingArgsDict', 'outputs.ConnectionDirectoryMapping']]]]] = None,
                  synchronize_automatically: pulumi.Input[Optional[_builtins.bool]] = None,
                  synchronize_groups: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -296,22 +296,20 @@ class ConnectionDirectory(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         google_workspace = auth0.Connection("google_workspace",
-            name="google-workspace-connection",
-            display_name="Google Workspace",
-            strategy="google-apps",
             options={
                 "client_id": "your-google-client-id",
                 "client_secret": "your-google-client-secret",
                 "domain": "example.com",
                 "api_enable_users": True,
                 "api_enable_groups": True,
-            })
+            },
+            name="google-workspace-connection",
+            display_name="Google Workspace",
+            strategy="google-apps")
         # Configure directory provisioning with default settings
         default = auth0.ConnectionDirectory("default", connection_id=google_workspace.id)
         # Configure directory provisioning with custom mapping and auto-sync enabled
         custom = auth0.ConnectionDirectory("custom",
-            connection_id=google_workspace.id,
-            synchronize_automatically=True,
             mappings=[
                 {
                     "auth0": "email",
@@ -329,7 +327,9 @@ class ConnectionDirectory(pulumi.CustomResource):
                     "auth0": "external_id",
                     "idp": "id",
                 },
-            ])
+            ],
+            connection_id=google_workspace.id,
+            synchronize_automatically=True)
         # Configure directory provisioning with selective group synchronization
         with_selected_groups = auth0.ConnectionDirectory("with_selected_groups",
             connection_id=google_workspace.id,
@@ -346,7 +346,7 @@ class ConnectionDirectory(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connection_id: ID of the connection for this directory provisioning configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionDirectoryMappingArgs', 'ConnectionDirectoryMappingArgsDict']]]] mappings: Mapping between Auth0 attributes and IDP user attributes. Defaults to default mapping for the connection type if not specified.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionDirectoryMappingArgs', 'ConnectionDirectoryMappingArgsDict', 'outputs.ConnectionDirectoryMapping']]]] mappings: Mapping between Auth0 attributes and IDP user attributes. Defaults to default mapping for the connection type if not specified.
         :param pulumi.Input[_builtins.bool] synchronize_automatically: Whether periodic automatic synchronization is enabled. Defaults to false.
         :param pulumi.Input[_builtins.str] synchronize_groups: Group synchronization configuration. Valid values are: off, all, selected.
         """
@@ -366,22 +366,20 @@ class ConnectionDirectory(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         google_workspace = auth0.Connection("google_workspace",
-            name="google-workspace-connection",
-            display_name="Google Workspace",
-            strategy="google-apps",
             options={
                 "client_id": "your-google-client-id",
                 "client_secret": "your-google-client-secret",
                 "domain": "example.com",
                 "api_enable_users": True,
                 "api_enable_groups": True,
-            })
+            },
+            name="google-workspace-connection",
+            display_name="Google Workspace",
+            strategy="google-apps")
         # Configure directory provisioning with default settings
         default = auth0.ConnectionDirectory("default", connection_id=google_workspace.id)
         # Configure directory provisioning with custom mapping and auto-sync enabled
         custom = auth0.ConnectionDirectory("custom",
-            connection_id=google_workspace.id,
-            synchronize_automatically=True,
             mappings=[
                 {
                     "auth0": "email",
@@ -399,7 +397,9 @@ class ConnectionDirectory(pulumi.CustomResource):
                     "auth0": "external_id",
                     "idp": "id",
                 },
-            ])
+            ],
+            connection_id=google_workspace.id,
+            synchronize_automatically=True)
         # Configure directory provisioning with selective group synchronization
         with_selected_groups = auth0.ConnectionDirectory("with_selected_groups",
             connection_id=google_workspace.id,
@@ -429,7 +429,7 @@ class ConnectionDirectory(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionDirectoryMappingArgs', 'ConnectionDirectoryMappingArgsDict']]]]] = None,
+                 mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionDirectoryMappingArgs', 'ConnectionDirectoryMappingArgsDict', 'outputs.ConnectionDirectoryMapping']]]]] = None,
                  synchronize_automatically: pulumi.Input[Optional[_builtins.bool]] = None,
                  synchronize_groups: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -470,7 +470,7 @@ class ConnectionDirectory(pulumi.CustomResource):
             last_synchronization_at: pulumi.Input[Optional[_builtins.str]] = None,
             last_synchronization_error: pulumi.Input[Optional[_builtins.str]] = None,
             last_synchronization_status: pulumi.Input[Optional[_builtins.str]] = None,
-            mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionDirectoryMappingArgs', 'ConnectionDirectoryMappingArgsDict']]]]] = None,
+            mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionDirectoryMappingArgs', 'ConnectionDirectoryMappingArgsDict', 'outputs.ConnectionDirectoryMapping']]]]] = None,
             strategy: pulumi.Input[Optional[_builtins.str]] = None,
             synchronize_automatically: pulumi.Input[Optional[_builtins.bool]] = None,
             synchronize_groups: pulumi.Input[Optional[_builtins.str]] = None,
@@ -488,7 +488,7 @@ class ConnectionDirectory(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] last_synchronization_at: The timestamp at which the connection was last synchronized.
         :param pulumi.Input[_builtins.str] last_synchronization_error: The error message of the last synchronization, if any.
         :param pulumi.Input[_builtins.str] last_synchronization_status: The status of the last synchronization.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionDirectoryMappingArgs', 'ConnectionDirectoryMappingArgsDict']]]] mappings: Mapping between Auth0 attributes and IDP user attributes. Defaults to default mapping for the connection type if not specified.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionDirectoryMappingArgs', 'ConnectionDirectoryMappingArgsDict', 'outputs.ConnectionDirectoryMapping']]]] mappings: Mapping between Auth0 attributes and IDP user attributes. Defaults to default mapping for the connection type if not specified.
         :param pulumi.Input[_builtins.str] strategy: Strategy of the connection for this directory provisioning configuration.
         :param pulumi.Input[_builtins.bool] synchronize_automatically: Whether periodic automatic synchronization is enabled. Defaults to false.
         :param pulumi.Input[_builtins.str] synchronize_groups: Group synchronization configuration. Valid values are: off, all, selected.

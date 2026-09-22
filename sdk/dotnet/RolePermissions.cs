@@ -35,7 +35,6 @@ namespace Pulumi.Auth0
     /// 
     ///     var resourceServerScopes = new Auth0.ResourceServerScopes("resource_server_scopes", new()
     ///     {
-    ///         ResourceServerIdentifier = resourceServer.Identifier,
     ///         Scopes = new[]
     ///         {
     ///             new Auth0.Inputs.ResourceServerScopesScopeArgs
@@ -55,6 +54,7 @@ namespace Pulumi.Auth0
     ///                 Name = "store:delete",
     ///             },
     ///         },
+    ///         ResourceServerIdentifier = resourceServer.Identifier,
     ///     });
     /// 
     ///     var myRole = new Auth0.Role("my_role", new()

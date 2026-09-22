@@ -24,15 +24,15 @@ namespace Pulumi.Auth0
     /// {
     ///     var myEmailProvider = new Auth0.EmailProvider("my_email_provider", new()
     ///     {
-    ///         Name = "ses",
-    ///         Enabled = true,
-    ///         DefaultFromAddress = "accounts@example.com",
     ///         Credentials = new Auth0.Inputs.EmailProviderCredentialsArgs
     ///         {
     ///             AccessKeyId = "AKIAXXXXXXXXXXXXXXXX",
     ///             SecretAccessKey = "7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
     ///             Region = "us-east-1",
     ///         },
+    ///         Name = "ses",
+    ///         Enabled = true,
+    ///         DefaultFromAddress = "accounts@example.com",
     ///     });
     /// 
     ///     var myEmailTemplate = new Auth0.EmailTemplate("my_email_template", new()

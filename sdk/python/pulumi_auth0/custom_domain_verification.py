@@ -127,7 +127,8 @@ class CustomDomainVerification(pulumi.CustomResource):
                 suffix=.example.com).result,
             value=my_custom_domain.verifications[0].methods[0].record)
         my_custom_domain_verification = auth0.CustomDomainVerification("my_custom_domain_verification", custom_domain_id=my_custom_domain.id,
-        opts = pulumi.ResourceOptions(depends_on=[my_domain_name_record]))
+        opts = pulumi.ResourceOptions(depends_on=[my_domain_name_record],
+            custom_timeouts=pulumi.CustomTimeouts(create="15m")))
         ```
 
         ## Import
@@ -173,7 +174,8 @@ class CustomDomainVerification(pulumi.CustomResource):
                 suffix=.example.com).result,
             value=my_custom_domain.verifications[0].methods[0].record)
         my_custom_domain_verification = auth0.CustomDomainVerification("my_custom_domain_verification", custom_domain_id=my_custom_domain.id,
-        opts = pulumi.ResourceOptions(depends_on=[my_domain_name_record]))
+        opts = pulumi.ResourceOptions(depends_on=[my_domain_name_record],
+            custom_timeouts=pulumi.CustomTimeouts(create="15m")))
         ```
 
         ## Import

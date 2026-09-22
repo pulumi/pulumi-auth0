@@ -56,7 +56,6 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var myApiScopes = new ResourceServerScopes("myApiScopes", ResourceServerScopesArgs.builder()
- *             .resourceServerIdentifier(myApi.identifier())
  *             .scopes(            
  *                 ResourceServerScopesScopeArgs.builder()
  *                     .name("create:appointments")
@@ -66,6 +65,7 @@ import javax.annotation.Nullable;
  *                     .name("read:appointments")
  *                     .description("Ability to read appointments")
  *                     .build())
+ *             .resourceServerIdentifier(myApi.identifier())
  *             .build());
  * 
  *     }

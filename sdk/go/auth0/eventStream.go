@@ -31,15 +31,15 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Creates an event stream of type eventbridge
 //			_, err := auth0.NewEventStream(ctx, "my_event_stream_event_bridge", &auth0.EventStreamArgs{
+//				EventbridgeConfiguration: &auth0.EventStreamEventbridgeConfigurationArgs{
+//					AwsAccountId: pulumi.String("242849305777"),
+//					AwsRegion:    pulumi.String("us-east-1"),
+//				},
 //				Name:            pulumi.String("my-eventbridge"),
 //				DestinationType: pulumi.String("eventbridge"),
 //				Subscriptions: pulumi.StringArray{
 //					pulumi.String("user.created"),
 //					pulumi.String("user.updated"),
-//				},
-//				EventbridgeConfiguration: &auth0.EventStreamEventbridgeConfigurationArgs{
-//					AwsAccountId: pulumi.String("242849305777"),
-//					AwsRegion:    pulumi.String("us-east-1"),
 //				},
 //			})
 //			if err != nil {
@@ -47,19 +47,19 @@ import (
 //			}
 //			// Creates an event stream of type webhook in a disabled state
 //			_, err = auth0.NewEventStream(ctx, "my_event_stream_webhook", &auth0.EventStreamArgs{
+//				WebhookConfiguration: &auth0.EventStreamWebhookConfigurationArgs{
+//					WebhookAuthorization: &auth0.EventStreamWebhookConfigurationWebhookAuthorizationArgs{
+//						Method: pulumi.String("bearer"),
+//						Token:  pulumi.String("123456789"),
+//					},
+//					WebhookEndpoint: pulumi.String("https://eof28wtn4v4506o.m.pipedream.net"),
+//				},
 //				Name:            pulumi.String("my-webhook"),
 //				DestinationType: pulumi.String("webhook"),
 //				Status:          pulumi.String("disabled"),
 //				Subscriptions: pulumi.StringArray{
 //					pulumi.String("user.created"),
 //					pulumi.String("user.updated"),
-//				},
-//				WebhookConfiguration: &auth0.EventStreamWebhookConfigurationArgs{
-//					WebhookEndpoint: pulumi.String("https://eof28wtn4v4506o.m.pipedream.net"),
-//					WebhookAuthorization: &auth0.EventStreamWebhookConfigurationWebhookAuthorizationArgs{
-//						Method: pulumi.String("bearer"),
-//						Token:  pulumi.String("123456789"),
-//					},
 //				},
 //			})
 //			if err != nil {
@@ -69,19 +69,19 @@ import (
 //			// The webhook token
 //			webhookToken := cfg.Require("webhookToken")
 //			_, err = auth0.NewEventStream(ctx, "my_event_stream_webhook_secure", &auth0.EventStreamArgs{
-//				Name:            pulumi.String("my-webhook-secure"),
-//				DestinationType: pulumi.String("webhook"),
-//				Subscriptions: pulumi.StringArray{
-//					pulumi.String("user.created"),
-//					pulumi.String("user.updated"),
-//				},
 //				WebhookConfiguration: &auth0.EventStreamWebhookConfigurationArgs{
-//					WebhookEndpoint: pulumi.String("https://eof28wtn4v4506o.m.pipedream.net"),
 //					WebhookAuthorization: &auth0.EventStreamWebhookConfigurationWebhookAuthorizationArgs{
 //						Method:         pulumi.String("bearer"),
 //						TokenWo:        pulumi.String(webhookToken),
 //						TokenWoVersion: pulumi.Int(1),
 //					},
+//					WebhookEndpoint: pulumi.String("https://eof28wtn4v4506o.m.pipedream.net"),
+//				},
+//				Name:            pulumi.String("my-webhook-secure"),
+//				DestinationType: pulumi.String("webhook"),
+//				Subscriptions: pulumi.StringArray{
+//					pulumi.String("user.created"),
+//					pulumi.String("user.updated"),
 //				},
 //			})
 //			if err != nil {
@@ -89,14 +89,14 @@ import (
 //			}
 //			// Creates an event stream of type action
 //			_, err = auth0.NewEventStream(ctx, "my_event_stream_action", &auth0.EventStreamArgs{
+//				ActionConfiguration: &auth0.EventStreamActionConfigurationArgs{
+//					ActionId: pulumi.Any(myAction.Id),
+//				},
 //				Name:            pulumi.String("my-action-stream"),
 //				DestinationType: pulumi.String("action"),
 //				Subscriptions: pulumi.StringArray{
 //					pulumi.String("user.created"),
 //					pulumi.String("user.updated"),
-//				},
-//				ActionConfiguration: &auth0.EventStreamActionConfigurationArgs{
-//					ActionId: pulumi.Any(myAction.Id),
 //				},
 //			})
 //			if err != nil {

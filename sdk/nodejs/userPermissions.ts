@@ -20,8 +20,6 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const resourceServer = new auth0.ResourceServer("resource_server", {
- *     name: "Example Resource Server (Managed by Terraform)",
- *     identifier: "https://api.example.com",
  *     scopes: [
  *         {
  *             value: "create:foo",
@@ -32,6 +30,8 @@ import * as utilities from "./utilities";
  *             description: "Read foos",
  *         },
  *     ],
+ *     name: "Example Resource Server (Managed by Terraform)",
+ *     identifier: "https://api.example.com",
  * });
  * const user = new auth0.User("user", {
  *     connectionName: "Username-Password-Authentication",
@@ -45,7 +45,6 @@ import * as utilities from "./utilities";
  *     picture: "https://www.example.com/a-valid-picture-url.jpg",
  * });
  * const allUserPermissions = new auth0.UserPermissions("all_user_permissions", {
- *     userId: user.id,
  *     permissions: [
  *         {
  *             name: resourceServer.scopes[0],
@@ -56,6 +55,7 @@ import * as utilities from "./utilities";
  *             resourceServerIdentifier: resourceServer.identifier,
  *         },
  *     ],
+ *     userId: user.id,
  * });
  * ```
  *

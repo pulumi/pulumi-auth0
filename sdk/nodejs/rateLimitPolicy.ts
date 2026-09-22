@@ -16,14 +16,14 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const noisyApp = new auth0.RateLimitPolicy("noisy_app", {
- *     resource: "oauth_authentication_api",
- *     consumer: "client",
- *     consumerSelector: "client_id:abc123",
  *     configuration: {
  *         action: "redirect",
  *         limit: 1000,
  *         redirectUri: "https://example.com/rate-limited",
  *     },
+ *     resource: "oauth_authentication_api",
+ *     consumer: "client",
+ *     consumerSelector: "client_id:abc123",
  * });
  * ```
  *

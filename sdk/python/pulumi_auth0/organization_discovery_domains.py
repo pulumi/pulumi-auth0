@@ -104,7 +104,7 @@ class OrganizationDiscoveryDomains(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 discovery_domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationDiscoveryDomainsDiscoveryDomainArgs', 'OrganizationDiscoveryDomainsDiscoveryDomainArgsDict']]]]] = None,
+                 discovery_domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationDiscoveryDomainsDiscoveryDomainArgs', 'OrganizationDiscoveryDomainsDiscoveryDomainArgsDict', 'outputs.OrganizationDiscoveryDomainsDiscoveryDomain']]]]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -113,7 +113,7 @@ class OrganizationDiscoveryDomains(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationDiscoveryDomainsDiscoveryDomainArgs', 'OrganizationDiscoveryDomainsDiscoveryDomainArgsDict']]]] discovery_domains: Discovery domains that are configured for the organization.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationDiscoveryDomainsDiscoveryDomainArgs', 'OrganizationDiscoveryDomainsDiscoveryDomainArgsDict', 'outputs.OrganizationDiscoveryDomainsDiscoveryDomain']]]] discovery_domains: Discovery domains that are configured for the organization.
         :param pulumi.Input[_builtins.str] organization_id: ID of the organization on which to manage the discovery domains.
         """
         ...
@@ -141,7 +141,7 @@ class OrganizationDiscoveryDomains(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 discovery_domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationDiscoveryDomainsDiscoveryDomainArgs', 'OrganizationDiscoveryDomainsDiscoveryDomainArgsDict']]]]] = None,
+                 discovery_domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationDiscoveryDomainsDiscoveryDomainArgs', 'OrganizationDiscoveryDomainsDiscoveryDomainArgsDict', 'outputs.OrganizationDiscoveryDomainsDiscoveryDomain']]]]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -168,7 +168,7 @@ class OrganizationDiscoveryDomains(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            discovery_domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationDiscoveryDomainsDiscoveryDomainArgs', 'OrganizationDiscoveryDomainsDiscoveryDomainArgsDict']]]]] = None,
+            discovery_domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationDiscoveryDomainsDiscoveryDomainArgs', 'OrganizationDiscoveryDomainsDiscoveryDomainArgsDict', 'outputs.OrganizationDiscoveryDomainsDiscoveryDomain']]]]] = None,
             organization_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'OrganizationDiscoveryDomains':
         """
         Get an existing OrganizationDiscoveryDomains resource's state with the given name, id, and optional extra
@@ -177,7 +177,7 @@ class OrganizationDiscoveryDomains(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationDiscoveryDomainsDiscoveryDomainArgs', 'OrganizationDiscoveryDomainsDiscoveryDomainArgsDict']]]] discovery_domains: Discovery domains that are configured for the organization.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationDiscoveryDomainsDiscoveryDomainArgs', 'OrganizationDiscoveryDomainsDiscoveryDomainArgsDict', 'outputs.OrganizationDiscoveryDomainsDiscoveryDomain']]]] discovery_domains: Discovery domains that are configured for the organization.
         :param pulumi.Input[_builtins.str] organization_id: ID of the organization on which to manage the discovery domains.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

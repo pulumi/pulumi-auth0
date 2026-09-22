@@ -61,10 +61,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myGuardian = new Guardian("myGuardian", GuardianArgs.builder()
- *             .policy("all-applications")
- *             .email(true)
- *             .otp(true)
- *             .recoveryCode(true)
  *             .webauthnPlatform(GuardianWebauthnPlatformArgs.builder()
  *                 .enabled(true)
  *                 .build())
@@ -79,8 +75,6 @@ import javax.annotation.Nullable;
  *                     "voice")
  *                 .build())
  *             .push(GuardianPushArgs.builder()
- *                 .enabled(true)
- *                 .provider("sns")
  *                 .amazonSns(GuardianPushAmazonSnsArgs.builder()
  *                     .awsAccessKeyId("test1")
  *                     .awsRegion("us-west-1")
@@ -93,6 +87,8 @@ import javax.annotation.Nullable;
  *                     .appleAppLink("https://itunes.apple.com/us/app/my-app/id123121")
  *                     .googleAppLink("https://play.google.com/store/apps/details?id=com.my.app")
  *                     .build())
+ *                 .enabled(true)
+ *                 .provider("sns")
  *                 .build())
  *             .duo(GuardianDuoArgs.builder()
  *                 .enabled(true)
@@ -100,6 +96,10 @@ import javax.annotation.Nullable;
  *                 .secretKey("someSecret")
  *                 .hostname("api-hostname")
  *                 .build())
+ *             .policy("all-applications")
+ *             .email(true)
+ *             .otp(true)
+ *             .recoveryCode(true)
  *             .build());
  * 
  *     }

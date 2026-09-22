@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.auth0.Form;
  * import com.pulumi.auth0.FormArgs;
- * import com.pulumi.auth0.inputs.FormMessageArgs;
  * import com.pulumi.auth0.inputs.FormLanguageArgs;
+ * import com.pulumi.auth0.inputs.FormMessageArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -49,6 +49,16 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Example:
  *         var myForm = new Form("myForm", FormArgs.builder()
+ *             .languages(FormLanguageArgs.builder()
+ *                 .default_("en")
+ *                 .primary("en")
+ *                 .build())
+ *             .messages(FormMessageArgs.builder()
+ *                 .errors(serializeJson(
+ *                     jsonObject(
+ *                         jsonProperty("ERR_REQUIRED_PROPERTY", "This field is required for user kyc.")
+ *                     )))
+ *                 .build())
  *             .name("My KYC Form")
  *             .start(serializeJson(
  *                 jsonObject(
@@ -133,16 +143,6 @@ import javax.annotation.Nullable;
  *                         ))
  *                     ))
  *                 )))
- *             .messages(FormMessageArgs.builder()
- *                 .errors(serializeJson(
- *                     jsonObject(
- *                         jsonProperty("ERR_REQUIRED_PROPERTY", "This field is required for user kyc.")
- *                     )))
- *                 .build())
- *             .languages(FormLanguageArgs.builder()
- *                 .default_("en")
- *                 .primary("en")
- *                 .build())
  *             .build());
  * 
  *     }

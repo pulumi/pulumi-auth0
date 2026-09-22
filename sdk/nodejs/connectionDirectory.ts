@@ -16,9 +16,6 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const googleWorkspace = new auth0.Connection("google_workspace", {
- *     name: "google-workspace-connection",
- *     displayName: "Google Workspace",
- *     strategy: "google-apps",
  *     options: {
  *         clientId: "your-google-client-id",
  *         clientSecret: "your-google-client-secret",
@@ -26,13 +23,14 @@ import * as utilities from "./utilities";
  *         apiEnableUsers: true,
  *         apiEnableGroups: true,
  *     },
+ *     name: "google-workspace-connection",
+ *     displayName: "Google Workspace",
+ *     strategy: "google-apps",
  * });
  * // Configure directory provisioning with default settings
  * const _default = new auth0.ConnectionDirectory("default", {connectionId: googleWorkspace.id});
  * // Configure directory provisioning with custom mapping and auto-sync enabled
  * const custom = new auth0.ConnectionDirectory("custom", {
- *     connectionId: googleWorkspace.id,
- *     synchronizeAutomatically: true,
  *     mappings: [
  *         {
  *             auth0: "email",
@@ -51,6 +49,8 @@ import * as utilities from "./utilities";
  *             idp: "id",
  *         },
  *     ],
+ *     connectionId: googleWorkspace.id,
+ *     synchronizeAutomatically: true,
  * });
  * // Configure directory provisioning with selective group synchronization
  * const withSelectedGroups = new auth0.ConnectionDirectory("with_selected_groups", {

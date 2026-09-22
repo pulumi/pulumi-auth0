@@ -48,7 +48,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myBrand = new Branding("myBrand", BrandingArgs.builder()
- *             .logoUrl("https://mycompany.org/logo.png")
  *             .colors(BrandingColorsArgs.builder()
  *                 .primary("#0059d6")
  *                 .pageBackground("#000000")
@@ -56,6 +55,7 @@ import javax.annotation.Nullable;
  *             .universalLogin(BrandingUniversalLoginArgs.builder()
  *                 .body(StdFunctions.file(Map.of("input", "universal_login_body.html")).result())
  *                 .build())
+ *             .logoUrl("https://mycompany.org/logo.png")
  *             .build());
  * 
  *     }

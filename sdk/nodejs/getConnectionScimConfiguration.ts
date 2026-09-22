@@ -16,9 +16,6 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const myEnterpriseConnection = new auth0.Connection("my_enterprise_connection", {
- *     name: "my-enterprise-connection",
- *     displayName: "My Enterprise Connection",
- *     strategy: "okta",
  *     options: {
  *         clientId: "1234567",
  *         clientSecret: "1234567",
@@ -27,6 +24,9 @@ import * as utilities from "./utilities";
  *         tokenEndpoint: "https://example.okta.com/oauth2/v1/token",
  *         authorizationEndpoint: "https://example.okta.com/oauth2/v1/authorize",
  *     },
+ *     name: "my-enterprise-connection",
+ *     displayName: "My Enterprise Connection",
+ *     strategy: "okta",
  * });
  * const myConnScimConfiguration = new auth0.ConnectionScimConfiguration("my_conn_scim_configuration", {connectionId: myEnterpriseConnection.id});
  * // A data source for an Auth0 Connection SCIM Configuration.
@@ -109,9 +109,6 @@ export interface GetConnectionScimConfigurationResult {
  * import * as auth0 from "@pulumi/auth0";
  *
  * const myEnterpriseConnection = new auth0.Connection("my_enterprise_connection", {
- *     name: "my-enterprise-connection",
- *     displayName: "My Enterprise Connection",
- *     strategy: "okta",
  *     options: {
  *         clientId: "1234567",
  *         clientSecret: "1234567",
@@ -120,6 +117,9 @@ export interface GetConnectionScimConfigurationResult {
  *         tokenEndpoint: "https://example.okta.com/oauth2/v1/token",
  *         authorizationEndpoint: "https://example.okta.com/oauth2/v1/authorize",
  *     },
+ *     name: "my-enterprise-connection",
+ *     displayName: "My Enterprise Connection",
+ *     strategy: "okta",
  * });
  * const myConnScimConfiguration = new auth0.ConnectionScimConfiguration("my_conn_scim_configuration", {connectionId: myEnterpriseConnection.id});
  * // A data source for an Auth0 Connection SCIM Configuration.

@@ -22,14 +22,10 @@ import * as utilities from "./utilities";
  * });
  * // Reference the key in a Network ACL rule to allow only signed requests.
  * const allowSignedOnly = new auth0.NetworkAcl("allow_signed_only", {
- *     description: "Block requests without a valid HMAC signature",
- *     active: true,
- *     priority: 99,
  *     rule: {
  *         action: {
  *             block: true,
  *         },
- *         scope: "tenant",
  *         notMatch: {
  *             httpMessageSignature: {
  *                 keys: [{
@@ -37,7 +33,11 @@ import * as utilities from "./utilities";
  *                 }],
  *             },
  *         },
+ *         scope: "tenant",
  *     },
+ *     description: "Block requests without a valid HMAC signature",
+ *     active: true,
+ *     priority: 99,
  * });
  * ```
  */

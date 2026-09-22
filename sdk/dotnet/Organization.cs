@@ -30,9 +30,6 @@ namespace Pulumi.Auth0
     /// {
     ///     var myOrganization = new Auth0.Organization("my_organization", new()
     ///     {
-    ///         Name = "auth0-inc",
-    ///         DisplayName = "Auth0 Inc.",
-    ///         ThirdPartyClientAccess = "block",
     ///         Branding = new Auth0.Inputs.OrganizationBrandingArgs
     ///         {
     ///             LogoUrl = "https://example.com/assets/icons/icon.png",
@@ -42,6 +39,9 @@ namespace Pulumi.Auth0
     ///                 { "page_background", "#e1e1e1" },
     ///             },
     ///         },
+    ///         Name = "auth0-inc",
+    ///         DisplayName = "Auth0 Inc.",
+    ///         ThirdPartyClientAccess = "block",
     ///     });
     /// 
     /// });

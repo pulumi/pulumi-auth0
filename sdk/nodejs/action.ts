@@ -26,22 +26,6 @@ import * as utilities from "./utilities";
  * import * as std from "@pulumi/std";
  *
  * const myAction = new auth0.Action("my_action", {
- *     name: std.format({
- *         input: "Test Action %s",
- *         args: [std.timestamp({}).result],
- *     }).result,
- *     runtime: "node22",
- *     deploy: true,
- *     code: `/**
- *  * Handler that will be called during the execution of a PostLogin flow.
- *  *
- *  * @param {Event} event - Details about the user and the context in which they are logging in.
- *  * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
- *  *&#47;
- *  exports.onExecutePostLogin = async (event, api) => {
- *    console.log(event);
- *  };
- * `,
  *     supportedTriggers: {
  *         id: "post-login",
  *         version: "v3",
@@ -66,11 +50,35 @@ import * as utilities from "./utilities";
  *             value: "Bar",
  *         },
  *     ],
+ *     name: std.format({
+ *         input: "Test Action %s",
+ *         args: [std.timestamp({}).result],
+ *     }).result,
+ *     runtime: "node22",
+ *     deploy: true,
+ *     code: `/**
+ *  * Handler that will be called during the execution of a PostLogin flow.
+ *  *
+ *  * @param {Event} event - Details about the user and the context in which they are logging in.
+ *  * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
+ *  *&#47;
+ *  exports.onExecutePostLogin = async (event, api) => {
+ *    console.log(event);
+ *  };
+ * `,
  * });
  * const config = new pulumi.Config();
  * // API key passed to the post-login action.
  * const actionApiKey = config.require("actionApiKey");
  * const mySecureAction = new auth0.Action("my_secure_action", {
+ *     supportedTriggers: {
+ *         id: "post-login",
+ *         version: "v3",
+ *     },
+ *     secretsWos: [{
+ *         name: "API_KEY",
+ *         value: actionApiKey,
+ *     }],
  *     name: std.format({
  *         input: "Secure Action %s",
  *         args: [std.timestamp({}).result],
@@ -81,14 +89,6 @@ import * as utilities from "./utilities";
  *   console.log(event);
  * };
  * `,
- *     supportedTriggers: {
- *         id: "post-login",
- *         version: "v3",
- *     },
- *     secretsWos: [{
- *         name: "API_KEY",
- *         value: actionApiKey,
- *     }],
  *     secretsWoVersion: 1,
  * });
  * ```

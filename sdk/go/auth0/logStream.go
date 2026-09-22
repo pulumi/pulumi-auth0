@@ -33,18 +33,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// This is an example of an http log stream.
 //			_, err := auth0.NewLogStream(ctx, "my_webhook", &auth0.LogStreamArgs{
-//				Name: pulumi.String("HTTP log stream"),
-//				Type: pulumi.String("http"),
-//				Filters: pulumi.StringMapArray{
-//					pulumi.StringMap{
-//						"type": pulumi.String("category"),
-//						"name": pulumi.String("auth.login.fail"),
-//					},
-//					pulumi.StringMap{
-//						"type": pulumi.String("category"),
-//						"name": pulumi.String("auth.signup.fail"),
-//					},
-//				},
 //				Sink: &auth0.LogStreamSinkArgs{
 //					HttpEndpoint:      pulumi.String("https://example.com/logs"),
 //					HttpContentType:   pulumi.String("application/json"),
@@ -57,19 +45,31 @@ import (
 //						},
 //					},
 //				},
+//				Name: pulumi.String("HTTP log stream"),
+//				Type: pulumi.String("http"),
+//				Filters: pulumi.StringMapArray{
+//					pulumi.StringMap{
+//						"type": pulumi.String("category"),
+//						"name": pulumi.String("auth.login.fail"),
+//					},
+//					pulumi.StringMap{
+//						"type": pulumi.String("category"),
+//						"name": pulumi.String("auth.signup.fail"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// This is an example of an Amazon EventBridge log stream.
 //			_, err = auth0.NewLogStream(ctx, "example_aws", &auth0.LogStreamArgs{
-//				Name:   pulumi.String("AWS Eventbridge"),
-//				Type:   pulumi.String("eventbridge"),
-//				Status: pulumi.String("active"),
 //				Sink: &auth0.LogStreamSinkArgs{
 //					AwsAccountId: pulumi.String("my_account_id"),
 //					AwsRegion:    pulumi.String("us-east-2"),
 //				},
+//				Name:   pulumi.String("AWS Eventbridge"),
+//				Type:   pulumi.String("eventbridge"),
+//				Status: pulumi.String("active"),
 //			})
 //			if err != nil {
 //				return err
@@ -77,13 +77,13 @@ import (
 //			// This is an example of a Datadog log stream using a write-only API key
 //			// (recommended for security). The key is never stored in Terraform state.
 //			_, err = auth0.NewLogStream(ctx, "datadog_secure", &auth0.LogStreamArgs{
-//				Name: pulumi.String("Datadog (write-only key)"),
-//				Type: pulumi.String("datadog"),
 //				Sink: &auth0.LogStreamSinkArgs{
 //					DatadogRegion:          pulumi.String("us"),
 //					DatadogApiKeyWo:        pulumi.String("AKIAXXXXXXXXXXXXXXXX"),
 //					DatadogApiKeyWoVersion: pulumi.Int(1),
 //				},
+//				Name: pulumi.String("Datadog (write-only key)"),
+//				Type: pulumi.String("datadog"),
 //			})
 //			if err != nil {
 //				return err

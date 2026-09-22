@@ -21,32 +21,32 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const promptScreenPartials = new auth0.PromptScreenPartials("prompt_screen_partials", {
- *     promptType: "login-passwordless",
  *     screenPartials: [
  *         {
- *             screenName: "login-passwordless-email-code",
  *             insertionPoints: {
  *                 formContentStart: "<div>Form Content Start</div>",
  *                 formContentEnd: "<div>Form Content End</div>",
  *             },
+ *             screenName: "login-passwordless-email-code",
  *         },
  *         {
- *             screenName: "login-passwordless-sms-otp",
  *             insertionPoints: {
  *                 formContentStart: "<div>Form Content Start</div>",
  *                 formContentEnd: "<div>Form Content End</div>",
  *             },
+ *             screenName: "login-passwordless-sms-otp",
  *         },
  *     ],
+ *     promptType: "login-passwordless",
  * });
  * const customized_consent = new auth0.PromptScreenPartials("customized-consent", {
- *     promptType: "customized-consent",
  *     screenPartials: [{
- *         screenName: "customized-consent",
  *         insertionPoints: {
  *             formContent: "<div>Form Content</div>",
  *         },
+ *         screenName: "customized-consent",
  *     }],
+ *     promptType: "customized-consent",
  * });
  * ```
  *

@@ -266,13 +266,13 @@ class ConnectionProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connection_config: pulumi.Input[Optional[Union['ConnectionProfileConnectionConfigArgs', 'ConnectionProfileConnectionConfigArgsDict']]] = None,
+                 connection_config: pulumi.Input[Optional[Union['ConnectionProfileConnectionConfigArgs', 'ConnectionProfileConnectionConfigArgsDict', 'outputs.ConnectionProfileConnectionConfig']]] = None,
                  connection_name_prefix_template: pulumi.Input[Optional[_builtins.str]] = None,
-                 cross_app_access_resource_app: pulumi.Input[Optional[Union['ConnectionProfileCrossAppAccessResourceAppArgs', 'ConnectionProfileCrossAppAccessResourceAppArgsDict']]] = None,
+                 cross_app_access_resource_app: pulumi.Input[Optional[Union['ConnectionProfileCrossAppAccessResourceAppArgs', 'ConnectionProfileCrossAppAccessResourceAppArgsDict', 'outputs.ConnectionProfileCrossAppAccessResourceApp']]] = None,
                  enabled_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 organization: pulumi.Input[Optional[Union['ConnectionProfileOrganizationArgs', 'ConnectionProfileOrganizationArgsDict']]] = None,
-                 strategy_overrides: pulumi.Input[Optional[Union['ConnectionProfileStrategyOverridesArgs', 'ConnectionProfileStrategyOverridesArgsDict']]] = None,
+                 organization: pulumi.Input[Optional[Union['ConnectionProfileOrganizationArgs', 'ConnectionProfileOrganizationArgsDict', 'outputs.ConnectionProfileOrganization']]] = None,
+                 strategy_overrides: pulumi.Input[Optional[Union['ConnectionProfileStrategyOverridesArgs', 'ConnectionProfileStrategyOverridesArgsDict', 'outputs.ConnectionProfileStrategyOverrides']]] = None,
                  __props__=None):
         """
         Manage Auth0 connection profiles. Connection profiles allow you to store configuration templates for connections.
@@ -284,16 +284,10 @@ class ConnectionProfile(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         my_profile = auth0.ConnectionProfile("my_profile",
-            name="My-Profile",
             organization={
                 "show_as_button": "optional",
                 "assign_membership_on_login": "required",
             },
-            connection_name_prefix_template="template1",
-            enabled_features=[
-                "scim",
-                "universal_logout",
-            ],
             cross_app_access_resource_app={
                 "status": {
                     "default_value": "enabled",
@@ -302,7 +296,13 @@ class ConnectionProfile(pulumi.CustomResource):
                         "disabled",
                     ],
                 },
-            })
+            },
+            name="My-Profile",
+            connection_name_prefix_template="template1",
+            enabled_features=[
+                "scim",
+                "universal_logout",
+            ])
         ```
 
         ## Import
@@ -318,13 +318,13 @@ class ConnectionProfile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ConnectionProfileConnectionConfigArgs', 'ConnectionProfileConnectionConfigArgsDict']] connection_config: Connection configuration for the profile.
+        :param pulumi.Input[Union['ConnectionProfileConnectionConfigArgs', 'ConnectionProfileConnectionConfigArgsDict', 'outputs.ConnectionProfileConnectionConfig']] connection_config: Connection configuration for the profile.
         :param pulumi.Input[_builtins.str] connection_name_prefix_template: Template for generating connection names from the profile.
-        :param pulumi.Input[Union['ConnectionProfileCrossAppAccessResourceAppArgs', 'ConnectionProfileCrossAppAccessResourceAppArgsDict']] cross_app_access_resource_app: Configures the connection profile as a Cross-App Access (XAA) resource application, controlling whether organization admins may enable XAA on their identity providers. Requires the `my_orgs_cross_app_access_resource_app` tenant flag to be enabled (EA only). Note: this is distinct from, and unrelated to, `cross_app_access_resource_app` on `Connection`, which uses a flat `status` string rather than this nested `status` block.
+        :param pulumi.Input[Union['ConnectionProfileCrossAppAccessResourceAppArgs', 'ConnectionProfileCrossAppAccessResourceAppArgsDict', 'outputs.ConnectionProfileCrossAppAccessResourceApp']] cross_app_access_resource_app: Configures the connection profile as a Cross-App Access (XAA) resource application, controlling whether organization admins may enable XAA on their identity providers. Requires the `my_orgs_cross_app_access_resource_app` tenant flag to be enabled (EA only). Note: this is distinct from, and unrelated to, `cross_app_access_resource_app` on `Connection`, which uses a flat `status` string rather than this nested `status` block.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enabled_features: List of enabled features for the connection profile.
         :param pulumi.Input[_builtins.str] name: Name of the connection profile.
-        :param pulumi.Input[Union['ConnectionProfileOrganizationArgs', 'ConnectionProfileOrganizationArgsDict']] organization: Organization associated with the connection profile.
-        :param pulumi.Input[Union['ConnectionProfileStrategyOverridesArgs', 'ConnectionProfileStrategyOverridesArgsDict']] strategy_overrides: Strategy overrides for the connection profile.
+        :param pulumi.Input[Union['ConnectionProfileOrganizationArgs', 'ConnectionProfileOrganizationArgsDict', 'outputs.ConnectionProfileOrganization']] organization: Organization associated with the connection profile.
+        :param pulumi.Input[Union['ConnectionProfileStrategyOverridesArgs', 'ConnectionProfileStrategyOverridesArgsDict', 'outputs.ConnectionProfileStrategyOverrides']] strategy_overrides: Strategy overrides for the connection profile.
         """
         ...
     @overload
@@ -342,16 +342,10 @@ class ConnectionProfile(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         my_profile = auth0.ConnectionProfile("my_profile",
-            name="My-Profile",
             organization={
                 "show_as_button": "optional",
                 "assign_membership_on_login": "required",
             },
-            connection_name_prefix_template="template1",
-            enabled_features=[
-                "scim",
-                "universal_logout",
-            ],
             cross_app_access_resource_app={
                 "status": {
                     "default_value": "enabled",
@@ -360,7 +354,13 @@ class ConnectionProfile(pulumi.CustomResource):
                         "disabled",
                     ],
                 },
-            })
+            },
+            name="My-Profile",
+            connection_name_prefix_template="template1",
+            enabled_features=[
+                "scim",
+                "universal_logout",
+            ])
         ```
 
         ## Import
@@ -389,13 +389,13 @@ class ConnectionProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connection_config: pulumi.Input[Optional[Union['ConnectionProfileConnectionConfigArgs', 'ConnectionProfileConnectionConfigArgsDict']]] = None,
+                 connection_config: pulumi.Input[Optional[Union['ConnectionProfileConnectionConfigArgs', 'ConnectionProfileConnectionConfigArgsDict', 'outputs.ConnectionProfileConnectionConfig']]] = None,
                  connection_name_prefix_template: pulumi.Input[Optional[_builtins.str]] = None,
-                 cross_app_access_resource_app: pulumi.Input[Optional[Union['ConnectionProfileCrossAppAccessResourceAppArgs', 'ConnectionProfileCrossAppAccessResourceAppArgsDict']]] = None,
+                 cross_app_access_resource_app: pulumi.Input[Optional[Union['ConnectionProfileCrossAppAccessResourceAppArgs', 'ConnectionProfileCrossAppAccessResourceAppArgsDict', 'outputs.ConnectionProfileCrossAppAccessResourceApp']]] = None,
                  enabled_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 organization: pulumi.Input[Optional[Union['ConnectionProfileOrganizationArgs', 'ConnectionProfileOrganizationArgsDict']]] = None,
-                 strategy_overrides: pulumi.Input[Optional[Union['ConnectionProfileStrategyOverridesArgs', 'ConnectionProfileStrategyOverridesArgsDict']]] = None,
+                 organization: pulumi.Input[Optional[Union['ConnectionProfileOrganizationArgs', 'ConnectionProfileOrganizationArgsDict', 'outputs.ConnectionProfileOrganization']]] = None,
+                 strategy_overrides: pulumi.Input[Optional[Union['ConnectionProfileStrategyOverridesArgs', 'ConnectionProfileStrategyOverridesArgsDict', 'outputs.ConnectionProfileStrategyOverrides']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -422,13 +422,13 @@ class ConnectionProfile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connection_config: pulumi.Input[Optional[Union['ConnectionProfileConnectionConfigArgs', 'ConnectionProfileConnectionConfigArgsDict']]] = None,
+            connection_config: pulumi.Input[Optional[Union['ConnectionProfileConnectionConfigArgs', 'ConnectionProfileConnectionConfigArgsDict', 'outputs.ConnectionProfileConnectionConfig']]] = None,
             connection_name_prefix_template: pulumi.Input[Optional[_builtins.str]] = None,
-            cross_app_access_resource_app: pulumi.Input[Optional[Union['ConnectionProfileCrossAppAccessResourceAppArgs', 'ConnectionProfileCrossAppAccessResourceAppArgsDict']]] = None,
+            cross_app_access_resource_app: pulumi.Input[Optional[Union['ConnectionProfileCrossAppAccessResourceAppArgs', 'ConnectionProfileCrossAppAccessResourceAppArgsDict', 'outputs.ConnectionProfileCrossAppAccessResourceApp']]] = None,
             enabled_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            organization: pulumi.Input[Optional[Union['ConnectionProfileOrganizationArgs', 'ConnectionProfileOrganizationArgsDict']]] = None,
-            strategy_overrides: pulumi.Input[Optional[Union['ConnectionProfileStrategyOverridesArgs', 'ConnectionProfileStrategyOverridesArgsDict']]] = None) -> 'ConnectionProfile':
+            organization: pulumi.Input[Optional[Union['ConnectionProfileOrganizationArgs', 'ConnectionProfileOrganizationArgsDict', 'outputs.ConnectionProfileOrganization']]] = None,
+            strategy_overrides: pulumi.Input[Optional[Union['ConnectionProfileStrategyOverridesArgs', 'ConnectionProfileStrategyOverridesArgsDict', 'outputs.ConnectionProfileStrategyOverrides']]] = None) -> 'ConnectionProfile':
         """
         Get an existing ConnectionProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -436,13 +436,13 @@ class ConnectionProfile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ConnectionProfileConnectionConfigArgs', 'ConnectionProfileConnectionConfigArgsDict']] connection_config: Connection configuration for the profile.
+        :param pulumi.Input[Union['ConnectionProfileConnectionConfigArgs', 'ConnectionProfileConnectionConfigArgsDict', 'outputs.ConnectionProfileConnectionConfig']] connection_config: Connection configuration for the profile.
         :param pulumi.Input[_builtins.str] connection_name_prefix_template: Template for generating connection names from the profile.
-        :param pulumi.Input[Union['ConnectionProfileCrossAppAccessResourceAppArgs', 'ConnectionProfileCrossAppAccessResourceAppArgsDict']] cross_app_access_resource_app: Configures the connection profile as a Cross-App Access (XAA) resource application, controlling whether organization admins may enable XAA on their identity providers. Requires the `my_orgs_cross_app_access_resource_app` tenant flag to be enabled (EA only). Note: this is distinct from, and unrelated to, `cross_app_access_resource_app` on `Connection`, which uses a flat `status` string rather than this nested `status` block.
+        :param pulumi.Input[Union['ConnectionProfileCrossAppAccessResourceAppArgs', 'ConnectionProfileCrossAppAccessResourceAppArgsDict', 'outputs.ConnectionProfileCrossAppAccessResourceApp']] cross_app_access_resource_app: Configures the connection profile as a Cross-App Access (XAA) resource application, controlling whether organization admins may enable XAA on their identity providers. Requires the `my_orgs_cross_app_access_resource_app` tenant flag to be enabled (EA only). Note: this is distinct from, and unrelated to, `cross_app_access_resource_app` on `Connection`, which uses a flat `status` string rather than this nested `status` block.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enabled_features: List of enabled features for the connection profile.
         :param pulumi.Input[_builtins.str] name: Name of the connection profile.
-        :param pulumi.Input[Union['ConnectionProfileOrganizationArgs', 'ConnectionProfileOrganizationArgsDict']] organization: Organization associated with the connection profile.
-        :param pulumi.Input[Union['ConnectionProfileStrategyOverridesArgs', 'ConnectionProfileStrategyOverridesArgsDict']] strategy_overrides: Strategy overrides for the connection profile.
+        :param pulumi.Input[Union['ConnectionProfileOrganizationArgs', 'ConnectionProfileOrganizationArgsDict', 'outputs.ConnectionProfileOrganization']] organization: Organization associated with the connection profile.
+        :param pulumi.Input[Union['ConnectionProfileStrategyOverridesArgs', 'ConnectionProfileStrategyOverridesArgsDict', 'outputs.ConnectionProfileStrategyOverrides']] strategy_overrides: Strategy overrides for the connection profile.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

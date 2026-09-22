@@ -27,21 +27,6 @@ namespace Pulumi.Auth0
     /// {
     ///     var myTenant = new Auth0.Tenant("my_tenant", new()
     ///     {
-    ///         FriendlyName = "Tenant Name",
-    ///         PictureUrl = "http://example.com/logo.png",
-    ///         SupportEmail = "support@example.com",
-    ///         SupportUrl = "http://example.com/support",
-    ///         AllowedLogoutUrls = new[]
-    ///         {
-    ///             "http://example.com/logout",
-    ///         },
-    ///         SessionLifetime = 8760,
-    ///         SandboxVersion = "22",
-    ///         EnabledLocales = new[]
-    ///         {
-    ///             "en",
-    ///         },
-    ///         DefaultRedirectionUri = "https://example.com/login",
     ///         Flags = new Auth0.Inputs.TenantFlagsArgs
     ///         {
     ///             DisableClickjackProtectionHeaders = true,
@@ -74,6 +59,21 @@ namespace Pulumi.Auth0
     ///             },
     ///             Mode = "allow",
     ///         },
+    ///         FriendlyName = "Tenant Name",
+    ///         PictureUrl = "http://example.com/logo.png",
+    ///         SupportEmail = "support@example.com",
+    ///         SupportUrl = "http://example.com/support",
+    ///         AllowedLogoutUrls = new[]
+    ///         {
+    ///             "http://example.com/logout",
+    ///         },
+    ///         SessionLifetime = 8760,
+    ///         SandboxVersion = "22",
+    ///         EnabledLocales = new[]
+    ///         {
+    ///             "en",
+    ///         },
+    ///         DefaultRedirectionUri = "https://example.com/login",
     ///     });
     /// 
     /// });

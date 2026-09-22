@@ -182,14 +182,12 @@ class RolePermission(pulumi.CustomResource):
         import pulumi
         from typing import Any
         import pulumi_auth0 as auth0
-        import pulumi_std as std
 
         # Example:
         resource_server = auth0.ResourceServer("resource_server",
             name="test",
             identifier="test.example.com")
         resource_server_scopes = auth0.ResourceServerScopes("resource_server_scopes",
-            resource_server_identifier=resource_server.identifier,
             scopes=[
                 {
                     "name": "store:create",
@@ -203,15 +201,19 @@ class RolePermission(pulumi.CustomResource):
                 {
                     "name": "store:delete",
                 },
-            ])
+            ],
+            resource_server_identifier=resource_server.identifier)
         my_role = auth0.Role("my_role", name="My Role")
         scopes_list = resource_server_scopes.scopes.apply(lambda scopes: [scope.name for scope in scopes])
-        my_role_perm: list[auth0.RolePermission] = []
-        for my_role_perm_range in [{"value": i} for i in range(0, std.toset(input=scopes_list).result)]:
-            my_role_perm.append(auth0.RolePermission(f"my_role_perm-{my_role_perm_range['value']}",
-                role_id=my_role.id,
-                resource_server_identifier=resource_server.identifier,
-                permission=my_role_perm_range["value"]))
+        my_role_perm: dict[str, auth0.RolePermission] = {}
+        def create_my_role_perm(range_body):
+            for my_role_perm_range in [{"key": k, "value": v} for [k, v] in sorted((range_body).items())]:
+                my_role_perm[my_role_perm_range['key']] = auth0.RolePermission(f"my_role_perm-{my_role_perm_range['key']}",
+                    role_id=my_role.id,
+                    resource_server_identifier=resource_server.identifier,
+                    permission=my_role_perm_range["value"])
+
+        pulumi.Output.all({entry: entry for entry in scopes_list}).apply(lambda resolved_outputs: create_my_role_perm(resolved_outputs[0]))
         ```
 
         ## Import
@@ -252,14 +254,12 @@ class RolePermission(pulumi.CustomResource):
         import pulumi
         from typing import Any
         import pulumi_auth0 as auth0
-        import pulumi_std as std
 
         # Example:
         resource_server = auth0.ResourceServer("resource_server",
             name="test",
             identifier="test.example.com")
         resource_server_scopes = auth0.ResourceServerScopes("resource_server_scopes",
-            resource_server_identifier=resource_server.identifier,
             scopes=[
                 {
                     "name": "store:create",
@@ -273,15 +273,19 @@ class RolePermission(pulumi.CustomResource):
                 {
                     "name": "store:delete",
                 },
-            ])
+            ],
+            resource_server_identifier=resource_server.identifier)
         my_role = auth0.Role("my_role", name="My Role")
         scopes_list = resource_server_scopes.scopes.apply(lambda scopes: [scope.name for scope in scopes])
-        my_role_perm: list[auth0.RolePermission] = []
-        for my_role_perm_range in [{"value": i} for i in range(0, std.toset(input=scopes_list).result)]:
-            my_role_perm.append(auth0.RolePermission(f"my_role_perm-{my_role_perm_range['value']}",
-                role_id=my_role.id,
-                resource_server_identifier=resource_server.identifier,
-                permission=my_role_perm_range["value"]))
+        my_role_perm: dict[str, auth0.RolePermission] = {}
+        def create_my_role_perm(range_body):
+            for my_role_perm_range in [{"key": k, "value": v} for [k, v] in sorted((range_body).items())]:
+                my_role_perm[my_role_perm_range['key']] = auth0.RolePermission(f"my_role_perm-{my_role_perm_range['key']}",
+                    role_id=my_role.id,
+                    resource_server_identifier=resource_server.identifier,
+                    permission=my_role_perm_range["value"])
+
+        pulumi.Output.all({entry: entry for entry in scopes_list}).apply(lambda resolved_outputs: create_my_role_perm(resolved_outputs[0]))
         ```
 
         ## Import

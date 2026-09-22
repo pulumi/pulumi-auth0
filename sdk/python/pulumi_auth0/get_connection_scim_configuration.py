@@ -136,8 +136,8 @@ class AwaitableGetConnectionScimConfigurationResult(GetConnectionScimConfigurati
 
 
 def get_connection_scim_configuration(connection_id: Optional[_builtins.str] = None,
-                                      default_mappings: Optional[Sequence[Union['GetConnectionScimConfigurationDefaultMappingArgs', 'GetConnectionScimConfigurationDefaultMappingArgsDict']]] = None,
-                                      mappings: Optional[Sequence[Union['GetConnectionScimConfigurationMappingArgs', 'GetConnectionScimConfigurationMappingArgsDict']]] = None,
+                                      default_mappings: Optional[Sequence[Union['GetConnectionScimConfigurationDefaultMappingArgs', 'GetConnectionScimConfigurationDefaultMappingArgsDict', 'outputs.GetConnectionScimConfigurationDefaultMappingResult']]] = None,
+                                      mappings: Optional[Sequence[Union['GetConnectionScimConfigurationMappingArgs', 'GetConnectionScimConfigurationMappingArgsDict', 'outputs.GetConnectionScimConfigurationMappingResult']]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConnectionScimConfigurationResult:
     """
     Data source to retrieve a SCIM configuration for an Auth0 connection by `connection_id`.
@@ -149,9 +149,6 @@ def get_connection_scim_configuration(connection_id: Optional[_builtins.str] = N
     import pulumi_auth0 as auth0
 
     my_enterprise_connection = auth0.Connection("my_enterprise_connection",
-        name="my-enterprise-connection",
-        display_name="My Enterprise Connection",
-        strategy="okta",
         options={
             "client_id": "1234567",
             "client_secret": "1234567",
@@ -159,7 +156,10 @@ def get_connection_scim_configuration(connection_id: Optional[_builtins.str] = N
             "jwks_uri": "https://example.okta.com/oauth2/v1/keys",
             "token_endpoint": "https://example.okta.com/oauth2/v1/token",
             "authorization_endpoint": "https://example.okta.com/oauth2/v1/authorize",
-        })
+        },
+        name="my-enterprise-connection",
+        display_name="My Enterprise Connection",
+        strategy="okta")
     my_conn_scim_configuration = auth0.ConnectionScimConfiguration("my_conn_scim_configuration", connection_id=my_enterprise_connection.id)
     # A data source for an Auth0 Connection SCIM Configuration.
     my_conn_scim_configuration_data = auth0.get_connection_scim_configuration_output(connection_id=my_conn_scim_configuration.id)
@@ -167,8 +167,8 @@ def get_connection_scim_configuration(connection_id: Optional[_builtins.str] = N
 
 
     :param _builtins.str connection_id: ID of the connection for this SCIM configuration.
-    :param Sequence[Union['GetConnectionScimConfigurationDefaultMappingArgs', 'GetConnectionScimConfigurationDefaultMappingArgsDict']] default_mappings: Default mapping between Auth0 attributes and SCIM attributes for this connection type.
-    :param Sequence[Union['GetConnectionScimConfigurationMappingArgs', 'GetConnectionScimConfigurationMappingArgsDict']] mappings: Mapping between Auth0 attributes and SCIM attributes.
+    :param Sequence[Union['GetConnectionScimConfigurationDefaultMappingArgs', 'GetConnectionScimConfigurationDefaultMappingArgsDict', 'outputs.GetConnectionScimConfigurationDefaultMappingResult']] default_mappings: Default mapping between Auth0 attributes and SCIM attributes for this connection type.
+    :param Sequence[Union['GetConnectionScimConfigurationMappingArgs', 'GetConnectionScimConfigurationMappingArgsDict', 'outputs.GetConnectionScimConfigurationMappingResult']] mappings: Mapping between Auth0 attributes and SCIM attributes.
     """
     __args__ = dict()
     __args__['connectionId'] = connection_id
@@ -187,8 +187,8 @@ def get_connection_scim_configuration(connection_id: Optional[_builtins.str] = N
         tenant_name=pulumi.get(__ret__, 'tenant_name'),
         user_id_attribute=pulumi.get(__ret__, 'user_id_attribute'))
 def get_connection_scim_configuration_output(connection_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                             default_mappings: pulumi.Input[Optional[Optional[Sequence[Union['GetConnectionScimConfigurationDefaultMappingArgs', 'GetConnectionScimConfigurationDefaultMappingArgsDict']]]]] = None,
-                                             mappings: pulumi.Input[Optional[Optional[Sequence[Union['GetConnectionScimConfigurationMappingArgs', 'GetConnectionScimConfigurationMappingArgsDict']]]]] = None,
+                                             default_mappings: pulumi.Input[Optional[Optional[Sequence[Union['GetConnectionScimConfigurationDefaultMappingArgs', 'GetConnectionScimConfigurationDefaultMappingArgsDict', 'outputs.GetConnectionScimConfigurationDefaultMappingResult']]]]] = None,
+                                             mappings: pulumi.Input[Optional[Optional[Sequence[Union['GetConnectionScimConfigurationMappingArgs', 'GetConnectionScimConfigurationMappingArgsDict', 'outputs.GetConnectionScimConfigurationMappingResult']]]]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectionScimConfigurationResult]:
     """
     Data source to retrieve a SCIM configuration for an Auth0 connection by `connection_id`.
@@ -200,9 +200,6 @@ def get_connection_scim_configuration_output(connection_id: pulumi.Input[Optiona
     import pulumi_auth0 as auth0
 
     my_enterprise_connection = auth0.Connection("my_enterprise_connection",
-        name="my-enterprise-connection",
-        display_name="My Enterprise Connection",
-        strategy="okta",
         options={
             "client_id": "1234567",
             "client_secret": "1234567",
@@ -210,7 +207,10 @@ def get_connection_scim_configuration_output(connection_id: pulumi.Input[Optiona
             "jwks_uri": "https://example.okta.com/oauth2/v1/keys",
             "token_endpoint": "https://example.okta.com/oauth2/v1/token",
             "authorization_endpoint": "https://example.okta.com/oauth2/v1/authorize",
-        })
+        },
+        name="my-enterprise-connection",
+        display_name="My Enterprise Connection",
+        strategy="okta")
     my_conn_scim_configuration = auth0.ConnectionScimConfiguration("my_conn_scim_configuration", connection_id=my_enterprise_connection.id)
     # A data source for an Auth0 Connection SCIM Configuration.
     my_conn_scim_configuration_data = auth0.get_connection_scim_configuration_output(connection_id=my_conn_scim_configuration.id)
@@ -218,8 +218,8 @@ def get_connection_scim_configuration_output(connection_id: pulumi.Input[Optiona
 
 
     :param _builtins.str connection_id: ID of the connection for this SCIM configuration.
-    :param Sequence[Union['GetConnectionScimConfigurationDefaultMappingArgs', 'GetConnectionScimConfigurationDefaultMappingArgsDict']] default_mappings: Default mapping between Auth0 attributes and SCIM attributes for this connection type.
-    :param Sequence[Union['GetConnectionScimConfigurationMappingArgs', 'GetConnectionScimConfigurationMappingArgsDict']] mappings: Mapping between Auth0 attributes and SCIM attributes.
+    :param Sequence[Union['GetConnectionScimConfigurationDefaultMappingArgs', 'GetConnectionScimConfigurationDefaultMappingArgsDict', 'outputs.GetConnectionScimConfigurationDefaultMappingResult']] default_mappings: Default mapping between Auth0 attributes and SCIM attributes for this connection type.
+    :param Sequence[Union['GetConnectionScimConfigurationMappingArgs', 'GetConnectionScimConfigurationMappingArgsDict', 'outputs.GetConnectionScimConfigurationMappingResult']] mappings: Mapping between Auth0 attributes and SCIM attributes.
     """
     __args__ = dict()
     __args__['connectionId'] = connection_id

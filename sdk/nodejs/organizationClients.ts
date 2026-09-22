@@ -25,7 +25,6 @@ import * as utilities from "./utilities";
  * // Use this instead of auth0_organization_client when you want Terraform to own the full
  * // set of associations; do not use both resources on the same organization.
  * const myOrgClients = new auth0.OrganizationClients("my_org_clients", {
- *     organizationId: myOrganization.id,
  *     clients: [
  *         {
  *             clientId: myClient.id,
@@ -35,6 +34,7 @@ import * as utilities from "./utilities";
  *             clientId: myOtherClient.id,
  *         },
  *     ],
+ *     organizationId: myOrganization.id,
  * });
  * ```
  *

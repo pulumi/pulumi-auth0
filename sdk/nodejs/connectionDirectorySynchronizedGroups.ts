@@ -16,8 +16,6 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const myConnection = new auth0.Connection("my_connection", {
- *     name: "My-Google-Workspace-Connection",
- *     strategy: "google-apps",
  *     options: {
  *         clientId: "...",
  *         clientSecret: "...",
@@ -26,13 +24,14 @@ import * as utilities from "./utilities";
  *         apiEnableUsers: true,
  *         apiEnableGroups: true,
  *     },
+ *     name: "My-Google-Workspace-Connection",
+ *     strategy: "google-apps",
  * });
  * const myDirectory = new auth0.ConnectionDirectory("my_directory", {
  *     connectionId: myConnection.id,
  *     synchronizeGroups: "selected",
  * });
  * const myGroups = new auth0.ConnectionDirectorySynchronizedGroups("my_groups", {
- *     connectionId: myConnection.id,
  *     groups: [
  *         {
  *             id: "group1",
@@ -44,6 +43,7 @@ import * as utilities from "./utilities";
  *             directMembersCount: 123,
  *         },
  *     ],
+ *     connectionId: myConnection.id,
  * }, {
  *     dependsOn: [myDirectory],
  * });

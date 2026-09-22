@@ -34,26 +34,6 @@ namespace Pulumi.Auth0
     /// {
     ///     var myAction = new Auth0.Action("my_action", new()
     ///     {
-    ///         Name = Std.Format.Invoke(new()
-    ///         {
-    ///             Input = "Test Action %s",
-    ///             Args = new[]
-    ///             {
-    ///                 Std.Timestamp.Invoke().Result,
-    ///             },
-    ///         }).Result,
-    ///         Runtime = "node22",
-    ///         Deploy = true,
-    ///         Code = @"/**
-    ///  * Handler that will be called during the execution of a PostLogin flow.
-    ///  *
-    ///  * @param {Event} event - Details about the user and the context in which they are logging in.
-    ///  * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
-    ///  */
-    ///  exports.onExecutePostLogin = async (event, api) =&gt; {
-    ///    console.log(event);
-    ///  };
-    /// ",
     ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
     ///         {
     ///             Id = "post-login",
@@ -85,6 +65,26 @@ namespace Pulumi.Auth0
     ///                 Value = "Bar",
     ///             },
     ///         },
+    ///         Name = Std.Format.Invoke(new()
+    ///         {
+    ///             Input = "Test Action %s",
+    ///             Args = new[]
+    ///             {
+    ///                 Std.Timestamp.Invoke().Result,
+    ///             },
+    ///         }).Result,
+    ///         Runtime = "node22",
+    ///         Deploy = true,
+    ///         Code = @"/**
+    ///  * Handler that will be called during the execution of a PostLogin flow.
+    ///  *
+    ///  * @param {Event} event - Details about the user and the context in which they are logging in.
+    ///  * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
+    ///  */
+    ///  exports.onExecutePostLogin = async (event, api) =&gt; {
+    ///    console.log(event);
+    ///  };
+    /// ",
     ///     });
     /// 
     ///     var config = new Config();
@@ -92,6 +92,19 @@ namespace Pulumi.Auth0
     ///     var actionApiKey = config.Require("actionApiKey");
     ///     var mySecureAction = new Auth0.Action("my_secure_action", new()
     ///     {
+    ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
+    ///         {
+    ///             Id = "post-login",
+    ///             Version = "v3",
+    ///         },
+    ///         SecretsWos = new[]
+    ///         {
+    ///             new Auth0.Inputs.ActionSecretsWoArgs
+    ///             {
+    ///                 Name = "API_KEY",
+    ///                 Value = actionApiKey,
+    ///             },
+    ///         },
     ///         Name = Std.Format.Invoke(new()
     ///         {
     ///             Input = "Secure Action %s",
@@ -106,19 +119,6 @@ namespace Pulumi.Auth0
     ///   console.log(event);
     /// };
     /// ",
-    ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
-    ///         {
-    ///             Id = "post-login",
-    ///             Version = "v3",
-    ///         },
-    ///         SecretsWos = new[]
-    ///         {
-    ///             new Auth0.Inputs.ActionSecretsWoArgs
-    ///             {
-    ///                 Name = "API_KEY",
-    ///                 Value = actionApiKey,
-    ///             },
-    ///         },
     ///         SecretsWoVersion = 1,
     ///     });
     /// 

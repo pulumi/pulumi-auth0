@@ -28,8 +28,6 @@ namespace Pulumi.Auth0
     /// {
     ///     var resourceServer = new Auth0.ResourceServer("resource_server", new()
     ///     {
-    ///         Name = "Example Resource Server (Managed by Terraform)",
-    ///         Identifier = "https://api.example.com",
     ///         Scopes = new[]
     ///         {
     ///             
@@ -43,6 +41,8 @@ namespace Pulumi.Auth0
     ///                 { "description", "Create bars" },
     ///             },
     ///         },
+    ///         Name = "Example Resource Server (Managed by Terraform)",
+    ///         Identifier = "https://api.example.com",
     ///     });
     /// 
     ///     var user = new Auth0.User("user", new()

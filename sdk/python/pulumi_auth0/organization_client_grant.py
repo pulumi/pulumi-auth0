@@ -124,12 +124,12 @@ class OrganizationClientGrant(pulumi.CustomResource):
             identifier="https://api.travel00123.com/")
         # Create a Client by referencing the newly created organisation or by reference an existing one.
         my_test_client = auth0.Client("my_test_client",
-            name="test_client",
-            organization_usage="allow",
             default_organization={
                 "organization_id": my_organization.id,
                 "flows": ["client_credentials"],
             },
+            name="test_client",
+            organization_usage="allow",
             opts = pulumi.ResourceOptions(depends_on=[
                     my_organization,
                     new_resource_server,
@@ -198,12 +198,12 @@ class OrganizationClientGrant(pulumi.CustomResource):
             identifier="https://api.travel00123.com/")
         # Create a Client by referencing the newly created organisation or by reference an existing one.
         my_test_client = auth0.Client("my_test_client",
-            name="test_client",
-            organization_usage="allow",
             default_organization={
                 "organization_id": my_organization.id,
                 "flows": ["client_credentials"],
             },
+            name="test_client",
+            organization_usage="allow",
             opts = pulumi.ResourceOptions(depends_on=[
                     my_organization,
                     new_resource_server,

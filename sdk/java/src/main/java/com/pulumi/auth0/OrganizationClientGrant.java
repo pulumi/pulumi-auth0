@@ -64,12 +64,12 @@ import javax.annotation.Nullable;
  * 
  *         // Create a Client by referencing the newly created organisation or by reference an existing one.
  *         var myTestClient = new Client("myTestClient", ClientArgs.builder()
- *             .name("test_client")
- *             .organizationUsage("allow")
  *             .defaultOrganization(ClientDefaultOrganizationArgs.builder()
  *                 .organizationId(myOrganization.id())
  *                 .flows("client_credentials")
  *                 .build())
+ *             .name("test_client")
+ *             .organizationUsage("allow")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(                
  *                     myOrganization,

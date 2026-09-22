@@ -40,14 +40,10 @@ import (
 //			}
 //			// Reference the key in a Network ACL rule to allow only signed requests.
 //			_, err = auth0.NewNetworkAcl(ctx, "allow_signed_only", &auth0.NetworkAclArgs{
-//				Description: pulumi.String("Block requests without a valid HMAC signature"),
-//				Active:      pulumi.Bool(true),
-//				Priority:    pulumi.Int(99),
 //				Rule: &auth0.NetworkAclRuleArgs{
 //					Action: &auth0.NetworkAclRuleActionArgs{
 //						Block: pulumi.Bool(true),
 //					},
-//					Scope: pulumi.String("tenant"),
 //					NotMatch: &auth0.NetworkAclRuleNotMatchArgs{
 //						HttpMessageSignature: &auth0.NetworkAclRuleNotMatchHttpMessageSignatureArgs{
 //							Keys: auth0.NetworkAclRuleNotMatchHttpMessageSignatureKeyArray{
@@ -57,7 +53,11 @@ import (
 //							},
 //						},
 //					},
+//					Scope: pulumi.String("tenant"),
 //				},
+//				Description: pulumi.String("Block requests without a valid HMAC signature"),
+//				Active:      pulumi.Bool(true),
+//				Priority:    pulumi.Int(99),
 //			})
 //			if err != nil {
 //				return err

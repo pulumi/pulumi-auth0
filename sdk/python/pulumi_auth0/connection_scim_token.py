@@ -165,9 +165,6 @@ class ConnectionScimToken(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         azure_ad = auth0.Connection("azure_ad",
-            name="Acceptance-Test-Azure-AD",
-            strategy="waad",
-            show_as_button=True,
             options={
                 "identity_api": "microsoft-identity-platform-v2.0",
                 "client_id": "123456",
@@ -196,7 +193,10 @@ class ConnectionScimToken(pulumi.CustomResource):
                         "alias": "login_hint",
                     },
                 }),
-            })
+            },
+            name="Acceptance-Test-Azure-AD",
+            strategy="waad",
+            show_as_button=True)
         my_scim_config = auth0.ConnectionScimConfiguration("my_scim_config", connection_id=azure_ad.id)
         my_scim_token = auth0.ConnectionScimToken("my_scim_token",
             connection_id=azure_ad.id,
@@ -230,9 +230,6 @@ class ConnectionScimToken(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         azure_ad = auth0.Connection("azure_ad",
-            name="Acceptance-Test-Azure-AD",
-            strategy="waad",
-            show_as_button=True,
             options={
                 "identity_api": "microsoft-identity-platform-v2.0",
                 "client_id": "123456",
@@ -261,7 +258,10 @@ class ConnectionScimToken(pulumi.CustomResource):
                         "alias": "login_hint",
                     },
                 }),
-            })
+            },
+            name="Acceptance-Test-Azure-AD",
+            strategy="waad",
+            show_as_button=True)
         my_scim_config = auth0.ConnectionScimConfiguration("my_scim_config", connection_id=azure_ad.id)
         my_scim_token = auth0.ConnectionScimToken("my_scim_token",
             connection_id=azure_ad.id,

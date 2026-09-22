@@ -26,9 +26,6 @@ namespace Pulumi.Auth0
         /// {
         ///     var myEnterpriseConnection = new Auth0.Connection("my_enterprise_connection", new()
         ///     {
-        ///         Name = "my-enterprise-connection",
-        ///         DisplayName = "My Enterprise Connection",
-        ///         Strategy = "okta",
         ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
         ///         {
         ///             ClientId = "1234567",
@@ -38,6 +35,9 @@ namespace Pulumi.Auth0
         ///             TokenEndpoint = "https://example.okta.com/oauth2/v1/token",
         ///             AuthorizationEndpoint = "https://example.okta.com/oauth2/v1/authorize",
         ///         },
+        ///         Name = "my-enterprise-connection",
+        ///         DisplayName = "My Enterprise Connection",
+        ///         Strategy = "okta",
         ///     });
         /// 
         ///     var myConnScimConfiguration = new Auth0.ConnectionScimConfiguration("my_conn_scim_configuration", new()
@@ -72,9 +72,6 @@ namespace Pulumi.Auth0
         /// {
         ///     var myEnterpriseConnection = new Auth0.Connection("my_enterprise_connection", new()
         ///     {
-        ///         Name = "my-enterprise-connection",
-        ///         DisplayName = "My Enterprise Connection",
-        ///         Strategy = "okta",
         ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
         ///         {
         ///             ClientId = "1234567",
@@ -84,6 +81,9 @@ namespace Pulumi.Auth0
         ///             TokenEndpoint = "https://example.okta.com/oauth2/v1/token",
         ///             AuthorizationEndpoint = "https://example.okta.com/oauth2/v1/authorize",
         ///         },
+        ///         Name = "my-enterprise-connection",
+        ///         DisplayName = "My Enterprise Connection",
+        ///         Strategy = "okta",
         ///     });
         /// 
         ///     var myConnScimConfiguration = new Auth0.ConnectionScimConfiguration("my_conn_scim_configuration", new()
@@ -118,9 +118,6 @@ namespace Pulumi.Auth0
         /// {
         ///     var myEnterpriseConnection = new Auth0.Connection("my_enterprise_connection", new()
         ///     {
-        ///         Name = "my-enterprise-connection",
-        ///         DisplayName = "My Enterprise Connection",
-        ///         Strategy = "okta",
         ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
         ///         {
         ///             ClientId = "1234567",
@@ -130,6 +127,9 @@ namespace Pulumi.Auth0
         ///             TokenEndpoint = "https://example.okta.com/oauth2/v1/token",
         ///             AuthorizationEndpoint = "https://example.okta.com/oauth2/v1/authorize",
         ///         },
+        ///         Name = "my-enterprise-connection",
+        ///         DisplayName = "My Enterprise Connection",
+        ///         Strategy = "okta",
         ///     });
         /// 
         ///     var myConnScimConfiguration = new Auth0.ConnectionScimConfiguration("my_conn_scim_configuration", new()

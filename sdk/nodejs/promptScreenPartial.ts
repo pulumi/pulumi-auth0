@@ -21,19 +21,19 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const login = new auth0.PromptScreenPartial("login", {
- *     promptType: "login",
- *     screenName: "login",
  *     insertionPoints: {
  *         formContentStart: "<div>Form Content Start</div>",
  *         formContentEnd: "<div>Form Content End</div>",
  *     },
+ *     promptType: "login",
+ *     screenName: "login",
  * });
  * const customized_consent = new auth0.PromptScreenPartial("customized-consent", {
- *     promptType: "customized-consent",
- *     screenName: "customized-consent",
  *     insertionPoints: {
  *         formContent: "<div>Form Content</div>",
  *     },
+ *     promptType: "customized-consent",
+ *     screenName: "customized-consent",
  * });
  * ```
  *

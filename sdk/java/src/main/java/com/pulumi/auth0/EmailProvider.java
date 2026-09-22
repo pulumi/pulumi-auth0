@@ -56,64 +56,68 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         // This is an example on how to set up the email provider with Amazon SES.
  *         var amazonSesEmailProvider = new EmailProvider("amazonSesEmailProvider", EmailProviderArgs.builder()
- *             .name("ses")
- *             .enabled(true)
- *             .defaultFromAddress("accounts}{@literal @}{@code example.com")
  *             .credentials(EmailProviderCredentialsArgs.builder()
  *                 .accessKeyId("AKIAXXXXXXXXXXXXXXXX")
  *                 .secretAccessKey("7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
  *                 .region("us-east-1")
  *                 .build())
+ *             .name("ses")
+ *             .enabled(true)
+ *             .defaultFromAddress("accounts}{@literal @}{@code example.com")
  *             .build());
  * 
  *         // This is an example on how to set up the email provider with SMTP.
  *         var smtpEmailProvider = new EmailProvider("smtpEmailProvider", EmailProviderArgs.builder()
- *             .name("smtp")
- *             .enabled(true)
- *             .defaultFromAddress("accounts}{@literal @}{@code example.com")
  *             .credentials(EmailProviderCredentialsArgs.builder()
  *                 .smtpHost("your.smtp.host.com")
  *                 .smtpPort(583)
  *                 .smtpUser("SMTP Username")
  *                 .smtpPass("SMTP Password")
  *                 .build())
+ *             .name("smtp")
+ *             .enabled(true)
+ *             .defaultFromAddress("accounts}{@literal @}{@code example.com")
  *             .build());
  * 
  *         // This is an example on how to set up the email provider with Sendgrid.
  *         var sendgridEmailProvider = new EmailProvider("sendgridEmailProvider", EmailProviderArgs.builder()
- *             .name("sendgrid")
- *             .enabled(true)
- *             .defaultFromAddress("accounts}{@literal @}{@code example.com")
  *             .credentials(EmailProviderCredentialsArgs.builder()
  *                 .apiKey("secretAPIKey")
  *                 .build())
+ *             .name("sendgrid")
+ *             .enabled(true)
+ *             .defaultFromAddress("accounts}{@literal @}{@code example.com")
  *             .build());
  * 
  *         // This is an example on how to set up the email provider with Azure CS.
  *         var azureCsEmailProvider = new EmailProvider("azureCsEmailProvider", EmailProviderArgs.builder()
- *             .name("azure_cs")
- *             .enabled(true)
- *             .defaultFromAddress("accounts}{@literal @}{@code example.com")
  *             .credentials(EmailProviderCredentialsArgs.builder()
  *                 .azureCsConnectionString("azure_cs_connection_string")
  *                 .build())
+ *             .name("azure_cs")
+ *             .enabled(true)
+ *             .defaultFromAddress("accounts}{@literal @}{@code example.com")
  *             .build());
  * 
  *         // This is an example on how to set up the email provider with MS365.
  *         var ms365EmailProvider = new EmailProvider("ms365EmailProvider", EmailProviderArgs.builder()
- *             .name("ms365")
- *             .enabled(true)
- *             .defaultFromAddress("accounts}{@literal @}{@code example.com")
  *             .credentials(EmailProviderCredentialsArgs.builder()
  *                 .ms365TenantId("ms365_tenant_id")
  *                 .ms365ClientId("ms365_client_id")
  *                 .ms365ClientSecret("ms365_client_secret")
  *                 .build())
+ *             .name("ms365")
+ *             .enabled(true)
+ *             .defaultFromAddress("accounts}{@literal @}{@code example.com")
  *             .build());
  * 
  *         // Below is an example of how to set up a custom email provider.
  *         // The action with custom-email-provider as supported_triggers is a prerequisite.
  *         var customEmailProviderAction = new Action("customEmailProviderAction", ActionArgs.builder()
+ *             .supportedTriggers(ActionSupportedTriggersArgs.builder()
+ *                 .id("custom-email-provider")
+ *                 .version("v1")
+ *                 .build())
  *             .name("custom-email-provider-action")
  *             .runtime("node22")
  *             .deploy(true)
@@ -130,18 +134,14 @@ import javax.annotation.Nullable;
  *   return;
  *  }}{@code ;
  *             """)
- *             .supportedTriggers(ActionSupportedTriggersArgs.builder()
- *                 .id("custom-email-provider")
- *                 .version("v1")
- *                 .build())
  *             .build());
  * 
  *         var customEmailProvider = new EmailProvider("customEmailProvider", EmailProviderArgs.builder()
+ *             .credentials(EmailProviderCredentialsArgs.builder()
+ *                 .build())
  *             .name("custom")
  *             .enabled(true)
  *             .defaultFromAddress("accounts}{@literal @}{@code example.com")
- *             .credentials(EmailProviderCredentialsArgs.builder()
- *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(customEmailProviderAction)
  *                 .build());

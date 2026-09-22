@@ -29,7 +29,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]string{
+//				"ERR_REQUIRED_PROPERTY": "This field is required for user kyc.",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			tmpJSON1, err := json.Marshal(map[string]interface{}{
 //				"coordinates": map[string]int{
 //					"x": 0,
 //					"y": 0,
@@ -39,8 +46,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			json0 := string(tmpJSON0)
-//			tmpJSON1, err := json.Marshal([]map[string]interface{}{
+//			json1 := string(tmpJSON1)
+//			tmpJSON2, err := json.Marshal([]map[string]interface{}{
 //				map[string]interface{}{
 //					"alias": "New step",
 //					"config": map[string]interface{}{
@@ -80,8 +87,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			json1 := string(tmpJSON1)
-//			tmpJSON2, err := json.Marshal(map[string]interface{}{
+//			json2 := string(tmpJSON2)
+//			tmpJSON3, err := json.Marshal(map[string]interface{}{
 //				"after_submit": map[string]string{
 //					"flow_id": "<my_flow_id>",
 //				},
@@ -94,15 +101,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			json2 := string(tmpJSON2)
-//			tmpJSON3, err := json.Marshal(map[string]string{
+//			json3 := string(tmpJSON3)
+//			tmpJSON4, err := json.Marshal(map[string]string{
 //				"css": "h1 {\n  color: white;\n  text-align: center;\n}",
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			json3 := string(tmpJSON3)
-//			tmpJSON4, err := json.Marshal(map[string]map[string]interface{}{
+//			json4 := string(tmpJSON4)
+//			tmpJSON5, err := json.Marshal(map[string]map[string]interface{}{
 //				"es": map[string]interface{}{
 //					"components": map[string]map[string]map[string]string{
 //						"rich_text_uctu": map[string]map[string]string{
@@ -122,33 +129,26 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			json4 := string(tmpJSON4)
-//			tmpJSON5, err := json.Marshal(map[string]string{
-//				"ERR_REQUIRED_PROPERTY": "This field is required for user kyc.",
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			json5 := string(tmpJSON5)
 //			// Example:
 //			_, err = auth0.NewForm(ctx, "my_form", &auth0.FormArgs{
-//				Name:         pulumi.String("My KYC Form"),
-//				Start:        pulumi.String(json0),
-//				Nodes:        pulumi.String(json1),
-//				Ending:       pulumi.String(json2),
-//				Style:        pulumi.String(json3),
-//				Translations: pulumi.String(json4),
-//				Messages: auth0.FormMessageArray{
-//					&auth0.FormMessageArgs{
-//						Errors: pulumi.String(json5),
-//					},
-//				},
 //				Languages: auth0.FormLanguageArray{
 //					&auth0.FormLanguageArgs{
 //						Default: pulumi.String("en"),
 //						Primary: pulumi.String("en"),
 //					},
 //				},
+//				Messages: auth0.FormMessageArray{
+//					&auth0.FormMessageArgs{
+//						Errors: pulumi.String(json0),
+//					},
+//				},
+//				Name:         pulumi.String("My KYC Form"),
+//				Start:        pulumi.String(json1),
+//				Nodes:        pulumi.String(json2),
+//				Ending:       pulumi.String(json3),
+//				Style:        pulumi.String(json4),
+//				Translations: pulumi.String(json5),
 //			})
 //			if err != nil {
 //				return err

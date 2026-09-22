@@ -22,10 +22,6 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const myGuardian = new auth0.Guardian("my_guardian", {
- *     policy: "all-applications",
- *     email: true,
- *     otp: true,
- *     recoveryCode: true,
  *     webauthnPlatform: {
  *         enabled: true,
  *     },
@@ -41,8 +37,6 @@ import * as utilities from "./utilities";
  *         ],
  *     },
  *     push: {
- *         enabled: true,
- *         provider: "sns",
  *         amazonSns: {
  *             awsAccessKeyId: "test1",
  *             awsRegion: "us-west-1",
@@ -55,6 +49,8 @@ import * as utilities from "./utilities";
  *             appleAppLink: "https://itunes.apple.com/us/app/my-app/id123121",
  *             googleAppLink: "https://play.google.com/store/apps/details?id=com.my.app",
  *         },
+ *         enabled: true,
+ *         provider: "sns",
  *     },
  *     duo: {
  *         enabled: true,
@@ -62,6 +58,10 @@ import * as utilities from "./utilities";
  *         secretKey: "someSecret",
  *         hostname: "api-hostname",
  *     },
+ *     policy: "all-applications",
+ *     email: true,
+ *     otp: true,
+ *     recoveryCode: true,
  * });
  * ```
  *

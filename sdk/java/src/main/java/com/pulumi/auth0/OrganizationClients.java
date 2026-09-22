@@ -64,7 +64,6 @@ import javax.annotation.Nullable;
  *         // Use this instead of auth0_organization_client when you want Terraform to own the full
  *         // set of associations; do not use both resources on the same organization.
  *         var myOrgClients = new OrganizationClients("myOrgClients", OrganizationClientsArgs.builder()
- *             .organizationId(myOrganization.id())
  *             .clients(            
  *                 OrganizationClientsClientArgs.builder()
  *                     .clientId(myClient.id())
@@ -73,6 +72,7 @@ import javax.annotation.Nullable;
  *                 OrganizationClientsClientArgs.builder()
  *                     .clientId(myOtherClient.id())
  *                     .build())
+ *             .organizationId(myOrganization.id())
  *             .build());
  * 
  *     }

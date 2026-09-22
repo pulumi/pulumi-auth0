@@ -26,31 +26,30 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const actionFoo = new auth0.Action("action_foo", {
+ *     supportedTriggers: {
+ *         id: "post-login",
+ *         version: "v3",
+ *     },
  *     name: "Test Trigger Binding Foo",
  *     code: `exports.onContinuePostLogin = async (event, api) => {
  *   console.log(\\"foo\\");
  * };\\"
  * `,
  *     deploy: true,
+ * });
+ * const actionBar = new auth0.Action("action_bar", {
  *     supportedTriggers: {
  *         id: "post-login",
  *         version: "v3",
  *     },
- * });
- * const actionBar = new auth0.Action("action_bar", {
  *     name: "Test Trigger Binding Bar",
  *     code: `exports.onContinuePostLogin = async (event, api) => {
  *   console.log(\\"bar\\");
  * };\\"
  * `,
  *     deploy: true,
- *     supportedTriggers: {
- *         id: "post-login",
- *         version: "v3",
- *     },
  * });
  * const loginFlow = new auth0.TriggerActions("login_flow", {
- *     trigger: "post-login",
  *     actions: [
  *         {
  *             id: actionFoo.id,
@@ -61,6 +60,7 @@ import * as utilities from "./utilities";
  *             displayName: actionBar.name,
  *         },
  *     ],
+ *     trigger: "post-login",
  * });
  * ```
  *

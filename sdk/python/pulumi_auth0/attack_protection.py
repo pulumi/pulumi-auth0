@@ -202,11 +202,11 @@ class AttackProtection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bot_detection: pulumi.Input[Optional[Union['AttackProtectionBotDetectionArgs', 'AttackProtectionBotDetectionArgsDict']]] = None,
-                 breached_password_detection: pulumi.Input[Optional[Union['AttackProtectionBreachedPasswordDetectionArgs', 'AttackProtectionBreachedPasswordDetectionArgsDict']]] = None,
-                 brute_force_protection: pulumi.Input[Optional[Union['AttackProtectionBruteForceProtectionArgs', 'AttackProtectionBruteForceProtectionArgsDict']]] = None,
-                 captcha: pulumi.Input[Optional[Union['AttackProtectionCaptchaArgs', 'AttackProtectionCaptchaArgsDict']]] = None,
-                 suspicious_ip_throttling: pulumi.Input[Optional[Union['AttackProtectionSuspiciousIpThrottlingArgs', 'AttackProtectionSuspiciousIpThrottlingArgsDict']]] = None,
+                 bot_detection: pulumi.Input[Optional[Union['AttackProtectionBotDetectionArgs', 'AttackProtectionBotDetectionArgsDict', 'outputs.AttackProtectionBotDetection']]] = None,
+                 breached_password_detection: pulumi.Input[Optional[Union['AttackProtectionBreachedPasswordDetectionArgs', 'AttackProtectionBreachedPasswordDetectionArgsDict', 'outputs.AttackProtectionBreachedPasswordDetection']]] = None,
+                 brute_force_protection: pulumi.Input[Optional[Union['AttackProtectionBruteForceProtectionArgs', 'AttackProtectionBruteForceProtectionArgsDict', 'outputs.AttackProtectionBruteForceProtection']]] = None,
+                 captcha: pulumi.Input[Optional[Union['AttackProtectionCaptchaArgs', 'AttackProtectionCaptchaArgsDict', 'outputs.AttackProtectionCaptcha']]] = None,
+                 suspicious_ip_throttling: pulumi.Input[Optional[Union['AttackProtectionSuspiciousIpThrottlingArgs', 'AttackProtectionSuspiciousIpThrottlingArgsDict', 'outputs.AttackProtectionSuspiciousIpThrottling']]] = None,
                  __props__=None):
         """
         Auth0 can detect attacks and stop malicious attempts to access your application such as blocking traffic from certain IPs and displaying CAPTCHAs.
@@ -219,12 +219,6 @@ class AttackProtection(pulumi.CustomResource):
 
         my_protection = auth0.AttackProtection("my_protection",
             suspicious_ip_throttling={
-                "enabled": True,
-                "shields": [
-                    "admin_notification",
-                    "block",
-                ],
-                "allowlists": ["192.168.1.1"],
                 "pre_login": {
                     "max_attempts": 100,
                     "rate": 864000,
@@ -233,6 +227,12 @@ class AttackProtection(pulumi.CustomResource):
                     "max_attempts": 50,
                     "rate": 1200,
                 },
+                "enabled": True,
+                "shields": [
+                    "admin_notification",
+                    "block",
+                ],
+                "allowlists": ["192.168.1.1"],
             },
             brute_force_protection={
                 "allowlists": ["127.0.0.1"],
@@ -245,13 +245,6 @@ class AttackProtection(pulumi.CustomResource):
                 ],
             },
             breached_password_detection={
-                "admin_notification_frequencies": ["daily"],
-                "enabled": True,
-                "method": "standard",
-                "shields": [
-                    "admin_notification",
-                    "block",
-                ],
                 "pre_user_registration": {
                     "shields": [
                         "admin_notification",
@@ -264,6 +257,13 @@ class AttackProtection(pulumi.CustomResource):
                         "block",
                     ],
                 },
+                "admin_notification_frequencies": ["daily"],
+                "enabled": True,
+                "method": "standard",
+                "shields": [
+                    "admin_notification",
+                    "block",
+                ],
             },
             bot_detection={
                 "bot_detection_level": "medium",
@@ -286,11 +286,11 @@ class AttackProtection(pulumi.CustomResource):
         recaptcha_v2_secret = config.require("recaptchaV2Secret")
         # Example 1: reCAPTCHA v2
         captcha_recaptcha_v2 = auth0.AttackProtection("captcha_recaptcha_v2", captcha={
-            "active_provider_id": "recaptcha_v2",
             "recaptcha_v2": {
                 "site_key": recaptcha_v2_site_key,
                 "secret": recaptcha_v2_secret,
             },
+            "active_provider_id": "recaptcha_v2",
         })
         # Google reCAPTCHA Enterprise site key
         recaptcha_enterprise_site_key = config.require("recaptchaEnterpriseSiteKey")
@@ -300,12 +300,12 @@ class AttackProtection(pulumi.CustomResource):
         recaptcha_enterprise_project_id = config.require("recaptchaEnterpriseProjectId")
         # Example 2: reCAPTCHA Enterprise
         captcha_recaptcha_enterprise = auth0.AttackProtection("captcha_recaptcha_enterprise", captcha={
-            "active_provider_id": "recaptcha_enterprise",
             "recaptcha_enterprise": {
                 "site_key": recaptcha_enterprise_site_key,
                 "api_key": recaptcha_enterprise_api_key,
                 "project_id": recaptcha_enterprise_project_id,
             },
+            "active_provider_id": "recaptcha_enterprise",
         })
         # hCaptcha site key
         hcaptcha_site_key = config.require("hcaptchaSiteKey")
@@ -313,11 +313,11 @@ class AttackProtection(pulumi.CustomResource):
         hcaptcha_secret = config.require("hcaptchaSecret")
         # Example 3: hCaptcha
         captcha_hcaptcha = auth0.AttackProtection("captcha_hcaptcha", captcha={
-            "active_provider_id": "hcaptcha",
             "hcaptcha": {
                 "site_key": hcaptcha_site_key,
                 "secret": hcaptcha_secret,
             },
+            "active_provider_id": "hcaptcha",
         })
         # Friendly Captcha site key
         friendly_captcha_site_key = config.require("friendlyCaptchaSiteKey")
@@ -325,11 +325,11 @@ class AttackProtection(pulumi.CustomResource):
         friendly_captcha_secret = config.require("friendlyCaptchaSecret")
         # Example 4: Friendly Captcha
         captcha_friendly_captcha = auth0.AttackProtection("captcha_friendly_captcha", captcha={
-            "active_provider_id": "friendly_captcha",
             "friendly_captcha": {
                 "site_key": friendly_captcha_site_key,
                 "secret": friendly_captcha_secret,
             },
+            "active_provider_id": "friendly_captcha",
         })
         # Arkose Labs site key
         arkose_site_key = config.require("arkoseSiteKey")
@@ -337,7 +337,6 @@ class AttackProtection(pulumi.CustomResource):
         arkose_secret = config.require("arkoseSecret")
         # Example 5: Arkose Labs
         captcha_arkose = auth0.AttackProtection("captcha_arkose", captcha={
-            "active_provider_id": "arkose",
             "arkose": {
                 "site_key": arkose_site_key,
                 "secret": arkose_secret,
@@ -345,6 +344,7 @@ class AttackProtection(pulumi.CustomResource):
                 "verify_subdomain": "verify.example.com",
                 "fail_open": False,
             },
+            "active_provider_id": "arkose",
         })
         # ============================================================================
         # VARIABLES FOR SENSITIVE DATA
@@ -367,11 +367,11 @@ class AttackProtection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AttackProtectionBotDetectionArgs', 'AttackProtectionBotDetectionArgsDict']] bot_detection: Bot detection configuration to identify and prevent automated threats.
-        :param pulumi.Input[Union['AttackProtectionBreachedPasswordDetectionArgs', 'AttackProtectionBreachedPasswordDetectionArgsDict']] breached_password_detection: Breached password detection protects your applications from bad actors logging in with stolen credentials.
-        :param pulumi.Input[Union['AttackProtectionBruteForceProtectionArgs', 'AttackProtectionBruteForceProtectionArgsDict']] brute_force_protection: Brute-force protection safeguards against a single IP address attacking a single user account.
-        :param pulumi.Input[Union['AttackProtectionCaptchaArgs', 'AttackProtectionCaptchaArgsDict']] captcha: CAPTCHA configuration for attack protection.
-        :param pulumi.Input[Union['AttackProtectionSuspiciousIpThrottlingArgs', 'AttackProtectionSuspiciousIpThrottlingArgsDict']] suspicious_ip_throttling: Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
+        :param pulumi.Input[Union['AttackProtectionBotDetectionArgs', 'AttackProtectionBotDetectionArgsDict', 'outputs.AttackProtectionBotDetection']] bot_detection: Bot detection configuration to identify and prevent automated threats.
+        :param pulumi.Input[Union['AttackProtectionBreachedPasswordDetectionArgs', 'AttackProtectionBreachedPasswordDetectionArgsDict', 'outputs.AttackProtectionBreachedPasswordDetection']] breached_password_detection: Breached password detection protects your applications from bad actors logging in with stolen credentials.
+        :param pulumi.Input[Union['AttackProtectionBruteForceProtectionArgs', 'AttackProtectionBruteForceProtectionArgsDict', 'outputs.AttackProtectionBruteForceProtection']] brute_force_protection: Brute-force protection safeguards against a single IP address attacking a single user account.
+        :param pulumi.Input[Union['AttackProtectionCaptchaArgs', 'AttackProtectionCaptchaArgsDict', 'outputs.AttackProtectionCaptcha']] captcha: CAPTCHA configuration for attack protection.
+        :param pulumi.Input[Union['AttackProtectionSuspiciousIpThrottlingArgs', 'AttackProtectionSuspiciousIpThrottlingArgsDict', 'outputs.AttackProtectionSuspiciousIpThrottling']] suspicious_ip_throttling: Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
         """
         ...
     @overload
@@ -390,12 +390,6 @@ class AttackProtection(pulumi.CustomResource):
 
         my_protection = auth0.AttackProtection("my_protection",
             suspicious_ip_throttling={
-                "enabled": True,
-                "shields": [
-                    "admin_notification",
-                    "block",
-                ],
-                "allowlists": ["192.168.1.1"],
                 "pre_login": {
                     "max_attempts": 100,
                     "rate": 864000,
@@ -404,6 +398,12 @@ class AttackProtection(pulumi.CustomResource):
                     "max_attempts": 50,
                     "rate": 1200,
                 },
+                "enabled": True,
+                "shields": [
+                    "admin_notification",
+                    "block",
+                ],
+                "allowlists": ["192.168.1.1"],
             },
             brute_force_protection={
                 "allowlists": ["127.0.0.1"],
@@ -416,13 +416,6 @@ class AttackProtection(pulumi.CustomResource):
                 ],
             },
             breached_password_detection={
-                "admin_notification_frequencies": ["daily"],
-                "enabled": True,
-                "method": "standard",
-                "shields": [
-                    "admin_notification",
-                    "block",
-                ],
                 "pre_user_registration": {
                     "shields": [
                         "admin_notification",
@@ -435,6 +428,13 @@ class AttackProtection(pulumi.CustomResource):
                         "block",
                     ],
                 },
+                "admin_notification_frequencies": ["daily"],
+                "enabled": True,
+                "method": "standard",
+                "shields": [
+                    "admin_notification",
+                    "block",
+                ],
             },
             bot_detection={
                 "bot_detection_level": "medium",
@@ -457,11 +457,11 @@ class AttackProtection(pulumi.CustomResource):
         recaptcha_v2_secret = config.require("recaptchaV2Secret")
         # Example 1: reCAPTCHA v2
         captcha_recaptcha_v2 = auth0.AttackProtection("captcha_recaptcha_v2", captcha={
-            "active_provider_id": "recaptcha_v2",
             "recaptcha_v2": {
                 "site_key": recaptcha_v2_site_key,
                 "secret": recaptcha_v2_secret,
             },
+            "active_provider_id": "recaptcha_v2",
         })
         # Google reCAPTCHA Enterprise site key
         recaptcha_enterprise_site_key = config.require("recaptchaEnterpriseSiteKey")
@@ -471,12 +471,12 @@ class AttackProtection(pulumi.CustomResource):
         recaptcha_enterprise_project_id = config.require("recaptchaEnterpriseProjectId")
         # Example 2: reCAPTCHA Enterprise
         captcha_recaptcha_enterprise = auth0.AttackProtection("captcha_recaptcha_enterprise", captcha={
-            "active_provider_id": "recaptcha_enterprise",
             "recaptcha_enterprise": {
                 "site_key": recaptcha_enterprise_site_key,
                 "api_key": recaptcha_enterprise_api_key,
                 "project_id": recaptcha_enterprise_project_id,
             },
+            "active_provider_id": "recaptcha_enterprise",
         })
         # hCaptcha site key
         hcaptcha_site_key = config.require("hcaptchaSiteKey")
@@ -484,11 +484,11 @@ class AttackProtection(pulumi.CustomResource):
         hcaptcha_secret = config.require("hcaptchaSecret")
         # Example 3: hCaptcha
         captcha_hcaptcha = auth0.AttackProtection("captcha_hcaptcha", captcha={
-            "active_provider_id": "hcaptcha",
             "hcaptcha": {
                 "site_key": hcaptcha_site_key,
                 "secret": hcaptcha_secret,
             },
+            "active_provider_id": "hcaptcha",
         })
         # Friendly Captcha site key
         friendly_captcha_site_key = config.require("friendlyCaptchaSiteKey")
@@ -496,11 +496,11 @@ class AttackProtection(pulumi.CustomResource):
         friendly_captcha_secret = config.require("friendlyCaptchaSecret")
         # Example 4: Friendly Captcha
         captcha_friendly_captcha = auth0.AttackProtection("captcha_friendly_captcha", captcha={
-            "active_provider_id": "friendly_captcha",
             "friendly_captcha": {
                 "site_key": friendly_captcha_site_key,
                 "secret": friendly_captcha_secret,
             },
+            "active_provider_id": "friendly_captcha",
         })
         # Arkose Labs site key
         arkose_site_key = config.require("arkoseSiteKey")
@@ -508,7 +508,6 @@ class AttackProtection(pulumi.CustomResource):
         arkose_secret = config.require("arkoseSecret")
         # Example 5: Arkose Labs
         captcha_arkose = auth0.AttackProtection("captcha_arkose", captcha={
-            "active_provider_id": "arkose",
             "arkose": {
                 "site_key": arkose_site_key,
                 "secret": arkose_secret,
@@ -516,6 +515,7 @@ class AttackProtection(pulumi.CustomResource):
                 "verify_subdomain": "verify.example.com",
                 "fail_open": False,
             },
+            "active_provider_id": "arkose",
         })
         # ============================================================================
         # VARIABLES FOR SENSITIVE DATA
@@ -551,11 +551,11 @@ class AttackProtection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bot_detection: pulumi.Input[Optional[Union['AttackProtectionBotDetectionArgs', 'AttackProtectionBotDetectionArgsDict']]] = None,
-                 breached_password_detection: pulumi.Input[Optional[Union['AttackProtectionBreachedPasswordDetectionArgs', 'AttackProtectionBreachedPasswordDetectionArgsDict']]] = None,
-                 brute_force_protection: pulumi.Input[Optional[Union['AttackProtectionBruteForceProtectionArgs', 'AttackProtectionBruteForceProtectionArgsDict']]] = None,
-                 captcha: pulumi.Input[Optional[Union['AttackProtectionCaptchaArgs', 'AttackProtectionCaptchaArgsDict']]] = None,
-                 suspicious_ip_throttling: pulumi.Input[Optional[Union['AttackProtectionSuspiciousIpThrottlingArgs', 'AttackProtectionSuspiciousIpThrottlingArgsDict']]] = None,
+                 bot_detection: pulumi.Input[Optional[Union['AttackProtectionBotDetectionArgs', 'AttackProtectionBotDetectionArgsDict', 'outputs.AttackProtectionBotDetection']]] = None,
+                 breached_password_detection: pulumi.Input[Optional[Union['AttackProtectionBreachedPasswordDetectionArgs', 'AttackProtectionBreachedPasswordDetectionArgsDict', 'outputs.AttackProtectionBreachedPasswordDetection']]] = None,
+                 brute_force_protection: pulumi.Input[Optional[Union['AttackProtectionBruteForceProtectionArgs', 'AttackProtectionBruteForceProtectionArgsDict', 'outputs.AttackProtectionBruteForceProtection']]] = None,
+                 captcha: pulumi.Input[Optional[Union['AttackProtectionCaptchaArgs', 'AttackProtectionCaptchaArgsDict', 'outputs.AttackProtectionCaptcha']]] = None,
+                 suspicious_ip_throttling: pulumi.Input[Optional[Union['AttackProtectionSuspiciousIpThrottlingArgs', 'AttackProtectionSuspiciousIpThrottlingArgsDict', 'outputs.AttackProtectionSuspiciousIpThrottling']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -580,11 +580,11 @@ class AttackProtection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bot_detection: pulumi.Input[Optional[Union['AttackProtectionBotDetectionArgs', 'AttackProtectionBotDetectionArgsDict']]] = None,
-            breached_password_detection: pulumi.Input[Optional[Union['AttackProtectionBreachedPasswordDetectionArgs', 'AttackProtectionBreachedPasswordDetectionArgsDict']]] = None,
-            brute_force_protection: pulumi.Input[Optional[Union['AttackProtectionBruteForceProtectionArgs', 'AttackProtectionBruteForceProtectionArgsDict']]] = None,
-            captcha: pulumi.Input[Optional[Union['AttackProtectionCaptchaArgs', 'AttackProtectionCaptchaArgsDict']]] = None,
-            suspicious_ip_throttling: pulumi.Input[Optional[Union['AttackProtectionSuspiciousIpThrottlingArgs', 'AttackProtectionSuspiciousIpThrottlingArgsDict']]] = None) -> 'AttackProtection':
+            bot_detection: pulumi.Input[Optional[Union['AttackProtectionBotDetectionArgs', 'AttackProtectionBotDetectionArgsDict', 'outputs.AttackProtectionBotDetection']]] = None,
+            breached_password_detection: pulumi.Input[Optional[Union['AttackProtectionBreachedPasswordDetectionArgs', 'AttackProtectionBreachedPasswordDetectionArgsDict', 'outputs.AttackProtectionBreachedPasswordDetection']]] = None,
+            brute_force_protection: pulumi.Input[Optional[Union['AttackProtectionBruteForceProtectionArgs', 'AttackProtectionBruteForceProtectionArgsDict', 'outputs.AttackProtectionBruteForceProtection']]] = None,
+            captcha: pulumi.Input[Optional[Union['AttackProtectionCaptchaArgs', 'AttackProtectionCaptchaArgsDict', 'outputs.AttackProtectionCaptcha']]] = None,
+            suspicious_ip_throttling: pulumi.Input[Optional[Union['AttackProtectionSuspiciousIpThrottlingArgs', 'AttackProtectionSuspiciousIpThrottlingArgsDict', 'outputs.AttackProtectionSuspiciousIpThrottling']]] = None) -> 'AttackProtection':
         """
         Get an existing AttackProtection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -592,11 +592,11 @@ class AttackProtection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AttackProtectionBotDetectionArgs', 'AttackProtectionBotDetectionArgsDict']] bot_detection: Bot detection configuration to identify and prevent automated threats.
-        :param pulumi.Input[Union['AttackProtectionBreachedPasswordDetectionArgs', 'AttackProtectionBreachedPasswordDetectionArgsDict']] breached_password_detection: Breached password detection protects your applications from bad actors logging in with stolen credentials.
-        :param pulumi.Input[Union['AttackProtectionBruteForceProtectionArgs', 'AttackProtectionBruteForceProtectionArgsDict']] brute_force_protection: Brute-force protection safeguards against a single IP address attacking a single user account.
-        :param pulumi.Input[Union['AttackProtectionCaptchaArgs', 'AttackProtectionCaptchaArgsDict']] captcha: CAPTCHA configuration for attack protection.
-        :param pulumi.Input[Union['AttackProtectionSuspiciousIpThrottlingArgs', 'AttackProtectionSuspiciousIpThrottlingArgsDict']] suspicious_ip_throttling: Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
+        :param pulumi.Input[Union['AttackProtectionBotDetectionArgs', 'AttackProtectionBotDetectionArgsDict', 'outputs.AttackProtectionBotDetection']] bot_detection: Bot detection configuration to identify and prevent automated threats.
+        :param pulumi.Input[Union['AttackProtectionBreachedPasswordDetectionArgs', 'AttackProtectionBreachedPasswordDetectionArgsDict', 'outputs.AttackProtectionBreachedPasswordDetection']] breached_password_detection: Breached password detection protects your applications from bad actors logging in with stolen credentials.
+        :param pulumi.Input[Union['AttackProtectionBruteForceProtectionArgs', 'AttackProtectionBruteForceProtectionArgsDict', 'outputs.AttackProtectionBruteForceProtection']] brute_force_protection: Brute-force protection safeguards against a single IP address attacking a single user account.
+        :param pulumi.Input[Union['AttackProtectionCaptchaArgs', 'AttackProtectionCaptchaArgsDict', 'outputs.AttackProtectionCaptcha']] captcha: CAPTCHA configuration for attack protection.
+        :param pulumi.Input[Union['AttackProtectionSuspiciousIpThrottlingArgs', 'AttackProtectionSuspiciousIpThrottlingArgsDict', 'outputs.AttackProtectionSuspiciousIpThrottling']] suspicious_ip_throttling: Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

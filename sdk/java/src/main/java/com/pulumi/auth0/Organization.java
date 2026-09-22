@@ -53,9 +53,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myOrganization = new Organization("myOrganization", OrganizationArgs.builder()
- *             .name("auth0-inc")
- *             .displayName("Auth0 Inc.")
- *             .thirdPartyClientAccess("block")
  *             .branding(OrganizationBrandingArgs.builder()
  *                 .logoUrl("https://example.com/assets/icons/icon.png")
  *                 .colors(Map.ofEntries(
@@ -63,6 +60,9 @@ import javax.annotation.Nullable;
  *                     Map.entry("page_background", "#e1e1e1")
  *                 ))
  *                 .build())
+ *             .name("auth0-inc")
+ *             .displayName("Auth0 Inc.")
+ *             .thirdPartyClientAccess("block")
  *             .build());
  * 
  *     }

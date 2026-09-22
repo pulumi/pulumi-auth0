@@ -33,8 +33,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			resourceServer, err := auth0.NewResourceServer(ctx, "resource_server", &auth0.ResourceServerArgs{
-//				Name:       pulumi.String("Example Resource Server (Managed by Terraform)"),
-//				Identifier: pulumi.String("https://api.example.com"),
 //				Scopes: []map[string]string{
 //					{
 //						"value":       "create:foo",
@@ -45,6 +43,8 @@ import (
 //						"description": "Create bars",
 //					},
 //				},
+//				Name:       pulumi.String("Example Resource Server (Managed by Terraform)"),
+//				Identifier: pulumi.String("https://api.example.com"),
 //			})
 //			if err != nil {
 //				return err

@@ -35,67 +35,67 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// This is an example on how to set up the email provider with Amazon SES.
 //			_, err := auth0.NewEmailProvider(ctx, "amazon_ses_email_provider", &auth0.EmailProviderArgs{
-//				Name:               pulumi.String("ses"),
-//				Enabled:            pulumi.Bool(true),
-//				DefaultFromAddress: pulumi.String("accounts@example.com"),
 //				Credentials: &auth0.EmailProviderCredentialsArgs{
 //					AccessKeyId:     pulumi.String("AKIAXXXXXXXXXXXXXXXX"),
 //					SecretAccessKey: pulumi.String("7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
 //					Region:          pulumi.String("us-east-1"),
 //				},
+//				Name:               pulumi.String("ses"),
+//				Enabled:            pulumi.Bool(true),
+//				DefaultFromAddress: pulumi.String("accounts@example.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// This is an example on how to set up the email provider with SMTP.
 //			_, err = auth0.NewEmailProvider(ctx, "smtp_email_provider", &auth0.EmailProviderArgs{
-//				Name:               pulumi.String("smtp"),
-//				Enabled:            pulumi.Bool(true),
-//				DefaultFromAddress: pulumi.String("accounts@example.com"),
 //				Credentials: &auth0.EmailProviderCredentialsArgs{
 //					SmtpHost: pulumi.String("your.smtp.host.com"),
 //					SmtpPort: pulumi.Int(583),
 //					SmtpUser: pulumi.String("SMTP Username"),
 //					SmtpPass: pulumi.String("SMTP Password"),
 //				},
+//				Name:               pulumi.String("smtp"),
+//				Enabled:            pulumi.Bool(true),
+//				DefaultFromAddress: pulumi.String("accounts@example.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// This is an example on how to set up the email provider with Sendgrid.
 //			_, err = auth0.NewEmailProvider(ctx, "sendgrid_email_provider", &auth0.EmailProviderArgs{
-//				Name:               pulumi.String("sendgrid"),
-//				Enabled:            pulumi.Bool(true),
-//				DefaultFromAddress: pulumi.String("accounts@example.com"),
 //				Credentials: &auth0.EmailProviderCredentialsArgs{
 //					ApiKey: pulumi.String("secretAPIKey"),
 //				},
+//				Name:               pulumi.String("sendgrid"),
+//				Enabled:            pulumi.Bool(true),
+//				DefaultFromAddress: pulumi.String("accounts@example.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// This is an example on how to set up the email provider with Azure CS.
 //			_, err = auth0.NewEmailProvider(ctx, "azure_cs_email_provider", &auth0.EmailProviderArgs{
-//				Name:               pulumi.String("azure_cs"),
-//				Enabled:            pulumi.Bool(true),
-//				DefaultFromAddress: pulumi.String("accounts@example.com"),
 //				Credentials: &auth0.EmailProviderCredentialsArgs{
 //					AzureCsConnectionString: pulumi.String("azure_cs_connection_string"),
 //				},
+//				Name:               pulumi.String("azure_cs"),
+//				Enabled:            pulumi.Bool(true),
+//				DefaultFromAddress: pulumi.String("accounts@example.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// This is an example on how to set up the email provider with MS365.
 //			_, err = auth0.NewEmailProvider(ctx, "ms365_email_provider", &auth0.EmailProviderArgs{
-//				Name:               pulumi.String("ms365"),
-//				Enabled:            pulumi.Bool(true),
-//				DefaultFromAddress: pulumi.String("accounts@example.com"),
 //				Credentials: &auth0.EmailProviderCredentialsArgs{
 //					Ms365TenantId:     pulumi.String("ms365_tenant_id"),
 //					Ms365ClientId:     pulumi.String("ms365_client_id"),
 //					Ms365ClientSecret: pulumi.String("ms365_client_secret"),
 //				},
+//				Name:               pulumi.String("ms365"),
+//				Enabled:            pulumi.Bool(true),
+//				DefaultFromAddress: pulumi.String("accounts@example.com"),
 //			})
 //			if err != nil {
 //				return err
@@ -103,6 +103,10 @@ import (
 //			// Below is an example of how to set up a custom email provider.
 //			// The action with custom-email-provider as supported_triggers is a prerequisite.
 //			customEmailProviderAction, err := auth0.NewAction(ctx, "custom_email_provider_action", &auth0.ActionArgs{
+//				SupportedTriggers: &auth0.ActionSupportedTriggersArgs{
+//					Id:      pulumi.String("custom-email-provider"),
+//					Version: pulumi.String("v1"),
+//				},
 //				Name:    pulumi.String("custom-email-provider-action"),
 //				Runtime: pulumi.String("node22"),
 //				Deploy:  pulumi.Bool(true),
@@ -120,19 +124,15 @@ import (
 //
 // `),
 //
-//				SupportedTriggers: &auth0.ActionSupportedTriggersArgs{
-//					Id:      pulumi.String("custom-email-provider"),
-//					Version: pulumi.String("v1"),
-//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = auth0.NewEmailProvider(ctx, "custom_email_provider", &auth0.EmailProviderArgs{
+//				Credentials:        &auth0.EmailProviderCredentialsArgs{},
 //				Name:               pulumi.String("custom"),
 //				Enabled:            pulumi.Bool(true),
 //				DefaultFromAddress: pulumi.String("accounts@example.com"),
-//				Credentials:        &auth0.EmailProviderCredentialsArgs{},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				customEmailProviderAction,
 //			}))

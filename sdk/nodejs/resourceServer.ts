@@ -16,17 +16,7 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const myResourceServer = new auth0.ResourceServer("my_resource_server", {
- *     name: "Example Resource Server (Managed by Terraform)",
- *     identifier: "https://api.example.com",
- *     signingAlg: "RS256",
- *     allowOfflineAccess: true,
- *     allowOnlineAccess: true,
- *     allowOnlineAccessWithEphemeralSessions: false,
- *     tokenLifetime: 8600,
- *     skipConsentForVerifiableFirstPartyClients: true,
- *     consentPolicy: "transactional-authorization-with-mfa",
  *     tokenEncryption: {
- *         format: "compact-nested-jwe",
  *         encryptionKey: {
  *             name: "keyname",
  *             algorithm: "RSA-OAEP-256",
@@ -35,15 +25,8 @@ import * as utilities from "./utilities";
  * -----END CERTIFICATE-----
  * `,
  *         },
+ *         format: "compact-nested-jwe",
  *     },
- *     authorizationDetails: [
- *         {
- *             type: "payment",
- *         },
- *         {
- *             type: "non-payment",
- *         },
- *     ],
  *     proofOfPossession: {
  *         mechanism: "mtls",
  *         required: true,
@@ -56,17 +39,26 @@ import * as utilities from "./utilities";
  *             policy: "require_client_grant",
  *         },
  *     },
+ *     authorizationDetails: [
+ *         {
+ *             type: "payment",
+ *         },
+ *         {
+ *             type: "non-payment",
+ *         },
+ *     ],
+ *     name: "Example Resource Server (Managed by Terraform)",
+ *     identifier: "https://api.example.com",
+ *     signingAlg: "RS256",
+ *     allowOfflineAccess: true,
+ *     allowOnlineAccess: true,
+ *     allowOnlineAccessWithEphemeralSessions: false,
+ *     tokenLifetime: 8600,
+ *     skipConsentForVerifiableFirstPartyClients: true,
+ *     consentPolicy: "transactional-authorization-with-mfa",
  * });
  * // Sample OIN resource server configuration
  * const oktaOinExpressConfigurationApi = new auth0.ResourceServer("okta_oin_express_configuration_api", {
- *     identifier: "urn:auth0:express-configure",
- *     name: "Okta OIN Express Configuration API",
- *     signingAlg: "RS256",
- *     signingSecret: null,
- *     skipConsentForVerifiableFirstPartyClients: false,
- *     tokenDialect: null,
- *     tokenLifetime: 86400,
- *     verificationLocation: null,
  *     proofOfPossession: {
  *         disable: true,
  *         mechanism: null,
@@ -76,6 +68,14 @@ import * as utilities from "./utilities";
  *         disable: true,
  *         format: null,
  *     },
+ *     identifier: "urn:auth0:express-configure",
+ *     name: "Okta OIN Express Configuration API",
+ *     signingAlg: "RS256",
+ *     signingSecret: null,
+ *     skipConsentForVerifiableFirstPartyClients: false,
+ *     tokenDialect: null,
+ *     tokenLifetime: 86400,
+ *     verificationLocation: null,
  * });
  * ```
  *

@@ -17,19 +17,26 @@ import * as utilities from "./utilities";
  *
  * // Creates an event stream of type eventbridge
  * const myEventStreamEventBridge = new auth0.EventStream("my_event_stream_event_bridge", {
+ *     eventbridgeConfiguration: {
+ *         awsAccountId: "242849305777",
+ *         awsRegion: "us-east-1",
+ *     },
  *     name: "my-eventbridge",
  *     destinationType: "eventbridge",
  *     subscriptions: [
  *         "user.created",
  *         "user.updated",
  *     ],
- *     eventbridgeConfiguration: {
- *         awsAccountId: "242849305777",
- *         awsRegion: "us-east-1",
- *     },
  * });
  * // Creates an event stream of type webhook in a disabled state
  * const myEventStreamWebhook = new auth0.EventStream("my_event_stream_webhook", {
+ *     webhookConfiguration: {
+ *         webhookAuthorization: {
+ *             method: "bearer",
+ *             token: "123456789",
+ *         },
+ *         webhookEndpoint: "https://eof28wtn4v4506o.m.pipedream.net",
+ *     },
  *     name: "my-webhook",
  *     destinationType: "webhook",
  *     status: "disabled",
@@ -37,44 +44,37 @@ import * as utilities from "./utilities";
  *         "user.created",
  *         "user.updated",
  *     ],
- *     webhookConfiguration: {
- *         webhookEndpoint: "https://eof28wtn4v4506o.m.pipedream.net",
- *         webhookAuthorization: {
- *             method: "bearer",
- *             token: "123456789",
- *         },
- *     },
  * });
  * const config = new pulumi.Config();
  * // The webhook token
  * const webhookToken = config.require("webhookToken");
  * const myEventStreamWebhookSecure = new auth0.EventStream("my_event_stream_webhook_secure", {
+ *     webhookConfiguration: {
+ *         webhookAuthorization: {
+ *             method: "bearer",
+ *             tokenWo: webhookToken,
+ *             tokenWoVersion: 1,
+ *         },
+ *         webhookEndpoint: "https://eof28wtn4v4506o.m.pipedream.net",
+ *     },
  *     name: "my-webhook-secure",
  *     destinationType: "webhook",
  *     subscriptions: [
  *         "user.created",
  *         "user.updated",
  *     ],
- *     webhookConfiguration: {
- *         webhookEndpoint: "https://eof28wtn4v4506o.m.pipedream.net",
- *         webhookAuthorization: {
- *             method: "bearer",
- *             tokenWo: webhookToken,
- *             tokenWoVersion: 1,
- *         },
- *     },
  * });
  * // Creates an event stream of type action
  * const myEventStreamAction = new auth0.EventStream("my_event_stream_action", {
+ *     actionConfiguration: {
+ *         actionId: myAction.id,
+ *     },
  *     name: "my-action-stream",
  *     destinationType: "action",
  *     subscriptions: [
  *         "user.created",
  *         "user.updated",
  *     ],
- *     actionConfiguration: {
- *         actionId: myAction.id,
- *     },
  * });
  * ```
  *

@@ -39,8 +39,6 @@ namespace Pulumi.Auth0
     ///     // Create a Client by referencing the newly created organisation or by reference an existing one.
     ///     var myTestClient = new Auth0.Client("my_test_client", new()
     ///     {
-    ///         Name = "test_client",
-    ///         OrganizationUsage = "allow",
     ///         DefaultOrganization = new Auth0.Inputs.ClientDefaultOrganizationArgs
     ///         {
     ///             OrganizationId = myOrganization.Id,
@@ -49,6 +47,8 @@ namespace Pulumi.Auth0
     ///                 "client_credentials",
     ///             },
     ///         },
+    ///         Name = "test_client",
+    ///         OrganizationUsage = "allow",
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =

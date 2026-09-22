@@ -26,34 +26,34 @@ namespace Pulumi.Auth0
     ///     // Configure the OTP enrollment phone notification template with SMS and voice support.
     ///     var otpEnrollment = new Auth0.BrandingPhoneNotificationTemplate("otp_enrollment", new()
     ///     {
-    ///         Type = "otp_enroll",
-    ///         Disabled = false,
     ///         Content = new Auth0.Inputs.BrandingPhoneNotificationTemplateContentArgs
     ///         {
-    ///             From = "+1234567890",
     ///             Body = new Auth0.Inputs.BrandingPhoneNotificationTemplateContentBodyArgs
     ///             {
     ///                 Text = "Your enrollment code is: @{code}",
     ///                 Voice = "Your enrollment code is @{code}",
     ///             },
+    ///             From = "+1234567890",
     ///         },
+    ///         Type = "otp_enroll",
+    ///         Disabled = false,
     ///     });
     /// 
     ///     // Phone Notification Template - OTP Verification
     ///     // Configure the OTP verification phone notification template.
     ///     var otpVerification = new Auth0.BrandingPhoneNotificationTemplate("otp_verification", new()
     ///     {
-    ///         Type = "otp_verify",
-    ///         Disabled = false,
     ///         Content = new Auth0.Inputs.BrandingPhoneNotificationTemplateContentArgs
     ///         {
-    ///             From = "+1234567890",
     ///             Body = new Auth0.Inputs.BrandingPhoneNotificationTemplateContentBodyArgs
     ///             {
     ///                 Text = "Your verification code is: @{code}",
     ///                 Voice = "Your verification code is @{code}",
     ///             },
+    ///             From = "+1234567890",
     ///         },
+    ///         Type = "otp_verify",
+    ///         Disabled = false,
     ///     });
     /// 
     /// });

@@ -25,12 +25,12 @@ import * as utilities from "./utilities";
  * });
  * // Create a Client by referencing the newly created organisation or by reference an existing one.
  * const myTestClient = new auth0.Client("my_test_client", {
- *     name: "test_client",
- *     organizationUsage: "allow",
  *     defaultOrganization: {
  *         organizationId: myOrganization.id,
  *         flows: ["client_credentials"],
  *     },
+ *     name: "test_client",
+ *     organizationUsage: "allow",
  * }, {
  *     dependsOn: [
  *         myOrganization,

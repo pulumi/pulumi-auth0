@@ -24,18 +24,8 @@ namespace Pulumi.Auth0
     /// {
     ///     var myResourceServer = new Auth0.ResourceServer("my_resource_server", new()
     ///     {
-    ///         Name = "Example Resource Server (Managed by Terraform)",
-    ///         Identifier = "https://api.example.com",
-    ///         SigningAlg = "RS256",
-    ///         AllowOfflineAccess = true,
-    ///         AllowOnlineAccess = true,
-    ///         AllowOnlineAccessWithEphemeralSessions = false,
-    ///         TokenLifetime = 8600,
-    ///         SkipConsentForVerifiableFirstPartyClients = true,
-    ///         ConsentPolicy = "transactional-authorization-with-mfa",
     ///         TokenEncryption = new Auth0.Inputs.ResourceServerTokenEncryptionArgs
     ///         {
-    ///             Format = "compact-nested-jwe",
     ///             EncryptionKey = new Auth0.Inputs.ResourceServerTokenEncryptionEncryptionKeyArgs
     ///             {
     ///                 Name = "keyname",
@@ -45,17 +35,7 @@ namespace Pulumi.Auth0
     /// -----END CERTIFICATE-----
     /// ",
     ///             },
-    ///         },
-    ///         AuthorizationDetails = new[]
-    ///         {
-    ///             new Auth0.Inputs.ResourceServerAuthorizationDetailArgs
-    ///             {
-    ///                 Type = "payment",
-    ///             },
-    ///             new Auth0.Inputs.ResourceServerAuthorizationDetailArgs
-    ///             {
-    ///                 Type = "non-payment",
-    ///             },
+    ///             Format = "compact-nested-jwe",
     ///         },
     ///         ProofOfPossession = new Auth0.Inputs.ResourceServerProofOfPossessionArgs
     ///         {
@@ -73,19 +53,31 @@ namespace Pulumi.Auth0
     ///                 Policy = "require_client_grant",
     ///             },
     ///         },
+    ///         AuthorizationDetails = new[]
+    ///         {
+    ///             new Auth0.Inputs.ResourceServerAuthorizationDetailArgs
+    ///             {
+    ///                 Type = "payment",
+    ///             },
+    ///             new Auth0.Inputs.ResourceServerAuthorizationDetailArgs
+    ///             {
+    ///                 Type = "non-payment",
+    ///             },
+    ///         },
+    ///         Name = "Example Resource Server (Managed by Terraform)",
+    ///         Identifier = "https://api.example.com",
+    ///         SigningAlg = "RS256",
+    ///         AllowOfflineAccess = true,
+    ///         AllowOnlineAccess = true,
+    ///         AllowOnlineAccessWithEphemeralSessions = false,
+    ///         TokenLifetime = 8600,
+    ///         SkipConsentForVerifiableFirstPartyClients = true,
+    ///         ConsentPolicy = "transactional-authorization-with-mfa",
     ///     });
     /// 
     ///     // Sample OIN resource server configuration
     ///     var oktaOinExpressConfigurationApi = new Auth0.ResourceServer("okta_oin_express_configuration_api", new()
     ///     {
-    ///         Identifier = "urn:auth0:express-configure",
-    ///         Name = "Okta OIN Express Configuration API",
-    ///         SigningAlg = "RS256",
-    ///         SigningSecret = null,
-    ///         SkipConsentForVerifiableFirstPartyClients = false,
-    ///         TokenDialect = null,
-    ///         TokenLifetime = 86400,
-    ///         VerificationLocation = null,
     ///         ProofOfPossession = new Auth0.Inputs.ResourceServerProofOfPossessionArgs
     ///         {
     ///             Disable = true,
@@ -97,6 +89,14 @@ namespace Pulumi.Auth0
     ///             Disable = true,
     ///             Format = null,
     ///         },
+    ///         Identifier = "urn:auth0:express-configure",
+    ///         Name = "Okta OIN Express Configuration API",
+    ///         SigningAlg = "RS256",
+    ///         SigningSecret = null,
+    ///         SkipConsentForVerifiableFirstPartyClients = false,
+    ///         TokenDialect = null,
+    ///         TokenLifetime = 86400,
+    ///         VerificationLocation = null,
     ///     });
     /// 
     /// });

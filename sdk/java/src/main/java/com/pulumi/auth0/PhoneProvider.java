@@ -62,8 +62,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         // This is an example on how to set up the phone provider with Twilio.
  *         var twilioPhoneProvider = new PhoneProvider("twilioPhoneProvider", PhoneProviderArgs.builder()
- *             .name("twilio")
- *             .disabled(false)
  *             .credentials(PhoneProviderCredentialsArgs.builder()
  *                 .authToken("secretAuthToken")
  *                 .build())
@@ -75,11 +73,17 @@ import javax.annotation.Nullable;
  *                 .sid("ACXXXXXXXXXXXXXXXX")
  *                 .mssid("MSXXXXXXXXXXXXXXXX")
  *                 .build())
+ *             .name("twilio")
+ *             .disabled(false)
  *             .build());
  * 
  *         // This is an example on how to set up the phone provider with a custom action.
  *         // Make sure a corresponding action exists with custom-phone-provider as supported triggers
  *         var sendCustomPhone = new Action("sendCustomPhone", ActionArgs.builder()
+ *             .supportedTriggers(ActionSupportedTriggersArgs.builder()
+ *                 .id("custom-phone-provider")
+ *                 .version("v1")
+ *                 .build())
  *             .name("Custom Phone Provider")
  *             .runtime("node22")
  *             .deploy(true)
@@ -94,15 +98,9 @@ import javax.annotation.Nullable;
  *     return;
  * }}{@code ;
  *             """)
- *             .supportedTriggers(ActionSupportedTriggersArgs.builder()
- *                 .id("custom-phone-provider")
- *                 .version("v1")
- *                 .build())
  *             .build());
  * 
  *         var customPhoneProvider = new PhoneProvider("customPhoneProvider", PhoneProviderArgs.builder()
- *             .name("custom")
- *             .disabled(false)
  *             .configuration(PhoneProviderConfigurationArgs.builder()
  *                 .deliveryMethods(                
  *                     "text",
@@ -110,6 +108,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .credentials(PhoneProviderCredentialsArgs.builder()
  *                 .build())
+ *             .name("custom")
+ *             .disabled(false)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(sendCustomPhone)
  *                 .build());

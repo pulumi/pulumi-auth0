@@ -201,7 +201,7 @@ class PhoneNotificationTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 content: pulumi.Input[Optional[Union['PhoneNotificationTemplateContentArgs', 'PhoneNotificationTemplateContentArgsDict']]] = None,
+                 content: pulumi.Input[Optional[Union['PhoneNotificationTemplateContentArgs', 'PhoneNotificationTemplateContentArgsDict', 'outputs.PhoneNotificationTemplateContent']]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -211,7 +211,7 @@ class PhoneNotificationTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['PhoneNotificationTemplateContentArgs', 'PhoneNotificationTemplateContentArgsDict']] content: The content of the phone notification template.
+        :param pulumi.Input[Union['PhoneNotificationTemplateContentArgs', 'PhoneNotificationTemplateContentArgsDict', 'outputs.PhoneNotificationTemplateContent']] content: The content of the phone notification template.
         :param pulumi.Input[_builtins.bool] disabled: Indicates whether the phone notification template is disabled.
         :param pulumi.Input[_builtins.str] type: The type of the phone notification template.
         """
@@ -240,7 +240,7 @@ class PhoneNotificationTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 content: pulumi.Input[Optional[Union['PhoneNotificationTemplateContentArgs', 'PhoneNotificationTemplateContentArgsDict']]] = None,
+                 content: pulumi.Input[Optional[Union['PhoneNotificationTemplateContentArgs', 'PhoneNotificationTemplateContentArgsDict', 'outputs.PhoneNotificationTemplateContent']]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -272,7 +272,7 @@ class PhoneNotificationTemplate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             channel: pulumi.Input[Optional[_builtins.str]] = None,
-            content: pulumi.Input[Optional[Union['PhoneNotificationTemplateContentArgs', 'PhoneNotificationTemplateContentArgsDict']]] = None,
+            content: pulumi.Input[Optional[Union['PhoneNotificationTemplateContentArgs', 'PhoneNotificationTemplateContentArgsDict', 'outputs.PhoneNotificationTemplateContent']]] = None,
             customizable: pulumi.Input[Optional[_builtins.bool]] = None,
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             template_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -286,7 +286,7 @@ class PhoneNotificationTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] channel: The channel of the phone notification template (e.g., `sms`, `voice`).
-        :param pulumi.Input[Union['PhoneNotificationTemplateContentArgs', 'PhoneNotificationTemplateContentArgsDict']] content: The content of the phone notification template.
+        :param pulumi.Input[Union['PhoneNotificationTemplateContentArgs', 'PhoneNotificationTemplateContentArgsDict', 'outputs.PhoneNotificationTemplateContent']] content: The content of the phone notification template.
         :param pulumi.Input[_builtins.bool] customizable: Indicates whether the phone notification template is customizable.
         :param pulumi.Input[_builtins.bool] disabled: Indicates whether the phone notification template is disabled.
         :param pulumi.Input[_builtins.str] template_id: The ID of the phone notification template.

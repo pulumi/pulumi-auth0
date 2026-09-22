@@ -26,16 +26,6 @@ namespace Pulumi.Auth0
     ///     {
     ///         SuspiciousIpThrottling = new Auth0.Inputs.AttackProtectionSuspiciousIpThrottlingArgs
     ///         {
-    ///             Enabled = true,
-    ///             Shields = new[]
-    ///             {
-    ///                 "admin_notification",
-    ///                 "block",
-    ///             },
-    ///             Allowlists = new[]
-    ///             {
-    ///                 "192.168.1.1",
-    ///             },
     ///             PreLogin = new Auth0.Inputs.AttackProtectionSuspiciousIpThrottlingPreLoginArgs
     ///             {
     ///                 MaxAttempts = 100,
@@ -45,6 +35,16 @@ namespace Pulumi.Auth0
     ///             {
     ///                 MaxAttempts = 50,
     ///                 Rate = 1200,
+    ///             },
+    ///             Enabled = true,
+    ///             Shields = new[]
+    ///             {
+    ///                 "admin_notification",
+    ///                 "block",
+    ///             },
+    ///             Allowlists = new[]
+    ///             {
+    ///                 "192.168.1.1",
     ///             },
     ///         },
     ///         BruteForceProtection = new Auth0.Inputs.AttackProtectionBruteForceProtectionArgs
@@ -64,17 +64,6 @@ namespace Pulumi.Auth0
     ///         },
     ///         BreachedPasswordDetection = new Auth0.Inputs.AttackProtectionBreachedPasswordDetectionArgs
     ///         {
-    ///             AdminNotificationFrequencies = new[]
-    ///             {
-    ///                 "daily",
-    ///             },
-    ///             Enabled = true,
-    ///             Method = "standard",
-    ///             Shields = new[]
-    ///             {
-    ///                 "admin_notification",
-    ///                 "block",
-    ///             },
     ///             PreUserRegistration = new Auth0.Inputs.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs
     ///             {
     ///                 Shields = new[]
@@ -90,6 +79,17 @@ namespace Pulumi.Auth0
     ///                     "admin_notification",
     ///                     "block",
     ///                 },
+    ///             },
+    ///             AdminNotificationFrequencies = new[]
+    ///             {
+    ///                 "daily",
+    ///             },
+    ///             Enabled = true,
+    ///             Method = "standard",
+    ///             Shields = new[]
+    ///             {
+    ///                 "admin_notification",
+    ///                 "block",
     ///             },
     ///         },
     ///         BotDetection = new Auth0.Inputs.AttackProtectionBotDetectionArgs
@@ -120,12 +120,12 @@ namespace Pulumi.Auth0
     ///     {
     ///         Captcha = new Auth0.Inputs.AttackProtectionCaptchaArgs
     ///         {
-    ///             ActiveProviderId = "recaptcha_v2",
     ///             RecaptchaV2 = new Auth0.Inputs.AttackProtectionCaptchaRecaptchaV2Args
     ///             {
     ///                 SiteKey = recaptchaV2SiteKey,
     ///                 Secret = recaptchaV2Secret,
     ///             },
+    ///             ActiveProviderId = "recaptcha_v2",
     ///         },
     ///     });
     /// 
@@ -140,13 +140,13 @@ namespace Pulumi.Auth0
     ///     {
     ///         Captcha = new Auth0.Inputs.AttackProtectionCaptchaArgs
     ///         {
-    ///             ActiveProviderId = "recaptcha_enterprise",
     ///             RecaptchaEnterprise = new Auth0.Inputs.AttackProtectionCaptchaRecaptchaEnterpriseArgs
     ///             {
     ///                 SiteKey = recaptchaEnterpriseSiteKey,
     ///                 ApiKey = recaptchaEnterpriseApiKey,
     ///                 ProjectId = recaptchaEnterpriseProjectId,
     ///             },
+    ///             ActiveProviderId = "recaptcha_enterprise",
     ///         },
     ///     });
     /// 
@@ -159,12 +159,12 @@ namespace Pulumi.Auth0
     ///     {
     ///         Captcha = new Auth0.Inputs.AttackProtectionCaptchaArgs
     ///         {
-    ///             ActiveProviderId = "hcaptcha",
     ///             Hcaptcha = new Auth0.Inputs.AttackProtectionCaptchaHcaptchaArgs
     ///             {
     ///                 SiteKey = hcaptchaSiteKey,
     ///                 Secret = hcaptchaSecret,
     ///             },
+    ///             ActiveProviderId = "hcaptcha",
     ///         },
     ///     });
     /// 
@@ -177,12 +177,12 @@ namespace Pulumi.Auth0
     ///     {
     ///         Captcha = new Auth0.Inputs.AttackProtectionCaptchaArgs
     ///         {
-    ///             ActiveProviderId = "friendly_captcha",
     ///             FriendlyCaptcha = new Auth0.Inputs.AttackProtectionCaptchaFriendlyCaptchaArgs
     ///             {
     ///                 SiteKey = friendlyCaptchaSiteKey,
     ///                 Secret = friendlyCaptchaSecret,
     ///             },
+    ///             ActiveProviderId = "friendly_captcha",
     ///         },
     ///     });
     /// 
@@ -195,7 +195,6 @@ namespace Pulumi.Auth0
     ///     {
     ///         Captcha = new Auth0.Inputs.AttackProtectionCaptchaArgs
     ///         {
-    ///             ActiveProviderId = "arkose",
     ///             Arkose = new Auth0.Inputs.AttackProtectionCaptchaArkoseArgs
     ///             {
     ///                 SiteKey = arkoseSiteKey,
@@ -204,6 +203,7 @@ namespace Pulumi.Auth0
     ///                 VerifySubdomain = "verify.example.com",
     ///                 FailOpen = false,
     ///             },
+    ///             ActiveProviderId = "arkose",
     ///         },
     ///     });
     /// 

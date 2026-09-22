@@ -43,7 +43,6 @@ namespace Pulumi.Auth0
     ///     // set of associations; do not use both resources on the same organization.
     ///     var myOrgClients = new Auth0.OrganizationClients("my_org_clients", new()
     ///     {
-    ///         OrganizationId = myOrganization.Id,
     ///         Clients = new[]
     ///         {
     ///             new Auth0.Inputs.OrganizationClientsClientArgs
@@ -56,6 +55,7 @@ namespace Pulumi.Auth0
     ///                 ClientId = myOtherClient.Id,
     ///             },
     ///         },
+    ///         OrganizationId = myOrganization.Id,
     ///     });
     /// 
     /// });

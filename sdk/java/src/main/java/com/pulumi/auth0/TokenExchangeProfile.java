@@ -47,6 +47,10 @@ import javax.annotation.Nullable;
  *         // Below action is created with custom-token-exchange as supported_triggers
  *         // This action is then linked using the action_id param to the token-exchange profile
  *         var myAction = new Action("myAction", ActionArgs.builder()
+ *             .supportedTriggers(ActionSupportedTriggersArgs.builder()
+ *                 .id("custom-token-exchange")
+ *                 .version("v1")
+ *                 .build())
  *             .name("TokenExchange-Action")
  *             .code("""
  * exports.onExecuteCustomTokenExchange = async (event, api) => {
@@ -54,10 +58,6 @@ import javax.annotation.Nullable;
  * };\"
  *             """)
  *             .deploy(true)
- *             .supportedTriggers(ActionSupportedTriggersArgs.builder()
- *                 .id("custom-token-exchange")
- *                 .version("v1")
- *                 .build())
  *             .build());
  * 
  *         var myTokenExchangeProfile = new TokenExchangeProfile("myTokenExchangeProfile", TokenExchangeProfileArgs.builder()

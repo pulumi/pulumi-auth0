@@ -207,14 +207,10 @@ class NetworkAclKey(pulumi.CustomResource):
             value=hmac_key_base64)
         # Reference the key in a Network ACL rule to allow only signed requests.
         allow_signed_only = auth0.NetworkAcl("allow_signed_only",
-            description="Block requests without a valid HMAC signature",
-            active=True,
-            priority=99,
             rule={
                 "action": {
                     "block": True,
                 },
-                "scope": "tenant",
                 "not_match": {
                     "http_message_signature": {
                         "keys": [{
@@ -222,7 +218,11 @@ class NetworkAclKey(pulumi.CustomResource):
                         }],
                     },
                 },
-            })
+                "scope": "tenant",
+            },
+            description="Block requests without a valid HMAC signature",
+            active=True,
+            priority=99)
         ```
 
 
@@ -256,14 +256,10 @@ class NetworkAclKey(pulumi.CustomResource):
             value=hmac_key_base64)
         # Reference the key in a Network ACL rule to allow only signed requests.
         allow_signed_only = auth0.NetworkAcl("allow_signed_only",
-            description="Block requests without a valid HMAC signature",
-            active=True,
-            priority=99,
             rule={
                 "action": {
                     "block": True,
                 },
-                "scope": "tenant",
                 "not_match": {
                     "http_message_signature": {
                         "keys": [{
@@ -271,7 +267,11 @@ class NetworkAclKey(pulumi.CustomResource):
                         }],
                     },
                 },
-            })
+                "scope": "tenant",
+            },
+            description="Block requests without a valid HMAC signature",
+            active=True,
+            priority=99)
         ```
 
 

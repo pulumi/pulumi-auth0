@@ -31,15 +31,15 @@ import (
 //			// Phone Notification Template - OTP Enrollment
 //			// Configure the OTP enrollment phone notification template with SMS and voice support.
 //			_, err := auth0.NewBrandingPhoneNotificationTemplate(ctx, "otp_enrollment", &auth0.BrandingPhoneNotificationTemplateArgs{
-//				Type:     pulumi.String("otp_enroll"),
-//				Disabled: pulumi.Bool(false),
 //				Content: &auth0.BrandingPhoneNotificationTemplateContentArgs{
-//					From: pulumi.String("+1234567890"),
 //					Body: &auth0.BrandingPhoneNotificationTemplateContentBodyArgs{
 //						Text:  pulumi.String("Your enrollment code is: @{code}"),
 //						Voice: pulumi.String("Your enrollment code is @{code}"),
 //					},
+//					From: pulumi.String("+1234567890"),
 //				},
+//				Type:     pulumi.String("otp_enroll"),
+//				Disabled: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -47,15 +47,15 @@ import (
 //			// Phone Notification Template - OTP Verification
 //			// Configure the OTP verification phone notification template.
 //			_, err = auth0.NewBrandingPhoneNotificationTemplate(ctx, "otp_verification", &auth0.BrandingPhoneNotificationTemplateArgs{
-//				Type:     pulumi.String("otp_verify"),
-//				Disabled: pulumi.Bool(false),
 //				Content: &auth0.BrandingPhoneNotificationTemplateContentArgs{
-//					From: pulumi.String("+1234567890"),
 //					Body: &auth0.BrandingPhoneNotificationTemplateContentBodyArgs{
 //						Text:  pulumi.String("Your verification code is: @{code}"),
 //						Voice: pulumi.String("Your verification code is @{code}"),
 //					},
+//					From: pulumi.String("+1234567890"),
 //				},
+//				Type:     pulumi.String("otp_verify"),
+//				Disabled: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err

@@ -299,8 +299,8 @@ class LogStream(pulumi.CustomResource):
                  filters: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
                  is_priority: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 pii_config: pulumi.Input[Optional[Union['LogStreamPiiConfigArgs', 'LogStreamPiiConfigArgsDict']]] = None,
-                 sink: pulumi.Input[Optional[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict']]] = None,
+                 pii_config: pulumi.Input[Optional[Union['LogStreamPiiConfigArgs', 'LogStreamPiiConfigArgsDict', 'outputs.LogStreamPiiConfig']]] = None,
+                 sink: pulumi.Input[Optional[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict', 'outputs.LogStreamSink']]] = None,
                  start_from: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -319,6 +319,16 @@ class LogStream(pulumi.CustomResource):
 
         # This is an example of an http log stream.
         my_webhook = auth0.LogStream("my_webhook",
+            sink={
+                "http_endpoint": "https://example.com/logs",
+                "http_content_type": "application/json",
+                "http_content_format": "JSONOBJECT",
+                "http_authorization": "AKIAXXXXXXXXXXXXXXXX",
+                "http_custom_headers": [{
+                    "header": "foo",
+                    "value": "bar",
+                }],
+            },
             name="HTTP log stream",
             type="http",
             filters=[
@@ -330,36 +340,26 @@ class LogStream(pulumi.CustomResource):
                     "type": "category",
                     "name": "auth.signup.fail",
                 },
-            ],
-            sink={
-                "http_endpoint": "https://example.com/logs",
-                "http_content_type": "application/json",
-                "http_content_format": "JSONOBJECT",
-                "http_authorization": "AKIAXXXXXXXXXXXXXXXX",
-                "http_custom_headers": [{
-                    "header": "foo",
-                    "value": "bar",
-                }],
-            })
+            ])
         # This is an example of an Amazon EventBridge log stream.
         example_aws = auth0.LogStream("example_aws",
-            name="AWS Eventbridge",
-            type="eventbridge",
-            status="active",
             sink={
                 "aws_account_id": "my_account_id",
                 "aws_region": "us-east-2",
-            })
+            },
+            name="AWS Eventbridge",
+            type="eventbridge",
+            status="active")
         # This is an example of a Datadog log stream using a write-only API key
         # (recommended for security). The key is never stored in Terraform state.
         datadog_secure = auth0.LogStream("datadog_secure",
-            name="Datadog (write-only key)",
-            type="datadog",
             sink={
                 "datadog_region": "us",
                 "datadog_api_key_wo": "AKIAXXXXXXXXXXXXXXXX",
                 "datadog_api_key_wo_version": 1,
-            })
+            },
+            name="Datadog (write-only key)",
+            type="datadog")
         ```
 
         ## Import
@@ -378,8 +378,8 @@ class LogStream(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]] filters: Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
         :param pulumi.Input[_builtins.bool] is_priority: Set True for priority log streams, False for non-priority
         :param pulumi.Input[_builtins.str] name: Name of the log stream.
-        :param pulumi.Input[Union['LogStreamPiiConfigArgs', 'LogStreamPiiConfigArgsDict']] pii_config: Configuration for PII (Personally Identifiable Information) handling.
-        :param pulumi.Input[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict']] sink: The sink configuration for the log stream.
+        :param pulumi.Input[Union['LogStreamPiiConfigArgs', 'LogStreamPiiConfigArgsDict', 'outputs.LogStreamPiiConfig']] pii_config: Configuration for PII (Personally Identifiable Information) handling.
+        :param pulumi.Input[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict', 'outputs.LogStreamSink']] sink: The sink configuration for the log stream.
         :param pulumi.Input[_builtins.str] start_from: The optional datetime (ISO 8601) to start streaming logs from.
         :param pulumi.Input[_builtins.str] status: The current status of the log stream. Options are "active", "paused", "suspended".
         :param pulumi.Input[_builtins.str] type: Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.
@@ -404,6 +404,16 @@ class LogStream(pulumi.CustomResource):
 
         # This is an example of an http log stream.
         my_webhook = auth0.LogStream("my_webhook",
+            sink={
+                "http_endpoint": "https://example.com/logs",
+                "http_content_type": "application/json",
+                "http_content_format": "JSONOBJECT",
+                "http_authorization": "AKIAXXXXXXXXXXXXXXXX",
+                "http_custom_headers": [{
+                    "header": "foo",
+                    "value": "bar",
+                }],
+            },
             name="HTTP log stream",
             type="http",
             filters=[
@@ -415,36 +425,26 @@ class LogStream(pulumi.CustomResource):
                     "type": "category",
                     "name": "auth.signup.fail",
                 },
-            ],
-            sink={
-                "http_endpoint": "https://example.com/logs",
-                "http_content_type": "application/json",
-                "http_content_format": "JSONOBJECT",
-                "http_authorization": "AKIAXXXXXXXXXXXXXXXX",
-                "http_custom_headers": [{
-                    "header": "foo",
-                    "value": "bar",
-                }],
-            })
+            ])
         # This is an example of an Amazon EventBridge log stream.
         example_aws = auth0.LogStream("example_aws",
-            name="AWS Eventbridge",
-            type="eventbridge",
-            status="active",
             sink={
                 "aws_account_id": "my_account_id",
                 "aws_region": "us-east-2",
-            })
+            },
+            name="AWS Eventbridge",
+            type="eventbridge",
+            status="active")
         # This is an example of a Datadog log stream using a write-only API key
         # (recommended for security). The key is never stored in Terraform state.
         datadog_secure = auth0.LogStream("datadog_secure",
-            name="Datadog (write-only key)",
-            type="datadog",
             sink={
                 "datadog_region": "us",
                 "datadog_api_key_wo": "AKIAXXXXXXXXXXXXXXXX",
                 "datadog_api_key_wo_version": 1,
-            })
+            },
+            name="Datadog (write-only key)",
+            type="datadog")
         ```
 
         ## Import
@@ -476,8 +476,8 @@ class LogStream(pulumi.CustomResource):
                  filters: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
                  is_priority: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 pii_config: pulumi.Input[Optional[Union['LogStreamPiiConfigArgs', 'LogStreamPiiConfigArgsDict']]] = None,
-                 sink: pulumi.Input[Optional[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict']]] = None,
+                 pii_config: pulumi.Input[Optional[Union['LogStreamPiiConfigArgs', 'LogStreamPiiConfigArgsDict', 'outputs.LogStreamPiiConfig']]] = None,
+                 sink: pulumi.Input[Optional[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict', 'outputs.LogStreamSink']]] = None,
                  start_from: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -515,8 +515,8 @@ class LogStream(pulumi.CustomResource):
             filters: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
             is_priority: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            pii_config: pulumi.Input[Optional[Union['LogStreamPiiConfigArgs', 'LogStreamPiiConfigArgsDict']]] = None,
-            sink: pulumi.Input[Optional[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict']]] = None,
+            pii_config: pulumi.Input[Optional[Union['LogStreamPiiConfigArgs', 'LogStreamPiiConfigArgsDict', 'outputs.LogStreamPiiConfig']]] = None,
+            sink: pulumi.Input[Optional[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict', 'outputs.LogStreamSink']]] = None,
             start_from: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None) -> 'LogStream':
@@ -530,8 +530,8 @@ class LogStream(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]] filters: Only logs events matching these filters will be delivered by the stream. If omitted or empty, all events will be delivered. Filters available: `auth.ancillary.fail`, `auth.ancillary.success`, `auth.login.fail`, `auth.login.notification`, `auth.login.success`, `auth.logout.fail`, `auth.logout.success`, `auth.signup.fail`, `auth.signup.success`, `auth.silent_auth.fail`, `auth.silent_auth.success`, `auth.token_exchange.fail`, `auth.token_exchange.success`, `management.fail`, `management.success`, `system.notification`, `user.fail`, `user.notification`, `user.success`, `other`.
         :param pulumi.Input[_builtins.bool] is_priority: Set True for priority log streams, False for non-priority
         :param pulumi.Input[_builtins.str] name: Name of the log stream.
-        :param pulumi.Input[Union['LogStreamPiiConfigArgs', 'LogStreamPiiConfigArgsDict']] pii_config: Configuration for PII (Personally Identifiable Information) handling.
-        :param pulumi.Input[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict']] sink: The sink configuration for the log stream.
+        :param pulumi.Input[Union['LogStreamPiiConfigArgs', 'LogStreamPiiConfigArgsDict', 'outputs.LogStreamPiiConfig']] pii_config: Configuration for PII (Personally Identifiable Information) handling.
+        :param pulumi.Input[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict', 'outputs.LogStreamSink']] sink: The sink configuration for the log stream.
         :param pulumi.Input[_builtins.str] start_from: The optional datetime (ISO 8601) to start streaming logs from.
         :param pulumi.Input[_builtins.str] status: The current status of the log stream. Options are "active", "paused", "suspended".
         :param pulumi.Input[_builtins.str] type: Type of the log stream, which indicates the sink provider. Options include: `eventbridge`, `eventgrid`, `http`, `datadog`, `splunk`, `sumo`, `mixpanel`, `segment`.

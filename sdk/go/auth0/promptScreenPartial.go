@@ -35,22 +35,22 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := auth0.NewPromptScreenPartial(ctx, "login", &auth0.PromptScreenPartialArgs{
-//				PromptType: pulumi.String("login"),
-//				ScreenName: pulumi.String("login"),
 //				InsertionPoints: &auth0.PromptScreenPartialInsertionPointsArgs{
 //					FormContentStart: pulumi.String("<div>Form Content Start</div>"),
 //					FormContentEnd:   pulumi.String("<div>Form Content End</div>"),
 //				},
+//				PromptType: pulumi.String("login"),
+//				ScreenName: pulumi.String("login"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = auth0.NewPromptScreenPartial(ctx, "customized-consent", &auth0.PromptScreenPartialArgs{
-//				PromptType: pulumi.String("customized-consent"),
-//				ScreenName: pulumi.String("customized-consent"),
 //				InsertionPoints: &auth0.PromptScreenPartialInsertionPointsArgs{
 //					FormContent: pulumi.String("<div>Form Content</div>"),
 //				},
+//				PromptType: pulumi.String("customized-consent"),
+//				ScreenName: pulumi.String("customized-consent"),
 //			})
 //			if err != nil {
 //				return err

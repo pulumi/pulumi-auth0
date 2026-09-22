@@ -22,59 +22,63 @@ import * as utilities from "./utilities";
  *
  * // This is an example on how to set up the email provider with Amazon SES.
  * const amazonSesEmailProvider = new auth0.EmailProvider("amazon_ses_email_provider", {
- *     name: "ses",
- *     enabled: true,
- *     defaultFromAddress: "accounts@example.com",
  *     credentials: {
  *         accessKeyId: "AKIAXXXXXXXXXXXXXXXX",
  *         secretAccessKey: "7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
  *         region: "us-east-1",
  *     },
+ *     name: "ses",
+ *     enabled: true,
+ *     defaultFromAddress: "accounts@example.com",
  * });
  * // This is an example on how to set up the email provider with SMTP.
  * const smtpEmailProvider = new auth0.EmailProvider("smtp_email_provider", {
- *     name: "smtp",
- *     enabled: true,
- *     defaultFromAddress: "accounts@example.com",
  *     credentials: {
  *         smtpHost: "your.smtp.host.com",
  *         smtpPort: 583,
  *         smtpUser: "SMTP Username",
  *         smtpPass: "SMTP Password",
  *     },
+ *     name: "smtp",
+ *     enabled: true,
+ *     defaultFromAddress: "accounts@example.com",
  * });
  * // This is an example on how to set up the email provider with Sendgrid.
  * const sendgridEmailProvider = new auth0.EmailProvider("sendgrid_email_provider", {
- *     name: "sendgrid",
- *     enabled: true,
- *     defaultFromAddress: "accounts@example.com",
  *     credentials: {
  *         apiKey: "secretAPIKey",
  *     },
+ *     name: "sendgrid",
+ *     enabled: true,
+ *     defaultFromAddress: "accounts@example.com",
  * });
  * // This is an example on how to set up the email provider with Azure CS.
  * const azureCsEmailProvider = new auth0.EmailProvider("azure_cs_email_provider", {
- *     name: "azure_cs",
- *     enabled: true,
- *     defaultFromAddress: "accounts@example.com",
  *     credentials: {
  *         azureCsConnectionString: "azure_cs_connection_string",
  *     },
+ *     name: "azure_cs",
+ *     enabled: true,
+ *     defaultFromAddress: "accounts@example.com",
  * });
  * // This is an example on how to set up the email provider with MS365.
  * const ms365EmailProvider = new auth0.EmailProvider("ms365_email_provider", {
- *     name: "ms365",
- *     enabled: true,
- *     defaultFromAddress: "accounts@example.com",
  *     credentials: {
  *         ms365TenantId: "ms365_tenant_id",
  *         ms365ClientId: "ms365_client_id",
  *         ms365ClientSecret: "ms365_client_secret",
  *     },
+ *     name: "ms365",
+ *     enabled: true,
+ *     defaultFromAddress: "accounts@example.com",
  * });
  * // Below is an example of how to set up a custom email provider.
  * // The action with custom-email-provider as supported_triggers is a prerequisite.
  * const customEmailProviderAction = new auth0.Action("custom_email_provider_action", {
+ *     supportedTriggers: {
+ *         id: "custom-email-provider",
+ *         version: "v1",
+ *     },
  *     name: "custom-email-provider-action",
  *     runtime: "node22",
  *     deploy: true,
@@ -90,16 +94,12 @@ import * as utilities from "./utilities";
  *   return;
  *  };
  * `,
- *     supportedTriggers: {
- *         id: "custom-email-provider",
- *         version: "v1",
- *     },
  * });
  * const customEmailProvider = new auth0.EmailProvider("custom_email_provider", {
+ *     credentials: {},
  *     name: "custom",
  *     enabled: true,
  *     defaultFromAddress: "accounts@example.com",
- *     credentials: {},
  * }, {
  *     dependsOn: [customEmailProviderAction],
  * });

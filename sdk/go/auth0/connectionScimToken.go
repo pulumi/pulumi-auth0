@@ -40,9 +40,6 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			azureAd, err := auth0.NewConnection(ctx, "azure_ad", &auth0.ConnectionArgs{
-//				Name:         pulumi.String("Acceptance-Test-Azure-AD"),
-//				Strategy:     pulumi.String("waad"),
-//				ShowAsButton: pulumi.Bool(true),
 //				Options: &auth0.ConnectionOptionsArgs{
 //					IdentityApi:     pulumi.String("microsoft-identity-platform-v2.0"),
 //					ClientId:        pulumi.String("123456"),
@@ -68,6 +65,9 @@ import (
 //					ShouldTrustEmailVerifiedConnection: pulumi.String("never_set_emails_as_verified"),
 //					UpstreamParams:                     pulumi.String(json0),
 //				},
+//				Name:         pulumi.String("Acceptance-Test-Azure-AD"),
+//				Strategy:     pulumi.String("waad"),
+//				ShowAsButton: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

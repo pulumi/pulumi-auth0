@@ -201,7 +201,7 @@ class BrandingPhoneNotificationTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 content: pulumi.Input[Optional[Union['BrandingPhoneNotificationTemplateContentArgs', 'BrandingPhoneNotificationTemplateContentArgsDict']]] = None,
+                 content: pulumi.Input[Optional[Union['BrandingPhoneNotificationTemplateContentArgs', 'BrandingPhoneNotificationTemplateContentArgsDict', 'outputs.BrandingPhoneNotificationTemplateContent']]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -217,27 +217,27 @@ class BrandingPhoneNotificationTemplate(pulumi.CustomResource):
         # Phone Notification Template - OTP Enrollment
         # Configure the OTP enrollment phone notification template with SMS and voice support.
         otp_enrollment = auth0.BrandingPhoneNotificationTemplate("otp_enrollment",
-            type="otp_enroll",
-            disabled=False,
             content={
-                "from_": "+1234567890",
                 "body": {
                     "text": "Your enrollment code is: @{code}",
                     "voice": "Your enrollment code is @{code}",
                 },
-            })
+                "from_": "+1234567890",
+            },
+            type="otp_enroll",
+            disabled=False)
         # Phone Notification Template - OTP Verification
         # Configure the OTP verification phone notification template.
         otp_verification = auth0.BrandingPhoneNotificationTemplate("otp_verification",
-            type="otp_verify",
-            disabled=False,
             content={
-                "from_": "+1234567890",
                 "body": {
                     "text": "Your verification code is: @{code}",
                     "voice": "Your verification code is @{code}",
                 },
-            })
+                "from_": "+1234567890",
+            },
+            type="otp_verify",
+            disabled=False)
         ```
 
         ## Import
@@ -254,7 +254,7 @@ class BrandingPhoneNotificationTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['BrandingPhoneNotificationTemplateContentArgs', 'BrandingPhoneNotificationTemplateContentArgsDict']] content: The content of the phone notification template.
+        :param pulumi.Input[Union['BrandingPhoneNotificationTemplateContentArgs', 'BrandingPhoneNotificationTemplateContentArgsDict', 'outputs.BrandingPhoneNotificationTemplateContent']] content: The content of the phone notification template.
         :param pulumi.Input[_builtins.bool] disabled: Indicates whether the phone notification template is disabled.
         :param pulumi.Input[_builtins.str] type: The type of the phone notification template.
         """
@@ -276,27 +276,27 @@ class BrandingPhoneNotificationTemplate(pulumi.CustomResource):
         # Phone Notification Template - OTP Enrollment
         # Configure the OTP enrollment phone notification template with SMS and voice support.
         otp_enrollment = auth0.BrandingPhoneNotificationTemplate("otp_enrollment",
-            type="otp_enroll",
-            disabled=False,
             content={
-                "from_": "+1234567890",
                 "body": {
                     "text": "Your enrollment code is: @{code}",
                     "voice": "Your enrollment code is @{code}",
                 },
-            })
+                "from_": "+1234567890",
+            },
+            type="otp_enroll",
+            disabled=False)
         # Phone Notification Template - OTP Verification
         # Configure the OTP verification phone notification template.
         otp_verification = auth0.BrandingPhoneNotificationTemplate("otp_verification",
-            type="otp_verify",
-            disabled=False,
             content={
-                "from_": "+1234567890",
                 "body": {
                     "text": "Your verification code is: @{code}",
                     "voice": "Your verification code is @{code}",
                 },
-            })
+                "from_": "+1234567890",
+            },
+            type="otp_verify",
+            disabled=False)
         ```
 
         ## Import
@@ -326,7 +326,7 @@ class BrandingPhoneNotificationTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 content: pulumi.Input[Optional[Union['BrandingPhoneNotificationTemplateContentArgs', 'BrandingPhoneNotificationTemplateContentArgsDict']]] = None,
+                 content: pulumi.Input[Optional[Union['BrandingPhoneNotificationTemplateContentArgs', 'BrandingPhoneNotificationTemplateContentArgsDict', 'outputs.BrandingPhoneNotificationTemplateContent']]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -358,7 +358,7 @@ class BrandingPhoneNotificationTemplate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             channel: pulumi.Input[Optional[_builtins.str]] = None,
-            content: pulumi.Input[Optional[Union['BrandingPhoneNotificationTemplateContentArgs', 'BrandingPhoneNotificationTemplateContentArgsDict']]] = None,
+            content: pulumi.Input[Optional[Union['BrandingPhoneNotificationTemplateContentArgs', 'BrandingPhoneNotificationTemplateContentArgsDict', 'outputs.BrandingPhoneNotificationTemplateContent']]] = None,
             customizable: pulumi.Input[Optional[_builtins.bool]] = None,
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             template_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -372,7 +372,7 @@ class BrandingPhoneNotificationTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] channel: The channel of the phone notification template (e.g., `sms`, `voice`).
-        :param pulumi.Input[Union['BrandingPhoneNotificationTemplateContentArgs', 'BrandingPhoneNotificationTemplateContentArgsDict']] content: The content of the phone notification template.
+        :param pulumi.Input[Union['BrandingPhoneNotificationTemplateContentArgs', 'BrandingPhoneNotificationTemplateContentArgsDict', 'outputs.BrandingPhoneNotificationTemplateContent']] content: The content of the phone notification template.
         :param pulumi.Input[_builtins.bool] customizable: Indicates whether the phone notification template is customizable.
         :param pulumi.Input[_builtins.bool] disabled: Indicates whether the phone notification template is disabled.
         :param pulumi.Input[_builtins.str] template_id: The ID of the phone notification template.

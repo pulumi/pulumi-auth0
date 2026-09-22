@@ -138,8 +138,8 @@ class UserAttributeProfile(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 user_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserAttributeProfileUserAttributeArgs', 'UserAttributeProfileUserAttributeArgsDict']]]]] = None,
-                 user_id: pulumi.Input[Optional[Union['UserAttributeProfileUserIdArgs', 'UserAttributeProfileUserIdArgsDict']]] = None,
+                 user_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserAttributeProfileUserAttributeArgs', 'UserAttributeProfileUserAttributeArgsDict', 'outputs.UserAttributeProfileUserAttribute']]]]] = None,
+                 user_id: pulumi.Input[Optional[Union['UserAttributeProfileUserIdArgs', 'UserAttributeProfileUserIdArgsDict', 'outputs.UserAttributeProfileUserId']]] = None,
                  __props__=None):
         """
         With this resource, you can manage User Attribute Profiles within Auth0. User Attribute Profiles allow you to define how user attributes are mapped between different identity providers and Auth0.
@@ -150,8 +150,8 @@ class UserAttributeProfile(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The name of the User Attribute Profile.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserAttributeProfileUserAttributeArgs', 'UserAttributeProfileUserAttributeArgsDict']]]] user_attributes: List of user attribute configurations.
-        :param pulumi.Input[Union['UserAttributeProfileUserIdArgs', 'UserAttributeProfileUserIdArgsDict']] user_id: Configuration for mapping the user ID from identity providers.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserAttributeProfileUserAttributeArgs', 'UserAttributeProfileUserAttributeArgsDict', 'outputs.UserAttributeProfileUserAttribute']]]] user_attributes: List of user attribute configurations.
+        :param pulumi.Input[Union['UserAttributeProfileUserIdArgs', 'UserAttributeProfileUserIdArgsDict', 'outputs.UserAttributeProfileUserId']] user_id: Configuration for mapping the user ID from identity providers.
         """
         ...
     @overload
@@ -181,8 +181,8 @@ class UserAttributeProfile(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 user_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserAttributeProfileUserAttributeArgs', 'UserAttributeProfileUserAttributeArgsDict']]]]] = None,
-                 user_id: pulumi.Input[Optional[Union['UserAttributeProfileUserIdArgs', 'UserAttributeProfileUserIdArgsDict']]] = None,
+                 user_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserAttributeProfileUserAttributeArgs', 'UserAttributeProfileUserAttributeArgsDict', 'outputs.UserAttributeProfileUserAttribute']]]]] = None,
+                 user_id: pulumi.Input[Optional[Union['UserAttributeProfileUserIdArgs', 'UserAttributeProfileUserIdArgsDict', 'outputs.UserAttributeProfileUserId']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -208,8 +208,8 @@ class UserAttributeProfile(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            user_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserAttributeProfileUserAttributeArgs', 'UserAttributeProfileUserAttributeArgsDict']]]]] = None,
-            user_id: pulumi.Input[Optional[Union['UserAttributeProfileUserIdArgs', 'UserAttributeProfileUserIdArgsDict']]] = None) -> 'UserAttributeProfile':
+            user_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserAttributeProfileUserAttributeArgs', 'UserAttributeProfileUserAttributeArgsDict', 'outputs.UserAttributeProfileUserAttribute']]]]] = None,
+            user_id: pulumi.Input[Optional[Union['UserAttributeProfileUserIdArgs', 'UserAttributeProfileUserIdArgsDict', 'outputs.UserAttributeProfileUserId']]] = None) -> 'UserAttributeProfile':
         """
         Get an existing UserAttributeProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -218,8 +218,8 @@ class UserAttributeProfile(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The name of the User Attribute Profile.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserAttributeProfileUserAttributeArgs', 'UserAttributeProfileUserAttributeArgsDict']]]] user_attributes: List of user attribute configurations.
-        :param pulumi.Input[Union['UserAttributeProfileUserIdArgs', 'UserAttributeProfileUserIdArgsDict']] user_id: Configuration for mapping the user ID from identity providers.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserAttributeProfileUserAttributeArgs', 'UserAttributeProfileUserAttributeArgsDict', 'outputs.UserAttributeProfileUserAttribute']]]] user_attributes: List of user attribute configurations.
+        :param pulumi.Input[Union['UserAttributeProfileUserIdArgs', 'UserAttributeProfileUserIdArgsDict', 'outputs.UserAttributeProfileUserId']] user_id: Configuration for mapping the user ID from identity providers.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

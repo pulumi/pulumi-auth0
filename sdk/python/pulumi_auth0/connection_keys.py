@@ -304,8 +304,6 @@ class ConnectionKeys(pulumi.CustomResource):
 
         my_client = auth0.Client("my_client", name="My-Auth0-Client")
         oidc = auth0.Connection("oidc",
-            name="OIDC-Connection",
-            strategy="oidc",
             options={
                 "client_id": my_client.id,
                 "scopes": [
@@ -319,7 +317,9 @@ class ConnectionKeys(pulumi.CustomResource):
                 "discovery_url": "https://www.paypalobjects.com/.well-known/openid-configuration",
                 "token_endpoint_auth_method": "private_key_jwt",
                 "token_endpoint_auth_signing_alg": "RS256",
-            })
+            },
+            name="OIDC-Connection",
+            strategy="oidc")
         # Resource used to rotate the keys for above OIDC connection
         my_keys = auth0.ConnectionKeys("my_keys",
             connection_id=oidc.id,
@@ -355,8 +355,6 @@ class ConnectionKeys(pulumi.CustomResource):
 
         my_client = auth0.Client("my_client", name="My-Auth0-Client")
         oidc = auth0.Connection("oidc",
-            name="OIDC-Connection",
-            strategy="oidc",
             options={
                 "client_id": my_client.id,
                 "scopes": [
@@ -370,7 +368,9 @@ class ConnectionKeys(pulumi.CustomResource):
                 "discovery_url": "https://www.paypalobjects.com/.well-known/openid-configuration",
                 "token_endpoint_auth_method": "private_key_jwt",
                 "token_endpoint_auth_signing_alg": "RS256",
-            })
+            },
+            name="OIDC-Connection",
+            strategy="oidc")
         # Resource used to rotate the keys for above OIDC connection
         my_keys = auth0.ConnectionKeys("my_keys",
             connection_id=oidc.id,

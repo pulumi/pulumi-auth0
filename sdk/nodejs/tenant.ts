@@ -19,15 +19,6 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const myTenant = new auth0.Tenant("my_tenant", {
- *     friendlyName: "Tenant Name",
- *     pictureUrl: "http://example.com/logo.png",
- *     supportEmail: "support@example.com",
- *     supportUrl: "http://example.com/support",
- *     allowedLogoutUrls: ["http://example.com/logout"],
- *     sessionLifetime: 8760,
- *     sandboxVersion: "22",
- *     enabledLocales: ["en"],
- *     defaultRedirectionUri: "https://example.com/login",
  *     flags: {
  *         disableClickjackProtectionHeaders: true,
  *         enablePublicSignupUserExistsError: true,
@@ -54,6 +45,15 @@ import * as utilities from "./utilities";
  *         ],
  *         mode: "allow",
  *     },
+ *     friendlyName: "Tenant Name",
+ *     pictureUrl: "http://example.com/logo.png",
+ *     supportEmail: "support@example.com",
+ *     supportUrl: "http://example.com/support",
+ *     allowedLogoutUrls: ["http://example.com/logout"],
+ *     sessionLifetime: 8760,
+ *     sandboxVersion: "22",
+ *     enabledLocales: ["en"],
+ *     defaultRedirectionUri: "https://example.com/login",
  * });
  * ```
  *

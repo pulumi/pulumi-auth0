@@ -30,10 +30,6 @@ namespace Pulumi.Auth0
     /// {
     ///     var myGuardian = new Auth0.Guardian("my_guardian", new()
     ///     {
-    ///         Policy = "all-applications",
-    ///         Email = true,
-    ///         Otp = true,
-    ///         RecoveryCode = true,
     ///         WebauthnPlatform = new Auth0.Inputs.GuardianWebauthnPlatformArgs
     ///         {
     ///             Enabled = true,
@@ -54,8 +50,6 @@ namespace Pulumi.Auth0
     ///         },
     ///         Push = new Auth0.Inputs.GuardianPushArgs
     ///         {
-    ///             Enabled = true,
-    ///             Provider = "sns",
     ///             AmazonSns = new Auth0.Inputs.GuardianPushAmazonSnsArgs
     ///             {
     ///                 AwsAccessKeyId = "test1",
@@ -70,6 +64,8 @@ namespace Pulumi.Auth0
     ///                 AppleAppLink = "https://itunes.apple.com/us/app/my-app/id123121",
     ///                 GoogleAppLink = "https://play.google.com/store/apps/details?id=com.my.app",
     ///             },
+    ///             Enabled = true,
+    ///             Provider = "sns",
     ///         },
     ///         Duo = new Auth0.Inputs.GuardianDuoArgs
     ///         {
@@ -78,6 +74,10 @@ namespace Pulumi.Auth0
     ///             SecretKey = "someSecret",
     ///             Hostname = "api-hostname",
     ///         },
+    ///         Policy = "all-applications",
+    ///         Email = true,
+    ///         Otp = true,
+    ///         RecoveryCode = true,
     ///     });
     /// 
     /// });

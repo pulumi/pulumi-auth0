@@ -28,7 +28,6 @@ import (
 //	"fmt"
 //
 //	"github.com/pulumi/pulumi-auth0/sdk/v3/go/auth0"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -44,7 +43,6 @@ import (
 //				return err
 //			}
 //			resourceServerScopes, err := auth0.NewResourceServerScopes(ctx, "resource_server_scopes", &auth0.ResourceServerScopesArgs{
-//				ResourceServerIdentifier: resourceServer.Identifier,
 //				Scopes: auth0.ResourceServerScopesScopeArray{
 //					&auth0.ResourceServerScopesScopeArgs{
 //						Name: pulumi.String("store:create"),
@@ -59,6 +57,7 @@ import (
 //						Name: pulumi.String("store:delete"),
 //					},
 //				},
+//				ResourceServerIdentifier: resourceServer.Identifier,
 //			})
 //			if err != nil {
 //				return err
@@ -76,16 +75,16 @@ import (
 //			scopesList := resourceServerScopes.Scopes.ApplyT(func(scopes []auth0.ResourceServerScopesScope) ([]*string, error) {
 //				return forResult0, nil
 //			}).(pulumi.ArrayOutput)
+//			forResult1 := map[string]*string{}
+//			for _, entry := range scopesList {
+//				forResult1[entry] = entry
+//			}
 //			var myRolePerm []*auth0.RolePermission
-//			for index := 0; index < std.Toset(ctx, map[string][]*string{
-//				"input": scopesList,
-//			}, nil).Result; index++ {
-//				key0 := index
-//				val0 := index
+//			for key0, val0 := range forResult1 {
 //				__res, err := auth0.NewRolePermission(ctx, fmt.Sprintf("my_role_perm-%v", key0), &auth0.RolePermissionArgs{
 //					RoleId:                   myRole.ID().ToIDOutput().ToStringOutput(),
 //					ResourceServerIdentifier: resourceServer.Identifier,
-//					Permission:               pulumi.Any(val0),
+//					Permission:               pulumi.String(val0),
 //				})
 //				if err != nil {
 //					return err

@@ -57,6 +57,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var actionFoo = new Action("actionFoo", ActionArgs.builder()
+ *             .supportedTriggers(ActionSupportedTriggersArgs.builder()
+ *                 .id("post-login")
+ *                 .version("v3")
+ *                 .build())
  *             .name("Test Trigger Binding Foo")
  *             .code("""
  * exports.onContinuePostLogin = async (event, api) => {
@@ -64,13 +68,13 @@ import javax.annotation.Nullable;
  * };\"
  *             """)
  *             .deploy(true)
+ *             .build());
+ * 
+ *         var actionBar = new Action("actionBar", ActionArgs.builder()
  *             .supportedTriggers(ActionSupportedTriggersArgs.builder()
  *                 .id("post-login")
  *                 .version("v3")
  *                 .build())
- *             .build());
- * 
- *         var actionBar = new Action("actionBar", ActionArgs.builder()
  *             .name("Test Trigger Binding Bar")
  *             .code("""
  * exports.onContinuePostLogin = async (event, api) => {
@@ -78,14 +82,9 @@ import javax.annotation.Nullable;
  * };\"
  *             """)
  *             .deploy(true)
- *             .supportedTriggers(ActionSupportedTriggersArgs.builder()
- *                 .id("post-login")
- *                 .version("v3")
- *                 .build())
  *             .build());
  * 
  *         var loginFlow = new TriggerActions("loginFlow", TriggerActionsArgs.builder()
- *             .trigger("post-login")
  *             .actions(            
  *                 TriggerActionsActionArgs.builder()
  *                     .id(actionFoo.id())
@@ -95,6 +94,7 @@ import javax.annotation.Nullable;
  *                     .id(actionBar.id())
  *                     .displayName(actionBar.name())
  *                     .build())
+ *             .trigger("post-login")
  *             .build());
  * 
  *     }

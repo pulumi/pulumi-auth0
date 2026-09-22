@@ -43,14 +43,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var noisyApp = new RateLimitPolicy("noisyApp", RateLimitPolicyArgs.builder()
- *             .resource("oauth_authentication_api")
- *             .consumer("client")
- *             .consumerSelector("client_id:abc123")
  *             .configuration(RateLimitPolicyConfigurationArgs.builder()
  *                 .action("redirect")
  *                 .limit(1000)
  *                 .redirectUri("https://example.com/rate-limited")
  *                 .build())
+ *             .resource("oauth_authentication_api")
+ *             .consumer("client")
+ *             .consumerSelector("client_id:abc123")
  *             .build());
  * 
  *     }

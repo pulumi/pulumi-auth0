@@ -104,7 +104,7 @@ class TriggerActions(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TriggerActionsActionArgs', 'TriggerActionsActionArgsDict']]]]] = None,
+                 actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TriggerActionsActionArgs', 'TriggerActionsActionArgsDict', 'outputs.TriggerActionsAction']]]]] = None,
                  trigger: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -127,29 +127,28 @@ class TriggerActions(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         action_foo = auth0.Action("action_foo",
+            supported_triggers={
+                "id": "post-login",
+                "version": "v3",
+            },
             name="Test Trigger Binding Foo",
             code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
           console.log(\\"foo\\");
         };\\"
         \"\"\",
-            deploy=True,
+            deploy=True)
+        action_bar = auth0.Action("action_bar",
             supported_triggers={
                 "id": "post-login",
                 "version": "v3",
-            })
-        action_bar = auth0.Action("action_bar",
+            },
             name="Test Trigger Binding Bar",
             code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
           console.log(\\"bar\\");
         };\\"
         \"\"\",
-            deploy=True,
-            supported_triggers={
-                "id": "post-login",
-                "version": "v3",
-            })
+            deploy=True)
         login_flow = auth0.TriggerActions("login_flow",
-            trigger="post-login",
             actions=[
                 {
                     "id": action_foo.id,
@@ -159,7 +158,8 @@ class TriggerActions(pulumi.CustomResource):
                     "id": action_bar.id,
                     "display_name": action_bar.name,
                 },
-            ])
+            ],
+            trigger="post-login")
         ```
 
         ## Import
@@ -175,7 +175,7 @@ class TriggerActions(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TriggerActionsActionArgs', 'TriggerActionsActionArgsDict']]]] actions: The list of actions bound to this trigger.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TriggerActionsActionArgs', 'TriggerActionsActionArgsDict', 'outputs.TriggerActionsAction']]]] actions: The list of actions bound to this trigger.
         :param pulumi.Input[_builtins.str] trigger: The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier`, `signup-post-identifier`.
         """
         ...
@@ -204,29 +204,28 @@ class TriggerActions(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         action_foo = auth0.Action("action_foo",
+            supported_triggers={
+                "id": "post-login",
+                "version": "v3",
+            },
             name="Test Trigger Binding Foo",
             code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
           console.log(\\"foo\\");
         };\\"
         \"\"\",
-            deploy=True,
+            deploy=True)
+        action_bar = auth0.Action("action_bar",
             supported_triggers={
                 "id": "post-login",
                 "version": "v3",
-            })
-        action_bar = auth0.Action("action_bar",
+            },
             name="Test Trigger Binding Bar",
             code=\"\"\"exports.onContinuePostLogin = async (event, api) => {
           console.log(\\"bar\\");
         };\\"
         \"\"\",
-            deploy=True,
-            supported_triggers={
-                "id": "post-login",
-                "version": "v3",
-            })
+            deploy=True)
         login_flow = auth0.TriggerActions("login_flow",
-            trigger="post-login",
             actions=[
                 {
                     "id": action_foo.id,
@@ -236,7 +235,8 @@ class TriggerActions(pulumi.CustomResource):
                     "id": action_bar.id,
                     "display_name": action_bar.name,
                 },
-            ])
+            ],
+            trigger="post-login")
         ```
 
         ## Import
@@ -265,7 +265,7 @@ class TriggerActions(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TriggerActionsActionArgs', 'TriggerActionsActionArgsDict']]]]] = None,
+                 actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TriggerActionsActionArgs', 'TriggerActionsActionArgsDict', 'outputs.TriggerActionsAction']]]]] = None,
                  trigger: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -292,7 +292,7 @@ class TriggerActions(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TriggerActionsActionArgs', 'TriggerActionsActionArgsDict']]]]] = None,
+            actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TriggerActionsActionArgs', 'TriggerActionsActionArgsDict', 'outputs.TriggerActionsAction']]]]] = None,
             trigger: pulumi.Input[Optional[_builtins.str]] = None) -> 'TriggerActions':
         """
         Get an existing TriggerActions resource's state with the given name, id, and optional extra
@@ -301,7 +301,7 @@ class TriggerActions(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['TriggerActionsActionArgs', 'TriggerActionsActionArgsDict']]]] actions: The list of actions bound to this trigger.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TriggerActionsActionArgs', 'TriggerActionsActionArgsDict', 'outputs.TriggerActionsAction']]]] actions: The list of actions bound to this trigger.
         :param pulumi.Input[_builtins.str] trigger: The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier`, `signup-post-identifier`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

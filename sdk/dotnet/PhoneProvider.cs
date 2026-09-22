@@ -35,8 +35,6 @@ namespace Pulumi.Auth0
     ///     // This is an example on how to set up the phone provider with Twilio.
     ///     var twilioPhoneProvider = new Auth0.PhoneProvider("twilio_phone_provider", new()
     ///     {
-    ///         Name = "twilio",
-    ///         Disabled = false,
     ///         Credentials = new Auth0.Inputs.PhoneProviderCredentialsArgs
     ///         {
     ///             AuthToken = "secretAuthToken",
@@ -52,12 +50,19 @@ namespace Pulumi.Auth0
     ///             Sid = "ACXXXXXXXXXXXXXXXX",
     ///             Mssid = "MSXXXXXXXXXXXXXXXX",
     ///         },
+    ///         Name = "twilio",
+    ///         Disabled = false,
     ///     });
     /// 
     ///     // This is an example on how to set up the phone provider with a custom action.
     ///     // Make sure a corresponding action exists with custom-phone-provider as supported triggers
     ///     var sendCustomPhone = new Auth0.Action("send_custom_phone", new()
     ///     {
+    ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
+    ///         {
+    ///             Id = "custom-phone-provider",
+    ///             Version = "v1",
+    ///         },
     ///         Name = "Custom Phone Provider",
     ///         Runtime = "node22",
     ///         Deploy = true,
@@ -71,17 +76,10 @@ namespace Pulumi.Auth0
     ///     return;
     /// };
     /// ",
-    ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
-    ///         {
-    ///             Id = "custom-phone-provider",
-    ///             Version = "v1",
-    ///         },
     ///     });
     /// 
     ///     var customPhoneProvider = new Auth0.PhoneProvider("custom_phone_provider", new()
     ///     {
-    ///         Name = "custom",
-    ///         Disabled = false,
     ///         Configuration = new Auth0.Inputs.PhoneProviderConfigurationArgs
     ///         {
     ///             DeliveryMethods = new[]
@@ -91,6 +89,8 @@ namespace Pulumi.Auth0
     ///             },
     ///         },
     ///         Credentials = null,
+    ///         Name = "custom",
+    ///         Disabled = false,
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =

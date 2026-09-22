@@ -49,21 +49,6 @@ import (
 //				return err
 //			}
 //			_, err = auth0.NewAction(ctx, "my_action", &auth0.ActionArgs{
-//				Name:    invokeFormat.Result,
-//				Runtime: pulumi.String("node22"),
-//				Deploy:  pulumi.Bool(true),
-//				Code: pulumi.String(`/**
-//	 * Handler that will be called during the execution of a PostLogin flow.
-//	 *
-//	 * @param {Event} event - Details about the user and the context in which they are logging in.
-//	 * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
-//	 */
-//	 exports.onExecutePostLogin = async (event, api) => {
-//	   console.log(event);
-//	 };
-//
-// `),
-//
 //				SupportedTriggers: &auth0.ActionSupportedTriggersArgs{
 //					Id:      pulumi.String("post-login"),
 //					Version: pulumi.String("v3"),
@@ -88,6 +73,21 @@ import (
 //						Value: pulumi.String("Bar"),
 //					},
 //				},
+//				Name:    invokeFormat.Result,
+//				Runtime: pulumi.String("node22"),
+//				Deploy:  pulumi.Bool(true),
+//				Code: pulumi.String(`/**
+//	 * Handler that will be called during the execution of a PostLogin flow.
+//	 *
+//	 * @param {Event} event - Details about the user and the context in which they are logging in.
+//	 * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
+//	 */
+//	 exports.onExecutePostLogin = async (event, api) => {
+//	   console.log(event);
+//	 };
+//
+// `),
+//
 //			})
 //			if err != nil {
 //				return err
@@ -105,10 +105,6 @@ import (
 //				return err
 //			}
 //			_, err = auth0.NewAction(ctx, "my_secure_action", &auth0.ActionArgs{
-//				Name:    invokeFormat1.Result,
-//				Runtime: pulumi.String("node22"),
-//				Deploy:  pulumi.Bool(true),
-//				Code:    pulumi.String("exports.onExecutePostLogin = async (event, api) => {\n  console.log(event);\n};\n"),
 //				SupportedTriggers: &auth0.ActionSupportedTriggersArgs{
 //					Id:      pulumi.String("post-login"),
 //					Version: pulumi.String("v3"),
@@ -119,6 +115,10 @@ import (
 //						Value: pulumi.String(actionApiKey),
 //					},
 //				},
+//				Name:             invokeFormat1.Result,
+//				Runtime:          pulumi.String("node22"),
+//				Deploy:           pulumi.Bool(true),
+//				Code:             pulumi.String("exports.onExecutePostLogin = async (event, api) => {\n  console.log(event);\n};\n"),
 //				SecretsWoVersion: pulumi.Int(1),
 //			})
 //			if err != nil {

@@ -14,14 +14,14 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const myEmailProvider = new auth0.EmailProvider("my_email_provider", {
- *     name: "ses",
- *     enabled: true,
- *     defaultFromAddress: "accounts@example.com",
  *     credentials: {
  *         accessKeyId: "AKIAXXXXXXXXXXXXXXXX",
  *         secretAccessKey: "7e8c2148xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
  *         region: "us-east-1",
  *     },
+ *     name: "ses",
+ *     enabled: true,
+ *     defaultFromAddress: "accounts@example.com",
  * });
  * const myEmailTemplate = new auth0.EmailTemplate("my_email_template", {
  *     template: "welcome_email",

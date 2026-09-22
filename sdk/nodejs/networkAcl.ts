@@ -17,14 +17,10 @@ import * as utilities from "./utilities";
  *
  * // Example of auth0_network_acl with match criteria
  * const myNetworkAclMatch = new auth0.NetworkAcl("my_network_acl_match", {
- *     description: "Example with match network ACL",
- *     active: true,
- *     priority: 1,
  *     rule: {
  *         action: {
  *             allow: true,
  *         },
- *         scope: "management",
  *         match: {
  *             geoCountryCodes: [
  *                 "US",
@@ -35,18 +31,18 @@ import * as utilities from "./utilities";
  *                 "CA-ON",
  *             ],
  *         },
+ *         scope: "management",
  *     },
+ *     description: "Example with match network ACL",
+ *     active: true,
+ *     priority: 1,
  * });
  * // Example of auth0_network_acl with not-match criteria
  * const myNetworkAclNotMatch = new auth0.NetworkAcl("my_network_acl_not_match", {
- *     description: "Example with not match network ACL",
- *     active: true,
- *     priority: 3,
  *     rule: {
  *         action: {
  *             log: true,
  *         },
- *         scope: "authentication",
  *         notMatch: {
  *             asns: [9876],
  *             ipv4Cidrs: [
@@ -55,7 +51,11 @@ import * as utilities from "./utilities";
  *             ],
  *             ipv6Cidrs: ["2001:db8::/32"],
  *         },
+ *         scope: "authentication",
  *     },
+ *     description: "Example with not match network ACL",
+ *     active: true,
+ *     priority: 3,
  * });
  * // Example of auth0_network_acl using Auth0-curated blocklists (Early Access).
  * //
@@ -63,45 +63,41 @@ import * as utilities from "./utilities";
  * // entitlement and the `tenant_acl_curated_blocklists` feature flag on the tenant.
  * // Allowed values are `auth0.low_reputation` and `auth0.icloud_relay_proxy`.
  * const blockIcloudRelay = new auth0.NetworkAcl("block_icloud_relay", {
- *     description: "Block iCloud Private Relay egress proxies",
- *     active: true,
- *     priority: 7,
  *     rule: {
  *         action: {
  *             block: true,
  *         },
- *         scope: "authentication",
  *         match: {
  *             auth0Manageds: ["auth0.icloud_relay_proxy"],
  *         },
+ *         scope: "authentication",
  *     },
+ *     description: "Block iCloud Private Relay egress proxies",
+ *     active: true,
+ *     priority: 7,
  * });
  * // Example using `not_match` to allow all traffic *unless* it comes from a
  * // low-reputation curated blocklist. `auth0_managed` is accepted on either block.
  * const allowUnlessLowReputation = new auth0.NetworkAcl("allow_unless_low_reputation", {
- *     description: "Allow traffic unless it is on the low-reputation blocklist",
- *     active: true,
- *     priority: 8,
  *     rule: {
  *         action: {
  *             allow: true,
  *         },
- *         scope: "authentication",
  *         notMatch: {
  *             auth0Manageds: ["auth0.low_reputation"],
  *         },
+ *         scope: "authentication",
  *     },
+ *     description: "Allow traffic unless it is on the low-reputation blocklist",
+ *     active: true,
+ *     priority: 8,
  * });
  * // Example of auth0_network_acl with hostname and connecting IP restrictions
  * const blockCanonical = new auth0.NetworkAcl("block_canonical", {
- *     description: "Block canonical domain except from proxy",
- *     active: true,
- *     priority: 5,
  *     rule: {
  *         action: {
  *             block: true,
  *         },
- *         scope: "tenant",
  *         match: {
  *             hostnames: ["mytenant1.us.auth0.com"],
  *             connectingIpv6Cidrs: [
@@ -113,7 +109,11 @@ import * as utilities from "./utilities";
  *             hostnames: ["mytenant2.us.auth0.com"],
  *             connectingIpv4Cidrs: ["203.0.113.0/24"],
  *         },
+ *         scope: "tenant",
  *     },
+ *     description: "Block canonical domain except from proxy",
+ *     active: true,
+ *     priority: 5,
  * });
  * ```
  *

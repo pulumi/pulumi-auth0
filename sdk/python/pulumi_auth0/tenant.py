@@ -1070,31 +1070,31 @@ class Tenant(pulumi.CustomResource):
                  allow_organization_name_in_authentication_api: pulumi.Input[Optional[_builtins.bool]] = None,
                  allowed_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  client_id_metadata_document_supported: pulumi.Input[Optional[_builtins.bool]] = None,
-                 country_codes: pulumi.Input[Optional[Union['TenantCountryCodesArgs', 'TenantCountryCodesArgsDict']]] = None,
+                 country_codes: pulumi.Input[Optional[Union['TenantCountryCodesArgs', 'TenantCountryCodesArgsDict', 'outputs.TenantCountryCodes']]] = None,
                  customize_mfa_in_postlogin_action: pulumi.Input[Optional[_builtins.bool]] = None,
                  default_audience: pulumi.Input[Optional[_builtins.str]] = None,
                  default_directory: pulumi.Input[Optional[_builtins.str]] = None,
                  default_redirection_uri: pulumi.Input[Optional[_builtins.str]] = None,
-                 default_token_quota: pulumi.Input[Optional[Union['TenantDefaultTokenQuotaArgs', 'TenantDefaultTokenQuotaArgsDict']]] = None,
+                 default_token_quota: pulumi.Input[Optional[Union['TenantDefaultTokenQuotaArgs', 'TenantDefaultTokenQuotaArgsDict', 'outputs.TenantDefaultTokenQuota']]] = None,
                  disable_acr_values_supported: pulumi.Input[Optional[_builtins.bool]] = None,
                  dynamic_client_registration_security_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled_locales: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ephemeral_session_lifetime: pulumi.Input[Optional[_builtins.float]] = None,
-                 error_page: pulumi.Input[Optional[Union['TenantErrorPageArgs', 'TenantErrorPageArgsDict']]] = None,
-                 flags: pulumi.Input[Optional[Union['TenantFlagsArgs', 'TenantFlagsArgsDict']]] = None,
+                 error_page: pulumi.Input[Optional[Union['TenantErrorPageArgs', 'TenantErrorPageArgsDict', 'outputs.TenantErrorPage']]] = None,
+                 flags: pulumi.Input[Optional[Union['TenantFlagsArgs', 'TenantFlagsArgsDict', 'outputs.TenantFlags']]] = None,
                  friendly_name: pulumi.Input[Optional[_builtins.str]] = None,
                  idle_ephemeral_session_lifetime: pulumi.Input[Optional[_builtins.float]] = None,
                  idle_session_lifetime: pulumi.Input[Optional[_builtins.float]] = None,
-                 mtls: pulumi.Input[Optional[Union['TenantMtlsArgs', 'TenantMtlsArgsDict']]] = None,
-                 oidc_logout: pulumi.Input[Optional[Union['TenantOidcLogoutArgs', 'TenantOidcLogoutArgsDict']]] = None,
+                 mtls: pulumi.Input[Optional[Union['TenantMtlsArgs', 'TenantMtlsArgsDict', 'outputs.TenantMtls']]] = None,
+                 oidc_logout: pulumi.Input[Optional[Union['TenantOidcLogoutArgs', 'TenantOidcLogoutArgsDict', 'outputs.TenantOidcLogout']]] = None,
                  phone_consolidated_experience: pulumi.Input[Optional[_builtins.bool]] = None,
                  picture_url: pulumi.Input[Optional[_builtins.str]] = None,
                  pushed_authorization_requests_supported: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_parameter_profile: pulumi.Input[Optional[_builtins.str]] = None,
                  sandbox_version: pulumi.Input[Optional[_builtins.str]] = None,
-                 session_cookie: pulumi.Input[Optional[Union['TenantSessionCookieArgs', 'TenantSessionCookieArgsDict']]] = None,
+                 session_cookie: pulumi.Input[Optional[Union['TenantSessionCookieArgs', 'TenantSessionCookieArgsDict', 'outputs.TenantSessionCookie']]] = None,
                  session_lifetime: pulumi.Input[Optional[_builtins.float]] = None,
-                 sessions: pulumi.Input[Optional[Union['TenantSessionsArgs', 'TenantSessionsArgsDict']]] = None,
+                 sessions: pulumi.Input[Optional[Union['TenantSessionsArgs', 'TenantSessionsArgsDict', 'outputs.TenantSessions']]] = None,
                  skip_non_verifiable_callback_uri_confirmation_prompt: pulumi.Input[Optional[_builtins.str]] = None,
                  support_email: pulumi.Input[Optional[_builtins.str]] = None,
                  support_url: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1112,15 +1112,6 @@ class Tenant(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         my_tenant = auth0.Tenant("my_tenant",
-            friendly_name="Tenant Name",
-            picture_url="http://example.com/logo.png",
-            support_email="support@example.com",
-            support_url="http://example.com/support",
-            allowed_logout_urls=["http://example.com/logout"],
-            session_lifetime=float(8760),
-            sandbox_version="22",
-            enabled_locales=["en"],
-            default_redirection_uri="https://example.com/login",
             flags={
                 "disable_clickjack_protection_headers": True,
                 "enable_public_signup_user_exists_error": True,
@@ -1146,7 +1137,16 @@ class Tenant(pulumi.CustomResource):
                     "CA",
                 ],
                 "mode": "allow",
-            })
+            },
+            friendly_name="Tenant Name",
+            picture_url="http://example.com/logo.png",
+            support_email="support@example.com",
+            support_url="http://example.com/support",
+            allowed_logout_urls=["http://example.com/logout"],
+            session_lifetime=float(8760),
+            sandbox_version="22",
+            enabled_locales=["en"],
+            default_redirection_uri="https://example.com/login")
         ```
 
         ## Import
@@ -1169,31 +1169,31 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] allow_organization_name_in_authentication_api: Whether to accept an organization name instead of an ID on auth endpoints.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[_builtins.bool] client_id_metadata_document_supported: Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
-        :param pulumi.Input[Union['TenantCountryCodesArgs', 'TenantCountryCodesArgsDict']] country_codes: Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
+        :param pulumi.Input[Union['TenantCountryCodesArgs', 'TenantCountryCodesArgsDict', 'outputs.TenantCountryCodes']] country_codes: Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
         :param pulumi.Input[_builtins.bool] customize_mfa_in_postlogin_action: Whether to enable flexible factors for MFA in the PostLogin action.
         :param pulumi.Input[_builtins.str] default_audience: API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[_builtins.str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
         :param pulumi.Input[_builtins.str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
-        :param pulumi.Input[Union['TenantDefaultTokenQuotaArgs', 'TenantDefaultTokenQuotaArgsDict']] default_token_quota: Token Quota configuration.
+        :param pulumi.Input[Union['TenantDefaultTokenQuotaArgs', 'TenantDefaultTokenQuotaArgsDict', 'outputs.TenantDefaultTokenQuota']] default_token_quota: Token Quota configuration.
         :param pulumi.Input[_builtins.bool] disable_acr_values_supported: Disable list of supported ACR values.
         :param pulumi.Input[_builtins.str] dynamic_client_registration_security_mode: Sets the third*party*security_mode assigned to clients created via Dynamic Client Registration. Can only be configured by [customers with pre-existing third-party client usage before April 2026](https://auth0.com/docs/get-started/applications/third-party-applications/permissive-mode#dynamic-client-registration-in-permissive-mode).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
         :param pulumi.Input[_builtins.float] ephemeral_session_lifetime: Number of hours an ephemeral (non-persistent) session will stay valid.
-        :param pulumi.Input[Union['TenantErrorPageArgs', 'TenantErrorPageArgsDict']] error_page: Configuration for the error page
-        :param pulumi.Input[Union['TenantFlagsArgs', 'TenantFlagsArgsDict']] flags: Configuration settings for tenant flags.
+        :param pulumi.Input[Union['TenantErrorPageArgs', 'TenantErrorPageArgsDict', 'outputs.TenantErrorPage']] error_page: Configuration for the error page
+        :param pulumi.Input[Union['TenantFlagsArgs', 'TenantFlagsArgsDict', 'outputs.TenantFlags']] flags: Configuration settings for tenant flags.
         :param pulumi.Input[_builtins.str] friendly_name: Friendly name for the tenant.
         :param pulumi.Input[_builtins.float] idle_ephemeral_session_lifetime: Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
         :param pulumi.Input[_builtins.float] idle_session_lifetime: Number of hours during which a session can be inactive before the user must log in again.
-        :param pulumi.Input[Union['TenantMtlsArgs', 'TenantMtlsArgsDict']] mtls: Configuration for mTLS.
-        :param pulumi.Input[Union['TenantOidcLogoutArgs', 'TenantOidcLogoutArgsDict']] oidc_logout: Settings related to OIDC RP-initiated Logout.
+        :param pulumi.Input[Union['TenantMtlsArgs', 'TenantMtlsArgsDict', 'outputs.TenantMtls']] mtls: Configuration for mTLS.
+        :param pulumi.Input[Union['TenantOidcLogoutArgs', 'TenantOidcLogoutArgsDict', 'outputs.TenantOidcLogout']] oidc_logout: Settings related to OIDC RP-initiated Logout.
         :param pulumi.Input[_builtins.bool] phone_consolidated_experience: When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
         :param pulumi.Input[_builtins.str] picture_url: URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         :param pulumi.Input[_builtins.bool] pushed_authorization_requests_supported: Enable pushed authorization requests.
         :param pulumi.Input[_builtins.str] resource_parameter_profile: Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
         :param pulumi.Input[_builtins.str] sandbox_version: Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
-        :param pulumi.Input[Union['TenantSessionCookieArgs', 'TenantSessionCookieArgsDict']] session_cookie: Alters behavior of tenant's session cookie. Contains a single `mode` property.
+        :param pulumi.Input[Union['TenantSessionCookieArgs', 'TenantSessionCookieArgsDict', 'outputs.TenantSessionCookie']] session_cookie: Alters behavior of tenant's session cookie. Contains a single `mode` property.
         :param pulumi.Input[_builtins.float] session_lifetime: Number of hours during which a session will stay valid.
-        :param pulumi.Input[Union['TenantSessionsArgs', 'TenantSessionsArgsDict']] sessions: Sessions related settings for the tenant.
+        :param pulumi.Input[Union['TenantSessionsArgs', 'TenantSessionsArgsDict', 'outputs.TenantSessions']] sessions: Sessions related settings for the tenant.
         :param pulumi.Input[_builtins.str] skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         :param pulumi.Input[_builtins.str] support_email: Support email address for authenticating users.
         :param pulumi.Input[_builtins.str] support_url: Support URL for authenticating users.
@@ -1217,15 +1217,6 @@ class Tenant(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         my_tenant = auth0.Tenant("my_tenant",
-            friendly_name="Tenant Name",
-            picture_url="http://example.com/logo.png",
-            support_email="support@example.com",
-            support_url="http://example.com/support",
-            allowed_logout_urls=["http://example.com/logout"],
-            session_lifetime=float(8760),
-            sandbox_version="22",
-            enabled_locales=["en"],
-            default_redirection_uri="https://example.com/login",
             flags={
                 "disable_clickjack_protection_headers": True,
                 "enable_public_signup_user_exists_error": True,
@@ -1251,7 +1242,16 @@ class Tenant(pulumi.CustomResource):
                     "CA",
                 ],
                 "mode": "allow",
-            })
+            },
+            friendly_name="Tenant Name",
+            picture_url="http://example.com/logo.png",
+            support_email="support@example.com",
+            support_url="http://example.com/support",
+            allowed_logout_urls=["http://example.com/logout"],
+            session_lifetime=float(8760),
+            sandbox_version="22",
+            enabled_locales=["en"],
+            default_redirection_uri="https://example.com/login")
         ```
 
         ## Import
@@ -1287,31 +1287,31 @@ class Tenant(pulumi.CustomResource):
                  allow_organization_name_in_authentication_api: pulumi.Input[Optional[_builtins.bool]] = None,
                  allowed_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  client_id_metadata_document_supported: pulumi.Input[Optional[_builtins.bool]] = None,
-                 country_codes: pulumi.Input[Optional[Union['TenantCountryCodesArgs', 'TenantCountryCodesArgsDict']]] = None,
+                 country_codes: pulumi.Input[Optional[Union['TenantCountryCodesArgs', 'TenantCountryCodesArgsDict', 'outputs.TenantCountryCodes']]] = None,
                  customize_mfa_in_postlogin_action: pulumi.Input[Optional[_builtins.bool]] = None,
                  default_audience: pulumi.Input[Optional[_builtins.str]] = None,
                  default_directory: pulumi.Input[Optional[_builtins.str]] = None,
                  default_redirection_uri: pulumi.Input[Optional[_builtins.str]] = None,
-                 default_token_quota: pulumi.Input[Optional[Union['TenantDefaultTokenQuotaArgs', 'TenantDefaultTokenQuotaArgsDict']]] = None,
+                 default_token_quota: pulumi.Input[Optional[Union['TenantDefaultTokenQuotaArgs', 'TenantDefaultTokenQuotaArgsDict', 'outputs.TenantDefaultTokenQuota']]] = None,
                  disable_acr_values_supported: pulumi.Input[Optional[_builtins.bool]] = None,
                  dynamic_client_registration_security_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled_locales: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ephemeral_session_lifetime: pulumi.Input[Optional[_builtins.float]] = None,
-                 error_page: pulumi.Input[Optional[Union['TenantErrorPageArgs', 'TenantErrorPageArgsDict']]] = None,
-                 flags: pulumi.Input[Optional[Union['TenantFlagsArgs', 'TenantFlagsArgsDict']]] = None,
+                 error_page: pulumi.Input[Optional[Union['TenantErrorPageArgs', 'TenantErrorPageArgsDict', 'outputs.TenantErrorPage']]] = None,
+                 flags: pulumi.Input[Optional[Union['TenantFlagsArgs', 'TenantFlagsArgsDict', 'outputs.TenantFlags']]] = None,
                  friendly_name: pulumi.Input[Optional[_builtins.str]] = None,
                  idle_ephemeral_session_lifetime: pulumi.Input[Optional[_builtins.float]] = None,
                  idle_session_lifetime: pulumi.Input[Optional[_builtins.float]] = None,
-                 mtls: pulumi.Input[Optional[Union['TenantMtlsArgs', 'TenantMtlsArgsDict']]] = None,
-                 oidc_logout: pulumi.Input[Optional[Union['TenantOidcLogoutArgs', 'TenantOidcLogoutArgsDict']]] = None,
+                 mtls: pulumi.Input[Optional[Union['TenantMtlsArgs', 'TenantMtlsArgsDict', 'outputs.TenantMtls']]] = None,
+                 oidc_logout: pulumi.Input[Optional[Union['TenantOidcLogoutArgs', 'TenantOidcLogoutArgsDict', 'outputs.TenantOidcLogout']]] = None,
                  phone_consolidated_experience: pulumi.Input[Optional[_builtins.bool]] = None,
                  picture_url: pulumi.Input[Optional[_builtins.str]] = None,
                  pushed_authorization_requests_supported: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_parameter_profile: pulumi.Input[Optional[_builtins.str]] = None,
                  sandbox_version: pulumi.Input[Optional[_builtins.str]] = None,
-                 session_cookie: pulumi.Input[Optional[Union['TenantSessionCookieArgs', 'TenantSessionCookieArgsDict']]] = None,
+                 session_cookie: pulumi.Input[Optional[Union['TenantSessionCookieArgs', 'TenantSessionCookieArgsDict', 'outputs.TenantSessionCookie']]] = None,
                  session_lifetime: pulumi.Input[Optional[_builtins.float]] = None,
-                 sessions: pulumi.Input[Optional[Union['TenantSessionsArgs', 'TenantSessionsArgsDict']]] = None,
+                 sessions: pulumi.Input[Optional[Union['TenantSessionsArgs', 'TenantSessionsArgsDict', 'outputs.TenantSessions']]] = None,
                  skip_non_verifiable_callback_uri_confirmation_prompt: pulumi.Input[Optional[_builtins.str]] = None,
                  support_email: pulumi.Input[Optional[_builtins.str]] = None,
                  support_url: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1370,31 +1370,31 @@ class Tenant(pulumi.CustomResource):
             allow_organization_name_in_authentication_api: pulumi.Input[Optional[_builtins.bool]] = None,
             allowed_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             client_id_metadata_document_supported: pulumi.Input[Optional[_builtins.bool]] = None,
-            country_codes: pulumi.Input[Optional[Union['TenantCountryCodesArgs', 'TenantCountryCodesArgsDict']]] = None,
+            country_codes: pulumi.Input[Optional[Union['TenantCountryCodesArgs', 'TenantCountryCodesArgsDict', 'outputs.TenantCountryCodes']]] = None,
             customize_mfa_in_postlogin_action: pulumi.Input[Optional[_builtins.bool]] = None,
             default_audience: pulumi.Input[Optional[_builtins.str]] = None,
             default_directory: pulumi.Input[Optional[_builtins.str]] = None,
             default_redirection_uri: pulumi.Input[Optional[_builtins.str]] = None,
-            default_token_quota: pulumi.Input[Optional[Union['TenantDefaultTokenQuotaArgs', 'TenantDefaultTokenQuotaArgsDict']]] = None,
+            default_token_quota: pulumi.Input[Optional[Union['TenantDefaultTokenQuotaArgs', 'TenantDefaultTokenQuotaArgsDict', 'outputs.TenantDefaultTokenQuota']]] = None,
             disable_acr_values_supported: pulumi.Input[Optional[_builtins.bool]] = None,
             dynamic_client_registration_security_mode: pulumi.Input[Optional[_builtins.str]] = None,
             enabled_locales: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             ephemeral_session_lifetime: pulumi.Input[Optional[_builtins.float]] = None,
-            error_page: pulumi.Input[Optional[Union['TenantErrorPageArgs', 'TenantErrorPageArgsDict']]] = None,
-            flags: pulumi.Input[Optional[Union['TenantFlagsArgs', 'TenantFlagsArgsDict']]] = None,
+            error_page: pulumi.Input[Optional[Union['TenantErrorPageArgs', 'TenantErrorPageArgsDict', 'outputs.TenantErrorPage']]] = None,
+            flags: pulumi.Input[Optional[Union['TenantFlagsArgs', 'TenantFlagsArgsDict', 'outputs.TenantFlags']]] = None,
             friendly_name: pulumi.Input[Optional[_builtins.str]] = None,
             idle_ephemeral_session_lifetime: pulumi.Input[Optional[_builtins.float]] = None,
             idle_session_lifetime: pulumi.Input[Optional[_builtins.float]] = None,
-            mtls: pulumi.Input[Optional[Union['TenantMtlsArgs', 'TenantMtlsArgsDict']]] = None,
-            oidc_logout: pulumi.Input[Optional[Union['TenantOidcLogoutArgs', 'TenantOidcLogoutArgsDict']]] = None,
+            mtls: pulumi.Input[Optional[Union['TenantMtlsArgs', 'TenantMtlsArgsDict', 'outputs.TenantMtls']]] = None,
+            oidc_logout: pulumi.Input[Optional[Union['TenantOidcLogoutArgs', 'TenantOidcLogoutArgsDict', 'outputs.TenantOidcLogout']]] = None,
             phone_consolidated_experience: pulumi.Input[Optional[_builtins.bool]] = None,
             picture_url: pulumi.Input[Optional[_builtins.str]] = None,
             pushed_authorization_requests_supported: pulumi.Input[Optional[_builtins.bool]] = None,
             resource_parameter_profile: pulumi.Input[Optional[_builtins.str]] = None,
             sandbox_version: pulumi.Input[Optional[_builtins.str]] = None,
-            session_cookie: pulumi.Input[Optional[Union['TenantSessionCookieArgs', 'TenantSessionCookieArgsDict']]] = None,
+            session_cookie: pulumi.Input[Optional[Union['TenantSessionCookieArgs', 'TenantSessionCookieArgsDict', 'outputs.TenantSessionCookie']]] = None,
             session_lifetime: pulumi.Input[Optional[_builtins.float]] = None,
-            sessions: pulumi.Input[Optional[Union['TenantSessionsArgs', 'TenantSessionsArgsDict']]] = None,
+            sessions: pulumi.Input[Optional[Union['TenantSessionsArgs', 'TenantSessionsArgsDict', 'outputs.TenantSessions']]] = None,
             skip_non_verifiable_callback_uri_confirmation_prompt: pulumi.Input[Optional[_builtins.str]] = None,
             support_email: pulumi.Input[Optional[_builtins.str]] = None,
             support_url: pulumi.Input[Optional[_builtins.str]] = None) -> 'Tenant':
@@ -1409,31 +1409,31 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] allow_organization_name_in_authentication_api: Whether to accept an organization name instead of an ID on auth endpoints.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[_builtins.bool] client_id_metadata_document_supported: Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
-        :param pulumi.Input[Union['TenantCountryCodesArgs', 'TenantCountryCodesArgsDict']] country_codes: Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
+        :param pulumi.Input[Union['TenantCountryCodesArgs', 'TenantCountryCodesArgsDict', 'outputs.TenantCountryCodes']] country_codes: Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
         :param pulumi.Input[_builtins.bool] customize_mfa_in_postlogin_action: Whether to enable flexible factors for MFA in the PostLogin action.
         :param pulumi.Input[_builtins.str] default_audience: API Audience to use by default for API Authorization flows. This setting is equivalent to appending the audience to every authorization request made to the tenant for every application.
         :param pulumi.Input[_builtins.str] default_directory: Name of the connection to be used for Password Grant exchanges. Options include `auth0-adldap`, `ad`, `auth0`, `email`, `sms`, `waad`, and `adfs`.
         :param pulumi.Input[_builtins.str] default_redirection_uri: The default absolute redirection URI. Must be HTTPS or an empty string.
-        :param pulumi.Input[Union['TenantDefaultTokenQuotaArgs', 'TenantDefaultTokenQuotaArgsDict']] default_token_quota: Token Quota configuration.
+        :param pulumi.Input[Union['TenantDefaultTokenQuotaArgs', 'TenantDefaultTokenQuotaArgsDict', 'outputs.TenantDefaultTokenQuota']] default_token_quota: Token Quota configuration.
         :param pulumi.Input[_builtins.bool] disable_acr_values_supported: Disable list of supported ACR values.
         :param pulumi.Input[_builtins.str] dynamic_client_registration_security_mode: Sets the third*party*security_mode assigned to clients created via Dynamic Client Registration. Can only be configured by [customers with pre-existing third-party client usage before April 2026](https://auth0.com/docs/get-started/applications/third-party-applications/permissive-mode#dynamic-client-registration-in-permissive-mode).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] enabled_locales: Supported locales for the user interface. The first locale in the list will be used to set the default locale.
         :param pulumi.Input[_builtins.float] ephemeral_session_lifetime: Number of hours an ephemeral (non-persistent) session will stay valid.
-        :param pulumi.Input[Union['TenantErrorPageArgs', 'TenantErrorPageArgsDict']] error_page: Configuration for the error page
-        :param pulumi.Input[Union['TenantFlagsArgs', 'TenantFlagsArgsDict']] flags: Configuration settings for tenant flags.
+        :param pulumi.Input[Union['TenantErrorPageArgs', 'TenantErrorPageArgsDict', 'outputs.TenantErrorPage']] error_page: Configuration for the error page
+        :param pulumi.Input[Union['TenantFlagsArgs', 'TenantFlagsArgsDict', 'outputs.TenantFlags']] flags: Configuration settings for tenant flags.
         :param pulumi.Input[_builtins.str] friendly_name: Friendly name for the tenant.
         :param pulumi.Input[_builtins.float] idle_ephemeral_session_lifetime: Number of hours for which an ephemeral (non-persistent) session can be inactive before the user must log in again.
         :param pulumi.Input[_builtins.float] idle_session_lifetime: Number of hours during which a session can be inactive before the user must log in again.
-        :param pulumi.Input[Union['TenantMtlsArgs', 'TenantMtlsArgsDict']] mtls: Configuration for mTLS.
-        :param pulumi.Input[Union['TenantOidcLogoutArgs', 'TenantOidcLogoutArgsDict']] oidc_logout: Settings related to OIDC RP-initiated Logout.
+        :param pulumi.Input[Union['TenantMtlsArgs', 'TenantMtlsArgsDict', 'outputs.TenantMtls']] mtls: Configuration for mTLS.
+        :param pulumi.Input[Union['TenantOidcLogoutArgs', 'TenantOidcLogoutArgsDict', 'outputs.TenantOidcLogout']] oidc_logout: Settings related to OIDC RP-initiated Logout.
         :param pulumi.Input[_builtins.bool] phone_consolidated_experience: When enabled, the tenant-level Phone Provider is used for Multi-Factor Authentication (MFA) and Passwordless phone notifications.
         :param pulumi.Input[_builtins.str] picture_url: URL of logo to be shown for the tenant. Recommended size is 150px x 150px. If no URL is provided, the Auth0 logo will be used.
         :param pulumi.Input[_builtins.bool] pushed_authorization_requests_supported: Enable pushed authorization requests.
         :param pulumi.Input[_builtins.str] resource_parameter_profile: Profile that determines how the protected resource identity is specified in OAuth endpoints. When set to `audience` (default), the `audience` parameter is used. When set to `compatibility`, the `resource` parameter is used as fallback if `audience` is not provided.
         :param pulumi.Input[_builtins.str] sandbox_version: Selected sandbox version for the extensibility environment, which allows you to use custom scripts to extend parts of Auth0's functionality.
-        :param pulumi.Input[Union['TenantSessionCookieArgs', 'TenantSessionCookieArgsDict']] session_cookie: Alters behavior of tenant's session cookie. Contains a single `mode` property.
+        :param pulumi.Input[Union['TenantSessionCookieArgs', 'TenantSessionCookieArgsDict', 'outputs.TenantSessionCookie']] session_cookie: Alters behavior of tenant's session cookie. Contains a single `mode` property.
         :param pulumi.Input[_builtins.float] session_lifetime: Number of hours during which a session will stay valid.
-        :param pulumi.Input[Union['TenantSessionsArgs', 'TenantSessionsArgsDict']] sessions: Sessions related settings for the tenant.
+        :param pulumi.Input[Union['TenantSessionsArgs', 'TenantSessionsArgsDict', 'outputs.TenantSessions']] sessions: Sessions related settings for the tenant.
         :param pulumi.Input[_builtins.str] skip_non_verifiable_callback_uri_confirmation_prompt: Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
         :param pulumi.Input[_builtins.str] support_email: Support email address for authenticating users.
         :param pulumi.Input[_builtins.str] support_url: Support URL for authenticating users.

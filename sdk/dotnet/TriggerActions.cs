@@ -34,37 +34,36 @@ namespace Pulumi.Auth0
     /// {
     ///     var actionFoo = new Auth0.Action("action_foo", new()
     ///     {
+    ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
+    ///         {
+    ///             Id = "post-login",
+    ///             Version = "v3",
+    ///         },
     ///         Name = "Test Trigger Binding Foo",
     ///         Code = @"exports.onContinuePostLogin = async (event, api) =&gt; {
     ///   console.log(\""foo\"");
     /// };\""
     /// ",
     ///         Deploy = true,
+    ///     });
+    /// 
+    ///     var actionBar = new Auth0.Action("action_bar", new()
+    ///     {
     ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
     ///         {
     ///             Id = "post-login",
     ///             Version = "v3",
     ///         },
-    ///     });
-    /// 
-    ///     var actionBar = new Auth0.Action("action_bar", new()
-    ///     {
     ///         Name = "Test Trigger Binding Bar",
     ///         Code = @"exports.onContinuePostLogin = async (event, api) =&gt; {
     ///   console.log(\""bar\"");
     /// };\""
     /// ",
     ///         Deploy = true,
-    ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
-    ///         {
-    ///             Id = "post-login",
-    ///             Version = "v3",
-    ///         },
     ///     });
     /// 
     ///     var loginFlow = new Auth0.TriggerActions("login_flow", new()
     ///     {
-    ///         Trigger = "post-login",
     ///         Actions = new[]
     ///         {
     ///             new Auth0.Inputs.TriggerActionsActionArgs
@@ -78,6 +77,7 @@ namespace Pulumi.Auth0
     ///                 DisplayName = actionBar.Name,
     ///             },
     ///         },
+    ///         Trigger = "post-login",
     ///     });
     /// 
     /// });

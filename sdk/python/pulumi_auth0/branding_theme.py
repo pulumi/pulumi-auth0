@@ -221,13 +221,13 @@ class BrandingTheme(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 borders: pulumi.Input[Optional[Union['BrandingThemeBordersArgs', 'BrandingThemeBordersArgsDict']]] = None,
-                 colors: pulumi.Input[Optional[Union['BrandingThemeColorsArgs', 'BrandingThemeColorsArgsDict']]] = None,
+                 borders: pulumi.Input[Optional[Union['BrandingThemeBordersArgs', 'BrandingThemeBordersArgsDict', 'outputs.BrandingThemeBorders']]] = None,
+                 colors: pulumi.Input[Optional[Union['BrandingThemeColorsArgs', 'BrandingThemeColorsArgsDict', 'outputs.BrandingThemeColors']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 fonts: pulumi.Input[Optional[Union['BrandingThemeFontsArgs', 'BrandingThemeFontsArgsDict']]] = None,
-                 identifiers: pulumi.Input[Optional[Union['BrandingThemeIdentifiersArgs', 'BrandingThemeIdentifiersArgsDict']]] = None,
-                 page_background: pulumi.Input[Optional[Union['BrandingThemePageBackgroundArgs', 'BrandingThemePageBackgroundArgsDict']]] = None,
-                 widget: pulumi.Input[Optional[Union['BrandingThemeWidgetArgs', 'BrandingThemeWidgetArgsDict']]] = None,
+                 fonts: pulumi.Input[Optional[Union['BrandingThemeFontsArgs', 'BrandingThemeFontsArgsDict', 'outputs.BrandingThemeFonts']]] = None,
+                 identifiers: pulumi.Input[Optional[Union['BrandingThemeIdentifiersArgs', 'BrandingThemeIdentifiersArgsDict', 'outputs.BrandingThemeIdentifiers']]] = None,
+                 page_background: pulumi.Input[Optional[Union['BrandingThemePageBackgroundArgs', 'BrandingThemePageBackgroundArgsDict', 'outputs.BrandingThemePageBackground']]] = None,
+                 widget: pulumi.Input[Optional[Union['BrandingThemeWidgetArgs', 'BrandingThemeWidgetArgsDict', 'outputs.BrandingThemeWidget']]] = None,
                  __props__=None):
         """
         This resource allows you to manage branding themes for your Universal Login page within your Auth0 tenant.
@@ -246,7 +246,7 @@ class BrandingTheme(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: The display name for the branding theme.
-        :param pulumi.Input[Union['BrandingThemeIdentifiersArgs', 'BrandingThemeIdentifiersArgsDict']] identifiers: Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed
+        :param pulumi.Input[Union['BrandingThemeIdentifiersArgs', 'BrandingThemeIdentifiersArgsDict', 'outputs.BrandingThemeIdentifiers']] identifiers: Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed
         """
         ...
     @overload
@@ -283,13 +283,13 @@ class BrandingTheme(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 borders: pulumi.Input[Optional[Union['BrandingThemeBordersArgs', 'BrandingThemeBordersArgsDict']]] = None,
-                 colors: pulumi.Input[Optional[Union['BrandingThemeColorsArgs', 'BrandingThemeColorsArgsDict']]] = None,
+                 borders: pulumi.Input[Optional[Union['BrandingThemeBordersArgs', 'BrandingThemeBordersArgsDict', 'outputs.BrandingThemeBorders']]] = None,
+                 colors: pulumi.Input[Optional[Union['BrandingThemeColorsArgs', 'BrandingThemeColorsArgsDict', 'outputs.BrandingThemeColors']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 fonts: pulumi.Input[Optional[Union['BrandingThemeFontsArgs', 'BrandingThemeFontsArgsDict']]] = None,
-                 identifiers: pulumi.Input[Optional[Union['BrandingThemeIdentifiersArgs', 'BrandingThemeIdentifiersArgsDict']]] = None,
-                 page_background: pulumi.Input[Optional[Union['BrandingThemePageBackgroundArgs', 'BrandingThemePageBackgroundArgsDict']]] = None,
-                 widget: pulumi.Input[Optional[Union['BrandingThemeWidgetArgs', 'BrandingThemeWidgetArgsDict']]] = None,
+                 fonts: pulumi.Input[Optional[Union['BrandingThemeFontsArgs', 'BrandingThemeFontsArgsDict', 'outputs.BrandingThemeFonts']]] = None,
+                 identifiers: pulumi.Input[Optional[Union['BrandingThemeIdentifiersArgs', 'BrandingThemeIdentifiersArgsDict', 'outputs.BrandingThemeIdentifiers']]] = None,
+                 page_background: pulumi.Input[Optional[Union['BrandingThemePageBackgroundArgs', 'BrandingThemePageBackgroundArgsDict', 'outputs.BrandingThemePageBackground']]] = None,
+                 widget: pulumi.Input[Optional[Union['BrandingThemeWidgetArgs', 'BrandingThemeWidgetArgsDict', 'outputs.BrandingThemeWidget']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -326,13 +326,13 @@ class BrandingTheme(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            borders: pulumi.Input[Optional[Union['BrandingThemeBordersArgs', 'BrandingThemeBordersArgsDict']]] = None,
-            colors: pulumi.Input[Optional[Union['BrandingThemeColorsArgs', 'BrandingThemeColorsArgsDict']]] = None,
+            borders: pulumi.Input[Optional[Union['BrandingThemeBordersArgs', 'BrandingThemeBordersArgsDict', 'outputs.BrandingThemeBorders']]] = None,
+            colors: pulumi.Input[Optional[Union['BrandingThemeColorsArgs', 'BrandingThemeColorsArgsDict', 'outputs.BrandingThemeColors']]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
-            fonts: pulumi.Input[Optional[Union['BrandingThemeFontsArgs', 'BrandingThemeFontsArgsDict']]] = None,
-            identifiers: pulumi.Input[Optional[Union['BrandingThemeIdentifiersArgs', 'BrandingThemeIdentifiersArgsDict']]] = None,
-            page_background: pulumi.Input[Optional[Union['BrandingThemePageBackgroundArgs', 'BrandingThemePageBackgroundArgsDict']]] = None,
-            widget: pulumi.Input[Optional[Union['BrandingThemeWidgetArgs', 'BrandingThemeWidgetArgsDict']]] = None) -> 'BrandingTheme':
+            fonts: pulumi.Input[Optional[Union['BrandingThemeFontsArgs', 'BrandingThemeFontsArgsDict', 'outputs.BrandingThemeFonts']]] = None,
+            identifiers: pulumi.Input[Optional[Union['BrandingThemeIdentifiersArgs', 'BrandingThemeIdentifiersArgsDict', 'outputs.BrandingThemeIdentifiers']]] = None,
+            page_background: pulumi.Input[Optional[Union['BrandingThemePageBackgroundArgs', 'BrandingThemePageBackgroundArgsDict', 'outputs.BrandingThemePageBackground']]] = None,
+            widget: pulumi.Input[Optional[Union['BrandingThemeWidgetArgs', 'BrandingThemeWidgetArgsDict', 'outputs.BrandingThemeWidget']]] = None) -> 'BrandingTheme':
         """
         Get an existing BrandingTheme resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -341,7 +341,7 @@ class BrandingTheme(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: The display name for the branding theme.
-        :param pulumi.Input[Union['BrandingThemeIdentifiersArgs', 'BrandingThemeIdentifiersArgsDict']] identifiers: Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed
+        :param pulumi.Input[Union['BrandingThemeIdentifiersArgs', 'BrandingThemeIdentifiersArgsDict', 'outputs.BrandingThemeIdentifiers']] identifiers: Configuration for identifier input display settings. Requires the identifier input feature flag to be enabled on the tenant. Once added, identifiers can only be updated but not removed
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

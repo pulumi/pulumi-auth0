@@ -26,6 +26,24 @@ namespace Pulumi.Auth0
     ///     // Example:
     ///     var myForm = new Auth0.Form("my_form", new()
     ///     {
+    ///         Languages = new[]
+    ///         {
+    ///             new Auth0.Inputs.FormLanguageArgs
+    ///             {
+    ///                 Default = "en",
+    ///                 Primary = "en",
+    ///             },
+    ///         },
+    ///         Messages = new[]
+    ///         {
+    ///             new Auth0.Inputs.FormMessageArgs
+    ///             {
+    ///                 Errors = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["ERR_REQUIRED_PROPERTY"] = "This field is required for user kyc.",
+    ///                 }),
+    ///             },
+    ///         },
     ///         Name = "My KYC Form",
     ///         Start = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
@@ -128,24 +146,6 @@ namespace Pulumi.Auth0
     ///                 },
     ///             },
     ///         }),
-    ///         Messages = new[]
-    ///         {
-    ///             new Auth0.Inputs.FormMessageArgs
-    ///             {
-    ///                 Errors = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///                 {
-    ///                     ["ERR_REQUIRED_PROPERTY"] = "This field is required for user kyc.",
-    ///                 }),
-    ///             },
-    ///         },
-    ///         Languages = new[]
-    ///         {
-    ///             new Auth0.Inputs.FormLanguageArgs
-    ///             {
-    ///                 Default = "en",
-    ///                 Primary = "en",
-    ///             },
-    ///         },
     ///     });
     /// 
     /// });

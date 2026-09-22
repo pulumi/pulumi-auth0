@@ -56,8 +56,6 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var oidc = new Connection("oidc", ConnectionArgs.builder()
- *             .name("OIDC-Connection")
- *             .strategy("oidc")
  *             .options(ConnectionOptionsArgs.builder()
  *                 .clientId(myClient.id())
  *                 .scopes(                
@@ -71,6 +69,8 @@ import javax.annotation.Nullable;
  *                 .tokenEndpointAuthMethod("private_key_jwt")
  *                 .tokenEndpointAuthSigningAlg("RS256")
  *                 .build())
+ *             .name("OIDC-Connection")
+ *             .strategy("oidc")
  *             .build());
  * 
  *         // Resource used to rotate the keys for above OIDC connection

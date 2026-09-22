@@ -25,6 +25,11 @@ namespace Pulumi.Auth0
     ///     // Creates an event stream of type eventbridge
     ///     var myEventStreamEventBridge = new Auth0.EventStream("my_event_stream_event_bridge", new()
     ///     {
+    ///         EventbridgeConfiguration = new Auth0.Inputs.EventStreamEventbridgeConfigurationArgs
+    ///         {
+    ///             AwsAccountId = "242849305777",
+    ///             AwsRegion = "us-east-1",
+    ///         },
     ///         Name = "my-eventbridge",
     ///         DestinationType = "eventbridge",
     ///         Subscriptions = new[]
@@ -32,16 +37,20 @@ namespace Pulumi.Auth0
     ///             "user.created",
     ///             "user.updated",
     ///         },
-    ///         EventbridgeConfiguration = new Auth0.Inputs.EventStreamEventbridgeConfigurationArgs
-    ///         {
-    ///             AwsAccountId = "242849305777",
-    ///             AwsRegion = "us-east-1",
-    ///         },
     ///     });
     /// 
     ///     // Creates an event stream of type webhook in a disabled state
     ///     var myEventStreamWebhook = new Auth0.EventStream("my_event_stream_webhook", new()
     ///     {
+    ///         WebhookConfiguration = new Auth0.Inputs.EventStreamWebhookConfigurationArgs
+    ///         {
+    ///             WebhookAuthorization = new Auth0.Inputs.EventStreamWebhookConfigurationWebhookAuthorizationArgs
+    ///             {
+    ///                 Method = "bearer",
+    ///                 Token = "123456789",
+    ///             },
+    ///             WebhookEndpoint = "https://eof28wtn4v4506o.m.pipedream.net",
+    ///         },
     ///         Name = "my-webhook",
     ///         DestinationType = "webhook",
     ///         Status = "disabled",
@@ -50,15 +59,6 @@ namespace Pulumi.Auth0
     ///             "user.created",
     ///             "user.updated",
     ///         },
-    ///         WebhookConfiguration = new Auth0.Inputs.EventStreamWebhookConfigurationArgs
-    ///         {
-    ///             WebhookEndpoint = "https://eof28wtn4v4506o.m.pipedream.net",
-    ///             WebhookAuthorization = new Auth0.Inputs.EventStreamWebhookConfigurationWebhookAuthorizationArgs
-    ///             {
-    ///                 Method = "bearer",
-    ///                 Token = "123456789",
-    ///             },
-    ///         },
     ///     });
     /// 
     ///     var config = new Config();
@@ -66,6 +66,16 @@ namespace Pulumi.Auth0
     ///     var webhookToken = config.Require("webhookToken");
     ///     var myEventStreamWebhookSecure = new Auth0.EventStream("my_event_stream_webhook_secure", new()
     ///     {
+    ///         WebhookConfiguration = new Auth0.Inputs.EventStreamWebhookConfigurationArgs
+    ///         {
+    ///             WebhookAuthorization = new Auth0.Inputs.EventStreamWebhookConfigurationWebhookAuthorizationArgs
+    ///             {
+    ///                 Method = "bearer",
+    ///                 TokenWo = webhookToken,
+    ///                 TokenWoVersion = 1,
+    ///             },
+    ///             WebhookEndpoint = "https://eof28wtn4v4506o.m.pipedream.net",
+    ///         },
     ///         Name = "my-webhook-secure",
     ///         DestinationType = "webhook",
     ///         Subscriptions = new[]
@@ -73,31 +83,21 @@ namespace Pulumi.Auth0
     ///             "user.created",
     ///             "user.updated",
     ///         },
-    ///         WebhookConfiguration = new Auth0.Inputs.EventStreamWebhookConfigurationArgs
-    ///         {
-    ///             WebhookEndpoint = "https://eof28wtn4v4506o.m.pipedream.net",
-    ///             WebhookAuthorization = new Auth0.Inputs.EventStreamWebhookConfigurationWebhookAuthorizationArgs
-    ///             {
-    ///                 Method = "bearer",
-    ///                 TokenWo = webhookToken,
-    ///                 TokenWoVersion = 1,
-    ///             },
-    ///         },
     ///     });
     /// 
     ///     // Creates an event stream of type action
     ///     var myEventStreamAction = new Auth0.EventStream("my_event_stream_action", new()
     ///     {
+    ///         ActionConfiguration = new Auth0.Inputs.EventStreamActionConfigurationArgs
+    ///         {
+    ///             ActionId = myAction.Id,
+    ///         },
     ///         Name = "my-action-stream",
     ///         DestinationType = "action",
     ///         Subscriptions = new[]
     ///         {
     ///             "user.created",
     ///             "user.updated",
-    ///         },
-    ///         ActionConfiguration = new Auth0.Inputs.EventStreamActionConfigurationArgs
-    ///         {
-    ///             ActionId = myAction.Id,
     ///         },
     ///     });
     /// 

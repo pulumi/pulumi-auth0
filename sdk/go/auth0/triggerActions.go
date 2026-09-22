@@ -39,31 +39,30 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			actionFoo, err := auth0.NewAction(ctx, "action_foo", &auth0.ActionArgs{
-//				Name:   pulumi.String("Test Trigger Binding Foo"),
-//				Code:   pulumi.String("exports.onContinuePostLogin = async (event, api) => {\n  console.log(\\\"foo\\\");\n};\\\"\n"),
-//				Deploy: pulumi.Bool(true),
 //				SupportedTriggers: &auth0.ActionSupportedTriggersArgs{
 //					Id:      pulumi.String("post-login"),
 //					Version: pulumi.String("v3"),
 //				},
+//				Name:   pulumi.String("Test Trigger Binding Foo"),
+//				Code:   pulumi.String("exports.onContinuePostLogin = async (event, api) => {\n  console.log(\\\"foo\\\");\n};\\\"\n"),
+//				Deploy: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			actionBar, err := auth0.NewAction(ctx, "action_bar", &auth0.ActionArgs{
-//				Name:   pulumi.String("Test Trigger Binding Bar"),
-//				Code:   pulumi.String("exports.onContinuePostLogin = async (event, api) => {\n  console.log(\\\"bar\\\");\n};\\\"\n"),
-//				Deploy: pulumi.Bool(true),
 //				SupportedTriggers: &auth0.ActionSupportedTriggersArgs{
 //					Id:      pulumi.String("post-login"),
 //					Version: pulumi.String("v3"),
 //				},
+//				Name:   pulumi.String("Test Trigger Binding Bar"),
+//				Code:   pulumi.String("exports.onContinuePostLogin = async (event, api) => {\n  console.log(\\\"bar\\\");\n};\\\"\n"),
+//				Deploy: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = auth0.NewTriggerActions(ctx, "login_flow", &auth0.TriggerActionsArgs{
-//				Trigger: pulumi.String("post-login"),
 //				Actions: auth0.TriggerActionsActionArray{
 //					&auth0.TriggerActionsActionArgs{
 //						Id:          actionFoo.ID().ToIDOutput().ToStringOutput(),
@@ -74,6 +73,7 @@ import (
 //						DisplayName: actionBar.Name,
 //					},
 //				},
+//				Trigger: pulumi.String("post-login"),
 //			})
 //			if err != nil {
 //				return err

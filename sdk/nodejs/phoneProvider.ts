@@ -27,8 +27,6 @@ import * as utilities from "./utilities";
  *
  * // This is an example on how to set up the phone provider with Twilio.
  * const twilioPhoneProvider = new auth0.PhoneProvider("twilio_phone_provider", {
- *     name: "twilio",
- *     disabled: false,
  *     credentials: {
  *         authToken: "secretAuthToken",
  *     },
@@ -41,10 +39,16 @@ import * as utilities from "./utilities";
  *         sid: "ACXXXXXXXXXXXXXXXX",
  *         mssid: "MSXXXXXXXXXXXXXXXX",
  *     },
+ *     name: "twilio",
+ *     disabled: false,
  * });
  * // This is an example on how to set up the phone provider with a custom action.
  * // Make sure a corresponding action exists with custom-phone-provider as supported triggers
  * const sendCustomPhone = new auth0.Action("send_custom_phone", {
+ *     supportedTriggers: {
+ *         id: "custom-phone-provider",
+ *         version: "v1",
+ *     },
  *     name: "Custom Phone Provider",
  *     runtime: "node22",
  *     deploy: true,
@@ -58,14 +62,8 @@ import * as utilities from "./utilities";
  *     return;
  * };
  * `,
- *     supportedTriggers: {
- *         id: "custom-phone-provider",
- *         version: "v1",
- *     },
  * });
  * const customPhoneProvider = new auth0.PhoneProvider("custom_phone_provider", {
- *     name: "custom",
- *     disabled: false,
  *     configuration: {
  *         deliveryMethods: [
  *             "text",
@@ -73,6 +71,8 @@ import * as utilities from "./utilities";
  *         ],
  *     },
  *     credentials: {},
+ *     name: "custom",
+ *     disabled: false,
  * }, {
  *     dependsOn: [sendCustomPhone],
  * });

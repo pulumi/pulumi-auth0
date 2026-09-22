@@ -18,8 +18,6 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const resourceServer = new auth0.ResourceServer("resource_server", {
- *     name: "Example Resource Server (Managed by Terraform)",
- *     identifier: "https://api.example.com",
  *     scopes: [
  *         {
  *             value: "create:foo",
@@ -30,6 +28,8 @@ import * as utilities from "./utilities";
  *             description: "Create bars",
  *         },
  *     ],
+ *     name: "Example Resource Server (Managed by Terraform)",
+ *     identifier: "https://api.example.com",
  * });
  * const user = new auth0.User("user", {
  *     connectionName: "Username-Password-Authentication",

@@ -41,7 +41,6 @@ import (
 //				return err
 //			}
 //			resourceServerScopes, err := auth0.NewResourceServerScopes(ctx, "resource_server_scopes", &auth0.ResourceServerScopesArgs{
-//				ResourceServerIdentifier: resourceServer.Identifier,
 //				Scopes: auth0.ResourceServerScopesScopeArray{
 //					&auth0.ResourceServerScopesScopeArgs{
 //						Name: pulumi.String("store:create"),
@@ -56,6 +55,7 @@ import (
 //						Name: pulumi.String("store:delete"),
 //					},
 //				},
+//				ResourceServerIdentifier: resourceServer.Identifier,
 //			})
 //			if err != nil {
 //				return err

@@ -30,40 +30,7 @@ import * as utilities from "./utilities";
  *
  * // This is an example of an Auth0 connection.
  * const myConnection = new auth0.Connection("my_connection", {
- *     name: "Example-Connection",
- *     isDomainConnection: true,
- *     strategy: "auth0",
- *     metadata: {
- *         key1: "foo",
- *         key2: "bar",
- *     },
  *     options: {
- *         passwordPolicy: "excellent",
- *         bruteForceProtection: true,
- *         strategyVersion: 2,
- *         enabledDatabaseCustomization: true,
- *         importMode: false,
- *         requiresUsername: true,
- *         disableSignup: false,
- *         customScripts: {
- *             get_user: `        function getByEmail(email, callback) {
- *           return callback(new Error(\\"Whoops!\\"));
- *         }
- * `,
- *         },
- *         configuration: {
- *             foo: "bar",
- *             bar: "baz",
- *         },
- *         upstreamParams: JSON.stringify({
- *             screen_name: {
- *                 alias: "login_hint",
- *             },
- *         }),
- *         passwordHistories: [{
- *             enable: true,
- *             size: 3,
- *         }],
  *         passwordNoPersonalInfo: {
  *             enable: true,
  *         },
@@ -88,6 +55,11 @@ import * as utilities from "./utilities";
  *             active: true,
  *             returnEnrollSettings: true,
  *         },
+ *         passkeyOptions: {
+ *             challengeUi: "both",
+ *             localEnrollmentEnabled: true,
+ *             progressiveEnrollmentEnabled: true,
+ *         },
  *         authenticationMethods: [{
  *             passkey: {
  *                 enabled: true,
@@ -96,11 +68,39 @@ import * as utilities from "./utilities";
  *                 enabled: true,
  *             },
  *         }],
- *         passkeyOptions: {
- *             challengeUi: "both",
- *             localEnrollmentEnabled: true,
- *             progressiveEnrollmentEnabled: true,
+ *         passwordHistories: [{
+ *             enable: true,
+ *             size: 3,
+ *         }],
+ *         passwordPolicy: "excellent",
+ *         bruteForceProtection: true,
+ *         strategyVersion: 2,
+ *         enabledDatabaseCustomization: true,
+ *         importMode: false,
+ *         requiresUsername: true,
+ *         disableSignup: false,
+ *         customScripts: {
+ *             get_user: `        function getByEmail(email, callback) {
+ *           return callback(new Error(\\"Whoops!\\"));
+ *         }
+ * `,
  *         },
+ *         configuration: {
+ *             foo: "bar",
+ *             bar: "baz",
+ *         },
+ *         upstreamParams: JSON.stringify({
+ *             screen_name: {
+ *                 alias: "login_hint",
+ *             },
+ *         }),
+ *     },
+ *     name: "Example-Connection",
+ *     isDomainConnection: true,
+ *     strategy: "auth0",
+ *     metadata: {
+ *         key1: "foo",
+ *         key2: "bar",
  *     },
  * });
  * // The strategy's client secret can be set as a write-only argument so it is never persisted to
@@ -110,10 +110,6 @@ import * as utilities from "./utilities";
  * //
  * // NOTE: Write-only arguments require Terraform 1.11 or later.
  * const myConnectionWriteOnlySecret = new auth0.Connection("my_connection_write_only_secret", {
- *     name: "Example-Connection-Write-Only-Secret",
- *     strategy: "oidc",
- *     optionsClientSecretWo: connectionClientSecret,
- *     optionsClientSecretWoVersion: 1,
  *     options: {
  *         clientId: "1234567",
  *         type: "back_channel",
@@ -128,6 +124,10 @@ import * as utilities from "./utilities";
  *             "email",
  *         ],
  *     },
+ *     name: "Example-Connection-Write-Only-Secret",
+ *     strategy: "oidc",
+ *     optionsClientSecretWo: connectionClientSecret,
+ *     optionsClientSecretWoVersion: 1,
  * });
  * ```
  *
@@ -141,8 +141,6 @@ import * as utilities from "./utilities";
  *
  * // This is an example of a Google OAuth2 connection.
  * const googleOauth2 = new auth0.Connection("google_oauth2", {
- *     name: "Google-OAuth2-Connection",
- *     strategy: "google-oauth2",
  *     options: {
  *         clientId: "<client-id>",
  *         clientSecret: "<client-secret>",
@@ -162,6 +160,8 @@ import * as utilities from "./utilities";
  *             "gender",
  *         ],
  *     },
+ *     name: "Google-OAuth2-Connection",
+ *     strategy: "google-oauth2",
  * });
  * ```
  *
@@ -172,10 +172,6 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const googleApps = new auth0.Connection("google_apps", {
- *     name: "connection-google-apps",
- *     isDomainConnection: false,
- *     strategy: "google-apps",
- *     showAsButton: false,
  *     options: {
  *         clientId: "",
  *         clientSecret: "",
@@ -202,6 +198,10 @@ import * as utilities from "./utilities";
  *             "gender",
  *         ],
  *     },
+ *     name: "connection-google-apps",
+ *     isDomainConnection: false,
+ *     strategy: "google-apps",
+ *     showAsButton: false,
  * });
  * ```
  *
@@ -213,8 +213,6 @@ import * as utilities from "./utilities";
  *
  * // This is an example of a Facebook connection.
  * const facebook = new auth0.Connection("facebook", {
- *     name: "Facebook-Connection",
- *     strategy: "facebook",
  *     options: {
  *         clientId: "<client-id>",
  *         clientSecret: "<client-secret>",
@@ -230,6 +228,8 @@ import * as utilities from "./utilities";
  *             "gender",
  *         ],
  *     },
+ *     name: "Facebook-Connection",
+ *     strategy: "facebook",
  * });
  * ```
  *
@@ -241,8 +241,6 @@ import * as utilities from "./utilities";
  *
  * // This is an example of an Apple connection.
  * const apple = new auth0.Connection("apple", {
- *     name: "Apple-Connection",
- *     strategy: "apple",
  *     options: {
  *         clientId: "<client-id>",
  *         clientSecret: `-----BEGIN PRIVATE KEY-----
@@ -260,6 +258,8 @@ import * as utilities from "./utilities";
  *             "gender",
  *         ],
  *     },
+ *     name: "Apple-Connection",
+ *     strategy: "apple",
  * });
  * ```
  *
@@ -271,8 +271,6 @@ import * as utilities from "./utilities";
  *
  * // This is an example of an LinkedIn connection.
  * const linkedin = new auth0.Connection("linkedin", {
- *     name: "Linkedin-Connection",
- *     strategy: "linkedin",
  *     options: {
  *         clientId: "<client-id>",
  *         clientSecret: "<client-secret>",
@@ -288,6 +286,8 @@ import * as utilities from "./utilities";
  *             "gender",
  *         ],
  *     },
+ *     name: "Linkedin-Connection",
+ *     strategy: "linkedin",
  * });
  * ```
  *
@@ -299,8 +299,6 @@ import * as utilities from "./utilities";
  *
  * // This is an example of an GitHub connection.
  * const github = new auth0.Connection("github", {
- *     name: "GitHub-Connection",
- *     strategy: "github",
  *     options: {
  *         clientId: "<client-id>",
  *         clientSecret: "<client-secret>",
@@ -316,6 +314,8 @@ import * as utilities from "./utilities";
  *             "gender",
  *         ],
  *     },
+ *     name: "GitHub-Connection",
+ *     strategy: "github",
  * });
  * ```
  *
@@ -327,8 +327,6 @@ import * as utilities from "./utilities";
  *
  * // This is an example of an SalesForce connection.
  * const salesforce = new auth0.Connection("salesforce", {
- *     name: "Salesforce-Connection",
- *     strategy: "salesforce",
  *     options: {
  *         clientId: "<client-id>",
  *         clientSecret: "<client-secret>",
@@ -343,6 +341,8 @@ import * as utilities from "./utilities";
  *             "gender",
  *         ],
  *     },
+ *     name: "Salesforce-Connection",
+ *     strategy: "salesforce",
  * });
  * ```
  *
@@ -356,9 +356,17 @@ import * as utilities from "./utilities";
  *
  * // This is an example of an OAuth2 connection.
  * const oauth2 = new auth0.Connection("oauth2", {
- *     name: "OAuth2-Connection",
- *     strategy: "oauth2",
  *     options: {
+ *         customHeaders: [
+ *             {
+ *                 header: "bar",
+ *                 value: "foo",
+ *             },
+ *             {
+ *                 header: "foo",
+ *                 value: "bar",
+ *             },
+ *         ],
  *         clientId: "<client-id>",
  *         clientSecret: "<client-secret>",
  *         strategyVersion: 2,
@@ -371,16 +379,6 @@ import * as utilities from "./utilities";
  *         authorizationEndpoint: "https://auth.example.com/oauth2/authorize",
  *         pkceEnabled: true,
  *         iconUrl: "https://auth.example.com/assets/logo.png",
- *         customHeaders: [
- *             {
- *                 header: "bar",
- *                 value: "foo",
- *             },
- *             {
- *                 header: "foo",
- *                 value: "bar",
- *             },
- *         ],
  *         scripts: {
  *             fetchUserProfile: `        function fetchUserProfile(accessToken, context, callback) {
  *           return callback(new Error(\\"Whoops!\\"));
@@ -393,6 +391,8 @@ import * as utilities from "./utilities";
  *             "gender",
  *         ],
  *     },
+ *     name: "OAuth2-Connection",
+ *     strategy: "oauth2",
  * });
  * ```
  *
@@ -403,10 +403,6 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const ad = new auth0.Connection("ad", {
- *     name: "connection-active-directory",
- *     displayName: "Active Directory Connection",
- *     strategy: "ad",
- *     showAsButton: true,
  *     options: {
  *         disableSelfServiceChangePassword: true,
  *         bruteForceProtection: true,
@@ -435,6 +431,10 @@ import * as utilities from "./utilities";
  *         useKerberos: false,
  *         disableCache: false,
  *     },
+ *     name: "connection-active-directory",
+ *     displayName: "Active Directory Connection",
+ *     strategy: "ad",
+ *     showAsButton: true,
  * });
  * ```
  *
@@ -445,9 +445,6 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const azureAd = new auth0.Connection("azure_ad", {
- *     name: "connection-azure-ad",
- *     strategy: "waad",
- *     showAsButton: true,
  *     options: {
  *         identityApi: "azure-active-directory-v1.0",
  *         clientId: "123456",
@@ -484,6 +481,9 @@ import * as utilities from "./utilities";
  *             "gender",
  *         ],
  *     },
+ *     name: "connection-azure-ad",
+ *     strategy: "waad",
+ *     showAsButton: true,
  * });
  * ```
  *
@@ -497,9 +497,11 @@ import * as utilities from "./utilities";
  *
  * // This is an example of an Email connection.
  * const passwordlessEmail = new auth0.Connection("passwordless_email", {
- *     strategy: "email",
- *     name: "email",
  *     options: {
+ *         totp: {
+ *             timeStep: 300,
+ *             length: 6,
+ *         },
  *         name: "email",
  *         from: "{{ application.name }} <root@auth0.com>",
  *         subject: "Welcome to {{ application.name }}",
@@ -513,11 +515,9 @@ import * as utilities from "./utilities";
  *             scope: "openid email profile offline_access",
  *             response_type: "code",
  *         },
- *         totp: {
- *             timeStep: 300,
- *             length: 6,
- *         },
  *     },
+ *     strategy: "email",
+ *     name: "email",
  * });
  * ```
  *
@@ -529,9 +529,28 @@ import * as utilities from "./utilities";
  *
  * // This is an example of a SAML connection.
  * const samlp = new auth0.Connection("samlp", {
- *     name: "SAML-Connection",
- *     strategy: "samlp",
  *     options: {
+ *         signingKey: {
+ *             key: `-----BEGIN PRIVATE KEY-----
+ * ...{your private key here}...
+ * -----END PRIVATE KEY-----`,
+ *             cert: `-----BEGIN CERTIFICATE-----
+ * ...{your public key cert here}...
+ * -----END CERTIFICATE-----`,
+ *         },
+ *         decryptionKey: {
+ *             key: `-----BEGIN PRIVATE KEY-----
+ * ...{your private key here}...
+ * -----END PRIVATE KEY-----`,
+ *             cert: `-----BEGIN CERTIFICATE-----
+ * ...{your public key cert here}...
+ * -----END CERTIFICATE-----`,
+ *         },
+ *         idpInitiated: {
+ *             clientId: "client_id",
+ *             clientProtocol: "samlp",
+ *             clientAuthorizeQuery: "type=code&timeout=30",
+ *         },
  *         debug: false,
  *         signingCert: "<signing-certificate>",
  *         signInEndpoint: "https://saml.provider/sign_in",
@@ -580,28 +599,9 @@ import * as utilities from "./utilities";
  *             ],
  *             family_name: "surname",
  *         }),
- *         signingKey: {
- *             key: `-----BEGIN PRIVATE KEY-----
- * ...{your private key here}...
- * -----END PRIVATE KEY-----`,
- *             cert: `-----BEGIN CERTIFICATE-----
- * ...{your public key cert here}...
- * -----END CERTIFICATE-----`,
- *         },
- *         decryptionKey: {
- *             key: `-----BEGIN PRIVATE KEY-----
- * ...{your private key here}...
- * -----END PRIVATE KEY-----`,
- *             cert: `-----BEGIN CERTIFICATE-----
- * ...{your public key cert here}...
- * -----END CERTIFICATE-----`,
- *         },
- *         idpInitiated: {
- *             clientId: "client_id",
- *             clientProtocol: "samlp",
- *             clientAuthorizeQuery: "type=code&timeout=30",
- *         },
  *     },
+ *     name: "SAML-Connection",
+ *     strategy: "samlp",
  * });
  * ```
  *
@@ -613,8 +613,6 @@ import * as utilities from "./utilities";
  *
  * // This is an example of a WindowsLive connection.
  * const windowslive = new auth0.Connection("windowslive", {
- *     name: "Windowslive-Connection",
- *     strategy: "windowslive",
  *     options: {
  *         clientId: "<client-id>",
  *         clientSecret: "<client-secret>",
@@ -629,6 +627,8 @@ import * as utilities from "./utilities";
  *             "gender",
  *         ],
  *     },
+ *     name: "Windowslive-Connection",
+ *     strategy: "windowslive",
  * });
  * ```
  *
@@ -640,11 +640,23 @@ import * as utilities from "./utilities";
  *
  * // This is an example of an OIDC connection.
  * const oidc = new auth0.Connection("oidc", {
- *     name: "oidc-connection",
- *     displayName: "OIDC Connection",
- *     strategy: "oidc",
- *     showAsButton: false,
  *     options: {
+ *         connectionSettings: {
+ *             pkce: "auto",
+ *         },
+ *         attributeMap: {
+ *             mappingMode: "use_map",
+ *             userinfoScope: "openid email profile groups",
+ *             attributes: JSON.stringify({
+ *                 name: "${context.tokenset.name}",
+ *                 email: "${context.tokenset.email}",
+ *                 email_verified: "${context.tokenset.email_verified}",
+ *                 nickname: "${context.tokenset.nickname}",
+ *                 picture: "${context.tokenset.picture}",
+ *                 given_name: "${context.tokenset.given_name}",
+ *                 family_name: "${context.tokenset.family_name}",
+ *             }),
+ *         },
  *         clientId: "1234567",
  *         clientSecret: "1234567",
  *         domainAliases: ["example.com"],
@@ -667,23 +679,11 @@ import * as utilities from "./utilities";
  *             "ethnicity",
  *             "gender",
  *         ],
- *         connectionSettings: {
- *             pkce: "auto",
- *         },
- *         attributeMap: {
- *             mappingMode: "use_map",
- *             userinfoScope: "openid email profile groups",
- *             attributes: JSON.stringify({
- *                 name: "${context.tokenset.name}",
- *                 email: "${context.tokenset.email}",
- *                 email_verified: "${context.tokenset.email_verified}",
- *                 nickname: "${context.tokenset.nickname}",
- *                 picture: "${context.tokenset.picture}",
- *                 given_name: "${context.tokenset.given_name}",
- *                 family_name: "${context.tokenset.family_name}",
- *             }),
- *         },
  *     },
+ *     name: "oidc-connection",
+ *     displayName: "OIDC Connection",
+ *     strategy: "oidc",
+ *     showAsButton: false,
  * });
  * ```
  *
@@ -698,11 +698,23 @@ import * as utilities from "./utilities";
  *
  * // This is an example of an Okta Workforce connection.
  * const okta = new auth0.Connection("okta", {
- *     name: "okta-connection",
- *     displayName: "Okta Workforce Connection",
- *     strategy: "okta",
- *     showAsButton: false,
  *     options: {
+ *         connectionSettings: {
+ *             pkce: "auto",
+ *         },
+ *         attributeMap: {
+ *             mappingMode: "basic_profile",
+ *             userinfoScope: "openid email profile groups",
+ *             attributes: JSON.stringify({
+ *                 name: "${context.tokenset.name}",
+ *                 email: "${context.tokenset.email}",
+ *                 email_verified: "${context.tokenset.email_verified}",
+ *                 nickname: "${context.tokenset.nickname}",
+ *                 picture: "${context.tokenset.picture}",
+ *                 given_name: "${context.tokenset.given_name}",
+ *                 family_name: "${context.tokenset.family_name}",
+ *             }),
+ *         },
  *         clientId: "1234567",
  *         clientSecret: "1234567",
  *         domain: "example.okta.com",
@@ -727,23 +739,11 @@ import * as utilities from "./utilities";
  *                 alias: "login_hint",
  *             },
  *         }),
- *         connectionSettings: {
- *             pkce: "auto",
- *         },
- *         attributeMap: {
- *             mappingMode: "basic_profile",
- *             userinfoScope: "openid email profile groups",
- *             attributes: JSON.stringify({
- *                 name: "${context.tokenset.name}",
- *                 email: "${context.tokenset.email}",
- *                 email_verified: "${context.tokenset.email_verified}",
- *                 nickname: "${context.tokenset.nickname}",
- *                 picture: "${context.tokenset.picture}",
- *                 given_name: "${context.tokenset.given_name}",
- *                 family_name: "${context.tokenset.family_name}",
- *             }),
- *         },
  *     },
+ *     name: "okta-connection",
+ *     displayName: "Okta Workforce Connection",
+ *     strategy: "okta",
+ *     showAsButton: false,
  * });
  * ```
  *
