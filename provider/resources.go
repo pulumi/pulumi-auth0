@@ -51,13 +51,13 @@ func Provider() tfbridge.ProviderInfo {
 
 	prov := tfbridge.ProviderInfo{
 		P:                p,
-		Name:             "auth0",
+		Name:             mainPkg,
 		DisplayName:      "Auth0",
 		Description:      "A Pulumi package for creating and managing auth0 cloud resources.",
-		Keywords:         []string{"pulumi", "auth0"},
+		Keywords:         []string{"pulumi", mainPkg},
 		License:          "Apache-2.0",
 		Homepage:         "https://pulumi.io",
-		GitHubOrg:        "auth0",
+		GitHubOrg:        mainPkg,
 		Repository:       "https://github.com/pulumi/pulumi-auth0",
 		UpstreamRepoPath: "./upstream",
 		Version:          version.Version,
@@ -116,8 +116,6 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		}, MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 		EnableZeroDefaultSchemaVersion: true,
-		EnableAccurateBridgePreview:    true,
-		EnableRawStateDelta:            true,
 	}
 
 	prov.MustComputeTokens(tks.SingleModule("auth0_", mainMod,
