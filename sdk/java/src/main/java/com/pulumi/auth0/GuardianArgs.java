@@ -4,8 +4,11 @@
 package com.pulumi.auth0;
 
 import com.pulumi.auth0.inputs.GuardianDuoArgs;
+import com.pulumi.auth0.inputs.GuardianEmailSettingsArgs;
 import com.pulumi.auth0.inputs.GuardianPhoneArgs;
+import com.pulumi.auth0.inputs.GuardianPhoneSettingsArgs;
 import com.pulumi.auth0.inputs.GuardianPushArgs;
+import com.pulumi.auth0.inputs.GuardianSettingsArgs;
 import com.pulumi.auth0.inputs.GuardianWebauthnPlatformArgs;
 import com.pulumi.auth0.inputs.GuardianWebauthnRoamingArgs;
 import com.pulumi.core.Output;
@@ -53,6 +56,21 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * One-time password settings for the email MFA factor. These are independent of whether the email factor is enabled.
+     * 
+     */
+    @Import(name="emailSettings")
+    private @Nullable Output<GuardianEmailSettingsArgs> emailSettings;
+
+    /**
+     * @return One-time password settings for the email MFA factor. These are independent of whether the email factor is enabled.
+     * 
+     */
+    public Optional<Output<GuardianEmailSettingsArgs>> emailSettings() {
+        return Optional.ofNullable(this.emailSettings);
+    }
+
+    /**
      * Indicates whether one time password MFA is enabled.
      * 
      */
@@ -80,6 +98,21 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<GuardianPhoneArgs>> phone() {
         return Optional.ofNullable(this.phone);
+    }
+
+    /**
+     * One-time password settings for the phone MFA factor. These are independent of whether the phone factor is enabled.
+     * 
+     */
+    @Import(name="phoneSettings")
+    private @Nullable Output<GuardianPhoneSettingsArgs> phoneSettings;
+
+    /**
+     * @return One-time password settings for the phone MFA factor. These are independent of whether the phone factor is enabled.
+     * 
+     */
+    public Optional<Output<GuardianPhoneSettingsArgs>> phoneSettings() {
+        return Optional.ofNullable(this.phoneSettings);
     }
 
     /**
@@ -128,6 +161,21 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Tenant-wide MFA settings controlling how often users are re-prompted for MFA and how the &#34;Remember me&#34; checkbox behaves. This block requires `read:tenant_settings` and `update:tenant_settings` scopes, which the other attributes of this resource do not require.
+     * 
+     */
+    @Import(name="settings")
+    private @Nullable Output<GuardianSettingsArgs> settings;
+
+    /**
+     * @return Tenant-wide MFA settings controlling how often users are re-prompted for MFA and how the &#34;Remember me&#34; checkbox behaves. This block requires `read:tenant_settings` and `update:tenant_settings` scopes, which the other attributes of this resource do not require.
+     * 
+     */
+    public Optional<Output<GuardianSettingsArgs>> settings() {
+        return Optional.ofNullable(this.settings);
+    }
+
+    /**
      * Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
      * 
      */
@@ -162,11 +210,14 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
     private GuardianArgs(GuardianArgs $) {
         this.duo = $.duo;
         this.email = $.email;
+        this.emailSettings = $.emailSettings;
         this.otp = $.otp;
         this.phone = $.phone;
+        this.phoneSettings = $.phoneSettings;
         this.policy = $.policy;
         this.push = $.push;
         this.recoveryCode = $.recoveryCode;
+        this.settings = $.settings;
         this.webauthnPlatform = $.webauthnPlatform;
         this.webauthnRoaming = $.webauthnRoaming;
     }
@@ -232,6 +283,27 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param emailSettings One-time password settings for the email MFA factor. These are independent of whether the email factor is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emailSettings(@Nullable Output<GuardianEmailSettingsArgs> emailSettings) {
+            $.emailSettings = emailSettings;
+            return this;
+        }
+
+        /**
+         * @param emailSettings One-time password settings for the email MFA factor. These are independent of whether the email factor is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emailSettings(GuardianEmailSettingsArgs emailSettings) {
+            return emailSettings(Output.of(emailSettings));
+        }
+
+        /**
          * @param otp Indicates whether one time password MFA is enabled.
          * 
          * @return builder
@@ -271,6 +343,27 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder phone(GuardianPhoneArgs phone) {
             return phone(Output.of(phone));
+        }
+
+        /**
+         * @param phoneSettings One-time password settings for the phone MFA factor. These are independent of whether the phone factor is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder phoneSettings(@Nullable Output<GuardianPhoneSettingsArgs> phoneSettings) {
+            $.phoneSettings = phoneSettings;
+            return this;
+        }
+
+        /**
+         * @param phoneSettings One-time password settings for the phone MFA factor. These are independent of whether the phone factor is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder phoneSettings(GuardianPhoneSettingsArgs phoneSettings) {
+            return phoneSettings(Output.of(phoneSettings));
         }
 
         /**
@@ -334,6 +427,27 @@ public final class GuardianArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder recoveryCode(Boolean recoveryCode) {
             return recoveryCode(Output.of(recoveryCode));
+        }
+
+        /**
+         * @param settings Tenant-wide MFA settings controlling how often users are re-prompted for MFA and how the &#34;Remember me&#34; checkbox behaves. This block requires `read:tenant_settings` and `update:tenant_settings` scopes, which the other attributes of this resource do not require.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder settings(@Nullable Output<GuardianSettingsArgs> settings) {
+            $.settings = settings;
+            return this;
+        }
+
+        /**
+         * @param settings Tenant-wide MFA settings controlling how often users are re-prompted for MFA and how the &#34;Remember me&#34; checkbox behaves. This block requires `read:tenant_settings` and `update:tenant_settings` scopes, which the other attributes of this resource do not require.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder settings(GuardianSettingsArgs settings) {
+            return settings(Output.of(settings));
         }
 
         /**

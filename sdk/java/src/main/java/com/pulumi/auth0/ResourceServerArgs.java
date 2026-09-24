@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0;
 
+import com.pulumi.auth0.inputs.ResourceServerAccessTokenArgs;
 import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
 import com.pulumi.auth0.inputs.ResourceServerAuthorizationPolicyArgs;
 import com.pulumi.auth0.inputs.ResourceServerProofOfPossessionArgs;
@@ -23,6 +24,21 @@ import javax.annotation.Nullable;
 public final class ResourceServerArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ResourceServerArgs Empty = new ResourceServerArgs();
+
+    /**
+     * Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
+     * 
+     */
+    @Import(name="accessToken")
+    private @Nullable Output<ResourceServerAccessTokenArgs> accessToken;
+
+    /**
+     * @return Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
+     * 
+     */
+    public Optional<Output<ResourceServerAccessTokenArgs>> accessToken() {
+        return Optional.ofNullable(this.accessToken);
+    }
 
     /**
      * Indicates whether refresh tokens can be issued for this resource server.
@@ -280,6 +296,21 @@ public final class ResourceServerArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+     * 
+     */
+    @Import(name="tokenLifetimeForAnonymousAccessTokens")
+    private @Nullable Output<Integer> tokenLifetimeForAnonymousAccessTokens;
+
+    /**
+     * @return Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+     * 
+     */
+    public Optional<Output<Integer>> tokenLifetimeForAnonymousAccessTokens() {
+        return Optional.ofNullable(this.tokenLifetimeForAnonymousAccessTokens);
+    }
+
+    /**
      * Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
      * 
      */
@@ -312,6 +343,7 @@ public final class ResourceServerArgs extends com.pulumi.resources.ResourceArgs 
     private ResourceServerArgs() {}
 
     private ResourceServerArgs(ResourceServerArgs $) {
+        this.accessToken = $.accessToken;
         this.allowOfflineAccess = $.allowOfflineAccess;
         this.allowOnlineAccess = $.allowOnlineAccess;
         this.allowOnlineAccessWithEphemeralSessions = $.allowOnlineAccessWithEphemeralSessions;
@@ -329,6 +361,7 @@ public final class ResourceServerArgs extends com.pulumi.resources.ResourceArgs 
         this.tokenDialect = $.tokenDialect;
         this.tokenEncryption = $.tokenEncryption;
         this.tokenLifetime = $.tokenLifetime;
+        this.tokenLifetimeForAnonymousAccessTokens = $.tokenLifetimeForAnonymousAccessTokens;
         this.tokenLifetimeForWeb = $.tokenLifetimeForWeb;
         this.verificationLocation = $.verificationLocation;
     }
@@ -349,6 +382,27 @@ public final class ResourceServerArgs extends com.pulumi.resources.ResourceArgs 
 
         public Builder(ResourceServerArgs defaults) {
             $ = new ResourceServerArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accessToken Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessToken(@Nullable Output<ResourceServerAccessTokenArgs> accessToken) {
+            $.accessToken = accessToken;
+            return this;
+        }
+
+        /**
+         * @param accessToken Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessToken(ResourceServerAccessTokenArgs accessToken) {
+            return accessToken(Output.of(accessToken));
         }
 
         /**
@@ -716,6 +770,27 @@ public final class ResourceServerArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder tokenLifetime(Integer tokenLifetime) {
             return tokenLifetime(Output.of(tokenLifetime));
+        }
+
+        /**
+         * @param tokenLifetimeForAnonymousAccessTokens Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenLifetimeForAnonymousAccessTokens(@Nullable Output<Integer> tokenLifetimeForAnonymousAccessTokens) {
+            $.tokenLifetimeForAnonymousAccessTokens = tokenLifetimeForAnonymousAccessTokens;
+            return this;
+        }
+
+        /**
+         * @param tokenLifetimeForAnonymousAccessTokens Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tokenLifetimeForAnonymousAccessTokens(Integer tokenLifetimeForAnonymousAccessTokens) {
+            return tokenLifetimeForAnonymousAccessTokens(Output.of(tokenLifetimeForAnonymousAccessTokens));
         }
 
         /**

@@ -76,6 +76,8 @@ type LookupClientResult struct {
 	AllowedLogoutUrls []string `pulumi:"allowedLogoutUrls"`
 	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins []string `pulumi:"allowedOrigins"`
+	// Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+	AnonymousSessions []GetClientAnonymousSession `pulumi:"anonymousSessions"`
 	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
 	AppType string `pulumi:"appType"`
 	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
@@ -247,6 +249,11 @@ func (o LookupClientResultOutput) AllowedLogoutUrls() pulumi.StringArrayOutput {
 // URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 func (o LookupClientResultOutput) AllowedOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupClientResult) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
+}
+
+// Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+func (o LookupClientResultOutput) AnonymousSessions() GetClientAnonymousSessionArrayOutput {
+	return o.ApplyT(func(v LookupClientResult) []GetClientAnonymousSession { return v.AnonymousSessions }).(GetClientAnonymousSessionArrayOutput)
 }
 
 // Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`

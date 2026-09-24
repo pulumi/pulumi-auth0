@@ -3,13 +3,20 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.GetTenantSessionAnonymouse;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetTenantSession {
+    /**
+     * @return Anonymous Sessions settings for the tenant. (EA only)
+     * 
+     */
+    private List<GetTenantSessionAnonymouse> anonymouses;
     /**
      * @return When active, users will be presented with a consent prompt to confirm the logout request if the request is not trustworthy. Turn off the consent prompt to bypass user confirmation.
      * 
@@ -17,6 +24,13 @@ public final class GetTenantSession {
     private Boolean oidcLogoutPromptEnabled;
 
     private GetTenantSession() {}
+    /**
+     * @return Anonymous Sessions settings for the tenant. (EA only)
+     * 
+     */
+    public List<GetTenantSessionAnonymouse> anonymouses() {
+        return this.anonymouses;
+    }
     /**
      * @return When active, users will be presented with a consent prompt to confirm the logout request if the request is not trustworthy. Turn off the consent prompt to bypass user confirmation.
      * 
@@ -34,13 +48,26 @@ public final class GetTenantSession {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetTenantSessionAnonymouse> anonymouses;
         private Boolean oidcLogoutPromptEnabled;
         public Builder() {}
         public Builder(GetTenantSession defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.anonymouses = defaults.anonymouses;
     	      this.oidcLogoutPromptEnabled = defaults.oidcLogoutPromptEnabled;
         }
 
+        @CustomType.Setter
+        public Builder anonymouses(List<GetTenantSessionAnonymouse> anonymouses) {
+            if (anonymouses == null) {
+              throw new MissingRequiredPropertyException("GetTenantSession", "anonymouses");
+            }
+            this.anonymouses = anonymouses;
+            return this;
+        }
+        public Builder anonymouses(GetTenantSessionAnonymouse... anonymouses) {
+            return anonymouses(List.of(anonymouses));
+        }
         @CustomType.Setter
         public Builder oidcLogoutPromptEnabled(Boolean oidcLogoutPromptEnabled) {
             if (oidcLogoutPromptEnabled == null) {
@@ -51,6 +78,7 @@ public final class GetTenantSession {
         }
         public GetTenantSession build() {
             final var _resultValue = new GetTenantSession();
+            _resultValue.anonymouses = anonymouses;
             _resultValue.oidcLogoutPromptEnabled = oidcLogoutPromptEnabled;
             return _resultValue;
         }

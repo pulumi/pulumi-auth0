@@ -27,7 +27,7 @@ class GetActionResult:
     """
     A collection of values returned by getAction.
     """
-    def __init__(__self__, code=None, dependencies=None, deploy=None, id=None, modules=None, name=None, runtime=None, secrets=None, secrets_wo_version=None, secrets_wos=None, supported_triggers=None, version_id=None):
+    def __init__(__self__, code=None, dependencies=None, deploy=None, id=None, modules=None, name=None, runtime=None, secrets=None, secrets_wo_version=None, secrets_wos=None, status=None, supported_triggers=None, version_id=None):
         if code and not isinstance(code, str):
             raise TypeError("Expected argument 'code' to be a str")
         pulumi.set(__self__, "code", code)
@@ -58,6 +58,9 @@ class GetActionResult:
         if secrets_wos and not isinstance(secrets_wos, list):
             raise TypeError("Expected argument 'secrets_wos' to be a list")
         pulumi.set(__self__, "secrets_wos", secrets_wos)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
         if supported_triggers and not isinstance(supported_triggers, list):
             raise TypeError("Expected argument 'supported_triggers' to be a list")
         pulumi.set(__self__, "supported_triggers", supported_triggers)
@@ -146,6 +149,14 @@ class GetActionResult:
         return pulumi.get(self, "secrets_wos")
 
     @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The build status of the action. Possible values: `built`, `failed`, `building`, `pending`, `retrying`. If the action is in `failed` state, the next `pulumi preview` will show a replacement to re-trigger the build.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
     @pulumi.getter(name="supportedTriggers")
     def supported_triggers(self) -> Sequence['outputs.GetActionSupportedTriggerResult']:
         """
@@ -178,6 +189,7 @@ class AwaitableGetActionResult(GetActionResult):
             secrets=self.secrets,
             secrets_wo_version=self.secrets_wo_version,
             secrets_wos=self.secrets_wos,
+            status=self.status,
             supported_triggers=self.supported_triggers,
             version_id=self.version_id)
 
@@ -209,6 +221,7 @@ def get_action(id: Optional[_builtins.str] = None,
         secrets=pulumi.get(__ret__, 'secrets'),
         secrets_wo_version=pulumi.get(__ret__, 'secrets_wo_version'),
         secrets_wos=pulumi.get(__ret__, 'secrets_wos'),
+        status=pulumi.get(__ret__, 'status'),
         supported_triggers=pulumi.get(__ret__, 'supported_triggers'),
         version_id=pulumi.get(__ret__, 'version_id'))
 def get_action_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -237,5 +250,6 @@ def get_action_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None
         secrets=pulumi.get(__response__, 'secrets'),
         secrets_wo_version=pulumi.get(__response__, 'secrets_wo_version'),
         secrets_wos=pulumi.get(__response__, 'secrets_wos'),
+        status=pulumi.get(__response__, 'status'),
         supported_triggers=pulumi.get(__response__, 'supported_triggers'),
         version_id=pulumi.get(__response__, 'version_id')))

@@ -163,6 +163,8 @@ __all__ = [
     'ClientAddonsZendeskArgsDict',
     'ClientAddonsZoomArgs',
     'ClientAddonsZoomArgsDict',
+    'ClientAnonymousSessionsArgs',
+    'ClientAnonymousSessionsArgsDict',
     'ClientB2bIntegrationConfigurationArgs',
     'ClientB2bIntegrationConfigurationArgsDict',
     'ClientCimdDefaultOrganizationArgs',
@@ -423,10 +425,14 @@ __all__ = [
     'FormMessageArgsDict',
     'GuardianDuoArgs',
     'GuardianDuoArgsDict',
+    'GuardianEmailSettingsArgs',
+    'GuardianEmailSettingsArgsDict',
     'GuardianPhoneArgs',
     'GuardianPhoneArgsDict',
     'GuardianPhoneOptionsArgs',
     'GuardianPhoneOptionsArgsDict',
+    'GuardianPhoneSettingsArgs',
+    'GuardianPhoneSettingsArgsDict',
     'GuardianPushArgs',
     'GuardianPushArgsDict',
     'GuardianPushAmazonSnsArgs',
@@ -437,6 +443,8 @@ __all__ = [
     'GuardianPushDirectApnsArgsDict',
     'GuardianPushDirectFcmArgs',
     'GuardianPushDirectFcmArgsDict',
+    'GuardianSettingsArgs',
+    'GuardianSettingsArgsDict',
     'GuardianWebauthnPlatformArgs',
     'GuardianWebauthnPlatformArgsDict',
     'GuardianWebauthnRoamingArgs',
@@ -499,6 +507,12 @@ __all__ = [
     'PromptScreenRendererFiltersArgsDict',
     'RateLimitPolicyConfigurationArgs',
     'RateLimitPolicyConfigurationArgsDict',
+    'ResourceServerAccessTokenArgs',
+    'ResourceServerAccessTokenArgsDict',
+    'ResourceServerAccessTokenClaimsMappingArgs',
+    'ResourceServerAccessTokenClaimsMappingArgsDict',
+    'ResourceServerAccessTokenClaimsMappingCustomClaimArgs',
+    'ResourceServerAccessTokenClaimsMappingCustomClaimArgsDict',
     'ResourceServerAuthorizationDetailArgs',
     'ResourceServerAuthorizationDetailArgsDict',
     'ResourceServerAuthorizationPolicyArgs',
@@ -509,6 +523,8 @@ __all__ = [
     'ResourceServerScopesScopeArgsDict',
     'ResourceServerSubjectTypeAuthorizationArgs',
     'ResourceServerSubjectTypeAuthorizationArgsDict',
+    'ResourceServerSubjectTypeAuthorizationAnonymousUserArgs',
+    'ResourceServerSubjectTypeAuthorizationAnonymousUserArgsDict',
     'ResourceServerSubjectTypeAuthorizationClientArgs',
     'ResourceServerSubjectTypeAuthorizationClientArgsDict',
     'ResourceServerSubjectTypeAuthorizationUserArgs',
@@ -549,6 +565,8 @@ __all__ = [
     'TenantSessionCookieArgsDict',
     'TenantSessionsArgs',
     'TenantSessionsArgsDict',
+    'TenantSessionsAnonymousArgs',
+    'TenantSessionsAnonymousArgsDict',
     'TriggerActionsActionArgs',
     'TriggerActionsActionArgsDict',
     'UserAttributeProfileUserAttributeArgs',
@@ -6505,6 +6523,34 @@ class ClientAddonsZoomArgs:
         pulumi.set(self, "account", value)
 
 
+class ClientAnonymousSessionsArgsDict(TypedDict):
+    active: pulumi.Input[_builtins.bool]
+    """
+    If set to true, this client is allowed to create anonymous sessions. Requires `oidc_conformant` to be set to `true`. Set to `false` to disable. (EA only)
+    """
+
+@pulumi.input_type
+class ClientAnonymousSessionsArgs:
+    def __init__(__self__, *,
+                 active: pulumi.Input[_builtins.bool]):
+        """
+        :param pulumi.Input[_builtins.bool] active: If set to true, this client is allowed to create anonymous sessions. Requires `oidc_conformant` to be set to `true`. Set to `false` to disable. (EA only)
+        """
+        pulumi.set(__self__, "active", active)
+
+    @_builtins.property
+    @pulumi.getter
+    def active(self) -> pulumi.Input[_builtins.bool]:
+        """
+        If set to true, this client is allowed to create anonymous sessions. Requires `oidc_conformant` to be set to `true`. Set to `false` to disable. (EA only)
+        """
+        return pulumi.get(self, "active")
+
+    @active.setter
+    def active(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "active", value)
+
+
 class ClientB2bIntegrationConfigurationArgsDict(TypedDict):
     integration_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -8756,6 +8802,14 @@ class ClientMyOrganizationConfigurationArgsDict(TypedDict):
     """
     The ID of the connection profile to use when creating organizations for this client.
     """
+    enforce_permission_ceiling: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    When true, limits the permissions that organization admins can assign to members to only those held by the admin themselves. Requires the `my_org_member_management_ea` feature flag. Available in Early Access (EA).
+    """
+    enforce_self_assignment_restriction: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    When true, prevents organization admins from assigning permissions to themselves. Requires the `my_org_member_management_ea` feature flag. Available in Early Access (EA).
+    """
     invitation_landing_client_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
@@ -8775,6 +8829,8 @@ class ClientMyOrganizationConfigurationArgs:
                  allowed_strategies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  connection_deletion_behavior: pulumi.Input[Optional[_builtins.str]] = None,
                  connection_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enforce_permission_ceiling: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enforce_self_assignment_restriction: pulumi.Input[Optional[_builtins.bool]] = None,
                  invitation_landing_client_id: pulumi.Input[Optional[_builtins.str]] = None,
                  third_party_client_access: pulumi.Input[Optional['ClientMyOrganizationConfigurationThirdPartyClientAccessArgs']] = None,
                  user_attribute_profile_id: pulumi.Input[Optional[_builtins.str]] = None):
@@ -8782,6 +8838,8 @@ class ClientMyOrganizationConfigurationArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_strategies: The list of connection strategies that are allowed when creating organizations for this client (e.g. "okta", "samlp").
         :param pulumi.Input[_builtins.str] connection_deletion_behavior: Controls the behavior when deleting connections associated with organizations for this client. Possible values: `allow`, `allow_if_empty`.
         :param pulumi.Input[_builtins.str] connection_profile_id: The ID of the connection profile to use when creating organizations for this client.
+        :param pulumi.Input[_builtins.bool] enforce_permission_ceiling: When true, limits the permissions that organization admins can assign to members to only those held by the admin themselves. Requires the `my_org_member_management_ea` feature flag. Available in Early Access (EA).
+        :param pulumi.Input[_builtins.bool] enforce_self_assignment_restriction: When true, prevents organization admins from assigning permissions to themselves. Requires the `my_org_member_management_ea` feature flag. Available in Early Access (EA).
         :param pulumi.Input[_builtins.str] invitation_landing_client_id: The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
         :param pulumi.Input['ClientMyOrganizationConfigurationThirdPartyClientAccessArgs'] third_party_client_access: Configures third-party client access to organizations created for this client through the My Organization API. Requires the `my_orgs_third_party_client_support` 	 (EA Only)
         :param pulumi.Input[_builtins.str] user_attribute_profile_id: The ID of the user attribute profile to use when creating organizations for this client.
@@ -8792,6 +8850,10 @@ class ClientMyOrganizationConfigurationArgs:
             pulumi.set(__self__, "connection_deletion_behavior", connection_deletion_behavior)
         if connection_profile_id is not None:
             pulumi.set(__self__, "connection_profile_id", connection_profile_id)
+        if enforce_permission_ceiling is not None:
+            pulumi.set(__self__, "enforce_permission_ceiling", enforce_permission_ceiling)
+        if enforce_self_assignment_restriction is not None:
+            pulumi.set(__self__, "enforce_self_assignment_restriction", enforce_self_assignment_restriction)
         if invitation_landing_client_id is not None:
             pulumi.set(__self__, "invitation_landing_client_id", invitation_landing_client_id)
         if third_party_client_access is not None:
@@ -8834,6 +8896,30 @@ class ClientMyOrganizationConfigurationArgs:
     @connection_profile_id.setter
     def connection_profile_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_profile_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enforcePermissionCeiling")
+    def enforce_permission_ceiling(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When true, limits the permissions that organization admins can assign to members to only those held by the admin themselves. Requires the `my_org_member_management_ea` feature flag. Available in Early Access (EA).
+        """
+        return pulumi.get(self, "enforce_permission_ceiling")
+
+    @enforce_permission_ceiling.setter
+    def enforce_permission_ceiling(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enforce_permission_ceiling", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enforceSelfAssignmentRestriction")
+    def enforce_self_assignment_restriction(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When true, prevents organization admins from assigning permissions to themselves. Requires the `my_org_member_management_ea` feature flag. Available in Early Access (EA).
+        """
+        return pulumi.get(self, "enforce_self_assignment_restriction")
+
+    @enforce_self_assignment_restriction.setter
+    def enforce_self_assignment_restriction(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enforce_self_assignment_restriction", value)
 
     @_builtins.property
     @pulumi.getter(name="invitationLandingClientId")
@@ -16826,6 +16912,53 @@ class GuardianDuoArgs:
         pulumi.set(self, "secret_key", value)
 
 
+class GuardianEmailSettingsArgsDict(TypedDict):
+    otp_expiration_time: pulumi.Input[_builtins.int]
+    """
+    The OTP expiration time in seconds. Defaults to `300` (5 minutes).
+    """
+    otp_length: pulumi.Input[_builtins.int]
+    """
+    The length of the OTP code. Defaults to `6`.
+    """
+
+@pulumi.input_type
+class GuardianEmailSettingsArgs:
+    def __init__(__self__, *,
+                 otp_expiration_time: pulumi.Input[_builtins.int],
+                 otp_length: pulumi.Input[_builtins.int]):
+        """
+        :param pulumi.Input[_builtins.int] otp_expiration_time: The OTP expiration time in seconds. Defaults to `300` (5 minutes).
+        :param pulumi.Input[_builtins.int] otp_length: The length of the OTP code. Defaults to `6`.
+        """
+        pulumi.set(__self__, "otp_expiration_time", otp_expiration_time)
+        pulumi.set(__self__, "otp_length", otp_length)
+
+    @_builtins.property
+    @pulumi.getter(name="otpExpirationTime")
+    def otp_expiration_time(self) -> pulumi.Input[_builtins.int]:
+        """
+        The OTP expiration time in seconds. Defaults to `300` (5 minutes).
+        """
+        return pulumi.get(self, "otp_expiration_time")
+
+    @otp_expiration_time.setter
+    def otp_expiration_time(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "otp_expiration_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="otpLength")
+    def otp_length(self) -> pulumi.Input[_builtins.int]:
+        """
+        The length of the OTP code. Defaults to `6`.
+        """
+        return pulumi.get(self, "otp_length")
+
+    @otp_length.setter
+    def otp_length(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "otp_length", value)
+
+
 class GuardianPhoneArgsDict(TypedDict):
     enabled: pulumi.Input[_builtins.bool]
     """
@@ -17049,6 +17182,53 @@ class GuardianPhoneOptionsArgs:
     @verification_message.setter
     def verification_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "verification_message", value)
+
+
+class GuardianPhoneSettingsArgsDict(TypedDict):
+    otp_expiration_time: pulumi.Input[_builtins.int]
+    """
+    The OTP expiration time in seconds. Defaults to `300` (5 minutes).
+    """
+    otp_length: pulumi.Input[_builtins.int]
+    """
+    The length of the OTP code. Defaults to `6`.
+    """
+
+@pulumi.input_type
+class GuardianPhoneSettingsArgs:
+    def __init__(__self__, *,
+                 otp_expiration_time: pulumi.Input[_builtins.int],
+                 otp_length: pulumi.Input[_builtins.int]):
+        """
+        :param pulumi.Input[_builtins.int] otp_expiration_time: The OTP expiration time in seconds. Defaults to `300` (5 minutes).
+        :param pulumi.Input[_builtins.int] otp_length: The length of the OTP code. Defaults to `6`.
+        """
+        pulumi.set(__self__, "otp_expiration_time", otp_expiration_time)
+        pulumi.set(__self__, "otp_length", otp_length)
+
+    @_builtins.property
+    @pulumi.getter(name="otpExpirationTime")
+    def otp_expiration_time(self) -> pulumi.Input[_builtins.int]:
+        """
+        The OTP expiration time in seconds. Defaults to `300` (5 minutes).
+        """
+        return pulumi.get(self, "otp_expiration_time")
+
+    @otp_expiration_time.setter
+    def otp_expiration_time(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "otp_expiration_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="otpLength")
+    def otp_length(self) -> pulumi.Input[_builtins.int]:
+        """
+        The length of the OTP code. Defaults to `6`.
+        """
+        return pulumi.get(self, "otp_length")
+
+    @otp_length.setter
+    def otp_length(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "otp_length", value)
 
 
 class GuardianPushArgsDict(TypedDict):
@@ -17464,6 +17644,91 @@ class GuardianPushDirectFcmArgs:
     @server_key.setter
     def server_key(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "server_key", value)
+
+
+class GuardianSettingsArgsDict(TypedDict):
+    display_remember_me_checkbox: pulumi.Input[_builtins.bool]
+    """
+    Determines whether to display the "Remember me" checkbox on the MFA prompt in Universal Login. Defaults to `true`.
+    """
+    mfa_session_inactivity_timeout: pulumi.Input[_builtins.int]
+    """
+    Duration of inactivity (seconds) after which the user will be prompted for MFA. Cannot exceed the overall timeout. Defaults to `604800` (7 days).
+    """
+    mfa_session_overall_timeout: pulumi.Input[_builtins.int]
+    """
+    Maximum duration (seconds) after which the user will be prompted for MFA regardless of activity. Defaults to `2592000` (30 days).
+    """
+    remember_me_default_value: pulumi.Input[_builtins.bool]
+    """
+    Determines the default state of the "Remember Me" checkbox on the MFA prompt in Universal Login. Defaults to `false`.
+    """
+
+@pulumi.input_type
+class GuardianSettingsArgs:
+    def __init__(__self__, *,
+                 display_remember_me_checkbox: pulumi.Input[_builtins.bool],
+                 mfa_session_inactivity_timeout: pulumi.Input[_builtins.int],
+                 mfa_session_overall_timeout: pulumi.Input[_builtins.int],
+                 remember_me_default_value: pulumi.Input[_builtins.bool]):
+        """
+        :param pulumi.Input[_builtins.bool] display_remember_me_checkbox: Determines whether to display the "Remember me" checkbox on the MFA prompt in Universal Login. Defaults to `true`.
+        :param pulumi.Input[_builtins.int] mfa_session_inactivity_timeout: Duration of inactivity (seconds) after which the user will be prompted for MFA. Cannot exceed the overall timeout. Defaults to `604800` (7 days).
+        :param pulumi.Input[_builtins.int] mfa_session_overall_timeout: Maximum duration (seconds) after which the user will be prompted for MFA regardless of activity. Defaults to `2592000` (30 days).
+        :param pulumi.Input[_builtins.bool] remember_me_default_value: Determines the default state of the "Remember Me" checkbox on the MFA prompt in Universal Login. Defaults to `false`.
+        """
+        pulumi.set(__self__, "display_remember_me_checkbox", display_remember_me_checkbox)
+        pulumi.set(__self__, "mfa_session_inactivity_timeout", mfa_session_inactivity_timeout)
+        pulumi.set(__self__, "mfa_session_overall_timeout", mfa_session_overall_timeout)
+        pulumi.set(__self__, "remember_me_default_value", remember_me_default_value)
+
+    @_builtins.property
+    @pulumi.getter(name="displayRememberMeCheckbox")
+    def display_remember_me_checkbox(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Determines whether to display the "Remember me" checkbox on the MFA prompt in Universal Login. Defaults to `true`.
+        """
+        return pulumi.get(self, "display_remember_me_checkbox")
+
+    @display_remember_me_checkbox.setter
+    def display_remember_me_checkbox(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "display_remember_me_checkbox", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mfaSessionInactivityTimeout")
+    def mfa_session_inactivity_timeout(self) -> pulumi.Input[_builtins.int]:
+        """
+        Duration of inactivity (seconds) after which the user will be prompted for MFA. Cannot exceed the overall timeout. Defaults to `604800` (7 days).
+        """
+        return pulumi.get(self, "mfa_session_inactivity_timeout")
+
+    @mfa_session_inactivity_timeout.setter
+    def mfa_session_inactivity_timeout(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "mfa_session_inactivity_timeout", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mfaSessionOverallTimeout")
+    def mfa_session_overall_timeout(self) -> pulumi.Input[_builtins.int]:
+        """
+        Maximum duration (seconds) after which the user will be prompted for MFA regardless of activity. Defaults to `2592000` (30 days).
+        """
+        return pulumi.get(self, "mfa_session_overall_timeout")
+
+    @mfa_session_overall_timeout.setter
+    def mfa_session_overall_timeout(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "mfa_session_overall_timeout", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rememberMeDefaultValue")
+    def remember_me_default_value(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Determines the default state of the "Remember Me" checkbox on the MFA prompt in Universal Login. Defaults to `false`.
+        """
+        return pulumi.get(self, "remember_me_default_value")
+
+    @remember_me_default_value.setter
+    def remember_me_default_value(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "remember_me_default_value", value)
 
 
 class GuardianWebauthnPlatformArgsDict(TypedDict):
@@ -20488,6 +20753,111 @@ class RateLimitPolicyConfigurationArgs:
         pulumi.set(self, "redirect_uri", value)
 
 
+class ResourceServerAccessTokenArgsDict(TypedDict):
+    claims_mapping: NotRequired[pulumi.Input[Optional['ResourceServerAccessTokenClaimsMappingArgsDict']]]
+    """
+    Configuration for mapping claims into the access tokens issued for this resource server. (EA only)
+    """
+
+@pulumi.input_type
+class ResourceServerAccessTokenArgs:
+    def __init__(__self__, *,
+                 claims_mapping: pulumi.Input[Optional['ResourceServerAccessTokenClaimsMappingArgs']] = None):
+        """
+        :param pulumi.Input['ResourceServerAccessTokenClaimsMappingArgs'] claims_mapping: Configuration for mapping claims into the access tokens issued for this resource server. (EA only)
+        """
+        if claims_mapping is not None:
+            pulumi.set(__self__, "claims_mapping", claims_mapping)
+
+    @_builtins.property
+    @pulumi.getter(name="claimsMapping")
+    def claims_mapping(self) -> pulumi.Input[Optional['ResourceServerAccessTokenClaimsMappingArgs']]:
+        """
+        Configuration for mapping claims into the access tokens issued for this resource server. (EA only)
+        """
+        return pulumi.get(self, "claims_mapping")
+
+    @claims_mapping.setter
+    def claims_mapping(self, value: pulumi.Input[Optional['ResourceServerAccessTokenClaimsMappingArgs']]):
+        pulumi.set(self, "claims_mapping", value)
+
+
+class ResourceServerAccessTokenClaimsMappingArgsDict(TypedDict):
+    custom_claims: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ResourceServerAccessTokenClaimsMappingCustomClaimArgsDict']]]]]
+    """
+    Custom claims to include in the access tokens issued for this resource server. Maximum of 20 claims. Setting an empty list clears the custom claims on the API. (EA only)
+    """
+
+@pulumi.input_type
+class ResourceServerAccessTokenClaimsMappingArgs:
+    def __init__(__self__, *,
+                 custom_claims: pulumi.Input[Optional[Sequence[pulumi.Input['ResourceServerAccessTokenClaimsMappingCustomClaimArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ResourceServerAccessTokenClaimsMappingCustomClaimArgs']]] custom_claims: Custom claims to include in the access tokens issued for this resource server. Maximum of 20 claims. Setting an empty list clears the custom claims on the API. (EA only)
+        """
+        if custom_claims is not None:
+            pulumi.set(__self__, "custom_claims", custom_claims)
+
+    @_builtins.property
+    @pulumi.getter(name="customClaims")
+    def custom_claims(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ResourceServerAccessTokenClaimsMappingCustomClaimArgs']]]]:
+        """
+        Custom claims to include in the access tokens issued for this resource server. Maximum of 20 claims. Setting an empty list clears the custom claims on the API. (EA only)
+        """
+        return pulumi.get(self, "custom_claims")
+
+    @custom_claims.setter
+    def custom_claims(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ResourceServerAccessTokenClaimsMappingCustomClaimArgs']]]]):
+        pulumi.set(self, "custom_claims", value)
+
+
+class ResourceServerAccessTokenClaimsMappingCustomClaimArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Expression used to resolve the claim value, given as a dot-path read from the request context (for example `anonymous_session.metadata.country`).
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the claim to emit in the access token. Reserved OIDC/JWT claim names are not allowed.
+    """
+
+@pulumi.input_type
+class ResourceServerAccessTokenClaimsMappingCustomClaimArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[_builtins.str],
+                 name: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] expression: Expression used to resolve the claim value, given as a dot-path read from the request context (for example `anonymous_session.metadata.country`).
+        :param pulumi.Input[_builtins.str] name: Name of the claim to emit in the access token. Reserved OIDC/JWT claim names are not allowed.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[_builtins.str]:
+        """
+        Expression used to resolve the claim value, given as a dot-path read from the request context (for example `anonymous_session.metadata.country`).
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the claim to emit in the access token. Reserved OIDC/JWT claim names are not allowed.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+
 class ResourceServerAuthorizationDetailArgsDict(TypedDict):
     disable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -20704,6 +21074,10 @@ class ResourceServerScopesScopeArgs:
 
 
 class ResourceServerSubjectTypeAuthorizationArgsDict(TypedDict):
+    anonymous_user: NotRequired[pulumi.Input[Optional['ResourceServerSubjectTypeAuthorizationAnonymousUserArgsDict']]]
+    """
+    Anonymous user authorization policies for the resource server. (EA only)
+    """
     client: NotRequired[pulumi.Input[Optional['ResourceServerSubjectTypeAuthorizationClientArgsDict']]]
     """
     Client authorization policies for the resource server.
@@ -20716,16 +21090,32 @@ class ResourceServerSubjectTypeAuthorizationArgsDict(TypedDict):
 @pulumi.input_type
 class ResourceServerSubjectTypeAuthorizationArgs:
     def __init__(__self__, *,
+                 anonymous_user: pulumi.Input[Optional['ResourceServerSubjectTypeAuthorizationAnonymousUserArgs']] = None,
                  client: pulumi.Input[Optional['ResourceServerSubjectTypeAuthorizationClientArgs']] = None,
                  user: pulumi.Input[Optional['ResourceServerSubjectTypeAuthorizationUserArgs']] = None):
         """
+        :param pulumi.Input['ResourceServerSubjectTypeAuthorizationAnonymousUserArgs'] anonymous_user: Anonymous user authorization policies for the resource server. (EA only)
         :param pulumi.Input['ResourceServerSubjectTypeAuthorizationClientArgs'] client: Client authorization policies for the resource server.
         :param pulumi.Input['ResourceServerSubjectTypeAuthorizationUserArgs'] user: User authorization policies for the resource server.
         """
+        if anonymous_user is not None:
+            pulumi.set(__self__, "anonymous_user", anonymous_user)
         if client is not None:
             pulumi.set(__self__, "client", client)
         if user is not None:
             pulumi.set(__self__, "user", user)
+
+    @_builtins.property
+    @pulumi.getter(name="anonymousUser")
+    def anonymous_user(self) -> pulumi.Input[Optional['ResourceServerSubjectTypeAuthorizationAnonymousUserArgs']]:
+        """
+        Anonymous user authorization policies for the resource server. (EA only)
+        """
+        return pulumi.get(self, "anonymous_user")
+
+    @anonymous_user.setter
+    def anonymous_user(self, value: pulumi.Input[Optional['ResourceServerSubjectTypeAuthorizationAnonymousUserArgs']]):
+        pulumi.set(self, "anonymous_user", value)
 
     @_builtins.property
     @pulumi.getter
@@ -20750,6 +21140,35 @@ class ResourceServerSubjectTypeAuthorizationArgs:
     @user.setter
     def user(self, value: pulumi.Input[Optional['ResourceServerSubjectTypeAuthorizationUserArgs']]):
         pulumi.set(self, "user", value)
+
+
+class ResourceServerSubjectTypeAuthorizationAnonymousUserArgsDict(TypedDict):
+    policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Anonymous user flows policy. One of `deny_all`, `require_client_grant`. Defaults to `deny_all` (EA only)
+    """
+
+@pulumi.input_type
+class ResourceServerSubjectTypeAuthorizationAnonymousUserArgs:
+    def __init__(__self__, *,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] policy: Anonymous user flows policy. One of `deny_all`, `require_client_grant`. Defaults to `deny_all` (EA only)
+        """
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Anonymous user flows policy. One of `deny_all`, `require_client_grant`. Defaults to `deny_all` (EA only)
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "policy", value)
 
 
 class ResourceServerSubjectTypeAuthorizationClientArgsDict(TypedDict):
@@ -22180,15 +22599,23 @@ class TenantSessionsArgsDict(TypedDict):
     """
     When active, users will be presented with a consent prompt to confirm the logout request if the request is not trustworthy. Turn off the consent prompt to bypass user confirmation.
     """
+    anonymous: NotRequired[pulumi.Input[Optional['TenantSessionsAnonymousArgsDict']]]
+    """
+    Anonymous Sessions settings for the tenant. (EA only)
+    """
 
 @pulumi.input_type
 class TenantSessionsArgs:
     def __init__(__self__, *,
-                 oidc_logout_prompt_enabled: pulumi.Input[_builtins.bool]):
+                 oidc_logout_prompt_enabled: pulumi.Input[_builtins.bool],
+                 anonymous: pulumi.Input[Optional['TenantSessionsAnonymousArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] oidc_logout_prompt_enabled: When active, users will be presented with a consent prompt to confirm the logout request if the request is not trustworthy. Turn off the consent prompt to bypass user confirmation.
+        :param pulumi.Input['TenantSessionsAnonymousArgs'] anonymous: Anonymous Sessions settings for the tenant. (EA only)
         """
         pulumi.set(__self__, "oidc_logout_prompt_enabled", oidc_logout_prompt_enabled)
+        if anonymous is not None:
+            pulumi.set(__self__, "anonymous", anonymous)
 
     @_builtins.property
     @pulumi.getter(name="oidcLogoutPromptEnabled")
@@ -22201,6 +22628,67 @@ class TenantSessionsArgs:
     @oidc_logout_prompt_enabled.setter
     def oidc_logout_prompt_enabled(self, value: pulumi.Input[_builtins.bool]):
         pulumi.set(self, "oidc_logout_prompt_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def anonymous(self) -> pulumi.Input[Optional['TenantSessionsAnonymousArgs']]:
+        """
+        Anonymous Sessions settings for the tenant. (EA only)
+        """
+        return pulumi.get(self, "anonymous")
+
+    @anonymous.setter
+    def anonymous(self, value: pulumi.Input[Optional['TenantSessionsAnonymousArgs']]):
+        pulumi.set(self, "anonymous", value)
+
+
+class TenantSessionsAnonymousArgsDict(TypedDict):
+    activate_cookie: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether anonymous session requests return the `auth0_anon` cookie. (EA only)
+    """
+    lifetime_in_minutes: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Number of minutes during which an anonymous session will stay valid. Minimum 1, maximum 525600. (EA only)
+    """
+
+@pulumi.input_type
+class TenantSessionsAnonymousArgs:
+    def __init__(__self__, *,
+                 activate_cookie: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lifetime_in_minutes: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] activate_cookie: Whether anonymous session requests return the `auth0_anon` cookie. (EA only)
+        :param pulumi.Input[_builtins.int] lifetime_in_minutes: Number of minutes during which an anonymous session will stay valid. Minimum 1, maximum 525600. (EA only)
+        """
+        if activate_cookie is not None:
+            pulumi.set(__self__, "activate_cookie", activate_cookie)
+        if lifetime_in_minutes is not None:
+            pulumi.set(__self__, "lifetime_in_minutes", lifetime_in_minutes)
+
+    @_builtins.property
+    @pulumi.getter(name="activateCookie")
+    def activate_cookie(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether anonymous session requests return the `auth0_anon` cookie. (EA only)
+        """
+        return pulumi.get(self, "activate_cookie")
+
+    @activate_cookie.setter
+    def activate_cookie(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "activate_cookie", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lifetimeInMinutes")
+    def lifetime_in_minutes(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of minutes during which an anonymous session will stay valid. Minimum 1, maximum 525600. (EA only)
+        """
+        return pulumi.get(self, "lifetime_in_minutes")
+
+    @lifetime_in_minutes.setter
+    def lifetime_in_minutes(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "lifetime_in_minutes", value)
 
 
 class TriggerActionsActionArgsDict(TypedDict):

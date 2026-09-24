@@ -58,6 +58,20 @@ import * as utilities from "./utilities";
  *         secretKey: "someSecret",
  *         hostname: "api-hostname",
  *     },
+ *     settings: {
+ *         displayRememberMeCheckbox: true,
+ *         rememberMeDefaultValue: false,
+ *         mfaSessionInactivityTimeout: 604800,
+ *         mfaSessionOverallTimeout: 2592000,
+ *     },
+ *     phoneSettings: {
+ *         otpLength: 6,
+ *         otpExpirationTime: 300,
+ *     },
+ *     emailSettings: {
+ *         otpLength: 6,
+ *         otpExpirationTime: 300,
+ *     },
  *     policy: "all-applications",
  *     email: true,
  *     otp: true,
@@ -115,6 +129,10 @@ export class Guardian extends pulumi.CustomResource {
      */
     declare public readonly email: pulumi.Output<boolean | undefined>;
     /**
+     * One-time password settings for the email MFA factor. These are independent of whether the email factor is enabled.
+     */
+    declare public readonly emailSettings: pulumi.Output<outputs.GuardianEmailSettings>;
+    /**
      * Indicates whether one time password MFA is enabled.
      */
     declare public readonly otp: pulumi.Output<boolean | undefined>;
@@ -122,6 +140,10 @@ export class Guardian extends pulumi.CustomResource {
      * Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
      */
     declare public readonly phone: pulumi.Output<outputs.GuardianPhone>;
+    /**
+     * One-time password settings for the phone MFA factor. These are independent of whether the phone factor is enabled.
+     */
+    declare public readonly phoneSettings: pulumi.Output<outputs.GuardianPhoneSettings>;
     /**
      * Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
      */
@@ -134,6 +156,10 @@ export class Guardian extends pulumi.CustomResource {
      * Indicates whether recovery code MFA is enabled.
      */
     declare public readonly recoveryCode: pulumi.Output<boolean | undefined>;
+    /**
+     * Tenant-wide MFA settings controlling how often users are re-prompted for MFA and how the "Remember me" checkbox behaves. This block requires `read:tenant_settings` and `update:tenant_settings` scopes, which the other attributes of this resource do not require.
+     */
+    declare public readonly settings: pulumi.Output<outputs.GuardianSettings>;
     /**
      * Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
      */
@@ -158,11 +184,14 @@ export class Guardian extends pulumi.CustomResource {
             const state = argsOrState as GuardianState | undefined;
             resourceInputs["duo"] = state?.duo;
             resourceInputs["email"] = state?.email;
+            resourceInputs["emailSettings"] = state?.emailSettings;
             resourceInputs["otp"] = state?.otp;
             resourceInputs["phone"] = state?.phone;
+            resourceInputs["phoneSettings"] = state?.phoneSettings;
             resourceInputs["policy"] = state?.policy;
             resourceInputs["push"] = state?.push;
             resourceInputs["recoveryCode"] = state?.recoveryCode;
+            resourceInputs["settings"] = state?.settings;
             resourceInputs["webauthnPlatform"] = state?.webauthnPlatform;
             resourceInputs["webauthnRoaming"] = state?.webauthnRoaming;
         } else {
@@ -172,11 +201,14 @@ export class Guardian extends pulumi.CustomResource {
             }
             resourceInputs["duo"] = args?.duo;
             resourceInputs["email"] = args?.email;
+            resourceInputs["emailSettings"] = args?.emailSettings;
             resourceInputs["otp"] = args?.otp;
             resourceInputs["phone"] = args?.phone;
+            resourceInputs["phoneSettings"] = args?.phoneSettings;
             resourceInputs["policy"] = args?.policy;
             resourceInputs["push"] = args?.push;
             resourceInputs["recoveryCode"] = args?.recoveryCode;
+            resourceInputs["settings"] = args?.settings;
             resourceInputs["webauthnPlatform"] = args?.webauthnPlatform;
             resourceInputs["webauthnRoaming"] = args?.webauthnRoaming;
         }
@@ -198,6 +230,10 @@ export interface GuardianState {
      */
     email?: pulumi.Input<boolean | undefined>;
     /**
+     * One-time password settings for the email MFA factor. These are independent of whether the email factor is enabled.
+     */
+    emailSettings?: pulumi.Input<inputs.GuardianEmailSettings | undefined>;
+    /**
      * Indicates whether one time password MFA is enabled.
      */
     otp?: pulumi.Input<boolean | undefined>;
@@ -205,6 +241,10 @@ export interface GuardianState {
      * Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
      */
     phone?: pulumi.Input<inputs.GuardianPhone | undefined>;
+    /**
+     * One-time password settings for the phone MFA factor. These are independent of whether the phone factor is enabled.
+     */
+    phoneSettings?: pulumi.Input<inputs.GuardianPhoneSettings | undefined>;
     /**
      * Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
      */
@@ -217,6 +257,10 @@ export interface GuardianState {
      * Indicates whether recovery code MFA is enabled.
      */
     recoveryCode?: pulumi.Input<boolean | undefined>;
+    /**
+     * Tenant-wide MFA settings controlling how often users are re-prompted for MFA and how the "Remember me" checkbox behaves. This block requires `read:tenant_settings` and `update:tenant_settings` scopes, which the other attributes of this resource do not require.
+     */
+    settings?: pulumi.Input<inputs.GuardianSettings | undefined>;
     /**
      * Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
      */
@@ -240,6 +284,10 @@ export interface GuardianArgs {
      */
     email?: pulumi.Input<boolean | undefined>;
     /**
+     * One-time password settings for the email MFA factor. These are independent of whether the email factor is enabled.
+     */
+    emailSettings?: pulumi.Input<inputs.GuardianEmailSettings | undefined>;
+    /**
      * Indicates whether one time password MFA is enabled.
      */
     otp?: pulumi.Input<boolean | undefined>;
@@ -247,6 +295,10 @@ export interface GuardianArgs {
      * Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
      */
     phone?: pulumi.Input<inputs.GuardianPhone | undefined>;
+    /**
+     * One-time password settings for the phone MFA factor. These are independent of whether the phone factor is enabled.
+     */
+    phoneSettings?: pulumi.Input<inputs.GuardianPhoneSettings | undefined>;
     /**
      * Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
      */
@@ -259,6 +311,10 @@ export interface GuardianArgs {
      * Indicates whether recovery code MFA is enabled.
      */
     recoveryCode?: pulumi.Input<boolean | undefined>;
+    /**
+     * Tenant-wide MFA settings controlling how often users are re-prompted for MFA and how the "Remember me" checkbox behaves. This block requires `read:tenant_settings` and `update:tenant_settings` scopes, which the other attributes of this resource do not require.
+     */
+    settings?: pulumi.Input<inputs.GuardianSettings | undefined>;
     /**
      * Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
      */

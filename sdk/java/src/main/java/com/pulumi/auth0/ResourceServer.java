@@ -6,6 +6,7 @@ package com.pulumi.auth0;
 import com.pulumi.auth0.ResourceServerArgs;
 import com.pulumi.auth0.Utilities;
 import com.pulumi.auth0.inputs.ResourceServerState;
+import com.pulumi.auth0.outputs.ResourceServerAccessToken;
 import com.pulumi.auth0.outputs.ResourceServerAuthorizationDetail;
 import com.pulumi.auth0.outputs.ResourceServerAuthorizationPolicy;
 import com.pulumi.auth0.outputs.ResourceServerProofOfPossession;
@@ -36,13 +37,19 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.auth0.ResourceServer;
  * import com.pulumi.auth0.ResourceServerArgs;
+ * import com.pulumi.auth0.inputs.ResourceServerAccessTokenArgs;
+ * import com.pulumi.auth0.inputs.ResourceServerAccessTokenClaimsMappingArgs;
+ * import com.pulumi.auth0.inputs.ResourceServerAccessTokenClaimsMappingCustomClaimArgs;
  * import com.pulumi.auth0.inputs.ResourceServerTokenEncryptionArgs;
  * import com.pulumi.auth0.inputs.ResourceServerTokenEncryptionEncryptionKeyArgs;
  * import com.pulumi.auth0.inputs.ResourceServerProofOfPossessionArgs;
  * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationArgs;
  * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationUserArgs;
  * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationClientArgs;
+ * import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationAnonymousUserArgs;
  * import com.pulumi.auth0.inputs.ResourceServerAuthorizationDetailArgs;
+ * import com.pulumi.auth0.ClientGrant;
+ * import com.pulumi.auth0.ClientGrantArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -57,6 +64,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myResourceServer = new ResourceServer("myResourceServer", ResourceServerArgs.builder()
+ *             .accessToken(ResourceServerAccessTokenArgs.builder()
+ *                 .claimsMapping(ResourceServerAccessTokenClaimsMappingArgs.builder()
+ *                     .customClaims(                    
+ *                         ResourceServerAccessTokenClaimsMappingCustomClaimArgs.builder()
+ *                             .name("country")
+ *                             .expression("anonymous_session.metadata.country")
+ *                             .build(),
+ *                         ResourceServerAccessTokenClaimsMappingCustomClaimArgs.builder()
+ *                             .name("city")
+ *                             .expression("anonymous_session.metadata.city")
+ *                             .build())
+ *                     .build())
+ *                 .build())
  *             .tokenEncryption(ResourceServerTokenEncryptionArgs.builder()
  *                 .encryptionKey(ResourceServerTokenEncryptionEncryptionKeyArgs.builder()
  *                     .name("keyname")
@@ -80,6 +100,9 @@ import javax.annotation.Nullable;
  *                 .client(ResourceServerSubjectTypeAuthorizationClientArgs.builder()
  *                     .policy("require_client_grant")
  *                     .build())
+ *                 .anonymousUser(ResourceServerSubjectTypeAuthorizationAnonymousUserArgs.builder()
+ *                     .policy("require_client_grant")
+ *                     .build())
  *                 .build())
  *             .authorizationDetails(            
  *                 ResourceServerAuthorizationDetailArgs.builder()
@@ -97,6 +120,7 @@ import javax.annotation.Nullable;
  *             .tokenLifetime(8600)
  *             .skipConsentForVerifiableFirstPartyClients(true)
  *             .consentPolicy("transactional-authorization-with-mfa")
+ *             .tokenLifetimeForAnonymousAccessTokens(86400)
  *             .build());
  * 
  *         // Sample OIN resource server configuration
@@ -120,6 +144,13 @@ import javax.annotation.Nullable;
  *             .verificationLocation(null)
  *             .build());
  * 
+ *         // Default permissions for third-party applications, set via a client grant.
+ *         var default3pGrant = new ClientGrant("default3pGrant", ClientGrantArgs.builder()
+ *             .defaultFor("third_party_clients")
+ *             .audience(myResourceServer.identifier())
+ *             .scopes("read:foo")
+ *             .build());
+ * 
  *     }
  * }
  * }
@@ -138,6 +169,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="auth0:index/resourceServer:ResourceServer")
 public class ResourceServer extends com.pulumi.resources.CustomResource {
+    /**
+     * Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
+     * 
+     */
+    @Export(name="accessToken", refs={ResourceServerAccessToken.class}, tree="[0]")
+    private Output</* @Nullable */ ResourceServerAccessToken> accessToken;
+
+    /**
+     * @return Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
+     * 
+     */
+    public Output<Optional<ResourceServerAccessToken>> accessToken() {
+        return Codegen.optional(this.accessToken);
+    }
     /**
      * Indicates whether refresh tokens can be issued for this resource server.
      * 
@@ -403,6 +448,20 @@ public class ResourceServer extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> tokenLifetime() {
         return this.tokenLifetime;
+    }
+    /**
+     * Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+     * 
+     */
+    @Export(name="tokenLifetimeForAnonymousAccessTokens", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> tokenLifetimeForAnonymousAccessTokens;
+
+    /**
+     * @return Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+     * 
+     */
+    public Output<Optional<Integer>> tokenLifetimeForAnonymousAccessTokens() {
+        return Codegen.optional(this.tokenLifetimeForAnonymousAccessTokens);
     }
     /**
      * Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.

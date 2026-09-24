@@ -151,6 +151,10 @@ namespace Pulumi.Auth0
     public sealed class GetResourceServerResult
     {
         /// <summary>
+        /// Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetResourceServerAccessTokenResult> AccessTokens;
+        /// <summary>
         /// Indicates whether refresh tokens can be issued for this resource server.
         /// </summary>
         public readonly bool AllowOfflineAccess;
@@ -239,6 +243,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly int TokenLifetime;
         /// <summary>
+        /// Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+        /// </summary>
+        public readonly int TokenLifetimeForAnonymousAccessTokens;
+        /// <summary>
         /// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `TokenLifetime` value.
         /// </summary>
         public readonly int TokenLifetimeForWeb;
@@ -249,6 +257,8 @@ namespace Pulumi.Auth0
 
         [OutputConstructor]
         private GetResourceServerResult(
+            ImmutableArray<Outputs.GetResourceServerAccessTokenResult> accessTokens,
+
             bool allowOfflineAccess,
 
             bool allowOnlineAccess,
@@ -293,10 +303,13 @@ namespace Pulumi.Auth0
 
             int tokenLifetime,
 
+            int tokenLifetimeForAnonymousAccessTokens,
+
             int tokenLifetimeForWeb,
 
             string verificationLocation)
         {
+            AccessTokens = accessTokens;
             AllowOfflineAccess = allowOfflineAccess;
             AllowOnlineAccess = allowOnlineAccess;
             AllowOnlineAccessWithEphemeralSessions = allowOnlineAccessWithEphemeralSessions;
@@ -319,6 +332,7 @@ namespace Pulumi.Auth0
             TokenDialect = tokenDialect;
             TokenEncryptions = tokenEncryptions;
             TokenLifetime = tokenLifetime;
+            TokenLifetimeForAnonymousAccessTokens = tokenLifetimeForAnonymousAccessTokens;
             TokenLifetimeForWeb = tokenLifetimeForWeb;
             VerificationLocation = verificationLocation;
         }

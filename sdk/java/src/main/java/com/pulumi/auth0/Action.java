@@ -280,6 +280,20 @@ public class Action extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.secretsWos);
     }
     /**
+     * The build status of the action. Possible values: `built`, `failed`, `building`, `pending`, `retrying`. If the action is in `failed` state, the next `terraform plan` will show a replacement to re-trigger the build.
+     * 
+     */
+    @Export(name="status", refs={String.class}, tree="[0]")
+    private Output<String> status;
+
+    /**
+     * @return The build status of the action. Possible values: `built`, `failed`, `building`, `pending`, `retrying`. If the action is in `failed` state, the next `terraform plan` will show a replacement to re-trigger the build.
+     * 
+     */
+    public Output<String> status() {
+        return this.status;
+    }
+    /**
      * List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
      * 
      */

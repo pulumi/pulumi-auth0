@@ -197,6 +197,7 @@ class _ActionState:
                  secrets: pulumi.Input[Optional[Sequence[pulumi.Input['ActionSecretArgs']]]] = None,
                  secrets_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  secrets_wos: pulumi.Input[Optional[Sequence[pulumi.Input['ActionSecretsWoArgs']]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  supported_triggers: pulumi.Input[Optional['ActionSupportedTriggersArgs']] = None,
                  version_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -211,6 +212,7 @@ class _ActionState:
         :param pulumi.Input[Sequence[pulumi.Input['ActionSecretArgs']]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `secrets_wo` instead, which supports write-only values and ephemeral variables.
         :param pulumi.Input[_builtins.int] secrets_wo_version: Version number for `secrets_wo` changes. Adding, renaming, or removing a `secrets_wo` entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API.
         :param pulumi.Input[Sequence[pulumi.Input['ActionSecretsWoArgs']]] secrets_wos: List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secrets_wo_version` attribute. To remove all secrets, delete the `secrets_wo` blocks together with the `secrets_wo_version` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
+        :param pulumi.Input[_builtins.str] status: The build status of the action. Possible values: `built`, `failed`, `building`, `pending`, `retrying`. If the action is in `failed` state, the next `terraform plan` will show a replacement to re-trigger the build.
         :param pulumi.Input['ActionSupportedTriggersArgs'] supported_triggers: List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
         :param pulumi.Input[_builtins.str] version_id: Version ID of the action. This value is available if `deploy` is set to true.
         """
@@ -232,6 +234,8 @@ class _ActionState:
             pulumi.set(__self__, "secrets_wo_version", secrets_wo_version)
         if secrets_wos is not None:
             pulumi.set(__self__, "secrets_wos", secrets_wos)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
         if supported_triggers is not None:
             pulumi.set(__self__, "supported_triggers", supported_triggers)
         if version_id is not None:
@@ -344,6 +348,18 @@ class _ActionState:
     @secrets_wos.setter
     def secrets_wos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ActionSecretsWoArgs']]]]):
         pulumi.set(self, "secrets_wos", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The build status of the action. Possible values: `built`, `failed`, `building`, `pending`, `retrying`. If the action is in `failed` state, the next `terraform plan` will show a replacement to re-trigger the build.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="supportedTriggers")
@@ -644,6 +660,7 @@ class Action(pulumi.CustomResource):
             if supported_triggers is None and not opts.urn:
                 raise TypeError("Missing required property 'supported_triggers'")
             __props__.__dict__["supported_triggers"] = supported_triggers
+            __props__.__dict__["status"] = None
             __props__.__dict__["version_id"] = None
         super(Action, __self__).__init__(
             'auth0:index/action:Action',
@@ -664,6 +681,7 @@ class Action(pulumi.CustomResource):
             secrets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict', 'outputs.ActionSecret']]]]] = None,
             secrets_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             secrets_wos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionSecretsWoArgs', 'ActionSecretsWoArgsDict', 'outputs.ActionSecretsWo']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
             supported_triggers: pulumi.Input[Optional[Union['ActionSupportedTriggersArgs', 'ActionSupportedTriggersArgsDict', 'outputs.ActionSupportedTriggers']]] = None,
             version_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Action':
         """
@@ -682,6 +700,7 @@ class Action(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict', 'outputs.ActionSecret']]]] secrets: List of secrets that are included in an action or a version of an action. Partial management of secrets is not supported. If the secret block is edited, the whole object is re-provisioned. **Note:** Secret values are persisted in Terraform state as plain text. For better security, consider using `secrets_wo` instead, which supports write-only values and ephemeral variables.
         :param pulumi.Input[_builtins.int] secrets_wo_version: Version number for `secrets_wo` changes. Adding, renaming, or removing a `secrets_wo` entry is detected automatically, but changing only the **value** of an existing secret is not (write-only values are not tracked in state). Increment this value to push value-only changes to the API.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ActionSecretsWoArgs', 'ActionSecretsWoArgsDict', 'outputs.ActionSecretsWo']]]] secrets_wos: List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secrets_wo_version` attribute. To remove all secrets, delete the `secrets_wo` blocks together with the `secrets_wo_version` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
+        :param pulumi.Input[_builtins.str] status: The build status of the action. Possible values: `built`, `failed`, `building`, `pending`, `retrying`. If the action is in `failed` state, the next `terraform plan` will show a replacement to re-trigger the build.
         :param pulumi.Input[Union['ActionSupportedTriggersArgs', 'ActionSupportedTriggersArgsDict', 'outputs.ActionSupportedTriggers']] supported_triggers: List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
         :param pulumi.Input[_builtins.str] version_id: Version ID of the action. This value is available if `deploy` is set to true.
         """
@@ -698,6 +717,7 @@ class Action(pulumi.CustomResource):
         __props__.__dict__["secrets"] = secrets
         __props__.__dict__["secrets_wo_version"] = secrets_wo_version
         __props__.__dict__["secrets_wos"] = secrets_wos
+        __props__.__dict__["status"] = status
         __props__.__dict__["supported_triggers"] = supported_triggers
         __props__.__dict__["version_id"] = version_id
         return Action(resource_name, opts=opts, __props__=__props__)
@@ -773,6 +793,14 @@ class Action(pulumi.CustomResource):
         List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secrets_wo_version` attribute. To remove all secrets, delete the `secrets_wo` blocks together with the `secrets_wo_version` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
         """
         return pulumi.get(self, "secrets_wos")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[_builtins.str]:
+        """
+        The build status of the action. Possible values: `built`, `failed`, `building`, `pending`, `retrying`. If the action is in `failed` state, the next `terraform plan` will show a replacement to re-trigger the build.
+        """
+        return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="supportedTriggers")

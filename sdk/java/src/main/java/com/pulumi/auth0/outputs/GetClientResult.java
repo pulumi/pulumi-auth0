@@ -4,6 +4,7 @@
 package com.pulumi.auth0.outputs;
 
 import com.pulumi.auth0.outputs.GetClientAddon;
+import com.pulumi.auth0.outputs.GetClientAnonymousSession;
 import com.pulumi.auth0.outputs.GetClientB2bIntegrationConfiguration;
 import com.pulumi.auth0.outputs.GetClientClientAuthenticationMethod;
 import com.pulumi.auth0.outputs.GetClientDefaultOrganization;
@@ -52,6 +53,11 @@ public final class GetClientResult {
      * 
      */
     private List<String> allowedOrigins;
+    /**
+     * @return Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+     * 
+     */
+    private List<GetClientAnonymousSession> anonymousSessions;
     /**
      * @return Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
      * 
@@ -372,6 +378,13 @@ public final class GetClientResult {
      */
     public List<String> allowedOrigins() {
         return this.allowedOrigins;
+    }
+    /**
+     * @return Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+     * 
+     */
+    public List<GetClientAnonymousSession> anonymousSessions() {
+        return this.anonymousSessions;
     }
     /**
      * @return Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
@@ -796,6 +809,7 @@ public final class GetClientResult {
         private List<String> allowedClients;
         private List<String> allowedLogoutUrls;
         private List<String> allowedOrigins;
+        private List<GetClientAnonymousSession> anonymousSessions;
         private String appType;
         private List<String> asyncApprovalNotificationChannels;
         private List<GetClientB2bIntegrationConfiguration> b2bIntegrationConfigurations;
@@ -862,6 +876,7 @@ public final class GetClientResult {
     	      this.allowedClients = defaults.allowedClients;
     	      this.allowedLogoutUrls = defaults.allowedLogoutUrls;
     	      this.allowedOrigins = defaults.allowedOrigins;
+    	      this.anonymousSessions = defaults.anonymousSessions;
     	      this.appType = defaults.appType;
     	      this.asyncApprovalNotificationChannels = defaults.asyncApprovalNotificationChannels;
     	      this.b2bIntegrationConfigurations = defaults.b2bIntegrationConfigurations;
@@ -966,6 +981,17 @@ public final class GetClientResult {
         }
         public Builder allowedOrigins(String... allowedOrigins) {
             return allowedOrigins(List.of(allowedOrigins));
+        }
+        @CustomType.Setter
+        public Builder anonymousSessions(List<GetClientAnonymousSession> anonymousSessions) {
+            if (anonymousSessions == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "anonymousSessions");
+            }
+            this.anonymousSessions = anonymousSessions;
+            return this;
+        }
+        public Builder anonymousSessions(GetClientAnonymousSession... anonymousSessions) {
+            return anonymousSessions(List.of(anonymousSessions));
         }
         @CustomType.Setter
         public Builder appType(String appType) {
@@ -1508,6 +1534,7 @@ public final class GetClientResult {
             _resultValue.allowedClients = allowedClients;
             _resultValue.allowedLogoutUrls = allowedLogoutUrls;
             _resultValue.allowedOrigins = allowedOrigins;
+            _resultValue.anonymousSessions = anonymousSessions;
             _resultValue.appType = appType;
             _resultValue.asyncApprovalNotificationChannels = asyncApprovalNotificationChannels;
             _resultValue.b2bIntegrationConfigurations = b2bIntegrationConfigurations;

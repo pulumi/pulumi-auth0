@@ -179,6 +179,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<string> AllowedOrigins;
         /// <summary>
+        /// Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClientAnonymousSessionResult> AnonymousSessions;
+        /// <summary>
         /// Type of application the client represents. Possible values are: `Native`, `Spa`, `RegularWeb`, `NonInteractive`, `ResourceServer`,`SsoIntegration`. Specific SSO integrations types accepted as well are: `Rms`, `Box`, `Cloudbees`, `Concur`, `Dropbox`, `Mscrm`, `Echosign`, `Egnyte`, `Newrelic`, `Office365`, `Salesforce`, `Sentry`, `Sharepoint`, `Slack`, `Springcm`, `Zendesk`, `Zoom`, `ExpressConfiguration`
         /// </summary>
         public readonly string AppType;
@@ -422,6 +426,8 @@ namespace Pulumi.Auth0
 
             ImmutableArray<string> allowedOrigins,
 
+            ImmutableArray<Outputs.GetClientAnonymousSessionResult> anonymousSessions,
+
             string appType,
 
             ImmutableArray<string> asyncApprovalNotificationChannels,
@@ -544,6 +550,7 @@ namespace Pulumi.Auth0
             AllowedClients = allowedClients;
             AllowedLogoutUrls = allowedLogoutUrls;
             AllowedOrigins = allowedOrigins;
+            AnonymousSessions = anonymousSessions;
             AppType = appType;
             AsyncApprovalNotificationChannels = asyncApprovalNotificationChannels;
             B2bIntegrationConfigurations = b2bIntegrationConfigurations;

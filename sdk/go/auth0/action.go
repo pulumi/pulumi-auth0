@@ -163,6 +163,8 @@ type Action struct {
 	SecretsWoVersion pulumi.IntPtrOutput `pulumi:"secretsWoVersion"`
 	// List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secretsWoVersion` attribute. To remove all secrets, delete the `secretsWo` blocks together with the `secretsWoVersion` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
 	SecretsWos ActionSecretsWoArrayOutput `pulumi:"secretsWos"`
+	// The build status of the action. Possible values: `built`, `failed`, `building`, `pending`, `retrying`. If the action is in `failed` state, the next `terraform plan` will show a replacement to re-trigger the build.
+	Status pulumi.StringOutput `pulumi:"status"`
 	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
 	SupportedTriggers ActionSupportedTriggersOutput `pulumi:"supportedTriggers"`
 	// Version ID of the action. This value is available if `deploy` is set to true.
@@ -223,6 +225,8 @@ type actionState struct {
 	SecretsWoVersion *int `pulumi:"secretsWoVersion"`
 	// List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secretsWoVersion` attribute. To remove all secrets, delete the `secretsWo` blocks together with the `secretsWoVersion` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
 	SecretsWos []ActionSecretsWo `pulumi:"secretsWos"`
+	// The build status of the action. Possible values: `built`, `failed`, `building`, `pending`, `retrying`. If the action is in `failed` state, the next `terraform plan` will show a replacement to re-trigger the build.
+	Status *string `pulumi:"status"`
 	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
 	SupportedTriggers *ActionSupportedTriggers `pulumi:"supportedTriggers"`
 	// Version ID of the action. This value is available if `deploy` is set to true.
@@ -248,6 +252,8 @@ type ActionState struct {
 	SecretsWoVersion pulumi.IntPtrInput
 	// List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secretsWoVersion` attribute. To remove all secrets, delete the `secretsWo` blocks together with the `secretsWoVersion` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
 	SecretsWos ActionSecretsWoArrayInput
+	// The build status of the action. Possible values: `built`, `failed`, `building`, `pending`, `retrying`. If the action is in `failed` state, the next `terraform plan` will show a replacement to re-trigger the build.
+	Status pulumi.StringPtrInput
 	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
 	SupportedTriggers ActionSupportedTriggersPtrInput
 	// Version ID of the action. This value is available if `deploy` is set to true.
@@ -435,6 +441,11 @@ func (o ActionOutput) SecretsWoVersion() pulumi.IntPtrOutput {
 // List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secretsWoVersion` attribute. To remove all secrets, delete the `secretsWo` blocks together with the `secretsWoVersion` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
 func (o ActionOutput) SecretsWos() ActionSecretsWoArrayOutput {
 	return o.ApplyT(func(v *Action) ActionSecretsWoArrayOutput { return v.SecretsWos }).(ActionSecretsWoArrayOutput)
+}
+
+// The build status of the action. Possible values: `built`, `failed`, `building`, `pending`, `retrying`. If the action is in `failed` state, the next `terraform plan` will show a replacement to re-trigger the build.
+func (o ActionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Action) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
 // List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.

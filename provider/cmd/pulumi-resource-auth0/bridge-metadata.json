@@ -361,6 +361,9 @@
                     "allowed_origins": {
                         "maxItemsOne": false
                     },
+                    "anonymous_sessions": {
+                        "maxItemsOne": true
+                    },
                     "async_approval_notification_channels": {
                         "maxItemsOne": false
                     },
@@ -1265,6 +1268,9 @@
                     "duo": {
                         "maxItemsOne": true
                     },
+                    "email_settings": {
+                        "maxItemsOne": true
+                    },
                     "phone": {
                         "maxItemsOne": true,
                         "elem": {
@@ -1277,6 +1283,9 @@
                                 }
                             }
                         }
+                    },
+                    "phone_settings": {
+                        "maxItemsOne": true
                     },
                     "push": {
                         "maxItemsOne": true,
@@ -1296,6 +1305,9 @@
                                 }
                             }
                         }
+                    },
+                    "settings": {
+                        "maxItemsOne": true
                     },
                     "webauthn_platform": {
                         "maxItemsOne": true
@@ -1672,6 +1684,23 @@
                 "current": "auth0:index/resourceServer:ResourceServer",
                 "majorVersion": 3,
                 "fields": {
+                    "access_token": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "claims_mapping": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "custom_claims": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "authorization_details": {
                         "maxItemsOne": false
                     },
@@ -1685,6 +1714,9 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "anonymous_user": {
+                                    "maxItemsOne": true
+                                },
                                 "client": {
                                     "maxItemsOne": true
                                 },
@@ -1848,7 +1880,14 @@
                         "maxItemsOne": true
                     },
                     "sessions": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "anonymous": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -2360,6 +2399,9 @@
                     "allowed_origins": {
                         "maxItemsOne": false
                     },
+                    "anonymous_sessions": {
+                        "maxItemsOne": false
+                    },
                     "async_approval_notification_channels": {
                         "maxItemsOne": false
                     },
@@ -2668,6 +2710,9 @@
                                     "maxItemsOne": false
                                 },
                                 "allowed_origins": {
+                                    "maxItemsOne": false
+                                },
+                                "anonymous_sessions": {
                                     "maxItemsOne": false
                                 },
                                 "async_approval_notification_channels": {
@@ -3691,6 +3736,23 @@
                 "current": "auth0:index/getResourceServer:getResourceServer",
                 "majorVersion": 3,
                 "fields": {
+                    "access_token": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "claims_mapping": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "custom_claims": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "authorization_details": {
                         "maxItemsOne": false
                     },
@@ -3707,6 +3769,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "anonymous_user": {
+                                    "maxItemsOne": false
+                                },
                                 "client": {
                                     "maxItemsOne": false
                                 },
@@ -3837,7 +3902,14 @@
                         "maxItemsOne": false
                     },
                     "sessions": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "anonymous": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },

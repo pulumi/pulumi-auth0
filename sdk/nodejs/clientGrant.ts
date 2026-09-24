@@ -69,6 +69,17 @@ import * as utilities from "./utilities";
  *     audience: myResourceServer.identifier,
  *     scopes: ["read:foo"],
  * });
+ * // The following example grants a client access to anonymous access tokens for an API whose
+ * // anonymous_user policy is set to "require_client_grant". The subject_type "anonymous_user" is
+ * // only accepted at creation time and cannot be combined with organization_usage,
+ * // allow_any_organization, authorization_details_types, or default_for.
+ * // Anonymous Sessions is an Early Access feature.
+ * const myAnonymousGrant = new auth0.ClientGrant("my_anonymous_grant", {
+ *     clientId: myClient.id,
+ *     audience: myResourceServer.identifier,
+ *     scopes: ["read:foo"],
+ *     subjectType: "anonymous_user",
+ * });
  * ```
  *
  * ## Import
@@ -147,7 +158,7 @@ export class ClientGrant extends pulumi.CustomResource {
      */
     declare public readonly scopes: pulumi.Output<string[] | undefined>;
     /**
-     * Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+     * Defines the type of subject for this grant. Can be one of `client`, `user`, or `anonymousUser` (EA only). Defaults to `client` when not defined.
      */
     declare public readonly subjectType: pulumi.Output<string>;
 
@@ -236,7 +247,7 @@ export interface ClientGrantState {
      */
     scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+     * Defines the type of subject for this grant. Can be one of `client`, `user`, or `anonymousUser` (EA only). Defaults to `client` when not defined.
      */
     subjectType?: pulumi.Input<string | undefined>;
 }
@@ -278,7 +289,7 @@ export interface ClientGrantArgs {
      */
     scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+     * Defines the type of subject for this grant. Can be one of `client`, `user`, or `anonymousUser` (EA only). Defaults to `client` when not defined.
      */
     subjectType?: pulumi.Input<string | undefined>;
 }

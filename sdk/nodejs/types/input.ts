@@ -1288,6 +1288,13 @@ export interface ClientAddonsZoom {
     account?: pulumi.Input<string | undefined>;
 }
 
+export interface ClientAnonymousSessions {
+    /**
+     * If set to true, this client is allowed to create anonymous sessions. Requires `oidcConformant` to be set to `true`. Set to `false` to disable. (EA only)
+     */
+    active: pulumi.Input<boolean>;
+}
+
 export interface ClientB2bIntegrationConfiguration {
     /**
      * The type of integration used to connect to this B2B integration client. One of custom*auth*server, third_party, application
@@ -1781,6 +1788,14 @@ export interface ClientMyOrganizationConfiguration {
      * The ID of the connection profile to use when creating organizations for this client.
      */
     connectionProfileId?: pulumi.Input<string | undefined>;
+    /**
+     * When true, limits the permissions that organization admins can assign to members to only those held by the admin themselves. Requires the `myOrgMemberManagementEa` feature flag. Available in Early Access (EA).
+     */
+    enforcePermissionCeiling?: pulumi.Input<boolean | undefined>;
+    /**
+     * When true, prevents organization admins from assigning permissions to themselves. Requires the `myOrgMemberManagementEa` feature flag. Available in Early Access (EA).
+     */
+    enforceSelfAssignmentRestriction?: pulumi.Input<boolean | undefined>;
     /**
      * The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
      */
@@ -3599,6 +3614,17 @@ export interface GuardianDuo {
     secretKey?: pulumi.Input<string | undefined>;
 }
 
+export interface GuardianEmailSettings {
+    /**
+     * The OTP expiration time in seconds. Defaults to `300` (5 minutes).
+     */
+    otpExpirationTime: pulumi.Input<number>;
+    /**
+     * The length of the OTP code. Defaults to `6`.
+     */
+    otpLength: pulumi.Input<number>;
+}
+
 export interface GuardianPhone {
     /**
      * Indicates whether Phone MFA is enabled.
@@ -3647,6 +3673,17 @@ export interface GuardianPhoneOptions {
      * This message will be sent whenever a user logs in after the enrollment. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).
      */
     verificationMessage?: pulumi.Input<string | undefined>;
+}
+
+export interface GuardianPhoneSettings {
+    /**
+     * The OTP expiration time in seconds. Defaults to `300` (5 minutes).
+     */
+    otpExpirationTime: pulumi.Input<number>;
+    /**
+     * The length of the OTP code. Defaults to `6`.
+     */
+    otpLength: pulumi.Input<number>;
 }
 
 export interface GuardianPush {
@@ -3738,6 +3775,25 @@ export interface GuardianPushDirectFcm {
      * The Firebase Cloud Messaging Server Key. For security purposes, we don’t retrieve your existing FCM server key to check for drift.
      */
     serverKey: pulumi.Input<string>;
+}
+
+export interface GuardianSettings {
+    /**
+     * Determines whether to display the "Remember me" checkbox on the MFA prompt in Universal Login. Defaults to `true`.
+     */
+    displayRememberMeCheckbox: pulumi.Input<boolean>;
+    /**
+     * Duration of inactivity (seconds) after which the user will be prompted for MFA. Cannot exceed the overall timeout. Defaults to `604800` (7 days).
+     */
+    mfaSessionInactivityTimeout: pulumi.Input<number>;
+    /**
+     * Maximum duration (seconds) after which the user will be prompted for MFA regardless of activity. Defaults to `2592000` (30 days).
+     */
+    mfaSessionOverallTimeout: pulumi.Input<number>;
+    /**
+     * Determines the default state of the "Remember Me" checkbox on the MFA prompt in Universal Login. Defaults to `false`.
+     */
+    rememberMeDefaultValue: pulumi.Input<boolean>;
 }
 
 export interface GuardianWebauthnPlatform {
@@ -4384,6 +4440,31 @@ export interface RateLimitPolicyConfiguration {
     redirectUri?: pulumi.Input<string | undefined>;
 }
 
+export interface ResourceServerAccessToken {
+    /**
+     * Configuration for mapping claims into the access tokens issued for this resource server. (EA only)
+     */
+    claimsMapping?: pulumi.Input<inputs.ResourceServerAccessTokenClaimsMapping | undefined>;
+}
+
+export interface ResourceServerAccessTokenClaimsMapping {
+    /**
+     * Custom claims to include in the access tokens issued for this resource server. Maximum of 20 claims. Setting an empty list clears the custom claims on the API. (EA only)
+     */
+    customClaims?: pulumi.Input<pulumi.Input<inputs.ResourceServerAccessTokenClaimsMappingCustomClaim>[] | undefined>;
+}
+
+export interface ResourceServerAccessTokenClaimsMappingCustomClaim {
+    /**
+     * Expression used to resolve the claim value, given as a dot-path read from the request context (for example `anonymous_session.metadata.country`).
+     */
+    expression: pulumi.Input<string>;
+    /**
+     * Name of the claim to emit in the access token. Reserved OIDC/JWT claim names are not allowed.
+     */
+    name: pulumi.Input<string>;
+}
+
 export interface ResourceServerAuthorizationDetail {
     /**
      * Disable authorization details.
@@ -4434,6 +4515,10 @@ export interface ResourceServerScopesScope {
 
 export interface ResourceServerSubjectTypeAuthorization {
     /**
+     * Anonymous user authorization policies for the resource server. (EA only)
+     */
+    anonymousUser?: pulumi.Input<inputs.ResourceServerSubjectTypeAuthorizationAnonymousUser | undefined>;
+    /**
      * Client authorization policies for the resource server.
      */
     client?: pulumi.Input<inputs.ResourceServerSubjectTypeAuthorizationClient | undefined>;
@@ -4441,6 +4526,13 @@ export interface ResourceServerSubjectTypeAuthorization {
      * User authorization policies for the resource server.
      */
     user?: pulumi.Input<inputs.ResourceServerSubjectTypeAuthorizationUser | undefined>;
+}
+
+export interface ResourceServerSubjectTypeAuthorizationAnonymousUser {
+    /**
+     * Anonymous user flows policy. One of `denyAll`, `requireClientGrant`. Defaults to `denyAll` (EA only)
+     */
+    policy?: pulumi.Input<string | undefined>;
 }
 
 export interface ResourceServerSubjectTypeAuthorizationClient {
@@ -4756,9 +4848,24 @@ export interface TenantSessionCookie {
 
 export interface TenantSessions {
     /**
+     * Anonymous Sessions settings for the tenant. (EA only)
+     */
+    anonymous?: pulumi.Input<inputs.TenantSessionsAnonymous | undefined>;
+    /**
      * When active, users will be presented with a consent prompt to confirm the logout request if the request is not trustworthy. Turn off the consent prompt to bypass user confirmation.
      */
     oidcLogoutPromptEnabled: pulumi.Input<boolean>;
+}
+
+export interface TenantSessionsAnonymous {
+    /**
+     * Whether anonymous session requests return the `auth0Anon` cookie. (EA only)
+     */
+    activateCookie?: pulumi.Input<boolean | undefined>;
+    /**
+     * Number of minutes during which an anonymous session will stay valid. Minimum 1, maximum 525600. (EA only)
+     */
+    lifetimeInMinutes?: pulumi.Input<number | undefined>;
 }
 
 export interface TriggerActionsAction {

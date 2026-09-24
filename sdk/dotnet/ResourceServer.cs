@@ -24,6 +24,25 @@ namespace Pulumi.Auth0
     /// {
     ///     var myResourceServer = new Auth0.ResourceServer("my_resource_server", new()
     ///     {
+    ///         AccessToken = new Auth0.Inputs.ResourceServerAccessTokenArgs
+    ///         {
+    ///             ClaimsMapping = new Auth0.Inputs.ResourceServerAccessTokenClaimsMappingArgs
+    ///             {
+    ///                 CustomClaims = new[]
+    ///                 {
+    ///                     new Auth0.Inputs.ResourceServerAccessTokenClaimsMappingCustomClaimArgs
+    ///                     {
+    ///                         Name = "country",
+    ///                         Expression = "anonymous_session.metadata.country",
+    ///                     },
+    ///                     new Auth0.Inputs.ResourceServerAccessTokenClaimsMappingCustomClaimArgs
+    ///                     {
+    ///                         Name = "city",
+    ///                         Expression = "anonymous_session.metadata.city",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
     ///         TokenEncryption = new Auth0.Inputs.ResourceServerTokenEncryptionArgs
     ///         {
     ///             EncryptionKey = new Auth0.Inputs.ResourceServerTokenEncryptionEncryptionKeyArgs
@@ -52,6 +71,10 @@ namespace Pulumi.Auth0
     ///             {
     ///                 Policy = "require_client_grant",
     ///             },
+    ///             AnonymousUser = new Auth0.Inputs.ResourceServerSubjectTypeAuthorizationAnonymousUserArgs
+    ///             {
+    ///                 Policy = "require_client_grant",
+    ///             },
     ///         },
     ///         AuthorizationDetails = new[]
     ///         {
@@ -73,6 +96,7 @@ namespace Pulumi.Auth0
     ///         TokenLifetime = 8600,
     ///         SkipConsentForVerifiableFirstPartyClients = true,
     ///         ConsentPolicy = "transactional-authorization-with-mfa",
+    ///         TokenLifetimeForAnonymousAccessTokens = 86400,
     ///     });
     /// 
     ///     // Sample OIN resource server configuration
@@ -99,6 +123,17 @@ namespace Pulumi.Auth0
     ///         VerificationLocation = null,
     ///     });
     /// 
+    ///     // Default permissions for third-party applications, set via a client grant.
+    ///     var default3pGrant = new Auth0.ClientGrant("default_3p_grant", new()
+    ///     {
+    ///         DefaultFor = "third_party_clients",
+    ///         Audience = myResourceServer.Identifier,
+    ///         Scopes = new[]
+    ///         {
+    ///             "read:foo",
+    ///         },
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -115,6 +150,12 @@ namespace Pulumi.Auth0
     [Auth0ResourceType("auth0:index/resourceServer:ResourceServer")]
     public partial class ResourceServer : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
+        /// </summary>
+        [Output("accessToken")]
+        public Output<Outputs.ResourceServerAccessToken?> AccessToken { get; private set; } = null!;
+
         /// <summary>
         /// Indicates whether refresh tokens can be issued for this resource server.
         /// </summary>
@@ -230,6 +271,12 @@ namespace Pulumi.Auth0
         public Output<int> TokenLifetime { get; private set; } = null!;
 
         /// <summary>
+        /// Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+        /// </summary>
+        [Output("tokenLifetimeForAnonymousAccessTokens")]
+        public Output<int?> TokenLifetimeForAnonymousAccessTokens { get; private set; } = null!;
+
+        /// <summary>
         /// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `TokenLifetime` value.
         /// </summary>
         [Output("tokenLifetimeForWeb")]
@@ -287,6 +334,12 @@ namespace Pulumi.Auth0
 
     public sealed class ResourceServerArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
+        /// </summary>
+        [Input("accessToken")]
+        public Input<Inputs.ResourceServerAccessTokenArgs>? AccessToken { get; set; }
+
         /// <summary>
         /// Indicates whether refresh tokens can be issued for this resource server.
         /// </summary>
@@ -396,6 +449,12 @@ namespace Pulumi.Auth0
         public Input<int>? TokenLifetime { get; set; }
 
         /// <summary>
+        /// Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+        /// </summary>
+        [Input("tokenLifetimeForAnonymousAccessTokens")]
+        public Input<int>? TokenLifetimeForAnonymousAccessTokens { get; set; }
+
+        /// <summary>
         /// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `TokenLifetime` value.
         /// </summary>
         [Input("tokenLifetimeForWeb")]
@@ -415,6 +474,12 @@ namespace Pulumi.Auth0
 
     public sealed class ResourceServerState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
+        /// </summary>
+        [Input("accessToken")]
+        public Input<Inputs.ResourceServerAccessTokenGetArgs>? AccessToken { get; set; }
+
         /// <summary>
         /// Indicates whether refresh tokens can be issued for this resource server.
         /// </summary>
@@ -534,6 +599,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("tokenLifetime")]
         public Input<int>? TokenLifetime { get; set; }
+
+        /// <summary>
+        /// Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+        /// </summary>
+        [Input("tokenLifetimeForAnonymousAccessTokens")]
+        public Input<int>? TokenLifetimeForAnonymousAccessTokens { get; set; }
 
         /// <summary>
         /// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `TokenLifetime` value.

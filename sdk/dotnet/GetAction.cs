@@ -116,6 +116,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<Outputs.GetActionSecretsWoResult> SecretsWos;
         /// <summary>
+        /// The build status of the action. Possible values: `Built`, `Failed`, `Building`, `Pending`, `Retrying`. If the action is in `Failed` state, the next `pulumi preview` will show a replacement to re-trigger the build.
+        /// </summary>
+        public readonly string Status;
+        /// <summary>
         /// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetActionSupportedTriggerResult> SupportedTriggers;
@@ -146,6 +150,8 @@ namespace Pulumi.Auth0
 
             ImmutableArray<Outputs.GetActionSecretsWoResult> secretsWos,
 
+            string status,
+
             ImmutableArray<Outputs.GetActionSupportedTriggerResult> supportedTriggers,
 
             string versionId)
@@ -160,6 +166,7 @@ namespace Pulumi.Auth0
             Secrets = secrets;
             SecretsWoVersion = secretsWoVersion;
             SecretsWos = secretsWos;
+            Status = status;
             SupportedTriggers = supportedTriggers;
             VersionId = versionId;
         }

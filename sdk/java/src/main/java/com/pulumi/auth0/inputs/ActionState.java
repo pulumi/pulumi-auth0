@@ -159,6 +159,21 @@ public final class ActionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The build status of the action. Possible values: `built`, `failed`, `building`, `pending`, `retrying`. If the action is in `failed` state, the next `terraform plan` will show a replacement to re-trigger the build.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return The build status of the action. Possible values: `built`, `failed`, `building`, `pending`, `retrying`. If the action is in `failed` state, the next `terraform plan` will show a replacement to re-trigger the build.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
+    /**
      * List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
      * 
      */
@@ -200,6 +215,7 @@ public final class ActionState extends com.pulumi.resources.ResourceArgs {
         this.secrets = $.secrets;
         this.secretsWoVersion = $.secretsWoVersion;
         this.secretsWos = $.secretsWos;
+        this.status = $.status;
         this.supportedTriggers = $.supportedTriggers;
         this.versionId = $.versionId;
     }
@@ -449,6 +465,27 @@ public final class ActionState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder secretsWos(ActionSecretsWoArgs... secretsWos) {
             return secretsWos(List.of(secretsWos));
+        }
+
+        /**
+         * @param status The build status of the action. Possible values: `built`, `failed`, `building`, `pending`, `retrying`. If the action is in `failed` state, the next `terraform plan` will show a replacement to re-trigger the build.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status The build status of the action. Possible values: `built`, `failed`, `building`, `pending`, `retrying`. If the action is in `failed` state, the next `terraform plan` will show a replacement to re-trigger the build.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
         }
 
         /**

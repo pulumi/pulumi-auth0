@@ -50,6 +50,12 @@ namespace Pulumi.Auth0
         public Output<ImmutableArray<string>> AllowedOrigins { get; private set; } = null!;
 
         /// <summary>
+        /// Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+        /// </summary>
+        [Output("anonymousSessions")]
+        public Output<Outputs.ClientAnonymousSessions?> AnonymousSessions { get; private set; } = null!;
+
+        /// <summary>
         /// Type of application the client represents. Possible values are: `Native`, `Spa`, `RegularWeb`, `NonInteractive`, `ResourceServer`,`SsoIntegration`. Specific SSO integrations types accepted as well are: `Rms`, `Box`, `Cloudbees`, `Concur`, `Dropbox`, `Mscrm`, `Echosign`, `Egnyte`, `Newrelic`, `Office365`, `Salesforce`, `Sentry`, `Sharepoint`, `Slack`, `Springcm`, `Zendesk`, `Zoom`, `ExpressConfiguration`
         /// </summary>
         [Output("appType")]
@@ -457,6 +463,12 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
+        /// Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+        /// </summary>
+        [Input("anonymousSessions")]
+        public Input<Inputs.ClientAnonymousSessionsArgs>? AnonymousSessions { get; set; }
+
+        /// <summary>
         /// Type of application the client represents. Possible values are: `Native`, `Spa`, `RegularWeb`, `NonInteractive`, `ResourceServer`,`SsoIntegration`. Specific SSO integrations types accepted as well are: `Rms`, `Box`, `Cloudbees`, `Concur`, `Dropbox`, `Mscrm`, `Echosign`, `Egnyte`, `Newrelic`, `Office365`, `Salesforce`, `Sentry`, `Sharepoint`, `Slack`, `Springcm`, `Zendesk`, `Zoom`, `ExpressConfiguration`
         /// </summary>
         [Input("appType")]
@@ -846,6 +858,12 @@ namespace Pulumi.Auth0
             get => _allowedOrigins ?? (_allowedOrigins = new InputList<string>());
             set => _allowedOrigins = value;
         }
+
+        /// <summary>
+        /// Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+        /// </summary>
+        [Input("anonymousSessions")]
+        public Input<Inputs.ClientAnonymousSessionsGetArgs>? AnonymousSessions { get; set; }
 
         /// <summary>
         /// Type of application the client represents. Possible values are: `Native`, `Spa`, `RegularWeb`, `NonInteractive`, `ResourceServer`,`SsoIntegration`. Specific SSO integrations types accepted as well are: `Rms`, `Box`, `Cloudbees`, `Concur`, `Dropbox`, `Mscrm`, `Echosign`, `Egnyte`, `Newrelic`, `Office365`, `Salesforce`, `Sentry`, `Sharepoint`, `Slack`, `Springcm`, `Zendesk`, `Zoom`, `ExpressConfiguration`

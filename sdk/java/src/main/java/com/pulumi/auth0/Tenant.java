@@ -45,6 +45,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.auth0.inputs.TenantFlagsArgs;
  * import com.pulumi.auth0.inputs.TenantSessionCookieArgs;
  * import com.pulumi.auth0.inputs.TenantSessionsArgs;
+ * import com.pulumi.auth0.inputs.TenantSessionsAnonymousArgs;
  * import com.pulumi.auth0.inputs.TenantErrorPageArgs;
  * import com.pulumi.auth0.inputs.TenantCountryCodesArgs;
  * import java.util.ArrayList;
@@ -73,6 +74,10 @@ import javax.annotation.Nullable;
  *                 .mode("non-persistent")
  *                 .build())
  *             .sessions(TenantSessionsArgs.builder()
+ *                 .anonymous(TenantSessionsAnonymousArgs.builder()
+ *                     .lifetimeInMinutes(43200)
+ *                     .activateCookie(true)
+ *                     .build())
  *                 .oidcLogoutPromptEnabled(false)
  *                 .build())
  *             .errorPage(TenantErrorPageArgs.builder()

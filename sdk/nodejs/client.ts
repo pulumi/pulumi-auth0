@@ -64,6 +64,10 @@ export class Client extends pulumi.CustomResource {
      */
     declare public readonly allowedOrigins: pulumi.Output<string[] | undefined>;
     /**
+     * Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+     */
+    declare public readonly anonymousSessions: pulumi.Output<outputs.ClientAnonymousSessions | undefined>;
+    /**
      * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
      */
     declare public readonly appType: pulumi.Output<string | undefined>;
@@ -292,6 +296,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["allowedClients"] = state?.allowedClients;
             resourceInputs["allowedLogoutUrls"] = state?.allowedLogoutUrls;
             resourceInputs["allowedOrigins"] = state?.allowedOrigins;
+            resourceInputs["anonymousSessions"] = state?.anonymousSessions;
             resourceInputs["appType"] = state?.appType;
             resourceInputs["asyncApprovalNotificationChannels"] = state?.asyncApprovalNotificationChannels;
             resourceInputs["b2bIntegrationConfiguration"] = state?.b2bIntegrationConfiguration;
@@ -351,6 +356,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["allowedClients"] = args?.allowedClients;
             resourceInputs["allowedLogoutUrls"] = args?.allowedLogoutUrls;
             resourceInputs["allowedOrigins"] = args?.allowedOrigins;
+            resourceInputs["anonymousSessions"] = args?.anonymousSessions;
             resourceInputs["appType"] = args?.appType;
             resourceInputs["asyncApprovalNotificationChannels"] = args?.asyncApprovalNotificationChannels;
             resourceInputs["b2bIntegrationConfiguration"] = args?.b2bIntegrationConfiguration;
@@ -432,6 +438,10 @@ export interface ClientState {
      * URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
      */
     allowedOrigins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+     */
+    anonymousSessions?: pulumi.Input<inputs.ClientAnonymousSessions | undefined>;
     /**
      * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
      */
@@ -665,6 +675,10 @@ export interface ClientArgs {
      * URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
      */
     allowedOrigins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+     */
+    anonymousSessions?: pulumi.Input<inputs.ClientAnonymousSessions | undefined>;
     /**
      * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
      */

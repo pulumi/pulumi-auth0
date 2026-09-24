@@ -43,6 +43,10 @@ import (
 //					Mode: pulumi.String("non-persistent"),
 //				},
 //				Sessions: &auth0.TenantSessionsArgs{
+//					Anonymous: &auth0.TenantSessionsAnonymousArgs{
+//						LifetimeInMinutes: pulumi.Int(43200),
+//						ActivateCookie:    pulumi.Bool(true),
+//					},
 //					OidcLogoutPromptEnabled: pulumi.Bool(false),
 //				},
 //				ErrorPage: &auth0.TenantErrorPageArgs{

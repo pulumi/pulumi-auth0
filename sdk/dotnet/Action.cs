@@ -196,6 +196,12 @@ namespace Pulumi.Auth0
         public Output<ImmutableArray<Outputs.ActionSecretsWo>> SecretsWos { get; private set; } = null!;
 
         /// <summary>
+        /// The build status of the action. Possible values: `Built`, `Failed`, `Building`, `Pending`, `Retrying`. If the action is in `Failed` state, the next `terraform plan` will show a replacement to re-trigger the build.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
         /// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
         /// </summary>
         [Output("supportedTriggers")]
@@ -422,6 +428,12 @@ namespace Pulumi.Auth0
             get => _secretsWos ?? (_secretsWos = new InputList<Inputs.ActionSecretsWoGetArgs>());
             set => _secretsWos = value;
         }
+
+        /// <summary>
+        /// The build status of the action. Possible values: `Built`, `Failed`, `Building`, `Pending`, `Retrying`. If the action is in `Failed` state, the next `terraform plan` will show a replacement to re-trigger the build.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         /// <summary>
         /// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.

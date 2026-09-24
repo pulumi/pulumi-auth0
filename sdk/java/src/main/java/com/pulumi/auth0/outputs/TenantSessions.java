@@ -3,13 +3,21 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.TenantSessionsAnonymous;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class TenantSessions {
+    /**
+     * @return Anonymous Sessions settings for the tenant. (EA only)
+     * 
+     */
+    private @Nullable TenantSessionsAnonymous anonymous;
     /**
      * @return When active, users will be presented with a consent prompt to confirm the logout request if the request is not trustworthy. Turn off the consent prompt to bypass user confirmation.
      * 
@@ -17,6 +25,13 @@ public final class TenantSessions {
     private Boolean oidcLogoutPromptEnabled;
 
     private TenantSessions() {}
+    /**
+     * @return Anonymous Sessions settings for the tenant. (EA only)
+     * 
+     */
+    public Optional<TenantSessionsAnonymous> anonymous() {
+        return Optional.ofNullable(this.anonymous);
+    }
     /**
      * @return When active, users will be presented with a consent prompt to confirm the logout request if the request is not trustworthy. Turn off the consent prompt to bypass user confirmation.
      * 
@@ -34,13 +49,21 @@ public final class TenantSessions {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable TenantSessionsAnonymous anonymous;
         private Boolean oidcLogoutPromptEnabled;
         public Builder() {}
         public Builder(TenantSessions defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.anonymous = defaults.anonymous;
     	      this.oidcLogoutPromptEnabled = defaults.oidcLogoutPromptEnabled;
         }
 
+        @CustomType.Setter
+        public Builder anonymous(@Nullable TenantSessionsAnonymous anonymous) {
+
+            this.anonymous = anonymous;
+            return this;
+        }
         @CustomType.Setter
         public Builder oidcLogoutPromptEnabled(Boolean oidcLogoutPromptEnabled) {
             if (oidcLogoutPromptEnabled == null) {
@@ -51,6 +74,7 @@ public final class TenantSessions {
         }
         public TenantSessions build() {
             final var _resultValue = new TenantSessions();
+            _resultValue.anonymous = anonymous;
             _resultValue.oidcLogoutPromptEnabled = oidcLogoutPromptEnabled;
             return _resultValue;
         }

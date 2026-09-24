@@ -3,16 +3,34 @@
 
 package com.pulumi.auth0.inputs;
 
+import com.pulumi.auth0.inputs.TenantSessionsAnonymousArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class TenantSessionsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final TenantSessionsArgs Empty = new TenantSessionsArgs();
+
+    /**
+     * Anonymous Sessions settings for the tenant. (EA only)
+     * 
+     */
+    @Import(name="anonymous")
+    private @Nullable Output<TenantSessionsAnonymousArgs> anonymous;
+
+    /**
+     * @return Anonymous Sessions settings for the tenant. (EA only)
+     * 
+     */
+    public Optional<Output<TenantSessionsAnonymousArgs>> anonymous() {
+        return Optional.ofNullable(this.anonymous);
+    }
 
     /**
      * When active, users will be presented with a consent prompt to confirm the logout request if the request is not trustworthy. Turn off the consent prompt to bypass user confirmation.
@@ -32,6 +50,7 @@ public final class TenantSessionsArgs extends com.pulumi.resources.ResourceArgs 
     private TenantSessionsArgs() {}
 
     private TenantSessionsArgs(TenantSessionsArgs $) {
+        this.anonymous = $.anonymous;
         this.oidcLogoutPromptEnabled = $.oidcLogoutPromptEnabled;
     }
 
@@ -51,6 +70,27 @@ public final class TenantSessionsArgs extends com.pulumi.resources.ResourceArgs 
 
         public Builder(TenantSessionsArgs defaults) {
             $ = new TenantSessionsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param anonymous Anonymous Sessions settings for the tenant. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder anonymous(@Nullable Output<TenantSessionsAnonymousArgs> anonymous) {
+            $.anonymous = anonymous;
+            return this;
+        }
+
+        /**
+         * @param anonymous Anonymous Sessions settings for the tenant. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder anonymous(TenantSessionsAnonymousArgs anonymous) {
+            return anonymous(Output.of(anonymous));
         }
 
         /**

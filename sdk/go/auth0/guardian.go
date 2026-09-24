@@ -71,6 +71,20 @@ import (
 //					SecretKey:      pulumi.String("someSecret"),
 //					Hostname:       pulumi.String("api-hostname"),
 //				},
+//				Settings: &auth0.GuardianSettingsArgs{
+//					DisplayRememberMeCheckbox:   pulumi.Bool(true),
+//					RememberMeDefaultValue:      pulumi.Bool(false),
+//					MfaSessionInactivityTimeout: pulumi.Int(604800),
+//					MfaSessionOverallTimeout:    pulumi.Int(2592000),
+//				},
+//				PhoneSettings: &auth0.GuardianPhoneSettingsArgs{
+//					OtpLength:         pulumi.Int(6),
+//					OtpExpirationTime: pulumi.Int(300),
+//				},
+//				EmailSettings: &auth0.GuardianEmailSettingsArgs{
+//					OtpLength:         pulumi.Int(6),
+//					OtpExpirationTime: pulumi.Int(300),
+//				},
 //				Policy:       pulumi.String("all-applications"),
 //				Email:        pulumi.Bool(true),
 //				Otp:          pulumi.Bool(true),
@@ -104,16 +118,22 @@ type Guardian struct {
 	Duo GuardianDuoOutput `pulumi:"duo"`
 	// Indicates whether email MFA is enabled.
 	Email pulumi.BoolPtrOutput `pulumi:"email"`
+	// One-time password settings for the email MFA factor. These are independent of whether the email factor is enabled.
+	EmailSettings GuardianEmailSettingsOutput `pulumi:"emailSettings"`
 	// Indicates whether one time password MFA is enabled.
 	Otp pulumi.BoolPtrOutput `pulumi:"otp"`
 	// Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
 	Phone GuardianPhoneOutput `pulumi:"phone"`
+	// One-time password settings for the phone MFA factor. These are independent of whether the phone factor is enabled.
+	PhoneSettings GuardianPhoneSettingsOutput `pulumi:"phoneSettings"`
 	// Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
 	Policy pulumi.StringOutput `pulumi:"policy"`
 	// Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
 	Push GuardianPushOutput `pulumi:"push"`
 	// Indicates whether recovery code MFA is enabled.
 	RecoveryCode pulumi.BoolPtrOutput `pulumi:"recoveryCode"`
+	// Tenant-wide MFA settings controlling how often users are re-prompted for MFA and how the "Remember me" checkbox behaves. This block requires `read:tenant_settings` and `update:tenant_settings` scopes, which the other attributes of this resource do not require.
+	Settings GuardianSettingsOutput `pulumi:"settings"`
 	// Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
 	WebauthnPlatform GuardianWebauthnPlatformOutput `pulumi:"webauthnPlatform"`
 	// Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
@@ -157,16 +177,22 @@ type guardianState struct {
 	Duo *GuardianDuo `pulumi:"duo"`
 	// Indicates whether email MFA is enabled.
 	Email *bool `pulumi:"email"`
+	// One-time password settings for the email MFA factor. These are independent of whether the email factor is enabled.
+	EmailSettings *GuardianEmailSettings `pulumi:"emailSettings"`
 	// Indicates whether one time password MFA is enabled.
 	Otp *bool `pulumi:"otp"`
 	// Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
 	Phone *GuardianPhone `pulumi:"phone"`
+	// One-time password settings for the phone MFA factor. These are independent of whether the phone factor is enabled.
+	PhoneSettings *GuardianPhoneSettings `pulumi:"phoneSettings"`
 	// Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
 	Policy *string `pulumi:"policy"`
 	// Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
 	Push *GuardianPush `pulumi:"push"`
 	// Indicates whether recovery code MFA is enabled.
 	RecoveryCode *bool `pulumi:"recoveryCode"`
+	// Tenant-wide MFA settings controlling how often users are re-prompted for MFA and how the "Remember me" checkbox behaves. This block requires `read:tenant_settings` and `update:tenant_settings` scopes, which the other attributes of this resource do not require.
+	Settings *GuardianSettings `pulumi:"settings"`
 	// Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
 	WebauthnPlatform *GuardianWebauthnPlatform `pulumi:"webauthnPlatform"`
 	// Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
@@ -178,16 +204,22 @@ type GuardianState struct {
 	Duo GuardianDuoPtrInput
 	// Indicates whether email MFA is enabled.
 	Email pulumi.BoolPtrInput
+	// One-time password settings for the email MFA factor. These are independent of whether the email factor is enabled.
+	EmailSettings GuardianEmailSettingsPtrInput
 	// Indicates whether one time password MFA is enabled.
 	Otp pulumi.BoolPtrInput
 	// Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
 	Phone GuardianPhonePtrInput
+	// One-time password settings for the phone MFA factor. These are independent of whether the phone factor is enabled.
+	PhoneSettings GuardianPhoneSettingsPtrInput
 	// Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
 	Policy pulumi.StringPtrInput
 	// Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
 	Push GuardianPushPtrInput
 	// Indicates whether recovery code MFA is enabled.
 	RecoveryCode pulumi.BoolPtrInput
+	// Tenant-wide MFA settings controlling how often users are re-prompted for MFA and how the "Remember me" checkbox behaves. This block requires `read:tenant_settings` and `update:tenant_settings` scopes, which the other attributes of this resource do not require.
+	Settings GuardianSettingsPtrInput
 	// Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
 	WebauthnPlatform GuardianWebauthnPlatformPtrInput
 	// Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
@@ -203,16 +235,22 @@ type guardianArgs struct {
 	Duo *GuardianDuo `pulumi:"duo"`
 	// Indicates whether email MFA is enabled.
 	Email *bool `pulumi:"email"`
+	// One-time password settings for the email MFA factor. These are independent of whether the email factor is enabled.
+	EmailSettings *GuardianEmailSettings `pulumi:"emailSettings"`
 	// Indicates whether one time password MFA is enabled.
 	Otp *bool `pulumi:"otp"`
 	// Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
 	Phone *GuardianPhone `pulumi:"phone"`
+	// One-time password settings for the phone MFA factor. These are independent of whether the phone factor is enabled.
+	PhoneSettings *GuardianPhoneSettings `pulumi:"phoneSettings"`
 	// Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
 	Policy string `pulumi:"policy"`
 	// Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
 	Push *GuardianPush `pulumi:"push"`
 	// Indicates whether recovery code MFA is enabled.
 	RecoveryCode *bool `pulumi:"recoveryCode"`
+	// Tenant-wide MFA settings controlling how often users are re-prompted for MFA and how the "Remember me" checkbox behaves. This block requires `read:tenant_settings` and `update:tenant_settings` scopes, which the other attributes of this resource do not require.
+	Settings *GuardianSettings `pulumi:"settings"`
 	// Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
 	WebauthnPlatform *GuardianWebauthnPlatform `pulumi:"webauthnPlatform"`
 	// Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
@@ -225,16 +263,22 @@ type GuardianArgs struct {
 	Duo GuardianDuoPtrInput
 	// Indicates whether email MFA is enabled.
 	Email pulumi.BoolPtrInput
+	// One-time password settings for the email MFA factor. These are independent of whether the email factor is enabled.
+	EmailSettings GuardianEmailSettingsPtrInput
 	// Indicates whether one time password MFA is enabled.
 	Otp pulumi.BoolPtrInput
 	// Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
 	Phone GuardianPhonePtrInput
+	// One-time password settings for the phone MFA factor. These are independent of whether the phone factor is enabled.
+	PhoneSettings GuardianPhoneSettingsPtrInput
 	// Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
 	Policy pulumi.StringInput
 	// Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
 	Push GuardianPushPtrInput
 	// Indicates whether recovery code MFA is enabled.
 	RecoveryCode pulumi.BoolPtrInput
+	// Tenant-wide MFA settings controlling how often users are re-prompted for MFA and how the "Remember me" checkbox behaves. This block requires `read:tenant_settings` and `update:tenant_settings` scopes, which the other attributes of this resource do not require.
+	Settings GuardianSettingsPtrInput
 	// Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
 	WebauthnPlatform GuardianWebauthnPlatformPtrInput
 	// Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
@@ -338,6 +382,11 @@ func (o GuardianOutput) Email() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Guardian) pulumi.BoolPtrOutput { return v.Email }).(pulumi.BoolPtrOutput)
 }
 
+// One-time password settings for the email MFA factor. These are independent of whether the email factor is enabled.
+func (o GuardianOutput) EmailSettings() GuardianEmailSettingsOutput {
+	return o.ApplyT(func(v *Guardian) GuardianEmailSettingsOutput { return v.EmailSettings }).(GuardianEmailSettingsOutput)
+}
+
 // Indicates whether one time password MFA is enabled.
 func (o GuardianOutput) Otp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Guardian) pulumi.BoolPtrOutput { return v.Otp }).(pulumi.BoolPtrOutput)
@@ -346,6 +395,11 @@ func (o GuardianOutput) Otp() pulumi.BoolPtrOutput {
 // Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
 func (o GuardianOutput) Phone() GuardianPhoneOutput {
 	return o.ApplyT(func(v *Guardian) GuardianPhoneOutput { return v.Phone }).(GuardianPhoneOutput)
+}
+
+// One-time password settings for the phone MFA factor. These are independent of whether the phone factor is enabled.
+func (o GuardianOutput) PhoneSettings() GuardianPhoneSettingsOutput {
+	return o.ApplyT(func(v *Guardian) GuardianPhoneSettingsOutput { return v.PhoneSettings }).(GuardianPhoneSettingsOutput)
 }
 
 // Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
@@ -361,6 +415,11 @@ func (o GuardianOutput) Push() GuardianPushOutput {
 // Indicates whether recovery code MFA is enabled.
 func (o GuardianOutput) RecoveryCode() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Guardian) pulumi.BoolPtrOutput { return v.RecoveryCode }).(pulumi.BoolPtrOutput)
+}
+
+// Tenant-wide MFA settings controlling how often users are re-prompted for MFA and how the "Remember me" checkbox behaves. This block requires `read:tenant_settings` and `update:tenant_settings` scopes, which the other attributes of this resource do not require.
+func (o GuardianOutput) Settings() GuardianSettingsOutput {
+	return o.ApplyT(func(v *Guardian) GuardianSettingsOutput { return v.Settings }).(GuardianSettingsOutput)
 }
 
 // Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.

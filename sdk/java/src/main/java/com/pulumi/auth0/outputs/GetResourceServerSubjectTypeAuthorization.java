@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.GetResourceServerSubjectTypeAuthorizationAnonymousUser;
 import com.pulumi.auth0.outputs.GetResourceServerSubjectTypeAuthorizationClient;
 import com.pulumi.auth0.outputs.GetResourceServerSubjectTypeAuthorizationUser;
 import com.pulumi.core.annotations.CustomType;
@@ -12,6 +13,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetResourceServerSubjectTypeAuthorization {
+    /**
+     * @return Anonymous user authorization policies for the resource server. (EA only)
+     * 
+     */
+    private List<GetResourceServerSubjectTypeAuthorizationAnonymousUser> anonymousUsers;
     /**
      * @return Client authorization policies for the resource server.
      * 
@@ -24,6 +30,13 @@ public final class GetResourceServerSubjectTypeAuthorization {
     private List<GetResourceServerSubjectTypeAuthorizationUser> users;
 
     private GetResourceServerSubjectTypeAuthorization() {}
+    /**
+     * @return Anonymous user authorization policies for the resource server. (EA only)
+     * 
+     */
+    public List<GetResourceServerSubjectTypeAuthorizationAnonymousUser> anonymousUsers() {
+        return this.anonymousUsers;
+    }
     /**
      * @return Client authorization policies for the resource server.
      * 
@@ -48,15 +61,28 @@ public final class GetResourceServerSubjectTypeAuthorization {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetResourceServerSubjectTypeAuthorizationAnonymousUser> anonymousUsers;
         private List<GetResourceServerSubjectTypeAuthorizationClient> clients;
         private List<GetResourceServerSubjectTypeAuthorizationUser> users;
         public Builder() {}
         public Builder(GetResourceServerSubjectTypeAuthorization defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.anonymousUsers = defaults.anonymousUsers;
     	      this.clients = defaults.clients;
     	      this.users = defaults.users;
         }
 
+        @CustomType.Setter
+        public Builder anonymousUsers(List<GetResourceServerSubjectTypeAuthorizationAnonymousUser> anonymousUsers) {
+            if (anonymousUsers == null) {
+              throw new MissingRequiredPropertyException("GetResourceServerSubjectTypeAuthorization", "anonymousUsers");
+            }
+            this.anonymousUsers = anonymousUsers;
+            return this;
+        }
+        public Builder anonymousUsers(GetResourceServerSubjectTypeAuthorizationAnonymousUser... anonymousUsers) {
+            return anonymousUsers(List.of(anonymousUsers));
+        }
         @CustomType.Setter
         public Builder clients(List<GetResourceServerSubjectTypeAuthorizationClient> clients) {
             if (clients == null) {
@@ -81,6 +107,7 @@ public final class GetResourceServerSubjectTypeAuthorization {
         }
         public GetResourceServerSubjectTypeAuthorization build() {
             final var _resultValue = new GetResourceServerSubjectTypeAuthorization();
+            _resultValue.anonymousUsers = anonymousUsers;
             _resultValue.clients = clients;
             _resultValue.users = users;
             return _resultValue;

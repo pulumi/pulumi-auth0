@@ -107,7 +107,7 @@ export class TriggerActions extends pulumi.CustomResource {
      */
     declare public readonly actions: pulumi.Output<outputs.TriggerActionsAction[]>;
     /**
-     * The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier`, `signup-post-identifier`.
+     * The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier`, `signup-post-identifier` and `post-credential-validation`
      */
     declare public readonly trigger: pulumi.Output<string>;
 
@@ -151,7 +151,7 @@ export interface TriggerActionsState {
      */
     actions?: pulumi.Input<pulumi.Input<inputs.TriggerActionsAction>[] | undefined>;
     /**
-     * The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier`, `signup-post-identifier`.
+     * The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier`, `signup-post-identifier` and `post-credential-validation`
      */
     trigger?: pulumi.Input<string | undefined>;
 }
@@ -165,7 +165,7 @@ export interface TriggerActionsArgs {
      */
     actions: pulumi.Input<pulumi.Input<inputs.TriggerActionsAction>[]>;
     /**
-     * The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier`, `signup-post-identifier`.
+     * The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier`, `signup-post-identifier` and `post-credential-validation`
      */
     trigger: pulumi.Input<string>;
 }

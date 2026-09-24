@@ -37,6 +37,18 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? ConnectionProfileId { get; set; }
 
         /// <summary>
+        /// When true, limits the permissions that organization admins can assign to members to only those held by the admin themselves. Requires the `MyOrgMemberManagementEa` feature flag. Available in Early Access (EA).
+        /// </summary>
+        [Input("enforcePermissionCeiling")]
+        public Input<bool>? EnforcePermissionCeiling { get; set; }
+
+        /// <summary>
+        /// When true, prevents organization admins from assigning permissions to themselves. Requires the `MyOrgMemberManagementEa` feature flag. Available in Early Access (EA).
+        /// </summary>
+        [Input("enforceSelfAssignmentRestriction")]
+        public Input<bool>? EnforceSelfAssignmentRestriction { get; set; }
+
+        /// <summary>
         /// The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
         /// </summary>
         [Input("invitationLandingClientId")]

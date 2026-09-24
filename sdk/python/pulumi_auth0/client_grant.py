@@ -39,7 +39,7 @@ class ClientGrantArgs:
         :param pulumi.Input[_builtins.str] default_for: Applies this client grant as the default for all clients in the specified group. The only accepted value is third*party*clients, which applies the grant to all third-party clients.
         :param pulumi.Input[_builtins.str] organization_usage: Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Permissions (scopes) included in this grant. Can not be provided when `allow_all_scopes` is set to `true`.
-        :param pulumi.Input[_builtins.str] subject_type: Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+        :param pulumi.Input[_builtins.str] subject_type: Defines the type of subject for this grant. Can be one of `client`, `user`, or `anonymous_user` (EA only). Defaults to `client` when not defined.
         """
         pulumi.set(__self__, "audience", audience)
         if allow_all_scopes is not None:
@@ -159,7 +159,7 @@ class ClientGrantArgs:
     @pulumi.getter(name="subjectType")
     def subject_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+        Defines the type of subject for this grant. Can be one of `client`, `user`, or `anonymous_user` (EA only). Defaults to `client` when not defined.
         """
         return pulumi.get(self, "subject_type")
 
@@ -193,7 +193,7 @@ class _ClientGrantState:
         :param pulumi.Input[_builtins.bool] is_system: Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.
         :param pulumi.Input[_builtins.str] organization_usage: Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Permissions (scopes) included in this grant. Can not be provided when `allow_all_scopes` is set to `true`.
-        :param pulumi.Input[_builtins.str] subject_type: Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+        :param pulumi.Input[_builtins.str] subject_type: Defines the type of subject for this grant. Can be one of `client`, `user`, or `anonymous_user` (EA only). Defaults to `client` when not defined.
         """
         if allow_all_scopes is not None:
             pulumi.set(__self__, "allow_all_scopes", allow_all_scopes)
@@ -328,7 +328,7 @@ class _ClientGrantState:
     @pulumi.getter(name="subjectType")
     def subject_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+        Defines the type of subject for this grant. Can be one of `client`, `user`, or `anonymous_user` (EA only). Defaults to `client` when not defined.
         """
         return pulumi.get(self, "subject_type")
 
@@ -413,6 +413,16 @@ class ClientGrant(pulumi.CustomResource):
             default_for="third_party_clients",
             audience=my_resource_server.identifier,
             scopes=["read:foo"])
+        # The following example grants a client access to anonymous access tokens for an API whose
+        # anonymous_user policy is set to "require_client_grant". The subject_type "anonymous_user" is
+        # only accepted at creation time and cannot be combined with organization_usage,
+        # allow_any_organization, authorization_details_types, or default_for.
+        # Anonymous Sessions is an Early Access feature.
+        my_anonymous_grant = auth0.ClientGrant("my_anonymous_grant",
+            client_id=my_client.id,
+            audience=my_resource_server.identifier,
+            scopes=["read:foo"],
+            subject_type="anonymous_user")
         ```
 
         ## Import
@@ -437,7 +447,7 @@ class ClientGrant(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] default_for: Applies this client grant as the default for all clients in the specified group. The only accepted value is third*party*clients, which applies the grant to all third-party clients.
         :param pulumi.Input[_builtins.str] organization_usage: Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Permissions (scopes) included in this grant. Can not be provided when `allow_all_scopes` is set to `true`.
-        :param pulumi.Input[_builtins.str] subject_type: Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+        :param pulumi.Input[_builtins.str] subject_type: Defines the type of subject for this grant. Can be one of `client`, `user`, or `anonymous_user` (EA only). Defaults to `client` when not defined.
         """
         ...
     @overload
@@ -505,6 +515,16 @@ class ClientGrant(pulumi.CustomResource):
             default_for="third_party_clients",
             audience=my_resource_server.identifier,
             scopes=["read:foo"])
+        # The following example grants a client access to anonymous access tokens for an API whose
+        # anonymous_user policy is set to "require_client_grant". The subject_type "anonymous_user" is
+        # only accepted at creation time and cannot be combined with organization_usage,
+        # allow_any_organization, authorization_details_types, or default_for.
+        # Anonymous Sessions is an Early Access feature.
+        my_anonymous_grant = auth0.ClientGrant("my_anonymous_grant",
+            client_id=my_client.id,
+            audience=my_resource_server.identifier,
+            scopes=["read:foo"],
+            subject_type="anonymous_user")
         ```
 
         ## Import
@@ -600,7 +620,7 @@ class ClientGrant(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] is_system: Indicates whether this grant is a special grant created by Auth0. It cannot be modified or deleted directly.
         :param pulumi.Input[_builtins.str] organization_usage: Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Permissions (scopes) included in this grant. Can not be provided when `allow_all_scopes` is set to `true`.
-        :param pulumi.Input[_builtins.str] subject_type: Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+        :param pulumi.Input[_builtins.str] subject_type: Defines the type of subject for this grant. Can be one of `client`, `user`, or `anonymous_user` (EA only). Defaults to `client` when not defined.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -694,7 +714,7 @@ class ClientGrant(pulumi.CustomResource):
     @pulumi.getter(name="subjectType")
     def subject_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+        Defines the type of subject for this grant. Can be one of `client`, `user`, or `anonymous_user` (EA only). Defaults to `client` when not defined.
         """
         return pulumi.get(self, "subject_type")
 

@@ -27,7 +27,7 @@ class GetClientResult:
     """
     A collection of values returned by getClient.
     """
-    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, app_type=None, async_approval_notification_channels=None, b2b_integration_configurations=None, callbacks=None, client_aliases=None, client_authentication_methods=None, client_id=None, client_metadata=None, client_secret=None, compliance_level=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, default_organizations=None, description=None, encryption_key=None, express_configurations=None, external_client_id=None, external_metadata_created_by=None, external_metadata_type=None, fedcm_logins=None, form_template=None, grant_types=None, hide_client_secret=None, id=None, identity_assertion_authorization_grants=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwks_uri=None, jwt_configurations=None, logo_uri=None, mobiles=None, my_organization_configurations=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, oidc_logouts=None, organization_discovery_methods=None, organization_require_behavior=None, organization_usage=None, redirection_policy=None, refresh_tokens=None, require_proof_of_possession=None, require_pushed_authorization_requests=None, resource_server_identifier=None, session_transfers=None, signed_request_objects=None, signing_keys=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, sso=None, sso_disabled=None, third_party_security_mode=None, token_endpoint_auth_method=None, token_exchanges=None, token_quotas=None, web_origins=None):
+    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, anonymous_sessions=None, app_type=None, async_approval_notification_channels=None, b2b_integration_configurations=None, callbacks=None, client_aliases=None, client_authentication_methods=None, client_id=None, client_metadata=None, client_secret=None, compliance_level=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, default_organizations=None, description=None, encryption_key=None, express_configurations=None, external_client_id=None, external_metadata_created_by=None, external_metadata_type=None, fedcm_logins=None, form_template=None, grant_types=None, hide_client_secret=None, id=None, identity_assertion_authorization_grants=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwks_uri=None, jwt_configurations=None, logo_uri=None, mobiles=None, my_organization_configurations=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, oidc_logouts=None, organization_discovery_methods=None, organization_require_behavior=None, organization_usage=None, redirection_policy=None, refresh_tokens=None, require_proof_of_possession=None, require_pushed_authorization_requests=None, resource_server_identifier=None, session_transfers=None, signed_request_objects=None, signing_keys=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, sso=None, sso_disabled=None, third_party_security_mode=None, token_endpoint_auth_method=None, token_exchanges=None, token_quotas=None, web_origins=None):
         if addons and not isinstance(addons, list):
             raise TypeError("Expected argument 'addons' to be a list")
         pulumi.set(__self__, "addons", addons)
@@ -40,6 +40,9 @@ class GetClientResult:
         if allowed_origins and not isinstance(allowed_origins, list):
             raise TypeError("Expected argument 'allowed_origins' to be a list")
         pulumi.set(__self__, "allowed_origins", allowed_origins)
+        if anonymous_sessions and not isinstance(anonymous_sessions, list):
+            raise TypeError("Expected argument 'anonymous_sessions' to be a list")
+        pulumi.set(__self__, "anonymous_sessions", anonymous_sessions)
         if app_type and not isinstance(app_type, str):
             raise TypeError("Expected argument 'app_type' to be a str")
         pulumi.set(__self__, "app_type", app_type)
@@ -249,6 +252,14 @@ class GetClientResult:
         URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
         """
         return pulumi.get(self, "allowed_origins")
+
+    @_builtins.property
+    @pulumi.getter(name="anonymousSessions")
+    def anonymous_sessions(self) -> Sequence['outputs.GetClientAnonymousSessionResult']:
+        """
+        Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+        """
+        return pulumi.get(self, "anonymous_sessions")
 
     @_builtins.property
     @pulumi.getter(name="appType")
@@ -730,6 +741,7 @@ class AwaitableGetClientResult(GetClientResult):
             allowed_clients=self.allowed_clients,
             allowed_logout_urls=self.allowed_logout_urls,
             allowed_origins=self.allowed_origins,
+            anonymous_sessions=self.anonymous_sessions,
             app_type=self.app_type,
             async_approval_notification_channels=self.async_approval_notification_channels,
             b2b_integration_configurations=self.b2b_integration_configurations,
@@ -827,6 +839,7 @@ def get_client(client_id: Optional[_builtins.str] = None,
         allowed_clients=pulumi.get(__ret__, 'allowed_clients'),
         allowed_logout_urls=pulumi.get(__ret__, 'allowed_logout_urls'),
         allowed_origins=pulumi.get(__ret__, 'allowed_origins'),
+        anonymous_sessions=pulumi.get(__ret__, 'anonymous_sessions'),
         app_type=pulumi.get(__ret__, 'app_type'),
         async_approval_notification_channels=pulumi.get(__ret__, 'async_approval_notification_channels'),
         b2b_integration_configurations=pulumi.get(__ret__, 'b2b_integration_configurations'),
@@ -921,6 +934,7 @@ def get_client_output(client_id: pulumi.Input[Optional[Optional[_builtins.str]]]
         allowed_clients=pulumi.get(__response__, 'allowed_clients'),
         allowed_logout_urls=pulumi.get(__response__, 'allowed_logout_urls'),
         allowed_origins=pulumi.get(__response__, 'allowed_origins'),
+        anonymous_sessions=pulumi.get(__response__, 'anonymous_sessions'),
         app_type=pulumi.get(__response__, 'app_type'),
         async_approval_notification_channels=pulumi.get(__response__, 'async_approval_notification_channels'),
         b2b_integration_configurations=pulumi.get(__response__, 'b2b_integration_configurations'),

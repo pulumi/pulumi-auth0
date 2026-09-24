@@ -71,6 +71,11 @@ public final class GetActionResult {
      */
     private List<GetActionSecretsWo> secretsWos;
     /**
+     * @return The build status of the action. Possible values: `built`, `failed`, `building`, `pending`, `retrying`. If the action is in `failed` state, the next `pulumi preview` will show a replacement to re-trigger the build.
+     * 
+     */
+    private String status;
+    /**
      * @return List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
      * 
      */
@@ -153,6 +158,13 @@ public final class GetActionResult {
         return this.secretsWos;
     }
     /**
+     * @return The build status of the action. Possible values: `built`, `failed`, `building`, `pending`, `retrying`. If the action is in `failed` state, the next `pulumi preview` will show a replacement to re-trigger the build.
+     * 
+     */
+    public String status() {
+        return this.status;
+    }
+    /**
      * @return List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
      * 
      */
@@ -186,6 +198,7 @@ public final class GetActionResult {
         private List<GetActionSecret> secrets;
         private Integer secretsWoVersion;
         private List<GetActionSecretsWo> secretsWos;
+        private String status;
         private List<GetActionSupportedTrigger> supportedTriggers;
         private String versionId;
         public Builder() {}
@@ -201,6 +214,7 @@ public final class GetActionResult {
     	      this.secrets = defaults.secrets;
     	      this.secretsWoVersion = defaults.secretsWoVersion;
     	      this.secretsWos = defaults.secretsWos;
+    	      this.status = defaults.status;
     	      this.supportedTriggers = defaults.supportedTriggers;
     	      this.versionId = defaults.versionId;
         }
@@ -294,6 +308,14 @@ public final class GetActionResult {
             return secretsWos(List.of(secretsWos));
         }
         @CustomType.Setter
+        public Builder status(String status) {
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetActionResult", "status");
+            }
+            this.status = status;
+            return this;
+        }
+        @CustomType.Setter
         public Builder supportedTriggers(List<GetActionSupportedTrigger> supportedTriggers) {
             if (supportedTriggers == null) {
               throw new MissingRequiredPropertyException("GetActionResult", "supportedTriggers");
@@ -324,6 +346,7 @@ public final class GetActionResult {
             _resultValue.secrets = secrets;
             _resultValue.secretsWoVersion = secretsWoVersion;
             _resultValue.secretsWos = secretsWos;
+            _resultValue.status = status;
             _resultValue.supportedTriggers = supportedTriggers;
             _resultValue.versionId = versionId;
             return _resultValue;

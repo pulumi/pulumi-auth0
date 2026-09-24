@@ -66,6 +66,8 @@ type LookupResourceServerArgs struct {
 
 // A collection of values returned by getResourceServer.
 type LookupResourceServerResult struct {
+	// Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
+	AccessTokens []GetResourceServerAccessToken `pulumi:"accessTokens"`
 	// Indicates whether refresh tokens can be issued for this resource server.
 	AllowOfflineAccess bool `pulumi:"allowOfflineAccess"`
 	// Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
@@ -110,6 +112,8 @@ type LookupResourceServerResult struct {
 	TokenEncryptions []GetResourceServerTokenEncryption `pulumi:"tokenEncryptions"`
 	// Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
 	TokenLifetime int `pulumi:"tokenLifetime"`
+	// Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+	TokenLifetimeForAnonymousAccessTokens int `pulumi:"tokenLifetimeForAnonymousAccessTokens"`
 	// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
 	TokenLifetimeForWeb int `pulumi:"tokenLifetimeForWeb"`
 	// URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
@@ -146,6 +150,11 @@ func (o LookupResourceServerResultOutput) ToLookupResourceServerResultOutput() L
 
 func (o LookupResourceServerResultOutput) ToLookupResourceServerResultOutputWithContext(ctx context.Context) LookupResourceServerResultOutput {
 	return o
+}
+
+// Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
+func (o LookupResourceServerResultOutput) AccessTokens() GetResourceServerAccessTokenArrayOutput {
+	return o.ApplyT(func(v LookupResourceServerResult) []GetResourceServerAccessToken { return v.AccessTokens }).(GetResourceServerAccessTokenArrayOutput)
 }
 
 // Indicates whether refresh tokens can be issued for this resource server.
@@ -262,6 +271,11 @@ func (o LookupResourceServerResultOutput) TokenEncryptions() GetResourceServerTo
 // Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
 func (o LookupResourceServerResultOutput) TokenLifetime() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupResourceServerResult) int { return v.TokenLifetime }).(pulumi.IntOutput)
+}
+
+// Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+func (o LookupResourceServerResultOutput) TokenLifetimeForAnonymousAccessTokens() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupResourceServerResult) int { return v.TokenLifetimeForAnonymousAccessTokens }).(pulumi.IntOutput)
 }
 
 // Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.

@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.ResourceServerSubjectTypeAuthorizationAnonymousUser;
 import com.pulumi.auth0.outputs.ResourceServerSubjectTypeAuthorizationClient;
 import com.pulumi.auth0.outputs.ResourceServerSubjectTypeAuthorizationUser;
 import com.pulumi.core.annotations.CustomType;
@@ -12,6 +13,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ResourceServerSubjectTypeAuthorization {
+    /**
+     * @return Anonymous user authorization policies for the resource server. (EA only)
+     * 
+     */
+    private @Nullable ResourceServerSubjectTypeAuthorizationAnonymousUser anonymousUser;
     /**
      * @return Client authorization policies for the resource server.
      * 
@@ -24,6 +30,13 @@ public final class ResourceServerSubjectTypeAuthorization {
     private @Nullable ResourceServerSubjectTypeAuthorizationUser user;
 
     private ResourceServerSubjectTypeAuthorization() {}
+    /**
+     * @return Anonymous user authorization policies for the resource server. (EA only)
+     * 
+     */
+    public Optional<ResourceServerSubjectTypeAuthorizationAnonymousUser> anonymousUser() {
+        return Optional.ofNullable(this.anonymousUser);
+    }
     /**
      * @return Client authorization policies for the resource server.
      * 
@@ -48,15 +61,23 @@ public final class ResourceServerSubjectTypeAuthorization {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable ResourceServerSubjectTypeAuthorizationAnonymousUser anonymousUser;
         private @Nullable ResourceServerSubjectTypeAuthorizationClient client;
         private @Nullable ResourceServerSubjectTypeAuthorizationUser user;
         public Builder() {}
         public Builder(ResourceServerSubjectTypeAuthorization defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.anonymousUser = defaults.anonymousUser;
     	      this.client = defaults.client;
     	      this.user = defaults.user;
         }
 
+        @CustomType.Setter
+        public Builder anonymousUser(@Nullable ResourceServerSubjectTypeAuthorizationAnonymousUser anonymousUser) {
+
+            this.anonymousUser = anonymousUser;
+            return this;
+        }
         @CustomType.Setter
         public Builder client(@Nullable ResourceServerSubjectTypeAuthorizationClient client) {
 
@@ -71,6 +92,7 @@ public final class ResourceServerSubjectTypeAuthorization {
         }
         public ResourceServerSubjectTypeAuthorization build() {
             final var _resultValue = new ResourceServerSubjectTypeAuthorization();
+            _resultValue.anonymousUser = anonymousUser;
             _resultValue.client = client;
             _resultValue.user = user;
             return _resultValue;

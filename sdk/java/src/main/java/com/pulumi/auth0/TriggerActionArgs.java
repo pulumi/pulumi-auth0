@@ -47,14 +47,14 @@ public final class TriggerActionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier` and `signup-post-identifier`.
+     * The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier`, `signup-post-identifier` and `post-credential-validation`
      * 
      */
     @Import(name="trigger", required=true)
     private Output<String> trigger;
 
     /**
-     * @return The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier` and `signup-post-identifier`.
+     * @return The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier`, `signup-post-identifier` and `post-credential-validation`
      * 
      */
     public Output<String> trigger() {
@@ -130,7 +130,7 @@ public final class TriggerActionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param trigger The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier` and `signup-post-identifier`.
+         * @param trigger The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier`, `signup-post-identifier` and `post-credential-validation`
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class TriggerActionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param trigger The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier` and `signup-post-identifier`.
+         * @param trigger The ID of the trigger to bind with. Available options: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier`, `signup-post-identifier` and `post-credential-validation`
          * 
          * @return builder
          * 
