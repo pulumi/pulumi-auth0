@@ -74,6 +74,23 @@ namespace Pulumi.Auth0
     ///             SecretKey = "someSecret",
     ///             Hostname = "api-hostname",
     ///         },
+    ///         Settings = new Auth0.Inputs.GuardianSettingsArgs
+    ///         {
+    ///             DisplayRememberMeCheckbox = true,
+    ///             RememberMeDefaultValue = false,
+    ///             MfaSessionInactivityTimeout = 604800,
+    ///             MfaSessionOverallTimeout = 2592000,
+    ///         },
+    ///         PhoneSettings = new Auth0.Inputs.GuardianPhoneSettingsArgs
+    ///         {
+    ///             OtpLength = 6,
+    ///             OtpExpirationTime = 300,
+    ///         },
+    ///         EmailSettings = new Auth0.Inputs.GuardianEmailSettingsArgs
+    ///         {
+    ///             OtpLength = 6,
+    ///             OtpExpirationTime = 300,
+    ///         },
     ///         Policy = "all-applications",
     ///         Email = true,
     ///         Otp = true,
@@ -112,6 +129,12 @@ namespace Pulumi.Auth0
         public Output<bool?> Email { get; private set; } = null!;
 
         /// <summary>
+        /// One-time password settings for the email MFA factor. These are independent of whether the email factor is enabled.
+        /// </summary>
+        [Output("emailSettings")]
+        public Output<Outputs.GuardianEmailSettings> EmailSettings { get; private set; } = null!;
+
+        /// <summary>
         /// Indicates whether one time password MFA is enabled.
         /// </summary>
         [Output("otp")]
@@ -122,6 +145,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("phone")]
         public Output<Outputs.GuardianPhone> Phone { get; private set; } = null!;
+
+        /// <summary>
+        /// One-time password settings for the phone MFA factor. These are independent of whether the phone factor is enabled.
+        /// </summary>
+        [Output("phoneSettings")]
+        public Output<Outputs.GuardianPhoneSettings> PhoneSettings { get; private set; } = null!;
 
         /// <summary>
         /// Policy to use. Available options are `Never`, `all-applications` and `confidence-score`.
@@ -140,6 +169,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("recoveryCode")]
         public Output<bool?> RecoveryCode { get; private set; } = null!;
+
+        /// <summary>
+        /// Tenant-wide MFA settings controlling how often users are re-prompted for MFA and how the "Remember me" checkbox behaves. This block requires `read:tenant_settings` and `update:tenant_settings` scopes, which the other attributes of this resource do not require.
+        /// </summary>
+        [Output("settings")]
+        public Output<Outputs.GuardianSettings> Settings { get; private set; } = null!;
 
         /// <summary>
         /// Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
@@ -212,6 +247,12 @@ namespace Pulumi.Auth0
         public Input<bool>? Email { get; set; }
 
         /// <summary>
+        /// One-time password settings for the email MFA factor. These are independent of whether the email factor is enabled.
+        /// </summary>
+        [Input("emailSettings")]
+        public Input<Inputs.GuardianEmailSettingsArgs>? EmailSettings { get; set; }
+
+        /// <summary>
         /// Indicates whether one time password MFA is enabled.
         /// </summary>
         [Input("otp")]
@@ -222,6 +263,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("phone")]
         public Input<Inputs.GuardianPhoneArgs>? Phone { get; set; }
+
+        /// <summary>
+        /// One-time password settings for the phone MFA factor. These are independent of whether the phone factor is enabled.
+        /// </summary>
+        [Input("phoneSettings")]
+        public Input<Inputs.GuardianPhoneSettingsArgs>? PhoneSettings { get; set; }
 
         /// <summary>
         /// Policy to use. Available options are `Never`, `all-applications` and `confidence-score`.
@@ -240,6 +287,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("recoveryCode")]
         public Input<bool>? RecoveryCode { get; set; }
+
+        /// <summary>
+        /// Tenant-wide MFA settings controlling how often users are re-prompted for MFA and how the "Remember me" checkbox behaves. This block requires `read:tenant_settings` and `update:tenant_settings` scopes, which the other attributes of this resource do not require.
+        /// </summary>
+        [Input("settings")]
+        public Input<Inputs.GuardianSettingsArgs>? Settings { get; set; }
 
         /// <summary>
         /// Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
@@ -274,6 +327,12 @@ namespace Pulumi.Auth0
         public Input<bool>? Email { get; set; }
 
         /// <summary>
+        /// One-time password settings for the email MFA factor. These are independent of whether the email factor is enabled.
+        /// </summary>
+        [Input("emailSettings")]
+        public Input<Inputs.GuardianEmailSettingsGetArgs>? EmailSettings { get; set; }
+
+        /// <summary>
         /// Indicates whether one time password MFA is enabled.
         /// </summary>
         [Input("otp")]
@@ -284,6 +343,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("phone")]
         public Input<Inputs.GuardianPhoneGetArgs>? Phone { get; set; }
+
+        /// <summary>
+        /// One-time password settings for the phone MFA factor. These are independent of whether the phone factor is enabled.
+        /// </summary>
+        [Input("phoneSettings")]
+        public Input<Inputs.GuardianPhoneSettingsGetArgs>? PhoneSettings { get; set; }
 
         /// <summary>
         /// Policy to use. Available options are `Never`, `all-applications` and `confidence-score`.
@@ -302,6 +367,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("recoveryCode")]
         public Input<bool>? RecoveryCode { get; set; }
+
+        /// <summary>
+        /// Tenant-wide MFA settings controlling how often users are re-prompted for MFA and how the "Remember me" checkbox behaves. This block requires `read:tenant_settings` and `update:tenant_settings` scopes, which the other attributes of this resource do not require.
+        /// </summary>
+        [Input("settings")]
+        public Input<Inputs.GuardianSettingsGetArgs>? Settings { get; set; }
 
         /// <summary>
         /// Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.

@@ -14,13 +14,21 @@ namespace Pulumi.Auth0.Outputs
     public sealed class TenantSessions
     {
         /// <summary>
+        /// Anonymous Sessions settings for the tenant. (EA only)
+        /// </summary>
+        public readonly Outputs.TenantSessionsAnonymous? Anonymous;
+        /// <summary>
         /// When active, users will be presented with a consent prompt to confirm the logout request if the request is not trustworthy. Turn off the consent prompt to bypass user confirmation.
         /// </summary>
         public readonly bool OidcLogoutPromptEnabled;
 
         [OutputConstructor]
-        private TenantSessions(bool oidcLogoutPromptEnabled)
+        private TenantSessions(
+            Outputs.TenantSessionsAnonymous? anonymous,
+
+            bool oidcLogoutPromptEnabled)
         {
+            Anonymous = anonymous;
             OidcLogoutPromptEnabled = oidcLogoutPromptEnabled;
         }
     }

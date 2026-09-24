@@ -6,6 +6,7 @@ package com.pulumi.auth0.inputs;
 import com.pulumi.auth0.inputs.ClientMyOrganizationConfigurationThirdPartyClientAccessArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -63,6 +64,36 @@ public final class ClientMyOrganizationConfigurationArgs extends com.pulumi.reso
     }
 
     /**
+     * When true, limits the permissions that organization admins can assign to members to only those held by the admin themselves. Requires the `myOrgMemberManagementEa` feature flag. Available in Early Access (EA).
+     * 
+     */
+    @Import(name="enforcePermissionCeiling")
+    private @Nullable Output<Boolean> enforcePermissionCeiling;
+
+    /**
+     * @return When true, limits the permissions that organization admins can assign to members to only those held by the admin themselves. Requires the `myOrgMemberManagementEa` feature flag. Available in Early Access (EA).
+     * 
+     */
+    public Optional<Output<Boolean>> enforcePermissionCeiling() {
+        return Optional.ofNullable(this.enforcePermissionCeiling);
+    }
+
+    /**
+     * When true, prevents organization admins from assigning permissions to themselves. Requires the `myOrgMemberManagementEa` feature flag. Available in Early Access (EA).
+     * 
+     */
+    @Import(name="enforceSelfAssignmentRestriction")
+    private @Nullable Output<Boolean> enforceSelfAssignmentRestriction;
+
+    /**
+     * @return When true, prevents organization admins from assigning permissions to themselves. Requires the `myOrgMemberManagementEa` feature flag. Available in Early Access (EA).
+     * 
+     */
+    public Optional<Output<Boolean>> enforceSelfAssignmentRestriction() {
+        return Optional.ofNullable(this.enforceSelfAssignmentRestriction);
+    }
+
+    /**
      * The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
      * 
      */
@@ -113,6 +144,8 @@ public final class ClientMyOrganizationConfigurationArgs extends com.pulumi.reso
         this.allowedStrategies = $.allowedStrategies;
         this.connectionDeletionBehavior = $.connectionDeletionBehavior;
         this.connectionProfileId = $.connectionProfileId;
+        this.enforcePermissionCeiling = $.enforcePermissionCeiling;
+        this.enforceSelfAssignmentRestriction = $.enforceSelfAssignmentRestriction;
         this.invitationLandingClientId = $.invitationLandingClientId;
         this.thirdPartyClientAccess = $.thirdPartyClientAccess;
         this.userAttributeProfileId = $.userAttributeProfileId;
@@ -207,6 +240,48 @@ public final class ClientMyOrganizationConfigurationArgs extends com.pulumi.reso
          */
         public Builder connectionProfileId(String connectionProfileId) {
             return connectionProfileId(Output.of(connectionProfileId));
+        }
+
+        /**
+         * @param enforcePermissionCeiling When true, limits the permissions that organization admins can assign to members to only those held by the admin themselves. Requires the `myOrgMemberManagementEa` feature flag. Available in Early Access (EA).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enforcePermissionCeiling(@Nullable Output<Boolean> enforcePermissionCeiling) {
+            $.enforcePermissionCeiling = enforcePermissionCeiling;
+            return this;
+        }
+
+        /**
+         * @param enforcePermissionCeiling When true, limits the permissions that organization admins can assign to members to only those held by the admin themselves. Requires the `myOrgMemberManagementEa` feature flag. Available in Early Access (EA).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enforcePermissionCeiling(Boolean enforcePermissionCeiling) {
+            return enforcePermissionCeiling(Output.of(enforcePermissionCeiling));
+        }
+
+        /**
+         * @param enforceSelfAssignmentRestriction When true, prevents organization admins from assigning permissions to themselves. Requires the `myOrgMemberManagementEa` feature flag. Available in Early Access (EA).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enforceSelfAssignmentRestriction(@Nullable Output<Boolean> enforceSelfAssignmentRestriction) {
+            $.enforceSelfAssignmentRestriction = enforceSelfAssignmentRestriction;
+            return this;
+        }
+
+        /**
+         * @param enforceSelfAssignmentRestriction When true, prevents organization admins from assigning permissions to themselves. Requires the `myOrgMemberManagementEa` feature flag. Available in Early Access (EA).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enforceSelfAssignmentRestriction(Boolean enforceSelfAssignmentRestriction) {
+            return enforceSelfAssignmentRestriction(Output.of(enforceSelfAssignmentRestriction));
         }
 
         /**

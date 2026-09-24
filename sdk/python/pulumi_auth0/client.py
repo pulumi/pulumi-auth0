@@ -25,6 +25,7 @@ class ClientArgs:
                  allowed_clients: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allowed_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 anonymous_sessions: pulumi.Input[Optional['ClientAnonymousSessionsArgs']] = None,
                  app_type: pulumi.Input[Optional[_builtins.str]] = None,
                  async_approval_notification_channels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  b2b_integration_configuration: pulumi.Input[Optional['ClientB2bIntegrationConfigurationArgs']] = None,
@@ -80,6 +81,7 @@ class ClientArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_clients: List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+        :param pulumi.Input['ClientAnonymousSessionsArgs'] anonymous_sessions: Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
         :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `express_configuration`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] async_approval_notification_channels: List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
         :param pulumi.Input['ClientB2bIntegrationConfigurationArgs'] b2b_integration_configuration: Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
@@ -136,6 +138,8 @@ class ClientArgs:
             pulumi.set(__self__, "allowed_logout_urls", allowed_logout_urls)
         if allowed_origins is not None:
             pulumi.set(__self__, "allowed_origins", allowed_origins)
+        if anonymous_sessions is not None:
+            pulumi.set(__self__, "anonymous_sessions", anonymous_sessions)
         if app_type is not None:
             pulumi.set(__self__, "app_type", app_type)
         if async_approval_notification_channels is not None:
@@ -285,6 +289,18 @@ class ClientArgs:
     @allowed_origins.setter
     def allowed_origins(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_origins", value)
+
+    @_builtins.property
+    @pulumi.getter(name="anonymousSessions")
+    def anonymous_sessions(self) -> pulumi.Input[Optional['ClientAnonymousSessionsArgs']]:
+        """
+        Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+        """
+        return pulumi.get(self, "anonymous_sessions")
+
+    @anonymous_sessions.setter
+    def anonymous_sessions(self, value: pulumi.Input[Optional['ClientAnonymousSessionsArgs']]):
+        pulumi.set(self, "anonymous_sessions", value)
 
     @_builtins.property
     @pulumi.getter(name="appType")
@@ -868,6 +884,7 @@ class _ClientState:
                  allowed_clients: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allowed_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 anonymous_sessions: pulumi.Input[Optional['ClientAnonymousSessionsArgs']] = None,
                  app_type: pulumi.Input[Optional[_builtins.str]] = None,
                  async_approval_notification_channels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  b2b_integration_configuration: pulumi.Input[Optional['ClientB2bIntegrationConfigurationArgs']] = None,
@@ -928,6 +945,7 @@ class _ClientState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_clients: List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+        :param pulumi.Input['ClientAnonymousSessionsArgs'] anonymous_sessions: Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
         :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `express_configuration`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] async_approval_notification_channels: List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
         :param pulumi.Input['ClientB2bIntegrationConfigurationArgs'] b2b_integration_configuration: Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
@@ -989,6 +1007,8 @@ class _ClientState:
             pulumi.set(__self__, "allowed_logout_urls", allowed_logout_urls)
         if allowed_origins is not None:
             pulumi.set(__self__, "allowed_origins", allowed_origins)
+        if anonymous_sessions is not None:
+            pulumi.set(__self__, "anonymous_sessions", anonymous_sessions)
         if app_type is not None:
             pulumi.set(__self__, "app_type", app_type)
         if async_approval_notification_channels is not None:
@@ -1148,6 +1168,18 @@ class _ClientState:
     @allowed_origins.setter
     def allowed_origins(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_origins", value)
+
+    @_builtins.property
+    @pulumi.getter(name="anonymousSessions")
+    def anonymous_sessions(self) -> pulumi.Input[Optional['ClientAnonymousSessionsArgs']]:
+        """
+        Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+        """
+        return pulumi.get(self, "anonymous_sessions")
+
+    @anonymous_sessions.setter
+    def anonymous_sessions(self, value: pulumi.Input[Optional['ClientAnonymousSessionsArgs']]):
+        pulumi.set(self, "anonymous_sessions", value)
 
     @_builtins.property
     @pulumi.getter(name="appType")
@@ -1794,6 +1826,7 @@ class Client(pulumi.CustomResource):
                  allowed_clients: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allowed_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 anonymous_sessions: pulumi.Input[Optional[Union['ClientAnonymousSessionsArgs', 'ClientAnonymousSessionsArgsDict', 'outputs.ClientAnonymousSessions']]] = None,
                  app_type: pulumi.Input[Optional[_builtins.str]] = None,
                  async_approval_notification_channels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  b2b_integration_configuration: pulumi.Input[Optional[Union['ClientB2bIntegrationConfigurationArgs', 'ClientB2bIntegrationConfigurationArgsDict', 'outputs.ClientB2bIntegrationConfiguration']]] = None,
@@ -1863,6 +1896,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_clients: List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+        :param pulumi.Input[Union['ClientAnonymousSessionsArgs', 'ClientAnonymousSessionsArgsDict', 'outputs.ClientAnonymousSessions']] anonymous_sessions: Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
         :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `express_configuration`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] async_approval_notification_channels: List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
         :param pulumi.Input[Union['ClientB2bIntegrationConfigurationArgs', 'ClientB2bIntegrationConfigurationArgsDict', 'outputs.ClientB2bIntegrationConfiguration']] b2b_integration_configuration: Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
@@ -1950,6 +1984,7 @@ class Client(pulumi.CustomResource):
                  allowed_clients: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allowed_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 anonymous_sessions: pulumi.Input[Optional[Union['ClientAnonymousSessionsArgs', 'ClientAnonymousSessionsArgsDict', 'outputs.ClientAnonymousSessions']]] = None,
                  app_type: pulumi.Input[Optional[_builtins.str]] = None,
                  async_approval_notification_channels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  b2b_integration_configuration: pulumi.Input[Optional[Union['ClientB2bIntegrationConfigurationArgs', 'ClientB2bIntegrationConfigurationArgsDict', 'outputs.ClientB2bIntegrationConfiguration']]] = None,
@@ -2011,6 +2046,7 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["allowed_clients"] = allowed_clients
             __props__.__dict__["allowed_logout_urls"] = allowed_logout_urls
             __props__.__dict__["allowed_origins"] = allowed_origins
+            __props__.__dict__["anonymous_sessions"] = anonymous_sessions
             __props__.__dict__["app_type"] = app_type
             __props__.__dict__["async_approval_notification_channels"] = async_approval_notification_channels
             __props__.__dict__["b2b_integration_configuration"] = b2b_integration_configuration
@@ -2082,6 +2118,7 @@ class Client(pulumi.CustomResource):
             allowed_clients: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             allowed_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            anonymous_sessions: pulumi.Input[Optional[Union['ClientAnonymousSessionsArgs', 'ClientAnonymousSessionsArgsDict', 'outputs.ClientAnonymousSessions']]] = None,
             app_type: pulumi.Input[Optional[_builtins.str]] = None,
             async_approval_notification_channels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             b2b_integration_configuration: pulumi.Input[Optional[Union['ClientB2bIntegrationConfigurationArgs', 'ClientB2bIntegrationConfigurationArgsDict', 'outputs.ClientB2bIntegrationConfiguration']]] = None,
@@ -2146,6 +2183,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_clients: List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+        :param pulumi.Input[Union['ClientAnonymousSessionsArgs', 'ClientAnonymousSessionsArgsDict', 'outputs.ClientAnonymousSessions']] anonymous_sessions: Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
         :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `express_configuration`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] async_approval_notification_channels: List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
         :param pulumi.Input[Union['ClientB2bIntegrationConfigurationArgs', 'ClientB2bIntegrationConfigurationArgsDict', 'outputs.ClientB2bIntegrationConfiguration']] b2b_integration_configuration: Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
@@ -2207,6 +2245,7 @@ class Client(pulumi.CustomResource):
         __props__.__dict__["allowed_clients"] = allowed_clients
         __props__.__dict__["allowed_logout_urls"] = allowed_logout_urls
         __props__.__dict__["allowed_origins"] = allowed_origins
+        __props__.__dict__["anonymous_sessions"] = anonymous_sessions
         __props__.__dict__["app_type"] = app_type
         __props__.__dict__["async_approval_notification_channels"] = async_approval_notification_channels
         __props__.__dict__["b2b_integration_configuration"] = b2b_integration_configuration
@@ -2293,6 +2332,14 @@ class Client(pulumi.CustomResource):
         URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
         """
         return pulumi.get(self, "allowed_origins")
+
+    @_builtins.property
+    @pulumi.getter(name="anonymousSessions")
+    def anonymous_sessions(self) -> pulumi.Output[Optional['outputs.ClientAnonymousSessions']]:
+        """
+        Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+        """
+        return pulumi.get(self, "anonymous_sessions")
 
     @_builtins.property
     @pulumi.getter(name="appType")

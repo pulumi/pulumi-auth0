@@ -13,6 +13,12 @@ namespace Pulumi.Auth0.Inputs
     public sealed class ResourceServerSubjectTypeAuthorizationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Anonymous user authorization policies for the resource server. (EA only)
+        /// </summary>
+        [Input("anonymousUser")]
+        public Input<Inputs.ResourceServerSubjectTypeAuthorizationAnonymousUserGetArgs>? AnonymousUser { get; set; }
+
+        /// <summary>
         /// Client authorization policies for the resource server.
         /// </summary>
         [Input("client")]

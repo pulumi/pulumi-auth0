@@ -19,14 +19,14 @@ public final class PromptScreenPartialsArgs extends com.pulumi.resources.Resourc
     public static final PromptScreenPartialsArgs Empty = new PromptScreenPartialsArgs();
 
     /**
-     * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`.
+     * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`, `confirmation`.
      * 
      */
     @Import(name="promptType", required=true)
     private Output<String> promptType;
 
     /**
-     * @return The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`.
+     * @return The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`, `confirmation`.
      * 
      */
     public Output<String> promptType() {
@@ -66,7 +66,7 @@ public final class PromptScreenPartialsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param promptType The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`.
+         * @param promptType The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`, `confirmation`.
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class PromptScreenPartialsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param promptType The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`.
+         * @param promptType The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`, `confirmation`.
          * 
          * @return builder
          * 

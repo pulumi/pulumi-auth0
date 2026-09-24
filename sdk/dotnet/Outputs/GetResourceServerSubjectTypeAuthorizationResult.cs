@@ -14,6 +14,10 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GetResourceServerSubjectTypeAuthorizationResult
     {
         /// <summary>
+        /// Anonymous user authorization policies for the resource server. (EA only)
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetResourceServerSubjectTypeAuthorizationAnonymousUserResult> AnonymousUsers;
+        /// <summary>
         /// Client authorization policies for the resource server.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetResourceServerSubjectTypeAuthorizationClientResult> Clients;
@@ -24,10 +28,13 @@ namespace Pulumi.Auth0.Outputs
 
         [OutputConstructor]
         private GetResourceServerSubjectTypeAuthorizationResult(
+            ImmutableArray<Outputs.GetResourceServerSubjectTypeAuthorizationAnonymousUserResult> anonymousUsers,
+
             ImmutableArray<Outputs.GetResourceServerSubjectTypeAuthorizationClientResult> clients,
 
             ImmutableArray<Outputs.GetResourceServerSubjectTypeAuthorizationUserResult> users)
         {
+            AnonymousUsers = anonymousUsers;
             Clients = clients;
             Users = users;
         }

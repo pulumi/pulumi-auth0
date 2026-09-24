@@ -6,6 +6,7 @@ package com.pulumi.auth0.outputs;
 import com.pulumi.auth0.outputs.GetClientsClientMyOrganizationConfigurationThirdPartyClientAccess;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -27,6 +28,16 @@ public final class GetClientsClientMyOrganizationConfiguration {
      * 
      */
     private String connectionProfileId;
+    /**
+     * @return When true, limits the permissions that organization admins can assign to members to only those held by the admin themselves. Requires the `myOrgMemberManagementEa` feature flag. Available in Early Access (EA).
+     * 
+     */
+    private Boolean enforcePermissionCeiling;
+    /**
+     * @return When true, prevents organization admins from assigning permissions to themselves. Requires the `myOrgMemberManagementEa` feature flag. Available in Early Access (EA).
+     * 
+     */
+    private Boolean enforceSelfAssignmentRestriction;
     /**
      * @return The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
      * 
@@ -66,6 +77,20 @@ public final class GetClientsClientMyOrganizationConfiguration {
         return this.connectionProfileId;
     }
     /**
+     * @return When true, limits the permissions that organization admins can assign to members to only those held by the admin themselves. Requires the `myOrgMemberManagementEa` feature flag. Available in Early Access (EA).
+     * 
+     */
+    public Boolean enforcePermissionCeiling() {
+        return this.enforcePermissionCeiling;
+    }
+    /**
+     * @return When true, prevents organization admins from assigning permissions to themselves. Requires the `myOrgMemberManagementEa` feature flag. Available in Early Access (EA).
+     * 
+     */
+    public Boolean enforceSelfAssignmentRestriction() {
+        return this.enforceSelfAssignmentRestriction;
+    }
+    /**
      * @return The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
      * 
      */
@@ -99,6 +124,8 @@ public final class GetClientsClientMyOrganizationConfiguration {
         private List<String> allowedStrategies;
         private String connectionDeletionBehavior;
         private String connectionProfileId;
+        private Boolean enforcePermissionCeiling;
+        private Boolean enforceSelfAssignmentRestriction;
         private String invitationLandingClientId;
         private List<GetClientsClientMyOrganizationConfigurationThirdPartyClientAccess> thirdPartyClientAccesses;
         private String userAttributeProfileId;
@@ -108,6 +135,8 @@ public final class GetClientsClientMyOrganizationConfiguration {
     	      this.allowedStrategies = defaults.allowedStrategies;
     	      this.connectionDeletionBehavior = defaults.connectionDeletionBehavior;
     	      this.connectionProfileId = defaults.connectionProfileId;
+    	      this.enforcePermissionCeiling = defaults.enforcePermissionCeiling;
+    	      this.enforceSelfAssignmentRestriction = defaults.enforceSelfAssignmentRestriction;
     	      this.invitationLandingClientId = defaults.invitationLandingClientId;
     	      this.thirdPartyClientAccesses = defaults.thirdPartyClientAccesses;
     	      this.userAttributeProfileId = defaults.userAttributeProfileId;
@@ -138,6 +167,22 @@ public final class GetClientsClientMyOrganizationConfiguration {
               throw new MissingRequiredPropertyException("GetClientsClientMyOrganizationConfiguration", "connectionProfileId");
             }
             this.connectionProfileId = connectionProfileId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enforcePermissionCeiling(Boolean enforcePermissionCeiling) {
+            if (enforcePermissionCeiling == null) {
+              throw new MissingRequiredPropertyException("GetClientsClientMyOrganizationConfiguration", "enforcePermissionCeiling");
+            }
+            this.enforcePermissionCeiling = enforcePermissionCeiling;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enforceSelfAssignmentRestriction(Boolean enforceSelfAssignmentRestriction) {
+            if (enforceSelfAssignmentRestriction == null) {
+              throw new MissingRequiredPropertyException("GetClientsClientMyOrganizationConfiguration", "enforceSelfAssignmentRestriction");
+            }
+            this.enforceSelfAssignmentRestriction = enforceSelfAssignmentRestriction;
             return this;
         }
         @CustomType.Setter
@@ -172,6 +217,8 @@ public final class GetClientsClientMyOrganizationConfiguration {
             _resultValue.allowedStrategies = allowedStrategies;
             _resultValue.connectionDeletionBehavior = connectionDeletionBehavior;
             _resultValue.connectionProfileId = connectionProfileId;
+            _resultValue.enforcePermissionCeiling = enforcePermissionCeiling;
+            _resultValue.enforceSelfAssignmentRestriction = enforceSelfAssignmentRestriction;
             _resultValue.invitationLandingClientId = invitationLandingClientId;
             _resultValue.thirdPartyClientAccesses = thirdPartyClientAccesses;
             _resultValue.userAttributeProfileId = userAttributeProfileId;

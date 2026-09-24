@@ -74,6 +74,10 @@ export interface GetClientResult {
      */
     readonly allowedOrigins: string[];
     /**
+     * Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+     */
+    readonly anonymousSessions: outputs.GetClientAnonymousSession[];
+    /**
      * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
      */
     readonly appType: string;

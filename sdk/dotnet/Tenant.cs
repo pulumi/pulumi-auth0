@@ -42,6 +42,11 @@ namespace Pulumi.Auth0
     ///         },
     ///         Sessions = new Auth0.Inputs.TenantSessionsArgs
     ///         {
+    ///             Anonymous = new Auth0.Inputs.TenantSessionsAnonymousArgs
+    ///             {
+    ///                 LifetimeInMinutes = 43200,
+    ///                 ActivateCookie = true,
+    ///             },
     ///             OidcLogoutPromptEnabled = false,
     ///         },
     ///         ErrorPage = new Auth0.Inputs.TenantErrorPageArgs

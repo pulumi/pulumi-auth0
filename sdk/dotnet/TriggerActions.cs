@@ -103,7 +103,7 @@ namespace Pulumi.Auth0
         public Output<ImmutableArray<Outputs.TriggerActionsAction>> Actions { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier`, `signup-post-identifier`.
+        /// The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier`, `signup-post-identifier` and `post-credential-validation`
         /// </summary>
         [Output("trigger")]
         public Output<string> Trigger { get; private set; } = null!;
@@ -167,7 +167,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier`, `signup-post-identifier`.
+        /// The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier`, `signup-post-identifier` and `post-credential-validation`
         /// </summary>
         [Input("trigger", required: true)]
         public Input<string> Trigger { get; set; } = null!;
@@ -193,7 +193,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier`, `signup-post-identifier`.
+        /// The ID of the trigger to bind with. Options include: `post-login`, `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, `send-phone-message`, `password-reset-post-challenge`, `custom-email-provider`, `custom-phone-provider`, `login-post-identifier`, `signup-post-identifier` and `post-credential-validation`
         /// </summary>
         [Input("trigger")]
         public Input<string>? Trigger { get; set; }

@@ -26,6 +26,14 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string ConnectionProfileId;
         /// <summary>
+        /// When true, limits the permissions that organization admins can assign to members to only those held by the admin themselves. Requires the `MyOrgMemberManagementEa` feature flag. Available in Early Access (EA).
+        /// </summary>
+        public readonly bool EnforcePermissionCeiling;
+        /// <summary>
+        /// When true, prevents organization admins from assigning permissions to themselves. Requires the `MyOrgMemberManagementEa` feature flag. Available in Early Access (EA).
+        /// </summary>
+        public readonly bool EnforceSelfAssignmentRestriction;
+        /// <summary>
         /// The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
         /// </summary>
         public readonly string InvitationLandingClientId;
@@ -46,6 +54,10 @@ namespace Pulumi.Auth0.Outputs
 
             string connectionProfileId,
 
+            bool enforcePermissionCeiling,
+
+            bool enforceSelfAssignmentRestriction,
+
             string invitationLandingClientId,
 
             ImmutableArray<Outputs.GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessResult> thirdPartyClientAccesses,
@@ -55,6 +67,8 @@ namespace Pulumi.Auth0.Outputs
             AllowedStrategies = allowedStrategies;
             ConnectionDeletionBehavior = connectionDeletionBehavior;
             ConnectionProfileId = connectionProfileId;
+            EnforcePermissionCeiling = enforcePermissionCeiling;
+            EnforceSelfAssignmentRestriction = enforceSelfAssignmentRestriction;
             InvitationLandingClientId = invitationLandingClientId;
             ThirdPartyClientAccesses = thirdPartyClientAccesses;
             UserAttributeProfileId = userAttributeProfileId;

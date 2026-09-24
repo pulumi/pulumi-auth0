@@ -103,6 +103,22 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// The following example grants a client access to anonymous access tokens for an API whose
+//			// anonymous_user policy is set to "require_client_grant". The subject_type "anonymous_user" is
+//			// only accepted at creation time and cannot be combined with organization_usage,
+//			// allow_any_organization, authorization_details_types, or default_for.
+//			// Anonymous Sessions is an Early Access feature.
+//			_, err = auth0.NewClientGrant(ctx, "my_anonymous_grant", &auth0.ClientGrantArgs{
+//				ClientId: myClient.ID().ToIDOutput().ToStringOutput(),
+//				Audience: myResourceServer.Identifier,
+//				Scopes: pulumi.StringArray{
+//					pulumi.String("read:foo"),
+//				},
+//				SubjectType: pulumi.String("anonymous_user"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -140,7 +156,7 @@ type ClientGrant struct {
 	OrganizationUsage pulumi.StringPtrOutput `pulumi:"organizationUsage"`
 	// Permissions (scopes) included in this grant. Can not be provided when `allowAllScopes` is set to `true`.
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
-	// Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+	// Defines the type of subject for this grant. Can be one of `client`, `user`, or `anonymousUser` (EA only). Defaults to `client` when not defined.
 	SubjectType pulumi.StringOutput `pulumi:"subjectType"`
 }
 
@@ -195,7 +211,7 @@ type clientGrantState struct {
 	OrganizationUsage *string `pulumi:"organizationUsage"`
 	// Permissions (scopes) included in this grant. Can not be provided when `allowAllScopes` is set to `true`.
 	Scopes []string `pulumi:"scopes"`
-	// Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+	// Defines the type of subject for this grant. Can be one of `client`, `user`, or `anonymousUser` (EA only). Defaults to `client` when not defined.
 	SubjectType *string `pulumi:"subjectType"`
 }
 
@@ -218,7 +234,7 @@ type ClientGrantState struct {
 	OrganizationUsage pulumi.StringPtrInput
 	// Permissions (scopes) included in this grant. Can not be provided when `allowAllScopes` is set to `true`.
 	Scopes pulumi.StringArrayInput
-	// Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+	// Defines the type of subject for this grant. Can be one of `client`, `user`, or `anonymousUser` (EA only). Defaults to `client` when not defined.
 	SubjectType pulumi.StringPtrInput
 }
 
@@ -243,7 +259,7 @@ type clientGrantArgs struct {
 	OrganizationUsage *string `pulumi:"organizationUsage"`
 	// Permissions (scopes) included in this grant. Can not be provided when `allowAllScopes` is set to `true`.
 	Scopes []string `pulumi:"scopes"`
-	// Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+	// Defines the type of subject for this grant. Can be one of `client`, `user`, or `anonymousUser` (EA only). Defaults to `client` when not defined.
 	SubjectType *string `pulumi:"subjectType"`
 }
 
@@ -265,7 +281,7 @@ type ClientGrantArgs struct {
 	OrganizationUsage pulumi.StringPtrInput
 	// Permissions (scopes) included in this grant. Can not be provided when `allowAllScopes` is set to `true`.
 	Scopes pulumi.StringArrayInput
-	// Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+	// Defines the type of subject for this grant. Can be one of `client`, `user`, or `anonymousUser` (EA only). Defaults to `client` when not defined.
 	SubjectType pulumi.StringPtrInput
 }
 
@@ -401,7 +417,7 @@ func (o ClientGrantOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClientGrant) pulumi.StringArrayOutput { return v.Scopes }).(pulumi.StringArrayOutput)
 }
 
-// Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+// Defines the type of subject for this grant. Can be one of `client`, `user`, or `anonymousUser` (EA only). Defaults to `client` when not defined.
 func (o ClientGrantOutput) SubjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientGrant) pulumi.StringOutput { return v.SubjectType }).(pulumi.StringOutput)
 }

@@ -1288,6 +1288,13 @@ export interface ClientAddonsZoom {
     account?: string;
 }
 
+export interface ClientAnonymousSessions {
+    /**
+     * If set to true, this client is allowed to create anonymous sessions. Requires `oidcConformant` to be set to `true`. Set to `false` to disable. (EA only)
+     */
+    active: boolean;
+}
+
 export interface ClientB2bIntegrationConfiguration {
     /**
      * The type of integration used to connect to this B2B integration client. One of custom*auth*server, third_party, application
@@ -1781,6 +1788,14 @@ export interface ClientMyOrganizationConfiguration {
      * The ID of the connection profile to use when creating organizations for this client.
      */
     connectionProfileId?: string;
+    /**
+     * When true, limits the permissions that organization admins can assign to members to only those held by the admin themselves. Requires the `myOrgMemberManagementEa` feature flag. Available in Early Access (EA).
+     */
+    enforcePermissionCeiling?: boolean;
+    /**
+     * When true, prevents organization admins from assigning permissions to themselves. Requires the `myOrgMemberManagementEa` feature flag. Available in Early Access (EA).
+     */
+    enforceSelfAssignmentRestriction?: boolean;
     /**
      * The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
      */
@@ -4849,6 +4864,13 @@ export interface GetClientAddonZoom {
     account: string;
 }
 
+export interface GetClientAnonymousSession {
+    /**
+     * If set to true, this client is allowed to create anonymous sessions. Requires `oidcConformant` to be set to `true`. Set to `false` to disable. (EA only)
+     */
+    active: boolean;
+}
+
 export interface GetClientB2bIntegrationConfiguration {
     /**
      * The type of integration used to connect to this B2B integration client. One of custom_auth_server, third_party, application
@@ -5216,6 +5238,14 @@ export interface GetClientMyOrganizationConfiguration {
      */
     connectionProfileId: string;
     /**
+     * When true, limits the permissions that organization admins can assign to members to only those held by the admin themselves. Requires the `myOrgMemberManagementEa` feature flag. Available in Early Access (EA).
+     */
+    enforcePermissionCeiling: boolean;
+    /**
+     * When true, prevents organization admins from assigning permissions to themselves. Requires the `myOrgMemberManagementEa` feature flag. Available in Early Access (EA).
+     */
+    enforceSelfAssignmentRestriction: boolean;
+    /**
      * The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
      */
     invitationLandingClientId: string;
@@ -5465,6 +5495,10 @@ export interface GetClientsClient {
      */
     allowedOrigins: string[];
     /**
+     * Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+     */
+    anonymousSessions: outputs.GetClientsClientAnonymousSession[];
+    /**
      * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
      */
     appType: string;
@@ -5583,6 +5617,13 @@ export interface GetClientsClient {
     webOrigins: string[];
 }
 
+export interface GetClientsClientAnonymousSession {
+    /**
+     * If set to true, this client is allowed to create anonymous sessions. Requires `oidcConformant` to be set to `true`. Set to `false` to disable. (EA only)
+     */
+    active: boolean;
+}
+
 export interface GetClientsClientB2bIntegrationConfiguration {
     /**
      * The type of integration used to connect to this B2B integration client. One of custom_auth_server, third_party, application
@@ -5674,6 +5715,14 @@ export interface GetClientsClientMyOrganizationConfiguration {
      * The ID of the connection profile to use when creating organizations for this client.
      */
     connectionProfileId: string;
+    /**
+     * When true, limits the permissions that organization admins can assign to members to only those held by the admin themselves. Requires the `myOrgMemberManagementEa` feature flag. Available in Early Access (EA).
+     */
+    enforcePermissionCeiling: boolean;
+    /**
+     * When true, prevents organization admins from assigning permissions to themselves. Requires the `myOrgMemberManagementEa` feature flag. Available in Early Access (EA).
+     */
+    enforceSelfAssignmentRestriction: boolean;
     /**
      * The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
      */
@@ -7962,6 +8011,31 @@ export interface GetRateLimitPolicyConfiguration {
     redirectUri: string;
 }
 
+export interface GetResourceServerAccessToken {
+    /**
+     * Configuration for mapping claims into the access tokens issued for this resource server. (EA only)
+     */
+    claimsMappings: outputs.GetResourceServerAccessTokenClaimsMapping[];
+}
+
+export interface GetResourceServerAccessTokenClaimsMapping {
+    /**
+     * Custom claims to include in the access tokens issued for this resource server. Maximum of 20 claims. Setting an empty list clears the custom claims on the API. (EA only)
+     */
+    customClaims: outputs.GetResourceServerAccessTokenClaimsMappingCustomClaim[];
+}
+
+export interface GetResourceServerAccessTokenClaimsMappingCustomClaim {
+    /**
+     * Expression used to resolve the claim value, given as a dot-path read from the request context (for example `anonymous_session.metadata.country`).
+     */
+    expression: string;
+    /**
+     * Name of the claim to emit in the access token. Reserved OIDC/JWT claim names are not allowed.
+     */
+    name: string;
+}
+
 export interface GetResourceServerAuthorizationDetail {
     /**
      * Disable authorization details.
@@ -8012,6 +8086,10 @@ export interface GetResourceServerScope {
 
 export interface GetResourceServerSubjectTypeAuthorization {
     /**
+     * Anonymous user authorization policies for the resource server. (EA only)
+     */
+    anonymousUsers: outputs.GetResourceServerSubjectTypeAuthorizationAnonymousUser[];
+    /**
      * Client authorization policies for the resource server.
      */
     clients: outputs.GetResourceServerSubjectTypeAuthorizationClient[];
@@ -8019,6 +8097,13 @@ export interface GetResourceServerSubjectTypeAuthorization {
      * User authorization policies for the resource server.
      */
     users: outputs.GetResourceServerSubjectTypeAuthorizationUser[];
+}
+
+export interface GetResourceServerSubjectTypeAuthorizationAnonymousUser {
+    /**
+     * Anonymous user flows policy. One of `denyAll`, `requireClientGrant`. Defaults to `denyAll` (EA only)
+     */
+    policy: string;
 }
 
 export interface GetResourceServerSubjectTypeAuthorizationClient {
@@ -8364,9 +8449,24 @@ export interface GetTenantOidcLogout {
 
 export interface GetTenantSession {
     /**
+     * Anonymous Sessions settings for the tenant. (EA only)
+     */
+    anonymouses: outputs.GetTenantSessionAnonymouse[];
+    /**
      * When active, users will be presented with a consent prompt to confirm the logout request if the request is not trustworthy. Turn off the consent prompt to bypass user confirmation.
      */
     oidcLogoutPromptEnabled: boolean;
+}
+
+export interface GetTenantSessionAnonymouse {
+    /**
+     * Whether anonymous session requests return the `auth0Anon` cookie. (EA only)
+     */
+    activateCookie: boolean;
+    /**
+     * Number of minutes during which an anonymous session will stay valid. Minimum 1, maximum 525600. (EA only)
+     */
+    lifetimeInMinutes: number;
 }
 
 export interface GetTenantSessionCooky {
@@ -8639,6 +8739,17 @@ export interface GuardianDuo {
     secretKey?: string;
 }
 
+export interface GuardianEmailSettings {
+    /**
+     * The OTP expiration time in seconds. Defaults to `300` (5 minutes).
+     */
+    otpExpirationTime: number;
+    /**
+     * The length of the OTP code. Defaults to `6`.
+     */
+    otpLength: number;
+}
+
 export interface GuardianPhone {
     /**
      * Indicates whether Phone MFA is enabled.
@@ -8687,6 +8798,17 @@ export interface GuardianPhoneOptions {
      * This message will be sent whenever a user logs in after the enrollment. Supports Liquid syntax, see [Auth0 docs](https://auth0.com/docs/customize/customize-sms-or-voice-messages).
      */
     verificationMessage?: string;
+}
+
+export interface GuardianPhoneSettings {
+    /**
+     * The OTP expiration time in seconds. Defaults to `300` (5 minutes).
+     */
+    otpExpirationTime: number;
+    /**
+     * The length of the OTP code. Defaults to `6`.
+     */
+    otpLength: number;
 }
 
 export interface GuardianPush {
@@ -8778,6 +8900,25 @@ export interface GuardianPushDirectFcm {
      * The Firebase Cloud Messaging Server Key. For security purposes, we don’t retrieve your existing FCM server key to check for drift.
      */
     serverKey: string;
+}
+
+export interface GuardianSettings {
+    /**
+     * Determines whether to display the "Remember me" checkbox on the MFA prompt in Universal Login. Defaults to `true`.
+     */
+    displayRememberMeCheckbox: boolean;
+    /**
+     * Duration of inactivity (seconds) after which the user will be prompted for MFA. Cannot exceed the overall timeout. Defaults to `604800` (7 days).
+     */
+    mfaSessionInactivityTimeout: number;
+    /**
+     * Maximum duration (seconds) after which the user will be prompted for MFA regardless of activity. Defaults to `2592000` (30 days).
+     */
+    mfaSessionOverallTimeout: number;
+    /**
+     * Determines the default state of the "Remember Me" checkbox on the MFA prompt in Universal Login. Defaults to `false`.
+     */
+    rememberMeDefaultValue: boolean;
 }
 
 export interface GuardianWebauthnPlatform {
@@ -9424,6 +9565,31 @@ export interface RateLimitPolicyConfiguration {
     redirectUri?: string;
 }
 
+export interface ResourceServerAccessToken {
+    /**
+     * Configuration for mapping claims into the access tokens issued for this resource server. (EA only)
+     */
+    claimsMapping?: outputs.ResourceServerAccessTokenClaimsMapping;
+}
+
+export interface ResourceServerAccessTokenClaimsMapping {
+    /**
+     * Custom claims to include in the access tokens issued for this resource server. Maximum of 20 claims. Setting an empty list clears the custom claims on the API. (EA only)
+     */
+    customClaims?: outputs.ResourceServerAccessTokenClaimsMappingCustomClaim[];
+}
+
+export interface ResourceServerAccessTokenClaimsMappingCustomClaim {
+    /**
+     * Expression used to resolve the claim value, given as a dot-path read from the request context (for example `anonymous_session.metadata.country`).
+     */
+    expression: string;
+    /**
+     * Name of the claim to emit in the access token. Reserved OIDC/JWT claim names are not allowed.
+     */
+    name: string;
+}
+
 export interface ResourceServerAuthorizationDetail {
     /**
      * Disable authorization details.
@@ -9474,6 +9640,10 @@ export interface ResourceServerScopesScope {
 
 export interface ResourceServerSubjectTypeAuthorization {
     /**
+     * Anonymous user authorization policies for the resource server. (EA only)
+     */
+    anonymousUser: outputs.ResourceServerSubjectTypeAuthorizationAnonymousUser;
+    /**
      * Client authorization policies for the resource server.
      */
     client: outputs.ResourceServerSubjectTypeAuthorizationClient;
@@ -9481,6 +9651,13 @@ export interface ResourceServerSubjectTypeAuthorization {
      * User authorization policies for the resource server.
      */
     user: outputs.ResourceServerSubjectTypeAuthorizationUser;
+}
+
+export interface ResourceServerSubjectTypeAuthorizationAnonymousUser {
+    /**
+     * Anonymous user flows policy. One of `denyAll`, `requireClientGrant`. Defaults to `denyAll` (EA only)
+     */
+    policy: string;
 }
 
 export interface ResourceServerSubjectTypeAuthorizationClient {
@@ -9796,9 +9973,24 @@ export interface TenantSessionCookie {
 
 export interface TenantSessions {
     /**
+     * Anonymous Sessions settings for the tenant. (EA only)
+     */
+    anonymous?: outputs.TenantSessionsAnonymous;
+    /**
      * When active, users will be presented with a consent prompt to confirm the logout request if the request is not trustworthy. Turn off the consent prompt to bypass user confirmation.
      */
     oidcLogoutPromptEnabled: boolean;
+}
+
+export interface TenantSessionsAnonymous {
+    /**
+     * Whether anonymous session requests return the `auth0Anon` cookie. (EA only)
+     */
+    activateCookie?: boolean;
+    /**
+     * Number of minutes during which an anonymous session will stay valid. Minimum 1, maximum 525600. (EA only)
+     */
+    lifetimeInMinutes?: number;
 }
 
 export interface TriggerActionsAction {

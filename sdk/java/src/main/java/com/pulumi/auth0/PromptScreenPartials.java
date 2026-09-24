@@ -98,14 +98,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="auth0:index/promptScreenPartials:PromptScreenPartials")
 public class PromptScreenPartials extends com.pulumi.resources.CustomResource {
     /**
-     * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`.
+     * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`, `confirmation`.
      * 
      */
     @Export(name="promptType", refs={String.class}, tree="[0]")
     private Output<String> promptType;
 
     /**
-     * @return The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`.
+     * @return The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`, `confirmation`.
      * 
      */
     public Output<String> promptType() {

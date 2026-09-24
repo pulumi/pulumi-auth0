@@ -7,6 +7,7 @@ import com.pulumi.auth0.ClientArgs;
 import com.pulumi.auth0.Utilities;
 import com.pulumi.auth0.inputs.ClientState;
 import com.pulumi.auth0.outputs.ClientAddons;
+import com.pulumi.auth0.outputs.ClientAnonymousSessions;
 import com.pulumi.auth0.outputs.ClientB2bIntegrationConfiguration;
 import com.pulumi.auth0.outputs.ClientDefaultOrganization;
 import com.pulumi.auth0.outputs.ClientExpressConfiguration;
@@ -103,6 +104,20 @@ public class Client extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> allowedOrigins() {
         return Codegen.optional(this.allowedOrigins);
+    }
+    /**
+     * Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+     * 
+     */
+    @Export(name="anonymousSessions", refs={ClientAnonymousSessions.class}, tree="[0]")
+    private Output</* @Nullable */ ClientAnonymousSessions> anonymousSessions;
+
+    /**
+     * @return Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+     * 
+     */
+    public Output<Optional<ClientAnonymousSessions>> anonymousSessions() {
+        return Codegen.optional(this.anonymousSessions);
     }
     /**
      * Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`

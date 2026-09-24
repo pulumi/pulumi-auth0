@@ -171,6 +171,10 @@ export class Action extends pulumi.CustomResource {
      */
     declare public readonly secretsWos: pulumi.Output<outputs.ActionSecretsWo[] | undefined>;
     /**
+     * The build status of the action. Possible values: `built`, `failed`, `building`, `pending`, `retrying`. If the action is in `failed` state, the next `terraform plan` will show a replacement to re-trigger the build.
+     */
+    declare public /*out*/ readonly status: pulumi.Output<string>;
+    /**
      * List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
      */
     declare public readonly supportedTriggers: pulumi.Output<outputs.ActionSupportedTriggers>;
@@ -201,6 +205,7 @@ export class Action extends pulumi.CustomResource {
             resourceInputs["secrets"] = state?.secrets;
             resourceInputs["secretsWoVersion"] = state?.secretsWoVersion;
             resourceInputs["secretsWos"] = state?.secretsWos;
+            resourceInputs["status"] = state?.status;
             resourceInputs["supportedTriggers"] = state?.supportedTriggers;
             resourceInputs["versionId"] = state?.versionId;
         } else {
@@ -221,6 +226,7 @@ export class Action extends pulumi.CustomResource {
             resourceInputs["secretsWoVersion"] = args?.secretsWoVersion;
             resourceInputs["secretsWos"] = args?.secretsWos;
             resourceInputs["supportedTriggers"] = args?.supportedTriggers;
+            resourceInputs["status"] = undefined /*out*/;
             resourceInputs["versionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -268,6 +274,10 @@ export interface ActionState {
      * List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secretsWoVersion` attribute. To remove all secrets, delete the `secretsWo` blocks together with the `secretsWoVersion` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
      */
     secretsWos?: pulumi.Input<pulumi.Input<inputs.ActionSecretsWo>[] | undefined>;
+    /**
+     * The build status of the action. Possible values: `built`, `failed`, `building`, `pending`, `retrying`. If the action is in `failed` state, the next `terraform plan` will show a replacement to re-trigger the build.
+     */
+    status?: pulumi.Input<string | undefined>;
     /**
      * List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
      */

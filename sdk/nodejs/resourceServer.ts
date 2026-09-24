@@ -16,6 +16,20 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * const myResourceServer = new auth0.ResourceServer("my_resource_server", {
+ *     accessToken: {
+ *         claimsMapping: {
+ *             customClaims: [
+ *                 {
+ *                     name: "country",
+ *                     expression: "anonymous_session.metadata.country",
+ *                 },
+ *                 {
+ *                     name: "city",
+ *                     expression: "anonymous_session.metadata.city",
+ *                 },
+ *             ],
+ *         },
+ *     },
  *     tokenEncryption: {
  *         encryptionKey: {
  *             name: "keyname",
@@ -38,6 +52,9 @@ import * as utilities from "./utilities";
  *         client: {
  *             policy: "require_client_grant",
  *         },
+ *         anonymousUser: {
+ *             policy: "require_client_grant",
+ *         },
  *     },
  *     authorizationDetails: [
  *         {
@@ -56,6 +73,7 @@ import * as utilities from "./utilities";
  *     tokenLifetime: 8600,
  *     skipConsentForVerifiableFirstPartyClients: true,
  *     consentPolicy: "transactional-authorization-with-mfa",
+ *     tokenLifetimeForAnonymousAccessTokens: 86400,
  * });
  * // Sample OIN resource server configuration
  * const oktaOinExpressConfigurationApi = new auth0.ResourceServer("okta_oin_express_configuration_api", {
@@ -76,6 +94,12 @@ import * as utilities from "./utilities";
  *     tokenDialect: null,
  *     tokenLifetime: 86400,
  *     verificationLocation: null,
+ * });
+ * // Default permissions for third-party applications, set via a client grant.
+ * const default3pGrant = new auth0.ClientGrant("default_3p_grant", {
+ *     defaultFor: "third_party_clients",
+ *     audience: myResourceServer.identifier,
+ *     scopes: ["read:foo"],
  * });
  * ```
  *
@@ -117,6 +141,10 @@ export class ResourceServer extends pulumi.CustomResource {
         return obj['__pulumiType'] === ResourceServer.__pulumiType;
     }
 
+    /**
+     * Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
+     */
+    declare public readonly accessToken: pulumi.Output<outputs.ResourceServerAccessToken | undefined>;
     /**
      * Indicates whether refresh tokens can be issued for this resource server.
      */
@@ -194,6 +222,10 @@ export class ResourceServer extends pulumi.CustomResource {
      */
     declare public readonly tokenLifetime: pulumi.Output<number>;
     /**
+     * Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+     */
+    declare public readonly tokenLifetimeForAnonymousAccessTokens: pulumi.Output<number | undefined>;
+    /**
      * Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
      */
     declare public readonly tokenLifetimeForWeb: pulumi.Output<number>;
@@ -215,6 +247,7 @@ export class ResourceServer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResourceServerState | undefined;
+            resourceInputs["accessToken"] = state?.accessToken;
             resourceInputs["allowOfflineAccess"] = state?.allowOfflineAccess;
             resourceInputs["allowOnlineAccess"] = state?.allowOnlineAccess;
             resourceInputs["allowOnlineAccessWithEphemeralSessions"] = state?.allowOnlineAccessWithEphemeralSessions;
@@ -234,6 +267,7 @@ export class ResourceServer extends pulumi.CustomResource {
             resourceInputs["tokenDialect"] = state?.tokenDialect;
             resourceInputs["tokenEncryption"] = state?.tokenEncryption;
             resourceInputs["tokenLifetime"] = state?.tokenLifetime;
+            resourceInputs["tokenLifetimeForAnonymousAccessTokens"] = state?.tokenLifetimeForAnonymousAccessTokens;
             resourceInputs["tokenLifetimeForWeb"] = state?.tokenLifetimeForWeb;
             resourceInputs["verificationLocation"] = state?.verificationLocation;
         } else {
@@ -241,6 +275,7 @@ export class ResourceServer extends pulumi.CustomResource {
             if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
+            resourceInputs["accessToken"] = args?.accessToken;
             resourceInputs["allowOfflineAccess"] = args?.allowOfflineAccess;
             resourceInputs["allowOnlineAccess"] = args?.allowOnlineAccess;
             resourceInputs["allowOnlineAccessWithEphemeralSessions"] = args?.allowOnlineAccessWithEphemeralSessions;
@@ -258,6 +293,7 @@ export class ResourceServer extends pulumi.CustomResource {
             resourceInputs["tokenDialect"] = args?.tokenDialect;
             resourceInputs["tokenEncryption"] = args?.tokenEncryption;
             resourceInputs["tokenLifetime"] = args?.tokenLifetime;
+            resourceInputs["tokenLifetimeForAnonymousAccessTokens"] = args?.tokenLifetimeForAnonymousAccessTokens;
             resourceInputs["tokenLifetimeForWeb"] = args?.tokenLifetimeForWeb;
             resourceInputs["verificationLocation"] = args?.verificationLocation;
             resourceInputs["clientId"] = undefined /*out*/;
@@ -272,6 +308,10 @@ export class ResourceServer extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ResourceServer resources.
  */
 export interface ResourceServerState {
+    /**
+     * Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
+     */
+    accessToken?: pulumi.Input<inputs.ResourceServerAccessToken | undefined>;
     /**
      * Indicates whether refresh tokens can be issued for this resource server.
      */
@@ -349,6 +389,10 @@ export interface ResourceServerState {
      */
     tokenLifetime?: pulumi.Input<number | undefined>;
     /**
+     * Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+     */
+    tokenLifetimeForAnonymousAccessTokens?: pulumi.Input<number | undefined>;
+    /**
      * Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
      */
     tokenLifetimeForWeb?: pulumi.Input<number | undefined>;
@@ -362,6 +406,10 @@ export interface ResourceServerState {
  * The set of arguments for constructing a ResourceServer resource.
  */
 export interface ResourceServerArgs {
+    /**
+     * Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
+     */
+    accessToken?: pulumi.Input<inputs.ResourceServerAccessToken | undefined>;
     /**
      * Indicates whether refresh tokens can be issued for this resource server.
      */
@@ -430,6 +478,10 @@ export interface ResourceServerArgs {
      * Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
      */
     tokenLifetime?: pulumi.Input<number | undefined>;
+    /**
+     * Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+     */
+    tokenLifetimeForAnonymousAccessTokens?: pulumi.Input<number | undefined>;
     /**
      * Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
      */

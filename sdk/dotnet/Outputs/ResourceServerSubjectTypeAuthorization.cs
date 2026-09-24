@@ -14,6 +14,10 @@ namespace Pulumi.Auth0.Outputs
     public sealed class ResourceServerSubjectTypeAuthorization
     {
         /// <summary>
+        /// Anonymous user authorization policies for the resource server. (EA only)
+        /// </summary>
+        public readonly Outputs.ResourceServerSubjectTypeAuthorizationAnonymousUser? AnonymousUser;
+        /// <summary>
         /// Client authorization policies for the resource server.
         /// </summary>
         public readonly Outputs.ResourceServerSubjectTypeAuthorizationClient? Client;
@@ -24,10 +28,13 @@ namespace Pulumi.Auth0.Outputs
 
         [OutputConstructor]
         private ResourceServerSubjectTypeAuthorization(
+            Outputs.ResourceServerSubjectTypeAuthorizationAnonymousUser? anonymousUser,
+
             Outputs.ResourceServerSubjectTypeAuthorizationClient? client,
 
             Outputs.ResourceServerSubjectTypeAuthorizationUser? user)
         {
+            AnonymousUser = anonymousUser;
             Client = client;
             User = user;
         }

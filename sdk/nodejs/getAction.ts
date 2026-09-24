@@ -77,6 +77,10 @@ export interface GetActionResult {
      */
     readonly secretsWos: outputs.GetActionSecretsWo[];
     /**
+     * The build status of the action. Possible values: `built`, `failed`, `building`, `pending`, `retrying`. If the action is in `failed` state, the next `pulumi preview` will show a replacement to re-trigger the build.
+     */
+    readonly status: string;
+    /**
      * List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
      */
     readonly supportedTriggers: outputs.GetActionSupportedTrigger[];

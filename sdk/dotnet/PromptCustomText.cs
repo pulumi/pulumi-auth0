@@ -85,7 +85,7 @@ namespace Pulumi.Auth0
         public Output<string> Language { get; private set; } = null!;
 
         /// <summary>
-        /// The term `Prompt` is used to refer to a specific step in the login flow. Options include: `Login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `Signup`, `signup-id`, `signup-password`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `Consent`, `customized-consent`, `Logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `Mfa`, `Status`, `device-flow`, `email-verification`, `email-otp-challenge`, `Organizations`, `Invitation`, `Common`, `Passkeys`, `Captcha`, `brute-force-protection`.
+        /// The term `Prompt` is used to refer to a specific step in the login flow. Options include: `Login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `Signup`, `signup-id`, `signup-password`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `Consent`, `customized-consent`, `Logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `Mfa`, `Status`, `device-flow`, `email-verification`, `email-otp-challenge`, `Organizations`, `Invitation`, `Common`, `Passkeys`, `Captcha`, `brute-force-protection`, `Confirmation`.
         /// </summary>
         [Output("prompt")]
         public Output<string> Prompt { get; private set; } = null!;
@@ -149,7 +149,7 @@ namespace Pulumi.Auth0
         public Input<string> Language { get; set; } = null!;
 
         /// <summary>
-        /// The term `Prompt` is used to refer to a specific step in the login flow. Options include: `Login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `Signup`, `signup-id`, `signup-password`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `Consent`, `customized-consent`, `Logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `Mfa`, `Status`, `device-flow`, `email-verification`, `email-otp-challenge`, `Organizations`, `Invitation`, `Common`, `Passkeys`, `Captcha`, `brute-force-protection`.
+        /// The term `Prompt` is used to refer to a specific step in the login flow. Options include: `Login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `Signup`, `signup-id`, `signup-password`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `Consent`, `customized-consent`, `Logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `Mfa`, `Status`, `device-flow`, `email-verification`, `email-otp-challenge`, `Organizations`, `Invitation`, `Common`, `Passkeys`, `Captcha`, `brute-force-protection`, `Confirmation`.
         /// </summary>
         [Input("prompt", required: true)]
         public Input<string> Prompt { get; set; } = null!;
@@ -175,7 +175,7 @@ namespace Pulumi.Auth0
         public Input<string>? Language { get; set; }
 
         /// <summary>
-        /// The term `Prompt` is used to refer to a specific step in the login flow. Options include: `Login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `Signup`, `signup-id`, `signup-password`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `Consent`, `customized-consent`, `Logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `Mfa`, `Status`, `device-flow`, `email-verification`, `email-otp-challenge`, `Organizations`, `Invitation`, `Common`, `Passkeys`, `Captcha`, `brute-force-protection`.
+        /// The term `Prompt` is used to refer to a specific step in the login flow. Options include: `Login`, `login-id`, `login-password`, `login-passwordless`, `login-email-verification`, `Signup`, `signup-id`, `signup-password`, `phone-identifier-enrollment`, `phone-identifier-challenge`, `email-identifier-challenge`, `reset-password`, `custom-form`, `Consent`, `customized-consent`, `Logout`, `mfa-push`, `mfa-otp`, `mfa-voice`, `mfa-phone`, `mfa-webauthn`, `mfa-sms`, `mfa-email`, `mfa-recovery-code`, `Mfa`, `Status`, `device-flow`, `email-verification`, `email-otp-challenge`, `Organizations`, `Invitation`, `Common`, `Passkeys`, `Captcha`, `brute-force-protection`, `Confirmation`.
         /// </summary>
         [Input("prompt")]
         public Input<string>? Prompt { get; set; }

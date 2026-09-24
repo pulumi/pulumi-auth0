@@ -13,6 +13,12 @@ namespace Pulumi.Auth0.Inputs
     public sealed class TenantSessionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Anonymous Sessions settings for the tenant. (EA only)
+        /// </summary>
+        [Input("anonymous")]
+        public Input<Inputs.TenantSessionsAnonymousGetArgs>? Anonymous { get; set; }
+
+        /// <summary>
         /// When active, users will be presented with a consent prompt to confirm the logout request if the request is not trustworthy. Turn off the consent prompt to bypass user confirmation.
         /// </summary>
         [Input("oidcLogoutPromptEnabled", required: true)]

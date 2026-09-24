@@ -139,14 +139,14 @@ public final class ClientGrantArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+     * Defines the type of subject for this grant. Can be one of `client`, `user`, or `anonymousUser` (EA only). Defaults to `client` when not defined.
      * 
      */
     @Import(name="subjectType")
     private @Nullable Output<String> subjectType;
 
     /**
-     * @return Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+     * @return Defines the type of subject for this grant. Can be one of `client`, `user`, or `anonymousUser` (EA only). Defaults to `client` when not defined.
      * 
      */
     public Optional<Output<String>> subjectType() {
@@ -374,7 +374,7 @@ public final class ClientGrantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subjectType Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+         * @param subjectType Defines the type of subject for this grant. Can be one of `client`, `user`, or `anonymousUser` (EA only). Defaults to `client` when not defined.
          * 
          * @return builder
          * 
@@ -385,7 +385,7 @@ public final class ClientGrantArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subjectType Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+         * @param subjectType Defines the type of subject for this grant. Can be one of `client`, `user`, or `anonymousUser` (EA only). Defaults to `client` when not defined.
          * 
          * @return builder
          * 

@@ -22,6 +22,7 @@ __all__ = ['ResourceServerArgs', 'ResourceServer']
 class ResourceServerArgs:
     def __init__(__self__, *,
                  identifier: pulumi.Input[_builtins.str],
+                 access_token: pulumi.Input[Optional['ResourceServerAccessTokenArgs']] = None,
                  allow_offline_access: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_online_access: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_online_access_with_ephemeral_sessions: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -38,12 +39,14 @@ class ResourceServerArgs:
                  token_dialect: pulumi.Input[Optional[_builtins.str]] = None,
                  token_encryption: pulumi.Input[Optional['ResourceServerTokenEncryptionArgs']] = None,
                  token_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+                 token_lifetime_for_anonymous_access_tokens: pulumi.Input[Optional[_builtins.int]] = None,
                  token_lifetime_for_web: pulumi.Input[Optional[_builtins.int]] = None,
                  verification_location: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ResourceServer resource.
 
         :param pulumi.Input[_builtins.str] identifier: Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
+        :param pulumi.Input['ResourceServerAccessTokenArgs'] access_token: Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
         :param pulumi.Input[_builtins.bool] allow_offline_access: Indicates whether refresh tokens can be issued for this resource server.
         :param pulumi.Input[_builtins.bool] allow_online_access: Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
         :param pulumi.Input[_builtins.bool] allow_online_access_with_ephemeral_sessions: Indicates whether Online Refresh Tokens can be issued even when sessions are configured as ephemeral. (EA Only)
@@ -60,10 +63,13 @@ class ResourceServerArgs:
         :param pulumi.Input[_builtins.str] token_dialect: Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
         :param pulumi.Input['ResourceServerTokenEncryptionArgs'] token_encryption: Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
         :param pulumi.Input[_builtins.int] token_lifetime: Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
+        :param pulumi.Input[_builtins.int] token_lifetime_for_anonymous_access_tokens: Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
         :param pulumi.Input[_builtins.int] token_lifetime_for_web: Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
         :param pulumi.Input[_builtins.str] verification_location: URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
         """
         pulumi.set(__self__, "identifier", identifier)
+        if access_token is not None:
+            pulumi.set(__self__, "access_token", access_token)
         if allow_offline_access is not None:
             pulumi.set(__self__, "allow_offline_access", allow_offline_access)
         if allow_online_access is not None:
@@ -96,6 +102,8 @@ class ResourceServerArgs:
             pulumi.set(__self__, "token_encryption", token_encryption)
         if token_lifetime is not None:
             pulumi.set(__self__, "token_lifetime", token_lifetime)
+        if token_lifetime_for_anonymous_access_tokens is not None:
+            pulumi.set(__self__, "token_lifetime_for_anonymous_access_tokens", token_lifetime_for_anonymous_access_tokens)
         if token_lifetime_for_web is not None:
             pulumi.set(__self__, "token_lifetime_for_web", token_lifetime_for_web)
         if verification_location is not None:
@@ -112,6 +120,18 @@ class ResourceServerArgs:
     @identifier.setter
     def identifier(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "identifier", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accessToken")
+    def access_token(self) -> pulumi.Input[Optional['ResourceServerAccessTokenArgs']]:
+        """
+        Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
+        """
+        return pulumi.get(self, "access_token")
+
+    @access_token.setter
+    def access_token(self, value: pulumi.Input[Optional['ResourceServerAccessTokenArgs']]):
+        pulumi.set(self, "access_token", value)
 
     @_builtins.property
     @pulumi.getter(name="allowOfflineAccess")
@@ -306,6 +326,18 @@ class ResourceServerArgs:
         pulumi.set(self, "token_lifetime", value)
 
     @_builtins.property
+    @pulumi.getter(name="tokenLifetimeForAnonymousAccessTokens")
+    def token_lifetime_for_anonymous_access_tokens(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+        """
+        return pulumi.get(self, "token_lifetime_for_anonymous_access_tokens")
+
+    @token_lifetime_for_anonymous_access_tokens.setter
+    def token_lifetime_for_anonymous_access_tokens(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "token_lifetime_for_anonymous_access_tokens", value)
+
+    @_builtins.property
     @pulumi.getter(name="tokenLifetimeForWeb")
     def token_lifetime_for_web(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -333,6 +365,7 @@ class ResourceServerArgs:
 @pulumi.input_type
 class _ResourceServerState:
     def __init__(__self__, *,
+                 access_token: pulumi.Input[Optional['ResourceServerAccessTokenArgs']] = None,
                  allow_offline_access: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_online_access: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_online_access_with_ephemeral_sessions: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -352,11 +385,13 @@ class _ResourceServerState:
                  token_dialect: pulumi.Input[Optional[_builtins.str]] = None,
                  token_encryption: pulumi.Input[Optional['ResourceServerTokenEncryptionArgs']] = None,
                  token_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+                 token_lifetime_for_anonymous_access_tokens: pulumi.Input[Optional[_builtins.int]] = None,
                  token_lifetime_for_web: pulumi.Input[Optional[_builtins.int]] = None,
                  verification_location: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ResourceServer resources.
 
+        :param pulumi.Input['ResourceServerAccessTokenArgs'] access_token: Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
         :param pulumi.Input[_builtins.bool] allow_offline_access: Indicates whether refresh tokens can be issued for this resource server.
         :param pulumi.Input[_builtins.bool] allow_online_access: Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
         :param pulumi.Input[_builtins.bool] allow_online_access_with_ephemeral_sessions: Indicates whether Online Refresh Tokens can be issued even when sessions are configured as ephemeral. (EA Only)
@@ -376,9 +411,12 @@ class _ResourceServerState:
         :param pulumi.Input[_builtins.str] token_dialect: Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
         :param pulumi.Input['ResourceServerTokenEncryptionArgs'] token_encryption: Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
         :param pulumi.Input[_builtins.int] token_lifetime: Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
+        :param pulumi.Input[_builtins.int] token_lifetime_for_anonymous_access_tokens: Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
         :param pulumi.Input[_builtins.int] token_lifetime_for_web: Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
         :param pulumi.Input[_builtins.str] verification_location: URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
         """
+        if access_token is not None:
+            pulumi.set(__self__, "access_token", access_token)
         if allow_offline_access is not None:
             pulumi.set(__self__, "allow_offline_access", allow_offline_access)
         if allow_online_access is not None:
@@ -417,10 +455,24 @@ class _ResourceServerState:
             pulumi.set(__self__, "token_encryption", token_encryption)
         if token_lifetime is not None:
             pulumi.set(__self__, "token_lifetime", token_lifetime)
+        if token_lifetime_for_anonymous_access_tokens is not None:
+            pulumi.set(__self__, "token_lifetime_for_anonymous_access_tokens", token_lifetime_for_anonymous_access_tokens)
         if token_lifetime_for_web is not None:
             pulumi.set(__self__, "token_lifetime_for_web", token_lifetime_for_web)
         if verification_location is not None:
             pulumi.set(__self__, "verification_location", verification_location)
+
+    @_builtins.property
+    @pulumi.getter(name="accessToken")
+    def access_token(self) -> pulumi.Input[Optional['ResourceServerAccessTokenArgs']]:
+        """
+        Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
+        """
+        return pulumi.get(self, "access_token")
+
+    @access_token.setter
+    def access_token(self, value: pulumi.Input[Optional['ResourceServerAccessTokenArgs']]):
+        pulumi.set(self, "access_token", value)
 
     @_builtins.property
     @pulumi.getter(name="allowOfflineAccess")
@@ -651,6 +703,18 @@ class _ResourceServerState:
         pulumi.set(self, "token_lifetime", value)
 
     @_builtins.property
+    @pulumi.getter(name="tokenLifetimeForAnonymousAccessTokens")
+    def token_lifetime_for_anonymous_access_tokens(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+        """
+        return pulumi.get(self, "token_lifetime_for_anonymous_access_tokens")
+
+    @token_lifetime_for_anonymous_access_tokens.setter
+    def token_lifetime_for_anonymous_access_tokens(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "token_lifetime_for_anonymous_access_tokens", value)
+
+    @_builtins.property
     @pulumi.getter(name="tokenLifetimeForWeb")
     def token_lifetime_for_web(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -681,6 +745,7 @@ class ResourceServer(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 access_token: pulumi.Input[Optional[Union['ResourceServerAccessTokenArgs', 'ResourceServerAccessTokenArgsDict', 'outputs.ResourceServerAccessToken']]] = None,
                  allow_offline_access: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_online_access: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_online_access_with_ephemeral_sessions: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -698,6 +763,7 @@ class ResourceServer(pulumi.CustomResource):
                  token_dialect: pulumi.Input[Optional[_builtins.str]] = None,
                  token_encryption: pulumi.Input[Optional[Union['ResourceServerTokenEncryptionArgs', 'ResourceServerTokenEncryptionArgsDict', 'outputs.ResourceServerTokenEncryption']]] = None,
                  token_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+                 token_lifetime_for_anonymous_access_tokens: pulumi.Input[Optional[_builtins.int]] = None,
                  token_lifetime_for_web: pulumi.Input[Optional[_builtins.int]] = None,
                  verification_location: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -711,6 +777,20 @@ class ResourceServer(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         my_resource_server = auth0.ResourceServer("my_resource_server",
+            access_token={
+                "claims_mapping": {
+                    "custom_claims": [
+                        {
+                            "name": "country",
+                            "expression": "anonymous_session.metadata.country",
+                        },
+                        {
+                            "name": "city",
+                            "expression": "anonymous_session.metadata.city",
+                        },
+                    ],
+                },
+            },
             token_encryption={
                 "encryption_key": {
                     "name": "keyname",
@@ -733,6 +813,9 @@ class ResourceServer(pulumi.CustomResource):
                 "client": {
                     "policy": "require_client_grant",
                 },
+                "anonymous_user": {
+                    "policy": "require_client_grant",
+                },
             },
             authorization_details=[
                 {
@@ -750,7 +833,8 @@ class ResourceServer(pulumi.CustomResource):
             allow_online_access_with_ephemeral_sessions=False,
             token_lifetime=8600,
             skip_consent_for_verifiable_first_party_clients=True,
-            consent_policy="transactional-authorization-with-mfa")
+            consent_policy="transactional-authorization-with-mfa",
+            token_lifetime_for_anonymous_access_tokens=86400)
         # Sample OIN resource server configuration
         okta_oin_express_configuration_api = auth0.ResourceServer("okta_oin_express_configuration_api",
             proof_of_possession={
@@ -770,6 +854,11 @@ class ResourceServer(pulumi.CustomResource):
             token_dialect=None,
             token_lifetime=86400,
             verification_location=None)
+        # Default permissions for third-party applications, set via a client grant.
+        default3p_grant = auth0.ClientGrant("default_3p_grant",
+            default_for="third_party_clients",
+            audience=my_resource_server.identifier,
+            scopes=["read:foo"])
         ```
 
         ## Import
@@ -785,6 +874,7 @@ class ResourceServer(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['ResourceServerAccessTokenArgs', 'ResourceServerAccessTokenArgsDict', 'outputs.ResourceServerAccessToken']] access_token: Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
         :param pulumi.Input[_builtins.bool] allow_offline_access: Indicates whether refresh tokens can be issued for this resource server.
         :param pulumi.Input[_builtins.bool] allow_online_access: Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
         :param pulumi.Input[_builtins.bool] allow_online_access_with_ephemeral_sessions: Indicates whether Online Refresh Tokens can be issued even when sessions are configured as ephemeral. (EA Only)
@@ -802,6 +892,7 @@ class ResourceServer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] token_dialect: Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
         :param pulumi.Input[Union['ResourceServerTokenEncryptionArgs', 'ResourceServerTokenEncryptionArgsDict', 'outputs.ResourceServerTokenEncryption']] token_encryption: Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
         :param pulumi.Input[_builtins.int] token_lifetime: Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
+        :param pulumi.Input[_builtins.int] token_lifetime_for_anonymous_access_tokens: Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
         :param pulumi.Input[_builtins.int] token_lifetime_for_web: Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
         :param pulumi.Input[_builtins.str] verification_location: URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
         """
@@ -821,6 +912,20 @@ class ResourceServer(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         my_resource_server = auth0.ResourceServer("my_resource_server",
+            access_token={
+                "claims_mapping": {
+                    "custom_claims": [
+                        {
+                            "name": "country",
+                            "expression": "anonymous_session.metadata.country",
+                        },
+                        {
+                            "name": "city",
+                            "expression": "anonymous_session.metadata.city",
+                        },
+                    ],
+                },
+            },
             token_encryption={
                 "encryption_key": {
                     "name": "keyname",
@@ -843,6 +948,9 @@ class ResourceServer(pulumi.CustomResource):
                 "client": {
                     "policy": "require_client_grant",
                 },
+                "anonymous_user": {
+                    "policy": "require_client_grant",
+                },
             },
             authorization_details=[
                 {
@@ -860,7 +968,8 @@ class ResourceServer(pulumi.CustomResource):
             allow_online_access_with_ephemeral_sessions=False,
             token_lifetime=8600,
             skip_consent_for_verifiable_first_party_clients=True,
-            consent_policy="transactional-authorization-with-mfa")
+            consent_policy="transactional-authorization-with-mfa",
+            token_lifetime_for_anonymous_access_tokens=86400)
         # Sample OIN resource server configuration
         okta_oin_express_configuration_api = auth0.ResourceServer("okta_oin_express_configuration_api",
             proof_of_possession={
@@ -880,6 +989,11 @@ class ResourceServer(pulumi.CustomResource):
             token_dialect=None,
             token_lifetime=86400,
             verification_location=None)
+        # Default permissions for third-party applications, set via a client grant.
+        default3p_grant = auth0.ClientGrant("default_3p_grant",
+            default_for="third_party_clients",
+            audience=my_resource_server.identifier,
+            scopes=["read:foo"])
         ```
 
         ## Import
@@ -908,6 +1022,7 @@ class ResourceServer(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 access_token: pulumi.Input[Optional[Union['ResourceServerAccessTokenArgs', 'ResourceServerAccessTokenArgsDict', 'outputs.ResourceServerAccessToken']]] = None,
                  allow_offline_access: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_online_access: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_online_access_with_ephemeral_sessions: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -925,6 +1040,7 @@ class ResourceServer(pulumi.CustomResource):
                  token_dialect: pulumi.Input[Optional[_builtins.str]] = None,
                  token_encryption: pulumi.Input[Optional[Union['ResourceServerTokenEncryptionArgs', 'ResourceServerTokenEncryptionArgsDict', 'outputs.ResourceServerTokenEncryption']]] = None,
                  token_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+                 token_lifetime_for_anonymous_access_tokens: pulumi.Input[Optional[_builtins.int]] = None,
                  token_lifetime_for_web: pulumi.Input[Optional[_builtins.int]] = None,
                  verification_location: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -936,6 +1052,7 @@ class ResourceServer(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ResourceServerArgs.__new__(ResourceServerArgs)
 
+            __props__.__dict__["access_token"] = access_token
             __props__.__dict__["allow_offline_access"] = allow_offline_access
             __props__.__dict__["allow_online_access"] = allow_online_access
             __props__.__dict__["allow_online_access_with_ephemeral_sessions"] = allow_online_access_with_ephemeral_sessions
@@ -955,6 +1072,7 @@ class ResourceServer(pulumi.CustomResource):
             __props__.__dict__["token_dialect"] = token_dialect
             __props__.__dict__["token_encryption"] = token_encryption
             __props__.__dict__["token_lifetime"] = token_lifetime
+            __props__.__dict__["token_lifetime_for_anonymous_access_tokens"] = token_lifetime_for_anonymous_access_tokens
             __props__.__dict__["token_lifetime_for_web"] = token_lifetime_for_web
             __props__.__dict__["verification_location"] = verification_location
             __props__.__dict__["client_id"] = None
@@ -969,6 +1087,7 @@ class ResourceServer(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            access_token: pulumi.Input[Optional[Union['ResourceServerAccessTokenArgs', 'ResourceServerAccessTokenArgsDict', 'outputs.ResourceServerAccessToken']]] = None,
             allow_offline_access: pulumi.Input[Optional[_builtins.bool]] = None,
             allow_online_access: pulumi.Input[Optional[_builtins.bool]] = None,
             allow_online_access_with_ephemeral_sessions: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -988,6 +1107,7 @@ class ResourceServer(pulumi.CustomResource):
             token_dialect: pulumi.Input[Optional[_builtins.str]] = None,
             token_encryption: pulumi.Input[Optional[Union['ResourceServerTokenEncryptionArgs', 'ResourceServerTokenEncryptionArgsDict', 'outputs.ResourceServerTokenEncryption']]] = None,
             token_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+            token_lifetime_for_anonymous_access_tokens: pulumi.Input[Optional[_builtins.int]] = None,
             token_lifetime_for_web: pulumi.Input[Optional[_builtins.int]] = None,
             verification_location: pulumi.Input[Optional[_builtins.str]] = None) -> 'ResourceServer':
         """
@@ -997,6 +1117,7 @@ class ResourceServer(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['ResourceServerAccessTokenArgs', 'ResourceServerAccessTokenArgsDict', 'outputs.ResourceServerAccessToken']] access_token: Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
         :param pulumi.Input[_builtins.bool] allow_offline_access: Indicates whether refresh tokens can be issued for this resource server.
         :param pulumi.Input[_builtins.bool] allow_online_access: Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
         :param pulumi.Input[_builtins.bool] allow_online_access_with_ephemeral_sessions: Indicates whether Online Refresh Tokens can be issued even when sessions are configured as ephemeral. (EA Only)
@@ -1016,6 +1137,7 @@ class ResourceServer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] token_dialect: Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
         :param pulumi.Input[Union['ResourceServerTokenEncryptionArgs', 'ResourceServerTokenEncryptionArgsDict', 'outputs.ResourceServerTokenEncryption']] token_encryption: Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
         :param pulumi.Input[_builtins.int] token_lifetime: Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
+        :param pulumi.Input[_builtins.int] token_lifetime_for_anonymous_access_tokens: Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
         :param pulumi.Input[_builtins.int] token_lifetime_for_web: Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
         :param pulumi.Input[_builtins.str] verification_location: URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
         """
@@ -1023,6 +1145,7 @@ class ResourceServer(pulumi.CustomResource):
 
         __props__ = _ResourceServerState.__new__(_ResourceServerState)
 
+        __props__.__dict__["access_token"] = access_token
         __props__.__dict__["allow_offline_access"] = allow_offline_access
         __props__.__dict__["allow_online_access"] = allow_online_access
         __props__.__dict__["allow_online_access_with_ephemeral_sessions"] = allow_online_access_with_ephemeral_sessions
@@ -1042,9 +1165,18 @@ class ResourceServer(pulumi.CustomResource):
         __props__.__dict__["token_dialect"] = token_dialect
         __props__.__dict__["token_encryption"] = token_encryption
         __props__.__dict__["token_lifetime"] = token_lifetime
+        __props__.__dict__["token_lifetime_for_anonymous_access_tokens"] = token_lifetime_for_anonymous_access_tokens
         __props__.__dict__["token_lifetime_for_web"] = token_lifetime_for_web
         __props__.__dict__["verification_location"] = verification_location
         return ResourceServer(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="accessToken")
+    def access_token(self) -> pulumi.Output[Optional['outputs.ResourceServerAccessToken']]:
+        """
+        Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
+        """
+        return pulumi.get(self, "access_token")
 
     @_builtins.property
     @pulumi.getter(name="allowOfflineAccess")
@@ -1197,6 +1329,14 @@ class ResourceServer(pulumi.CustomResource):
         Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
         """
         return pulumi.get(self, "token_lifetime")
+
+    @_builtins.property
+    @pulumi.getter(name="tokenLifetimeForAnonymousAccessTokens")
+    def token_lifetime_for_anonymous_access_tokens(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+        """
+        return pulumi.get(self, "token_lifetime_for_anonymous_access_tokens")
 
     @_builtins.property
     @pulumi.getter(name="tokenLifetimeForWeb")

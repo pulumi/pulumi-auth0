@@ -114,6 +114,18 @@ import javax.annotation.Nullable;
  *             .scopes("read:foo")
  *             .build());
  * 
+ *         // The following example grants a client access to anonymous access tokens for an API whose
+ *         // anonymous_user policy is set to "require_client_grant". The subject_type "anonymous_user" is
+ *         // only accepted at creation time and cannot be combined with organization_usage,
+ *         // allow_any_organization, authorization_details_types, or default_for.
+ *         // Anonymous Sessions is an Early Access feature.
+ *         var myAnonymousGrant = new ClientGrant("myAnonymousGrant", ClientGrantArgs.builder()
+ *             .clientId(myClient.id())
+ *             .audience(myResourceServer.identifier())
+ *             .scopes("read:foo")
+ *             .subjectType("anonymous_user")
+ *             .build());
+ * 
  *     }
  * }
  * }
@@ -260,14 +272,14 @@ public class ClientGrant extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.scopes);
     }
     /**
-     * Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+     * Defines the type of subject for this grant. Can be one of `client`, `user`, or `anonymousUser` (EA only). Defaults to `client` when not defined.
      * 
      */
     @Export(name="subjectType", refs={String.class}, tree="[0]")
     private Output<String> subjectType;
 
     /**
-     * @return Defines the type of subject for this grant. Can be one of `client` or `user`. Defaults to `client` when not defined.
+     * @return Defines the type of subject for this grant. Can be one of `client`, `user`, or `anonymousUser` (EA only). Defaults to `client` when not defined.
      * 
      */
     public Output<String> subjectType() {

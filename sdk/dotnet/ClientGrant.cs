@@ -108,6 +108,22 @@ namespace Pulumi.Auth0
     ///         },
     ///     });
     /// 
+    ///     // The following example grants a client access to anonymous access tokens for an API whose
+    ///     // anonymous_user policy is set to "require_client_grant". The subject_type "anonymous_user" is
+    ///     // only accepted at creation time and cannot be combined with organization_usage,
+    ///     // allow_any_organization, authorization_details_types, or default_for.
+    ///     // Anonymous Sessions is an Early Access feature.
+    ///     var myAnonymousGrant = new Auth0.ClientGrant("my_anonymous_grant", new()
+    ///     {
+    ///         ClientId = myClient.Id,
+    ///         Audience = myResourceServer.Identifier,
+    ///         Scopes = new[]
+    ///         {
+    ///             "read:foo",
+    ///         },
+    ///         SubjectType = "anonymous_user",
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -180,7 +196,7 @@ namespace Pulumi.Auth0
         public Output<ImmutableArray<string>> Scopes { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the type of subject for this grant. Can be one of `Client` or `User`. Defaults to `Client` when not defined.
+        /// Defines the type of subject for this grant. Can be one of `Client`, `User`, or `AnonymousUser` (EA only). Defaults to `Client` when not defined.
         /// </summary>
         [Output("subjectType")]
         public Output<string> SubjectType { get; private set; } = null!;
@@ -292,7 +308,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Defines the type of subject for this grant. Can be one of `Client` or `User`. Defaults to `Client` when not defined.
+        /// Defines the type of subject for this grant. Can be one of `Client`, `User`, or `AnonymousUser` (EA only). Defaults to `Client` when not defined.
         /// </summary>
         [Input("subjectType")]
         public Input<string>? SubjectType { get; set; }
@@ -372,7 +388,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Defines the type of subject for this grant. Can be one of `Client` or `User`. Defaults to `Client` when not defined.
+        /// Defines the type of subject for this grant. Can be one of `Client`, `User`, or `AnonymousUser` (EA only). Defaults to `Client` when not defined.
         /// </summary>
         [Input("subjectType")]
         public Input<string>? SubjectType { get; set; }

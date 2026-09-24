@@ -27,7 +27,10 @@ class GetResourceServerResult:
     """
     A collection of values returned by getResourceServer.
     """
-    def __init__(__self__, allow_offline_access=None, allow_online_access=None, allow_online_access_with_ephemeral_sessions=None, authorization_details=None, authorization_policies=None, client_id=None, consent_policy=None, enforce_policies=None, id=None, identifier=None, is_system=None, name=None, proof_of_possessions=None, resource_server_id=None, scopes=None, signing_alg=None, signing_secret=None, skip_consent_for_verifiable_first_party_clients=None, subject_type_authorizations=None, token_dialect=None, token_encryptions=None, token_lifetime=None, token_lifetime_for_web=None, verification_location=None):
+    def __init__(__self__, access_tokens=None, allow_offline_access=None, allow_online_access=None, allow_online_access_with_ephemeral_sessions=None, authorization_details=None, authorization_policies=None, client_id=None, consent_policy=None, enforce_policies=None, id=None, identifier=None, is_system=None, name=None, proof_of_possessions=None, resource_server_id=None, scopes=None, signing_alg=None, signing_secret=None, skip_consent_for_verifiable_first_party_clients=None, subject_type_authorizations=None, token_dialect=None, token_encryptions=None, token_lifetime=None, token_lifetime_for_anonymous_access_tokens=None, token_lifetime_for_web=None, verification_location=None):
+        if access_tokens and not isinstance(access_tokens, list):
+            raise TypeError("Expected argument 'access_tokens' to be a list")
+        pulumi.set(__self__, "access_tokens", access_tokens)
         if allow_offline_access and not isinstance(allow_offline_access, bool):
             raise TypeError("Expected argument 'allow_offline_access' to be a bool")
         pulumi.set(__self__, "allow_offline_access", allow_offline_access)
@@ -94,12 +97,23 @@ class GetResourceServerResult:
         if token_lifetime and not isinstance(token_lifetime, int):
             raise TypeError("Expected argument 'token_lifetime' to be a int")
         pulumi.set(__self__, "token_lifetime", token_lifetime)
+        if token_lifetime_for_anonymous_access_tokens and not isinstance(token_lifetime_for_anonymous_access_tokens, int):
+            raise TypeError("Expected argument 'token_lifetime_for_anonymous_access_tokens' to be a int")
+        pulumi.set(__self__, "token_lifetime_for_anonymous_access_tokens", token_lifetime_for_anonymous_access_tokens)
         if token_lifetime_for_web and not isinstance(token_lifetime_for_web, int):
             raise TypeError("Expected argument 'token_lifetime_for_web' to be a int")
         pulumi.set(__self__, "token_lifetime_for_web", token_lifetime_for_web)
         if verification_location and not isinstance(verification_location, str):
             raise TypeError("Expected argument 'verification_location' to be a str")
         pulumi.set(__self__, "verification_location", verification_location)
+
+    @_builtins.property
+    @pulumi.getter(name="accessTokens")
+    def access_tokens(self) -> Sequence['outputs.GetResourceServerAccessTokenResult']:
+        """
+        Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
+        """
+        return pulumi.get(self, "access_tokens")
 
     @_builtins.property
     @pulumi.getter(name="allowOfflineAccess")
@@ -278,6 +292,14 @@ class GetResourceServerResult:
         return pulumi.get(self, "token_lifetime")
 
     @_builtins.property
+    @pulumi.getter(name="tokenLifetimeForAnonymousAccessTokens")
+    def token_lifetime_for_anonymous_access_tokens(self) -> _builtins.int:
+        """
+        Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+        """
+        return pulumi.get(self, "token_lifetime_for_anonymous_access_tokens")
+
+    @_builtins.property
     @pulumi.getter(name="tokenLifetimeForWeb")
     def token_lifetime_for_web(self) -> _builtins.int:
         """
@@ -300,6 +322,7 @@ class AwaitableGetResourceServerResult(GetResourceServerResult):
         if False:
             yield self
         return GetResourceServerResult(
+            access_tokens=self.access_tokens,
             allow_offline_access=self.allow_offline_access,
             allow_online_access=self.allow_online_access,
             allow_online_access_with_ephemeral_sessions=self.allow_online_access_with_ephemeral_sessions,
@@ -322,6 +345,7 @@ class AwaitableGetResourceServerResult(GetResourceServerResult):
             token_dialect=self.token_dialect,
             token_encryptions=self.token_encryptions,
             token_lifetime=self.token_lifetime,
+            token_lifetime_for_anonymous_access_tokens=self.token_lifetime_for_anonymous_access_tokens,
             token_lifetime_for_web=self.token_lifetime_for_web,
             verification_location=self.verification_location)
 
@@ -355,6 +379,7 @@ def get_resource_server(identifier: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('auth0:index/getResourceServer:getResourceServer', __args__, opts=opts, typ=GetResourceServerResult).value
 
     return AwaitableGetResourceServerResult(
+        access_tokens=pulumi.get(__ret__, 'access_tokens'),
         allow_offline_access=pulumi.get(__ret__, 'allow_offline_access'),
         allow_online_access=pulumi.get(__ret__, 'allow_online_access'),
         allow_online_access_with_ephemeral_sessions=pulumi.get(__ret__, 'allow_online_access_with_ephemeral_sessions'),
@@ -377,6 +402,7 @@ def get_resource_server(identifier: Optional[_builtins.str] = None,
         token_dialect=pulumi.get(__ret__, 'token_dialect'),
         token_encryptions=pulumi.get(__ret__, 'token_encryptions'),
         token_lifetime=pulumi.get(__ret__, 'token_lifetime'),
+        token_lifetime_for_anonymous_access_tokens=pulumi.get(__ret__, 'token_lifetime_for_anonymous_access_tokens'),
         token_lifetime_for_web=pulumi.get(__ret__, 'token_lifetime_for_web'),
         verification_location=pulumi.get(__ret__, 'verification_location'))
 def get_resource_server_output(identifier: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -407,6 +433,7 @@ def get_resource_server_output(identifier: pulumi.Input[Optional[Optional[_built
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('auth0:index/getResourceServer:getResourceServer', __args__, opts=opts, typ=GetResourceServerResult)
     return __ret__.apply(lambda __response__: GetResourceServerResult(
+        access_tokens=pulumi.get(__response__, 'access_tokens'),
         allow_offline_access=pulumi.get(__response__, 'allow_offline_access'),
         allow_online_access=pulumi.get(__response__, 'allow_online_access'),
         allow_online_access_with_ephemeral_sessions=pulumi.get(__response__, 'allow_online_access_with_ephemeral_sessions'),
@@ -429,5 +456,6 @@ def get_resource_server_output(identifier: pulumi.Input[Optional[Optional[_built
         token_dialect=pulumi.get(__response__, 'token_dialect'),
         token_encryptions=pulumi.get(__response__, 'token_encryptions'),
         token_lifetime=pulumi.get(__response__, 'token_lifetime'),
+        token_lifetime_for_anonymous_access_tokens=pulumi.get(__response__, 'token_lifetime_for_anonymous_access_tokens'),
         token_lifetime_for_web=pulumi.get(__response__, 'token_lifetime_for_web'),
         verification_location=pulumi.get(__response__, 'verification_location')))

@@ -24,10 +24,13 @@ class GuardianArgs:
                  policy: pulumi.Input[_builtins.str],
                  duo: pulumi.Input[Optional['GuardianDuoArgs']] = None,
                  email: pulumi.Input[Optional[_builtins.bool]] = None,
+                 email_settings: pulumi.Input[Optional['GuardianEmailSettingsArgs']] = None,
                  otp: pulumi.Input[Optional[_builtins.bool]] = None,
                  phone: pulumi.Input[Optional['GuardianPhoneArgs']] = None,
+                 phone_settings: pulumi.Input[Optional['GuardianPhoneSettingsArgs']] = None,
                  push: pulumi.Input[Optional['GuardianPushArgs']] = None,
                  recovery_code: pulumi.Input[Optional[_builtins.bool]] = None,
+                 settings: pulumi.Input[Optional['GuardianSettingsArgs']] = None,
                  webauthn_platform: pulumi.Input[Optional['GuardianWebauthnPlatformArgs']] = None,
                  webauthn_roaming: pulumi.Input[Optional['GuardianWebauthnRoamingArgs']] = None):
         """
@@ -36,10 +39,13 @@ class GuardianArgs:
         :param pulumi.Input[_builtins.str] policy: Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
         :param pulumi.Input['GuardianDuoArgs'] duo: Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
         :param pulumi.Input[_builtins.bool] email: Indicates whether email MFA is enabled.
+        :param pulumi.Input['GuardianEmailSettingsArgs'] email_settings: One-time password settings for the email MFA factor. These are independent of whether the email factor is enabled.
         :param pulumi.Input[_builtins.bool] otp: Indicates whether one time password MFA is enabled.
         :param pulumi.Input['GuardianPhoneArgs'] phone: Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
+        :param pulumi.Input['GuardianPhoneSettingsArgs'] phone_settings: One-time password settings for the phone MFA factor. These are independent of whether the phone factor is enabled.
         :param pulumi.Input['GuardianPushArgs'] push: Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
         :param pulumi.Input[_builtins.bool] recovery_code: Indicates whether recovery code MFA is enabled.
+        :param pulumi.Input['GuardianSettingsArgs'] settings: Tenant-wide MFA settings controlling how often users are re-prompted for MFA and how the "Remember me" checkbox behaves. This block requires `read:tenant_settings` and `update:tenant_settings` scopes, which the other attributes of this resource do not require.
         :param pulumi.Input['GuardianWebauthnPlatformArgs'] webauthn_platform: Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
         :param pulumi.Input['GuardianWebauthnRoamingArgs'] webauthn_roaming: Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
         """
@@ -48,14 +54,20 @@ class GuardianArgs:
             pulumi.set(__self__, "duo", duo)
         if email is not None:
             pulumi.set(__self__, "email", email)
+        if email_settings is not None:
+            pulumi.set(__self__, "email_settings", email_settings)
         if otp is not None:
             pulumi.set(__self__, "otp", otp)
         if phone is not None:
             pulumi.set(__self__, "phone", phone)
+        if phone_settings is not None:
+            pulumi.set(__self__, "phone_settings", phone_settings)
         if push is not None:
             pulumi.set(__self__, "push", push)
         if recovery_code is not None:
             pulumi.set(__self__, "recovery_code", recovery_code)
+        if settings is not None:
+            pulumi.set(__self__, "settings", settings)
         if webauthn_platform is not None:
             pulumi.set(__self__, "webauthn_platform", webauthn_platform)
         if webauthn_roaming is not None:
@@ -98,6 +110,18 @@ class GuardianArgs:
         pulumi.set(self, "email", value)
 
     @_builtins.property
+    @pulumi.getter(name="emailSettings")
+    def email_settings(self) -> pulumi.Input[Optional['GuardianEmailSettingsArgs']]:
+        """
+        One-time password settings for the email MFA factor. These are independent of whether the email factor is enabled.
+        """
+        return pulumi.get(self, "email_settings")
+
+    @email_settings.setter
+    def email_settings(self, value: pulumi.Input[Optional['GuardianEmailSettingsArgs']]):
+        pulumi.set(self, "email_settings", value)
+
+    @_builtins.property
     @pulumi.getter
     def otp(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -122,6 +146,18 @@ class GuardianArgs:
         pulumi.set(self, "phone", value)
 
     @_builtins.property
+    @pulumi.getter(name="phoneSettings")
+    def phone_settings(self) -> pulumi.Input[Optional['GuardianPhoneSettingsArgs']]:
+        """
+        One-time password settings for the phone MFA factor. These are independent of whether the phone factor is enabled.
+        """
+        return pulumi.get(self, "phone_settings")
+
+    @phone_settings.setter
+    def phone_settings(self, value: pulumi.Input[Optional['GuardianPhoneSettingsArgs']]):
+        pulumi.set(self, "phone_settings", value)
+
+    @_builtins.property
     @pulumi.getter
     def push(self) -> pulumi.Input[Optional['GuardianPushArgs']]:
         """
@@ -144,6 +180,18 @@ class GuardianArgs:
     @recovery_code.setter
     def recovery_code(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "recovery_code", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def settings(self) -> pulumi.Input[Optional['GuardianSettingsArgs']]:
+        """
+        Tenant-wide MFA settings controlling how often users are re-prompted for MFA and how the "Remember me" checkbox behaves. This block requires `read:tenant_settings` and `update:tenant_settings` scopes, which the other attributes of this resource do not require.
+        """
+        return pulumi.get(self, "settings")
+
+    @settings.setter
+    def settings(self, value: pulumi.Input[Optional['GuardianSettingsArgs']]):
+        pulumi.set(self, "settings", value)
 
     @_builtins.property
     @pulumi.getter(name="webauthnPlatform")
@@ -175,11 +223,14 @@ class _GuardianState:
     def __init__(__self__, *,
                  duo: pulumi.Input[Optional['GuardianDuoArgs']] = None,
                  email: pulumi.Input[Optional[_builtins.bool]] = None,
+                 email_settings: pulumi.Input[Optional['GuardianEmailSettingsArgs']] = None,
                  otp: pulumi.Input[Optional[_builtins.bool]] = None,
                  phone: pulumi.Input[Optional['GuardianPhoneArgs']] = None,
+                 phone_settings: pulumi.Input[Optional['GuardianPhoneSettingsArgs']] = None,
                  policy: pulumi.Input[Optional[_builtins.str]] = None,
                  push: pulumi.Input[Optional['GuardianPushArgs']] = None,
                  recovery_code: pulumi.Input[Optional[_builtins.bool]] = None,
+                 settings: pulumi.Input[Optional['GuardianSettingsArgs']] = None,
                  webauthn_platform: pulumi.Input[Optional['GuardianWebauthnPlatformArgs']] = None,
                  webauthn_roaming: pulumi.Input[Optional['GuardianWebauthnRoamingArgs']] = None):
         """
@@ -187,11 +238,14 @@ class _GuardianState:
 
         :param pulumi.Input['GuardianDuoArgs'] duo: Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
         :param pulumi.Input[_builtins.bool] email: Indicates whether email MFA is enabled.
+        :param pulumi.Input['GuardianEmailSettingsArgs'] email_settings: One-time password settings for the email MFA factor. These are independent of whether the email factor is enabled.
         :param pulumi.Input[_builtins.bool] otp: Indicates whether one time password MFA is enabled.
         :param pulumi.Input['GuardianPhoneArgs'] phone: Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
+        :param pulumi.Input['GuardianPhoneSettingsArgs'] phone_settings: One-time password settings for the phone MFA factor. These are independent of whether the phone factor is enabled.
         :param pulumi.Input[_builtins.str] policy: Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
         :param pulumi.Input['GuardianPushArgs'] push: Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
         :param pulumi.Input[_builtins.bool] recovery_code: Indicates whether recovery code MFA is enabled.
+        :param pulumi.Input['GuardianSettingsArgs'] settings: Tenant-wide MFA settings controlling how often users are re-prompted for MFA and how the "Remember me" checkbox behaves. This block requires `read:tenant_settings` and `update:tenant_settings` scopes, which the other attributes of this resource do not require.
         :param pulumi.Input['GuardianWebauthnPlatformArgs'] webauthn_platform: Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
         :param pulumi.Input['GuardianWebauthnRoamingArgs'] webauthn_roaming: Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
         """
@@ -199,16 +253,22 @@ class _GuardianState:
             pulumi.set(__self__, "duo", duo)
         if email is not None:
             pulumi.set(__self__, "email", email)
+        if email_settings is not None:
+            pulumi.set(__self__, "email_settings", email_settings)
         if otp is not None:
             pulumi.set(__self__, "otp", otp)
         if phone is not None:
             pulumi.set(__self__, "phone", phone)
+        if phone_settings is not None:
+            pulumi.set(__self__, "phone_settings", phone_settings)
         if policy is not None:
             pulumi.set(__self__, "policy", policy)
         if push is not None:
             pulumi.set(__self__, "push", push)
         if recovery_code is not None:
             pulumi.set(__self__, "recovery_code", recovery_code)
+        if settings is not None:
+            pulumi.set(__self__, "settings", settings)
         if webauthn_platform is not None:
             pulumi.set(__self__, "webauthn_platform", webauthn_platform)
         if webauthn_roaming is not None:
@@ -239,6 +299,18 @@ class _GuardianState:
         pulumi.set(self, "email", value)
 
     @_builtins.property
+    @pulumi.getter(name="emailSettings")
+    def email_settings(self) -> pulumi.Input[Optional['GuardianEmailSettingsArgs']]:
+        """
+        One-time password settings for the email MFA factor. These are independent of whether the email factor is enabled.
+        """
+        return pulumi.get(self, "email_settings")
+
+    @email_settings.setter
+    def email_settings(self, value: pulumi.Input[Optional['GuardianEmailSettingsArgs']]):
+        pulumi.set(self, "email_settings", value)
+
+    @_builtins.property
     @pulumi.getter
     def otp(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -261,6 +333,18 @@ class _GuardianState:
     @phone.setter
     def phone(self, value: pulumi.Input[Optional['GuardianPhoneArgs']]):
         pulumi.set(self, "phone", value)
+
+    @_builtins.property
+    @pulumi.getter(name="phoneSettings")
+    def phone_settings(self) -> pulumi.Input[Optional['GuardianPhoneSettingsArgs']]:
+        """
+        One-time password settings for the phone MFA factor. These are independent of whether the phone factor is enabled.
+        """
+        return pulumi.get(self, "phone_settings")
+
+    @phone_settings.setter
+    def phone_settings(self, value: pulumi.Input[Optional['GuardianPhoneSettingsArgs']]):
+        pulumi.set(self, "phone_settings", value)
 
     @_builtins.property
     @pulumi.getter
@@ -299,6 +383,18 @@ class _GuardianState:
         pulumi.set(self, "recovery_code", value)
 
     @_builtins.property
+    @pulumi.getter
+    def settings(self) -> pulumi.Input[Optional['GuardianSettingsArgs']]:
+        """
+        Tenant-wide MFA settings controlling how often users are re-prompted for MFA and how the "Remember me" checkbox behaves. This block requires `read:tenant_settings` and `update:tenant_settings` scopes, which the other attributes of this resource do not require.
+        """
+        return pulumi.get(self, "settings")
+
+    @settings.setter
+    def settings(self, value: pulumi.Input[Optional['GuardianSettingsArgs']]):
+        pulumi.set(self, "settings", value)
+
+    @_builtins.property
     @pulumi.getter(name="webauthnPlatform")
     def webauthn_platform(self) -> pulumi.Input[Optional['GuardianWebauthnPlatformArgs']]:
         """
@@ -331,11 +427,14 @@ class Guardian(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  duo: pulumi.Input[Optional[Union['GuardianDuoArgs', 'GuardianDuoArgsDict', 'outputs.GuardianDuo']]] = None,
                  email: pulumi.Input[Optional[_builtins.bool]] = None,
+                 email_settings: pulumi.Input[Optional[Union['GuardianEmailSettingsArgs', 'GuardianEmailSettingsArgsDict', 'outputs.GuardianEmailSettings']]] = None,
                  otp: pulumi.Input[Optional[_builtins.bool]] = None,
                  phone: pulumi.Input[Optional[Union['GuardianPhoneArgs', 'GuardianPhoneArgsDict', 'outputs.GuardianPhone']]] = None,
+                 phone_settings: pulumi.Input[Optional[Union['GuardianPhoneSettingsArgs', 'GuardianPhoneSettingsArgsDict', 'outputs.GuardianPhoneSettings']]] = None,
                  policy: pulumi.Input[Optional[_builtins.str]] = None,
                  push: pulumi.Input[Optional[Union['GuardianPushArgs', 'GuardianPushArgsDict', 'outputs.GuardianPush']]] = None,
                  recovery_code: pulumi.Input[Optional[_builtins.bool]] = None,
+                 settings: pulumi.Input[Optional[Union['GuardianSettingsArgs', 'GuardianSettingsArgsDict', 'outputs.GuardianSettings']]] = None,
                  webauthn_platform: pulumi.Input[Optional[Union['GuardianWebauthnPlatformArgs', 'GuardianWebauthnPlatformArgsDict', 'outputs.GuardianWebauthnPlatform']]] = None,
                  webauthn_roaming: pulumi.Input[Optional[Union['GuardianWebauthnRoamingArgs', 'GuardianWebauthnRoamingArgsDict', 'outputs.GuardianWebauthnRoaming']]] = None,
                  __props__=None):
@@ -391,6 +490,20 @@ class Guardian(pulumi.CustomResource):
                 "secret_key": "someSecret",
                 "hostname": "api-hostname",
             },
+            settings={
+                "display_remember_me_checkbox": True,
+                "remember_me_default_value": False,
+                "mfa_session_inactivity_timeout": 604800,
+                "mfa_session_overall_timeout": 2592000,
+            },
+            phone_settings={
+                "otp_length": 6,
+                "otp_expiration_time": 300,
+            },
+            email_settings={
+                "otp_length": 6,
+                "otp_expiration_time": 300,
+            },
             policy="all-applications",
             email=True,
             otp=True,
@@ -415,11 +528,14 @@ class Guardian(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['GuardianDuoArgs', 'GuardianDuoArgsDict', 'outputs.GuardianDuo']] duo: Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
         :param pulumi.Input[_builtins.bool] email: Indicates whether email MFA is enabled.
+        :param pulumi.Input[Union['GuardianEmailSettingsArgs', 'GuardianEmailSettingsArgsDict', 'outputs.GuardianEmailSettings']] email_settings: One-time password settings for the email MFA factor. These are independent of whether the email factor is enabled.
         :param pulumi.Input[_builtins.bool] otp: Indicates whether one time password MFA is enabled.
         :param pulumi.Input[Union['GuardianPhoneArgs', 'GuardianPhoneArgsDict', 'outputs.GuardianPhone']] phone: Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
+        :param pulumi.Input[Union['GuardianPhoneSettingsArgs', 'GuardianPhoneSettingsArgsDict', 'outputs.GuardianPhoneSettings']] phone_settings: One-time password settings for the phone MFA factor. These are independent of whether the phone factor is enabled.
         :param pulumi.Input[_builtins.str] policy: Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
         :param pulumi.Input[Union['GuardianPushArgs', 'GuardianPushArgsDict', 'outputs.GuardianPush']] push: Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
         :param pulumi.Input[_builtins.bool] recovery_code: Indicates whether recovery code MFA is enabled.
+        :param pulumi.Input[Union['GuardianSettingsArgs', 'GuardianSettingsArgsDict', 'outputs.GuardianSettings']] settings: Tenant-wide MFA settings controlling how often users are re-prompted for MFA and how the "Remember me" checkbox behaves. This block requires `read:tenant_settings` and `update:tenant_settings` scopes, which the other attributes of this resource do not require.
         :param pulumi.Input[Union['GuardianWebauthnPlatformArgs', 'GuardianWebauthnPlatformArgsDict', 'outputs.GuardianWebauthnPlatform']] webauthn_platform: Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
         :param pulumi.Input[Union['GuardianWebauthnRoamingArgs', 'GuardianWebauthnRoamingArgsDict', 'outputs.GuardianWebauthnRoaming']] webauthn_roaming: Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
         """
@@ -481,6 +597,20 @@ class Guardian(pulumi.CustomResource):
                 "secret_key": "someSecret",
                 "hostname": "api-hostname",
             },
+            settings={
+                "display_remember_me_checkbox": True,
+                "remember_me_default_value": False,
+                "mfa_session_inactivity_timeout": 604800,
+                "mfa_session_overall_timeout": 2592000,
+            },
+            phone_settings={
+                "otp_length": 6,
+                "otp_expiration_time": 300,
+            },
+            email_settings={
+                "otp_length": 6,
+                "otp_expiration_time": 300,
+            },
             policy="all-applications",
             email=True,
             otp=True,
@@ -518,11 +648,14 @@ class Guardian(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  duo: pulumi.Input[Optional[Union['GuardianDuoArgs', 'GuardianDuoArgsDict', 'outputs.GuardianDuo']]] = None,
                  email: pulumi.Input[Optional[_builtins.bool]] = None,
+                 email_settings: pulumi.Input[Optional[Union['GuardianEmailSettingsArgs', 'GuardianEmailSettingsArgsDict', 'outputs.GuardianEmailSettings']]] = None,
                  otp: pulumi.Input[Optional[_builtins.bool]] = None,
                  phone: pulumi.Input[Optional[Union['GuardianPhoneArgs', 'GuardianPhoneArgsDict', 'outputs.GuardianPhone']]] = None,
+                 phone_settings: pulumi.Input[Optional[Union['GuardianPhoneSettingsArgs', 'GuardianPhoneSettingsArgsDict', 'outputs.GuardianPhoneSettings']]] = None,
                  policy: pulumi.Input[Optional[_builtins.str]] = None,
                  push: pulumi.Input[Optional[Union['GuardianPushArgs', 'GuardianPushArgsDict', 'outputs.GuardianPush']]] = None,
                  recovery_code: pulumi.Input[Optional[_builtins.bool]] = None,
+                 settings: pulumi.Input[Optional[Union['GuardianSettingsArgs', 'GuardianSettingsArgsDict', 'outputs.GuardianSettings']]] = None,
                  webauthn_platform: pulumi.Input[Optional[Union['GuardianWebauthnPlatformArgs', 'GuardianWebauthnPlatformArgsDict', 'outputs.GuardianWebauthnPlatform']]] = None,
                  webauthn_roaming: pulumi.Input[Optional[Union['GuardianWebauthnRoamingArgs', 'GuardianWebauthnRoamingArgsDict', 'outputs.GuardianWebauthnRoaming']]] = None,
                  __props__=None):
@@ -536,13 +669,16 @@ class Guardian(pulumi.CustomResource):
 
             __props__.__dict__["duo"] = duo
             __props__.__dict__["email"] = email
+            __props__.__dict__["email_settings"] = email_settings
             __props__.__dict__["otp"] = otp
             __props__.__dict__["phone"] = phone
+            __props__.__dict__["phone_settings"] = phone_settings
             if policy is None and not opts.urn:
                 raise TypeError("Missing required property 'policy'")
             __props__.__dict__["policy"] = policy
             __props__.__dict__["push"] = push
             __props__.__dict__["recovery_code"] = recovery_code
+            __props__.__dict__["settings"] = settings
             __props__.__dict__["webauthn_platform"] = webauthn_platform
             __props__.__dict__["webauthn_roaming"] = webauthn_roaming
         super(Guardian, __self__).__init__(
@@ -557,11 +693,14 @@ class Guardian(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             duo: pulumi.Input[Optional[Union['GuardianDuoArgs', 'GuardianDuoArgsDict', 'outputs.GuardianDuo']]] = None,
             email: pulumi.Input[Optional[_builtins.bool]] = None,
+            email_settings: pulumi.Input[Optional[Union['GuardianEmailSettingsArgs', 'GuardianEmailSettingsArgsDict', 'outputs.GuardianEmailSettings']]] = None,
             otp: pulumi.Input[Optional[_builtins.bool]] = None,
             phone: pulumi.Input[Optional[Union['GuardianPhoneArgs', 'GuardianPhoneArgsDict', 'outputs.GuardianPhone']]] = None,
+            phone_settings: pulumi.Input[Optional[Union['GuardianPhoneSettingsArgs', 'GuardianPhoneSettingsArgsDict', 'outputs.GuardianPhoneSettings']]] = None,
             policy: pulumi.Input[Optional[_builtins.str]] = None,
             push: pulumi.Input[Optional[Union['GuardianPushArgs', 'GuardianPushArgsDict', 'outputs.GuardianPush']]] = None,
             recovery_code: pulumi.Input[Optional[_builtins.bool]] = None,
+            settings: pulumi.Input[Optional[Union['GuardianSettingsArgs', 'GuardianSettingsArgsDict', 'outputs.GuardianSettings']]] = None,
             webauthn_platform: pulumi.Input[Optional[Union['GuardianWebauthnPlatformArgs', 'GuardianWebauthnPlatformArgsDict', 'outputs.GuardianWebauthnPlatform']]] = None,
             webauthn_roaming: pulumi.Input[Optional[Union['GuardianWebauthnRoamingArgs', 'GuardianWebauthnRoamingArgsDict', 'outputs.GuardianWebauthnRoaming']]] = None) -> 'Guardian':
         """
@@ -573,11 +712,14 @@ class Guardian(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['GuardianDuoArgs', 'GuardianDuoArgsDict', 'outputs.GuardianDuo']] duo: Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
         :param pulumi.Input[_builtins.bool] email: Indicates whether email MFA is enabled.
+        :param pulumi.Input[Union['GuardianEmailSettingsArgs', 'GuardianEmailSettingsArgsDict', 'outputs.GuardianEmailSettings']] email_settings: One-time password settings for the email MFA factor. These are independent of whether the email factor is enabled.
         :param pulumi.Input[_builtins.bool] otp: Indicates whether one time password MFA is enabled.
         :param pulumi.Input[Union['GuardianPhoneArgs', 'GuardianPhoneArgsDict', 'outputs.GuardianPhone']] phone: Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
+        :param pulumi.Input[Union['GuardianPhoneSettingsArgs', 'GuardianPhoneSettingsArgsDict', 'outputs.GuardianPhoneSettings']] phone_settings: One-time password settings for the phone MFA factor. These are independent of whether the phone factor is enabled.
         :param pulumi.Input[_builtins.str] policy: Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
         :param pulumi.Input[Union['GuardianPushArgs', 'GuardianPushArgsDict', 'outputs.GuardianPush']] push: Configuration settings for the Push MFA. If this block is present, Push MFA will be enabled, and disabled otherwise.
         :param pulumi.Input[_builtins.bool] recovery_code: Indicates whether recovery code MFA is enabled.
+        :param pulumi.Input[Union['GuardianSettingsArgs', 'GuardianSettingsArgsDict', 'outputs.GuardianSettings']] settings: Tenant-wide MFA settings controlling how often users are re-prompted for MFA and how the "Remember me" checkbox behaves. This block requires `read:tenant_settings` and `update:tenant_settings` scopes, which the other attributes of this resource do not require.
         :param pulumi.Input[Union['GuardianWebauthnPlatformArgs', 'GuardianWebauthnPlatformArgsDict', 'outputs.GuardianWebauthnPlatform']] webauthn_platform: Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.
         :param pulumi.Input[Union['GuardianWebauthnRoamingArgs', 'GuardianWebauthnRoamingArgsDict', 'outputs.GuardianWebauthnRoaming']] webauthn_roaming: Configuration settings for the WebAuthn with FIDO Security Keys MFA. If this block is present, WebAuthn with FIDO Security Keys MFA will be enabled, and disabled otherwise.
         """
@@ -587,11 +729,14 @@ class Guardian(pulumi.CustomResource):
 
         __props__.__dict__["duo"] = duo
         __props__.__dict__["email"] = email
+        __props__.__dict__["email_settings"] = email_settings
         __props__.__dict__["otp"] = otp
         __props__.__dict__["phone"] = phone
+        __props__.__dict__["phone_settings"] = phone_settings
         __props__.__dict__["policy"] = policy
         __props__.__dict__["push"] = push
         __props__.__dict__["recovery_code"] = recovery_code
+        __props__.__dict__["settings"] = settings
         __props__.__dict__["webauthn_platform"] = webauthn_platform
         __props__.__dict__["webauthn_roaming"] = webauthn_roaming
         return Guardian(resource_name, opts=opts, __props__=__props__)
@@ -613,6 +758,14 @@ class Guardian(pulumi.CustomResource):
         return pulumi.get(self, "email")
 
     @_builtins.property
+    @pulumi.getter(name="emailSettings")
+    def email_settings(self) -> pulumi.Output['outputs.GuardianEmailSettings']:
+        """
+        One-time password settings for the email MFA factor. These are independent of whether the email factor is enabled.
+        """
+        return pulumi.get(self, "email_settings")
+
+    @_builtins.property
     @pulumi.getter
     def otp(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
@@ -627,6 +780,14 @@ class Guardian(pulumi.CustomResource):
         Configuration settings for the phone MFA. If this block is present, Phone MFA will be enabled, and disabled otherwise.
         """
         return pulumi.get(self, "phone")
+
+    @_builtins.property
+    @pulumi.getter(name="phoneSettings")
+    def phone_settings(self) -> pulumi.Output['outputs.GuardianPhoneSettings']:
+        """
+        One-time password settings for the phone MFA factor. These are independent of whether the phone factor is enabled.
+        """
+        return pulumi.get(self, "phone_settings")
 
     @_builtins.property
     @pulumi.getter
@@ -651,6 +812,14 @@ class Guardian(pulumi.CustomResource):
         Indicates whether recovery code MFA is enabled.
         """
         return pulumi.get(self, "recovery_code")
+
+    @_builtins.property
+    @pulumi.getter
+    def settings(self) -> pulumi.Output['outputs.GuardianSettings']:
+        """
+        Tenant-wide MFA settings controlling how often users are re-prompted for MFA and how the "Remember me" checkbox behaves. This block requires `read:tenant_settings` and `update:tenant_settings` scopes, which the other attributes of this resource do not require.
+        """
+        return pulumi.get(self, "settings")
 
     @_builtins.property
     @pulumi.getter(name="webauthnPlatform")

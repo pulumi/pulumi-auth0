@@ -4,6 +4,7 @@
 package com.pulumi.auth0;
 
 import com.pulumi.auth0.inputs.ClientAddonsArgs;
+import com.pulumi.auth0.inputs.ClientAnonymousSessionsArgs;
 import com.pulumi.auth0.inputs.ClientB2bIntegrationConfigurationArgs;
 import com.pulumi.auth0.inputs.ClientDefaultOrganizationArgs;
 import com.pulumi.auth0.inputs.ClientExpressConfigurationArgs;
@@ -92,6 +93,21 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<String>>> allowedOrigins() {
         return Optional.ofNullable(this.allowedOrigins);
+    }
+
+    /**
+     * Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+     * 
+     */
+    @Import(name="anonymousSessions")
+    private @Nullable Output<ClientAnonymousSessionsArgs> anonymousSessions;
+
+    /**
+     * @return Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+     * 
+     */
+    public Optional<Output<ClientAnonymousSessionsArgs>> anonymousSessions() {
+        return Optional.ofNullable(this.anonymousSessions);
     }
 
     /**
@@ -821,6 +837,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         this.allowedClients = $.allowedClients;
         this.allowedLogoutUrls = $.allowedLogoutUrls;
         this.allowedOrigins = $.allowedOrigins;
+        this.anonymousSessions = $.anonymousSessions;
         this.appType = $.appType;
         this.asyncApprovalNotificationChannels = $.asyncApprovalNotificationChannels;
         this.b2bIntegrationConfiguration = $.b2bIntegrationConfiguration;
@@ -1001,6 +1018,27 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder allowedOrigins(String... allowedOrigins) {
             return allowedOrigins(List.of(allowedOrigins));
+        }
+
+        /**
+         * @param anonymousSessions Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder anonymousSessions(@Nullable Output<ClientAnonymousSessionsArgs> anonymousSessions) {
+            $.anonymousSessions = anonymousSessions;
+            return this;
+        }
+
+        /**
+         * @param anonymousSessions Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder anonymousSessions(ClientAnonymousSessionsArgs anonymousSessions) {
+            return anonymousSessions(Output.of(anonymousSessions));
         }
 
         /**

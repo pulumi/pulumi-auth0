@@ -28,7 +28,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := auth0.NewResourceServer(ctx, "my_resource_server", &auth0.ResourceServerArgs{
+//			myResourceServer, err := auth0.NewResourceServer(ctx, "my_resource_server", &auth0.ResourceServerArgs{
+//				AccessToken: &auth0.ResourceServerAccessTokenArgs{
+//					ClaimsMapping: &auth0.ResourceServerAccessTokenClaimsMappingArgs{
+//						CustomClaims: auth0.ResourceServerAccessTokenClaimsMappingCustomClaimArray{
+//							&auth0.ResourceServerAccessTokenClaimsMappingCustomClaimArgs{
+//								Name:       pulumi.String("country"),
+//								Expression: pulumi.String("anonymous_session.metadata.country"),
+//							},
+//							&auth0.ResourceServerAccessTokenClaimsMappingCustomClaimArgs{
+//								Name:       pulumi.String("city"),
+//								Expression: pulumi.String("anonymous_session.metadata.city"),
+//							},
+//						},
+//					},
+//				},
 //				TokenEncryption: &auth0.ResourceServerTokenEncryptionArgs{
 //					EncryptionKey: &auth0.ResourceServerTokenEncryptionEncryptionKeyArgs{
 //						Name:      pulumi.String("keyname"),
@@ -48,6 +62,9 @@ import (
 //					Client: &auth0.ResourceServerSubjectTypeAuthorizationClientArgs{
 //						Policy: pulumi.String("require_client_grant"),
 //					},
+//					AnonymousUser: &auth0.ResourceServerSubjectTypeAuthorizationAnonymousUserArgs{
+//						Policy: pulumi.String("require_client_grant"),
+//					},
 //				},
 //				AuthorizationDetails: auth0.ResourceServerAuthorizationDetailArray{
 //					&auth0.ResourceServerAuthorizationDetailArgs{
@@ -65,7 +82,8 @@ import (
 //				AllowOnlineAccessWithEphemeralSessions: pulumi.Bool(false),
 //				TokenLifetime:                          pulumi.Int(8600),
 //				SkipConsentForVerifiableFirstPartyClients: pulumi.Bool(true),
-//				ConsentPolicy: pulumi.String("transactional-authorization-with-mfa"),
+//				ConsentPolicy:                         pulumi.String("transactional-authorization-with-mfa"),
+//				TokenLifetimeForAnonymousAccessTokens: pulumi.Int(86400),
 //			})
 //			if err != nil {
 //				return err
@@ -93,6 +111,17 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Default permissions for third-party applications, set via a client grant.
+//			_, err = auth0.NewClientGrant(ctx, "default_3p_grant", &auth0.ClientGrantArgs{
+//				DefaultFor: pulumi.String("third_party_clients"),
+//				Audience:   myResourceServer.Identifier,
+//				Scopes: pulumi.StringArray{
+//					pulumi.String("read:foo"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -111,6 +140,8 @@ import (
 type ResourceServer struct {
 	pulumi.CustomResourceState
 
+	// Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
+	AccessToken ResourceServerAccessTokenPtrOutput `pulumi:"accessToken"`
 	// Indicates whether refresh tokens can be issued for this resource server.
 	AllowOfflineAccess pulumi.BoolOutput `pulumi:"allowOfflineAccess"`
 	// Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
@@ -149,6 +180,8 @@ type ResourceServer struct {
 	TokenEncryption ResourceServerTokenEncryptionOutput `pulumi:"tokenEncryption"`
 	// Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
 	TokenLifetime pulumi.IntOutput `pulumi:"tokenLifetime"`
+	// Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+	TokenLifetimeForAnonymousAccessTokens pulumi.IntPtrOutput `pulumi:"tokenLifetimeForAnonymousAccessTokens"`
 	// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
 	TokenLifetimeForWeb pulumi.IntOutput `pulumi:"tokenLifetimeForWeb"`
 	// URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
@@ -188,6 +221,8 @@ func GetResourceServer(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ResourceServer resources.
 type resourceServerState struct {
+	// Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
+	AccessToken *ResourceServerAccessToken `pulumi:"accessToken"`
 	// Indicates whether refresh tokens can be issued for this resource server.
 	AllowOfflineAccess *bool `pulumi:"allowOfflineAccess"`
 	// Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
@@ -226,6 +261,8 @@ type resourceServerState struct {
 	TokenEncryption *ResourceServerTokenEncryption `pulumi:"tokenEncryption"`
 	// Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
 	TokenLifetime *int `pulumi:"tokenLifetime"`
+	// Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+	TokenLifetimeForAnonymousAccessTokens *int `pulumi:"tokenLifetimeForAnonymousAccessTokens"`
 	// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
 	TokenLifetimeForWeb *int `pulumi:"tokenLifetimeForWeb"`
 	// URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
@@ -233,6 +270,8 @@ type resourceServerState struct {
 }
 
 type ResourceServerState struct {
+	// Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
+	AccessToken ResourceServerAccessTokenPtrInput
 	// Indicates whether refresh tokens can be issued for this resource server.
 	AllowOfflineAccess pulumi.BoolPtrInput
 	// Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
@@ -271,6 +310,8 @@ type ResourceServerState struct {
 	TokenEncryption ResourceServerTokenEncryptionPtrInput
 	// Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
 	TokenLifetime pulumi.IntPtrInput
+	// Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+	TokenLifetimeForAnonymousAccessTokens pulumi.IntPtrInput
 	// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
 	TokenLifetimeForWeb pulumi.IntPtrInput
 	// URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
@@ -282,6 +323,8 @@ func (ResourceServerState) ElementType() reflect.Type {
 }
 
 type resourceServerArgs struct {
+	// Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
+	AccessToken *ResourceServerAccessToken `pulumi:"accessToken"`
 	// Indicates whether refresh tokens can be issued for this resource server.
 	AllowOfflineAccess *bool `pulumi:"allowOfflineAccess"`
 	// Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
@@ -316,6 +359,8 @@ type resourceServerArgs struct {
 	TokenEncryption *ResourceServerTokenEncryption `pulumi:"tokenEncryption"`
 	// Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
 	TokenLifetime *int `pulumi:"tokenLifetime"`
+	// Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+	TokenLifetimeForAnonymousAccessTokens *int `pulumi:"tokenLifetimeForAnonymousAccessTokens"`
 	// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
 	TokenLifetimeForWeb *int `pulumi:"tokenLifetimeForWeb"`
 	// URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
@@ -324,6 +369,8 @@ type resourceServerArgs struct {
 
 // The set of arguments for constructing a ResourceServer resource.
 type ResourceServerArgs struct {
+	// Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
+	AccessToken ResourceServerAccessTokenPtrInput
 	// Indicates whether refresh tokens can be issued for this resource server.
 	AllowOfflineAccess pulumi.BoolPtrInput
 	// Indicates whether Online Refresh Tokens can be issued for this resource server. (EA Only)
@@ -358,6 +405,8 @@ type ResourceServerArgs struct {
 	TokenEncryption ResourceServerTokenEncryptionPtrInput
 	// Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
 	TokenLifetime pulumi.IntPtrInput
+	// Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+	TokenLifetimeForAnonymousAccessTokens pulumi.IntPtrInput
 	// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
 	TokenLifetimeForWeb pulumi.IntPtrInput
 	// URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
@@ -449,6 +498,11 @@ func (o ResourceServerOutput) ToResourceServerOutput() ResourceServerOutput {
 
 func (o ResourceServerOutput) ToResourceServerOutputWithContext(ctx context.Context) ResourceServerOutput {
 	return o
+}
+
+// Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
+func (o ResourceServerOutput) AccessToken() ResourceServerAccessTokenPtrOutput {
+	return o.ApplyT(func(v *ResourceServer) ResourceServerAccessTokenPtrOutput { return v.AccessToken }).(ResourceServerAccessTokenPtrOutput)
 }
 
 // Indicates whether refresh tokens can be issued for this resource server.
@@ -546,6 +600,11 @@ func (o ResourceServerOutput) TokenEncryption() ResourceServerTokenEncryptionOut
 // Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
 func (o ResourceServerOutput) TokenLifetime() pulumi.IntOutput {
 	return o.ApplyT(func(v *ResourceServer) pulumi.IntOutput { return v.TokenLifetime }).(pulumi.IntOutput)
+}
+
+// Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+func (o ResourceServerOutput) TokenLifetimeForAnonymousAccessTokens() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceServer) pulumi.IntPtrOutput { return v.TokenLifetimeForAnonymousAccessTokens }).(pulumi.IntPtrOutput)
 }
 
 // Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.

@@ -1124,6 +1124,10 @@ class Tenant(pulumi.CustomResource):
                 "mode": "non-persistent",
             },
             sessions={
+                "anonymous": {
+                    "lifetime_in_minutes": 43200,
+                    "activate_cookie": True,
+                },
                 "oidc_logout_prompt_enabled": False,
             },
             error_page={
@@ -1229,6 +1233,10 @@ class Tenant(pulumi.CustomResource):
                 "mode": "non-persistent",
             },
             sessions={
+                "anonymous": {
+                    "lifetime_in_minutes": 43200,
+                    "activate_cookie": True,
+                },
                 "oidc_logout_prompt_enabled": False,
             },
             error_page={

@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.inputs;
 
+import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationAnonymousUserArgs;
 import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationClientArgs;
 import com.pulumi.auth0.inputs.ResourceServerSubjectTypeAuthorizationUserArgs;
 import com.pulumi.core.Output;
@@ -15,6 +16,21 @@ import javax.annotation.Nullable;
 public final class ResourceServerSubjectTypeAuthorizationArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ResourceServerSubjectTypeAuthorizationArgs Empty = new ResourceServerSubjectTypeAuthorizationArgs();
+
+    /**
+     * Anonymous user authorization policies for the resource server. (EA only)
+     * 
+     */
+    @Import(name="anonymousUser")
+    private @Nullable Output<ResourceServerSubjectTypeAuthorizationAnonymousUserArgs> anonymousUser;
+
+    /**
+     * @return Anonymous user authorization policies for the resource server. (EA only)
+     * 
+     */
+    public Optional<Output<ResourceServerSubjectTypeAuthorizationAnonymousUserArgs>> anonymousUser() {
+        return Optional.ofNullable(this.anonymousUser);
+    }
 
     /**
      * Client authorization policies for the resource server.
@@ -49,6 +65,7 @@ public final class ResourceServerSubjectTypeAuthorizationArgs extends com.pulumi
     private ResourceServerSubjectTypeAuthorizationArgs() {}
 
     private ResourceServerSubjectTypeAuthorizationArgs(ResourceServerSubjectTypeAuthorizationArgs $) {
+        this.anonymousUser = $.anonymousUser;
         this.client = $.client;
         this.user = $.user;
     }
@@ -69,6 +86,27 @@ public final class ResourceServerSubjectTypeAuthorizationArgs extends com.pulumi
 
         public Builder(ResourceServerSubjectTypeAuthorizationArgs defaults) {
             $ = new ResourceServerSubjectTypeAuthorizationArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param anonymousUser Anonymous user authorization policies for the resource server. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder anonymousUser(@Nullable Output<ResourceServerSubjectTypeAuthorizationAnonymousUserArgs> anonymousUser) {
+            $.anonymousUser = anonymousUser;
+            return this;
+        }
+
+        /**
+         * @param anonymousUser Anonymous user authorization policies for the resource server. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder anonymousUser(ResourceServerSubjectTypeAuthorizationAnonymousUserArgs anonymousUser) {
+            return anonymousUser(Output.of(anonymousUser));
         }
 
         /**

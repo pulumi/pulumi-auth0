@@ -7,8 +7,11 @@ import com.pulumi.auth0.GuardianArgs;
 import com.pulumi.auth0.Utilities;
 import com.pulumi.auth0.inputs.GuardianState;
 import com.pulumi.auth0.outputs.GuardianDuo;
+import com.pulumi.auth0.outputs.GuardianEmailSettings;
 import com.pulumi.auth0.outputs.GuardianPhone;
+import com.pulumi.auth0.outputs.GuardianPhoneSettings;
 import com.pulumi.auth0.outputs.GuardianPush;
+import com.pulumi.auth0.outputs.GuardianSettings;
 import com.pulumi.auth0.outputs.GuardianWebauthnPlatform;
 import com.pulumi.auth0.outputs.GuardianWebauthnRoaming;
 import com.pulumi.core.Output;
@@ -47,6 +50,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.auth0.inputs.GuardianPushAmazonSnsArgs;
  * import com.pulumi.auth0.inputs.GuardianPushCustomAppArgs;
  * import com.pulumi.auth0.inputs.GuardianDuoArgs;
+ * import com.pulumi.auth0.inputs.GuardianSettingsArgs;
+ * import com.pulumi.auth0.inputs.GuardianPhoneSettingsArgs;
+ * import com.pulumi.auth0.inputs.GuardianEmailSettingsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -95,6 +101,20 @@ import javax.annotation.Nullable;
  *                 .integrationKey("someKey")
  *                 .secretKey("someSecret")
  *                 .hostname("api-hostname")
+ *                 .build())
+ *             .settings(GuardianSettingsArgs.builder()
+ *                 .displayRememberMeCheckbox(true)
+ *                 .rememberMeDefaultValue(false)
+ *                 .mfaSessionInactivityTimeout(604800)
+ *                 .mfaSessionOverallTimeout(2592000)
+ *                 .build())
+ *             .phoneSettings(GuardianPhoneSettingsArgs.builder()
+ *                 .otpLength(6)
+ *                 .otpExpirationTime(300)
+ *                 .build())
+ *             .emailSettings(GuardianEmailSettingsArgs.builder()
+ *                 .otpLength(6)
+ *                 .otpExpirationTime(300)
  *                 .build())
  *             .policy("all-applications")
  *             .email(true)
@@ -152,6 +172,20 @@ public class Guardian extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.email);
     }
     /**
+     * One-time password settings for the email MFA factor. These are independent of whether the email factor is enabled.
+     * 
+     */
+    @Export(name="emailSettings", refs={GuardianEmailSettings.class}, tree="[0]")
+    private Output<GuardianEmailSettings> emailSettings;
+
+    /**
+     * @return One-time password settings for the email MFA factor. These are independent of whether the email factor is enabled.
+     * 
+     */
+    public Output<GuardianEmailSettings> emailSettings() {
+        return this.emailSettings;
+    }
+    /**
      * Indicates whether one time password MFA is enabled.
      * 
      */
@@ -178,6 +212,20 @@ public class Guardian extends com.pulumi.resources.CustomResource {
      */
     public Output<GuardianPhone> phone() {
         return this.phone;
+    }
+    /**
+     * One-time password settings for the phone MFA factor. These are independent of whether the phone factor is enabled.
+     * 
+     */
+    @Export(name="phoneSettings", refs={GuardianPhoneSettings.class}, tree="[0]")
+    private Output<GuardianPhoneSettings> phoneSettings;
+
+    /**
+     * @return One-time password settings for the phone MFA factor. These are independent of whether the phone factor is enabled.
+     * 
+     */
+    public Output<GuardianPhoneSettings> phoneSettings() {
+        return this.phoneSettings;
     }
     /**
      * Policy to use. Available options are `never`, `all-applications` and `confidence-score`.
@@ -220,6 +268,20 @@ public class Guardian extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> recoveryCode() {
         return Codegen.optional(this.recoveryCode);
+    }
+    /**
+     * Tenant-wide MFA settings controlling how often users are re-prompted for MFA and how the &#34;Remember me&#34; checkbox behaves. This block requires `read:tenant_settings` and `update:tenant_settings` scopes, which the other attributes of this resource do not require.
+     * 
+     */
+    @Export(name="settings", refs={GuardianSettings.class}, tree="[0]")
+    private Output<GuardianSettings> settings;
+
+    /**
+     * @return Tenant-wide MFA settings controlling how often users are re-prompted for MFA and how the &#34;Remember me&#34; checkbox behaves. This block requires `read:tenant_settings` and `update:tenant_settings` scopes, which the other attributes of this resource do not require.
+     * 
+     */
+    public Output<GuardianSettings> settings() {
+        return this.settings;
     }
     /**
      * Configuration settings for the WebAuthn with FIDO Device Biometrics MFA. If this block is present, WebAuthn with FIDO Device Biometrics MFA will be enabled, and disabled otherwise.

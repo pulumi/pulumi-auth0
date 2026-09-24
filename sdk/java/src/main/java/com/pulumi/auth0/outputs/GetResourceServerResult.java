@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.GetResourceServerAccessToken;
 import com.pulumi.auth0.outputs.GetResourceServerAuthorizationDetail;
 import com.pulumi.auth0.outputs.GetResourceServerAuthorizationPolicy;
 import com.pulumi.auth0.outputs.GetResourceServerProofOfPossession;
@@ -21,6 +22,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetResourceServerResult {
+    /**
+     * @return Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
+     * 
+     */
+    private List<GetResourceServerAccessToken> accessTokens;
     /**
      * @return Indicates whether refresh tokens can be issued for this resource server.
      * 
@@ -132,6 +138,11 @@ public final class GetResourceServerResult {
      */
     private Integer tokenLifetime;
     /**
+     * @return Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+     * 
+     */
+    private Integer tokenLifetimeForAnonymousAccessTokens;
+    /**
      * @return Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
      * 
      */
@@ -143,6 +154,13 @@ public final class GetResourceServerResult {
     private String verificationLocation;
 
     private GetResourceServerResult() {}
+    /**
+     * @return Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
+     * 
+     */
+    public List<GetResourceServerAccessToken> accessTokens() {
+        return this.accessTokens;
+    }
     /**
      * @return Indicates whether refresh tokens can be issued for this resource server.
      * 
@@ -298,6 +316,13 @@ public final class GetResourceServerResult {
         return this.tokenLifetime;
     }
     /**
+     * @return Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+     * 
+     */
+    public Integer tokenLifetimeForAnonymousAccessTokens() {
+        return this.tokenLifetimeForAnonymousAccessTokens;
+    }
+    /**
      * @return Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
      * 
      */
@@ -321,6 +346,7 @@ public final class GetResourceServerResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetResourceServerAccessToken> accessTokens;
         private Boolean allowOfflineAccess;
         private Boolean allowOnlineAccess;
         private Boolean allowOnlineAccessWithEphemeralSessions;
@@ -343,11 +369,13 @@ public final class GetResourceServerResult {
         private String tokenDialect;
         private List<GetResourceServerTokenEncryption> tokenEncryptions;
         private Integer tokenLifetime;
+        private Integer tokenLifetimeForAnonymousAccessTokens;
         private Integer tokenLifetimeForWeb;
         private String verificationLocation;
         public Builder() {}
         public Builder(GetResourceServerResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.accessTokens = defaults.accessTokens;
     	      this.allowOfflineAccess = defaults.allowOfflineAccess;
     	      this.allowOnlineAccess = defaults.allowOnlineAccess;
     	      this.allowOnlineAccessWithEphemeralSessions = defaults.allowOnlineAccessWithEphemeralSessions;
@@ -370,10 +398,22 @@ public final class GetResourceServerResult {
     	      this.tokenDialect = defaults.tokenDialect;
     	      this.tokenEncryptions = defaults.tokenEncryptions;
     	      this.tokenLifetime = defaults.tokenLifetime;
+    	      this.tokenLifetimeForAnonymousAccessTokens = defaults.tokenLifetimeForAnonymousAccessTokens;
     	      this.tokenLifetimeForWeb = defaults.tokenLifetimeForWeb;
     	      this.verificationLocation = defaults.verificationLocation;
         }
 
+        @CustomType.Setter
+        public Builder accessTokens(List<GetResourceServerAccessToken> accessTokens) {
+            if (accessTokens == null) {
+              throw new MissingRequiredPropertyException("GetResourceServerResult", "accessTokens");
+            }
+            this.accessTokens = accessTokens;
+            return this;
+        }
+        public Builder accessTokens(GetResourceServerAccessToken... accessTokens) {
+            return accessTokens(List.of(accessTokens));
+        }
         @CustomType.Setter
         public Builder allowOfflineAccess(Boolean allowOfflineAccess) {
             if (allowOfflineAccess == null) {
@@ -565,6 +605,14 @@ public final class GetResourceServerResult {
             return this;
         }
         @CustomType.Setter
+        public Builder tokenLifetimeForAnonymousAccessTokens(Integer tokenLifetimeForAnonymousAccessTokens) {
+            if (tokenLifetimeForAnonymousAccessTokens == null) {
+              throw new MissingRequiredPropertyException("GetResourceServerResult", "tokenLifetimeForAnonymousAccessTokens");
+            }
+            this.tokenLifetimeForAnonymousAccessTokens = tokenLifetimeForAnonymousAccessTokens;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tokenLifetimeForWeb(Integer tokenLifetimeForWeb) {
             if (tokenLifetimeForWeb == null) {
               throw new MissingRequiredPropertyException("GetResourceServerResult", "tokenLifetimeForWeb");
@@ -582,6 +630,7 @@ public final class GetResourceServerResult {
         }
         public GetResourceServerResult build() {
             final var _resultValue = new GetResourceServerResult();
+            _resultValue.accessTokens = accessTokens;
             _resultValue.allowOfflineAccess = allowOfflineAccess;
             _resultValue.allowOnlineAccess = allowOnlineAccess;
             _resultValue.allowOnlineAccessWithEphemeralSessions = allowOnlineAccessWithEphemeralSessions;
@@ -604,6 +653,7 @@ public final class GetResourceServerResult {
             _resultValue.tokenDialect = tokenDialect;
             _resultValue.tokenEncryptions = tokenEncryptions;
             _resultValue.tokenLifetime = tokenLifetime;
+            _resultValue.tokenLifetimeForAnonymousAccessTokens = tokenLifetimeForAnonymousAccessTokens;
             _resultValue.tokenLifetimeForWeb = tokenLifetimeForWeb;
             _resultValue.verificationLocation = verificationLocation;
             return _resultValue;

@@ -52,6 +52,8 @@ type LookupActionResult struct {
 	SecretsWoVersion int `pulumi:"secretsWoVersion"`
 	// List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secretsWoVersion` attribute. To remove all secrets, delete the `secretsWo` blocks together with the `secretsWoVersion` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
 	SecretsWos []GetActionSecretsWo `pulumi:"secretsWos"`
+	// The build status of the action. Possible values: `built`, `failed`, `building`, `pending`, `retrying`. If the action is in `failed` state, the next `pulumi preview` will show a replacement to re-trigger the build.
+	Status string `pulumi:"status"`
 	// List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.
 	SupportedTriggers []GetActionSupportedTrigger `pulumi:"supportedTriggers"`
 	// Version ID of the action. This value is available if `deploy` is set to true.
@@ -138,6 +140,11 @@ func (o LookupActionResultOutput) SecretsWoVersion() pulumi.IntOutput {
 // List of secrets for the action (write-only). Secret values are only available during resource creation and update, and are **not** stored in Terraform state. Adding, renaming, or removing an entry is applied automatically; to change only the value of an existing secret, bump the `secretsWoVersion` attribute. To remove all secrets, delete the `secretsWo` blocks together with the `secretsWoVersion` attribute. This is an ordered list, so reordering the blocks is treated as a change. Conflicts with `secrets`.
 func (o LookupActionResultOutput) SecretsWos() GetActionSecretsWoArrayOutput {
 	return o.ApplyT(func(v LookupActionResult) []GetActionSecretsWo { return v.SecretsWos }).(GetActionSecretsWoArrayOutput)
+}
+
+// The build status of the action. Possible values: `built`, `failed`, `building`, `pending`, `retrying`. If the action is in `failed` state, the next `pulumi preview` will show a replacement to re-trigger the build.
+func (o LookupActionResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupActionResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // List of triggers that this action supports. At this time, an action can only target a single trigger at a time. Read Retrieving the set of triggers available within actions to retrieve the latest trigger versions supported.

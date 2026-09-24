@@ -31,6 +31,10 @@ import * as utilities from "./utilities";
  *         mode: "non-persistent",
  *     },
  *     sessions: {
+ *         anonymous: {
+ *             lifetimeInMinutes: 43200,
+ *             activateCookie: true,
+ *         },
  *         oidcLogoutPromptEnabled: false,
  *     },
  *     errorPage: {

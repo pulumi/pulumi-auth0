@@ -53,6 +53,10 @@ export interface GetResourceServerArgs {
  */
 export interface GetResourceServerResult {
     /**
+     * Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
+     */
+    readonly accessTokens: outputs.GetResourceServerAccessToken[];
+    /**
      * Indicates whether refresh tokens can be issued for this resource server.
      */
     readonly allowOfflineAccess: boolean;
@@ -140,6 +144,10 @@ export interface GetResourceServerResult {
      * Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
      */
     readonly tokenLifetime: number;
+    /**
+     * Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+     */
+    readonly tokenLifetimeForAnonymousAccessTokens: number;
     /**
      * Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
      */

@@ -33,6 +33,8 @@ type Client struct {
 	AllowedLogoutUrls pulumi.StringArrayOutput `pulumi:"allowedLogoutUrls"`
 	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins pulumi.StringArrayOutput `pulumi:"allowedOrigins"`
+	// Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+	AnonymousSessions ClientAnonymousSessionsPtrOutput `pulumi:"anonymousSessions"`
 	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
 	AppType pulumi.StringPtrOutput `pulumi:"appType"`
 	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
@@ -187,6 +189,8 @@ type clientState struct {
 	AllowedLogoutUrls []string `pulumi:"allowedLogoutUrls"`
 	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins []string `pulumi:"allowedOrigins"`
+	// Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+	AnonymousSessions *ClientAnonymousSessions `pulumi:"anonymousSessions"`
 	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
 	AppType *string `pulumi:"appType"`
 	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
@@ -305,6 +309,8 @@ type ClientState struct {
 	AllowedLogoutUrls pulumi.StringArrayInput
 	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins pulumi.StringArrayInput
+	// Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+	AnonymousSessions ClientAnonymousSessionsPtrInput
 	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
 	AppType pulumi.StringPtrInput
 	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
@@ -427,6 +433,8 @@ type clientArgs struct {
 	AllowedLogoutUrls []string `pulumi:"allowedLogoutUrls"`
 	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins []string `pulumi:"allowedOrigins"`
+	// Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+	AnonymousSessions *ClientAnonymousSessions `pulumi:"anonymousSessions"`
 	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
 	AppType *string `pulumi:"appType"`
 	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
@@ -536,6 +544,8 @@ type ClientArgs struct {
 	AllowedLogoutUrls pulumi.StringArrayInput
 	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins pulumi.StringArrayInput
+	// Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+	AnonymousSessions ClientAnonymousSessionsPtrInput
 	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
 	AppType pulumi.StringPtrInput
 	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
@@ -740,6 +750,11 @@ func (o ClientOutput) AllowedLogoutUrls() pulumi.StringArrayOutput {
 // URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 func (o ClientOutput) AllowedOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringArrayOutput { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
+}
+
+// Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+func (o ClientOutput) AnonymousSessions() ClientAnonymousSessionsPtrOutput {
+	return o.ApplyT(func(v *Client) ClientAnonymousSessionsPtrOutput { return v.AnonymousSessions }).(ClientAnonymousSessionsPtrOutput)
 }
 
 // Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`

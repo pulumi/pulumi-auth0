@@ -13,6 +13,1428 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetCustomDomainVerificationType struct {
+	// Contains error message, if any, from the last DNS verification check.
+	ErrorMsg string `pulumi:"errorMsg"`
+	// Indicates the last time the domain was successfully verified.
+	LastVerifiedAt string `pulumi:"lastVerifiedAt"`
+	// Defines the list of domain verification methods used.
+	Methods []interface{} `pulumi:"methods"`
+	// Represents the current status of the domain verification process.
+	Status string `pulumi:"status"`
+}
+
+// GetCustomDomainVerificationTypeInput is an input type that accepts GetCustomDomainVerificationTypeArgs and GetCustomDomainVerificationTypeOutput values.
+// You can construct a concrete instance of `GetCustomDomainVerificationTypeInput` via:
+//
+//	GetCustomDomainVerificationTypeArgs{...}
+type GetCustomDomainVerificationTypeInput interface {
+	pulumi.Input
+
+	ToGetCustomDomainVerificationTypeOutput() GetCustomDomainVerificationTypeOutput
+	ToGetCustomDomainVerificationTypeOutputWithContext(context.Context) GetCustomDomainVerificationTypeOutput
+}
+
+type GetCustomDomainVerificationTypeArgs struct {
+	// Contains error message, if any, from the last DNS verification check.
+	ErrorMsg pulumi.StringInput `pulumi:"errorMsg"`
+	// Indicates the last time the domain was successfully verified.
+	LastVerifiedAt pulumi.StringInput `pulumi:"lastVerifiedAt"`
+	// Defines the list of domain verification methods used.
+	Methods pulumi.ArrayInput `pulumi:"methods"`
+	// Represents the current status of the domain verification process.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetCustomDomainVerificationTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomDomainVerificationType)(nil)).Elem()
+}
+
+func (i GetCustomDomainVerificationTypeArgs) ToGetCustomDomainVerificationTypeOutput() GetCustomDomainVerificationTypeOutput {
+	return i.ToGetCustomDomainVerificationTypeOutputWithContext(context.Background())
+}
+
+func (i GetCustomDomainVerificationTypeArgs) ToGetCustomDomainVerificationTypeOutputWithContext(ctx context.Context) GetCustomDomainVerificationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomDomainVerificationTypeOutput)
+}
+
+// GetCustomDomainVerificationTypeArrayInput is an input type that accepts GetCustomDomainVerificationTypeArray and GetCustomDomainVerificationTypeArrayOutput values.
+// You can construct a concrete instance of `GetCustomDomainVerificationTypeArrayInput` via:
+//
+//	GetCustomDomainVerificationTypeArray{ GetCustomDomainVerificationTypeArgs{...} }
+type GetCustomDomainVerificationTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetCustomDomainVerificationTypeArrayOutput() GetCustomDomainVerificationTypeArrayOutput
+	ToGetCustomDomainVerificationTypeArrayOutputWithContext(context.Context) GetCustomDomainVerificationTypeArrayOutput
+}
+
+type GetCustomDomainVerificationTypeArray []GetCustomDomainVerificationTypeInput
+
+func (GetCustomDomainVerificationTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomDomainVerificationType)(nil)).Elem()
+}
+
+func (i GetCustomDomainVerificationTypeArray) ToGetCustomDomainVerificationTypeArrayOutput() GetCustomDomainVerificationTypeArrayOutput {
+	return i.ToGetCustomDomainVerificationTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetCustomDomainVerificationTypeArray) ToGetCustomDomainVerificationTypeArrayOutputWithContext(ctx context.Context) GetCustomDomainVerificationTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomDomainVerificationTypeArrayOutput)
+}
+
+type GetCustomDomainVerificationTypeOutput struct{ *pulumi.OutputState }
+
+func (GetCustomDomainVerificationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomDomainVerificationType)(nil)).Elem()
+}
+
+func (o GetCustomDomainVerificationTypeOutput) ToGetCustomDomainVerificationTypeOutput() GetCustomDomainVerificationTypeOutput {
+	return o
+}
+
+func (o GetCustomDomainVerificationTypeOutput) ToGetCustomDomainVerificationTypeOutputWithContext(ctx context.Context) GetCustomDomainVerificationTypeOutput {
+	return o
+}
+
+// Contains error message, if any, from the last DNS verification check.
+func (o GetCustomDomainVerificationTypeOutput) ErrorMsg() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainVerificationType) string { return v.ErrorMsg }).(pulumi.StringOutput)
+}
+
+// Indicates the last time the domain was successfully verified.
+func (o GetCustomDomainVerificationTypeOutput) LastVerifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainVerificationType) string { return v.LastVerifiedAt }).(pulumi.StringOutput)
+}
+
+// Defines the list of domain verification methods used.
+func (o GetCustomDomainVerificationTypeOutput) Methods() pulumi.ArrayOutput {
+	return o.ApplyT(func(v GetCustomDomainVerificationType) []interface{} { return v.Methods }).(pulumi.ArrayOutput)
+}
+
+// Represents the current status of the domain verification process.
+func (o GetCustomDomainVerificationTypeOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainVerificationType) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetCustomDomainVerificationTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCustomDomainVerificationTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomDomainVerificationType)(nil)).Elem()
+}
+
+func (o GetCustomDomainVerificationTypeArrayOutput) ToGetCustomDomainVerificationTypeArrayOutput() GetCustomDomainVerificationTypeArrayOutput {
+	return o
+}
+
+func (o GetCustomDomainVerificationTypeArrayOutput) ToGetCustomDomainVerificationTypeArrayOutputWithContext(ctx context.Context) GetCustomDomainVerificationTypeArrayOutput {
+	return o
+}
+
+func (o GetCustomDomainVerificationTypeArrayOutput) Index(i pulumi.IntInput) GetCustomDomainVerificationTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCustomDomainVerificationType {
+		return vs[0].([]GetCustomDomainVerificationType)[vs[1].(int)]
+	}).(GetCustomDomainVerificationTypeOutput)
+}
+
+type GetCustomDomainsCustomDomain struct {
+	// The Custom Domain certificate.
+	Certificates []GetCustomDomainsCustomDomainCertificate `pulumi:"certificates"`
+	// The HTTP header to fetch the client's IP address. Cannot be set on auth0Managed domains.
+	CustomClientIpHeader string `pulumi:"customClientIpHeader"`
+	// Name of the custom domain.
+	Domain string `pulumi:"domain"`
+	// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
+	DomainMetadata map[string]string `pulumi:"domainMetadata"`
+	// Indicates whether this custom domain is the default domain for the tenant
+	IsDefault bool `pulumi:"isDefault"`
+	// Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+	OriginDomainName string `pulumi:"originDomainName"`
+	// Indicates whether this is a primary domain.
+	Primary bool `pulumi:"primary"`
+	// Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+	RelyingPartyIdentifier string `pulumi:"relyingPartyIdentifier"`
+	// Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
+	Status string `pulumi:"status"`
+	// TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
+	TlsPolicy string `pulumi:"tlsPolicy"`
+	// Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
+	Type string `pulumi:"type"`
+	// Configuration settings for verification.
+	Verifications []GetCustomDomainsCustomDomainVerification `pulumi:"verifications"`
+}
+
+// GetCustomDomainsCustomDomainInput is an input type that accepts GetCustomDomainsCustomDomainArgs and GetCustomDomainsCustomDomainOutput values.
+// You can construct a concrete instance of `GetCustomDomainsCustomDomainInput` via:
+//
+//	GetCustomDomainsCustomDomainArgs{...}
+type GetCustomDomainsCustomDomainInput interface {
+	pulumi.Input
+
+	ToGetCustomDomainsCustomDomainOutput() GetCustomDomainsCustomDomainOutput
+	ToGetCustomDomainsCustomDomainOutputWithContext(context.Context) GetCustomDomainsCustomDomainOutput
+}
+
+type GetCustomDomainsCustomDomainArgs struct {
+	// The Custom Domain certificate.
+	Certificates GetCustomDomainsCustomDomainCertificateArrayInput `pulumi:"certificates"`
+	// The HTTP header to fetch the client's IP address. Cannot be set on auth0Managed domains.
+	CustomClientIpHeader pulumi.StringInput `pulumi:"customClientIpHeader"`
+	// Name of the custom domain.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
+	DomainMetadata pulumi.StringMapInput `pulumi:"domainMetadata"`
+	// Indicates whether this custom domain is the default domain for the tenant
+	IsDefault pulumi.BoolInput `pulumi:"isDefault"`
+	// Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+	OriginDomainName pulumi.StringInput `pulumi:"originDomainName"`
+	// Indicates whether this is a primary domain.
+	Primary pulumi.BoolInput `pulumi:"primary"`
+	// Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+	RelyingPartyIdentifier pulumi.StringInput `pulumi:"relyingPartyIdentifier"`
+	// Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
+	Status pulumi.StringInput `pulumi:"status"`
+	// TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
+	TlsPolicy pulumi.StringInput `pulumi:"tlsPolicy"`
+	// Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Configuration settings for verification.
+	Verifications GetCustomDomainsCustomDomainVerificationArrayInput `pulumi:"verifications"`
+}
+
+func (GetCustomDomainsCustomDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomDomainsCustomDomain)(nil)).Elem()
+}
+
+func (i GetCustomDomainsCustomDomainArgs) ToGetCustomDomainsCustomDomainOutput() GetCustomDomainsCustomDomainOutput {
+	return i.ToGetCustomDomainsCustomDomainOutputWithContext(context.Background())
+}
+
+func (i GetCustomDomainsCustomDomainArgs) ToGetCustomDomainsCustomDomainOutputWithContext(ctx context.Context) GetCustomDomainsCustomDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomDomainsCustomDomainOutput)
+}
+
+// GetCustomDomainsCustomDomainArrayInput is an input type that accepts GetCustomDomainsCustomDomainArray and GetCustomDomainsCustomDomainArrayOutput values.
+// You can construct a concrete instance of `GetCustomDomainsCustomDomainArrayInput` via:
+//
+//	GetCustomDomainsCustomDomainArray{ GetCustomDomainsCustomDomainArgs{...} }
+type GetCustomDomainsCustomDomainArrayInput interface {
+	pulumi.Input
+
+	ToGetCustomDomainsCustomDomainArrayOutput() GetCustomDomainsCustomDomainArrayOutput
+	ToGetCustomDomainsCustomDomainArrayOutputWithContext(context.Context) GetCustomDomainsCustomDomainArrayOutput
+}
+
+type GetCustomDomainsCustomDomainArray []GetCustomDomainsCustomDomainInput
+
+func (GetCustomDomainsCustomDomainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomDomainsCustomDomain)(nil)).Elem()
+}
+
+func (i GetCustomDomainsCustomDomainArray) ToGetCustomDomainsCustomDomainArrayOutput() GetCustomDomainsCustomDomainArrayOutput {
+	return i.ToGetCustomDomainsCustomDomainArrayOutputWithContext(context.Background())
+}
+
+func (i GetCustomDomainsCustomDomainArray) ToGetCustomDomainsCustomDomainArrayOutputWithContext(ctx context.Context) GetCustomDomainsCustomDomainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomDomainsCustomDomainArrayOutput)
+}
+
+type GetCustomDomainsCustomDomainOutput struct{ *pulumi.OutputState }
+
+func (GetCustomDomainsCustomDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomDomainsCustomDomain)(nil)).Elem()
+}
+
+func (o GetCustomDomainsCustomDomainOutput) ToGetCustomDomainsCustomDomainOutput() GetCustomDomainsCustomDomainOutput {
+	return o
+}
+
+func (o GetCustomDomainsCustomDomainOutput) ToGetCustomDomainsCustomDomainOutputWithContext(ctx context.Context) GetCustomDomainsCustomDomainOutput {
+	return o
+}
+
+// The Custom Domain certificate.
+func (o GetCustomDomainsCustomDomainOutput) Certificates() GetCustomDomainsCustomDomainCertificateArrayOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomain) []GetCustomDomainsCustomDomainCertificate { return v.Certificates }).(GetCustomDomainsCustomDomainCertificateArrayOutput)
+}
+
+// The HTTP header to fetch the client's IP address. Cannot be set on auth0Managed domains.
+func (o GetCustomDomainsCustomDomainOutput) CustomClientIpHeader() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomain) string { return v.CustomClientIpHeader }).(pulumi.StringOutput)
+}
+
+// Name of the custom domain.
+func (o GetCustomDomainsCustomDomainOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomain) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// Metadata associated with the Custom Domain. Maximum of 10 metadata properties allowed. (EA only).
+func (o GetCustomDomainsCustomDomainOutput) DomainMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomain) map[string]string { return v.DomainMetadata }).(pulumi.StringMapOutput)
+}
+
+// Indicates whether this custom domain is the default domain for the tenant
+func (o GetCustomDomainsCustomDomainOutput) IsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomain) bool { return v.IsDefault }).(pulumi.BoolOutput)
+}
+
+// Once the configuration status is `ready`, the DNS name of the Auth0 origin server that handles traffic for the custom domain.
+func (o GetCustomDomainsCustomDomainOutput) OriginDomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomain) string { return v.OriginDomainName }).(pulumi.StringOutput)
+}
+
+// Indicates whether this is a primary domain.
+func (o GetCustomDomainsCustomDomainOutput) Primary() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomain) bool { return v.Primary }).(pulumi.BoolOutput)
+}
+
+// Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided or set to null, the full domain will be used.
+func (o GetCustomDomainsCustomDomainOutput) RelyingPartyIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomain) string { return v.RelyingPartyIdentifier }).(pulumi.StringOutput)
+}
+
+// Configuration status for the custom domain. Options include `disabled`, `pending`, `pendingVerification`, `ready` and `failed`.
+func (o GetCustomDomainsCustomDomainOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomain) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// TLS policy for the custom domain. Available options are: `compatible` or `recommended`. Compatible includes TLS 1.0, 1.1, 1.2, and recommended only includes TLS 1.2. Cannot be set on selfManaged domains.
+func (o GetCustomDomainsCustomDomainOutput) TlsPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomain) string { return v.TlsPolicy }).(pulumi.StringOutput)
+}
+
+// Provisioning type for the custom domain. Options include `auth0ManagedCerts` and `selfManagedCerts`.
+func (o GetCustomDomainsCustomDomainOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomain) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Configuration settings for verification.
+func (o GetCustomDomainsCustomDomainOutput) Verifications() GetCustomDomainsCustomDomainVerificationArrayOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomain) []GetCustomDomainsCustomDomainVerification {
+		return v.Verifications
+	}).(GetCustomDomainsCustomDomainVerificationArrayOutput)
+}
+
+type GetCustomDomainsCustomDomainArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCustomDomainsCustomDomainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomDomainsCustomDomain)(nil)).Elem()
+}
+
+func (o GetCustomDomainsCustomDomainArrayOutput) ToGetCustomDomainsCustomDomainArrayOutput() GetCustomDomainsCustomDomainArrayOutput {
+	return o
+}
+
+func (o GetCustomDomainsCustomDomainArrayOutput) ToGetCustomDomainsCustomDomainArrayOutputWithContext(ctx context.Context) GetCustomDomainsCustomDomainArrayOutput {
+	return o
+}
+
+func (o GetCustomDomainsCustomDomainArrayOutput) Index(i pulumi.IntInput) GetCustomDomainsCustomDomainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCustomDomainsCustomDomain {
+		return vs[0].([]GetCustomDomainsCustomDomain)[vs[1].(int)]
+	}).(GetCustomDomainsCustomDomainOutput)
+}
+
+type GetCustomDomainsCustomDomainCertificate struct {
+	// Name of the certificate authority that issued the certificate.
+	CertificateAuthority string `pulumi:"certificateAuthority"`
+	// Contains the error message if the provisioning process fails.
+	ErrorMsg string `pulumi:"errorMsg"`
+	// Specifies the date by which the certificate should be renewed.
+	RenewsBefore string `pulumi:"renewsBefore"`
+	// Indicates the current state of the certificate provisioning process.
+	Status string `pulumi:"status"`
+}
+
+// GetCustomDomainsCustomDomainCertificateInput is an input type that accepts GetCustomDomainsCustomDomainCertificateArgs and GetCustomDomainsCustomDomainCertificateOutput values.
+// You can construct a concrete instance of `GetCustomDomainsCustomDomainCertificateInput` via:
+//
+//	GetCustomDomainsCustomDomainCertificateArgs{...}
+type GetCustomDomainsCustomDomainCertificateInput interface {
+	pulumi.Input
+
+	ToGetCustomDomainsCustomDomainCertificateOutput() GetCustomDomainsCustomDomainCertificateOutput
+	ToGetCustomDomainsCustomDomainCertificateOutputWithContext(context.Context) GetCustomDomainsCustomDomainCertificateOutput
+}
+
+type GetCustomDomainsCustomDomainCertificateArgs struct {
+	// Name of the certificate authority that issued the certificate.
+	CertificateAuthority pulumi.StringInput `pulumi:"certificateAuthority"`
+	// Contains the error message if the provisioning process fails.
+	ErrorMsg pulumi.StringInput `pulumi:"errorMsg"`
+	// Specifies the date by which the certificate should be renewed.
+	RenewsBefore pulumi.StringInput `pulumi:"renewsBefore"`
+	// Indicates the current state of the certificate provisioning process.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetCustomDomainsCustomDomainCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomDomainsCustomDomainCertificate)(nil)).Elem()
+}
+
+func (i GetCustomDomainsCustomDomainCertificateArgs) ToGetCustomDomainsCustomDomainCertificateOutput() GetCustomDomainsCustomDomainCertificateOutput {
+	return i.ToGetCustomDomainsCustomDomainCertificateOutputWithContext(context.Background())
+}
+
+func (i GetCustomDomainsCustomDomainCertificateArgs) ToGetCustomDomainsCustomDomainCertificateOutputWithContext(ctx context.Context) GetCustomDomainsCustomDomainCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomDomainsCustomDomainCertificateOutput)
+}
+
+// GetCustomDomainsCustomDomainCertificateArrayInput is an input type that accepts GetCustomDomainsCustomDomainCertificateArray and GetCustomDomainsCustomDomainCertificateArrayOutput values.
+// You can construct a concrete instance of `GetCustomDomainsCustomDomainCertificateArrayInput` via:
+//
+//	GetCustomDomainsCustomDomainCertificateArray{ GetCustomDomainsCustomDomainCertificateArgs{...} }
+type GetCustomDomainsCustomDomainCertificateArrayInput interface {
+	pulumi.Input
+
+	ToGetCustomDomainsCustomDomainCertificateArrayOutput() GetCustomDomainsCustomDomainCertificateArrayOutput
+	ToGetCustomDomainsCustomDomainCertificateArrayOutputWithContext(context.Context) GetCustomDomainsCustomDomainCertificateArrayOutput
+}
+
+type GetCustomDomainsCustomDomainCertificateArray []GetCustomDomainsCustomDomainCertificateInput
+
+func (GetCustomDomainsCustomDomainCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomDomainsCustomDomainCertificate)(nil)).Elem()
+}
+
+func (i GetCustomDomainsCustomDomainCertificateArray) ToGetCustomDomainsCustomDomainCertificateArrayOutput() GetCustomDomainsCustomDomainCertificateArrayOutput {
+	return i.ToGetCustomDomainsCustomDomainCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i GetCustomDomainsCustomDomainCertificateArray) ToGetCustomDomainsCustomDomainCertificateArrayOutputWithContext(ctx context.Context) GetCustomDomainsCustomDomainCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomDomainsCustomDomainCertificateArrayOutput)
+}
+
+type GetCustomDomainsCustomDomainCertificateOutput struct{ *pulumi.OutputState }
+
+func (GetCustomDomainsCustomDomainCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomDomainsCustomDomainCertificate)(nil)).Elem()
+}
+
+func (o GetCustomDomainsCustomDomainCertificateOutput) ToGetCustomDomainsCustomDomainCertificateOutput() GetCustomDomainsCustomDomainCertificateOutput {
+	return o
+}
+
+func (o GetCustomDomainsCustomDomainCertificateOutput) ToGetCustomDomainsCustomDomainCertificateOutputWithContext(ctx context.Context) GetCustomDomainsCustomDomainCertificateOutput {
+	return o
+}
+
+// Name of the certificate authority that issued the certificate.
+func (o GetCustomDomainsCustomDomainCertificateOutput) CertificateAuthority() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomainCertificate) string { return v.CertificateAuthority }).(pulumi.StringOutput)
+}
+
+// Contains the error message if the provisioning process fails.
+func (o GetCustomDomainsCustomDomainCertificateOutput) ErrorMsg() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomainCertificate) string { return v.ErrorMsg }).(pulumi.StringOutput)
+}
+
+// Specifies the date by which the certificate should be renewed.
+func (o GetCustomDomainsCustomDomainCertificateOutput) RenewsBefore() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomainCertificate) string { return v.RenewsBefore }).(pulumi.StringOutput)
+}
+
+// Indicates the current state of the certificate provisioning process.
+func (o GetCustomDomainsCustomDomainCertificateOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomainCertificate) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetCustomDomainsCustomDomainCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCustomDomainsCustomDomainCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomDomainsCustomDomainCertificate)(nil)).Elem()
+}
+
+func (o GetCustomDomainsCustomDomainCertificateArrayOutput) ToGetCustomDomainsCustomDomainCertificateArrayOutput() GetCustomDomainsCustomDomainCertificateArrayOutput {
+	return o
+}
+
+func (o GetCustomDomainsCustomDomainCertificateArrayOutput) ToGetCustomDomainsCustomDomainCertificateArrayOutputWithContext(ctx context.Context) GetCustomDomainsCustomDomainCertificateArrayOutput {
+	return o
+}
+
+func (o GetCustomDomainsCustomDomainCertificateArrayOutput) Index(i pulumi.IntInput) GetCustomDomainsCustomDomainCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCustomDomainsCustomDomainCertificate {
+		return vs[0].([]GetCustomDomainsCustomDomainCertificate)[vs[1].(int)]
+	}).(GetCustomDomainsCustomDomainCertificateOutput)
+}
+
+type GetCustomDomainsCustomDomainVerification struct {
+	// Contains error message, if any, from the last DNS verification check.
+	ErrorMsg string `pulumi:"errorMsg"`
+	// Indicates the last time the domain was successfully verified.
+	LastVerifiedAt string `pulumi:"lastVerifiedAt"`
+	// Defines the list of domain verification methods used.
+	Methods []interface{} `pulumi:"methods"`
+	// Represents the current status of the domain verification process.
+	Status string `pulumi:"status"`
+}
+
+// GetCustomDomainsCustomDomainVerificationInput is an input type that accepts GetCustomDomainsCustomDomainVerificationArgs and GetCustomDomainsCustomDomainVerificationOutput values.
+// You can construct a concrete instance of `GetCustomDomainsCustomDomainVerificationInput` via:
+//
+//	GetCustomDomainsCustomDomainVerificationArgs{...}
+type GetCustomDomainsCustomDomainVerificationInput interface {
+	pulumi.Input
+
+	ToGetCustomDomainsCustomDomainVerificationOutput() GetCustomDomainsCustomDomainVerificationOutput
+	ToGetCustomDomainsCustomDomainVerificationOutputWithContext(context.Context) GetCustomDomainsCustomDomainVerificationOutput
+}
+
+type GetCustomDomainsCustomDomainVerificationArgs struct {
+	// Contains error message, if any, from the last DNS verification check.
+	ErrorMsg pulumi.StringInput `pulumi:"errorMsg"`
+	// Indicates the last time the domain was successfully verified.
+	LastVerifiedAt pulumi.StringInput `pulumi:"lastVerifiedAt"`
+	// Defines the list of domain verification methods used.
+	Methods pulumi.ArrayInput `pulumi:"methods"`
+	// Represents the current status of the domain verification process.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetCustomDomainsCustomDomainVerificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomDomainsCustomDomainVerification)(nil)).Elem()
+}
+
+func (i GetCustomDomainsCustomDomainVerificationArgs) ToGetCustomDomainsCustomDomainVerificationOutput() GetCustomDomainsCustomDomainVerificationOutput {
+	return i.ToGetCustomDomainsCustomDomainVerificationOutputWithContext(context.Background())
+}
+
+func (i GetCustomDomainsCustomDomainVerificationArgs) ToGetCustomDomainsCustomDomainVerificationOutputWithContext(ctx context.Context) GetCustomDomainsCustomDomainVerificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomDomainsCustomDomainVerificationOutput)
+}
+
+// GetCustomDomainsCustomDomainVerificationArrayInput is an input type that accepts GetCustomDomainsCustomDomainVerificationArray and GetCustomDomainsCustomDomainVerificationArrayOutput values.
+// You can construct a concrete instance of `GetCustomDomainsCustomDomainVerificationArrayInput` via:
+//
+//	GetCustomDomainsCustomDomainVerificationArray{ GetCustomDomainsCustomDomainVerificationArgs{...} }
+type GetCustomDomainsCustomDomainVerificationArrayInput interface {
+	pulumi.Input
+
+	ToGetCustomDomainsCustomDomainVerificationArrayOutput() GetCustomDomainsCustomDomainVerificationArrayOutput
+	ToGetCustomDomainsCustomDomainVerificationArrayOutputWithContext(context.Context) GetCustomDomainsCustomDomainVerificationArrayOutput
+}
+
+type GetCustomDomainsCustomDomainVerificationArray []GetCustomDomainsCustomDomainVerificationInput
+
+func (GetCustomDomainsCustomDomainVerificationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomDomainsCustomDomainVerification)(nil)).Elem()
+}
+
+func (i GetCustomDomainsCustomDomainVerificationArray) ToGetCustomDomainsCustomDomainVerificationArrayOutput() GetCustomDomainsCustomDomainVerificationArrayOutput {
+	return i.ToGetCustomDomainsCustomDomainVerificationArrayOutputWithContext(context.Background())
+}
+
+func (i GetCustomDomainsCustomDomainVerificationArray) ToGetCustomDomainsCustomDomainVerificationArrayOutputWithContext(ctx context.Context) GetCustomDomainsCustomDomainVerificationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomDomainsCustomDomainVerificationArrayOutput)
+}
+
+type GetCustomDomainsCustomDomainVerificationOutput struct{ *pulumi.OutputState }
+
+func (GetCustomDomainsCustomDomainVerificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomDomainsCustomDomainVerification)(nil)).Elem()
+}
+
+func (o GetCustomDomainsCustomDomainVerificationOutput) ToGetCustomDomainsCustomDomainVerificationOutput() GetCustomDomainsCustomDomainVerificationOutput {
+	return o
+}
+
+func (o GetCustomDomainsCustomDomainVerificationOutput) ToGetCustomDomainsCustomDomainVerificationOutputWithContext(ctx context.Context) GetCustomDomainsCustomDomainVerificationOutput {
+	return o
+}
+
+// Contains error message, if any, from the last DNS verification check.
+func (o GetCustomDomainsCustomDomainVerificationOutput) ErrorMsg() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomainVerification) string { return v.ErrorMsg }).(pulumi.StringOutput)
+}
+
+// Indicates the last time the domain was successfully verified.
+func (o GetCustomDomainsCustomDomainVerificationOutput) LastVerifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomainVerification) string { return v.LastVerifiedAt }).(pulumi.StringOutput)
+}
+
+// Defines the list of domain verification methods used.
+func (o GetCustomDomainsCustomDomainVerificationOutput) Methods() pulumi.ArrayOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomainVerification) []interface{} { return v.Methods }).(pulumi.ArrayOutput)
+}
+
+// Represents the current status of the domain verification process.
+func (o GetCustomDomainsCustomDomainVerificationOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainsCustomDomainVerification) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetCustomDomainsCustomDomainVerificationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCustomDomainsCustomDomainVerificationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomDomainsCustomDomainVerification)(nil)).Elem()
+}
+
+func (o GetCustomDomainsCustomDomainVerificationArrayOutput) ToGetCustomDomainsCustomDomainVerificationArrayOutput() GetCustomDomainsCustomDomainVerificationArrayOutput {
+	return o
+}
+
+func (o GetCustomDomainsCustomDomainVerificationArrayOutput) ToGetCustomDomainsCustomDomainVerificationArrayOutputWithContext(ctx context.Context) GetCustomDomainsCustomDomainVerificationArrayOutput {
+	return o
+}
+
+func (o GetCustomDomainsCustomDomainVerificationArrayOutput) Index(i pulumi.IntInput) GetCustomDomainsCustomDomainVerificationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCustomDomainsCustomDomainVerification {
+		return vs[0].([]GetCustomDomainsCustomDomainVerification)[vs[1].(int)]
+	}).(GetCustomDomainsCustomDomainVerificationOutput)
+}
+
+type GetEventStreamActionConfiguration struct {
+	// The ID of the Auth0 Action to use as the event stream destination.
+	ActionId string `pulumi:"actionId"`
+}
+
+// GetEventStreamActionConfigurationInput is an input type that accepts GetEventStreamActionConfigurationArgs and GetEventStreamActionConfigurationOutput values.
+// You can construct a concrete instance of `GetEventStreamActionConfigurationInput` via:
+//
+//	GetEventStreamActionConfigurationArgs{...}
+type GetEventStreamActionConfigurationInput interface {
+	pulumi.Input
+
+	ToGetEventStreamActionConfigurationOutput() GetEventStreamActionConfigurationOutput
+	ToGetEventStreamActionConfigurationOutputWithContext(context.Context) GetEventStreamActionConfigurationOutput
+}
+
+type GetEventStreamActionConfigurationArgs struct {
+	// The ID of the Auth0 Action to use as the event stream destination.
+	ActionId pulumi.StringInput `pulumi:"actionId"`
+}
+
+func (GetEventStreamActionConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventStreamActionConfiguration)(nil)).Elem()
+}
+
+func (i GetEventStreamActionConfigurationArgs) ToGetEventStreamActionConfigurationOutput() GetEventStreamActionConfigurationOutput {
+	return i.ToGetEventStreamActionConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetEventStreamActionConfigurationArgs) ToGetEventStreamActionConfigurationOutputWithContext(ctx context.Context) GetEventStreamActionConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventStreamActionConfigurationOutput)
+}
+
+// GetEventStreamActionConfigurationArrayInput is an input type that accepts GetEventStreamActionConfigurationArray and GetEventStreamActionConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetEventStreamActionConfigurationArrayInput` via:
+//
+//	GetEventStreamActionConfigurationArray{ GetEventStreamActionConfigurationArgs{...} }
+type GetEventStreamActionConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetEventStreamActionConfigurationArrayOutput() GetEventStreamActionConfigurationArrayOutput
+	ToGetEventStreamActionConfigurationArrayOutputWithContext(context.Context) GetEventStreamActionConfigurationArrayOutput
+}
+
+type GetEventStreamActionConfigurationArray []GetEventStreamActionConfigurationInput
+
+func (GetEventStreamActionConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventStreamActionConfiguration)(nil)).Elem()
+}
+
+func (i GetEventStreamActionConfigurationArray) ToGetEventStreamActionConfigurationArrayOutput() GetEventStreamActionConfigurationArrayOutput {
+	return i.ToGetEventStreamActionConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetEventStreamActionConfigurationArray) ToGetEventStreamActionConfigurationArrayOutputWithContext(ctx context.Context) GetEventStreamActionConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventStreamActionConfigurationArrayOutput)
+}
+
+type GetEventStreamActionConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetEventStreamActionConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventStreamActionConfiguration)(nil)).Elem()
+}
+
+func (o GetEventStreamActionConfigurationOutput) ToGetEventStreamActionConfigurationOutput() GetEventStreamActionConfigurationOutput {
+	return o
+}
+
+func (o GetEventStreamActionConfigurationOutput) ToGetEventStreamActionConfigurationOutputWithContext(ctx context.Context) GetEventStreamActionConfigurationOutput {
+	return o
+}
+
+// The ID of the Auth0 Action to use as the event stream destination.
+func (o GetEventStreamActionConfigurationOutput) ActionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventStreamActionConfiguration) string { return v.ActionId }).(pulumi.StringOutput)
+}
+
+type GetEventStreamActionConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEventStreamActionConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventStreamActionConfiguration)(nil)).Elem()
+}
+
+func (o GetEventStreamActionConfigurationArrayOutput) ToGetEventStreamActionConfigurationArrayOutput() GetEventStreamActionConfigurationArrayOutput {
+	return o
+}
+
+func (o GetEventStreamActionConfigurationArrayOutput) ToGetEventStreamActionConfigurationArrayOutputWithContext(ctx context.Context) GetEventStreamActionConfigurationArrayOutput {
+	return o
+}
+
+func (o GetEventStreamActionConfigurationArrayOutput) Index(i pulumi.IntInput) GetEventStreamActionConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEventStreamActionConfiguration {
+		return vs[0].([]GetEventStreamActionConfiguration)[vs[1].(int)]
+	}).(GetEventStreamActionConfigurationOutput)
+}
+
+type GetEventStreamEventbridgeConfiguration struct {
+	AwsAccountId          string `pulumi:"awsAccountId"`
+	AwsPartnerEventSource string `pulumi:"awsPartnerEventSource"`
+	AwsRegion             string `pulumi:"awsRegion"`
+}
+
+// GetEventStreamEventbridgeConfigurationInput is an input type that accepts GetEventStreamEventbridgeConfigurationArgs and GetEventStreamEventbridgeConfigurationOutput values.
+// You can construct a concrete instance of `GetEventStreamEventbridgeConfigurationInput` via:
+//
+//	GetEventStreamEventbridgeConfigurationArgs{...}
+type GetEventStreamEventbridgeConfigurationInput interface {
+	pulumi.Input
+
+	ToGetEventStreamEventbridgeConfigurationOutput() GetEventStreamEventbridgeConfigurationOutput
+	ToGetEventStreamEventbridgeConfigurationOutputWithContext(context.Context) GetEventStreamEventbridgeConfigurationOutput
+}
+
+type GetEventStreamEventbridgeConfigurationArgs struct {
+	AwsAccountId          pulumi.StringInput `pulumi:"awsAccountId"`
+	AwsPartnerEventSource pulumi.StringInput `pulumi:"awsPartnerEventSource"`
+	AwsRegion             pulumi.StringInput `pulumi:"awsRegion"`
+}
+
+func (GetEventStreamEventbridgeConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventStreamEventbridgeConfiguration)(nil)).Elem()
+}
+
+func (i GetEventStreamEventbridgeConfigurationArgs) ToGetEventStreamEventbridgeConfigurationOutput() GetEventStreamEventbridgeConfigurationOutput {
+	return i.ToGetEventStreamEventbridgeConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetEventStreamEventbridgeConfigurationArgs) ToGetEventStreamEventbridgeConfigurationOutputWithContext(ctx context.Context) GetEventStreamEventbridgeConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventStreamEventbridgeConfigurationOutput)
+}
+
+// GetEventStreamEventbridgeConfigurationArrayInput is an input type that accepts GetEventStreamEventbridgeConfigurationArray and GetEventStreamEventbridgeConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetEventStreamEventbridgeConfigurationArrayInput` via:
+//
+//	GetEventStreamEventbridgeConfigurationArray{ GetEventStreamEventbridgeConfigurationArgs{...} }
+type GetEventStreamEventbridgeConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetEventStreamEventbridgeConfigurationArrayOutput() GetEventStreamEventbridgeConfigurationArrayOutput
+	ToGetEventStreamEventbridgeConfigurationArrayOutputWithContext(context.Context) GetEventStreamEventbridgeConfigurationArrayOutput
+}
+
+type GetEventStreamEventbridgeConfigurationArray []GetEventStreamEventbridgeConfigurationInput
+
+func (GetEventStreamEventbridgeConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventStreamEventbridgeConfiguration)(nil)).Elem()
+}
+
+func (i GetEventStreamEventbridgeConfigurationArray) ToGetEventStreamEventbridgeConfigurationArrayOutput() GetEventStreamEventbridgeConfigurationArrayOutput {
+	return i.ToGetEventStreamEventbridgeConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetEventStreamEventbridgeConfigurationArray) ToGetEventStreamEventbridgeConfigurationArrayOutputWithContext(ctx context.Context) GetEventStreamEventbridgeConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventStreamEventbridgeConfigurationArrayOutput)
+}
+
+type GetEventStreamEventbridgeConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetEventStreamEventbridgeConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventStreamEventbridgeConfiguration)(nil)).Elem()
+}
+
+func (o GetEventStreamEventbridgeConfigurationOutput) ToGetEventStreamEventbridgeConfigurationOutput() GetEventStreamEventbridgeConfigurationOutput {
+	return o
+}
+
+func (o GetEventStreamEventbridgeConfigurationOutput) ToGetEventStreamEventbridgeConfigurationOutputWithContext(ctx context.Context) GetEventStreamEventbridgeConfigurationOutput {
+	return o
+}
+
+func (o GetEventStreamEventbridgeConfigurationOutput) AwsAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventStreamEventbridgeConfiguration) string { return v.AwsAccountId }).(pulumi.StringOutput)
+}
+
+func (o GetEventStreamEventbridgeConfigurationOutput) AwsPartnerEventSource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventStreamEventbridgeConfiguration) string { return v.AwsPartnerEventSource }).(pulumi.StringOutput)
+}
+
+func (o GetEventStreamEventbridgeConfigurationOutput) AwsRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventStreamEventbridgeConfiguration) string { return v.AwsRegion }).(pulumi.StringOutput)
+}
+
+type GetEventStreamEventbridgeConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEventStreamEventbridgeConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventStreamEventbridgeConfiguration)(nil)).Elem()
+}
+
+func (o GetEventStreamEventbridgeConfigurationArrayOutput) ToGetEventStreamEventbridgeConfigurationArrayOutput() GetEventStreamEventbridgeConfigurationArrayOutput {
+	return o
+}
+
+func (o GetEventStreamEventbridgeConfigurationArrayOutput) ToGetEventStreamEventbridgeConfigurationArrayOutputWithContext(ctx context.Context) GetEventStreamEventbridgeConfigurationArrayOutput {
+	return o
+}
+
+func (o GetEventStreamEventbridgeConfigurationArrayOutput) Index(i pulumi.IntInput) GetEventStreamEventbridgeConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEventStreamEventbridgeConfiguration {
+		return vs[0].([]GetEventStreamEventbridgeConfiguration)[vs[1].(int)]
+	}).(GetEventStreamEventbridgeConfigurationOutput)
+}
+
+type GetEventStreamWebhookConfiguration struct {
+	// Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, `bearer` authentication using a `token`, or `customHeader` authentication using `headerKey` and `headerValue` (or `headerValueWo`). The appropriate fields must be set based on the chosen method.
+	WebhookAuthorizations []GetEventStreamWebhookConfigurationWebhookAuthorization `pulumi:"webhookAuthorizations"`
+	// The HTTPS endpoint that will receive the webhook events. Must be a valid, publicly accessible URL.
+	WebhookEndpoint string `pulumi:"webhookEndpoint"`
+}
+
+// GetEventStreamWebhookConfigurationInput is an input type that accepts GetEventStreamWebhookConfigurationArgs and GetEventStreamWebhookConfigurationOutput values.
+// You can construct a concrete instance of `GetEventStreamWebhookConfigurationInput` via:
+//
+//	GetEventStreamWebhookConfigurationArgs{...}
+type GetEventStreamWebhookConfigurationInput interface {
+	pulumi.Input
+
+	ToGetEventStreamWebhookConfigurationOutput() GetEventStreamWebhookConfigurationOutput
+	ToGetEventStreamWebhookConfigurationOutputWithContext(context.Context) GetEventStreamWebhookConfigurationOutput
+}
+
+type GetEventStreamWebhookConfigurationArgs struct {
+	// Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, `bearer` authentication using a `token`, or `customHeader` authentication using `headerKey` and `headerValue` (or `headerValueWo`). The appropriate fields must be set based on the chosen method.
+	WebhookAuthorizations GetEventStreamWebhookConfigurationWebhookAuthorizationArrayInput `pulumi:"webhookAuthorizations"`
+	// The HTTPS endpoint that will receive the webhook events. Must be a valid, publicly accessible URL.
+	WebhookEndpoint pulumi.StringInput `pulumi:"webhookEndpoint"`
+}
+
+func (GetEventStreamWebhookConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventStreamWebhookConfiguration)(nil)).Elem()
+}
+
+func (i GetEventStreamWebhookConfigurationArgs) ToGetEventStreamWebhookConfigurationOutput() GetEventStreamWebhookConfigurationOutput {
+	return i.ToGetEventStreamWebhookConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetEventStreamWebhookConfigurationArgs) ToGetEventStreamWebhookConfigurationOutputWithContext(ctx context.Context) GetEventStreamWebhookConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventStreamWebhookConfigurationOutput)
+}
+
+// GetEventStreamWebhookConfigurationArrayInput is an input type that accepts GetEventStreamWebhookConfigurationArray and GetEventStreamWebhookConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetEventStreamWebhookConfigurationArrayInput` via:
+//
+//	GetEventStreamWebhookConfigurationArray{ GetEventStreamWebhookConfigurationArgs{...} }
+type GetEventStreamWebhookConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetEventStreamWebhookConfigurationArrayOutput() GetEventStreamWebhookConfigurationArrayOutput
+	ToGetEventStreamWebhookConfigurationArrayOutputWithContext(context.Context) GetEventStreamWebhookConfigurationArrayOutput
+}
+
+type GetEventStreamWebhookConfigurationArray []GetEventStreamWebhookConfigurationInput
+
+func (GetEventStreamWebhookConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventStreamWebhookConfiguration)(nil)).Elem()
+}
+
+func (i GetEventStreamWebhookConfigurationArray) ToGetEventStreamWebhookConfigurationArrayOutput() GetEventStreamWebhookConfigurationArrayOutput {
+	return i.ToGetEventStreamWebhookConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetEventStreamWebhookConfigurationArray) ToGetEventStreamWebhookConfigurationArrayOutputWithContext(ctx context.Context) GetEventStreamWebhookConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventStreamWebhookConfigurationArrayOutput)
+}
+
+type GetEventStreamWebhookConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetEventStreamWebhookConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventStreamWebhookConfiguration)(nil)).Elem()
+}
+
+func (o GetEventStreamWebhookConfigurationOutput) ToGetEventStreamWebhookConfigurationOutput() GetEventStreamWebhookConfigurationOutput {
+	return o
+}
+
+func (o GetEventStreamWebhookConfigurationOutput) ToGetEventStreamWebhookConfigurationOutputWithContext(ctx context.Context) GetEventStreamWebhookConfigurationOutput {
+	return o
+}
+
+// Authorization details for the webhook endpoint. Supports `basic` authentication using `username` and `password`, `bearer` authentication using a `token`, or `customHeader` authentication using `headerKey` and `headerValue` (or `headerValueWo`). The appropriate fields must be set based on the chosen method.
+func (o GetEventStreamWebhookConfigurationOutput) WebhookAuthorizations() GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput {
+	return o.ApplyT(func(v GetEventStreamWebhookConfiguration) []GetEventStreamWebhookConfigurationWebhookAuthorization {
+		return v.WebhookAuthorizations
+	}).(GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput)
+}
+
+// The HTTPS endpoint that will receive the webhook events. Must be a valid, publicly accessible URL.
+func (o GetEventStreamWebhookConfigurationOutput) WebhookEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventStreamWebhookConfiguration) string { return v.WebhookEndpoint }).(pulumi.StringOutput)
+}
+
+type GetEventStreamWebhookConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEventStreamWebhookConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventStreamWebhookConfiguration)(nil)).Elem()
+}
+
+func (o GetEventStreamWebhookConfigurationArrayOutput) ToGetEventStreamWebhookConfigurationArrayOutput() GetEventStreamWebhookConfigurationArrayOutput {
+	return o
+}
+
+func (o GetEventStreamWebhookConfigurationArrayOutput) ToGetEventStreamWebhookConfigurationArrayOutputWithContext(ctx context.Context) GetEventStreamWebhookConfigurationArrayOutput {
+	return o
+}
+
+func (o GetEventStreamWebhookConfigurationArrayOutput) Index(i pulumi.IntInput) GetEventStreamWebhookConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEventStreamWebhookConfiguration {
+		return vs[0].([]GetEventStreamWebhookConfiguration)[vs[1].(int)]
+	}).(GetEventStreamWebhookConfigurationOutput)
+}
+
+type GetEventStreamWebhookConfigurationWebhookAuthorization struct {
+	// The name of the HTTP header used for `customHeader` authentication. Required when `method` is `customHeader`. Returned by the API and stored in state.
+	HeaderKey string `pulumi:"headerKey"`
+	// The secret value sent in the custom header. Required when `method` is `customHeader` and `headerValueWo` is not provided. **Note:** For better security, use `headerValueWo` to prevent storing the secret in state.
+	HeaderValue string `pulumi:"headerValue"`
+	// The secret value sent in the custom header (write-only). Not stored in Terraform state. Bump `headerValueWoVersion` to rotate the secret.
+	HeaderValueWo string `pulumi:"headerValueWo"`
+	// Version number for secret rotation. Update to trigger a new `headerValueWo` to be sent.
+	HeaderValueWoVersion int `pulumi:"headerValueWoVersion"`
+	// The authorization method used to secure the webhook endpoint. Can be `basic`, `bearer`, or `customHeader`.
+	Method string `pulumi:"method"`
+	// The password for `basic` authentication. Required only when `method` is set to `basic`. **Note:** For better security, consider using `passwordWo` instead to prevent storing the password in Terraform state.
+	Password string `pulumi:"password"`
+	// The password for `basic` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the password, update the `passwordWoVersion` attribute. Required only when `method` is set to `basic` and `password` is not provided.
+	PasswordWo string `pulumi:"passwordWo"`
+	// Version number for password changes. Update this value to trigger a password change when using `passwordWo`.
+	PasswordWoVersion int `pulumi:"passwordWoVersion"`
+	// The token used for `bearer` authentication. Required only when `method` is set to `bearer`. **Note:** For better security, consider using `tokenWo` instead to prevent storing the token in Terraform state.
+	Token string `pulumi:"token"`
+	// The token used for `bearer` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the token, update the `tokenWoVersion` attribute. Required only when `method` is set to `bearer` and `token` is not provided.
+	TokenWo string `pulumi:"tokenWo"`
+	// Version number for token changes. Update this value to trigger a token change when using `tokenWo`.
+	TokenWoVersion int `pulumi:"tokenWoVersion"`
+	// The username for `basic` authentication. Required only when `method` is set to `basic`.
+	Username string `pulumi:"username"`
+}
+
+// GetEventStreamWebhookConfigurationWebhookAuthorizationInput is an input type that accepts GetEventStreamWebhookConfigurationWebhookAuthorizationArgs and GetEventStreamWebhookConfigurationWebhookAuthorizationOutput values.
+// You can construct a concrete instance of `GetEventStreamWebhookConfigurationWebhookAuthorizationInput` via:
+//
+//	GetEventStreamWebhookConfigurationWebhookAuthorizationArgs{...}
+type GetEventStreamWebhookConfigurationWebhookAuthorizationInput interface {
+	pulumi.Input
+
+	ToGetEventStreamWebhookConfigurationWebhookAuthorizationOutput() GetEventStreamWebhookConfigurationWebhookAuthorizationOutput
+	ToGetEventStreamWebhookConfigurationWebhookAuthorizationOutputWithContext(context.Context) GetEventStreamWebhookConfigurationWebhookAuthorizationOutput
+}
+
+type GetEventStreamWebhookConfigurationWebhookAuthorizationArgs struct {
+	// The name of the HTTP header used for `customHeader` authentication. Required when `method` is `customHeader`. Returned by the API and stored in state.
+	HeaderKey pulumi.StringInput `pulumi:"headerKey"`
+	// The secret value sent in the custom header. Required when `method` is `customHeader` and `headerValueWo` is not provided. **Note:** For better security, use `headerValueWo` to prevent storing the secret in state.
+	HeaderValue pulumi.StringInput `pulumi:"headerValue"`
+	// The secret value sent in the custom header (write-only). Not stored in Terraform state. Bump `headerValueWoVersion` to rotate the secret.
+	HeaderValueWo pulumi.StringInput `pulumi:"headerValueWo"`
+	// Version number for secret rotation. Update to trigger a new `headerValueWo` to be sent.
+	HeaderValueWoVersion pulumi.IntInput `pulumi:"headerValueWoVersion"`
+	// The authorization method used to secure the webhook endpoint. Can be `basic`, `bearer`, or `customHeader`.
+	Method pulumi.StringInput `pulumi:"method"`
+	// The password for `basic` authentication. Required only when `method` is set to `basic`. **Note:** For better security, consider using `passwordWo` instead to prevent storing the password in Terraform state.
+	Password pulumi.StringInput `pulumi:"password"`
+	// The password for `basic` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the password, update the `passwordWoVersion` attribute. Required only when `method` is set to `basic` and `password` is not provided.
+	PasswordWo pulumi.StringInput `pulumi:"passwordWo"`
+	// Version number for password changes. Update this value to trigger a password change when using `passwordWo`.
+	PasswordWoVersion pulumi.IntInput `pulumi:"passwordWoVersion"`
+	// The token used for `bearer` authentication. Required only when `method` is set to `bearer`. **Note:** For better security, consider using `tokenWo` instead to prevent storing the token in Terraform state.
+	Token pulumi.StringInput `pulumi:"token"`
+	// The token used for `bearer` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the token, update the `tokenWoVersion` attribute. Required only when `method` is set to `bearer` and `token` is not provided.
+	TokenWo pulumi.StringInput `pulumi:"tokenWo"`
+	// Version number for token changes. Update this value to trigger a token change when using `tokenWo`.
+	TokenWoVersion pulumi.IntInput `pulumi:"tokenWoVersion"`
+	// The username for `basic` authentication. Required only when `method` is set to `basic`.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (GetEventStreamWebhookConfigurationWebhookAuthorizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventStreamWebhookConfigurationWebhookAuthorization)(nil)).Elem()
+}
+
+func (i GetEventStreamWebhookConfigurationWebhookAuthorizationArgs) ToGetEventStreamWebhookConfigurationWebhookAuthorizationOutput() GetEventStreamWebhookConfigurationWebhookAuthorizationOutput {
+	return i.ToGetEventStreamWebhookConfigurationWebhookAuthorizationOutputWithContext(context.Background())
+}
+
+func (i GetEventStreamWebhookConfigurationWebhookAuthorizationArgs) ToGetEventStreamWebhookConfigurationWebhookAuthorizationOutputWithContext(ctx context.Context) GetEventStreamWebhookConfigurationWebhookAuthorizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventStreamWebhookConfigurationWebhookAuthorizationOutput)
+}
+
+// GetEventStreamWebhookConfigurationWebhookAuthorizationArrayInput is an input type that accepts GetEventStreamWebhookConfigurationWebhookAuthorizationArray and GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput values.
+// You can construct a concrete instance of `GetEventStreamWebhookConfigurationWebhookAuthorizationArrayInput` via:
+//
+//	GetEventStreamWebhookConfigurationWebhookAuthorizationArray{ GetEventStreamWebhookConfigurationWebhookAuthorizationArgs{...} }
+type GetEventStreamWebhookConfigurationWebhookAuthorizationArrayInput interface {
+	pulumi.Input
+
+	ToGetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput() GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput
+	ToGetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutputWithContext(context.Context) GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput
+}
+
+type GetEventStreamWebhookConfigurationWebhookAuthorizationArray []GetEventStreamWebhookConfigurationWebhookAuthorizationInput
+
+func (GetEventStreamWebhookConfigurationWebhookAuthorizationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventStreamWebhookConfigurationWebhookAuthorization)(nil)).Elem()
+}
+
+func (i GetEventStreamWebhookConfigurationWebhookAuthorizationArray) ToGetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput() GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput {
+	return i.ToGetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutputWithContext(context.Background())
+}
+
+func (i GetEventStreamWebhookConfigurationWebhookAuthorizationArray) ToGetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutputWithContext(ctx context.Context) GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput)
+}
+
+type GetEventStreamWebhookConfigurationWebhookAuthorizationOutput struct{ *pulumi.OutputState }
+
+func (GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEventStreamWebhookConfigurationWebhookAuthorization)(nil)).Elem()
+}
+
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) ToGetEventStreamWebhookConfigurationWebhookAuthorizationOutput() GetEventStreamWebhookConfigurationWebhookAuthorizationOutput {
+	return o
+}
+
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) ToGetEventStreamWebhookConfigurationWebhookAuthorizationOutputWithContext(ctx context.Context) GetEventStreamWebhookConfigurationWebhookAuthorizationOutput {
+	return o
+}
+
+// The name of the HTTP header used for `customHeader` authentication. Required when `method` is `customHeader`. Returned by the API and stored in state.
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) HeaderKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) string { return v.HeaderKey }).(pulumi.StringOutput)
+}
+
+// The secret value sent in the custom header. Required when `method` is `customHeader` and `headerValueWo` is not provided. **Note:** For better security, use `headerValueWo` to prevent storing the secret in state.
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) HeaderValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) string { return v.HeaderValue }).(pulumi.StringOutput)
+}
+
+// The secret value sent in the custom header (write-only). Not stored in Terraform state. Bump `headerValueWoVersion` to rotate the secret.
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) HeaderValueWo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) string { return v.HeaderValueWo }).(pulumi.StringOutput)
+}
+
+// Version number for secret rotation. Update to trigger a new `headerValueWo` to be sent.
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) HeaderValueWoVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) int { return v.HeaderValueWoVersion }).(pulumi.IntOutput)
+}
+
+// The authorization method used to secure the webhook endpoint. Can be `basic`, `bearer`, or `customHeader`.
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) string { return v.Method }).(pulumi.StringOutput)
+}
+
+// The password for `basic` authentication. Required only when `method` is set to `basic`. **Note:** For better security, consider using `passwordWo` instead to prevent storing the password in Terraform state.
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// The password for `basic` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the password, update the `passwordWoVersion` attribute. Required only when `method` is set to `basic` and `password` is not provided.
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) PasswordWo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) string { return v.PasswordWo }).(pulumi.StringOutput)
+}
+
+// Version number for password changes. Update this value to trigger a password change when using `passwordWo`.
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) PasswordWoVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) int { return v.PasswordWoVersion }).(pulumi.IntOutput)
+}
+
+// The token used for `bearer` authentication. Required only when `method` is set to `bearer`. **Note:** For better security, consider using `tokenWo` instead to prevent storing the token in Terraform state.
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) string { return v.Token }).(pulumi.StringOutput)
+}
+
+// The token used for `bearer` authentication (write-only). This value is only available during resource creation and update, and is **not** stored in Terraform state. To change the token, update the `tokenWoVersion` attribute. Required only when `method` is set to `bearer` and `token` is not provided.
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) TokenWo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) string { return v.TokenWo }).(pulumi.StringOutput)
+}
+
+// Version number for token changes. Update this value to trigger a token change when using `tokenWo`.
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) TokenWoVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) int { return v.TokenWoVersion }).(pulumi.IntOutput)
+}
+
+// The username for `basic` authentication. Required only when `method` is set to `basic`.
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEventStreamWebhookConfigurationWebhookAuthorization) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEventStreamWebhookConfigurationWebhookAuthorization)(nil)).Elem()
+}
+
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput) ToGetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput() GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput {
+	return o
+}
+
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput) ToGetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutputWithContext(ctx context.Context) GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput {
+	return o
+}
+
+func (o GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput) Index(i pulumi.IntInput) GetEventStreamWebhookConfigurationWebhookAuthorizationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEventStreamWebhookConfigurationWebhookAuthorization {
+		return vs[0].([]GetEventStreamWebhookConfigurationWebhookAuthorization)[vs[1].(int)]
+	}).(GetEventStreamWebhookConfigurationWebhookAuthorizationOutput)
+}
+
+type GetFormLanguage struct {
+	// Default language for the form.
+	Default string `pulumi:"default"`
+	// Primary language for the form.
+	Primary string `pulumi:"primary"`
+}
+
+// GetFormLanguageInput is an input type that accepts GetFormLanguageArgs and GetFormLanguageOutput values.
+// You can construct a concrete instance of `GetFormLanguageInput` via:
+//
+//	GetFormLanguageArgs{...}
+type GetFormLanguageInput interface {
+	pulumi.Input
+
+	ToGetFormLanguageOutput() GetFormLanguageOutput
+	ToGetFormLanguageOutputWithContext(context.Context) GetFormLanguageOutput
+}
+
+type GetFormLanguageArgs struct {
+	// Default language for the form.
+	Default pulumi.StringInput `pulumi:"default"`
+	// Primary language for the form.
+	Primary pulumi.StringInput `pulumi:"primary"`
+}
+
+func (GetFormLanguageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFormLanguage)(nil)).Elem()
+}
+
+func (i GetFormLanguageArgs) ToGetFormLanguageOutput() GetFormLanguageOutput {
+	return i.ToGetFormLanguageOutputWithContext(context.Background())
+}
+
+func (i GetFormLanguageArgs) ToGetFormLanguageOutputWithContext(ctx context.Context) GetFormLanguageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFormLanguageOutput)
+}
+
+// GetFormLanguageArrayInput is an input type that accepts GetFormLanguageArray and GetFormLanguageArrayOutput values.
+// You can construct a concrete instance of `GetFormLanguageArrayInput` via:
+//
+//	GetFormLanguageArray{ GetFormLanguageArgs{...} }
+type GetFormLanguageArrayInput interface {
+	pulumi.Input
+
+	ToGetFormLanguageArrayOutput() GetFormLanguageArrayOutput
+	ToGetFormLanguageArrayOutputWithContext(context.Context) GetFormLanguageArrayOutput
+}
+
+type GetFormLanguageArray []GetFormLanguageInput
+
+func (GetFormLanguageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFormLanguage)(nil)).Elem()
+}
+
+func (i GetFormLanguageArray) ToGetFormLanguageArrayOutput() GetFormLanguageArrayOutput {
+	return i.ToGetFormLanguageArrayOutputWithContext(context.Background())
+}
+
+func (i GetFormLanguageArray) ToGetFormLanguageArrayOutputWithContext(ctx context.Context) GetFormLanguageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFormLanguageArrayOutput)
+}
+
+type GetFormLanguageOutput struct{ *pulumi.OutputState }
+
+func (GetFormLanguageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFormLanguage)(nil)).Elem()
+}
+
+func (o GetFormLanguageOutput) ToGetFormLanguageOutput() GetFormLanguageOutput {
+	return o
+}
+
+func (o GetFormLanguageOutput) ToGetFormLanguageOutputWithContext(ctx context.Context) GetFormLanguageOutput {
+	return o
+}
+
+// Default language for the form.
+func (o GetFormLanguageOutput) Default() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFormLanguage) string { return v.Default }).(pulumi.StringOutput)
+}
+
+// Primary language for the form.
+func (o GetFormLanguageOutput) Primary() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFormLanguage) string { return v.Primary }).(pulumi.StringOutput)
+}
+
+type GetFormLanguageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFormLanguageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFormLanguage)(nil)).Elem()
+}
+
+func (o GetFormLanguageArrayOutput) ToGetFormLanguageArrayOutput() GetFormLanguageArrayOutput {
+	return o
+}
+
+func (o GetFormLanguageArrayOutput) ToGetFormLanguageArrayOutputWithContext(ctx context.Context) GetFormLanguageArrayOutput {
+	return o
+}
+
+func (o GetFormLanguageArrayOutput) Index(i pulumi.IntInput) GetFormLanguageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFormLanguage {
+		return vs[0].([]GetFormLanguage)[vs[1].(int)]
+	}).(GetFormLanguageOutput)
+}
+
+type GetFormMessage struct {
+	// Custom message for the form. (JSON encoded)
+	Custom string `pulumi:"custom"`
+	// Error message for the form. (JSON encoded)
+	Errors string `pulumi:"errors"`
+}
+
+// GetFormMessageInput is an input type that accepts GetFormMessageArgs and GetFormMessageOutput values.
+// You can construct a concrete instance of `GetFormMessageInput` via:
+//
+//	GetFormMessageArgs{...}
+type GetFormMessageInput interface {
+	pulumi.Input
+
+	ToGetFormMessageOutput() GetFormMessageOutput
+	ToGetFormMessageOutputWithContext(context.Context) GetFormMessageOutput
+}
+
+type GetFormMessageArgs struct {
+	// Custom message for the form. (JSON encoded)
+	Custom pulumi.StringInput `pulumi:"custom"`
+	// Error message for the form. (JSON encoded)
+	Errors pulumi.StringInput `pulumi:"errors"`
+}
+
+func (GetFormMessageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFormMessage)(nil)).Elem()
+}
+
+func (i GetFormMessageArgs) ToGetFormMessageOutput() GetFormMessageOutput {
+	return i.ToGetFormMessageOutputWithContext(context.Background())
+}
+
+func (i GetFormMessageArgs) ToGetFormMessageOutputWithContext(ctx context.Context) GetFormMessageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFormMessageOutput)
+}
+
+// GetFormMessageArrayInput is an input type that accepts GetFormMessageArray and GetFormMessageArrayOutput values.
+// You can construct a concrete instance of `GetFormMessageArrayInput` via:
+//
+//	GetFormMessageArray{ GetFormMessageArgs{...} }
+type GetFormMessageArrayInput interface {
+	pulumi.Input
+
+	ToGetFormMessageArrayOutput() GetFormMessageArrayOutput
+	ToGetFormMessageArrayOutputWithContext(context.Context) GetFormMessageArrayOutput
+}
+
+type GetFormMessageArray []GetFormMessageInput
+
+func (GetFormMessageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFormMessage)(nil)).Elem()
+}
+
+func (i GetFormMessageArray) ToGetFormMessageArrayOutput() GetFormMessageArrayOutput {
+	return i.ToGetFormMessageArrayOutputWithContext(context.Background())
+}
+
+func (i GetFormMessageArray) ToGetFormMessageArrayOutputWithContext(ctx context.Context) GetFormMessageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFormMessageArrayOutput)
+}
+
+type GetFormMessageOutput struct{ *pulumi.OutputState }
+
+func (GetFormMessageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFormMessage)(nil)).Elem()
+}
+
+func (o GetFormMessageOutput) ToGetFormMessageOutput() GetFormMessageOutput {
+	return o
+}
+
+func (o GetFormMessageOutput) ToGetFormMessageOutputWithContext(ctx context.Context) GetFormMessageOutput {
+	return o
+}
+
+// Custom message for the form. (JSON encoded)
+func (o GetFormMessageOutput) Custom() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFormMessage) string { return v.Custom }).(pulumi.StringOutput)
+}
+
+// Error message for the form. (JSON encoded)
+func (o GetFormMessageOutput) Errors() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFormMessage) string { return v.Errors }).(pulumi.StringOutput)
+}
+
+type GetFormMessageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFormMessageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFormMessage)(nil)).Elem()
+}
+
+func (o GetFormMessageArrayOutput) ToGetFormMessageArrayOutput() GetFormMessageArrayOutput {
+	return o
+}
+
+func (o GetFormMessageArrayOutput) ToGetFormMessageArrayOutputWithContext(ctx context.Context) GetFormMessageArrayOutput {
+	return o
+}
+
+func (o GetFormMessageArrayOutput) Index(i pulumi.IntInput) GetFormMessageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFormMessage {
+		return vs[0].([]GetFormMessage)[vs[1].(int)]
+	}).(GetFormMessageOutput)
+}
+
+type GetNetworkAclRule struct {
+	// The action configuration for the Network ACL Rule. Only one action type (block, allow, log, or redirect) should be specified.
+	Actions []GetNetworkAclRuleAction `pulumi:"actions"`
+	// When true, the rule unconditionally matches all traffic regardless of any other criteria. Mutually exclusive with match and not_match.
+	MatchAll bool `pulumi:"matchAll"`
+	// The configuration for the Network ACL Rule
+	Matches []GetNetworkAclRuleMatch `pulumi:"matches"`
+	// The configuration for the Network ACL Rule
+	NotMatches []GetNetworkAclRuleNotMatch `pulumi:"notMatches"`
+	// The scope of the Network ACL Rule
+	Scope string `pulumi:"scope"`
+}
+
+// GetNetworkAclRuleInput is an input type that accepts GetNetworkAclRuleArgs and GetNetworkAclRuleOutput values.
+// You can construct a concrete instance of `GetNetworkAclRuleInput` via:
+//
+//	GetNetworkAclRuleArgs{...}
+type GetNetworkAclRuleInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclRuleOutput() GetNetworkAclRuleOutput
+	ToGetNetworkAclRuleOutputWithContext(context.Context) GetNetworkAclRuleOutput
+}
+
+type GetNetworkAclRuleArgs struct {
+	// The action configuration for the Network ACL Rule. Only one action type (block, allow, log, or redirect) should be specified.
+	Actions GetNetworkAclRuleActionArrayInput `pulumi:"actions"`
+	// When true, the rule unconditionally matches all traffic regardless of any other criteria. Mutually exclusive with match and not_match.
+	MatchAll pulumi.BoolInput `pulumi:"matchAll"`
+	// The configuration for the Network ACL Rule
+	Matches GetNetworkAclRuleMatchArrayInput `pulumi:"matches"`
+	// The configuration for the Network ACL Rule
+	NotMatches GetNetworkAclRuleNotMatchArrayInput `pulumi:"notMatches"`
+	// The scope of the Network ACL Rule
+	Scope pulumi.StringInput `pulumi:"scope"`
+}
+
+func (GetNetworkAclRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclRule)(nil)).Elem()
+}
+
+func (i GetNetworkAclRuleArgs) ToGetNetworkAclRuleOutput() GetNetworkAclRuleOutput {
+	return i.ToGetNetworkAclRuleOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclRuleArgs) ToGetNetworkAclRuleOutputWithContext(ctx context.Context) GetNetworkAclRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclRuleOutput)
+}
+
+// GetNetworkAclRuleArrayInput is an input type that accepts GetNetworkAclRuleArray and GetNetworkAclRuleArrayOutput values.
+// You can construct a concrete instance of `GetNetworkAclRuleArrayInput` via:
+//
+//	GetNetworkAclRuleArray{ GetNetworkAclRuleArgs{...} }
+type GetNetworkAclRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkAclRuleArrayOutput() GetNetworkAclRuleArrayOutput
+	ToGetNetworkAclRuleArrayOutputWithContext(context.Context) GetNetworkAclRuleArrayOutput
+}
+
+type GetNetworkAclRuleArray []GetNetworkAclRuleInput
+
+func (GetNetworkAclRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclRule)(nil)).Elem()
+}
+
+func (i GetNetworkAclRuleArray) ToGetNetworkAclRuleArrayOutput() GetNetworkAclRuleArrayOutput {
+	return i.ToGetNetworkAclRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAclRuleArray) ToGetNetworkAclRuleArrayOutputWithContext(ctx context.Context) GetNetworkAclRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAclRuleArrayOutput)
+}
+
+type GetNetworkAclRuleOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAclRule)(nil)).Elem()
+}
+
+func (o GetNetworkAclRuleOutput) ToGetNetworkAclRuleOutput() GetNetworkAclRuleOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleOutput) ToGetNetworkAclRuleOutputWithContext(ctx context.Context) GetNetworkAclRuleOutput {
+	return o
+}
+
+// The action configuration for the Network ACL Rule. Only one action type (block, allow, log, or redirect) should be specified.
+func (o GetNetworkAclRuleOutput) Actions() GetNetworkAclRuleActionArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRule) []GetNetworkAclRuleAction { return v.Actions }).(GetNetworkAclRuleActionArrayOutput)
+}
+
+// When true, the rule unconditionally matches all traffic regardless of any other criteria. Mutually exclusive with match and not_match.
+func (o GetNetworkAclRuleOutput) MatchAll() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworkAclRule) bool { return v.MatchAll }).(pulumi.BoolOutput)
+}
+
+// The configuration for the Network ACL Rule
+func (o GetNetworkAclRuleOutput) Matches() GetNetworkAclRuleMatchArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRule) []GetNetworkAclRuleMatch { return v.Matches }).(GetNetworkAclRuleMatchArrayOutput)
+}
+
+// The configuration for the Network ACL Rule
+func (o GetNetworkAclRuleOutput) NotMatches() GetNetworkAclRuleNotMatchArrayOutput {
+	return o.ApplyT(func(v GetNetworkAclRule) []GetNetworkAclRuleNotMatch { return v.NotMatches }).(GetNetworkAclRuleNotMatchArrayOutput)
+}
+
+// The scope of the Network ACL Rule
+func (o GetNetworkAclRuleOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAclRule) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+type GetNetworkAclRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAclRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAclRule)(nil)).Elem()
+}
+
+func (o GetNetworkAclRuleArrayOutput) ToGetNetworkAclRuleArrayOutput() GetNetworkAclRuleArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleArrayOutput) ToGetNetworkAclRuleArrayOutputWithContext(ctx context.Context) GetNetworkAclRuleArrayOutput {
+	return o
+}
+
+func (o GetNetworkAclRuleArrayOutput) Index(i pulumi.IntInput) GetNetworkAclRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkAclRule {
+		return vs[0].([]GetNetworkAclRule)[vs[1].(int)]
+	}).(GetNetworkAclRuleOutput)
+}
+
 type GetNetworkAclRuleAction struct {
 	// If true, allows the request. When using allow action, no other properties should be set.
 	Allow bool `pulumi:"allow"`
@@ -4321,6 +5743,310 @@ func (o GetRateLimitPolicyConfigurationArrayOutput) Index(i pulumi.IntInput) Get
 	}).(GetRateLimitPolicyConfigurationOutput)
 }
 
+type GetResourceServerAccessToken struct {
+	// Configuration for mapping claims into the access tokens issued for this resource server. (EA only)
+	ClaimsMappings []GetResourceServerAccessTokenClaimsMapping `pulumi:"claimsMappings"`
+}
+
+// GetResourceServerAccessTokenInput is an input type that accepts GetResourceServerAccessTokenArgs and GetResourceServerAccessTokenOutput values.
+// You can construct a concrete instance of `GetResourceServerAccessTokenInput` via:
+//
+//	GetResourceServerAccessTokenArgs{...}
+type GetResourceServerAccessTokenInput interface {
+	pulumi.Input
+
+	ToGetResourceServerAccessTokenOutput() GetResourceServerAccessTokenOutput
+	ToGetResourceServerAccessTokenOutputWithContext(context.Context) GetResourceServerAccessTokenOutput
+}
+
+type GetResourceServerAccessTokenArgs struct {
+	// Configuration for mapping claims into the access tokens issued for this resource server. (EA only)
+	ClaimsMappings GetResourceServerAccessTokenClaimsMappingArrayInput `pulumi:"claimsMappings"`
+}
+
+func (GetResourceServerAccessTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerAccessToken)(nil)).Elem()
+}
+
+func (i GetResourceServerAccessTokenArgs) ToGetResourceServerAccessTokenOutput() GetResourceServerAccessTokenOutput {
+	return i.ToGetResourceServerAccessTokenOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerAccessTokenArgs) ToGetResourceServerAccessTokenOutputWithContext(ctx context.Context) GetResourceServerAccessTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerAccessTokenOutput)
+}
+
+// GetResourceServerAccessTokenArrayInput is an input type that accepts GetResourceServerAccessTokenArray and GetResourceServerAccessTokenArrayOutput values.
+// You can construct a concrete instance of `GetResourceServerAccessTokenArrayInput` via:
+//
+//	GetResourceServerAccessTokenArray{ GetResourceServerAccessTokenArgs{...} }
+type GetResourceServerAccessTokenArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceServerAccessTokenArrayOutput() GetResourceServerAccessTokenArrayOutput
+	ToGetResourceServerAccessTokenArrayOutputWithContext(context.Context) GetResourceServerAccessTokenArrayOutput
+}
+
+type GetResourceServerAccessTokenArray []GetResourceServerAccessTokenInput
+
+func (GetResourceServerAccessTokenArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerAccessToken)(nil)).Elem()
+}
+
+func (i GetResourceServerAccessTokenArray) ToGetResourceServerAccessTokenArrayOutput() GetResourceServerAccessTokenArrayOutput {
+	return i.ToGetResourceServerAccessTokenArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerAccessTokenArray) ToGetResourceServerAccessTokenArrayOutputWithContext(ctx context.Context) GetResourceServerAccessTokenArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerAccessTokenArrayOutput)
+}
+
+type GetResourceServerAccessTokenOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerAccessTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerAccessToken)(nil)).Elem()
+}
+
+func (o GetResourceServerAccessTokenOutput) ToGetResourceServerAccessTokenOutput() GetResourceServerAccessTokenOutput {
+	return o
+}
+
+func (o GetResourceServerAccessTokenOutput) ToGetResourceServerAccessTokenOutputWithContext(ctx context.Context) GetResourceServerAccessTokenOutput {
+	return o
+}
+
+// Configuration for mapping claims into the access tokens issued for this resource server. (EA only)
+func (o GetResourceServerAccessTokenOutput) ClaimsMappings() GetResourceServerAccessTokenClaimsMappingArrayOutput {
+	return o.ApplyT(func(v GetResourceServerAccessToken) []GetResourceServerAccessTokenClaimsMapping {
+		return v.ClaimsMappings
+	}).(GetResourceServerAccessTokenClaimsMappingArrayOutput)
+}
+
+type GetResourceServerAccessTokenArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerAccessTokenArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerAccessToken)(nil)).Elem()
+}
+
+func (o GetResourceServerAccessTokenArrayOutput) ToGetResourceServerAccessTokenArrayOutput() GetResourceServerAccessTokenArrayOutput {
+	return o
+}
+
+func (o GetResourceServerAccessTokenArrayOutput) ToGetResourceServerAccessTokenArrayOutputWithContext(ctx context.Context) GetResourceServerAccessTokenArrayOutput {
+	return o
+}
+
+func (o GetResourceServerAccessTokenArrayOutput) Index(i pulumi.IntInput) GetResourceServerAccessTokenOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerAccessToken {
+		return vs[0].([]GetResourceServerAccessToken)[vs[1].(int)]
+	}).(GetResourceServerAccessTokenOutput)
+}
+
+type GetResourceServerAccessTokenClaimsMapping struct {
+	// Custom claims to include in the access tokens issued for this resource server. Maximum of 20 claims. Setting an empty list clears the custom claims on the API. (EA only)
+	CustomClaims []GetResourceServerAccessTokenClaimsMappingCustomClaim `pulumi:"customClaims"`
+}
+
+// GetResourceServerAccessTokenClaimsMappingInput is an input type that accepts GetResourceServerAccessTokenClaimsMappingArgs and GetResourceServerAccessTokenClaimsMappingOutput values.
+// You can construct a concrete instance of `GetResourceServerAccessTokenClaimsMappingInput` via:
+//
+//	GetResourceServerAccessTokenClaimsMappingArgs{...}
+type GetResourceServerAccessTokenClaimsMappingInput interface {
+	pulumi.Input
+
+	ToGetResourceServerAccessTokenClaimsMappingOutput() GetResourceServerAccessTokenClaimsMappingOutput
+	ToGetResourceServerAccessTokenClaimsMappingOutputWithContext(context.Context) GetResourceServerAccessTokenClaimsMappingOutput
+}
+
+type GetResourceServerAccessTokenClaimsMappingArgs struct {
+	// Custom claims to include in the access tokens issued for this resource server. Maximum of 20 claims. Setting an empty list clears the custom claims on the API. (EA only)
+	CustomClaims GetResourceServerAccessTokenClaimsMappingCustomClaimArrayInput `pulumi:"customClaims"`
+}
+
+func (GetResourceServerAccessTokenClaimsMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerAccessTokenClaimsMapping)(nil)).Elem()
+}
+
+func (i GetResourceServerAccessTokenClaimsMappingArgs) ToGetResourceServerAccessTokenClaimsMappingOutput() GetResourceServerAccessTokenClaimsMappingOutput {
+	return i.ToGetResourceServerAccessTokenClaimsMappingOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerAccessTokenClaimsMappingArgs) ToGetResourceServerAccessTokenClaimsMappingOutputWithContext(ctx context.Context) GetResourceServerAccessTokenClaimsMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerAccessTokenClaimsMappingOutput)
+}
+
+// GetResourceServerAccessTokenClaimsMappingArrayInput is an input type that accepts GetResourceServerAccessTokenClaimsMappingArray and GetResourceServerAccessTokenClaimsMappingArrayOutput values.
+// You can construct a concrete instance of `GetResourceServerAccessTokenClaimsMappingArrayInput` via:
+//
+//	GetResourceServerAccessTokenClaimsMappingArray{ GetResourceServerAccessTokenClaimsMappingArgs{...} }
+type GetResourceServerAccessTokenClaimsMappingArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceServerAccessTokenClaimsMappingArrayOutput() GetResourceServerAccessTokenClaimsMappingArrayOutput
+	ToGetResourceServerAccessTokenClaimsMappingArrayOutputWithContext(context.Context) GetResourceServerAccessTokenClaimsMappingArrayOutput
+}
+
+type GetResourceServerAccessTokenClaimsMappingArray []GetResourceServerAccessTokenClaimsMappingInput
+
+func (GetResourceServerAccessTokenClaimsMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerAccessTokenClaimsMapping)(nil)).Elem()
+}
+
+func (i GetResourceServerAccessTokenClaimsMappingArray) ToGetResourceServerAccessTokenClaimsMappingArrayOutput() GetResourceServerAccessTokenClaimsMappingArrayOutput {
+	return i.ToGetResourceServerAccessTokenClaimsMappingArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerAccessTokenClaimsMappingArray) ToGetResourceServerAccessTokenClaimsMappingArrayOutputWithContext(ctx context.Context) GetResourceServerAccessTokenClaimsMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerAccessTokenClaimsMappingArrayOutput)
+}
+
+type GetResourceServerAccessTokenClaimsMappingOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerAccessTokenClaimsMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerAccessTokenClaimsMapping)(nil)).Elem()
+}
+
+func (o GetResourceServerAccessTokenClaimsMappingOutput) ToGetResourceServerAccessTokenClaimsMappingOutput() GetResourceServerAccessTokenClaimsMappingOutput {
+	return o
+}
+
+func (o GetResourceServerAccessTokenClaimsMappingOutput) ToGetResourceServerAccessTokenClaimsMappingOutputWithContext(ctx context.Context) GetResourceServerAccessTokenClaimsMappingOutput {
+	return o
+}
+
+// Custom claims to include in the access tokens issued for this resource server. Maximum of 20 claims. Setting an empty list clears the custom claims on the API. (EA only)
+func (o GetResourceServerAccessTokenClaimsMappingOutput) CustomClaims() GetResourceServerAccessTokenClaimsMappingCustomClaimArrayOutput {
+	return o.ApplyT(func(v GetResourceServerAccessTokenClaimsMapping) []GetResourceServerAccessTokenClaimsMappingCustomClaim {
+		return v.CustomClaims
+	}).(GetResourceServerAccessTokenClaimsMappingCustomClaimArrayOutput)
+}
+
+type GetResourceServerAccessTokenClaimsMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerAccessTokenClaimsMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerAccessTokenClaimsMapping)(nil)).Elem()
+}
+
+func (o GetResourceServerAccessTokenClaimsMappingArrayOutput) ToGetResourceServerAccessTokenClaimsMappingArrayOutput() GetResourceServerAccessTokenClaimsMappingArrayOutput {
+	return o
+}
+
+func (o GetResourceServerAccessTokenClaimsMappingArrayOutput) ToGetResourceServerAccessTokenClaimsMappingArrayOutputWithContext(ctx context.Context) GetResourceServerAccessTokenClaimsMappingArrayOutput {
+	return o
+}
+
+func (o GetResourceServerAccessTokenClaimsMappingArrayOutput) Index(i pulumi.IntInput) GetResourceServerAccessTokenClaimsMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerAccessTokenClaimsMapping {
+		return vs[0].([]GetResourceServerAccessTokenClaimsMapping)[vs[1].(int)]
+	}).(GetResourceServerAccessTokenClaimsMappingOutput)
+}
+
+type GetResourceServerAccessTokenClaimsMappingCustomClaim struct {
+	// Expression used to resolve the claim value, given as a dot-path read from the request context (for example `anonymous_session.metadata.country`).
+	Expression string `pulumi:"expression"`
+	// Name of the claim to emit in the access token. Reserved OIDC/JWT claim names are not allowed.
+	Name string `pulumi:"name"`
+}
+
+// GetResourceServerAccessTokenClaimsMappingCustomClaimInput is an input type that accepts GetResourceServerAccessTokenClaimsMappingCustomClaimArgs and GetResourceServerAccessTokenClaimsMappingCustomClaimOutput values.
+// You can construct a concrete instance of `GetResourceServerAccessTokenClaimsMappingCustomClaimInput` via:
+//
+//	GetResourceServerAccessTokenClaimsMappingCustomClaimArgs{...}
+type GetResourceServerAccessTokenClaimsMappingCustomClaimInput interface {
+	pulumi.Input
+
+	ToGetResourceServerAccessTokenClaimsMappingCustomClaimOutput() GetResourceServerAccessTokenClaimsMappingCustomClaimOutput
+	ToGetResourceServerAccessTokenClaimsMappingCustomClaimOutputWithContext(context.Context) GetResourceServerAccessTokenClaimsMappingCustomClaimOutput
+}
+
+type GetResourceServerAccessTokenClaimsMappingCustomClaimArgs struct {
+	// Expression used to resolve the claim value, given as a dot-path read from the request context (for example `anonymous_session.metadata.country`).
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// Name of the claim to emit in the access token. Reserved OIDC/JWT claim names are not allowed.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetResourceServerAccessTokenClaimsMappingCustomClaimArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerAccessTokenClaimsMappingCustomClaim)(nil)).Elem()
+}
+
+func (i GetResourceServerAccessTokenClaimsMappingCustomClaimArgs) ToGetResourceServerAccessTokenClaimsMappingCustomClaimOutput() GetResourceServerAccessTokenClaimsMappingCustomClaimOutput {
+	return i.ToGetResourceServerAccessTokenClaimsMappingCustomClaimOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerAccessTokenClaimsMappingCustomClaimArgs) ToGetResourceServerAccessTokenClaimsMappingCustomClaimOutputWithContext(ctx context.Context) GetResourceServerAccessTokenClaimsMappingCustomClaimOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerAccessTokenClaimsMappingCustomClaimOutput)
+}
+
+// GetResourceServerAccessTokenClaimsMappingCustomClaimArrayInput is an input type that accepts GetResourceServerAccessTokenClaimsMappingCustomClaimArray and GetResourceServerAccessTokenClaimsMappingCustomClaimArrayOutput values.
+// You can construct a concrete instance of `GetResourceServerAccessTokenClaimsMappingCustomClaimArrayInput` via:
+//
+//	GetResourceServerAccessTokenClaimsMappingCustomClaimArray{ GetResourceServerAccessTokenClaimsMappingCustomClaimArgs{...} }
+type GetResourceServerAccessTokenClaimsMappingCustomClaimArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceServerAccessTokenClaimsMappingCustomClaimArrayOutput() GetResourceServerAccessTokenClaimsMappingCustomClaimArrayOutput
+	ToGetResourceServerAccessTokenClaimsMappingCustomClaimArrayOutputWithContext(context.Context) GetResourceServerAccessTokenClaimsMappingCustomClaimArrayOutput
+}
+
+type GetResourceServerAccessTokenClaimsMappingCustomClaimArray []GetResourceServerAccessTokenClaimsMappingCustomClaimInput
+
+func (GetResourceServerAccessTokenClaimsMappingCustomClaimArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerAccessTokenClaimsMappingCustomClaim)(nil)).Elem()
+}
+
+func (i GetResourceServerAccessTokenClaimsMappingCustomClaimArray) ToGetResourceServerAccessTokenClaimsMappingCustomClaimArrayOutput() GetResourceServerAccessTokenClaimsMappingCustomClaimArrayOutput {
+	return i.ToGetResourceServerAccessTokenClaimsMappingCustomClaimArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerAccessTokenClaimsMappingCustomClaimArray) ToGetResourceServerAccessTokenClaimsMappingCustomClaimArrayOutputWithContext(ctx context.Context) GetResourceServerAccessTokenClaimsMappingCustomClaimArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerAccessTokenClaimsMappingCustomClaimArrayOutput)
+}
+
+type GetResourceServerAccessTokenClaimsMappingCustomClaimOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerAccessTokenClaimsMappingCustomClaimOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerAccessTokenClaimsMappingCustomClaim)(nil)).Elem()
+}
+
+func (o GetResourceServerAccessTokenClaimsMappingCustomClaimOutput) ToGetResourceServerAccessTokenClaimsMappingCustomClaimOutput() GetResourceServerAccessTokenClaimsMappingCustomClaimOutput {
+	return o
+}
+
+func (o GetResourceServerAccessTokenClaimsMappingCustomClaimOutput) ToGetResourceServerAccessTokenClaimsMappingCustomClaimOutputWithContext(ctx context.Context) GetResourceServerAccessTokenClaimsMappingCustomClaimOutput {
+	return o
+}
+
+// Expression used to resolve the claim value, given as a dot-path read from the request context (for example `anonymous_session.metadata.country`).
+func (o GetResourceServerAccessTokenClaimsMappingCustomClaimOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceServerAccessTokenClaimsMappingCustomClaim) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// Name of the claim to emit in the access token. Reserved OIDC/JWT claim names are not allowed.
+func (o GetResourceServerAccessTokenClaimsMappingCustomClaimOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceServerAccessTokenClaimsMappingCustomClaim) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetResourceServerAccessTokenClaimsMappingCustomClaimArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerAccessTokenClaimsMappingCustomClaimArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerAccessTokenClaimsMappingCustomClaim)(nil)).Elem()
+}
+
+func (o GetResourceServerAccessTokenClaimsMappingCustomClaimArrayOutput) ToGetResourceServerAccessTokenClaimsMappingCustomClaimArrayOutput() GetResourceServerAccessTokenClaimsMappingCustomClaimArrayOutput {
+	return o
+}
+
+func (o GetResourceServerAccessTokenClaimsMappingCustomClaimArrayOutput) ToGetResourceServerAccessTokenClaimsMappingCustomClaimArrayOutputWithContext(ctx context.Context) GetResourceServerAccessTokenClaimsMappingCustomClaimArrayOutput {
+	return o
+}
+
+func (o GetResourceServerAccessTokenClaimsMappingCustomClaimArrayOutput) Index(i pulumi.IntInput) GetResourceServerAccessTokenClaimsMappingCustomClaimOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerAccessTokenClaimsMappingCustomClaim {
+		return vs[0].([]GetResourceServerAccessTokenClaimsMappingCustomClaim)[vs[1].(int)]
+	}).(GetResourceServerAccessTokenClaimsMappingCustomClaimOutput)
+}
+
 type GetResourceServerAuthorizationDetail struct {
 	// Disable authorization details.
 	Disable bool `pulumi:"disable"`
@@ -4755,6 +6481,8 @@ func (o GetResourceServerScopeTypeArrayOutput) Index(i pulumi.IntInput) GetResou
 }
 
 type GetResourceServerSubjectTypeAuthorization struct {
+	// Anonymous user authorization policies for the resource server. (EA only)
+	AnonymousUsers []GetResourceServerSubjectTypeAuthorizationAnonymousUser `pulumi:"anonymousUsers"`
 	// Client authorization policies for the resource server.
 	Clients []GetResourceServerSubjectTypeAuthorizationClient `pulumi:"clients"`
 	// User authorization policies for the resource server.
@@ -4773,6 +6501,8 @@ type GetResourceServerSubjectTypeAuthorizationInput interface {
 }
 
 type GetResourceServerSubjectTypeAuthorizationArgs struct {
+	// Anonymous user authorization policies for the resource server. (EA only)
+	AnonymousUsers GetResourceServerSubjectTypeAuthorizationAnonymousUserArrayInput `pulumi:"anonymousUsers"`
 	// Client authorization policies for the resource server.
 	Clients GetResourceServerSubjectTypeAuthorizationClientArrayInput `pulumi:"clients"`
 	// User authorization policies for the resource server.
@@ -4830,6 +6560,13 @@ func (o GetResourceServerSubjectTypeAuthorizationOutput) ToGetResourceServerSubj
 	return o
 }
 
+// Anonymous user authorization policies for the resource server. (EA only)
+func (o GetResourceServerSubjectTypeAuthorizationOutput) AnonymousUsers() GetResourceServerSubjectTypeAuthorizationAnonymousUserArrayOutput {
+	return o.ApplyT(func(v GetResourceServerSubjectTypeAuthorization) []GetResourceServerSubjectTypeAuthorizationAnonymousUser {
+		return v.AnonymousUsers
+	}).(GetResourceServerSubjectTypeAuthorizationAnonymousUserArrayOutput)
+}
+
 // Client authorization policies for the resource server.
 func (o GetResourceServerSubjectTypeAuthorizationOutput) Clients() GetResourceServerSubjectTypeAuthorizationClientArrayOutput {
 	return o.ApplyT(func(v GetResourceServerSubjectTypeAuthorization) []GetResourceServerSubjectTypeAuthorizationClient {
@@ -4862,6 +6599,103 @@ func (o GetResourceServerSubjectTypeAuthorizationArrayOutput) Index(i pulumi.Int
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerSubjectTypeAuthorization {
 		return vs[0].([]GetResourceServerSubjectTypeAuthorization)[vs[1].(int)]
 	}).(GetResourceServerSubjectTypeAuthorizationOutput)
+}
+
+type GetResourceServerSubjectTypeAuthorizationAnonymousUser struct {
+	// Anonymous user flows policy. One of `denyAll`, `requireClientGrant`. Defaults to `denyAll` (EA only)
+	Policy string `pulumi:"policy"`
+}
+
+// GetResourceServerSubjectTypeAuthorizationAnonymousUserInput is an input type that accepts GetResourceServerSubjectTypeAuthorizationAnonymousUserArgs and GetResourceServerSubjectTypeAuthorizationAnonymousUserOutput values.
+// You can construct a concrete instance of `GetResourceServerSubjectTypeAuthorizationAnonymousUserInput` via:
+//
+//	GetResourceServerSubjectTypeAuthorizationAnonymousUserArgs{...}
+type GetResourceServerSubjectTypeAuthorizationAnonymousUserInput interface {
+	pulumi.Input
+
+	ToGetResourceServerSubjectTypeAuthorizationAnonymousUserOutput() GetResourceServerSubjectTypeAuthorizationAnonymousUserOutput
+	ToGetResourceServerSubjectTypeAuthorizationAnonymousUserOutputWithContext(context.Context) GetResourceServerSubjectTypeAuthorizationAnonymousUserOutput
+}
+
+type GetResourceServerSubjectTypeAuthorizationAnonymousUserArgs struct {
+	// Anonymous user flows policy. One of `denyAll`, `requireClientGrant`. Defaults to `denyAll` (EA only)
+	Policy pulumi.StringInput `pulumi:"policy"`
+}
+
+func (GetResourceServerSubjectTypeAuthorizationAnonymousUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationAnonymousUser)(nil)).Elem()
+}
+
+func (i GetResourceServerSubjectTypeAuthorizationAnonymousUserArgs) ToGetResourceServerSubjectTypeAuthorizationAnonymousUserOutput() GetResourceServerSubjectTypeAuthorizationAnonymousUserOutput {
+	return i.ToGetResourceServerSubjectTypeAuthorizationAnonymousUserOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerSubjectTypeAuthorizationAnonymousUserArgs) ToGetResourceServerSubjectTypeAuthorizationAnonymousUserOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationAnonymousUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerSubjectTypeAuthorizationAnonymousUserOutput)
+}
+
+// GetResourceServerSubjectTypeAuthorizationAnonymousUserArrayInput is an input type that accepts GetResourceServerSubjectTypeAuthorizationAnonymousUserArray and GetResourceServerSubjectTypeAuthorizationAnonymousUserArrayOutput values.
+// You can construct a concrete instance of `GetResourceServerSubjectTypeAuthorizationAnonymousUserArrayInput` via:
+//
+//	GetResourceServerSubjectTypeAuthorizationAnonymousUserArray{ GetResourceServerSubjectTypeAuthorizationAnonymousUserArgs{...} }
+type GetResourceServerSubjectTypeAuthorizationAnonymousUserArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceServerSubjectTypeAuthorizationAnonymousUserArrayOutput() GetResourceServerSubjectTypeAuthorizationAnonymousUserArrayOutput
+	ToGetResourceServerSubjectTypeAuthorizationAnonymousUserArrayOutputWithContext(context.Context) GetResourceServerSubjectTypeAuthorizationAnonymousUserArrayOutput
+}
+
+type GetResourceServerSubjectTypeAuthorizationAnonymousUserArray []GetResourceServerSubjectTypeAuthorizationAnonymousUserInput
+
+func (GetResourceServerSubjectTypeAuthorizationAnonymousUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerSubjectTypeAuthorizationAnonymousUser)(nil)).Elem()
+}
+
+func (i GetResourceServerSubjectTypeAuthorizationAnonymousUserArray) ToGetResourceServerSubjectTypeAuthorizationAnonymousUserArrayOutput() GetResourceServerSubjectTypeAuthorizationAnonymousUserArrayOutput {
+	return i.ToGetResourceServerSubjectTypeAuthorizationAnonymousUserArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceServerSubjectTypeAuthorizationAnonymousUserArray) ToGetResourceServerSubjectTypeAuthorizationAnonymousUserArrayOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationAnonymousUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceServerSubjectTypeAuthorizationAnonymousUserArrayOutput)
+}
+
+type GetResourceServerSubjectTypeAuthorizationAnonymousUserOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerSubjectTypeAuthorizationAnonymousUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationAnonymousUser)(nil)).Elem()
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationAnonymousUserOutput) ToGetResourceServerSubjectTypeAuthorizationAnonymousUserOutput() GetResourceServerSubjectTypeAuthorizationAnonymousUserOutput {
+	return o
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationAnonymousUserOutput) ToGetResourceServerSubjectTypeAuthorizationAnonymousUserOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationAnonymousUserOutput {
+	return o
+}
+
+// Anonymous user flows policy. One of `denyAll`, `requireClientGrant`. Defaults to `denyAll` (EA only)
+func (o GetResourceServerSubjectTypeAuthorizationAnonymousUserOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourceServerSubjectTypeAuthorizationAnonymousUser) string { return v.Policy }).(pulumi.StringOutput)
+}
+
+type GetResourceServerSubjectTypeAuthorizationAnonymousUserArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceServerSubjectTypeAuthorizationAnonymousUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceServerSubjectTypeAuthorizationAnonymousUser)(nil)).Elem()
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationAnonymousUserArrayOutput) ToGetResourceServerSubjectTypeAuthorizationAnonymousUserArrayOutput() GetResourceServerSubjectTypeAuthorizationAnonymousUserArrayOutput {
+	return o
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationAnonymousUserArrayOutput) ToGetResourceServerSubjectTypeAuthorizationAnonymousUserArrayOutputWithContext(ctx context.Context) GetResourceServerSubjectTypeAuthorizationAnonymousUserArrayOutput {
+	return o
+}
+
+func (o GetResourceServerSubjectTypeAuthorizationAnonymousUserArrayOutput) Index(i pulumi.IntInput) GetResourceServerSubjectTypeAuthorizationAnonymousUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceServerSubjectTypeAuthorizationAnonymousUser {
+		return vs[0].([]GetResourceServerSubjectTypeAuthorizationAnonymousUser)[vs[1].(int)]
+	}).(GetResourceServerSubjectTypeAuthorizationAnonymousUserOutput)
 }
 
 type GetResourceServerSubjectTypeAuthorizationClient struct {
@@ -7182,6 +9016,8 @@ func (o GetTenantOidcLogoutArrayOutput) Index(i pulumi.IntInput) GetTenantOidcLo
 }
 
 type GetTenantSession struct {
+	// Anonymous Sessions settings for the tenant. (EA only)
+	Anonymouses []GetTenantSessionAnonymouse `pulumi:"anonymouses"`
 	// When active, users will be presented with a consent prompt to confirm the logout request if the request is not trustworthy. Turn off the consent prompt to bypass user confirmation.
 	OidcLogoutPromptEnabled bool `pulumi:"oidcLogoutPromptEnabled"`
 }
@@ -7198,6 +9034,8 @@ type GetTenantSessionInput interface {
 }
 
 type GetTenantSessionArgs struct {
+	// Anonymous Sessions settings for the tenant. (EA only)
+	Anonymouses GetTenantSessionAnonymouseArrayInput `pulumi:"anonymouses"`
 	// When active, users will be presented with a consent prompt to confirm the logout request if the request is not trustworthy. Turn off the consent prompt to bypass user confirmation.
 	OidcLogoutPromptEnabled pulumi.BoolInput `pulumi:"oidcLogoutPromptEnabled"`
 }
@@ -7253,6 +9091,11 @@ func (o GetTenantSessionOutput) ToGetTenantSessionOutputWithContext(ctx context.
 	return o
 }
 
+// Anonymous Sessions settings for the tenant. (EA only)
+func (o GetTenantSessionOutput) Anonymouses() GetTenantSessionAnonymouseArrayOutput {
+	return o.ApplyT(func(v GetTenantSession) []GetTenantSessionAnonymouse { return v.Anonymouses }).(GetTenantSessionAnonymouseArrayOutput)
+}
+
 // When active, users will be presented with a consent prompt to confirm the logout request if the request is not trustworthy. Turn off the consent prompt to bypass user confirmation.
 func (o GetTenantSessionOutput) OidcLogoutPromptEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetTenantSession) bool { return v.OidcLogoutPromptEnabled }).(pulumi.BoolOutput)
@@ -7276,6 +9119,112 @@ func (o GetTenantSessionArrayOutput) Index(i pulumi.IntInput) GetTenantSessionOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantSession {
 		return vs[0].([]GetTenantSession)[vs[1].(int)]
 	}).(GetTenantSessionOutput)
+}
+
+type GetTenantSessionAnonymouse struct {
+	// Whether anonymous session requests return the `auth0Anon` cookie. (EA only)
+	ActivateCookie bool `pulumi:"activateCookie"`
+	// Number of minutes during which an anonymous session will stay valid. Minimum 1, maximum 525600. (EA only)
+	LifetimeInMinutes int `pulumi:"lifetimeInMinutes"`
+}
+
+// GetTenantSessionAnonymouseInput is an input type that accepts GetTenantSessionAnonymouseArgs and GetTenantSessionAnonymouseOutput values.
+// You can construct a concrete instance of `GetTenantSessionAnonymouseInput` via:
+//
+//	GetTenantSessionAnonymouseArgs{...}
+type GetTenantSessionAnonymouseInput interface {
+	pulumi.Input
+
+	ToGetTenantSessionAnonymouseOutput() GetTenantSessionAnonymouseOutput
+	ToGetTenantSessionAnonymouseOutputWithContext(context.Context) GetTenantSessionAnonymouseOutput
+}
+
+type GetTenantSessionAnonymouseArgs struct {
+	// Whether anonymous session requests return the `auth0Anon` cookie. (EA only)
+	ActivateCookie pulumi.BoolInput `pulumi:"activateCookie"`
+	// Number of minutes during which an anonymous session will stay valid. Minimum 1, maximum 525600. (EA only)
+	LifetimeInMinutes pulumi.IntInput `pulumi:"lifetimeInMinutes"`
+}
+
+func (GetTenantSessionAnonymouseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantSessionAnonymouse)(nil)).Elem()
+}
+
+func (i GetTenantSessionAnonymouseArgs) ToGetTenantSessionAnonymouseOutput() GetTenantSessionAnonymouseOutput {
+	return i.ToGetTenantSessionAnonymouseOutputWithContext(context.Background())
+}
+
+func (i GetTenantSessionAnonymouseArgs) ToGetTenantSessionAnonymouseOutputWithContext(ctx context.Context) GetTenantSessionAnonymouseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantSessionAnonymouseOutput)
+}
+
+// GetTenantSessionAnonymouseArrayInput is an input type that accepts GetTenantSessionAnonymouseArray and GetTenantSessionAnonymouseArrayOutput values.
+// You can construct a concrete instance of `GetTenantSessionAnonymouseArrayInput` via:
+//
+//	GetTenantSessionAnonymouseArray{ GetTenantSessionAnonymouseArgs{...} }
+type GetTenantSessionAnonymouseArrayInput interface {
+	pulumi.Input
+
+	ToGetTenantSessionAnonymouseArrayOutput() GetTenantSessionAnonymouseArrayOutput
+	ToGetTenantSessionAnonymouseArrayOutputWithContext(context.Context) GetTenantSessionAnonymouseArrayOutput
+}
+
+type GetTenantSessionAnonymouseArray []GetTenantSessionAnonymouseInput
+
+func (GetTenantSessionAnonymouseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantSessionAnonymouse)(nil)).Elem()
+}
+
+func (i GetTenantSessionAnonymouseArray) ToGetTenantSessionAnonymouseArrayOutput() GetTenantSessionAnonymouseArrayOutput {
+	return i.ToGetTenantSessionAnonymouseArrayOutputWithContext(context.Background())
+}
+
+func (i GetTenantSessionAnonymouseArray) ToGetTenantSessionAnonymouseArrayOutputWithContext(ctx context.Context) GetTenantSessionAnonymouseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTenantSessionAnonymouseArrayOutput)
+}
+
+type GetTenantSessionAnonymouseOutput struct{ *pulumi.OutputState }
+
+func (GetTenantSessionAnonymouseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTenantSessionAnonymouse)(nil)).Elem()
+}
+
+func (o GetTenantSessionAnonymouseOutput) ToGetTenantSessionAnonymouseOutput() GetTenantSessionAnonymouseOutput {
+	return o
+}
+
+func (o GetTenantSessionAnonymouseOutput) ToGetTenantSessionAnonymouseOutputWithContext(ctx context.Context) GetTenantSessionAnonymouseOutput {
+	return o
+}
+
+// Whether anonymous session requests return the `auth0Anon` cookie. (EA only)
+func (o GetTenantSessionAnonymouseOutput) ActivateCookie() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTenantSessionAnonymouse) bool { return v.ActivateCookie }).(pulumi.BoolOutput)
+}
+
+// Number of minutes during which an anonymous session will stay valid. Minimum 1, maximum 525600. (EA only)
+func (o GetTenantSessionAnonymouseOutput) LifetimeInMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTenantSessionAnonymouse) int { return v.LifetimeInMinutes }).(pulumi.IntOutput)
+}
+
+type GetTenantSessionAnonymouseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTenantSessionAnonymouseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTenantSessionAnonymouse)(nil)).Elem()
+}
+
+func (o GetTenantSessionAnonymouseArrayOutput) ToGetTenantSessionAnonymouseArrayOutput() GetTenantSessionAnonymouseArrayOutput {
+	return o
+}
+
+func (o GetTenantSessionAnonymouseArrayOutput) ToGetTenantSessionAnonymouseArrayOutputWithContext(ctx context.Context) GetTenantSessionAnonymouseArrayOutput {
+	return o
+}
+
+func (o GetTenantSessionAnonymouseArrayOutput) Index(i pulumi.IntInput) GetTenantSessionAnonymouseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTenantSessionAnonymouse {
+		return vs[0].([]GetTenantSessionAnonymouse)[vs[1].(int)]
+	}).(GetTenantSessionAnonymouseOutput)
 }
 
 type GetTenantSessionCooky struct {
@@ -8914,6 +10863,28 @@ func (o GetUserPermissionTypeArrayOutput) Index(i pulumi.IntInput) GetUserPermis
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainVerificationTypeInput)(nil)).Elem(), GetCustomDomainVerificationTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainVerificationTypeArrayInput)(nil)).Elem(), GetCustomDomainVerificationTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainsCustomDomainInput)(nil)).Elem(), GetCustomDomainsCustomDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainsCustomDomainArrayInput)(nil)).Elem(), GetCustomDomainsCustomDomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainsCustomDomainCertificateInput)(nil)).Elem(), GetCustomDomainsCustomDomainCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainsCustomDomainCertificateArrayInput)(nil)).Elem(), GetCustomDomainsCustomDomainCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainsCustomDomainVerificationInput)(nil)).Elem(), GetCustomDomainsCustomDomainVerificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainsCustomDomainVerificationArrayInput)(nil)).Elem(), GetCustomDomainsCustomDomainVerificationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventStreamActionConfigurationInput)(nil)).Elem(), GetEventStreamActionConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventStreamActionConfigurationArrayInput)(nil)).Elem(), GetEventStreamActionConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventStreamEventbridgeConfigurationInput)(nil)).Elem(), GetEventStreamEventbridgeConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventStreamEventbridgeConfigurationArrayInput)(nil)).Elem(), GetEventStreamEventbridgeConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventStreamWebhookConfigurationInput)(nil)).Elem(), GetEventStreamWebhookConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventStreamWebhookConfigurationArrayInput)(nil)).Elem(), GetEventStreamWebhookConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventStreamWebhookConfigurationWebhookAuthorizationInput)(nil)).Elem(), GetEventStreamWebhookConfigurationWebhookAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEventStreamWebhookConfigurationWebhookAuthorizationArrayInput)(nil)).Elem(), GetEventStreamWebhookConfigurationWebhookAuthorizationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFormLanguageInput)(nil)).Elem(), GetFormLanguageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFormLanguageArrayInput)(nil)).Elem(), GetFormLanguageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFormMessageInput)(nil)).Elem(), GetFormMessageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFormMessageArrayInput)(nil)).Elem(), GetFormMessageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAclRuleInput)(nil)).Elem(), GetNetworkAclRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAclRuleArrayInput)(nil)).Elem(), GetNetworkAclRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAclRuleActionInput)(nil)).Elem(), GetNetworkAclRuleActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAclRuleActionArrayInput)(nil)).Elem(), GetNetworkAclRuleActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAclRuleMatchInput)(nil)).Elem(), GetNetworkAclRuleMatchArgs{})
@@ -8984,6 +10955,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRateLimitPoliciesRateLimitPolicyConfigurationArrayInput)(nil)).Elem(), GetRateLimitPoliciesRateLimitPolicyConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRateLimitPolicyConfigurationInput)(nil)).Elem(), GetRateLimitPolicyConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRateLimitPolicyConfigurationArrayInput)(nil)).Elem(), GetRateLimitPolicyConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerAccessTokenInput)(nil)).Elem(), GetResourceServerAccessTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerAccessTokenArrayInput)(nil)).Elem(), GetResourceServerAccessTokenArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerAccessTokenClaimsMappingInput)(nil)).Elem(), GetResourceServerAccessTokenClaimsMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerAccessTokenClaimsMappingArrayInput)(nil)).Elem(), GetResourceServerAccessTokenClaimsMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerAccessTokenClaimsMappingCustomClaimInput)(nil)).Elem(), GetResourceServerAccessTokenClaimsMappingCustomClaimArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerAccessTokenClaimsMappingCustomClaimArrayInput)(nil)).Elem(), GetResourceServerAccessTokenClaimsMappingCustomClaimArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerAuthorizationDetailInput)(nil)).Elem(), GetResourceServerAuthorizationDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerAuthorizationDetailArrayInput)(nil)).Elem(), GetResourceServerAuthorizationDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerAuthorizationPolicyInput)(nil)).Elem(), GetResourceServerAuthorizationPolicyArgs{})
@@ -8994,6 +10971,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerScopeTypeArrayInput)(nil)).Elem(), GetResourceServerScopeTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationInput)(nil)).Elem(), GetResourceServerSubjectTypeAuthorizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationArrayInput)(nil)).Elem(), GetResourceServerSubjectTypeAuthorizationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationAnonymousUserInput)(nil)).Elem(), GetResourceServerSubjectTypeAuthorizationAnonymousUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationAnonymousUserArrayInput)(nil)).Elem(), GetResourceServerSubjectTypeAuthorizationAnonymousUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationClientInput)(nil)).Elem(), GetResourceServerSubjectTypeAuthorizationClientArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationClientArrayInput)(nil)).Elem(), GetResourceServerSubjectTypeAuthorizationClientArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceServerSubjectTypeAuthorizationUserInput)(nil)).Elem(), GetResourceServerSubjectTypeAuthorizationUserArgs{})
@@ -9034,6 +11013,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantOidcLogoutArrayInput)(nil)).Elem(), GetTenantOidcLogoutArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantSessionInput)(nil)).Elem(), GetTenantSessionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantSessionArrayInput)(nil)).Elem(), GetTenantSessionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantSessionAnonymouseInput)(nil)).Elem(), GetTenantSessionAnonymouseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantSessionAnonymouseArrayInput)(nil)).Elem(), GetTenantSessionAnonymouseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantSessionCookyInput)(nil)).Elem(), GetTenantSessionCookyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTenantSessionCookyArrayInput)(nil)).Elem(), GetTenantSessionCookyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserAttributeProfileUserAttributeInput)(nil)).Elem(), GetUserAttributeProfileUserAttributeArgs{})
@@ -9060,6 +11041,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserOrganizationsOrganizationTokenQuotaClientCredentialArrayInput)(nil)).Elem(), GetUserOrganizationsOrganizationTokenQuotaClientCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPermissionTypeInput)(nil)).Elem(), GetUserPermissionTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPermissionTypeArrayInput)(nil)).Elem(), GetUserPermissionTypeArray{})
+	pulumi.RegisterOutputType(GetCustomDomainVerificationTypeOutput{})
+	pulumi.RegisterOutputType(GetCustomDomainVerificationTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetCustomDomainsCustomDomainOutput{})
+	pulumi.RegisterOutputType(GetCustomDomainsCustomDomainArrayOutput{})
+	pulumi.RegisterOutputType(GetCustomDomainsCustomDomainCertificateOutput{})
+	pulumi.RegisterOutputType(GetCustomDomainsCustomDomainCertificateArrayOutput{})
+	pulumi.RegisterOutputType(GetCustomDomainsCustomDomainVerificationOutput{})
+	pulumi.RegisterOutputType(GetCustomDomainsCustomDomainVerificationArrayOutput{})
+	pulumi.RegisterOutputType(GetEventStreamActionConfigurationOutput{})
+	pulumi.RegisterOutputType(GetEventStreamActionConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetEventStreamEventbridgeConfigurationOutput{})
+	pulumi.RegisterOutputType(GetEventStreamEventbridgeConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetEventStreamWebhookConfigurationOutput{})
+	pulumi.RegisterOutputType(GetEventStreamWebhookConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetEventStreamWebhookConfigurationWebhookAuthorizationOutput{})
+	pulumi.RegisterOutputType(GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput{})
+	pulumi.RegisterOutputType(GetFormLanguageOutput{})
+	pulumi.RegisterOutputType(GetFormLanguageArrayOutput{})
+	pulumi.RegisterOutputType(GetFormMessageOutput{})
+	pulumi.RegisterOutputType(GetFormMessageArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclRuleOutput{})
+	pulumi.RegisterOutputType(GetNetworkAclRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworkAclRuleActionOutput{})
 	pulumi.RegisterOutputType(GetNetworkAclRuleActionArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworkAclRuleMatchOutput{})
@@ -9130,6 +11133,12 @@ func init() {
 	pulumi.RegisterOutputType(GetRateLimitPoliciesRateLimitPolicyConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetRateLimitPolicyConfigurationOutput{})
 	pulumi.RegisterOutputType(GetRateLimitPolicyConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceServerAccessTokenOutput{})
+	pulumi.RegisterOutputType(GetResourceServerAccessTokenArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceServerAccessTokenClaimsMappingOutput{})
+	pulumi.RegisterOutputType(GetResourceServerAccessTokenClaimsMappingArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceServerAccessTokenClaimsMappingCustomClaimOutput{})
+	pulumi.RegisterOutputType(GetResourceServerAccessTokenClaimsMappingCustomClaimArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceServerAuthorizationDetailOutput{})
 	pulumi.RegisterOutputType(GetResourceServerAuthorizationDetailArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceServerAuthorizationPolicyOutput{})
@@ -9140,6 +11149,8 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceServerScopeTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceServerSubjectTypeAuthorizationOutput{})
 	pulumi.RegisterOutputType(GetResourceServerSubjectTypeAuthorizationArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceServerSubjectTypeAuthorizationAnonymousUserOutput{})
+	pulumi.RegisterOutputType(GetResourceServerSubjectTypeAuthorizationAnonymousUserArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceServerSubjectTypeAuthorizationClientOutput{})
 	pulumi.RegisterOutputType(GetResourceServerSubjectTypeAuthorizationClientArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceServerSubjectTypeAuthorizationUserOutput{})
@@ -9180,6 +11191,8 @@ func init() {
 	pulumi.RegisterOutputType(GetTenantOidcLogoutArrayOutput{})
 	pulumi.RegisterOutputType(GetTenantSessionOutput{})
 	pulumi.RegisterOutputType(GetTenantSessionArrayOutput{})
+	pulumi.RegisterOutputType(GetTenantSessionAnonymouseOutput{})
+	pulumi.RegisterOutputType(GetTenantSessionAnonymouseArrayOutput{})
 	pulumi.RegisterOutputType(GetTenantSessionCookyOutput{})
 	pulumi.RegisterOutputType(GetTenantSessionCookyArrayOutput{})
 	pulumi.RegisterOutputType(GetUserAttributeProfileUserAttributeOutput{})
