@@ -138,7 +138,7 @@ public final class GetResourceServerResult {
      */
     private Integer tokenLifetime;
     /**
-     * @return Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+     * @return Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Must be between 86400 (1 day) and 2592000 (30 days) when present. Removing this attribute clears the value on the API. (EA only)
      * 
      */
     private Integer tokenLifetimeForAnonymousAccessTokens;
@@ -316,7 +316,7 @@ public final class GetResourceServerResult {
         return this.tokenLifetime;
     }
     /**
-     * @return Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+     * @return Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Must be between 86400 (1 day) and 2592000 (30 days) when present. Removing this attribute clears the value on the API. (EA only)
      * 
      */
     public Integer tokenLifetimeForAnonymousAccessTokens() {

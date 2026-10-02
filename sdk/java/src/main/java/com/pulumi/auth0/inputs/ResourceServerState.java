@@ -325,14 +325,14 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+     * Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Must be between 86400 (1 day) and 2592000 (30 days) when present. Removing this attribute clears the value on the API. (EA only)
      * 
      */
     @Import(name="tokenLifetimeForAnonymousAccessTokens")
     private @Nullable Output<Integer> tokenLifetimeForAnonymousAccessTokens;
 
     /**
-     * @return Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+     * @return Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Must be between 86400 (1 day) and 2592000 (30 days) when present. Removing this attribute clears the value on the API. (EA only)
      * 
      */
     public Optional<Output<Integer>> tokenLifetimeForAnonymousAccessTokens() {
@@ -846,7 +846,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param tokenLifetimeForAnonymousAccessTokens Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+         * @param tokenLifetimeForAnonymousAccessTokens Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Must be between 86400 (1 day) and 2592000 (30 days) when present. Removing this attribute clears the value on the API. (EA only)
          * 
          * @return builder
          * 
@@ -857,7 +857,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param tokenLifetimeForAnonymousAccessTokens Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+         * @param tokenLifetimeForAnonymousAccessTokens Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Must be between 86400 (1 day) and 2592000 (30 days) when present. Removing this attribute clears the value on the API. (EA only)
          * 
          * @return builder
          * 
