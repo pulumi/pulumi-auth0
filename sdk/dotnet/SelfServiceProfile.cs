@@ -43,6 +43,7 @@ namespace Pulumi.Auth0
     ///                 IsOptional = true,
     ///             },
     ///         },
+    ///         Name = "my-self-service-profile",
     ///     });
     /// 
     /// });

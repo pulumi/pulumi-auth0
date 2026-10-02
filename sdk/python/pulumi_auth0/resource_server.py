@@ -63,7 +63,7 @@ class ResourceServerArgs:
         :param pulumi.Input[_builtins.str] token_dialect: Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
         :param pulumi.Input['ResourceServerTokenEncryptionArgs'] token_encryption: Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
         :param pulumi.Input[_builtins.int] token_lifetime: Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
-        :param pulumi.Input[_builtins.int] token_lifetime_for_anonymous_access_tokens: Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+        :param pulumi.Input[_builtins.int] token_lifetime_for_anonymous_access_tokens: Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Must be between 86400 (1 day) and 2592000 (30 days) when present. Removing this attribute clears the value on the API. (EA only)
         :param pulumi.Input[_builtins.int] token_lifetime_for_web: Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
         :param pulumi.Input[_builtins.str] verification_location: URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
         """
@@ -329,7 +329,7 @@ class ResourceServerArgs:
     @pulumi.getter(name="tokenLifetimeForAnonymousAccessTokens")
     def token_lifetime_for_anonymous_access_tokens(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+        Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Must be between 86400 (1 day) and 2592000 (30 days) when present. Removing this attribute clears the value on the API. (EA only)
         """
         return pulumi.get(self, "token_lifetime_for_anonymous_access_tokens")
 
@@ -411,7 +411,7 @@ class _ResourceServerState:
         :param pulumi.Input[_builtins.str] token_dialect: Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
         :param pulumi.Input['ResourceServerTokenEncryptionArgs'] token_encryption: Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
         :param pulumi.Input[_builtins.int] token_lifetime: Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
-        :param pulumi.Input[_builtins.int] token_lifetime_for_anonymous_access_tokens: Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+        :param pulumi.Input[_builtins.int] token_lifetime_for_anonymous_access_tokens: Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Must be between 86400 (1 day) and 2592000 (30 days) when present. Removing this attribute clears the value on the API. (EA only)
         :param pulumi.Input[_builtins.int] token_lifetime_for_web: Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
         :param pulumi.Input[_builtins.str] verification_location: URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
         """
@@ -706,7 +706,7 @@ class _ResourceServerState:
     @pulumi.getter(name="tokenLifetimeForAnonymousAccessTokens")
     def token_lifetime_for_anonymous_access_tokens(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+        Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Must be between 86400 (1 day) and 2592000 (30 days) when present. Removing this attribute clears the value on the API. (EA only)
         """
         return pulumi.get(self, "token_lifetime_for_anonymous_access_tokens")
 
@@ -892,7 +892,7 @@ class ResourceServer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] token_dialect: Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
         :param pulumi.Input[Union['ResourceServerTokenEncryptionArgs', 'ResourceServerTokenEncryptionArgsDict', 'outputs.ResourceServerTokenEncryption']] token_encryption: Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
         :param pulumi.Input[_builtins.int] token_lifetime: Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
-        :param pulumi.Input[_builtins.int] token_lifetime_for_anonymous_access_tokens: Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+        :param pulumi.Input[_builtins.int] token_lifetime_for_anonymous_access_tokens: Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Must be between 86400 (1 day) and 2592000 (30 days) when present. Removing this attribute clears the value on the API. (EA only)
         :param pulumi.Input[_builtins.int] token_lifetime_for_web: Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
         :param pulumi.Input[_builtins.str] verification_location: URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
         """
@@ -1137,7 +1137,7 @@ class ResourceServer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] token_dialect: Dialect of access tokens that should be issued for this resource server. Options include `access_token`, `rfc9068_profile`, `access_token_authz`, and `rfc9068_profile_authz`. `access_token` is a JWT containing standard Auth0 claims. `rfc9068_profile` is a JWT conforming to the IETF JWT Access Token Profile. `access_token_authz` is a JWT containing standard Auth0 claims, including RBAC permissions claims. `rfc9068_profile_authz` is a JWT conforming to the IETF JWT Access Token Profile, including RBAC permissions claims. RBAC permissions claims are available if RBAC (`enforce_policies`) is enabled for this API. For more details, refer to [Access Token Profiles](https://auth0.com/docs/secure/tokens/access-tokens/access-token-profiles).
         :param pulumi.Input[Union['ResourceServerTokenEncryptionArgs', 'ResourceServerTokenEncryptionArgsDict', 'outputs.ResourceServerTokenEncryption']] token_encryption: Configuration for JSON Web Encryption(JWE) of tokens for this resource server.
         :param pulumi.Input[_builtins.int] token_lifetime: Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
-        :param pulumi.Input[_builtins.int] token_lifetime_for_anonymous_access_tokens: Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+        :param pulumi.Input[_builtins.int] token_lifetime_for_anonymous_access_tokens: Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Must be between 86400 (1 day) and 2592000 (30 days) when present. Removing this attribute clears the value on the API. (EA only)
         :param pulumi.Input[_builtins.int] token_lifetime_for_web: Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
         :param pulumi.Input[_builtins.str] verification_location: URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
         """
@@ -1334,7 +1334,7 @@ class ResourceServer(pulumi.CustomResource):
     @pulumi.getter(name="tokenLifetimeForAnonymousAccessTokens")
     def token_lifetime_for_anonymous_access_tokens(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+        Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Must be between 86400 (1 day) and 2592000 (30 days) when present. Removing this attribute clears the value on the API. (EA only)
         """
         return pulumi.get(self, "token_lifetime_for_anonymous_access_tokens")
 

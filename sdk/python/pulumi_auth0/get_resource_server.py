@@ -295,7 +295,7 @@ class GetResourceServerResult:
     @pulumi.getter(name="tokenLifetimeForAnonymousAccessTokens")
     def token_lifetime_for_anonymous_access_tokens(self) -> _builtins.int:
         """
-        Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+        Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Must be between 86400 (1 day) and 2592000 (30 days) when present. Removing this attribute clears the value on the API. (EA only)
         """
         return pulumi.get(self, "token_lifetime_for_anonymous_access_tokens")
 

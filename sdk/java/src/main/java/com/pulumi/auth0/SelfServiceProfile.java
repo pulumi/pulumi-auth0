@@ -61,6 +61,7 @@ import javax.annotation.Nullable;
  *                 .description("sample-description")
  *                 .isOptional(true)
  *                 .build())
+ *             .name("my-self-service-profile")
  *             .build());
  * 
  *     }

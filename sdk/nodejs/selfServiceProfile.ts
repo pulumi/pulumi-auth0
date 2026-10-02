@@ -29,6 +29,7 @@ import * as utilities from "./utilities";
  *         description: "sample-description",
  *         isOptional: true,
  *     }],
+ *     name: "my-self-service-profile",
  * });
  * ```
  *

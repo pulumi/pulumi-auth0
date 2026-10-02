@@ -295,7 +295,8 @@ class SelfServiceProfile(pulumi.CustomResource):
                 "name": "sample-name",
                 "description": "sample-description",
                 "is_optional": True,
-            }])
+            }],
+            name="my-self-service-profile")
         ```
 
         ## Import
@@ -345,7 +346,8 @@ class SelfServiceProfile(pulumi.CustomResource):
                 "name": "sample-name",
                 "description": "sample-description",
                 "is_optional": True,
-            }])
+            }],
+            name="my-self-service-profile")
         ```
 
         ## Import

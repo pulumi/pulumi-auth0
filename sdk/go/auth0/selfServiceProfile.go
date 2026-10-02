@@ -43,6 +43,7 @@ import (
 //						IsOptional:  pulumi.Bool(true),
 //					},
 //				},
+//				Name: pulumi.String("my-self-service-profile"),
 //			})
 //			if err != nil {
 //				return err

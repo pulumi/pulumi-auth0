@@ -112,7 +112,7 @@ type LookupResourceServerResult struct {
 	TokenEncryptions []GetResourceServerTokenEncryption `pulumi:"tokenEncryptions"`
 	// Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
 	TokenLifetime int `pulumi:"tokenLifetime"`
-	// Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+	// Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Must be between 86400 (1 day) and 2592000 (30 days) when present. Removing this attribute clears the value on the API. (EA only)
 	TokenLifetimeForAnonymousAccessTokens int `pulumi:"tokenLifetimeForAnonymousAccessTokens"`
 	// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
 	TokenLifetimeForWeb int `pulumi:"tokenLifetimeForWeb"`
@@ -273,7 +273,7 @@ func (o LookupResourceServerResultOutput) TokenLifetime() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupResourceServerResult) int { return v.TokenLifetime }).(pulumi.IntOutput)
 }
 
-// Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+// Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Must be between 86400 (1 day) and 2592000 (30 days) when present. Removing this attribute clears the value on the API. (EA only)
 func (o LookupResourceServerResultOutput) TokenLifetimeForAnonymousAccessTokens() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupResourceServerResult) int { return v.TokenLifetimeForAnonymousAccessTokens }).(pulumi.IntOutput)
 }

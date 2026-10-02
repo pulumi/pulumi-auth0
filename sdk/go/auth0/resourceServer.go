@@ -180,7 +180,7 @@ type ResourceServer struct {
 	TokenEncryption ResourceServerTokenEncryptionOutput `pulumi:"tokenEncryption"`
 	// Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
 	TokenLifetime pulumi.IntOutput `pulumi:"tokenLifetime"`
-	// Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+	// Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Must be between 86400 (1 day) and 2592000 (30 days) when present. Removing this attribute clears the value on the API. (EA only)
 	TokenLifetimeForAnonymousAccessTokens pulumi.IntPtrOutput `pulumi:"tokenLifetimeForAnonymousAccessTokens"`
 	// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
 	TokenLifetimeForWeb pulumi.IntOutput `pulumi:"tokenLifetimeForWeb"`
@@ -261,7 +261,7 @@ type resourceServerState struct {
 	TokenEncryption *ResourceServerTokenEncryption `pulumi:"tokenEncryption"`
 	// Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
 	TokenLifetime *int `pulumi:"tokenLifetime"`
-	// Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+	// Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Must be between 86400 (1 day) and 2592000 (30 days) when present. Removing this attribute clears the value on the API. (EA only)
 	TokenLifetimeForAnonymousAccessTokens *int `pulumi:"tokenLifetimeForAnonymousAccessTokens"`
 	// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
 	TokenLifetimeForWeb *int `pulumi:"tokenLifetimeForWeb"`
@@ -310,7 +310,7 @@ type ResourceServerState struct {
 	TokenEncryption ResourceServerTokenEncryptionPtrInput
 	// Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
 	TokenLifetime pulumi.IntPtrInput
-	// Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+	// Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Must be between 86400 (1 day) and 2592000 (30 days) when present. Removing this attribute clears the value on the API. (EA only)
 	TokenLifetimeForAnonymousAccessTokens pulumi.IntPtrInput
 	// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
 	TokenLifetimeForWeb pulumi.IntPtrInput
@@ -359,7 +359,7 @@ type resourceServerArgs struct {
 	TokenEncryption *ResourceServerTokenEncryption `pulumi:"tokenEncryption"`
 	// Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
 	TokenLifetime *int `pulumi:"tokenLifetime"`
-	// Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+	// Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Must be between 86400 (1 day) and 2592000 (30 days) when present. Removing this attribute clears the value on the API. (EA only)
 	TokenLifetimeForAnonymousAccessTokens *int `pulumi:"tokenLifetimeForAnonymousAccessTokens"`
 	// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
 	TokenLifetimeForWeb *int `pulumi:"tokenLifetimeForWeb"`
@@ -405,7 +405,7 @@ type ResourceServerArgs struct {
 	TokenEncryption ResourceServerTokenEncryptionPtrInput
 	// Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
 	TokenLifetime pulumi.IntPtrInput
-	// Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+	// Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Must be between 86400 (1 day) and 2592000 (30 days) when present. Removing this attribute clears the value on the API. (EA only)
 	TokenLifetimeForAnonymousAccessTokens pulumi.IntPtrInput
 	// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
 	TokenLifetimeForWeb pulumi.IntPtrInput
@@ -602,7 +602,7 @@ func (o ResourceServerOutput) TokenLifetime() pulumi.IntOutput {
 	return o.ApplyT(func(v *ResourceServer) pulumi.IntOutput { return v.TokenLifetime }).(pulumi.IntOutput)
 }
 
-// Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Minimum 86400 (1 day), maximum 2592000 (30 days). Removing this attribute clears the value on the API. (EA only)
+// Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Must be between 86400 (1 day) and 2592000 (30 days) when present. Removing this attribute clears the value on the API. (EA only)
 func (o ResourceServerOutput) TokenLifetimeForAnonymousAccessTokens() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ResourceServer) pulumi.IntPtrOutput { return v.TokenLifetimeForAnonymousAccessTokens }).(pulumi.IntPtrOutput)
 }
