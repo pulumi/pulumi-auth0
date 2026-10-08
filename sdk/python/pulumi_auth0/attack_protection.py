@@ -25,6 +25,7 @@ class AttackProtectionArgs:
                  breached_password_detection: pulumi.Input[Optional['AttackProtectionBreachedPasswordDetectionArgs']] = None,
                  brute_force_protection: pulumi.Input[Optional['AttackProtectionBruteForceProtectionArgs']] = None,
                  captcha: pulumi.Input[Optional['AttackProtectionCaptchaArgs']] = None,
+                 phone_provider_protection: pulumi.Input[Optional['AttackProtectionPhoneProviderProtectionArgs']] = None,
                  suspicious_ip_throttling: pulumi.Input[Optional['AttackProtectionSuspiciousIpThrottlingArgs']] = None):
         """
         The set of arguments for constructing a AttackProtection resource.
@@ -33,6 +34,7 @@ class AttackProtectionArgs:
         :param pulumi.Input['AttackProtectionBreachedPasswordDetectionArgs'] breached_password_detection: Breached password detection protects your applications from bad actors logging in with stolen credentials.
         :param pulumi.Input['AttackProtectionBruteForceProtectionArgs'] brute_force_protection: Brute-force protection safeguards against a single IP address attacking a single user account.
         :param pulumi.Input['AttackProtectionCaptchaArgs'] captcha: CAPTCHA configuration for attack protection.
+        :param pulumi.Input['AttackProtectionPhoneProviderProtectionArgs'] phone_provider_protection: Configuration for the SMS MFA enrollment backoff strategy (EA Only).
         :param pulumi.Input['AttackProtectionSuspiciousIpThrottlingArgs'] suspicious_ip_throttling: Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
         """
         if bot_detection is not None:
@@ -43,6 +45,8 @@ class AttackProtectionArgs:
             pulumi.set(__self__, "brute_force_protection", brute_force_protection)
         if captcha is not None:
             pulumi.set(__self__, "captcha", captcha)
+        if phone_provider_protection is not None:
+            pulumi.set(__self__, "phone_provider_protection", phone_provider_protection)
         if suspicious_ip_throttling is not None:
             pulumi.set(__self__, "suspicious_ip_throttling", suspicious_ip_throttling)
 
@@ -93,6 +97,18 @@ class AttackProtectionArgs:
     @captcha.setter
     def captcha(self, value: pulumi.Input[Optional['AttackProtectionCaptchaArgs']]):
         pulumi.set(self, "captcha", value)
+
+    @_builtins.property
+    @pulumi.getter(name="phoneProviderProtection")
+    def phone_provider_protection(self) -> pulumi.Input[Optional['AttackProtectionPhoneProviderProtectionArgs']]:
+        """
+        Configuration for the SMS MFA enrollment backoff strategy (EA Only).
+        """
+        return pulumi.get(self, "phone_provider_protection")
+
+    @phone_provider_protection.setter
+    def phone_provider_protection(self, value: pulumi.Input[Optional['AttackProtectionPhoneProviderProtectionArgs']]):
+        pulumi.set(self, "phone_provider_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="suspiciousIpThrottling")
@@ -114,6 +130,7 @@ class _AttackProtectionState:
                  breached_password_detection: pulumi.Input[Optional['AttackProtectionBreachedPasswordDetectionArgs']] = None,
                  brute_force_protection: pulumi.Input[Optional['AttackProtectionBruteForceProtectionArgs']] = None,
                  captcha: pulumi.Input[Optional['AttackProtectionCaptchaArgs']] = None,
+                 phone_provider_protection: pulumi.Input[Optional['AttackProtectionPhoneProviderProtectionArgs']] = None,
                  suspicious_ip_throttling: pulumi.Input[Optional['AttackProtectionSuspiciousIpThrottlingArgs']] = None):
         """
         Input properties used for looking up and filtering AttackProtection resources.
@@ -122,6 +139,7 @@ class _AttackProtectionState:
         :param pulumi.Input['AttackProtectionBreachedPasswordDetectionArgs'] breached_password_detection: Breached password detection protects your applications from bad actors logging in with stolen credentials.
         :param pulumi.Input['AttackProtectionBruteForceProtectionArgs'] brute_force_protection: Brute-force protection safeguards against a single IP address attacking a single user account.
         :param pulumi.Input['AttackProtectionCaptchaArgs'] captcha: CAPTCHA configuration for attack protection.
+        :param pulumi.Input['AttackProtectionPhoneProviderProtectionArgs'] phone_provider_protection: Configuration for the SMS MFA enrollment backoff strategy (EA Only).
         :param pulumi.Input['AttackProtectionSuspiciousIpThrottlingArgs'] suspicious_ip_throttling: Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
         """
         if bot_detection is not None:
@@ -132,6 +150,8 @@ class _AttackProtectionState:
             pulumi.set(__self__, "brute_force_protection", brute_force_protection)
         if captcha is not None:
             pulumi.set(__self__, "captcha", captcha)
+        if phone_provider_protection is not None:
+            pulumi.set(__self__, "phone_provider_protection", phone_provider_protection)
         if suspicious_ip_throttling is not None:
             pulumi.set(__self__, "suspicious_ip_throttling", suspicious_ip_throttling)
 
@@ -182,6 +202,18 @@ class _AttackProtectionState:
     @captcha.setter
     def captcha(self, value: pulumi.Input[Optional['AttackProtectionCaptchaArgs']]):
         pulumi.set(self, "captcha", value)
+
+    @_builtins.property
+    @pulumi.getter(name="phoneProviderProtection")
+    def phone_provider_protection(self) -> pulumi.Input[Optional['AttackProtectionPhoneProviderProtectionArgs']]:
+        """
+        Configuration for the SMS MFA enrollment backoff strategy (EA Only).
+        """
+        return pulumi.get(self, "phone_provider_protection")
+
+    @phone_provider_protection.setter
+    def phone_provider_protection(self, value: pulumi.Input[Optional['AttackProtectionPhoneProviderProtectionArgs']]):
+        pulumi.set(self, "phone_provider_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="suspiciousIpThrottling")
@@ -206,6 +238,7 @@ class AttackProtection(pulumi.CustomResource):
                  breached_password_detection: pulumi.Input[Optional[Union['AttackProtectionBreachedPasswordDetectionArgs', 'AttackProtectionBreachedPasswordDetectionArgsDict', 'outputs.AttackProtectionBreachedPasswordDetection']]] = None,
                  brute_force_protection: pulumi.Input[Optional[Union['AttackProtectionBruteForceProtectionArgs', 'AttackProtectionBruteForceProtectionArgsDict', 'outputs.AttackProtectionBruteForceProtection']]] = None,
                  captcha: pulumi.Input[Optional[Union['AttackProtectionCaptchaArgs', 'AttackProtectionCaptchaArgsDict', 'outputs.AttackProtectionCaptcha']]] = None,
+                 phone_provider_protection: pulumi.Input[Optional[Union['AttackProtectionPhoneProviderProtectionArgs', 'AttackProtectionPhoneProviderProtectionArgsDict', 'outputs.AttackProtectionPhoneProviderProtection']]] = None,
                  suspicious_ip_throttling: pulumi.Input[Optional[Union['AttackProtectionSuspiciousIpThrottlingArgs', 'AttackProtectionSuspiciousIpThrottlingArgsDict', 'outputs.AttackProtectionSuspiciousIpThrottling']]] = None,
                  __props__=None):
         """
@@ -275,6 +308,9 @@ class AttackProtection(pulumi.CustomResource):
                     "10.0.0.0",
                 ],
                 "monitoring_mode_enabled": True,
+            },
+            phone_provider_protection={
+                "type": "exponential",
             })
         # ============================================================================
         # CAPTCHA PROVIDER EXAMPLES - One per Provider
@@ -371,6 +407,7 @@ class AttackProtection(pulumi.CustomResource):
         :param pulumi.Input[Union['AttackProtectionBreachedPasswordDetectionArgs', 'AttackProtectionBreachedPasswordDetectionArgsDict', 'outputs.AttackProtectionBreachedPasswordDetection']] breached_password_detection: Breached password detection protects your applications from bad actors logging in with stolen credentials.
         :param pulumi.Input[Union['AttackProtectionBruteForceProtectionArgs', 'AttackProtectionBruteForceProtectionArgsDict', 'outputs.AttackProtectionBruteForceProtection']] brute_force_protection: Brute-force protection safeguards against a single IP address attacking a single user account.
         :param pulumi.Input[Union['AttackProtectionCaptchaArgs', 'AttackProtectionCaptchaArgsDict', 'outputs.AttackProtectionCaptcha']] captcha: CAPTCHA configuration for attack protection.
+        :param pulumi.Input[Union['AttackProtectionPhoneProviderProtectionArgs', 'AttackProtectionPhoneProviderProtectionArgsDict', 'outputs.AttackProtectionPhoneProviderProtection']] phone_provider_protection: Configuration for the SMS MFA enrollment backoff strategy (EA Only).
         :param pulumi.Input[Union['AttackProtectionSuspiciousIpThrottlingArgs', 'AttackProtectionSuspiciousIpThrottlingArgsDict', 'outputs.AttackProtectionSuspiciousIpThrottling']] suspicious_ip_throttling: Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
         """
         ...
@@ -446,6 +483,9 @@ class AttackProtection(pulumi.CustomResource):
                     "10.0.0.0",
                 ],
                 "monitoring_mode_enabled": True,
+            },
+            phone_provider_protection={
+                "type": "exponential",
             })
         # ============================================================================
         # CAPTCHA PROVIDER EXAMPLES - One per Provider
@@ -555,6 +595,7 @@ class AttackProtection(pulumi.CustomResource):
                  breached_password_detection: pulumi.Input[Optional[Union['AttackProtectionBreachedPasswordDetectionArgs', 'AttackProtectionBreachedPasswordDetectionArgsDict', 'outputs.AttackProtectionBreachedPasswordDetection']]] = None,
                  brute_force_protection: pulumi.Input[Optional[Union['AttackProtectionBruteForceProtectionArgs', 'AttackProtectionBruteForceProtectionArgsDict', 'outputs.AttackProtectionBruteForceProtection']]] = None,
                  captcha: pulumi.Input[Optional[Union['AttackProtectionCaptchaArgs', 'AttackProtectionCaptchaArgsDict', 'outputs.AttackProtectionCaptcha']]] = None,
+                 phone_provider_protection: pulumi.Input[Optional[Union['AttackProtectionPhoneProviderProtectionArgs', 'AttackProtectionPhoneProviderProtectionArgsDict', 'outputs.AttackProtectionPhoneProviderProtection']]] = None,
                  suspicious_ip_throttling: pulumi.Input[Optional[Union['AttackProtectionSuspiciousIpThrottlingArgs', 'AttackProtectionSuspiciousIpThrottlingArgsDict', 'outputs.AttackProtectionSuspiciousIpThrottling']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -569,6 +610,7 @@ class AttackProtection(pulumi.CustomResource):
             __props__.__dict__["breached_password_detection"] = breached_password_detection
             __props__.__dict__["brute_force_protection"] = brute_force_protection
             __props__.__dict__["captcha"] = captcha
+            __props__.__dict__["phone_provider_protection"] = phone_provider_protection
             __props__.__dict__["suspicious_ip_throttling"] = suspicious_ip_throttling
         super(AttackProtection, __self__).__init__(
             'auth0:index/attackProtection:AttackProtection',
@@ -584,6 +626,7 @@ class AttackProtection(pulumi.CustomResource):
             breached_password_detection: pulumi.Input[Optional[Union['AttackProtectionBreachedPasswordDetectionArgs', 'AttackProtectionBreachedPasswordDetectionArgsDict', 'outputs.AttackProtectionBreachedPasswordDetection']]] = None,
             brute_force_protection: pulumi.Input[Optional[Union['AttackProtectionBruteForceProtectionArgs', 'AttackProtectionBruteForceProtectionArgsDict', 'outputs.AttackProtectionBruteForceProtection']]] = None,
             captcha: pulumi.Input[Optional[Union['AttackProtectionCaptchaArgs', 'AttackProtectionCaptchaArgsDict', 'outputs.AttackProtectionCaptcha']]] = None,
+            phone_provider_protection: pulumi.Input[Optional[Union['AttackProtectionPhoneProviderProtectionArgs', 'AttackProtectionPhoneProviderProtectionArgsDict', 'outputs.AttackProtectionPhoneProviderProtection']]] = None,
             suspicious_ip_throttling: pulumi.Input[Optional[Union['AttackProtectionSuspiciousIpThrottlingArgs', 'AttackProtectionSuspiciousIpThrottlingArgsDict', 'outputs.AttackProtectionSuspiciousIpThrottling']]] = None) -> 'AttackProtection':
         """
         Get an existing AttackProtection resource's state with the given name, id, and optional extra
@@ -596,6 +639,7 @@ class AttackProtection(pulumi.CustomResource):
         :param pulumi.Input[Union['AttackProtectionBreachedPasswordDetectionArgs', 'AttackProtectionBreachedPasswordDetectionArgsDict', 'outputs.AttackProtectionBreachedPasswordDetection']] breached_password_detection: Breached password detection protects your applications from bad actors logging in with stolen credentials.
         :param pulumi.Input[Union['AttackProtectionBruteForceProtectionArgs', 'AttackProtectionBruteForceProtectionArgsDict', 'outputs.AttackProtectionBruteForceProtection']] brute_force_protection: Brute-force protection safeguards against a single IP address attacking a single user account.
         :param pulumi.Input[Union['AttackProtectionCaptchaArgs', 'AttackProtectionCaptchaArgsDict', 'outputs.AttackProtectionCaptcha']] captcha: CAPTCHA configuration for attack protection.
+        :param pulumi.Input[Union['AttackProtectionPhoneProviderProtectionArgs', 'AttackProtectionPhoneProviderProtectionArgsDict', 'outputs.AttackProtectionPhoneProviderProtection']] phone_provider_protection: Configuration for the SMS MFA enrollment backoff strategy (EA Only).
         :param pulumi.Input[Union['AttackProtectionSuspiciousIpThrottlingArgs', 'AttackProtectionSuspiciousIpThrottlingArgsDict', 'outputs.AttackProtectionSuspiciousIpThrottling']] suspicious_ip_throttling: Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -606,6 +650,7 @@ class AttackProtection(pulumi.CustomResource):
         __props__.__dict__["breached_password_detection"] = breached_password_detection
         __props__.__dict__["brute_force_protection"] = brute_force_protection
         __props__.__dict__["captcha"] = captcha
+        __props__.__dict__["phone_provider_protection"] = phone_provider_protection
         __props__.__dict__["suspicious_ip_throttling"] = suspicious_ip_throttling
         return AttackProtection(resource_name, opts=opts, __props__=__props__)
 
@@ -640,6 +685,14 @@ class AttackProtection(pulumi.CustomResource):
         CAPTCHA configuration for attack protection.
         """
         return pulumi.get(self, "captcha")
+
+    @_builtins.property
+    @pulumi.getter(name="phoneProviderProtection")
+    def phone_provider_protection(self) -> pulumi.Output['outputs.AttackProtectionPhoneProviderProtection']:
+        """
+        Configuration for the SMS MFA enrollment backoff strategy (EA Only).
+        """
+        return pulumi.get(self, "phone_provider_protection")
 
     @_builtins.property
     @pulumi.getter(name="suspiciousIpThrottling")

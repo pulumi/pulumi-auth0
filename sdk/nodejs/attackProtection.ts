@@ -74,6 +74,9 @@ import * as utilities from "./utilities";
  *         ],
  *         monitoringModeEnabled: true,
  *     },
+ *     phoneProviderProtection: {
+ *         type: "exponential",
+ *     },
  * });
  * // ============================================================================
  * // CAPTCHA PROVIDER EXAMPLES - One per Provider
@@ -208,6 +211,10 @@ export class AttackProtection extends pulumi.CustomResource {
      */
     declare public readonly captcha: pulumi.Output<outputs.AttackProtectionCaptcha>;
     /**
+     * Configuration for the SMS MFA enrollment backoff strategy (EA Only).
+     */
+    declare public readonly phoneProviderProtection: pulumi.Output<outputs.AttackProtectionPhoneProviderProtection>;
+    /**
      * Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
      */
     declare public readonly suspiciousIpThrottling: pulumi.Output<outputs.AttackProtectionSuspiciousIpThrottling>;
@@ -229,6 +236,7 @@ export class AttackProtection extends pulumi.CustomResource {
             resourceInputs["breachedPasswordDetection"] = state?.breachedPasswordDetection;
             resourceInputs["bruteForceProtection"] = state?.bruteForceProtection;
             resourceInputs["captcha"] = state?.captcha;
+            resourceInputs["phoneProviderProtection"] = state?.phoneProviderProtection;
             resourceInputs["suspiciousIpThrottling"] = state?.suspiciousIpThrottling;
         } else {
             const args = argsOrState as AttackProtectionArgs | undefined;
@@ -236,6 +244,7 @@ export class AttackProtection extends pulumi.CustomResource {
             resourceInputs["breachedPasswordDetection"] = args?.breachedPasswordDetection;
             resourceInputs["bruteForceProtection"] = args?.bruteForceProtection;
             resourceInputs["captcha"] = args?.captcha;
+            resourceInputs["phoneProviderProtection"] = args?.phoneProviderProtection;
             resourceInputs["suspiciousIpThrottling"] = args?.suspiciousIpThrottling;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -264,6 +273,10 @@ export interface AttackProtectionState {
      */
     captcha?: pulumi.Input<inputs.AttackProtectionCaptcha | undefined>;
     /**
+     * Configuration for the SMS MFA enrollment backoff strategy (EA Only).
+     */
+    phoneProviderProtection?: pulumi.Input<inputs.AttackProtectionPhoneProviderProtection | undefined>;
+    /**
      * Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
      */
     suspiciousIpThrottling?: pulumi.Input<inputs.AttackProtectionSuspiciousIpThrottling | undefined>;
@@ -289,6 +302,10 @@ export interface AttackProtectionArgs {
      * CAPTCHA configuration for attack protection.
      */
     captcha?: pulumi.Input<inputs.AttackProtectionCaptcha | undefined>;
+    /**
+     * Configuration for the SMS MFA enrollment backoff strategy (EA Only).
+     */
+    phoneProviderProtection?: pulumi.Input<inputs.AttackProtectionPhoneProviderProtection | undefined>;
     /**
      * Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
      */

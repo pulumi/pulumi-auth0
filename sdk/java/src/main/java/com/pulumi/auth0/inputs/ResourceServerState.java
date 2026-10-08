@@ -220,6 +220,21 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
+     * 
+     */
+    @Import(name="requireConsentNonRepudiation")
+    private @Nullable Output<Boolean> requireConsentNonRepudiation;
+
+    /**
+     * @return When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
+     * 
+     */
+    public Optional<Output<Boolean>> requireConsentNonRepudiation() {
+        return Optional.ofNullable(this.requireConsentNonRepudiation);
+    }
+
+    /**
      * Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
      * 
      */
@@ -385,6 +400,7 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
         this.isSystem = $.isSystem;
         this.name = $.name;
         this.proofOfPossession = $.proofOfPossession;
+        this.requireConsentNonRepudiation = $.requireConsentNonRepudiation;
         this.signingAlg = $.signingAlg;
         this.signingSecret = $.signingSecret;
         this.skipConsentForVerifiableFirstPartyClients = $.skipConsentForVerifiableFirstPartyClients;
@@ -696,6 +712,27 @@ public final class ResourceServerState extends com.pulumi.resources.ResourceArgs
          */
         public Builder proofOfPossession(ResourceServerProofOfPossessionArgs proofOfPossession) {
             return proofOfPossession(Output.of(proofOfPossession));
+        }
+
+        /**
+         * @param requireConsentNonRepudiation When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requireConsentNonRepudiation(@Nullable Output<Boolean> requireConsentNonRepudiation) {
+            $.requireConsentNonRepudiation = requireConsentNonRepudiation;
+            return this;
+        }
+
+        /**
+         * @param requireConsentNonRepudiation When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requireConsentNonRepudiation(Boolean requireConsentNonRepudiation) {
+            return requireConsentNonRepudiation(Output.of(requireConsentNonRepudiation));
         }
 
         /**

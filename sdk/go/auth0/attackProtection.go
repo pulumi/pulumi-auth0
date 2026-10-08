@@ -93,6 +93,9 @@ import (
 //					},
 //					MonitoringModeEnabled: pulumi.Bool(true),
 //				},
+//				PhoneProviderProtection: &auth0.AttackProtectionPhoneProviderProtectionArgs{
+//					Type: pulumi.String("exponential"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -218,6 +221,8 @@ type AttackProtection struct {
 	BruteForceProtection AttackProtectionBruteForceProtectionOutput `pulumi:"bruteForceProtection"`
 	// CAPTCHA configuration for attack protection.
 	Captcha AttackProtectionCaptchaOutput `pulumi:"captcha"`
+	// Configuration for the SMS MFA enrollment backoff strategy (EA Only).
+	PhoneProviderProtection AttackProtectionPhoneProviderProtectionOutput `pulumi:"phoneProviderProtection"`
 	// Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
 	SuspiciousIpThrottling AttackProtectionSuspiciousIpThrottlingOutput `pulumi:"suspiciousIpThrottling"`
 }
@@ -260,6 +265,8 @@ type attackProtectionState struct {
 	BruteForceProtection *AttackProtectionBruteForceProtection `pulumi:"bruteForceProtection"`
 	// CAPTCHA configuration for attack protection.
 	Captcha *AttackProtectionCaptcha `pulumi:"captcha"`
+	// Configuration for the SMS MFA enrollment backoff strategy (EA Only).
+	PhoneProviderProtection *AttackProtectionPhoneProviderProtection `pulumi:"phoneProviderProtection"`
 	// Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
 	SuspiciousIpThrottling *AttackProtectionSuspiciousIpThrottling `pulumi:"suspiciousIpThrottling"`
 }
@@ -273,6 +280,8 @@ type AttackProtectionState struct {
 	BruteForceProtection AttackProtectionBruteForceProtectionPtrInput
 	// CAPTCHA configuration for attack protection.
 	Captcha AttackProtectionCaptchaPtrInput
+	// Configuration for the SMS MFA enrollment backoff strategy (EA Only).
+	PhoneProviderProtection AttackProtectionPhoneProviderProtectionPtrInput
 	// Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
 	SuspiciousIpThrottling AttackProtectionSuspiciousIpThrottlingPtrInput
 }
@@ -290,6 +299,8 @@ type attackProtectionArgs struct {
 	BruteForceProtection *AttackProtectionBruteForceProtection `pulumi:"bruteForceProtection"`
 	// CAPTCHA configuration for attack protection.
 	Captcha *AttackProtectionCaptcha `pulumi:"captcha"`
+	// Configuration for the SMS MFA enrollment backoff strategy (EA Only).
+	PhoneProviderProtection *AttackProtectionPhoneProviderProtection `pulumi:"phoneProviderProtection"`
 	// Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
 	SuspiciousIpThrottling *AttackProtectionSuspiciousIpThrottling `pulumi:"suspiciousIpThrottling"`
 }
@@ -304,6 +315,8 @@ type AttackProtectionArgs struct {
 	BruteForceProtection AttackProtectionBruteForceProtectionPtrInput
 	// CAPTCHA configuration for attack protection.
 	Captcha AttackProtectionCaptchaPtrInput
+	// Configuration for the SMS MFA enrollment backoff strategy (EA Only).
+	PhoneProviderProtection AttackProtectionPhoneProviderProtectionPtrInput
 	// Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
 	SuspiciousIpThrottling AttackProtectionSuspiciousIpThrottlingPtrInput
 }
@@ -415,6 +428,13 @@ func (o AttackProtectionOutput) BruteForceProtection() AttackProtectionBruteForc
 // CAPTCHA configuration for attack protection.
 func (o AttackProtectionOutput) Captcha() AttackProtectionCaptchaOutput {
 	return o.ApplyT(func(v *AttackProtection) AttackProtectionCaptchaOutput { return v.Captcha }).(AttackProtectionCaptchaOutput)
+}
+
+// Configuration for the SMS MFA enrollment backoff strategy (EA Only).
+func (o AttackProtectionOutput) PhoneProviderProtection() AttackProtectionPhoneProviderProtectionOutput {
+	return o.ApplyT(func(v *AttackProtection) AttackProtectionPhoneProviderProtectionOutput {
+		return v.PhoneProviderProtection
+	}).(AttackProtectionPhoneProviderProtectionOutput)
 }
 
 // Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.

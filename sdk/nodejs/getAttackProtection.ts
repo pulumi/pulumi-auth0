@@ -49,6 +49,10 @@ export interface GetAttackProtectionResult {
      */
     readonly id: string;
     /**
+     * Configuration for the SMS MFA enrollment backoff strategy (EA Only).
+     */
+    readonly phoneProviderProtections: outputs.GetAttackProtectionPhoneProviderProtection[];
+    /**
      * Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
      */
     readonly suspiciousIpThrottlings: outputs.GetAttackProtectionSuspiciousIpThrottling[];

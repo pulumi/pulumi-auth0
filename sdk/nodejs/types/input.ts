@@ -344,6 +344,13 @@ export interface AttackProtectionCaptchaRecaptchaV2 {
     siteKey: pulumi.Input<string>;
 }
 
+export interface AttackProtectionPhoneProviderProtection {
+    /**
+     * The SMS backoff strategy used during MFA enrollment. Use `exponential` to activate exponential-backoff resend limiting (EA only).
+     */
+    type?: pulumi.Input<string | undefined>;
+}
+
 export interface AttackProtectionSuspiciousIpThrottling {
     /**
      * List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.

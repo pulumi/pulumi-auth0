@@ -7,6 +7,7 @@ import com.pulumi.auth0.inputs.AttackProtectionBotDetectionArgs;
 import com.pulumi.auth0.inputs.AttackProtectionBreachedPasswordDetectionArgs;
 import com.pulumi.auth0.inputs.AttackProtectionBruteForceProtectionArgs;
 import com.pulumi.auth0.inputs.AttackProtectionCaptchaArgs;
+import com.pulumi.auth0.inputs.AttackProtectionPhoneProviderProtectionArgs;
 import com.pulumi.auth0.inputs.AttackProtectionSuspiciousIpThrottlingArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -80,6 +81,21 @@ public final class AttackProtectionState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Configuration for the SMS MFA enrollment backoff strategy (EA Only).
+     * 
+     */
+    @Import(name="phoneProviderProtection")
+    private @Nullable Output<AttackProtectionPhoneProviderProtectionArgs> phoneProviderProtection;
+
+    /**
+     * @return Configuration for the SMS MFA enrollment backoff strategy (EA Only).
+     * 
+     */
+    public Optional<Output<AttackProtectionPhoneProviderProtectionArgs>> phoneProviderProtection() {
+        return Optional.ofNullable(this.phoneProviderProtection);
+    }
+
+    /**
      * Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
      * 
      */
@@ -101,6 +117,7 @@ public final class AttackProtectionState extends com.pulumi.resources.ResourceAr
         this.breachedPasswordDetection = $.breachedPasswordDetection;
         this.bruteForceProtection = $.bruteForceProtection;
         this.captcha = $.captcha;
+        this.phoneProviderProtection = $.phoneProviderProtection;
         this.suspiciousIpThrottling = $.suspiciousIpThrottling;
     }
 
@@ -204,6 +221,27 @@ public final class AttackProtectionState extends com.pulumi.resources.ResourceAr
          */
         public Builder captcha(AttackProtectionCaptchaArgs captcha) {
             return captcha(Output.of(captcha));
+        }
+
+        /**
+         * @param phoneProviderProtection Configuration for the SMS MFA enrollment backoff strategy (EA Only).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder phoneProviderProtection(@Nullable Output<AttackProtectionPhoneProviderProtectionArgs> phoneProviderProtection) {
+            $.phoneProviderProtection = phoneProviderProtection;
+            return this;
+        }
+
+        /**
+         * @param phoneProviderProtection Configuration for the SMS MFA enrollment backoff strategy (EA Only).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder phoneProviderProtection(AttackProtectionPhoneProviderProtectionArgs phoneProviderProtection) {
+            return phoneProviderProtection(Output.of(phoneProviderProtection));
         }
 
         /**

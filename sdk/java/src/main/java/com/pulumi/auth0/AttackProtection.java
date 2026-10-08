@@ -10,6 +10,7 @@ import com.pulumi.auth0.outputs.AttackProtectionBotDetection;
 import com.pulumi.auth0.outputs.AttackProtectionBreachedPasswordDetection;
 import com.pulumi.auth0.outputs.AttackProtectionBruteForceProtection;
 import com.pulumi.auth0.outputs.AttackProtectionCaptcha;
+import com.pulumi.auth0.outputs.AttackProtectionPhoneProviderProtection;
 import com.pulumi.auth0.outputs.AttackProtectionSuspiciousIpThrottling;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -39,6 +40,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.auth0.inputs.AttackProtectionBreachedPasswordDetectionPreUserRegistrationArgs;
  * import com.pulumi.auth0.inputs.AttackProtectionBreachedPasswordDetectionPreChangePasswordArgs;
  * import com.pulumi.auth0.inputs.AttackProtectionBotDetectionArgs;
+ * import com.pulumi.auth0.inputs.AttackProtectionPhoneProviderProtectionArgs;
  * import com.pulumi.auth0.inputs.AttackProtectionCaptchaArgs;
  * import com.pulumi.auth0.inputs.AttackProtectionCaptchaRecaptchaV2Args;
  * import com.pulumi.auth0.inputs.AttackProtectionCaptchaRecaptchaEnterpriseArgs;
@@ -111,6 +113,9 @@ import javax.annotation.Nullable;
  *                     "192.168.1.0",
  *                     "10.0.0.0")
  *                 .monitoringModeEnabled(true)
+ *                 .build())
+ *             .phoneProviderProtection(AttackProtectionPhoneProviderProtectionArgs.builder()
+ *                 .type("exponential")
  *                 .build())
  *             .build());
  * 
@@ -266,6 +271,20 @@ public class AttackProtection extends com.pulumi.resources.CustomResource {
      */
     public Output<AttackProtectionCaptcha> captcha() {
         return this.captcha;
+    }
+    /**
+     * Configuration for the SMS MFA enrollment backoff strategy (EA Only).
+     * 
+     */
+    @Export(name="phoneProviderProtection", refs={AttackProtectionPhoneProviderProtection.class}, tree="[0]")
+    private Output<AttackProtectionPhoneProviderProtection> phoneProviderProtection;
+
+    /**
+     * @return Configuration for the SMS MFA enrollment backoff strategy (EA Only).
+     * 
+     */
+    public Output<AttackProtectionPhoneProviderProtection> phoneProviderProtection() {
+        return this.phoneProviderProtection;
     }
     /**
      * Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.

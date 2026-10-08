@@ -117,6 +117,7 @@ import javax.annotation.Nullable;
  *             .allowOfflineAccess(true)
  *             .allowOnlineAccess(true)
  *             .allowOnlineAccessWithEphemeralSessions(false)
+ *             .requireConsentNonRepudiation(true)
  *             .tokenLifetime(8600)
  *             .skipConsentForVerifiableFirstPartyClients(true)
  *             .consentPolicy("transactional-authorization-with-mfa")
@@ -350,6 +351,20 @@ public class ResourceServer extends com.pulumi.resources.CustomResource {
      */
     public Output<ResourceServerProofOfPossession> proofOfPossession() {
         return this.proofOfPossession;
+    }
+    /**
+     * When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
+     * 
+     */
+    @Export(name="requireConsentNonRepudiation", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> requireConsentNonRepudiation;
+
+    /**
+     * @return When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
+     * 
+     */
+    public Output<Boolean> requireConsentNonRepudiation() {
+        return this.requireConsentNonRepudiation;
     }
     /**
      * Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.

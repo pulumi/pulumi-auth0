@@ -70,6 +70,7 @@ import * as utilities from "./utilities";
  *     allowOfflineAccess: true,
  *     allowOnlineAccess: true,
  *     allowOnlineAccessWithEphemeralSessions: false,
+ *     requireConsentNonRepudiation: true,
  *     tokenLifetime: 8600,
  *     skipConsentForVerifiableFirstPartyClients: true,
  *     consentPolicy: "transactional-authorization-with-mfa",
@@ -194,6 +195,10 @@ export class ResourceServer extends pulumi.CustomResource {
      */
     declare public readonly proofOfPossession: pulumi.Output<outputs.ResourceServerProofOfPossession>;
     /**
+     * When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
+     */
+    declare public readonly requireConsentNonRepudiation: pulumi.Output<boolean>;
+    /**
      * Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
      */
     declare public readonly signingAlg: pulumi.Output<string>;
@@ -260,6 +265,7 @@ export class ResourceServer extends pulumi.CustomResource {
             resourceInputs["isSystem"] = state?.isSystem;
             resourceInputs["name"] = state?.name;
             resourceInputs["proofOfPossession"] = state?.proofOfPossession;
+            resourceInputs["requireConsentNonRepudiation"] = state?.requireConsentNonRepudiation;
             resourceInputs["signingAlg"] = state?.signingAlg;
             resourceInputs["signingSecret"] = state?.signingSecret;
             resourceInputs["skipConsentForVerifiableFirstPartyClients"] = state?.skipConsentForVerifiableFirstPartyClients;
@@ -286,6 +292,7 @@ export class ResourceServer extends pulumi.CustomResource {
             resourceInputs["identifier"] = args?.identifier;
             resourceInputs["name"] = args?.name;
             resourceInputs["proofOfPossession"] = args?.proofOfPossession;
+            resourceInputs["requireConsentNonRepudiation"] = args?.requireConsentNonRepudiation;
             resourceInputs["signingAlg"] = args?.signingAlg;
             resourceInputs["signingSecret"] = args?.signingSecret;
             resourceInputs["skipConsentForVerifiableFirstPartyClients"] = args?.skipConsentForVerifiableFirstPartyClients;
@@ -360,6 +367,10 @@ export interface ResourceServerState {
      * Configuration settings for proof-of-possession for this resource server.
      */
     proofOfPossession?: pulumi.Input<inputs.ResourceServerProofOfPossession | undefined>;
+    /**
+     * When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
+     */
+    requireConsentNonRepudiation?: pulumi.Input<boolean | undefined>;
     /**
      * Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
      */
@@ -450,6 +461,10 @@ export interface ResourceServerArgs {
      * Configuration settings for proof-of-possession for this resource server.
      */
     proofOfPossession?: pulumi.Input<inputs.ResourceServerProofOfPossession | undefined>;
+    /**
+     * When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
+     */
+    requireConsentNonRepudiation?: pulumi.Input<boolean | undefined>;
     /**
      * Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
      */

@@ -100,6 +100,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// Configuration for the SMS MFA enrollment backoff strategy (EA Only).
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetAttackProtectionPhoneProviderProtectionResult> PhoneProviderProtections;
+        /// <summary>
         /// Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAttackProtectionSuspiciousIpThrottlingResult> SuspiciousIpThrottlings;
@@ -116,6 +120,8 @@ namespace Pulumi.Auth0
 
             string id,
 
+            ImmutableArray<Outputs.GetAttackProtectionPhoneProviderProtectionResult> phoneProviderProtections,
+
             ImmutableArray<Outputs.GetAttackProtectionSuspiciousIpThrottlingResult> suspiciousIpThrottlings)
         {
             BotDetections = botDetections;
@@ -123,6 +129,7 @@ namespace Pulumi.Auth0
             BruteForceProtections = bruteForceProtections;
             Captchas = captchas;
             Id = id;
+            PhoneProviderProtections = phoneProviderProtections;
             SuspiciousIpThrottlings = suspiciousIpThrottlings;
         }
     }

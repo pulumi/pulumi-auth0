@@ -7,6 +7,7 @@ import com.pulumi.auth0.outputs.GetAttackProtectionBotDetection;
 import com.pulumi.auth0.outputs.GetAttackProtectionBreachedPasswordDetection;
 import com.pulumi.auth0.outputs.GetAttackProtectionBruteForceProtection;
 import com.pulumi.auth0.outputs.GetAttackProtectionCaptcha;
+import com.pulumi.auth0.outputs.GetAttackProtectionPhoneProviderProtection;
 import com.pulumi.auth0.outputs.GetAttackProtectionSuspiciousIpThrottling;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -41,6 +42,11 @@ public final class GetAttackProtectionResult {
      * 
      */
     private String id;
+    /**
+     * @return Configuration for the SMS MFA enrollment backoff strategy (EA Only).
+     * 
+     */
+    private List<GetAttackProtectionPhoneProviderProtection> phoneProviderProtections;
     /**
      * @return Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
      * 
@@ -84,6 +90,13 @@ public final class GetAttackProtectionResult {
         return this.id;
     }
     /**
+     * @return Configuration for the SMS MFA enrollment backoff strategy (EA Only).
+     * 
+     */
+    public List<GetAttackProtectionPhoneProviderProtection> phoneProviderProtections() {
+        return this.phoneProviderProtections;
+    }
+    /**
      * @return Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
      * 
      */
@@ -105,6 +118,7 @@ public final class GetAttackProtectionResult {
         private List<GetAttackProtectionBruteForceProtection> bruteForceProtections;
         private List<GetAttackProtectionCaptcha> captchas;
         private String id;
+        private List<GetAttackProtectionPhoneProviderProtection> phoneProviderProtections;
         private List<GetAttackProtectionSuspiciousIpThrottling> suspiciousIpThrottlings;
         public Builder() {}
         public Builder(GetAttackProtectionResult defaults) {
@@ -114,6 +128,7 @@ public final class GetAttackProtectionResult {
     	      this.bruteForceProtections = defaults.bruteForceProtections;
     	      this.captchas = defaults.captchas;
     	      this.id = defaults.id;
+    	      this.phoneProviderProtections = defaults.phoneProviderProtections;
     	      this.suspiciousIpThrottlings = defaults.suspiciousIpThrottlings;
         }
 
@@ -170,6 +185,17 @@ public final class GetAttackProtectionResult {
             return this;
         }
         @CustomType.Setter
+        public Builder phoneProviderProtections(List<GetAttackProtectionPhoneProviderProtection> phoneProviderProtections) {
+            if (phoneProviderProtections == null) {
+              throw new MissingRequiredPropertyException("GetAttackProtectionResult", "phoneProviderProtections");
+            }
+            this.phoneProviderProtections = phoneProviderProtections;
+            return this;
+        }
+        public Builder phoneProviderProtections(GetAttackProtectionPhoneProviderProtection... phoneProviderProtections) {
+            return phoneProviderProtections(List.of(phoneProviderProtections));
+        }
+        @CustomType.Setter
         public Builder suspiciousIpThrottlings(List<GetAttackProtectionSuspiciousIpThrottling> suspiciousIpThrottlings) {
             if (suspiciousIpThrottlings == null) {
               throw new MissingRequiredPropertyException("GetAttackProtectionResult", "suspiciousIpThrottlings");
@@ -187,6 +213,7 @@ public final class GetAttackProtectionResult {
             _resultValue.bruteForceProtections = bruteForceProtections;
             _resultValue.captchas = captchas;
             _resultValue.id = id;
+            _resultValue.phoneProviderProtections = phoneProviderProtections;
             _resultValue.suspiciousIpThrottlings = suspiciousIpThrottlings;
             return _resultValue;
         }

@@ -58,6 +58,8 @@ type LookupAttackProtectionResult struct {
 	Captchas []GetAttackProtectionCaptcha `pulumi:"captchas"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// Configuration for the SMS MFA enrollment backoff strategy (EA Only).
+	PhoneProviderProtections []GetAttackProtectionPhoneProviderProtection `pulumi:"phoneProviderProtections"`
 	// Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
 	SuspiciousIpThrottlings []GetAttackProtectionSuspiciousIpThrottling `pulumi:"suspiciousIpThrottlings"`
 }
@@ -109,6 +111,13 @@ func (o LookupAttackProtectionResultOutput) Captchas() GetAttackProtectionCaptch
 // The provider-assigned unique ID for this managed resource.
 func (o LookupAttackProtectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAttackProtectionResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Configuration for the SMS MFA enrollment backoff strategy (EA Only).
+func (o LookupAttackProtectionResultOutput) PhoneProviderProtections() GetAttackProtectionPhoneProviderProtectionArrayOutput {
+	return o.ApplyT(func(v LookupAttackProtectionResult) []GetAttackProtectionPhoneProviderProtection {
+		return v.PhoneProviderProtections
+	}).(GetAttackProtectionPhoneProviderProtectionArrayOutput)
 }
 
 // Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.

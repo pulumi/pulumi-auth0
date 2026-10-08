@@ -93,6 +93,11 @@ public final class GetResourceServerResult {
      */
     private List<GetResourceServerProofOfPossession> proofOfPossessions;
     /**
+     * @return When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
+     * 
+     */
+    private Boolean requireConsentNonRepudiation;
+    /**
      * @return The ID of the resource server. If not provided, `identifier` must be set.
      * 
      */
@@ -253,6 +258,13 @@ public final class GetResourceServerResult {
         return this.proofOfPossessions;
     }
     /**
+     * @return When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
+     * 
+     */
+    public Boolean requireConsentNonRepudiation() {
+        return this.requireConsentNonRepudiation;
+    }
+    /**
      * @return The ID of the resource server. If not provided, `identifier` must be set.
      * 
      */
@@ -360,6 +372,7 @@ public final class GetResourceServerResult {
         private Boolean isSystem;
         private String name;
         private List<GetResourceServerProofOfPossession> proofOfPossessions;
+        private Boolean requireConsentNonRepudiation;
         private @Nullable String resourceServerId;
         private List<GetResourceServerScope> scopes;
         private String signingAlg;
@@ -389,6 +402,7 @@ public final class GetResourceServerResult {
     	      this.isSystem = defaults.isSystem;
     	      this.name = defaults.name;
     	      this.proofOfPossessions = defaults.proofOfPossessions;
+    	      this.requireConsentNonRepudiation = defaults.requireConsentNonRepudiation;
     	      this.resourceServerId = defaults.resourceServerId;
     	      this.scopes = defaults.scopes;
     	      this.signingAlg = defaults.signingAlg;
@@ -526,6 +540,14 @@ public final class GetResourceServerResult {
             return proofOfPossessions(List.of(proofOfPossessions));
         }
         @CustomType.Setter
+        public Builder requireConsentNonRepudiation(Boolean requireConsentNonRepudiation) {
+            if (requireConsentNonRepudiation == null) {
+              throw new MissingRequiredPropertyException("GetResourceServerResult", "requireConsentNonRepudiation");
+            }
+            this.requireConsentNonRepudiation = requireConsentNonRepudiation;
+            return this;
+        }
+        @CustomType.Setter
         public Builder resourceServerId(@Nullable String resourceServerId) {
 
             this.resourceServerId = resourceServerId;
@@ -644,6 +666,7 @@ public final class GetResourceServerResult {
             _resultValue.isSystem = isSystem;
             _resultValue.name = name;
             _resultValue.proofOfPossessions = proofOfPossessions;
+            _resultValue.requireConsentNonRepudiation = requireConsentNonRepudiation;
             _resultValue.resourceServerId = resourceServerId;
             _resultValue.scopes = scopes;
             _resultValue.signingAlg = signingAlg;
