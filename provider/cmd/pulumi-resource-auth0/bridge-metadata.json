@@ -132,6 +132,9 @@
                             }
                         }
                     },
+                    "phone_provider_protection": {
+                        "maxItemsOne": true
+                    },
                     "suspicious_ip_throttling": {
                         "maxItemsOne": true,
                         "elem": {
@@ -2169,6 +2172,9 @@
                                 }
                             }
                         }
+                    },
+                    "phone_provider_protection": {
+                        "maxItemsOne": false
                     },
                     "suspicious_ip_throttling": {
                         "maxItemsOne": false,
