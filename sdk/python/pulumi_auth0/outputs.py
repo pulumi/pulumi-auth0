@@ -38,6 +38,7 @@ __all__ = [
     'AttackProtectionCaptchaHcaptcha',
     'AttackProtectionCaptchaRecaptchaEnterprise',
     'AttackProtectionCaptchaRecaptchaV2',
+    'AttackProtectionPhoneProviderProtection',
     'AttackProtectionSuspiciousIpThrottling',
     'AttackProtectionSuspiciousIpThrottlingPreLogin',
     'AttackProtectionSuspiciousIpThrottlingPreUserRegistration',
@@ -329,6 +330,7 @@ __all__ = [
     'GetAttackProtectionCaptchaHcaptchaResult',
     'GetAttackProtectionCaptchaRecaptchaEnterpriseResult',
     'GetAttackProtectionCaptchaRecaptchaV2Result',
+    'GetAttackProtectionPhoneProviderProtectionResult',
     'GetAttackProtectionSuspiciousIpThrottlingResult',
     'GetAttackProtectionSuspiciousIpThrottlingPreLoginResult',
     'GetAttackProtectionSuspiciousIpThrottlingPreUserRegistrationResult',
@@ -1831,6 +1833,25 @@ class AttackProtectionCaptchaRecaptchaV2(dict):
         Secret for reCAPTCHA v2. Required when configuring reCAPTCHA v2.
         """
         return pulumi.get(self, "secret")
+
+
+@pulumi.output_type
+class AttackProtectionPhoneProviderProtection(dict):
+    def __init__(__self__, *,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str type: The SMS backoff strategy used during MFA enrollment. Use `exponential` to activate exponential-backoff resend limiting (EA only).
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        The SMS backoff strategy used during MFA enrollment. Use `exponential` to activate exponential-backoff resend limiting (EA only).
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -19768,6 +19789,24 @@ class GetAttackProtectionCaptchaRecaptchaV2Result(dict):
 
 
 @pulumi.output_type
+class GetAttackProtectionPhoneProviderProtectionResult(dict):
+    def __init__(__self__, *,
+                 type: _builtins.str):
+        """
+        :param _builtins.str type: The SMS backoff strategy used during MFA enrollment. Use `exponential` to activate exponential-backoff resend limiting (EA only).
+        """
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The SMS backoff strategy used during MFA enrollment. Use `exponential` to activate exponential-backoff resend limiting (EA only).
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class GetAttackProtectionSuspiciousIpThrottlingResult(dict):
     def __init__(__self__, *,
                  allowlists: Sequence[_builtins.str],
@@ -24015,7 +24054,7 @@ class GetClientsClientResult(dict):
         :param Sequence[_builtins.str] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
         :param Sequence['GetClientsClientAnonymousSessionArgs'] anonymous_sessions: Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
         :param _builtins.str app_type: Type of application the client represents. Possible values are: `native`, `spa`, `regular_web`, `non_interactive`, `resource_server`,`sso_integration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `express_configuration`
-        :param Sequence[_builtins.str] async_approval_notification_channels: List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
+        :param Sequence[_builtins.str] async_approval_notification_channels: List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push`, `email`, and `my-account`.The order is significant as this is the order in which notification channels will be evaluated.
         :param Sequence['GetClientsClientB2bIntegrationConfigurationArgs'] b2b_integration_configurations: Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
         :param Sequence[_builtins.str] callbacks: URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
         :param Mapping[str, _builtins.str] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
@@ -24125,7 +24164,7 @@ class GetClientsClientResult(dict):
     @pulumi.getter(name="asyncApprovalNotificationChannels")
     def async_approval_notification_channels(self) -> Sequence[_builtins.str]:
         """
-        List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
+        List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push`, `email`, and `my-account`.The order is significant as this is the order in which notification channels will be evaluated.
         """
         return pulumi.get(self, "async_approval_notification_channels")
 

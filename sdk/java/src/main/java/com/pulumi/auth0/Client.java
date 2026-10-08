@@ -134,14 +134,14 @@ public class Client extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.appType);
     }
     /**
-     * List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
+     * List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push`, `email`, and `my-account`.The order is significant as this is the order in which notification channels will be evaluated.
      * 
      */
     @Export(name="asyncApprovalNotificationChannels", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> asyncApprovalNotificationChannels;
 
     /**
-     * @return List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
+     * @return List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push`, `email`, and `my-account`.The order is significant as this is the order in which notification channels will be evaluated.
      * 
      */
     public Output<Optional<List<String>>> asyncApprovalNotificationChannels() {

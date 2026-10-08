@@ -207,6 +207,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<Outputs.GetResourceServerProofOfPossessionResult> ProofOfPossessions;
         /// <summary>
+        /// When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
+        /// </summary>
+        public readonly bool RequireConsentNonRepudiation;
+        /// <summary>
         /// The ID of the resource server. If not provided, `Identifier` must be set.
         /// </summary>
         public readonly string? ResourceServerId;
@@ -285,6 +289,8 @@ namespace Pulumi.Auth0
 
             ImmutableArray<Outputs.GetResourceServerProofOfPossessionResult> proofOfPossessions,
 
+            bool requireConsentNonRepudiation,
+
             string? resourceServerId,
 
             ImmutableArray<Outputs.GetResourceServerScopeResult> scopes,
@@ -323,6 +329,7 @@ namespace Pulumi.Auth0
             IsSystem = isSystem;
             Name = name;
             ProofOfPossessions = proofOfPossessions;
+            RequireConsentNonRepudiation = requireConsentNonRepudiation;
             ResourceServerId = resourceServerId;
             Scopes = scopes;
             SigningAlg = signingAlg;

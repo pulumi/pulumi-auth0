@@ -105,6 +105,10 @@ namespace Pulumi.Auth0
     ///             },
     ///             MonitoringModeEnabled = true,
     ///         },
+    ///         PhoneProviderProtection = new Auth0.Inputs.AttackProtectionPhoneProviderProtectionArgs
+    ///         {
+    ///             Type = "exponential",
+    ///         },
     ///     });
     /// 
     ///     // ============================================================================
@@ -254,6 +258,12 @@ namespace Pulumi.Auth0
         public Output<Outputs.AttackProtectionCaptcha> Captcha { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for the SMS MFA enrollment backoff strategy (EA Only).
+        /// </summary>
+        [Output("phoneProviderProtection")]
+        public Output<Outputs.AttackProtectionPhoneProviderProtection> PhoneProviderProtection { get; private set; } = null!;
+
+        /// <summary>
         /// Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
         /// </summary>
         [Output("suspiciousIpThrottling")]
@@ -330,6 +340,12 @@ namespace Pulumi.Auth0
         public Input<Inputs.AttackProtectionCaptchaArgs>? Captcha { get; set; }
 
         /// <summary>
+        /// Configuration for the SMS MFA enrollment backoff strategy (EA Only).
+        /// </summary>
+        [Input("phoneProviderProtection")]
+        public Input<Inputs.AttackProtectionPhoneProviderProtectionArgs>? PhoneProviderProtection { get; set; }
+
+        /// <summary>
         /// Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.
         /// </summary>
         [Input("suspiciousIpThrottling")]
@@ -366,6 +382,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("captcha")]
         public Input<Inputs.AttackProtectionCaptchaGetArgs>? Captcha { get; set; }
+
+        /// <summary>
+        /// Configuration for the SMS MFA enrollment backoff strategy (EA Only).
+        /// </summary>
+        [Input("phoneProviderProtection")]
+        public Input<Inputs.AttackProtectionPhoneProviderProtectionGetArgs>? PhoneProviderProtection { get; set; }
 
         /// <summary>
         /// Suspicious IP throttling blocks traffic from any IP address that rapidly attempts too many logins or signups.

@@ -93,6 +93,7 @@ namespace Pulumi.Auth0
     ///         AllowOfflineAccess = true,
     ///         AllowOnlineAccess = true,
     ///         AllowOnlineAccessWithEphemeralSessions = false,
+    ///         RequireConsentNonRepudiation = true,
     ///         TokenLifetime = 8600,
     ///         SkipConsentForVerifiableFirstPartyClients = true,
     ///         ConsentPolicy = "transactional-authorization-with-mfa",
@@ -227,6 +228,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("proofOfPossession")]
         public Output<Outputs.ResourceServerProofOfPossession> ProofOfPossession { get; private set; } = null!;
+
+        /// <summary>
+        /// When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
+        /// </summary>
+        [Output("requireConsentNonRepudiation")]
+        public Output<bool> RequireConsentNonRepudiation { get; private set; } = null!;
 
         /// <summary>
         /// Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
@@ -407,6 +414,12 @@ namespace Pulumi.Auth0
         public Input<Inputs.ResourceServerProofOfPossessionArgs>? ProofOfPossession { get; set; }
 
         /// <summary>
+        /// When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
+        /// </summary>
+        [Input("requireConsentNonRepudiation")]
+        public Input<bool>? RequireConsentNonRepudiation { get; set; }
+
+        /// <summary>
         /// Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
         /// </summary>
         [Input("signingAlg")]
@@ -557,6 +570,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("proofOfPossession")]
         public Input<Inputs.ResourceServerProofOfPossessionGetArgs>? ProofOfPossession { get; set; }
+
+        /// <summary>
+        /// When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
+        /// </summary>
+        [Input("requireConsentNonRepudiation")]
+        public Input<bool>? RequireConsentNonRepudiation { get; set; }
 
         /// <summary>
         /// Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.

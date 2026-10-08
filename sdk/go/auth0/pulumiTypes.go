@@ -3390,6 +3390,143 @@ func (o AttackProtectionCaptchaRecaptchaV2PtrOutput) SiteKey() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+type AttackProtectionPhoneProviderProtection struct {
+	// The SMS backoff strategy used during MFA enrollment. Use `exponential` to activate exponential-backoff resend limiting (EA only).
+	Type *string `pulumi:"type"`
+}
+
+// AttackProtectionPhoneProviderProtectionInput is an input type that accepts AttackProtectionPhoneProviderProtectionArgs and AttackProtectionPhoneProviderProtectionOutput values.
+// You can construct a concrete instance of `AttackProtectionPhoneProviderProtectionInput` via:
+//
+//	AttackProtectionPhoneProviderProtectionArgs{...}
+type AttackProtectionPhoneProviderProtectionInput interface {
+	pulumi.Input
+
+	ToAttackProtectionPhoneProviderProtectionOutput() AttackProtectionPhoneProviderProtectionOutput
+	ToAttackProtectionPhoneProviderProtectionOutputWithContext(context.Context) AttackProtectionPhoneProviderProtectionOutput
+}
+
+type AttackProtectionPhoneProviderProtectionArgs struct {
+	// The SMS backoff strategy used during MFA enrollment. Use `exponential` to activate exponential-backoff resend limiting (EA only).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (AttackProtectionPhoneProviderProtectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionPhoneProviderProtection)(nil)).Elem()
+}
+
+func (i AttackProtectionPhoneProviderProtectionArgs) ToAttackProtectionPhoneProviderProtectionOutput() AttackProtectionPhoneProviderProtectionOutput {
+	return i.ToAttackProtectionPhoneProviderProtectionOutputWithContext(context.Background())
+}
+
+func (i AttackProtectionPhoneProviderProtectionArgs) ToAttackProtectionPhoneProviderProtectionOutputWithContext(ctx context.Context) AttackProtectionPhoneProviderProtectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionPhoneProviderProtectionOutput)
+}
+
+func (i AttackProtectionPhoneProviderProtectionArgs) ToAttackProtectionPhoneProviderProtectionPtrOutput() AttackProtectionPhoneProviderProtectionPtrOutput {
+	return i.ToAttackProtectionPhoneProviderProtectionPtrOutputWithContext(context.Background())
+}
+
+func (i AttackProtectionPhoneProviderProtectionArgs) ToAttackProtectionPhoneProviderProtectionPtrOutputWithContext(ctx context.Context) AttackProtectionPhoneProviderProtectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionPhoneProviderProtectionOutput).ToAttackProtectionPhoneProviderProtectionPtrOutputWithContext(ctx)
+}
+
+// AttackProtectionPhoneProviderProtectionPtrInput is an input type that accepts AttackProtectionPhoneProviderProtectionArgs, AttackProtectionPhoneProviderProtectionPtr and AttackProtectionPhoneProviderProtectionPtrOutput values.
+// You can construct a concrete instance of `AttackProtectionPhoneProviderProtectionPtrInput` via:
+//
+//	        AttackProtectionPhoneProviderProtectionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AttackProtectionPhoneProviderProtectionPtrInput interface {
+	pulumi.Input
+
+	ToAttackProtectionPhoneProviderProtectionPtrOutput() AttackProtectionPhoneProviderProtectionPtrOutput
+	ToAttackProtectionPhoneProviderProtectionPtrOutputWithContext(context.Context) AttackProtectionPhoneProviderProtectionPtrOutput
+}
+
+type attackProtectionPhoneProviderProtectionPtrType AttackProtectionPhoneProviderProtectionArgs
+
+func AttackProtectionPhoneProviderProtectionPtr(v *AttackProtectionPhoneProviderProtectionArgs) AttackProtectionPhoneProviderProtectionPtrInput {
+	return (*attackProtectionPhoneProviderProtectionPtrType)(v)
+}
+
+func (*attackProtectionPhoneProviderProtectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionPhoneProviderProtection)(nil)).Elem()
+}
+
+func (i *attackProtectionPhoneProviderProtectionPtrType) ToAttackProtectionPhoneProviderProtectionPtrOutput() AttackProtectionPhoneProviderProtectionPtrOutput {
+	return i.ToAttackProtectionPhoneProviderProtectionPtrOutputWithContext(context.Background())
+}
+
+func (i *attackProtectionPhoneProviderProtectionPtrType) ToAttackProtectionPhoneProviderProtectionPtrOutputWithContext(ctx context.Context) AttackProtectionPhoneProviderProtectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttackProtectionPhoneProviderProtectionPtrOutput)
+}
+
+type AttackProtectionPhoneProviderProtectionOutput struct{ *pulumi.OutputState }
+
+func (AttackProtectionPhoneProviderProtectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttackProtectionPhoneProviderProtection)(nil)).Elem()
+}
+
+func (o AttackProtectionPhoneProviderProtectionOutput) ToAttackProtectionPhoneProviderProtectionOutput() AttackProtectionPhoneProviderProtectionOutput {
+	return o
+}
+
+func (o AttackProtectionPhoneProviderProtectionOutput) ToAttackProtectionPhoneProviderProtectionOutputWithContext(ctx context.Context) AttackProtectionPhoneProviderProtectionOutput {
+	return o
+}
+
+func (o AttackProtectionPhoneProviderProtectionOutput) ToAttackProtectionPhoneProviderProtectionPtrOutput() AttackProtectionPhoneProviderProtectionPtrOutput {
+	return o.ToAttackProtectionPhoneProviderProtectionPtrOutputWithContext(context.Background())
+}
+
+func (o AttackProtectionPhoneProviderProtectionOutput) ToAttackProtectionPhoneProviderProtectionPtrOutputWithContext(ctx context.Context) AttackProtectionPhoneProviderProtectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttackProtectionPhoneProviderProtection) *AttackProtectionPhoneProviderProtection {
+		return &v
+	}).(AttackProtectionPhoneProviderProtectionPtrOutput)
+}
+
+// The SMS backoff strategy used during MFA enrollment. Use `exponential` to activate exponential-backoff resend limiting (EA only).
+func (o AttackProtectionPhoneProviderProtectionOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttackProtectionPhoneProviderProtection) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type AttackProtectionPhoneProviderProtectionPtrOutput struct{ *pulumi.OutputState }
+
+func (AttackProtectionPhoneProviderProtectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttackProtectionPhoneProviderProtection)(nil)).Elem()
+}
+
+func (o AttackProtectionPhoneProviderProtectionPtrOutput) ToAttackProtectionPhoneProviderProtectionPtrOutput() AttackProtectionPhoneProviderProtectionPtrOutput {
+	return o
+}
+
+func (o AttackProtectionPhoneProviderProtectionPtrOutput) ToAttackProtectionPhoneProviderProtectionPtrOutputWithContext(ctx context.Context) AttackProtectionPhoneProviderProtectionPtrOutput {
+	return o
+}
+
+func (o AttackProtectionPhoneProviderProtectionPtrOutput) Elem() AttackProtectionPhoneProviderProtectionOutput {
+	return o.ApplyT(func(v *AttackProtectionPhoneProviderProtection) AttackProtectionPhoneProviderProtection {
+		if v != nil {
+			return *v
+		}
+		var ret AttackProtectionPhoneProviderProtection
+		return ret
+	}).(AttackProtectionPhoneProviderProtectionOutput)
+}
+
+// The SMS backoff strategy used during MFA enrollment. Use `exponential` to activate exponential-backoff resend limiting (EA only).
+func (o AttackProtectionPhoneProviderProtectionPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionPhoneProviderProtection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 type AttackProtectionSuspiciousIpThrottling struct {
 	// List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
 	Allowlists []string `pulumi:"allowlists"`
@@ -52624,6 +52761,103 @@ func (o GetAttackProtectionCaptchaRecaptchaV2ArrayOutput) Index(i pulumi.IntInpu
 	}).(GetAttackProtectionCaptchaRecaptchaV2Output)
 }
 
+type GetAttackProtectionPhoneProviderProtection struct {
+	// The SMS backoff strategy used during MFA enrollment. Use `exponential` to activate exponential-backoff resend limiting (EA only).
+	Type string `pulumi:"type"`
+}
+
+// GetAttackProtectionPhoneProviderProtectionInput is an input type that accepts GetAttackProtectionPhoneProviderProtectionArgs and GetAttackProtectionPhoneProviderProtectionOutput values.
+// You can construct a concrete instance of `GetAttackProtectionPhoneProviderProtectionInput` via:
+//
+//	GetAttackProtectionPhoneProviderProtectionArgs{...}
+type GetAttackProtectionPhoneProviderProtectionInput interface {
+	pulumi.Input
+
+	ToGetAttackProtectionPhoneProviderProtectionOutput() GetAttackProtectionPhoneProviderProtectionOutput
+	ToGetAttackProtectionPhoneProviderProtectionOutputWithContext(context.Context) GetAttackProtectionPhoneProviderProtectionOutput
+}
+
+type GetAttackProtectionPhoneProviderProtectionArgs struct {
+	// The SMS backoff strategy used during MFA enrollment. Use `exponential` to activate exponential-backoff resend limiting (EA only).
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetAttackProtectionPhoneProviderProtectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionPhoneProviderProtection)(nil)).Elem()
+}
+
+func (i GetAttackProtectionPhoneProviderProtectionArgs) ToGetAttackProtectionPhoneProviderProtectionOutput() GetAttackProtectionPhoneProviderProtectionOutput {
+	return i.ToGetAttackProtectionPhoneProviderProtectionOutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionPhoneProviderProtectionArgs) ToGetAttackProtectionPhoneProviderProtectionOutputWithContext(ctx context.Context) GetAttackProtectionPhoneProviderProtectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionPhoneProviderProtectionOutput)
+}
+
+// GetAttackProtectionPhoneProviderProtectionArrayInput is an input type that accepts GetAttackProtectionPhoneProviderProtectionArray and GetAttackProtectionPhoneProviderProtectionArrayOutput values.
+// You can construct a concrete instance of `GetAttackProtectionPhoneProviderProtectionArrayInput` via:
+//
+//	GetAttackProtectionPhoneProviderProtectionArray{ GetAttackProtectionPhoneProviderProtectionArgs{...} }
+type GetAttackProtectionPhoneProviderProtectionArrayInput interface {
+	pulumi.Input
+
+	ToGetAttackProtectionPhoneProviderProtectionArrayOutput() GetAttackProtectionPhoneProviderProtectionArrayOutput
+	ToGetAttackProtectionPhoneProviderProtectionArrayOutputWithContext(context.Context) GetAttackProtectionPhoneProviderProtectionArrayOutput
+}
+
+type GetAttackProtectionPhoneProviderProtectionArray []GetAttackProtectionPhoneProviderProtectionInput
+
+func (GetAttackProtectionPhoneProviderProtectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionPhoneProviderProtection)(nil)).Elem()
+}
+
+func (i GetAttackProtectionPhoneProviderProtectionArray) ToGetAttackProtectionPhoneProviderProtectionArrayOutput() GetAttackProtectionPhoneProviderProtectionArrayOutput {
+	return i.ToGetAttackProtectionPhoneProviderProtectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetAttackProtectionPhoneProviderProtectionArray) ToGetAttackProtectionPhoneProviderProtectionArrayOutputWithContext(ctx context.Context) GetAttackProtectionPhoneProviderProtectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAttackProtectionPhoneProviderProtectionArrayOutput)
+}
+
+type GetAttackProtectionPhoneProviderProtectionOutput struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionPhoneProviderProtectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAttackProtectionPhoneProviderProtection)(nil)).Elem()
+}
+
+func (o GetAttackProtectionPhoneProviderProtectionOutput) ToGetAttackProtectionPhoneProviderProtectionOutput() GetAttackProtectionPhoneProviderProtectionOutput {
+	return o
+}
+
+func (o GetAttackProtectionPhoneProviderProtectionOutput) ToGetAttackProtectionPhoneProviderProtectionOutputWithContext(ctx context.Context) GetAttackProtectionPhoneProviderProtectionOutput {
+	return o
+}
+
+// The SMS backoff strategy used during MFA enrollment. Use `exponential` to activate exponential-backoff resend limiting (EA only).
+func (o GetAttackProtectionPhoneProviderProtectionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackProtectionPhoneProviderProtection) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetAttackProtectionPhoneProviderProtectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAttackProtectionPhoneProviderProtectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAttackProtectionPhoneProviderProtection)(nil)).Elem()
+}
+
+func (o GetAttackProtectionPhoneProviderProtectionArrayOutput) ToGetAttackProtectionPhoneProviderProtectionArrayOutput() GetAttackProtectionPhoneProviderProtectionArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionPhoneProviderProtectionArrayOutput) ToGetAttackProtectionPhoneProviderProtectionArrayOutputWithContext(ctx context.Context) GetAttackProtectionPhoneProviderProtectionArrayOutput {
+	return o
+}
+
+func (o GetAttackProtectionPhoneProviderProtectionArrayOutput) Index(i pulumi.IntInput) GetAttackProtectionPhoneProviderProtectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAttackProtectionPhoneProviderProtection {
+		return vs[0].([]GetAttackProtectionPhoneProviderProtection)[vs[1].(int)]
+	}).(GetAttackProtectionPhoneProviderProtectionOutput)
+}
+
 type GetAttackProtectionSuspiciousIpThrottling struct {
 	// List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
 	Allowlists []string `pulumi:"allowlists"`
@@ -63864,7 +64098,7 @@ type GetClientsClient struct {
 	AnonymousSessions []GetClientsClientAnonymousSession `pulumi:"anonymousSessions"`
 	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
 	AppType string `pulumi:"appType"`
-	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
+	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push`, `email`, and `my-account`.The order is significant as this is the order in which notification channels will be evaluated.
 	AsyncApprovalNotificationChannels []string `pulumi:"asyncApprovalNotificationChannels"`
 	// Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
 	B2bIntegrationConfigurations []GetClientsClientB2bIntegrationConfiguration `pulumi:"b2bIntegrationConfigurations"`
@@ -63945,7 +64179,7 @@ type GetClientsClientArgs struct {
 	AnonymousSessions GetClientsClientAnonymousSessionArrayInput `pulumi:"anonymousSessions"`
 	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
 	AppType pulumi.StringInput `pulumi:"appType"`
-	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
+	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push`, `email`, and `my-account`.The order is significant as this is the order in which notification channels will be evaluated.
 	AsyncApprovalNotificationChannels pulumi.StringArrayInput `pulumi:"asyncApprovalNotificationChannels"`
 	// Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
 	B2bIntegrationConfigurations GetClientsClientB2bIntegrationConfigurationArrayInput `pulumi:"b2bIntegrationConfigurations"`
@@ -64080,7 +64314,7 @@ func (o GetClientsClientOutput) AppType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClientsClient) string { return v.AppType }).(pulumi.StringOutput)
 }
 
-// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
+// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push`, `email`, and `my-account`.The order is significant as this is the order in which notification channels will be evaluated.
 func (o GetClientsClientOutput) AsyncApprovalNotificationChannels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClientsClient) []string { return v.AsyncApprovalNotificationChannels }).(pulumi.StringArrayOutput)
 }
@@ -74359,236 +74593,6 @@ func (o GetConnectionScimConfigurationDefaultMappingArrayOutput) Index(i pulumi.
 	}).(GetConnectionScimConfigurationDefaultMappingOutput)
 }
 
-type GetConnectionScimConfigurationMapping struct {
-	// The field location in the Auth0 schema.
-	Auth0 string `pulumi:"auth0"`
-	// The field location in the SCIM schema.
-	Scim string `pulumi:"scim"`
-}
-
-// GetConnectionScimConfigurationMappingInput is an input type that accepts GetConnectionScimConfigurationMappingArgs and GetConnectionScimConfigurationMappingOutput values.
-// You can construct a concrete instance of `GetConnectionScimConfigurationMappingInput` via:
-//
-//	GetConnectionScimConfigurationMappingArgs{...}
-type GetConnectionScimConfigurationMappingInput interface {
-	pulumi.Input
-
-	ToGetConnectionScimConfigurationMappingOutput() GetConnectionScimConfigurationMappingOutput
-	ToGetConnectionScimConfigurationMappingOutputWithContext(context.Context) GetConnectionScimConfigurationMappingOutput
-}
-
-type GetConnectionScimConfigurationMappingArgs struct {
-	// The field location in the Auth0 schema.
-	Auth0 pulumi.StringInput `pulumi:"auth0"`
-	// The field location in the SCIM schema.
-	Scim pulumi.StringInput `pulumi:"scim"`
-}
-
-func (GetConnectionScimConfigurationMappingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetConnectionScimConfigurationMapping)(nil)).Elem()
-}
-
-func (i GetConnectionScimConfigurationMappingArgs) ToGetConnectionScimConfigurationMappingOutput() GetConnectionScimConfigurationMappingOutput {
-	return i.ToGetConnectionScimConfigurationMappingOutputWithContext(context.Background())
-}
-
-func (i GetConnectionScimConfigurationMappingArgs) ToGetConnectionScimConfigurationMappingOutputWithContext(ctx context.Context) GetConnectionScimConfigurationMappingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionScimConfigurationMappingOutput)
-}
-
-// GetConnectionScimConfigurationMappingArrayInput is an input type that accepts GetConnectionScimConfigurationMappingArray and GetConnectionScimConfigurationMappingArrayOutput values.
-// You can construct a concrete instance of `GetConnectionScimConfigurationMappingArrayInput` via:
-//
-//	GetConnectionScimConfigurationMappingArray{ GetConnectionScimConfigurationMappingArgs{...} }
-type GetConnectionScimConfigurationMappingArrayInput interface {
-	pulumi.Input
-
-	ToGetConnectionScimConfigurationMappingArrayOutput() GetConnectionScimConfigurationMappingArrayOutput
-	ToGetConnectionScimConfigurationMappingArrayOutputWithContext(context.Context) GetConnectionScimConfigurationMappingArrayOutput
-}
-
-type GetConnectionScimConfigurationMappingArray []GetConnectionScimConfigurationMappingInput
-
-func (GetConnectionScimConfigurationMappingArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConnectionScimConfigurationMapping)(nil)).Elem()
-}
-
-func (i GetConnectionScimConfigurationMappingArray) ToGetConnectionScimConfigurationMappingArrayOutput() GetConnectionScimConfigurationMappingArrayOutput {
-	return i.ToGetConnectionScimConfigurationMappingArrayOutputWithContext(context.Background())
-}
-
-func (i GetConnectionScimConfigurationMappingArray) ToGetConnectionScimConfigurationMappingArrayOutputWithContext(ctx context.Context) GetConnectionScimConfigurationMappingArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionScimConfigurationMappingArrayOutput)
-}
-
-type GetConnectionScimConfigurationMappingOutput struct{ *pulumi.OutputState }
-
-func (GetConnectionScimConfigurationMappingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetConnectionScimConfigurationMapping)(nil)).Elem()
-}
-
-func (o GetConnectionScimConfigurationMappingOutput) ToGetConnectionScimConfigurationMappingOutput() GetConnectionScimConfigurationMappingOutput {
-	return o
-}
-
-func (o GetConnectionScimConfigurationMappingOutput) ToGetConnectionScimConfigurationMappingOutputWithContext(ctx context.Context) GetConnectionScimConfigurationMappingOutput {
-	return o
-}
-
-// The field location in the Auth0 schema.
-func (o GetConnectionScimConfigurationMappingOutput) Auth0() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectionScimConfigurationMapping) string { return v.Auth0 }).(pulumi.StringOutput)
-}
-
-// The field location in the SCIM schema.
-func (o GetConnectionScimConfigurationMappingOutput) Scim() pulumi.StringOutput {
-	return o.ApplyT(func(v GetConnectionScimConfigurationMapping) string { return v.Scim }).(pulumi.StringOutput)
-}
-
-type GetConnectionScimConfigurationMappingArrayOutput struct{ *pulumi.OutputState }
-
-func (GetConnectionScimConfigurationMappingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetConnectionScimConfigurationMapping)(nil)).Elem()
-}
-
-func (o GetConnectionScimConfigurationMappingArrayOutput) ToGetConnectionScimConfigurationMappingArrayOutput() GetConnectionScimConfigurationMappingArrayOutput {
-	return o
-}
-
-func (o GetConnectionScimConfigurationMappingArrayOutput) ToGetConnectionScimConfigurationMappingArrayOutputWithContext(ctx context.Context) GetConnectionScimConfigurationMappingArrayOutput {
-	return o
-}
-
-func (o GetConnectionScimConfigurationMappingArrayOutput) Index(i pulumi.IntInput) GetConnectionScimConfigurationMappingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionScimConfigurationMapping {
-		return vs[0].([]GetConnectionScimConfigurationMapping)[vs[1].(int)]
-	}).(GetConnectionScimConfigurationMappingOutput)
-}
-
-type GetCustomDomainCertificate struct {
-	// Name of the certificate authority that issued the certificate.
-	CertificateAuthority string `pulumi:"certificateAuthority"`
-	// Contains the error message if the provisioning process fails.
-	ErrorMsg string `pulumi:"errorMsg"`
-	// Specifies the date by which the certificate should be renewed.
-	RenewsBefore string `pulumi:"renewsBefore"`
-	// Indicates the current state of the certificate provisioning process.
-	Status string `pulumi:"status"`
-}
-
-// GetCustomDomainCertificateInput is an input type that accepts GetCustomDomainCertificateArgs and GetCustomDomainCertificateOutput values.
-// You can construct a concrete instance of `GetCustomDomainCertificateInput` via:
-//
-//	GetCustomDomainCertificateArgs{...}
-type GetCustomDomainCertificateInput interface {
-	pulumi.Input
-
-	ToGetCustomDomainCertificateOutput() GetCustomDomainCertificateOutput
-	ToGetCustomDomainCertificateOutputWithContext(context.Context) GetCustomDomainCertificateOutput
-}
-
-type GetCustomDomainCertificateArgs struct {
-	// Name of the certificate authority that issued the certificate.
-	CertificateAuthority pulumi.StringInput `pulumi:"certificateAuthority"`
-	// Contains the error message if the provisioning process fails.
-	ErrorMsg pulumi.StringInput `pulumi:"errorMsg"`
-	// Specifies the date by which the certificate should be renewed.
-	RenewsBefore pulumi.StringInput `pulumi:"renewsBefore"`
-	// Indicates the current state of the certificate provisioning process.
-	Status pulumi.StringInput `pulumi:"status"`
-}
-
-func (GetCustomDomainCertificateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetCustomDomainCertificate)(nil)).Elem()
-}
-
-func (i GetCustomDomainCertificateArgs) ToGetCustomDomainCertificateOutput() GetCustomDomainCertificateOutput {
-	return i.ToGetCustomDomainCertificateOutputWithContext(context.Background())
-}
-
-func (i GetCustomDomainCertificateArgs) ToGetCustomDomainCertificateOutputWithContext(ctx context.Context) GetCustomDomainCertificateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetCustomDomainCertificateOutput)
-}
-
-// GetCustomDomainCertificateArrayInput is an input type that accepts GetCustomDomainCertificateArray and GetCustomDomainCertificateArrayOutput values.
-// You can construct a concrete instance of `GetCustomDomainCertificateArrayInput` via:
-//
-//	GetCustomDomainCertificateArray{ GetCustomDomainCertificateArgs{...} }
-type GetCustomDomainCertificateArrayInput interface {
-	pulumi.Input
-
-	ToGetCustomDomainCertificateArrayOutput() GetCustomDomainCertificateArrayOutput
-	ToGetCustomDomainCertificateArrayOutputWithContext(context.Context) GetCustomDomainCertificateArrayOutput
-}
-
-type GetCustomDomainCertificateArray []GetCustomDomainCertificateInput
-
-func (GetCustomDomainCertificateArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetCustomDomainCertificate)(nil)).Elem()
-}
-
-func (i GetCustomDomainCertificateArray) ToGetCustomDomainCertificateArrayOutput() GetCustomDomainCertificateArrayOutput {
-	return i.ToGetCustomDomainCertificateArrayOutputWithContext(context.Background())
-}
-
-func (i GetCustomDomainCertificateArray) ToGetCustomDomainCertificateArrayOutputWithContext(ctx context.Context) GetCustomDomainCertificateArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetCustomDomainCertificateArrayOutput)
-}
-
-type GetCustomDomainCertificateOutput struct{ *pulumi.OutputState }
-
-func (GetCustomDomainCertificateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetCustomDomainCertificate)(nil)).Elem()
-}
-
-func (o GetCustomDomainCertificateOutput) ToGetCustomDomainCertificateOutput() GetCustomDomainCertificateOutput {
-	return o
-}
-
-func (o GetCustomDomainCertificateOutput) ToGetCustomDomainCertificateOutputWithContext(ctx context.Context) GetCustomDomainCertificateOutput {
-	return o
-}
-
-// Name of the certificate authority that issued the certificate.
-func (o GetCustomDomainCertificateOutput) CertificateAuthority() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCustomDomainCertificate) string { return v.CertificateAuthority }).(pulumi.StringOutput)
-}
-
-// Contains the error message if the provisioning process fails.
-func (o GetCustomDomainCertificateOutput) ErrorMsg() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCustomDomainCertificate) string { return v.ErrorMsg }).(pulumi.StringOutput)
-}
-
-// Specifies the date by which the certificate should be renewed.
-func (o GetCustomDomainCertificateOutput) RenewsBefore() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCustomDomainCertificate) string { return v.RenewsBefore }).(pulumi.StringOutput)
-}
-
-// Indicates the current state of the certificate provisioning process.
-func (o GetCustomDomainCertificateOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCustomDomainCertificate) string { return v.Status }).(pulumi.StringOutput)
-}
-
-type GetCustomDomainCertificateArrayOutput struct{ *pulumi.OutputState }
-
-func (GetCustomDomainCertificateArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetCustomDomainCertificate)(nil)).Elem()
-}
-
-func (o GetCustomDomainCertificateArrayOutput) ToGetCustomDomainCertificateArrayOutput() GetCustomDomainCertificateArrayOutput {
-	return o
-}
-
-func (o GetCustomDomainCertificateArrayOutput) ToGetCustomDomainCertificateArrayOutputWithContext(ctx context.Context) GetCustomDomainCertificateArrayOutput {
-	return o
-}
-
-func (o GetCustomDomainCertificateArrayOutput) Index(i pulumi.IntInput) GetCustomDomainCertificateOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCustomDomainCertificate {
-		return vs[0].([]GetCustomDomainCertificate)[vs[1].(int)]
-	}).(GetCustomDomainCertificateOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionDependencyInput)(nil)).Elem(), ActionDependencyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionDependencyArrayInput)(nil)).Elem(), ActionDependencyArray{})
@@ -74634,6 +74638,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionCaptchaRecaptchaEnterprisePtrInput)(nil)).Elem(), AttackProtectionCaptchaRecaptchaEnterpriseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionCaptchaRecaptchaV2Input)(nil)).Elem(), AttackProtectionCaptchaRecaptchaV2Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionCaptchaRecaptchaV2PtrInput)(nil)).Elem(), AttackProtectionCaptchaRecaptchaV2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionPhoneProviderProtectionInput)(nil)).Elem(), AttackProtectionPhoneProviderProtectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionPhoneProviderProtectionPtrInput)(nil)).Elem(), AttackProtectionPhoneProviderProtectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionSuspiciousIpThrottlingInput)(nil)).Elem(), AttackProtectionSuspiciousIpThrottlingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionSuspiciousIpThrottlingPtrInput)(nil)).Elem(), AttackProtectionSuspiciousIpThrottlingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttackProtectionSuspiciousIpThrottlingPreLoginInput)(nil)).Elem(), AttackProtectionSuspiciousIpThrottlingPreLoginArgs{})
@@ -75215,6 +75221,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionCaptchaRecaptchaEnterpriseArrayInput)(nil)).Elem(), GetAttackProtectionCaptchaRecaptchaEnterpriseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionCaptchaRecaptchaV2Input)(nil)).Elem(), GetAttackProtectionCaptchaRecaptchaV2Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionCaptchaRecaptchaV2ArrayInput)(nil)).Elem(), GetAttackProtectionCaptchaRecaptchaV2Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionPhoneProviderProtectionInput)(nil)).Elem(), GetAttackProtectionPhoneProviderProtectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionPhoneProviderProtectionArrayInput)(nil)).Elem(), GetAttackProtectionPhoneProviderProtectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionSuspiciousIpThrottlingInput)(nil)).Elem(), GetAttackProtectionSuspiciousIpThrottlingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionSuspiciousIpThrottlingArrayInput)(nil)).Elem(), GetAttackProtectionSuspiciousIpThrottlingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAttackProtectionSuspiciousIpThrottlingPreLoginInput)(nil)).Elem(), GetAttackProtectionSuspiciousIpThrottlingPreLoginArgs{})
@@ -75569,10 +75577,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideWaadConnectionConfigInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideWaadConnectionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionScimConfigurationDefaultMappingInput)(nil)).Elem(), GetConnectionScimConfigurationDefaultMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionScimConfigurationDefaultMappingArrayInput)(nil)).Elem(), GetConnectionScimConfigurationDefaultMappingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionScimConfigurationMappingInput)(nil)).Elem(), GetConnectionScimConfigurationMappingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionScimConfigurationMappingArrayInput)(nil)).Elem(), GetConnectionScimConfigurationMappingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainCertificateInput)(nil)).Elem(), GetCustomDomainCertificateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainCertificateArrayInput)(nil)).Elem(), GetCustomDomainCertificateArray{})
 	pulumi.RegisterOutputType(ActionDependencyOutput{})
 	pulumi.RegisterOutputType(ActionDependencyArrayOutput{})
 	pulumi.RegisterOutputType(ActionModuleTypeOutput{})
@@ -75617,6 +75621,8 @@ func init() {
 	pulumi.RegisterOutputType(AttackProtectionCaptchaRecaptchaEnterprisePtrOutput{})
 	pulumi.RegisterOutputType(AttackProtectionCaptchaRecaptchaV2Output{})
 	pulumi.RegisterOutputType(AttackProtectionCaptchaRecaptchaV2PtrOutput{})
+	pulumi.RegisterOutputType(AttackProtectionPhoneProviderProtectionOutput{})
+	pulumi.RegisterOutputType(AttackProtectionPhoneProviderProtectionPtrOutput{})
 	pulumi.RegisterOutputType(AttackProtectionSuspiciousIpThrottlingOutput{})
 	pulumi.RegisterOutputType(AttackProtectionSuspiciousIpThrottlingPtrOutput{})
 	pulumi.RegisterOutputType(AttackProtectionSuspiciousIpThrottlingPreLoginOutput{})
@@ -76198,6 +76204,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAttackProtectionCaptchaRecaptchaEnterpriseArrayOutput{})
 	pulumi.RegisterOutputType(GetAttackProtectionCaptchaRecaptchaV2Output{})
 	pulumi.RegisterOutputType(GetAttackProtectionCaptchaRecaptchaV2ArrayOutput{})
+	pulumi.RegisterOutputType(GetAttackProtectionPhoneProviderProtectionOutput{})
+	pulumi.RegisterOutputType(GetAttackProtectionPhoneProviderProtectionArrayOutput{})
 	pulumi.RegisterOutputType(GetAttackProtectionSuspiciousIpThrottlingOutput{})
 	pulumi.RegisterOutputType(GetAttackProtectionSuspiciousIpThrottlingArrayOutput{})
 	pulumi.RegisterOutputType(GetAttackProtectionSuspiciousIpThrottlingPreLoginOutput{})
@@ -76552,8 +76560,4 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideWaadConnectionConfigOutput{})
 	pulumi.RegisterOutputType(GetConnectionScimConfigurationDefaultMappingOutput{})
 	pulumi.RegisterOutputType(GetConnectionScimConfigurationDefaultMappingArrayOutput{})
-	pulumi.RegisterOutputType(GetConnectionScimConfigurationMappingOutput{})
-	pulumi.RegisterOutputType(GetConnectionScimConfigurationMappingArrayOutput{})
-	pulumi.RegisterOutputType(GetCustomDomainCertificateOutput{})
-	pulumi.RegisterOutputType(GetCustomDomainCertificateArrayOutput{})
 }

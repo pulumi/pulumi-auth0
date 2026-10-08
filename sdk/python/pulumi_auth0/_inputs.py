@@ -59,6 +59,8 @@ __all__ = [
     'AttackProtectionCaptchaRecaptchaEnterpriseArgsDict',
     'AttackProtectionCaptchaRecaptchaV2Args',
     'AttackProtectionCaptchaRecaptchaV2ArgsDict',
+    'AttackProtectionPhoneProviderProtectionArgs',
+    'AttackProtectionPhoneProviderProtectionArgsDict',
     'AttackProtectionSuspiciousIpThrottlingArgs',
     'AttackProtectionSuspiciousIpThrottlingArgsDict',
     'AttackProtectionSuspiciousIpThrottlingPreLoginArgs',
@@ -2130,6 +2132,35 @@ class AttackProtectionCaptchaRecaptchaV2Args:
     @secret.setter
     def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
+
+
+class AttackProtectionPhoneProviderProtectionArgsDict(TypedDict):
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The SMS backoff strategy used during MFA enrollment. Use `exponential` to activate exponential-backoff resend limiting (EA only).
+    """
+
+@pulumi.input_type
+class AttackProtectionPhoneProviderProtectionArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] type: The SMS backoff strategy used during MFA enrollment. Use `exponential` to activate exponential-backoff resend limiting (EA only).
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The SMS backoff strategy used during MFA enrollment. Use `exponential` to activate exponential-backoff resend limiting (EA only).
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
 
 
 class AttackProtectionSuspiciousIpThrottlingArgsDict(TypedDict):

@@ -109,6 +109,10 @@ export interface GetResourceServerResult {
      */
     readonly proofOfPossessions: outputs.GetResourceServerProofOfPossession[];
     /**
+     * When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
+     */
+    readonly requireConsentNonRepudiation: boolean;
+    /**
      * The ID of the resource server. If not provided, `identifier` must be set.
      */
     readonly resourceServerId?: string;

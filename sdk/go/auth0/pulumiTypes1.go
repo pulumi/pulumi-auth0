@@ -13,6 +13,236 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetConnectionScimConfigurationMapping struct {
+	// The field location in the Auth0 schema.
+	Auth0 string `pulumi:"auth0"`
+	// The field location in the SCIM schema.
+	Scim string `pulumi:"scim"`
+}
+
+// GetConnectionScimConfigurationMappingInput is an input type that accepts GetConnectionScimConfigurationMappingArgs and GetConnectionScimConfigurationMappingOutput values.
+// You can construct a concrete instance of `GetConnectionScimConfigurationMappingInput` via:
+//
+//	GetConnectionScimConfigurationMappingArgs{...}
+type GetConnectionScimConfigurationMappingInput interface {
+	pulumi.Input
+
+	ToGetConnectionScimConfigurationMappingOutput() GetConnectionScimConfigurationMappingOutput
+	ToGetConnectionScimConfigurationMappingOutputWithContext(context.Context) GetConnectionScimConfigurationMappingOutput
+}
+
+type GetConnectionScimConfigurationMappingArgs struct {
+	// The field location in the Auth0 schema.
+	Auth0 pulumi.StringInput `pulumi:"auth0"`
+	// The field location in the SCIM schema.
+	Scim pulumi.StringInput `pulumi:"scim"`
+}
+
+func (GetConnectionScimConfigurationMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionScimConfigurationMapping)(nil)).Elem()
+}
+
+func (i GetConnectionScimConfigurationMappingArgs) ToGetConnectionScimConfigurationMappingOutput() GetConnectionScimConfigurationMappingOutput {
+	return i.ToGetConnectionScimConfigurationMappingOutputWithContext(context.Background())
+}
+
+func (i GetConnectionScimConfigurationMappingArgs) ToGetConnectionScimConfigurationMappingOutputWithContext(ctx context.Context) GetConnectionScimConfigurationMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionScimConfigurationMappingOutput)
+}
+
+// GetConnectionScimConfigurationMappingArrayInput is an input type that accepts GetConnectionScimConfigurationMappingArray and GetConnectionScimConfigurationMappingArrayOutput values.
+// You can construct a concrete instance of `GetConnectionScimConfigurationMappingArrayInput` via:
+//
+//	GetConnectionScimConfigurationMappingArray{ GetConnectionScimConfigurationMappingArgs{...} }
+type GetConnectionScimConfigurationMappingArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionScimConfigurationMappingArrayOutput() GetConnectionScimConfigurationMappingArrayOutput
+	ToGetConnectionScimConfigurationMappingArrayOutputWithContext(context.Context) GetConnectionScimConfigurationMappingArrayOutput
+}
+
+type GetConnectionScimConfigurationMappingArray []GetConnectionScimConfigurationMappingInput
+
+func (GetConnectionScimConfigurationMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionScimConfigurationMapping)(nil)).Elem()
+}
+
+func (i GetConnectionScimConfigurationMappingArray) ToGetConnectionScimConfigurationMappingArrayOutput() GetConnectionScimConfigurationMappingArrayOutput {
+	return i.ToGetConnectionScimConfigurationMappingArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionScimConfigurationMappingArray) ToGetConnectionScimConfigurationMappingArrayOutputWithContext(ctx context.Context) GetConnectionScimConfigurationMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionScimConfigurationMappingArrayOutput)
+}
+
+type GetConnectionScimConfigurationMappingOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionScimConfigurationMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionScimConfigurationMapping)(nil)).Elem()
+}
+
+func (o GetConnectionScimConfigurationMappingOutput) ToGetConnectionScimConfigurationMappingOutput() GetConnectionScimConfigurationMappingOutput {
+	return o
+}
+
+func (o GetConnectionScimConfigurationMappingOutput) ToGetConnectionScimConfigurationMappingOutputWithContext(ctx context.Context) GetConnectionScimConfigurationMappingOutput {
+	return o
+}
+
+// The field location in the Auth0 schema.
+func (o GetConnectionScimConfigurationMappingOutput) Auth0() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionScimConfigurationMapping) string { return v.Auth0 }).(pulumi.StringOutput)
+}
+
+// The field location in the SCIM schema.
+func (o GetConnectionScimConfigurationMappingOutput) Scim() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionScimConfigurationMapping) string { return v.Scim }).(pulumi.StringOutput)
+}
+
+type GetConnectionScimConfigurationMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionScimConfigurationMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionScimConfigurationMapping)(nil)).Elem()
+}
+
+func (o GetConnectionScimConfigurationMappingArrayOutput) ToGetConnectionScimConfigurationMappingArrayOutput() GetConnectionScimConfigurationMappingArrayOutput {
+	return o
+}
+
+func (o GetConnectionScimConfigurationMappingArrayOutput) ToGetConnectionScimConfigurationMappingArrayOutputWithContext(ctx context.Context) GetConnectionScimConfigurationMappingArrayOutput {
+	return o
+}
+
+func (o GetConnectionScimConfigurationMappingArrayOutput) Index(i pulumi.IntInput) GetConnectionScimConfigurationMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionScimConfigurationMapping {
+		return vs[0].([]GetConnectionScimConfigurationMapping)[vs[1].(int)]
+	}).(GetConnectionScimConfigurationMappingOutput)
+}
+
+type GetCustomDomainCertificate struct {
+	// Name of the certificate authority that issued the certificate.
+	CertificateAuthority string `pulumi:"certificateAuthority"`
+	// Contains the error message if the provisioning process fails.
+	ErrorMsg string `pulumi:"errorMsg"`
+	// Specifies the date by which the certificate should be renewed.
+	RenewsBefore string `pulumi:"renewsBefore"`
+	// Indicates the current state of the certificate provisioning process.
+	Status string `pulumi:"status"`
+}
+
+// GetCustomDomainCertificateInput is an input type that accepts GetCustomDomainCertificateArgs and GetCustomDomainCertificateOutput values.
+// You can construct a concrete instance of `GetCustomDomainCertificateInput` via:
+//
+//	GetCustomDomainCertificateArgs{...}
+type GetCustomDomainCertificateInput interface {
+	pulumi.Input
+
+	ToGetCustomDomainCertificateOutput() GetCustomDomainCertificateOutput
+	ToGetCustomDomainCertificateOutputWithContext(context.Context) GetCustomDomainCertificateOutput
+}
+
+type GetCustomDomainCertificateArgs struct {
+	// Name of the certificate authority that issued the certificate.
+	CertificateAuthority pulumi.StringInput `pulumi:"certificateAuthority"`
+	// Contains the error message if the provisioning process fails.
+	ErrorMsg pulumi.StringInput `pulumi:"errorMsg"`
+	// Specifies the date by which the certificate should be renewed.
+	RenewsBefore pulumi.StringInput `pulumi:"renewsBefore"`
+	// Indicates the current state of the certificate provisioning process.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetCustomDomainCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomDomainCertificate)(nil)).Elem()
+}
+
+func (i GetCustomDomainCertificateArgs) ToGetCustomDomainCertificateOutput() GetCustomDomainCertificateOutput {
+	return i.ToGetCustomDomainCertificateOutputWithContext(context.Background())
+}
+
+func (i GetCustomDomainCertificateArgs) ToGetCustomDomainCertificateOutputWithContext(ctx context.Context) GetCustomDomainCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomDomainCertificateOutput)
+}
+
+// GetCustomDomainCertificateArrayInput is an input type that accepts GetCustomDomainCertificateArray and GetCustomDomainCertificateArrayOutput values.
+// You can construct a concrete instance of `GetCustomDomainCertificateArrayInput` via:
+//
+//	GetCustomDomainCertificateArray{ GetCustomDomainCertificateArgs{...} }
+type GetCustomDomainCertificateArrayInput interface {
+	pulumi.Input
+
+	ToGetCustomDomainCertificateArrayOutput() GetCustomDomainCertificateArrayOutput
+	ToGetCustomDomainCertificateArrayOutputWithContext(context.Context) GetCustomDomainCertificateArrayOutput
+}
+
+type GetCustomDomainCertificateArray []GetCustomDomainCertificateInput
+
+func (GetCustomDomainCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomDomainCertificate)(nil)).Elem()
+}
+
+func (i GetCustomDomainCertificateArray) ToGetCustomDomainCertificateArrayOutput() GetCustomDomainCertificateArrayOutput {
+	return i.ToGetCustomDomainCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i GetCustomDomainCertificateArray) ToGetCustomDomainCertificateArrayOutputWithContext(ctx context.Context) GetCustomDomainCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCustomDomainCertificateArrayOutput)
+}
+
+type GetCustomDomainCertificateOutput struct{ *pulumi.OutputState }
+
+func (GetCustomDomainCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCustomDomainCertificate)(nil)).Elem()
+}
+
+func (o GetCustomDomainCertificateOutput) ToGetCustomDomainCertificateOutput() GetCustomDomainCertificateOutput {
+	return o
+}
+
+func (o GetCustomDomainCertificateOutput) ToGetCustomDomainCertificateOutputWithContext(ctx context.Context) GetCustomDomainCertificateOutput {
+	return o
+}
+
+// Name of the certificate authority that issued the certificate.
+func (o GetCustomDomainCertificateOutput) CertificateAuthority() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainCertificate) string { return v.CertificateAuthority }).(pulumi.StringOutput)
+}
+
+// Contains the error message if the provisioning process fails.
+func (o GetCustomDomainCertificateOutput) ErrorMsg() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainCertificate) string { return v.ErrorMsg }).(pulumi.StringOutput)
+}
+
+// Specifies the date by which the certificate should be renewed.
+func (o GetCustomDomainCertificateOutput) RenewsBefore() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainCertificate) string { return v.RenewsBefore }).(pulumi.StringOutput)
+}
+
+// Indicates the current state of the certificate provisioning process.
+func (o GetCustomDomainCertificateOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCustomDomainCertificate) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetCustomDomainCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCustomDomainCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCustomDomainCertificate)(nil)).Elem()
+}
+
+func (o GetCustomDomainCertificateArrayOutput) ToGetCustomDomainCertificateArrayOutput() GetCustomDomainCertificateArrayOutput {
+	return o
+}
+
+func (o GetCustomDomainCertificateArrayOutput) ToGetCustomDomainCertificateArrayOutputWithContext(ctx context.Context) GetCustomDomainCertificateArrayOutput {
+	return o
+}
+
+func (o GetCustomDomainCertificateArrayOutput) Index(i pulumi.IntInput) GetCustomDomainCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCustomDomainCertificate {
+		return vs[0].([]GetCustomDomainCertificate)[vs[1].(int)]
+	}).(GetCustomDomainCertificateOutput)
+}
+
 type GetCustomDomainVerificationType struct {
 	// Contains error message, if any, from the last DNS verification check.
 	ErrorMsg string `pulumi:"errorMsg"`
@@ -10863,6 +11093,10 @@ func (o GetUserPermissionTypeArrayOutput) Index(i pulumi.IntInput) GetUserPermis
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionScimConfigurationMappingInput)(nil)).Elem(), GetConnectionScimConfigurationMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionScimConfigurationMappingArrayInput)(nil)).Elem(), GetConnectionScimConfigurationMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainCertificateInput)(nil)).Elem(), GetCustomDomainCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainCertificateArrayInput)(nil)).Elem(), GetCustomDomainCertificateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainVerificationTypeInput)(nil)).Elem(), GetCustomDomainVerificationTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainVerificationTypeArrayInput)(nil)).Elem(), GetCustomDomainVerificationTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainsCustomDomainInput)(nil)).Elem(), GetCustomDomainsCustomDomainArgs{})
@@ -11041,6 +11275,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserOrganizationsOrganizationTokenQuotaClientCredentialArrayInput)(nil)).Elem(), GetUserOrganizationsOrganizationTokenQuotaClientCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPermissionTypeInput)(nil)).Elem(), GetUserPermissionTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPermissionTypeArrayInput)(nil)).Elem(), GetUserPermissionTypeArray{})
+	pulumi.RegisterOutputType(GetConnectionScimConfigurationMappingOutput{})
+	pulumi.RegisterOutputType(GetConnectionScimConfigurationMappingArrayOutput{})
+	pulumi.RegisterOutputType(GetCustomDomainCertificateOutput{})
+	pulumi.RegisterOutputType(GetCustomDomainCertificateArrayOutput{})
 	pulumi.RegisterOutputType(GetCustomDomainVerificationTypeOutput{})
 	pulumi.RegisterOutputType(GetCustomDomainVerificationTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetCustomDomainsCustomDomainOutput{})

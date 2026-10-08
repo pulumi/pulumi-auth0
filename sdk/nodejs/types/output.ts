@@ -344,6 +344,13 @@ export interface AttackProtectionCaptchaRecaptchaV2 {
     siteKey: string;
 }
 
+export interface AttackProtectionPhoneProviderProtection {
+    /**
+     * The SMS backoff strategy used during MFA enrollment. Use `exponential` to activate exponential-backoff resend limiting (EA only).
+     */
+    type: string;
+}
+
 export interface AttackProtectionSuspiciousIpThrottling {
     /**
      * List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
@@ -3920,6 +3927,13 @@ export interface GetAttackProtectionCaptchaRecaptchaV2 {
     siteKey: string;
 }
 
+export interface GetAttackProtectionPhoneProviderProtection {
+    /**
+     * The SMS backoff strategy used during MFA enrollment. Use `exponential` to activate exponential-backoff resend limiting (EA only).
+     */
+    type: string;
+}
+
 export interface GetAttackProtectionSuspiciousIpThrottling {
     /**
      * List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
@@ -5503,7 +5517,7 @@ export interface GetClientsClient {
      */
     appType: string;
     /**
-     * List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
+     * List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push`, `email`, and `my-account`.The order is significant as this is the order in which notification channels will be evaluated.
      */
     asyncApprovalNotificationChannels: string[];
     /**

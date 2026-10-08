@@ -27,7 +27,7 @@ class GetResourceServerResult:
     """
     A collection of values returned by getResourceServer.
     """
-    def __init__(__self__, access_tokens=None, allow_offline_access=None, allow_online_access=None, allow_online_access_with_ephemeral_sessions=None, authorization_details=None, authorization_policies=None, client_id=None, consent_policy=None, enforce_policies=None, id=None, identifier=None, is_system=None, name=None, proof_of_possessions=None, resource_server_id=None, scopes=None, signing_alg=None, signing_secret=None, skip_consent_for_verifiable_first_party_clients=None, subject_type_authorizations=None, token_dialect=None, token_encryptions=None, token_lifetime=None, token_lifetime_for_anonymous_access_tokens=None, token_lifetime_for_web=None, verification_location=None):
+    def __init__(__self__, access_tokens=None, allow_offline_access=None, allow_online_access=None, allow_online_access_with_ephemeral_sessions=None, authorization_details=None, authorization_policies=None, client_id=None, consent_policy=None, enforce_policies=None, id=None, identifier=None, is_system=None, name=None, proof_of_possessions=None, require_consent_non_repudiation=None, resource_server_id=None, scopes=None, signing_alg=None, signing_secret=None, skip_consent_for_verifiable_first_party_clients=None, subject_type_authorizations=None, token_dialect=None, token_encryptions=None, token_lifetime=None, token_lifetime_for_anonymous_access_tokens=None, token_lifetime_for_web=None, verification_location=None):
         if access_tokens and not isinstance(access_tokens, list):
             raise TypeError("Expected argument 'access_tokens' to be a list")
         pulumi.set(__self__, "access_tokens", access_tokens)
@@ -70,6 +70,9 @@ class GetResourceServerResult:
         if proof_of_possessions and not isinstance(proof_of_possessions, list):
             raise TypeError("Expected argument 'proof_of_possessions' to be a list")
         pulumi.set(__self__, "proof_of_possessions", proof_of_possessions)
+        if require_consent_non_repudiation and not isinstance(require_consent_non_repudiation, bool):
+            raise TypeError("Expected argument 'require_consent_non_repudiation' to be a bool")
+        pulumi.set(__self__, "require_consent_non_repudiation", require_consent_non_repudiation)
         if resource_server_id and not isinstance(resource_server_id, str):
             raise TypeError("Expected argument 'resource_server_id' to be a str")
         pulumi.set(__self__, "resource_server_id", resource_server_id)
@@ -220,6 +223,14 @@ class GetResourceServerResult:
         return pulumi.get(self, "proof_of_possessions")
 
     @_builtins.property
+    @pulumi.getter(name="requireConsentNonRepudiation")
+    def require_consent_non_repudiation(self) -> _builtins.bool:
+        """
+        When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
+        """
+        return pulumi.get(self, "require_consent_non_repudiation")
+
+    @_builtins.property
     @pulumi.getter(name="resourceServerId")
     def resource_server_id(self) -> Optional[_builtins.str]:
         """
@@ -336,6 +347,7 @@ class AwaitableGetResourceServerResult(GetResourceServerResult):
             is_system=self.is_system,
             name=self.name,
             proof_of_possessions=self.proof_of_possessions,
+            require_consent_non_repudiation=self.require_consent_non_repudiation,
             resource_server_id=self.resource_server_id,
             scopes=self.scopes,
             signing_alg=self.signing_alg,
@@ -393,6 +405,7 @@ def get_resource_server(identifier: Optional[_builtins.str] = None,
         is_system=pulumi.get(__ret__, 'is_system'),
         name=pulumi.get(__ret__, 'name'),
         proof_of_possessions=pulumi.get(__ret__, 'proof_of_possessions'),
+        require_consent_non_repudiation=pulumi.get(__ret__, 'require_consent_non_repudiation'),
         resource_server_id=pulumi.get(__ret__, 'resource_server_id'),
         scopes=pulumi.get(__ret__, 'scopes'),
         signing_alg=pulumi.get(__ret__, 'signing_alg'),
@@ -447,6 +460,7 @@ def get_resource_server_output(identifier: pulumi.Input[Optional[Optional[_built
         is_system=pulumi.get(__response__, 'is_system'),
         name=pulumi.get(__response__, 'name'),
         proof_of_possessions=pulumi.get(__response__, 'proof_of_possessions'),
+        require_consent_non_repudiation=pulumi.get(__response__, 'require_consent_non_repudiation'),
         resource_server_id=pulumi.get(__response__, 'resource_server_id'),
         scopes=pulumi.get(__response__, 'scopes'),
         signing_alg=pulumi.get(__response__, 'signing_alg'),

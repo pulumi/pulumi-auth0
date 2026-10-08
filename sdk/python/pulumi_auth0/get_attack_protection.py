@@ -27,7 +27,7 @@ class GetAttackProtectionResult:
     """
     A collection of values returned by getAttackProtection.
     """
-    def __init__(__self__, bot_detections=None, breached_password_detections=None, brute_force_protections=None, captchas=None, id=None, suspicious_ip_throttlings=None):
+    def __init__(__self__, bot_detections=None, breached_password_detections=None, brute_force_protections=None, captchas=None, id=None, phone_provider_protections=None, suspicious_ip_throttlings=None):
         if bot_detections and not isinstance(bot_detections, list):
             raise TypeError("Expected argument 'bot_detections' to be a list")
         pulumi.set(__self__, "bot_detections", bot_detections)
@@ -43,6 +43,9 @@ class GetAttackProtectionResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if phone_provider_protections and not isinstance(phone_provider_protections, list):
+            raise TypeError("Expected argument 'phone_provider_protections' to be a list")
+        pulumi.set(__self__, "phone_provider_protections", phone_provider_protections)
         if suspicious_ip_throttlings and not isinstance(suspicious_ip_throttlings, list):
             raise TypeError("Expected argument 'suspicious_ip_throttlings' to be a list")
         pulumi.set(__self__, "suspicious_ip_throttlings", suspicious_ip_throttlings)
@@ -88,6 +91,14 @@ class GetAttackProtectionResult:
         return pulumi.get(self, "id")
 
     @_builtins.property
+    @pulumi.getter(name="phoneProviderProtections")
+    def phone_provider_protections(self) -> Sequence['outputs.GetAttackProtectionPhoneProviderProtectionResult']:
+        """
+        Configuration for the SMS MFA enrollment backoff strategy (EA Only).
+        """
+        return pulumi.get(self, "phone_provider_protections")
+
+    @_builtins.property
     @pulumi.getter(name="suspiciousIpThrottlings")
     def suspicious_ip_throttlings(self) -> Sequence['outputs.GetAttackProtectionSuspiciousIpThrottlingResult']:
         """
@@ -107,6 +118,7 @@ class AwaitableGetAttackProtectionResult(GetAttackProtectionResult):
             brute_force_protections=self.brute_force_protections,
             captchas=self.captchas,
             id=self.id,
+            phone_provider_protections=self.phone_provider_protections,
             suspicious_ip_throttlings=self.suspicious_ip_throttlings)
 
 
@@ -133,6 +145,7 @@ def get_attack_protection(opts: Optional[pulumi.InvokeOptions] = None) -> Awaita
         brute_force_protections=pulumi.get(__ret__, 'brute_force_protections'),
         captchas=pulumi.get(__ret__, 'captchas'),
         id=pulumi.get(__ret__, 'id'),
+        phone_provider_protections=pulumi.get(__ret__, 'phone_provider_protections'),
         suspicious_ip_throttlings=pulumi.get(__ret__, 'suspicious_ip_throttlings'))
 def get_attack_protection_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAttackProtectionResult]:
     """
@@ -156,4 +169,5 @@ def get_attack_protection_output(opts: Optional[Union[pulumi.InvokeOptions, pulu
         brute_force_protections=pulumi.get(__response__, 'brute_force_protections'),
         captchas=pulumi.get(__response__, 'captchas'),
         id=pulumi.get(__response__, 'id'),
+        phone_provider_protections=pulumi.get(__response__, 'phone_provider_protections'),
         suspicious_ip_throttlings=pulumi.get(__response__, 'suspicious_ip_throttlings')))

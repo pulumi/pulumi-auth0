@@ -80,6 +80,7 @@ import (
 //				AllowOfflineAccess:                     pulumi.Bool(true),
 //				AllowOnlineAccess:                      pulumi.Bool(true),
 //				AllowOnlineAccessWithEphemeralSessions: pulumi.Bool(false),
+//				RequireConsentNonRepudiation:           pulumi.Bool(true),
 //				TokenLifetime:                          pulumi.Int(8600),
 //				SkipConsentForVerifiableFirstPartyClients: pulumi.Bool(true),
 //				ConsentPolicy:                         pulumi.String("transactional-authorization-with-mfa"),
@@ -166,6 +167,8 @@ type ResourceServer struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configuration settings for proof-of-possession for this resource server.
 	ProofOfPossession ResourceServerProofOfPossessionOutput `pulumi:"proofOfPossession"`
+	// When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
+	RequireConsentNonRepudiation pulumi.BoolOutput `pulumi:"requireConsentNonRepudiation"`
 	// Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
 	SigningAlg pulumi.StringOutput `pulumi:"signingAlg"`
 	// Secret used to sign tokens when using symmetric algorithms (HS256).
@@ -247,6 +250,8 @@ type resourceServerState struct {
 	Name *string `pulumi:"name"`
 	// Configuration settings for proof-of-possession for this resource server.
 	ProofOfPossession *ResourceServerProofOfPossession `pulumi:"proofOfPossession"`
+	// When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
+	RequireConsentNonRepudiation *bool `pulumi:"requireConsentNonRepudiation"`
 	// Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
 	SigningAlg *string `pulumi:"signingAlg"`
 	// Secret used to sign tokens when using symmetric algorithms (HS256).
@@ -296,6 +301,8 @@ type ResourceServerState struct {
 	Name pulumi.StringPtrInput
 	// Configuration settings for proof-of-possession for this resource server.
 	ProofOfPossession ResourceServerProofOfPossessionPtrInput
+	// When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
+	RequireConsentNonRepudiation pulumi.BoolPtrInput
 	// Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
 	SigningAlg pulumi.StringPtrInput
 	// Secret used to sign tokens when using symmetric algorithms (HS256).
@@ -345,6 +352,8 @@ type resourceServerArgs struct {
 	Name *string `pulumi:"name"`
 	// Configuration settings for proof-of-possession for this resource server.
 	ProofOfPossession *ResourceServerProofOfPossession `pulumi:"proofOfPossession"`
+	// When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
+	RequireConsentNonRepudiation *bool `pulumi:"requireConsentNonRepudiation"`
 	// Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
 	SigningAlg *string `pulumi:"signingAlg"`
 	// Secret used to sign tokens when using symmetric algorithms (HS256).
@@ -391,6 +400,8 @@ type ResourceServerArgs struct {
 	Name pulumi.StringPtrInput
 	// Configuration settings for proof-of-possession for this resource server.
 	ProofOfPossession ResourceServerProofOfPossessionPtrInput
+	// When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
+	RequireConsentNonRepudiation pulumi.BoolPtrInput
 	// Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
 	SigningAlg pulumi.StringPtrInput
 	// Secret used to sign tokens when using symmetric algorithms (HS256).
@@ -563,6 +574,11 @@ func (o ResourceServerOutput) Name() pulumi.StringOutput {
 // Configuration settings for proof-of-possession for this resource server.
 func (o ResourceServerOutput) ProofOfPossession() ResourceServerProofOfPossessionOutput {
 	return o.ApplyT(func(v *ResourceServer) ResourceServerProofOfPossessionOutput { return v.ProofOfPossession }).(ResourceServerProofOfPossessionOutput)
+}
+
+// When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
+func (o ResourceServerOutput) RequireConsentNonRepudiation() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ResourceServer) pulumi.BoolOutput { return v.RequireConsentNonRepudiation }).(pulumi.BoolOutput)
 }
 
 // Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.

@@ -72,7 +72,7 @@ export class Client extends pulumi.CustomResource {
      */
     declare public readonly appType: pulumi.Output<string | undefined>;
     /**
-     * List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
+     * List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push`, `email`, and `my-account`.The order is significant as this is the order in which notification channels will be evaluated.
      */
     declare public readonly asyncApprovalNotificationChannels: pulumi.Output<string[] | undefined>;
     /**
@@ -447,7 +447,7 @@ export interface ClientState {
      */
     appType?: pulumi.Input<string | undefined>;
     /**
-     * List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
+     * List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push`, `email`, and `my-account`.The order is significant as this is the order in which notification channels will be evaluated.
      */
     asyncApprovalNotificationChannels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -684,7 +684,7 @@ export interface ClientArgs {
      */
     appType?: pulumi.Input<string | undefined>;
     /**
-     * List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
+     * List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push`, `email`, and `my-account`.The order is significant as this is the order in which notification channels will be evaluated.
      */
     asyncApprovalNotificationChannels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**

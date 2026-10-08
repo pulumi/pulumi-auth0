@@ -40,8 +40,8 @@ require (
 	github.com/apparentlymart/go-cidr v1.1.0 // indirect
 	github.com/apparentlymart/go-textseg/v15 v15.0.0 // indirect
 	github.com/armon/go-radix v1.0.0 // indirect
-	github.com/auth0/go-auth0 v1.50.0 // indirect
-	github.com/auth0/go-auth0/v3 v3.5.0 // indirect
+	github.com/auth0/go-auth0 v1.51.0 // indirect
+	github.com/auth0/go-auth0/v3 v3.7.0 // indirect
 	github.com/aws/aws-sdk-go-v2 v1.43.0 // indirect
 	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.7.14 // indirect
 	github.com/aws/aws-sdk-go-v2/config v1.32.31 // indirect

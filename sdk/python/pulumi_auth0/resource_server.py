@@ -32,6 +32,7 @@ class ResourceServerArgs:
                  enforce_policies: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  proof_of_possession: pulumi.Input[Optional['ResourceServerProofOfPossessionArgs']] = None,
+                 require_consent_non_repudiation: pulumi.Input[Optional[_builtins.bool]] = None,
                  signing_alg: pulumi.Input[Optional[_builtins.str]] = None,
                  signing_secret: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_consent_for_verifiable_first_party_clients: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -56,6 +57,7 @@ class ResourceServerArgs:
         :param pulumi.Input[_builtins.bool] enforce_policies: If this setting is enabled, RBAC authorization policies will be enforced for this API. Role and permission assignments will be evaluated during the login transaction.
         :param pulumi.Input[_builtins.str] name: Friendly name for the resource server. Cannot include `<` or `>` characters.
         :param pulumi.Input['ResourceServerProofOfPossessionArgs'] proof_of_possession: Configuration settings for proof-of-possession for this resource server.
+        :param pulumi.Input[_builtins.bool] require_consent_non_repudiation: When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
         :param pulumi.Input[_builtins.str] signing_alg: Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
         :param pulumi.Input[_builtins.str] signing_secret: Secret used to sign tokens when using symmetric algorithms (HS256).
         :param pulumi.Input[_builtins.bool] skip_consent_for_verifiable_first_party_clients: Indicates whether to skip user consent for applications flagged as first party.
@@ -88,6 +90,8 @@ class ResourceServerArgs:
             pulumi.set(__self__, "name", name)
         if proof_of_possession is not None:
             pulumi.set(__self__, "proof_of_possession", proof_of_possession)
+        if require_consent_non_repudiation is not None:
+            pulumi.set(__self__, "require_consent_non_repudiation", require_consent_non_repudiation)
         if signing_alg is not None:
             pulumi.set(__self__, "signing_alg", signing_alg)
         if signing_secret is not None:
@@ -242,6 +246,18 @@ class ResourceServerArgs:
         pulumi.set(self, "proof_of_possession", value)
 
     @_builtins.property
+    @pulumi.getter(name="requireConsentNonRepudiation")
+    def require_consent_non_repudiation(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
+        """
+        return pulumi.get(self, "require_consent_non_repudiation")
+
+    @require_consent_non_repudiation.setter
+    def require_consent_non_repudiation(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "require_consent_non_repudiation", value)
+
+    @_builtins.property
     @pulumi.getter(name="signingAlg")
     def signing_alg(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -378,6 +394,7 @@ class _ResourceServerState:
                  is_system: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  proof_of_possession: pulumi.Input[Optional['ResourceServerProofOfPossessionArgs']] = None,
+                 require_consent_non_repudiation: pulumi.Input[Optional[_builtins.bool]] = None,
                  signing_alg: pulumi.Input[Optional[_builtins.str]] = None,
                  signing_secret: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_consent_for_verifiable_first_party_clients: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -404,6 +421,7 @@ class _ResourceServerState:
         :param pulumi.Input[_builtins.bool] is_system: Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.
         :param pulumi.Input[_builtins.str] name: Friendly name for the resource server. Cannot include `<` or `>` characters.
         :param pulumi.Input['ResourceServerProofOfPossessionArgs'] proof_of_possession: Configuration settings for proof-of-possession for this resource server.
+        :param pulumi.Input[_builtins.bool] require_consent_non_repudiation: When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
         :param pulumi.Input[_builtins.str] signing_alg: Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
         :param pulumi.Input[_builtins.str] signing_secret: Secret used to sign tokens when using symmetric algorithms (HS256).
         :param pulumi.Input[_builtins.bool] skip_consent_for_verifiable_first_party_clients: Indicates whether to skip user consent for applications flagged as first party.
@@ -441,6 +459,8 @@ class _ResourceServerState:
             pulumi.set(__self__, "name", name)
         if proof_of_possession is not None:
             pulumi.set(__self__, "proof_of_possession", proof_of_possession)
+        if require_consent_non_repudiation is not None:
+            pulumi.set(__self__, "require_consent_non_repudiation", require_consent_non_repudiation)
         if signing_alg is not None:
             pulumi.set(__self__, "signing_alg", signing_alg)
         if signing_secret is not None:
@@ -619,6 +639,18 @@ class _ResourceServerState:
         pulumi.set(self, "proof_of_possession", value)
 
     @_builtins.property
+    @pulumi.getter(name="requireConsentNonRepudiation")
+    def require_consent_non_repudiation(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
+        """
+        return pulumi.get(self, "require_consent_non_repudiation")
+
+    @require_consent_non_repudiation.setter
+    def require_consent_non_repudiation(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "require_consent_non_repudiation", value)
+
+    @_builtins.property
     @pulumi.getter(name="signingAlg")
     def signing_alg(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -756,6 +788,7 @@ class ResourceServer(pulumi.CustomResource):
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  proof_of_possession: pulumi.Input[Optional[Union['ResourceServerProofOfPossessionArgs', 'ResourceServerProofOfPossessionArgsDict', 'outputs.ResourceServerProofOfPossession']]] = None,
+                 require_consent_non_repudiation: pulumi.Input[Optional[_builtins.bool]] = None,
                  signing_alg: pulumi.Input[Optional[_builtins.str]] = None,
                  signing_secret: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_consent_for_verifiable_first_party_clients: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -831,6 +864,7 @@ class ResourceServer(pulumi.CustomResource):
             allow_offline_access=True,
             allow_online_access=True,
             allow_online_access_with_ephemeral_sessions=False,
+            require_consent_non_repudiation=True,
             token_lifetime=8600,
             skip_consent_for_verifiable_first_party_clients=True,
             consent_policy="transactional-authorization-with-mfa",
@@ -885,6 +919,7 @@ class ResourceServer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] identifier: Unique identifier for the resource server. Used as the audience parameter for authorization calls. Cannot be changed once set.
         :param pulumi.Input[_builtins.str] name: Friendly name for the resource server. Cannot include `<` or `>` characters.
         :param pulumi.Input[Union['ResourceServerProofOfPossessionArgs', 'ResourceServerProofOfPossessionArgsDict', 'outputs.ResourceServerProofOfPossession']] proof_of_possession: Configuration settings for proof-of-possession for this resource server.
+        :param pulumi.Input[_builtins.bool] require_consent_non_repudiation: When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
         :param pulumi.Input[_builtins.str] signing_alg: Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
         :param pulumi.Input[_builtins.str] signing_secret: Secret used to sign tokens when using symmetric algorithms (HS256).
         :param pulumi.Input[_builtins.bool] skip_consent_for_verifiable_first_party_clients: Indicates whether to skip user consent for applications flagged as first party.
@@ -966,6 +1001,7 @@ class ResourceServer(pulumi.CustomResource):
             allow_offline_access=True,
             allow_online_access=True,
             allow_online_access_with_ephemeral_sessions=False,
+            require_consent_non_repudiation=True,
             token_lifetime=8600,
             skip_consent_for_verifiable_first_party_clients=True,
             consent_policy="transactional-authorization-with-mfa",
@@ -1033,6 +1069,7 @@ class ResourceServer(pulumi.CustomResource):
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  proof_of_possession: pulumi.Input[Optional[Union['ResourceServerProofOfPossessionArgs', 'ResourceServerProofOfPossessionArgsDict', 'outputs.ResourceServerProofOfPossession']]] = None,
+                 require_consent_non_repudiation: pulumi.Input[Optional[_builtins.bool]] = None,
                  signing_alg: pulumi.Input[Optional[_builtins.str]] = None,
                  signing_secret: pulumi.Input[Optional[_builtins.str]] = None,
                  skip_consent_for_verifiable_first_party_clients: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1065,6 +1102,7 @@ class ResourceServer(pulumi.CustomResource):
             __props__.__dict__["identifier"] = identifier
             __props__.__dict__["name"] = name
             __props__.__dict__["proof_of_possession"] = proof_of_possession
+            __props__.__dict__["require_consent_non_repudiation"] = require_consent_non_repudiation
             __props__.__dict__["signing_alg"] = signing_alg
             __props__.__dict__["signing_secret"] = signing_secret
             __props__.__dict__["skip_consent_for_verifiable_first_party_clients"] = skip_consent_for_verifiable_first_party_clients
@@ -1100,6 +1138,7 @@ class ResourceServer(pulumi.CustomResource):
             is_system: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             proof_of_possession: pulumi.Input[Optional[Union['ResourceServerProofOfPossessionArgs', 'ResourceServerProofOfPossessionArgsDict', 'outputs.ResourceServerProofOfPossession']]] = None,
+            require_consent_non_repudiation: pulumi.Input[Optional[_builtins.bool]] = None,
             signing_alg: pulumi.Input[Optional[_builtins.str]] = None,
             signing_secret: pulumi.Input[Optional[_builtins.str]] = None,
             skip_consent_for_verifiable_first_party_clients: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1130,6 +1169,7 @@ class ResourceServer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] is_system: Indicates whether this resource server is a special resource server created by Auth0. It cannot be modified or deleted directly.
         :param pulumi.Input[_builtins.str] name: Friendly name for the resource server. Cannot include `<` or `>` characters.
         :param pulumi.Input[Union['ResourceServerProofOfPossessionArgs', 'ResourceServerProofOfPossessionArgsDict', 'outputs.ResourceServerProofOfPossession']] proof_of_possession: Configuration settings for proof-of-possession for this resource server.
+        :param pulumi.Input[_builtins.bool] require_consent_non_repudiation: When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
         :param pulumi.Input[_builtins.str] signing_alg: Algorithm used to sign JWTs. Options include `HS256`, `RS256`, and `PS256`.
         :param pulumi.Input[_builtins.str] signing_secret: Secret used to sign tokens when using symmetric algorithms (HS256).
         :param pulumi.Input[_builtins.bool] skip_consent_for_verifiable_first_party_clients: Indicates whether to skip user consent for applications flagged as first party.
@@ -1158,6 +1198,7 @@ class ResourceServer(pulumi.CustomResource):
         __props__.__dict__["is_system"] = is_system
         __props__.__dict__["name"] = name
         __props__.__dict__["proof_of_possession"] = proof_of_possession
+        __props__.__dict__["require_consent_non_repudiation"] = require_consent_non_repudiation
         __props__.__dict__["signing_alg"] = signing_alg
         __props__.__dict__["signing_secret"] = signing_secret
         __props__.__dict__["skip_consent_for_verifiable_first_party_clients"] = skip_consent_for_verifiable_first_party_clients
@@ -1273,6 +1314,14 @@ class ResourceServer(pulumi.CustomResource):
         Configuration settings for proof-of-possession for this resource server.
         """
         return pulumi.get(self, "proof_of_possession")
+
+    @_builtins.property
+    @pulumi.getter(name="requireConsentNonRepudiation")
+    def require_consent_non_repudiation(self) -> pulumi.Output[_builtins.bool]:
+        """
+        When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
+        """
+        return pulumi.get(self, "require_consent_non_repudiation")
 
     @_builtins.property
     @pulumi.getter(name="signingAlg")

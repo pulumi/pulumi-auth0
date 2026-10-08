@@ -37,7 +37,7 @@ type Client struct {
 	AnonymousSessions ClientAnonymousSessionsPtrOutput `pulumi:"anonymousSessions"`
 	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
 	AppType pulumi.StringPtrOutput `pulumi:"appType"`
-	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
+	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push`, `email`, and `my-account`.The order is significant as this is the order in which notification channels will be evaluated.
 	AsyncApprovalNotificationChannels pulumi.StringArrayOutput `pulumi:"asyncApprovalNotificationChannels"`
 	// Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
 	B2bIntegrationConfiguration ClientB2bIntegrationConfigurationPtrOutput `pulumi:"b2bIntegrationConfiguration"`
@@ -193,7 +193,7 @@ type clientState struct {
 	AnonymousSessions *ClientAnonymousSessions `pulumi:"anonymousSessions"`
 	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
 	AppType *string `pulumi:"appType"`
-	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
+	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push`, `email`, and `my-account`.The order is significant as this is the order in which notification channels will be evaluated.
 	AsyncApprovalNotificationChannels []string `pulumi:"asyncApprovalNotificationChannels"`
 	// Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
 	B2bIntegrationConfiguration *ClientB2bIntegrationConfiguration `pulumi:"b2bIntegrationConfiguration"`
@@ -313,7 +313,7 @@ type ClientState struct {
 	AnonymousSessions ClientAnonymousSessionsPtrInput
 	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
 	AppType pulumi.StringPtrInput
-	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
+	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push`, `email`, and `my-account`.The order is significant as this is the order in which notification channels will be evaluated.
 	AsyncApprovalNotificationChannels pulumi.StringArrayInput
 	// Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
 	B2bIntegrationConfiguration ClientB2bIntegrationConfigurationPtrInput
@@ -437,7 +437,7 @@ type clientArgs struct {
 	AnonymousSessions *ClientAnonymousSessions `pulumi:"anonymousSessions"`
 	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
 	AppType *string `pulumi:"appType"`
-	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
+	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push`, `email`, and `my-account`.The order is significant as this is the order in which notification channels will be evaluated.
 	AsyncApprovalNotificationChannels []string `pulumi:"asyncApprovalNotificationChannels"`
 	// Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
 	B2bIntegrationConfiguration *ClientB2bIntegrationConfiguration `pulumi:"b2bIntegrationConfiguration"`
@@ -548,7 +548,7 @@ type ClientArgs struct {
 	AnonymousSessions ClientAnonymousSessionsPtrInput
 	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
 	AppType pulumi.StringPtrInput
-	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
+	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push`, `email`, and `my-account`.The order is significant as this is the order in which notification channels will be evaluated.
 	AsyncApprovalNotificationChannels pulumi.StringArrayInput
 	// Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
 	B2bIntegrationConfiguration ClientB2bIntegrationConfigurationPtrInput
@@ -762,7 +762,7 @@ func (o ClientOutput) AppType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringPtrOutput { return v.AppType }).(pulumi.StringPtrOutput)
 }
 
-// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `email`. The order is significant as this is the order in which notification channels will be evaluated.
+// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push`, `email`, and `my-account`.The order is significant as this is the order in which notification channels will be evaluated.
 func (o ClientOutput) AsyncApprovalNotificationChannels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringArrayOutput { return v.AsyncApprovalNotificationChannels }).(pulumi.StringArrayOutput)
 }

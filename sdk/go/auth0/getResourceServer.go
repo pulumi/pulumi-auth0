@@ -94,6 +94,8 @@ type LookupResourceServerResult struct {
 	Name string `pulumi:"name"`
 	// Configuration settings for proof-of-possession for this resource server.
 	ProofOfPossessions []GetResourceServerProofOfPossession `pulumi:"proofOfPossessions"`
+	// When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
+	RequireConsentNonRepudiation bool `pulumi:"requireConsentNonRepudiation"`
 	// The ID of the resource server. If not provided, `identifier` must be set.
 	ResourceServerId *string `pulumi:"resourceServerId"`
 	// List of permissions (scopes) used by this resource server.
@@ -224,6 +226,11 @@ func (o LookupResourceServerResultOutput) Name() pulumi.StringOutput {
 // Configuration settings for proof-of-possession for this resource server.
 func (o LookupResourceServerResultOutput) ProofOfPossessions() GetResourceServerProofOfPossessionArrayOutput {
 	return o.ApplyT(func(v LookupResourceServerResult) []GetResourceServerProofOfPossession { return v.ProofOfPossessions }).(GetResourceServerProofOfPossessionArrayOutput)
+}
+
+// When true, the authorization server will reject consent decisions that do not include a valid signature and kid. (EA Only)
+func (o LookupResourceServerResultOutput) RequireConsentNonRepudiation() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupResourceServerResult) bool { return v.RequireConsentNonRepudiation }).(pulumi.BoolOutput)
 }
 
 // The ID of the resource server. If not provided, `identifier` must be set.

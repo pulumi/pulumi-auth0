@@ -187,7 +187,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string AppType;
         /// <summary>
-        /// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push` and `Email`. The order is significant as this is the order in which notification channels will be evaluated.
+        /// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push`, `Email`, and `my-account`.The order is significant as this is the order in which notification channels will be evaluated.
         /// </summary>
         public readonly ImmutableArray<string> AsyncApprovalNotificationChannels;
         /// <summary>
