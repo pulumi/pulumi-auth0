@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create an HMAC-SHA256 key for Network ACL HTTP Message Signature verification.
- *         // The key material (value) is write-only and not stored in Terraform state.
+ *         // The key material (value) is write-only and not stored in Pulumi state.
  *         var myKey = new NetworkAclKey("myKey", NetworkAclKeyArgs.builder()
  *             .name("my-hmac-key")
  *             .alg("hmac-sha256")

@@ -98,7 +98,7 @@ def get_action_module_versions(module_id: Optional[_builtins.str] = None,
     \"\"\")
     # Retrieve all published versions of the module
     my_module_versions = auth0.get_action_module_versions_output(module_id=my_module.id)
-    pulumi.export("totalVersions", len(my_module_versions.versions))
+    pulumi.export("totalVersions", my_module_versions.apply(lambda my_module_versions: len(my_module_versions.versions)))
     pulumi.export("latestVersionNumber", my_module_versions.versions[0].version_number)
     pulumi.export("versionIds", my_module_versions.apply(lambda my_module_versions: [v.id for v in my_module_versions.versions]))
     ```
@@ -139,7 +139,7 @@ def get_action_module_versions_output(module_id: pulumi.Input[Optional[_builtins
     \"\"\")
     # Retrieve all published versions of the module
     my_module_versions = auth0.get_action_module_versions_output(module_id=my_module.id)
-    pulumi.export("totalVersions", len(my_module_versions.versions))
+    pulumi.export("totalVersions", my_module_versions.apply(lambda my_module_versions: len(my_module_versions.versions)))
     pulumi.export("latestVersionNumber", my_module_versions.versions[0].version_number)
     pulumi.export("versionIds", my_module_versions.apply(lambda my_module_versions: [v.id for v in my_module_versions.versions]))
     ```

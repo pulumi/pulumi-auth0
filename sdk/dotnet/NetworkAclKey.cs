@@ -23,7 +23,7 @@ namespace Pulumi.Auth0
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create an HMAC-SHA256 key for Network ACL HTTP Message Signature verification.
-    ///     // The key material (value) is write-only and not stored in Terraform state.
+    ///     // The key material (value) is write-only and not stored in Pulumi state.
     ///     var myKey = new Auth0.NetworkAclKey("my_key", new()
     ///     {
     ///         Name = "my-hmac-key",

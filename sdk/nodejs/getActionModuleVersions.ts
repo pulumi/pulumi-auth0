@@ -31,7 +31,7 @@ import * as utilities from "./utilities";
  * const myModuleVersions = auth0.getActionModuleVersionsOutput({
  *     moduleId: myModule.id,
  * });
- * export const totalVersions = myModuleVersions.apply(myModuleVersions => myModuleVersions.versions).length;
+ * export const totalVersions = myModuleVersions.apply(myModuleVersions => myModuleVersions.versions.length);
  * export const latestVersionNumber = myModuleVersions.apply(myModuleVersions => myModuleVersions.versions?.[0]?.versionNumber);
  * export const versionIds = myModuleVersions.apply(myModuleVersions => .map(v => (v.id)));
  * ```
@@ -95,7 +95,7 @@ export interface GetActionModuleVersionsResult {
  * const myModuleVersions = auth0.getActionModuleVersionsOutput({
  *     moduleId: myModule.id,
  * });
- * export const totalVersions = myModuleVersions.apply(myModuleVersions => myModuleVersions.versions).length;
+ * export const totalVersions = myModuleVersions.apply(myModuleVersions => myModuleVersions.versions.length);
  * export const latestVersionNumber = myModuleVersions.apply(myModuleVersions => myModuleVersions.versions?.[0]?.versionNumber);
  * export const versionIds = myModuleVersions.apply(myModuleVersions => .map(v => (v.id)));
  * ```

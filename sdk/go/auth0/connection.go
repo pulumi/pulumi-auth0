@@ -128,11 +128,11 @@ import (
 //				return err
 //			}
 //			// The strategy's client secret can be set as a write-only argument so it is never persisted to
-//			// Terraform state. It can be sourced from an ephemeral value (e.g. a secrets manager) and is
+//			// Pulumi state. It can be sourced from an ephemeral value (e.g. a secrets manager) and is
 //			// mutually exclusive with `options.client_secret`. Bump `options_client_secret_wo_version` to
 //			// rotate the secret.
 //			//
-//			// NOTE: Write-only arguments require Terraform 1.11 or later.
+//			// NOTE: Write-only arguments require Pulumi 1.11 or later.
 //			_, err = auth0.NewConnection(ctx, "my_connection_write_only_secret", &auth0.ConnectionArgs{
 //				Options: &auth0.ConnectionOptionsArgs{
 //					ClientId:              pulumi.String("1234567"),

@@ -72,7 +72,7 @@ namespace Pulumi.Auth0
     ///         {
     ///             "http://example.com/logout",
     ///         },
-    ///         SessionLifetime = 8760,
+    ///         SessionLifetime = 8760.0,
     ///         SandboxVersion = "22",
     ///         EnabledLocales = new[]
     ///         {

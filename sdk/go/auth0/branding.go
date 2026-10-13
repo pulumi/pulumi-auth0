@@ -40,7 +40,7 @@ import (
 //					PageBackground: pulumi.String("#000000"),
 //				},
 //				UniversalLogin: &auth0.BrandingUniversalLoginArgs{
-//					Body: invokeFile.Result,
+//					Body: invokeFile.Result.(pulumi.String),
 //				},
 //				LogoUrl: pulumi.String("https://mycompany.org/logo.png"),
 //			})

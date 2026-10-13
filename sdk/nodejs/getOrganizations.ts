@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * // An empty data source block retrieves every organization of the tenant.
+ * // An empty function block retrieves every organization of the tenant.
  * const myOrganizations = auth0.getOrganizations({});
  * // Setting include_client_association_for additionally returns, for every organization
  * // associated with that client (application), the details of the association.
@@ -68,7 +68,7 @@ export interface GetOrganizationsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * // An empty data source block retrieves every organization of the tenant.
+ * // An empty function block retrieves every organization of the tenant.
  * const myOrganizations = auth0.getOrganizations({});
  * // Setting include_client_association_for additionally returns, for every organization
  * // associated with that client (application), the details of the association.

@@ -88,7 +88,7 @@ namespace Pulumi.Auth0
     ///                 "voice",
     ///             },
     ///         },
-    ///         Credentials = null,
+    ///         Credentials = new() { },
     ///         Name = "custom",
     ///         Disabled = false,
     ///     }, new CustomResourceOptions

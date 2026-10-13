@@ -49,7 +49,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// A data source for an Auth0 Connection SCIM Configuration.
+//			// A function for an Auth0 Connection SCIM Configuration.
 //			_ = auth0.GetConnectionScimConfigurationOutput(ctx, auth0.GetConnectionScimConfigurationOutputArgs{
 //				ConnectionId: myConnScimConfiguration.ID().ToIDOutput().ToStringOutput(),
 //			}, nil)

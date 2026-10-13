@@ -1344,7 +1344,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Data Source Example: Retrieve Auth0 Phone Notification Templates
+     *         // Function Example: Retrieve Auth0 Phone Notification Templates
      *         // This example shows how to fetch existing phone notification templates from your Auth0 tenant
      *         // Retrieve the OTP enrollment template
      *         final var otpEnrollment = Auth0Functions.getBrandingPhoneNotificationTemplate(GetBrandingPhoneNotificationTemplateArgs.builder()
@@ -1388,7 +1388,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Data Source Example: Retrieve Auth0 Phone Notification Templates
+     *         // Function Example: Retrieve Auth0 Phone Notification Templates
      *         // This example shows how to fetch existing phone notification templates from your Auth0 tenant
      *         // Retrieve the OTP enrollment template
      *         final var otpEnrollment = Auth0Functions.getBrandingPhoneNotificationTemplate(GetBrandingPhoneNotificationTemplateArgs.builder()
@@ -1432,7 +1432,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Data Source Example: Retrieve Auth0 Phone Notification Templates
+     *         // Function Example: Retrieve Auth0 Phone Notification Templates
      *         // This example shows how to fetch existing phone notification templates from your Auth0 tenant
      *         // Retrieve the OTP enrollment template
      *         final var otpEnrollment = Auth0Functions.getBrandingPhoneNotificationTemplate(GetBrandingPhoneNotificationTemplateArgs.builder()
@@ -1476,7 +1476,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Data Source Example: Retrieve Auth0 Phone Notification Templates
+     *         // Function Example: Retrieve Auth0 Phone Notification Templates
      *         // This example shows how to fetch existing phone notification templates from your Auth0 tenant
      *         // Retrieve the OTP enrollment template
      *         final var otpEnrollment = Auth0Functions.getBrandingPhoneNotificationTemplate(GetBrandingPhoneNotificationTemplateArgs.builder()
@@ -1520,7 +1520,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Data Source Example: Retrieve Auth0 Phone Notification Templates
+     *         // Function Example: Retrieve Auth0 Phone Notification Templates
      *         // This example shows how to fetch existing phone notification templates from your Auth0 tenant
      *         // Retrieve the OTP enrollment template
      *         final var otpEnrollment = Auth0Functions.getBrandingPhoneNotificationTemplate(GetBrandingPhoneNotificationTemplateArgs.builder()
@@ -4863,7 +4863,7 @@ public final class Auth0Functions {
      *             .connectionId(myEnterpriseConnection.id())
      *             .build());
      * 
-     *         // A data source for an Auth0 Connection SCIM Configuration.
+     *         // A function for an Auth0 Connection SCIM Configuration.
      *         final var myConnScimConfigurationData = Auth0Functions.getConnectionScimConfiguration(GetConnectionScimConfigurationArgs.builder()
      *             .connectionId(myConnScimConfiguration.id())
      *             .build());
@@ -4927,7 +4927,7 @@ public final class Auth0Functions {
      *             .connectionId(myEnterpriseConnection.id())
      *             .build());
      * 
-     *         // A data source for an Auth0 Connection SCIM Configuration.
+     *         // A function for an Auth0 Connection SCIM Configuration.
      *         final var myConnScimConfigurationData = Auth0Functions.getConnectionScimConfiguration(GetConnectionScimConfigurationArgs.builder()
      *             .connectionId(myConnScimConfiguration.id())
      *             .build());
@@ -4991,7 +4991,7 @@ public final class Auth0Functions {
      *             .connectionId(myEnterpriseConnection.id())
      *             .build());
      * 
-     *         // A data source for an Auth0 Connection SCIM Configuration.
+     *         // A function for an Auth0 Connection SCIM Configuration.
      *         final var myConnScimConfigurationData = Auth0Functions.getConnectionScimConfiguration(GetConnectionScimConfigurationArgs.builder()
      *             .connectionId(myConnScimConfiguration.id())
      *             .build());
@@ -5055,7 +5055,7 @@ public final class Auth0Functions {
      *             .connectionId(myEnterpriseConnection.id())
      *             .build());
      * 
-     *         // A data source for an Auth0 Connection SCIM Configuration.
+     *         // A function for an Auth0 Connection SCIM Configuration.
      *         final var myConnScimConfigurationData = Auth0Functions.getConnectionScimConfiguration(GetConnectionScimConfigurationArgs.builder()
      *             .connectionId(myConnScimConfiguration.id())
      *             .build());
@@ -5119,7 +5119,7 @@ public final class Auth0Functions {
      *             .connectionId(myEnterpriseConnection.id())
      *             .build());
      * 
-     *         // A data source for an Auth0 Connection SCIM Configuration.
+     *         // A function for an Auth0 Connection SCIM Configuration.
      *         final var myConnScimConfigurationData = Auth0Functions.getConnectionScimConfiguration(GetConnectionScimConfigurationArgs.builder()
      *             .connectionId(myConnScimConfiguration.id())
      *             .build());
@@ -8330,7 +8330,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // An empty data source block retrieves every organization of the tenant.
+     *         // An empty function block retrieves every organization of the tenant.
      *         final var myOrganizations = Auth0Functions.getOrganizations(GetOrganizationsArgs.builder()
      *             .build());
      * 
@@ -8376,7 +8376,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // An empty data source block retrieves every organization of the tenant.
+     *         // An empty function block retrieves every organization of the tenant.
      *         final var myOrganizations = Auth0Functions.getOrganizations(GetOrganizationsArgs.builder()
      *             .build());
      * 
@@ -8422,7 +8422,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // An empty data source block retrieves every organization of the tenant.
+     *         // An empty function block retrieves every organization of the tenant.
      *         final var myOrganizations = Auth0Functions.getOrganizations(GetOrganizationsArgs.builder()
      *             .build());
      * 
@@ -8468,7 +8468,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // An empty data source block retrieves every organization of the tenant.
+     *         // An empty function block retrieves every organization of the tenant.
      *         final var myOrganizations = Auth0Functions.getOrganizations(GetOrganizationsArgs.builder()
      *             .build());
      * 
@@ -8514,7 +8514,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // An empty data source block retrieves every organization of the tenant.
+     *         // An empty function block retrieves every organization of the tenant.
      *         final var myOrganizations = Auth0Functions.getOrganizations(GetOrganizationsArgs.builder()
      *             .build());
      * 
@@ -8560,7 +8560,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // An empty data source block retrieves every organization of the tenant.
+     *         // An empty function block retrieves every organization of the tenant.
      *         final var myOrganizations = Auth0Functions.getOrganizations(GetOrganizationsArgs.builder()
      *             .build());
      * 
@@ -8606,7 +8606,7 @@ public final class Auth0Functions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // An empty data source block retrieves every organization of the tenant.
+     *         // An empty function block retrieves every organization of the tenant.
      *         final var myOrganizations = Auth0Functions.getOrganizations(GetOrganizationsArgs.builder()
      *             .build());
      * 

@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * const myClient = new auth0.Client("my_client", {name: "My Application"});
  * const myOtherClient = new auth0.Client("my_other_client", {name: "My Other Application"});
  * // Entitle both applications to the organization in one authoritative resource (EA only).
- * // Use this instead of auth0_organization_client when you want Terraform to own the full
+ * // Use this instead of auth0_organization_client when you want Pulumi to own the full
  * // set of associations; do not use both resources on the same organization.
  * const myOrgClients = new auth0.OrganizationClients("my_org_clients", {
  *     clients: [

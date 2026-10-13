@@ -73,7 +73,7 @@ import (
 //						Value: pulumi.String("Bar"),
 //					},
 //				},
-//				Name:    invokeFormat.Result,
+//				Name:    invokeFormat.Result.(pulumi.String),
 //				Runtime: pulumi.String("node22"),
 //				Deploy:  pulumi.Bool(true),
 //				Code: pulumi.String(`/**
@@ -115,7 +115,7 @@ import (
 //						Value: pulumi.String(actionApiKey),
 //					},
 //				},
-//				Name:             invokeFormat1.Result,
+//				Name:             invokeFormat1.Result.(pulumi.String),
 //				Runtime:          pulumi.String("node22"),
 //				Deploy:           pulumi.Bool(true),
 //				Code:             pulumi.String("exports.onExecutePostLogin = async (event, api) => {\n  console.log(event);\n};\n"),

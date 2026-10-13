@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as auth0 from "@pulumi/auth0";
  *
  * // Create an HMAC-SHA256 key for Network ACL HTTP Message Signature verification.
- * // The key material (value) is write-only and not stored in Terraform state.
+ * // The key material (value) is write-only and not stored in Pulumi state.
  * const myKey = new auth0.NetworkAclKey("my_key", {
  *     name: "my-hmac-key",
  *     alg: "hmac-sha256",

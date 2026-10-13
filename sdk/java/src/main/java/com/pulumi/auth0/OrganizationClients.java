@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Entitle both applications to the organization in one authoritative resource (EA only).
- *         // Use this instead of auth0_organization_client when you want Terraform to own the full
+ *         // Use this instead of auth0_organization_client when you want Pulumi to own the full
  *         // set of associations; do not use both resources on the same organization.
  *         var myOrgClients = new OrganizationClients("myOrgClients", OrganizationClientsArgs.builder()
  *             .clients(            

@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // This is an example of a Datadog log stream using a write-only API key
- *         // (recommended for security). The key is never stored in Terraform state.
+ *         // (recommended for security). The key is never stored in Pulumi state.
  *         var datadogSecure = new LogStream("datadogSecure", LogStreamArgs.builder()
  *             .sink(LogStreamSinkArgs.builder()
  *                 .datadogRegion("us")

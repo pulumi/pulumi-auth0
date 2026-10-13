@@ -33,12 +33,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			resourceServer, err := auth0.NewResourceServer(ctx, "resource_server", &auth0.ResourceServerArgs{
-//				Scopes: []map[string]string{
-//					{
+//				Scopes: []interface{}{
+//					map[string]string{
 //						"value":       "create:foo",
 //						"description": "Create foos",
 //					},
-//					{
+//					map[string]string{
 //						"value":       "create:bar",
 //						"description": "Create bars",
 //					},

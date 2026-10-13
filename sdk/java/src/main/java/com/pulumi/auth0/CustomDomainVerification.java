@@ -56,11 +56,11 @@ import javax.annotation.Nullable;
  * 
  *         var myDomainNameRecord = new Record("myDomainNameRecord", RecordArgs.builder()
  *             .domain("example.com")
- *             .type(StdFunctions.upper(Map.of("input", myCustomDomain.verifications()[0].methods()[0].name())).result())
+ *             .type(StdFunctions.upper(Map.of("input", myCustomDomain.verifications()[0].methods()[0].name())).get("result"))
  *             .name(StdFunctions.trimsuffix(Map.ofEntries(
  *                 Map.entry("input", myCustomDomain.verifications()[0].methods()[0].domain()),
  *                 Map.entry("suffix", ".example.com")
- *             )).result())
+ *             )).get("result"))
  *             .value(myCustomDomain.verifications()[0].methods()[0].record())
  *             .build());
  * 
