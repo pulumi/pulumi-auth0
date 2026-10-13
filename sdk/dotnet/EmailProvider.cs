@@ -122,7 +122,7 @@ namespace Pulumi.Auth0
     /// 
     ///     var customEmailProvider = new Auth0.EmailProvider("custom_email_provider", new()
     ///     {
-    ///         Credentials = null,
+    ///         Credentials = new() { },
     ///         Name = "custom",
     ///         Enabled = true,
     ///         DefaultFromAddress = "accounts@example.com",

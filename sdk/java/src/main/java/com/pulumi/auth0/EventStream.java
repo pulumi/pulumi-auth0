@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *         // Creates an event stream of type action
  *         var myEventStreamAction = new EventStream("myEventStreamAction", EventStreamArgs.builder()
  *             .actionConfiguration(EventStreamActionConfigurationArgs.builder()
- *                 .actionId(myAction.id())
+ *                 .actionId(myAction.get("id"))
  *                 .build())
  *             .name("my-action-stream")
  *             .destinationType("action")

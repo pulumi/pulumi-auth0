@@ -48,7 +48,7 @@ import (
 //				return err
 //			}
 //			// Entitle both applications to the organization in one authoritative resource (EA only).
-//			// Use this instead of auth0_organization_client when you want Terraform to own the full
+//			// Use this instead of auth0_organization_client when you want Pulumi to own the full
 //			// set of associations; do not use both resources on the same organization.
 //			_, err = auth0.NewOrganizationClients(ctx, "my_org_clients", &auth0.OrganizationClientsArgs{
 //				Clients: auth0.OrganizationClientsClientArray{

@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * // Data Source Example: Retrieve Auth0 Phone Notification Templates
+ * // Function Example: Retrieve Auth0 Phone Notification Templates
  * // This example shows how to fetch existing phone notification templates from your Auth0 tenant
  * // Retrieve the OTP enrollment template
  * const otpEnrollment = auth0.getBrandingPhoneNotificationTemplate({
@@ -87,7 +87,7 @@ export interface GetBrandingPhoneNotificationTemplateResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as auth0 from "@pulumi/auth0";
  *
- * // Data Source Example: Retrieve Auth0 Phone Notification Templates
+ * // Function Example: Retrieve Auth0 Phone Notification Templates
  * // This example shows how to fetch existing phone notification templates from your Auth0 tenant
  * // Retrieve the OTP enrollment template
  * const otpEnrollment = auth0.getBrandingPhoneNotificationTemplate({

@@ -85,7 +85,7 @@ def get_organizations(include_client_association_for: Optional[_builtins.str] = 
     import pulumi
     import pulumi_auth0 as auth0
 
-    # An empty data source block retrieves every organization of the tenant.
+    # An empty function block retrieves every organization of the tenant.
     my_organizations = auth0.get_organizations()
     # Setting include_client_association_for additionally returns, for every organization
     # associated with that client (application), the details of the association.
@@ -115,7 +115,7 @@ def get_organizations_output(include_client_association_for: pulumi.Input[Option
     import pulumi
     import pulumi_auth0 as auth0
 
-    # An empty data source block retrieves every organization of the tenant.
+    # An empty function block retrieves every organization of the tenant.
     my_organizations = auth0.get_organizations()
     # Setting include_client_association_for additionally returns, for every organization
     # associated with that client (application), the details of the association.

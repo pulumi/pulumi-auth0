@@ -145,7 +145,7 @@ def get_branding_phone_notification_template(template_id: Optional[_builtins.str
     import pulumi
     import pulumi_auth0 as auth0
 
-    # Data Source Example: Retrieve Auth0 Phone Notification Templates
+    # Function Example: Retrieve Auth0 Phone Notification Templates
     # This example shows how to fetch existing phone notification templates from your Auth0 tenant
     # Retrieve the OTP enrollment template
     otp_enrollment = auth0.get_branding_phone_notification_template(template_id="tem_xxxxxxxxxxxxxxxxx")
@@ -180,7 +180,7 @@ def get_branding_phone_notification_template_output(template_id: pulumi.Input[Op
     import pulumi
     import pulumi_auth0 as auth0
 
-    # Data Source Example: Retrieve Auth0 Phone Notification Templates
+    # Function Example: Retrieve Auth0 Phone Notification Templates
     # This example shows how to fetch existing phone notification templates from your Auth0 tenant
     # Retrieve the OTP enrollment template
     otp_enrollment = auth0.get_branding_phone_notification_template(template_id="tem_xxxxxxxxxxxxxxxxx")

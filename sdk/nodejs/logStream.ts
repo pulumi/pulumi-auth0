@@ -54,7 +54,7 @@ import * as utilities from "./utilities";
  *     status: "active",
  * });
  * // This is an example of a Datadog log stream using a write-only API key
- * // (recommended for security). The key is never stored in Terraform state.
+ * // (recommended for security). The key is never stored in Pulumi state.
  * const datadogSecure = new auth0.LogStream("datadog_secure", {
  *     sink: {
  *         datadogRegion: "us",

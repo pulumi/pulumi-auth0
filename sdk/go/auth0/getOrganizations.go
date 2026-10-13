@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// An empty data source block retrieves every organization of the tenant.
+//			// An empty function block retrieves every organization of the tenant.
 //			_, err := auth0.GetOrganizations(ctx, &auth0.GetOrganizationsArgs{}, nil)
 //			if err != nil {
 //				return err

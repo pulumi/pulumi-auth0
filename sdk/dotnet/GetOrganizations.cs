@@ -24,7 +24,7 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // An empty data source block retrieves every organization of the tenant.
+        ///     // An empty function block retrieves every organization of the tenant.
         ///     var myOrganizations = Auth0.GetOrganizations.Invoke();
         /// 
         ///     // Setting include_client_association_for additionally returns, for every organization
@@ -53,7 +53,7 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // An empty data source block retrieves every organization of the tenant.
+        ///     // An empty function block retrieves every organization of the tenant.
         ///     var myOrganizations = Auth0.GetOrganizations.Invoke();
         /// 
         ///     // Setting include_client_association_for additionally returns, for every organization
@@ -82,7 +82,7 @@ namespace Pulumi.Auth0
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // An empty data source block retrieves every organization of the tenant.
+        ///     // An empty function block retrieves every organization of the tenant.
         ///     var myOrganizations = Auth0.GetOrganizations.Invoke();
         /// 
         ///     // Setting include_client_association_for additionally returns, for every organization

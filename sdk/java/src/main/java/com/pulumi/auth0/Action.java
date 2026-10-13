@@ -90,8 +90,8 @@ import javax.annotation.Nullable;
  *             .name(StdFunctions.format(Map.ofEntries(
  *                 Map.entry("input", "Test Action %s"),
  *                 Map.entry("args", Arrays.asList(StdFunctions.timestamp(Map.ofEntries(
- *                 )).result()))
- *             )).result())
+ *                 )).get("result")))
+ *             )).get("result"))
  *             .runtime("node22")
  *             .deploy(true)
  *             .code("""
@@ -120,8 +120,8 @@ import javax.annotation.Nullable;
  *             .name(StdFunctions.format(Map.ofEntries(
  *                 Map.entry("input", "Secure Action %s"),
  *                 Map.entry("args", Arrays.asList(StdFunctions.timestamp(Map.ofEntries(
- *                 )).result()))
- *             )).result())
+ *                 )).get("result")))
+ *             )).get("result"))
  *             .runtime("node22")
  *             .deploy(true)
  *             .code("""

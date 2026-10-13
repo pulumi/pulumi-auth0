@@ -29,7 +29,7 @@ import * as utilities from "./utilities";
  *     strategy: "okta",
  * });
  * const myConnScimConfiguration = new auth0.ConnectionScimConfiguration("my_conn_scim_configuration", {connectionId: myEnterpriseConnection.id});
- * // A data source for an Auth0 Connection SCIM Configuration.
+ * // A function for an Auth0 Connection SCIM Configuration.
  * const myConnScimConfigurationData = auth0.getConnectionScimConfigurationOutput({
  *     connectionId: myConnScimConfiguration.id,
  * });
@@ -122,7 +122,7 @@ export interface GetConnectionScimConfigurationResult {
  *     strategy: "okta",
  * });
  * const myConnScimConfiguration = new auth0.ConnectionScimConfiguration("my_conn_scim_configuration", {connectionId: myEnterpriseConnection.id});
- * // A data source for an Auth0 Connection SCIM Configuration.
+ * // A function for an Auth0 Connection SCIM Configuration.
  * const myConnScimConfigurationData = auth0.getConnectionScimConfigurationOutput({
  *     connectionId: myConnScimConfiguration.id,
  * });

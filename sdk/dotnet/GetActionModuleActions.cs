@@ -39,7 +39,7 @@ namespace Pulumi.Auth0
         ///     });
         /// 
         ///     // Create an action that uses the module.
-        ///     // Use version_id directly from the module resource — no data source needed.
+        ///     // Use version_id directly from the module resource — no function needed.
         ///     var myAction1 = new Auth0.Action("my_action_1", new()
         ///     {
         ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
@@ -137,7 +137,7 @@ namespace Pulumi.Auth0
         ///     });
         /// 
         ///     // Create an action that uses the module.
-        ///     // Use version_id directly from the module resource — no data source needed.
+        ///     // Use version_id directly from the module resource — no function needed.
         ///     var myAction1 = new Auth0.Action("my_action_1", new()
         ///     {
         ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs
@@ -235,7 +235,7 @@ namespace Pulumi.Auth0
         ///     });
         /// 
         ///     // Create an action that uses the module.
-        ///     // Use version_id directly from the module resource — no data source needed.
+        ///     // Use version_id directly from the module resource — no function needed.
         ///     var myAction1 = new Auth0.Action("my_action_1", new()
         ///     {
         ///         SupportedTriggers = new Auth0.Inputs.ActionSupportedTriggersArgs

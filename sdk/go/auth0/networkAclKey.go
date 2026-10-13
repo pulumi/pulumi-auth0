@@ -29,7 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create an HMAC-SHA256 key for Network ACL HTTP Message Signature verification.
-//			// The key material (value) is write-only and not stored in Terraform state.
+//			// The key material (value) is write-only and not stored in Pulumi state.
 //			myKey, err := auth0.NewNetworkAclKey(ctx, "my_key", &auth0.NetworkAclKeyArgs{
 //				Name:  pulumi.String("my-hmac-key"),
 //				Alg:   pulumi.String("hmac-sha256"),

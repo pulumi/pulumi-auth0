@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *                 .pageBackground("#000000")
  *                 .build())
  *             .universalLogin(BrandingUniversalLoginArgs.builder()
- *                 .body(StdFunctions.file(Map.of("input", "universal_login_body.html")).result())
+ *                 .body(StdFunctions.file(Map.of("input", "universal_login_body.html")).get("result"))
  *                 .build())
  *             .logoUrl("https://mycompany.org/logo.png")
  *             .build());

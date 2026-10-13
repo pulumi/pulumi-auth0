@@ -46,7 +46,7 @@ namespace Pulumi.Auth0
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["totalVersions"] = myModuleVersions.Apply(getActionModuleVersionsResult =&gt; getActionModuleVersionsResult.Versions).Length(),
+        ///         ["totalVersions"] = myModuleVersions.Apply(getActionModuleVersionsResult =&gt; getActionModuleVersionsResult.Versions).Length,
         ///         ["latestVersionNumber"] = myModuleVersions.Apply(getActionModuleVersionsResult =&gt; getActionModuleVersionsResult.Versions[0]?.VersionNumber),
         ///         ["versionIds"] = .Select(v =&gt; 
         ///         {
@@ -94,7 +94,7 @@ namespace Pulumi.Auth0
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["totalVersions"] = myModuleVersions.Apply(getActionModuleVersionsResult =&gt; getActionModuleVersionsResult.Versions).Length(),
+        ///         ["totalVersions"] = myModuleVersions.Apply(getActionModuleVersionsResult =&gt; getActionModuleVersionsResult.Versions).Length,
         ///         ["latestVersionNumber"] = myModuleVersions.Apply(getActionModuleVersionsResult =&gt; getActionModuleVersionsResult.Versions[0]?.VersionNumber),
         ///         ["versionIds"] = .Select(v =&gt; 
         ///         {
@@ -142,7 +142,7 @@ namespace Pulumi.Auth0
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["totalVersions"] = myModuleVersions.Apply(getActionModuleVersionsResult =&gt; getActionModuleVersionsResult.Versions).Length(),
+        ///         ["totalVersions"] = myModuleVersions.Apply(getActionModuleVersionsResult =&gt; getActionModuleVersionsResult.Versions).Length,
         ///         ["latestVersionNumber"] = myModuleVersions.Apply(getActionModuleVersionsResult =&gt; getActionModuleVersionsResult.Versions[0]?.VersionNumber),
         ///         ["versionIds"] = .Select(v =&gt; 
         ///         {

@@ -161,7 +161,7 @@ def get_connection_scim_configuration(connection_id: Optional[_builtins.str] = N
         display_name="My Enterprise Connection",
         strategy="okta")
     my_conn_scim_configuration = auth0.ConnectionScimConfiguration("my_conn_scim_configuration", connection_id=my_enterprise_connection.id)
-    # A data source for an Auth0 Connection SCIM Configuration.
+    # A function for an Auth0 Connection SCIM Configuration.
     my_conn_scim_configuration_data = auth0.get_connection_scim_configuration_output(connection_id=my_conn_scim_configuration.id)
     ```
 
@@ -212,7 +212,7 @@ def get_connection_scim_configuration_output(connection_id: pulumi.Input[Optiona
         display_name="My Enterprise Connection",
         strategy="okta")
     my_conn_scim_configuration = auth0.ConnectionScimConfiguration("my_conn_scim_configuration", connection_id=my_enterprise_connection.id)
-    # A data source for an Auth0 Connection SCIM Configuration.
+    # A function for an Auth0 Connection SCIM Configuration.
     my_conn_scim_configuration_data = auth0.get_connection_scim_configuration_output(connection_id=my_conn_scim_configuration.id)
     ```
 

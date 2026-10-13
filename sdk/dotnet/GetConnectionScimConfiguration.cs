@@ -45,7 +45,7 @@ namespace Pulumi.Auth0
         ///         ConnectionId = myEnterpriseConnection.Id,
         ///     });
         /// 
-        ///     // A data source for an Auth0 Connection SCIM Configuration.
+        ///     // A function for an Auth0 Connection SCIM Configuration.
         ///     var myConnScimConfigurationData = Auth0.GetConnectionScimConfiguration.Invoke(new()
         ///     {
         ///         ConnectionId = myConnScimConfiguration.Id,
@@ -91,7 +91,7 @@ namespace Pulumi.Auth0
         ///         ConnectionId = myEnterpriseConnection.Id,
         ///     });
         /// 
-        ///     // A data source for an Auth0 Connection SCIM Configuration.
+        ///     // A function for an Auth0 Connection SCIM Configuration.
         ///     var myConnScimConfigurationData = Auth0.GetConnectionScimConfiguration.Invoke(new()
         ///     {
         ///         ConnectionId = myConnScimConfiguration.Id,
@@ -137,7 +137,7 @@ namespace Pulumi.Auth0
         ///         ConnectionId = myEnterpriseConnection.Id,
         ///     });
         /// 
-        ///     // A data source for an Auth0 Connection SCIM Configuration.
+        ///     // A function for an Auth0 Connection SCIM Configuration.
         ///     var myConnScimConfigurationData = Auth0.GetConnectionScimConfiguration.Invoke(new()
         ///     {
         ///         ConnectionId = myConnScimConfiguration.Id,

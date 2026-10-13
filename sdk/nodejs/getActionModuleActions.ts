@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  * `,
  * });
  * // Create an action that uses the module.
- * // Use version_id directly from the module resource — no data source needed.
+ * // Use version_id directly from the module resource — no function needed.
  * const myAction1 = new auth0.Action("my_action_1", {
  *     supportedTriggers: {
  *         id: "post-login",
@@ -132,7 +132,7 @@ export interface GetActionModuleActionsResult {
  * `,
  * });
  * // Create an action that uses the module.
- * // Use version_id directly from the module resource — no data source needed.
+ * // Use version_id directly from the module resource — no function needed.
  * const myAction1 = new auth0.Action("my_action_1", {
  *     supportedTriggers: {
  *         id: "post-login",

@@ -200,7 +200,7 @@ class NetworkAclKey(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         # Create an HMAC-SHA256 key for Network ACL HTTP Message Signature verification.
-        # The key material (value) is write-only and not stored in Terraform state.
+        # The key material (value) is write-only and not stored in Pulumi state.
         my_key = auth0.NetworkAclKey("my_key",
             name="my-hmac-key",
             alg="hmac-sha256",
@@ -249,7 +249,7 @@ class NetworkAclKey(pulumi.CustomResource):
         import pulumi_auth0 as auth0
 
         # Create an HMAC-SHA256 key for Network ACL HTTP Message Signature verification.
-        # The key material (value) is write-only and not stored in Terraform state.
+        # The key material (value) is write-only and not stored in Pulumi state.
         my_key = auth0.NetworkAclKey("my_key",
             name="my-hmac-key",
             alg="hmac-sha256",

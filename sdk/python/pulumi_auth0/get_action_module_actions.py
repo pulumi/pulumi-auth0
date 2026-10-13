@@ -109,7 +109,7 @@ def get_action_module_actions(module_id: Optional[_builtins.str] = None,
     };
     \"\"\")
     # Create an action that uses the module.
-    # Use version_id directly from the module resource — no data source needed.
+    # Use version_id directly from the module resource — no function needed.
     my_action1 = auth0.Action("my_action_1",
         supported_triggers={
             "id": "post-login",
@@ -185,7 +185,7 @@ def get_action_module_actions_output(module_id: pulumi.Input[Optional[_builtins.
     };
     \"\"\")
     # Create an action that uses the module.
-    # Use version_id directly from the module resource — no data source needed.
+    # Use version_id directly from the module resource — no function needed.
     my_action1 = auth0.Action("my_action_1",
         supported_triggers={
             "id": "post-login",
