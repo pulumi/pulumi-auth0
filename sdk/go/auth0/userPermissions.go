@@ -74,7 +74,7 @@ import (
 //						ResourceServerIdentifier: resourceServer.Identifier,
 //					},
 //				},
-//				UserId: user.ID().ToIDOutput().ToStringOutput(),
+//				UserId: user.ID(),
 //			})
 //			if err != nil {
 //				return err

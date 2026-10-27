@@ -48,7 +48,7 @@ import (
 //						HttpMessageSignature: &auth0.NetworkAclRuleNotMatchHttpMessageSignatureArgs{
 //							Keys: auth0.NetworkAclRuleNotMatchHttpMessageSignatureKeyArray{
 //								&auth0.NetworkAclRuleNotMatchHttpMessageSignatureKeyArgs{
-//									Id: myKey.ID().ToIDOutput().ToStringOutput(),
+//									Id: myKey.ID(),
 //								},
 //							},
 //						},

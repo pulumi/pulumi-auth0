@@ -70,7 +70,7 @@ import (
 //		},
 //		Modules: auth0.ActionModuleTypeArray{
 //			&auth0.ActionModuleTypeArgs{
-//				ModuleId:        myModule.ID().ToIDOutput().ToStringOutput(),
+//				ModuleId:        myModule.ID(),
 //				ModuleVersionId: myModule.VersionId,
 //			},
 //		},

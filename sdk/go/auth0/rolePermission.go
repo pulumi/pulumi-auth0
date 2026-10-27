@@ -82,7 +82,7 @@ import (
 //			var myRolePerm []*auth0.RolePermission
 //			for key0, val0 := range forResult1 {
 //				__res, err := auth0.NewRolePermission(ctx, fmt.Sprintf("my_role_perm-%v", key0), &auth0.RolePermissionArgs{
-//					RoleId:                   myRole.ID().ToIDOutput().ToStringOutput(),
+//					RoleId:                   myRole.ID(),
 //					ResourceServerIdentifier: resourceServer.Identifier,
 //					Permission:               pulumi.String(val0),
 //				})

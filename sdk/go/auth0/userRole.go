@@ -53,8 +53,8 @@ import (
 //				return err
 //			}
 //			_, err = auth0.NewUserRole(ctx, "user_roles", &auth0.UserRoleArgs{
-//				UserId: user.ID().ToIDOutput().ToStringOutput(),
-//				RoleId: admin.ID().ToIDOutput().ToStringOutput(),
+//				UserId: user.ID(),
+//				RoleId: admin.ID(),
 //			})
 //			if err != nil {
 //				return err

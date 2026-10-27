@@ -45,7 +45,7 @@ import (
 //			}
 //			// Configure directory provisioning with default settings
 //			_, err = auth0.NewConnectionDirectory(ctx, "default", &auth0.ConnectionDirectoryArgs{
-//				ConnectionId: googleWorkspace.ID().ToIDOutput().ToStringOutput(),
+//				ConnectionId: googleWorkspace.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -70,7 +70,7 @@ import (
 //						Idp:   pulumi.String("id"),
 //					},
 //				},
-//				ConnectionId:             googleWorkspace.ID().ToIDOutput().ToStringOutput(),
+//				ConnectionId:             googleWorkspace.ID(),
 //				SynchronizeAutomatically: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -78,7 +78,7 @@ import (
 //			}
 //			// Configure directory provisioning with selective group synchronization
 //			_, err = auth0.NewConnectionDirectory(ctx, "with_selected_groups", &auth0.ConnectionDirectoryArgs{
-//				ConnectionId:      googleWorkspace.ID().ToIDOutput().ToStringOutput(),
+//				ConnectionId:      googleWorkspace.ID(),
 //				SynchronizeGroups: pulumi.String("selected"),
 //			})
 //			if err != nil {

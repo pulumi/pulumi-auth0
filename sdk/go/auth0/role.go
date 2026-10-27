@@ -47,7 +47,7 @@ import (
 //				Name:        pulumi.String("My Organization Role - (Managed by Terraform)"),
 //				Description: pulumi.String("Organization Role Description..."),
 //				Type:        pulumi.String("organization"),
-//				OwnerId:     myOrganization.ID().ToIDOutput().ToStringOutput(),
+//				OwnerId:     myOrganization.ID(),
 //			})
 //			if err != nil {
 //				return err

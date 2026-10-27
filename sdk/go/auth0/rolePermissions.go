@@ -79,7 +79,7 @@ import (
 //					identifier := _args[1].(string)
 //					return forResult0, nil
 //				}).(pulumi.ArrayOutput),
-//				RoleId: myRole.ID().ToIDOutput().ToStringOutput(),
+//				RoleId: myRole.ID(),
 //			})
 //			if err != nil {
 //				return err

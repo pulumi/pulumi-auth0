@@ -44,7 +44,7 @@ import (
 //				return err
 //			}
 //			myDirectory, err := auth0.NewConnectionDirectory(ctx, "my_directory", &auth0.ConnectionDirectoryArgs{
-//				ConnectionId:      myConnection.ID().ToIDOutput().ToStringOutput(),
+//				ConnectionId:      myConnection.ID(),
 //				SynchronizeGroups: pulumi.String("selected"),
 //			})
 //			if err != nil {
@@ -62,7 +62,7 @@ import (
 //						DirectMembersCount: pulumi.Int(123),
 //					},
 //				},
-//				ConnectionId: myConnection.ID().ToIDOutput().ToStringOutput(),
+//				ConnectionId: myConnection.ID(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				myDirectory,
 //			}))

@@ -63,7 +63,7 @@ import (
 //			// A resource for configuring an Auth0 Connection SCIM Configuration, using default values.
 //			// Only one can be specified for a connection.
 //			_, err = auth0.NewConnectionScimConfiguration(ctx, "my_conn_scim_configuration_default", &auth0.ConnectionScimConfigurationArgs{
-//				ConnectionId: myEnterpriseConnection.ID().ToIDOutput().ToStringOutput(),
+//				ConnectionId: myEnterpriseConnection.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -81,7 +81,7 @@ import (
 //						Scim:  pulumi.String("sacim_attribute2"),
 //					},
 //				},
-//				ConnectionId:    myEnterpriseConnection2.ID().ToIDOutput().ToStringOutput(),
+//				ConnectionId:    myEnterpriseConnection2.ID(),
 //				UserIdAttribute: pulumi.String("attribute1"),
 //			})
 //			if err != nil {

@@ -64,7 +64,7 @@ import (
 //				return err
 //			}
 //			_, err = auth0.NewUserPermission(ctx, "user_permission_read", &auth0.UserPermissionArgs{
-//				UserId:                   user.ID().ToIDOutput().ToStringOutput(),
+//				UserId:                   user.ID(),
 //				ResourceServerIdentifier: resourceServer.Identifier,
 //				Permission:               resourceServer.Scopes[0],
 //			})

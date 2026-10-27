@@ -46,7 +46,7 @@ import (
 //			}
 //			// Retrieve the latest published version using the module's version_id directly
 //			myModuleVersion := auth0.GetActionModuleVersionOutput(ctx, auth0.GetActionModuleVersionOutputArgs{
-//				ModuleId:  myModule.ID().ToIDOutput().ToStringOutput(),
+//				ModuleId:  myModule.ID(),
 //				VersionId: myModule.VersionId,
 //			}, nil)
 //			ctx.Export("versionNumber", myModuleVersion.VersionNumber())

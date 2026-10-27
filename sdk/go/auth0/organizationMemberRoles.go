@@ -56,18 +56,18 @@ import (
 //				return err
 //			}
 //			_, err = auth0.NewOrganizationMember(ctx, "my_org_member", &auth0.OrganizationMemberArgs{
-//				OrganizationId: myOrg.ID().ToIDOutput().ToStringOutput(),
-//				UserId:         user.ID().ToIDOutput().ToStringOutput(),
+//				OrganizationId: myOrg.ID(),
+//				UserId:         user.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = auth0.NewOrganizationMemberRoles(ctx, "my_org_member_roles", &auth0.OrganizationMemberRolesArgs{
-//				OrganizationId: myOrg.ID().ToIDOutput().ToStringOutput(),
-//				UserId:         user.ID().ToIDOutput().ToStringOutput(),
+//				OrganizationId: myOrg.ID(),
+//				UserId:         user.ID(),
 //				Roles: pulumi.StringArray{
-//					reader.ID().ToIDOutput().ToStringOutput(),
-//					writer.ID().ToIDOutput().ToStringOutput(),
+//					reader.ID(),
+//					writer.ID(),
 //				},
 //			})
 //			if err != nil {

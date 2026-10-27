@@ -45,8 +45,8 @@ import (
 //			// from `auth0_organization_client_grant`, which associates the organization
 //			// with a client_grant instead of an application.
 //			_, err = auth0.NewOrganizationClient(ctx, "my_org_client", &auth0.OrganizationClientArgs{
-//				OrganizationId:     myOrganization.ID().ToIDOutput().ToStringOutput(),
-//				ClientId:           myClient.ID().ToIDOutput().ToStringOutput(),
+//				OrganizationId:     myOrganization.ID(),
+//				ClientId:           myClient.ID(),
 //				UseForMemberAccess: pulumi.Bool(true),
 //			})
 //			if err != nil {

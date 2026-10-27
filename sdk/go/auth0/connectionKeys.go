@@ -40,7 +40,7 @@ import (
 //			}
 //			oidc, err := auth0.NewConnection(ctx, "oidc", &auth0.ConnectionArgs{
 //				Options: &auth0.ConnectionOptionsArgs{
-//					ClientId: myClient.ID().ToIDOutput().ToStringOutput(),
+//					ClientId: myClient.ID(),
 //					Scopes: pulumi.StringArray{
 //						pulumi.String("ext_nested_groups"),
 //						pulumi.String("openid"),
@@ -61,7 +61,7 @@ import (
 //			}
 //			// Resource used to rotate the keys for above OIDC connection
 //			_, err = auth0.NewConnectionKeys(ctx, "my_keys", &auth0.ConnectionKeysArgs{
-//				ConnectionId: oidc.ID().ToIDOutput().ToStringOutput(),
+//				ConnectionId: oidc.ID(),
 //				Triggers: pulumi.StringMap{
 //					"version": pulumi.String("1"),
 //					"date":    pulumi.String("2023-10-01T00:00:00Z"),
