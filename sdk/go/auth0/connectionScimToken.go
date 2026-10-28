@@ -73,13 +73,13 @@ import (
 //				return err
 //			}
 //			myScimConfig, err := auth0.NewConnectionScimConfiguration(ctx, "my_scim_config", &auth0.ConnectionScimConfigurationArgs{
-//				ConnectionId: azureAd.ID().ToIDOutput().ToStringOutput(),
+//				ConnectionId: azureAd.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = auth0.NewConnectionScimToken(ctx, "my_scim_token", &auth0.ConnectionScimTokenArgs{
-//				ConnectionId: azureAd.ID().ToIDOutput().ToStringOutput(),
+//				ConnectionId: azureAd.ID(),
 //				Scopes: pulumi.StringArray{
 //					pulumi.String("post:users"),
 //					pulumi.String("get:users"),

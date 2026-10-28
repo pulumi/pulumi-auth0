@@ -65,11 +65,11 @@ import (
 //			_, err = auth0.NewTriggerActions(ctx, "login_flow", &auth0.TriggerActionsArgs{
 //				Actions: auth0.TriggerActionsActionArray{
 //					&auth0.TriggerActionsActionArgs{
-//						Id:          actionFoo.ID().ToIDOutput().ToStringOutput(),
+//						Id:          actionFoo.ID(),
 //						DisplayName: actionFoo.Name,
 //					},
 //					&auth0.TriggerActionsActionArgs{
-//						Id:          actionBar.ID().ToIDOutput().ToStringOutput(),
+//						Id:          actionBar.ID(),
 //						DisplayName: actionBar.Name,
 //					},
 //				},

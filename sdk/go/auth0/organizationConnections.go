@@ -57,19 +57,19 @@ import (
 //			_, err = auth0.NewOrganizationConnections(ctx, "one-to-many", &auth0.OrganizationConnectionsArgs{
 //				EnabledConnections: auth0.OrganizationConnectionsEnabledConnectionArray{
 //					&auth0.OrganizationConnectionsEnabledConnectionArgs{
-//						ConnectionId:            myConnection_1.ID().ToIDOutput().ToStringOutput(),
+//						ConnectionId:            myConnection_1.ID(),
 //						AssignMembershipOnLogin: pulumi.Bool(true),
 //						IsSignupEnabled:         pulumi.Bool(false),
 //						ShowAsButton:            pulumi.Bool(true),
 //					},
 //					&auth0.OrganizationConnectionsEnabledConnectionArgs{
-//						ConnectionId:            myConnection_2.ID().ToIDOutput().ToStringOutput(),
+//						ConnectionId:            myConnection_2.ID(),
 //						AssignMembershipOnLogin: pulumi.Bool(true),
 //						IsSignupEnabled:         pulumi.Bool(false),
 //						ShowAsButton:            pulumi.Bool(true),
 //					},
 //				},
-//				OrganizationId: myOrganization.ID().ToIDOutput().ToStringOutput(),
+//				OrganizationId: myOrganization.ID(),
 //			})
 //			if err != nil {
 //				return err

@@ -47,7 +47,7 @@ import (
 //			// Create a Client by referencing the newly created organisation or by reference an existing one.
 //			myTestClient, err := auth0.NewClient(ctx, "my_test_client", &auth0.ClientArgs{
 //				DefaultOrganization: &auth0.ClientDefaultOrganizationArgs{
-//					OrganizationId: myOrganization.ID().ToIDOutput().ToStringOutput(),
+//					OrganizationId: myOrganization.ID(),
 //					Flows: pulumi.StringArray{
 //						pulumi.String("client_credentials"),
 //					},
@@ -63,7 +63,7 @@ import (
 //			}
 //			// Create a client grant which is associated with the client and resource server.
 //			myClientGrant, err := auth0.NewClientGrant(ctx, "my_client_grant", &auth0.ClientGrantArgs{
-//				ClientId: myTestClient.ID().ToIDOutput().ToStringOutput(),
+//				ClientId: myTestClient.ID(),
 //				Audience: newResourceServer.Identifier,
 //				Scopes: pulumi.StringArray{
 //					pulumi.String("create:organization_client_grants"),
@@ -80,8 +80,8 @@ import (
 //			}
 //			// Create the organization and client grant association
 //			_, err = auth0.NewOrganizationClientGrant(ctx, "associate_org_client_grant", &auth0.OrganizationClientGrantArgs{
-//				OrganizationId: myOrganization.ID().ToIDOutput().ToStringOutput(),
-//				GrantId:        myClientGrant.ID().ToIDOutput().ToStringOutput(),
+//				OrganizationId: myOrganization.ID(),
+//				GrantId:        myClientGrant.ID(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				myClientGrant,
 //			}))

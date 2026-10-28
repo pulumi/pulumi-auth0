@@ -55,10 +55,10 @@ import (
 //			// One connection to many clients association.
 //			// To prevent issues, avoid using this resource together with the `auth0_connection_client` resource.
 //			_, err = auth0.NewConnectionClients(ctx, "my_conn_clients_assoc", &auth0.ConnectionClientsArgs{
-//				ConnectionId: myConn.ID().ToIDOutput().ToStringOutput(),
+//				ConnectionId: myConn.ID(),
 //				EnabledClients: pulumi.StringArray{
-//					myFirstClient.ID().ToIDOutput().ToStringOutput(),
-//					mySecondClient.ID().ToIDOutput().ToStringOutput(),
+//					myFirstClient.ID(),
+//					mySecondClient.ID(),
 //				},
 //			})
 //			if err != nil {

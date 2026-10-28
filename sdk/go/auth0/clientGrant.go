@@ -77,7 +77,7 @@ import (
 //				return err
 //			}
 //			_, err = auth0.NewClientGrant(ctx, "my_client_grant", &auth0.ClientGrantArgs{
-//				ClientId: myClient.ID().ToIDOutput().ToStringOutput(),
+//				ClientId: myClient.ID(),
 //				Audience: myResourceServer.Identifier,
 //				Scopes: pulumi.StringArray{
 //					pulumi.String("create:foo"),
@@ -109,7 +109,7 @@ import (
 //			// allow_any_organization, authorization_details_types, or default_for.
 //			// Anonymous Sessions is an Early Access feature.
 //			_, err = auth0.NewClientGrant(ctx, "my_anonymous_grant", &auth0.ClientGrantArgs{
-//				ClientId: myClient.ID().ToIDOutput().ToStringOutput(),
+//				ClientId: myClient.ID(),
 //				Audience: myResourceServer.Identifier,
 //				Scopes: pulumi.StringArray{
 //					pulumi.String("read:foo"),

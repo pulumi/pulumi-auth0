@@ -53,14 +53,14 @@ import (
 //			_, err = auth0.NewOrganizationClients(ctx, "my_org_clients", &auth0.OrganizationClientsArgs{
 //				Clients: auth0.OrganizationClientsClientArray{
 //					&auth0.OrganizationClientsClientArgs{
-//						ClientId:           myClient.ID().ToIDOutput().ToStringOutput(),
+//						ClientId:           myClient.ID(),
 //						UseForMemberAccess: pulumi.Bool(true),
 //					},
 //					&auth0.OrganizationClientsClientArgs{
-//						ClientId: myOtherClient.ID().ToIDOutput().ToStringOutput(),
+//						ClientId: myOtherClient.ID(),
 //					},
 //				},
-//				OrganizationId: myOrganization.ID().ToIDOutput().ToStringOutput(),
+//				OrganizationId: myOrganization.ID(),
 //			})
 //			if err != nil {
 //				return err

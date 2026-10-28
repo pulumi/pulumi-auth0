@@ -52,7 +52,7 @@ import (
 //				return err
 //			}
 //			_ = auth0.GetConnectionProfileOutput(ctx, auth0.GetConnectionProfileOutputArgs{
-//				Id: myProfile.ID().ToIDOutput().ToStringOutput(),
+//				Id: myProfile.ID(),
 //			}, nil)
 //			return nil
 //		})
