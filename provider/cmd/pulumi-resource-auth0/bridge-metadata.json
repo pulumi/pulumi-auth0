@@ -712,6 +712,57 @@
                     }
                 }
             },
+            "auth0_client_profile": {
+                "current": "auth0:index/clientProfile:ClientProfile",
+                "majorVersion": 3,
+                "fields": {
+                    "apply_policy": {
+                        "maxItemsOne": true
+                    },
+                    "client_configuration": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "organization_discovery_methods": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "default_value": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "organization_require_behavior": {
+                                    "maxItemsOne": true
+                                },
+                                "organization_usage": {
+                                    "maxItemsOne": true
+                                },
+                                "refresh_token": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "idle_token_lifetime": {
+                                                "maxItemsOne": true
+                                            },
+                                            "leeway": {
+                                                "maxItemsOne": true
+                                            },
+                                            "token_lifetime": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "require_proof_of_possession": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "auth0_connection": {
                 "current": "auth0:index/connection:Connection",
                 "majorVersion": 3,
@@ -1238,6 +1289,523 @@
                             "fields": {
                                 "webhook_authorization": {
                                     "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "auth0_experiment": {
+                "current": "auth0:index/experiment:Experiment",
+                "majorVersion": 3,
+                "fields": {
+                    "allocations": {
+                        "maxItemsOne": false
+                    },
+                    "editable_fields": {
+                        "maxItemsOne": false
+                    },
+                    "levels": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "auth0_experiment_feature_flag": {
+                "current": "auth0:index/experimentFeatureFlag:ExperimentFeatureFlag",
+                "majorVersion": 3,
+                "fields": {
+                    "parameters": {
+                        "maxItemsOne": false
+                    },
+                    "variations": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "overrides": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "auth0_experiment_segment": {
+                "current": "auth0:index/experimentSegment:ExperimentSegment",
+                "majorVersion": 3,
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "match": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "anonymous_session_metadata": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "browser": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "client_id": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "connection": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "connection_type": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "country": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "device_type": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "domain": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "organization_id": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "platform": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "region": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "user_agent": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "not_match": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "anonymous_session_metadata": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "browser": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "client_id": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "connection": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "connection_type": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "country": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "device_type": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "domain": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "organization_id": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "platform": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "region": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "user_agent": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -2698,6 +3266,57 @@
                     }
                 }
             },
+            "auth0_client_profile": {
+                "current": "auth0:index/getClientProfile:getClientProfile",
+                "majorVersion": 3,
+                "fields": {
+                    "apply_policy": {
+                        "maxItemsOne": false
+                    },
+                    "client_configuration": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "organization_discovery_methods": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "default_value": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "organization_require_behavior": {
+                                    "maxItemsOne": false
+                                },
+                                "organization_usage": {
+                                    "maxItemsOne": false
+                                },
+                                "refresh_token": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "idle_token_lifetime": {
+                                                "maxItemsOne": false
+                                            },
+                                            "leeway": {
+                                                "maxItemsOne": false
+                                            },
+                                            "token_lifetime": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "require_proof_of_possession": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "auth0_clients": {
                 "current": "auth0:index/getClients:getClients",
                 "majorVersion": 3,
@@ -3354,6 +3973,523 @@
                             "fields": {
                                 "webhook_authorization": {
                                     "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "auth0_experiment": {
+                "current": "auth0:index/getExperiment:getExperiment",
+                "majorVersion": 3,
+                "fields": {
+                    "allocations": {
+                        "maxItemsOne": false
+                    },
+                    "editable_fields": {
+                        "maxItemsOne": false
+                    },
+                    "levels": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "auth0_experiment_feature_flag": {
+                "current": "auth0:index/getExperimentFeatureFlag:getExperimentFeatureFlag",
+                "majorVersion": 3,
+                "fields": {
+                    "parameters": {
+                        "maxItemsOne": false
+                    },
+                    "variations": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "overrides": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "auth0_experiment_segment": {
+                "current": "auth0:index/getExperimentSegment:getExperimentSegment",
+                "majorVersion": 3,
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "match": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "anonymous_session_metadata": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "browser": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "client_id": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "connection": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "connection_type": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "country": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "device_type": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "domain": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "organization_id": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "platform": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "region": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "user_agent": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "not_match": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "anonymous_session_metadata": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "browser": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "client_id": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "connection": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "connection_type": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "country": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "device_type": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "domain": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "organization_id": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "platform": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "region": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "user_agent": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "contains": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ends_with": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "one_of": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "starts_with": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
