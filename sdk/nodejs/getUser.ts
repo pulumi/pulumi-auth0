@@ -96,7 +96,7 @@ export interface GetUserResult {
      */
     readonly nickname: string;
     /**
-     * Initial password for this user. Required for non-passwordless connections (SMS and email).
+     * Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `passwordWo`.
      */
     readonly password: string;
     /**

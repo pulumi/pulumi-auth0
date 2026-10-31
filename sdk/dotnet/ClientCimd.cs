@@ -64,6 +64,8 @@ namespace Pulumi.Auth0
     ///             "authorization_code",
     ///             "refresh_token",
     ///         },
+    ///         OrganizationUsage = "require",
+    ///         OrganizationRequireBehavior = "post_login_prompt",
     ///         ClientMetadata = 
     ///         {
     ///             { "environment", "production" },
@@ -200,6 +202,18 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("organizationDiscoveryMethods")]
         public Output<ImmutableArray<string>> OrganizationDiscoveryMethods { get; private set; } = null!;
+
+        /// <summary>
+        /// Defines how to proceed during an authentication transaction when `OrganizationUsage = "require"`. Can be `NoPrompt` (default), `PreLoginPrompt` or `PostLoginPrompt`.
+        /// </summary>
+        [Output("organizationRequireBehavior")]
+        public Output<string> OrganizationRequireBehavior { get; private set; } = null!;
+
+        /// <summary>
+        /// Defines how to proceed during an authentication transaction with regards to an organization. Can be `Deny` (default), `Allow` or `Require`.
+        /// </summary>
+        [Output("organizationUsage")]
+        public Output<string> OrganizationUsage { get; private set; } = null!;
 
         /// <summary>
         /// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.
@@ -396,6 +410,18 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
+        /// Defines how to proceed during an authentication transaction when `OrganizationUsage = "require"`. Can be `NoPrompt` (default), `PreLoginPrompt` or `PostLoginPrompt`.
+        /// </summary>
+        [Input("organizationRequireBehavior")]
+        public Input<string>? OrganizationRequireBehavior { get; set; }
+
+        /// <summary>
+        /// Defines how to proceed during an authentication transaction with regards to an organization. Can be `Deny` (default), `Allow` or `Require`.
+        /// </summary>
+        [Input("organizationUsage")]
+        public Input<string>? OrganizationUsage { get; set; }
+
+        /// <summary>
         /// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.
         /// </summary>
         [Input("redirectionPolicy")]
@@ -588,6 +614,18 @@ namespace Pulumi.Auth0
             get => _organizationDiscoveryMethods ?? (_organizationDiscoveryMethods = new InputList<string>());
             set => _organizationDiscoveryMethods = value;
         }
+
+        /// <summary>
+        /// Defines how to proceed during an authentication transaction when `OrganizationUsage = "require"`. Can be `NoPrompt` (default), `PreLoginPrompt` or `PostLoginPrompt`.
+        /// </summary>
+        [Input("organizationRequireBehavior")]
+        public Input<string>? OrganizationRequireBehavior { get; set; }
+
+        /// <summary>
+        /// Defines how to proceed during an authentication transaction with regards to an organization. Can be `Deny` (default), `Allow` or `Require`.
+        /// </summary>
+        [Input("organizationUsage")]
+        public Input<string>? OrganizationUsage { get; set; }
 
         /// <summary>
         /// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.

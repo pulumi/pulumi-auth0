@@ -1879,6 +1879,104 @@ export interface ClientOidcLogoutBackchannelLogoutSessionMetadata {
     include: boolean;
 }
 
+export interface ClientProfileApplyPolicy {
+    /**
+     * The creator of the clients to match. Defaults to `client`, which means the client was registered dynamically. Possible values: [client].
+     */
+    externalMetadataCreatedBy: string;
+    /**
+     * The type of external metadata of the clients to match. Defaults to `cimd`. Possible values: [cimd].
+     */
+    externalMetadataType: string;
+}
+
+export interface ClientProfileClientConfiguration {
+    /**
+     * Methods used to discover the organization during login. Requires the `organizationRequireBehavior` default value to be `preLoginPrompt`.
+     */
+    organizationDiscoveryMethods?: outputs.ClientProfileClientConfigurationOrganizationDiscoveryMethods;
+    /**
+     * Defines how to proceed during an authentication transaction when the organization usage is `require`.
+     */
+    organizationRequireBehavior?: outputs.ClientProfileClientConfigurationOrganizationRequireBehavior;
+    /**
+     * Whether matched clients can use organizations.
+     */
+    organizationUsage?: outputs.ClientProfileClientConfigurationOrganizationUsage;
+    /**
+     * Refresh token settings applied to matched clients. Auth0 replaces this block as a whole, so removing it clears all of its settings.
+     */
+    refreshToken?: outputs.ClientProfileClientConfigurationRefreshToken;
+    /**
+     * Whether matched clients must use proof of possession (DPoP) for their tokens.
+     */
+    requireProofOfPossession?: outputs.ClientProfileClientConfigurationRequireProofOfPossession;
+}
+
+export interface ClientProfileClientConfigurationOrganizationDiscoveryMethods {
+    /**
+     * Possible values: [email organizationName].
+     */
+    defaultValues: string[];
+}
+
+export interface ClientProfileClientConfigurationOrganizationRequireBehavior {
+    /**
+     * Possible values: [no*prompt pre*login*prompt post*login_prompt].
+     */
+    defaultValue: string;
+}
+
+export interface ClientProfileClientConfigurationOrganizationUsage {
+    /**
+     * Possible values: [deny allow require].
+     */
+    defaultValue: string;
+}
+
+export interface ClientProfileClientConfigurationRefreshToken {
+    /**
+     * The inactivity lifetime of a refresh token. It must not exceed `tokenLifetime`. If only one of `tokenLifetime` and `idleTokenLifetime` is set, Auth0 derives the other.
+     */
+    idleTokenLifetime: outputs.ClientProfileClientConfigurationRefreshTokenIdleTokenLifetime;
+    /**
+     * The period in which a refresh token may be reused without triggering reuse detection.
+     */
+    leeway?: outputs.ClientProfileClientConfigurationRefreshTokenLeeway;
+    /**
+     * The absolute lifetime of a refresh token. If only one of `tokenLifetime` and `idleTokenLifetime` is set, Auth0 derives the other.
+     */
+    tokenLifetime: outputs.ClientProfileClientConfigurationRefreshTokenTokenLifetime;
+}
+
+export interface ClientProfileClientConfigurationRefreshTokenIdleTokenLifetime {
+    /**
+     * The lifetime in seconds.
+     */
+    defaultValue: number;
+}
+
+export interface ClientProfileClientConfigurationRefreshTokenLeeway {
+    /**
+     * The leeway in seconds. `0` disables the leeway.
+     */
+    defaultValue: number;
+}
+
+export interface ClientProfileClientConfigurationRefreshTokenTokenLifetime {
+    /**
+     * The lifetime in seconds.
+     */
+    defaultValue: number;
+}
+
+export interface ClientProfileClientConfigurationRequireProofOfPossession {
+    /**
+     * Whether proof of possession is required.
+     */
+    defaultValue: boolean;
+}
+
 export interface ClientRefreshToken {
     /**
      * Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
@@ -3456,6 +3554,771 @@ export interface EventStreamWebhookConfigurationWebhookAuthorization {
      * The username for `basic` authentication. Required only when `method` is set to `basic`.
      */
     username?: string;
+}
+
+export interface ExperimentAllocation {
+    /**
+     * Whether this allocation is the control variation. At most one allocation can be the control.
+     */
+    isControl: boolean;
+    /**
+     * Whether this allocation is the fallback. Only for the segment strategy.
+     */
+    isFallback: boolean;
+    /**
+     * The evaluation priority of this allocation. Only for the segment strategy.
+     */
+    priority?: number;
+    /**
+     * The segment targeted by this allocation. Only for the segment strategy. Omit for the fallback allocation.
+     */
+    segmentId?: string;
+    /**
+     * The name of the targeted segment.
+     */
+    segmentName: string;
+    /**
+     * The snapshot of the segment.
+     */
+    segmentSnapshot: string;
+    /**
+     * The ID of the feature flag variation assigned to this allocation.
+     */
+    variationId: string;
+    /**
+     * The name of the assigned variation.
+     */
+    variationName: string;
+    /**
+     * The snapshot of the variation.
+     */
+    variationSnapshot: string;
+    /**
+     * The percentage weight of this allocation. Only for the percentage strategy. Omit when using levels.
+     */
+    weight?: number;
+}
+
+export interface ExperimentFeatureFlagParameter {
+    /**
+     * Description of the parameter.
+     */
+    description?: string;
+    /**
+     * The key of the parameter.
+     */
+    name: string;
+    /**
+     * The value type of the parameter. One of boolean, string, number, array, object
+     */
+    type: string;
+    /**
+     * The default value of the parameter, as a string. For `type = "object"` or `type = "array"` supply a JSON-encoded string; for `boolean`/`number` supply the literal value as a string.
+     */
+    value: string;
+}
+
+export interface ExperimentFeatureFlagVariation {
+    /**
+     * Description of the variation. Must contain 3 to 1024 characters when set.
+     */
+    description?: string;
+    /**
+     * The name of the variation. Must be unique within the feature flag and contain 3 to 255 characters without surrounding whitespace. Changing the name deletes the variation and creates a new one with a new ID.
+     */
+    name: string;
+    /**
+     * Parameter overrides for the variation. Omit for a control variation.
+     */
+    overrides?: outputs.ExperimentFeatureFlagVariationOverride[];
+}
+
+export interface ExperimentFeatureFlagVariationOverride {
+    /**
+     * The name of a parameter on the feature flag. Each name can appear once.
+     */
+    name: string;
+    /**
+     * The type of the parameter value. One of boolean, string, number, array, object.
+     */
+    type: string;
+    /**
+     * The override value as a string. For object and array values, provide JSON; for boolean and number values, provide their literal text.
+     */
+    value: string;
+}
+
+export interface ExperimentSegmentRule {
+    /**
+     * Attribute conditions that must match. Set between 1 and 10 attributes, including each `anonymousSessionMetadata` block. At least one of `match` or `notMatch` is required per rule.
+     */
+    match?: outputs.ExperimentSegmentRuleMatch;
+    /**
+     * Attribute conditions that must not match. Set between 1 and 10 attributes, including each `anonymousSessionMetadata` block. At least one of `match` or `notMatch` is required per rule.
+     */
+    notMatch?: outputs.ExperimentSegmentRuleNotMatch;
+}
+
+export interface ExperimentSegmentRuleMatch {
+    /**
+     * Condition on a namespaced `anonymous_session_metadata.<key>` attribute. Repeat the block once per key. Each key can appear only once per `match/not_match` block.
+     */
+    anonymousSessionMetadatas?: outputs.ExperimentSegmentRuleMatchAnonymousSessionMetadata[];
+    /**
+     * Condition on the `browser` attribute. Set exactly one operator.
+     */
+    browser?: outputs.ExperimentSegmentRuleMatchBrowser;
+    /**
+     * Condition on the `clientId` attribute. Set exactly one operator.
+     */
+    clientId?: outputs.ExperimentSegmentRuleMatchClientId;
+    /**
+     * Condition on the `connection` attribute. Set exactly one operator.
+     */
+    connection?: outputs.ExperimentSegmentRuleMatchConnection;
+    /**
+     * Condition on the `connectionType` attribute. Set exactly one operator.
+     */
+    connectionType?: outputs.ExperimentSegmentRuleMatchConnectionType;
+    /**
+     * Condition on the `country` attribute. Set exactly one operator.
+     */
+    country?: outputs.ExperimentSegmentRuleMatchCountry;
+    /**
+     * Condition on the `deviceType` attribute. Set exactly one operator.
+     */
+    deviceType?: outputs.ExperimentSegmentRuleMatchDeviceType;
+    /**
+     * Condition on the `domain` attribute. Set exactly one operator.
+     */
+    domain?: outputs.ExperimentSegmentRuleMatchDomain;
+    /**
+     * Condition on the `organizationId` attribute. Set exactly one operator.
+     */
+    organizationId?: outputs.ExperimentSegmentRuleMatchOrganizationId;
+    /**
+     * Condition on the `platform` attribute. Set exactly one operator.
+     */
+    platform?: outputs.ExperimentSegmentRuleMatchPlatform;
+    /**
+     * Condition on the `region` attribute. Set exactly one operator.
+     */
+    region?: outputs.ExperimentSegmentRuleMatchRegion;
+    /**
+     * Condition on the `userAgent` attribute. Set exactly one operator.
+     */
+    userAgent?: outputs.ExperimentSegmentRuleMatchUserAgent;
+}
+
+export interface ExperimentSegmentRuleMatchAnonymousSessionMetadata {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: string;
+    /**
+     * The metadata key, without the `anonymous_session_metadata.` prefix. Between 1 and 255 characters, not blank.
+     */
+    key: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: string[];
+}
+
+export interface ExperimentSegmentRuleMatchBrowser {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: string[];
+}
+
+export interface ExperimentSegmentRuleMatchClientId {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: string[];
+}
+
+export interface ExperimentSegmentRuleMatchConnection {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: string[];
+}
+
+export interface ExperimentSegmentRuleMatchConnectionType {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: string[];
+}
+
+export interface ExperimentSegmentRuleMatchCountry {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: string[];
+}
+
+export interface ExperimentSegmentRuleMatchDeviceType {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: string[];
+}
+
+export interface ExperimentSegmentRuleMatchDomain {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: string[];
+}
+
+export interface ExperimentSegmentRuleMatchOrganizationId {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: string[];
+}
+
+export interface ExperimentSegmentRuleMatchPlatform {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: string[];
+}
+
+export interface ExperimentSegmentRuleMatchRegion {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: string[];
+}
+
+export interface ExperimentSegmentRuleMatchUserAgent {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: string[];
+}
+
+export interface ExperimentSegmentRuleNotMatch {
+    /**
+     * Condition on a namespaced `anonymous_session_metadata.<key>` attribute. Repeat the block once per key. Each key can appear only once per `match/not_match` block.
+     */
+    anonymousSessionMetadatas?: outputs.ExperimentSegmentRuleNotMatchAnonymousSessionMetadata[];
+    /**
+     * Condition on the `browser` attribute. Set exactly one operator.
+     */
+    browser?: outputs.ExperimentSegmentRuleNotMatchBrowser;
+    /**
+     * Condition on the `clientId` attribute. Set exactly one operator.
+     */
+    clientId?: outputs.ExperimentSegmentRuleNotMatchClientId;
+    /**
+     * Condition on the `connection` attribute. Set exactly one operator.
+     */
+    connection?: outputs.ExperimentSegmentRuleNotMatchConnection;
+    /**
+     * Condition on the `connectionType` attribute. Set exactly one operator.
+     */
+    connectionType?: outputs.ExperimentSegmentRuleNotMatchConnectionType;
+    /**
+     * Condition on the `country` attribute. Set exactly one operator.
+     */
+    country?: outputs.ExperimentSegmentRuleNotMatchCountry;
+    /**
+     * Condition on the `deviceType` attribute. Set exactly one operator.
+     */
+    deviceType?: outputs.ExperimentSegmentRuleNotMatchDeviceType;
+    /**
+     * Condition on the `domain` attribute. Set exactly one operator.
+     */
+    domain?: outputs.ExperimentSegmentRuleNotMatchDomain;
+    /**
+     * Condition on the `organizationId` attribute. Set exactly one operator.
+     */
+    organizationId?: outputs.ExperimentSegmentRuleNotMatchOrganizationId;
+    /**
+     * Condition on the `platform` attribute. Set exactly one operator.
+     */
+    platform?: outputs.ExperimentSegmentRuleNotMatchPlatform;
+    /**
+     * Condition on the `region` attribute. Set exactly one operator.
+     */
+    region?: outputs.ExperimentSegmentRuleNotMatchRegion;
+    /**
+     * Condition on the `userAgent` attribute. Set exactly one operator.
+     */
+    userAgent?: outputs.ExperimentSegmentRuleNotMatchUserAgent;
+}
+
+export interface ExperimentSegmentRuleNotMatchAnonymousSessionMetadata {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: string;
+    /**
+     * The metadata key, without the `anonymous_session_metadata.` prefix. Between 1 and 255 characters, not blank.
+     */
+    key: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: string[];
+}
+
+export interface ExperimentSegmentRuleNotMatchBrowser {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: string[];
+}
+
+export interface ExperimentSegmentRuleNotMatchClientId {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: string[];
+}
+
+export interface ExperimentSegmentRuleNotMatchConnection {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: string[];
+}
+
+export interface ExperimentSegmentRuleNotMatchConnectionType {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: string[];
+}
+
+export interface ExperimentSegmentRuleNotMatchCountry {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: string[];
+}
+
+export interface ExperimentSegmentRuleNotMatchDeviceType {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: string[];
+}
+
+export interface ExperimentSegmentRuleNotMatchDomain {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: string[];
+}
+
+export interface ExperimentSegmentRuleNotMatchOrganizationId {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: string[];
+}
+
+export interface ExperimentSegmentRuleNotMatchPlatform {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: string[];
+}
+
+export interface ExperimentSegmentRuleNotMatchRegion {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: string[];
+}
+
+export interface ExperimentSegmentRuleNotMatchUserAgent {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: string[];
 }
 
 export interface FormLanguage {
@@ -5333,6 +6196,104 @@ export interface GetClientOidcLogoutBackchannelLogoutSessionMetadata {
      * The `include` property determines whether session metadata is included in the logout token.
      */
     include: boolean;
+}
+
+export interface GetClientProfileApplyPolicy {
+    /**
+     * The creator of the clients to match. Defaults to `client`, which means the client was registered dynamically. Possible values: [client].
+     */
+    externalMetadataCreatedBy: string;
+    /**
+     * The type of external metadata of the clients to match. Defaults to `cimd`. Possible values: [cimd].
+     */
+    externalMetadataType: string;
+}
+
+export interface GetClientProfileClientConfiguration {
+    /**
+     * Methods used to discover the organization during login. Requires the `organizationRequireBehavior` default value to be `preLoginPrompt`.
+     */
+    organizationDiscoveryMethods: outputs.GetClientProfileClientConfigurationOrganizationDiscoveryMethod[];
+    /**
+     * Defines how to proceed during an authentication transaction when the organization usage is `require`.
+     */
+    organizationRequireBehaviors: outputs.GetClientProfileClientConfigurationOrganizationRequireBehavior[];
+    /**
+     * Whether matched clients can use organizations.
+     */
+    organizationUsages: outputs.GetClientProfileClientConfigurationOrganizationUsage[];
+    /**
+     * Refresh token settings applied to matched clients. Auth0 replaces this block as a whole, so removing it clears all of its settings.
+     */
+    refreshTokens: outputs.GetClientProfileClientConfigurationRefreshToken[];
+    /**
+     * Whether matched clients must use proof of possession (DPoP) for their tokens.
+     */
+    requireProofOfPossessions: outputs.GetClientProfileClientConfigurationRequireProofOfPossession[];
+}
+
+export interface GetClientProfileClientConfigurationOrganizationDiscoveryMethod {
+    /**
+     * Possible values: [email organizationName].
+     */
+    defaultValues: string[];
+}
+
+export interface GetClientProfileClientConfigurationOrganizationRequireBehavior {
+    /**
+     * Possible values: [noPrompt pre_login_prompt postLoginPrompt].
+     */
+    defaultValue: string;
+}
+
+export interface GetClientProfileClientConfigurationOrganizationUsage {
+    /**
+     * Possible values: [deny allow require].
+     */
+    defaultValue: string;
+}
+
+export interface GetClientProfileClientConfigurationRefreshToken {
+    /**
+     * The inactivity lifetime of a refresh token. It must not exceed `tokenLifetime`. If only one of `tokenLifetime` and `idleTokenLifetime` is set, Auth0 derives the other.
+     */
+    idleTokenLifetimes: outputs.GetClientProfileClientConfigurationRefreshTokenIdleTokenLifetime[];
+    /**
+     * The period in which a refresh token may be reused without triggering reuse detection.
+     */
+    leeways: outputs.GetClientProfileClientConfigurationRefreshTokenLeeway[];
+    /**
+     * The absolute lifetime of a refresh token. If only one of `tokenLifetime` and `idleTokenLifetime` is set, Auth0 derives the other.
+     */
+    tokenLifetimes: outputs.GetClientProfileClientConfigurationRefreshTokenTokenLifetime[];
+}
+
+export interface GetClientProfileClientConfigurationRefreshTokenIdleTokenLifetime {
+    /**
+     * The lifetime in seconds.
+     */
+    defaultValue: number;
+}
+
+export interface GetClientProfileClientConfigurationRefreshTokenLeeway {
+    /**
+     * The leeway in seconds. `0` disables the leeway.
+     */
+    defaultValue: number;
+}
+
+export interface GetClientProfileClientConfigurationRefreshTokenTokenLifetime {
+    /**
+     * The lifetime in seconds.
+     */
+    defaultValue: number;
+}
+
+export interface GetClientProfileClientConfigurationRequireProofOfPossession {
+    /**
+     * Whether proof of possession is required.
+     */
+    defaultValue: boolean;
 }
 
 export interface GetClientRefreshToken {
@@ -7336,6 +8297,771 @@ export interface GetEventStreamWebhookConfigurationWebhookAuthorization {
      * The username for `basic` authentication. Required only when `method` is set to `basic`.
      */
     username: string;
+}
+
+export interface GetExperimentAllocation {
+    /**
+     * Whether this allocation is the control variation. At most one allocation can be the control.
+     */
+    isControl: boolean;
+    /**
+     * Whether this allocation is the fallback. Only for the segment strategy.
+     */
+    isFallback: boolean;
+    /**
+     * The evaluation priority of this allocation. Only for the segment strategy.
+     */
+    priority: number;
+    /**
+     * The segment targeted by this allocation. Only for the segment strategy. Omit for the fallback allocation.
+     */
+    segmentId: string;
+    /**
+     * The name of the targeted segment.
+     */
+    segmentName: string;
+    /**
+     * The snapshot of the segment.
+     */
+    segmentSnapshot: string;
+    /**
+     * The ID of the feature flag variation assigned to this allocation.
+     */
+    variationId: string;
+    /**
+     * The name of the assigned variation.
+     */
+    variationName: string;
+    /**
+     * The snapshot of the variation.
+     */
+    variationSnapshot: string;
+    /**
+     * The percentage weight of this allocation. Only for the percentage strategy. Omit when using levels.
+     */
+    weight: number;
+}
+
+export interface GetExperimentFeatureFlagParameter {
+    /**
+     * Description of the parameter.
+     */
+    description: string;
+    /**
+     * The key of the parameter.
+     */
+    name: string;
+    /**
+     * The value type of the parameter. One of boolean, string, number, array, object
+     */
+    type: string;
+    /**
+     * The default value of the parameter, as a string. For `type = "object"` or `type = "array"` supply a JSON-encoded string; for `boolean`/`number` supply the literal value as a string.
+     */
+    value: string;
+}
+
+export interface GetExperimentFeatureFlagVariation {
+    /**
+     * Description of the variation. Must contain 3 to 1024 characters when set.
+     */
+    description: string;
+    /**
+     * The name of the variation. Must be unique within the feature flag and contain 3 to 255 characters without surrounding whitespace. Changing the name deletes the variation and creates a new one with a new ID.
+     */
+    name: string;
+    /**
+     * Parameter overrides for the variation. Omit for a control variation.
+     */
+    overrides: outputs.GetExperimentFeatureFlagVariationOverride[];
+}
+
+export interface GetExperimentFeatureFlagVariationOverride {
+    /**
+     * The name of a parameter on the feature flag. Each name can appear once.
+     */
+    name: string;
+    /**
+     * The type of the parameter value. One of boolean, string, number, array, object.
+     */
+    type: string;
+    /**
+     * The override value as a string. For object and array values, provide JSON; for boolean and number values, provide their literal text.
+     */
+    value: string;
+}
+
+export interface GetExperimentSegmentRule {
+    /**
+     * Attribute conditions that must match. Set between 1 and 10 attributes, including each `anonymousSessionMetadata` block. At least one of `match` or `notMatch` is required per rule.
+     */
+    matches: outputs.GetExperimentSegmentRuleMatch[];
+    /**
+     * Attribute conditions that must not match. Set between 1 and 10 attributes, including each `anonymousSessionMetadata` block. At least one of `match` or `notMatch` is required per rule.
+     */
+    notMatches: outputs.GetExperimentSegmentRuleNotMatch[];
+}
+
+export interface GetExperimentSegmentRuleMatch {
+    /**
+     * Condition on a namespaced `anonymous_session_metadata.<key>` attribute. Repeat the block once per key. Each key can appear only once per `match/not_match` block.
+     */
+    anonymousSessionMetadatas: outputs.GetExperimentSegmentRuleMatchAnonymousSessionMetadata[];
+    /**
+     * Condition on the `browser` attribute. Set exactly one operator.
+     */
+    browsers: outputs.GetExperimentSegmentRuleMatchBrowser[];
+    /**
+     * Condition on the `clientId` attribute. Set exactly one operator.
+     */
+    clientIds: outputs.GetExperimentSegmentRuleMatchClientId[];
+    /**
+     * Condition on the `connectionType` attribute. Set exactly one operator.
+     */
+    connectionTypes: outputs.GetExperimentSegmentRuleMatchConnectionType[];
+    /**
+     * Condition on the `connection` attribute. Set exactly one operator.
+     */
+    connections: outputs.GetExperimentSegmentRuleMatchConnection[];
+    /**
+     * Condition on the `country` attribute. Set exactly one operator.
+     */
+    countries: outputs.GetExperimentSegmentRuleMatchCountry[];
+    /**
+     * Condition on the `deviceType` attribute. Set exactly one operator.
+     */
+    deviceTypes: outputs.GetExperimentSegmentRuleMatchDeviceType[];
+    /**
+     * Condition on the `domain` attribute. Set exactly one operator.
+     */
+    domains: outputs.GetExperimentSegmentRuleMatchDomain[];
+    /**
+     * Condition on the `organizationId` attribute. Set exactly one operator.
+     */
+    organizationIds: outputs.GetExperimentSegmentRuleMatchOrganizationId[];
+    /**
+     * Condition on the `platform` attribute. Set exactly one operator.
+     */
+    platforms: outputs.GetExperimentSegmentRuleMatchPlatform[];
+    /**
+     * Condition on the `region` attribute. Set exactly one operator.
+     */
+    regions: outputs.GetExperimentSegmentRuleMatchRegion[];
+    /**
+     * Condition on the `userAgent` attribute. Set exactly one operator.
+     */
+    userAgents: outputs.GetExperimentSegmentRuleMatchUserAgent[];
+}
+
+export interface GetExperimentSegmentRuleMatchAnonymousSessionMetadata {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists: string;
+    /**
+     * The metadata key, without the `anonymous_session_metadata.` prefix. Between 1 and 255 characters, not blank.
+     */
+    key: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths: string[];
+}
+
+export interface GetExperimentSegmentRuleMatchBrowser {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths: string[];
+}
+
+export interface GetExperimentSegmentRuleMatchClientId {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths: string[];
+}
+
+export interface GetExperimentSegmentRuleMatchConnection {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths: string[];
+}
+
+export interface GetExperimentSegmentRuleMatchConnectionType {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths: string[];
+}
+
+export interface GetExperimentSegmentRuleMatchCountry {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths: string[];
+}
+
+export interface GetExperimentSegmentRuleMatchDeviceType {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths: string[];
+}
+
+export interface GetExperimentSegmentRuleMatchDomain {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths: string[];
+}
+
+export interface GetExperimentSegmentRuleMatchOrganizationId {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths: string[];
+}
+
+export interface GetExperimentSegmentRuleMatchPlatform {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths: string[];
+}
+
+export interface GetExperimentSegmentRuleMatchRegion {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths: string[];
+}
+
+export interface GetExperimentSegmentRuleMatchUserAgent {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths: string[];
+}
+
+export interface GetExperimentSegmentRuleNotMatch {
+    /**
+     * Condition on a namespaced `anonymous_session_metadata.<key>` attribute. Repeat the block once per key. Each key can appear only once per `match/not_match` block.
+     */
+    anonymousSessionMetadatas: outputs.GetExperimentSegmentRuleNotMatchAnonymousSessionMetadata[];
+    /**
+     * Condition on the `browser` attribute. Set exactly one operator.
+     */
+    browsers: outputs.GetExperimentSegmentRuleNotMatchBrowser[];
+    /**
+     * Condition on the `clientId` attribute. Set exactly one operator.
+     */
+    clientIds: outputs.GetExperimentSegmentRuleNotMatchClientId[];
+    /**
+     * Condition on the `connectionType` attribute. Set exactly one operator.
+     */
+    connectionTypes: outputs.GetExperimentSegmentRuleNotMatchConnectionType[];
+    /**
+     * Condition on the `connection` attribute. Set exactly one operator.
+     */
+    connections: outputs.GetExperimentSegmentRuleNotMatchConnection[];
+    /**
+     * Condition on the `country` attribute. Set exactly one operator.
+     */
+    countries: outputs.GetExperimentSegmentRuleNotMatchCountry[];
+    /**
+     * Condition on the `deviceType` attribute. Set exactly one operator.
+     */
+    deviceTypes: outputs.GetExperimentSegmentRuleNotMatchDeviceType[];
+    /**
+     * Condition on the `domain` attribute. Set exactly one operator.
+     */
+    domains: outputs.GetExperimentSegmentRuleNotMatchDomain[];
+    /**
+     * Condition on the `organizationId` attribute. Set exactly one operator.
+     */
+    organizationIds: outputs.GetExperimentSegmentRuleNotMatchOrganizationId[];
+    /**
+     * Condition on the `platform` attribute. Set exactly one operator.
+     */
+    platforms: outputs.GetExperimentSegmentRuleNotMatchPlatform[];
+    /**
+     * Condition on the `region` attribute. Set exactly one operator.
+     */
+    regions: outputs.GetExperimentSegmentRuleNotMatchRegion[];
+    /**
+     * Condition on the `userAgent` attribute. Set exactly one operator.
+     */
+    userAgents: outputs.GetExperimentSegmentRuleNotMatchUserAgent[];
+}
+
+export interface GetExperimentSegmentRuleNotMatchAnonymousSessionMetadata {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists: string;
+    /**
+     * The metadata key, without the `anonymous_session_metadata.` prefix. Between 1 and 255 characters, not blank.
+     */
+    key: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths: string[];
+}
+
+export interface GetExperimentSegmentRuleNotMatchBrowser {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths: string[];
+}
+
+export interface GetExperimentSegmentRuleNotMatchClientId {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths: string[];
+}
+
+export interface GetExperimentSegmentRuleNotMatchConnection {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths: string[];
+}
+
+export interface GetExperimentSegmentRuleNotMatchConnectionType {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths: string[];
+}
+
+export interface GetExperimentSegmentRuleNotMatchCountry {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths: string[];
+}
+
+export interface GetExperimentSegmentRuleNotMatchDeviceType {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths: string[];
+}
+
+export interface GetExperimentSegmentRuleNotMatchDomain {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths: string[];
+}
+
+export interface GetExperimentSegmentRuleNotMatchOrganizationId {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths: string[];
+}
+
+export interface GetExperimentSegmentRuleNotMatchPlatform {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths: string[];
+}
+
+export interface GetExperimentSegmentRuleNotMatchRegion {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths: string[];
+}
+
+export interface GetExperimentSegmentRuleNotMatchUserAgent {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains: string[];
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths: string[];
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists: string;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs: string[];
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths: string[];
 }
 
 export interface GetFormLanguage {

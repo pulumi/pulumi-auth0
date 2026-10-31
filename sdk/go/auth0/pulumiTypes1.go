@@ -13,6 +13,4642 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetConnectionOptionAttributeUsernameValidation struct {
+	// Defines allowed types for for UserName attribute
+	AllowedTypes []GetConnectionOptionAttributeUsernameValidationAllowedType `pulumi:"allowedTypes"`
+	// Defines Max Length for User Name attribute
+	MaxLength int `pulumi:"maxLength"`
+	// Defines Min Length for User Name attribute
+	MinLength int `pulumi:"minLength"`
+}
+
+// GetConnectionOptionAttributeUsernameValidationInput is an input type that accepts GetConnectionOptionAttributeUsernameValidationArgs and GetConnectionOptionAttributeUsernameValidationOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeUsernameValidationInput` via:
+//
+//	GetConnectionOptionAttributeUsernameValidationArgs{...}
+type GetConnectionOptionAttributeUsernameValidationInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeUsernameValidationOutput() GetConnectionOptionAttributeUsernameValidationOutput
+	ToGetConnectionOptionAttributeUsernameValidationOutputWithContext(context.Context) GetConnectionOptionAttributeUsernameValidationOutput
+}
+
+type GetConnectionOptionAttributeUsernameValidationArgs struct {
+	// Defines allowed types for for UserName attribute
+	AllowedTypes GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayInput `pulumi:"allowedTypes"`
+	// Defines Max Length for User Name attribute
+	MaxLength pulumi.IntInput `pulumi:"maxLength"`
+	// Defines Min Length for User Name attribute
+	MinLength pulumi.IntInput `pulumi:"minLength"`
+}
+
+func (GetConnectionOptionAttributeUsernameValidationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeUsernameValidation)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeUsernameValidationArgs) ToGetConnectionOptionAttributeUsernameValidationOutput() GetConnectionOptionAttributeUsernameValidationOutput {
+	return i.ToGetConnectionOptionAttributeUsernameValidationOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeUsernameValidationArgs) ToGetConnectionOptionAttributeUsernameValidationOutputWithContext(ctx context.Context) GetConnectionOptionAttributeUsernameValidationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeUsernameValidationOutput)
+}
+
+// GetConnectionOptionAttributeUsernameValidationArrayInput is an input type that accepts GetConnectionOptionAttributeUsernameValidationArray and GetConnectionOptionAttributeUsernameValidationArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeUsernameValidationArrayInput` via:
+//
+//	GetConnectionOptionAttributeUsernameValidationArray{ GetConnectionOptionAttributeUsernameValidationArgs{...} }
+type GetConnectionOptionAttributeUsernameValidationArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeUsernameValidationArrayOutput() GetConnectionOptionAttributeUsernameValidationArrayOutput
+	ToGetConnectionOptionAttributeUsernameValidationArrayOutputWithContext(context.Context) GetConnectionOptionAttributeUsernameValidationArrayOutput
+}
+
+type GetConnectionOptionAttributeUsernameValidationArray []GetConnectionOptionAttributeUsernameValidationInput
+
+func (GetConnectionOptionAttributeUsernameValidationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeUsernameValidation)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeUsernameValidationArray) ToGetConnectionOptionAttributeUsernameValidationArrayOutput() GetConnectionOptionAttributeUsernameValidationArrayOutput {
+	return i.ToGetConnectionOptionAttributeUsernameValidationArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeUsernameValidationArray) ToGetConnectionOptionAttributeUsernameValidationArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeUsernameValidationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeUsernameValidationArrayOutput)
+}
+
+type GetConnectionOptionAttributeUsernameValidationOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeUsernameValidationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeUsernameValidation)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeUsernameValidationOutput) ToGetConnectionOptionAttributeUsernameValidationOutput() GetConnectionOptionAttributeUsernameValidationOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeUsernameValidationOutput) ToGetConnectionOptionAttributeUsernameValidationOutputWithContext(ctx context.Context) GetConnectionOptionAttributeUsernameValidationOutput {
+	return o
+}
+
+// Defines allowed types for for UserName attribute
+func (o GetConnectionOptionAttributeUsernameValidationOutput) AllowedTypes() GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeUsernameValidation) []GetConnectionOptionAttributeUsernameValidationAllowedType {
+		return v.AllowedTypes
+	}).(GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput)
+}
+
+// Defines Max Length for User Name attribute
+func (o GetConnectionOptionAttributeUsernameValidationOutput) MaxLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeUsernameValidation) int { return v.MaxLength }).(pulumi.IntOutput)
+}
+
+// Defines Min Length for User Name attribute
+func (o GetConnectionOptionAttributeUsernameValidationOutput) MinLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeUsernameValidation) int { return v.MinLength }).(pulumi.IntOutput)
+}
+
+type GetConnectionOptionAttributeUsernameValidationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeUsernameValidationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeUsernameValidation)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeUsernameValidationArrayOutput) ToGetConnectionOptionAttributeUsernameValidationArrayOutput() GetConnectionOptionAttributeUsernameValidationArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeUsernameValidationArrayOutput) ToGetConnectionOptionAttributeUsernameValidationArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeUsernameValidationArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeUsernameValidationArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAttributeUsernameValidationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAttributeUsernameValidation {
+		return vs[0].([]GetConnectionOptionAttributeUsernameValidation)[vs[1].(int)]
+	}).(GetConnectionOptionAttributeUsernameValidationOutput)
+}
+
+type GetConnectionOptionAttributeUsernameValidationAllowedType struct {
+	// One of the allowed types for UserName signup attribute
+	Email bool `pulumi:"email"`
+	// One of the allowed types for UserName signup attribute
+	PhoneNumber bool `pulumi:"phoneNumber"`
+}
+
+// GetConnectionOptionAttributeUsernameValidationAllowedTypeInput is an input type that accepts GetConnectionOptionAttributeUsernameValidationAllowedTypeArgs and GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeUsernameValidationAllowedTypeInput` via:
+//
+//	GetConnectionOptionAttributeUsernameValidationAllowedTypeArgs{...}
+type GetConnectionOptionAttributeUsernameValidationAllowedTypeInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeUsernameValidationAllowedTypeOutput() GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput
+	ToGetConnectionOptionAttributeUsernameValidationAllowedTypeOutputWithContext(context.Context) GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput
+}
+
+type GetConnectionOptionAttributeUsernameValidationAllowedTypeArgs struct {
+	// One of the allowed types for UserName signup attribute
+	Email pulumi.BoolInput `pulumi:"email"`
+	// One of the allowed types for UserName signup attribute
+	PhoneNumber pulumi.BoolInput `pulumi:"phoneNumber"`
+}
+
+func (GetConnectionOptionAttributeUsernameValidationAllowedTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeUsernameValidationAllowedType)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeUsernameValidationAllowedTypeArgs) ToGetConnectionOptionAttributeUsernameValidationAllowedTypeOutput() GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput {
+	return i.ToGetConnectionOptionAttributeUsernameValidationAllowedTypeOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeUsernameValidationAllowedTypeArgs) ToGetConnectionOptionAttributeUsernameValidationAllowedTypeOutputWithContext(ctx context.Context) GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput)
+}
+
+// GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayInput is an input type that accepts GetConnectionOptionAttributeUsernameValidationAllowedTypeArray and GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayInput` via:
+//
+//	GetConnectionOptionAttributeUsernameValidationAllowedTypeArray{ GetConnectionOptionAttributeUsernameValidationAllowedTypeArgs{...} }
+type GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput() GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput
+	ToGetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutputWithContext(context.Context) GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput
+}
+
+type GetConnectionOptionAttributeUsernameValidationAllowedTypeArray []GetConnectionOptionAttributeUsernameValidationAllowedTypeInput
+
+func (GetConnectionOptionAttributeUsernameValidationAllowedTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeUsernameValidationAllowedType)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeUsernameValidationAllowedTypeArray) ToGetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput() GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput {
+	return i.ToGetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeUsernameValidationAllowedTypeArray) ToGetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput)
+}
+
+type GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeUsernameValidationAllowedType)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput) ToGetConnectionOptionAttributeUsernameValidationAllowedTypeOutput() GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput) ToGetConnectionOptionAttributeUsernameValidationAllowedTypeOutputWithContext(ctx context.Context) GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput {
+	return o
+}
+
+// One of the allowed types for UserName signup attribute
+func (o GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput) Email() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeUsernameValidationAllowedType) bool { return v.Email }).(pulumi.BoolOutput)
+}
+
+// One of the allowed types for UserName signup attribute
+func (o GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput) PhoneNumber() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeUsernameValidationAllowedType) bool { return v.PhoneNumber }).(pulumi.BoolOutput)
+}
+
+type GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeUsernameValidationAllowedType)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput) ToGetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput() GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput) ToGetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAttributeUsernameValidationAllowedType {
+		return vs[0].([]GetConnectionOptionAttributeUsernameValidationAllowedType)[vs[1].(int)]
+	}).(GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput)
+}
+
+type GetConnectionOptionAuthenticationMethod struct {
+	// Configures Email OTP authentication
+	EmailOtps []GetConnectionOptionAuthenticationMethodEmailOtp `pulumi:"emailOtps"`
+	// Configures passkey authentication
+	Passkeys []GetConnectionOptionAuthenticationMethodPasskey `pulumi:"passkeys"`
+	// Configures password authentication
+	Passwords []GetConnectionOptionAuthenticationMethodPassword `pulumi:"passwords"`
+	// Configures Phone OTP authentication
+	PhoneOtps []GetConnectionOptionAuthenticationMethodPhoneOtp `pulumi:"phoneOtps"`
+}
+
+// GetConnectionOptionAuthenticationMethodInput is an input type that accepts GetConnectionOptionAuthenticationMethodArgs and GetConnectionOptionAuthenticationMethodOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAuthenticationMethodInput` via:
+//
+//	GetConnectionOptionAuthenticationMethodArgs{...}
+type GetConnectionOptionAuthenticationMethodInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAuthenticationMethodOutput() GetConnectionOptionAuthenticationMethodOutput
+	ToGetConnectionOptionAuthenticationMethodOutputWithContext(context.Context) GetConnectionOptionAuthenticationMethodOutput
+}
+
+type GetConnectionOptionAuthenticationMethodArgs struct {
+	// Configures Email OTP authentication
+	EmailOtps GetConnectionOptionAuthenticationMethodEmailOtpArrayInput `pulumi:"emailOtps"`
+	// Configures passkey authentication
+	Passkeys GetConnectionOptionAuthenticationMethodPasskeyArrayInput `pulumi:"passkeys"`
+	// Configures password authentication
+	Passwords GetConnectionOptionAuthenticationMethodPasswordArrayInput `pulumi:"passwords"`
+	// Configures Phone OTP authentication
+	PhoneOtps GetConnectionOptionAuthenticationMethodPhoneOtpArrayInput `pulumi:"phoneOtps"`
+}
+
+func (GetConnectionOptionAuthenticationMethodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAuthenticationMethod)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAuthenticationMethodArgs) ToGetConnectionOptionAuthenticationMethodOutput() GetConnectionOptionAuthenticationMethodOutput {
+	return i.ToGetConnectionOptionAuthenticationMethodOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAuthenticationMethodArgs) ToGetConnectionOptionAuthenticationMethodOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAuthenticationMethodOutput)
+}
+
+// GetConnectionOptionAuthenticationMethodArrayInput is an input type that accepts GetConnectionOptionAuthenticationMethodArray and GetConnectionOptionAuthenticationMethodArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAuthenticationMethodArrayInput` via:
+//
+//	GetConnectionOptionAuthenticationMethodArray{ GetConnectionOptionAuthenticationMethodArgs{...} }
+type GetConnectionOptionAuthenticationMethodArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAuthenticationMethodArrayOutput() GetConnectionOptionAuthenticationMethodArrayOutput
+	ToGetConnectionOptionAuthenticationMethodArrayOutputWithContext(context.Context) GetConnectionOptionAuthenticationMethodArrayOutput
+}
+
+type GetConnectionOptionAuthenticationMethodArray []GetConnectionOptionAuthenticationMethodInput
+
+func (GetConnectionOptionAuthenticationMethodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAuthenticationMethod)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAuthenticationMethodArray) ToGetConnectionOptionAuthenticationMethodArrayOutput() GetConnectionOptionAuthenticationMethodArrayOutput {
+	return i.ToGetConnectionOptionAuthenticationMethodArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAuthenticationMethodArray) ToGetConnectionOptionAuthenticationMethodArrayOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAuthenticationMethodArrayOutput)
+}
+
+type GetConnectionOptionAuthenticationMethodOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAuthenticationMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAuthenticationMethod)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAuthenticationMethodOutput) ToGetConnectionOptionAuthenticationMethodOutput() GetConnectionOptionAuthenticationMethodOutput {
+	return o
+}
+
+func (o GetConnectionOptionAuthenticationMethodOutput) ToGetConnectionOptionAuthenticationMethodOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodOutput {
+	return o
+}
+
+// Configures Email OTP authentication
+func (o GetConnectionOptionAuthenticationMethodOutput) EmailOtps() GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAuthenticationMethod) []GetConnectionOptionAuthenticationMethodEmailOtp {
+		return v.EmailOtps
+	}).(GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput)
+}
+
+// Configures passkey authentication
+func (o GetConnectionOptionAuthenticationMethodOutput) Passkeys() GetConnectionOptionAuthenticationMethodPasskeyArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAuthenticationMethod) []GetConnectionOptionAuthenticationMethodPasskey {
+		return v.Passkeys
+	}).(GetConnectionOptionAuthenticationMethodPasskeyArrayOutput)
+}
+
+// Configures password authentication
+func (o GetConnectionOptionAuthenticationMethodOutput) Passwords() GetConnectionOptionAuthenticationMethodPasswordArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAuthenticationMethod) []GetConnectionOptionAuthenticationMethodPassword {
+		return v.Passwords
+	}).(GetConnectionOptionAuthenticationMethodPasswordArrayOutput)
+}
+
+// Configures Phone OTP authentication
+func (o GetConnectionOptionAuthenticationMethodOutput) PhoneOtps() GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAuthenticationMethod) []GetConnectionOptionAuthenticationMethodPhoneOtp {
+		return v.PhoneOtps
+	}).(GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput)
+}
+
+type GetConnectionOptionAuthenticationMethodArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAuthenticationMethodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAuthenticationMethod)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAuthenticationMethodArrayOutput) ToGetConnectionOptionAuthenticationMethodArrayOutput() GetConnectionOptionAuthenticationMethodArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAuthenticationMethodArrayOutput) ToGetConnectionOptionAuthenticationMethodArrayOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAuthenticationMethodArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAuthenticationMethodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAuthenticationMethod {
+		return vs[0].([]GetConnectionOptionAuthenticationMethod)[vs[1].(int)]
+	}).(GetConnectionOptionAuthenticationMethodOutput)
+}
+
+type GetConnectionOptionAuthenticationMethodEmailOtp struct {
+	// Enables Email OTP authentication
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetConnectionOptionAuthenticationMethodEmailOtpInput is an input type that accepts GetConnectionOptionAuthenticationMethodEmailOtpArgs and GetConnectionOptionAuthenticationMethodEmailOtpOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAuthenticationMethodEmailOtpInput` via:
+//
+//	GetConnectionOptionAuthenticationMethodEmailOtpArgs{...}
+type GetConnectionOptionAuthenticationMethodEmailOtpInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAuthenticationMethodEmailOtpOutput() GetConnectionOptionAuthenticationMethodEmailOtpOutput
+	ToGetConnectionOptionAuthenticationMethodEmailOtpOutputWithContext(context.Context) GetConnectionOptionAuthenticationMethodEmailOtpOutput
+}
+
+type GetConnectionOptionAuthenticationMethodEmailOtpArgs struct {
+	// Enables Email OTP authentication
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetConnectionOptionAuthenticationMethodEmailOtpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAuthenticationMethodEmailOtp)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAuthenticationMethodEmailOtpArgs) ToGetConnectionOptionAuthenticationMethodEmailOtpOutput() GetConnectionOptionAuthenticationMethodEmailOtpOutput {
+	return i.ToGetConnectionOptionAuthenticationMethodEmailOtpOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAuthenticationMethodEmailOtpArgs) ToGetConnectionOptionAuthenticationMethodEmailOtpOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodEmailOtpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAuthenticationMethodEmailOtpOutput)
+}
+
+// GetConnectionOptionAuthenticationMethodEmailOtpArrayInput is an input type that accepts GetConnectionOptionAuthenticationMethodEmailOtpArray and GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAuthenticationMethodEmailOtpArrayInput` via:
+//
+//	GetConnectionOptionAuthenticationMethodEmailOtpArray{ GetConnectionOptionAuthenticationMethodEmailOtpArgs{...} }
+type GetConnectionOptionAuthenticationMethodEmailOtpArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAuthenticationMethodEmailOtpArrayOutput() GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput
+	ToGetConnectionOptionAuthenticationMethodEmailOtpArrayOutputWithContext(context.Context) GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput
+}
+
+type GetConnectionOptionAuthenticationMethodEmailOtpArray []GetConnectionOptionAuthenticationMethodEmailOtpInput
+
+func (GetConnectionOptionAuthenticationMethodEmailOtpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAuthenticationMethodEmailOtp)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAuthenticationMethodEmailOtpArray) ToGetConnectionOptionAuthenticationMethodEmailOtpArrayOutput() GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput {
+	return i.ToGetConnectionOptionAuthenticationMethodEmailOtpArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAuthenticationMethodEmailOtpArray) ToGetConnectionOptionAuthenticationMethodEmailOtpArrayOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput)
+}
+
+type GetConnectionOptionAuthenticationMethodEmailOtpOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAuthenticationMethodEmailOtpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAuthenticationMethodEmailOtp)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAuthenticationMethodEmailOtpOutput) ToGetConnectionOptionAuthenticationMethodEmailOtpOutput() GetConnectionOptionAuthenticationMethodEmailOtpOutput {
+	return o
+}
+
+func (o GetConnectionOptionAuthenticationMethodEmailOtpOutput) ToGetConnectionOptionAuthenticationMethodEmailOtpOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodEmailOtpOutput {
+	return o
+}
+
+// Enables Email OTP authentication
+func (o GetConnectionOptionAuthenticationMethodEmailOtpOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionAuthenticationMethodEmailOtp) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAuthenticationMethodEmailOtp)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput) ToGetConnectionOptionAuthenticationMethodEmailOtpArrayOutput() GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput) ToGetConnectionOptionAuthenticationMethodEmailOtpArrayOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAuthenticationMethodEmailOtpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAuthenticationMethodEmailOtp {
+		return vs[0].([]GetConnectionOptionAuthenticationMethodEmailOtp)[vs[1].(int)]
+	}).(GetConnectionOptionAuthenticationMethodEmailOtpOutput)
+}
+
+type GetConnectionOptionAuthenticationMethodPasskey struct {
+	// Enables passkey authentication
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetConnectionOptionAuthenticationMethodPasskeyInput is an input type that accepts GetConnectionOptionAuthenticationMethodPasskeyArgs and GetConnectionOptionAuthenticationMethodPasskeyOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAuthenticationMethodPasskeyInput` via:
+//
+//	GetConnectionOptionAuthenticationMethodPasskeyArgs{...}
+type GetConnectionOptionAuthenticationMethodPasskeyInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAuthenticationMethodPasskeyOutput() GetConnectionOptionAuthenticationMethodPasskeyOutput
+	ToGetConnectionOptionAuthenticationMethodPasskeyOutputWithContext(context.Context) GetConnectionOptionAuthenticationMethodPasskeyOutput
+}
+
+type GetConnectionOptionAuthenticationMethodPasskeyArgs struct {
+	// Enables passkey authentication
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetConnectionOptionAuthenticationMethodPasskeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAuthenticationMethodPasskey)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAuthenticationMethodPasskeyArgs) ToGetConnectionOptionAuthenticationMethodPasskeyOutput() GetConnectionOptionAuthenticationMethodPasskeyOutput {
+	return i.ToGetConnectionOptionAuthenticationMethodPasskeyOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAuthenticationMethodPasskeyArgs) ToGetConnectionOptionAuthenticationMethodPasskeyOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodPasskeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAuthenticationMethodPasskeyOutput)
+}
+
+// GetConnectionOptionAuthenticationMethodPasskeyArrayInput is an input type that accepts GetConnectionOptionAuthenticationMethodPasskeyArray and GetConnectionOptionAuthenticationMethodPasskeyArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAuthenticationMethodPasskeyArrayInput` via:
+//
+//	GetConnectionOptionAuthenticationMethodPasskeyArray{ GetConnectionOptionAuthenticationMethodPasskeyArgs{...} }
+type GetConnectionOptionAuthenticationMethodPasskeyArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAuthenticationMethodPasskeyArrayOutput() GetConnectionOptionAuthenticationMethodPasskeyArrayOutput
+	ToGetConnectionOptionAuthenticationMethodPasskeyArrayOutputWithContext(context.Context) GetConnectionOptionAuthenticationMethodPasskeyArrayOutput
+}
+
+type GetConnectionOptionAuthenticationMethodPasskeyArray []GetConnectionOptionAuthenticationMethodPasskeyInput
+
+func (GetConnectionOptionAuthenticationMethodPasskeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAuthenticationMethodPasskey)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAuthenticationMethodPasskeyArray) ToGetConnectionOptionAuthenticationMethodPasskeyArrayOutput() GetConnectionOptionAuthenticationMethodPasskeyArrayOutput {
+	return i.ToGetConnectionOptionAuthenticationMethodPasskeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAuthenticationMethodPasskeyArray) ToGetConnectionOptionAuthenticationMethodPasskeyArrayOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodPasskeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAuthenticationMethodPasskeyArrayOutput)
+}
+
+type GetConnectionOptionAuthenticationMethodPasskeyOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAuthenticationMethodPasskeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAuthenticationMethodPasskey)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAuthenticationMethodPasskeyOutput) ToGetConnectionOptionAuthenticationMethodPasskeyOutput() GetConnectionOptionAuthenticationMethodPasskeyOutput {
+	return o
+}
+
+func (o GetConnectionOptionAuthenticationMethodPasskeyOutput) ToGetConnectionOptionAuthenticationMethodPasskeyOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodPasskeyOutput {
+	return o
+}
+
+// Enables passkey authentication
+func (o GetConnectionOptionAuthenticationMethodPasskeyOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionAuthenticationMethodPasskey) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetConnectionOptionAuthenticationMethodPasskeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAuthenticationMethodPasskeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAuthenticationMethodPasskey)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAuthenticationMethodPasskeyArrayOutput) ToGetConnectionOptionAuthenticationMethodPasskeyArrayOutput() GetConnectionOptionAuthenticationMethodPasskeyArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAuthenticationMethodPasskeyArrayOutput) ToGetConnectionOptionAuthenticationMethodPasskeyArrayOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodPasskeyArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAuthenticationMethodPasskeyArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAuthenticationMethodPasskeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAuthenticationMethodPasskey {
+		return vs[0].([]GetConnectionOptionAuthenticationMethodPasskey)[vs[1].(int)]
+	}).(GetConnectionOptionAuthenticationMethodPasskeyOutput)
+}
+
+type GetConnectionOptionAuthenticationMethodPassword struct {
+	// Specifies whether password is required or optional when creating users via API. Possible values: "required", "optional". Defaults to "required".
+	ApiBehavior string `pulumi:"apiBehavior"`
+	// Enables password authentication
+	Enabled bool `pulumi:"enabled"`
+	// Specifies whether password is allowed or blocked during signup flows. Possible values: "allow", "block". Defaults to "allow".
+	SignupBehavior string `pulumi:"signupBehavior"`
+}
+
+// GetConnectionOptionAuthenticationMethodPasswordInput is an input type that accepts GetConnectionOptionAuthenticationMethodPasswordArgs and GetConnectionOptionAuthenticationMethodPasswordOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAuthenticationMethodPasswordInput` via:
+//
+//	GetConnectionOptionAuthenticationMethodPasswordArgs{...}
+type GetConnectionOptionAuthenticationMethodPasswordInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAuthenticationMethodPasswordOutput() GetConnectionOptionAuthenticationMethodPasswordOutput
+	ToGetConnectionOptionAuthenticationMethodPasswordOutputWithContext(context.Context) GetConnectionOptionAuthenticationMethodPasswordOutput
+}
+
+type GetConnectionOptionAuthenticationMethodPasswordArgs struct {
+	// Specifies whether password is required or optional when creating users via API. Possible values: "required", "optional". Defaults to "required".
+	ApiBehavior pulumi.StringInput `pulumi:"apiBehavior"`
+	// Enables password authentication
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Specifies whether password is allowed or blocked during signup flows. Possible values: "allow", "block". Defaults to "allow".
+	SignupBehavior pulumi.StringInput `pulumi:"signupBehavior"`
+}
+
+func (GetConnectionOptionAuthenticationMethodPasswordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAuthenticationMethodPassword)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAuthenticationMethodPasswordArgs) ToGetConnectionOptionAuthenticationMethodPasswordOutput() GetConnectionOptionAuthenticationMethodPasswordOutput {
+	return i.ToGetConnectionOptionAuthenticationMethodPasswordOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAuthenticationMethodPasswordArgs) ToGetConnectionOptionAuthenticationMethodPasswordOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodPasswordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAuthenticationMethodPasswordOutput)
+}
+
+// GetConnectionOptionAuthenticationMethodPasswordArrayInput is an input type that accepts GetConnectionOptionAuthenticationMethodPasswordArray and GetConnectionOptionAuthenticationMethodPasswordArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAuthenticationMethodPasswordArrayInput` via:
+//
+//	GetConnectionOptionAuthenticationMethodPasswordArray{ GetConnectionOptionAuthenticationMethodPasswordArgs{...} }
+type GetConnectionOptionAuthenticationMethodPasswordArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAuthenticationMethodPasswordArrayOutput() GetConnectionOptionAuthenticationMethodPasswordArrayOutput
+	ToGetConnectionOptionAuthenticationMethodPasswordArrayOutputWithContext(context.Context) GetConnectionOptionAuthenticationMethodPasswordArrayOutput
+}
+
+type GetConnectionOptionAuthenticationMethodPasswordArray []GetConnectionOptionAuthenticationMethodPasswordInput
+
+func (GetConnectionOptionAuthenticationMethodPasswordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAuthenticationMethodPassword)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAuthenticationMethodPasswordArray) ToGetConnectionOptionAuthenticationMethodPasswordArrayOutput() GetConnectionOptionAuthenticationMethodPasswordArrayOutput {
+	return i.ToGetConnectionOptionAuthenticationMethodPasswordArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAuthenticationMethodPasswordArray) ToGetConnectionOptionAuthenticationMethodPasswordArrayOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodPasswordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAuthenticationMethodPasswordArrayOutput)
+}
+
+type GetConnectionOptionAuthenticationMethodPasswordOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAuthenticationMethodPasswordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAuthenticationMethodPassword)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAuthenticationMethodPasswordOutput) ToGetConnectionOptionAuthenticationMethodPasswordOutput() GetConnectionOptionAuthenticationMethodPasswordOutput {
+	return o
+}
+
+func (o GetConnectionOptionAuthenticationMethodPasswordOutput) ToGetConnectionOptionAuthenticationMethodPasswordOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodPasswordOutput {
+	return o
+}
+
+// Specifies whether password is required or optional when creating users via API. Possible values: "required", "optional". Defaults to "required".
+func (o GetConnectionOptionAuthenticationMethodPasswordOutput) ApiBehavior() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionAuthenticationMethodPassword) string { return v.ApiBehavior }).(pulumi.StringOutput)
+}
+
+// Enables password authentication
+func (o GetConnectionOptionAuthenticationMethodPasswordOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionAuthenticationMethodPassword) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Specifies whether password is allowed or blocked during signup flows. Possible values: "allow", "block". Defaults to "allow".
+func (o GetConnectionOptionAuthenticationMethodPasswordOutput) SignupBehavior() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionAuthenticationMethodPassword) string { return v.SignupBehavior }).(pulumi.StringOutput)
+}
+
+type GetConnectionOptionAuthenticationMethodPasswordArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAuthenticationMethodPasswordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAuthenticationMethodPassword)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAuthenticationMethodPasswordArrayOutput) ToGetConnectionOptionAuthenticationMethodPasswordArrayOutput() GetConnectionOptionAuthenticationMethodPasswordArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAuthenticationMethodPasswordArrayOutput) ToGetConnectionOptionAuthenticationMethodPasswordArrayOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodPasswordArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAuthenticationMethodPasswordArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAuthenticationMethodPasswordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAuthenticationMethodPassword {
+		return vs[0].([]GetConnectionOptionAuthenticationMethodPassword)[vs[1].(int)]
+	}).(GetConnectionOptionAuthenticationMethodPasswordOutput)
+}
+
+type GetConnectionOptionAuthenticationMethodPhoneOtp struct {
+	// Enables Phone OTP authentication
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetConnectionOptionAuthenticationMethodPhoneOtpInput is an input type that accepts GetConnectionOptionAuthenticationMethodPhoneOtpArgs and GetConnectionOptionAuthenticationMethodPhoneOtpOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAuthenticationMethodPhoneOtpInput` via:
+//
+//	GetConnectionOptionAuthenticationMethodPhoneOtpArgs{...}
+type GetConnectionOptionAuthenticationMethodPhoneOtpInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAuthenticationMethodPhoneOtpOutput() GetConnectionOptionAuthenticationMethodPhoneOtpOutput
+	ToGetConnectionOptionAuthenticationMethodPhoneOtpOutputWithContext(context.Context) GetConnectionOptionAuthenticationMethodPhoneOtpOutput
+}
+
+type GetConnectionOptionAuthenticationMethodPhoneOtpArgs struct {
+	// Enables Phone OTP authentication
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetConnectionOptionAuthenticationMethodPhoneOtpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAuthenticationMethodPhoneOtp)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAuthenticationMethodPhoneOtpArgs) ToGetConnectionOptionAuthenticationMethodPhoneOtpOutput() GetConnectionOptionAuthenticationMethodPhoneOtpOutput {
+	return i.ToGetConnectionOptionAuthenticationMethodPhoneOtpOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAuthenticationMethodPhoneOtpArgs) ToGetConnectionOptionAuthenticationMethodPhoneOtpOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodPhoneOtpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAuthenticationMethodPhoneOtpOutput)
+}
+
+// GetConnectionOptionAuthenticationMethodPhoneOtpArrayInput is an input type that accepts GetConnectionOptionAuthenticationMethodPhoneOtpArray and GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAuthenticationMethodPhoneOtpArrayInput` via:
+//
+//	GetConnectionOptionAuthenticationMethodPhoneOtpArray{ GetConnectionOptionAuthenticationMethodPhoneOtpArgs{...} }
+type GetConnectionOptionAuthenticationMethodPhoneOtpArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput() GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput
+	ToGetConnectionOptionAuthenticationMethodPhoneOtpArrayOutputWithContext(context.Context) GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput
+}
+
+type GetConnectionOptionAuthenticationMethodPhoneOtpArray []GetConnectionOptionAuthenticationMethodPhoneOtpInput
+
+func (GetConnectionOptionAuthenticationMethodPhoneOtpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAuthenticationMethodPhoneOtp)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAuthenticationMethodPhoneOtpArray) ToGetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput() GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput {
+	return i.ToGetConnectionOptionAuthenticationMethodPhoneOtpArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAuthenticationMethodPhoneOtpArray) ToGetConnectionOptionAuthenticationMethodPhoneOtpArrayOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput)
+}
+
+type GetConnectionOptionAuthenticationMethodPhoneOtpOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAuthenticationMethodPhoneOtpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAuthenticationMethodPhoneOtp)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAuthenticationMethodPhoneOtpOutput) ToGetConnectionOptionAuthenticationMethodPhoneOtpOutput() GetConnectionOptionAuthenticationMethodPhoneOtpOutput {
+	return o
+}
+
+func (o GetConnectionOptionAuthenticationMethodPhoneOtpOutput) ToGetConnectionOptionAuthenticationMethodPhoneOtpOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodPhoneOtpOutput {
+	return o
+}
+
+// Enables Phone OTP authentication
+func (o GetConnectionOptionAuthenticationMethodPhoneOtpOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionAuthenticationMethodPhoneOtp) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAuthenticationMethodPhoneOtp)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput) ToGetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput() GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput) ToGetConnectionOptionAuthenticationMethodPhoneOtpArrayOutputWithContext(ctx context.Context) GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAuthenticationMethodPhoneOtpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAuthenticationMethodPhoneOtp {
+		return vs[0].([]GetConnectionOptionAuthenticationMethodPhoneOtp)[vs[1].(int)]
+	}).(GetConnectionOptionAuthenticationMethodPhoneOtpOutput)
+}
+
+type GetConnectionOptionConnectionSetting struct {
+	// PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `S256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
+	Pkce string `pulumi:"pkce"`
+}
+
+// GetConnectionOptionConnectionSettingInput is an input type that accepts GetConnectionOptionConnectionSettingArgs and GetConnectionOptionConnectionSettingOutput values.
+// You can construct a concrete instance of `GetConnectionOptionConnectionSettingInput` via:
+//
+//	GetConnectionOptionConnectionSettingArgs{...}
+type GetConnectionOptionConnectionSettingInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionConnectionSettingOutput() GetConnectionOptionConnectionSettingOutput
+	ToGetConnectionOptionConnectionSettingOutputWithContext(context.Context) GetConnectionOptionConnectionSettingOutput
+}
+
+type GetConnectionOptionConnectionSettingArgs struct {
+	// PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `S256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
+	Pkce pulumi.StringInput `pulumi:"pkce"`
+}
+
+func (GetConnectionOptionConnectionSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionConnectionSetting)(nil)).Elem()
+}
+
+func (i GetConnectionOptionConnectionSettingArgs) ToGetConnectionOptionConnectionSettingOutput() GetConnectionOptionConnectionSettingOutput {
+	return i.ToGetConnectionOptionConnectionSettingOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionConnectionSettingArgs) ToGetConnectionOptionConnectionSettingOutputWithContext(ctx context.Context) GetConnectionOptionConnectionSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionConnectionSettingOutput)
+}
+
+// GetConnectionOptionConnectionSettingArrayInput is an input type that accepts GetConnectionOptionConnectionSettingArray and GetConnectionOptionConnectionSettingArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionConnectionSettingArrayInput` via:
+//
+//	GetConnectionOptionConnectionSettingArray{ GetConnectionOptionConnectionSettingArgs{...} }
+type GetConnectionOptionConnectionSettingArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionConnectionSettingArrayOutput() GetConnectionOptionConnectionSettingArrayOutput
+	ToGetConnectionOptionConnectionSettingArrayOutputWithContext(context.Context) GetConnectionOptionConnectionSettingArrayOutput
+}
+
+type GetConnectionOptionConnectionSettingArray []GetConnectionOptionConnectionSettingInput
+
+func (GetConnectionOptionConnectionSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionConnectionSetting)(nil)).Elem()
+}
+
+func (i GetConnectionOptionConnectionSettingArray) ToGetConnectionOptionConnectionSettingArrayOutput() GetConnectionOptionConnectionSettingArrayOutput {
+	return i.ToGetConnectionOptionConnectionSettingArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionConnectionSettingArray) ToGetConnectionOptionConnectionSettingArrayOutputWithContext(ctx context.Context) GetConnectionOptionConnectionSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionConnectionSettingArrayOutput)
+}
+
+type GetConnectionOptionConnectionSettingOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionConnectionSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionConnectionSetting)(nil)).Elem()
+}
+
+func (o GetConnectionOptionConnectionSettingOutput) ToGetConnectionOptionConnectionSettingOutput() GetConnectionOptionConnectionSettingOutput {
+	return o
+}
+
+func (o GetConnectionOptionConnectionSettingOutput) ToGetConnectionOptionConnectionSettingOutputWithContext(ctx context.Context) GetConnectionOptionConnectionSettingOutput {
+	return o
+}
+
+// PKCE configuration. Possible values: `auto` (uses the strongest algorithm available), `S256` (uses the SHA-256 algorithm), `plain` (uses plaintext as described in the PKCE specification) or `disabled` (disables support for PKCE).
+func (o GetConnectionOptionConnectionSettingOutput) Pkce() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionConnectionSetting) string { return v.Pkce }).(pulumi.StringOutput)
+}
+
+type GetConnectionOptionConnectionSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionConnectionSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionConnectionSetting)(nil)).Elem()
+}
+
+func (o GetConnectionOptionConnectionSettingArrayOutput) ToGetConnectionOptionConnectionSettingArrayOutput() GetConnectionOptionConnectionSettingArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionConnectionSettingArrayOutput) ToGetConnectionOptionConnectionSettingArrayOutputWithContext(ctx context.Context) GetConnectionOptionConnectionSettingArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionConnectionSettingArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionConnectionSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionConnectionSetting {
+		return vs[0].([]GetConnectionOptionConnectionSetting)[vs[1].(int)]
+	}).(GetConnectionOptionConnectionSettingOutput)
+}
+
+type GetConnectionOptionCustomHeader struct {
+	Header string `pulumi:"header"`
+	Value  string `pulumi:"value"`
+}
+
+// GetConnectionOptionCustomHeaderInput is an input type that accepts GetConnectionOptionCustomHeaderArgs and GetConnectionOptionCustomHeaderOutput values.
+// You can construct a concrete instance of `GetConnectionOptionCustomHeaderInput` via:
+//
+//	GetConnectionOptionCustomHeaderArgs{...}
+type GetConnectionOptionCustomHeaderInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionCustomHeaderOutput() GetConnectionOptionCustomHeaderOutput
+	ToGetConnectionOptionCustomHeaderOutputWithContext(context.Context) GetConnectionOptionCustomHeaderOutput
+}
+
+type GetConnectionOptionCustomHeaderArgs struct {
+	Header pulumi.StringInput `pulumi:"header"`
+	Value  pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetConnectionOptionCustomHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionCustomHeader)(nil)).Elem()
+}
+
+func (i GetConnectionOptionCustomHeaderArgs) ToGetConnectionOptionCustomHeaderOutput() GetConnectionOptionCustomHeaderOutput {
+	return i.ToGetConnectionOptionCustomHeaderOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionCustomHeaderArgs) ToGetConnectionOptionCustomHeaderOutputWithContext(ctx context.Context) GetConnectionOptionCustomHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionCustomHeaderOutput)
+}
+
+// GetConnectionOptionCustomHeaderArrayInput is an input type that accepts GetConnectionOptionCustomHeaderArray and GetConnectionOptionCustomHeaderArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionCustomHeaderArrayInput` via:
+//
+//	GetConnectionOptionCustomHeaderArray{ GetConnectionOptionCustomHeaderArgs{...} }
+type GetConnectionOptionCustomHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionCustomHeaderArrayOutput() GetConnectionOptionCustomHeaderArrayOutput
+	ToGetConnectionOptionCustomHeaderArrayOutputWithContext(context.Context) GetConnectionOptionCustomHeaderArrayOutput
+}
+
+type GetConnectionOptionCustomHeaderArray []GetConnectionOptionCustomHeaderInput
+
+func (GetConnectionOptionCustomHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionCustomHeader)(nil)).Elem()
+}
+
+func (i GetConnectionOptionCustomHeaderArray) ToGetConnectionOptionCustomHeaderArrayOutput() GetConnectionOptionCustomHeaderArrayOutput {
+	return i.ToGetConnectionOptionCustomHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionCustomHeaderArray) ToGetConnectionOptionCustomHeaderArrayOutputWithContext(ctx context.Context) GetConnectionOptionCustomHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionCustomHeaderArrayOutput)
+}
+
+type GetConnectionOptionCustomHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionCustomHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionCustomHeader)(nil)).Elem()
+}
+
+func (o GetConnectionOptionCustomHeaderOutput) ToGetConnectionOptionCustomHeaderOutput() GetConnectionOptionCustomHeaderOutput {
+	return o
+}
+
+func (o GetConnectionOptionCustomHeaderOutput) ToGetConnectionOptionCustomHeaderOutputWithContext(ctx context.Context) GetConnectionOptionCustomHeaderOutput {
+	return o
+}
+
+func (o GetConnectionOptionCustomHeaderOutput) Header() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionCustomHeader) string { return v.Header }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionCustomHeaderOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionCustomHeader) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetConnectionOptionCustomHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionCustomHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionCustomHeader)(nil)).Elem()
+}
+
+func (o GetConnectionOptionCustomHeaderArrayOutput) ToGetConnectionOptionCustomHeaderArrayOutput() GetConnectionOptionCustomHeaderArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionCustomHeaderArrayOutput) ToGetConnectionOptionCustomHeaderArrayOutputWithContext(ctx context.Context) GetConnectionOptionCustomHeaderArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionCustomHeaderArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionCustomHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionCustomHeader {
+		return vs[0].([]GetConnectionOptionCustomHeader)[vs[1].(int)]
+	}).(GetConnectionOptionCustomHeaderOutput)
+}
+
+type GetConnectionOptionCustomPasswordHash struct {
+	// Id of an existing action that should be invoked when validating a universal password hash. This action must support password-hash-migration trigger
+	ActionId string `pulumi:"actionId"`
+}
+
+// GetConnectionOptionCustomPasswordHashInput is an input type that accepts GetConnectionOptionCustomPasswordHashArgs and GetConnectionOptionCustomPasswordHashOutput values.
+// You can construct a concrete instance of `GetConnectionOptionCustomPasswordHashInput` via:
+//
+//	GetConnectionOptionCustomPasswordHashArgs{...}
+type GetConnectionOptionCustomPasswordHashInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionCustomPasswordHashOutput() GetConnectionOptionCustomPasswordHashOutput
+	ToGetConnectionOptionCustomPasswordHashOutputWithContext(context.Context) GetConnectionOptionCustomPasswordHashOutput
+}
+
+type GetConnectionOptionCustomPasswordHashArgs struct {
+	// Id of an existing action that should be invoked when validating a universal password hash. This action must support password-hash-migration trigger
+	ActionId pulumi.StringInput `pulumi:"actionId"`
+}
+
+func (GetConnectionOptionCustomPasswordHashArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionCustomPasswordHash)(nil)).Elem()
+}
+
+func (i GetConnectionOptionCustomPasswordHashArgs) ToGetConnectionOptionCustomPasswordHashOutput() GetConnectionOptionCustomPasswordHashOutput {
+	return i.ToGetConnectionOptionCustomPasswordHashOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionCustomPasswordHashArgs) ToGetConnectionOptionCustomPasswordHashOutputWithContext(ctx context.Context) GetConnectionOptionCustomPasswordHashOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionCustomPasswordHashOutput)
+}
+
+// GetConnectionOptionCustomPasswordHashArrayInput is an input type that accepts GetConnectionOptionCustomPasswordHashArray and GetConnectionOptionCustomPasswordHashArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionCustomPasswordHashArrayInput` via:
+//
+//	GetConnectionOptionCustomPasswordHashArray{ GetConnectionOptionCustomPasswordHashArgs{...} }
+type GetConnectionOptionCustomPasswordHashArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionCustomPasswordHashArrayOutput() GetConnectionOptionCustomPasswordHashArrayOutput
+	ToGetConnectionOptionCustomPasswordHashArrayOutputWithContext(context.Context) GetConnectionOptionCustomPasswordHashArrayOutput
+}
+
+type GetConnectionOptionCustomPasswordHashArray []GetConnectionOptionCustomPasswordHashInput
+
+func (GetConnectionOptionCustomPasswordHashArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionCustomPasswordHash)(nil)).Elem()
+}
+
+func (i GetConnectionOptionCustomPasswordHashArray) ToGetConnectionOptionCustomPasswordHashArrayOutput() GetConnectionOptionCustomPasswordHashArrayOutput {
+	return i.ToGetConnectionOptionCustomPasswordHashArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionCustomPasswordHashArray) ToGetConnectionOptionCustomPasswordHashArrayOutputWithContext(ctx context.Context) GetConnectionOptionCustomPasswordHashArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionCustomPasswordHashArrayOutput)
+}
+
+type GetConnectionOptionCustomPasswordHashOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionCustomPasswordHashOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionCustomPasswordHash)(nil)).Elem()
+}
+
+func (o GetConnectionOptionCustomPasswordHashOutput) ToGetConnectionOptionCustomPasswordHashOutput() GetConnectionOptionCustomPasswordHashOutput {
+	return o
+}
+
+func (o GetConnectionOptionCustomPasswordHashOutput) ToGetConnectionOptionCustomPasswordHashOutputWithContext(ctx context.Context) GetConnectionOptionCustomPasswordHashOutput {
+	return o
+}
+
+// Id of an existing action that should be invoked when validating a universal password hash. This action must support password-hash-migration trigger
+func (o GetConnectionOptionCustomPasswordHashOutput) ActionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionCustomPasswordHash) string { return v.ActionId }).(pulumi.StringOutput)
+}
+
+type GetConnectionOptionCustomPasswordHashArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionCustomPasswordHashArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionCustomPasswordHash)(nil)).Elem()
+}
+
+func (o GetConnectionOptionCustomPasswordHashArrayOutput) ToGetConnectionOptionCustomPasswordHashArrayOutput() GetConnectionOptionCustomPasswordHashArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionCustomPasswordHashArrayOutput) ToGetConnectionOptionCustomPasswordHashArrayOutputWithContext(ctx context.Context) GetConnectionOptionCustomPasswordHashArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionCustomPasswordHashArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionCustomPasswordHashOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionCustomPasswordHash {
+		return vs[0].([]GetConnectionOptionCustomPasswordHash)[vs[1].(int)]
+	}).(GetConnectionOptionCustomPasswordHashOutput)
+}
+
+type GetConnectionOptionDecryptionKey struct {
+	Cert string `pulumi:"cert"`
+	Key  string `pulumi:"key"`
+}
+
+// GetConnectionOptionDecryptionKeyInput is an input type that accepts GetConnectionOptionDecryptionKeyArgs and GetConnectionOptionDecryptionKeyOutput values.
+// You can construct a concrete instance of `GetConnectionOptionDecryptionKeyInput` via:
+//
+//	GetConnectionOptionDecryptionKeyArgs{...}
+type GetConnectionOptionDecryptionKeyInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionDecryptionKeyOutput() GetConnectionOptionDecryptionKeyOutput
+	ToGetConnectionOptionDecryptionKeyOutputWithContext(context.Context) GetConnectionOptionDecryptionKeyOutput
+}
+
+type GetConnectionOptionDecryptionKeyArgs struct {
+	Cert pulumi.StringInput `pulumi:"cert"`
+	Key  pulumi.StringInput `pulumi:"key"`
+}
+
+func (GetConnectionOptionDecryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionDecryptionKey)(nil)).Elem()
+}
+
+func (i GetConnectionOptionDecryptionKeyArgs) ToGetConnectionOptionDecryptionKeyOutput() GetConnectionOptionDecryptionKeyOutput {
+	return i.ToGetConnectionOptionDecryptionKeyOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionDecryptionKeyArgs) ToGetConnectionOptionDecryptionKeyOutputWithContext(ctx context.Context) GetConnectionOptionDecryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionDecryptionKeyOutput)
+}
+
+// GetConnectionOptionDecryptionKeyArrayInput is an input type that accepts GetConnectionOptionDecryptionKeyArray and GetConnectionOptionDecryptionKeyArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionDecryptionKeyArrayInput` via:
+//
+//	GetConnectionOptionDecryptionKeyArray{ GetConnectionOptionDecryptionKeyArgs{...} }
+type GetConnectionOptionDecryptionKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionDecryptionKeyArrayOutput() GetConnectionOptionDecryptionKeyArrayOutput
+	ToGetConnectionOptionDecryptionKeyArrayOutputWithContext(context.Context) GetConnectionOptionDecryptionKeyArrayOutput
+}
+
+type GetConnectionOptionDecryptionKeyArray []GetConnectionOptionDecryptionKeyInput
+
+func (GetConnectionOptionDecryptionKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionDecryptionKey)(nil)).Elem()
+}
+
+func (i GetConnectionOptionDecryptionKeyArray) ToGetConnectionOptionDecryptionKeyArrayOutput() GetConnectionOptionDecryptionKeyArrayOutput {
+	return i.ToGetConnectionOptionDecryptionKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionDecryptionKeyArray) ToGetConnectionOptionDecryptionKeyArrayOutputWithContext(ctx context.Context) GetConnectionOptionDecryptionKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionDecryptionKeyArrayOutput)
+}
+
+type GetConnectionOptionDecryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionDecryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionDecryptionKey)(nil)).Elem()
+}
+
+func (o GetConnectionOptionDecryptionKeyOutput) ToGetConnectionOptionDecryptionKeyOutput() GetConnectionOptionDecryptionKeyOutput {
+	return o
+}
+
+func (o GetConnectionOptionDecryptionKeyOutput) ToGetConnectionOptionDecryptionKeyOutputWithContext(ctx context.Context) GetConnectionOptionDecryptionKeyOutput {
+	return o
+}
+
+func (o GetConnectionOptionDecryptionKeyOutput) Cert() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionDecryptionKey) string { return v.Cert }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionDecryptionKeyOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionDecryptionKey) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetConnectionOptionDecryptionKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionDecryptionKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionDecryptionKey)(nil)).Elem()
+}
+
+func (o GetConnectionOptionDecryptionKeyArrayOutput) ToGetConnectionOptionDecryptionKeyArrayOutput() GetConnectionOptionDecryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionDecryptionKeyArrayOutput) ToGetConnectionOptionDecryptionKeyArrayOutputWithContext(ctx context.Context) GetConnectionOptionDecryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionDecryptionKeyArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionDecryptionKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionDecryptionKey {
+		return vs[0].([]GetConnectionOptionDecryptionKey)[vs[1].(int)]
+	}).(GetConnectionOptionDecryptionKeyOutput)
+}
+
+type GetConnectionOptionFederatedConnectionsAccessToken struct {
+	// When enabled, Auth0 will collect and store access tokens and refresh tokens obtained from federated connections during authentication.
+	Active bool `pulumi:"active"`
+}
+
+// GetConnectionOptionFederatedConnectionsAccessTokenInput is an input type that accepts GetConnectionOptionFederatedConnectionsAccessTokenArgs and GetConnectionOptionFederatedConnectionsAccessTokenOutput values.
+// You can construct a concrete instance of `GetConnectionOptionFederatedConnectionsAccessTokenInput` via:
+//
+//	GetConnectionOptionFederatedConnectionsAccessTokenArgs{...}
+type GetConnectionOptionFederatedConnectionsAccessTokenInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionFederatedConnectionsAccessTokenOutput() GetConnectionOptionFederatedConnectionsAccessTokenOutput
+	ToGetConnectionOptionFederatedConnectionsAccessTokenOutputWithContext(context.Context) GetConnectionOptionFederatedConnectionsAccessTokenOutput
+}
+
+type GetConnectionOptionFederatedConnectionsAccessTokenArgs struct {
+	// When enabled, Auth0 will collect and store access tokens and refresh tokens obtained from federated connections during authentication.
+	Active pulumi.BoolInput `pulumi:"active"`
+}
+
+func (GetConnectionOptionFederatedConnectionsAccessTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionFederatedConnectionsAccessToken)(nil)).Elem()
+}
+
+func (i GetConnectionOptionFederatedConnectionsAccessTokenArgs) ToGetConnectionOptionFederatedConnectionsAccessTokenOutput() GetConnectionOptionFederatedConnectionsAccessTokenOutput {
+	return i.ToGetConnectionOptionFederatedConnectionsAccessTokenOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionFederatedConnectionsAccessTokenArgs) ToGetConnectionOptionFederatedConnectionsAccessTokenOutputWithContext(ctx context.Context) GetConnectionOptionFederatedConnectionsAccessTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionFederatedConnectionsAccessTokenOutput)
+}
+
+// GetConnectionOptionFederatedConnectionsAccessTokenArrayInput is an input type that accepts GetConnectionOptionFederatedConnectionsAccessTokenArray and GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionFederatedConnectionsAccessTokenArrayInput` via:
+//
+//	GetConnectionOptionFederatedConnectionsAccessTokenArray{ GetConnectionOptionFederatedConnectionsAccessTokenArgs{...} }
+type GetConnectionOptionFederatedConnectionsAccessTokenArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionFederatedConnectionsAccessTokenArrayOutput() GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput
+	ToGetConnectionOptionFederatedConnectionsAccessTokenArrayOutputWithContext(context.Context) GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput
+}
+
+type GetConnectionOptionFederatedConnectionsAccessTokenArray []GetConnectionOptionFederatedConnectionsAccessTokenInput
+
+func (GetConnectionOptionFederatedConnectionsAccessTokenArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionFederatedConnectionsAccessToken)(nil)).Elem()
+}
+
+func (i GetConnectionOptionFederatedConnectionsAccessTokenArray) ToGetConnectionOptionFederatedConnectionsAccessTokenArrayOutput() GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput {
+	return i.ToGetConnectionOptionFederatedConnectionsAccessTokenArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionFederatedConnectionsAccessTokenArray) ToGetConnectionOptionFederatedConnectionsAccessTokenArrayOutputWithContext(ctx context.Context) GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput)
+}
+
+type GetConnectionOptionFederatedConnectionsAccessTokenOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionFederatedConnectionsAccessTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionFederatedConnectionsAccessToken)(nil)).Elem()
+}
+
+func (o GetConnectionOptionFederatedConnectionsAccessTokenOutput) ToGetConnectionOptionFederatedConnectionsAccessTokenOutput() GetConnectionOptionFederatedConnectionsAccessTokenOutput {
+	return o
+}
+
+func (o GetConnectionOptionFederatedConnectionsAccessTokenOutput) ToGetConnectionOptionFederatedConnectionsAccessTokenOutputWithContext(ctx context.Context) GetConnectionOptionFederatedConnectionsAccessTokenOutput {
+	return o
+}
+
+// When enabled, Auth0 will collect and store access tokens and refresh tokens obtained from federated connections during authentication.
+func (o GetConnectionOptionFederatedConnectionsAccessTokenOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionFederatedConnectionsAccessToken) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+type GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionFederatedConnectionsAccessToken)(nil)).Elem()
+}
+
+func (o GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput) ToGetConnectionOptionFederatedConnectionsAccessTokenArrayOutput() GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput) ToGetConnectionOptionFederatedConnectionsAccessTokenArrayOutputWithContext(ctx context.Context) GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionFederatedConnectionsAccessTokenOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionFederatedConnectionsAccessToken {
+		return vs[0].([]GetConnectionOptionFederatedConnectionsAccessToken)[vs[1].(int)]
+	}).(GetConnectionOptionFederatedConnectionsAccessTokenOutput)
+}
+
+type GetConnectionOptionGatewayAuthentication struct {
+	// Audience claim for the HS256 token sent to `gatewayUrl`.
+	Audience string `pulumi:"audience"`
+	// Authentication method (default is `bearer` token).
+	Method string `pulumi:"method"`
+	// Secret used to sign the HS256 token sent to `gatewayUrl`.
+	Secret string `pulumi:"secret"`
+	// Specifies whether or not the secret is Base64-encoded.
+	SecretBase64Encoded bool `pulumi:"secretBase64Encoded"`
+	// Subject claim for the HS256 token sent to `gatewayUrl`.
+	Subject string `pulumi:"subject"`
+}
+
+// GetConnectionOptionGatewayAuthenticationInput is an input type that accepts GetConnectionOptionGatewayAuthenticationArgs and GetConnectionOptionGatewayAuthenticationOutput values.
+// You can construct a concrete instance of `GetConnectionOptionGatewayAuthenticationInput` via:
+//
+//	GetConnectionOptionGatewayAuthenticationArgs{...}
+type GetConnectionOptionGatewayAuthenticationInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionGatewayAuthenticationOutput() GetConnectionOptionGatewayAuthenticationOutput
+	ToGetConnectionOptionGatewayAuthenticationOutputWithContext(context.Context) GetConnectionOptionGatewayAuthenticationOutput
+}
+
+type GetConnectionOptionGatewayAuthenticationArgs struct {
+	// Audience claim for the HS256 token sent to `gatewayUrl`.
+	Audience pulumi.StringInput `pulumi:"audience"`
+	// Authentication method (default is `bearer` token).
+	Method pulumi.StringInput `pulumi:"method"`
+	// Secret used to sign the HS256 token sent to `gatewayUrl`.
+	Secret pulumi.StringInput `pulumi:"secret"`
+	// Specifies whether or not the secret is Base64-encoded.
+	SecretBase64Encoded pulumi.BoolInput `pulumi:"secretBase64Encoded"`
+	// Subject claim for the HS256 token sent to `gatewayUrl`.
+	Subject pulumi.StringInput `pulumi:"subject"`
+}
+
+func (GetConnectionOptionGatewayAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionGatewayAuthentication)(nil)).Elem()
+}
+
+func (i GetConnectionOptionGatewayAuthenticationArgs) ToGetConnectionOptionGatewayAuthenticationOutput() GetConnectionOptionGatewayAuthenticationOutput {
+	return i.ToGetConnectionOptionGatewayAuthenticationOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionGatewayAuthenticationArgs) ToGetConnectionOptionGatewayAuthenticationOutputWithContext(ctx context.Context) GetConnectionOptionGatewayAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionGatewayAuthenticationOutput)
+}
+
+// GetConnectionOptionGatewayAuthenticationArrayInput is an input type that accepts GetConnectionOptionGatewayAuthenticationArray and GetConnectionOptionGatewayAuthenticationArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionGatewayAuthenticationArrayInput` via:
+//
+//	GetConnectionOptionGatewayAuthenticationArray{ GetConnectionOptionGatewayAuthenticationArgs{...} }
+type GetConnectionOptionGatewayAuthenticationArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionGatewayAuthenticationArrayOutput() GetConnectionOptionGatewayAuthenticationArrayOutput
+	ToGetConnectionOptionGatewayAuthenticationArrayOutputWithContext(context.Context) GetConnectionOptionGatewayAuthenticationArrayOutput
+}
+
+type GetConnectionOptionGatewayAuthenticationArray []GetConnectionOptionGatewayAuthenticationInput
+
+func (GetConnectionOptionGatewayAuthenticationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionGatewayAuthentication)(nil)).Elem()
+}
+
+func (i GetConnectionOptionGatewayAuthenticationArray) ToGetConnectionOptionGatewayAuthenticationArrayOutput() GetConnectionOptionGatewayAuthenticationArrayOutput {
+	return i.ToGetConnectionOptionGatewayAuthenticationArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionGatewayAuthenticationArray) ToGetConnectionOptionGatewayAuthenticationArrayOutputWithContext(ctx context.Context) GetConnectionOptionGatewayAuthenticationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionGatewayAuthenticationArrayOutput)
+}
+
+type GetConnectionOptionGatewayAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionGatewayAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionGatewayAuthentication)(nil)).Elem()
+}
+
+func (o GetConnectionOptionGatewayAuthenticationOutput) ToGetConnectionOptionGatewayAuthenticationOutput() GetConnectionOptionGatewayAuthenticationOutput {
+	return o
+}
+
+func (o GetConnectionOptionGatewayAuthenticationOutput) ToGetConnectionOptionGatewayAuthenticationOutputWithContext(ctx context.Context) GetConnectionOptionGatewayAuthenticationOutput {
+	return o
+}
+
+// Audience claim for the HS256 token sent to `gatewayUrl`.
+func (o GetConnectionOptionGatewayAuthenticationOutput) Audience() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionGatewayAuthentication) string { return v.Audience }).(pulumi.StringOutput)
+}
+
+// Authentication method (default is `bearer` token).
+func (o GetConnectionOptionGatewayAuthenticationOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionGatewayAuthentication) string { return v.Method }).(pulumi.StringOutput)
+}
+
+// Secret used to sign the HS256 token sent to `gatewayUrl`.
+func (o GetConnectionOptionGatewayAuthenticationOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionGatewayAuthentication) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+// Specifies whether or not the secret is Base64-encoded.
+func (o GetConnectionOptionGatewayAuthenticationOutput) SecretBase64Encoded() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionGatewayAuthentication) bool { return v.SecretBase64Encoded }).(pulumi.BoolOutput)
+}
+
+// Subject claim for the HS256 token sent to `gatewayUrl`.
+func (o GetConnectionOptionGatewayAuthenticationOutput) Subject() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionGatewayAuthentication) string { return v.Subject }).(pulumi.StringOutput)
+}
+
+type GetConnectionOptionGatewayAuthenticationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionGatewayAuthenticationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionGatewayAuthentication)(nil)).Elem()
+}
+
+func (o GetConnectionOptionGatewayAuthenticationArrayOutput) ToGetConnectionOptionGatewayAuthenticationArrayOutput() GetConnectionOptionGatewayAuthenticationArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionGatewayAuthenticationArrayOutput) ToGetConnectionOptionGatewayAuthenticationArrayOutputWithContext(ctx context.Context) GetConnectionOptionGatewayAuthenticationArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionGatewayAuthenticationArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionGatewayAuthenticationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionGatewayAuthentication {
+		return vs[0].([]GetConnectionOptionGatewayAuthentication)[vs[1].(int)]
+	}).(GetConnectionOptionGatewayAuthenticationOutput)
+}
+
+type GetConnectionOptionIdpInitiated struct {
+	ClientAuthorizeQuery string `pulumi:"clientAuthorizeQuery"`
+	ClientId             string `pulumi:"clientId"`
+	ClientProtocol       string `pulumi:"clientProtocol"`
+	Enabled              bool   `pulumi:"enabled"`
+}
+
+// GetConnectionOptionIdpInitiatedInput is an input type that accepts GetConnectionOptionIdpInitiatedArgs and GetConnectionOptionIdpInitiatedOutput values.
+// You can construct a concrete instance of `GetConnectionOptionIdpInitiatedInput` via:
+//
+//	GetConnectionOptionIdpInitiatedArgs{...}
+type GetConnectionOptionIdpInitiatedInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionIdpInitiatedOutput() GetConnectionOptionIdpInitiatedOutput
+	ToGetConnectionOptionIdpInitiatedOutputWithContext(context.Context) GetConnectionOptionIdpInitiatedOutput
+}
+
+type GetConnectionOptionIdpInitiatedArgs struct {
+	ClientAuthorizeQuery pulumi.StringInput `pulumi:"clientAuthorizeQuery"`
+	ClientId             pulumi.StringInput `pulumi:"clientId"`
+	ClientProtocol       pulumi.StringInput `pulumi:"clientProtocol"`
+	Enabled              pulumi.BoolInput   `pulumi:"enabled"`
+}
+
+func (GetConnectionOptionIdpInitiatedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionIdpInitiated)(nil)).Elem()
+}
+
+func (i GetConnectionOptionIdpInitiatedArgs) ToGetConnectionOptionIdpInitiatedOutput() GetConnectionOptionIdpInitiatedOutput {
+	return i.ToGetConnectionOptionIdpInitiatedOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionIdpInitiatedArgs) ToGetConnectionOptionIdpInitiatedOutputWithContext(ctx context.Context) GetConnectionOptionIdpInitiatedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionIdpInitiatedOutput)
+}
+
+// GetConnectionOptionIdpInitiatedArrayInput is an input type that accepts GetConnectionOptionIdpInitiatedArray and GetConnectionOptionIdpInitiatedArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionIdpInitiatedArrayInput` via:
+//
+//	GetConnectionOptionIdpInitiatedArray{ GetConnectionOptionIdpInitiatedArgs{...} }
+type GetConnectionOptionIdpInitiatedArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionIdpInitiatedArrayOutput() GetConnectionOptionIdpInitiatedArrayOutput
+	ToGetConnectionOptionIdpInitiatedArrayOutputWithContext(context.Context) GetConnectionOptionIdpInitiatedArrayOutput
+}
+
+type GetConnectionOptionIdpInitiatedArray []GetConnectionOptionIdpInitiatedInput
+
+func (GetConnectionOptionIdpInitiatedArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionIdpInitiated)(nil)).Elem()
+}
+
+func (i GetConnectionOptionIdpInitiatedArray) ToGetConnectionOptionIdpInitiatedArrayOutput() GetConnectionOptionIdpInitiatedArrayOutput {
+	return i.ToGetConnectionOptionIdpInitiatedArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionIdpInitiatedArray) ToGetConnectionOptionIdpInitiatedArrayOutputWithContext(ctx context.Context) GetConnectionOptionIdpInitiatedArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionIdpInitiatedArrayOutput)
+}
+
+type GetConnectionOptionIdpInitiatedOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionIdpInitiatedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionIdpInitiated)(nil)).Elem()
+}
+
+func (o GetConnectionOptionIdpInitiatedOutput) ToGetConnectionOptionIdpInitiatedOutput() GetConnectionOptionIdpInitiatedOutput {
+	return o
+}
+
+func (o GetConnectionOptionIdpInitiatedOutput) ToGetConnectionOptionIdpInitiatedOutputWithContext(ctx context.Context) GetConnectionOptionIdpInitiatedOutput {
+	return o
+}
+
+func (o GetConnectionOptionIdpInitiatedOutput) ClientAuthorizeQuery() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionIdpInitiated) string { return v.ClientAuthorizeQuery }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionIdpInitiatedOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionIdpInitiated) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionIdpInitiatedOutput) ClientProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionIdpInitiated) string { return v.ClientProtocol }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionIdpInitiatedOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionIdpInitiated) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetConnectionOptionIdpInitiatedArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionIdpInitiatedArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionIdpInitiated)(nil)).Elem()
+}
+
+func (o GetConnectionOptionIdpInitiatedArrayOutput) ToGetConnectionOptionIdpInitiatedArrayOutput() GetConnectionOptionIdpInitiatedArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionIdpInitiatedArrayOutput) ToGetConnectionOptionIdpInitiatedArrayOutputWithContext(ctx context.Context) GetConnectionOptionIdpInitiatedArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionIdpInitiatedArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionIdpInitiatedOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionIdpInitiated {
+		return vs[0].([]GetConnectionOptionIdpInitiated)[vs[1].(int)]
+	}).(GetConnectionOptionIdpInitiatedOutput)
+}
+
+type GetConnectionOptionMfa struct {
+	// Indicates whether multifactor authentication is enabled for this connection.
+	Active bool `pulumi:"active"`
+	// Indicates whether multifactor authentication enrollment settings will be returned.
+	ReturnEnrollSettings bool `pulumi:"returnEnrollSettings"`
+}
+
+// GetConnectionOptionMfaInput is an input type that accepts GetConnectionOptionMfaArgs and GetConnectionOptionMfaOutput values.
+// You can construct a concrete instance of `GetConnectionOptionMfaInput` via:
+//
+//	GetConnectionOptionMfaArgs{...}
+type GetConnectionOptionMfaInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionMfaOutput() GetConnectionOptionMfaOutput
+	ToGetConnectionOptionMfaOutputWithContext(context.Context) GetConnectionOptionMfaOutput
+}
+
+type GetConnectionOptionMfaArgs struct {
+	// Indicates whether multifactor authentication is enabled for this connection.
+	Active pulumi.BoolInput `pulumi:"active"`
+	// Indicates whether multifactor authentication enrollment settings will be returned.
+	ReturnEnrollSettings pulumi.BoolInput `pulumi:"returnEnrollSettings"`
+}
+
+func (GetConnectionOptionMfaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionMfa)(nil)).Elem()
+}
+
+func (i GetConnectionOptionMfaArgs) ToGetConnectionOptionMfaOutput() GetConnectionOptionMfaOutput {
+	return i.ToGetConnectionOptionMfaOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionMfaArgs) ToGetConnectionOptionMfaOutputWithContext(ctx context.Context) GetConnectionOptionMfaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionMfaOutput)
+}
+
+// GetConnectionOptionMfaArrayInput is an input type that accepts GetConnectionOptionMfaArray and GetConnectionOptionMfaArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionMfaArrayInput` via:
+//
+//	GetConnectionOptionMfaArray{ GetConnectionOptionMfaArgs{...} }
+type GetConnectionOptionMfaArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionMfaArrayOutput() GetConnectionOptionMfaArrayOutput
+	ToGetConnectionOptionMfaArrayOutputWithContext(context.Context) GetConnectionOptionMfaArrayOutput
+}
+
+type GetConnectionOptionMfaArray []GetConnectionOptionMfaInput
+
+func (GetConnectionOptionMfaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionMfa)(nil)).Elem()
+}
+
+func (i GetConnectionOptionMfaArray) ToGetConnectionOptionMfaArrayOutput() GetConnectionOptionMfaArrayOutput {
+	return i.ToGetConnectionOptionMfaArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionMfaArray) ToGetConnectionOptionMfaArrayOutputWithContext(ctx context.Context) GetConnectionOptionMfaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionMfaArrayOutput)
+}
+
+type GetConnectionOptionMfaOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionMfaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionMfa)(nil)).Elem()
+}
+
+func (o GetConnectionOptionMfaOutput) ToGetConnectionOptionMfaOutput() GetConnectionOptionMfaOutput {
+	return o
+}
+
+func (o GetConnectionOptionMfaOutput) ToGetConnectionOptionMfaOutputWithContext(ctx context.Context) GetConnectionOptionMfaOutput {
+	return o
+}
+
+// Indicates whether multifactor authentication is enabled for this connection.
+func (o GetConnectionOptionMfaOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionMfa) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+// Indicates whether multifactor authentication enrollment settings will be returned.
+func (o GetConnectionOptionMfaOutput) ReturnEnrollSettings() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionMfa) bool { return v.ReturnEnrollSettings }).(pulumi.BoolOutput)
+}
+
+type GetConnectionOptionMfaArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionMfaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionMfa)(nil)).Elem()
+}
+
+func (o GetConnectionOptionMfaArrayOutput) ToGetConnectionOptionMfaArrayOutput() GetConnectionOptionMfaArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionMfaArrayOutput) ToGetConnectionOptionMfaArrayOutputWithContext(ctx context.Context) GetConnectionOptionMfaArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionMfaArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionMfaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionMfa {
+		return vs[0].([]GetConnectionOptionMfa)[vs[1].(int)]
+	}).(GetConnectionOptionMfaOutput)
+}
+
+type GetConnectionOptionPasskeyOption struct {
+	// Controls the UI used to challenge the user for their passkey
+	ChallengeUi string `pulumi:"challengeUi"`
+	// Enables or disables enrollment prompt for local passkey when user authenticates using a cross-device passkey for the connection
+	LocalEnrollmentEnabled bool `pulumi:"localEnrollmentEnabled"`
+	// Enables or disables progressive enrollment of passkeys for the connection
+	ProgressiveEnrollmentEnabled bool `pulumi:"progressiveEnrollmentEnabled"`
+}
+
+// GetConnectionOptionPasskeyOptionInput is an input type that accepts GetConnectionOptionPasskeyOptionArgs and GetConnectionOptionPasskeyOptionOutput values.
+// You can construct a concrete instance of `GetConnectionOptionPasskeyOptionInput` via:
+//
+//	GetConnectionOptionPasskeyOptionArgs{...}
+type GetConnectionOptionPasskeyOptionInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionPasskeyOptionOutput() GetConnectionOptionPasskeyOptionOutput
+	ToGetConnectionOptionPasskeyOptionOutputWithContext(context.Context) GetConnectionOptionPasskeyOptionOutput
+}
+
+type GetConnectionOptionPasskeyOptionArgs struct {
+	// Controls the UI used to challenge the user for their passkey
+	ChallengeUi pulumi.StringInput `pulumi:"challengeUi"`
+	// Enables or disables enrollment prompt for local passkey when user authenticates using a cross-device passkey for the connection
+	LocalEnrollmentEnabled pulumi.BoolInput `pulumi:"localEnrollmentEnabled"`
+	// Enables or disables progressive enrollment of passkeys for the connection
+	ProgressiveEnrollmentEnabled pulumi.BoolInput `pulumi:"progressiveEnrollmentEnabled"`
+}
+
+func (GetConnectionOptionPasskeyOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionPasskeyOption)(nil)).Elem()
+}
+
+func (i GetConnectionOptionPasskeyOptionArgs) ToGetConnectionOptionPasskeyOptionOutput() GetConnectionOptionPasskeyOptionOutput {
+	return i.ToGetConnectionOptionPasskeyOptionOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionPasskeyOptionArgs) ToGetConnectionOptionPasskeyOptionOutputWithContext(ctx context.Context) GetConnectionOptionPasskeyOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionPasskeyOptionOutput)
+}
+
+// GetConnectionOptionPasskeyOptionArrayInput is an input type that accepts GetConnectionOptionPasskeyOptionArray and GetConnectionOptionPasskeyOptionArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionPasskeyOptionArrayInput` via:
+//
+//	GetConnectionOptionPasskeyOptionArray{ GetConnectionOptionPasskeyOptionArgs{...} }
+type GetConnectionOptionPasskeyOptionArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionPasskeyOptionArrayOutput() GetConnectionOptionPasskeyOptionArrayOutput
+	ToGetConnectionOptionPasskeyOptionArrayOutputWithContext(context.Context) GetConnectionOptionPasskeyOptionArrayOutput
+}
+
+type GetConnectionOptionPasskeyOptionArray []GetConnectionOptionPasskeyOptionInput
+
+func (GetConnectionOptionPasskeyOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionPasskeyOption)(nil)).Elem()
+}
+
+func (i GetConnectionOptionPasskeyOptionArray) ToGetConnectionOptionPasskeyOptionArrayOutput() GetConnectionOptionPasskeyOptionArrayOutput {
+	return i.ToGetConnectionOptionPasskeyOptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionPasskeyOptionArray) ToGetConnectionOptionPasskeyOptionArrayOutputWithContext(ctx context.Context) GetConnectionOptionPasskeyOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionPasskeyOptionArrayOutput)
+}
+
+type GetConnectionOptionPasskeyOptionOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionPasskeyOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionPasskeyOption)(nil)).Elem()
+}
+
+func (o GetConnectionOptionPasskeyOptionOutput) ToGetConnectionOptionPasskeyOptionOutput() GetConnectionOptionPasskeyOptionOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasskeyOptionOutput) ToGetConnectionOptionPasskeyOptionOutputWithContext(ctx context.Context) GetConnectionOptionPasskeyOptionOutput {
+	return o
+}
+
+// Controls the UI used to challenge the user for their passkey
+func (o GetConnectionOptionPasskeyOptionOutput) ChallengeUi() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasskeyOption) string { return v.ChallengeUi }).(pulumi.StringOutput)
+}
+
+// Enables or disables enrollment prompt for local passkey when user authenticates using a cross-device passkey for the connection
+func (o GetConnectionOptionPasskeyOptionOutput) LocalEnrollmentEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasskeyOption) bool { return v.LocalEnrollmentEnabled }).(pulumi.BoolOutput)
+}
+
+// Enables or disables progressive enrollment of passkeys for the connection
+func (o GetConnectionOptionPasskeyOptionOutput) ProgressiveEnrollmentEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasskeyOption) bool { return v.ProgressiveEnrollmentEnabled }).(pulumi.BoolOutput)
+}
+
+type GetConnectionOptionPasskeyOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionPasskeyOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionPasskeyOption)(nil)).Elem()
+}
+
+func (o GetConnectionOptionPasskeyOptionArrayOutput) ToGetConnectionOptionPasskeyOptionArrayOutput() GetConnectionOptionPasskeyOptionArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasskeyOptionArrayOutput) ToGetConnectionOptionPasskeyOptionArrayOutputWithContext(ctx context.Context) GetConnectionOptionPasskeyOptionArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasskeyOptionArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionPasskeyOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionPasskeyOption {
+		return vs[0].([]GetConnectionOptionPasskeyOption)[vs[1].(int)]
+	}).(GetConnectionOptionPasskeyOptionOutput)
+}
+
+type GetConnectionOptionPasswordComplexityOption struct {
+	// Minimum number of characters allowed in passwords.
+	MinLength int `pulumi:"minLength"`
+}
+
+// GetConnectionOptionPasswordComplexityOptionInput is an input type that accepts GetConnectionOptionPasswordComplexityOptionArgs and GetConnectionOptionPasswordComplexityOptionOutput values.
+// You can construct a concrete instance of `GetConnectionOptionPasswordComplexityOptionInput` via:
+//
+//	GetConnectionOptionPasswordComplexityOptionArgs{...}
+type GetConnectionOptionPasswordComplexityOptionInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionPasswordComplexityOptionOutput() GetConnectionOptionPasswordComplexityOptionOutput
+	ToGetConnectionOptionPasswordComplexityOptionOutputWithContext(context.Context) GetConnectionOptionPasswordComplexityOptionOutput
+}
+
+type GetConnectionOptionPasswordComplexityOptionArgs struct {
+	// Minimum number of characters allowed in passwords.
+	MinLength pulumi.IntInput `pulumi:"minLength"`
+}
+
+func (GetConnectionOptionPasswordComplexityOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionPasswordComplexityOption)(nil)).Elem()
+}
+
+func (i GetConnectionOptionPasswordComplexityOptionArgs) ToGetConnectionOptionPasswordComplexityOptionOutput() GetConnectionOptionPasswordComplexityOptionOutput {
+	return i.ToGetConnectionOptionPasswordComplexityOptionOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionPasswordComplexityOptionArgs) ToGetConnectionOptionPasswordComplexityOptionOutputWithContext(ctx context.Context) GetConnectionOptionPasswordComplexityOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionPasswordComplexityOptionOutput)
+}
+
+// GetConnectionOptionPasswordComplexityOptionArrayInput is an input type that accepts GetConnectionOptionPasswordComplexityOptionArray and GetConnectionOptionPasswordComplexityOptionArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionPasswordComplexityOptionArrayInput` via:
+//
+//	GetConnectionOptionPasswordComplexityOptionArray{ GetConnectionOptionPasswordComplexityOptionArgs{...} }
+type GetConnectionOptionPasswordComplexityOptionArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionPasswordComplexityOptionArrayOutput() GetConnectionOptionPasswordComplexityOptionArrayOutput
+	ToGetConnectionOptionPasswordComplexityOptionArrayOutputWithContext(context.Context) GetConnectionOptionPasswordComplexityOptionArrayOutput
+}
+
+type GetConnectionOptionPasswordComplexityOptionArray []GetConnectionOptionPasswordComplexityOptionInput
+
+func (GetConnectionOptionPasswordComplexityOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionPasswordComplexityOption)(nil)).Elem()
+}
+
+func (i GetConnectionOptionPasswordComplexityOptionArray) ToGetConnectionOptionPasswordComplexityOptionArrayOutput() GetConnectionOptionPasswordComplexityOptionArrayOutput {
+	return i.ToGetConnectionOptionPasswordComplexityOptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionPasswordComplexityOptionArray) ToGetConnectionOptionPasswordComplexityOptionArrayOutputWithContext(ctx context.Context) GetConnectionOptionPasswordComplexityOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionPasswordComplexityOptionArrayOutput)
+}
+
+type GetConnectionOptionPasswordComplexityOptionOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionPasswordComplexityOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionPasswordComplexityOption)(nil)).Elem()
+}
+
+func (o GetConnectionOptionPasswordComplexityOptionOutput) ToGetConnectionOptionPasswordComplexityOptionOutput() GetConnectionOptionPasswordComplexityOptionOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordComplexityOptionOutput) ToGetConnectionOptionPasswordComplexityOptionOutputWithContext(ctx context.Context) GetConnectionOptionPasswordComplexityOptionOutput {
+	return o
+}
+
+// Minimum number of characters allowed in passwords.
+func (o GetConnectionOptionPasswordComplexityOptionOutput) MinLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasswordComplexityOption) int { return v.MinLength }).(pulumi.IntOutput)
+}
+
+type GetConnectionOptionPasswordComplexityOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionPasswordComplexityOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionPasswordComplexityOption)(nil)).Elem()
+}
+
+func (o GetConnectionOptionPasswordComplexityOptionArrayOutput) ToGetConnectionOptionPasswordComplexityOptionArrayOutput() GetConnectionOptionPasswordComplexityOptionArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordComplexityOptionArrayOutput) ToGetConnectionOptionPasswordComplexityOptionArrayOutputWithContext(ctx context.Context) GetConnectionOptionPasswordComplexityOptionArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordComplexityOptionArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionPasswordComplexityOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionPasswordComplexityOption {
+		return vs[0].([]GetConnectionOptionPasswordComplexityOption)[vs[1].(int)]
+	}).(GetConnectionOptionPasswordComplexityOptionOutput)
+}
+
+type GetConnectionOptionPasswordDictionary struct {
+	// Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
+	Dictionaries []string `pulumi:"dictionaries"`
+	// Indicates whether the password dictionary check is enabled for this connection.
+	Enable bool `pulumi:"enable"`
+}
+
+// GetConnectionOptionPasswordDictionaryInput is an input type that accepts GetConnectionOptionPasswordDictionaryArgs and GetConnectionOptionPasswordDictionaryOutput values.
+// You can construct a concrete instance of `GetConnectionOptionPasswordDictionaryInput` via:
+//
+//	GetConnectionOptionPasswordDictionaryArgs{...}
+type GetConnectionOptionPasswordDictionaryInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionPasswordDictionaryOutput() GetConnectionOptionPasswordDictionaryOutput
+	ToGetConnectionOptionPasswordDictionaryOutputWithContext(context.Context) GetConnectionOptionPasswordDictionaryOutput
+}
+
+type GetConnectionOptionPasswordDictionaryArgs struct {
+	// Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
+	Dictionaries pulumi.StringArrayInput `pulumi:"dictionaries"`
+	// Indicates whether the password dictionary check is enabled for this connection.
+	Enable pulumi.BoolInput `pulumi:"enable"`
+}
+
+func (GetConnectionOptionPasswordDictionaryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionPasswordDictionary)(nil)).Elem()
+}
+
+func (i GetConnectionOptionPasswordDictionaryArgs) ToGetConnectionOptionPasswordDictionaryOutput() GetConnectionOptionPasswordDictionaryOutput {
+	return i.ToGetConnectionOptionPasswordDictionaryOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionPasswordDictionaryArgs) ToGetConnectionOptionPasswordDictionaryOutputWithContext(ctx context.Context) GetConnectionOptionPasswordDictionaryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionPasswordDictionaryOutput)
+}
+
+// GetConnectionOptionPasswordDictionaryArrayInput is an input type that accepts GetConnectionOptionPasswordDictionaryArray and GetConnectionOptionPasswordDictionaryArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionPasswordDictionaryArrayInput` via:
+//
+//	GetConnectionOptionPasswordDictionaryArray{ GetConnectionOptionPasswordDictionaryArgs{...} }
+type GetConnectionOptionPasswordDictionaryArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionPasswordDictionaryArrayOutput() GetConnectionOptionPasswordDictionaryArrayOutput
+	ToGetConnectionOptionPasswordDictionaryArrayOutputWithContext(context.Context) GetConnectionOptionPasswordDictionaryArrayOutput
+}
+
+type GetConnectionOptionPasswordDictionaryArray []GetConnectionOptionPasswordDictionaryInput
+
+func (GetConnectionOptionPasswordDictionaryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionPasswordDictionary)(nil)).Elem()
+}
+
+func (i GetConnectionOptionPasswordDictionaryArray) ToGetConnectionOptionPasswordDictionaryArrayOutput() GetConnectionOptionPasswordDictionaryArrayOutput {
+	return i.ToGetConnectionOptionPasswordDictionaryArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionPasswordDictionaryArray) ToGetConnectionOptionPasswordDictionaryArrayOutputWithContext(ctx context.Context) GetConnectionOptionPasswordDictionaryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionPasswordDictionaryArrayOutput)
+}
+
+type GetConnectionOptionPasswordDictionaryOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionPasswordDictionaryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionPasswordDictionary)(nil)).Elem()
+}
+
+func (o GetConnectionOptionPasswordDictionaryOutput) ToGetConnectionOptionPasswordDictionaryOutput() GetConnectionOptionPasswordDictionaryOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordDictionaryOutput) ToGetConnectionOptionPasswordDictionaryOutputWithContext(ctx context.Context) GetConnectionOptionPasswordDictionaryOutput {
+	return o
+}
+
+// Customized contents of the password dictionary. By default, the password dictionary contains a list of the [10,000 most common passwords](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10k-most-common.txt); your customized content is used in addition to the default password dictionary. Matching is not case-sensitive.
+func (o GetConnectionOptionPasswordDictionaryOutput) Dictionaries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasswordDictionary) []string { return v.Dictionaries }).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether the password dictionary check is enabled for this connection.
+func (o GetConnectionOptionPasswordDictionaryOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasswordDictionary) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+type GetConnectionOptionPasswordDictionaryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionPasswordDictionaryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionPasswordDictionary)(nil)).Elem()
+}
+
+func (o GetConnectionOptionPasswordDictionaryArrayOutput) ToGetConnectionOptionPasswordDictionaryArrayOutput() GetConnectionOptionPasswordDictionaryArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordDictionaryArrayOutput) ToGetConnectionOptionPasswordDictionaryArrayOutputWithContext(ctx context.Context) GetConnectionOptionPasswordDictionaryArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordDictionaryArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionPasswordDictionaryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionPasswordDictionary {
+		return vs[0].([]GetConnectionOptionPasswordDictionary)[vs[1].(int)]
+	}).(GetConnectionOptionPasswordDictionaryOutput)
+}
+
+type GetConnectionOptionPasswordHistory struct {
+	Enable bool `pulumi:"enable"`
+	Size   int  `pulumi:"size"`
+}
+
+// GetConnectionOptionPasswordHistoryInput is an input type that accepts GetConnectionOptionPasswordHistoryArgs and GetConnectionOptionPasswordHistoryOutput values.
+// You can construct a concrete instance of `GetConnectionOptionPasswordHistoryInput` via:
+//
+//	GetConnectionOptionPasswordHistoryArgs{...}
+type GetConnectionOptionPasswordHistoryInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionPasswordHistoryOutput() GetConnectionOptionPasswordHistoryOutput
+	ToGetConnectionOptionPasswordHistoryOutputWithContext(context.Context) GetConnectionOptionPasswordHistoryOutput
+}
+
+type GetConnectionOptionPasswordHistoryArgs struct {
+	Enable pulumi.BoolInput `pulumi:"enable"`
+	Size   pulumi.IntInput  `pulumi:"size"`
+}
+
+func (GetConnectionOptionPasswordHistoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionPasswordHistory)(nil)).Elem()
+}
+
+func (i GetConnectionOptionPasswordHistoryArgs) ToGetConnectionOptionPasswordHistoryOutput() GetConnectionOptionPasswordHistoryOutput {
+	return i.ToGetConnectionOptionPasswordHistoryOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionPasswordHistoryArgs) ToGetConnectionOptionPasswordHistoryOutputWithContext(ctx context.Context) GetConnectionOptionPasswordHistoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionPasswordHistoryOutput)
+}
+
+// GetConnectionOptionPasswordHistoryArrayInput is an input type that accepts GetConnectionOptionPasswordHistoryArray and GetConnectionOptionPasswordHistoryArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionPasswordHistoryArrayInput` via:
+//
+//	GetConnectionOptionPasswordHistoryArray{ GetConnectionOptionPasswordHistoryArgs{...} }
+type GetConnectionOptionPasswordHistoryArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionPasswordHistoryArrayOutput() GetConnectionOptionPasswordHistoryArrayOutput
+	ToGetConnectionOptionPasswordHistoryArrayOutputWithContext(context.Context) GetConnectionOptionPasswordHistoryArrayOutput
+}
+
+type GetConnectionOptionPasswordHistoryArray []GetConnectionOptionPasswordHistoryInput
+
+func (GetConnectionOptionPasswordHistoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionPasswordHistory)(nil)).Elem()
+}
+
+func (i GetConnectionOptionPasswordHistoryArray) ToGetConnectionOptionPasswordHistoryArrayOutput() GetConnectionOptionPasswordHistoryArrayOutput {
+	return i.ToGetConnectionOptionPasswordHistoryArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionPasswordHistoryArray) ToGetConnectionOptionPasswordHistoryArrayOutputWithContext(ctx context.Context) GetConnectionOptionPasswordHistoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionPasswordHistoryArrayOutput)
+}
+
+type GetConnectionOptionPasswordHistoryOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionPasswordHistoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionPasswordHistory)(nil)).Elem()
+}
+
+func (o GetConnectionOptionPasswordHistoryOutput) ToGetConnectionOptionPasswordHistoryOutput() GetConnectionOptionPasswordHistoryOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordHistoryOutput) ToGetConnectionOptionPasswordHistoryOutputWithContext(ctx context.Context) GetConnectionOptionPasswordHistoryOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordHistoryOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasswordHistory) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+func (o GetConnectionOptionPasswordHistoryOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasswordHistory) int { return v.Size }).(pulumi.IntOutput)
+}
+
+type GetConnectionOptionPasswordHistoryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionPasswordHistoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionPasswordHistory)(nil)).Elem()
+}
+
+func (o GetConnectionOptionPasswordHistoryArrayOutput) ToGetConnectionOptionPasswordHistoryArrayOutput() GetConnectionOptionPasswordHistoryArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordHistoryArrayOutput) ToGetConnectionOptionPasswordHistoryArrayOutputWithContext(ctx context.Context) GetConnectionOptionPasswordHistoryArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordHistoryArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionPasswordHistoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionPasswordHistory {
+		return vs[0].([]GetConnectionOptionPasswordHistory)[vs[1].(int)]
+	}).(GetConnectionOptionPasswordHistoryOutput)
+}
+
+type GetConnectionOptionPasswordNoPersonalInfo struct {
+	Enable bool `pulumi:"enable"`
+}
+
+// GetConnectionOptionPasswordNoPersonalInfoInput is an input type that accepts GetConnectionOptionPasswordNoPersonalInfoArgs and GetConnectionOptionPasswordNoPersonalInfoOutput values.
+// You can construct a concrete instance of `GetConnectionOptionPasswordNoPersonalInfoInput` via:
+//
+//	GetConnectionOptionPasswordNoPersonalInfoArgs{...}
+type GetConnectionOptionPasswordNoPersonalInfoInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionPasswordNoPersonalInfoOutput() GetConnectionOptionPasswordNoPersonalInfoOutput
+	ToGetConnectionOptionPasswordNoPersonalInfoOutputWithContext(context.Context) GetConnectionOptionPasswordNoPersonalInfoOutput
+}
+
+type GetConnectionOptionPasswordNoPersonalInfoArgs struct {
+	Enable pulumi.BoolInput `pulumi:"enable"`
+}
+
+func (GetConnectionOptionPasswordNoPersonalInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionPasswordNoPersonalInfo)(nil)).Elem()
+}
+
+func (i GetConnectionOptionPasswordNoPersonalInfoArgs) ToGetConnectionOptionPasswordNoPersonalInfoOutput() GetConnectionOptionPasswordNoPersonalInfoOutput {
+	return i.ToGetConnectionOptionPasswordNoPersonalInfoOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionPasswordNoPersonalInfoArgs) ToGetConnectionOptionPasswordNoPersonalInfoOutputWithContext(ctx context.Context) GetConnectionOptionPasswordNoPersonalInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionPasswordNoPersonalInfoOutput)
+}
+
+// GetConnectionOptionPasswordNoPersonalInfoArrayInput is an input type that accepts GetConnectionOptionPasswordNoPersonalInfoArray and GetConnectionOptionPasswordNoPersonalInfoArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionPasswordNoPersonalInfoArrayInput` via:
+//
+//	GetConnectionOptionPasswordNoPersonalInfoArray{ GetConnectionOptionPasswordNoPersonalInfoArgs{...} }
+type GetConnectionOptionPasswordNoPersonalInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionPasswordNoPersonalInfoArrayOutput() GetConnectionOptionPasswordNoPersonalInfoArrayOutput
+	ToGetConnectionOptionPasswordNoPersonalInfoArrayOutputWithContext(context.Context) GetConnectionOptionPasswordNoPersonalInfoArrayOutput
+}
+
+type GetConnectionOptionPasswordNoPersonalInfoArray []GetConnectionOptionPasswordNoPersonalInfoInput
+
+func (GetConnectionOptionPasswordNoPersonalInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionPasswordNoPersonalInfo)(nil)).Elem()
+}
+
+func (i GetConnectionOptionPasswordNoPersonalInfoArray) ToGetConnectionOptionPasswordNoPersonalInfoArrayOutput() GetConnectionOptionPasswordNoPersonalInfoArrayOutput {
+	return i.ToGetConnectionOptionPasswordNoPersonalInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionPasswordNoPersonalInfoArray) ToGetConnectionOptionPasswordNoPersonalInfoArrayOutputWithContext(ctx context.Context) GetConnectionOptionPasswordNoPersonalInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionPasswordNoPersonalInfoArrayOutput)
+}
+
+type GetConnectionOptionPasswordNoPersonalInfoOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionPasswordNoPersonalInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionPasswordNoPersonalInfo)(nil)).Elem()
+}
+
+func (o GetConnectionOptionPasswordNoPersonalInfoOutput) ToGetConnectionOptionPasswordNoPersonalInfoOutput() GetConnectionOptionPasswordNoPersonalInfoOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordNoPersonalInfoOutput) ToGetConnectionOptionPasswordNoPersonalInfoOutputWithContext(ctx context.Context) GetConnectionOptionPasswordNoPersonalInfoOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordNoPersonalInfoOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasswordNoPersonalInfo) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+type GetConnectionOptionPasswordNoPersonalInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionPasswordNoPersonalInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionPasswordNoPersonalInfo)(nil)).Elem()
+}
+
+func (o GetConnectionOptionPasswordNoPersonalInfoArrayOutput) ToGetConnectionOptionPasswordNoPersonalInfoArrayOutput() GetConnectionOptionPasswordNoPersonalInfoArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordNoPersonalInfoArrayOutput) ToGetConnectionOptionPasswordNoPersonalInfoArrayOutputWithContext(ctx context.Context) GetConnectionOptionPasswordNoPersonalInfoArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordNoPersonalInfoArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionPasswordNoPersonalInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionPasswordNoPersonalInfo {
+		return vs[0].([]GetConnectionOptionPasswordNoPersonalInfo)[vs[1].(int)]
+	}).(GetConnectionOptionPasswordNoPersonalInfoOutput)
+}
+
+type GetConnectionOptionPasswordOption struct {
+	// Password complexity requirements.
+	Complexities []GetConnectionOptionPasswordOptionComplexity `pulumi:"complexities"`
+	// Dictionary-based password validation.
+	Dictionaries []GetConnectionOptionPasswordOptionDictionary `pulumi:"dictionaries"`
+	// Password history enforcement.
+	Histories []GetConnectionOptionPasswordOptionHistory `pulumi:"histories"`
+	// Personal information restriction policy.
+	ProfileDatas []GetConnectionOptionPasswordOptionProfileData `pulumi:"profileDatas"`
+}
+
+// GetConnectionOptionPasswordOptionInput is an input type that accepts GetConnectionOptionPasswordOptionArgs and GetConnectionOptionPasswordOptionOutput values.
+// You can construct a concrete instance of `GetConnectionOptionPasswordOptionInput` via:
+//
+//	GetConnectionOptionPasswordOptionArgs{...}
+type GetConnectionOptionPasswordOptionInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionPasswordOptionOutput() GetConnectionOptionPasswordOptionOutput
+	ToGetConnectionOptionPasswordOptionOutputWithContext(context.Context) GetConnectionOptionPasswordOptionOutput
+}
+
+type GetConnectionOptionPasswordOptionArgs struct {
+	// Password complexity requirements.
+	Complexities GetConnectionOptionPasswordOptionComplexityArrayInput `pulumi:"complexities"`
+	// Dictionary-based password validation.
+	Dictionaries GetConnectionOptionPasswordOptionDictionaryArrayInput `pulumi:"dictionaries"`
+	// Password history enforcement.
+	Histories GetConnectionOptionPasswordOptionHistoryArrayInput `pulumi:"histories"`
+	// Personal information restriction policy.
+	ProfileDatas GetConnectionOptionPasswordOptionProfileDataArrayInput `pulumi:"profileDatas"`
+}
+
+func (GetConnectionOptionPasswordOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionPasswordOption)(nil)).Elem()
+}
+
+func (i GetConnectionOptionPasswordOptionArgs) ToGetConnectionOptionPasswordOptionOutput() GetConnectionOptionPasswordOptionOutput {
+	return i.ToGetConnectionOptionPasswordOptionOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionPasswordOptionArgs) ToGetConnectionOptionPasswordOptionOutputWithContext(ctx context.Context) GetConnectionOptionPasswordOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionPasswordOptionOutput)
+}
+
+// GetConnectionOptionPasswordOptionArrayInput is an input type that accepts GetConnectionOptionPasswordOptionArray and GetConnectionOptionPasswordOptionArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionPasswordOptionArrayInput` via:
+//
+//	GetConnectionOptionPasswordOptionArray{ GetConnectionOptionPasswordOptionArgs{...} }
+type GetConnectionOptionPasswordOptionArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionPasswordOptionArrayOutput() GetConnectionOptionPasswordOptionArrayOutput
+	ToGetConnectionOptionPasswordOptionArrayOutputWithContext(context.Context) GetConnectionOptionPasswordOptionArrayOutput
+}
+
+type GetConnectionOptionPasswordOptionArray []GetConnectionOptionPasswordOptionInput
+
+func (GetConnectionOptionPasswordOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionPasswordOption)(nil)).Elem()
+}
+
+func (i GetConnectionOptionPasswordOptionArray) ToGetConnectionOptionPasswordOptionArrayOutput() GetConnectionOptionPasswordOptionArrayOutput {
+	return i.ToGetConnectionOptionPasswordOptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionPasswordOptionArray) ToGetConnectionOptionPasswordOptionArrayOutputWithContext(ctx context.Context) GetConnectionOptionPasswordOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionPasswordOptionArrayOutput)
+}
+
+type GetConnectionOptionPasswordOptionOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionPasswordOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionPasswordOption)(nil)).Elem()
+}
+
+func (o GetConnectionOptionPasswordOptionOutput) ToGetConnectionOptionPasswordOptionOutput() GetConnectionOptionPasswordOptionOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordOptionOutput) ToGetConnectionOptionPasswordOptionOutputWithContext(ctx context.Context) GetConnectionOptionPasswordOptionOutput {
+	return o
+}
+
+// Password complexity requirements.
+func (o GetConnectionOptionPasswordOptionOutput) Complexities() GetConnectionOptionPasswordOptionComplexityArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasswordOption) []GetConnectionOptionPasswordOptionComplexity {
+		return v.Complexities
+	}).(GetConnectionOptionPasswordOptionComplexityArrayOutput)
+}
+
+// Dictionary-based password validation.
+func (o GetConnectionOptionPasswordOptionOutput) Dictionaries() GetConnectionOptionPasswordOptionDictionaryArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasswordOption) []GetConnectionOptionPasswordOptionDictionary {
+		return v.Dictionaries
+	}).(GetConnectionOptionPasswordOptionDictionaryArrayOutput)
+}
+
+// Password history enforcement.
+func (o GetConnectionOptionPasswordOptionOutput) Histories() GetConnectionOptionPasswordOptionHistoryArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasswordOption) []GetConnectionOptionPasswordOptionHistory {
+		return v.Histories
+	}).(GetConnectionOptionPasswordOptionHistoryArrayOutput)
+}
+
+// Personal information restriction policy.
+func (o GetConnectionOptionPasswordOptionOutput) ProfileDatas() GetConnectionOptionPasswordOptionProfileDataArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasswordOption) []GetConnectionOptionPasswordOptionProfileData {
+		return v.ProfileDatas
+	}).(GetConnectionOptionPasswordOptionProfileDataArrayOutput)
+}
+
+type GetConnectionOptionPasswordOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionPasswordOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionPasswordOption)(nil)).Elem()
+}
+
+func (o GetConnectionOptionPasswordOptionArrayOutput) ToGetConnectionOptionPasswordOptionArrayOutput() GetConnectionOptionPasswordOptionArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordOptionArrayOutput) ToGetConnectionOptionPasswordOptionArrayOutputWithContext(ctx context.Context) GetConnectionOptionPasswordOptionArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordOptionArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionPasswordOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionPasswordOption {
+		return vs[0].([]GetConnectionOptionPasswordOption)[vs[1].(int)]
+	}).(GetConnectionOptionPasswordOptionOutput)
+}
+
+type GetConnectionOptionPasswordOptionComplexity struct {
+	// When all 4 character types are specified, determines if all or 3 of 4 are required. Possible values: `all`, `threeOfFour`. Default: `all`.
+	CharacterTypeRule string `pulumi:"characterTypeRule"`
+	// Required character types. Valid values: `uppercase`, `lowercase`, `number`, `special`.
+	CharacterTypes []string `pulumi:"characterTypes"`
+	// Controls whether 3+ consecutive identical characters are allowed. Possible values: `allow`, `block`. Default: `allow`.
+	IdenticalCharacters string `pulumi:"identicalCharacters"`
+	// Controls behavior when the password exceeds 72 bytes. Possible values: `truncate`, `error`. Default: `error`.
+	MaxLengthExceeded string `pulumi:"maxLengthExceeded"`
+	// Minimum password length. Must be between 1 and 72. Default: 15.
+	MinLength int `pulumi:"minLength"`
+	// Controls whether sequential characters (abc, 123, etc.) are allowed. Possible values: `allow`, `block`. Default: `allow`.
+	SequentialCharacters string `pulumi:"sequentialCharacters"`
+}
+
+// GetConnectionOptionPasswordOptionComplexityInput is an input type that accepts GetConnectionOptionPasswordOptionComplexityArgs and GetConnectionOptionPasswordOptionComplexityOutput values.
+// You can construct a concrete instance of `GetConnectionOptionPasswordOptionComplexityInput` via:
+//
+//	GetConnectionOptionPasswordOptionComplexityArgs{...}
+type GetConnectionOptionPasswordOptionComplexityInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionPasswordOptionComplexityOutput() GetConnectionOptionPasswordOptionComplexityOutput
+	ToGetConnectionOptionPasswordOptionComplexityOutputWithContext(context.Context) GetConnectionOptionPasswordOptionComplexityOutput
+}
+
+type GetConnectionOptionPasswordOptionComplexityArgs struct {
+	// When all 4 character types are specified, determines if all or 3 of 4 are required. Possible values: `all`, `threeOfFour`. Default: `all`.
+	CharacterTypeRule pulumi.StringInput `pulumi:"characterTypeRule"`
+	// Required character types. Valid values: `uppercase`, `lowercase`, `number`, `special`.
+	CharacterTypes pulumi.StringArrayInput `pulumi:"characterTypes"`
+	// Controls whether 3+ consecutive identical characters are allowed. Possible values: `allow`, `block`. Default: `allow`.
+	IdenticalCharacters pulumi.StringInput `pulumi:"identicalCharacters"`
+	// Controls behavior when the password exceeds 72 bytes. Possible values: `truncate`, `error`. Default: `error`.
+	MaxLengthExceeded pulumi.StringInput `pulumi:"maxLengthExceeded"`
+	// Minimum password length. Must be between 1 and 72. Default: 15.
+	MinLength pulumi.IntInput `pulumi:"minLength"`
+	// Controls whether sequential characters (abc, 123, etc.) are allowed. Possible values: `allow`, `block`. Default: `allow`.
+	SequentialCharacters pulumi.StringInput `pulumi:"sequentialCharacters"`
+}
+
+func (GetConnectionOptionPasswordOptionComplexityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionPasswordOptionComplexity)(nil)).Elem()
+}
+
+func (i GetConnectionOptionPasswordOptionComplexityArgs) ToGetConnectionOptionPasswordOptionComplexityOutput() GetConnectionOptionPasswordOptionComplexityOutput {
+	return i.ToGetConnectionOptionPasswordOptionComplexityOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionPasswordOptionComplexityArgs) ToGetConnectionOptionPasswordOptionComplexityOutputWithContext(ctx context.Context) GetConnectionOptionPasswordOptionComplexityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionPasswordOptionComplexityOutput)
+}
+
+// GetConnectionOptionPasswordOptionComplexityArrayInput is an input type that accepts GetConnectionOptionPasswordOptionComplexityArray and GetConnectionOptionPasswordOptionComplexityArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionPasswordOptionComplexityArrayInput` via:
+//
+//	GetConnectionOptionPasswordOptionComplexityArray{ GetConnectionOptionPasswordOptionComplexityArgs{...} }
+type GetConnectionOptionPasswordOptionComplexityArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionPasswordOptionComplexityArrayOutput() GetConnectionOptionPasswordOptionComplexityArrayOutput
+	ToGetConnectionOptionPasswordOptionComplexityArrayOutputWithContext(context.Context) GetConnectionOptionPasswordOptionComplexityArrayOutput
+}
+
+type GetConnectionOptionPasswordOptionComplexityArray []GetConnectionOptionPasswordOptionComplexityInput
+
+func (GetConnectionOptionPasswordOptionComplexityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionPasswordOptionComplexity)(nil)).Elem()
+}
+
+func (i GetConnectionOptionPasswordOptionComplexityArray) ToGetConnectionOptionPasswordOptionComplexityArrayOutput() GetConnectionOptionPasswordOptionComplexityArrayOutput {
+	return i.ToGetConnectionOptionPasswordOptionComplexityArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionPasswordOptionComplexityArray) ToGetConnectionOptionPasswordOptionComplexityArrayOutputWithContext(ctx context.Context) GetConnectionOptionPasswordOptionComplexityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionPasswordOptionComplexityArrayOutput)
+}
+
+type GetConnectionOptionPasswordOptionComplexityOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionPasswordOptionComplexityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionPasswordOptionComplexity)(nil)).Elem()
+}
+
+func (o GetConnectionOptionPasswordOptionComplexityOutput) ToGetConnectionOptionPasswordOptionComplexityOutput() GetConnectionOptionPasswordOptionComplexityOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordOptionComplexityOutput) ToGetConnectionOptionPasswordOptionComplexityOutputWithContext(ctx context.Context) GetConnectionOptionPasswordOptionComplexityOutput {
+	return o
+}
+
+// When all 4 character types are specified, determines if all or 3 of 4 are required. Possible values: `all`, `threeOfFour`. Default: `all`.
+func (o GetConnectionOptionPasswordOptionComplexityOutput) CharacterTypeRule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasswordOptionComplexity) string { return v.CharacterTypeRule }).(pulumi.StringOutput)
+}
+
+// Required character types. Valid values: `uppercase`, `lowercase`, `number`, `special`.
+func (o GetConnectionOptionPasswordOptionComplexityOutput) CharacterTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasswordOptionComplexity) []string { return v.CharacterTypes }).(pulumi.StringArrayOutput)
+}
+
+// Controls whether 3+ consecutive identical characters are allowed. Possible values: `allow`, `block`. Default: `allow`.
+func (o GetConnectionOptionPasswordOptionComplexityOutput) IdenticalCharacters() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasswordOptionComplexity) string { return v.IdenticalCharacters }).(pulumi.StringOutput)
+}
+
+// Controls behavior when the password exceeds 72 bytes. Possible values: `truncate`, `error`. Default: `error`.
+func (o GetConnectionOptionPasswordOptionComplexityOutput) MaxLengthExceeded() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasswordOptionComplexity) string { return v.MaxLengthExceeded }).(pulumi.StringOutput)
+}
+
+// Minimum password length. Must be between 1 and 72. Default: 15.
+func (o GetConnectionOptionPasswordOptionComplexityOutput) MinLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasswordOptionComplexity) int { return v.MinLength }).(pulumi.IntOutput)
+}
+
+// Controls whether sequential characters (abc, 123, etc.) are allowed. Possible values: `allow`, `block`. Default: `allow`.
+func (o GetConnectionOptionPasswordOptionComplexityOutput) SequentialCharacters() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasswordOptionComplexity) string { return v.SequentialCharacters }).(pulumi.StringOutput)
+}
+
+type GetConnectionOptionPasswordOptionComplexityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionPasswordOptionComplexityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionPasswordOptionComplexity)(nil)).Elem()
+}
+
+func (o GetConnectionOptionPasswordOptionComplexityArrayOutput) ToGetConnectionOptionPasswordOptionComplexityArrayOutput() GetConnectionOptionPasswordOptionComplexityArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordOptionComplexityArrayOutput) ToGetConnectionOptionPasswordOptionComplexityArrayOutputWithContext(ctx context.Context) GetConnectionOptionPasswordOptionComplexityArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordOptionComplexityArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionPasswordOptionComplexityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionPasswordOptionComplexity {
+		return vs[0].([]GetConnectionOptionPasswordOptionComplexity)[vs[1].(int)]
+	}).(GetConnectionOptionPasswordOptionComplexityOutput)
+}
+
+type GetConnectionOptionPasswordOptionDictionary struct {
+	// Enables dictionary checking.
+	Active bool `pulumi:"active"`
+	// Custom list of disallowed terms.
+	Customs []string `pulumi:"customs"`
+	// Default dictionary to use. Possible values: `en10k`, `en100k`. Default: `en100k`.
+	Default string `pulumi:"default"`
+}
+
+// GetConnectionOptionPasswordOptionDictionaryInput is an input type that accepts GetConnectionOptionPasswordOptionDictionaryArgs and GetConnectionOptionPasswordOptionDictionaryOutput values.
+// You can construct a concrete instance of `GetConnectionOptionPasswordOptionDictionaryInput` via:
+//
+//	GetConnectionOptionPasswordOptionDictionaryArgs{...}
+type GetConnectionOptionPasswordOptionDictionaryInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionPasswordOptionDictionaryOutput() GetConnectionOptionPasswordOptionDictionaryOutput
+	ToGetConnectionOptionPasswordOptionDictionaryOutputWithContext(context.Context) GetConnectionOptionPasswordOptionDictionaryOutput
+}
+
+type GetConnectionOptionPasswordOptionDictionaryArgs struct {
+	// Enables dictionary checking.
+	Active pulumi.BoolInput `pulumi:"active"`
+	// Custom list of disallowed terms.
+	Customs pulumi.StringArrayInput `pulumi:"customs"`
+	// Default dictionary to use. Possible values: `en10k`, `en100k`. Default: `en100k`.
+	Default pulumi.StringInput `pulumi:"default"`
+}
+
+func (GetConnectionOptionPasswordOptionDictionaryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionPasswordOptionDictionary)(nil)).Elem()
+}
+
+func (i GetConnectionOptionPasswordOptionDictionaryArgs) ToGetConnectionOptionPasswordOptionDictionaryOutput() GetConnectionOptionPasswordOptionDictionaryOutput {
+	return i.ToGetConnectionOptionPasswordOptionDictionaryOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionPasswordOptionDictionaryArgs) ToGetConnectionOptionPasswordOptionDictionaryOutputWithContext(ctx context.Context) GetConnectionOptionPasswordOptionDictionaryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionPasswordOptionDictionaryOutput)
+}
+
+// GetConnectionOptionPasswordOptionDictionaryArrayInput is an input type that accepts GetConnectionOptionPasswordOptionDictionaryArray and GetConnectionOptionPasswordOptionDictionaryArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionPasswordOptionDictionaryArrayInput` via:
+//
+//	GetConnectionOptionPasswordOptionDictionaryArray{ GetConnectionOptionPasswordOptionDictionaryArgs{...} }
+type GetConnectionOptionPasswordOptionDictionaryArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionPasswordOptionDictionaryArrayOutput() GetConnectionOptionPasswordOptionDictionaryArrayOutput
+	ToGetConnectionOptionPasswordOptionDictionaryArrayOutputWithContext(context.Context) GetConnectionOptionPasswordOptionDictionaryArrayOutput
+}
+
+type GetConnectionOptionPasswordOptionDictionaryArray []GetConnectionOptionPasswordOptionDictionaryInput
+
+func (GetConnectionOptionPasswordOptionDictionaryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionPasswordOptionDictionary)(nil)).Elem()
+}
+
+func (i GetConnectionOptionPasswordOptionDictionaryArray) ToGetConnectionOptionPasswordOptionDictionaryArrayOutput() GetConnectionOptionPasswordOptionDictionaryArrayOutput {
+	return i.ToGetConnectionOptionPasswordOptionDictionaryArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionPasswordOptionDictionaryArray) ToGetConnectionOptionPasswordOptionDictionaryArrayOutputWithContext(ctx context.Context) GetConnectionOptionPasswordOptionDictionaryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionPasswordOptionDictionaryArrayOutput)
+}
+
+type GetConnectionOptionPasswordOptionDictionaryOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionPasswordOptionDictionaryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionPasswordOptionDictionary)(nil)).Elem()
+}
+
+func (o GetConnectionOptionPasswordOptionDictionaryOutput) ToGetConnectionOptionPasswordOptionDictionaryOutput() GetConnectionOptionPasswordOptionDictionaryOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordOptionDictionaryOutput) ToGetConnectionOptionPasswordOptionDictionaryOutputWithContext(ctx context.Context) GetConnectionOptionPasswordOptionDictionaryOutput {
+	return o
+}
+
+// Enables dictionary checking.
+func (o GetConnectionOptionPasswordOptionDictionaryOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasswordOptionDictionary) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+// Custom list of disallowed terms.
+func (o GetConnectionOptionPasswordOptionDictionaryOutput) Customs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasswordOptionDictionary) []string { return v.Customs }).(pulumi.StringArrayOutput)
+}
+
+// Default dictionary to use. Possible values: `en10k`, `en100k`. Default: `en100k`.
+func (o GetConnectionOptionPasswordOptionDictionaryOutput) Default() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasswordOptionDictionary) string { return v.Default }).(pulumi.StringOutput)
+}
+
+type GetConnectionOptionPasswordOptionDictionaryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionPasswordOptionDictionaryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionPasswordOptionDictionary)(nil)).Elem()
+}
+
+func (o GetConnectionOptionPasswordOptionDictionaryArrayOutput) ToGetConnectionOptionPasswordOptionDictionaryArrayOutput() GetConnectionOptionPasswordOptionDictionaryArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordOptionDictionaryArrayOutput) ToGetConnectionOptionPasswordOptionDictionaryArrayOutputWithContext(ctx context.Context) GetConnectionOptionPasswordOptionDictionaryArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordOptionDictionaryArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionPasswordOptionDictionaryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionPasswordOptionDictionary {
+		return vs[0].([]GetConnectionOptionPasswordOptionDictionary)[vs[1].(int)]
+	}).(GetConnectionOptionPasswordOptionDictionaryOutput)
+}
+
+type GetConnectionOptionPasswordOptionHistory struct {
+	// Enables password history checking.
+	Active bool `pulumi:"active"`
+	// Number of previous passwords to check against. Must be between 1 and 24. Default: 3.
+	Size int `pulumi:"size"`
+}
+
+// GetConnectionOptionPasswordOptionHistoryInput is an input type that accepts GetConnectionOptionPasswordOptionHistoryArgs and GetConnectionOptionPasswordOptionHistoryOutput values.
+// You can construct a concrete instance of `GetConnectionOptionPasswordOptionHistoryInput` via:
+//
+//	GetConnectionOptionPasswordOptionHistoryArgs{...}
+type GetConnectionOptionPasswordOptionHistoryInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionPasswordOptionHistoryOutput() GetConnectionOptionPasswordOptionHistoryOutput
+	ToGetConnectionOptionPasswordOptionHistoryOutputWithContext(context.Context) GetConnectionOptionPasswordOptionHistoryOutput
+}
+
+type GetConnectionOptionPasswordOptionHistoryArgs struct {
+	// Enables password history checking.
+	Active pulumi.BoolInput `pulumi:"active"`
+	// Number of previous passwords to check against. Must be between 1 and 24. Default: 3.
+	Size pulumi.IntInput `pulumi:"size"`
+}
+
+func (GetConnectionOptionPasswordOptionHistoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionPasswordOptionHistory)(nil)).Elem()
+}
+
+func (i GetConnectionOptionPasswordOptionHistoryArgs) ToGetConnectionOptionPasswordOptionHistoryOutput() GetConnectionOptionPasswordOptionHistoryOutput {
+	return i.ToGetConnectionOptionPasswordOptionHistoryOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionPasswordOptionHistoryArgs) ToGetConnectionOptionPasswordOptionHistoryOutputWithContext(ctx context.Context) GetConnectionOptionPasswordOptionHistoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionPasswordOptionHistoryOutput)
+}
+
+// GetConnectionOptionPasswordOptionHistoryArrayInput is an input type that accepts GetConnectionOptionPasswordOptionHistoryArray and GetConnectionOptionPasswordOptionHistoryArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionPasswordOptionHistoryArrayInput` via:
+//
+//	GetConnectionOptionPasswordOptionHistoryArray{ GetConnectionOptionPasswordOptionHistoryArgs{...} }
+type GetConnectionOptionPasswordOptionHistoryArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionPasswordOptionHistoryArrayOutput() GetConnectionOptionPasswordOptionHistoryArrayOutput
+	ToGetConnectionOptionPasswordOptionHistoryArrayOutputWithContext(context.Context) GetConnectionOptionPasswordOptionHistoryArrayOutput
+}
+
+type GetConnectionOptionPasswordOptionHistoryArray []GetConnectionOptionPasswordOptionHistoryInput
+
+func (GetConnectionOptionPasswordOptionHistoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionPasswordOptionHistory)(nil)).Elem()
+}
+
+func (i GetConnectionOptionPasswordOptionHistoryArray) ToGetConnectionOptionPasswordOptionHistoryArrayOutput() GetConnectionOptionPasswordOptionHistoryArrayOutput {
+	return i.ToGetConnectionOptionPasswordOptionHistoryArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionPasswordOptionHistoryArray) ToGetConnectionOptionPasswordOptionHistoryArrayOutputWithContext(ctx context.Context) GetConnectionOptionPasswordOptionHistoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionPasswordOptionHistoryArrayOutput)
+}
+
+type GetConnectionOptionPasswordOptionHistoryOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionPasswordOptionHistoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionPasswordOptionHistory)(nil)).Elem()
+}
+
+func (o GetConnectionOptionPasswordOptionHistoryOutput) ToGetConnectionOptionPasswordOptionHistoryOutput() GetConnectionOptionPasswordOptionHistoryOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordOptionHistoryOutput) ToGetConnectionOptionPasswordOptionHistoryOutputWithContext(ctx context.Context) GetConnectionOptionPasswordOptionHistoryOutput {
+	return o
+}
+
+// Enables password history checking.
+func (o GetConnectionOptionPasswordOptionHistoryOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasswordOptionHistory) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+// Number of previous passwords to check against. Must be between 1 and 24. Default: 3.
+func (o GetConnectionOptionPasswordOptionHistoryOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasswordOptionHistory) int { return v.Size }).(pulumi.IntOutput)
+}
+
+type GetConnectionOptionPasswordOptionHistoryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionPasswordOptionHistoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionPasswordOptionHistory)(nil)).Elem()
+}
+
+func (o GetConnectionOptionPasswordOptionHistoryArrayOutput) ToGetConnectionOptionPasswordOptionHistoryArrayOutput() GetConnectionOptionPasswordOptionHistoryArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordOptionHistoryArrayOutput) ToGetConnectionOptionPasswordOptionHistoryArrayOutputWithContext(ctx context.Context) GetConnectionOptionPasswordOptionHistoryArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordOptionHistoryArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionPasswordOptionHistoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionPasswordOptionHistory {
+		return vs[0].([]GetConnectionOptionPasswordOptionHistory)[vs[1].(int)]
+	}).(GetConnectionOptionPasswordOptionHistoryOutput)
+}
+
+type GetConnectionOptionPasswordOptionProfileData struct {
+	// Prevents users from including profile data in passwords.
+	Active bool `pulumi:"active"`
+	// User profile fields to block from passwords. Maximum 12 items, each max 100 characters.
+	BlockedFields []string `pulumi:"blockedFields"`
+}
+
+// GetConnectionOptionPasswordOptionProfileDataInput is an input type that accepts GetConnectionOptionPasswordOptionProfileDataArgs and GetConnectionOptionPasswordOptionProfileDataOutput values.
+// You can construct a concrete instance of `GetConnectionOptionPasswordOptionProfileDataInput` via:
+//
+//	GetConnectionOptionPasswordOptionProfileDataArgs{...}
+type GetConnectionOptionPasswordOptionProfileDataInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionPasswordOptionProfileDataOutput() GetConnectionOptionPasswordOptionProfileDataOutput
+	ToGetConnectionOptionPasswordOptionProfileDataOutputWithContext(context.Context) GetConnectionOptionPasswordOptionProfileDataOutput
+}
+
+type GetConnectionOptionPasswordOptionProfileDataArgs struct {
+	// Prevents users from including profile data in passwords.
+	Active pulumi.BoolInput `pulumi:"active"`
+	// User profile fields to block from passwords. Maximum 12 items, each max 100 characters.
+	BlockedFields pulumi.StringArrayInput `pulumi:"blockedFields"`
+}
+
+func (GetConnectionOptionPasswordOptionProfileDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionPasswordOptionProfileData)(nil)).Elem()
+}
+
+func (i GetConnectionOptionPasswordOptionProfileDataArgs) ToGetConnectionOptionPasswordOptionProfileDataOutput() GetConnectionOptionPasswordOptionProfileDataOutput {
+	return i.ToGetConnectionOptionPasswordOptionProfileDataOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionPasswordOptionProfileDataArgs) ToGetConnectionOptionPasswordOptionProfileDataOutputWithContext(ctx context.Context) GetConnectionOptionPasswordOptionProfileDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionPasswordOptionProfileDataOutput)
+}
+
+// GetConnectionOptionPasswordOptionProfileDataArrayInput is an input type that accepts GetConnectionOptionPasswordOptionProfileDataArray and GetConnectionOptionPasswordOptionProfileDataArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionPasswordOptionProfileDataArrayInput` via:
+//
+//	GetConnectionOptionPasswordOptionProfileDataArray{ GetConnectionOptionPasswordOptionProfileDataArgs{...} }
+type GetConnectionOptionPasswordOptionProfileDataArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionPasswordOptionProfileDataArrayOutput() GetConnectionOptionPasswordOptionProfileDataArrayOutput
+	ToGetConnectionOptionPasswordOptionProfileDataArrayOutputWithContext(context.Context) GetConnectionOptionPasswordOptionProfileDataArrayOutput
+}
+
+type GetConnectionOptionPasswordOptionProfileDataArray []GetConnectionOptionPasswordOptionProfileDataInput
+
+func (GetConnectionOptionPasswordOptionProfileDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionPasswordOptionProfileData)(nil)).Elem()
+}
+
+func (i GetConnectionOptionPasswordOptionProfileDataArray) ToGetConnectionOptionPasswordOptionProfileDataArrayOutput() GetConnectionOptionPasswordOptionProfileDataArrayOutput {
+	return i.ToGetConnectionOptionPasswordOptionProfileDataArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionPasswordOptionProfileDataArray) ToGetConnectionOptionPasswordOptionProfileDataArrayOutputWithContext(ctx context.Context) GetConnectionOptionPasswordOptionProfileDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionPasswordOptionProfileDataArrayOutput)
+}
+
+type GetConnectionOptionPasswordOptionProfileDataOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionPasswordOptionProfileDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionPasswordOptionProfileData)(nil)).Elem()
+}
+
+func (o GetConnectionOptionPasswordOptionProfileDataOutput) ToGetConnectionOptionPasswordOptionProfileDataOutput() GetConnectionOptionPasswordOptionProfileDataOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordOptionProfileDataOutput) ToGetConnectionOptionPasswordOptionProfileDataOutputWithContext(ctx context.Context) GetConnectionOptionPasswordOptionProfileDataOutput {
+	return o
+}
+
+// Prevents users from including profile data in passwords.
+func (o GetConnectionOptionPasswordOptionProfileDataOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasswordOptionProfileData) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+// User profile fields to block from passwords. Maximum 12 items, each max 100 characters.
+func (o GetConnectionOptionPasswordOptionProfileDataOutput) BlockedFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionPasswordOptionProfileData) []string { return v.BlockedFields }).(pulumi.StringArrayOutput)
+}
+
+type GetConnectionOptionPasswordOptionProfileDataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionPasswordOptionProfileDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionPasswordOptionProfileData)(nil)).Elem()
+}
+
+func (o GetConnectionOptionPasswordOptionProfileDataArrayOutput) ToGetConnectionOptionPasswordOptionProfileDataArrayOutput() GetConnectionOptionPasswordOptionProfileDataArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordOptionProfileDataArrayOutput) ToGetConnectionOptionPasswordOptionProfileDataArrayOutputWithContext(ctx context.Context) GetConnectionOptionPasswordOptionProfileDataArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionPasswordOptionProfileDataArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionPasswordOptionProfileDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionPasswordOptionProfileData {
+		return vs[0].([]GetConnectionOptionPasswordOptionProfileData)[vs[1].(int)]
+	}).(GetConnectionOptionPasswordOptionProfileDataOutput)
+}
+
+type GetConnectionOptionSigningKey struct {
+	Cert string `pulumi:"cert"`
+	Key  string `pulumi:"key"`
+}
+
+// GetConnectionOptionSigningKeyInput is an input type that accepts GetConnectionOptionSigningKeyArgs and GetConnectionOptionSigningKeyOutput values.
+// You can construct a concrete instance of `GetConnectionOptionSigningKeyInput` via:
+//
+//	GetConnectionOptionSigningKeyArgs{...}
+type GetConnectionOptionSigningKeyInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionSigningKeyOutput() GetConnectionOptionSigningKeyOutput
+	ToGetConnectionOptionSigningKeyOutputWithContext(context.Context) GetConnectionOptionSigningKeyOutput
+}
+
+type GetConnectionOptionSigningKeyArgs struct {
+	Cert pulumi.StringInput `pulumi:"cert"`
+	Key  pulumi.StringInput `pulumi:"key"`
+}
+
+func (GetConnectionOptionSigningKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionSigningKey)(nil)).Elem()
+}
+
+func (i GetConnectionOptionSigningKeyArgs) ToGetConnectionOptionSigningKeyOutput() GetConnectionOptionSigningKeyOutput {
+	return i.ToGetConnectionOptionSigningKeyOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionSigningKeyArgs) ToGetConnectionOptionSigningKeyOutputWithContext(ctx context.Context) GetConnectionOptionSigningKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionSigningKeyOutput)
+}
+
+// GetConnectionOptionSigningKeyArrayInput is an input type that accepts GetConnectionOptionSigningKeyArray and GetConnectionOptionSigningKeyArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionSigningKeyArrayInput` via:
+//
+//	GetConnectionOptionSigningKeyArray{ GetConnectionOptionSigningKeyArgs{...} }
+type GetConnectionOptionSigningKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionSigningKeyArrayOutput() GetConnectionOptionSigningKeyArrayOutput
+	ToGetConnectionOptionSigningKeyArrayOutputWithContext(context.Context) GetConnectionOptionSigningKeyArrayOutput
+}
+
+type GetConnectionOptionSigningKeyArray []GetConnectionOptionSigningKeyInput
+
+func (GetConnectionOptionSigningKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionSigningKey)(nil)).Elem()
+}
+
+func (i GetConnectionOptionSigningKeyArray) ToGetConnectionOptionSigningKeyArrayOutput() GetConnectionOptionSigningKeyArrayOutput {
+	return i.ToGetConnectionOptionSigningKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionSigningKeyArray) ToGetConnectionOptionSigningKeyArrayOutputWithContext(ctx context.Context) GetConnectionOptionSigningKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionSigningKeyArrayOutput)
+}
+
+type GetConnectionOptionSigningKeyOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionSigningKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionSigningKey)(nil)).Elem()
+}
+
+func (o GetConnectionOptionSigningKeyOutput) ToGetConnectionOptionSigningKeyOutput() GetConnectionOptionSigningKeyOutput {
+	return o
+}
+
+func (o GetConnectionOptionSigningKeyOutput) ToGetConnectionOptionSigningKeyOutputWithContext(ctx context.Context) GetConnectionOptionSigningKeyOutput {
+	return o
+}
+
+func (o GetConnectionOptionSigningKeyOutput) Cert() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionSigningKey) string { return v.Cert }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionOptionSigningKeyOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionSigningKey) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetConnectionOptionSigningKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionSigningKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionSigningKey)(nil)).Elem()
+}
+
+func (o GetConnectionOptionSigningKeyArrayOutput) ToGetConnectionOptionSigningKeyArrayOutput() GetConnectionOptionSigningKeyArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionSigningKeyArrayOutput) ToGetConnectionOptionSigningKeyArrayOutputWithContext(ctx context.Context) GetConnectionOptionSigningKeyArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionSigningKeyArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionSigningKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionSigningKey {
+		return vs[0].([]GetConnectionOptionSigningKey)[vs[1].(int)]
+	}).(GetConnectionOptionSigningKeyOutput)
+}
+
+type GetConnectionOptionTotp struct {
+	// Length of the one-time password.
+	Length int `pulumi:"length"`
+	// Seconds between allowed generation of new passwords.
+	TimeStep int `pulumi:"timeStep"`
+}
+
+// GetConnectionOptionTotpInput is an input type that accepts GetConnectionOptionTotpArgs and GetConnectionOptionTotpOutput values.
+// You can construct a concrete instance of `GetConnectionOptionTotpInput` via:
+//
+//	GetConnectionOptionTotpArgs{...}
+type GetConnectionOptionTotpInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionTotpOutput() GetConnectionOptionTotpOutput
+	ToGetConnectionOptionTotpOutputWithContext(context.Context) GetConnectionOptionTotpOutput
+}
+
+type GetConnectionOptionTotpArgs struct {
+	// Length of the one-time password.
+	Length pulumi.IntInput `pulumi:"length"`
+	// Seconds between allowed generation of new passwords.
+	TimeStep pulumi.IntInput `pulumi:"timeStep"`
+}
+
+func (GetConnectionOptionTotpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionTotp)(nil)).Elem()
+}
+
+func (i GetConnectionOptionTotpArgs) ToGetConnectionOptionTotpOutput() GetConnectionOptionTotpOutput {
+	return i.ToGetConnectionOptionTotpOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionTotpArgs) ToGetConnectionOptionTotpOutputWithContext(ctx context.Context) GetConnectionOptionTotpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionTotpOutput)
+}
+
+// GetConnectionOptionTotpArrayInput is an input type that accepts GetConnectionOptionTotpArray and GetConnectionOptionTotpArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionTotpArrayInput` via:
+//
+//	GetConnectionOptionTotpArray{ GetConnectionOptionTotpArgs{...} }
+type GetConnectionOptionTotpArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionTotpArrayOutput() GetConnectionOptionTotpArrayOutput
+	ToGetConnectionOptionTotpArrayOutputWithContext(context.Context) GetConnectionOptionTotpArrayOutput
+}
+
+type GetConnectionOptionTotpArray []GetConnectionOptionTotpInput
+
+func (GetConnectionOptionTotpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionTotp)(nil)).Elem()
+}
+
+func (i GetConnectionOptionTotpArray) ToGetConnectionOptionTotpArrayOutput() GetConnectionOptionTotpArrayOutput {
+	return i.ToGetConnectionOptionTotpArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionTotpArray) ToGetConnectionOptionTotpArrayOutputWithContext(ctx context.Context) GetConnectionOptionTotpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionTotpArrayOutput)
+}
+
+type GetConnectionOptionTotpOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionTotpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionTotp)(nil)).Elem()
+}
+
+func (o GetConnectionOptionTotpOutput) ToGetConnectionOptionTotpOutput() GetConnectionOptionTotpOutput {
+	return o
+}
+
+func (o GetConnectionOptionTotpOutput) ToGetConnectionOptionTotpOutputWithContext(ctx context.Context) GetConnectionOptionTotpOutput {
+	return o
+}
+
+// Length of the one-time password.
+func (o GetConnectionOptionTotpOutput) Length() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionOptionTotp) int { return v.Length }).(pulumi.IntOutput)
+}
+
+// Seconds between allowed generation of new passwords.
+func (o GetConnectionOptionTotpOutput) TimeStep() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionOptionTotp) int { return v.TimeStep }).(pulumi.IntOutput)
+}
+
+type GetConnectionOptionTotpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionTotpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionTotp)(nil)).Elem()
+}
+
+func (o GetConnectionOptionTotpArrayOutput) ToGetConnectionOptionTotpArrayOutput() GetConnectionOptionTotpArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionTotpArrayOutput) ToGetConnectionOptionTotpArrayOutputWithContext(ctx context.Context) GetConnectionOptionTotpArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionTotpArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionTotpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionTotp {
+		return vs[0].([]GetConnectionOptionTotp)[vs[1].(int)]
+	}).(GetConnectionOptionTotpOutput)
+}
+
+type GetConnectionOptionValidation struct {
+	// Specifies the `min` and `max` values of username length.
+	Usernames []GetConnectionOptionValidationUsername `pulumi:"usernames"`
+}
+
+// GetConnectionOptionValidationInput is an input type that accepts GetConnectionOptionValidationArgs and GetConnectionOptionValidationOutput values.
+// You can construct a concrete instance of `GetConnectionOptionValidationInput` via:
+//
+//	GetConnectionOptionValidationArgs{...}
+type GetConnectionOptionValidationInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionValidationOutput() GetConnectionOptionValidationOutput
+	ToGetConnectionOptionValidationOutputWithContext(context.Context) GetConnectionOptionValidationOutput
+}
+
+type GetConnectionOptionValidationArgs struct {
+	// Specifies the `min` and `max` values of username length.
+	Usernames GetConnectionOptionValidationUsernameArrayInput `pulumi:"usernames"`
+}
+
+func (GetConnectionOptionValidationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionValidation)(nil)).Elem()
+}
+
+func (i GetConnectionOptionValidationArgs) ToGetConnectionOptionValidationOutput() GetConnectionOptionValidationOutput {
+	return i.ToGetConnectionOptionValidationOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionValidationArgs) ToGetConnectionOptionValidationOutputWithContext(ctx context.Context) GetConnectionOptionValidationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionValidationOutput)
+}
+
+// GetConnectionOptionValidationArrayInput is an input type that accepts GetConnectionOptionValidationArray and GetConnectionOptionValidationArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionValidationArrayInput` via:
+//
+//	GetConnectionOptionValidationArray{ GetConnectionOptionValidationArgs{...} }
+type GetConnectionOptionValidationArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionValidationArrayOutput() GetConnectionOptionValidationArrayOutput
+	ToGetConnectionOptionValidationArrayOutputWithContext(context.Context) GetConnectionOptionValidationArrayOutput
+}
+
+type GetConnectionOptionValidationArray []GetConnectionOptionValidationInput
+
+func (GetConnectionOptionValidationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionValidation)(nil)).Elem()
+}
+
+func (i GetConnectionOptionValidationArray) ToGetConnectionOptionValidationArrayOutput() GetConnectionOptionValidationArrayOutput {
+	return i.ToGetConnectionOptionValidationArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionValidationArray) ToGetConnectionOptionValidationArrayOutputWithContext(ctx context.Context) GetConnectionOptionValidationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionValidationArrayOutput)
+}
+
+type GetConnectionOptionValidationOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionValidationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionValidation)(nil)).Elem()
+}
+
+func (o GetConnectionOptionValidationOutput) ToGetConnectionOptionValidationOutput() GetConnectionOptionValidationOutput {
+	return o
+}
+
+func (o GetConnectionOptionValidationOutput) ToGetConnectionOptionValidationOutputWithContext(ctx context.Context) GetConnectionOptionValidationOutput {
+	return o
+}
+
+// Specifies the `min` and `max` values of username length.
+func (o GetConnectionOptionValidationOutput) Usernames() GetConnectionOptionValidationUsernameArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionValidation) []GetConnectionOptionValidationUsername { return v.Usernames }).(GetConnectionOptionValidationUsernameArrayOutput)
+}
+
+type GetConnectionOptionValidationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionValidationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionValidation)(nil)).Elem()
+}
+
+func (o GetConnectionOptionValidationArrayOutput) ToGetConnectionOptionValidationArrayOutput() GetConnectionOptionValidationArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionValidationArrayOutput) ToGetConnectionOptionValidationArrayOutputWithContext(ctx context.Context) GetConnectionOptionValidationArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionValidationArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionValidationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionValidation {
+		return vs[0].([]GetConnectionOptionValidation)[vs[1].(int)]
+	}).(GetConnectionOptionValidationOutput)
+}
+
+type GetConnectionOptionValidationUsername struct {
+	Max int `pulumi:"max"`
+	Min int `pulumi:"min"`
+}
+
+// GetConnectionOptionValidationUsernameInput is an input type that accepts GetConnectionOptionValidationUsernameArgs and GetConnectionOptionValidationUsernameOutput values.
+// You can construct a concrete instance of `GetConnectionOptionValidationUsernameInput` via:
+//
+//	GetConnectionOptionValidationUsernameArgs{...}
+type GetConnectionOptionValidationUsernameInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionValidationUsernameOutput() GetConnectionOptionValidationUsernameOutput
+	ToGetConnectionOptionValidationUsernameOutputWithContext(context.Context) GetConnectionOptionValidationUsernameOutput
+}
+
+type GetConnectionOptionValidationUsernameArgs struct {
+	Max pulumi.IntInput `pulumi:"max"`
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (GetConnectionOptionValidationUsernameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionValidationUsername)(nil)).Elem()
+}
+
+func (i GetConnectionOptionValidationUsernameArgs) ToGetConnectionOptionValidationUsernameOutput() GetConnectionOptionValidationUsernameOutput {
+	return i.ToGetConnectionOptionValidationUsernameOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionValidationUsernameArgs) ToGetConnectionOptionValidationUsernameOutputWithContext(ctx context.Context) GetConnectionOptionValidationUsernameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionValidationUsernameOutput)
+}
+
+// GetConnectionOptionValidationUsernameArrayInput is an input type that accepts GetConnectionOptionValidationUsernameArray and GetConnectionOptionValidationUsernameArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionValidationUsernameArrayInput` via:
+//
+//	GetConnectionOptionValidationUsernameArray{ GetConnectionOptionValidationUsernameArgs{...} }
+type GetConnectionOptionValidationUsernameArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionValidationUsernameArrayOutput() GetConnectionOptionValidationUsernameArrayOutput
+	ToGetConnectionOptionValidationUsernameArrayOutputWithContext(context.Context) GetConnectionOptionValidationUsernameArrayOutput
+}
+
+type GetConnectionOptionValidationUsernameArray []GetConnectionOptionValidationUsernameInput
+
+func (GetConnectionOptionValidationUsernameArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionValidationUsername)(nil)).Elem()
+}
+
+func (i GetConnectionOptionValidationUsernameArray) ToGetConnectionOptionValidationUsernameArrayOutput() GetConnectionOptionValidationUsernameArrayOutput {
+	return i.ToGetConnectionOptionValidationUsernameArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionValidationUsernameArray) ToGetConnectionOptionValidationUsernameArrayOutputWithContext(ctx context.Context) GetConnectionOptionValidationUsernameArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionValidationUsernameArrayOutput)
+}
+
+type GetConnectionOptionValidationUsernameOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionValidationUsernameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionValidationUsername)(nil)).Elem()
+}
+
+func (o GetConnectionOptionValidationUsernameOutput) ToGetConnectionOptionValidationUsernameOutput() GetConnectionOptionValidationUsernameOutput {
+	return o
+}
+
+func (o GetConnectionOptionValidationUsernameOutput) ToGetConnectionOptionValidationUsernameOutputWithContext(ctx context.Context) GetConnectionOptionValidationUsernameOutput {
+	return o
+}
+
+func (o GetConnectionOptionValidationUsernameOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionOptionValidationUsername) int { return v.Max }).(pulumi.IntOutput)
+}
+
+func (o GetConnectionOptionValidationUsernameOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionOptionValidationUsername) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type GetConnectionOptionValidationUsernameArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionValidationUsernameArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionValidationUsername)(nil)).Elem()
+}
+
+func (o GetConnectionOptionValidationUsernameArrayOutput) ToGetConnectionOptionValidationUsernameArrayOutput() GetConnectionOptionValidationUsernameArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionValidationUsernameArrayOutput) ToGetConnectionOptionValidationUsernameArrayOutputWithContext(ctx context.Context) GetConnectionOptionValidationUsernameArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionValidationUsernameArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionValidationUsernameOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionValidationUsername {
+		return vs[0].([]GetConnectionOptionValidationUsername)[vs[1].(int)]
+	}).(GetConnectionOptionValidationUsernameOutput)
+}
+
+type GetConnectionProfileConnectionConfig struct {
+}
+
+// GetConnectionProfileConnectionConfigInput is an input type that accepts GetConnectionProfileConnectionConfigArgs and GetConnectionProfileConnectionConfigOutput values.
+// You can construct a concrete instance of `GetConnectionProfileConnectionConfigInput` via:
+//
+//	GetConnectionProfileConnectionConfigArgs{...}
+type GetConnectionProfileConnectionConfigInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileConnectionConfigOutput() GetConnectionProfileConnectionConfigOutput
+	ToGetConnectionProfileConnectionConfigOutputWithContext(context.Context) GetConnectionProfileConnectionConfigOutput
+}
+
+type GetConnectionProfileConnectionConfigArgs struct {
+}
+
+func (GetConnectionProfileConnectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileConnectionConfig)(nil)).Elem()
+}
+
+func (i GetConnectionProfileConnectionConfigArgs) ToGetConnectionProfileConnectionConfigOutput() GetConnectionProfileConnectionConfigOutput {
+	return i.ToGetConnectionProfileConnectionConfigOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileConnectionConfigArgs) ToGetConnectionProfileConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileConnectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileConnectionConfigOutput)
+}
+
+// GetConnectionProfileConnectionConfigArrayInput is an input type that accepts GetConnectionProfileConnectionConfigArray and GetConnectionProfileConnectionConfigArrayOutput values.
+// You can construct a concrete instance of `GetConnectionProfileConnectionConfigArrayInput` via:
+//
+//	GetConnectionProfileConnectionConfigArray{ GetConnectionProfileConnectionConfigArgs{...} }
+type GetConnectionProfileConnectionConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileConnectionConfigArrayOutput() GetConnectionProfileConnectionConfigArrayOutput
+	ToGetConnectionProfileConnectionConfigArrayOutputWithContext(context.Context) GetConnectionProfileConnectionConfigArrayOutput
+}
+
+type GetConnectionProfileConnectionConfigArray []GetConnectionProfileConnectionConfigInput
+
+func (GetConnectionProfileConnectionConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionProfileConnectionConfig)(nil)).Elem()
+}
+
+func (i GetConnectionProfileConnectionConfigArray) ToGetConnectionProfileConnectionConfigArrayOutput() GetConnectionProfileConnectionConfigArrayOutput {
+	return i.ToGetConnectionProfileConnectionConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileConnectionConfigArray) ToGetConnectionProfileConnectionConfigArrayOutputWithContext(ctx context.Context) GetConnectionProfileConnectionConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileConnectionConfigArrayOutput)
+}
+
+type GetConnectionProfileConnectionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileConnectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileConnectionConfig)(nil)).Elem()
+}
+
+func (o GetConnectionProfileConnectionConfigOutput) ToGetConnectionProfileConnectionConfigOutput() GetConnectionProfileConnectionConfigOutput {
+	return o
+}
+
+func (o GetConnectionProfileConnectionConfigOutput) ToGetConnectionProfileConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileConnectionConfigOutput {
+	return o
+}
+
+type GetConnectionProfileConnectionConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileConnectionConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionProfileConnectionConfig)(nil)).Elem()
+}
+
+func (o GetConnectionProfileConnectionConfigArrayOutput) ToGetConnectionProfileConnectionConfigArrayOutput() GetConnectionProfileConnectionConfigArrayOutput {
+	return o
+}
+
+func (o GetConnectionProfileConnectionConfigArrayOutput) ToGetConnectionProfileConnectionConfigArrayOutputWithContext(ctx context.Context) GetConnectionProfileConnectionConfigArrayOutput {
+	return o
+}
+
+func (o GetConnectionProfileConnectionConfigArrayOutput) Index(i pulumi.IntInput) GetConnectionProfileConnectionConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionProfileConnectionConfig {
+		return vs[0].([]GetConnectionProfileConnectionConfig)[vs[1].(int)]
+	}).(GetConnectionProfileConnectionConfigOutput)
+}
+
+type GetConnectionProfileCrossAppAccessResourceApp struct {
+	// The Cross App Access resource app status configuration.
+	Statuses []GetConnectionProfileCrossAppAccessResourceAppStatus `pulumi:"statuses"`
+}
+
+// GetConnectionProfileCrossAppAccessResourceAppInput is an input type that accepts GetConnectionProfileCrossAppAccessResourceAppArgs and GetConnectionProfileCrossAppAccessResourceAppOutput values.
+// You can construct a concrete instance of `GetConnectionProfileCrossAppAccessResourceAppInput` via:
+//
+//	GetConnectionProfileCrossAppAccessResourceAppArgs{...}
+type GetConnectionProfileCrossAppAccessResourceAppInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileCrossAppAccessResourceAppOutput() GetConnectionProfileCrossAppAccessResourceAppOutput
+	ToGetConnectionProfileCrossAppAccessResourceAppOutputWithContext(context.Context) GetConnectionProfileCrossAppAccessResourceAppOutput
+}
+
+type GetConnectionProfileCrossAppAccessResourceAppArgs struct {
+	// The Cross App Access resource app status configuration.
+	Statuses GetConnectionProfileCrossAppAccessResourceAppStatusArrayInput `pulumi:"statuses"`
+}
+
+func (GetConnectionProfileCrossAppAccessResourceAppArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileCrossAppAccessResourceApp)(nil)).Elem()
+}
+
+func (i GetConnectionProfileCrossAppAccessResourceAppArgs) ToGetConnectionProfileCrossAppAccessResourceAppOutput() GetConnectionProfileCrossAppAccessResourceAppOutput {
+	return i.ToGetConnectionProfileCrossAppAccessResourceAppOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileCrossAppAccessResourceAppArgs) ToGetConnectionProfileCrossAppAccessResourceAppOutputWithContext(ctx context.Context) GetConnectionProfileCrossAppAccessResourceAppOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileCrossAppAccessResourceAppOutput)
+}
+
+// GetConnectionProfileCrossAppAccessResourceAppArrayInput is an input type that accepts GetConnectionProfileCrossAppAccessResourceAppArray and GetConnectionProfileCrossAppAccessResourceAppArrayOutput values.
+// You can construct a concrete instance of `GetConnectionProfileCrossAppAccessResourceAppArrayInput` via:
+//
+//	GetConnectionProfileCrossAppAccessResourceAppArray{ GetConnectionProfileCrossAppAccessResourceAppArgs{...} }
+type GetConnectionProfileCrossAppAccessResourceAppArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileCrossAppAccessResourceAppArrayOutput() GetConnectionProfileCrossAppAccessResourceAppArrayOutput
+	ToGetConnectionProfileCrossAppAccessResourceAppArrayOutputWithContext(context.Context) GetConnectionProfileCrossAppAccessResourceAppArrayOutput
+}
+
+type GetConnectionProfileCrossAppAccessResourceAppArray []GetConnectionProfileCrossAppAccessResourceAppInput
+
+func (GetConnectionProfileCrossAppAccessResourceAppArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionProfileCrossAppAccessResourceApp)(nil)).Elem()
+}
+
+func (i GetConnectionProfileCrossAppAccessResourceAppArray) ToGetConnectionProfileCrossAppAccessResourceAppArrayOutput() GetConnectionProfileCrossAppAccessResourceAppArrayOutput {
+	return i.ToGetConnectionProfileCrossAppAccessResourceAppArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileCrossAppAccessResourceAppArray) ToGetConnectionProfileCrossAppAccessResourceAppArrayOutputWithContext(ctx context.Context) GetConnectionProfileCrossAppAccessResourceAppArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileCrossAppAccessResourceAppArrayOutput)
+}
+
+type GetConnectionProfileCrossAppAccessResourceAppOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileCrossAppAccessResourceAppOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileCrossAppAccessResourceApp)(nil)).Elem()
+}
+
+func (o GetConnectionProfileCrossAppAccessResourceAppOutput) ToGetConnectionProfileCrossAppAccessResourceAppOutput() GetConnectionProfileCrossAppAccessResourceAppOutput {
+	return o
+}
+
+func (o GetConnectionProfileCrossAppAccessResourceAppOutput) ToGetConnectionProfileCrossAppAccessResourceAppOutputWithContext(ctx context.Context) GetConnectionProfileCrossAppAccessResourceAppOutput {
+	return o
+}
+
+// The Cross App Access resource app status configuration.
+func (o GetConnectionProfileCrossAppAccessResourceAppOutput) Statuses() GetConnectionProfileCrossAppAccessResourceAppStatusArrayOutput {
+	return o.ApplyT(func(v GetConnectionProfileCrossAppAccessResourceApp) []GetConnectionProfileCrossAppAccessResourceAppStatus {
+		return v.Statuses
+	}).(GetConnectionProfileCrossAppAccessResourceAppStatusArrayOutput)
+}
+
+type GetConnectionProfileCrossAppAccessResourceAppArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileCrossAppAccessResourceAppArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionProfileCrossAppAccessResourceApp)(nil)).Elem()
+}
+
+func (o GetConnectionProfileCrossAppAccessResourceAppArrayOutput) ToGetConnectionProfileCrossAppAccessResourceAppArrayOutput() GetConnectionProfileCrossAppAccessResourceAppArrayOutput {
+	return o
+}
+
+func (o GetConnectionProfileCrossAppAccessResourceAppArrayOutput) ToGetConnectionProfileCrossAppAccessResourceAppArrayOutputWithContext(ctx context.Context) GetConnectionProfileCrossAppAccessResourceAppArrayOutput {
+	return o
+}
+
+func (o GetConnectionProfileCrossAppAccessResourceAppArrayOutput) Index(i pulumi.IntInput) GetConnectionProfileCrossAppAccessResourceAppOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionProfileCrossAppAccessResourceApp {
+		return vs[0].([]GetConnectionProfileCrossAppAccessResourceApp)[vs[1].(int)]
+	}).(GetConnectionProfileCrossAppAccessResourceAppOutput)
+}
+
+type GetConnectionProfileCrossAppAccessResourceAppStatus struct {
+	// Status values organizations are allowed to set.
+	AllowedValues []string `pulumi:"allowedValues"`
+	// Default status value for organizations that don't have an explicit override.
+	DefaultValue string `pulumi:"defaultValue"`
+}
+
+// GetConnectionProfileCrossAppAccessResourceAppStatusInput is an input type that accepts GetConnectionProfileCrossAppAccessResourceAppStatusArgs and GetConnectionProfileCrossAppAccessResourceAppStatusOutput values.
+// You can construct a concrete instance of `GetConnectionProfileCrossAppAccessResourceAppStatusInput` via:
+//
+//	GetConnectionProfileCrossAppAccessResourceAppStatusArgs{...}
+type GetConnectionProfileCrossAppAccessResourceAppStatusInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileCrossAppAccessResourceAppStatusOutput() GetConnectionProfileCrossAppAccessResourceAppStatusOutput
+	ToGetConnectionProfileCrossAppAccessResourceAppStatusOutputWithContext(context.Context) GetConnectionProfileCrossAppAccessResourceAppStatusOutput
+}
+
+type GetConnectionProfileCrossAppAccessResourceAppStatusArgs struct {
+	// Status values organizations are allowed to set.
+	AllowedValues pulumi.StringArrayInput `pulumi:"allowedValues"`
+	// Default status value for organizations that don't have an explicit override.
+	DefaultValue pulumi.StringInput `pulumi:"defaultValue"`
+}
+
+func (GetConnectionProfileCrossAppAccessResourceAppStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileCrossAppAccessResourceAppStatus)(nil)).Elem()
+}
+
+func (i GetConnectionProfileCrossAppAccessResourceAppStatusArgs) ToGetConnectionProfileCrossAppAccessResourceAppStatusOutput() GetConnectionProfileCrossAppAccessResourceAppStatusOutput {
+	return i.ToGetConnectionProfileCrossAppAccessResourceAppStatusOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileCrossAppAccessResourceAppStatusArgs) ToGetConnectionProfileCrossAppAccessResourceAppStatusOutputWithContext(ctx context.Context) GetConnectionProfileCrossAppAccessResourceAppStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileCrossAppAccessResourceAppStatusOutput)
+}
+
+// GetConnectionProfileCrossAppAccessResourceAppStatusArrayInput is an input type that accepts GetConnectionProfileCrossAppAccessResourceAppStatusArray and GetConnectionProfileCrossAppAccessResourceAppStatusArrayOutput values.
+// You can construct a concrete instance of `GetConnectionProfileCrossAppAccessResourceAppStatusArrayInput` via:
+//
+//	GetConnectionProfileCrossAppAccessResourceAppStatusArray{ GetConnectionProfileCrossAppAccessResourceAppStatusArgs{...} }
+type GetConnectionProfileCrossAppAccessResourceAppStatusArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileCrossAppAccessResourceAppStatusArrayOutput() GetConnectionProfileCrossAppAccessResourceAppStatusArrayOutput
+	ToGetConnectionProfileCrossAppAccessResourceAppStatusArrayOutputWithContext(context.Context) GetConnectionProfileCrossAppAccessResourceAppStatusArrayOutput
+}
+
+type GetConnectionProfileCrossAppAccessResourceAppStatusArray []GetConnectionProfileCrossAppAccessResourceAppStatusInput
+
+func (GetConnectionProfileCrossAppAccessResourceAppStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionProfileCrossAppAccessResourceAppStatus)(nil)).Elem()
+}
+
+func (i GetConnectionProfileCrossAppAccessResourceAppStatusArray) ToGetConnectionProfileCrossAppAccessResourceAppStatusArrayOutput() GetConnectionProfileCrossAppAccessResourceAppStatusArrayOutput {
+	return i.ToGetConnectionProfileCrossAppAccessResourceAppStatusArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileCrossAppAccessResourceAppStatusArray) ToGetConnectionProfileCrossAppAccessResourceAppStatusArrayOutputWithContext(ctx context.Context) GetConnectionProfileCrossAppAccessResourceAppStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileCrossAppAccessResourceAppStatusArrayOutput)
+}
+
+type GetConnectionProfileCrossAppAccessResourceAppStatusOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileCrossAppAccessResourceAppStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileCrossAppAccessResourceAppStatus)(nil)).Elem()
+}
+
+func (o GetConnectionProfileCrossAppAccessResourceAppStatusOutput) ToGetConnectionProfileCrossAppAccessResourceAppStatusOutput() GetConnectionProfileCrossAppAccessResourceAppStatusOutput {
+	return o
+}
+
+func (o GetConnectionProfileCrossAppAccessResourceAppStatusOutput) ToGetConnectionProfileCrossAppAccessResourceAppStatusOutputWithContext(ctx context.Context) GetConnectionProfileCrossAppAccessResourceAppStatusOutput {
+	return o
+}
+
+// Status values organizations are allowed to set.
+func (o GetConnectionProfileCrossAppAccessResourceAppStatusOutput) AllowedValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionProfileCrossAppAccessResourceAppStatus) []string { return v.AllowedValues }).(pulumi.StringArrayOutput)
+}
+
+// Default status value for organizations that don't have an explicit override.
+func (o GetConnectionProfileCrossAppAccessResourceAppStatusOutput) DefaultValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionProfileCrossAppAccessResourceAppStatus) string { return v.DefaultValue }).(pulumi.StringOutput)
+}
+
+type GetConnectionProfileCrossAppAccessResourceAppStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileCrossAppAccessResourceAppStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionProfileCrossAppAccessResourceAppStatus)(nil)).Elem()
+}
+
+func (o GetConnectionProfileCrossAppAccessResourceAppStatusArrayOutput) ToGetConnectionProfileCrossAppAccessResourceAppStatusArrayOutput() GetConnectionProfileCrossAppAccessResourceAppStatusArrayOutput {
+	return o
+}
+
+func (o GetConnectionProfileCrossAppAccessResourceAppStatusArrayOutput) ToGetConnectionProfileCrossAppAccessResourceAppStatusArrayOutputWithContext(ctx context.Context) GetConnectionProfileCrossAppAccessResourceAppStatusArrayOutput {
+	return o
+}
+
+func (o GetConnectionProfileCrossAppAccessResourceAppStatusArrayOutput) Index(i pulumi.IntInput) GetConnectionProfileCrossAppAccessResourceAppStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionProfileCrossAppAccessResourceAppStatus {
+		return vs[0].([]GetConnectionProfileCrossAppAccessResourceAppStatus)[vs[1].(int)]
+	}).(GetConnectionProfileCrossAppAccessResourceAppStatusOutput)
+}
+
+type GetConnectionProfileOrganization struct {
+	// Whether to assign membership on login.
+	AssignMembershipOnLogin string `pulumi:"assignMembershipOnLogin"`
+	// Whether to show organization as a button.
+	ShowAsButton string `pulumi:"showAsButton"`
+}
+
+// GetConnectionProfileOrganizationInput is an input type that accepts GetConnectionProfileOrganizationArgs and GetConnectionProfileOrganizationOutput values.
+// You can construct a concrete instance of `GetConnectionProfileOrganizationInput` via:
+//
+//	GetConnectionProfileOrganizationArgs{...}
+type GetConnectionProfileOrganizationInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileOrganizationOutput() GetConnectionProfileOrganizationOutput
+	ToGetConnectionProfileOrganizationOutputWithContext(context.Context) GetConnectionProfileOrganizationOutput
+}
+
+type GetConnectionProfileOrganizationArgs struct {
+	// Whether to assign membership on login.
+	AssignMembershipOnLogin pulumi.StringInput `pulumi:"assignMembershipOnLogin"`
+	// Whether to show organization as a button.
+	ShowAsButton pulumi.StringInput `pulumi:"showAsButton"`
+}
+
+func (GetConnectionProfileOrganizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileOrganization)(nil)).Elem()
+}
+
+func (i GetConnectionProfileOrganizationArgs) ToGetConnectionProfileOrganizationOutput() GetConnectionProfileOrganizationOutput {
+	return i.ToGetConnectionProfileOrganizationOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileOrganizationArgs) ToGetConnectionProfileOrganizationOutputWithContext(ctx context.Context) GetConnectionProfileOrganizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileOrganizationOutput)
+}
+
+// GetConnectionProfileOrganizationArrayInput is an input type that accepts GetConnectionProfileOrganizationArray and GetConnectionProfileOrganizationArrayOutput values.
+// You can construct a concrete instance of `GetConnectionProfileOrganizationArrayInput` via:
+//
+//	GetConnectionProfileOrganizationArray{ GetConnectionProfileOrganizationArgs{...} }
+type GetConnectionProfileOrganizationArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileOrganizationArrayOutput() GetConnectionProfileOrganizationArrayOutput
+	ToGetConnectionProfileOrganizationArrayOutputWithContext(context.Context) GetConnectionProfileOrganizationArrayOutput
+}
+
+type GetConnectionProfileOrganizationArray []GetConnectionProfileOrganizationInput
+
+func (GetConnectionProfileOrganizationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionProfileOrganization)(nil)).Elem()
+}
+
+func (i GetConnectionProfileOrganizationArray) ToGetConnectionProfileOrganizationArrayOutput() GetConnectionProfileOrganizationArrayOutput {
+	return i.ToGetConnectionProfileOrganizationArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileOrganizationArray) ToGetConnectionProfileOrganizationArrayOutputWithContext(ctx context.Context) GetConnectionProfileOrganizationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileOrganizationArrayOutput)
+}
+
+type GetConnectionProfileOrganizationOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileOrganizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileOrganization)(nil)).Elem()
+}
+
+func (o GetConnectionProfileOrganizationOutput) ToGetConnectionProfileOrganizationOutput() GetConnectionProfileOrganizationOutput {
+	return o
+}
+
+func (o GetConnectionProfileOrganizationOutput) ToGetConnectionProfileOrganizationOutputWithContext(ctx context.Context) GetConnectionProfileOrganizationOutput {
+	return o
+}
+
+// Whether to assign membership on login.
+func (o GetConnectionProfileOrganizationOutput) AssignMembershipOnLogin() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionProfileOrganization) string { return v.AssignMembershipOnLogin }).(pulumi.StringOutput)
+}
+
+// Whether to show organization as a button.
+func (o GetConnectionProfileOrganizationOutput) ShowAsButton() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionProfileOrganization) string { return v.ShowAsButton }).(pulumi.StringOutput)
+}
+
+type GetConnectionProfileOrganizationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileOrganizationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionProfileOrganization)(nil)).Elem()
+}
+
+func (o GetConnectionProfileOrganizationArrayOutput) ToGetConnectionProfileOrganizationArrayOutput() GetConnectionProfileOrganizationArrayOutput {
+	return o
+}
+
+func (o GetConnectionProfileOrganizationArrayOutput) ToGetConnectionProfileOrganizationArrayOutputWithContext(ctx context.Context) GetConnectionProfileOrganizationArrayOutput {
+	return o
+}
+
+func (o GetConnectionProfileOrganizationArrayOutput) Index(i pulumi.IntInput) GetConnectionProfileOrganizationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionProfileOrganization {
+		return vs[0].([]GetConnectionProfileOrganization)[vs[1].(int)]
+	}).(GetConnectionProfileOrganizationOutput)
+}
+
+type GetConnectionProfileStrategyOverride struct {
+	// Strategy override configuration.
+	Ad GetConnectionProfileStrategyOverrideAd `pulumi:"ad"`
+	// Strategy override configuration.
+	Adfs GetConnectionProfileStrategyOverrideAdfs `pulumi:"adfs"`
+	// Strategy override configuration.
+	GoogleApps GetConnectionProfileStrategyOverrideGoogleApps `pulumi:"googleApps"`
+	// Strategy override configuration.
+	Oidc GetConnectionProfileStrategyOverrideOidc `pulumi:"oidc"`
+	// Strategy override configuration.
+	Okta GetConnectionProfileStrategyOverrideOkta `pulumi:"okta"`
+	// Strategy override configuration.
+	Pingfederate GetConnectionProfileStrategyOverridePingfederate `pulumi:"pingfederate"`
+	// Strategy override configuration.
+	Samlp GetConnectionProfileStrategyOverrideSamlp `pulumi:"samlp"`
+	// Strategy override configuration.
+	Waad GetConnectionProfileStrategyOverrideWaad `pulumi:"waad"`
+}
+
+// GetConnectionProfileStrategyOverrideInput is an input type that accepts GetConnectionProfileStrategyOverrideArgs and GetConnectionProfileStrategyOverrideOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideInput` via:
+//
+//	GetConnectionProfileStrategyOverrideArgs{...}
+type GetConnectionProfileStrategyOverrideInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideOutput() GetConnectionProfileStrategyOverrideOutput
+	ToGetConnectionProfileStrategyOverrideOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideOutput
+}
+
+type GetConnectionProfileStrategyOverrideArgs struct {
+	// Strategy override configuration.
+	Ad GetConnectionProfileStrategyOverrideAdInput `pulumi:"ad"`
+	// Strategy override configuration.
+	Adfs GetConnectionProfileStrategyOverrideAdfsInput `pulumi:"adfs"`
+	// Strategy override configuration.
+	GoogleApps GetConnectionProfileStrategyOverrideGoogleAppsInput `pulumi:"googleApps"`
+	// Strategy override configuration.
+	Oidc GetConnectionProfileStrategyOverrideOidcInput `pulumi:"oidc"`
+	// Strategy override configuration.
+	Okta GetConnectionProfileStrategyOverrideOktaInput `pulumi:"okta"`
+	// Strategy override configuration.
+	Pingfederate GetConnectionProfileStrategyOverridePingfederateInput `pulumi:"pingfederate"`
+	// Strategy override configuration.
+	Samlp GetConnectionProfileStrategyOverrideSamlpInput `pulumi:"samlp"`
+	// Strategy override configuration.
+	Waad GetConnectionProfileStrategyOverrideWaadInput `pulumi:"waad"`
+}
+
+func (GetConnectionProfileStrategyOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverride)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideArgs) ToGetConnectionProfileStrategyOverrideOutput() GetConnectionProfileStrategyOverrideOutput {
+	return i.ToGetConnectionProfileStrategyOverrideOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideArgs) ToGetConnectionProfileStrategyOverrideOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideOutput)
+}
+
+// GetConnectionProfileStrategyOverrideArrayInput is an input type that accepts GetConnectionProfileStrategyOverrideArray and GetConnectionProfileStrategyOverrideArrayOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideArrayInput` via:
+//
+//	GetConnectionProfileStrategyOverrideArray{ GetConnectionProfileStrategyOverrideArgs{...} }
+type GetConnectionProfileStrategyOverrideArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideArrayOutput() GetConnectionProfileStrategyOverrideArrayOutput
+	ToGetConnectionProfileStrategyOverrideArrayOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideArrayOutput
+}
+
+type GetConnectionProfileStrategyOverrideArray []GetConnectionProfileStrategyOverrideInput
+
+func (GetConnectionProfileStrategyOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionProfileStrategyOverride)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideArray) ToGetConnectionProfileStrategyOverrideArrayOutput() GetConnectionProfileStrategyOverrideArrayOutput {
+	return i.ToGetConnectionProfileStrategyOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideArray) ToGetConnectionProfileStrategyOverrideArrayOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideArrayOutput)
+}
+
+type GetConnectionProfileStrategyOverrideOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverride)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideOutput) ToGetConnectionProfileStrategyOverrideOutput() GetConnectionProfileStrategyOverrideOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideOutput) ToGetConnectionProfileStrategyOverrideOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideOutput {
+	return o
+}
+
+// Strategy override configuration.
+func (o GetConnectionProfileStrategyOverrideOutput) Ad() GetConnectionProfileStrategyOverrideAdOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverride) GetConnectionProfileStrategyOverrideAd { return v.Ad }).(GetConnectionProfileStrategyOverrideAdOutput)
+}
+
+// Strategy override configuration.
+func (o GetConnectionProfileStrategyOverrideOutput) Adfs() GetConnectionProfileStrategyOverrideAdfsOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverride) GetConnectionProfileStrategyOverrideAdfs { return v.Adfs }).(GetConnectionProfileStrategyOverrideAdfsOutput)
+}
+
+// Strategy override configuration.
+func (o GetConnectionProfileStrategyOverrideOutput) GoogleApps() GetConnectionProfileStrategyOverrideGoogleAppsOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverride) GetConnectionProfileStrategyOverrideGoogleApps {
+		return v.GoogleApps
+	}).(GetConnectionProfileStrategyOverrideGoogleAppsOutput)
+}
+
+// Strategy override configuration.
+func (o GetConnectionProfileStrategyOverrideOutput) Oidc() GetConnectionProfileStrategyOverrideOidcOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverride) GetConnectionProfileStrategyOverrideOidc { return v.Oidc }).(GetConnectionProfileStrategyOverrideOidcOutput)
+}
+
+// Strategy override configuration.
+func (o GetConnectionProfileStrategyOverrideOutput) Okta() GetConnectionProfileStrategyOverrideOktaOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverride) GetConnectionProfileStrategyOverrideOkta { return v.Okta }).(GetConnectionProfileStrategyOverrideOktaOutput)
+}
+
+// Strategy override configuration.
+func (o GetConnectionProfileStrategyOverrideOutput) Pingfederate() GetConnectionProfileStrategyOverridePingfederateOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverride) GetConnectionProfileStrategyOverridePingfederate {
+		return v.Pingfederate
+	}).(GetConnectionProfileStrategyOverridePingfederateOutput)
+}
+
+// Strategy override configuration.
+func (o GetConnectionProfileStrategyOverrideOutput) Samlp() GetConnectionProfileStrategyOverrideSamlpOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverride) GetConnectionProfileStrategyOverrideSamlp { return v.Samlp }).(GetConnectionProfileStrategyOverrideSamlpOutput)
+}
+
+// Strategy override configuration.
+func (o GetConnectionProfileStrategyOverrideOutput) Waad() GetConnectionProfileStrategyOverrideWaadOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverride) GetConnectionProfileStrategyOverrideWaad { return v.Waad }).(GetConnectionProfileStrategyOverrideWaadOutput)
+}
+
+type GetConnectionProfileStrategyOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionProfileStrategyOverride)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideArrayOutput) ToGetConnectionProfileStrategyOverrideArrayOutput() GetConnectionProfileStrategyOverrideArrayOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideArrayOutput) ToGetConnectionProfileStrategyOverrideArrayOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideArrayOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideArrayOutput) Index(i pulumi.IntInput) GetConnectionProfileStrategyOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionProfileStrategyOverride {
+		return vs[0].([]GetConnectionProfileStrategyOverride)[vs[1].(int)]
+	}).(GetConnectionProfileStrategyOverrideOutput)
+}
+
+type GetConnectionProfileStrategyOverrideAd struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverrideAdConnectionConfig `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures []string `pulumi:"enabledFeatures"`
+}
+
+// GetConnectionProfileStrategyOverrideAdInput is an input type that accepts GetConnectionProfileStrategyOverrideAdArgs and GetConnectionProfileStrategyOverrideAdOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideAdInput` via:
+//
+//	GetConnectionProfileStrategyOverrideAdArgs{...}
+type GetConnectionProfileStrategyOverrideAdInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideAdOutput() GetConnectionProfileStrategyOverrideAdOutput
+	ToGetConnectionProfileStrategyOverrideAdOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideAdOutput
+}
+
+type GetConnectionProfileStrategyOverrideAdArgs struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverrideAdConnectionConfigInput `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures pulumi.StringArrayInput `pulumi:"enabledFeatures"`
+}
+
+func (GetConnectionProfileStrategyOverrideAdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideAd)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideAdArgs) ToGetConnectionProfileStrategyOverrideAdOutput() GetConnectionProfileStrategyOverrideAdOutput {
+	return i.ToGetConnectionProfileStrategyOverrideAdOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideAdArgs) ToGetConnectionProfileStrategyOverrideAdOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideAdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideAdOutput)
+}
+
+type GetConnectionProfileStrategyOverrideAdOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideAdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideAd)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideAdOutput) ToGetConnectionProfileStrategyOverrideAdOutput() GetConnectionProfileStrategyOverrideAdOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideAdOutput) ToGetConnectionProfileStrategyOverrideAdOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideAdOutput {
+	return o
+}
+
+// Connection config for the strategy override.
+func (o GetConnectionProfileStrategyOverrideAdOutput) ConnectionConfig() GetConnectionProfileStrategyOverrideAdConnectionConfigOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverrideAd) GetConnectionProfileStrategyOverrideAdConnectionConfig {
+		return v.ConnectionConfig
+	}).(GetConnectionProfileStrategyOverrideAdConnectionConfigOutput)
+}
+
+// Enabled features for the strategy override.
+func (o GetConnectionProfileStrategyOverrideAdOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverrideAd) []string { return v.EnabledFeatures }).(pulumi.StringArrayOutput)
+}
+
+type GetConnectionProfileStrategyOverrideAdConnectionConfig struct {
+}
+
+// GetConnectionProfileStrategyOverrideAdConnectionConfigInput is an input type that accepts GetConnectionProfileStrategyOverrideAdConnectionConfigArgs and GetConnectionProfileStrategyOverrideAdConnectionConfigOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideAdConnectionConfigInput` via:
+//
+//	GetConnectionProfileStrategyOverrideAdConnectionConfigArgs{...}
+type GetConnectionProfileStrategyOverrideAdConnectionConfigInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideAdConnectionConfigOutput() GetConnectionProfileStrategyOverrideAdConnectionConfigOutput
+	ToGetConnectionProfileStrategyOverrideAdConnectionConfigOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideAdConnectionConfigOutput
+}
+
+type GetConnectionProfileStrategyOverrideAdConnectionConfigArgs struct {
+}
+
+func (GetConnectionProfileStrategyOverrideAdConnectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideAdConnectionConfig)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideAdConnectionConfigArgs) ToGetConnectionProfileStrategyOverrideAdConnectionConfigOutput() GetConnectionProfileStrategyOverrideAdConnectionConfigOutput {
+	return i.ToGetConnectionProfileStrategyOverrideAdConnectionConfigOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideAdConnectionConfigArgs) ToGetConnectionProfileStrategyOverrideAdConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideAdConnectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideAdConnectionConfigOutput)
+}
+
+type GetConnectionProfileStrategyOverrideAdConnectionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideAdConnectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideAdConnectionConfig)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideAdConnectionConfigOutput) ToGetConnectionProfileStrategyOverrideAdConnectionConfigOutput() GetConnectionProfileStrategyOverrideAdConnectionConfigOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideAdConnectionConfigOutput) ToGetConnectionProfileStrategyOverrideAdConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideAdConnectionConfigOutput {
+	return o
+}
+
+type GetConnectionProfileStrategyOverrideAdfs struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverrideAdfsConnectionConfig `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures []string `pulumi:"enabledFeatures"`
+}
+
+// GetConnectionProfileStrategyOverrideAdfsInput is an input type that accepts GetConnectionProfileStrategyOverrideAdfsArgs and GetConnectionProfileStrategyOverrideAdfsOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideAdfsInput` via:
+//
+//	GetConnectionProfileStrategyOverrideAdfsArgs{...}
+type GetConnectionProfileStrategyOverrideAdfsInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideAdfsOutput() GetConnectionProfileStrategyOverrideAdfsOutput
+	ToGetConnectionProfileStrategyOverrideAdfsOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideAdfsOutput
+}
+
+type GetConnectionProfileStrategyOverrideAdfsArgs struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverrideAdfsConnectionConfigInput `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures pulumi.StringArrayInput `pulumi:"enabledFeatures"`
+}
+
+func (GetConnectionProfileStrategyOverrideAdfsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideAdfs)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideAdfsArgs) ToGetConnectionProfileStrategyOverrideAdfsOutput() GetConnectionProfileStrategyOverrideAdfsOutput {
+	return i.ToGetConnectionProfileStrategyOverrideAdfsOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideAdfsArgs) ToGetConnectionProfileStrategyOverrideAdfsOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideAdfsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideAdfsOutput)
+}
+
+type GetConnectionProfileStrategyOverrideAdfsOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideAdfsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideAdfs)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideAdfsOutput) ToGetConnectionProfileStrategyOverrideAdfsOutput() GetConnectionProfileStrategyOverrideAdfsOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideAdfsOutput) ToGetConnectionProfileStrategyOverrideAdfsOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideAdfsOutput {
+	return o
+}
+
+// Connection config for the strategy override.
+func (o GetConnectionProfileStrategyOverrideAdfsOutput) ConnectionConfig() GetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverrideAdfs) GetConnectionProfileStrategyOverrideAdfsConnectionConfig {
+		return v.ConnectionConfig
+	}).(GetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput)
+}
+
+// Enabled features for the strategy override.
+func (o GetConnectionProfileStrategyOverrideAdfsOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverrideAdfs) []string { return v.EnabledFeatures }).(pulumi.StringArrayOutput)
+}
+
+type GetConnectionProfileStrategyOverrideAdfsConnectionConfig struct {
+}
+
+// GetConnectionProfileStrategyOverrideAdfsConnectionConfigInput is an input type that accepts GetConnectionProfileStrategyOverrideAdfsConnectionConfigArgs and GetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideAdfsConnectionConfigInput` via:
+//
+//	GetConnectionProfileStrategyOverrideAdfsConnectionConfigArgs{...}
+type GetConnectionProfileStrategyOverrideAdfsConnectionConfigInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput() GetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput
+	ToGetConnectionProfileStrategyOverrideAdfsConnectionConfigOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput
+}
+
+type GetConnectionProfileStrategyOverrideAdfsConnectionConfigArgs struct {
+}
+
+func (GetConnectionProfileStrategyOverrideAdfsConnectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideAdfsConnectionConfig)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideAdfsConnectionConfigArgs) ToGetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput() GetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput {
+	return i.ToGetConnectionProfileStrategyOverrideAdfsConnectionConfigOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideAdfsConnectionConfigArgs) ToGetConnectionProfileStrategyOverrideAdfsConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput)
+}
+
+type GetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideAdfsConnectionConfig)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput) ToGetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput() GetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput) ToGetConnectionProfileStrategyOverrideAdfsConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput {
+	return o
+}
+
+type GetConnectionProfileStrategyOverrideGoogleApps struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfig `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures []string `pulumi:"enabledFeatures"`
+}
+
+// GetConnectionProfileStrategyOverrideGoogleAppsInput is an input type that accepts GetConnectionProfileStrategyOverrideGoogleAppsArgs and GetConnectionProfileStrategyOverrideGoogleAppsOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideGoogleAppsInput` via:
+//
+//	GetConnectionProfileStrategyOverrideGoogleAppsArgs{...}
+type GetConnectionProfileStrategyOverrideGoogleAppsInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideGoogleAppsOutput() GetConnectionProfileStrategyOverrideGoogleAppsOutput
+	ToGetConnectionProfileStrategyOverrideGoogleAppsOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideGoogleAppsOutput
+}
+
+type GetConnectionProfileStrategyOverrideGoogleAppsArgs struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigInput `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures pulumi.StringArrayInput `pulumi:"enabledFeatures"`
+}
+
+func (GetConnectionProfileStrategyOverrideGoogleAppsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideGoogleApps)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideGoogleAppsArgs) ToGetConnectionProfileStrategyOverrideGoogleAppsOutput() GetConnectionProfileStrategyOverrideGoogleAppsOutput {
+	return i.ToGetConnectionProfileStrategyOverrideGoogleAppsOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideGoogleAppsArgs) ToGetConnectionProfileStrategyOverrideGoogleAppsOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideGoogleAppsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideGoogleAppsOutput)
+}
+
+type GetConnectionProfileStrategyOverrideGoogleAppsOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideGoogleAppsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideGoogleApps)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideGoogleAppsOutput) ToGetConnectionProfileStrategyOverrideGoogleAppsOutput() GetConnectionProfileStrategyOverrideGoogleAppsOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideGoogleAppsOutput) ToGetConnectionProfileStrategyOverrideGoogleAppsOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideGoogleAppsOutput {
+	return o
+}
+
+// Connection config for the strategy override.
+func (o GetConnectionProfileStrategyOverrideGoogleAppsOutput) ConnectionConfig() GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverrideGoogleApps) GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfig {
+		return v.ConnectionConfig
+	}).(GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput)
+}
+
+// Enabled features for the strategy override.
+func (o GetConnectionProfileStrategyOverrideGoogleAppsOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverrideGoogleApps) []string { return v.EnabledFeatures }).(pulumi.StringArrayOutput)
+}
+
+type GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfig struct {
+}
+
+// GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigInput is an input type that accepts GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigArgs and GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigInput` via:
+//
+//	GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigArgs{...}
+type GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput() GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput
+	ToGetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput
+}
+
+type GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigArgs struct {
+}
+
+func (GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfig)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigArgs) ToGetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput() GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput {
+	return i.ToGetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigArgs) ToGetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput)
+}
+
+type GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfig)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput) ToGetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput() GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput) ToGetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput {
+	return o
+}
+
+type GetConnectionProfileStrategyOverrideOidc struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverrideOidcConnectionConfig `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures []string `pulumi:"enabledFeatures"`
+}
+
+// GetConnectionProfileStrategyOverrideOidcInput is an input type that accepts GetConnectionProfileStrategyOverrideOidcArgs and GetConnectionProfileStrategyOverrideOidcOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideOidcInput` via:
+//
+//	GetConnectionProfileStrategyOverrideOidcArgs{...}
+type GetConnectionProfileStrategyOverrideOidcInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideOidcOutput() GetConnectionProfileStrategyOverrideOidcOutput
+	ToGetConnectionProfileStrategyOverrideOidcOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideOidcOutput
+}
+
+type GetConnectionProfileStrategyOverrideOidcArgs struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverrideOidcConnectionConfigInput `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures pulumi.StringArrayInput `pulumi:"enabledFeatures"`
+}
+
+func (GetConnectionProfileStrategyOverrideOidcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideOidc)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideOidcArgs) ToGetConnectionProfileStrategyOverrideOidcOutput() GetConnectionProfileStrategyOverrideOidcOutput {
+	return i.ToGetConnectionProfileStrategyOverrideOidcOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideOidcArgs) ToGetConnectionProfileStrategyOverrideOidcOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideOidcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideOidcOutput)
+}
+
+type GetConnectionProfileStrategyOverrideOidcOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideOidcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideOidc)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideOidcOutput) ToGetConnectionProfileStrategyOverrideOidcOutput() GetConnectionProfileStrategyOverrideOidcOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideOidcOutput) ToGetConnectionProfileStrategyOverrideOidcOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideOidcOutput {
+	return o
+}
+
+// Connection config for the strategy override.
+func (o GetConnectionProfileStrategyOverrideOidcOutput) ConnectionConfig() GetConnectionProfileStrategyOverrideOidcConnectionConfigOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverrideOidc) GetConnectionProfileStrategyOverrideOidcConnectionConfig {
+		return v.ConnectionConfig
+	}).(GetConnectionProfileStrategyOverrideOidcConnectionConfigOutput)
+}
+
+// Enabled features for the strategy override.
+func (o GetConnectionProfileStrategyOverrideOidcOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverrideOidc) []string { return v.EnabledFeatures }).(pulumi.StringArrayOutput)
+}
+
+type GetConnectionProfileStrategyOverrideOidcConnectionConfig struct {
+}
+
+// GetConnectionProfileStrategyOverrideOidcConnectionConfigInput is an input type that accepts GetConnectionProfileStrategyOverrideOidcConnectionConfigArgs and GetConnectionProfileStrategyOverrideOidcConnectionConfigOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideOidcConnectionConfigInput` via:
+//
+//	GetConnectionProfileStrategyOverrideOidcConnectionConfigArgs{...}
+type GetConnectionProfileStrategyOverrideOidcConnectionConfigInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideOidcConnectionConfigOutput() GetConnectionProfileStrategyOverrideOidcConnectionConfigOutput
+	ToGetConnectionProfileStrategyOverrideOidcConnectionConfigOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideOidcConnectionConfigOutput
+}
+
+type GetConnectionProfileStrategyOverrideOidcConnectionConfigArgs struct {
+}
+
+func (GetConnectionProfileStrategyOverrideOidcConnectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideOidcConnectionConfig)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideOidcConnectionConfigArgs) ToGetConnectionProfileStrategyOverrideOidcConnectionConfigOutput() GetConnectionProfileStrategyOverrideOidcConnectionConfigOutput {
+	return i.ToGetConnectionProfileStrategyOverrideOidcConnectionConfigOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideOidcConnectionConfigArgs) ToGetConnectionProfileStrategyOverrideOidcConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideOidcConnectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideOidcConnectionConfigOutput)
+}
+
+type GetConnectionProfileStrategyOverrideOidcConnectionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideOidcConnectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideOidcConnectionConfig)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideOidcConnectionConfigOutput) ToGetConnectionProfileStrategyOverrideOidcConnectionConfigOutput() GetConnectionProfileStrategyOverrideOidcConnectionConfigOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideOidcConnectionConfigOutput) ToGetConnectionProfileStrategyOverrideOidcConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideOidcConnectionConfigOutput {
+	return o
+}
+
+type GetConnectionProfileStrategyOverrideOkta struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverrideOktaConnectionConfig `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures []string `pulumi:"enabledFeatures"`
+}
+
+// GetConnectionProfileStrategyOverrideOktaInput is an input type that accepts GetConnectionProfileStrategyOverrideOktaArgs and GetConnectionProfileStrategyOverrideOktaOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideOktaInput` via:
+//
+//	GetConnectionProfileStrategyOverrideOktaArgs{...}
+type GetConnectionProfileStrategyOverrideOktaInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideOktaOutput() GetConnectionProfileStrategyOverrideOktaOutput
+	ToGetConnectionProfileStrategyOverrideOktaOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideOktaOutput
+}
+
+type GetConnectionProfileStrategyOverrideOktaArgs struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverrideOktaConnectionConfigInput `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures pulumi.StringArrayInput `pulumi:"enabledFeatures"`
+}
+
+func (GetConnectionProfileStrategyOverrideOktaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideOkta)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideOktaArgs) ToGetConnectionProfileStrategyOverrideOktaOutput() GetConnectionProfileStrategyOverrideOktaOutput {
+	return i.ToGetConnectionProfileStrategyOverrideOktaOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideOktaArgs) ToGetConnectionProfileStrategyOverrideOktaOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideOktaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideOktaOutput)
+}
+
+type GetConnectionProfileStrategyOverrideOktaOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideOktaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideOkta)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideOktaOutput) ToGetConnectionProfileStrategyOverrideOktaOutput() GetConnectionProfileStrategyOverrideOktaOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideOktaOutput) ToGetConnectionProfileStrategyOverrideOktaOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideOktaOutput {
+	return o
+}
+
+// Connection config for the strategy override.
+func (o GetConnectionProfileStrategyOverrideOktaOutput) ConnectionConfig() GetConnectionProfileStrategyOverrideOktaConnectionConfigOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverrideOkta) GetConnectionProfileStrategyOverrideOktaConnectionConfig {
+		return v.ConnectionConfig
+	}).(GetConnectionProfileStrategyOverrideOktaConnectionConfigOutput)
+}
+
+// Enabled features for the strategy override.
+func (o GetConnectionProfileStrategyOverrideOktaOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverrideOkta) []string { return v.EnabledFeatures }).(pulumi.StringArrayOutput)
+}
+
+type GetConnectionProfileStrategyOverrideOktaConnectionConfig struct {
+}
+
+// GetConnectionProfileStrategyOverrideOktaConnectionConfigInput is an input type that accepts GetConnectionProfileStrategyOverrideOktaConnectionConfigArgs and GetConnectionProfileStrategyOverrideOktaConnectionConfigOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideOktaConnectionConfigInput` via:
+//
+//	GetConnectionProfileStrategyOverrideOktaConnectionConfigArgs{...}
+type GetConnectionProfileStrategyOverrideOktaConnectionConfigInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideOktaConnectionConfigOutput() GetConnectionProfileStrategyOverrideOktaConnectionConfigOutput
+	ToGetConnectionProfileStrategyOverrideOktaConnectionConfigOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideOktaConnectionConfigOutput
+}
+
+type GetConnectionProfileStrategyOverrideOktaConnectionConfigArgs struct {
+}
+
+func (GetConnectionProfileStrategyOverrideOktaConnectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideOktaConnectionConfig)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideOktaConnectionConfigArgs) ToGetConnectionProfileStrategyOverrideOktaConnectionConfigOutput() GetConnectionProfileStrategyOverrideOktaConnectionConfigOutput {
+	return i.ToGetConnectionProfileStrategyOverrideOktaConnectionConfigOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideOktaConnectionConfigArgs) ToGetConnectionProfileStrategyOverrideOktaConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideOktaConnectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideOktaConnectionConfigOutput)
+}
+
+type GetConnectionProfileStrategyOverrideOktaConnectionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideOktaConnectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideOktaConnectionConfig)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideOktaConnectionConfigOutput) ToGetConnectionProfileStrategyOverrideOktaConnectionConfigOutput() GetConnectionProfileStrategyOverrideOktaConnectionConfigOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideOktaConnectionConfigOutput) ToGetConnectionProfileStrategyOverrideOktaConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideOktaConnectionConfigOutput {
+	return o
+}
+
+type GetConnectionProfileStrategyOverridePingfederate struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverridePingfederateConnectionConfig `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures []string `pulumi:"enabledFeatures"`
+}
+
+// GetConnectionProfileStrategyOverridePingfederateInput is an input type that accepts GetConnectionProfileStrategyOverridePingfederateArgs and GetConnectionProfileStrategyOverridePingfederateOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverridePingfederateInput` via:
+//
+//	GetConnectionProfileStrategyOverridePingfederateArgs{...}
+type GetConnectionProfileStrategyOverridePingfederateInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverridePingfederateOutput() GetConnectionProfileStrategyOverridePingfederateOutput
+	ToGetConnectionProfileStrategyOverridePingfederateOutputWithContext(context.Context) GetConnectionProfileStrategyOverridePingfederateOutput
+}
+
+type GetConnectionProfileStrategyOverridePingfederateArgs struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverridePingfederateConnectionConfigInput `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures pulumi.StringArrayInput `pulumi:"enabledFeatures"`
+}
+
+func (GetConnectionProfileStrategyOverridePingfederateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverridePingfederate)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverridePingfederateArgs) ToGetConnectionProfileStrategyOverridePingfederateOutput() GetConnectionProfileStrategyOverridePingfederateOutput {
+	return i.ToGetConnectionProfileStrategyOverridePingfederateOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverridePingfederateArgs) ToGetConnectionProfileStrategyOverridePingfederateOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverridePingfederateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverridePingfederateOutput)
+}
+
+type GetConnectionProfileStrategyOverridePingfederateOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverridePingfederateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverridePingfederate)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverridePingfederateOutput) ToGetConnectionProfileStrategyOverridePingfederateOutput() GetConnectionProfileStrategyOverridePingfederateOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverridePingfederateOutput) ToGetConnectionProfileStrategyOverridePingfederateOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverridePingfederateOutput {
+	return o
+}
+
+// Connection config for the strategy override.
+func (o GetConnectionProfileStrategyOverridePingfederateOutput) ConnectionConfig() GetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverridePingfederate) GetConnectionProfileStrategyOverridePingfederateConnectionConfig {
+		return v.ConnectionConfig
+	}).(GetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput)
+}
+
+// Enabled features for the strategy override.
+func (o GetConnectionProfileStrategyOverridePingfederateOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverridePingfederate) []string { return v.EnabledFeatures }).(pulumi.StringArrayOutput)
+}
+
+type GetConnectionProfileStrategyOverridePingfederateConnectionConfig struct {
+}
+
+// GetConnectionProfileStrategyOverridePingfederateConnectionConfigInput is an input type that accepts GetConnectionProfileStrategyOverridePingfederateConnectionConfigArgs and GetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverridePingfederateConnectionConfigInput` via:
+//
+//	GetConnectionProfileStrategyOverridePingfederateConnectionConfigArgs{...}
+type GetConnectionProfileStrategyOverridePingfederateConnectionConfigInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput() GetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput
+	ToGetConnectionProfileStrategyOverridePingfederateConnectionConfigOutputWithContext(context.Context) GetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput
+}
+
+type GetConnectionProfileStrategyOverridePingfederateConnectionConfigArgs struct {
+}
+
+func (GetConnectionProfileStrategyOverridePingfederateConnectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverridePingfederateConnectionConfig)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverridePingfederateConnectionConfigArgs) ToGetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput() GetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput {
+	return i.ToGetConnectionProfileStrategyOverridePingfederateConnectionConfigOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverridePingfederateConnectionConfigArgs) ToGetConnectionProfileStrategyOverridePingfederateConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput)
+}
+
+type GetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverridePingfederateConnectionConfig)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput) ToGetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput() GetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput) ToGetConnectionProfileStrategyOverridePingfederateConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput {
+	return o
+}
+
+type GetConnectionProfileStrategyOverrideSamlp struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverrideSamlpConnectionConfig `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures []string `pulumi:"enabledFeatures"`
+}
+
+// GetConnectionProfileStrategyOverrideSamlpInput is an input type that accepts GetConnectionProfileStrategyOverrideSamlpArgs and GetConnectionProfileStrategyOverrideSamlpOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideSamlpInput` via:
+//
+//	GetConnectionProfileStrategyOverrideSamlpArgs{...}
+type GetConnectionProfileStrategyOverrideSamlpInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideSamlpOutput() GetConnectionProfileStrategyOverrideSamlpOutput
+	ToGetConnectionProfileStrategyOverrideSamlpOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideSamlpOutput
+}
+
+type GetConnectionProfileStrategyOverrideSamlpArgs struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverrideSamlpConnectionConfigInput `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures pulumi.StringArrayInput `pulumi:"enabledFeatures"`
+}
+
+func (GetConnectionProfileStrategyOverrideSamlpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideSamlp)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideSamlpArgs) ToGetConnectionProfileStrategyOverrideSamlpOutput() GetConnectionProfileStrategyOverrideSamlpOutput {
+	return i.ToGetConnectionProfileStrategyOverrideSamlpOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideSamlpArgs) ToGetConnectionProfileStrategyOverrideSamlpOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideSamlpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideSamlpOutput)
+}
+
+type GetConnectionProfileStrategyOverrideSamlpOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideSamlpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideSamlp)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideSamlpOutput) ToGetConnectionProfileStrategyOverrideSamlpOutput() GetConnectionProfileStrategyOverrideSamlpOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideSamlpOutput) ToGetConnectionProfileStrategyOverrideSamlpOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideSamlpOutput {
+	return o
+}
+
+// Connection config for the strategy override.
+func (o GetConnectionProfileStrategyOverrideSamlpOutput) ConnectionConfig() GetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverrideSamlp) GetConnectionProfileStrategyOverrideSamlpConnectionConfig {
+		return v.ConnectionConfig
+	}).(GetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput)
+}
+
+// Enabled features for the strategy override.
+func (o GetConnectionProfileStrategyOverrideSamlpOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverrideSamlp) []string { return v.EnabledFeatures }).(pulumi.StringArrayOutput)
+}
+
+type GetConnectionProfileStrategyOverrideSamlpConnectionConfig struct {
+}
+
+// GetConnectionProfileStrategyOverrideSamlpConnectionConfigInput is an input type that accepts GetConnectionProfileStrategyOverrideSamlpConnectionConfigArgs and GetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideSamlpConnectionConfigInput` via:
+//
+//	GetConnectionProfileStrategyOverrideSamlpConnectionConfigArgs{...}
+type GetConnectionProfileStrategyOverrideSamlpConnectionConfigInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput() GetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput
+	ToGetConnectionProfileStrategyOverrideSamlpConnectionConfigOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput
+}
+
+type GetConnectionProfileStrategyOverrideSamlpConnectionConfigArgs struct {
+}
+
+func (GetConnectionProfileStrategyOverrideSamlpConnectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideSamlpConnectionConfig)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideSamlpConnectionConfigArgs) ToGetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput() GetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput {
+	return i.ToGetConnectionProfileStrategyOverrideSamlpConnectionConfigOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideSamlpConnectionConfigArgs) ToGetConnectionProfileStrategyOverrideSamlpConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput)
+}
+
+type GetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideSamlpConnectionConfig)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput) ToGetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput() GetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput) ToGetConnectionProfileStrategyOverrideSamlpConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput {
+	return o
+}
+
+type GetConnectionProfileStrategyOverrideWaad struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverrideWaadConnectionConfig `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures []string `pulumi:"enabledFeatures"`
+}
+
+// GetConnectionProfileStrategyOverrideWaadInput is an input type that accepts GetConnectionProfileStrategyOverrideWaadArgs and GetConnectionProfileStrategyOverrideWaadOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideWaadInput` via:
+//
+//	GetConnectionProfileStrategyOverrideWaadArgs{...}
+type GetConnectionProfileStrategyOverrideWaadInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideWaadOutput() GetConnectionProfileStrategyOverrideWaadOutput
+	ToGetConnectionProfileStrategyOverrideWaadOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideWaadOutput
+}
+
+type GetConnectionProfileStrategyOverrideWaadArgs struct {
+	// Connection config for the strategy override.
+	ConnectionConfig GetConnectionProfileStrategyOverrideWaadConnectionConfigInput `pulumi:"connectionConfig"`
+	// Enabled features for the strategy override.
+	EnabledFeatures pulumi.StringArrayInput `pulumi:"enabledFeatures"`
+}
+
+func (GetConnectionProfileStrategyOverrideWaadArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideWaad)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideWaadArgs) ToGetConnectionProfileStrategyOverrideWaadOutput() GetConnectionProfileStrategyOverrideWaadOutput {
+	return i.ToGetConnectionProfileStrategyOverrideWaadOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideWaadArgs) ToGetConnectionProfileStrategyOverrideWaadOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideWaadOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideWaadOutput)
+}
+
+type GetConnectionProfileStrategyOverrideWaadOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideWaadOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideWaad)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideWaadOutput) ToGetConnectionProfileStrategyOverrideWaadOutput() GetConnectionProfileStrategyOverrideWaadOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideWaadOutput) ToGetConnectionProfileStrategyOverrideWaadOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideWaadOutput {
+	return o
+}
+
+// Connection config for the strategy override.
+func (o GetConnectionProfileStrategyOverrideWaadOutput) ConnectionConfig() GetConnectionProfileStrategyOverrideWaadConnectionConfigOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverrideWaad) GetConnectionProfileStrategyOverrideWaadConnectionConfig {
+		return v.ConnectionConfig
+	}).(GetConnectionProfileStrategyOverrideWaadConnectionConfigOutput)
+}
+
+// Enabled features for the strategy override.
+func (o GetConnectionProfileStrategyOverrideWaadOutput) EnabledFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionProfileStrategyOverrideWaad) []string { return v.EnabledFeatures }).(pulumi.StringArrayOutput)
+}
+
+type GetConnectionProfileStrategyOverrideWaadConnectionConfig struct {
+}
+
+// GetConnectionProfileStrategyOverrideWaadConnectionConfigInput is an input type that accepts GetConnectionProfileStrategyOverrideWaadConnectionConfigArgs and GetConnectionProfileStrategyOverrideWaadConnectionConfigOutput values.
+// You can construct a concrete instance of `GetConnectionProfileStrategyOverrideWaadConnectionConfigInput` via:
+//
+//	GetConnectionProfileStrategyOverrideWaadConnectionConfigArgs{...}
+type GetConnectionProfileStrategyOverrideWaadConnectionConfigInput interface {
+	pulumi.Input
+
+	ToGetConnectionProfileStrategyOverrideWaadConnectionConfigOutput() GetConnectionProfileStrategyOverrideWaadConnectionConfigOutput
+	ToGetConnectionProfileStrategyOverrideWaadConnectionConfigOutputWithContext(context.Context) GetConnectionProfileStrategyOverrideWaadConnectionConfigOutput
+}
+
+type GetConnectionProfileStrategyOverrideWaadConnectionConfigArgs struct {
+}
+
+func (GetConnectionProfileStrategyOverrideWaadConnectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideWaadConnectionConfig)(nil)).Elem()
+}
+
+func (i GetConnectionProfileStrategyOverrideWaadConnectionConfigArgs) ToGetConnectionProfileStrategyOverrideWaadConnectionConfigOutput() GetConnectionProfileStrategyOverrideWaadConnectionConfigOutput {
+	return i.ToGetConnectionProfileStrategyOverrideWaadConnectionConfigOutputWithContext(context.Background())
+}
+
+func (i GetConnectionProfileStrategyOverrideWaadConnectionConfigArgs) ToGetConnectionProfileStrategyOverrideWaadConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideWaadConnectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionProfileStrategyOverrideWaadConnectionConfigOutput)
+}
+
+type GetConnectionProfileStrategyOverrideWaadConnectionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionProfileStrategyOverrideWaadConnectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionProfileStrategyOverrideWaadConnectionConfig)(nil)).Elem()
+}
+
+func (o GetConnectionProfileStrategyOverrideWaadConnectionConfigOutput) ToGetConnectionProfileStrategyOverrideWaadConnectionConfigOutput() GetConnectionProfileStrategyOverrideWaadConnectionConfigOutput {
+	return o
+}
+
+func (o GetConnectionProfileStrategyOverrideWaadConnectionConfigOutput) ToGetConnectionProfileStrategyOverrideWaadConnectionConfigOutputWithContext(ctx context.Context) GetConnectionProfileStrategyOverrideWaadConnectionConfigOutput {
+	return o
+}
+
+type GetConnectionScimConfigurationDefaultMapping struct {
+	// The field location in the Auth0 schema.
+	Auth0 string `pulumi:"auth0"`
+	// The field location in the SCIM schema.
+	Scim string `pulumi:"scim"`
+}
+
+// GetConnectionScimConfigurationDefaultMappingInput is an input type that accepts GetConnectionScimConfigurationDefaultMappingArgs and GetConnectionScimConfigurationDefaultMappingOutput values.
+// You can construct a concrete instance of `GetConnectionScimConfigurationDefaultMappingInput` via:
+//
+//	GetConnectionScimConfigurationDefaultMappingArgs{...}
+type GetConnectionScimConfigurationDefaultMappingInput interface {
+	pulumi.Input
+
+	ToGetConnectionScimConfigurationDefaultMappingOutput() GetConnectionScimConfigurationDefaultMappingOutput
+	ToGetConnectionScimConfigurationDefaultMappingOutputWithContext(context.Context) GetConnectionScimConfigurationDefaultMappingOutput
+}
+
+type GetConnectionScimConfigurationDefaultMappingArgs struct {
+	// The field location in the Auth0 schema.
+	Auth0 pulumi.StringInput `pulumi:"auth0"`
+	// The field location in the SCIM schema.
+	Scim pulumi.StringInput `pulumi:"scim"`
+}
+
+func (GetConnectionScimConfigurationDefaultMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionScimConfigurationDefaultMapping)(nil)).Elem()
+}
+
+func (i GetConnectionScimConfigurationDefaultMappingArgs) ToGetConnectionScimConfigurationDefaultMappingOutput() GetConnectionScimConfigurationDefaultMappingOutput {
+	return i.ToGetConnectionScimConfigurationDefaultMappingOutputWithContext(context.Background())
+}
+
+func (i GetConnectionScimConfigurationDefaultMappingArgs) ToGetConnectionScimConfigurationDefaultMappingOutputWithContext(ctx context.Context) GetConnectionScimConfigurationDefaultMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionScimConfigurationDefaultMappingOutput)
+}
+
+// GetConnectionScimConfigurationDefaultMappingArrayInput is an input type that accepts GetConnectionScimConfigurationDefaultMappingArray and GetConnectionScimConfigurationDefaultMappingArrayOutput values.
+// You can construct a concrete instance of `GetConnectionScimConfigurationDefaultMappingArrayInput` via:
+//
+//	GetConnectionScimConfigurationDefaultMappingArray{ GetConnectionScimConfigurationDefaultMappingArgs{...} }
+type GetConnectionScimConfigurationDefaultMappingArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionScimConfigurationDefaultMappingArrayOutput() GetConnectionScimConfigurationDefaultMappingArrayOutput
+	ToGetConnectionScimConfigurationDefaultMappingArrayOutputWithContext(context.Context) GetConnectionScimConfigurationDefaultMappingArrayOutput
+}
+
+type GetConnectionScimConfigurationDefaultMappingArray []GetConnectionScimConfigurationDefaultMappingInput
+
+func (GetConnectionScimConfigurationDefaultMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionScimConfigurationDefaultMapping)(nil)).Elem()
+}
+
+func (i GetConnectionScimConfigurationDefaultMappingArray) ToGetConnectionScimConfigurationDefaultMappingArrayOutput() GetConnectionScimConfigurationDefaultMappingArrayOutput {
+	return i.ToGetConnectionScimConfigurationDefaultMappingArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionScimConfigurationDefaultMappingArray) ToGetConnectionScimConfigurationDefaultMappingArrayOutputWithContext(ctx context.Context) GetConnectionScimConfigurationDefaultMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionScimConfigurationDefaultMappingArrayOutput)
+}
+
+type GetConnectionScimConfigurationDefaultMappingOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionScimConfigurationDefaultMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionScimConfigurationDefaultMapping)(nil)).Elem()
+}
+
+func (o GetConnectionScimConfigurationDefaultMappingOutput) ToGetConnectionScimConfigurationDefaultMappingOutput() GetConnectionScimConfigurationDefaultMappingOutput {
+	return o
+}
+
+func (o GetConnectionScimConfigurationDefaultMappingOutput) ToGetConnectionScimConfigurationDefaultMappingOutputWithContext(ctx context.Context) GetConnectionScimConfigurationDefaultMappingOutput {
+	return o
+}
+
+// The field location in the Auth0 schema.
+func (o GetConnectionScimConfigurationDefaultMappingOutput) Auth0() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionScimConfigurationDefaultMapping) string { return v.Auth0 }).(pulumi.StringOutput)
+}
+
+// The field location in the SCIM schema.
+func (o GetConnectionScimConfigurationDefaultMappingOutput) Scim() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionScimConfigurationDefaultMapping) string { return v.Scim }).(pulumi.StringOutput)
+}
+
+type GetConnectionScimConfigurationDefaultMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionScimConfigurationDefaultMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionScimConfigurationDefaultMapping)(nil)).Elem()
+}
+
+func (o GetConnectionScimConfigurationDefaultMappingArrayOutput) ToGetConnectionScimConfigurationDefaultMappingArrayOutput() GetConnectionScimConfigurationDefaultMappingArrayOutput {
+	return o
+}
+
+func (o GetConnectionScimConfigurationDefaultMappingArrayOutput) ToGetConnectionScimConfigurationDefaultMappingArrayOutputWithContext(ctx context.Context) GetConnectionScimConfigurationDefaultMappingArrayOutput {
+	return o
+}
+
+func (o GetConnectionScimConfigurationDefaultMappingArrayOutput) Index(i pulumi.IntInput) GetConnectionScimConfigurationDefaultMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionScimConfigurationDefaultMapping {
+		return vs[0].([]GetConnectionScimConfigurationDefaultMapping)[vs[1].(int)]
+	}).(GetConnectionScimConfigurationDefaultMappingOutput)
+}
+
 type GetConnectionScimConfigurationMapping struct {
 	// The field location in the Auth0 schema.
 	Auth0 string `pulumi:"auth0"`
@@ -1318,6 +5954,4270 @@ func (o GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput) Index
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEventStreamWebhookConfigurationWebhookAuthorization {
 		return vs[0].([]GetEventStreamWebhookConfigurationWebhookAuthorization)[vs[1].(int)]
 	}).(GetEventStreamWebhookConfigurationWebhookAuthorizationOutput)
+}
+
+type GetExperimentAllocation struct {
+	// Whether this allocation is the control variation. At most one allocation can be the control.
+	IsControl bool `pulumi:"isControl"`
+	// Whether this allocation is the fallback. Only for the segment strategy.
+	IsFallback bool `pulumi:"isFallback"`
+	// The evaluation priority of this allocation. Only for the segment strategy.
+	Priority int `pulumi:"priority"`
+	// The segment targeted by this allocation. Only for the segment strategy. Omit for the fallback allocation.
+	SegmentId string `pulumi:"segmentId"`
+	// The name of the targeted segment.
+	SegmentName string `pulumi:"segmentName"`
+	// The snapshot of the segment.
+	SegmentSnapshot string `pulumi:"segmentSnapshot"`
+	// The ID of the feature flag variation assigned to this allocation.
+	VariationId string `pulumi:"variationId"`
+	// The name of the assigned variation.
+	VariationName string `pulumi:"variationName"`
+	// The snapshot of the variation.
+	VariationSnapshot string `pulumi:"variationSnapshot"`
+	// The percentage weight of this allocation. Only for the percentage strategy. Omit when using levels.
+	Weight int `pulumi:"weight"`
+}
+
+// GetExperimentAllocationInput is an input type that accepts GetExperimentAllocationArgs and GetExperimentAllocationOutput values.
+// You can construct a concrete instance of `GetExperimentAllocationInput` via:
+//
+//	GetExperimentAllocationArgs{...}
+type GetExperimentAllocationInput interface {
+	pulumi.Input
+
+	ToGetExperimentAllocationOutput() GetExperimentAllocationOutput
+	ToGetExperimentAllocationOutputWithContext(context.Context) GetExperimentAllocationOutput
+}
+
+type GetExperimentAllocationArgs struct {
+	// Whether this allocation is the control variation. At most one allocation can be the control.
+	IsControl pulumi.BoolInput `pulumi:"isControl"`
+	// Whether this allocation is the fallback. Only for the segment strategy.
+	IsFallback pulumi.BoolInput `pulumi:"isFallback"`
+	// The evaluation priority of this allocation. Only for the segment strategy.
+	Priority pulumi.IntInput `pulumi:"priority"`
+	// The segment targeted by this allocation. Only for the segment strategy. Omit for the fallback allocation.
+	SegmentId pulumi.StringInput `pulumi:"segmentId"`
+	// The name of the targeted segment.
+	SegmentName pulumi.StringInput `pulumi:"segmentName"`
+	// The snapshot of the segment.
+	SegmentSnapshot pulumi.StringInput `pulumi:"segmentSnapshot"`
+	// The ID of the feature flag variation assigned to this allocation.
+	VariationId pulumi.StringInput `pulumi:"variationId"`
+	// The name of the assigned variation.
+	VariationName pulumi.StringInput `pulumi:"variationName"`
+	// The snapshot of the variation.
+	VariationSnapshot pulumi.StringInput `pulumi:"variationSnapshot"`
+	// The percentage weight of this allocation. Only for the percentage strategy. Omit when using levels.
+	Weight pulumi.IntInput `pulumi:"weight"`
+}
+
+func (GetExperimentAllocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentAllocation)(nil)).Elem()
+}
+
+func (i GetExperimentAllocationArgs) ToGetExperimentAllocationOutput() GetExperimentAllocationOutput {
+	return i.ToGetExperimentAllocationOutputWithContext(context.Background())
+}
+
+func (i GetExperimentAllocationArgs) ToGetExperimentAllocationOutputWithContext(ctx context.Context) GetExperimentAllocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentAllocationOutput)
+}
+
+// GetExperimentAllocationArrayInput is an input type that accepts GetExperimentAllocationArray and GetExperimentAllocationArrayOutput values.
+// You can construct a concrete instance of `GetExperimentAllocationArrayInput` via:
+//
+//	GetExperimentAllocationArray{ GetExperimentAllocationArgs{...} }
+type GetExperimentAllocationArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentAllocationArrayOutput() GetExperimentAllocationArrayOutput
+	ToGetExperimentAllocationArrayOutputWithContext(context.Context) GetExperimentAllocationArrayOutput
+}
+
+type GetExperimentAllocationArray []GetExperimentAllocationInput
+
+func (GetExperimentAllocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentAllocation)(nil)).Elem()
+}
+
+func (i GetExperimentAllocationArray) ToGetExperimentAllocationArrayOutput() GetExperimentAllocationArrayOutput {
+	return i.ToGetExperimentAllocationArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentAllocationArray) ToGetExperimentAllocationArrayOutputWithContext(ctx context.Context) GetExperimentAllocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentAllocationArrayOutput)
+}
+
+type GetExperimentAllocationOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentAllocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentAllocation)(nil)).Elem()
+}
+
+func (o GetExperimentAllocationOutput) ToGetExperimentAllocationOutput() GetExperimentAllocationOutput {
+	return o
+}
+
+func (o GetExperimentAllocationOutput) ToGetExperimentAllocationOutputWithContext(ctx context.Context) GetExperimentAllocationOutput {
+	return o
+}
+
+// Whether this allocation is the control variation. At most one allocation can be the control.
+func (o GetExperimentAllocationOutput) IsControl() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetExperimentAllocation) bool { return v.IsControl }).(pulumi.BoolOutput)
+}
+
+// Whether this allocation is the fallback. Only for the segment strategy.
+func (o GetExperimentAllocationOutput) IsFallback() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetExperimentAllocation) bool { return v.IsFallback }).(pulumi.BoolOutput)
+}
+
+// The evaluation priority of this allocation. Only for the segment strategy.
+func (o GetExperimentAllocationOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v GetExperimentAllocation) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// The segment targeted by this allocation. Only for the segment strategy. Omit for the fallback allocation.
+func (o GetExperimentAllocationOutput) SegmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentAllocation) string { return v.SegmentId }).(pulumi.StringOutput)
+}
+
+// The name of the targeted segment.
+func (o GetExperimentAllocationOutput) SegmentName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentAllocation) string { return v.SegmentName }).(pulumi.StringOutput)
+}
+
+// The snapshot of the segment.
+func (o GetExperimentAllocationOutput) SegmentSnapshot() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentAllocation) string { return v.SegmentSnapshot }).(pulumi.StringOutput)
+}
+
+// The ID of the feature flag variation assigned to this allocation.
+func (o GetExperimentAllocationOutput) VariationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentAllocation) string { return v.VariationId }).(pulumi.StringOutput)
+}
+
+// The name of the assigned variation.
+func (o GetExperimentAllocationOutput) VariationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentAllocation) string { return v.VariationName }).(pulumi.StringOutput)
+}
+
+// The snapshot of the variation.
+func (o GetExperimentAllocationOutput) VariationSnapshot() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentAllocation) string { return v.VariationSnapshot }).(pulumi.StringOutput)
+}
+
+// The percentage weight of this allocation. Only for the percentage strategy. Omit when using levels.
+func (o GetExperimentAllocationOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v GetExperimentAllocation) int { return v.Weight }).(pulumi.IntOutput)
+}
+
+type GetExperimentAllocationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentAllocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentAllocation)(nil)).Elem()
+}
+
+func (o GetExperimentAllocationArrayOutput) ToGetExperimentAllocationArrayOutput() GetExperimentAllocationArrayOutput {
+	return o
+}
+
+func (o GetExperimentAllocationArrayOutput) ToGetExperimentAllocationArrayOutputWithContext(ctx context.Context) GetExperimentAllocationArrayOutput {
+	return o
+}
+
+func (o GetExperimentAllocationArrayOutput) Index(i pulumi.IntInput) GetExperimentAllocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentAllocation {
+		return vs[0].([]GetExperimentAllocation)[vs[1].(int)]
+	}).(GetExperimentAllocationOutput)
+}
+
+type GetExperimentFeatureFlagParameter struct {
+	// Description of the parameter.
+	Description string `pulumi:"description"`
+	// The key of the parameter.
+	Name string `pulumi:"name"`
+	// The value type of the parameter. One of boolean, string, number, array, object
+	Type string `pulumi:"type"`
+	// The default value of the parameter, as a string. For `type = "object"` or `type = "array"` supply a JSON-encoded string; for `boolean`/`number` supply the literal value as a string.
+	Value string `pulumi:"value"`
+}
+
+// GetExperimentFeatureFlagParameterInput is an input type that accepts GetExperimentFeatureFlagParameterArgs and GetExperimentFeatureFlagParameterOutput values.
+// You can construct a concrete instance of `GetExperimentFeatureFlagParameterInput` via:
+//
+//	GetExperimentFeatureFlagParameterArgs{...}
+type GetExperimentFeatureFlagParameterInput interface {
+	pulumi.Input
+
+	ToGetExperimentFeatureFlagParameterOutput() GetExperimentFeatureFlagParameterOutput
+	ToGetExperimentFeatureFlagParameterOutputWithContext(context.Context) GetExperimentFeatureFlagParameterOutput
+}
+
+type GetExperimentFeatureFlagParameterArgs struct {
+	// Description of the parameter.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The key of the parameter.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value type of the parameter. One of boolean, string, number, array, object
+	Type pulumi.StringInput `pulumi:"type"`
+	// The default value of the parameter, as a string. For `type = "object"` or `type = "array"` supply a JSON-encoded string; for `boolean`/`number` supply the literal value as a string.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetExperimentFeatureFlagParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentFeatureFlagParameter)(nil)).Elem()
+}
+
+func (i GetExperimentFeatureFlagParameterArgs) ToGetExperimentFeatureFlagParameterOutput() GetExperimentFeatureFlagParameterOutput {
+	return i.ToGetExperimentFeatureFlagParameterOutputWithContext(context.Background())
+}
+
+func (i GetExperimentFeatureFlagParameterArgs) ToGetExperimentFeatureFlagParameterOutputWithContext(ctx context.Context) GetExperimentFeatureFlagParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentFeatureFlagParameterOutput)
+}
+
+// GetExperimentFeatureFlagParameterArrayInput is an input type that accepts GetExperimentFeatureFlagParameterArray and GetExperimentFeatureFlagParameterArrayOutput values.
+// You can construct a concrete instance of `GetExperimentFeatureFlagParameterArrayInput` via:
+//
+//	GetExperimentFeatureFlagParameterArray{ GetExperimentFeatureFlagParameterArgs{...} }
+type GetExperimentFeatureFlagParameterArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentFeatureFlagParameterArrayOutput() GetExperimentFeatureFlagParameterArrayOutput
+	ToGetExperimentFeatureFlagParameterArrayOutputWithContext(context.Context) GetExperimentFeatureFlagParameterArrayOutput
+}
+
+type GetExperimentFeatureFlagParameterArray []GetExperimentFeatureFlagParameterInput
+
+func (GetExperimentFeatureFlagParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentFeatureFlagParameter)(nil)).Elem()
+}
+
+func (i GetExperimentFeatureFlagParameterArray) ToGetExperimentFeatureFlagParameterArrayOutput() GetExperimentFeatureFlagParameterArrayOutput {
+	return i.ToGetExperimentFeatureFlagParameterArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentFeatureFlagParameterArray) ToGetExperimentFeatureFlagParameterArrayOutputWithContext(ctx context.Context) GetExperimentFeatureFlagParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentFeatureFlagParameterArrayOutput)
+}
+
+type GetExperimentFeatureFlagParameterOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentFeatureFlagParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentFeatureFlagParameter)(nil)).Elem()
+}
+
+func (o GetExperimentFeatureFlagParameterOutput) ToGetExperimentFeatureFlagParameterOutput() GetExperimentFeatureFlagParameterOutput {
+	return o
+}
+
+func (o GetExperimentFeatureFlagParameterOutput) ToGetExperimentFeatureFlagParameterOutputWithContext(ctx context.Context) GetExperimentFeatureFlagParameterOutput {
+	return o
+}
+
+// Description of the parameter.
+func (o GetExperimentFeatureFlagParameterOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentFeatureFlagParameter) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The key of the parameter.
+func (o GetExperimentFeatureFlagParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentFeatureFlagParameter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value type of the parameter. One of boolean, string, number, array, object
+func (o GetExperimentFeatureFlagParameterOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentFeatureFlagParameter) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The default value of the parameter, as a string. For `type = "object"` or `type = "array"` supply a JSON-encoded string; for `boolean`/`number` supply the literal value as a string.
+func (o GetExperimentFeatureFlagParameterOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentFeatureFlagParameter) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetExperimentFeatureFlagParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentFeatureFlagParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentFeatureFlagParameter)(nil)).Elem()
+}
+
+func (o GetExperimentFeatureFlagParameterArrayOutput) ToGetExperimentFeatureFlagParameterArrayOutput() GetExperimentFeatureFlagParameterArrayOutput {
+	return o
+}
+
+func (o GetExperimentFeatureFlagParameterArrayOutput) ToGetExperimentFeatureFlagParameterArrayOutputWithContext(ctx context.Context) GetExperimentFeatureFlagParameterArrayOutput {
+	return o
+}
+
+func (o GetExperimentFeatureFlagParameterArrayOutput) Index(i pulumi.IntInput) GetExperimentFeatureFlagParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentFeatureFlagParameter {
+		return vs[0].([]GetExperimentFeatureFlagParameter)[vs[1].(int)]
+	}).(GetExperimentFeatureFlagParameterOutput)
+}
+
+type GetExperimentFeatureFlagVariation struct {
+	// Description of the variation. Must contain 3 to 1024 characters when set.
+	Description string `pulumi:"description"`
+	// The name of the variation. Must be unique within the feature flag and contain 3 to 255 characters without surrounding whitespace. Changing the name deletes the variation and creates a new one with a new ID.
+	Name string `pulumi:"name"`
+	// Parameter overrides for the variation. Omit for a control variation.
+	Overrides []GetExperimentFeatureFlagVariationOverride `pulumi:"overrides"`
+}
+
+// GetExperimentFeatureFlagVariationInput is an input type that accepts GetExperimentFeatureFlagVariationArgs and GetExperimentFeatureFlagVariationOutput values.
+// You can construct a concrete instance of `GetExperimentFeatureFlagVariationInput` via:
+//
+//	GetExperimentFeatureFlagVariationArgs{...}
+type GetExperimentFeatureFlagVariationInput interface {
+	pulumi.Input
+
+	ToGetExperimentFeatureFlagVariationOutput() GetExperimentFeatureFlagVariationOutput
+	ToGetExperimentFeatureFlagVariationOutputWithContext(context.Context) GetExperimentFeatureFlagVariationOutput
+}
+
+type GetExperimentFeatureFlagVariationArgs struct {
+	// Description of the variation. Must contain 3 to 1024 characters when set.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The name of the variation. Must be unique within the feature flag and contain 3 to 255 characters without surrounding whitespace. Changing the name deletes the variation and creates a new one with a new ID.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Parameter overrides for the variation. Omit for a control variation.
+	Overrides GetExperimentFeatureFlagVariationOverrideArrayInput `pulumi:"overrides"`
+}
+
+func (GetExperimentFeatureFlagVariationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentFeatureFlagVariation)(nil)).Elem()
+}
+
+func (i GetExperimentFeatureFlagVariationArgs) ToGetExperimentFeatureFlagVariationOutput() GetExperimentFeatureFlagVariationOutput {
+	return i.ToGetExperimentFeatureFlagVariationOutputWithContext(context.Background())
+}
+
+func (i GetExperimentFeatureFlagVariationArgs) ToGetExperimentFeatureFlagVariationOutputWithContext(ctx context.Context) GetExperimentFeatureFlagVariationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentFeatureFlagVariationOutput)
+}
+
+// GetExperimentFeatureFlagVariationArrayInput is an input type that accepts GetExperimentFeatureFlagVariationArray and GetExperimentFeatureFlagVariationArrayOutput values.
+// You can construct a concrete instance of `GetExperimentFeatureFlagVariationArrayInput` via:
+//
+//	GetExperimentFeatureFlagVariationArray{ GetExperimentFeatureFlagVariationArgs{...} }
+type GetExperimentFeatureFlagVariationArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentFeatureFlagVariationArrayOutput() GetExperimentFeatureFlagVariationArrayOutput
+	ToGetExperimentFeatureFlagVariationArrayOutputWithContext(context.Context) GetExperimentFeatureFlagVariationArrayOutput
+}
+
+type GetExperimentFeatureFlagVariationArray []GetExperimentFeatureFlagVariationInput
+
+func (GetExperimentFeatureFlagVariationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentFeatureFlagVariation)(nil)).Elem()
+}
+
+func (i GetExperimentFeatureFlagVariationArray) ToGetExperimentFeatureFlagVariationArrayOutput() GetExperimentFeatureFlagVariationArrayOutput {
+	return i.ToGetExperimentFeatureFlagVariationArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentFeatureFlagVariationArray) ToGetExperimentFeatureFlagVariationArrayOutputWithContext(ctx context.Context) GetExperimentFeatureFlagVariationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentFeatureFlagVariationArrayOutput)
+}
+
+type GetExperimentFeatureFlagVariationOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentFeatureFlagVariationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentFeatureFlagVariation)(nil)).Elem()
+}
+
+func (o GetExperimentFeatureFlagVariationOutput) ToGetExperimentFeatureFlagVariationOutput() GetExperimentFeatureFlagVariationOutput {
+	return o
+}
+
+func (o GetExperimentFeatureFlagVariationOutput) ToGetExperimentFeatureFlagVariationOutputWithContext(ctx context.Context) GetExperimentFeatureFlagVariationOutput {
+	return o
+}
+
+// Description of the variation. Must contain 3 to 1024 characters when set.
+func (o GetExperimentFeatureFlagVariationOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentFeatureFlagVariation) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The name of the variation. Must be unique within the feature flag and contain 3 to 255 characters without surrounding whitespace. Changing the name deletes the variation and creates a new one with a new ID.
+func (o GetExperimentFeatureFlagVariationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentFeatureFlagVariation) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Parameter overrides for the variation. Omit for a control variation.
+func (o GetExperimentFeatureFlagVariationOutput) Overrides() GetExperimentFeatureFlagVariationOverrideArrayOutput {
+	return o.ApplyT(func(v GetExperimentFeatureFlagVariation) []GetExperimentFeatureFlagVariationOverride {
+		return v.Overrides
+	}).(GetExperimentFeatureFlagVariationOverrideArrayOutput)
+}
+
+type GetExperimentFeatureFlagVariationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentFeatureFlagVariationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentFeatureFlagVariation)(nil)).Elem()
+}
+
+func (o GetExperimentFeatureFlagVariationArrayOutput) ToGetExperimentFeatureFlagVariationArrayOutput() GetExperimentFeatureFlagVariationArrayOutput {
+	return o
+}
+
+func (o GetExperimentFeatureFlagVariationArrayOutput) ToGetExperimentFeatureFlagVariationArrayOutputWithContext(ctx context.Context) GetExperimentFeatureFlagVariationArrayOutput {
+	return o
+}
+
+func (o GetExperimentFeatureFlagVariationArrayOutput) Index(i pulumi.IntInput) GetExperimentFeatureFlagVariationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentFeatureFlagVariation {
+		return vs[0].([]GetExperimentFeatureFlagVariation)[vs[1].(int)]
+	}).(GetExperimentFeatureFlagVariationOutput)
+}
+
+type GetExperimentFeatureFlagVariationOverride struct {
+	// The name of a parameter on the feature flag. Each name can appear once.
+	Name string `pulumi:"name"`
+	// The type of the parameter value. One of boolean, string, number, array, object.
+	Type string `pulumi:"type"`
+	// The override value as a string. For object and array values, provide JSON; for boolean and number values, provide their literal text.
+	Value string `pulumi:"value"`
+}
+
+// GetExperimentFeatureFlagVariationOverrideInput is an input type that accepts GetExperimentFeatureFlagVariationOverrideArgs and GetExperimentFeatureFlagVariationOverrideOutput values.
+// You can construct a concrete instance of `GetExperimentFeatureFlagVariationOverrideInput` via:
+//
+//	GetExperimentFeatureFlagVariationOverrideArgs{...}
+type GetExperimentFeatureFlagVariationOverrideInput interface {
+	pulumi.Input
+
+	ToGetExperimentFeatureFlagVariationOverrideOutput() GetExperimentFeatureFlagVariationOverrideOutput
+	ToGetExperimentFeatureFlagVariationOverrideOutputWithContext(context.Context) GetExperimentFeatureFlagVariationOverrideOutput
+}
+
+type GetExperimentFeatureFlagVariationOverrideArgs struct {
+	// The name of a parameter on the feature flag. Each name can appear once.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The type of the parameter value. One of boolean, string, number, array, object.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The override value as a string. For object and array values, provide JSON; for boolean and number values, provide their literal text.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetExperimentFeatureFlagVariationOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentFeatureFlagVariationOverride)(nil)).Elem()
+}
+
+func (i GetExperimentFeatureFlagVariationOverrideArgs) ToGetExperimentFeatureFlagVariationOverrideOutput() GetExperimentFeatureFlagVariationOverrideOutput {
+	return i.ToGetExperimentFeatureFlagVariationOverrideOutputWithContext(context.Background())
+}
+
+func (i GetExperimentFeatureFlagVariationOverrideArgs) ToGetExperimentFeatureFlagVariationOverrideOutputWithContext(ctx context.Context) GetExperimentFeatureFlagVariationOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentFeatureFlagVariationOverrideOutput)
+}
+
+// GetExperimentFeatureFlagVariationOverrideArrayInput is an input type that accepts GetExperimentFeatureFlagVariationOverrideArray and GetExperimentFeatureFlagVariationOverrideArrayOutput values.
+// You can construct a concrete instance of `GetExperimentFeatureFlagVariationOverrideArrayInput` via:
+//
+//	GetExperimentFeatureFlagVariationOverrideArray{ GetExperimentFeatureFlagVariationOverrideArgs{...} }
+type GetExperimentFeatureFlagVariationOverrideArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentFeatureFlagVariationOverrideArrayOutput() GetExperimentFeatureFlagVariationOverrideArrayOutput
+	ToGetExperimentFeatureFlagVariationOverrideArrayOutputWithContext(context.Context) GetExperimentFeatureFlagVariationOverrideArrayOutput
+}
+
+type GetExperimentFeatureFlagVariationOverrideArray []GetExperimentFeatureFlagVariationOverrideInput
+
+func (GetExperimentFeatureFlagVariationOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentFeatureFlagVariationOverride)(nil)).Elem()
+}
+
+func (i GetExperimentFeatureFlagVariationOverrideArray) ToGetExperimentFeatureFlagVariationOverrideArrayOutput() GetExperimentFeatureFlagVariationOverrideArrayOutput {
+	return i.ToGetExperimentFeatureFlagVariationOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentFeatureFlagVariationOverrideArray) ToGetExperimentFeatureFlagVariationOverrideArrayOutputWithContext(ctx context.Context) GetExperimentFeatureFlagVariationOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentFeatureFlagVariationOverrideArrayOutput)
+}
+
+type GetExperimentFeatureFlagVariationOverrideOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentFeatureFlagVariationOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentFeatureFlagVariationOverride)(nil)).Elem()
+}
+
+func (o GetExperimentFeatureFlagVariationOverrideOutput) ToGetExperimentFeatureFlagVariationOverrideOutput() GetExperimentFeatureFlagVariationOverrideOutput {
+	return o
+}
+
+func (o GetExperimentFeatureFlagVariationOverrideOutput) ToGetExperimentFeatureFlagVariationOverrideOutputWithContext(ctx context.Context) GetExperimentFeatureFlagVariationOverrideOutput {
+	return o
+}
+
+// The name of a parameter on the feature flag. Each name can appear once.
+func (o GetExperimentFeatureFlagVariationOverrideOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentFeatureFlagVariationOverride) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The type of the parameter value. One of boolean, string, number, array, object.
+func (o GetExperimentFeatureFlagVariationOverrideOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentFeatureFlagVariationOverride) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The override value as a string. For object and array values, provide JSON; for boolean and number values, provide their literal text.
+func (o GetExperimentFeatureFlagVariationOverrideOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentFeatureFlagVariationOverride) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetExperimentFeatureFlagVariationOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentFeatureFlagVariationOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentFeatureFlagVariationOverride)(nil)).Elem()
+}
+
+func (o GetExperimentFeatureFlagVariationOverrideArrayOutput) ToGetExperimentFeatureFlagVariationOverrideArrayOutput() GetExperimentFeatureFlagVariationOverrideArrayOutput {
+	return o
+}
+
+func (o GetExperimentFeatureFlagVariationOverrideArrayOutput) ToGetExperimentFeatureFlagVariationOverrideArrayOutputWithContext(ctx context.Context) GetExperimentFeatureFlagVariationOverrideArrayOutput {
+	return o
+}
+
+func (o GetExperimentFeatureFlagVariationOverrideArrayOutput) Index(i pulumi.IntInput) GetExperimentFeatureFlagVariationOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentFeatureFlagVariationOverride {
+		return vs[0].([]GetExperimentFeatureFlagVariationOverride)[vs[1].(int)]
+	}).(GetExperimentFeatureFlagVariationOverrideOutput)
+}
+
+type GetExperimentSegmentRule struct {
+	// Attribute conditions that must match. Set between 1 and 10 attributes, including each `anonymousSessionMetadata` block. At least one of `match` or `notMatch` is required per rule.
+	Matches []GetExperimentSegmentRuleMatch `pulumi:"matches"`
+	// Attribute conditions that must not match. Set between 1 and 10 attributes, including each `anonymousSessionMetadata` block. At least one of `match` or `notMatch` is required per rule.
+	NotMatches []GetExperimentSegmentRuleNotMatch `pulumi:"notMatches"`
+}
+
+// GetExperimentSegmentRuleInput is an input type that accepts GetExperimentSegmentRuleArgs and GetExperimentSegmentRuleOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleInput` via:
+//
+//	GetExperimentSegmentRuleArgs{...}
+type GetExperimentSegmentRuleInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleOutput() GetExperimentSegmentRuleOutput
+	ToGetExperimentSegmentRuleOutputWithContext(context.Context) GetExperimentSegmentRuleOutput
+}
+
+type GetExperimentSegmentRuleArgs struct {
+	// Attribute conditions that must match. Set between 1 and 10 attributes, including each `anonymousSessionMetadata` block. At least one of `match` or `notMatch` is required per rule.
+	Matches GetExperimentSegmentRuleMatchArrayInput `pulumi:"matches"`
+	// Attribute conditions that must not match. Set between 1 and 10 attributes, including each `anonymousSessionMetadata` block. At least one of `match` or `notMatch` is required per rule.
+	NotMatches GetExperimentSegmentRuleNotMatchArrayInput `pulumi:"notMatches"`
+}
+
+func (GetExperimentSegmentRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRule)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleArgs) ToGetExperimentSegmentRuleOutput() GetExperimentSegmentRuleOutput {
+	return i.ToGetExperimentSegmentRuleOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleArgs) ToGetExperimentSegmentRuleOutputWithContext(ctx context.Context) GetExperimentSegmentRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleOutput)
+}
+
+// GetExperimentSegmentRuleArrayInput is an input type that accepts GetExperimentSegmentRuleArray and GetExperimentSegmentRuleArrayOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleArrayInput` via:
+//
+//	GetExperimentSegmentRuleArray{ GetExperimentSegmentRuleArgs{...} }
+type GetExperimentSegmentRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleArrayOutput() GetExperimentSegmentRuleArrayOutput
+	ToGetExperimentSegmentRuleArrayOutputWithContext(context.Context) GetExperimentSegmentRuleArrayOutput
+}
+
+type GetExperimentSegmentRuleArray []GetExperimentSegmentRuleInput
+
+func (GetExperimentSegmentRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRule)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleArray) ToGetExperimentSegmentRuleArrayOutput() GetExperimentSegmentRuleArrayOutput {
+	return i.ToGetExperimentSegmentRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleArray) ToGetExperimentSegmentRuleArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleArrayOutput)
+}
+
+type GetExperimentSegmentRuleOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRule)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleOutput) ToGetExperimentSegmentRuleOutput() GetExperimentSegmentRuleOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleOutput) ToGetExperimentSegmentRuleOutputWithContext(ctx context.Context) GetExperimentSegmentRuleOutput {
+	return o
+}
+
+// Attribute conditions that must match. Set between 1 and 10 attributes, including each `anonymousSessionMetadata` block. At least one of `match` or `notMatch` is required per rule.
+func (o GetExperimentSegmentRuleOutput) Matches() GetExperimentSegmentRuleMatchArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRule) []GetExperimentSegmentRuleMatch { return v.Matches }).(GetExperimentSegmentRuleMatchArrayOutput)
+}
+
+// Attribute conditions that must not match. Set between 1 and 10 attributes, including each `anonymousSessionMetadata` block. At least one of `match` or `notMatch` is required per rule.
+func (o GetExperimentSegmentRuleOutput) NotMatches() GetExperimentSegmentRuleNotMatchArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRule) []GetExperimentSegmentRuleNotMatch { return v.NotMatches }).(GetExperimentSegmentRuleNotMatchArrayOutput)
+}
+
+type GetExperimentSegmentRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRule)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleArrayOutput) ToGetExperimentSegmentRuleArrayOutput() GetExperimentSegmentRuleArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleArrayOutput) ToGetExperimentSegmentRuleArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleArrayOutput) Index(i pulumi.IntInput) GetExperimentSegmentRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentSegmentRule {
+		return vs[0].([]GetExperimentSegmentRule)[vs[1].(int)]
+	}).(GetExperimentSegmentRuleOutput)
+}
+
+type GetExperimentSegmentRuleMatch struct {
+	// Condition on a namespaced `anonymous_session_metadata.<key>` attribute. Repeat the block once per key. Each key can appear only once per `match/not_match` block.
+	AnonymousSessionMetadatas []GetExperimentSegmentRuleMatchAnonymousSessionMetadata `pulumi:"anonymousSessionMetadatas"`
+	// Condition on the `browser` attribute. Set exactly one operator.
+	Browsers []GetExperimentSegmentRuleMatchBrowser `pulumi:"browsers"`
+	// Condition on the `clientId` attribute. Set exactly one operator.
+	ClientIds []GetExperimentSegmentRuleMatchClientId `pulumi:"clientIds"`
+	// Condition on the `connectionType` attribute. Set exactly one operator.
+	ConnectionTypes []GetExperimentSegmentRuleMatchConnectionType `pulumi:"connectionTypes"`
+	// Condition on the `connection` attribute. Set exactly one operator.
+	Connections []GetExperimentSegmentRuleMatchConnection `pulumi:"connections"`
+	// Condition on the `country` attribute. Set exactly one operator.
+	Countries []GetExperimentSegmentRuleMatchCountry `pulumi:"countries"`
+	// Condition on the `deviceType` attribute. Set exactly one operator.
+	DeviceTypes []GetExperimentSegmentRuleMatchDeviceType `pulumi:"deviceTypes"`
+	// Condition on the `domain` attribute. Set exactly one operator.
+	Domains []GetExperimentSegmentRuleMatchDomain `pulumi:"domains"`
+	// Condition on the `organizationId` attribute. Set exactly one operator.
+	OrganizationIds []GetExperimentSegmentRuleMatchOrganizationId `pulumi:"organizationIds"`
+	// Condition on the `platform` attribute. Set exactly one operator.
+	Platforms []GetExperimentSegmentRuleMatchPlatform `pulumi:"platforms"`
+	// Condition on the `region` attribute. Set exactly one operator.
+	Regions []GetExperimentSegmentRuleMatchRegion `pulumi:"regions"`
+	// Condition on the `userAgent` attribute. Set exactly one operator.
+	UserAgents []GetExperimentSegmentRuleMatchUserAgent `pulumi:"userAgents"`
+}
+
+// GetExperimentSegmentRuleMatchInput is an input type that accepts GetExperimentSegmentRuleMatchArgs and GetExperimentSegmentRuleMatchOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleMatchInput` via:
+//
+//	GetExperimentSegmentRuleMatchArgs{...}
+type GetExperimentSegmentRuleMatchInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleMatchOutput() GetExperimentSegmentRuleMatchOutput
+	ToGetExperimentSegmentRuleMatchOutputWithContext(context.Context) GetExperimentSegmentRuleMatchOutput
+}
+
+type GetExperimentSegmentRuleMatchArgs struct {
+	// Condition on a namespaced `anonymous_session_metadata.<key>` attribute. Repeat the block once per key. Each key can appear only once per `match/not_match` block.
+	AnonymousSessionMetadatas GetExperimentSegmentRuleMatchAnonymousSessionMetadataArrayInput `pulumi:"anonymousSessionMetadatas"`
+	// Condition on the `browser` attribute. Set exactly one operator.
+	Browsers GetExperimentSegmentRuleMatchBrowserArrayInput `pulumi:"browsers"`
+	// Condition on the `clientId` attribute. Set exactly one operator.
+	ClientIds GetExperimentSegmentRuleMatchClientIdArrayInput `pulumi:"clientIds"`
+	// Condition on the `connectionType` attribute. Set exactly one operator.
+	ConnectionTypes GetExperimentSegmentRuleMatchConnectionTypeArrayInput `pulumi:"connectionTypes"`
+	// Condition on the `connection` attribute. Set exactly one operator.
+	Connections GetExperimentSegmentRuleMatchConnectionArrayInput `pulumi:"connections"`
+	// Condition on the `country` attribute. Set exactly one operator.
+	Countries GetExperimentSegmentRuleMatchCountryArrayInput `pulumi:"countries"`
+	// Condition on the `deviceType` attribute. Set exactly one operator.
+	DeviceTypes GetExperimentSegmentRuleMatchDeviceTypeArrayInput `pulumi:"deviceTypes"`
+	// Condition on the `domain` attribute. Set exactly one operator.
+	Domains GetExperimentSegmentRuleMatchDomainArrayInput `pulumi:"domains"`
+	// Condition on the `organizationId` attribute. Set exactly one operator.
+	OrganizationIds GetExperimentSegmentRuleMatchOrganizationIdArrayInput `pulumi:"organizationIds"`
+	// Condition on the `platform` attribute. Set exactly one operator.
+	Platforms GetExperimentSegmentRuleMatchPlatformArrayInput `pulumi:"platforms"`
+	// Condition on the `region` attribute. Set exactly one operator.
+	Regions GetExperimentSegmentRuleMatchRegionArrayInput `pulumi:"regions"`
+	// Condition on the `userAgent` attribute. Set exactly one operator.
+	UserAgents GetExperimentSegmentRuleMatchUserAgentArrayInput `pulumi:"userAgents"`
+}
+
+func (GetExperimentSegmentRuleMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleMatch)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleMatchArgs) ToGetExperimentSegmentRuleMatchOutput() GetExperimentSegmentRuleMatchOutput {
+	return i.ToGetExperimentSegmentRuleMatchOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleMatchArgs) ToGetExperimentSegmentRuleMatchOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleMatchOutput)
+}
+
+// GetExperimentSegmentRuleMatchArrayInput is an input type that accepts GetExperimentSegmentRuleMatchArray and GetExperimentSegmentRuleMatchArrayOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleMatchArrayInput` via:
+//
+//	GetExperimentSegmentRuleMatchArray{ GetExperimentSegmentRuleMatchArgs{...} }
+type GetExperimentSegmentRuleMatchArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleMatchArrayOutput() GetExperimentSegmentRuleMatchArrayOutput
+	ToGetExperimentSegmentRuleMatchArrayOutputWithContext(context.Context) GetExperimentSegmentRuleMatchArrayOutput
+}
+
+type GetExperimentSegmentRuleMatchArray []GetExperimentSegmentRuleMatchInput
+
+func (GetExperimentSegmentRuleMatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleMatch)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleMatchArray) ToGetExperimentSegmentRuleMatchArrayOutput() GetExperimentSegmentRuleMatchArrayOutput {
+	return i.ToGetExperimentSegmentRuleMatchArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleMatchArray) ToGetExperimentSegmentRuleMatchArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleMatchArrayOutput)
+}
+
+type GetExperimentSegmentRuleMatchOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleMatch)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleMatchOutput) ToGetExperimentSegmentRuleMatchOutput() GetExperimentSegmentRuleMatchOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchOutput) ToGetExperimentSegmentRuleMatchOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchOutput {
+	return o
+}
+
+// Condition on a namespaced `anonymous_session_metadata.<key>` attribute. Repeat the block once per key. Each key can appear only once per `match/not_match` block.
+func (o GetExperimentSegmentRuleMatchOutput) AnonymousSessionMetadatas() GetExperimentSegmentRuleMatchAnonymousSessionMetadataArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatch) []GetExperimentSegmentRuleMatchAnonymousSessionMetadata {
+		return v.AnonymousSessionMetadatas
+	}).(GetExperimentSegmentRuleMatchAnonymousSessionMetadataArrayOutput)
+}
+
+// Condition on the `browser` attribute. Set exactly one operator.
+func (o GetExperimentSegmentRuleMatchOutput) Browsers() GetExperimentSegmentRuleMatchBrowserArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatch) []GetExperimentSegmentRuleMatchBrowser { return v.Browsers }).(GetExperimentSegmentRuleMatchBrowserArrayOutput)
+}
+
+// Condition on the `clientId` attribute. Set exactly one operator.
+func (o GetExperimentSegmentRuleMatchOutput) ClientIds() GetExperimentSegmentRuleMatchClientIdArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatch) []GetExperimentSegmentRuleMatchClientId { return v.ClientIds }).(GetExperimentSegmentRuleMatchClientIdArrayOutput)
+}
+
+// Condition on the `connectionType` attribute. Set exactly one operator.
+func (o GetExperimentSegmentRuleMatchOutput) ConnectionTypes() GetExperimentSegmentRuleMatchConnectionTypeArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatch) []GetExperimentSegmentRuleMatchConnectionType {
+		return v.ConnectionTypes
+	}).(GetExperimentSegmentRuleMatchConnectionTypeArrayOutput)
+}
+
+// Condition on the `connection` attribute. Set exactly one operator.
+func (o GetExperimentSegmentRuleMatchOutput) Connections() GetExperimentSegmentRuleMatchConnectionArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatch) []GetExperimentSegmentRuleMatchConnection { return v.Connections }).(GetExperimentSegmentRuleMatchConnectionArrayOutput)
+}
+
+// Condition on the `country` attribute. Set exactly one operator.
+func (o GetExperimentSegmentRuleMatchOutput) Countries() GetExperimentSegmentRuleMatchCountryArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatch) []GetExperimentSegmentRuleMatchCountry { return v.Countries }).(GetExperimentSegmentRuleMatchCountryArrayOutput)
+}
+
+// Condition on the `deviceType` attribute. Set exactly one operator.
+func (o GetExperimentSegmentRuleMatchOutput) DeviceTypes() GetExperimentSegmentRuleMatchDeviceTypeArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatch) []GetExperimentSegmentRuleMatchDeviceType { return v.DeviceTypes }).(GetExperimentSegmentRuleMatchDeviceTypeArrayOutput)
+}
+
+// Condition on the `domain` attribute. Set exactly one operator.
+func (o GetExperimentSegmentRuleMatchOutput) Domains() GetExperimentSegmentRuleMatchDomainArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatch) []GetExperimentSegmentRuleMatchDomain { return v.Domains }).(GetExperimentSegmentRuleMatchDomainArrayOutput)
+}
+
+// Condition on the `organizationId` attribute. Set exactly one operator.
+func (o GetExperimentSegmentRuleMatchOutput) OrganizationIds() GetExperimentSegmentRuleMatchOrganizationIdArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatch) []GetExperimentSegmentRuleMatchOrganizationId {
+		return v.OrganizationIds
+	}).(GetExperimentSegmentRuleMatchOrganizationIdArrayOutput)
+}
+
+// Condition on the `platform` attribute. Set exactly one operator.
+func (o GetExperimentSegmentRuleMatchOutput) Platforms() GetExperimentSegmentRuleMatchPlatformArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatch) []GetExperimentSegmentRuleMatchPlatform { return v.Platforms }).(GetExperimentSegmentRuleMatchPlatformArrayOutput)
+}
+
+// Condition on the `region` attribute. Set exactly one operator.
+func (o GetExperimentSegmentRuleMatchOutput) Regions() GetExperimentSegmentRuleMatchRegionArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatch) []GetExperimentSegmentRuleMatchRegion { return v.Regions }).(GetExperimentSegmentRuleMatchRegionArrayOutput)
+}
+
+// Condition on the `userAgent` attribute. Set exactly one operator.
+func (o GetExperimentSegmentRuleMatchOutput) UserAgents() GetExperimentSegmentRuleMatchUserAgentArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatch) []GetExperimentSegmentRuleMatchUserAgent { return v.UserAgents }).(GetExperimentSegmentRuleMatchUserAgentArrayOutput)
+}
+
+type GetExperimentSegmentRuleMatchArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleMatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleMatch)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleMatchArrayOutput) ToGetExperimentSegmentRuleMatchArrayOutput() GetExperimentSegmentRuleMatchArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchArrayOutput) ToGetExperimentSegmentRuleMatchArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchArrayOutput) Index(i pulumi.IntInput) GetExperimentSegmentRuleMatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentSegmentRuleMatch {
+		return vs[0].([]GetExperimentSegmentRuleMatch)[vs[1].(int)]
+	}).(GetExperimentSegmentRuleMatchOutput)
+}
+
+type GetExperimentSegmentRuleMatchAnonymousSessionMetadata struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains []string `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths []string `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists string `pulumi:"exists"`
+	// The metadata key, without the `anonymous_session_metadata.` prefix. Between 1 and 255 characters, not blank.
+	Key string `pulumi:"key"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs []string `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths []string `pulumi:"startsWiths"`
+}
+
+// GetExperimentSegmentRuleMatchAnonymousSessionMetadataInput is an input type that accepts GetExperimentSegmentRuleMatchAnonymousSessionMetadataArgs and GetExperimentSegmentRuleMatchAnonymousSessionMetadataOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleMatchAnonymousSessionMetadataInput` via:
+//
+//	GetExperimentSegmentRuleMatchAnonymousSessionMetadataArgs{...}
+type GetExperimentSegmentRuleMatchAnonymousSessionMetadataInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleMatchAnonymousSessionMetadataOutput() GetExperimentSegmentRuleMatchAnonymousSessionMetadataOutput
+	ToGetExperimentSegmentRuleMatchAnonymousSessionMetadataOutputWithContext(context.Context) GetExperimentSegmentRuleMatchAnonymousSessionMetadataOutput
+}
+
+type GetExperimentSegmentRuleMatchAnonymousSessionMetadataArgs struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains pulumi.StringArrayInput `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths pulumi.StringArrayInput `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists pulumi.StringInput `pulumi:"exists"`
+	// The metadata key, without the `anonymous_session_metadata.` prefix. Between 1 and 255 characters, not blank.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs pulumi.StringArrayInput `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths pulumi.StringArrayInput `pulumi:"startsWiths"`
+}
+
+func (GetExperimentSegmentRuleMatchAnonymousSessionMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleMatchAnonymousSessionMetadata)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleMatchAnonymousSessionMetadataArgs) ToGetExperimentSegmentRuleMatchAnonymousSessionMetadataOutput() GetExperimentSegmentRuleMatchAnonymousSessionMetadataOutput {
+	return i.ToGetExperimentSegmentRuleMatchAnonymousSessionMetadataOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleMatchAnonymousSessionMetadataArgs) ToGetExperimentSegmentRuleMatchAnonymousSessionMetadataOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchAnonymousSessionMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleMatchAnonymousSessionMetadataOutput)
+}
+
+// GetExperimentSegmentRuleMatchAnonymousSessionMetadataArrayInput is an input type that accepts GetExperimentSegmentRuleMatchAnonymousSessionMetadataArray and GetExperimentSegmentRuleMatchAnonymousSessionMetadataArrayOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleMatchAnonymousSessionMetadataArrayInput` via:
+//
+//	GetExperimentSegmentRuleMatchAnonymousSessionMetadataArray{ GetExperimentSegmentRuleMatchAnonymousSessionMetadataArgs{...} }
+type GetExperimentSegmentRuleMatchAnonymousSessionMetadataArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleMatchAnonymousSessionMetadataArrayOutput() GetExperimentSegmentRuleMatchAnonymousSessionMetadataArrayOutput
+	ToGetExperimentSegmentRuleMatchAnonymousSessionMetadataArrayOutputWithContext(context.Context) GetExperimentSegmentRuleMatchAnonymousSessionMetadataArrayOutput
+}
+
+type GetExperimentSegmentRuleMatchAnonymousSessionMetadataArray []GetExperimentSegmentRuleMatchAnonymousSessionMetadataInput
+
+func (GetExperimentSegmentRuleMatchAnonymousSessionMetadataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleMatchAnonymousSessionMetadata)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleMatchAnonymousSessionMetadataArray) ToGetExperimentSegmentRuleMatchAnonymousSessionMetadataArrayOutput() GetExperimentSegmentRuleMatchAnonymousSessionMetadataArrayOutput {
+	return i.ToGetExperimentSegmentRuleMatchAnonymousSessionMetadataArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleMatchAnonymousSessionMetadataArray) ToGetExperimentSegmentRuleMatchAnonymousSessionMetadataArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchAnonymousSessionMetadataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleMatchAnonymousSessionMetadataArrayOutput)
+}
+
+type GetExperimentSegmentRuleMatchAnonymousSessionMetadataOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleMatchAnonymousSessionMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleMatchAnonymousSessionMetadata)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleMatchAnonymousSessionMetadataOutput) ToGetExperimentSegmentRuleMatchAnonymousSessionMetadataOutput() GetExperimentSegmentRuleMatchAnonymousSessionMetadataOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchAnonymousSessionMetadataOutput) ToGetExperimentSegmentRuleMatchAnonymousSessionMetadataOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchAnonymousSessionMetadataOutput {
+	return o
+}
+
+// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchAnonymousSessionMetadataOutput) Contains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchAnonymousSessionMetadata) []string { return v.Contains }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchAnonymousSessionMetadataOutput) EndsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchAnonymousSessionMetadata) []string { return v.EndsWiths }).(pulumi.StringArrayOutput)
+}
+
+// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+func (o GetExperimentSegmentRuleMatchAnonymousSessionMetadataOutput) Exists() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchAnonymousSessionMetadata) string { return v.Exists }).(pulumi.StringOutput)
+}
+
+// The metadata key, without the `anonymous_session_metadata.` prefix. Between 1 and 255 characters, not blank.
+func (o GetExperimentSegmentRuleMatchAnonymousSessionMetadataOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchAnonymousSessionMetadata) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchAnonymousSessionMetadataOutput) OneOfs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchAnonymousSessionMetadata) []string { return v.OneOfs }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchAnonymousSessionMetadataOutput) StartsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchAnonymousSessionMetadata) []string { return v.StartsWiths }).(pulumi.StringArrayOutput)
+}
+
+type GetExperimentSegmentRuleMatchAnonymousSessionMetadataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleMatchAnonymousSessionMetadataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleMatchAnonymousSessionMetadata)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleMatchAnonymousSessionMetadataArrayOutput) ToGetExperimentSegmentRuleMatchAnonymousSessionMetadataArrayOutput() GetExperimentSegmentRuleMatchAnonymousSessionMetadataArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchAnonymousSessionMetadataArrayOutput) ToGetExperimentSegmentRuleMatchAnonymousSessionMetadataArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchAnonymousSessionMetadataArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchAnonymousSessionMetadataArrayOutput) Index(i pulumi.IntInput) GetExperimentSegmentRuleMatchAnonymousSessionMetadataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentSegmentRuleMatchAnonymousSessionMetadata {
+		return vs[0].([]GetExperimentSegmentRuleMatchAnonymousSessionMetadata)[vs[1].(int)]
+	}).(GetExperimentSegmentRuleMatchAnonymousSessionMetadataOutput)
+}
+
+type GetExperimentSegmentRuleMatchBrowser struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains []string `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths []string `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists string `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs []string `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths []string `pulumi:"startsWiths"`
+}
+
+// GetExperimentSegmentRuleMatchBrowserInput is an input type that accepts GetExperimentSegmentRuleMatchBrowserArgs and GetExperimentSegmentRuleMatchBrowserOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleMatchBrowserInput` via:
+//
+//	GetExperimentSegmentRuleMatchBrowserArgs{...}
+type GetExperimentSegmentRuleMatchBrowserInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleMatchBrowserOutput() GetExperimentSegmentRuleMatchBrowserOutput
+	ToGetExperimentSegmentRuleMatchBrowserOutputWithContext(context.Context) GetExperimentSegmentRuleMatchBrowserOutput
+}
+
+type GetExperimentSegmentRuleMatchBrowserArgs struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains pulumi.StringArrayInput `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths pulumi.StringArrayInput `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists pulumi.StringInput `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs pulumi.StringArrayInput `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths pulumi.StringArrayInput `pulumi:"startsWiths"`
+}
+
+func (GetExperimentSegmentRuleMatchBrowserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleMatchBrowser)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleMatchBrowserArgs) ToGetExperimentSegmentRuleMatchBrowserOutput() GetExperimentSegmentRuleMatchBrowserOutput {
+	return i.ToGetExperimentSegmentRuleMatchBrowserOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleMatchBrowserArgs) ToGetExperimentSegmentRuleMatchBrowserOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchBrowserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleMatchBrowserOutput)
+}
+
+// GetExperimentSegmentRuleMatchBrowserArrayInput is an input type that accepts GetExperimentSegmentRuleMatchBrowserArray and GetExperimentSegmentRuleMatchBrowserArrayOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleMatchBrowserArrayInput` via:
+//
+//	GetExperimentSegmentRuleMatchBrowserArray{ GetExperimentSegmentRuleMatchBrowserArgs{...} }
+type GetExperimentSegmentRuleMatchBrowserArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleMatchBrowserArrayOutput() GetExperimentSegmentRuleMatchBrowserArrayOutput
+	ToGetExperimentSegmentRuleMatchBrowserArrayOutputWithContext(context.Context) GetExperimentSegmentRuleMatchBrowserArrayOutput
+}
+
+type GetExperimentSegmentRuleMatchBrowserArray []GetExperimentSegmentRuleMatchBrowserInput
+
+func (GetExperimentSegmentRuleMatchBrowserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleMatchBrowser)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleMatchBrowserArray) ToGetExperimentSegmentRuleMatchBrowserArrayOutput() GetExperimentSegmentRuleMatchBrowserArrayOutput {
+	return i.ToGetExperimentSegmentRuleMatchBrowserArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleMatchBrowserArray) ToGetExperimentSegmentRuleMatchBrowserArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchBrowserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleMatchBrowserArrayOutput)
+}
+
+type GetExperimentSegmentRuleMatchBrowserOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleMatchBrowserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleMatchBrowser)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleMatchBrowserOutput) ToGetExperimentSegmentRuleMatchBrowserOutput() GetExperimentSegmentRuleMatchBrowserOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchBrowserOutput) ToGetExperimentSegmentRuleMatchBrowserOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchBrowserOutput {
+	return o
+}
+
+// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchBrowserOutput) Contains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchBrowser) []string { return v.Contains }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchBrowserOutput) EndsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchBrowser) []string { return v.EndsWiths }).(pulumi.StringArrayOutput)
+}
+
+// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+func (o GetExperimentSegmentRuleMatchBrowserOutput) Exists() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchBrowser) string { return v.Exists }).(pulumi.StringOutput)
+}
+
+// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchBrowserOutput) OneOfs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchBrowser) []string { return v.OneOfs }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchBrowserOutput) StartsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchBrowser) []string { return v.StartsWiths }).(pulumi.StringArrayOutput)
+}
+
+type GetExperimentSegmentRuleMatchBrowserArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleMatchBrowserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleMatchBrowser)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleMatchBrowserArrayOutput) ToGetExperimentSegmentRuleMatchBrowserArrayOutput() GetExperimentSegmentRuleMatchBrowserArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchBrowserArrayOutput) ToGetExperimentSegmentRuleMatchBrowserArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchBrowserArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchBrowserArrayOutput) Index(i pulumi.IntInput) GetExperimentSegmentRuleMatchBrowserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentSegmentRuleMatchBrowser {
+		return vs[0].([]GetExperimentSegmentRuleMatchBrowser)[vs[1].(int)]
+	}).(GetExperimentSegmentRuleMatchBrowserOutput)
+}
+
+type GetExperimentSegmentRuleMatchClientId struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains []string `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths []string `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists string `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs []string `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths []string `pulumi:"startsWiths"`
+}
+
+// GetExperimentSegmentRuleMatchClientIdInput is an input type that accepts GetExperimentSegmentRuleMatchClientIdArgs and GetExperimentSegmentRuleMatchClientIdOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleMatchClientIdInput` via:
+//
+//	GetExperimentSegmentRuleMatchClientIdArgs{...}
+type GetExperimentSegmentRuleMatchClientIdInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleMatchClientIdOutput() GetExperimentSegmentRuleMatchClientIdOutput
+	ToGetExperimentSegmentRuleMatchClientIdOutputWithContext(context.Context) GetExperimentSegmentRuleMatchClientIdOutput
+}
+
+type GetExperimentSegmentRuleMatchClientIdArgs struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains pulumi.StringArrayInput `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths pulumi.StringArrayInput `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists pulumi.StringInput `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs pulumi.StringArrayInput `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths pulumi.StringArrayInput `pulumi:"startsWiths"`
+}
+
+func (GetExperimentSegmentRuleMatchClientIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleMatchClientId)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleMatchClientIdArgs) ToGetExperimentSegmentRuleMatchClientIdOutput() GetExperimentSegmentRuleMatchClientIdOutput {
+	return i.ToGetExperimentSegmentRuleMatchClientIdOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleMatchClientIdArgs) ToGetExperimentSegmentRuleMatchClientIdOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchClientIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleMatchClientIdOutput)
+}
+
+// GetExperimentSegmentRuleMatchClientIdArrayInput is an input type that accepts GetExperimentSegmentRuleMatchClientIdArray and GetExperimentSegmentRuleMatchClientIdArrayOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleMatchClientIdArrayInput` via:
+//
+//	GetExperimentSegmentRuleMatchClientIdArray{ GetExperimentSegmentRuleMatchClientIdArgs{...} }
+type GetExperimentSegmentRuleMatchClientIdArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleMatchClientIdArrayOutput() GetExperimentSegmentRuleMatchClientIdArrayOutput
+	ToGetExperimentSegmentRuleMatchClientIdArrayOutputWithContext(context.Context) GetExperimentSegmentRuleMatchClientIdArrayOutput
+}
+
+type GetExperimentSegmentRuleMatchClientIdArray []GetExperimentSegmentRuleMatchClientIdInput
+
+func (GetExperimentSegmentRuleMatchClientIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleMatchClientId)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleMatchClientIdArray) ToGetExperimentSegmentRuleMatchClientIdArrayOutput() GetExperimentSegmentRuleMatchClientIdArrayOutput {
+	return i.ToGetExperimentSegmentRuleMatchClientIdArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleMatchClientIdArray) ToGetExperimentSegmentRuleMatchClientIdArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchClientIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleMatchClientIdArrayOutput)
+}
+
+type GetExperimentSegmentRuleMatchClientIdOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleMatchClientIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleMatchClientId)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleMatchClientIdOutput) ToGetExperimentSegmentRuleMatchClientIdOutput() GetExperimentSegmentRuleMatchClientIdOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchClientIdOutput) ToGetExperimentSegmentRuleMatchClientIdOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchClientIdOutput {
+	return o
+}
+
+// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchClientIdOutput) Contains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchClientId) []string { return v.Contains }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchClientIdOutput) EndsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchClientId) []string { return v.EndsWiths }).(pulumi.StringArrayOutput)
+}
+
+// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+func (o GetExperimentSegmentRuleMatchClientIdOutput) Exists() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchClientId) string { return v.Exists }).(pulumi.StringOutput)
+}
+
+// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchClientIdOutput) OneOfs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchClientId) []string { return v.OneOfs }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchClientIdOutput) StartsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchClientId) []string { return v.StartsWiths }).(pulumi.StringArrayOutput)
+}
+
+type GetExperimentSegmentRuleMatchClientIdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleMatchClientIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleMatchClientId)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleMatchClientIdArrayOutput) ToGetExperimentSegmentRuleMatchClientIdArrayOutput() GetExperimentSegmentRuleMatchClientIdArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchClientIdArrayOutput) ToGetExperimentSegmentRuleMatchClientIdArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchClientIdArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchClientIdArrayOutput) Index(i pulumi.IntInput) GetExperimentSegmentRuleMatchClientIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentSegmentRuleMatchClientId {
+		return vs[0].([]GetExperimentSegmentRuleMatchClientId)[vs[1].(int)]
+	}).(GetExperimentSegmentRuleMatchClientIdOutput)
+}
+
+type GetExperimentSegmentRuleMatchConnection struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains []string `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths []string `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists string `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs []string `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths []string `pulumi:"startsWiths"`
+}
+
+// GetExperimentSegmentRuleMatchConnectionInput is an input type that accepts GetExperimentSegmentRuleMatchConnectionArgs and GetExperimentSegmentRuleMatchConnectionOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleMatchConnectionInput` via:
+//
+//	GetExperimentSegmentRuleMatchConnectionArgs{...}
+type GetExperimentSegmentRuleMatchConnectionInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleMatchConnectionOutput() GetExperimentSegmentRuleMatchConnectionOutput
+	ToGetExperimentSegmentRuleMatchConnectionOutputWithContext(context.Context) GetExperimentSegmentRuleMatchConnectionOutput
+}
+
+type GetExperimentSegmentRuleMatchConnectionArgs struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains pulumi.StringArrayInput `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths pulumi.StringArrayInput `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists pulumi.StringInput `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs pulumi.StringArrayInput `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths pulumi.StringArrayInput `pulumi:"startsWiths"`
+}
+
+func (GetExperimentSegmentRuleMatchConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleMatchConnection)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleMatchConnectionArgs) ToGetExperimentSegmentRuleMatchConnectionOutput() GetExperimentSegmentRuleMatchConnectionOutput {
+	return i.ToGetExperimentSegmentRuleMatchConnectionOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleMatchConnectionArgs) ToGetExperimentSegmentRuleMatchConnectionOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleMatchConnectionOutput)
+}
+
+// GetExperimentSegmentRuleMatchConnectionArrayInput is an input type that accepts GetExperimentSegmentRuleMatchConnectionArray and GetExperimentSegmentRuleMatchConnectionArrayOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleMatchConnectionArrayInput` via:
+//
+//	GetExperimentSegmentRuleMatchConnectionArray{ GetExperimentSegmentRuleMatchConnectionArgs{...} }
+type GetExperimentSegmentRuleMatchConnectionArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleMatchConnectionArrayOutput() GetExperimentSegmentRuleMatchConnectionArrayOutput
+	ToGetExperimentSegmentRuleMatchConnectionArrayOutputWithContext(context.Context) GetExperimentSegmentRuleMatchConnectionArrayOutput
+}
+
+type GetExperimentSegmentRuleMatchConnectionArray []GetExperimentSegmentRuleMatchConnectionInput
+
+func (GetExperimentSegmentRuleMatchConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleMatchConnection)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleMatchConnectionArray) ToGetExperimentSegmentRuleMatchConnectionArrayOutput() GetExperimentSegmentRuleMatchConnectionArrayOutput {
+	return i.ToGetExperimentSegmentRuleMatchConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleMatchConnectionArray) ToGetExperimentSegmentRuleMatchConnectionArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleMatchConnectionArrayOutput)
+}
+
+type GetExperimentSegmentRuleMatchConnectionOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleMatchConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleMatchConnection)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleMatchConnectionOutput) ToGetExperimentSegmentRuleMatchConnectionOutput() GetExperimentSegmentRuleMatchConnectionOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchConnectionOutput) ToGetExperimentSegmentRuleMatchConnectionOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchConnectionOutput {
+	return o
+}
+
+// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchConnectionOutput) Contains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchConnection) []string { return v.Contains }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchConnectionOutput) EndsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchConnection) []string { return v.EndsWiths }).(pulumi.StringArrayOutput)
+}
+
+// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+func (o GetExperimentSegmentRuleMatchConnectionOutput) Exists() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchConnection) string { return v.Exists }).(pulumi.StringOutput)
+}
+
+// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchConnectionOutput) OneOfs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchConnection) []string { return v.OneOfs }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchConnectionOutput) StartsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchConnection) []string { return v.StartsWiths }).(pulumi.StringArrayOutput)
+}
+
+type GetExperimentSegmentRuleMatchConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleMatchConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleMatchConnection)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleMatchConnectionArrayOutput) ToGetExperimentSegmentRuleMatchConnectionArrayOutput() GetExperimentSegmentRuleMatchConnectionArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchConnectionArrayOutput) ToGetExperimentSegmentRuleMatchConnectionArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchConnectionArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchConnectionArrayOutput) Index(i pulumi.IntInput) GetExperimentSegmentRuleMatchConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentSegmentRuleMatchConnection {
+		return vs[0].([]GetExperimentSegmentRuleMatchConnection)[vs[1].(int)]
+	}).(GetExperimentSegmentRuleMatchConnectionOutput)
+}
+
+type GetExperimentSegmentRuleMatchConnectionType struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains []string `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths []string `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists string `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs []string `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths []string `pulumi:"startsWiths"`
+}
+
+// GetExperimentSegmentRuleMatchConnectionTypeInput is an input type that accepts GetExperimentSegmentRuleMatchConnectionTypeArgs and GetExperimentSegmentRuleMatchConnectionTypeOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleMatchConnectionTypeInput` via:
+//
+//	GetExperimentSegmentRuleMatchConnectionTypeArgs{...}
+type GetExperimentSegmentRuleMatchConnectionTypeInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleMatchConnectionTypeOutput() GetExperimentSegmentRuleMatchConnectionTypeOutput
+	ToGetExperimentSegmentRuleMatchConnectionTypeOutputWithContext(context.Context) GetExperimentSegmentRuleMatchConnectionTypeOutput
+}
+
+type GetExperimentSegmentRuleMatchConnectionTypeArgs struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains pulumi.StringArrayInput `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths pulumi.StringArrayInput `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists pulumi.StringInput `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs pulumi.StringArrayInput `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths pulumi.StringArrayInput `pulumi:"startsWiths"`
+}
+
+func (GetExperimentSegmentRuleMatchConnectionTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleMatchConnectionType)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleMatchConnectionTypeArgs) ToGetExperimentSegmentRuleMatchConnectionTypeOutput() GetExperimentSegmentRuleMatchConnectionTypeOutput {
+	return i.ToGetExperimentSegmentRuleMatchConnectionTypeOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleMatchConnectionTypeArgs) ToGetExperimentSegmentRuleMatchConnectionTypeOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchConnectionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleMatchConnectionTypeOutput)
+}
+
+// GetExperimentSegmentRuleMatchConnectionTypeArrayInput is an input type that accepts GetExperimentSegmentRuleMatchConnectionTypeArray and GetExperimentSegmentRuleMatchConnectionTypeArrayOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleMatchConnectionTypeArrayInput` via:
+//
+//	GetExperimentSegmentRuleMatchConnectionTypeArray{ GetExperimentSegmentRuleMatchConnectionTypeArgs{...} }
+type GetExperimentSegmentRuleMatchConnectionTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleMatchConnectionTypeArrayOutput() GetExperimentSegmentRuleMatchConnectionTypeArrayOutput
+	ToGetExperimentSegmentRuleMatchConnectionTypeArrayOutputWithContext(context.Context) GetExperimentSegmentRuleMatchConnectionTypeArrayOutput
+}
+
+type GetExperimentSegmentRuleMatchConnectionTypeArray []GetExperimentSegmentRuleMatchConnectionTypeInput
+
+func (GetExperimentSegmentRuleMatchConnectionTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleMatchConnectionType)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleMatchConnectionTypeArray) ToGetExperimentSegmentRuleMatchConnectionTypeArrayOutput() GetExperimentSegmentRuleMatchConnectionTypeArrayOutput {
+	return i.ToGetExperimentSegmentRuleMatchConnectionTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleMatchConnectionTypeArray) ToGetExperimentSegmentRuleMatchConnectionTypeArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchConnectionTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleMatchConnectionTypeArrayOutput)
+}
+
+type GetExperimentSegmentRuleMatchConnectionTypeOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleMatchConnectionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleMatchConnectionType)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleMatchConnectionTypeOutput) ToGetExperimentSegmentRuleMatchConnectionTypeOutput() GetExperimentSegmentRuleMatchConnectionTypeOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchConnectionTypeOutput) ToGetExperimentSegmentRuleMatchConnectionTypeOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchConnectionTypeOutput {
+	return o
+}
+
+// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchConnectionTypeOutput) Contains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchConnectionType) []string { return v.Contains }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchConnectionTypeOutput) EndsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchConnectionType) []string { return v.EndsWiths }).(pulumi.StringArrayOutput)
+}
+
+// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+func (o GetExperimentSegmentRuleMatchConnectionTypeOutput) Exists() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchConnectionType) string { return v.Exists }).(pulumi.StringOutput)
+}
+
+// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchConnectionTypeOutput) OneOfs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchConnectionType) []string { return v.OneOfs }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchConnectionTypeOutput) StartsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchConnectionType) []string { return v.StartsWiths }).(pulumi.StringArrayOutput)
+}
+
+type GetExperimentSegmentRuleMatchConnectionTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleMatchConnectionTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleMatchConnectionType)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleMatchConnectionTypeArrayOutput) ToGetExperimentSegmentRuleMatchConnectionTypeArrayOutput() GetExperimentSegmentRuleMatchConnectionTypeArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchConnectionTypeArrayOutput) ToGetExperimentSegmentRuleMatchConnectionTypeArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchConnectionTypeArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchConnectionTypeArrayOutput) Index(i pulumi.IntInput) GetExperimentSegmentRuleMatchConnectionTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentSegmentRuleMatchConnectionType {
+		return vs[0].([]GetExperimentSegmentRuleMatchConnectionType)[vs[1].(int)]
+	}).(GetExperimentSegmentRuleMatchConnectionTypeOutput)
+}
+
+type GetExperimentSegmentRuleMatchCountry struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains []string `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths []string `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists string `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs []string `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths []string `pulumi:"startsWiths"`
+}
+
+// GetExperimentSegmentRuleMatchCountryInput is an input type that accepts GetExperimentSegmentRuleMatchCountryArgs and GetExperimentSegmentRuleMatchCountryOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleMatchCountryInput` via:
+//
+//	GetExperimentSegmentRuleMatchCountryArgs{...}
+type GetExperimentSegmentRuleMatchCountryInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleMatchCountryOutput() GetExperimentSegmentRuleMatchCountryOutput
+	ToGetExperimentSegmentRuleMatchCountryOutputWithContext(context.Context) GetExperimentSegmentRuleMatchCountryOutput
+}
+
+type GetExperimentSegmentRuleMatchCountryArgs struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains pulumi.StringArrayInput `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths pulumi.StringArrayInput `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists pulumi.StringInput `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs pulumi.StringArrayInput `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths pulumi.StringArrayInput `pulumi:"startsWiths"`
+}
+
+func (GetExperimentSegmentRuleMatchCountryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleMatchCountry)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleMatchCountryArgs) ToGetExperimentSegmentRuleMatchCountryOutput() GetExperimentSegmentRuleMatchCountryOutput {
+	return i.ToGetExperimentSegmentRuleMatchCountryOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleMatchCountryArgs) ToGetExperimentSegmentRuleMatchCountryOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchCountryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleMatchCountryOutput)
+}
+
+// GetExperimentSegmentRuleMatchCountryArrayInput is an input type that accepts GetExperimentSegmentRuleMatchCountryArray and GetExperimentSegmentRuleMatchCountryArrayOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleMatchCountryArrayInput` via:
+//
+//	GetExperimentSegmentRuleMatchCountryArray{ GetExperimentSegmentRuleMatchCountryArgs{...} }
+type GetExperimentSegmentRuleMatchCountryArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleMatchCountryArrayOutput() GetExperimentSegmentRuleMatchCountryArrayOutput
+	ToGetExperimentSegmentRuleMatchCountryArrayOutputWithContext(context.Context) GetExperimentSegmentRuleMatchCountryArrayOutput
+}
+
+type GetExperimentSegmentRuleMatchCountryArray []GetExperimentSegmentRuleMatchCountryInput
+
+func (GetExperimentSegmentRuleMatchCountryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleMatchCountry)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleMatchCountryArray) ToGetExperimentSegmentRuleMatchCountryArrayOutput() GetExperimentSegmentRuleMatchCountryArrayOutput {
+	return i.ToGetExperimentSegmentRuleMatchCountryArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleMatchCountryArray) ToGetExperimentSegmentRuleMatchCountryArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchCountryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleMatchCountryArrayOutput)
+}
+
+type GetExperimentSegmentRuleMatchCountryOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleMatchCountryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleMatchCountry)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleMatchCountryOutput) ToGetExperimentSegmentRuleMatchCountryOutput() GetExperimentSegmentRuleMatchCountryOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchCountryOutput) ToGetExperimentSegmentRuleMatchCountryOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchCountryOutput {
+	return o
+}
+
+// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchCountryOutput) Contains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchCountry) []string { return v.Contains }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchCountryOutput) EndsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchCountry) []string { return v.EndsWiths }).(pulumi.StringArrayOutput)
+}
+
+// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+func (o GetExperimentSegmentRuleMatchCountryOutput) Exists() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchCountry) string { return v.Exists }).(pulumi.StringOutput)
+}
+
+// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchCountryOutput) OneOfs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchCountry) []string { return v.OneOfs }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchCountryOutput) StartsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchCountry) []string { return v.StartsWiths }).(pulumi.StringArrayOutput)
+}
+
+type GetExperimentSegmentRuleMatchCountryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleMatchCountryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleMatchCountry)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleMatchCountryArrayOutput) ToGetExperimentSegmentRuleMatchCountryArrayOutput() GetExperimentSegmentRuleMatchCountryArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchCountryArrayOutput) ToGetExperimentSegmentRuleMatchCountryArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchCountryArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchCountryArrayOutput) Index(i pulumi.IntInput) GetExperimentSegmentRuleMatchCountryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentSegmentRuleMatchCountry {
+		return vs[0].([]GetExperimentSegmentRuleMatchCountry)[vs[1].(int)]
+	}).(GetExperimentSegmentRuleMatchCountryOutput)
+}
+
+type GetExperimentSegmentRuleMatchDeviceType struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains []string `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths []string `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists string `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs []string `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths []string `pulumi:"startsWiths"`
+}
+
+// GetExperimentSegmentRuleMatchDeviceTypeInput is an input type that accepts GetExperimentSegmentRuleMatchDeviceTypeArgs and GetExperimentSegmentRuleMatchDeviceTypeOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleMatchDeviceTypeInput` via:
+//
+//	GetExperimentSegmentRuleMatchDeviceTypeArgs{...}
+type GetExperimentSegmentRuleMatchDeviceTypeInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleMatchDeviceTypeOutput() GetExperimentSegmentRuleMatchDeviceTypeOutput
+	ToGetExperimentSegmentRuleMatchDeviceTypeOutputWithContext(context.Context) GetExperimentSegmentRuleMatchDeviceTypeOutput
+}
+
+type GetExperimentSegmentRuleMatchDeviceTypeArgs struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains pulumi.StringArrayInput `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths pulumi.StringArrayInput `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists pulumi.StringInput `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs pulumi.StringArrayInput `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths pulumi.StringArrayInput `pulumi:"startsWiths"`
+}
+
+func (GetExperimentSegmentRuleMatchDeviceTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleMatchDeviceType)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleMatchDeviceTypeArgs) ToGetExperimentSegmentRuleMatchDeviceTypeOutput() GetExperimentSegmentRuleMatchDeviceTypeOutput {
+	return i.ToGetExperimentSegmentRuleMatchDeviceTypeOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleMatchDeviceTypeArgs) ToGetExperimentSegmentRuleMatchDeviceTypeOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchDeviceTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleMatchDeviceTypeOutput)
+}
+
+// GetExperimentSegmentRuleMatchDeviceTypeArrayInput is an input type that accepts GetExperimentSegmentRuleMatchDeviceTypeArray and GetExperimentSegmentRuleMatchDeviceTypeArrayOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleMatchDeviceTypeArrayInput` via:
+//
+//	GetExperimentSegmentRuleMatchDeviceTypeArray{ GetExperimentSegmentRuleMatchDeviceTypeArgs{...} }
+type GetExperimentSegmentRuleMatchDeviceTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleMatchDeviceTypeArrayOutput() GetExperimentSegmentRuleMatchDeviceTypeArrayOutput
+	ToGetExperimentSegmentRuleMatchDeviceTypeArrayOutputWithContext(context.Context) GetExperimentSegmentRuleMatchDeviceTypeArrayOutput
+}
+
+type GetExperimentSegmentRuleMatchDeviceTypeArray []GetExperimentSegmentRuleMatchDeviceTypeInput
+
+func (GetExperimentSegmentRuleMatchDeviceTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleMatchDeviceType)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleMatchDeviceTypeArray) ToGetExperimentSegmentRuleMatchDeviceTypeArrayOutput() GetExperimentSegmentRuleMatchDeviceTypeArrayOutput {
+	return i.ToGetExperimentSegmentRuleMatchDeviceTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleMatchDeviceTypeArray) ToGetExperimentSegmentRuleMatchDeviceTypeArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchDeviceTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleMatchDeviceTypeArrayOutput)
+}
+
+type GetExperimentSegmentRuleMatchDeviceTypeOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleMatchDeviceTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleMatchDeviceType)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleMatchDeviceTypeOutput) ToGetExperimentSegmentRuleMatchDeviceTypeOutput() GetExperimentSegmentRuleMatchDeviceTypeOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchDeviceTypeOutput) ToGetExperimentSegmentRuleMatchDeviceTypeOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchDeviceTypeOutput {
+	return o
+}
+
+// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchDeviceTypeOutput) Contains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchDeviceType) []string { return v.Contains }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchDeviceTypeOutput) EndsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchDeviceType) []string { return v.EndsWiths }).(pulumi.StringArrayOutput)
+}
+
+// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+func (o GetExperimentSegmentRuleMatchDeviceTypeOutput) Exists() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchDeviceType) string { return v.Exists }).(pulumi.StringOutput)
+}
+
+// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchDeviceTypeOutput) OneOfs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchDeviceType) []string { return v.OneOfs }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchDeviceTypeOutput) StartsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchDeviceType) []string { return v.StartsWiths }).(pulumi.StringArrayOutput)
+}
+
+type GetExperimentSegmentRuleMatchDeviceTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleMatchDeviceTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleMatchDeviceType)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleMatchDeviceTypeArrayOutput) ToGetExperimentSegmentRuleMatchDeviceTypeArrayOutput() GetExperimentSegmentRuleMatchDeviceTypeArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchDeviceTypeArrayOutput) ToGetExperimentSegmentRuleMatchDeviceTypeArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchDeviceTypeArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchDeviceTypeArrayOutput) Index(i pulumi.IntInput) GetExperimentSegmentRuleMatchDeviceTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentSegmentRuleMatchDeviceType {
+		return vs[0].([]GetExperimentSegmentRuleMatchDeviceType)[vs[1].(int)]
+	}).(GetExperimentSegmentRuleMatchDeviceTypeOutput)
+}
+
+type GetExperimentSegmentRuleMatchDomain struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains []string `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths []string `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists string `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs []string `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths []string `pulumi:"startsWiths"`
+}
+
+// GetExperimentSegmentRuleMatchDomainInput is an input type that accepts GetExperimentSegmentRuleMatchDomainArgs and GetExperimentSegmentRuleMatchDomainOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleMatchDomainInput` via:
+//
+//	GetExperimentSegmentRuleMatchDomainArgs{...}
+type GetExperimentSegmentRuleMatchDomainInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleMatchDomainOutput() GetExperimentSegmentRuleMatchDomainOutput
+	ToGetExperimentSegmentRuleMatchDomainOutputWithContext(context.Context) GetExperimentSegmentRuleMatchDomainOutput
+}
+
+type GetExperimentSegmentRuleMatchDomainArgs struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains pulumi.StringArrayInput `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths pulumi.StringArrayInput `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists pulumi.StringInput `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs pulumi.StringArrayInput `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths pulumi.StringArrayInput `pulumi:"startsWiths"`
+}
+
+func (GetExperimentSegmentRuleMatchDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleMatchDomain)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleMatchDomainArgs) ToGetExperimentSegmentRuleMatchDomainOutput() GetExperimentSegmentRuleMatchDomainOutput {
+	return i.ToGetExperimentSegmentRuleMatchDomainOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleMatchDomainArgs) ToGetExperimentSegmentRuleMatchDomainOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleMatchDomainOutput)
+}
+
+// GetExperimentSegmentRuleMatchDomainArrayInput is an input type that accepts GetExperimentSegmentRuleMatchDomainArray and GetExperimentSegmentRuleMatchDomainArrayOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleMatchDomainArrayInput` via:
+//
+//	GetExperimentSegmentRuleMatchDomainArray{ GetExperimentSegmentRuleMatchDomainArgs{...} }
+type GetExperimentSegmentRuleMatchDomainArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleMatchDomainArrayOutput() GetExperimentSegmentRuleMatchDomainArrayOutput
+	ToGetExperimentSegmentRuleMatchDomainArrayOutputWithContext(context.Context) GetExperimentSegmentRuleMatchDomainArrayOutput
+}
+
+type GetExperimentSegmentRuleMatchDomainArray []GetExperimentSegmentRuleMatchDomainInput
+
+func (GetExperimentSegmentRuleMatchDomainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleMatchDomain)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleMatchDomainArray) ToGetExperimentSegmentRuleMatchDomainArrayOutput() GetExperimentSegmentRuleMatchDomainArrayOutput {
+	return i.ToGetExperimentSegmentRuleMatchDomainArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleMatchDomainArray) ToGetExperimentSegmentRuleMatchDomainArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchDomainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleMatchDomainArrayOutput)
+}
+
+type GetExperimentSegmentRuleMatchDomainOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleMatchDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleMatchDomain)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleMatchDomainOutput) ToGetExperimentSegmentRuleMatchDomainOutput() GetExperimentSegmentRuleMatchDomainOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchDomainOutput) ToGetExperimentSegmentRuleMatchDomainOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchDomainOutput {
+	return o
+}
+
+// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchDomainOutput) Contains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchDomain) []string { return v.Contains }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchDomainOutput) EndsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchDomain) []string { return v.EndsWiths }).(pulumi.StringArrayOutput)
+}
+
+// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+func (o GetExperimentSegmentRuleMatchDomainOutput) Exists() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchDomain) string { return v.Exists }).(pulumi.StringOutput)
+}
+
+// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchDomainOutput) OneOfs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchDomain) []string { return v.OneOfs }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchDomainOutput) StartsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchDomain) []string { return v.StartsWiths }).(pulumi.StringArrayOutput)
+}
+
+type GetExperimentSegmentRuleMatchDomainArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleMatchDomainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleMatchDomain)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleMatchDomainArrayOutput) ToGetExperimentSegmentRuleMatchDomainArrayOutput() GetExperimentSegmentRuleMatchDomainArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchDomainArrayOutput) ToGetExperimentSegmentRuleMatchDomainArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchDomainArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchDomainArrayOutput) Index(i pulumi.IntInput) GetExperimentSegmentRuleMatchDomainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentSegmentRuleMatchDomain {
+		return vs[0].([]GetExperimentSegmentRuleMatchDomain)[vs[1].(int)]
+	}).(GetExperimentSegmentRuleMatchDomainOutput)
+}
+
+type GetExperimentSegmentRuleMatchOrganizationId struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains []string `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths []string `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists string `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs []string `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths []string `pulumi:"startsWiths"`
+}
+
+// GetExperimentSegmentRuleMatchOrganizationIdInput is an input type that accepts GetExperimentSegmentRuleMatchOrganizationIdArgs and GetExperimentSegmentRuleMatchOrganizationIdOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleMatchOrganizationIdInput` via:
+//
+//	GetExperimentSegmentRuleMatchOrganizationIdArgs{...}
+type GetExperimentSegmentRuleMatchOrganizationIdInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleMatchOrganizationIdOutput() GetExperimentSegmentRuleMatchOrganizationIdOutput
+	ToGetExperimentSegmentRuleMatchOrganizationIdOutputWithContext(context.Context) GetExperimentSegmentRuleMatchOrganizationIdOutput
+}
+
+type GetExperimentSegmentRuleMatchOrganizationIdArgs struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains pulumi.StringArrayInput `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths pulumi.StringArrayInput `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists pulumi.StringInput `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs pulumi.StringArrayInput `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths pulumi.StringArrayInput `pulumi:"startsWiths"`
+}
+
+func (GetExperimentSegmentRuleMatchOrganizationIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleMatchOrganizationId)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleMatchOrganizationIdArgs) ToGetExperimentSegmentRuleMatchOrganizationIdOutput() GetExperimentSegmentRuleMatchOrganizationIdOutput {
+	return i.ToGetExperimentSegmentRuleMatchOrganizationIdOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleMatchOrganizationIdArgs) ToGetExperimentSegmentRuleMatchOrganizationIdOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchOrganizationIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleMatchOrganizationIdOutput)
+}
+
+// GetExperimentSegmentRuleMatchOrganizationIdArrayInput is an input type that accepts GetExperimentSegmentRuleMatchOrganizationIdArray and GetExperimentSegmentRuleMatchOrganizationIdArrayOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleMatchOrganizationIdArrayInput` via:
+//
+//	GetExperimentSegmentRuleMatchOrganizationIdArray{ GetExperimentSegmentRuleMatchOrganizationIdArgs{...} }
+type GetExperimentSegmentRuleMatchOrganizationIdArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleMatchOrganizationIdArrayOutput() GetExperimentSegmentRuleMatchOrganizationIdArrayOutput
+	ToGetExperimentSegmentRuleMatchOrganizationIdArrayOutputWithContext(context.Context) GetExperimentSegmentRuleMatchOrganizationIdArrayOutput
+}
+
+type GetExperimentSegmentRuleMatchOrganizationIdArray []GetExperimentSegmentRuleMatchOrganizationIdInput
+
+func (GetExperimentSegmentRuleMatchOrganizationIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleMatchOrganizationId)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleMatchOrganizationIdArray) ToGetExperimentSegmentRuleMatchOrganizationIdArrayOutput() GetExperimentSegmentRuleMatchOrganizationIdArrayOutput {
+	return i.ToGetExperimentSegmentRuleMatchOrganizationIdArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleMatchOrganizationIdArray) ToGetExperimentSegmentRuleMatchOrganizationIdArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchOrganizationIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleMatchOrganizationIdArrayOutput)
+}
+
+type GetExperimentSegmentRuleMatchOrganizationIdOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleMatchOrganizationIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleMatchOrganizationId)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleMatchOrganizationIdOutput) ToGetExperimentSegmentRuleMatchOrganizationIdOutput() GetExperimentSegmentRuleMatchOrganizationIdOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchOrganizationIdOutput) ToGetExperimentSegmentRuleMatchOrganizationIdOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchOrganizationIdOutput {
+	return o
+}
+
+// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchOrganizationIdOutput) Contains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchOrganizationId) []string { return v.Contains }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchOrganizationIdOutput) EndsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchOrganizationId) []string { return v.EndsWiths }).(pulumi.StringArrayOutput)
+}
+
+// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+func (o GetExperimentSegmentRuleMatchOrganizationIdOutput) Exists() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchOrganizationId) string { return v.Exists }).(pulumi.StringOutput)
+}
+
+// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchOrganizationIdOutput) OneOfs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchOrganizationId) []string { return v.OneOfs }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchOrganizationIdOutput) StartsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchOrganizationId) []string { return v.StartsWiths }).(pulumi.StringArrayOutput)
+}
+
+type GetExperimentSegmentRuleMatchOrganizationIdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleMatchOrganizationIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleMatchOrganizationId)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleMatchOrganizationIdArrayOutput) ToGetExperimentSegmentRuleMatchOrganizationIdArrayOutput() GetExperimentSegmentRuleMatchOrganizationIdArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchOrganizationIdArrayOutput) ToGetExperimentSegmentRuleMatchOrganizationIdArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchOrganizationIdArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchOrganizationIdArrayOutput) Index(i pulumi.IntInput) GetExperimentSegmentRuleMatchOrganizationIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentSegmentRuleMatchOrganizationId {
+		return vs[0].([]GetExperimentSegmentRuleMatchOrganizationId)[vs[1].(int)]
+	}).(GetExperimentSegmentRuleMatchOrganizationIdOutput)
+}
+
+type GetExperimentSegmentRuleMatchPlatform struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains []string `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths []string `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists string `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs []string `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths []string `pulumi:"startsWiths"`
+}
+
+// GetExperimentSegmentRuleMatchPlatformInput is an input type that accepts GetExperimentSegmentRuleMatchPlatformArgs and GetExperimentSegmentRuleMatchPlatformOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleMatchPlatformInput` via:
+//
+//	GetExperimentSegmentRuleMatchPlatformArgs{...}
+type GetExperimentSegmentRuleMatchPlatformInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleMatchPlatformOutput() GetExperimentSegmentRuleMatchPlatformOutput
+	ToGetExperimentSegmentRuleMatchPlatformOutputWithContext(context.Context) GetExperimentSegmentRuleMatchPlatformOutput
+}
+
+type GetExperimentSegmentRuleMatchPlatformArgs struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains pulumi.StringArrayInput `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths pulumi.StringArrayInput `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists pulumi.StringInput `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs pulumi.StringArrayInput `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths pulumi.StringArrayInput `pulumi:"startsWiths"`
+}
+
+func (GetExperimentSegmentRuleMatchPlatformArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleMatchPlatform)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleMatchPlatformArgs) ToGetExperimentSegmentRuleMatchPlatformOutput() GetExperimentSegmentRuleMatchPlatformOutput {
+	return i.ToGetExperimentSegmentRuleMatchPlatformOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleMatchPlatformArgs) ToGetExperimentSegmentRuleMatchPlatformOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchPlatformOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleMatchPlatformOutput)
+}
+
+// GetExperimentSegmentRuleMatchPlatformArrayInput is an input type that accepts GetExperimentSegmentRuleMatchPlatformArray and GetExperimentSegmentRuleMatchPlatformArrayOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleMatchPlatformArrayInput` via:
+//
+//	GetExperimentSegmentRuleMatchPlatformArray{ GetExperimentSegmentRuleMatchPlatformArgs{...} }
+type GetExperimentSegmentRuleMatchPlatformArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleMatchPlatformArrayOutput() GetExperimentSegmentRuleMatchPlatformArrayOutput
+	ToGetExperimentSegmentRuleMatchPlatformArrayOutputWithContext(context.Context) GetExperimentSegmentRuleMatchPlatformArrayOutput
+}
+
+type GetExperimentSegmentRuleMatchPlatformArray []GetExperimentSegmentRuleMatchPlatformInput
+
+func (GetExperimentSegmentRuleMatchPlatformArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleMatchPlatform)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleMatchPlatformArray) ToGetExperimentSegmentRuleMatchPlatformArrayOutput() GetExperimentSegmentRuleMatchPlatformArrayOutput {
+	return i.ToGetExperimentSegmentRuleMatchPlatformArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleMatchPlatformArray) ToGetExperimentSegmentRuleMatchPlatformArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchPlatformArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleMatchPlatformArrayOutput)
+}
+
+type GetExperimentSegmentRuleMatchPlatformOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleMatchPlatformOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleMatchPlatform)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleMatchPlatformOutput) ToGetExperimentSegmentRuleMatchPlatformOutput() GetExperimentSegmentRuleMatchPlatformOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchPlatformOutput) ToGetExperimentSegmentRuleMatchPlatformOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchPlatformOutput {
+	return o
+}
+
+// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchPlatformOutput) Contains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchPlatform) []string { return v.Contains }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchPlatformOutput) EndsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchPlatform) []string { return v.EndsWiths }).(pulumi.StringArrayOutput)
+}
+
+// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+func (o GetExperimentSegmentRuleMatchPlatformOutput) Exists() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchPlatform) string { return v.Exists }).(pulumi.StringOutput)
+}
+
+// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchPlatformOutput) OneOfs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchPlatform) []string { return v.OneOfs }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchPlatformOutput) StartsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchPlatform) []string { return v.StartsWiths }).(pulumi.StringArrayOutput)
+}
+
+type GetExperimentSegmentRuleMatchPlatformArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleMatchPlatformArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleMatchPlatform)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleMatchPlatformArrayOutput) ToGetExperimentSegmentRuleMatchPlatformArrayOutput() GetExperimentSegmentRuleMatchPlatformArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchPlatformArrayOutput) ToGetExperimentSegmentRuleMatchPlatformArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchPlatformArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchPlatformArrayOutput) Index(i pulumi.IntInput) GetExperimentSegmentRuleMatchPlatformOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentSegmentRuleMatchPlatform {
+		return vs[0].([]GetExperimentSegmentRuleMatchPlatform)[vs[1].(int)]
+	}).(GetExperimentSegmentRuleMatchPlatformOutput)
+}
+
+type GetExperimentSegmentRuleMatchRegion struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains []string `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths []string `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists string `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs []string `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths []string `pulumi:"startsWiths"`
+}
+
+// GetExperimentSegmentRuleMatchRegionInput is an input type that accepts GetExperimentSegmentRuleMatchRegionArgs and GetExperimentSegmentRuleMatchRegionOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleMatchRegionInput` via:
+//
+//	GetExperimentSegmentRuleMatchRegionArgs{...}
+type GetExperimentSegmentRuleMatchRegionInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleMatchRegionOutput() GetExperimentSegmentRuleMatchRegionOutput
+	ToGetExperimentSegmentRuleMatchRegionOutputWithContext(context.Context) GetExperimentSegmentRuleMatchRegionOutput
+}
+
+type GetExperimentSegmentRuleMatchRegionArgs struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains pulumi.StringArrayInput `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths pulumi.StringArrayInput `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists pulumi.StringInput `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs pulumi.StringArrayInput `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths pulumi.StringArrayInput `pulumi:"startsWiths"`
+}
+
+func (GetExperimentSegmentRuleMatchRegionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleMatchRegion)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleMatchRegionArgs) ToGetExperimentSegmentRuleMatchRegionOutput() GetExperimentSegmentRuleMatchRegionOutput {
+	return i.ToGetExperimentSegmentRuleMatchRegionOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleMatchRegionArgs) ToGetExperimentSegmentRuleMatchRegionOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchRegionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleMatchRegionOutput)
+}
+
+// GetExperimentSegmentRuleMatchRegionArrayInput is an input type that accepts GetExperimentSegmentRuleMatchRegionArray and GetExperimentSegmentRuleMatchRegionArrayOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleMatchRegionArrayInput` via:
+//
+//	GetExperimentSegmentRuleMatchRegionArray{ GetExperimentSegmentRuleMatchRegionArgs{...} }
+type GetExperimentSegmentRuleMatchRegionArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleMatchRegionArrayOutput() GetExperimentSegmentRuleMatchRegionArrayOutput
+	ToGetExperimentSegmentRuleMatchRegionArrayOutputWithContext(context.Context) GetExperimentSegmentRuleMatchRegionArrayOutput
+}
+
+type GetExperimentSegmentRuleMatchRegionArray []GetExperimentSegmentRuleMatchRegionInput
+
+func (GetExperimentSegmentRuleMatchRegionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleMatchRegion)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleMatchRegionArray) ToGetExperimentSegmentRuleMatchRegionArrayOutput() GetExperimentSegmentRuleMatchRegionArrayOutput {
+	return i.ToGetExperimentSegmentRuleMatchRegionArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleMatchRegionArray) ToGetExperimentSegmentRuleMatchRegionArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchRegionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleMatchRegionArrayOutput)
+}
+
+type GetExperimentSegmentRuleMatchRegionOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleMatchRegionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleMatchRegion)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleMatchRegionOutput) ToGetExperimentSegmentRuleMatchRegionOutput() GetExperimentSegmentRuleMatchRegionOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchRegionOutput) ToGetExperimentSegmentRuleMatchRegionOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchRegionOutput {
+	return o
+}
+
+// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchRegionOutput) Contains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchRegion) []string { return v.Contains }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchRegionOutput) EndsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchRegion) []string { return v.EndsWiths }).(pulumi.StringArrayOutput)
+}
+
+// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+func (o GetExperimentSegmentRuleMatchRegionOutput) Exists() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchRegion) string { return v.Exists }).(pulumi.StringOutput)
+}
+
+// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchRegionOutput) OneOfs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchRegion) []string { return v.OneOfs }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchRegionOutput) StartsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchRegion) []string { return v.StartsWiths }).(pulumi.StringArrayOutput)
+}
+
+type GetExperimentSegmentRuleMatchRegionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleMatchRegionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleMatchRegion)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleMatchRegionArrayOutput) ToGetExperimentSegmentRuleMatchRegionArrayOutput() GetExperimentSegmentRuleMatchRegionArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchRegionArrayOutput) ToGetExperimentSegmentRuleMatchRegionArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchRegionArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchRegionArrayOutput) Index(i pulumi.IntInput) GetExperimentSegmentRuleMatchRegionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentSegmentRuleMatchRegion {
+		return vs[0].([]GetExperimentSegmentRuleMatchRegion)[vs[1].(int)]
+	}).(GetExperimentSegmentRuleMatchRegionOutput)
+}
+
+type GetExperimentSegmentRuleMatchUserAgent struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains []string `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths []string `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists string `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs []string `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths []string `pulumi:"startsWiths"`
+}
+
+// GetExperimentSegmentRuleMatchUserAgentInput is an input type that accepts GetExperimentSegmentRuleMatchUserAgentArgs and GetExperimentSegmentRuleMatchUserAgentOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleMatchUserAgentInput` via:
+//
+//	GetExperimentSegmentRuleMatchUserAgentArgs{...}
+type GetExperimentSegmentRuleMatchUserAgentInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleMatchUserAgentOutput() GetExperimentSegmentRuleMatchUserAgentOutput
+	ToGetExperimentSegmentRuleMatchUserAgentOutputWithContext(context.Context) GetExperimentSegmentRuleMatchUserAgentOutput
+}
+
+type GetExperimentSegmentRuleMatchUserAgentArgs struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains pulumi.StringArrayInput `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths pulumi.StringArrayInput `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists pulumi.StringInput `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs pulumi.StringArrayInput `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths pulumi.StringArrayInput `pulumi:"startsWiths"`
+}
+
+func (GetExperimentSegmentRuleMatchUserAgentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleMatchUserAgent)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleMatchUserAgentArgs) ToGetExperimentSegmentRuleMatchUserAgentOutput() GetExperimentSegmentRuleMatchUserAgentOutput {
+	return i.ToGetExperimentSegmentRuleMatchUserAgentOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleMatchUserAgentArgs) ToGetExperimentSegmentRuleMatchUserAgentOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchUserAgentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleMatchUserAgentOutput)
+}
+
+// GetExperimentSegmentRuleMatchUserAgentArrayInput is an input type that accepts GetExperimentSegmentRuleMatchUserAgentArray and GetExperimentSegmentRuleMatchUserAgentArrayOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleMatchUserAgentArrayInput` via:
+//
+//	GetExperimentSegmentRuleMatchUserAgentArray{ GetExperimentSegmentRuleMatchUserAgentArgs{...} }
+type GetExperimentSegmentRuleMatchUserAgentArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleMatchUserAgentArrayOutput() GetExperimentSegmentRuleMatchUserAgentArrayOutput
+	ToGetExperimentSegmentRuleMatchUserAgentArrayOutputWithContext(context.Context) GetExperimentSegmentRuleMatchUserAgentArrayOutput
+}
+
+type GetExperimentSegmentRuleMatchUserAgentArray []GetExperimentSegmentRuleMatchUserAgentInput
+
+func (GetExperimentSegmentRuleMatchUserAgentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleMatchUserAgent)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleMatchUserAgentArray) ToGetExperimentSegmentRuleMatchUserAgentArrayOutput() GetExperimentSegmentRuleMatchUserAgentArrayOutput {
+	return i.ToGetExperimentSegmentRuleMatchUserAgentArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleMatchUserAgentArray) ToGetExperimentSegmentRuleMatchUserAgentArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchUserAgentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleMatchUserAgentArrayOutput)
+}
+
+type GetExperimentSegmentRuleMatchUserAgentOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleMatchUserAgentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleMatchUserAgent)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleMatchUserAgentOutput) ToGetExperimentSegmentRuleMatchUserAgentOutput() GetExperimentSegmentRuleMatchUserAgentOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchUserAgentOutput) ToGetExperimentSegmentRuleMatchUserAgentOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchUserAgentOutput {
+	return o
+}
+
+// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchUserAgentOutput) Contains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchUserAgent) []string { return v.Contains }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchUserAgentOutput) EndsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchUserAgent) []string { return v.EndsWiths }).(pulumi.StringArrayOutput)
+}
+
+// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+func (o GetExperimentSegmentRuleMatchUserAgentOutput) Exists() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchUserAgent) string { return v.Exists }).(pulumi.StringOutput)
+}
+
+// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchUserAgentOutput) OneOfs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchUserAgent) []string { return v.OneOfs }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleMatchUserAgentOutput) StartsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleMatchUserAgent) []string { return v.StartsWiths }).(pulumi.StringArrayOutput)
+}
+
+type GetExperimentSegmentRuleMatchUserAgentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleMatchUserAgentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleMatchUserAgent)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleMatchUserAgentArrayOutput) ToGetExperimentSegmentRuleMatchUserAgentArrayOutput() GetExperimentSegmentRuleMatchUserAgentArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchUserAgentArrayOutput) ToGetExperimentSegmentRuleMatchUserAgentArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleMatchUserAgentArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleMatchUserAgentArrayOutput) Index(i pulumi.IntInput) GetExperimentSegmentRuleMatchUserAgentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentSegmentRuleMatchUserAgent {
+		return vs[0].([]GetExperimentSegmentRuleMatchUserAgent)[vs[1].(int)]
+	}).(GetExperimentSegmentRuleMatchUserAgentOutput)
+}
+
+type GetExperimentSegmentRuleNotMatch struct {
+	// Condition on a namespaced `anonymous_session_metadata.<key>` attribute. Repeat the block once per key. Each key can appear only once per `match/not_match` block.
+	AnonymousSessionMetadatas []GetExperimentSegmentRuleNotMatchAnonymousSessionMetadata `pulumi:"anonymousSessionMetadatas"`
+	// Condition on the `browser` attribute. Set exactly one operator.
+	Browsers []GetExperimentSegmentRuleNotMatchBrowser `pulumi:"browsers"`
+	// Condition on the `clientId` attribute. Set exactly one operator.
+	ClientIds []GetExperimentSegmentRuleNotMatchClientId `pulumi:"clientIds"`
+	// Condition on the `connectionType` attribute. Set exactly one operator.
+	ConnectionTypes []GetExperimentSegmentRuleNotMatchConnectionType `pulumi:"connectionTypes"`
+	// Condition on the `connection` attribute. Set exactly one operator.
+	Connections []GetExperimentSegmentRuleNotMatchConnection `pulumi:"connections"`
+	// Condition on the `country` attribute. Set exactly one operator.
+	Countries []GetExperimentSegmentRuleNotMatchCountry `pulumi:"countries"`
+	// Condition on the `deviceType` attribute. Set exactly one operator.
+	DeviceTypes []GetExperimentSegmentRuleNotMatchDeviceType `pulumi:"deviceTypes"`
+	// Condition on the `domain` attribute. Set exactly one operator.
+	Domains []GetExperimentSegmentRuleNotMatchDomain `pulumi:"domains"`
+	// Condition on the `organizationId` attribute. Set exactly one operator.
+	OrganizationIds []GetExperimentSegmentRuleNotMatchOrganizationId `pulumi:"organizationIds"`
+	// Condition on the `platform` attribute. Set exactly one operator.
+	Platforms []GetExperimentSegmentRuleNotMatchPlatform `pulumi:"platforms"`
+	// Condition on the `region` attribute. Set exactly one operator.
+	Regions []GetExperimentSegmentRuleNotMatchRegion `pulumi:"regions"`
+	// Condition on the `userAgent` attribute. Set exactly one operator.
+	UserAgents []GetExperimentSegmentRuleNotMatchUserAgent `pulumi:"userAgents"`
+}
+
+// GetExperimentSegmentRuleNotMatchInput is an input type that accepts GetExperimentSegmentRuleNotMatchArgs and GetExperimentSegmentRuleNotMatchOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleNotMatchInput` via:
+//
+//	GetExperimentSegmentRuleNotMatchArgs{...}
+type GetExperimentSegmentRuleNotMatchInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleNotMatchOutput() GetExperimentSegmentRuleNotMatchOutput
+	ToGetExperimentSegmentRuleNotMatchOutputWithContext(context.Context) GetExperimentSegmentRuleNotMatchOutput
+}
+
+type GetExperimentSegmentRuleNotMatchArgs struct {
+	// Condition on a namespaced `anonymous_session_metadata.<key>` attribute. Repeat the block once per key. Each key can appear only once per `match/not_match` block.
+	AnonymousSessionMetadatas GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArrayInput `pulumi:"anonymousSessionMetadatas"`
+	// Condition on the `browser` attribute. Set exactly one operator.
+	Browsers GetExperimentSegmentRuleNotMatchBrowserArrayInput `pulumi:"browsers"`
+	// Condition on the `clientId` attribute. Set exactly one operator.
+	ClientIds GetExperimentSegmentRuleNotMatchClientIdArrayInput `pulumi:"clientIds"`
+	// Condition on the `connectionType` attribute. Set exactly one operator.
+	ConnectionTypes GetExperimentSegmentRuleNotMatchConnectionTypeArrayInput `pulumi:"connectionTypes"`
+	// Condition on the `connection` attribute. Set exactly one operator.
+	Connections GetExperimentSegmentRuleNotMatchConnectionArrayInput `pulumi:"connections"`
+	// Condition on the `country` attribute. Set exactly one operator.
+	Countries GetExperimentSegmentRuleNotMatchCountryArrayInput `pulumi:"countries"`
+	// Condition on the `deviceType` attribute. Set exactly one operator.
+	DeviceTypes GetExperimentSegmentRuleNotMatchDeviceTypeArrayInput `pulumi:"deviceTypes"`
+	// Condition on the `domain` attribute. Set exactly one operator.
+	Domains GetExperimentSegmentRuleNotMatchDomainArrayInput `pulumi:"domains"`
+	// Condition on the `organizationId` attribute. Set exactly one operator.
+	OrganizationIds GetExperimentSegmentRuleNotMatchOrganizationIdArrayInput `pulumi:"organizationIds"`
+	// Condition on the `platform` attribute. Set exactly one operator.
+	Platforms GetExperimentSegmentRuleNotMatchPlatformArrayInput `pulumi:"platforms"`
+	// Condition on the `region` attribute. Set exactly one operator.
+	Regions GetExperimentSegmentRuleNotMatchRegionArrayInput `pulumi:"regions"`
+	// Condition on the `userAgent` attribute. Set exactly one operator.
+	UserAgents GetExperimentSegmentRuleNotMatchUserAgentArrayInput `pulumi:"userAgents"`
+}
+
+func (GetExperimentSegmentRuleNotMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleNotMatch)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleNotMatchArgs) ToGetExperimentSegmentRuleNotMatchOutput() GetExperimentSegmentRuleNotMatchOutput {
+	return i.ToGetExperimentSegmentRuleNotMatchOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleNotMatchArgs) ToGetExperimentSegmentRuleNotMatchOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleNotMatchOutput)
+}
+
+// GetExperimentSegmentRuleNotMatchArrayInput is an input type that accepts GetExperimentSegmentRuleNotMatchArray and GetExperimentSegmentRuleNotMatchArrayOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleNotMatchArrayInput` via:
+//
+//	GetExperimentSegmentRuleNotMatchArray{ GetExperimentSegmentRuleNotMatchArgs{...} }
+type GetExperimentSegmentRuleNotMatchArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleNotMatchArrayOutput() GetExperimentSegmentRuleNotMatchArrayOutput
+	ToGetExperimentSegmentRuleNotMatchArrayOutputWithContext(context.Context) GetExperimentSegmentRuleNotMatchArrayOutput
+}
+
+type GetExperimentSegmentRuleNotMatchArray []GetExperimentSegmentRuleNotMatchInput
+
+func (GetExperimentSegmentRuleNotMatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleNotMatch)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleNotMatchArray) ToGetExperimentSegmentRuleNotMatchArrayOutput() GetExperimentSegmentRuleNotMatchArrayOutput {
+	return i.ToGetExperimentSegmentRuleNotMatchArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleNotMatchArray) ToGetExperimentSegmentRuleNotMatchArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleNotMatchArrayOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleNotMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleNotMatch)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleNotMatchOutput) ToGetExperimentSegmentRuleNotMatchOutput() GetExperimentSegmentRuleNotMatchOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchOutput) ToGetExperimentSegmentRuleNotMatchOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchOutput {
+	return o
+}
+
+// Condition on a namespaced `anonymous_session_metadata.<key>` attribute. Repeat the block once per key. Each key can appear only once per `match/not_match` block.
+func (o GetExperimentSegmentRuleNotMatchOutput) AnonymousSessionMetadatas() GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatch) []GetExperimentSegmentRuleNotMatchAnonymousSessionMetadata {
+		return v.AnonymousSessionMetadatas
+	}).(GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArrayOutput)
+}
+
+// Condition on the `browser` attribute. Set exactly one operator.
+func (o GetExperimentSegmentRuleNotMatchOutput) Browsers() GetExperimentSegmentRuleNotMatchBrowserArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatch) []GetExperimentSegmentRuleNotMatchBrowser { return v.Browsers }).(GetExperimentSegmentRuleNotMatchBrowserArrayOutput)
+}
+
+// Condition on the `clientId` attribute. Set exactly one operator.
+func (o GetExperimentSegmentRuleNotMatchOutput) ClientIds() GetExperimentSegmentRuleNotMatchClientIdArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatch) []GetExperimentSegmentRuleNotMatchClientId {
+		return v.ClientIds
+	}).(GetExperimentSegmentRuleNotMatchClientIdArrayOutput)
+}
+
+// Condition on the `connectionType` attribute. Set exactly one operator.
+func (o GetExperimentSegmentRuleNotMatchOutput) ConnectionTypes() GetExperimentSegmentRuleNotMatchConnectionTypeArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatch) []GetExperimentSegmentRuleNotMatchConnectionType {
+		return v.ConnectionTypes
+	}).(GetExperimentSegmentRuleNotMatchConnectionTypeArrayOutput)
+}
+
+// Condition on the `connection` attribute. Set exactly one operator.
+func (o GetExperimentSegmentRuleNotMatchOutput) Connections() GetExperimentSegmentRuleNotMatchConnectionArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatch) []GetExperimentSegmentRuleNotMatchConnection {
+		return v.Connections
+	}).(GetExperimentSegmentRuleNotMatchConnectionArrayOutput)
+}
+
+// Condition on the `country` attribute. Set exactly one operator.
+func (o GetExperimentSegmentRuleNotMatchOutput) Countries() GetExperimentSegmentRuleNotMatchCountryArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatch) []GetExperimentSegmentRuleNotMatchCountry { return v.Countries }).(GetExperimentSegmentRuleNotMatchCountryArrayOutput)
+}
+
+// Condition on the `deviceType` attribute. Set exactly one operator.
+func (o GetExperimentSegmentRuleNotMatchOutput) DeviceTypes() GetExperimentSegmentRuleNotMatchDeviceTypeArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatch) []GetExperimentSegmentRuleNotMatchDeviceType {
+		return v.DeviceTypes
+	}).(GetExperimentSegmentRuleNotMatchDeviceTypeArrayOutput)
+}
+
+// Condition on the `domain` attribute. Set exactly one operator.
+func (o GetExperimentSegmentRuleNotMatchOutput) Domains() GetExperimentSegmentRuleNotMatchDomainArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatch) []GetExperimentSegmentRuleNotMatchDomain { return v.Domains }).(GetExperimentSegmentRuleNotMatchDomainArrayOutput)
+}
+
+// Condition on the `organizationId` attribute. Set exactly one operator.
+func (o GetExperimentSegmentRuleNotMatchOutput) OrganizationIds() GetExperimentSegmentRuleNotMatchOrganizationIdArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatch) []GetExperimentSegmentRuleNotMatchOrganizationId {
+		return v.OrganizationIds
+	}).(GetExperimentSegmentRuleNotMatchOrganizationIdArrayOutput)
+}
+
+// Condition on the `platform` attribute. Set exactly one operator.
+func (o GetExperimentSegmentRuleNotMatchOutput) Platforms() GetExperimentSegmentRuleNotMatchPlatformArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatch) []GetExperimentSegmentRuleNotMatchPlatform {
+		return v.Platforms
+	}).(GetExperimentSegmentRuleNotMatchPlatformArrayOutput)
+}
+
+// Condition on the `region` attribute. Set exactly one operator.
+func (o GetExperimentSegmentRuleNotMatchOutput) Regions() GetExperimentSegmentRuleNotMatchRegionArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatch) []GetExperimentSegmentRuleNotMatchRegion { return v.Regions }).(GetExperimentSegmentRuleNotMatchRegionArrayOutput)
+}
+
+// Condition on the `userAgent` attribute. Set exactly one operator.
+func (o GetExperimentSegmentRuleNotMatchOutput) UserAgents() GetExperimentSegmentRuleNotMatchUserAgentArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatch) []GetExperimentSegmentRuleNotMatchUserAgent {
+		return v.UserAgents
+	}).(GetExperimentSegmentRuleNotMatchUserAgentArrayOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleNotMatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleNotMatch)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleNotMatchArrayOutput) ToGetExperimentSegmentRuleNotMatchArrayOutput() GetExperimentSegmentRuleNotMatchArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchArrayOutput) ToGetExperimentSegmentRuleNotMatchArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchArrayOutput) Index(i pulumi.IntInput) GetExperimentSegmentRuleNotMatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentSegmentRuleNotMatch {
+		return vs[0].([]GetExperimentSegmentRuleNotMatch)[vs[1].(int)]
+	}).(GetExperimentSegmentRuleNotMatchOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchAnonymousSessionMetadata struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains []string `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths []string `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists string `pulumi:"exists"`
+	// The metadata key, without the `anonymous_session_metadata.` prefix. Between 1 and 255 characters, not blank.
+	Key string `pulumi:"key"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs []string `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths []string `pulumi:"startsWiths"`
+}
+
+// GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataInput is an input type that accepts GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArgs and GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataInput` via:
+//
+//	GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArgs{...}
+type GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleNotMatchAnonymousSessionMetadataOutput() GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataOutput
+	ToGetExperimentSegmentRuleNotMatchAnonymousSessionMetadataOutputWithContext(context.Context) GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataOutput
+}
+
+type GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArgs struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains pulumi.StringArrayInput `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths pulumi.StringArrayInput `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists pulumi.StringInput `pulumi:"exists"`
+	// The metadata key, without the `anonymous_session_metadata.` prefix. Between 1 and 255 characters, not blank.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs pulumi.StringArrayInput `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths pulumi.StringArrayInput `pulumi:"startsWiths"`
+}
+
+func (GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleNotMatchAnonymousSessionMetadata)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArgs) ToGetExperimentSegmentRuleNotMatchAnonymousSessionMetadataOutput() GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataOutput {
+	return i.ToGetExperimentSegmentRuleNotMatchAnonymousSessionMetadataOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArgs) ToGetExperimentSegmentRuleNotMatchAnonymousSessionMetadataOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataOutput)
+}
+
+// GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArrayInput is an input type that accepts GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArray and GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArrayOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArrayInput` via:
+//
+//	GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArray{ GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArgs{...} }
+type GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArrayOutput() GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArrayOutput
+	ToGetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArrayOutputWithContext(context.Context) GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArrayOutput
+}
+
+type GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArray []GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataInput
+
+func (GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleNotMatchAnonymousSessionMetadata)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArray) ToGetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArrayOutput() GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArrayOutput {
+	return i.ToGetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArray) ToGetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArrayOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleNotMatchAnonymousSessionMetadata)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataOutput) ToGetExperimentSegmentRuleNotMatchAnonymousSessionMetadataOutput() GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataOutput) ToGetExperimentSegmentRuleNotMatchAnonymousSessionMetadataOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataOutput {
+	return o
+}
+
+// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataOutput) Contains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchAnonymousSessionMetadata) []string { return v.Contains }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataOutput) EndsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchAnonymousSessionMetadata) []string { return v.EndsWiths }).(pulumi.StringArrayOutput)
+}
+
+// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+func (o GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataOutput) Exists() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchAnonymousSessionMetadata) string { return v.Exists }).(pulumi.StringOutput)
+}
+
+// The metadata key, without the `anonymous_session_metadata.` prefix. Between 1 and 255 characters, not blank.
+func (o GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchAnonymousSessionMetadata) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataOutput) OneOfs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchAnonymousSessionMetadata) []string { return v.OneOfs }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataOutput) StartsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchAnonymousSessionMetadata) []string { return v.StartsWiths }).(pulumi.StringArrayOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleNotMatchAnonymousSessionMetadata)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArrayOutput) ToGetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArrayOutput() GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArrayOutput) ToGetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArrayOutput) Index(i pulumi.IntInput) GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentSegmentRuleNotMatchAnonymousSessionMetadata {
+		return vs[0].([]GetExperimentSegmentRuleNotMatchAnonymousSessionMetadata)[vs[1].(int)]
+	}).(GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchBrowser struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains []string `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths []string `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists string `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs []string `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths []string `pulumi:"startsWiths"`
+}
+
+// GetExperimentSegmentRuleNotMatchBrowserInput is an input type that accepts GetExperimentSegmentRuleNotMatchBrowserArgs and GetExperimentSegmentRuleNotMatchBrowserOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleNotMatchBrowserInput` via:
+//
+//	GetExperimentSegmentRuleNotMatchBrowserArgs{...}
+type GetExperimentSegmentRuleNotMatchBrowserInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleNotMatchBrowserOutput() GetExperimentSegmentRuleNotMatchBrowserOutput
+	ToGetExperimentSegmentRuleNotMatchBrowserOutputWithContext(context.Context) GetExperimentSegmentRuleNotMatchBrowserOutput
+}
+
+type GetExperimentSegmentRuleNotMatchBrowserArgs struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains pulumi.StringArrayInput `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths pulumi.StringArrayInput `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists pulumi.StringInput `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs pulumi.StringArrayInput `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths pulumi.StringArrayInput `pulumi:"startsWiths"`
+}
+
+func (GetExperimentSegmentRuleNotMatchBrowserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleNotMatchBrowser)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleNotMatchBrowserArgs) ToGetExperimentSegmentRuleNotMatchBrowserOutput() GetExperimentSegmentRuleNotMatchBrowserOutput {
+	return i.ToGetExperimentSegmentRuleNotMatchBrowserOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleNotMatchBrowserArgs) ToGetExperimentSegmentRuleNotMatchBrowserOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchBrowserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleNotMatchBrowserOutput)
+}
+
+// GetExperimentSegmentRuleNotMatchBrowserArrayInput is an input type that accepts GetExperimentSegmentRuleNotMatchBrowserArray and GetExperimentSegmentRuleNotMatchBrowserArrayOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleNotMatchBrowserArrayInput` via:
+//
+//	GetExperimentSegmentRuleNotMatchBrowserArray{ GetExperimentSegmentRuleNotMatchBrowserArgs{...} }
+type GetExperimentSegmentRuleNotMatchBrowserArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleNotMatchBrowserArrayOutput() GetExperimentSegmentRuleNotMatchBrowserArrayOutput
+	ToGetExperimentSegmentRuleNotMatchBrowserArrayOutputWithContext(context.Context) GetExperimentSegmentRuleNotMatchBrowserArrayOutput
+}
+
+type GetExperimentSegmentRuleNotMatchBrowserArray []GetExperimentSegmentRuleNotMatchBrowserInput
+
+func (GetExperimentSegmentRuleNotMatchBrowserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleNotMatchBrowser)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleNotMatchBrowserArray) ToGetExperimentSegmentRuleNotMatchBrowserArrayOutput() GetExperimentSegmentRuleNotMatchBrowserArrayOutput {
+	return i.ToGetExperimentSegmentRuleNotMatchBrowserArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleNotMatchBrowserArray) ToGetExperimentSegmentRuleNotMatchBrowserArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchBrowserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleNotMatchBrowserArrayOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchBrowserOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleNotMatchBrowserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleNotMatchBrowser)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleNotMatchBrowserOutput) ToGetExperimentSegmentRuleNotMatchBrowserOutput() GetExperimentSegmentRuleNotMatchBrowserOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchBrowserOutput) ToGetExperimentSegmentRuleNotMatchBrowserOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchBrowserOutput {
+	return o
+}
+
+// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchBrowserOutput) Contains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchBrowser) []string { return v.Contains }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchBrowserOutput) EndsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchBrowser) []string { return v.EndsWiths }).(pulumi.StringArrayOutput)
+}
+
+// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+func (o GetExperimentSegmentRuleNotMatchBrowserOutput) Exists() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchBrowser) string { return v.Exists }).(pulumi.StringOutput)
+}
+
+// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchBrowserOutput) OneOfs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchBrowser) []string { return v.OneOfs }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchBrowserOutput) StartsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchBrowser) []string { return v.StartsWiths }).(pulumi.StringArrayOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchBrowserArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleNotMatchBrowserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleNotMatchBrowser)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleNotMatchBrowserArrayOutput) ToGetExperimentSegmentRuleNotMatchBrowserArrayOutput() GetExperimentSegmentRuleNotMatchBrowserArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchBrowserArrayOutput) ToGetExperimentSegmentRuleNotMatchBrowserArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchBrowserArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchBrowserArrayOutput) Index(i pulumi.IntInput) GetExperimentSegmentRuleNotMatchBrowserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentSegmentRuleNotMatchBrowser {
+		return vs[0].([]GetExperimentSegmentRuleNotMatchBrowser)[vs[1].(int)]
+	}).(GetExperimentSegmentRuleNotMatchBrowserOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchClientId struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains []string `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths []string `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists string `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs []string `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths []string `pulumi:"startsWiths"`
+}
+
+// GetExperimentSegmentRuleNotMatchClientIdInput is an input type that accepts GetExperimentSegmentRuleNotMatchClientIdArgs and GetExperimentSegmentRuleNotMatchClientIdOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleNotMatchClientIdInput` via:
+//
+//	GetExperimentSegmentRuleNotMatchClientIdArgs{...}
+type GetExperimentSegmentRuleNotMatchClientIdInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleNotMatchClientIdOutput() GetExperimentSegmentRuleNotMatchClientIdOutput
+	ToGetExperimentSegmentRuleNotMatchClientIdOutputWithContext(context.Context) GetExperimentSegmentRuleNotMatchClientIdOutput
+}
+
+type GetExperimentSegmentRuleNotMatchClientIdArgs struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains pulumi.StringArrayInput `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths pulumi.StringArrayInput `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists pulumi.StringInput `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs pulumi.StringArrayInput `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths pulumi.StringArrayInput `pulumi:"startsWiths"`
+}
+
+func (GetExperimentSegmentRuleNotMatchClientIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleNotMatchClientId)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleNotMatchClientIdArgs) ToGetExperimentSegmentRuleNotMatchClientIdOutput() GetExperimentSegmentRuleNotMatchClientIdOutput {
+	return i.ToGetExperimentSegmentRuleNotMatchClientIdOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleNotMatchClientIdArgs) ToGetExperimentSegmentRuleNotMatchClientIdOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchClientIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleNotMatchClientIdOutput)
+}
+
+// GetExperimentSegmentRuleNotMatchClientIdArrayInput is an input type that accepts GetExperimentSegmentRuleNotMatchClientIdArray and GetExperimentSegmentRuleNotMatchClientIdArrayOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleNotMatchClientIdArrayInput` via:
+//
+//	GetExperimentSegmentRuleNotMatchClientIdArray{ GetExperimentSegmentRuleNotMatchClientIdArgs{...} }
+type GetExperimentSegmentRuleNotMatchClientIdArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleNotMatchClientIdArrayOutput() GetExperimentSegmentRuleNotMatchClientIdArrayOutput
+	ToGetExperimentSegmentRuleNotMatchClientIdArrayOutputWithContext(context.Context) GetExperimentSegmentRuleNotMatchClientIdArrayOutput
+}
+
+type GetExperimentSegmentRuleNotMatchClientIdArray []GetExperimentSegmentRuleNotMatchClientIdInput
+
+func (GetExperimentSegmentRuleNotMatchClientIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleNotMatchClientId)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleNotMatchClientIdArray) ToGetExperimentSegmentRuleNotMatchClientIdArrayOutput() GetExperimentSegmentRuleNotMatchClientIdArrayOutput {
+	return i.ToGetExperimentSegmentRuleNotMatchClientIdArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleNotMatchClientIdArray) ToGetExperimentSegmentRuleNotMatchClientIdArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchClientIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleNotMatchClientIdArrayOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchClientIdOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleNotMatchClientIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleNotMatchClientId)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleNotMatchClientIdOutput) ToGetExperimentSegmentRuleNotMatchClientIdOutput() GetExperimentSegmentRuleNotMatchClientIdOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchClientIdOutput) ToGetExperimentSegmentRuleNotMatchClientIdOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchClientIdOutput {
+	return o
+}
+
+// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchClientIdOutput) Contains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchClientId) []string { return v.Contains }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchClientIdOutput) EndsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchClientId) []string { return v.EndsWiths }).(pulumi.StringArrayOutput)
+}
+
+// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+func (o GetExperimentSegmentRuleNotMatchClientIdOutput) Exists() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchClientId) string { return v.Exists }).(pulumi.StringOutput)
+}
+
+// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchClientIdOutput) OneOfs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchClientId) []string { return v.OneOfs }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchClientIdOutput) StartsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchClientId) []string { return v.StartsWiths }).(pulumi.StringArrayOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchClientIdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleNotMatchClientIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleNotMatchClientId)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleNotMatchClientIdArrayOutput) ToGetExperimentSegmentRuleNotMatchClientIdArrayOutput() GetExperimentSegmentRuleNotMatchClientIdArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchClientIdArrayOutput) ToGetExperimentSegmentRuleNotMatchClientIdArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchClientIdArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchClientIdArrayOutput) Index(i pulumi.IntInput) GetExperimentSegmentRuleNotMatchClientIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentSegmentRuleNotMatchClientId {
+		return vs[0].([]GetExperimentSegmentRuleNotMatchClientId)[vs[1].(int)]
+	}).(GetExperimentSegmentRuleNotMatchClientIdOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchConnection struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains []string `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths []string `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists string `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs []string `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths []string `pulumi:"startsWiths"`
+}
+
+// GetExperimentSegmentRuleNotMatchConnectionInput is an input type that accepts GetExperimentSegmentRuleNotMatchConnectionArgs and GetExperimentSegmentRuleNotMatchConnectionOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleNotMatchConnectionInput` via:
+//
+//	GetExperimentSegmentRuleNotMatchConnectionArgs{...}
+type GetExperimentSegmentRuleNotMatchConnectionInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleNotMatchConnectionOutput() GetExperimentSegmentRuleNotMatchConnectionOutput
+	ToGetExperimentSegmentRuleNotMatchConnectionOutputWithContext(context.Context) GetExperimentSegmentRuleNotMatchConnectionOutput
+}
+
+type GetExperimentSegmentRuleNotMatchConnectionArgs struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains pulumi.StringArrayInput `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths pulumi.StringArrayInput `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists pulumi.StringInput `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs pulumi.StringArrayInput `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths pulumi.StringArrayInput `pulumi:"startsWiths"`
+}
+
+func (GetExperimentSegmentRuleNotMatchConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleNotMatchConnection)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleNotMatchConnectionArgs) ToGetExperimentSegmentRuleNotMatchConnectionOutput() GetExperimentSegmentRuleNotMatchConnectionOutput {
+	return i.ToGetExperimentSegmentRuleNotMatchConnectionOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleNotMatchConnectionArgs) ToGetExperimentSegmentRuleNotMatchConnectionOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleNotMatchConnectionOutput)
+}
+
+// GetExperimentSegmentRuleNotMatchConnectionArrayInput is an input type that accepts GetExperimentSegmentRuleNotMatchConnectionArray and GetExperimentSegmentRuleNotMatchConnectionArrayOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleNotMatchConnectionArrayInput` via:
+//
+//	GetExperimentSegmentRuleNotMatchConnectionArray{ GetExperimentSegmentRuleNotMatchConnectionArgs{...} }
+type GetExperimentSegmentRuleNotMatchConnectionArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleNotMatchConnectionArrayOutput() GetExperimentSegmentRuleNotMatchConnectionArrayOutput
+	ToGetExperimentSegmentRuleNotMatchConnectionArrayOutputWithContext(context.Context) GetExperimentSegmentRuleNotMatchConnectionArrayOutput
+}
+
+type GetExperimentSegmentRuleNotMatchConnectionArray []GetExperimentSegmentRuleNotMatchConnectionInput
+
+func (GetExperimentSegmentRuleNotMatchConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleNotMatchConnection)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleNotMatchConnectionArray) ToGetExperimentSegmentRuleNotMatchConnectionArrayOutput() GetExperimentSegmentRuleNotMatchConnectionArrayOutput {
+	return i.ToGetExperimentSegmentRuleNotMatchConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleNotMatchConnectionArray) ToGetExperimentSegmentRuleNotMatchConnectionArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleNotMatchConnectionArrayOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchConnectionOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleNotMatchConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleNotMatchConnection)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleNotMatchConnectionOutput) ToGetExperimentSegmentRuleNotMatchConnectionOutput() GetExperimentSegmentRuleNotMatchConnectionOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchConnectionOutput) ToGetExperimentSegmentRuleNotMatchConnectionOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchConnectionOutput {
+	return o
+}
+
+// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchConnectionOutput) Contains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchConnection) []string { return v.Contains }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchConnectionOutput) EndsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchConnection) []string { return v.EndsWiths }).(pulumi.StringArrayOutput)
+}
+
+// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+func (o GetExperimentSegmentRuleNotMatchConnectionOutput) Exists() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchConnection) string { return v.Exists }).(pulumi.StringOutput)
+}
+
+// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchConnectionOutput) OneOfs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchConnection) []string { return v.OneOfs }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchConnectionOutput) StartsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchConnection) []string { return v.StartsWiths }).(pulumi.StringArrayOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleNotMatchConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleNotMatchConnection)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleNotMatchConnectionArrayOutput) ToGetExperimentSegmentRuleNotMatchConnectionArrayOutput() GetExperimentSegmentRuleNotMatchConnectionArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchConnectionArrayOutput) ToGetExperimentSegmentRuleNotMatchConnectionArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchConnectionArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchConnectionArrayOutput) Index(i pulumi.IntInput) GetExperimentSegmentRuleNotMatchConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentSegmentRuleNotMatchConnection {
+		return vs[0].([]GetExperimentSegmentRuleNotMatchConnection)[vs[1].(int)]
+	}).(GetExperimentSegmentRuleNotMatchConnectionOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchConnectionType struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains []string `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths []string `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists string `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs []string `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths []string `pulumi:"startsWiths"`
+}
+
+// GetExperimentSegmentRuleNotMatchConnectionTypeInput is an input type that accepts GetExperimentSegmentRuleNotMatchConnectionTypeArgs and GetExperimentSegmentRuleNotMatchConnectionTypeOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleNotMatchConnectionTypeInput` via:
+//
+//	GetExperimentSegmentRuleNotMatchConnectionTypeArgs{...}
+type GetExperimentSegmentRuleNotMatchConnectionTypeInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleNotMatchConnectionTypeOutput() GetExperimentSegmentRuleNotMatchConnectionTypeOutput
+	ToGetExperimentSegmentRuleNotMatchConnectionTypeOutputWithContext(context.Context) GetExperimentSegmentRuleNotMatchConnectionTypeOutput
+}
+
+type GetExperimentSegmentRuleNotMatchConnectionTypeArgs struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains pulumi.StringArrayInput `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths pulumi.StringArrayInput `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists pulumi.StringInput `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs pulumi.StringArrayInput `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths pulumi.StringArrayInput `pulumi:"startsWiths"`
+}
+
+func (GetExperimentSegmentRuleNotMatchConnectionTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleNotMatchConnectionType)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleNotMatchConnectionTypeArgs) ToGetExperimentSegmentRuleNotMatchConnectionTypeOutput() GetExperimentSegmentRuleNotMatchConnectionTypeOutput {
+	return i.ToGetExperimentSegmentRuleNotMatchConnectionTypeOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleNotMatchConnectionTypeArgs) ToGetExperimentSegmentRuleNotMatchConnectionTypeOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchConnectionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleNotMatchConnectionTypeOutput)
+}
+
+// GetExperimentSegmentRuleNotMatchConnectionTypeArrayInput is an input type that accepts GetExperimentSegmentRuleNotMatchConnectionTypeArray and GetExperimentSegmentRuleNotMatchConnectionTypeArrayOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleNotMatchConnectionTypeArrayInput` via:
+//
+//	GetExperimentSegmentRuleNotMatchConnectionTypeArray{ GetExperimentSegmentRuleNotMatchConnectionTypeArgs{...} }
+type GetExperimentSegmentRuleNotMatchConnectionTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleNotMatchConnectionTypeArrayOutput() GetExperimentSegmentRuleNotMatchConnectionTypeArrayOutput
+	ToGetExperimentSegmentRuleNotMatchConnectionTypeArrayOutputWithContext(context.Context) GetExperimentSegmentRuleNotMatchConnectionTypeArrayOutput
+}
+
+type GetExperimentSegmentRuleNotMatchConnectionTypeArray []GetExperimentSegmentRuleNotMatchConnectionTypeInput
+
+func (GetExperimentSegmentRuleNotMatchConnectionTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleNotMatchConnectionType)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleNotMatchConnectionTypeArray) ToGetExperimentSegmentRuleNotMatchConnectionTypeArrayOutput() GetExperimentSegmentRuleNotMatchConnectionTypeArrayOutput {
+	return i.ToGetExperimentSegmentRuleNotMatchConnectionTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleNotMatchConnectionTypeArray) ToGetExperimentSegmentRuleNotMatchConnectionTypeArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchConnectionTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleNotMatchConnectionTypeArrayOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchConnectionTypeOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleNotMatchConnectionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleNotMatchConnectionType)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleNotMatchConnectionTypeOutput) ToGetExperimentSegmentRuleNotMatchConnectionTypeOutput() GetExperimentSegmentRuleNotMatchConnectionTypeOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchConnectionTypeOutput) ToGetExperimentSegmentRuleNotMatchConnectionTypeOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchConnectionTypeOutput {
+	return o
+}
+
+// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchConnectionTypeOutput) Contains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchConnectionType) []string { return v.Contains }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchConnectionTypeOutput) EndsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchConnectionType) []string { return v.EndsWiths }).(pulumi.StringArrayOutput)
+}
+
+// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+func (o GetExperimentSegmentRuleNotMatchConnectionTypeOutput) Exists() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchConnectionType) string { return v.Exists }).(pulumi.StringOutput)
+}
+
+// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchConnectionTypeOutput) OneOfs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchConnectionType) []string { return v.OneOfs }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchConnectionTypeOutput) StartsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchConnectionType) []string { return v.StartsWiths }).(pulumi.StringArrayOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchConnectionTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleNotMatchConnectionTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleNotMatchConnectionType)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleNotMatchConnectionTypeArrayOutput) ToGetExperimentSegmentRuleNotMatchConnectionTypeArrayOutput() GetExperimentSegmentRuleNotMatchConnectionTypeArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchConnectionTypeArrayOutput) ToGetExperimentSegmentRuleNotMatchConnectionTypeArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchConnectionTypeArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchConnectionTypeArrayOutput) Index(i pulumi.IntInput) GetExperimentSegmentRuleNotMatchConnectionTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentSegmentRuleNotMatchConnectionType {
+		return vs[0].([]GetExperimentSegmentRuleNotMatchConnectionType)[vs[1].(int)]
+	}).(GetExperimentSegmentRuleNotMatchConnectionTypeOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchCountry struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains []string `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths []string `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists string `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs []string `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths []string `pulumi:"startsWiths"`
+}
+
+// GetExperimentSegmentRuleNotMatchCountryInput is an input type that accepts GetExperimentSegmentRuleNotMatchCountryArgs and GetExperimentSegmentRuleNotMatchCountryOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleNotMatchCountryInput` via:
+//
+//	GetExperimentSegmentRuleNotMatchCountryArgs{...}
+type GetExperimentSegmentRuleNotMatchCountryInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleNotMatchCountryOutput() GetExperimentSegmentRuleNotMatchCountryOutput
+	ToGetExperimentSegmentRuleNotMatchCountryOutputWithContext(context.Context) GetExperimentSegmentRuleNotMatchCountryOutput
+}
+
+type GetExperimentSegmentRuleNotMatchCountryArgs struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains pulumi.StringArrayInput `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths pulumi.StringArrayInput `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists pulumi.StringInput `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs pulumi.StringArrayInput `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths pulumi.StringArrayInput `pulumi:"startsWiths"`
+}
+
+func (GetExperimentSegmentRuleNotMatchCountryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleNotMatchCountry)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleNotMatchCountryArgs) ToGetExperimentSegmentRuleNotMatchCountryOutput() GetExperimentSegmentRuleNotMatchCountryOutput {
+	return i.ToGetExperimentSegmentRuleNotMatchCountryOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleNotMatchCountryArgs) ToGetExperimentSegmentRuleNotMatchCountryOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchCountryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleNotMatchCountryOutput)
+}
+
+// GetExperimentSegmentRuleNotMatchCountryArrayInput is an input type that accepts GetExperimentSegmentRuleNotMatchCountryArray and GetExperimentSegmentRuleNotMatchCountryArrayOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleNotMatchCountryArrayInput` via:
+//
+//	GetExperimentSegmentRuleNotMatchCountryArray{ GetExperimentSegmentRuleNotMatchCountryArgs{...} }
+type GetExperimentSegmentRuleNotMatchCountryArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleNotMatchCountryArrayOutput() GetExperimentSegmentRuleNotMatchCountryArrayOutput
+	ToGetExperimentSegmentRuleNotMatchCountryArrayOutputWithContext(context.Context) GetExperimentSegmentRuleNotMatchCountryArrayOutput
+}
+
+type GetExperimentSegmentRuleNotMatchCountryArray []GetExperimentSegmentRuleNotMatchCountryInput
+
+func (GetExperimentSegmentRuleNotMatchCountryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleNotMatchCountry)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleNotMatchCountryArray) ToGetExperimentSegmentRuleNotMatchCountryArrayOutput() GetExperimentSegmentRuleNotMatchCountryArrayOutput {
+	return i.ToGetExperimentSegmentRuleNotMatchCountryArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleNotMatchCountryArray) ToGetExperimentSegmentRuleNotMatchCountryArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchCountryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleNotMatchCountryArrayOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchCountryOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleNotMatchCountryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleNotMatchCountry)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleNotMatchCountryOutput) ToGetExperimentSegmentRuleNotMatchCountryOutput() GetExperimentSegmentRuleNotMatchCountryOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchCountryOutput) ToGetExperimentSegmentRuleNotMatchCountryOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchCountryOutput {
+	return o
+}
+
+// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchCountryOutput) Contains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchCountry) []string { return v.Contains }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchCountryOutput) EndsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchCountry) []string { return v.EndsWiths }).(pulumi.StringArrayOutput)
+}
+
+// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+func (o GetExperimentSegmentRuleNotMatchCountryOutput) Exists() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchCountry) string { return v.Exists }).(pulumi.StringOutput)
+}
+
+// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchCountryOutput) OneOfs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchCountry) []string { return v.OneOfs }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchCountryOutput) StartsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchCountry) []string { return v.StartsWiths }).(pulumi.StringArrayOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchCountryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleNotMatchCountryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleNotMatchCountry)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleNotMatchCountryArrayOutput) ToGetExperimentSegmentRuleNotMatchCountryArrayOutput() GetExperimentSegmentRuleNotMatchCountryArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchCountryArrayOutput) ToGetExperimentSegmentRuleNotMatchCountryArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchCountryArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchCountryArrayOutput) Index(i pulumi.IntInput) GetExperimentSegmentRuleNotMatchCountryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentSegmentRuleNotMatchCountry {
+		return vs[0].([]GetExperimentSegmentRuleNotMatchCountry)[vs[1].(int)]
+	}).(GetExperimentSegmentRuleNotMatchCountryOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchDeviceType struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains []string `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths []string `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists string `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs []string `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths []string `pulumi:"startsWiths"`
+}
+
+// GetExperimentSegmentRuleNotMatchDeviceTypeInput is an input type that accepts GetExperimentSegmentRuleNotMatchDeviceTypeArgs and GetExperimentSegmentRuleNotMatchDeviceTypeOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleNotMatchDeviceTypeInput` via:
+//
+//	GetExperimentSegmentRuleNotMatchDeviceTypeArgs{...}
+type GetExperimentSegmentRuleNotMatchDeviceTypeInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleNotMatchDeviceTypeOutput() GetExperimentSegmentRuleNotMatchDeviceTypeOutput
+	ToGetExperimentSegmentRuleNotMatchDeviceTypeOutputWithContext(context.Context) GetExperimentSegmentRuleNotMatchDeviceTypeOutput
+}
+
+type GetExperimentSegmentRuleNotMatchDeviceTypeArgs struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains pulumi.StringArrayInput `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths pulumi.StringArrayInput `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists pulumi.StringInput `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs pulumi.StringArrayInput `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths pulumi.StringArrayInput `pulumi:"startsWiths"`
+}
+
+func (GetExperimentSegmentRuleNotMatchDeviceTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleNotMatchDeviceType)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleNotMatchDeviceTypeArgs) ToGetExperimentSegmentRuleNotMatchDeviceTypeOutput() GetExperimentSegmentRuleNotMatchDeviceTypeOutput {
+	return i.ToGetExperimentSegmentRuleNotMatchDeviceTypeOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleNotMatchDeviceTypeArgs) ToGetExperimentSegmentRuleNotMatchDeviceTypeOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchDeviceTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleNotMatchDeviceTypeOutput)
+}
+
+// GetExperimentSegmentRuleNotMatchDeviceTypeArrayInput is an input type that accepts GetExperimentSegmentRuleNotMatchDeviceTypeArray and GetExperimentSegmentRuleNotMatchDeviceTypeArrayOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleNotMatchDeviceTypeArrayInput` via:
+//
+//	GetExperimentSegmentRuleNotMatchDeviceTypeArray{ GetExperimentSegmentRuleNotMatchDeviceTypeArgs{...} }
+type GetExperimentSegmentRuleNotMatchDeviceTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleNotMatchDeviceTypeArrayOutput() GetExperimentSegmentRuleNotMatchDeviceTypeArrayOutput
+	ToGetExperimentSegmentRuleNotMatchDeviceTypeArrayOutputWithContext(context.Context) GetExperimentSegmentRuleNotMatchDeviceTypeArrayOutput
+}
+
+type GetExperimentSegmentRuleNotMatchDeviceTypeArray []GetExperimentSegmentRuleNotMatchDeviceTypeInput
+
+func (GetExperimentSegmentRuleNotMatchDeviceTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleNotMatchDeviceType)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleNotMatchDeviceTypeArray) ToGetExperimentSegmentRuleNotMatchDeviceTypeArrayOutput() GetExperimentSegmentRuleNotMatchDeviceTypeArrayOutput {
+	return i.ToGetExperimentSegmentRuleNotMatchDeviceTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleNotMatchDeviceTypeArray) ToGetExperimentSegmentRuleNotMatchDeviceTypeArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchDeviceTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleNotMatchDeviceTypeArrayOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchDeviceTypeOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleNotMatchDeviceTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleNotMatchDeviceType)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleNotMatchDeviceTypeOutput) ToGetExperimentSegmentRuleNotMatchDeviceTypeOutput() GetExperimentSegmentRuleNotMatchDeviceTypeOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchDeviceTypeOutput) ToGetExperimentSegmentRuleNotMatchDeviceTypeOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchDeviceTypeOutput {
+	return o
+}
+
+// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchDeviceTypeOutput) Contains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchDeviceType) []string { return v.Contains }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchDeviceTypeOutput) EndsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchDeviceType) []string { return v.EndsWiths }).(pulumi.StringArrayOutput)
+}
+
+// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+func (o GetExperimentSegmentRuleNotMatchDeviceTypeOutput) Exists() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchDeviceType) string { return v.Exists }).(pulumi.StringOutput)
+}
+
+// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchDeviceTypeOutput) OneOfs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchDeviceType) []string { return v.OneOfs }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchDeviceTypeOutput) StartsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchDeviceType) []string { return v.StartsWiths }).(pulumi.StringArrayOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchDeviceTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleNotMatchDeviceTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleNotMatchDeviceType)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleNotMatchDeviceTypeArrayOutput) ToGetExperimentSegmentRuleNotMatchDeviceTypeArrayOutput() GetExperimentSegmentRuleNotMatchDeviceTypeArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchDeviceTypeArrayOutput) ToGetExperimentSegmentRuleNotMatchDeviceTypeArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchDeviceTypeArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchDeviceTypeArrayOutput) Index(i pulumi.IntInput) GetExperimentSegmentRuleNotMatchDeviceTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentSegmentRuleNotMatchDeviceType {
+		return vs[0].([]GetExperimentSegmentRuleNotMatchDeviceType)[vs[1].(int)]
+	}).(GetExperimentSegmentRuleNotMatchDeviceTypeOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchDomain struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains []string `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths []string `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists string `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs []string `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths []string `pulumi:"startsWiths"`
+}
+
+// GetExperimentSegmentRuleNotMatchDomainInput is an input type that accepts GetExperimentSegmentRuleNotMatchDomainArgs and GetExperimentSegmentRuleNotMatchDomainOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleNotMatchDomainInput` via:
+//
+//	GetExperimentSegmentRuleNotMatchDomainArgs{...}
+type GetExperimentSegmentRuleNotMatchDomainInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleNotMatchDomainOutput() GetExperimentSegmentRuleNotMatchDomainOutput
+	ToGetExperimentSegmentRuleNotMatchDomainOutputWithContext(context.Context) GetExperimentSegmentRuleNotMatchDomainOutput
+}
+
+type GetExperimentSegmentRuleNotMatchDomainArgs struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains pulumi.StringArrayInput `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths pulumi.StringArrayInput `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists pulumi.StringInput `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs pulumi.StringArrayInput `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths pulumi.StringArrayInput `pulumi:"startsWiths"`
+}
+
+func (GetExperimentSegmentRuleNotMatchDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleNotMatchDomain)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleNotMatchDomainArgs) ToGetExperimentSegmentRuleNotMatchDomainOutput() GetExperimentSegmentRuleNotMatchDomainOutput {
+	return i.ToGetExperimentSegmentRuleNotMatchDomainOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleNotMatchDomainArgs) ToGetExperimentSegmentRuleNotMatchDomainOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleNotMatchDomainOutput)
+}
+
+// GetExperimentSegmentRuleNotMatchDomainArrayInput is an input type that accepts GetExperimentSegmentRuleNotMatchDomainArray and GetExperimentSegmentRuleNotMatchDomainArrayOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleNotMatchDomainArrayInput` via:
+//
+//	GetExperimentSegmentRuleNotMatchDomainArray{ GetExperimentSegmentRuleNotMatchDomainArgs{...} }
+type GetExperimentSegmentRuleNotMatchDomainArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleNotMatchDomainArrayOutput() GetExperimentSegmentRuleNotMatchDomainArrayOutput
+	ToGetExperimentSegmentRuleNotMatchDomainArrayOutputWithContext(context.Context) GetExperimentSegmentRuleNotMatchDomainArrayOutput
+}
+
+type GetExperimentSegmentRuleNotMatchDomainArray []GetExperimentSegmentRuleNotMatchDomainInput
+
+func (GetExperimentSegmentRuleNotMatchDomainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleNotMatchDomain)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleNotMatchDomainArray) ToGetExperimentSegmentRuleNotMatchDomainArrayOutput() GetExperimentSegmentRuleNotMatchDomainArrayOutput {
+	return i.ToGetExperimentSegmentRuleNotMatchDomainArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleNotMatchDomainArray) ToGetExperimentSegmentRuleNotMatchDomainArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchDomainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleNotMatchDomainArrayOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchDomainOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleNotMatchDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleNotMatchDomain)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleNotMatchDomainOutput) ToGetExperimentSegmentRuleNotMatchDomainOutput() GetExperimentSegmentRuleNotMatchDomainOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchDomainOutput) ToGetExperimentSegmentRuleNotMatchDomainOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchDomainOutput {
+	return o
+}
+
+// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchDomainOutput) Contains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchDomain) []string { return v.Contains }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchDomainOutput) EndsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchDomain) []string { return v.EndsWiths }).(pulumi.StringArrayOutput)
+}
+
+// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+func (o GetExperimentSegmentRuleNotMatchDomainOutput) Exists() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchDomain) string { return v.Exists }).(pulumi.StringOutput)
+}
+
+// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchDomainOutput) OneOfs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchDomain) []string { return v.OneOfs }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchDomainOutput) StartsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchDomain) []string { return v.StartsWiths }).(pulumi.StringArrayOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchDomainArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleNotMatchDomainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleNotMatchDomain)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleNotMatchDomainArrayOutput) ToGetExperimentSegmentRuleNotMatchDomainArrayOutput() GetExperimentSegmentRuleNotMatchDomainArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchDomainArrayOutput) ToGetExperimentSegmentRuleNotMatchDomainArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchDomainArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchDomainArrayOutput) Index(i pulumi.IntInput) GetExperimentSegmentRuleNotMatchDomainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentSegmentRuleNotMatchDomain {
+		return vs[0].([]GetExperimentSegmentRuleNotMatchDomain)[vs[1].(int)]
+	}).(GetExperimentSegmentRuleNotMatchDomainOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchOrganizationId struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains []string `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths []string `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists string `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs []string `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths []string `pulumi:"startsWiths"`
+}
+
+// GetExperimentSegmentRuleNotMatchOrganizationIdInput is an input type that accepts GetExperimentSegmentRuleNotMatchOrganizationIdArgs and GetExperimentSegmentRuleNotMatchOrganizationIdOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleNotMatchOrganizationIdInput` via:
+//
+//	GetExperimentSegmentRuleNotMatchOrganizationIdArgs{...}
+type GetExperimentSegmentRuleNotMatchOrganizationIdInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleNotMatchOrganizationIdOutput() GetExperimentSegmentRuleNotMatchOrganizationIdOutput
+	ToGetExperimentSegmentRuleNotMatchOrganizationIdOutputWithContext(context.Context) GetExperimentSegmentRuleNotMatchOrganizationIdOutput
+}
+
+type GetExperimentSegmentRuleNotMatchOrganizationIdArgs struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains pulumi.StringArrayInput `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths pulumi.StringArrayInput `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists pulumi.StringInput `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs pulumi.StringArrayInput `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths pulumi.StringArrayInput `pulumi:"startsWiths"`
+}
+
+func (GetExperimentSegmentRuleNotMatchOrganizationIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleNotMatchOrganizationId)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleNotMatchOrganizationIdArgs) ToGetExperimentSegmentRuleNotMatchOrganizationIdOutput() GetExperimentSegmentRuleNotMatchOrganizationIdOutput {
+	return i.ToGetExperimentSegmentRuleNotMatchOrganizationIdOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleNotMatchOrganizationIdArgs) ToGetExperimentSegmentRuleNotMatchOrganizationIdOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchOrganizationIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleNotMatchOrganizationIdOutput)
+}
+
+// GetExperimentSegmentRuleNotMatchOrganizationIdArrayInput is an input type that accepts GetExperimentSegmentRuleNotMatchOrganizationIdArray and GetExperimentSegmentRuleNotMatchOrganizationIdArrayOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleNotMatchOrganizationIdArrayInput` via:
+//
+//	GetExperimentSegmentRuleNotMatchOrganizationIdArray{ GetExperimentSegmentRuleNotMatchOrganizationIdArgs{...} }
+type GetExperimentSegmentRuleNotMatchOrganizationIdArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleNotMatchOrganizationIdArrayOutput() GetExperimentSegmentRuleNotMatchOrganizationIdArrayOutput
+	ToGetExperimentSegmentRuleNotMatchOrganizationIdArrayOutputWithContext(context.Context) GetExperimentSegmentRuleNotMatchOrganizationIdArrayOutput
+}
+
+type GetExperimentSegmentRuleNotMatchOrganizationIdArray []GetExperimentSegmentRuleNotMatchOrganizationIdInput
+
+func (GetExperimentSegmentRuleNotMatchOrganizationIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleNotMatchOrganizationId)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleNotMatchOrganizationIdArray) ToGetExperimentSegmentRuleNotMatchOrganizationIdArrayOutput() GetExperimentSegmentRuleNotMatchOrganizationIdArrayOutput {
+	return i.ToGetExperimentSegmentRuleNotMatchOrganizationIdArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleNotMatchOrganizationIdArray) ToGetExperimentSegmentRuleNotMatchOrganizationIdArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchOrganizationIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleNotMatchOrganizationIdArrayOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchOrganizationIdOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleNotMatchOrganizationIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleNotMatchOrganizationId)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleNotMatchOrganizationIdOutput) ToGetExperimentSegmentRuleNotMatchOrganizationIdOutput() GetExperimentSegmentRuleNotMatchOrganizationIdOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchOrganizationIdOutput) ToGetExperimentSegmentRuleNotMatchOrganizationIdOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchOrganizationIdOutput {
+	return o
+}
+
+// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchOrganizationIdOutput) Contains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchOrganizationId) []string { return v.Contains }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchOrganizationIdOutput) EndsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchOrganizationId) []string { return v.EndsWiths }).(pulumi.StringArrayOutput)
+}
+
+// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+func (o GetExperimentSegmentRuleNotMatchOrganizationIdOutput) Exists() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchOrganizationId) string { return v.Exists }).(pulumi.StringOutput)
+}
+
+// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchOrganizationIdOutput) OneOfs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchOrganizationId) []string { return v.OneOfs }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchOrganizationIdOutput) StartsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchOrganizationId) []string { return v.StartsWiths }).(pulumi.StringArrayOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchOrganizationIdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleNotMatchOrganizationIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleNotMatchOrganizationId)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleNotMatchOrganizationIdArrayOutput) ToGetExperimentSegmentRuleNotMatchOrganizationIdArrayOutput() GetExperimentSegmentRuleNotMatchOrganizationIdArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchOrganizationIdArrayOutput) ToGetExperimentSegmentRuleNotMatchOrganizationIdArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchOrganizationIdArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchOrganizationIdArrayOutput) Index(i pulumi.IntInput) GetExperimentSegmentRuleNotMatchOrganizationIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentSegmentRuleNotMatchOrganizationId {
+		return vs[0].([]GetExperimentSegmentRuleNotMatchOrganizationId)[vs[1].(int)]
+	}).(GetExperimentSegmentRuleNotMatchOrganizationIdOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchPlatform struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains []string `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths []string `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists string `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs []string `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths []string `pulumi:"startsWiths"`
+}
+
+// GetExperimentSegmentRuleNotMatchPlatformInput is an input type that accepts GetExperimentSegmentRuleNotMatchPlatformArgs and GetExperimentSegmentRuleNotMatchPlatformOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleNotMatchPlatformInput` via:
+//
+//	GetExperimentSegmentRuleNotMatchPlatformArgs{...}
+type GetExperimentSegmentRuleNotMatchPlatformInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleNotMatchPlatformOutput() GetExperimentSegmentRuleNotMatchPlatformOutput
+	ToGetExperimentSegmentRuleNotMatchPlatformOutputWithContext(context.Context) GetExperimentSegmentRuleNotMatchPlatformOutput
+}
+
+type GetExperimentSegmentRuleNotMatchPlatformArgs struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains pulumi.StringArrayInput `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths pulumi.StringArrayInput `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists pulumi.StringInput `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs pulumi.StringArrayInput `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths pulumi.StringArrayInput `pulumi:"startsWiths"`
+}
+
+func (GetExperimentSegmentRuleNotMatchPlatformArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleNotMatchPlatform)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleNotMatchPlatformArgs) ToGetExperimentSegmentRuleNotMatchPlatformOutput() GetExperimentSegmentRuleNotMatchPlatformOutput {
+	return i.ToGetExperimentSegmentRuleNotMatchPlatformOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleNotMatchPlatformArgs) ToGetExperimentSegmentRuleNotMatchPlatformOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchPlatformOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleNotMatchPlatformOutput)
+}
+
+// GetExperimentSegmentRuleNotMatchPlatformArrayInput is an input type that accepts GetExperimentSegmentRuleNotMatchPlatformArray and GetExperimentSegmentRuleNotMatchPlatformArrayOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleNotMatchPlatformArrayInput` via:
+//
+//	GetExperimentSegmentRuleNotMatchPlatformArray{ GetExperimentSegmentRuleNotMatchPlatformArgs{...} }
+type GetExperimentSegmentRuleNotMatchPlatformArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleNotMatchPlatformArrayOutput() GetExperimentSegmentRuleNotMatchPlatformArrayOutput
+	ToGetExperimentSegmentRuleNotMatchPlatformArrayOutputWithContext(context.Context) GetExperimentSegmentRuleNotMatchPlatformArrayOutput
+}
+
+type GetExperimentSegmentRuleNotMatchPlatformArray []GetExperimentSegmentRuleNotMatchPlatformInput
+
+func (GetExperimentSegmentRuleNotMatchPlatformArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleNotMatchPlatform)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleNotMatchPlatformArray) ToGetExperimentSegmentRuleNotMatchPlatformArrayOutput() GetExperimentSegmentRuleNotMatchPlatformArrayOutput {
+	return i.ToGetExperimentSegmentRuleNotMatchPlatformArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleNotMatchPlatformArray) ToGetExperimentSegmentRuleNotMatchPlatformArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchPlatformArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleNotMatchPlatformArrayOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchPlatformOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleNotMatchPlatformOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleNotMatchPlatform)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleNotMatchPlatformOutput) ToGetExperimentSegmentRuleNotMatchPlatformOutput() GetExperimentSegmentRuleNotMatchPlatformOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchPlatformOutput) ToGetExperimentSegmentRuleNotMatchPlatformOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchPlatformOutput {
+	return o
+}
+
+// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchPlatformOutput) Contains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchPlatform) []string { return v.Contains }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchPlatformOutput) EndsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchPlatform) []string { return v.EndsWiths }).(pulumi.StringArrayOutput)
+}
+
+// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+func (o GetExperimentSegmentRuleNotMatchPlatformOutput) Exists() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchPlatform) string { return v.Exists }).(pulumi.StringOutput)
+}
+
+// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchPlatformOutput) OneOfs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchPlatform) []string { return v.OneOfs }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchPlatformOutput) StartsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchPlatform) []string { return v.StartsWiths }).(pulumi.StringArrayOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchPlatformArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleNotMatchPlatformArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleNotMatchPlatform)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleNotMatchPlatformArrayOutput) ToGetExperimentSegmentRuleNotMatchPlatformArrayOutput() GetExperimentSegmentRuleNotMatchPlatformArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchPlatformArrayOutput) ToGetExperimentSegmentRuleNotMatchPlatformArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchPlatformArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchPlatformArrayOutput) Index(i pulumi.IntInput) GetExperimentSegmentRuleNotMatchPlatformOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentSegmentRuleNotMatchPlatform {
+		return vs[0].([]GetExperimentSegmentRuleNotMatchPlatform)[vs[1].(int)]
+	}).(GetExperimentSegmentRuleNotMatchPlatformOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchRegion struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains []string `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths []string `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists string `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs []string `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths []string `pulumi:"startsWiths"`
+}
+
+// GetExperimentSegmentRuleNotMatchRegionInput is an input type that accepts GetExperimentSegmentRuleNotMatchRegionArgs and GetExperimentSegmentRuleNotMatchRegionOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleNotMatchRegionInput` via:
+//
+//	GetExperimentSegmentRuleNotMatchRegionArgs{...}
+type GetExperimentSegmentRuleNotMatchRegionInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleNotMatchRegionOutput() GetExperimentSegmentRuleNotMatchRegionOutput
+	ToGetExperimentSegmentRuleNotMatchRegionOutputWithContext(context.Context) GetExperimentSegmentRuleNotMatchRegionOutput
+}
+
+type GetExperimentSegmentRuleNotMatchRegionArgs struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains pulumi.StringArrayInput `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths pulumi.StringArrayInput `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists pulumi.StringInput `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs pulumi.StringArrayInput `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths pulumi.StringArrayInput `pulumi:"startsWiths"`
+}
+
+func (GetExperimentSegmentRuleNotMatchRegionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleNotMatchRegion)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleNotMatchRegionArgs) ToGetExperimentSegmentRuleNotMatchRegionOutput() GetExperimentSegmentRuleNotMatchRegionOutput {
+	return i.ToGetExperimentSegmentRuleNotMatchRegionOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleNotMatchRegionArgs) ToGetExperimentSegmentRuleNotMatchRegionOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchRegionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleNotMatchRegionOutput)
+}
+
+// GetExperimentSegmentRuleNotMatchRegionArrayInput is an input type that accepts GetExperimentSegmentRuleNotMatchRegionArray and GetExperimentSegmentRuleNotMatchRegionArrayOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleNotMatchRegionArrayInput` via:
+//
+//	GetExperimentSegmentRuleNotMatchRegionArray{ GetExperimentSegmentRuleNotMatchRegionArgs{...} }
+type GetExperimentSegmentRuleNotMatchRegionArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleNotMatchRegionArrayOutput() GetExperimentSegmentRuleNotMatchRegionArrayOutput
+	ToGetExperimentSegmentRuleNotMatchRegionArrayOutputWithContext(context.Context) GetExperimentSegmentRuleNotMatchRegionArrayOutput
+}
+
+type GetExperimentSegmentRuleNotMatchRegionArray []GetExperimentSegmentRuleNotMatchRegionInput
+
+func (GetExperimentSegmentRuleNotMatchRegionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleNotMatchRegion)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleNotMatchRegionArray) ToGetExperimentSegmentRuleNotMatchRegionArrayOutput() GetExperimentSegmentRuleNotMatchRegionArrayOutput {
+	return i.ToGetExperimentSegmentRuleNotMatchRegionArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleNotMatchRegionArray) ToGetExperimentSegmentRuleNotMatchRegionArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchRegionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleNotMatchRegionArrayOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchRegionOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleNotMatchRegionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleNotMatchRegion)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleNotMatchRegionOutput) ToGetExperimentSegmentRuleNotMatchRegionOutput() GetExperimentSegmentRuleNotMatchRegionOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchRegionOutput) ToGetExperimentSegmentRuleNotMatchRegionOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchRegionOutput {
+	return o
+}
+
+// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchRegionOutput) Contains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchRegion) []string { return v.Contains }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchRegionOutput) EndsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchRegion) []string { return v.EndsWiths }).(pulumi.StringArrayOutput)
+}
+
+// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+func (o GetExperimentSegmentRuleNotMatchRegionOutput) Exists() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchRegion) string { return v.Exists }).(pulumi.StringOutput)
+}
+
+// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchRegionOutput) OneOfs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchRegion) []string { return v.OneOfs }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchRegionOutput) StartsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchRegion) []string { return v.StartsWiths }).(pulumi.StringArrayOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchRegionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleNotMatchRegionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleNotMatchRegion)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleNotMatchRegionArrayOutput) ToGetExperimentSegmentRuleNotMatchRegionArrayOutput() GetExperimentSegmentRuleNotMatchRegionArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchRegionArrayOutput) ToGetExperimentSegmentRuleNotMatchRegionArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchRegionArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchRegionArrayOutput) Index(i pulumi.IntInput) GetExperimentSegmentRuleNotMatchRegionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentSegmentRuleNotMatchRegion {
+		return vs[0].([]GetExperimentSegmentRuleNotMatchRegion)[vs[1].(int)]
+	}).(GetExperimentSegmentRuleNotMatchRegionOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchUserAgent struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains []string `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths []string `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists string `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs []string `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths []string `pulumi:"startsWiths"`
+}
+
+// GetExperimentSegmentRuleNotMatchUserAgentInput is an input type that accepts GetExperimentSegmentRuleNotMatchUserAgentArgs and GetExperimentSegmentRuleNotMatchUserAgentOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleNotMatchUserAgentInput` via:
+//
+//	GetExperimentSegmentRuleNotMatchUserAgentArgs{...}
+type GetExperimentSegmentRuleNotMatchUserAgentInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleNotMatchUserAgentOutput() GetExperimentSegmentRuleNotMatchUserAgentOutput
+	ToGetExperimentSegmentRuleNotMatchUserAgentOutputWithContext(context.Context) GetExperimentSegmentRuleNotMatchUserAgentOutput
+}
+
+type GetExperimentSegmentRuleNotMatchUserAgentArgs struct {
+	// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	Contains pulumi.StringArrayInput `pulumi:"contains"`
+	// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	EndsWiths pulumi.StringArrayInput `pulumi:"endsWiths"`
+	// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+	Exists pulumi.StringInput `pulumi:"exists"`
+	// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	OneOfs pulumi.StringArrayInput `pulumi:"oneOfs"`
+	// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+	StartsWiths pulumi.StringArrayInput `pulumi:"startsWiths"`
+}
+
+func (GetExperimentSegmentRuleNotMatchUserAgentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleNotMatchUserAgent)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleNotMatchUserAgentArgs) ToGetExperimentSegmentRuleNotMatchUserAgentOutput() GetExperimentSegmentRuleNotMatchUserAgentOutput {
+	return i.ToGetExperimentSegmentRuleNotMatchUserAgentOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleNotMatchUserAgentArgs) ToGetExperimentSegmentRuleNotMatchUserAgentOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchUserAgentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleNotMatchUserAgentOutput)
+}
+
+// GetExperimentSegmentRuleNotMatchUserAgentArrayInput is an input type that accepts GetExperimentSegmentRuleNotMatchUserAgentArray and GetExperimentSegmentRuleNotMatchUserAgentArrayOutput values.
+// You can construct a concrete instance of `GetExperimentSegmentRuleNotMatchUserAgentArrayInput` via:
+//
+//	GetExperimentSegmentRuleNotMatchUserAgentArray{ GetExperimentSegmentRuleNotMatchUserAgentArgs{...} }
+type GetExperimentSegmentRuleNotMatchUserAgentArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentSegmentRuleNotMatchUserAgentArrayOutput() GetExperimentSegmentRuleNotMatchUserAgentArrayOutput
+	ToGetExperimentSegmentRuleNotMatchUserAgentArrayOutputWithContext(context.Context) GetExperimentSegmentRuleNotMatchUserAgentArrayOutput
+}
+
+type GetExperimentSegmentRuleNotMatchUserAgentArray []GetExperimentSegmentRuleNotMatchUserAgentInput
+
+func (GetExperimentSegmentRuleNotMatchUserAgentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleNotMatchUserAgent)(nil)).Elem()
+}
+
+func (i GetExperimentSegmentRuleNotMatchUserAgentArray) ToGetExperimentSegmentRuleNotMatchUserAgentArrayOutput() GetExperimentSegmentRuleNotMatchUserAgentArrayOutput {
+	return i.ToGetExperimentSegmentRuleNotMatchUserAgentArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentSegmentRuleNotMatchUserAgentArray) ToGetExperimentSegmentRuleNotMatchUserAgentArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchUserAgentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentSegmentRuleNotMatchUserAgentArrayOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchUserAgentOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleNotMatchUserAgentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentSegmentRuleNotMatchUserAgent)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleNotMatchUserAgentOutput) ToGetExperimentSegmentRuleNotMatchUserAgentOutput() GetExperimentSegmentRuleNotMatchUserAgentOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchUserAgentOutput) ToGetExperimentSegmentRuleNotMatchUserAgentOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchUserAgentOutput {
+	return o
+}
+
+// Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchUserAgentOutput) Contains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchUserAgent) []string { return v.Contains }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchUserAgentOutput) EndsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchUserAgent) []string { return v.EndsWiths }).(pulumi.StringArrayOutput)
+}
+
+// Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+func (o GetExperimentSegmentRuleNotMatchUserAgentOutput) Exists() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchUserAgent) string { return v.Exists }).(pulumi.StringOutput)
+}
+
+// Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchUserAgentOutput) OneOfs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchUserAgent) []string { return v.OneOfs }).(pulumi.StringArrayOutput)
+}
+
+// Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+func (o GetExperimentSegmentRuleNotMatchUserAgentOutput) StartsWiths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentSegmentRuleNotMatchUserAgent) []string { return v.StartsWiths }).(pulumi.StringArrayOutput)
+}
+
+type GetExperimentSegmentRuleNotMatchUserAgentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentSegmentRuleNotMatchUserAgentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentSegmentRuleNotMatchUserAgent)(nil)).Elem()
+}
+
+func (o GetExperimentSegmentRuleNotMatchUserAgentArrayOutput) ToGetExperimentSegmentRuleNotMatchUserAgentArrayOutput() GetExperimentSegmentRuleNotMatchUserAgentArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchUserAgentArrayOutput) ToGetExperimentSegmentRuleNotMatchUserAgentArrayOutputWithContext(ctx context.Context) GetExperimentSegmentRuleNotMatchUserAgentArrayOutput {
+	return o
+}
+
+func (o GetExperimentSegmentRuleNotMatchUserAgentArrayOutput) Index(i pulumi.IntInput) GetExperimentSegmentRuleNotMatchUserAgentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentSegmentRuleNotMatchUserAgent {
+		return vs[0].([]GetExperimentSegmentRuleNotMatchUserAgent)[vs[1].(int)]
+	}).(GetExperimentSegmentRuleNotMatchUserAgentOutput)
 }
 
 type GetFormLanguage struct {
@@ -11093,6 +19993,92 @@ func (o GetUserPermissionTypeArrayOutput) Index(i pulumi.IntInput) GetUserPermis
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeUsernameValidationInput)(nil)).Elem(), GetConnectionOptionAttributeUsernameValidationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeUsernameValidationArrayInput)(nil)).Elem(), GetConnectionOptionAttributeUsernameValidationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeUsernameValidationAllowedTypeInput)(nil)).Elem(), GetConnectionOptionAttributeUsernameValidationAllowedTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayInput)(nil)).Elem(), GetConnectionOptionAttributeUsernameValidationAllowedTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAuthenticationMethodInput)(nil)).Elem(), GetConnectionOptionAuthenticationMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAuthenticationMethodArrayInput)(nil)).Elem(), GetConnectionOptionAuthenticationMethodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAuthenticationMethodEmailOtpInput)(nil)).Elem(), GetConnectionOptionAuthenticationMethodEmailOtpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAuthenticationMethodEmailOtpArrayInput)(nil)).Elem(), GetConnectionOptionAuthenticationMethodEmailOtpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAuthenticationMethodPasskeyInput)(nil)).Elem(), GetConnectionOptionAuthenticationMethodPasskeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAuthenticationMethodPasskeyArrayInput)(nil)).Elem(), GetConnectionOptionAuthenticationMethodPasskeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAuthenticationMethodPasswordInput)(nil)).Elem(), GetConnectionOptionAuthenticationMethodPasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAuthenticationMethodPasswordArrayInput)(nil)).Elem(), GetConnectionOptionAuthenticationMethodPasswordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAuthenticationMethodPhoneOtpInput)(nil)).Elem(), GetConnectionOptionAuthenticationMethodPhoneOtpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAuthenticationMethodPhoneOtpArrayInput)(nil)).Elem(), GetConnectionOptionAuthenticationMethodPhoneOtpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionConnectionSettingInput)(nil)).Elem(), GetConnectionOptionConnectionSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionConnectionSettingArrayInput)(nil)).Elem(), GetConnectionOptionConnectionSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionCustomHeaderInput)(nil)).Elem(), GetConnectionOptionCustomHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionCustomHeaderArrayInput)(nil)).Elem(), GetConnectionOptionCustomHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionCustomPasswordHashInput)(nil)).Elem(), GetConnectionOptionCustomPasswordHashArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionCustomPasswordHashArrayInput)(nil)).Elem(), GetConnectionOptionCustomPasswordHashArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionDecryptionKeyInput)(nil)).Elem(), GetConnectionOptionDecryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionDecryptionKeyArrayInput)(nil)).Elem(), GetConnectionOptionDecryptionKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionFederatedConnectionsAccessTokenInput)(nil)).Elem(), GetConnectionOptionFederatedConnectionsAccessTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionFederatedConnectionsAccessTokenArrayInput)(nil)).Elem(), GetConnectionOptionFederatedConnectionsAccessTokenArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionGatewayAuthenticationInput)(nil)).Elem(), GetConnectionOptionGatewayAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionGatewayAuthenticationArrayInput)(nil)).Elem(), GetConnectionOptionGatewayAuthenticationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionIdpInitiatedInput)(nil)).Elem(), GetConnectionOptionIdpInitiatedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionIdpInitiatedArrayInput)(nil)).Elem(), GetConnectionOptionIdpInitiatedArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionMfaInput)(nil)).Elem(), GetConnectionOptionMfaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionMfaArrayInput)(nil)).Elem(), GetConnectionOptionMfaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasskeyOptionInput)(nil)).Elem(), GetConnectionOptionPasskeyOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasskeyOptionArrayInput)(nil)).Elem(), GetConnectionOptionPasskeyOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasswordComplexityOptionInput)(nil)).Elem(), GetConnectionOptionPasswordComplexityOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasswordComplexityOptionArrayInput)(nil)).Elem(), GetConnectionOptionPasswordComplexityOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasswordDictionaryInput)(nil)).Elem(), GetConnectionOptionPasswordDictionaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasswordDictionaryArrayInput)(nil)).Elem(), GetConnectionOptionPasswordDictionaryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasswordHistoryInput)(nil)).Elem(), GetConnectionOptionPasswordHistoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasswordHistoryArrayInput)(nil)).Elem(), GetConnectionOptionPasswordHistoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasswordNoPersonalInfoInput)(nil)).Elem(), GetConnectionOptionPasswordNoPersonalInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasswordNoPersonalInfoArrayInput)(nil)).Elem(), GetConnectionOptionPasswordNoPersonalInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasswordOptionInput)(nil)).Elem(), GetConnectionOptionPasswordOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasswordOptionArrayInput)(nil)).Elem(), GetConnectionOptionPasswordOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasswordOptionComplexityInput)(nil)).Elem(), GetConnectionOptionPasswordOptionComplexityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasswordOptionComplexityArrayInput)(nil)).Elem(), GetConnectionOptionPasswordOptionComplexityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasswordOptionDictionaryInput)(nil)).Elem(), GetConnectionOptionPasswordOptionDictionaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasswordOptionDictionaryArrayInput)(nil)).Elem(), GetConnectionOptionPasswordOptionDictionaryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasswordOptionHistoryInput)(nil)).Elem(), GetConnectionOptionPasswordOptionHistoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasswordOptionHistoryArrayInput)(nil)).Elem(), GetConnectionOptionPasswordOptionHistoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasswordOptionProfileDataInput)(nil)).Elem(), GetConnectionOptionPasswordOptionProfileDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionPasswordOptionProfileDataArrayInput)(nil)).Elem(), GetConnectionOptionPasswordOptionProfileDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionSigningKeyInput)(nil)).Elem(), GetConnectionOptionSigningKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionSigningKeyArrayInput)(nil)).Elem(), GetConnectionOptionSigningKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionTotpInput)(nil)).Elem(), GetConnectionOptionTotpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionTotpArrayInput)(nil)).Elem(), GetConnectionOptionTotpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionValidationInput)(nil)).Elem(), GetConnectionOptionValidationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionValidationArrayInput)(nil)).Elem(), GetConnectionOptionValidationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionValidationUsernameInput)(nil)).Elem(), GetConnectionOptionValidationUsernameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionValidationUsernameArrayInput)(nil)).Elem(), GetConnectionOptionValidationUsernameArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileConnectionConfigInput)(nil)).Elem(), GetConnectionProfileConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileConnectionConfigArrayInput)(nil)).Elem(), GetConnectionProfileConnectionConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileCrossAppAccessResourceAppInput)(nil)).Elem(), GetConnectionProfileCrossAppAccessResourceAppArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileCrossAppAccessResourceAppArrayInput)(nil)).Elem(), GetConnectionProfileCrossAppAccessResourceAppArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileCrossAppAccessResourceAppStatusInput)(nil)).Elem(), GetConnectionProfileCrossAppAccessResourceAppStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileCrossAppAccessResourceAppStatusArrayInput)(nil)).Elem(), GetConnectionProfileCrossAppAccessResourceAppStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileOrganizationInput)(nil)).Elem(), GetConnectionProfileOrganizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileOrganizationArrayInput)(nil)).Elem(), GetConnectionProfileOrganizationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideArrayInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideAdInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideAdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideAdConnectionConfigInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideAdConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideAdfsInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideAdfsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideAdfsConnectionConfigInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideAdfsConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideGoogleAppsInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideGoogleAppsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideOidcInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideOidcConnectionConfigInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideOidcConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideOktaInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideOktaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideOktaConnectionConfigInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideOktaConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverridePingfederateInput)(nil)).Elem(), GetConnectionProfileStrategyOverridePingfederateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverridePingfederateConnectionConfigInput)(nil)).Elem(), GetConnectionProfileStrategyOverridePingfederateConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideSamlpInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideSamlpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideSamlpConnectionConfigInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideSamlpConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideWaadInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideWaadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionProfileStrategyOverrideWaadConnectionConfigInput)(nil)).Elem(), GetConnectionProfileStrategyOverrideWaadConnectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionScimConfigurationDefaultMappingInput)(nil)).Elem(), GetConnectionScimConfigurationDefaultMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionScimConfigurationDefaultMappingArrayInput)(nil)).Elem(), GetConnectionScimConfigurationDefaultMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionScimConfigurationMappingInput)(nil)).Elem(), GetConnectionScimConfigurationMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionScimConfigurationMappingArrayInput)(nil)).Elem(), GetConnectionScimConfigurationMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainCertificateInput)(nil)).Elem(), GetCustomDomainCertificateArgs{})
@@ -11113,6 +20099,68 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEventStreamWebhookConfigurationArrayInput)(nil)).Elem(), GetEventStreamWebhookConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEventStreamWebhookConfigurationWebhookAuthorizationInput)(nil)).Elem(), GetEventStreamWebhookConfigurationWebhookAuthorizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEventStreamWebhookConfigurationWebhookAuthorizationArrayInput)(nil)).Elem(), GetEventStreamWebhookConfigurationWebhookAuthorizationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentAllocationInput)(nil)).Elem(), GetExperimentAllocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentAllocationArrayInput)(nil)).Elem(), GetExperimentAllocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentFeatureFlagParameterInput)(nil)).Elem(), GetExperimentFeatureFlagParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentFeatureFlagParameterArrayInput)(nil)).Elem(), GetExperimentFeatureFlagParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentFeatureFlagVariationInput)(nil)).Elem(), GetExperimentFeatureFlagVariationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentFeatureFlagVariationArrayInput)(nil)).Elem(), GetExperimentFeatureFlagVariationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentFeatureFlagVariationOverrideInput)(nil)).Elem(), GetExperimentFeatureFlagVariationOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentFeatureFlagVariationOverrideArrayInput)(nil)).Elem(), GetExperimentFeatureFlagVariationOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleInput)(nil)).Elem(), GetExperimentSegmentRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleArrayInput)(nil)).Elem(), GetExperimentSegmentRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleMatchInput)(nil)).Elem(), GetExperimentSegmentRuleMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleMatchArrayInput)(nil)).Elem(), GetExperimentSegmentRuleMatchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleMatchAnonymousSessionMetadataInput)(nil)).Elem(), GetExperimentSegmentRuleMatchAnonymousSessionMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleMatchAnonymousSessionMetadataArrayInput)(nil)).Elem(), GetExperimentSegmentRuleMatchAnonymousSessionMetadataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleMatchBrowserInput)(nil)).Elem(), GetExperimentSegmentRuleMatchBrowserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleMatchBrowserArrayInput)(nil)).Elem(), GetExperimentSegmentRuleMatchBrowserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleMatchClientIdInput)(nil)).Elem(), GetExperimentSegmentRuleMatchClientIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleMatchClientIdArrayInput)(nil)).Elem(), GetExperimentSegmentRuleMatchClientIdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleMatchConnectionInput)(nil)).Elem(), GetExperimentSegmentRuleMatchConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleMatchConnectionArrayInput)(nil)).Elem(), GetExperimentSegmentRuleMatchConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleMatchConnectionTypeInput)(nil)).Elem(), GetExperimentSegmentRuleMatchConnectionTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleMatchConnectionTypeArrayInput)(nil)).Elem(), GetExperimentSegmentRuleMatchConnectionTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleMatchCountryInput)(nil)).Elem(), GetExperimentSegmentRuleMatchCountryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleMatchCountryArrayInput)(nil)).Elem(), GetExperimentSegmentRuleMatchCountryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleMatchDeviceTypeInput)(nil)).Elem(), GetExperimentSegmentRuleMatchDeviceTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleMatchDeviceTypeArrayInput)(nil)).Elem(), GetExperimentSegmentRuleMatchDeviceTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleMatchDomainInput)(nil)).Elem(), GetExperimentSegmentRuleMatchDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleMatchDomainArrayInput)(nil)).Elem(), GetExperimentSegmentRuleMatchDomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleMatchOrganizationIdInput)(nil)).Elem(), GetExperimentSegmentRuleMatchOrganizationIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleMatchOrganizationIdArrayInput)(nil)).Elem(), GetExperimentSegmentRuleMatchOrganizationIdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleMatchPlatformInput)(nil)).Elem(), GetExperimentSegmentRuleMatchPlatformArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleMatchPlatformArrayInput)(nil)).Elem(), GetExperimentSegmentRuleMatchPlatformArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleMatchRegionInput)(nil)).Elem(), GetExperimentSegmentRuleMatchRegionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleMatchRegionArrayInput)(nil)).Elem(), GetExperimentSegmentRuleMatchRegionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleMatchUserAgentInput)(nil)).Elem(), GetExperimentSegmentRuleMatchUserAgentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleMatchUserAgentArrayInput)(nil)).Elem(), GetExperimentSegmentRuleMatchUserAgentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleNotMatchInput)(nil)).Elem(), GetExperimentSegmentRuleNotMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleNotMatchArrayInput)(nil)).Elem(), GetExperimentSegmentRuleNotMatchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataInput)(nil)).Elem(), GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArrayInput)(nil)).Elem(), GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleNotMatchBrowserInput)(nil)).Elem(), GetExperimentSegmentRuleNotMatchBrowserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleNotMatchBrowserArrayInput)(nil)).Elem(), GetExperimentSegmentRuleNotMatchBrowserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleNotMatchClientIdInput)(nil)).Elem(), GetExperimentSegmentRuleNotMatchClientIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleNotMatchClientIdArrayInput)(nil)).Elem(), GetExperimentSegmentRuleNotMatchClientIdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleNotMatchConnectionInput)(nil)).Elem(), GetExperimentSegmentRuleNotMatchConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleNotMatchConnectionArrayInput)(nil)).Elem(), GetExperimentSegmentRuleNotMatchConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleNotMatchConnectionTypeInput)(nil)).Elem(), GetExperimentSegmentRuleNotMatchConnectionTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleNotMatchConnectionTypeArrayInput)(nil)).Elem(), GetExperimentSegmentRuleNotMatchConnectionTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleNotMatchCountryInput)(nil)).Elem(), GetExperimentSegmentRuleNotMatchCountryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleNotMatchCountryArrayInput)(nil)).Elem(), GetExperimentSegmentRuleNotMatchCountryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleNotMatchDeviceTypeInput)(nil)).Elem(), GetExperimentSegmentRuleNotMatchDeviceTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleNotMatchDeviceTypeArrayInput)(nil)).Elem(), GetExperimentSegmentRuleNotMatchDeviceTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleNotMatchDomainInput)(nil)).Elem(), GetExperimentSegmentRuleNotMatchDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleNotMatchDomainArrayInput)(nil)).Elem(), GetExperimentSegmentRuleNotMatchDomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleNotMatchOrganizationIdInput)(nil)).Elem(), GetExperimentSegmentRuleNotMatchOrganizationIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleNotMatchOrganizationIdArrayInput)(nil)).Elem(), GetExperimentSegmentRuleNotMatchOrganizationIdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleNotMatchPlatformInput)(nil)).Elem(), GetExperimentSegmentRuleNotMatchPlatformArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleNotMatchPlatformArrayInput)(nil)).Elem(), GetExperimentSegmentRuleNotMatchPlatformArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleNotMatchRegionInput)(nil)).Elem(), GetExperimentSegmentRuleNotMatchRegionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleNotMatchRegionArrayInput)(nil)).Elem(), GetExperimentSegmentRuleNotMatchRegionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleNotMatchUserAgentInput)(nil)).Elem(), GetExperimentSegmentRuleNotMatchUserAgentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentSegmentRuleNotMatchUserAgentArrayInput)(nil)).Elem(), GetExperimentSegmentRuleNotMatchUserAgentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFormLanguageInput)(nil)).Elem(), GetFormLanguageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFormLanguageArrayInput)(nil)).Elem(), GetFormLanguageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFormMessageInput)(nil)).Elem(), GetFormMessageArgs{})
@@ -11275,6 +20323,92 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserOrganizationsOrganizationTokenQuotaClientCredentialArrayInput)(nil)).Elem(), GetUserOrganizationsOrganizationTokenQuotaClientCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPermissionTypeInput)(nil)).Elem(), GetUserPermissionTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPermissionTypeArrayInput)(nil)).Elem(), GetUserPermissionTypeArray{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeUsernameValidationOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeUsernameValidationArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeUsernameValidationAllowedTypeOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeUsernameValidationAllowedTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAuthenticationMethodOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAuthenticationMethodArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAuthenticationMethodEmailOtpOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAuthenticationMethodPasskeyOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAuthenticationMethodPasskeyArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAuthenticationMethodPasswordOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAuthenticationMethodPasswordArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAuthenticationMethodPhoneOtpOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAuthenticationMethodPhoneOtpArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionConnectionSettingOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionConnectionSettingArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionCustomHeaderOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionCustomHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionCustomPasswordHashOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionCustomPasswordHashArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionDecryptionKeyOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionDecryptionKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionFederatedConnectionsAccessTokenOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionGatewayAuthenticationOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionGatewayAuthenticationArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionIdpInitiatedOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionIdpInitiatedArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionMfaOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionMfaArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionPasskeyOptionOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionPasskeyOptionArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionPasswordComplexityOptionOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionPasswordComplexityOptionArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionPasswordDictionaryOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionPasswordDictionaryArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionPasswordHistoryOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionPasswordHistoryArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionPasswordNoPersonalInfoOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionPasswordNoPersonalInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionPasswordOptionOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionPasswordOptionArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionPasswordOptionComplexityOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionPasswordOptionComplexityArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionPasswordOptionDictionaryOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionPasswordOptionDictionaryArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionPasswordOptionHistoryOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionPasswordOptionHistoryArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionPasswordOptionProfileDataOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionPasswordOptionProfileDataArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionSigningKeyOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionSigningKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionTotpOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionTotpArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionValidationOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionValidationArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionValidationUsernameOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionValidationUsernameArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileConnectionConfigOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileConnectionConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileCrossAppAccessResourceAppOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileCrossAppAccessResourceAppArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileCrossAppAccessResourceAppStatusOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileCrossAppAccessResourceAppStatusArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileOrganizationOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileOrganizationArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideAdOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideAdConnectionConfigOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideAdfsOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideAdfsConnectionConfigOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideGoogleAppsOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideGoogleAppsConnectionConfigOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideOidcOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideOidcConnectionConfigOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideOktaOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideOktaConnectionConfigOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverridePingfederateOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverridePingfederateConnectionConfigOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideSamlpOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideSamlpConnectionConfigOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideWaadOutput{})
+	pulumi.RegisterOutputType(GetConnectionProfileStrategyOverrideWaadConnectionConfigOutput{})
+	pulumi.RegisterOutputType(GetConnectionScimConfigurationDefaultMappingOutput{})
+	pulumi.RegisterOutputType(GetConnectionScimConfigurationDefaultMappingArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionScimConfigurationMappingOutput{})
 	pulumi.RegisterOutputType(GetConnectionScimConfigurationMappingArrayOutput{})
 	pulumi.RegisterOutputType(GetCustomDomainCertificateOutput{})
@@ -11295,6 +20429,68 @@ func init() {
 	pulumi.RegisterOutputType(GetEventStreamWebhookConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetEventStreamWebhookConfigurationWebhookAuthorizationOutput{})
 	pulumi.RegisterOutputType(GetEventStreamWebhookConfigurationWebhookAuthorizationArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentAllocationOutput{})
+	pulumi.RegisterOutputType(GetExperimentAllocationArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentFeatureFlagParameterOutput{})
+	pulumi.RegisterOutputType(GetExperimentFeatureFlagParameterArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentFeatureFlagVariationOutput{})
+	pulumi.RegisterOutputType(GetExperimentFeatureFlagVariationArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentFeatureFlagVariationOverrideOutput{})
+	pulumi.RegisterOutputType(GetExperimentFeatureFlagVariationOverrideArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleMatchOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleMatchArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleMatchAnonymousSessionMetadataOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleMatchAnonymousSessionMetadataArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleMatchBrowserOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleMatchBrowserArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleMatchClientIdOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleMatchClientIdArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleMatchConnectionOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleMatchConnectionArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleMatchConnectionTypeOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleMatchConnectionTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleMatchCountryOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleMatchCountryArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleMatchDeviceTypeOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleMatchDeviceTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleMatchDomainOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleMatchDomainArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleMatchOrganizationIdOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleMatchOrganizationIdArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleMatchPlatformOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleMatchPlatformArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleMatchRegionOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleMatchRegionArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleMatchUserAgentOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleMatchUserAgentArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleNotMatchOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleNotMatchArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleNotMatchBrowserOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleNotMatchBrowserArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleNotMatchClientIdOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleNotMatchClientIdArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleNotMatchConnectionOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleNotMatchConnectionArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleNotMatchConnectionTypeOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleNotMatchConnectionTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleNotMatchCountryOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleNotMatchCountryArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleNotMatchDeviceTypeOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleNotMatchDeviceTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleNotMatchDomainOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleNotMatchDomainArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleNotMatchOrganizationIdOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleNotMatchOrganizationIdArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleNotMatchPlatformOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleNotMatchPlatformArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleNotMatchRegionOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleNotMatchRegionArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleNotMatchUserAgentOutput{})
+	pulumi.RegisterOutputType(GetExperimentSegmentRuleNotMatchUserAgentArrayOutput{})
 	pulumi.RegisterOutputType(GetFormLanguageOutput{})
 	pulumi.RegisterOutputType(GetFormLanguageArrayOutput{})
 	pulumi.RegisterOutputType(GetFormMessageOutput{})

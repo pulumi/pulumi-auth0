@@ -71,7 +71,7 @@ public final class GetUserResult {
      */
     private String nickname;
     /**
-     * @return Initial password for this user. Required for non-passwordless connections (SMS and email).
+     * @return Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `passwordWo`.
      * 
      */
     private String password;
@@ -215,7 +215,7 @@ public final class GetUserResult {
         return this.nickname;
     }
     /**
-     * @return Initial password for this user. Required for non-passwordless connections (SMS and email).
+     * @return Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `passwordWo`.
      * 
      */
     public String password() {

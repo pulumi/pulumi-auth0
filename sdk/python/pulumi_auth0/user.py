@@ -30,6 +30,8 @@ class UserArgs:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  nickname: pulumi.Input[Optional[_builtins.str]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  phone_number: pulumi.Input[Optional[_builtins.str]] = None,
                  phone_verified: pulumi.Input[Optional[_builtins.bool]] = None,
                  picture: pulumi.Input[Optional[_builtins.str]] = None,
@@ -50,7 +52,10 @@ class UserArgs:
         :param pulumi.Input[_builtins.str] given_name: Given name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         :param pulumi.Input[_builtins.str] name: Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         :param pulumi.Input[_builtins.str] nickname: Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
-        :param pulumi.Input[_builtins.str] password: Initial password for this user. Required for non-passwordless connections (SMS and email).
+        :param pulumi.Input[_builtins.str] password: Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `password_wo`.
+        :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Password for this user (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. It is sent when the user is created and whenever `password_wo_version` changes. Conflicts with `password`.
+        :param pulumi.Input[_builtins.int] password_wo_version: Version counter for `password_wo`, required whenever the write-only password is set. Change it to send a new password.
         :param pulumi.Input[_builtins.str] phone_number: Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
         :param pulumi.Input[_builtins.bool] phone_verified: Indicates whether the phone number has been verified.
         :param pulumi.Input[_builtins.str] picture: Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
@@ -80,6 +85,10 @@ class UserArgs:
             pulumi.set(__self__, "nickname", nickname)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if password_wo is not None:
+            pulumi.set(__self__, "password_wo", password_wo)
+        if password_wo_version is not None:
+            pulumi.set(__self__, "password_wo_version", password_wo_version)
         if phone_number is not None:
             pulumi.set(__self__, "phone_number", phone_number)
         if phone_verified is not None:
@@ -219,13 +228,38 @@ class UserArgs:
     @pulumi.getter
     def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Initial password for this user. Required for non-passwordless connections (SMS and email).
+        Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `password_wo`.
         """
         return pulumi.get(self, "password")
 
     @password.setter
     def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Password for this user (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. It is sent when the user is created and whenever `password_wo_version` changes. Conflicts with `password`.
+        """
+        return pulumi.get(self, "password_wo")
+
+    @password_wo.setter
+    def password_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "password_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Version counter for `password_wo`, required whenever the write-only password is set. Change it to send a new password.
+        """
+        return pulumi.get(self, "password_wo_version")
+
+    @password_wo_version.setter
+    def password_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "password_wo_version", value)
 
     @_builtins.property
     @pulumi.getter(name="phoneNumber")
@@ -326,6 +360,8 @@ class _UserState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  nickname: pulumi.Input[Optional[_builtins.str]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  phone_number: pulumi.Input[Optional[_builtins.str]] = None,
                  phone_verified: pulumi.Input[Optional[_builtins.bool]] = None,
                  picture: pulumi.Input[Optional[_builtins.str]] = None,
@@ -346,7 +382,10 @@ class _UserState:
         :param pulumi.Input[_builtins.str] given_name: Given name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         :param pulumi.Input[_builtins.str] name: Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         :param pulumi.Input[_builtins.str] nickname: Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
-        :param pulumi.Input[_builtins.str] password: Initial password for this user. Required for non-passwordless connections (SMS and email).
+        :param pulumi.Input[_builtins.str] password: Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `password_wo`.
+        :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Password for this user (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. It is sent when the user is created and whenever `password_wo_version` changes. Conflicts with `password`.
+        :param pulumi.Input[_builtins.int] password_wo_version: Version counter for `password_wo`, required whenever the write-only password is set. Change it to send a new password.
         :param pulumi.Input[_builtins.str] phone_number: Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
         :param pulumi.Input[_builtins.bool] phone_verified: Indicates whether the phone number has been verified.
         :param pulumi.Input[_builtins.str] picture: Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
@@ -377,6 +416,10 @@ class _UserState:
             pulumi.set(__self__, "nickname", nickname)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if password_wo is not None:
+            pulumi.set(__self__, "password_wo", password_wo)
+        if password_wo_version is not None:
+            pulumi.set(__self__, "password_wo_version", password_wo_version)
         if phone_number is not None:
             pulumi.set(__self__, "phone_number", phone_number)
         if phone_verified is not None:
@@ -516,13 +559,38 @@ class _UserState:
     @pulumi.getter
     def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Initial password for this user. Required for non-passwordless connections (SMS and email).
+        Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `password_wo`.
         """
         return pulumi.get(self, "password")
 
     @password.setter
     def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Password for this user (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. It is sent when the user is created and whenever `password_wo_version` changes. Conflicts with `password`.
+        """
+        return pulumi.get(self, "password_wo")
+
+    @password_wo.setter
+    def password_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "password_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Version counter for `password_wo`, required whenever the write-only password is set. Change it to send a new password.
+        """
+        return pulumi.get(self, "password_wo_version")
+
+    @password_wo_version.setter
+    def password_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "password_wo_version", value)
 
     @_builtins.property
     @pulumi.getter(name="phoneNumber")
@@ -626,6 +694,8 @@ class User(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  nickname: pulumi.Input[Optional[_builtins.str]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  phone_number: pulumi.Input[Optional[_builtins.str]] = None,
                  phone_verified: pulumi.Input[Optional[_builtins.bool]] = None,
                  picture: pulumi.Input[Optional[_builtins.str]] = None,
@@ -661,6 +731,17 @@ class User(pulumi.CustomResource):
             email_verified=True,
             password="MyPass123$",
             custom_domain_header="my-custom.domain.org")
+        # The password can be set as a write-only argument so it is never persisted to Pulumi state.
+        # It can be sourced from an ephemeral value (e.g. a secrets manager) and is mutually exclusive
+        # with `password`. Bump `password_wo_version` to send a new password.
+        #
+        # NOTE: Write-only arguments require Pulumi 1.11 or later.
+        user_write_only_password = auth0.User("user_write_only_password",
+            connection_name="Username-Password-Authentication",
+            username="write_only_user",
+            email="write.only@test.com",
+            password_wo=user_password,
+            password_wo_version=1)
         ```
 
         ## Import
@@ -686,7 +767,10 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] given_name: Given name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         :param pulumi.Input[_builtins.str] name: Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         :param pulumi.Input[_builtins.str] nickname: Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
-        :param pulumi.Input[_builtins.str] password: Initial password for this user. Required for non-passwordless connections (SMS and email).
+        :param pulumi.Input[_builtins.str] password: Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `password_wo`.
+        :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Password for this user (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. It is sent when the user is created and whenever `password_wo_version` changes. Conflicts with `password`.
+        :param pulumi.Input[_builtins.int] password_wo_version: Version counter for `password_wo`, required whenever the write-only password is set. Change it to send a new password.
         :param pulumi.Input[_builtins.str] phone_number: Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
         :param pulumi.Input[_builtins.bool] phone_verified: Indicates whether the phone number has been verified.
         :param pulumi.Input[_builtins.str] picture: Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
@@ -728,6 +812,17 @@ class User(pulumi.CustomResource):
             email_verified=True,
             password="MyPass123$",
             custom_domain_header="my-custom.domain.org")
+        # The password can be set as a write-only argument so it is never persisted to Pulumi state.
+        # It can be sourced from an ephemeral value (e.g. a secrets manager) and is mutually exclusive
+        # with `password`. Bump `password_wo_version` to send a new password.
+        #
+        # NOTE: Write-only arguments require Pulumi 1.11 or later.
+        user_write_only_password = auth0.User("user_write_only_password",
+            connection_name="Username-Password-Authentication",
+            username="write_only_user",
+            email="write.only@test.com",
+            password_wo=user_password,
+            password_wo_version=1)
         ```
 
         ## Import
@@ -767,6 +862,8 @@ class User(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  nickname: pulumi.Input[Optional[_builtins.str]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  phone_number: pulumi.Input[Optional[_builtins.str]] = None,
                  phone_verified: pulumi.Input[Optional[_builtins.bool]] = None,
                  picture: pulumi.Input[Optional[_builtins.str]] = None,
@@ -796,6 +893,8 @@ class User(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["nickname"] = nickname
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
+            __props__.__dict__["password_wo"] = None if password_wo is None else pulumi.Output.secret(password_wo)
+            __props__.__dict__["password_wo_version"] = password_wo_version
             __props__.__dict__["phone_number"] = phone_number
             __props__.__dict__["phone_verified"] = phone_verified
             __props__.__dict__["picture"] = picture
@@ -803,7 +902,7 @@ class User(pulumi.CustomResource):
             __props__.__dict__["user_metadata"] = user_metadata
             __props__.__dict__["username"] = username
             __props__.__dict__["verify_email"] = verify_email
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password", "passwordWo"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(User, __self__).__init__(
             'auth0:index/user:User',
@@ -826,6 +925,8 @@ class User(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             nickname: pulumi.Input[Optional[_builtins.str]] = None,
             password: pulumi.Input[Optional[_builtins.str]] = None,
+            password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             phone_number: pulumi.Input[Optional[_builtins.str]] = None,
             phone_verified: pulumi.Input[Optional[_builtins.bool]] = None,
             picture: pulumi.Input[Optional[_builtins.str]] = None,
@@ -850,7 +951,10 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] given_name: Given name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         :param pulumi.Input[_builtins.str] name: Name of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
         :param pulumi.Input[_builtins.str] nickname: Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
-        :param pulumi.Input[_builtins.str] password: Initial password for this user. Required for non-passwordless connections (SMS and email).
+        :param pulumi.Input[_builtins.str] password: Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `password_wo`.
+        :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Password for this user (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. It is sent when the user is created and whenever `password_wo_version` changes. Conflicts with `password`.
+        :param pulumi.Input[_builtins.int] password_wo_version: Version counter for `password_wo`, required whenever the write-only password is set. Change it to send a new password.
         :param pulumi.Input[_builtins.str] phone_number: Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
         :param pulumi.Input[_builtins.bool] phone_verified: Indicates whether the phone number has been verified.
         :param pulumi.Input[_builtins.str] picture: Picture of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
@@ -874,6 +978,8 @@ class User(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["nickname"] = nickname
         __props__.__dict__["password"] = password
+        __props__.__dict__["password_wo"] = password_wo
+        __props__.__dict__["password_wo_version"] = password_wo_version
         __props__.__dict__["phone_number"] = phone_number
         __props__.__dict__["phone_verified"] = phone_verified
         __props__.__dict__["picture"] = picture
@@ -967,9 +1073,26 @@ class User(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Initial password for this user. Required for non-passwordless connections (SMS and email).
+        Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `password_wo`.
         """
         return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Password for this user (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. It is sent when the user is created and whenever `password_wo_version` changes. Conflicts with `password`.
+        """
+        return pulumi.get(self, "password_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Version counter for `password_wo`, required whenever the write-only password is set. Change it to send a new password.
+        """
+        return pulumi.get(self, "password_wo_version")
 
     @_builtins.property
     @pulumi.getter(name="phoneNumber")
