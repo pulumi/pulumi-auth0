@@ -41,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ClientCredentials{}
 	case "auth0:index/clientGrant:ClientGrant":
 		r = &ClientGrant{}
+	case "auth0:index/clientProfile:ClientProfile":
+		r = &ClientProfile{}
 	case "auth0:index/connection:Connection":
 		r = &Connection{}
 	case "auth0:index/connectionClient:ConnectionClient":
@@ -73,6 +75,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EncryptionKeyManager{}
 	case "auth0:index/eventStream:EventStream":
 		r = &EventStream{}
+	case "auth0:index/experiment:Experiment":
+		r = &Experiment{}
+	case "auth0:index/experimentFeatureFlag:ExperimentFeatureFlag":
+		r = &ExperimentFeatureFlag{}
+	case "auth0:index/experimentSegment:ExperimentSegment":
+		r = &ExperimentSegment{}
 	case "auth0:index/flow:Flow":
 		r = &Flow{}
 	case "auth0:index/flowVaultConnection:FlowVaultConnection":
@@ -262,6 +270,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"auth0",
+		"index/clientProfile",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
 		"index/connection",
 		&module{version},
 	)
@@ -338,6 +351,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"auth0",
 		"index/eventStream",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/experiment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/experimentFeatureFlag",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/experimentSegment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

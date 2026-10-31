@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -168,18 +169,50 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Initial password for this user. Required for non-passwordless connections (SMS and email).
+     * Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `passwordWo`.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return Initial password for this user. Required for non-passwordless connections (SMS and email).
+     * @return Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `passwordWo`.
      * 
      */
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
+    }
+
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Password for this user (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. It is sent when the user is created and whenever `passwordWoVersion` changes. Conflicts with `password`.
+     * 
+     */
+    @Import(name="passwordWo")
+    private @Nullable Output<String> passwordWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Password for this user (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. It is sent when the user is created and whenever `passwordWoVersion` changes. Conflicts with `password`.
+     * 
+     */
+    public Optional<Output<String>> passwordWo() {
+        return Optional.ofNullable(this.passwordWo);
+    }
+
+    /**
+     * Version counter for `passwordWo`, required whenever the write-only password is set. Change it to send a new password.
+     * 
+     */
+    @Import(name="passwordWoVersion")
+    private @Nullable Output<Integer> passwordWoVersion;
+
+    /**
+     * @return Version counter for `passwordWo`, required whenever the write-only password is set. Change it to send a new password.
+     * 
+     */
+    public Optional<Output<Integer>> passwordWoVersion() {
+        return Optional.ofNullable(this.passwordWoVersion);
     }
 
     /**
@@ -301,6 +334,8 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.nickname = $.nickname;
         this.password = $.password;
+        this.passwordWo = $.passwordWo;
+        this.passwordWoVersion = $.passwordWoVersion;
         this.phoneNumber = $.phoneNumber;
         this.phoneVerified = $.phoneVerified;
         this.picture = $.picture;
@@ -539,7 +574,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password Initial password for this user. Required for non-passwordless connections (SMS and email).
+         * @param password Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `passwordWo`.
          * 
          * @return builder
          * 
@@ -550,13 +585,57 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password Initial password for this user. Required for non-passwordless connections (SMS and email).
+         * @param password Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `passwordWo`.
          * 
          * @return builder
          * 
          */
         public Builder password(String password) {
             return password(Output.of(password));
+        }
+
+        /**
+         * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Password for this user (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. It is sent when the user is created and whenever `passwordWoVersion` changes. Conflicts with `password`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWo(@Nullable Output<String> passwordWo) {
+            $.passwordWo = passwordWo;
+            return this;
+        }
+
+        /**
+         * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Password for this user (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. It is sent when the user is created and whenever `passwordWoVersion` changes. Conflicts with `password`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWo(String passwordWo) {
+            return passwordWo(Output.of(passwordWo));
+        }
+
+        /**
+         * @param passwordWoVersion Version counter for `passwordWo`, required whenever the write-only password is set. Change it to send a new password.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWoVersion(@Nullable Output<Integer> passwordWoVersion) {
+            $.passwordWoVersion = passwordWoVersion;
+            return this;
+        }
+
+        /**
+         * @param passwordWoVersion Version counter for `passwordWo`, required whenever the write-only password is set. Change it to send a new password.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWoVersion(Integer passwordWoVersion) {
+            return passwordWoVersion(Output.of(passwordWoVersion));
         }
 
         /**

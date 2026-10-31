@@ -54,6 +54,21 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// The password can be set as a write-only argument so it is never persisted to Pulumi state.
+//			// It can be sourced from an ephemeral value (e.g. a secrets manager) and is mutually exclusive
+//			// with `password`. Bump `password_wo_version` to send a new password.
+//			//
+//			// NOTE: Write-only arguments require Pulumi 1.11 or later.
+//			_, err = auth0.NewUser(ctx, "user_write_only_password", &auth0.UserArgs{
+//				ConnectionName:    pulumi.String("Username-Password-Authentication"),
+//				Username:          pulumi.String("write_only_user"),
+//				Email:             pulumi.String("write.only@test.com"),
+//				PasswordWo:        pulumi.Any(userPassword),
+//				PasswordWoVersion: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -92,8 +107,13 @@ type User struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
 	Nickname pulumi.StringOutput `pulumi:"nickname"`
-	// Initial password for this user. Required for non-passwordless connections (SMS and email).
+	// Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `passwordWo`.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Password for this user (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. It is sent when the user is created and whenever `passwordWoVersion` changes. Conflicts with `password`.
+	PasswordWo pulumi.StringPtrOutput `pulumi:"passwordWo"`
+	// Version counter for `passwordWo`, required whenever the write-only password is set. Change it to send a new password.
+	PasswordWoVersion pulumi.IntPtrOutput `pulumi:"passwordWoVersion"`
 	// Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
 	PhoneNumber pulumi.StringPtrOutput `pulumi:"phoneNumber"`
 	// Indicates whether the phone number has been verified.
@@ -123,8 +143,12 @@ func NewUser(ctx *pulumi.Context,
 	if args.Password != nil {
 		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
 	}
+	if args.PasswordWo != nil {
+		args.PasswordWo = pulumi.ToSecret(args.PasswordWo).(pulumi.StringPtrInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"password",
+		"passwordWo",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
@@ -170,8 +194,13 @@ type userState struct {
 	Name *string `pulumi:"name"`
 	// Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
 	Nickname *string `pulumi:"nickname"`
-	// Initial password for this user. Required for non-passwordless connections (SMS and email).
+	// Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `passwordWo`.
 	Password *string `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Password for this user (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. It is sent when the user is created and whenever `passwordWoVersion` changes. Conflicts with `password`.
+	PasswordWo *string `pulumi:"passwordWo"`
+	// Version counter for `passwordWo`, required whenever the write-only password is set. Change it to send a new password.
+	PasswordWoVersion *int `pulumi:"passwordWoVersion"`
 	// Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
 	PhoneNumber *string `pulumi:"phoneNumber"`
 	// Indicates whether the phone number has been verified.
@@ -209,8 +238,13 @@ type UserState struct {
 	Name pulumi.StringPtrInput
 	// Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
 	Nickname pulumi.StringPtrInput
-	// Initial password for this user. Required for non-passwordless connections (SMS and email).
+	// Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `passwordWo`.
 	Password pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Password for this user (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. It is sent when the user is created and whenever `passwordWoVersion` changes. Conflicts with `password`.
+	PasswordWo pulumi.StringPtrInput
+	// Version counter for `passwordWo`, required whenever the write-only password is set. Change it to send a new password.
+	PasswordWoVersion pulumi.IntPtrInput
 	// Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
 	PhoneNumber pulumi.StringPtrInput
 	// Indicates whether the phone number has been verified.
@@ -252,8 +286,13 @@ type userArgs struct {
 	Name *string `pulumi:"name"`
 	// Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
 	Nickname *string `pulumi:"nickname"`
-	// Initial password for this user. Required for non-passwordless connections (SMS and email).
+	// Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `passwordWo`.
 	Password *string `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Password for this user (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. It is sent when the user is created and whenever `passwordWoVersion` changes. Conflicts with `password`.
+	PasswordWo *string `pulumi:"passwordWo"`
+	// Version counter for `passwordWo`, required whenever the write-only password is set. Change it to send a new password.
+	PasswordWoVersion *int `pulumi:"passwordWoVersion"`
 	// Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
 	PhoneNumber *string `pulumi:"phoneNumber"`
 	// Indicates whether the phone number has been verified.
@@ -292,8 +331,13 @@ type UserArgs struct {
 	Name pulumi.StringPtrInput
 	// Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
 	Nickname pulumi.StringPtrInput
-	// Initial password for this user. Required for non-passwordless connections (SMS and email).
+	// Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `passwordWo`.
 	Password pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Password for this user (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. It is sent when the user is created and whenever `passwordWoVersion` changes. Conflicts with `password`.
+	PasswordWo pulumi.StringPtrInput
+	// Version counter for `passwordWo`, required whenever the write-only password is set. Change it to send a new password.
+	PasswordWoVersion pulumi.IntPtrInput
 	// Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
 	PhoneNumber pulumi.StringPtrInput
 	// Indicates whether the phone number has been verified.
@@ -447,9 +491,20 @@ func (o UserOutput) Nickname() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Nickname }).(pulumi.StringOutput)
 }
 
-// Initial password for this user. Required for non-passwordless connections (SMS and email).
+// Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `passwordWo`.
 func (o UserOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// Password for this user (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. It is sent when the user is created and whenever `passwordWoVersion` changes. Conflicts with `password`.
+func (o UserOutput) PasswordWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.PasswordWo }).(pulumi.StringPtrOutput)
+}
+
+// Version counter for `passwordWo`, required whenever the write-only password is set. Change it to send a new password.
+func (o UserOutput) PasswordWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.IntPtrOutput { return v.PasswordWoVersion }).(pulumi.IntPtrOutput)
 }
 
 // Phone number for the user; follows the E.164 recommendation. Used for SMS connections.

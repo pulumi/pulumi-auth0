@@ -1879,6 +1879,104 @@ export interface ClientOidcLogoutBackchannelLogoutSessionMetadata {
     include: pulumi.Input<boolean>;
 }
 
+export interface ClientProfileApplyPolicy {
+    /**
+     * The creator of the clients to match. Defaults to `client`, which means the client was registered dynamically. Possible values: [client].
+     */
+    externalMetadataCreatedBy?: pulumi.Input<string | undefined>;
+    /**
+     * The type of external metadata of the clients to match. Defaults to `cimd`. Possible values: [cimd].
+     */
+    externalMetadataType?: pulumi.Input<string | undefined>;
+}
+
+export interface ClientProfileClientConfiguration {
+    /**
+     * Methods used to discover the organization during login. Requires the `organizationRequireBehavior` default value to be `preLoginPrompt`.
+     */
+    organizationDiscoveryMethods?: pulumi.Input<inputs.ClientProfileClientConfigurationOrganizationDiscoveryMethods | undefined>;
+    /**
+     * Defines how to proceed during an authentication transaction when the organization usage is `require`.
+     */
+    organizationRequireBehavior?: pulumi.Input<inputs.ClientProfileClientConfigurationOrganizationRequireBehavior | undefined>;
+    /**
+     * Whether matched clients can use organizations.
+     */
+    organizationUsage?: pulumi.Input<inputs.ClientProfileClientConfigurationOrganizationUsage | undefined>;
+    /**
+     * Refresh token settings applied to matched clients. Auth0 replaces this block as a whole, so removing it clears all of its settings.
+     */
+    refreshToken?: pulumi.Input<inputs.ClientProfileClientConfigurationRefreshToken | undefined>;
+    /**
+     * Whether matched clients must use proof of possession (DPoP) for their tokens.
+     */
+    requireProofOfPossession?: pulumi.Input<inputs.ClientProfileClientConfigurationRequireProofOfPossession | undefined>;
+}
+
+export interface ClientProfileClientConfigurationOrganizationDiscoveryMethods {
+    /**
+     * Possible values: [email organizationName].
+     */
+    defaultValues: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ClientProfileClientConfigurationOrganizationRequireBehavior {
+    /**
+     * Possible values: [no*prompt pre*login*prompt post*login_prompt].
+     */
+    defaultValue: pulumi.Input<string>;
+}
+
+export interface ClientProfileClientConfigurationOrganizationUsage {
+    /**
+     * Possible values: [deny allow require].
+     */
+    defaultValue: pulumi.Input<string>;
+}
+
+export interface ClientProfileClientConfigurationRefreshToken {
+    /**
+     * The inactivity lifetime of a refresh token. It must not exceed `tokenLifetime`. If only one of `tokenLifetime` and `idleTokenLifetime` is set, Auth0 derives the other.
+     */
+    idleTokenLifetime?: pulumi.Input<inputs.ClientProfileClientConfigurationRefreshTokenIdleTokenLifetime | undefined>;
+    /**
+     * The period in which a refresh token may be reused without triggering reuse detection.
+     */
+    leeway?: pulumi.Input<inputs.ClientProfileClientConfigurationRefreshTokenLeeway | undefined>;
+    /**
+     * The absolute lifetime of a refresh token. If only one of `tokenLifetime` and `idleTokenLifetime` is set, Auth0 derives the other.
+     */
+    tokenLifetime?: pulumi.Input<inputs.ClientProfileClientConfigurationRefreshTokenTokenLifetime | undefined>;
+}
+
+export interface ClientProfileClientConfigurationRefreshTokenIdleTokenLifetime {
+    /**
+     * The lifetime in seconds.
+     */
+    defaultValue?: pulumi.Input<number | undefined>;
+}
+
+export interface ClientProfileClientConfigurationRefreshTokenLeeway {
+    /**
+     * The leeway in seconds. `0` disables the leeway.
+     */
+    defaultValue: pulumi.Input<number>;
+}
+
+export interface ClientProfileClientConfigurationRefreshTokenTokenLifetime {
+    /**
+     * The lifetime in seconds.
+     */
+    defaultValue?: pulumi.Input<number | undefined>;
+}
+
+export interface ClientProfileClientConfigurationRequireProofOfPossession {
+    /**
+     * Whether proof of possession is required.
+     */
+    defaultValue: pulumi.Input<boolean>;
+}
+
 export interface ClientRefreshToken {
     /**
      * Options include `expiring`, `non-expiring`. Whether a refresh token will expire based on an absolute lifetime, after which the token can no longer be used. If rotation is `rotating`, this must be set to `expiring`.
@@ -3456,6 +3554,771 @@ export interface EventStreamWebhookConfigurationWebhookAuthorization {
      * The username for `basic` authentication. Required only when `method` is set to `basic`.
      */
     username?: pulumi.Input<string | undefined>;
+}
+
+export interface ExperimentAllocation {
+    /**
+     * Whether this allocation is the control variation. At most one allocation can be the control.
+     */
+    isControl: pulumi.Input<boolean>;
+    /**
+     * Whether this allocation is the fallback. Only for the segment strategy.
+     */
+    isFallback?: pulumi.Input<boolean | undefined>;
+    /**
+     * The evaluation priority of this allocation. Only for the segment strategy.
+     */
+    priority?: pulumi.Input<number | undefined>;
+    /**
+     * The segment targeted by this allocation. Only for the segment strategy. Omit for the fallback allocation.
+     */
+    segmentId?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the targeted segment.
+     */
+    segmentName?: pulumi.Input<string | undefined>;
+    /**
+     * The snapshot of the segment.
+     */
+    segmentSnapshot?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the feature flag variation assigned to this allocation.
+     */
+    variationId: pulumi.Input<string>;
+    /**
+     * The name of the assigned variation.
+     */
+    variationName?: pulumi.Input<string | undefined>;
+    /**
+     * The snapshot of the variation.
+     */
+    variationSnapshot?: pulumi.Input<string | undefined>;
+    /**
+     * The percentage weight of this allocation. Only for the percentage strategy. Omit when using levels.
+     */
+    weight?: pulumi.Input<number | undefined>;
+}
+
+export interface ExperimentFeatureFlagParameter {
+    /**
+     * Description of the parameter.
+     */
+    description?: pulumi.Input<string | undefined>;
+    /**
+     * The key of the parameter.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The value type of the parameter. One of boolean, string, number, array, object
+     */
+    type: pulumi.Input<string>;
+    /**
+     * The default value of the parameter, as a string. For `type = "object"` or `type = "array"` supply a JSON-encoded string; for `boolean`/`number` supply the literal value as a string.
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface ExperimentFeatureFlagVariation {
+    /**
+     * Description of the variation. Must contain 3 to 1024 characters when set.
+     */
+    description?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the variation. Must be unique within the feature flag and contain 3 to 255 characters without surrounding whitespace. Changing the name deletes the variation and creates a new one with a new ID.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Parameter overrides for the variation. Omit for a control variation.
+     */
+    overrides?: pulumi.Input<pulumi.Input<inputs.ExperimentFeatureFlagVariationOverride>[] | undefined>;
+}
+
+export interface ExperimentFeatureFlagVariationOverride {
+    /**
+     * The name of a parameter on the feature flag. Each name can appear once.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The type of the parameter value. One of boolean, string, number, array, object.
+     */
+    type: pulumi.Input<string>;
+    /**
+     * The override value as a string. For object and array values, provide JSON; for boolean and number values, provide their literal text.
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface ExperimentSegmentRule {
+    /**
+     * Attribute conditions that must match. Set between 1 and 10 attributes, including each `anonymousSessionMetadata` block. At least one of `match` or `notMatch` is required per rule.
+     */
+    match?: pulumi.Input<inputs.ExperimentSegmentRuleMatch | undefined>;
+    /**
+     * Attribute conditions that must not match. Set between 1 and 10 attributes, including each `anonymousSessionMetadata` block. At least one of `match` or `notMatch` is required per rule.
+     */
+    notMatch?: pulumi.Input<inputs.ExperimentSegmentRuleNotMatch | undefined>;
+}
+
+export interface ExperimentSegmentRuleMatch {
+    /**
+     * Condition on a namespaced `anonymous_session_metadata.<key>` attribute. Repeat the block once per key. Each key can appear only once per `match/not_match` block.
+     */
+    anonymousSessionMetadatas?: pulumi.Input<pulumi.Input<inputs.ExperimentSegmentRuleMatchAnonymousSessionMetadata>[] | undefined>;
+    /**
+     * Condition on the `browser` attribute. Set exactly one operator.
+     */
+    browser?: pulumi.Input<inputs.ExperimentSegmentRuleMatchBrowser | undefined>;
+    /**
+     * Condition on the `clientId` attribute. Set exactly one operator.
+     */
+    clientId?: pulumi.Input<inputs.ExperimentSegmentRuleMatchClientId | undefined>;
+    /**
+     * Condition on the `connection` attribute. Set exactly one operator.
+     */
+    connection?: pulumi.Input<inputs.ExperimentSegmentRuleMatchConnection | undefined>;
+    /**
+     * Condition on the `connectionType` attribute. Set exactly one operator.
+     */
+    connectionType?: pulumi.Input<inputs.ExperimentSegmentRuleMatchConnectionType | undefined>;
+    /**
+     * Condition on the `country` attribute. Set exactly one operator.
+     */
+    country?: pulumi.Input<inputs.ExperimentSegmentRuleMatchCountry | undefined>;
+    /**
+     * Condition on the `deviceType` attribute. Set exactly one operator.
+     */
+    deviceType?: pulumi.Input<inputs.ExperimentSegmentRuleMatchDeviceType | undefined>;
+    /**
+     * Condition on the `domain` attribute. Set exactly one operator.
+     */
+    domain?: pulumi.Input<inputs.ExperimentSegmentRuleMatchDomain | undefined>;
+    /**
+     * Condition on the `organizationId` attribute. Set exactly one operator.
+     */
+    organizationId?: pulumi.Input<inputs.ExperimentSegmentRuleMatchOrganizationId | undefined>;
+    /**
+     * Condition on the `platform` attribute. Set exactly one operator.
+     */
+    platform?: pulumi.Input<inputs.ExperimentSegmentRuleMatchPlatform | undefined>;
+    /**
+     * Condition on the `region` attribute. Set exactly one operator.
+     */
+    region?: pulumi.Input<inputs.ExperimentSegmentRuleMatchRegion | undefined>;
+    /**
+     * Condition on the `userAgent` attribute. Set exactly one operator.
+     */
+    userAgent?: pulumi.Input<inputs.ExperimentSegmentRuleMatchUserAgent | undefined>;
+}
+
+export interface ExperimentSegmentRuleMatchAnonymousSessionMetadata {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: pulumi.Input<string | undefined>;
+    /**
+     * The metadata key, without the `anonymous_session_metadata.` prefix. Between 1 and 255 characters, not blank.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface ExperimentSegmentRuleMatchBrowser {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: pulumi.Input<string | undefined>;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface ExperimentSegmentRuleMatchClientId {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: pulumi.Input<string | undefined>;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface ExperimentSegmentRuleMatchConnection {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: pulumi.Input<string | undefined>;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface ExperimentSegmentRuleMatchConnectionType {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: pulumi.Input<string | undefined>;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface ExperimentSegmentRuleMatchCountry {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: pulumi.Input<string | undefined>;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface ExperimentSegmentRuleMatchDeviceType {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: pulumi.Input<string | undefined>;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface ExperimentSegmentRuleMatchDomain {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: pulumi.Input<string | undefined>;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface ExperimentSegmentRuleMatchOrganizationId {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: pulumi.Input<string | undefined>;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface ExperimentSegmentRuleMatchPlatform {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: pulumi.Input<string | undefined>;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface ExperimentSegmentRuleMatchRegion {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: pulumi.Input<string | undefined>;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface ExperimentSegmentRuleMatchUserAgent {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: pulumi.Input<string | undefined>;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface ExperimentSegmentRuleNotMatch {
+    /**
+     * Condition on a namespaced `anonymous_session_metadata.<key>` attribute. Repeat the block once per key. Each key can appear only once per `match/not_match` block.
+     */
+    anonymousSessionMetadatas?: pulumi.Input<pulumi.Input<inputs.ExperimentSegmentRuleNotMatchAnonymousSessionMetadata>[] | undefined>;
+    /**
+     * Condition on the `browser` attribute. Set exactly one operator.
+     */
+    browser?: pulumi.Input<inputs.ExperimentSegmentRuleNotMatchBrowser | undefined>;
+    /**
+     * Condition on the `clientId` attribute. Set exactly one operator.
+     */
+    clientId?: pulumi.Input<inputs.ExperimentSegmentRuleNotMatchClientId | undefined>;
+    /**
+     * Condition on the `connection` attribute. Set exactly one operator.
+     */
+    connection?: pulumi.Input<inputs.ExperimentSegmentRuleNotMatchConnection | undefined>;
+    /**
+     * Condition on the `connectionType` attribute. Set exactly one operator.
+     */
+    connectionType?: pulumi.Input<inputs.ExperimentSegmentRuleNotMatchConnectionType | undefined>;
+    /**
+     * Condition on the `country` attribute. Set exactly one operator.
+     */
+    country?: pulumi.Input<inputs.ExperimentSegmentRuleNotMatchCountry | undefined>;
+    /**
+     * Condition on the `deviceType` attribute. Set exactly one operator.
+     */
+    deviceType?: pulumi.Input<inputs.ExperimentSegmentRuleNotMatchDeviceType | undefined>;
+    /**
+     * Condition on the `domain` attribute. Set exactly one operator.
+     */
+    domain?: pulumi.Input<inputs.ExperimentSegmentRuleNotMatchDomain | undefined>;
+    /**
+     * Condition on the `organizationId` attribute. Set exactly one operator.
+     */
+    organizationId?: pulumi.Input<inputs.ExperimentSegmentRuleNotMatchOrganizationId | undefined>;
+    /**
+     * Condition on the `platform` attribute. Set exactly one operator.
+     */
+    platform?: pulumi.Input<inputs.ExperimentSegmentRuleNotMatchPlatform | undefined>;
+    /**
+     * Condition on the `region` attribute. Set exactly one operator.
+     */
+    region?: pulumi.Input<inputs.ExperimentSegmentRuleNotMatchRegion | undefined>;
+    /**
+     * Condition on the `userAgent` attribute. Set exactly one operator.
+     */
+    userAgent?: pulumi.Input<inputs.ExperimentSegmentRuleNotMatchUserAgent | undefined>;
+}
+
+export interface ExperimentSegmentRuleNotMatchAnonymousSessionMetadata {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: pulumi.Input<string | undefined>;
+    /**
+     * The metadata key, without the `anonymous_session_metadata.` prefix. Between 1 and 255 characters, not blank.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface ExperimentSegmentRuleNotMatchBrowser {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: pulumi.Input<string | undefined>;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface ExperimentSegmentRuleNotMatchClientId {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: pulumi.Input<string | undefined>;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface ExperimentSegmentRuleNotMatchConnection {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: pulumi.Input<string | undefined>;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface ExperimentSegmentRuleNotMatchConnectionType {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: pulumi.Input<string | undefined>;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface ExperimentSegmentRuleNotMatchCountry {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: pulumi.Input<string | undefined>;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface ExperimentSegmentRuleNotMatchDeviceType {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: pulumi.Input<string | undefined>;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface ExperimentSegmentRuleNotMatchDomain {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: pulumi.Input<string | undefined>;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface ExperimentSegmentRuleNotMatchOrganizationId {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: pulumi.Input<string | undefined>;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface ExperimentSegmentRuleNotMatchPlatform {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: pulumi.Input<string | undefined>;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface ExperimentSegmentRuleNotMatchRegion {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: pulumi.Input<string | undefined>;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface ExperimentSegmentRuleNotMatchUserAgent {
+    /**
+     * Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    contains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `endsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    endsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+     */
+    exists?: pulumi.Input<string | undefined>;
+    /**
+     * Values for the `oneOf` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    oneOfs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Values for the `startsWith` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+     */
+    startsWiths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface FormLanguage {

@@ -65,6 +65,8 @@ import (
 //					pulumi.String("authorization_code"),
 //					pulumi.String("refresh_token"),
 //				},
+//				OrganizationUsage:           pulumi.String("require"),
+//				OrganizationRequireBehavior: pulumi.String("post_login_prompt"),
 //				ClientMetadata: pulumi.StringMap{
 //					"environment": pulumi.String("production"),
 //				},
@@ -129,6 +131,10 @@ type ClientCimd struct {
 	OidcConformant pulumi.BoolOutput `pulumi:"oidcConformant"`
 	// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
 	OrganizationDiscoveryMethods pulumi.StringArrayOutput `pulumi:"organizationDiscoveryMethods"`
+	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or `postLoginPrompt`.
+	OrganizationRequireBehavior pulumi.StringOutput `pulumi:"organizationRequireBehavior"`
+	// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+	OrganizationUsage pulumi.StringOutput `pulumi:"organizationUsage"`
 	// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.
 	RedirectionPolicy pulumi.StringOutput `pulumi:"redirectionPolicy"`
 	// Configuration settings for the refresh tokens issued for this client.
@@ -224,6 +230,10 @@ type clientCimdState struct {
 	OidcConformant *bool `pulumi:"oidcConformant"`
 	// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
 	OrganizationDiscoveryMethods []string `pulumi:"organizationDiscoveryMethods"`
+	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or `postLoginPrompt`.
+	OrganizationRequireBehavior *string `pulumi:"organizationRequireBehavior"`
+	// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+	OrganizationUsage *string `pulumi:"organizationUsage"`
 	// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.
 	RedirectionPolicy *string `pulumi:"redirectionPolicy"`
 	// Configuration settings for the refresh tokens issued for this client.
@@ -283,6 +293,10 @@ type ClientCimdState struct {
 	OidcConformant pulumi.BoolPtrInput
 	// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
 	OrganizationDiscoveryMethods pulumi.StringArrayInput
+	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or `postLoginPrompt`.
+	OrganizationRequireBehavior pulumi.StringPtrInput
+	// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+	OrganizationUsage pulumi.StringPtrInput
 	// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.
 	RedirectionPolicy pulumi.StringPtrInput
 	// Configuration settings for the refresh tokens issued for this client.
@@ -330,6 +344,10 @@ type clientCimdArgs struct {
 	OidcConformant *bool `pulumi:"oidcConformant"`
 	// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
 	OrganizationDiscoveryMethods []string `pulumi:"organizationDiscoveryMethods"`
+	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or `postLoginPrompt`.
+	OrganizationRequireBehavior *string `pulumi:"organizationRequireBehavior"`
+	// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+	OrganizationUsage *string `pulumi:"organizationUsage"`
 	// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.
 	RedirectionPolicy *string `pulumi:"redirectionPolicy"`
 	// Configuration settings for the refresh tokens issued for this client.
@@ -368,6 +386,10 @@ type ClientCimdArgs struct {
 	OidcConformant pulumi.BoolPtrInput
 	// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
 	OrganizationDiscoveryMethods pulumi.StringArrayInput
+	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or `postLoginPrompt`.
+	OrganizationRequireBehavior pulumi.StringPtrInput
+	// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+	OrganizationUsage pulumi.StringPtrInput
 	// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.
 	RedirectionPolicy pulumi.StringPtrInput
 	// Configuration settings for the refresh tokens issued for this client.
@@ -562,6 +584,16 @@ func (o ClientCimdOutput) OidcConformant() pulumi.BoolOutput {
 // Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
 func (o ClientCimdOutput) OrganizationDiscoveryMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClientCimd) pulumi.StringArrayOutput { return v.OrganizationDiscoveryMethods }).(pulumi.StringArrayOutput)
+}
+
+// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or `postLoginPrompt`.
+func (o ClientCimdOutput) OrganizationRequireBehavior() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClientCimd) pulumi.StringOutput { return v.OrganizationRequireBehavior }).(pulumi.StringOutput)
+}
+
+// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+func (o ClientCimdOutput) OrganizationUsage() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClientCimd) pulumi.StringOutput { return v.OrganizationUsage }).(pulumi.StringOutput)
 }
 
 // Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.

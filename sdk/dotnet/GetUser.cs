@@ -156,7 +156,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string Nickname;
         /// <summary>
-        /// Initial password for this user. Required for non-passwordless connections (SMS and email).
+        /// Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `PasswordWo`.
         /// </summary>
         public readonly string Password;
         /// <summary>

@@ -46,6 +46,20 @@ namespace Pulumi.Auth0
     ///         CustomDomainHeader = "my-custom.domain.org",
     ///     });
     /// 
+    ///     // The password can be set as a write-only argument so it is never persisted to Pulumi state.
+    ///     // It can be sourced from an ephemeral value (e.g. a secrets manager) and is mutually exclusive
+    ///     // with `password`. Bump `password_wo_version` to send a new password.
+    ///     //
+    ///     // NOTE: Write-only arguments require Pulumi 1.11 or later.
+    ///     var userWriteOnlyPassword = new Auth0.User("user_write_only_password", new()
+    ///     {
+    ///         ConnectionName = "Username-Password-Authentication",
+    ///         Username = "write_only_user",
+    ///         Email = "write.only@test.com",
+    ///         PasswordWo = userPassword,
+    ///         PasswordWoVersion = 1,
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -123,10 +137,23 @@ namespace Pulumi.Auth0
         public Output<string> Nickname { get; private set; } = null!;
 
         /// <summary>
-        /// Initial password for this user. Required for non-passwordless connections (SMS and email).
+        /// Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `PasswordWo`.
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Password for this user (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. It is sent when the user is created and whenever `PasswordWoVersion` changes. Conflicts with `Password`.
+        /// </summary>
+        [Output("passwordWo")]
+        public Output<string?> PasswordWo { get; private set; } = null!;
+
+        /// <summary>
+        /// Version counter for `PasswordWo`, required whenever the write-only password is set. Change it to send a new password.
+        /// </summary>
+        [Output("passwordWoVersion")]
+        public Output<int?> PasswordWoVersion { get; private set; } = null!;
 
         /// <summary>
         /// Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
@@ -196,6 +223,7 @@ namespace Pulumi.Auth0
                 AdditionalSecretOutputs =
                 {
                     "password",
+                    "passwordWo",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -284,7 +312,7 @@ namespace Pulumi.Auth0
         private Input<string>? _password;
 
         /// <summary>
-        /// Initial password for this user. Required for non-passwordless connections (SMS and email).
+        /// Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `PasswordWo`.
         /// </summary>
         public Input<string>? Password
         {
@@ -295,6 +323,29 @@ namespace Pulumi.Auth0
                 _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("passwordWo")]
+        private Input<string>? _passwordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Password for this user (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. It is sent when the user is created and whenever `PasswordWoVersion` changes. Conflicts with `Password`.
+        /// </summary>
+        public Input<string>? PasswordWo
+        {
+            get => _passwordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _passwordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Version counter for `PasswordWo`, required whenever the write-only password is set. Change it to send a new password.
+        /// </summary>
+        [Input("passwordWoVersion")]
+        public Input<int>? PasswordWoVersion { get; set; }
 
         /// <summary>
         /// Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
@@ -410,7 +461,7 @@ namespace Pulumi.Auth0
         private Input<string>? _password;
 
         /// <summary>
-        /// Initial password for this user. Required for non-passwordless connections (SMS and email).
+        /// Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `PasswordWo`.
         /// </summary>
         public Input<string>? Password
         {
@@ -421,6 +472,29 @@ namespace Pulumi.Auth0
                 _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("passwordWo")]
+        private Input<string>? _passwordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Password for this user (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. It is sent when the user is created and whenever `PasswordWoVersion` changes. Conflicts with `Password`.
+        /// </summary>
+        public Input<string>? PasswordWo
+        {
+            get => _passwordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _passwordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Version counter for `PasswordWo`, required whenever the write-only password is set. Change it to send a new password.
+        /// </summary>
+        [Input("passwordWoVersion")]
+        public Input<int>? PasswordWoVersion { get; set; }
 
         /// <summary>
         /// Phone number for the user; follows the E.164 recommendation. Used for SMS connections.

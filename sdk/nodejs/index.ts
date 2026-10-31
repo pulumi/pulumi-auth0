@@ -55,6 +55,11 @@ export type ClientGrant = import("./clientGrant").ClientGrant;
 export const ClientGrant: typeof import("./clientGrant").ClientGrant = null as any;
 utilities.lazyLoad(exports, ["ClientGrant"], () => require("./clientGrant"));
 
+export { ClientProfileArgs, ClientProfileState } from "./clientProfile";
+export type ClientProfile = import("./clientProfile").ClientProfile;
+export const ClientProfile: typeof import("./clientProfile").ClientProfile = null as any;
+utilities.lazyLoad(exports, ["ClientProfile"], () => require("./clientProfile"));
+
 export { ConnectionArgs, ConnectionState } from "./connection";
 export type Connection = import("./connection").Connection;
 export const Connection: typeof import("./connection").Connection = null as any;
@@ -135,6 +140,21 @@ export type EventStream = import("./eventStream").EventStream;
 export const EventStream: typeof import("./eventStream").EventStream = null as any;
 utilities.lazyLoad(exports, ["EventStream"], () => require("./eventStream"));
 
+export { ExperimentArgs, ExperimentState } from "./experiment";
+export type Experiment = import("./experiment").Experiment;
+export const Experiment: typeof import("./experiment").Experiment = null as any;
+utilities.lazyLoad(exports, ["Experiment"], () => require("./experiment"));
+
+export { ExperimentFeatureFlagArgs, ExperimentFeatureFlagState } from "./experimentFeatureFlag";
+export type ExperimentFeatureFlag = import("./experimentFeatureFlag").ExperimentFeatureFlag;
+export const ExperimentFeatureFlag: typeof import("./experimentFeatureFlag").ExperimentFeatureFlag = null as any;
+utilities.lazyLoad(exports, ["ExperimentFeatureFlag"], () => require("./experimentFeatureFlag"));
+
+export { ExperimentSegmentArgs, ExperimentSegmentState } from "./experimentSegment";
+export type ExperimentSegment = import("./experimentSegment").ExperimentSegment;
+export const ExperimentSegment: typeof import("./experimentSegment").ExperimentSegment = null as any;
+utilities.lazyLoad(exports, ["ExperimentSegment"], () => require("./experimentSegment"));
+
 export { FlowArgs, FlowState } from "./flow";
 export type Flow = import("./flow").Flow;
 export const Flow: typeof import("./flow").Flow = null as any;
@@ -210,6 +230,11 @@ export const getClientGrants: typeof import("./getClientGrants").getClientGrants
 export const getClientGrantsOutput: typeof import("./getClientGrants").getClientGrantsOutput = null as any;
 utilities.lazyLoad(exports, ["getClientGrants","getClientGrantsOutput"], () => require("./getClientGrants"));
 
+export { GetClientProfileArgs, GetClientProfileResult, GetClientProfileOutputArgs } from "./getClientProfile";
+export const getClientProfile: typeof import("./getClientProfile").getClientProfile = null as any;
+export const getClientProfileOutput: typeof import("./getClientProfile").getClientProfileOutput = null as any;
+utilities.lazyLoad(exports, ["getClientProfile","getClientProfileOutput"], () => require("./getClientProfile"));
+
 export { GetClientsArgs, GetClientsResult, GetClientsOutputArgs } from "./getClients";
 export const getClients: typeof import("./getClients").getClients = null as any;
 export const getClientsOutput: typeof import("./getClients").getClientsOutput = null as any;
@@ -264,6 +289,21 @@ export { GetEventStreamArgs, GetEventStreamResult, GetEventStreamOutputArgs } fr
 export const getEventStream: typeof import("./getEventStream").getEventStream = null as any;
 export const getEventStreamOutput: typeof import("./getEventStream").getEventStreamOutput = null as any;
 utilities.lazyLoad(exports, ["getEventStream","getEventStreamOutput"], () => require("./getEventStream"));
+
+export { GetExperimentArgs, GetExperimentResult, GetExperimentOutputArgs } from "./getExperiment";
+export const getExperiment: typeof import("./getExperiment").getExperiment = null as any;
+export const getExperimentOutput: typeof import("./getExperiment").getExperimentOutput = null as any;
+utilities.lazyLoad(exports, ["getExperiment","getExperimentOutput"], () => require("./getExperiment"));
+
+export { GetExperimentFeatureFlagArgs, GetExperimentFeatureFlagResult, GetExperimentFeatureFlagOutputArgs } from "./getExperimentFeatureFlag";
+export const getExperimentFeatureFlag: typeof import("./getExperimentFeatureFlag").getExperimentFeatureFlag = null as any;
+export const getExperimentFeatureFlagOutput: typeof import("./getExperimentFeatureFlag").getExperimentFeatureFlagOutput = null as any;
+utilities.lazyLoad(exports, ["getExperimentFeatureFlag","getExperimentFeatureFlagOutput"], () => require("./getExperimentFeatureFlag"));
+
+export { GetExperimentSegmentArgs, GetExperimentSegmentResult, GetExperimentSegmentOutputArgs } from "./getExperimentSegment";
+export const getExperimentSegment: typeof import("./getExperimentSegment").getExperimentSegment = null as any;
+export const getExperimentSegmentOutput: typeof import("./getExperimentSegment").getExperimentSegmentOutput = null as any;
+utilities.lazyLoad(exports, ["getExperimentSegment","getExperimentSegmentOutput"], () => require("./getExperimentSegment"));
 
 export { GetFlowArgs, GetFlowResult, GetFlowOutputArgs } from "./getFlow";
 export const getFlow: typeof import("./getFlow").getFlow = null as any;
@@ -697,6 +737,8 @@ const _module = {
                 return new ClientCredentials(name, <any>undefined, { urn })
             case "auth0:index/clientGrant:ClientGrant":
                 return new ClientGrant(name, <any>undefined, { urn })
+            case "auth0:index/clientProfile:ClientProfile":
+                return new ClientProfile(name, <any>undefined, { urn })
             case "auth0:index/connection:Connection":
                 return new Connection(name, <any>undefined, { urn })
             case "auth0:index/connectionClient:ConnectionClient":
@@ -729,6 +771,12 @@ const _module = {
                 return new EncryptionKeyManager(name, <any>undefined, { urn })
             case "auth0:index/eventStream:EventStream":
                 return new EventStream(name, <any>undefined, { urn })
+            case "auth0:index/experiment:Experiment":
+                return new Experiment(name, <any>undefined, { urn })
+            case "auth0:index/experimentFeatureFlag:ExperimentFeatureFlag":
+                return new ExperimentFeatureFlag(name, <any>undefined, { urn })
+            case "auth0:index/experimentSegment:ExperimentSegment":
+                return new ExperimentSegment(name, <any>undefined, { urn })
             case "auth0:index/flow:Flow":
                 return new Flow(name, <any>undefined, { urn })
             case "auth0:index/flowVaultConnection:FlowVaultConnection":
@@ -850,6 +898,7 @@ pulumi.runtime.registerResourceModule("auth0", "index/client", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/clientCimd", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/clientCredentials", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/clientGrant", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/clientProfile", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/connection", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/connectionClient", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/connectionClients", _module)
@@ -866,6 +915,9 @@ pulumi.runtime.registerResourceModule("auth0", "index/emailProvider", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/emailTemplate", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/encryptionKeyManager", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/eventStream", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/experiment", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/experimentFeatureFlag", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/experimentSegment", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/flow", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/flowVaultConnection", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/form", _module)
