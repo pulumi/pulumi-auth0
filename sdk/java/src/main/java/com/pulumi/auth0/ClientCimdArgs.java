@@ -190,6 +190,36 @@ public final class ClientCimdArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Defines how to proceed during an authentication transaction when `organizationUsage = &#34;require&#34;`. Can be `noPrompt` (default), `preLoginPrompt` or `postLoginPrompt`.
+     * 
+     */
+    @Import(name="organizationRequireBehavior")
+    private @Nullable Output<String> organizationRequireBehavior;
+
+    /**
+     * @return Defines how to proceed during an authentication transaction when `organizationUsage = &#34;require&#34;`. Can be `noPrompt` (default), `preLoginPrompt` or `postLoginPrompt`.
+     * 
+     */
+    public Optional<Output<String>> organizationRequireBehavior() {
+        return Optional.ofNullable(this.organizationRequireBehavior);
+    }
+
+    /**
+     * Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+     * 
+     */
+    @Import(name="organizationUsage")
+    private @Nullable Output<String> organizationUsage;
+
+    /**
+     * @return Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+     * 
+     */
+    public Optional<Output<String>> organizationUsage() {
+        return Optional.ofNullable(this.organizationUsage);
+    }
+
+    /**
      * Controls whether Auth0 redirects users to the application&#39;s callback URL on authentication errors or in email verification flows.
      * 
      */
@@ -293,6 +323,8 @@ public final class ClientCimdArgs extends com.pulumi.resources.ResourceArgs {
         this.jwtConfiguration = $.jwtConfiguration;
         this.oidcConformant = $.oidcConformant;
         this.organizationDiscoveryMethods = $.organizationDiscoveryMethods;
+        this.organizationRequireBehavior = $.organizationRequireBehavior;
+        this.organizationUsage = $.organizationUsage;
         this.redirectionPolicy = $.redirectionPolicy;
         this.refreshToken = $.refreshToken;
         this.requireProofOfPossession = $.requireProofOfPossession;
@@ -578,6 +610,48 @@ public final class ClientCimdArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder organizationDiscoveryMethods(String... organizationDiscoveryMethods) {
             return organizationDiscoveryMethods(List.of(organizationDiscoveryMethods));
+        }
+
+        /**
+         * @param organizationRequireBehavior Defines how to proceed during an authentication transaction when `organizationUsage = &#34;require&#34;`. Can be `noPrompt` (default), `preLoginPrompt` or `postLoginPrompt`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder organizationRequireBehavior(@Nullable Output<String> organizationRequireBehavior) {
+            $.organizationRequireBehavior = organizationRequireBehavior;
+            return this;
+        }
+
+        /**
+         * @param organizationRequireBehavior Defines how to proceed during an authentication transaction when `organizationUsage = &#34;require&#34;`. Can be `noPrompt` (default), `preLoginPrompt` or `postLoginPrompt`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder organizationRequireBehavior(String organizationRequireBehavior) {
+            return organizationRequireBehavior(Output.of(organizationRequireBehavior));
+        }
+
+        /**
+         * @param organizationUsage Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder organizationUsage(@Nullable Output<String> organizationUsage) {
+            $.organizationUsage = organizationUsage;
+            return this;
+        }
+
+        /**
+         * @param organizationUsage Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder organizationUsage(String organizationUsage) {
+            return organizationUsage(Output.of(organizationUsage));
         }
 
         /**

@@ -22,6 +22,8 @@ import com.pulumi.auth0.inputs.GetClientGrantOrganizationsPlainArgs;
 import com.pulumi.auth0.inputs.GetClientGrantsArgs;
 import com.pulumi.auth0.inputs.GetClientGrantsPlainArgs;
 import com.pulumi.auth0.inputs.GetClientPlainArgs;
+import com.pulumi.auth0.inputs.GetClientProfileArgs;
+import com.pulumi.auth0.inputs.GetClientProfilePlainArgs;
 import com.pulumi.auth0.inputs.GetClientsArgs;
 import com.pulumi.auth0.inputs.GetClientsPlainArgs;
 import com.pulumi.auth0.inputs.GetConnectionArgs;
@@ -44,6 +46,12 @@ import com.pulumi.auth0.inputs.GetCustomDomainsArgs;
 import com.pulumi.auth0.inputs.GetCustomDomainsPlainArgs;
 import com.pulumi.auth0.inputs.GetEventStreamArgs;
 import com.pulumi.auth0.inputs.GetEventStreamPlainArgs;
+import com.pulumi.auth0.inputs.GetExperimentArgs;
+import com.pulumi.auth0.inputs.GetExperimentFeatureFlagArgs;
+import com.pulumi.auth0.inputs.GetExperimentFeatureFlagPlainArgs;
+import com.pulumi.auth0.inputs.GetExperimentPlainArgs;
+import com.pulumi.auth0.inputs.GetExperimentSegmentArgs;
+import com.pulumi.auth0.inputs.GetExperimentSegmentPlainArgs;
 import com.pulumi.auth0.inputs.GetFlowArgs;
 import com.pulumi.auth0.inputs.GetFlowPlainArgs;
 import com.pulumi.auth0.inputs.GetFlowVaultConnectionArgs;
@@ -105,6 +113,7 @@ import com.pulumi.auth0.outputs.GetBrandingResult;
 import com.pulumi.auth0.outputs.GetBrandingThemeResult;
 import com.pulumi.auth0.outputs.GetClientGrantOrganizationsResult;
 import com.pulumi.auth0.outputs.GetClientGrantsResult;
+import com.pulumi.auth0.outputs.GetClientProfileResult;
 import com.pulumi.auth0.outputs.GetClientResult;
 import com.pulumi.auth0.outputs.GetClientsResult;
 import com.pulumi.auth0.outputs.GetConnectionDirectoryDefaultMappingResult;
@@ -117,6 +126,9 @@ import com.pulumi.auth0.outputs.GetConnectionScimConfigurationResult;
 import com.pulumi.auth0.outputs.GetCustomDomainResult;
 import com.pulumi.auth0.outputs.GetCustomDomainsResult;
 import com.pulumi.auth0.outputs.GetEventStreamResult;
+import com.pulumi.auth0.outputs.GetExperimentFeatureFlagResult;
+import com.pulumi.auth0.outputs.GetExperimentResult;
+import com.pulumi.auth0.outputs.GetExperimentSegmentResult;
 import com.pulumi.auth0.outputs.GetFlowResult;
 import com.pulumi.auth0.outputs.GetFlowVaultConnectionResult;
 import com.pulumi.auth0.outputs.GetFormResult;
@@ -2989,6 +3001,211 @@ public final class Auth0Functions {
      */
     public static CompletableFuture<GetClientGrantsResult> getClientGrantsPlain(GetClientGrantsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getClientGrants:getClientGrants", TypeShape.of(GetClientGrantsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 client profile (application profile) by `id`. This feature is available in Early Access only and requires the `read:client_profiles` scope on the Management API client. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetClientProfileArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 client profile (application profile) can be retrieved by its ID.
+     *         final var myProfile = Auth0Functions.getClientProfile(GetClientProfileArgs.builder()
+     *             .id("cpr_XXXXXXXXXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetClientProfileResult> getClientProfile(GetClientProfileArgs args) {
+        return getClientProfile(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 client profile (application profile) by `id`. This feature is available in Early Access only and requires the `read:client_profiles` scope on the Management API client. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetClientProfileArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 client profile (application profile) can be retrieved by its ID.
+     *         final var myProfile = Auth0Functions.getClientProfile(GetClientProfileArgs.builder()
+     *             .id("cpr_XXXXXXXXXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetClientProfileResult> getClientProfilePlain(GetClientProfilePlainArgs args) {
+        return getClientProfilePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 client profile (application profile) by `id`. This feature is available in Early Access only and requires the `read:client_profiles` scope on the Management API client. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetClientProfileArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 client profile (application profile) can be retrieved by its ID.
+     *         final var myProfile = Auth0Functions.getClientProfile(GetClientProfileArgs.builder()
+     *             .id("cpr_XXXXXXXXXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetClientProfileResult> getClientProfile(GetClientProfileArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getClientProfile:getClientProfile", TypeShape.of(GetClientProfileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 client profile (application profile) by `id`. This feature is available in Early Access only and requires the `read:client_profiles` scope on the Management API client. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetClientProfileArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 client profile (application profile) can be retrieved by its ID.
+     *         final var myProfile = Auth0Functions.getClientProfile(GetClientProfileArgs.builder()
+     *             .id("cpr_XXXXXXXXXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetClientProfileResult> getClientProfile(GetClientProfileArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getClientProfile:getClientProfile", TypeShape.of(GetClientProfileResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 client profile (application profile) by `id`. This feature is available in Early Access only and requires the `read:client_profiles` scope on the Management API client. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetClientProfileArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 client profile (application profile) can be retrieved by its ID.
+     *         final var myProfile = Auth0Functions.getClientProfile(GetClientProfileArgs.builder()
+     *             .id("cpr_XXXXXXXXXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetClientProfileResult> getClientProfilePlain(GetClientProfilePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getClientProfile:getClientProfile", TypeShape.of(GetClientProfileResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source to retrieve a list of Auth0 application clients with optional filtering.
@@ -6135,6 +6352,626 @@ public final class Auth0Functions {
      */
     public static CompletableFuture<GetEventStreamResult> getEventStreamPlain(GetEventStreamPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getEventStream:getEventStream", TypeShape.of(GetEventStreamResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Experiment Center experiment by `id`. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetExperimentArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An existing Experiment Center experiment loaded using its ID.
+     *         final var loginUiTest = Auth0Functions.getExperiment(GetExperimentArgs.builder()
+     *             .id("exp_XXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetExperimentResult> getExperiment(GetExperimentArgs args) {
+        return getExperiment(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Experiment Center experiment by `id`. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetExperimentArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An existing Experiment Center experiment loaded using its ID.
+     *         final var loginUiTest = Auth0Functions.getExperiment(GetExperimentArgs.builder()
+     *             .id("exp_XXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetExperimentResult> getExperimentPlain(GetExperimentPlainArgs args) {
+        return getExperimentPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Experiment Center experiment by `id`. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetExperimentArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An existing Experiment Center experiment loaded using its ID.
+     *         final var loginUiTest = Auth0Functions.getExperiment(GetExperimentArgs.builder()
+     *             .id("exp_XXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetExperimentResult> getExperiment(GetExperimentArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getExperiment:getExperiment", TypeShape.of(GetExperimentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Experiment Center experiment by `id`. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetExperimentArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An existing Experiment Center experiment loaded using its ID.
+     *         final var loginUiTest = Auth0Functions.getExperiment(GetExperimentArgs.builder()
+     *             .id("exp_XXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetExperimentResult> getExperiment(GetExperimentArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getExperiment:getExperiment", TypeShape.of(GetExperimentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Experiment Center experiment by `id`. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetExperimentArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An existing Experiment Center experiment loaded using its ID.
+     *         final var loginUiTest = Auth0Functions.getExperiment(GetExperimentArgs.builder()
+     *             .id("exp_XXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetExperimentResult> getExperimentPlain(GetExperimentPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getExperiment:getExperiment", TypeShape.of(GetExperimentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Experiment Center feature flag by `id`. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetExperimentFeatureFlagArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 Experiment Center feature flag loaded using its ID.
+     *         final var myFlag = Auth0Functions.getExperimentFeatureFlag(GetExperimentFeatureFlagArgs.builder()
+     *             .id("flg_XXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *         ctx.export("treatmentVariationId", myFlag.variationIds().treatment());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetExperimentFeatureFlagResult> getExperimentFeatureFlag(GetExperimentFeatureFlagArgs args) {
+        return getExperimentFeatureFlag(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Experiment Center feature flag by `id`. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetExperimentFeatureFlagArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 Experiment Center feature flag loaded using its ID.
+     *         final var myFlag = Auth0Functions.getExperimentFeatureFlag(GetExperimentFeatureFlagArgs.builder()
+     *             .id("flg_XXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *         ctx.export("treatmentVariationId", myFlag.variationIds().treatment());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetExperimentFeatureFlagResult> getExperimentFeatureFlagPlain(GetExperimentFeatureFlagPlainArgs args) {
+        return getExperimentFeatureFlagPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Experiment Center feature flag by `id`. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetExperimentFeatureFlagArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 Experiment Center feature flag loaded using its ID.
+     *         final var myFlag = Auth0Functions.getExperimentFeatureFlag(GetExperimentFeatureFlagArgs.builder()
+     *             .id("flg_XXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *         ctx.export("treatmentVariationId", myFlag.variationIds().treatment());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetExperimentFeatureFlagResult> getExperimentFeatureFlag(GetExperimentFeatureFlagArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getExperimentFeatureFlag:getExperimentFeatureFlag", TypeShape.of(GetExperimentFeatureFlagResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Experiment Center feature flag by `id`. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetExperimentFeatureFlagArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 Experiment Center feature flag loaded using its ID.
+     *         final var myFlag = Auth0Functions.getExperimentFeatureFlag(GetExperimentFeatureFlagArgs.builder()
+     *             .id("flg_XXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *         ctx.export("treatmentVariationId", myFlag.variationIds().treatment());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetExperimentFeatureFlagResult> getExperimentFeatureFlag(GetExperimentFeatureFlagArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getExperimentFeatureFlag:getExperimentFeatureFlag", TypeShape.of(GetExperimentFeatureFlagResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Experiment Center feature flag by `id`. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetExperimentFeatureFlagArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 Experiment Center feature flag loaded using its ID.
+     *         final var myFlag = Auth0Functions.getExperimentFeatureFlag(GetExperimentFeatureFlagArgs.builder()
+     *             .id("flg_XXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *         ctx.export("treatmentVariationId", myFlag.variationIds().treatment());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetExperimentFeatureFlagResult> getExperimentFeatureFlagPlain(GetExperimentFeatureFlagPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getExperimentFeatureFlag:getExperimentFeatureFlag", TypeShape.of(GetExperimentFeatureFlagResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Experiment Center segment by `id`. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetExperimentSegmentArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An existing Experiment Center segment loaded using its ID.
+     *         final var premiumTraffic = Auth0Functions.getExperimentSegment(GetExperimentSegmentArgs.builder()
+     *             .id("seg_XXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetExperimentSegmentResult> getExperimentSegment(GetExperimentSegmentArgs args) {
+        return getExperimentSegment(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Experiment Center segment by `id`. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetExperimentSegmentArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An existing Experiment Center segment loaded using its ID.
+     *         final var premiumTraffic = Auth0Functions.getExperimentSegment(GetExperimentSegmentArgs.builder()
+     *             .id("seg_XXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetExperimentSegmentResult> getExperimentSegmentPlain(GetExperimentSegmentPlainArgs args) {
+        return getExperimentSegmentPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Experiment Center segment by `id`. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetExperimentSegmentArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An existing Experiment Center segment loaded using its ID.
+     *         final var premiumTraffic = Auth0Functions.getExperimentSegment(GetExperimentSegmentArgs.builder()
+     *             .id("seg_XXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetExperimentSegmentResult> getExperimentSegment(GetExperimentSegmentArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getExperimentSegment:getExperimentSegment", TypeShape.of(GetExperimentSegmentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Experiment Center segment by `id`. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetExperimentSegmentArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An existing Experiment Center segment loaded using its ID.
+     *         final var premiumTraffic = Auth0Functions.getExperimentSegment(GetExperimentSegmentArgs.builder()
+     *             .id("seg_XXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetExperimentSegmentResult> getExperimentSegment(GetExperimentSegmentArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getExperimentSegment:getExperimentSegment", TypeShape.of(GetExperimentSegmentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Experiment Center segment by `id`. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetExperimentSegmentArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An existing Experiment Center segment loaded using its ID.
+     *         final var premiumTraffic = Auth0Functions.getExperimentSegment(GetExperimentSegmentArgs.builder()
+     *             .id("seg_XXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetExperimentSegmentResult> getExperimentSegmentPlain(GetExperimentSegmentPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getExperimentSegment:getExperimentSegment", TypeShape.of(GetExperimentSegmentResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source to retrieve a specific Auth0 Flow by `id`

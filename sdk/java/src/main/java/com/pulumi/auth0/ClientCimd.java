@@ -82,6 +82,8 @@ import javax.annotation.Nullable;
  *             .grantTypes(            
  *                 "authorization_code",
  *                 "refresh_token")
+ *             .organizationUsage("require")
+ *             .organizationRequireBehavior("post_login_prompt")
  *             .clientMetadata(Map.of("environment", "production"))
  *             .build());
  * 
@@ -369,6 +371,34 @@ public class ClientCimd extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> organizationDiscoveryMethods() {
         return Codegen.optional(this.organizationDiscoveryMethods);
+    }
+    /**
+     * Defines how to proceed during an authentication transaction when `organizationUsage = &#34;require&#34;`. Can be `noPrompt` (default), `preLoginPrompt` or `postLoginPrompt`.
+     * 
+     */
+    @Export(name="organizationRequireBehavior", refs={String.class}, tree="[0]")
+    private Output<String> organizationRequireBehavior;
+
+    /**
+     * @return Defines how to proceed during an authentication transaction when `organizationUsage = &#34;require&#34;`. Can be `noPrompt` (default), `preLoginPrompt` or `postLoginPrompt`.
+     * 
+     */
+    public Output<String> organizationRequireBehavior() {
+        return this.organizationRequireBehavior;
+    }
+    /**
+     * Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+     * 
+     */
+    @Export(name="organizationUsage", refs={String.class}, tree="[0]")
+    private Output<String> organizationUsage;
+
+    /**
+     * @return Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+     * 
+     */
+    public Output<String> organizationUsage() {
+        return this.organizationUsage;
     }
     /**
      * Controls whether Auth0 redirects users to the application&#39;s callback URL on authentication errors or in email verification flows.

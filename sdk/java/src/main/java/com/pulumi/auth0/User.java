@@ -11,6 +11,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -63,6 +64,19 @@ import javax.annotation.Nullable;
  *             .emailVerified(true)
  *             .password("MyPass123$")
  *             .customDomainHeader("my-custom.domain.org")
+ *             .build());
+ * 
+ *         // The password can be set as a write-only argument so it is never persisted to Pulumi state.
+ *         // It can be sourced from an ephemeral value (e.g. a secrets manager) and is mutually exclusive
+ *         // with `password`. Bump `password_wo_version` to send a new password.
+ *         //
+ *         // NOTE: Write-only arguments require Pulumi 1.11 or later.
+ *         var userWriteOnlyPassword = new User("userWriteOnlyPassword", UserArgs.builder()
+ *             .connectionName("Username-Password-Authentication")
+ *             .username("write_only_user")
+ *             .email("write.only}{@literal @}{@code test.com")
+ *             .passwordWo(userPassword)
+ *             .passwordWoVersion(1)
  *             .build());
  * 
  *     }}{@code
@@ -224,18 +238,48 @@ public class User extends com.pulumi.resources.CustomResource {
         return this.nickname;
     }
     /**
-     * Initial password for this user. Required for non-passwordless connections (SMS and email).
+     * Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `passwordWo`.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
-     * @return Initial password for this user. Required for non-passwordless connections (SMS and email).
+     * @return Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `passwordWo`.
      * 
      */
     public Output<Optional<String>> password() {
         return Codegen.optional(this.password);
+    }
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Password for this user (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. It is sent when the user is created and whenever `passwordWoVersion` changes. Conflicts with `password`.
+     * 
+     */
+    @Export(name="passwordWo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> passwordWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Password for this user (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. It is sent when the user is created and whenever `passwordWoVersion` changes. Conflicts with `password`.
+     * 
+     */
+    public Output<Optional<String>> passwordWo() {
+        return Codegen.optional(this.passwordWo);
+    }
+    /**
+     * Version counter for `passwordWo`, required whenever the write-only password is set. Change it to send a new password.
+     * 
+     */
+    @Export(name="passwordWoVersion", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> passwordWoVersion;
+
+    /**
+     * @return Version counter for `passwordWo`, required whenever the write-only password is set. Change it to send a new password.
+     * 
+     */
+    public Output<Optional<Integer>> passwordWoVersion() {
+        return Codegen.optional(this.passwordWoVersion);
     }
     /**
      * Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
@@ -376,7 +420,8 @@ public class User extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
-                "password"
+                "password",
+                "passwordWo"
             ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);

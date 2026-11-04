@@ -32,6 +32,8 @@ class ClientCimdArgs:
                  jwt_configuration: pulumi.Input[Optional['ClientCimdJwtConfigurationArgs']] = None,
                  oidc_conformant: pulumi.Input[Optional[_builtins.bool]] = None,
                  organization_discovery_methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 organization_require_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_usage: pulumi.Input[Optional[_builtins.str]] = None,
                  redirection_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  refresh_token: pulumi.Input[Optional['ClientCimdRefreshTokenArgs']] = None,
                  require_proof_of_possession: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -52,6 +54,8 @@ class ClientCimdArgs:
         :param pulumi.Input['ClientCimdJwtConfigurationArgs'] jwt_configuration: Configuration settings for the JWTs issued for this client.
         :param pulumi.Input[_builtins.bool] oidc_conformant: Whether this client conforms to strict OIDC specifications. Must be `true` for CIMD clients.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] organization_discovery_methods: Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
+        :param pulumi.Input[_builtins.str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or `post_login_prompt`.
+        :param pulumi.Input[_builtins.str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input[_builtins.str] redirection_policy: Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.
         :param pulumi.Input['ClientCimdRefreshTokenArgs'] refresh_token: Configuration settings for the refresh tokens issued for this client.
         :param pulumi.Input[_builtins.bool] require_proof_of_possession: Makes the use of Proof-of-Possession mandatory for this client.
@@ -80,6 +84,10 @@ class ClientCimdArgs:
             pulumi.set(__self__, "oidc_conformant", oidc_conformant)
         if organization_discovery_methods is not None:
             pulumi.set(__self__, "organization_discovery_methods", organization_discovery_methods)
+        if organization_require_behavior is not None:
+            pulumi.set(__self__, "organization_require_behavior", organization_require_behavior)
+        if organization_usage is not None:
+            pulumi.set(__self__, "organization_usage", organization_usage)
         if redirection_policy is not None:
             pulumi.set(__self__, "redirection_policy", redirection_policy)
         if refresh_token is not None:
@@ -226,6 +234,30 @@ class ClientCimdArgs:
         pulumi.set(self, "organization_discovery_methods", value)
 
     @_builtins.property
+    @pulumi.getter(name="organizationRequireBehavior")
+    def organization_require_behavior(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or `post_login_prompt`.
+        """
+        return pulumi.get(self, "organization_require_behavior")
+
+    @organization_require_behavior.setter
+    def organization_require_behavior(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "organization_require_behavior", value)
+
+    @_builtins.property
+    @pulumi.getter(name="organizationUsage")
+    def organization_usage(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+        """
+        return pulumi.get(self, "organization_usage")
+
+    @organization_usage.setter
+    def organization_usage(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "organization_usage", value)
+
+    @_builtins.property
     @pulumi.getter(name="redirectionPolicy")
     def redirection_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -320,6 +352,8 @@ class _ClientCimdState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  oidc_conformant: pulumi.Input[Optional[_builtins.bool]] = None,
                  organization_discovery_methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 organization_require_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_usage: pulumi.Input[Optional[_builtins.str]] = None,
                  redirection_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  refresh_token: pulumi.Input[Optional['ClientCimdRefreshTokenArgs']] = None,
                  require_proof_of_possession: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -351,6 +385,8 @@ class _ClientCimdState:
         :param pulumi.Input[_builtins.str] name: Name of the client, derived from the CIMD metadata document.
         :param pulumi.Input[_builtins.bool] oidc_conformant: Whether this client conforms to strict OIDC specifications. Must be `true` for CIMD clients.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] organization_discovery_methods: Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
+        :param pulumi.Input[_builtins.str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or `post_login_prompt`.
+        :param pulumi.Input[_builtins.str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input[_builtins.str] redirection_policy: Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.
         :param pulumi.Input['ClientCimdRefreshTokenArgs'] refresh_token: Configuration settings for the refresh tokens issued for this client.
         :param pulumi.Input[_builtins.bool] require_proof_of_possession: Makes the use of Proof-of-Possession mandatory for this client.
@@ -399,6 +435,10 @@ class _ClientCimdState:
             pulumi.set(__self__, "oidc_conformant", oidc_conformant)
         if organization_discovery_methods is not None:
             pulumi.set(__self__, "organization_discovery_methods", organization_discovery_methods)
+        if organization_require_behavior is not None:
+            pulumi.set(__self__, "organization_require_behavior", organization_require_behavior)
+        if organization_usage is not None:
+            pulumi.set(__self__, "organization_usage", organization_usage)
         if redirection_policy is not None:
             pulumi.set(__self__, "redirection_policy", redirection_policy)
         if refresh_token is not None:
@@ -647,6 +687,30 @@ class _ClientCimdState:
         pulumi.set(self, "organization_discovery_methods", value)
 
     @_builtins.property
+    @pulumi.getter(name="organizationRequireBehavior")
+    def organization_require_behavior(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or `post_login_prompt`.
+        """
+        return pulumi.get(self, "organization_require_behavior")
+
+    @organization_require_behavior.setter
+    def organization_require_behavior(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "organization_require_behavior", value)
+
+    @_builtins.property
+    @pulumi.getter(name="organizationUsage")
+    def organization_usage(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+        """
+        return pulumi.get(self, "organization_usage")
+
+    @organization_usage.setter
+    def organization_usage(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "organization_usage", value)
+
+    @_builtins.property
     @pulumi.getter(name="redirectionPolicy")
     def redirection_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -772,6 +836,8 @@ class ClientCimd(pulumi.CustomResource):
                  jwt_configuration: pulumi.Input[Optional[Union['ClientCimdJwtConfigurationArgs', 'ClientCimdJwtConfigurationArgsDict', 'outputs.ClientCimdJwtConfiguration']]] = None,
                  oidc_conformant: pulumi.Input[Optional[_builtins.bool]] = None,
                  organization_discovery_methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 organization_require_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_usage: pulumi.Input[Optional[_builtins.str]] = None,
                  redirection_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  refresh_token: pulumi.Input[Optional[Union['ClientCimdRefreshTokenArgs', 'ClientCimdRefreshTokenArgsDict', 'outputs.ClientCimdRefreshToken']]] = None,
                  require_proof_of_possession: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -816,6 +882,8 @@ class ClientCimd(pulumi.CustomResource):
                 "authorization_code",
                 "refresh_token",
             ],
+            organization_usage="require",
+            organization_require_behavior="post_login_prompt",
             client_metadata={
                 "environment": "production",
             })
@@ -846,6 +914,8 @@ class ClientCimd(pulumi.CustomResource):
         :param pulumi.Input[Union['ClientCimdJwtConfigurationArgs', 'ClientCimdJwtConfigurationArgsDict', 'outputs.ClientCimdJwtConfiguration']] jwt_configuration: Configuration settings for the JWTs issued for this client.
         :param pulumi.Input[_builtins.bool] oidc_conformant: Whether this client conforms to strict OIDC specifications. Must be `true` for CIMD clients.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] organization_discovery_methods: Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
+        :param pulumi.Input[_builtins.str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or `post_login_prompt`.
+        :param pulumi.Input[_builtins.str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input[_builtins.str] redirection_policy: Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.
         :param pulumi.Input[Union['ClientCimdRefreshTokenArgs', 'ClientCimdRefreshTokenArgsDict', 'outputs.ClientCimdRefreshToken']] refresh_token: Configuration settings for the refresh tokens issued for this client.
         :param pulumi.Input[_builtins.bool] require_proof_of_possession: Makes the use of Proof-of-Possession mandatory for this client.
@@ -896,6 +966,8 @@ class ClientCimd(pulumi.CustomResource):
                 "authorization_code",
                 "refresh_token",
             ],
+            organization_usage="require",
+            organization_require_behavior="post_login_prompt",
             client_metadata={
                 "environment": "production",
             })
@@ -939,6 +1011,8 @@ class ClientCimd(pulumi.CustomResource):
                  jwt_configuration: pulumi.Input[Optional[Union['ClientCimdJwtConfigurationArgs', 'ClientCimdJwtConfigurationArgsDict', 'outputs.ClientCimdJwtConfiguration']]] = None,
                  oidc_conformant: pulumi.Input[Optional[_builtins.bool]] = None,
                  organization_discovery_methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 organization_require_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_usage: pulumi.Input[Optional[_builtins.str]] = None,
                  redirection_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  refresh_token: pulumi.Input[Optional[Union['ClientCimdRefreshTokenArgs', 'ClientCimdRefreshTokenArgsDict', 'outputs.ClientCimdRefreshToken']]] = None,
                  require_proof_of_possession: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -967,6 +1041,8 @@ class ClientCimd(pulumi.CustomResource):
             __props__.__dict__["jwt_configuration"] = jwt_configuration
             __props__.__dict__["oidc_conformant"] = oidc_conformant
             __props__.__dict__["organization_discovery_methods"] = organization_discovery_methods
+            __props__.__dict__["organization_require_behavior"] = organization_require_behavior
+            __props__.__dict__["organization_usage"] = organization_usage
             __props__.__dict__["redirection_policy"] = redirection_policy
             __props__.__dict__["refresh_token"] = refresh_token
             __props__.__dict__["require_proof_of_possession"] = require_proof_of_possession
@@ -1015,6 +1091,8 @@ class ClientCimd(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             oidc_conformant: pulumi.Input[Optional[_builtins.bool]] = None,
             organization_discovery_methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            organization_require_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_usage: pulumi.Input[Optional[_builtins.str]] = None,
             redirection_policy: pulumi.Input[Optional[_builtins.str]] = None,
             refresh_token: pulumi.Input[Optional[Union['ClientCimdRefreshTokenArgs', 'ClientCimdRefreshTokenArgsDict', 'outputs.ClientCimdRefreshToken']]] = None,
             require_proof_of_possession: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1050,6 +1128,8 @@ class ClientCimd(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the client, derived from the CIMD metadata document.
         :param pulumi.Input[_builtins.bool] oidc_conformant: Whether this client conforms to strict OIDC specifications. Must be `true` for CIMD clients.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] organization_discovery_methods: Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
+        :param pulumi.Input[_builtins.str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or `post_login_prompt`.
+        :param pulumi.Input[_builtins.str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input[_builtins.str] redirection_policy: Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.
         :param pulumi.Input[Union['ClientCimdRefreshTokenArgs', 'ClientCimdRefreshTokenArgsDict', 'outputs.ClientCimdRefreshToken']] refresh_token: Configuration settings for the refresh tokens issued for this client.
         :param pulumi.Input[_builtins.bool] require_proof_of_possession: Makes the use of Proof-of-Possession mandatory for this client.
@@ -1083,6 +1163,8 @@ class ClientCimd(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["oidc_conformant"] = oidc_conformant
         __props__.__dict__["organization_discovery_methods"] = organization_discovery_methods
+        __props__.__dict__["organization_require_behavior"] = organization_require_behavior
+        __props__.__dict__["organization_usage"] = organization_usage
         __props__.__dict__["redirection_policy"] = redirection_policy
         __props__.__dict__["refresh_token"] = refresh_token
         __props__.__dict__["require_proof_of_possession"] = require_proof_of_possession
@@ -1245,6 +1327,22 @@ class ClientCimd(pulumi.CustomResource):
         Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
         """
         return pulumi.get(self, "organization_discovery_methods")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationRequireBehavior")
+    def organization_require_behavior(self) -> pulumi.Output[_builtins.str]:
+        """
+        Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or `post_login_prompt`.
+        """
+        return pulumi.get(self, "organization_require_behavior")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationUsage")
+    def organization_usage(self) -> pulumi.Output[_builtins.str]:
+        """
+        Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+        """
+        return pulumi.get(self, "organization_usage")
 
     @_builtins.property
     @pulumi.getter(name="redirectionPolicy")

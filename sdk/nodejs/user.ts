@@ -33,6 +33,18 @@ import * as utilities from "./utilities";
  *     password: "MyPass123$",
  *     customDomainHeader: "my-custom.domain.org",
  * });
+ * // The password can be set as a write-only argument so it is never persisted to Pulumi state.
+ * // It can be sourced from an ephemeral value (e.g. a secrets manager) and is mutually exclusive
+ * // with `password`. Bump `password_wo_version` to send a new password.
+ * //
+ * // NOTE: Write-only arguments require Pulumi 1.11 or later.
+ * const userWriteOnlyPassword = new auth0.User("user_write_only_password", {
+ *     connectionName: "Username-Password-Authentication",
+ *     username: "write_only_user",
+ *     email: "write.only@test.com",
+ *     passwordWo: userPassword,
+ *     passwordWoVersion: 1,
+ * });
  * ```
  *
  * ## Import
@@ -114,9 +126,18 @@ export class User extends pulumi.CustomResource {
      */
     declare public readonly nickname: pulumi.Output<string>;
     /**
-     * Initial password for this user. Required for non-passwordless connections (SMS and email).
+     * Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `passwordWo`.
      */
     declare public readonly password: pulumi.Output<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Password for this user (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. It is sent when the user is created and whenever `passwordWoVersion` changes. Conflicts with `password`.
+     */
+    declare public readonly passwordWo: pulumi.Output<string | undefined>;
+    /**
+     * Version counter for `passwordWo`, required whenever the write-only password is set. Change it to send a new password.
+     */
+    declare public readonly passwordWoVersion: pulumi.Output<number | undefined>;
     /**
      * Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
      */
@@ -170,6 +191,8 @@ export class User extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["nickname"] = state?.nickname;
             resourceInputs["password"] = state?.password;
+            resourceInputs["passwordWo"] = state?.passwordWo;
+            resourceInputs["passwordWoVersion"] = state?.passwordWoVersion;
             resourceInputs["phoneNumber"] = state?.phoneNumber;
             resourceInputs["phoneVerified"] = state?.phoneVerified;
             resourceInputs["picture"] = state?.picture;
@@ -193,6 +216,8 @@ export class User extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["nickname"] = args?.nickname;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
+            resourceInputs["passwordWo"] = args?.passwordWo ? pulumi.secret(args.passwordWo) : undefined;
+            resourceInputs["passwordWoVersion"] = args?.passwordWoVersion;
             resourceInputs["phoneNumber"] = args?.phoneNumber;
             resourceInputs["phoneVerified"] = args?.phoneVerified;
             resourceInputs["picture"] = args?.picture;
@@ -202,7 +227,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["verifyEmail"] = args?.verifyEmail;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["password"] };
+        const secretOpts = { additionalSecretOutputs: ["password", "passwordWo"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(User.__pulumiType, name, resourceInputs, opts);
     }
@@ -253,9 +278,18 @@ export interface UserState {
      */
     nickname?: pulumi.Input<string | undefined>;
     /**
-     * Initial password for this user. Required for non-passwordless connections (SMS and email).
+     * Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `passwordWo`.
      */
     password?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Password for this user (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. It is sent when the user is created and whenever `passwordWoVersion` changes. Conflicts with `password`.
+     */
+    passwordWo?: pulumi.Input<string | undefined>;
+    /**
+     * Version counter for `passwordWo`, required whenever the write-only password is set. Change it to send a new password.
+     */
+    passwordWoVersion?: pulumi.Input<number | undefined>;
     /**
      * Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
      */
@@ -331,9 +365,18 @@ export interface UserArgs {
      */
     nickname?: pulumi.Input<string | undefined>;
     /**
-     * Initial password for this user. Required for non-passwordless connections (SMS and email).
+     * Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `passwordWo`.
      */
     password?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Password for this user (write-only). This value is **not** stored in Terraform state and can be sourced from an ephemeral value. It is sent when the user is created and whenever `passwordWoVersion` changes. Conflicts with `password`.
+     */
+    passwordWo?: pulumi.Input<string | undefined>;
+    /**
+     * Version counter for `passwordWo`, required whenever the write-only password is set. Change it to send a new password.
+     */
+    passwordWoVersion?: pulumi.Input<number | undefined>;
     /**
      * Phone number for the user; follows the E.164 recommendation. Used for SMS connections.
      */
