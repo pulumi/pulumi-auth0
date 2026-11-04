@@ -144,6 +144,12 @@ func (CustomDomainVerificationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customDomainVerificationState)(nil)).Elem()
 }
 
+// CustomDomainVerificationExists checks whether an existing CustomDomainVerification resource with the given ID exists.
+func CustomDomainVerificationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomDomainVerificationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/customDomainVerification:CustomDomainVerification", id, state, "", opts...)
+}
+
 type customDomainVerificationArgs struct {
 	// ID of the custom domain resource.
 	CustomDomainId string `pulumi:"customDomainId"`

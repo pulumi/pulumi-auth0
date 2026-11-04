@@ -260,6 +260,12 @@ func (FormState) ElementType() reflect.Type {
 	return reflect.TypeOf((*formState)(nil)).Elem()
 }
 
+// FormExists checks whether an existing Form resource with the given ID exists.
+func FormExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FormState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/form:Form", id, state, "", opts...)
+}
+
 type formArgs struct {
 	// Submission configuration of the form. (JSON encoded)
 	Ending *string `pulumi:"ending"`

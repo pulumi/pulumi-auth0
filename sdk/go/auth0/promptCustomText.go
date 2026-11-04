@@ -153,6 +153,12 @@ func (PromptCustomTextState) ElementType() reflect.Type {
 	return reflect.TypeOf((*promptCustomTextState)(nil)).Elem()
 }
 
+// PromptCustomTextExists checks whether an existing PromptCustomText resource with the given ID exists.
+func PromptCustomTextExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PromptCustomTextState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/promptCustomText:PromptCustomText", id, state, "", opts...)
+}
+
 type promptCustomTextArgs struct {
 	// JSON containing the custom texts. You can check the options for each prompt [here](https://auth0.com/docs/customize/universal-login-pages/customize-login-text-prompts#prompt-values).
 	Body string `pulumi:"body"`

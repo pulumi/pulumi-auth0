@@ -151,6 +151,12 @@ func (OrganizationConnectionsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationConnectionsState)(nil)).Elem()
 }
 
+// OrganizationConnectionsExists checks whether an existing OrganizationConnections resource with the given ID exists.
+func OrganizationConnectionsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrganizationConnectionsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/organizationConnections:OrganizationConnections", id, state, "", opts...)
+}
+
 type organizationConnectionsArgs struct {
 	// Connections that are enabled for the organization.
 	EnabledConnections []OrganizationConnectionsEnabledConnection `pulumi:"enabledConnections"`

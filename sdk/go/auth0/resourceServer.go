@@ -329,6 +329,12 @@ func (ResourceServerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*resourceServerState)(nil)).Elem()
 }
 
+// ResourceServerExists checks whether an existing ResourceServer resource with the given ID exists.
+func ResourceServerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ResourceServerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/resourceServer:ResourceServer", id, state, "", opts...)
+}
+
 type resourceServerArgs struct {
 	// Configuration for the access tokens issued for this resource server. Remove the block to clear the configuration on the API. (EA only)
 	AccessToken *ResourceServerAccessToken `pulumi:"accessToken"`

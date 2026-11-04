@@ -117,7 +117,7 @@ public final class ClientAddonsSamlp {
      */
     private @Nullable String signatureAlgorithm;
     /**
-     * @return Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
+     * @return Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----&#92;nMIGf...bpP/t3&#92;n+JGNGIRMj1hF1rnb6QIDAQAB&#92;n-----END PUBLIC KEY-----&#92;n`.
      * 
      */
     private @Nullable String signingCert;
@@ -269,7 +269,7 @@ public final class ClientAddonsSamlp {
         return Optional.ofNullable(this.signatureAlgorithm);
     }
     /**
-     * @return Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
+     * @return Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----&#92;nMIGf...bpP/t3&#92;n+JGNGIRMj1hF1rnb6QIDAQAB&#92;n-----END PUBLIC KEY-----&#92;n`.
      * 
      */
     public Optional<String> signingCert() {

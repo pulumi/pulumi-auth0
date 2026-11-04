@@ -202,6 +202,12 @@ func (PhoneProviderState) ElementType() reflect.Type {
 	return reflect.TypeOf((*phoneProviderState)(nil)).Elem()
 }
 
+// PhoneProviderExists checks whether an existing PhoneProvider resource with the given ID exists.
+func PhoneProviderExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PhoneProviderState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/phoneProvider:PhoneProvider", id, state, "", opts...)
+}
+
 type phoneProviderArgs struct {
 	// Specific phone provider settings.
 	Configuration PhoneProviderConfiguration `pulumi:"configuration"`

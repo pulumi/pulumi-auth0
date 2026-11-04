@@ -66,6 +66,12 @@ func (RiskAssessmentsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*riskAssessmentsState)(nil)).Elem()
 }
 
+// RiskAssessmentsExists checks whether an existing RiskAssessments resource with the given ID exists.
+func RiskAssessmentsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RiskAssessmentsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/riskAssessments:RiskAssessments", id, state, "", opts...)
+}
+
 type riskAssessmentsArgs struct {
 	// Whether risk assessment is enabled or not.
 	Enabled bool `pulumi:"enabled"`

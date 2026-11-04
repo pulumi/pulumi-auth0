@@ -171,6 +171,12 @@ func (UserPermissionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userPermissionState)(nil)).Elem()
 }
 
+// UserPermissionExists checks whether an existing UserPermission resource with the given ID exists.
+func UserPermissionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserPermissionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/userPermission:UserPermission", id, state, "", opts...)
+}
+
 type userPermissionArgs struct {
 	// Name of the permission.
 	Permission string `pulumi:"permission"`

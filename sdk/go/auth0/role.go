@@ -138,6 +138,12 @@ func (RoleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*roleState)(nil)).Elem()
 }
 
+// RoleExists checks whether an existing Role resource with the given ID exists.
+func RoleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RoleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/role:Role", id, state, "", opts...)
+}
+
 type roleArgs struct {
 	// The description of the role.
 	Description *string `pulumi:"description"`

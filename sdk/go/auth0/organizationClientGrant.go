@@ -167,6 +167,12 @@ func (OrganizationClientGrantState) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationClientGrantState)(nil)).Elem()
 }
 
+// OrganizationClientGrantExists checks whether an existing OrganizationClientGrant resource with the given ID exists.
+func OrganizationClientGrantExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrganizationClientGrantState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/organizationClientGrant:OrganizationClientGrant", id, state, "", opts...)
+}
+
 type organizationClientGrantArgs struct {
 	// A Client Grant ID to add to the organization.
 	GrantId string `pulumi:"grantId"`

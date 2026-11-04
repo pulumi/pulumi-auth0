@@ -526,6 +526,36 @@ class CustomDomain(pulumi.CustomResource):
         __props__.__dict__["verifications"] = verifications
         return CustomDomain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomDomainCertificateArgs', 'CustomDomainCertificateArgsDict', 'outputs.CustomDomainCertificate']]]]] = None,
+            custom_client_ip_header: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            origin_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            primary: pulumi.Input[Optional[_builtins.bool]] = None,
+            relying_party_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tls_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            verifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomDomainVerificationArgs', 'CustomDomainVerificationArgsDict', 'outputs.CustomDomainVerification']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["certificates"] = certificates
+        __props__["customClientIpHeader"] = custom_client_ip_header
+        __props__["domain"] = domain
+        __props__["domainMetadata"] = domain_metadata
+        __props__["isDefault"] = is_default
+        __props__["originDomainName"] = origin_domain_name
+        __props__["primary"] = primary
+        __props__["relyingPartyIdentifier"] = relying_party_identifier
+        __props__["status"] = status
+        __props__["tlsPolicy"] = tls_policy
+        __props__["type"] = type
+        __props__["verifications"] = verifications
+        return pulumi.runtime.exists_resource(None, 'auth0:index/customDomain:CustomDomain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def certificates(self) -> pulumi.Output[Sequence['outputs.CustomDomainCertificate']]:

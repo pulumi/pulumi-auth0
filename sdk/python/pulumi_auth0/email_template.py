@@ -551,6 +551,30 @@ class EmailTemplate(pulumi.CustomResource):
         __props__.__dict__["url_lifetime_in_seconds"] = url_lifetime_in_seconds
         return EmailTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            body: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            from_: pulumi.Input[Optional[_builtins.str]] = None,
+            include_email_in_redirect: pulumi.Input[Optional[_builtins.bool]] = None,
+            result_url: pulumi.Input[Optional[_builtins.str]] = None,
+            subject: pulumi.Input[Optional[_builtins.str]] = None,
+            syntax: pulumi.Input[Optional[_builtins.str]] = None,
+            template: pulumi.Input[Optional[_builtins.str]] = None,
+            url_lifetime_in_seconds: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["body"] = body
+        __props__["enabled"] = enabled
+        __props__["from"] = from_
+        __props__["includeEmailInRedirect"] = include_email_in_redirect
+        __props__["resultUrl"] = result_url
+        __props__["subject"] = subject
+        __props__["syntax"] = syntax
+        __props__["template"] = template
+        __props__["urlLifetimeInSeconds"] = url_lifetime_in_seconds
+        return pulumi.runtime.exists_resource(None, 'auth0:index/emailTemplate:EmailTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def body(self) -> pulumi.Output[_builtins.str]:

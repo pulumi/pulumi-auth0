@@ -173,6 +173,12 @@ func (OrganizationClientState) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationClientState)(nil)).Elem()
 }
 
+// OrganizationClientExists checks whether an existing OrganizationClient resource with the given ID exists.
+func OrganizationClientExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrganizationClientState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/organizationClient:OrganizationClient", id, state, "", opts...)
+}
+
 type organizationClientArgs struct {
 	// The ID of the client (application) to associate with the organization.
 	ClientId string `pulumi:"clientId"`

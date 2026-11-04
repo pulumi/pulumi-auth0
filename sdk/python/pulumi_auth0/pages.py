@@ -348,6 +348,20 @@ class Pages(pulumi.CustomResource):
         __props__.__dict__["login"] = login
         return Pages(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            change_password: pulumi.Input[Optional[Union['PagesChangePasswordArgs', 'PagesChangePasswordArgsDict', 'outputs.PagesChangePassword']]] = None,
+            error: pulumi.Input[Optional[Union['PagesErrorArgs', 'PagesErrorArgsDict', 'outputs.PagesError']]] = None,
+            guardian_mfa: pulumi.Input[Optional[Union['PagesGuardianMfaArgs', 'PagesGuardianMfaArgsDict', 'outputs.PagesGuardianMfa']]] = None,
+            login: pulumi.Input[Optional[Union['PagesLoginArgs', 'PagesLoginArgsDict', 'outputs.PagesLogin']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["changePassword"] = change_password
+        __props__["error"] = error
+        __props__["guardianMfa"] = guardian_mfa
+        __props__["login"] = login
+        return pulumi.runtime.exists_resource(None, 'auth0:index/pages:Pages', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="changePassword")
     def change_password(self) -> pulumi.Output['outputs.PagesChangePassword']:

@@ -164,11 +164,10 @@ public class CustomDomain extends com.pulumi.resources.CustomResource {
     /**
      * Indicates whether this is a primary domain.
      * 
-     * @deprecated
-     * Primary field is no longer used and will be removed in a future release.
+     * @deprecated Primary field is no longer used and will be removed in a future release.
      * 
      */
-    @Deprecated /* Primary field is no longer used and will be removed in a future release. */
+    @Deprecated
     @Export(name="primary", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> primary;
 

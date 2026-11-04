@@ -80,6 +80,12 @@ func (UserAttributeProfileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userAttributeProfileState)(nil)).Elem()
 }
 
+// UserAttributeProfileExists checks whether an existing UserAttributeProfile resource with the given ID exists.
+func UserAttributeProfileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserAttributeProfileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/userAttributeProfile:UserAttributeProfile", id, state, "", opts...)
+}
+
 type userAttributeProfileArgs struct {
 	// The name of the User Attribute Profile.
 	Name *string `pulumi:"name"`

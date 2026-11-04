@@ -883,6 +883,48 @@ class User(pulumi.CustomResource):
         __props__.__dict__["verify_email"] = verify_email
         return User(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_metadata: pulumi.Input[Optional[_builtins.str]] = None,
+            blocked: pulumi.Input[Optional[_builtins.bool]] = None,
+            connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_domain_header: pulumi.Input[Optional[_builtins.str]] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            email_verified: pulumi.Input[Optional[_builtins.bool]] = None,
+            family_name: pulumi.Input[Optional[_builtins.str]] = None,
+            given_name: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            nickname: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            phone_number: pulumi.Input[Optional[_builtins.str]] = None,
+            phone_verified: pulumi.Input[Optional[_builtins.bool]] = None,
+            picture: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_metadata: pulumi.Input[Optional[_builtins.str]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None,
+            verify_email: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appMetadata"] = app_metadata
+        __props__["blocked"] = blocked
+        __props__["connectionName"] = connection_name
+        __props__["customDomainHeader"] = custom_domain_header
+        __props__["email"] = email
+        __props__["emailVerified"] = email_verified
+        __props__["familyName"] = family_name
+        __props__["givenName"] = given_name
+        __props__["name"] = name
+        __props__["nickname"] = nickname
+        __props__["password"] = password
+        __props__["phoneNumber"] = phone_number
+        __props__["phoneVerified"] = phone_verified
+        __props__["picture"] = picture
+        __props__["userId"] = user_id
+        __props__["userMetadata"] = user_metadata
+        __props__["username"] = username
+        __props__["verifyEmail"] = verify_email
+        return pulumi.runtime.exists_resource(None, 'auth0:index/user:User', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appMetadata")
     def app_metadata(self) -> pulumi.Output[Optional[_builtins.str]]:

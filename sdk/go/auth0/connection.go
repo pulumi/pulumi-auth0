@@ -1197,6 +1197,12 @@ func (ConnectionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectionState)(nil)).Elem()
 }
 
+// ConnectionExists checks whether an existing Connection resource with the given ID exists.
+func ConnectionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConnectionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/connection:Connection", id, state, "", opts...)
+}
+
 type connectionArgs struct {
 	// Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
 	Authentication *ConnectionAuthentication `pulumi:"authentication"`

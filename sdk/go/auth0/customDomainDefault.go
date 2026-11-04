@@ -110,6 +110,12 @@ func (CustomDomainDefaultState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customDomainDefaultState)(nil)).Elem()
 }
 
+// CustomDomainDefaultExists checks whether an existing CustomDomainDefault resource with the given ID exists.
+func CustomDomainDefaultExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomDomainDefaultState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/customDomainDefault:CustomDomainDefault", id, state, "", opts...)
+}
+
 type customDomainDefaultArgs struct {
 	// The custom domain name or canonical domain name to set as the default domain for the tenant.
 	Domain string `pulumi:"domain"`

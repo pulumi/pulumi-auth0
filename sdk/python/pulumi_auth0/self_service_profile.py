@@ -446,6 +446,28 @@ class SelfServiceProfile(pulumi.CustomResource):
         __props__.__dict__["user_attributes"] = user_attributes
         return SelfServiceProfile(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allowed_strategies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            branding: pulumi.Input[Optional[Union['SelfServiceProfileBrandingArgs', 'SelfServiceProfileBrandingArgsDict', 'outputs.SelfServiceProfileBranding']]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            user_attribute_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SelfServiceProfileUserAttributeArgs', 'SelfServiceProfileUserAttributeArgsDict', 'outputs.SelfServiceProfileUserAttribute']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowedStrategies"] = allowed_strategies
+        __props__["branding"] = branding
+        __props__["createdAt"] = created_at
+        __props__["description"] = description
+        __props__["name"] = name
+        __props__["updatedAt"] = updated_at
+        __props__["userAttributeProfileId"] = user_attribute_profile_id
+        __props__["userAttributes"] = user_attributes
+        return pulumi.runtime.exists_resource(None, 'auth0:index/selfServiceProfile:SelfServiceProfile', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowedStrategies")
     def allowed_strategies(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

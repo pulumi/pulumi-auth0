@@ -138,6 +138,12 @@ func (TriggerActionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*triggerActionState)(nil)).Elem()
 }
 
+// TriggerActionExists checks whether an existing TriggerAction resource with the given ID exists.
+func TriggerActionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TriggerActionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/triggerAction:TriggerAction", id, state, "", opts...)
+}
+
 type triggerActionArgs struct {
 	// The ID of the action to bind to the trigger.
 	ActionId string `pulumi:"actionId"`

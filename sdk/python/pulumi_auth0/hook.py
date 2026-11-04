@@ -412,6 +412,24 @@ class Hook(pulumi.CustomResource):
         __props__.__dict__["trigger_id"] = trigger_id
         return Hook(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            dependencies: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            script: pulumi.Input[Optional[_builtins.str]] = None,
+            secrets: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            trigger_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dependencies"] = dependencies
+        __props__["enabled"] = enabled
+        __props__["name"] = name
+        __props__["script"] = script
+        __props__["secrets"] = secrets
+        __props__["triggerId"] = trigger_id
+        return pulumi.runtime.exists_resource(None, 'auth0:index/hook:Hook', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def dependencies(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:

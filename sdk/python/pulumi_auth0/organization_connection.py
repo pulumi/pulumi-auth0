@@ -515,6 +515,32 @@ class OrganizationConnection(pulumi.CustomResource):
         __props__.__dict__["strategy"] = strategy
         return OrganizationConnection(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            assign_membership_on_login: pulumi.Input[Optional[_builtins.bool]] = None,
+            connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_signup_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            show_as_button: pulumi.Input[Optional[_builtins.bool]] = None,
+            strategy: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["assignMembershipOnLogin"] = assign_membership_on_login
+        __props__["connectionId"] = connection_id
+        __props__["isEnabled"] = is_enabled
+        __props__["isSignupEnabled"] = is_signup_enabled
+        __props__["name"] = name
+        __props__["organizationAccessLevel"] = organization_access_level
+        __props__["organizationConnectionName"] = organization_connection_name
+        __props__["organizationId"] = organization_id
+        __props__["showAsButton"] = show_as_button
+        __props__["strategy"] = strategy
+        return pulumi.runtime.exists_resource(None, 'auth0:index/organizationConnection:OrganizationConnection', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="assignMembershipOnLogin")
     def assign_membership_on_login(self) -> pulumi.Output[_builtins.bool]:

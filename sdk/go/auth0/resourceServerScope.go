@@ -138,6 +138,12 @@ func (ResourceServerScopeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*resourceServerScopeState)(nil)).Elem()
 }
 
+// ResourceServerScopeExists checks whether an existing ResourceServerScope resource with the given ID exists.
+func ResourceServerScopeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ResourceServerScopeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/resourceServerScope:ResourceServerScope", id, state, "", opts...)
+}
+
 type resourceServerScopeArgs struct {
 	// Description of the scope (permission).
 	Description *string `pulumi:"description"`

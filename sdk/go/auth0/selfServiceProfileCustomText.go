@@ -143,6 +143,12 @@ func (SelfServiceProfileCustomTextState) ElementType() reflect.Type {
 	return reflect.TypeOf((*selfServiceProfileCustomTextState)(nil)).Elem()
 }
 
+// SelfServiceProfileCustomTextExists checks whether an existing SelfServiceProfileCustomText resource with the given ID exists.
+func SelfServiceProfileCustomTextExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SelfServiceProfileCustomTextState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/selfServiceProfileCustomText:SelfServiceProfileCustomText", id, state, "", opts...)
+}
+
 type selfServiceProfileCustomTextArgs struct {
 	// The list of text keys and values to customize the self-service SSO page. Values can be plain text or rich HTML content limited to basic styling tags and hyperlinks
 	Body string `pulumi:"body"`

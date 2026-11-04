@@ -573,6 +573,30 @@ class EventStream(pulumi.CustomResource):
         __props__.__dict__["webhook_configuration"] = webhook_configuration
         return EventStream(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action_configuration: pulumi.Input[Optional[Union['EventStreamActionConfigurationArgs', 'EventStreamActionConfigurationArgsDict', 'outputs.EventStreamActionConfiguration']]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_type: pulumi.Input[Optional[_builtins.str]] = None,
+            eventbridge_configuration: pulumi.Input[Optional[Union['EventStreamEventbridgeConfigurationArgs', 'EventStreamEventbridgeConfigurationArgsDict', 'outputs.EventStreamEventbridgeConfiguration']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            subscriptions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            webhook_configuration: pulumi.Input[Optional[Union['EventStreamWebhookConfigurationArgs', 'EventStreamWebhookConfigurationArgsDict', 'outputs.EventStreamWebhookConfiguration']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["actionConfiguration"] = action_configuration
+        __props__["createdAt"] = created_at
+        __props__["destinationType"] = destination_type
+        __props__["eventbridgeConfiguration"] = eventbridge_configuration
+        __props__["name"] = name
+        __props__["status"] = status
+        __props__["subscriptions"] = subscriptions
+        __props__["updatedAt"] = updated_at
+        __props__["webhookConfiguration"] = webhook_configuration
+        return pulumi.runtime.exists_resource(None, 'auth0:index/eventStream:EventStream', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="actionConfiguration")
     def action_configuration(self) -> pulumi.Output[Optional['outputs.EventStreamActionConfiguration']]:

@@ -151,6 +151,12 @@ func (RateLimitPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*rateLimitPolicyState)(nil)).Elem()
 }
 
+// RateLimitPolicyExists checks whether an existing RateLimitPolicy resource with the given ID exists.
+func RateLimitPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RateLimitPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/rateLimitPolicy:RateLimitPolicy", id, state, "", opts...)
+}
+
 type rateLimitPolicyArgs struct {
 	// The throttling configuration applied when the rate limit is reached. (EA only)
 	Configuration RateLimitPolicyConfiguration `pulumi:"configuration"`

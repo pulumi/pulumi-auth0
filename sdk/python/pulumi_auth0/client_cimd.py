@@ -1094,6 +1094,68 @@ class ClientCimd(pulumi.CustomResource):
         __props__.__dict__["web_origins"] = web_origins
         return ClientCimd(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            app_type: pulumi.Input[Optional[_builtins.str]] = None,
+            callbacks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            client_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            default_organization: pulumi.Input[Optional[Union['ClientCimdDefaultOrganizationArgs', 'ClientCimdDefaultOrganizationArgsDict', 'outputs.ClientCimdDefaultOrganization']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            external_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            external_client_id_version: pulumi.Input[Optional[_builtins.int]] = None,
+            external_metadata_created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            external_metadata_type: pulumi.Input[Optional[_builtins.str]] = None,
+            grant_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            is_first_party: pulumi.Input[Optional[_builtins.bool]] = None,
+            jwks_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            jwt_configuration: pulumi.Input[Optional[Union['ClientCimdJwtConfigurationArgs', 'ClientCimdJwtConfigurationArgsDict', 'outputs.ClientCimdJwtConfiguration']]] = None,
+            logo_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            oidc_conformant: pulumi.Input[Optional[_builtins.bool]] = None,
+            organization_discovery_methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            redirection_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            refresh_token: pulumi.Input[Optional[Union['ClientCimdRefreshTokenArgs', 'ClientCimdRefreshTokenArgsDict', 'outputs.ClientCimdRefreshToken']]] = None,
+            require_proof_of_possession: pulumi.Input[Optional[_builtins.bool]] = None,
+            signing_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+            skip_non_verifiable_callback_uri_confirmation_prompt: pulumi.Input[Optional[_builtins.bool]] = None,
+            third_party_security_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            token_quota: pulumi.Input[Optional[Union['ClientCimdTokenQuotaArgs', 'ClientCimdTokenQuotaArgsDict', 'outputs.ClientCimdTokenQuota']]] = None,
+            validations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClientCimdValidationArgs', 'ClientCimdValidationArgsDict', 'outputs.ClientCimdValidation']]]]] = None,
+            web_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowedOrigins"] = allowed_origins
+        __props__["appType"] = app_type
+        __props__["callbacks"] = callbacks
+        __props__["clientId"] = client_id
+        __props__["clientMetadata"] = client_metadata
+        __props__["defaultOrganization"] = default_organization
+        __props__["description"] = description
+        __props__["externalClientId"] = external_client_id
+        __props__["externalClientIdVersion"] = external_client_id_version
+        __props__["externalMetadataCreatedBy"] = external_metadata_created_by
+        __props__["externalMetadataType"] = external_metadata_type
+        __props__["grantTypes"] = grant_types
+        __props__["isFirstParty"] = is_first_party
+        __props__["jwksUri"] = jwks_uri
+        __props__["jwtConfiguration"] = jwt_configuration
+        __props__["logoUri"] = logo_uri
+        __props__["name"] = name
+        __props__["oidcConformant"] = oidc_conformant
+        __props__["organizationDiscoveryMethods"] = organization_discovery_methods
+        __props__["redirectionPolicy"] = redirection_policy
+        __props__["refreshToken"] = refresh_token
+        __props__["requireProofOfPossession"] = require_proof_of_possession
+        __props__["signingKeys"] = signing_keys
+        __props__["skipNonVerifiableCallbackUriConfirmationPrompt"] = skip_non_verifiable_callback_uri_confirmation_prompt
+        __props__["thirdPartySecurityMode"] = third_party_security_mode
+        __props__["tokenQuota"] = token_quota
+        __props__["validations"] = validations
+        __props__["webOrigins"] = web_origins
+        return pulumi.runtime.exists_resource(None, 'auth0:index/clientCimd:ClientCimd', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowedOrigins")
     def allowed_origins(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

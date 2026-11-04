@@ -115,11 +115,10 @@ public class ConnectionDirectorySynchronizedGroups extends com.pulumi.resources.
     /**
      * IDs of the Google Workspace Directory groups to synchronize.
      * 
-     * @deprecated
-     * Use `groups` instead, which exposes each group&#39;s name, email and member count alongside its ID.
+     * @deprecated Use `groups` instead, which exposes each group&#39;s name, email and member count alongside its ID.
      * 
      */
-    @Deprecated /* Use `groups` instead, which exposes each group's name, email and member count alongside its ID. */
+    @Deprecated
     @Export(name="groupIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> groupIds;
 

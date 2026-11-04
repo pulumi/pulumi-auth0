@@ -304,6 +304,16 @@ class OrganizationClientGrant(pulumi.CustomResource):
         __props__.__dict__["organization_id"] = organization_id
         return OrganizationClientGrant(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            grant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["grantId"] = grant_id
+        __props__["organizationId"] = organization_id
+        return pulumi.runtime.exists_resource(None, 'auth0:index/organizationClientGrant:OrganizationClientGrant', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="grantId")
     def grant_id(self) -> pulumi.Output[_builtins.str]:

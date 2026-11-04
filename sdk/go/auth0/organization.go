@@ -149,6 +149,12 @@ func (OrganizationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationState)(nil)).Elem()
 }
 
+// OrganizationExists checks whether an existing Organization resource with the given ID exists.
+func OrganizationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrganizationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/organization:Organization", id, state, "", opts...)
+}
+
 type organizationArgs struct {
 	// Defines how to style the login pages.
 	Branding *OrganizationBranding `pulumi:"branding"`

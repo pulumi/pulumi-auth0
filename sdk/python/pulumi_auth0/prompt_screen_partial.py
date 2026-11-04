@@ -307,6 +307,18 @@ class PromptScreenPartial(pulumi.CustomResource):
         __props__.__dict__["screen_name"] = screen_name
         return PromptScreenPartial(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            insertion_points: pulumi.Input[Optional[Union['PromptScreenPartialInsertionPointsArgs', 'PromptScreenPartialInsertionPointsArgsDict', 'outputs.PromptScreenPartialInsertionPoints']]] = None,
+            prompt_type: pulumi.Input[Optional[_builtins.str]] = None,
+            screen_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["insertionPoints"] = insertion_points
+        __props__["promptType"] = prompt_type
+        __props__["screenName"] = screen_name
+        return pulumi.runtime.exists_resource(None, 'auth0:index/promptScreenPartial:PromptScreenPartial', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="insertionPoints")
     def insertion_points(self) -> pulumi.Output[Optional['outputs.PromptScreenPartialInsertionPoints']]:

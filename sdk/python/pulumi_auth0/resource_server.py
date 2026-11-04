@@ -1211,6 +1211,60 @@ class ResourceServer(pulumi.CustomResource):
         __props__.__dict__["verification_location"] = verification_location
         return ResourceServer(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_token: pulumi.Input[Optional[Union['ResourceServerAccessTokenArgs', 'ResourceServerAccessTokenArgsDict', 'outputs.ResourceServerAccessToken']]] = None,
+            allow_offline_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_online_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_online_access_with_ephemeral_sessions: pulumi.Input[Optional[_builtins.bool]] = None,
+            authorization_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceServerAuthorizationDetailArgs', 'ResourceServerAuthorizationDetailArgsDict', 'outputs.ResourceServerAuthorizationDetail']]]]] = None,
+            authorization_policy: pulumi.Input[Optional[Union['ResourceServerAuthorizationPolicyArgs', 'ResourceServerAuthorizationPolicyArgsDict', 'outputs.ResourceServerAuthorizationPolicy']]] = None,
+            client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            consent_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            enforce_policies: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            is_system: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            proof_of_possession: pulumi.Input[Optional[Union['ResourceServerProofOfPossessionArgs', 'ResourceServerProofOfPossessionArgsDict', 'outputs.ResourceServerProofOfPossession']]] = None,
+            require_consent_non_repudiation: pulumi.Input[Optional[_builtins.bool]] = None,
+            signing_alg: pulumi.Input[Optional[_builtins.str]] = None,
+            signing_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_consent_for_verifiable_first_party_clients: pulumi.Input[Optional[_builtins.bool]] = None,
+            subject_type_authorization: pulumi.Input[Optional[Union['ResourceServerSubjectTypeAuthorizationArgs', 'ResourceServerSubjectTypeAuthorizationArgsDict', 'outputs.ResourceServerSubjectTypeAuthorization']]] = None,
+            token_dialect: pulumi.Input[Optional[_builtins.str]] = None,
+            token_encryption: pulumi.Input[Optional[Union['ResourceServerTokenEncryptionArgs', 'ResourceServerTokenEncryptionArgsDict', 'outputs.ResourceServerTokenEncryption']]] = None,
+            token_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+            token_lifetime_for_anonymous_access_tokens: pulumi.Input[Optional[_builtins.int]] = None,
+            token_lifetime_for_web: pulumi.Input[Optional[_builtins.int]] = None,
+            verification_location: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessToken"] = access_token
+        __props__["allowOfflineAccess"] = allow_offline_access
+        __props__["allowOnlineAccess"] = allow_online_access
+        __props__["allowOnlineAccessWithEphemeralSessions"] = allow_online_access_with_ephemeral_sessions
+        __props__["authorizationDetails"] = authorization_details
+        __props__["authorizationPolicy"] = authorization_policy
+        __props__["clientId"] = client_id
+        __props__["consentPolicy"] = consent_policy
+        __props__["enforcePolicies"] = enforce_policies
+        __props__["identifier"] = identifier
+        __props__["isSystem"] = is_system
+        __props__["name"] = name
+        __props__["proofOfPossession"] = proof_of_possession
+        __props__["requireConsentNonRepudiation"] = require_consent_non_repudiation
+        __props__["signingAlg"] = signing_alg
+        __props__["signingSecret"] = signing_secret
+        __props__["skipConsentForVerifiableFirstPartyClients"] = skip_consent_for_verifiable_first_party_clients
+        __props__["subjectTypeAuthorization"] = subject_type_authorization
+        __props__["tokenDialect"] = token_dialect
+        __props__["tokenEncryption"] = token_encryption
+        __props__["tokenLifetime"] = token_lifetime
+        __props__["tokenLifetimeForAnonymousAccessTokens"] = token_lifetime_for_anonymous_access_tokens
+        __props__["tokenLifetimeForWeb"] = token_lifetime_for_web
+        __props__["verificationLocation"] = verification_location
+        return pulumi.runtime.exists_resource(None, 'auth0:index/resourceServer:ResourceServer', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessToken")
     def access_token(self) -> pulumi.Output[Optional['outputs.ResourceServerAccessToken']]:

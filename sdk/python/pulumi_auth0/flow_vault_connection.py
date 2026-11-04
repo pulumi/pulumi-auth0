@@ -419,6 +419,26 @@ class FlowVaultConnection(pulumi.CustomResource):
         __props__.__dict__["setup"] = setup
         return FlowVaultConnection(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            environment: pulumi.Input[Optional[_builtins.str]] = None,
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            ready: pulumi.Input[Optional[_builtins.bool]] = None,
+            setup: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountName"] = account_name
+        __props__["appId"] = app_id
+        __props__["environment"] = environment
+        __props__["fingerprint"] = fingerprint
+        __props__["name"] = name
+        __props__["ready"] = ready
+        __props__["setup"] = setup
+        return pulumi.runtime.exists_resource(None, 'auth0:index/flowVaultConnection:FlowVaultConnection', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountName")
     def account_name(self) -> pulumi.Output[Optional[_builtins.str]]:

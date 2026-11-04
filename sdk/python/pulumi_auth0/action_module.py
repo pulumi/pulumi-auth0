@@ -504,6 +504,32 @@ class ActionModule(pulumi.CustomResource):
         __props__.__dict__["version_id"] = version_id
         return ActionModule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            actions_using_module_total: pulumi.Input[Optional[_builtins.int]] = None,
+            all_changes_published: pulumi.Input[Optional[_builtins.bool]] = None,
+            code: pulumi.Input[Optional[_builtins.str]] = None,
+            dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleDependencyArgs', 'ActionModuleDependencyArgsDict', 'outputs.ActionModuleDependency']]]]] = None,
+            latest_version_number: pulumi.Input[Optional[_builtins.int]] = None,
+            latest_versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleLatestVersionArgs', 'ActionModuleLatestVersionArgsDict', 'outputs.ActionModuleLatestVersion']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            publish: pulumi.Input[Optional[_builtins.bool]] = None,
+            secrets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleSecretArgs', 'ActionModuleSecretArgsDict', 'outputs.ActionModuleSecret']]]]] = None,
+            version_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["actionsUsingModuleTotal"] = actions_using_module_total
+        __props__["allChangesPublished"] = all_changes_published
+        __props__["code"] = code
+        __props__["dependencies"] = dependencies
+        __props__["latestVersionNumber"] = latest_version_number
+        __props__["latestVersions"] = latest_versions
+        __props__["name"] = name
+        __props__["publish"] = publish
+        __props__["secrets"] = secrets
+        __props__["versionId"] = version_id
+        return pulumi.runtime.exists_resource(None, 'auth0:index/actionModule:ActionModule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="actionsUsingModuleTotal")
     def actions_using_module_total(self) -> pulumi.Output[_builtins.int]:

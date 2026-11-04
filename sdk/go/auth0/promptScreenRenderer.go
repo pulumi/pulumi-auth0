@@ -198,6 +198,12 @@ func (PromptScreenRendererState) ElementType() reflect.Type {
 	return reflect.TypeOf((*promptScreenRendererState)(nil)).Elem()
 }
 
+// PromptScreenRendererExists checks whether an existing PromptScreenRenderer resource with the given ID exists.
+func PromptScreenRendererExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PromptScreenRendererState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/promptScreenRenderer:PromptScreenRenderer", id, state, "", opts...)
+}
+
 type promptScreenRendererArgs struct {
 	// Context values to make available
 	ContextConfigurations []string `pulumi:"contextConfigurations"`

@@ -143,6 +143,12 @@ func (OrganizationMembersState) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationMembersState)(nil)).Elem()
 }
 
+// OrganizationMembersExists checks whether an existing OrganizationMembers resource with the given ID exists.
+func OrganizationMembersExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrganizationMembersState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/organizationMembers:OrganizationMembers", id, state, "", opts...)
+}
+
 type organizationMembersArgs struct {
 	// Add user ID(s) directly from the tenant to become members of the organization.
 	Members []string `pulumi:"members"`

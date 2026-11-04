@@ -124,11 +124,10 @@ public final class TenantFlags {
     /**
      * @return This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
      * 
-     * @deprecated
-     * This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
+     * @deprecated This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
      * 
      */
-    @Deprecated /* This Flag is not supported by the Auth0 Management API and will be removed in the next major release. */
+    @Deprecated
     private @Nullable Boolean requirePushedAuthorizationRequests;
     /**
      * @return Delete underlying grant when a refresh token is revoked via the Authentication API.
@@ -299,11 +298,10 @@ public final class TenantFlags {
     /**
      * @return This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
      * 
-     * @deprecated
-     * This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
+     * @deprecated This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
      * 
      */
-    @Deprecated /* This Flag is not supported by the Auth0 Management API and will be removed in the next major release. */
+    @Deprecated
     public Optional<Boolean> requirePushedAuthorizationRequests() {
         return Optional.ofNullable(this.requirePushedAuthorizationRequests);
     }

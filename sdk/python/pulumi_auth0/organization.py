@@ -451,6 +451,26 @@ class Organization(pulumi.CustomResource):
         __props__.__dict__["token_quota"] = token_quota
         return Organization(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            branding: pulumi.Input[Optional[Union['OrganizationBrandingArgs', 'OrganizationBrandingArgsDict', 'outputs.OrganizationBranding']]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            is_app_entitlement_active: pulumi.Input[Optional[_builtins.bool]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            third_party_client_access: pulumi.Input[Optional[_builtins.str]] = None,
+            token_quota: pulumi.Input[Optional[Union['OrganizationTokenQuotaArgs', 'OrganizationTokenQuotaArgsDict', 'outputs.OrganizationTokenQuota']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["branding"] = branding
+        __props__["displayName"] = display_name
+        __props__["isAppEntitlementActive"] = is_app_entitlement_active
+        __props__["metadata"] = metadata
+        __props__["name"] = name
+        __props__["thirdPartyClientAccess"] = third_party_client_access
+        __props__["tokenQuota"] = token_quota
+        return pulumi.runtime.exists_resource(None, 'auth0:index/organization:Organization', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def branding(self) -> pulumi.Output['outputs.OrganizationBranding']:

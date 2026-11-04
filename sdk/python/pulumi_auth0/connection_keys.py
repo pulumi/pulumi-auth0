@@ -490,6 +490,40 @@ class ConnectionKeys(pulumi.CustomResource):
         __props__.__dict__["triggers"] = triggers
         return ConnectionKeys(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            cert: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            current: pulumi.Input[Optional[_builtins.bool]] = None,
+            current_since: pulumi.Input[Optional[_builtins.str]] = None,
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            key_use: pulumi.Input[Optional[_builtins.str]] = None,
+            kid: pulumi.Input[Optional[_builtins.str]] = None,
+            next: pulumi.Input[Optional[_builtins.bool]] = None,
+            pkcs: pulumi.Input[Optional[_builtins.str]] = None,
+            previous: pulumi.Input[Optional[_builtins.bool]] = None,
+            subject_dn: pulumi.Input[Optional[_builtins.str]] = None,
+            thumbprint: pulumi.Input[Optional[_builtins.str]] = None,
+            triggers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["algorithm"] = algorithm
+        __props__["cert"] = cert
+        __props__["connectionId"] = connection_id
+        __props__["current"] = current
+        __props__["currentSince"] = current_since
+        __props__["fingerprint"] = fingerprint
+        __props__["keyUse"] = key_use
+        __props__["kid"] = kid
+        __props__["next"] = next
+        __props__["pkcs"] = pkcs
+        __props__["previous"] = previous
+        __props__["subjectDn"] = subject_dn
+        __props__["thumbprint"] = thumbprint
+        __props__["triggers"] = triggers
+        return pulumi.runtime.exists_resource(None, 'auth0:index/connectionKeys:ConnectionKeys', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def algorithm(self) -> pulumi.Output[_builtins.str]:

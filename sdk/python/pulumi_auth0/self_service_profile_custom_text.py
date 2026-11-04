@@ -322,6 +322,20 @@ class SelfServiceProfileCustomText(pulumi.CustomResource):
         __props__.__dict__["sso_id"] = sso_id
         return SelfServiceProfileCustomText(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            body: pulumi.Input[Optional[_builtins.str]] = None,
+            language: pulumi.Input[Optional[_builtins.str]] = None,
+            page: pulumi.Input[Optional[_builtins.str]] = None,
+            sso_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["body"] = body
+        __props__["language"] = language
+        __props__["page"] = page
+        __props__["ssoId"] = sso_id
+        return pulumi.runtime.exists_resource(None, 'auth0:index/selfServiceProfileCustomText:SelfServiceProfileCustomText', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def body(self) -> pulumi.Output[_builtins.str]:

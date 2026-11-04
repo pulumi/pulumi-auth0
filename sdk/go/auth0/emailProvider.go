@@ -237,6 +237,12 @@ func (EmailProviderState) ElementType() reflect.Type {
 	return reflect.TypeOf((*emailProviderState)(nil)).Elem()
 }
 
+// EmailProviderExists checks whether an existing EmailProvider resource with the given ID exists.
+func EmailProviderExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EmailProviderState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/emailProvider:EmailProvider", id, state, "", opts...)
+}
+
 type emailProviderArgs struct {
 	// Configuration settings for the credentials for the email provider.
 	Credentials EmailProviderCredentials `pulumi:"credentials"`

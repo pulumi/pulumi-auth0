@@ -186,6 +186,12 @@ func (CustomDomainState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customDomainState)(nil)).Elem()
 }
 
+// CustomDomainExists checks whether an existing CustomDomain resource with the given ID exists.
+func CustomDomainExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomDomainState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/customDomain:CustomDomain", id, state, "", opts...)
+}
+
 type customDomainArgs struct {
 	// The HTTP header to fetch the client's IP address. Cannot be set on auth0Managed domains.
 	CustomClientIpHeader *string `pulumi:"customClientIpHeader"`

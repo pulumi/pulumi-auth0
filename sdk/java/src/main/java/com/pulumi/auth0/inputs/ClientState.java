@@ -201,14 +201,14 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/\()&lt;&gt;{@literal @} [Tab] [Space]`.
+     * Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/&#92;()&lt;&gt;{@literal @} [Tab] [Space]`.
      * 
      */
     @Import(name="clientMetadata")
     private @Nullable Output<Map<String,String>> clientMetadata;
 
     /**
-     * @return Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/\()&lt;&gt;{@literal @} [Tab] [Space]`.
+     * @return Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/&#92;()&lt;&gt;{@literal @} [Tab] [Space]`.
      * 
      */
     public Optional<Output<Map<String,String>>> clientMetadata() {
@@ -608,22 +608,20 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     /**
      * Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
      * 
-     * @deprecated
-     * This resource is deprecated and will be removed in the next major version. Please use `oidcLogout` for managing OIDC backchannel logout URLs.
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `oidcLogout` for managing OIDC backchannel logout URLs.
      * 
      */
-    @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `oidcLogout` for managing OIDC backchannel logout URLs. */
+    @Deprecated
     @Import(name="oidcBackchannelLogoutUrls")
     private @Nullable Output<List<String>> oidcBackchannelLogoutUrls;
 
     /**
      * @return Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
      * 
-     * @deprecated
-     * This resource is deprecated and will be removed in the next major version. Please use `oidcLogout` for managing OIDC backchannel logout URLs.
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `oidcLogout` for managing OIDC backchannel logout URLs.
      * 
      */
-    @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `oidcLogout` for managing OIDC backchannel logout URLs. */
+    @Deprecated
     public Optional<Output<List<String>>> oidcBackchannelLogoutUrls() {
         return Optional.ofNullable(this.oidcBackchannelLogoutUrls);
     }
@@ -1278,7 +1276,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientMetadata Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/\()&lt;&gt;{@literal @} [Tab] [Space]`.
+         * @param clientMetadata Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/&#92;()&lt;&gt;{@literal @} [Tab] [Space]`.
          * 
          * @return builder
          * 
@@ -1289,7 +1287,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clientMetadata Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/\()&lt;&gt;{@literal @} [Tab] [Space]`.
+         * @param clientMetadata Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?&#34;/&#92;()&lt;&gt;{@literal @} [Tab] [Space]`.
          * 
          * @return builder
          * 
@@ -1859,11 +1857,10 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This resource is deprecated and will be removed in the next major version. Please use `oidcLogout` for managing OIDC backchannel logout URLs.
+         * @deprecated This resource is deprecated and will be removed in the next major version. Please use `oidcLogout` for managing OIDC backchannel logout URLs.
          * 
          */
-        @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `oidcLogout` for managing OIDC backchannel logout URLs. */
+        @Deprecated
         public Builder oidcBackchannelLogoutUrls(@Nullable Output<List<String>> oidcBackchannelLogoutUrls) {
             $.oidcBackchannelLogoutUrls = oidcBackchannelLogoutUrls;
             return this;
@@ -1874,11 +1871,10 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This resource is deprecated and will be removed in the next major version. Please use `oidcLogout` for managing OIDC backchannel logout URLs.
+         * @deprecated This resource is deprecated and will be removed in the next major version. Please use `oidcLogout` for managing OIDC backchannel logout URLs.
          * 
          */
-        @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `oidcLogout` for managing OIDC backchannel logout URLs. */
+        @Deprecated
         public Builder oidcBackchannelLogoutUrls(List<String> oidcBackchannelLogoutUrls) {
             return oidcBackchannelLogoutUrls(Output.of(oidcBackchannelLogoutUrls));
         }
@@ -1888,11 +1884,10 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This resource is deprecated and will be removed in the next major version. Please use `oidcLogout` for managing OIDC backchannel logout URLs.
+         * @deprecated This resource is deprecated and will be removed in the next major version. Please use `oidcLogout` for managing OIDC backchannel logout URLs.
          * 
          */
-        @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `oidcLogout` for managing OIDC backchannel logout URLs. */
+        @Deprecated
         public Builder oidcBackchannelLogoutUrls(String... oidcBackchannelLogoutUrls) {
             return oidcBackchannelLogoutUrls(List.of(oidcBackchannelLogoutUrls));
         }

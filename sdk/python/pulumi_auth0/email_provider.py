@@ -507,6 +507,22 @@ class EmailProvider(pulumi.CustomResource):
         __props__.__dict__["settings"] = settings
         return EmailProvider(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            credentials: pulumi.Input[Optional[Union['EmailProviderCredentialsArgs', 'EmailProviderCredentialsArgsDict', 'outputs.EmailProviderCredentials']]] = None,
+            default_from_address: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            settings: pulumi.Input[Optional[Union['EmailProviderSettingsArgs', 'EmailProviderSettingsArgsDict', 'outputs.EmailProviderSettings']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["credentials"] = credentials
+        __props__["defaultFromAddress"] = default_from_address
+        __props__["enabled"] = enabled
+        __props__["name"] = name
+        __props__["settings"] = settings
+        return pulumi.runtime.exists_resource(None, 'auth0:index/emailProvider:EmailProvider', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def credentials(self) -> pulumi.Output['outputs.EmailProviderCredentials']:

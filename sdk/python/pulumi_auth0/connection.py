@@ -2139,6 +2139,40 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["strategy"] = strategy
         return Connection(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            authentication: pulumi.Input[Optional[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict', 'outputs.ConnectionAuthentication']]] = None,
+            connected_accounts: pulumi.Input[Optional[Union['ConnectionConnectedAccountsArgs', 'ConnectionConnectedAccountsArgsDict', 'outputs.ConnectionConnectedAccounts']]] = None,
+            cross_app_access_requesting_app: pulumi.Input[Optional[Union['ConnectionCrossAppAccessRequestingAppArgs', 'ConnectionCrossAppAccessRequestingAppArgsDict', 'outputs.ConnectionCrossAppAccessRequestingApp']]] = None,
+            cross_app_access_resource_app: pulumi.Input[Optional[Union['ConnectionCrossAppAccessResourceAppArgs', 'ConnectionCrossAppAccessResourceAppArgsDict', 'outputs.ConnectionCrossAppAccessResourceApp']]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            is_domain_connection: pulumi.Input[Optional[_builtins.bool]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            options: pulumi.Input[Optional[Union['ConnectionOptionsArgs', 'ConnectionOptionsArgsDict', 'outputs.ConnectionOptions']]] = None,
+            options_client_secret_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            options_client_secret_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
+            realms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            show_as_button: pulumi.Input[Optional[_builtins.bool]] = None,
+            strategy: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authentication"] = authentication
+        __props__["connectedAccounts"] = connected_accounts
+        __props__["crossAppAccessRequestingApp"] = cross_app_access_requesting_app
+        __props__["crossAppAccessResourceApp"] = cross_app_access_resource_app
+        __props__["displayName"] = display_name
+        __props__["isDomainConnection"] = is_domain_connection
+        __props__["metadata"] = metadata
+        __props__["name"] = name
+        __props__["options"] = options
+        __props__["optionsClientSecretWo"] = options_client_secret_wo
+        __props__["optionsClientSecretWoVersion"] = options_client_secret_wo_version
+        __props__["realms"] = realms
+        __props__["showAsButton"] = show_as_button
+        __props__["strategy"] = strategy
+        return pulumi.runtime.exists_resource(None, 'auth0:index/connection:Connection', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def authentication(self) -> pulumi.Output['outputs.ConnectionAuthentication']:

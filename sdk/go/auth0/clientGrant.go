@@ -242,6 +242,12 @@ func (ClientGrantState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clientGrantState)(nil)).Elem()
 }
 
+// ClientGrantExists checks whether an existing ClientGrant resource with the given ID exists.
+func ClientGrantExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClientGrantState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/clientGrant:ClientGrant", id, state, "", opts...)
+}
+
 type clientGrantArgs struct {
 	// When set to `true`, all scopes configured on the resource server are allowed for this client grant. `scopes` can not be provided when this is set to `true`. EA Only.
 	AllowAllScopes *bool `pulumi:"allowAllScopes"`

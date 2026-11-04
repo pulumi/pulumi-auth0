@@ -638,6 +638,32 @@ class ClientGrant(pulumi.CustomResource):
         __props__.__dict__["subject_type"] = subject_type
         return ClientGrant(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allow_all_scopes: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_any_organization: pulumi.Input[Optional[_builtins.bool]] = None,
+            audience: pulumi.Input[Optional[_builtins.str]] = None,
+            authorization_details_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            default_for: pulumi.Input[Optional[_builtins.str]] = None,
+            is_system: pulumi.Input[Optional[_builtins.bool]] = None,
+            organization_usage: pulumi.Input[Optional[_builtins.str]] = None,
+            scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            subject_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowAllScopes"] = allow_all_scopes
+        __props__["allowAnyOrganization"] = allow_any_organization
+        __props__["audience"] = audience
+        __props__["authorizationDetailsTypes"] = authorization_details_types
+        __props__["clientId"] = client_id
+        __props__["defaultFor"] = default_for
+        __props__["isSystem"] = is_system
+        __props__["organizationUsage"] = organization_usage
+        __props__["scopes"] = scopes
+        __props__["subjectType"] = subject_type
+        return pulumi.runtime.exists_resource(None, 'auth0:index/clientGrant:ClientGrant', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowAllScopes")
     def allow_all_scopes(self) -> pulumi.Output[Optional[_builtins.bool]]:

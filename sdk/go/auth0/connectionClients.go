@@ -153,6 +153,12 @@ func (ConnectionClientsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectionClientsState)(nil)).Elem()
 }
 
+// ConnectionClientsExists checks whether an existing ConnectionClients resource with the given ID exists.
+func ConnectionClientsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConnectionClientsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/connectionClients:ConnectionClients", id, state, "", opts...)
+}
+
 type connectionClientsArgs struct {
 	// ID of the connection on which to enable the client.
 	ConnectionId string `pulumi:"connectionId"`

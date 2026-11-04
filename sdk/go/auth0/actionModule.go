@@ -201,6 +201,12 @@ func (ActionModuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*actionModuleState)(nil)).Elem()
 }
 
+// ActionModuleExists checks whether an existing ActionModule resource with the given ID exists.
+func ActionModuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ActionModuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/actionModule:ActionModule", id, state, "", opts...)
+}
+
 type actionModuleArgs struct {
 	// The source code of the action module.
 	Code string `pulumi:"code"`

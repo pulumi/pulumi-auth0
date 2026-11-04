@@ -305,6 +305,24 @@ class OrganizationDiscoveryDomain(pulumi.CustomResource):
         __props__.__dict__["verification_txt"] = verification_txt
         return OrganizationDiscoveryDomain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            use_for_organization_discovery: pulumi.Input[Optional[_builtins.bool]] = None,
+            verification_host: pulumi.Input[Optional[_builtins.str]] = None,
+            verification_txt: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["domain"] = domain
+        __props__["organizationId"] = organization_id
+        __props__["status"] = status
+        __props__["useForOrganizationDiscovery"] = use_for_organization_discovery
+        __props__["verificationHost"] = verification_host
+        __props__["verificationTxt"] = verification_txt
+        return pulumi.runtime.exists_resource(None, 'auth0:index/organizationDiscoveryDomain:OrganizationDiscoveryDomain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def domain(self) -> pulumi.Output[_builtins.str]:

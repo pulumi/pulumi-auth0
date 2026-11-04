@@ -539,6 +539,32 @@ class ClientCredentials(pulumi.CustomResource):
         __props__.__dict__["token_vault_privileged_access"] = token_vault_privileged_access
         return ClientCredentials(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            authentication_method: pulumi.Input[Optional[_builtins.str]] = None,
+            client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            client_secret_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            client_secret_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
+            private_key_jwt: pulumi.Input[Optional[Union['ClientCredentialsPrivateKeyJwtArgs', 'ClientCredentialsPrivateKeyJwtArgsDict', 'outputs.ClientCredentialsPrivateKeyJwt']]] = None,
+            self_signed_tls_client_auth: pulumi.Input[Optional[Union['ClientCredentialsSelfSignedTlsClientAuthArgs', 'ClientCredentialsSelfSignedTlsClientAuthArgsDict', 'outputs.ClientCredentialsSelfSignedTlsClientAuth']]] = None,
+            signed_request_object: pulumi.Input[Optional[Union['ClientCredentialsSignedRequestObjectArgs', 'ClientCredentialsSignedRequestObjectArgsDict', 'outputs.ClientCredentialsSignedRequestObject']]] = None,
+            tls_client_auth: pulumi.Input[Optional[Union['ClientCredentialsTlsClientAuthArgs', 'ClientCredentialsTlsClientAuthArgsDict', 'outputs.ClientCredentialsTlsClientAuth']]] = None,
+            token_vault_privileged_access: pulumi.Input[Optional[Union['ClientCredentialsTokenVaultPrivilegedAccessArgs', 'ClientCredentialsTokenVaultPrivilegedAccessArgsDict', 'outputs.ClientCredentialsTokenVaultPrivilegedAccess']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authenticationMethod"] = authentication_method
+        __props__["clientId"] = client_id
+        __props__["clientSecret"] = client_secret
+        __props__["clientSecretWo"] = client_secret_wo
+        __props__["clientSecretWoVersion"] = client_secret_wo_version
+        __props__["privateKeyJwt"] = private_key_jwt
+        __props__["selfSignedTlsClientAuth"] = self_signed_tls_client_auth
+        __props__["signedRequestObject"] = signed_request_object
+        __props__["tlsClientAuth"] = tls_client_auth
+        __props__["tokenVaultPrivilegedAccess"] = token_vault_privileged_access
+        return pulumi.runtime.exists_resource(None, 'auth0:index/clientCredentials:ClientCredentials', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="authenticationMethod")
     def authentication_method(self) -> pulumi.Output[_builtins.str]:

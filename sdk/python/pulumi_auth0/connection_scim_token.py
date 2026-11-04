@@ -347,6 +347,22 @@ class ConnectionScimToken(pulumi.CustomResource):
         __props__.__dict__["token_id"] = token_id
         return ConnectionScimToken(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            token: pulumi.Input[Optional[_builtins.str]] = None,
+            token_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["connectionId"] = connection_id
+        __props__["createdAt"] = created_at
+        __props__["scopes"] = scopes
+        __props__["token"] = token
+        __props__["tokenId"] = token_id
+        return pulumi.runtime.exists_resource(None, 'auth0:index/connectionScimToken:ConnectionScimToken', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> pulumi.Output[_builtins.str]:

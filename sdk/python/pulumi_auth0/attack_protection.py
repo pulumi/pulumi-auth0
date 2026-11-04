@@ -654,6 +654,24 @@ class AttackProtection(pulumi.CustomResource):
         __props__.__dict__["suspicious_ip_throttling"] = suspicious_ip_throttling
         return AttackProtection(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bot_detection: pulumi.Input[Optional[Union['AttackProtectionBotDetectionArgs', 'AttackProtectionBotDetectionArgsDict', 'outputs.AttackProtectionBotDetection']]] = None,
+            breached_password_detection: pulumi.Input[Optional[Union['AttackProtectionBreachedPasswordDetectionArgs', 'AttackProtectionBreachedPasswordDetectionArgsDict', 'outputs.AttackProtectionBreachedPasswordDetection']]] = None,
+            brute_force_protection: pulumi.Input[Optional[Union['AttackProtectionBruteForceProtectionArgs', 'AttackProtectionBruteForceProtectionArgsDict', 'outputs.AttackProtectionBruteForceProtection']]] = None,
+            captcha: pulumi.Input[Optional[Union['AttackProtectionCaptchaArgs', 'AttackProtectionCaptchaArgsDict', 'outputs.AttackProtectionCaptcha']]] = None,
+            phone_provider_protection: pulumi.Input[Optional[Union['AttackProtectionPhoneProviderProtectionArgs', 'AttackProtectionPhoneProviderProtectionArgsDict', 'outputs.AttackProtectionPhoneProviderProtection']]] = None,
+            suspicious_ip_throttling: pulumi.Input[Optional[Union['AttackProtectionSuspiciousIpThrottlingArgs', 'AttackProtectionSuspiciousIpThrottlingArgsDict', 'outputs.AttackProtectionSuspiciousIpThrottling']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["botDetection"] = bot_detection
+        __props__["breachedPasswordDetection"] = breached_password_detection
+        __props__["bruteForceProtection"] = brute_force_protection
+        __props__["captcha"] = captcha
+        __props__["phoneProviderProtection"] = phone_provider_protection
+        __props__["suspiciousIpThrottling"] = suspicious_ip_throttling
+        return pulumi.runtime.exists_resource(None, 'auth0:index/attackProtection:AttackProtection', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="botDetection")
     def bot_detection(self) -> pulumi.Output['outputs.AttackProtectionBotDetection']:

@@ -230,6 +230,12 @@ func (GuardianState) ElementType() reflect.Type {
 	return reflect.TypeOf((*guardianState)(nil)).Elem()
 }
 
+// GuardianExists checks whether an existing Guardian resource with the given ID exists.
+func GuardianExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GuardianState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/guardian:Guardian", id, state, "", opts...)
+}
+
 type guardianArgs struct {
 	// Configuration settings for the Duo MFA. If this block is present, Duo MFA will be enabled, and disabled otherwise.
 	Duo *GuardianDuo `pulumi:"duo"`

@@ -318,6 +318,18 @@ class ConnectionDirectorySynchronizedGroups(pulumi.CustomResource):
         __props__.__dict__["groups"] = groups
         return ConnectionDirectorySynchronizedGroups(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionDirectorySynchronizedGroupsGroupArgs', 'ConnectionDirectorySynchronizedGroupsGroupArgsDict', 'outputs.ConnectionDirectorySynchronizedGroupsGroup']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["connectionId"] = connection_id
+        __props__["groupIds"] = group_ids
+        __props__["groups"] = groups
+        return pulumi.runtime.exists_resource(None, 'auth0:index/connectionDirectorySynchronizedGroups:ConnectionDirectorySynchronizedGroups', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> pulumi.Output[_builtins.str]:

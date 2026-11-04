@@ -552,6 +552,30 @@ class PromptScreenRenderer(pulumi.CustomResource):
         __props__.__dict__["use_page_template"] = use_page_template
         return PromptScreenRenderer(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            context_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            default_head_tags_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            filters: pulumi.Input[Optional[Union['PromptScreenRendererFiltersArgs', 'PromptScreenRendererFiltersArgsDict', 'outputs.PromptScreenRendererFilters']]] = None,
+            head_tags: pulumi.Input[Optional[_builtins.str]] = None,
+            prompt_type: pulumi.Input[Optional[_builtins.str]] = None,
+            rendering_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            screen_name: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant: pulumi.Input[Optional[_builtins.str]] = None,
+            use_page_template: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["contextConfigurations"] = context_configurations
+        __props__["defaultHeadTagsDisabled"] = default_head_tags_disabled
+        __props__["filters"] = filters
+        __props__["headTags"] = head_tags
+        __props__["promptType"] = prompt_type
+        __props__["renderingMode"] = rendering_mode
+        __props__["screenName"] = screen_name
+        __props__["tenant"] = tenant
+        __props__["usePageTemplate"] = use_page_template
+        return pulumi.runtime.exists_resource(None, 'auth0:index/promptScreenRenderer:PromptScreenRenderer', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="contextConfigurations")
     def context_configurations(self) -> pulumi.Output[Sequence[_builtins.str]]:

@@ -115,6 +115,12 @@ func (PromptState) ElementType() reflect.Type {
 	return reflect.TypeOf((*promptState)(nil)).Elem()
 }
 
+// PromptExists checks whether an existing Prompt resource with the given ID exists.
+func PromptExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PromptState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/prompt:Prompt", id, state, "", opts...)
+}
+
 type promptArgs struct {
 	// Indicates whether the identifier first is used when using the new Universal Login experience.
 	IdentifierFirst *bool `pulumi:"identifierFirst"`

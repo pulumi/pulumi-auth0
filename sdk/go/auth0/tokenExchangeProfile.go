@@ -145,6 +145,12 @@ func (TokenExchangeProfileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tokenExchangeProfileState)(nil)).Elem()
 }
 
+// TokenExchangeProfileExists checks whether an existing TokenExchangeProfile resource with the given ID exists.
+func TokenExchangeProfileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TokenExchangeProfileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/tokenExchangeProfile:TokenExchangeProfile", id, state, "", opts...)
+}
+
 type tokenExchangeProfileArgs struct {
 	// Unique identifier of the Action
 	ActionId *string `pulumi:"actionId"`

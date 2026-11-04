@@ -164,6 +164,14 @@ class SupplementalSignals(pulumi.CustomResource):
         __props__.__dict__["akamai_enabled"] = akamai_enabled
         return SupplementalSignals(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            akamai_enabled: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["akamaiEnabled"] = akamai_enabled
+        return pulumi.runtime.exists_resource(None, 'auth0:index/supplementalSignals:SupplementalSignals', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="akamaiEnabled")
     def akamai_enabled(self) -> pulumi.Output[_builtins.bool]:

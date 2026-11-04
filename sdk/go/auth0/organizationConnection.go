@@ -184,6 +184,12 @@ func (OrganizationConnectionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationConnectionState)(nil)).Elem()
 }
 
+// OrganizationConnectionExists checks whether an existing OrganizationConnection resource with the given ID exists.
+func OrganizationConnectionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrganizationConnectionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/organizationConnection:OrganizationConnection", id, state, "", opts...)
+}
+
 type organizationConnectionArgs struct {
 	// When `true`, all users that log in with this connection will be automatically granted membership in the organization. When `false`, users must be granted membership in the organization before logging in with this connection.
 	AssignMembershipOnLogin *bool `pulumi:"assignMembershipOnLogin"`

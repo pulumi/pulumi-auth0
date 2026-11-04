@@ -165,6 +165,12 @@ func (BrandingPhoneNotificationTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*brandingPhoneNotificationTemplateState)(nil)).Elem()
 }
 
+// BrandingPhoneNotificationTemplateExists checks whether an existing BrandingPhoneNotificationTemplate resource with the given ID exists.
+func BrandingPhoneNotificationTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BrandingPhoneNotificationTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/brandingPhoneNotificationTemplate:BrandingPhoneNotificationTemplate", id, state, "", opts...)
+}
+
 type brandingPhoneNotificationTemplateArgs struct {
 	// The content of the phone notification template.
 	Content *BrandingPhoneNotificationTemplateContent `pulumi:"content"`

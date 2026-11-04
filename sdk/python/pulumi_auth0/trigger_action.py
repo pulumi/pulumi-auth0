@@ -305,6 +305,18 @@ class TriggerAction(pulumi.CustomResource):
         __props__.__dict__["trigger"] = trigger
         return TriggerAction(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action_id: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            trigger: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["actionId"] = action_id
+        __props__["displayName"] = display_name
+        __props__["trigger"] = trigger
+        return pulumi.runtime.exists_resource(None, 'auth0:index/triggerAction:TriggerAction', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="actionId")
     def action_id(self) -> pulumi.Output[_builtins.str]:
