@@ -43,6 +43,8 @@ import * as utilities from "./utilities";
  *         "authorization_code",
  *         "refresh_token",
  *     ],
+ *     organizationUsage: "require",
+ *     organizationRequireBehavior: "post_login_prompt",
  *     clientMetadata: {
  *         environment: "production",
  *     },
@@ -176,6 +178,14 @@ export class ClientCimd extends pulumi.CustomResource {
      */
     declare public readonly organizationDiscoveryMethods: pulumi.Output<string[] | undefined>;
     /**
+     * Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or `postLoginPrompt`.
+     */
+    declare public readonly organizationRequireBehavior: pulumi.Output<string>;
+    /**
+     * Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+     */
+    declare public readonly organizationUsage: pulumi.Output<string>;
+    /**
      * Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.
      */
     declare public readonly redirectionPolicy: pulumi.Output<string>;
@@ -244,6 +254,8 @@ export class ClientCimd extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["oidcConformant"] = state?.oidcConformant;
             resourceInputs["organizationDiscoveryMethods"] = state?.organizationDiscoveryMethods;
+            resourceInputs["organizationRequireBehavior"] = state?.organizationRequireBehavior;
+            resourceInputs["organizationUsage"] = state?.organizationUsage;
             resourceInputs["redirectionPolicy"] = state?.redirectionPolicy;
             resourceInputs["refreshToken"] = state?.refreshToken;
             resourceInputs["requireProofOfPossession"] = state?.requireProofOfPossession;
@@ -269,6 +281,8 @@ export class ClientCimd extends pulumi.CustomResource {
             resourceInputs["jwtConfiguration"] = args?.jwtConfiguration;
             resourceInputs["oidcConformant"] = args?.oidcConformant;
             resourceInputs["organizationDiscoveryMethods"] = args?.organizationDiscoveryMethods;
+            resourceInputs["organizationRequireBehavior"] = args?.organizationRequireBehavior;
+            resourceInputs["organizationUsage"] = args?.organizationUsage;
             resourceInputs["redirectionPolicy"] = args?.redirectionPolicy;
             resourceInputs["refreshToken"] = args?.refreshToken;
             resourceInputs["requireProofOfPossession"] = args?.requireProofOfPossession;
@@ -375,6 +389,14 @@ export interface ClientCimdState {
      */
     organizationDiscoveryMethods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or `postLoginPrompt`.
+     */
+    organizationRequireBehavior?: pulumi.Input<string | undefined>;
+    /**
+     * Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+     */
+    organizationUsage?: pulumi.Input<string | undefined>;
+    /**
      * Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.
      */
     redirectionPolicy?: pulumi.Input<string | undefined>;
@@ -460,6 +482,14 @@ export interface ClientCimdArgs {
      * Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
      */
     organizationDiscoveryMethods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or `postLoginPrompt`.
+     */
+    organizationRequireBehavior?: pulumi.Input<string | undefined>;
+    /**
+     * Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+     */
+    organizationUsage?: pulumi.Input<string | undefined>;
     /**
      * Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.
      */

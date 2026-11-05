@@ -193,7 +193,7 @@ class GetUserResult:
     @pulumi.getter
     def password(self) -> _builtins.str:
         """
-        Initial password for this user. Required for non-passwordless connections (SMS and email).
+        Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `password_wo`.
         """
         return pulumi.get(self, "password")
 

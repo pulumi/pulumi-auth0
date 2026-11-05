@@ -129,6 +129,16 @@ __all__ = [
     'ClientOidcLogout',
     'ClientOidcLogoutBackchannelLogoutInitiators',
     'ClientOidcLogoutBackchannelLogoutSessionMetadata',
+    'ClientProfileApplyPolicy',
+    'ClientProfileClientConfiguration',
+    'ClientProfileClientConfigurationOrganizationDiscoveryMethods',
+    'ClientProfileClientConfigurationOrganizationRequireBehavior',
+    'ClientProfileClientConfigurationOrganizationUsage',
+    'ClientProfileClientConfigurationRefreshToken',
+    'ClientProfileClientConfigurationRefreshTokenIdleTokenLifetime',
+    'ClientProfileClientConfigurationRefreshTokenLeeway',
+    'ClientProfileClientConfigurationRefreshTokenTokenLifetime',
+    'ClientProfileClientConfigurationRequireProofOfPossession',
     'ClientRefreshToken',
     'ClientRefreshTokenPolicy',
     'ClientSessionTransfer',
@@ -219,6 +229,37 @@ __all__ = [
     'EventStreamEventbridgeConfiguration',
     'EventStreamWebhookConfiguration',
     'EventStreamWebhookConfigurationWebhookAuthorization',
+    'ExperimentAllocation',
+    'ExperimentFeatureFlagParameter',
+    'ExperimentFeatureFlagVariation',
+    'ExperimentFeatureFlagVariationOverride',
+    'ExperimentSegmentRule',
+    'ExperimentSegmentRuleMatch',
+    'ExperimentSegmentRuleMatchAnonymousSessionMetadata',
+    'ExperimentSegmentRuleMatchBrowser',
+    'ExperimentSegmentRuleMatchClientId',
+    'ExperimentSegmentRuleMatchConnection',
+    'ExperimentSegmentRuleMatchConnectionType',
+    'ExperimentSegmentRuleMatchCountry',
+    'ExperimentSegmentRuleMatchDeviceType',
+    'ExperimentSegmentRuleMatchDomain',
+    'ExperimentSegmentRuleMatchOrganizationId',
+    'ExperimentSegmentRuleMatchPlatform',
+    'ExperimentSegmentRuleMatchRegion',
+    'ExperimentSegmentRuleMatchUserAgent',
+    'ExperimentSegmentRuleNotMatch',
+    'ExperimentSegmentRuleNotMatchAnonymousSessionMetadata',
+    'ExperimentSegmentRuleNotMatchBrowser',
+    'ExperimentSegmentRuleNotMatchClientId',
+    'ExperimentSegmentRuleNotMatchConnection',
+    'ExperimentSegmentRuleNotMatchConnectionType',
+    'ExperimentSegmentRuleNotMatchCountry',
+    'ExperimentSegmentRuleNotMatchDeviceType',
+    'ExperimentSegmentRuleNotMatchDomain',
+    'ExperimentSegmentRuleNotMatchOrganizationId',
+    'ExperimentSegmentRuleNotMatchPlatform',
+    'ExperimentSegmentRuleNotMatchRegion',
+    'ExperimentSegmentRuleNotMatchUserAgent',
     'FormLanguage',
     'FormMessage',
     'GuardianDuo',
@@ -416,6 +457,16 @@ __all__ = [
     'GetClientOidcLogoutResult',
     'GetClientOidcLogoutBackchannelLogoutInitiatorResult',
     'GetClientOidcLogoutBackchannelLogoutSessionMetadataResult',
+    'GetClientProfileApplyPolicyResult',
+    'GetClientProfileClientConfigurationResult',
+    'GetClientProfileClientConfigurationOrganizationDiscoveryMethodResult',
+    'GetClientProfileClientConfigurationOrganizationRequireBehaviorResult',
+    'GetClientProfileClientConfigurationOrganizationUsageResult',
+    'GetClientProfileClientConfigurationRefreshTokenResult',
+    'GetClientProfileClientConfigurationRefreshTokenIdleTokenLifetimeResult',
+    'GetClientProfileClientConfigurationRefreshTokenLeewayResult',
+    'GetClientProfileClientConfigurationRefreshTokenTokenLifetimeResult',
+    'GetClientProfileClientConfigurationRequireProofOfPossessionResult',
     'GetClientRefreshTokenResult',
     'GetClientRefreshTokenPolicyResult',
     'GetClientSessionTransferResult',
@@ -526,6 +577,37 @@ __all__ = [
     'GetEventStreamEventbridgeConfigurationResult',
     'GetEventStreamWebhookConfigurationResult',
     'GetEventStreamWebhookConfigurationWebhookAuthorizationResult',
+    'GetExperimentAllocationResult',
+    'GetExperimentFeatureFlagParameterResult',
+    'GetExperimentFeatureFlagVariationResult',
+    'GetExperimentFeatureFlagVariationOverrideResult',
+    'GetExperimentSegmentRuleResult',
+    'GetExperimentSegmentRuleMatchResult',
+    'GetExperimentSegmentRuleMatchAnonymousSessionMetadataResult',
+    'GetExperimentSegmentRuleMatchBrowserResult',
+    'GetExperimentSegmentRuleMatchClientIdResult',
+    'GetExperimentSegmentRuleMatchConnectionResult',
+    'GetExperimentSegmentRuleMatchConnectionTypeResult',
+    'GetExperimentSegmentRuleMatchCountryResult',
+    'GetExperimentSegmentRuleMatchDeviceTypeResult',
+    'GetExperimentSegmentRuleMatchDomainResult',
+    'GetExperimentSegmentRuleMatchOrganizationIdResult',
+    'GetExperimentSegmentRuleMatchPlatformResult',
+    'GetExperimentSegmentRuleMatchRegionResult',
+    'GetExperimentSegmentRuleMatchUserAgentResult',
+    'GetExperimentSegmentRuleNotMatchResult',
+    'GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataResult',
+    'GetExperimentSegmentRuleNotMatchBrowserResult',
+    'GetExperimentSegmentRuleNotMatchClientIdResult',
+    'GetExperimentSegmentRuleNotMatchConnectionResult',
+    'GetExperimentSegmentRuleNotMatchConnectionTypeResult',
+    'GetExperimentSegmentRuleNotMatchCountryResult',
+    'GetExperimentSegmentRuleNotMatchDeviceTypeResult',
+    'GetExperimentSegmentRuleNotMatchDomainResult',
+    'GetExperimentSegmentRuleNotMatchOrganizationIdResult',
+    'GetExperimentSegmentRuleNotMatchPlatformResult',
+    'GetExperimentSegmentRuleNotMatchRegionResult',
+    'GetExperimentSegmentRuleNotMatchUserAgentResult',
     'GetFormLanguageResult',
     'GetFormMessageResult',
     'GetNetworkAclRuleResult',
@@ -7381,6 +7463,457 @@ class ClientOidcLogoutBackchannelLogoutSessionMetadata(dict):
 
 
 @pulumi.output_type
+class ClientProfileApplyPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "externalMetadataCreatedBy":
+            suggest = "external_metadata_created_by"
+        elif key == "externalMetadataType":
+            suggest = "external_metadata_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientProfileApplyPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientProfileApplyPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientProfileApplyPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 external_metadata_created_by: Optional[_builtins.str] = None,
+                 external_metadata_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str external_metadata_created_by: The creator of the clients to match. Defaults to `client`, which means the client was registered dynamically. Possible values: [client].
+        :param _builtins.str external_metadata_type: The type of external metadata of the clients to match. Defaults to `cimd`. Possible values: [cimd].
+        """
+        if external_metadata_created_by is not None:
+            pulumi.set(__self__, "external_metadata_created_by", external_metadata_created_by)
+        if external_metadata_type is not None:
+            pulumi.set(__self__, "external_metadata_type", external_metadata_type)
+
+    @_builtins.property
+    @pulumi.getter(name="externalMetadataCreatedBy")
+    def external_metadata_created_by(self) -> Optional[_builtins.str]:
+        """
+        The creator of the clients to match. Defaults to `client`, which means the client was registered dynamically. Possible values: [client].
+        """
+        return pulumi.get(self, "external_metadata_created_by")
+
+    @_builtins.property
+    @pulumi.getter(name="externalMetadataType")
+    def external_metadata_type(self) -> Optional[_builtins.str]:
+        """
+        The type of external metadata of the clients to match. Defaults to `cimd`. Possible values: [cimd].
+        """
+        return pulumi.get(self, "external_metadata_type")
+
+
+@pulumi.output_type
+class ClientProfileClientConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "organizationDiscoveryMethods":
+            suggest = "organization_discovery_methods"
+        elif key == "organizationRequireBehavior":
+            suggest = "organization_require_behavior"
+        elif key == "organizationUsage":
+            suggest = "organization_usage"
+        elif key == "refreshToken":
+            suggest = "refresh_token"
+        elif key == "requireProofOfPossession":
+            suggest = "require_proof_of_possession"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientProfileClientConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientProfileClientConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientProfileClientConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 organization_discovery_methods: Optional['outputs.ClientProfileClientConfigurationOrganizationDiscoveryMethods'] = None,
+                 organization_require_behavior: Optional['outputs.ClientProfileClientConfigurationOrganizationRequireBehavior'] = None,
+                 organization_usage: Optional['outputs.ClientProfileClientConfigurationOrganizationUsage'] = None,
+                 refresh_token: Optional['outputs.ClientProfileClientConfigurationRefreshToken'] = None,
+                 require_proof_of_possession: Optional['outputs.ClientProfileClientConfigurationRequireProofOfPossession'] = None):
+        """
+        :param 'ClientProfileClientConfigurationOrganizationDiscoveryMethodsArgs' organization_discovery_methods: Methods used to discover the organization during login. Requires the `organization_require_behavior` default value to be `pre_login_prompt`.
+        :param 'ClientProfileClientConfigurationOrganizationRequireBehaviorArgs' organization_require_behavior: Defines how to proceed during an authentication transaction when the organization usage is `require`.
+        :param 'ClientProfileClientConfigurationOrganizationUsageArgs' organization_usage: Whether matched clients can use organizations.
+        :param 'ClientProfileClientConfigurationRefreshTokenArgs' refresh_token: Refresh token settings applied to matched clients. Auth0 replaces this block as a whole, so removing it clears all of its settings.
+        :param 'ClientProfileClientConfigurationRequireProofOfPossessionArgs' require_proof_of_possession: Whether matched clients must use proof of possession (DPoP) for their tokens.
+        """
+        if organization_discovery_methods is not None:
+            pulumi.set(__self__, "organization_discovery_methods", organization_discovery_methods)
+        if organization_require_behavior is not None:
+            pulumi.set(__self__, "organization_require_behavior", organization_require_behavior)
+        if organization_usage is not None:
+            pulumi.set(__self__, "organization_usage", organization_usage)
+        if refresh_token is not None:
+            pulumi.set(__self__, "refresh_token", refresh_token)
+        if require_proof_of_possession is not None:
+            pulumi.set(__self__, "require_proof_of_possession", require_proof_of_possession)
+
+    @_builtins.property
+    @pulumi.getter(name="organizationDiscoveryMethods")
+    def organization_discovery_methods(self) -> Optional['outputs.ClientProfileClientConfigurationOrganizationDiscoveryMethods']:
+        """
+        Methods used to discover the organization during login. Requires the `organization_require_behavior` default value to be `pre_login_prompt`.
+        """
+        return pulumi.get(self, "organization_discovery_methods")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationRequireBehavior")
+    def organization_require_behavior(self) -> Optional['outputs.ClientProfileClientConfigurationOrganizationRequireBehavior']:
+        """
+        Defines how to proceed during an authentication transaction when the organization usage is `require`.
+        """
+        return pulumi.get(self, "organization_require_behavior")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationUsage")
+    def organization_usage(self) -> Optional['outputs.ClientProfileClientConfigurationOrganizationUsage']:
+        """
+        Whether matched clients can use organizations.
+        """
+        return pulumi.get(self, "organization_usage")
+
+    @_builtins.property
+    @pulumi.getter(name="refreshToken")
+    def refresh_token(self) -> Optional['outputs.ClientProfileClientConfigurationRefreshToken']:
+        """
+        Refresh token settings applied to matched clients. Auth0 replaces this block as a whole, so removing it clears all of its settings.
+        """
+        return pulumi.get(self, "refresh_token")
+
+    @_builtins.property
+    @pulumi.getter(name="requireProofOfPossession")
+    def require_proof_of_possession(self) -> Optional['outputs.ClientProfileClientConfigurationRequireProofOfPossession']:
+        """
+        Whether matched clients must use proof of possession (DPoP) for their tokens.
+        """
+        return pulumi.get(self, "require_proof_of_possession")
+
+
+@pulumi.output_type
+class ClientProfileClientConfigurationOrganizationDiscoveryMethods(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultValues":
+            suggest = "default_values"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientProfileClientConfigurationOrganizationDiscoveryMethods. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientProfileClientConfigurationOrganizationDiscoveryMethods.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientProfileClientConfigurationOrganizationDiscoveryMethods.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_values: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] default_values: Possible values: [email organization_name].
+        """
+        pulumi.set(__self__, "default_values", default_values)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultValues")
+    def default_values(self) -> Sequence[_builtins.str]:
+        """
+        Possible values: [email organization_name].
+        """
+        return pulumi.get(self, "default_values")
+
+
+@pulumi.output_type
+class ClientProfileClientConfigurationOrganizationRequireBehavior(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultValue":
+            suggest = "default_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientProfileClientConfigurationOrganizationRequireBehavior. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientProfileClientConfigurationOrganizationRequireBehavior.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientProfileClientConfigurationOrganizationRequireBehavior.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_value: _builtins.str):
+        """
+        :param _builtins.str default_value: Possible values: [no*prompt pre*login*prompt post*login_prompt].
+        """
+        pulumi.set(__self__, "default_value", default_value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> _builtins.str:
+        """
+        Possible values: [no*prompt pre*login*prompt post*login_prompt].
+        """
+        return pulumi.get(self, "default_value")
+
+
+@pulumi.output_type
+class ClientProfileClientConfigurationOrganizationUsage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultValue":
+            suggest = "default_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientProfileClientConfigurationOrganizationUsage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientProfileClientConfigurationOrganizationUsage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientProfileClientConfigurationOrganizationUsage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_value: _builtins.str):
+        """
+        :param _builtins.str default_value: Possible values: [deny allow require].
+        """
+        pulumi.set(__self__, "default_value", default_value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> _builtins.str:
+        """
+        Possible values: [deny allow require].
+        """
+        return pulumi.get(self, "default_value")
+
+
+@pulumi.output_type
+class ClientProfileClientConfigurationRefreshToken(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "idleTokenLifetime":
+            suggest = "idle_token_lifetime"
+        elif key == "tokenLifetime":
+            suggest = "token_lifetime"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientProfileClientConfigurationRefreshToken. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientProfileClientConfigurationRefreshToken.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientProfileClientConfigurationRefreshToken.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 idle_token_lifetime: Optional['outputs.ClientProfileClientConfigurationRefreshTokenIdleTokenLifetime'] = None,
+                 leeway: Optional['outputs.ClientProfileClientConfigurationRefreshTokenLeeway'] = None,
+                 token_lifetime: Optional['outputs.ClientProfileClientConfigurationRefreshTokenTokenLifetime'] = None):
+        """
+        :param 'ClientProfileClientConfigurationRefreshTokenIdleTokenLifetimeArgs' idle_token_lifetime: The inactivity lifetime of a refresh token. It must not exceed `token_lifetime`. If only one of `token_lifetime` and `idle_token_lifetime` is set, Auth0 derives the other.
+        :param 'ClientProfileClientConfigurationRefreshTokenLeewayArgs' leeway: The period in which a refresh token may be reused without triggering reuse detection.
+        :param 'ClientProfileClientConfigurationRefreshTokenTokenLifetimeArgs' token_lifetime: The absolute lifetime of a refresh token. If only one of `token_lifetime` and `idle_token_lifetime` is set, Auth0 derives the other.
+        """
+        if idle_token_lifetime is not None:
+            pulumi.set(__self__, "idle_token_lifetime", idle_token_lifetime)
+        if leeway is not None:
+            pulumi.set(__self__, "leeway", leeway)
+        if token_lifetime is not None:
+            pulumi.set(__self__, "token_lifetime", token_lifetime)
+
+    @_builtins.property
+    @pulumi.getter(name="idleTokenLifetime")
+    def idle_token_lifetime(self) -> Optional['outputs.ClientProfileClientConfigurationRefreshTokenIdleTokenLifetime']:
+        """
+        The inactivity lifetime of a refresh token. It must not exceed `token_lifetime`. If only one of `token_lifetime` and `idle_token_lifetime` is set, Auth0 derives the other.
+        """
+        return pulumi.get(self, "idle_token_lifetime")
+
+    @_builtins.property
+    @pulumi.getter
+    def leeway(self) -> Optional['outputs.ClientProfileClientConfigurationRefreshTokenLeeway']:
+        """
+        The period in which a refresh token may be reused without triggering reuse detection.
+        """
+        return pulumi.get(self, "leeway")
+
+    @_builtins.property
+    @pulumi.getter(name="tokenLifetime")
+    def token_lifetime(self) -> Optional['outputs.ClientProfileClientConfigurationRefreshTokenTokenLifetime']:
+        """
+        The absolute lifetime of a refresh token. If only one of `token_lifetime` and `idle_token_lifetime` is set, Auth0 derives the other.
+        """
+        return pulumi.get(self, "token_lifetime")
+
+
+@pulumi.output_type
+class ClientProfileClientConfigurationRefreshTokenIdleTokenLifetime(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultValue":
+            suggest = "default_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientProfileClientConfigurationRefreshTokenIdleTokenLifetime. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientProfileClientConfigurationRefreshTokenIdleTokenLifetime.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientProfileClientConfigurationRefreshTokenIdleTokenLifetime.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_value: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int default_value: The lifetime in seconds.
+        """
+        if default_value is not None:
+            pulumi.set(__self__, "default_value", default_value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> Optional[_builtins.int]:
+        """
+        The lifetime in seconds.
+        """
+        return pulumi.get(self, "default_value")
+
+
+@pulumi.output_type
+class ClientProfileClientConfigurationRefreshTokenLeeway(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultValue":
+            suggest = "default_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientProfileClientConfigurationRefreshTokenLeeway. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientProfileClientConfigurationRefreshTokenLeeway.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientProfileClientConfigurationRefreshTokenLeeway.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_value: _builtins.int):
+        """
+        :param _builtins.int default_value: The leeway in seconds. `0` disables the leeway.
+        """
+        pulumi.set(__self__, "default_value", default_value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> _builtins.int:
+        """
+        The leeway in seconds. `0` disables the leeway.
+        """
+        return pulumi.get(self, "default_value")
+
+
+@pulumi.output_type
+class ClientProfileClientConfigurationRefreshTokenTokenLifetime(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultValue":
+            suggest = "default_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientProfileClientConfigurationRefreshTokenTokenLifetime. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientProfileClientConfigurationRefreshTokenTokenLifetime.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientProfileClientConfigurationRefreshTokenTokenLifetime.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_value: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int default_value: The lifetime in seconds.
+        """
+        if default_value is not None:
+            pulumi.set(__self__, "default_value", default_value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> Optional[_builtins.int]:
+        """
+        The lifetime in seconds.
+        """
+        return pulumi.get(self, "default_value")
+
+
+@pulumi.output_type
+class ClientProfileClientConfigurationRequireProofOfPossession(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultValue":
+            suggest = "default_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientProfileClientConfigurationRequireProofOfPossession. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientProfileClientConfigurationRequireProofOfPossession.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientProfileClientConfigurationRequireProofOfPossession.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_value: _builtins.bool):
+        """
+        :param _builtins.bool default_value: Whether proof of possession is required.
+        """
+        pulumi.set(__self__, "default_value", default_value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> _builtins.bool:
+        """
+        Whether proof of possession is required.
+        """
+        return pulumi.get(self, "default_value")
+
+
+@pulumi.output_type
 class ClientRefreshToken(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -13207,6 +13740,2834 @@ class EventStreamWebhookConfigurationWebhookAuthorization(dict):
         The username for `basic` authentication. Required only when `method` is set to `basic`.
         """
         return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class ExperimentAllocation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isControl":
+            suggest = "is_control"
+        elif key == "variationId":
+            suggest = "variation_id"
+        elif key == "isFallback":
+            suggest = "is_fallback"
+        elif key == "segmentId":
+            suggest = "segment_id"
+        elif key == "segmentName":
+            suggest = "segment_name"
+        elif key == "segmentSnapshot":
+            suggest = "segment_snapshot"
+        elif key == "variationName":
+            suggest = "variation_name"
+        elif key == "variationSnapshot":
+            suggest = "variation_snapshot"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentAllocation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentAllocation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentAllocation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 is_control: _builtins.bool,
+                 variation_id: _builtins.str,
+                 is_fallback: Optional[_builtins.bool] = None,
+                 priority: Optional[_builtins.int] = None,
+                 segment_id: Optional[_builtins.str] = None,
+                 segment_name: Optional[_builtins.str] = None,
+                 segment_snapshot: Optional[_builtins.str] = None,
+                 variation_name: Optional[_builtins.str] = None,
+                 variation_snapshot: Optional[_builtins.str] = None,
+                 weight: Optional[_builtins.int] = None):
+        """
+        :param _builtins.bool is_control: Whether this allocation is the control variation. At most one allocation can be the control.
+        :param _builtins.str variation_id: The ID of the feature flag variation assigned to this allocation.
+        :param _builtins.bool is_fallback: Whether this allocation is the fallback. Only for the segment strategy.
+        :param _builtins.int priority: The evaluation priority of this allocation. Only for the segment strategy.
+        :param _builtins.str segment_id: The segment targeted by this allocation. Only for the segment strategy. Omit for the fallback allocation.
+        :param _builtins.str segment_name: The name of the targeted segment.
+        :param _builtins.str segment_snapshot: The snapshot of the segment.
+        :param _builtins.str variation_name: The name of the assigned variation.
+        :param _builtins.str variation_snapshot: The snapshot of the variation.
+        :param _builtins.int weight: The percentage weight of this allocation. Only for the percentage strategy. Omit when using levels.
+        """
+        pulumi.set(__self__, "is_control", is_control)
+        pulumi.set(__self__, "variation_id", variation_id)
+        if is_fallback is not None:
+            pulumi.set(__self__, "is_fallback", is_fallback)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if segment_id is not None:
+            pulumi.set(__self__, "segment_id", segment_id)
+        if segment_name is not None:
+            pulumi.set(__self__, "segment_name", segment_name)
+        if segment_snapshot is not None:
+            pulumi.set(__self__, "segment_snapshot", segment_snapshot)
+        if variation_name is not None:
+            pulumi.set(__self__, "variation_name", variation_name)
+        if variation_snapshot is not None:
+            pulumi.set(__self__, "variation_snapshot", variation_snapshot)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @_builtins.property
+    @pulumi.getter(name="isControl")
+    def is_control(self) -> _builtins.bool:
+        """
+        Whether this allocation is the control variation. At most one allocation can be the control.
+        """
+        return pulumi.get(self, "is_control")
+
+    @_builtins.property
+    @pulumi.getter(name="variationId")
+    def variation_id(self) -> _builtins.str:
+        """
+        The ID of the feature flag variation assigned to this allocation.
+        """
+        return pulumi.get(self, "variation_id")
+
+    @_builtins.property
+    @pulumi.getter(name="isFallback")
+    def is_fallback(self) -> Optional[_builtins.bool]:
+        """
+        Whether this allocation is the fallback. Only for the segment strategy.
+        """
+        return pulumi.get(self, "is_fallback")
+
+    @_builtins.property
+    @pulumi.getter
+    def priority(self) -> Optional[_builtins.int]:
+        """
+        The evaluation priority of this allocation. Only for the segment strategy.
+        """
+        return pulumi.get(self, "priority")
+
+    @_builtins.property
+    @pulumi.getter(name="segmentId")
+    def segment_id(self) -> Optional[_builtins.str]:
+        """
+        The segment targeted by this allocation. Only for the segment strategy. Omit for the fallback allocation.
+        """
+        return pulumi.get(self, "segment_id")
+
+    @_builtins.property
+    @pulumi.getter(name="segmentName")
+    def segment_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the targeted segment.
+        """
+        return pulumi.get(self, "segment_name")
+
+    @_builtins.property
+    @pulumi.getter(name="segmentSnapshot")
+    def segment_snapshot(self) -> Optional[_builtins.str]:
+        """
+        The snapshot of the segment.
+        """
+        return pulumi.get(self, "segment_snapshot")
+
+    @_builtins.property
+    @pulumi.getter(name="variationName")
+    def variation_name(self) -> Optional[_builtins.str]:
+        """
+        The name of the assigned variation.
+        """
+        return pulumi.get(self, "variation_name")
+
+    @_builtins.property
+    @pulumi.getter(name="variationSnapshot")
+    def variation_snapshot(self) -> Optional[_builtins.str]:
+        """
+        The snapshot of the variation.
+        """
+        return pulumi.get(self, "variation_snapshot")
+
+    @_builtins.property
+    @pulumi.getter
+    def weight(self) -> Optional[_builtins.int]:
+        """
+        The percentage weight of this allocation. Only for the percentage strategy. Omit when using levels.
+        """
+        return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class ExperimentFeatureFlagParameter(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 type: _builtins.str,
+                 value: _builtins.str,
+                 description: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: The key of the parameter.
+        :param _builtins.str type: The value type of the parameter. One of boolean, string, number, array, object
+        :param _builtins.str value: The default value of the parameter, as a string. For `type = "object"` or `type = "array"` supply a JSON-encoded string; for `boolean`/`number` supply the literal value as a string.
+        :param _builtins.str description: Description of the parameter.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The key of the parameter.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The value type of the parameter. One of boolean, string, number, array, object
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The default value of the parameter, as a string. For `type = "object"` or `type = "array"` supply a JSON-encoded string; for `boolean`/`number` supply the literal value as a string.
+        """
+        return pulumi.get(self, "value")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Description of the parameter.
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class ExperimentFeatureFlagVariation(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 description: Optional[_builtins.str] = None,
+                 overrides: Optional[Sequence['outputs.ExperimentFeatureFlagVariationOverride']] = None):
+        """
+        :param _builtins.str name: The name of the variation. Must be unique within the feature flag and contain 3 to 255 characters without surrounding whitespace. Changing the name deletes the variation and creates a new one with a new ID.
+        :param _builtins.str description: Description of the variation. Must contain 3 to 1024 characters when set.
+        :param Sequence['ExperimentFeatureFlagVariationOverrideArgs'] overrides: Parameter overrides for the variation. Omit for a control variation.
+        """
+        pulumi.set(__self__, "name", name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if overrides is not None:
+            pulumi.set(__self__, "overrides", overrides)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the variation. Must be unique within the feature flag and contain 3 to 255 characters without surrounding whitespace. Changing the name deletes the variation and creates a new one with a new ID.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Description of the variation. Must contain 3 to 1024 characters when set.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def overrides(self) -> Optional[Sequence['outputs.ExperimentFeatureFlagVariationOverride']]:
+        """
+        Parameter overrides for the variation. Omit for a control variation.
+        """
+        return pulumi.get(self, "overrides")
+
+
+@pulumi.output_type
+class ExperimentFeatureFlagVariationOverride(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 type: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str name: The name of a parameter on the feature flag. Each name can appear once.
+        :param _builtins.str type: The type of the parameter value. One of boolean, string, number, array, object.
+        :param _builtins.str value: The override value as a string. For object and array values, provide JSON; for boolean and number values, provide their literal text.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of a parameter on the feature flag. Each name can appear once.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The type of the parameter value. One of boolean, string, number, array, object.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The override value as a string. For object and array values, provide JSON; for boolean and number values, provide their literal text.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ExperimentSegmentRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "notMatch":
+            suggest = "not_match"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentSegmentRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentSegmentRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentSegmentRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 match: Optional['outputs.ExperimentSegmentRuleMatch'] = None,
+                 not_match: Optional['outputs.ExperimentSegmentRuleNotMatch'] = None):
+        """
+        :param 'ExperimentSegmentRuleMatchArgs' match: Attribute conditions that must match. Set between 1 and 10 attributes, including each `anonymous_session_metadata` block. At least one of `match` or `not_match` is required per rule.
+        :param 'ExperimentSegmentRuleNotMatchArgs' not_match: Attribute conditions that must not match. Set between 1 and 10 attributes, including each `anonymous_session_metadata` block. At least one of `match` or `not_match` is required per rule.
+        """
+        if match is not None:
+            pulumi.set(__self__, "match", match)
+        if not_match is not None:
+            pulumi.set(__self__, "not_match", not_match)
+
+    @_builtins.property
+    @pulumi.getter
+    def match(self) -> Optional['outputs.ExperimentSegmentRuleMatch']:
+        """
+        Attribute conditions that must match. Set between 1 and 10 attributes, including each `anonymous_session_metadata` block. At least one of `match` or `not_match` is required per rule.
+        """
+        return pulumi.get(self, "match")
+
+    @_builtins.property
+    @pulumi.getter(name="notMatch")
+    def not_match(self) -> Optional['outputs.ExperimentSegmentRuleNotMatch']:
+        """
+        Attribute conditions that must not match. Set between 1 and 10 attributes, including each `anonymous_session_metadata` block. At least one of `match` or `not_match` is required per rule.
+        """
+        return pulumi.get(self, "not_match")
+
+
+@pulumi.output_type
+class ExperimentSegmentRuleMatch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "anonymousSessionMetadatas":
+            suggest = "anonymous_session_metadatas"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "connectionType":
+            suggest = "connection_type"
+        elif key == "deviceType":
+            suggest = "device_type"
+        elif key == "organizationId":
+            suggest = "organization_id"
+        elif key == "userAgent":
+            suggest = "user_agent"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentSegmentRuleMatch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentSegmentRuleMatch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentSegmentRuleMatch.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 anonymous_session_metadatas: Optional[Sequence['outputs.ExperimentSegmentRuleMatchAnonymousSessionMetadata']] = None,
+                 browser: Optional['outputs.ExperimentSegmentRuleMatchBrowser'] = None,
+                 client_id: Optional['outputs.ExperimentSegmentRuleMatchClientId'] = None,
+                 connection: Optional['outputs.ExperimentSegmentRuleMatchConnection'] = None,
+                 connection_type: Optional['outputs.ExperimentSegmentRuleMatchConnectionType'] = None,
+                 country: Optional['outputs.ExperimentSegmentRuleMatchCountry'] = None,
+                 device_type: Optional['outputs.ExperimentSegmentRuleMatchDeviceType'] = None,
+                 domain: Optional['outputs.ExperimentSegmentRuleMatchDomain'] = None,
+                 organization_id: Optional['outputs.ExperimentSegmentRuleMatchOrganizationId'] = None,
+                 platform: Optional['outputs.ExperimentSegmentRuleMatchPlatform'] = None,
+                 region: Optional['outputs.ExperimentSegmentRuleMatchRegion'] = None,
+                 user_agent: Optional['outputs.ExperimentSegmentRuleMatchUserAgent'] = None):
+        """
+        :param Sequence['ExperimentSegmentRuleMatchAnonymousSessionMetadataArgs'] anonymous_session_metadatas: Condition on a namespaced `anonymous_session_metadata.<key>` attribute. Repeat the block once per key. Each key can appear only once per `match/not_match` block.
+        :param 'ExperimentSegmentRuleMatchBrowserArgs' browser: Condition on the `browser` attribute. Set exactly one operator.
+        :param 'ExperimentSegmentRuleMatchClientIdArgs' client_id: Condition on the `client_id` attribute. Set exactly one operator.
+        :param 'ExperimentSegmentRuleMatchConnectionArgs' connection: Condition on the `connection` attribute. Set exactly one operator.
+        :param 'ExperimentSegmentRuleMatchConnectionTypeArgs' connection_type: Condition on the `connection_type` attribute. Set exactly one operator.
+        :param 'ExperimentSegmentRuleMatchCountryArgs' country: Condition on the `country` attribute. Set exactly one operator.
+        :param 'ExperimentSegmentRuleMatchDeviceTypeArgs' device_type: Condition on the `device_type` attribute. Set exactly one operator.
+        :param 'ExperimentSegmentRuleMatchDomainArgs' domain: Condition on the `domain` attribute. Set exactly one operator.
+        :param 'ExperimentSegmentRuleMatchOrganizationIdArgs' organization_id: Condition on the `organization_id` attribute. Set exactly one operator.
+        :param 'ExperimentSegmentRuleMatchPlatformArgs' platform: Condition on the `platform` attribute. Set exactly one operator.
+        :param 'ExperimentSegmentRuleMatchRegionArgs' region: Condition on the `region` attribute. Set exactly one operator.
+        :param 'ExperimentSegmentRuleMatchUserAgentArgs' user_agent: Condition on the `user_agent` attribute. Set exactly one operator.
+        """
+        if anonymous_session_metadatas is not None:
+            pulumi.set(__self__, "anonymous_session_metadatas", anonymous_session_metadatas)
+        if browser is not None:
+            pulumi.set(__self__, "browser", browser)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if connection is not None:
+            pulumi.set(__self__, "connection", connection)
+        if connection_type is not None:
+            pulumi.set(__self__, "connection_type", connection_type)
+        if country is not None:
+            pulumi.set(__self__, "country", country)
+        if device_type is not None:
+            pulumi.set(__self__, "device_type", device_type)
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if organization_id is not None:
+            pulumi.set(__self__, "organization_id", organization_id)
+        if platform is not None:
+            pulumi.set(__self__, "platform", platform)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if user_agent is not None:
+            pulumi.set(__self__, "user_agent", user_agent)
+
+    @_builtins.property
+    @pulumi.getter(name="anonymousSessionMetadatas")
+    def anonymous_session_metadatas(self) -> Optional[Sequence['outputs.ExperimentSegmentRuleMatchAnonymousSessionMetadata']]:
+        """
+        Condition on a namespaced `anonymous_session_metadata.<key>` attribute. Repeat the block once per key. Each key can appear only once per `match/not_match` block.
+        """
+        return pulumi.get(self, "anonymous_session_metadatas")
+
+    @_builtins.property
+    @pulumi.getter
+    def browser(self) -> Optional['outputs.ExperimentSegmentRuleMatchBrowser']:
+        """
+        Condition on the `browser` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "browser")
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional['outputs.ExperimentSegmentRuleMatchClientId']:
+        """
+        Condition on the `client_id` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "client_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def connection(self) -> Optional['outputs.ExperimentSegmentRuleMatchConnection']:
+        """
+        Condition on the `connection` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "connection")
+
+    @_builtins.property
+    @pulumi.getter(name="connectionType")
+    def connection_type(self) -> Optional['outputs.ExperimentSegmentRuleMatchConnectionType']:
+        """
+        Condition on the `connection_type` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "connection_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def country(self) -> Optional['outputs.ExperimentSegmentRuleMatchCountry']:
+        """
+        Condition on the `country` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "country")
+
+    @_builtins.property
+    @pulumi.getter(name="deviceType")
+    def device_type(self) -> Optional['outputs.ExperimentSegmentRuleMatchDeviceType']:
+        """
+        Condition on the `device_type` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "device_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> Optional['outputs.ExperimentSegmentRuleMatchDomain']:
+        """
+        Condition on the `domain` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "domain")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> Optional['outputs.ExperimentSegmentRuleMatchOrganizationId']:
+        """
+        Condition on the `organization_id` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "organization_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def platform(self) -> Optional['outputs.ExperimentSegmentRuleMatchPlatform']:
+        """
+        Condition on the `platform` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "platform")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional['outputs.ExperimentSegmentRuleMatchRegion']:
+        """
+        Condition on the `region` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="userAgent")
+    def user_agent(self) -> Optional['outputs.ExperimentSegmentRuleMatchUserAgent']:
+        """
+        Condition on the `user_agent` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "user_agent")
+
+
+@pulumi.output_type
+class ExperimentSegmentRuleMatchAnonymousSessionMetadata(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endsWiths":
+            suggest = "ends_withs"
+        elif key == "oneOfs":
+            suggest = "one_ofs"
+        elif key == "startsWiths":
+            suggest = "starts_withs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentSegmentRuleMatchAnonymousSessionMetadata. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentSegmentRuleMatchAnonymousSessionMetadata.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentSegmentRuleMatchAnonymousSessionMetadata.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 contains: Optional[Sequence[_builtins.str]] = None,
+                 ends_withs: Optional[Sequence[_builtins.str]] = None,
+                 exists: Optional[_builtins.str] = None,
+                 one_ofs: Optional[Sequence[_builtins.str]] = None,
+                 starts_withs: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str key: The metadata key, without the `anonymous_session_metadata.` prefix. Between 1 and 255 characters, not blank.
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        pulumi.set(__self__, "key", key)
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if ends_withs is not None:
+            pulumi.set(__self__, "ends_withs", ends_withs)
+        if exists is not None:
+            pulumi.set(__self__, "exists", exists)
+        if one_ofs is not None:
+            pulumi.set(__self__, "one_ofs", one_ofs)
+        if starts_withs is not None:
+            pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The metadata key, without the `anonymous_session_metadata.` prefix. Between 1 and 255 characters, not blank.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> Optional[_builtins.str]:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class ExperimentSegmentRuleMatchBrowser(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endsWiths":
+            suggest = "ends_withs"
+        elif key == "oneOfs":
+            suggest = "one_ofs"
+        elif key == "startsWiths":
+            suggest = "starts_withs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentSegmentRuleMatchBrowser. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentSegmentRuleMatchBrowser.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentSegmentRuleMatchBrowser.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 contains: Optional[Sequence[_builtins.str]] = None,
+                 ends_withs: Optional[Sequence[_builtins.str]] = None,
+                 exists: Optional[_builtins.str] = None,
+                 one_ofs: Optional[Sequence[_builtins.str]] = None,
+                 starts_withs: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if ends_withs is not None:
+            pulumi.set(__self__, "ends_withs", ends_withs)
+        if exists is not None:
+            pulumi.set(__self__, "exists", exists)
+        if one_ofs is not None:
+            pulumi.set(__self__, "one_ofs", one_ofs)
+        if starts_withs is not None:
+            pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> Optional[_builtins.str]:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class ExperimentSegmentRuleMatchClientId(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endsWiths":
+            suggest = "ends_withs"
+        elif key == "oneOfs":
+            suggest = "one_ofs"
+        elif key == "startsWiths":
+            suggest = "starts_withs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentSegmentRuleMatchClientId. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentSegmentRuleMatchClientId.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentSegmentRuleMatchClientId.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 contains: Optional[Sequence[_builtins.str]] = None,
+                 ends_withs: Optional[Sequence[_builtins.str]] = None,
+                 exists: Optional[_builtins.str] = None,
+                 one_ofs: Optional[Sequence[_builtins.str]] = None,
+                 starts_withs: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if ends_withs is not None:
+            pulumi.set(__self__, "ends_withs", ends_withs)
+        if exists is not None:
+            pulumi.set(__self__, "exists", exists)
+        if one_ofs is not None:
+            pulumi.set(__self__, "one_ofs", one_ofs)
+        if starts_withs is not None:
+            pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> Optional[_builtins.str]:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class ExperimentSegmentRuleMatchConnection(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endsWiths":
+            suggest = "ends_withs"
+        elif key == "oneOfs":
+            suggest = "one_ofs"
+        elif key == "startsWiths":
+            suggest = "starts_withs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentSegmentRuleMatchConnection. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentSegmentRuleMatchConnection.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentSegmentRuleMatchConnection.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 contains: Optional[Sequence[_builtins.str]] = None,
+                 ends_withs: Optional[Sequence[_builtins.str]] = None,
+                 exists: Optional[_builtins.str] = None,
+                 one_ofs: Optional[Sequence[_builtins.str]] = None,
+                 starts_withs: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if ends_withs is not None:
+            pulumi.set(__self__, "ends_withs", ends_withs)
+        if exists is not None:
+            pulumi.set(__self__, "exists", exists)
+        if one_ofs is not None:
+            pulumi.set(__self__, "one_ofs", one_ofs)
+        if starts_withs is not None:
+            pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> Optional[_builtins.str]:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class ExperimentSegmentRuleMatchConnectionType(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endsWiths":
+            suggest = "ends_withs"
+        elif key == "oneOfs":
+            suggest = "one_ofs"
+        elif key == "startsWiths":
+            suggest = "starts_withs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentSegmentRuleMatchConnectionType. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentSegmentRuleMatchConnectionType.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentSegmentRuleMatchConnectionType.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 contains: Optional[Sequence[_builtins.str]] = None,
+                 ends_withs: Optional[Sequence[_builtins.str]] = None,
+                 exists: Optional[_builtins.str] = None,
+                 one_ofs: Optional[Sequence[_builtins.str]] = None,
+                 starts_withs: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if ends_withs is not None:
+            pulumi.set(__self__, "ends_withs", ends_withs)
+        if exists is not None:
+            pulumi.set(__self__, "exists", exists)
+        if one_ofs is not None:
+            pulumi.set(__self__, "one_ofs", one_ofs)
+        if starts_withs is not None:
+            pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> Optional[_builtins.str]:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class ExperimentSegmentRuleMatchCountry(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endsWiths":
+            suggest = "ends_withs"
+        elif key == "oneOfs":
+            suggest = "one_ofs"
+        elif key == "startsWiths":
+            suggest = "starts_withs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentSegmentRuleMatchCountry. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentSegmentRuleMatchCountry.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentSegmentRuleMatchCountry.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 contains: Optional[Sequence[_builtins.str]] = None,
+                 ends_withs: Optional[Sequence[_builtins.str]] = None,
+                 exists: Optional[_builtins.str] = None,
+                 one_ofs: Optional[Sequence[_builtins.str]] = None,
+                 starts_withs: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if ends_withs is not None:
+            pulumi.set(__self__, "ends_withs", ends_withs)
+        if exists is not None:
+            pulumi.set(__self__, "exists", exists)
+        if one_ofs is not None:
+            pulumi.set(__self__, "one_ofs", one_ofs)
+        if starts_withs is not None:
+            pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> Optional[_builtins.str]:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class ExperimentSegmentRuleMatchDeviceType(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endsWiths":
+            suggest = "ends_withs"
+        elif key == "oneOfs":
+            suggest = "one_ofs"
+        elif key == "startsWiths":
+            suggest = "starts_withs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentSegmentRuleMatchDeviceType. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentSegmentRuleMatchDeviceType.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentSegmentRuleMatchDeviceType.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 contains: Optional[Sequence[_builtins.str]] = None,
+                 ends_withs: Optional[Sequence[_builtins.str]] = None,
+                 exists: Optional[_builtins.str] = None,
+                 one_ofs: Optional[Sequence[_builtins.str]] = None,
+                 starts_withs: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if ends_withs is not None:
+            pulumi.set(__self__, "ends_withs", ends_withs)
+        if exists is not None:
+            pulumi.set(__self__, "exists", exists)
+        if one_ofs is not None:
+            pulumi.set(__self__, "one_ofs", one_ofs)
+        if starts_withs is not None:
+            pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> Optional[_builtins.str]:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class ExperimentSegmentRuleMatchDomain(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endsWiths":
+            suggest = "ends_withs"
+        elif key == "oneOfs":
+            suggest = "one_ofs"
+        elif key == "startsWiths":
+            suggest = "starts_withs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentSegmentRuleMatchDomain. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentSegmentRuleMatchDomain.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentSegmentRuleMatchDomain.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 contains: Optional[Sequence[_builtins.str]] = None,
+                 ends_withs: Optional[Sequence[_builtins.str]] = None,
+                 exists: Optional[_builtins.str] = None,
+                 one_ofs: Optional[Sequence[_builtins.str]] = None,
+                 starts_withs: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if ends_withs is not None:
+            pulumi.set(__self__, "ends_withs", ends_withs)
+        if exists is not None:
+            pulumi.set(__self__, "exists", exists)
+        if one_ofs is not None:
+            pulumi.set(__self__, "one_ofs", one_ofs)
+        if starts_withs is not None:
+            pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> Optional[_builtins.str]:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class ExperimentSegmentRuleMatchOrganizationId(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endsWiths":
+            suggest = "ends_withs"
+        elif key == "oneOfs":
+            suggest = "one_ofs"
+        elif key == "startsWiths":
+            suggest = "starts_withs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentSegmentRuleMatchOrganizationId. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentSegmentRuleMatchOrganizationId.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentSegmentRuleMatchOrganizationId.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 contains: Optional[Sequence[_builtins.str]] = None,
+                 ends_withs: Optional[Sequence[_builtins.str]] = None,
+                 exists: Optional[_builtins.str] = None,
+                 one_ofs: Optional[Sequence[_builtins.str]] = None,
+                 starts_withs: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if ends_withs is not None:
+            pulumi.set(__self__, "ends_withs", ends_withs)
+        if exists is not None:
+            pulumi.set(__self__, "exists", exists)
+        if one_ofs is not None:
+            pulumi.set(__self__, "one_ofs", one_ofs)
+        if starts_withs is not None:
+            pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> Optional[_builtins.str]:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class ExperimentSegmentRuleMatchPlatform(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endsWiths":
+            suggest = "ends_withs"
+        elif key == "oneOfs":
+            suggest = "one_ofs"
+        elif key == "startsWiths":
+            suggest = "starts_withs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentSegmentRuleMatchPlatform. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentSegmentRuleMatchPlatform.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentSegmentRuleMatchPlatform.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 contains: Optional[Sequence[_builtins.str]] = None,
+                 ends_withs: Optional[Sequence[_builtins.str]] = None,
+                 exists: Optional[_builtins.str] = None,
+                 one_ofs: Optional[Sequence[_builtins.str]] = None,
+                 starts_withs: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if ends_withs is not None:
+            pulumi.set(__self__, "ends_withs", ends_withs)
+        if exists is not None:
+            pulumi.set(__self__, "exists", exists)
+        if one_ofs is not None:
+            pulumi.set(__self__, "one_ofs", one_ofs)
+        if starts_withs is not None:
+            pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> Optional[_builtins.str]:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class ExperimentSegmentRuleMatchRegion(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endsWiths":
+            suggest = "ends_withs"
+        elif key == "oneOfs":
+            suggest = "one_ofs"
+        elif key == "startsWiths":
+            suggest = "starts_withs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentSegmentRuleMatchRegion. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentSegmentRuleMatchRegion.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentSegmentRuleMatchRegion.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 contains: Optional[Sequence[_builtins.str]] = None,
+                 ends_withs: Optional[Sequence[_builtins.str]] = None,
+                 exists: Optional[_builtins.str] = None,
+                 one_ofs: Optional[Sequence[_builtins.str]] = None,
+                 starts_withs: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if ends_withs is not None:
+            pulumi.set(__self__, "ends_withs", ends_withs)
+        if exists is not None:
+            pulumi.set(__self__, "exists", exists)
+        if one_ofs is not None:
+            pulumi.set(__self__, "one_ofs", one_ofs)
+        if starts_withs is not None:
+            pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> Optional[_builtins.str]:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class ExperimentSegmentRuleMatchUserAgent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endsWiths":
+            suggest = "ends_withs"
+        elif key == "oneOfs":
+            suggest = "one_ofs"
+        elif key == "startsWiths":
+            suggest = "starts_withs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentSegmentRuleMatchUserAgent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentSegmentRuleMatchUserAgent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentSegmentRuleMatchUserAgent.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 contains: Optional[Sequence[_builtins.str]] = None,
+                 ends_withs: Optional[Sequence[_builtins.str]] = None,
+                 exists: Optional[_builtins.str] = None,
+                 one_ofs: Optional[Sequence[_builtins.str]] = None,
+                 starts_withs: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if ends_withs is not None:
+            pulumi.set(__self__, "ends_withs", ends_withs)
+        if exists is not None:
+            pulumi.set(__self__, "exists", exists)
+        if one_ofs is not None:
+            pulumi.set(__self__, "one_ofs", one_ofs)
+        if starts_withs is not None:
+            pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> Optional[_builtins.str]:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class ExperimentSegmentRuleNotMatch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "anonymousSessionMetadatas":
+            suggest = "anonymous_session_metadatas"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "connectionType":
+            suggest = "connection_type"
+        elif key == "deviceType":
+            suggest = "device_type"
+        elif key == "organizationId":
+            suggest = "organization_id"
+        elif key == "userAgent":
+            suggest = "user_agent"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentSegmentRuleNotMatch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentSegmentRuleNotMatch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentSegmentRuleNotMatch.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 anonymous_session_metadatas: Optional[Sequence['outputs.ExperimentSegmentRuleNotMatchAnonymousSessionMetadata']] = None,
+                 browser: Optional['outputs.ExperimentSegmentRuleNotMatchBrowser'] = None,
+                 client_id: Optional['outputs.ExperimentSegmentRuleNotMatchClientId'] = None,
+                 connection: Optional['outputs.ExperimentSegmentRuleNotMatchConnection'] = None,
+                 connection_type: Optional['outputs.ExperimentSegmentRuleNotMatchConnectionType'] = None,
+                 country: Optional['outputs.ExperimentSegmentRuleNotMatchCountry'] = None,
+                 device_type: Optional['outputs.ExperimentSegmentRuleNotMatchDeviceType'] = None,
+                 domain: Optional['outputs.ExperimentSegmentRuleNotMatchDomain'] = None,
+                 organization_id: Optional['outputs.ExperimentSegmentRuleNotMatchOrganizationId'] = None,
+                 platform: Optional['outputs.ExperimentSegmentRuleNotMatchPlatform'] = None,
+                 region: Optional['outputs.ExperimentSegmentRuleNotMatchRegion'] = None,
+                 user_agent: Optional['outputs.ExperimentSegmentRuleNotMatchUserAgent'] = None):
+        """
+        :param Sequence['ExperimentSegmentRuleNotMatchAnonymousSessionMetadataArgs'] anonymous_session_metadatas: Condition on a namespaced `anonymous_session_metadata.<key>` attribute. Repeat the block once per key. Each key can appear only once per `match/not_match` block.
+        :param 'ExperimentSegmentRuleNotMatchBrowserArgs' browser: Condition on the `browser` attribute. Set exactly one operator.
+        :param 'ExperimentSegmentRuleNotMatchClientIdArgs' client_id: Condition on the `client_id` attribute. Set exactly one operator.
+        :param 'ExperimentSegmentRuleNotMatchConnectionArgs' connection: Condition on the `connection` attribute. Set exactly one operator.
+        :param 'ExperimentSegmentRuleNotMatchConnectionTypeArgs' connection_type: Condition on the `connection_type` attribute. Set exactly one operator.
+        :param 'ExperimentSegmentRuleNotMatchCountryArgs' country: Condition on the `country` attribute. Set exactly one operator.
+        :param 'ExperimentSegmentRuleNotMatchDeviceTypeArgs' device_type: Condition on the `device_type` attribute. Set exactly one operator.
+        :param 'ExperimentSegmentRuleNotMatchDomainArgs' domain: Condition on the `domain` attribute. Set exactly one operator.
+        :param 'ExperimentSegmentRuleNotMatchOrganizationIdArgs' organization_id: Condition on the `organization_id` attribute. Set exactly one operator.
+        :param 'ExperimentSegmentRuleNotMatchPlatformArgs' platform: Condition on the `platform` attribute. Set exactly one operator.
+        :param 'ExperimentSegmentRuleNotMatchRegionArgs' region: Condition on the `region` attribute. Set exactly one operator.
+        :param 'ExperimentSegmentRuleNotMatchUserAgentArgs' user_agent: Condition on the `user_agent` attribute. Set exactly one operator.
+        """
+        if anonymous_session_metadatas is not None:
+            pulumi.set(__self__, "anonymous_session_metadatas", anonymous_session_metadatas)
+        if browser is not None:
+            pulumi.set(__self__, "browser", browser)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if connection is not None:
+            pulumi.set(__self__, "connection", connection)
+        if connection_type is not None:
+            pulumi.set(__self__, "connection_type", connection_type)
+        if country is not None:
+            pulumi.set(__self__, "country", country)
+        if device_type is not None:
+            pulumi.set(__self__, "device_type", device_type)
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if organization_id is not None:
+            pulumi.set(__self__, "organization_id", organization_id)
+        if platform is not None:
+            pulumi.set(__self__, "platform", platform)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if user_agent is not None:
+            pulumi.set(__self__, "user_agent", user_agent)
+
+    @_builtins.property
+    @pulumi.getter(name="anonymousSessionMetadatas")
+    def anonymous_session_metadatas(self) -> Optional[Sequence['outputs.ExperimentSegmentRuleNotMatchAnonymousSessionMetadata']]:
+        """
+        Condition on a namespaced `anonymous_session_metadata.<key>` attribute. Repeat the block once per key. Each key can appear only once per `match/not_match` block.
+        """
+        return pulumi.get(self, "anonymous_session_metadatas")
+
+    @_builtins.property
+    @pulumi.getter
+    def browser(self) -> Optional['outputs.ExperimentSegmentRuleNotMatchBrowser']:
+        """
+        Condition on the `browser` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "browser")
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional['outputs.ExperimentSegmentRuleNotMatchClientId']:
+        """
+        Condition on the `client_id` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "client_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def connection(self) -> Optional['outputs.ExperimentSegmentRuleNotMatchConnection']:
+        """
+        Condition on the `connection` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "connection")
+
+    @_builtins.property
+    @pulumi.getter(name="connectionType")
+    def connection_type(self) -> Optional['outputs.ExperimentSegmentRuleNotMatchConnectionType']:
+        """
+        Condition on the `connection_type` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "connection_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def country(self) -> Optional['outputs.ExperimentSegmentRuleNotMatchCountry']:
+        """
+        Condition on the `country` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "country")
+
+    @_builtins.property
+    @pulumi.getter(name="deviceType")
+    def device_type(self) -> Optional['outputs.ExperimentSegmentRuleNotMatchDeviceType']:
+        """
+        Condition on the `device_type` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "device_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> Optional['outputs.ExperimentSegmentRuleNotMatchDomain']:
+        """
+        Condition on the `domain` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "domain")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> Optional['outputs.ExperimentSegmentRuleNotMatchOrganizationId']:
+        """
+        Condition on the `organization_id` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "organization_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def platform(self) -> Optional['outputs.ExperimentSegmentRuleNotMatchPlatform']:
+        """
+        Condition on the `platform` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "platform")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional['outputs.ExperimentSegmentRuleNotMatchRegion']:
+        """
+        Condition on the `region` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="userAgent")
+    def user_agent(self) -> Optional['outputs.ExperimentSegmentRuleNotMatchUserAgent']:
+        """
+        Condition on the `user_agent` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "user_agent")
+
+
+@pulumi.output_type
+class ExperimentSegmentRuleNotMatchAnonymousSessionMetadata(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endsWiths":
+            suggest = "ends_withs"
+        elif key == "oneOfs":
+            suggest = "one_ofs"
+        elif key == "startsWiths":
+            suggest = "starts_withs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentSegmentRuleNotMatchAnonymousSessionMetadata. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentSegmentRuleNotMatchAnonymousSessionMetadata.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentSegmentRuleNotMatchAnonymousSessionMetadata.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 contains: Optional[Sequence[_builtins.str]] = None,
+                 ends_withs: Optional[Sequence[_builtins.str]] = None,
+                 exists: Optional[_builtins.str] = None,
+                 one_ofs: Optional[Sequence[_builtins.str]] = None,
+                 starts_withs: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str key: The metadata key, without the `anonymous_session_metadata.` prefix. Between 1 and 255 characters, not blank.
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        pulumi.set(__self__, "key", key)
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if ends_withs is not None:
+            pulumi.set(__self__, "ends_withs", ends_withs)
+        if exists is not None:
+            pulumi.set(__self__, "exists", exists)
+        if one_ofs is not None:
+            pulumi.set(__self__, "one_ofs", one_ofs)
+        if starts_withs is not None:
+            pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The metadata key, without the `anonymous_session_metadata.` prefix. Between 1 and 255 characters, not blank.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> Optional[_builtins.str]:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class ExperimentSegmentRuleNotMatchBrowser(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endsWiths":
+            suggest = "ends_withs"
+        elif key == "oneOfs":
+            suggest = "one_ofs"
+        elif key == "startsWiths":
+            suggest = "starts_withs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentSegmentRuleNotMatchBrowser. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentSegmentRuleNotMatchBrowser.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentSegmentRuleNotMatchBrowser.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 contains: Optional[Sequence[_builtins.str]] = None,
+                 ends_withs: Optional[Sequence[_builtins.str]] = None,
+                 exists: Optional[_builtins.str] = None,
+                 one_ofs: Optional[Sequence[_builtins.str]] = None,
+                 starts_withs: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if ends_withs is not None:
+            pulumi.set(__self__, "ends_withs", ends_withs)
+        if exists is not None:
+            pulumi.set(__self__, "exists", exists)
+        if one_ofs is not None:
+            pulumi.set(__self__, "one_ofs", one_ofs)
+        if starts_withs is not None:
+            pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> Optional[_builtins.str]:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class ExperimentSegmentRuleNotMatchClientId(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endsWiths":
+            suggest = "ends_withs"
+        elif key == "oneOfs":
+            suggest = "one_ofs"
+        elif key == "startsWiths":
+            suggest = "starts_withs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentSegmentRuleNotMatchClientId. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentSegmentRuleNotMatchClientId.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentSegmentRuleNotMatchClientId.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 contains: Optional[Sequence[_builtins.str]] = None,
+                 ends_withs: Optional[Sequence[_builtins.str]] = None,
+                 exists: Optional[_builtins.str] = None,
+                 one_ofs: Optional[Sequence[_builtins.str]] = None,
+                 starts_withs: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if ends_withs is not None:
+            pulumi.set(__self__, "ends_withs", ends_withs)
+        if exists is not None:
+            pulumi.set(__self__, "exists", exists)
+        if one_ofs is not None:
+            pulumi.set(__self__, "one_ofs", one_ofs)
+        if starts_withs is not None:
+            pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> Optional[_builtins.str]:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class ExperimentSegmentRuleNotMatchConnection(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endsWiths":
+            suggest = "ends_withs"
+        elif key == "oneOfs":
+            suggest = "one_ofs"
+        elif key == "startsWiths":
+            suggest = "starts_withs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentSegmentRuleNotMatchConnection. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentSegmentRuleNotMatchConnection.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentSegmentRuleNotMatchConnection.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 contains: Optional[Sequence[_builtins.str]] = None,
+                 ends_withs: Optional[Sequence[_builtins.str]] = None,
+                 exists: Optional[_builtins.str] = None,
+                 one_ofs: Optional[Sequence[_builtins.str]] = None,
+                 starts_withs: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if ends_withs is not None:
+            pulumi.set(__self__, "ends_withs", ends_withs)
+        if exists is not None:
+            pulumi.set(__self__, "exists", exists)
+        if one_ofs is not None:
+            pulumi.set(__self__, "one_ofs", one_ofs)
+        if starts_withs is not None:
+            pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> Optional[_builtins.str]:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class ExperimentSegmentRuleNotMatchConnectionType(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endsWiths":
+            suggest = "ends_withs"
+        elif key == "oneOfs":
+            suggest = "one_ofs"
+        elif key == "startsWiths":
+            suggest = "starts_withs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentSegmentRuleNotMatchConnectionType. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentSegmentRuleNotMatchConnectionType.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentSegmentRuleNotMatchConnectionType.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 contains: Optional[Sequence[_builtins.str]] = None,
+                 ends_withs: Optional[Sequence[_builtins.str]] = None,
+                 exists: Optional[_builtins.str] = None,
+                 one_ofs: Optional[Sequence[_builtins.str]] = None,
+                 starts_withs: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if ends_withs is not None:
+            pulumi.set(__self__, "ends_withs", ends_withs)
+        if exists is not None:
+            pulumi.set(__self__, "exists", exists)
+        if one_ofs is not None:
+            pulumi.set(__self__, "one_ofs", one_ofs)
+        if starts_withs is not None:
+            pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> Optional[_builtins.str]:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class ExperimentSegmentRuleNotMatchCountry(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endsWiths":
+            suggest = "ends_withs"
+        elif key == "oneOfs":
+            suggest = "one_ofs"
+        elif key == "startsWiths":
+            suggest = "starts_withs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentSegmentRuleNotMatchCountry. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentSegmentRuleNotMatchCountry.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentSegmentRuleNotMatchCountry.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 contains: Optional[Sequence[_builtins.str]] = None,
+                 ends_withs: Optional[Sequence[_builtins.str]] = None,
+                 exists: Optional[_builtins.str] = None,
+                 one_ofs: Optional[Sequence[_builtins.str]] = None,
+                 starts_withs: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if ends_withs is not None:
+            pulumi.set(__self__, "ends_withs", ends_withs)
+        if exists is not None:
+            pulumi.set(__self__, "exists", exists)
+        if one_ofs is not None:
+            pulumi.set(__self__, "one_ofs", one_ofs)
+        if starts_withs is not None:
+            pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> Optional[_builtins.str]:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class ExperimentSegmentRuleNotMatchDeviceType(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endsWiths":
+            suggest = "ends_withs"
+        elif key == "oneOfs":
+            suggest = "one_ofs"
+        elif key == "startsWiths":
+            suggest = "starts_withs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentSegmentRuleNotMatchDeviceType. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentSegmentRuleNotMatchDeviceType.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentSegmentRuleNotMatchDeviceType.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 contains: Optional[Sequence[_builtins.str]] = None,
+                 ends_withs: Optional[Sequence[_builtins.str]] = None,
+                 exists: Optional[_builtins.str] = None,
+                 one_ofs: Optional[Sequence[_builtins.str]] = None,
+                 starts_withs: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if ends_withs is not None:
+            pulumi.set(__self__, "ends_withs", ends_withs)
+        if exists is not None:
+            pulumi.set(__self__, "exists", exists)
+        if one_ofs is not None:
+            pulumi.set(__self__, "one_ofs", one_ofs)
+        if starts_withs is not None:
+            pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> Optional[_builtins.str]:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class ExperimentSegmentRuleNotMatchDomain(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endsWiths":
+            suggest = "ends_withs"
+        elif key == "oneOfs":
+            suggest = "one_ofs"
+        elif key == "startsWiths":
+            suggest = "starts_withs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentSegmentRuleNotMatchDomain. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentSegmentRuleNotMatchDomain.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentSegmentRuleNotMatchDomain.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 contains: Optional[Sequence[_builtins.str]] = None,
+                 ends_withs: Optional[Sequence[_builtins.str]] = None,
+                 exists: Optional[_builtins.str] = None,
+                 one_ofs: Optional[Sequence[_builtins.str]] = None,
+                 starts_withs: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if ends_withs is not None:
+            pulumi.set(__self__, "ends_withs", ends_withs)
+        if exists is not None:
+            pulumi.set(__self__, "exists", exists)
+        if one_ofs is not None:
+            pulumi.set(__self__, "one_ofs", one_ofs)
+        if starts_withs is not None:
+            pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> Optional[_builtins.str]:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class ExperimentSegmentRuleNotMatchOrganizationId(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endsWiths":
+            suggest = "ends_withs"
+        elif key == "oneOfs":
+            suggest = "one_ofs"
+        elif key == "startsWiths":
+            suggest = "starts_withs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentSegmentRuleNotMatchOrganizationId. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentSegmentRuleNotMatchOrganizationId.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentSegmentRuleNotMatchOrganizationId.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 contains: Optional[Sequence[_builtins.str]] = None,
+                 ends_withs: Optional[Sequence[_builtins.str]] = None,
+                 exists: Optional[_builtins.str] = None,
+                 one_ofs: Optional[Sequence[_builtins.str]] = None,
+                 starts_withs: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if ends_withs is not None:
+            pulumi.set(__self__, "ends_withs", ends_withs)
+        if exists is not None:
+            pulumi.set(__self__, "exists", exists)
+        if one_ofs is not None:
+            pulumi.set(__self__, "one_ofs", one_ofs)
+        if starts_withs is not None:
+            pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> Optional[_builtins.str]:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class ExperimentSegmentRuleNotMatchPlatform(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endsWiths":
+            suggest = "ends_withs"
+        elif key == "oneOfs":
+            suggest = "one_ofs"
+        elif key == "startsWiths":
+            suggest = "starts_withs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentSegmentRuleNotMatchPlatform. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentSegmentRuleNotMatchPlatform.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentSegmentRuleNotMatchPlatform.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 contains: Optional[Sequence[_builtins.str]] = None,
+                 ends_withs: Optional[Sequence[_builtins.str]] = None,
+                 exists: Optional[_builtins.str] = None,
+                 one_ofs: Optional[Sequence[_builtins.str]] = None,
+                 starts_withs: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if ends_withs is not None:
+            pulumi.set(__self__, "ends_withs", ends_withs)
+        if exists is not None:
+            pulumi.set(__self__, "exists", exists)
+        if one_ofs is not None:
+            pulumi.set(__self__, "one_ofs", one_ofs)
+        if starts_withs is not None:
+            pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> Optional[_builtins.str]:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class ExperimentSegmentRuleNotMatchRegion(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endsWiths":
+            suggest = "ends_withs"
+        elif key == "oneOfs":
+            suggest = "one_ofs"
+        elif key == "startsWiths":
+            suggest = "starts_withs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentSegmentRuleNotMatchRegion. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentSegmentRuleNotMatchRegion.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentSegmentRuleNotMatchRegion.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 contains: Optional[Sequence[_builtins.str]] = None,
+                 ends_withs: Optional[Sequence[_builtins.str]] = None,
+                 exists: Optional[_builtins.str] = None,
+                 one_ofs: Optional[Sequence[_builtins.str]] = None,
+                 starts_withs: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if ends_withs is not None:
+            pulumi.set(__self__, "ends_withs", ends_withs)
+        if exists is not None:
+            pulumi.set(__self__, "exists", exists)
+        if one_ofs is not None:
+            pulumi.set(__self__, "one_ofs", one_ofs)
+        if starts_withs is not None:
+            pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> Optional[_builtins.str]:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class ExperimentSegmentRuleNotMatchUserAgent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endsWiths":
+            suggest = "ends_withs"
+        elif key == "oneOfs":
+            suggest = "one_ofs"
+        elif key == "startsWiths":
+            suggest = "starts_withs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExperimentSegmentRuleNotMatchUserAgent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExperimentSegmentRuleNotMatchUserAgent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExperimentSegmentRuleNotMatchUserAgent.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 contains: Optional[Sequence[_builtins.str]] = None,
+                 ends_withs: Optional[Sequence[_builtins.str]] = None,
+                 exists: Optional[_builtins.str] = None,
+                 one_ofs: Optional[Sequence[_builtins.str]] = None,
+                 starts_withs: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        if contains is not None:
+            pulumi.set(__self__, "contains", contains)
+        if ends_withs is not None:
+            pulumi.set(__self__, "ends_withs", ends_withs)
+        if exists is not None:
+            pulumi.set(__self__, "exists", exists)
+        if one_ofs is not None:
+            pulumi.set(__self__, "one_ofs", one_ofs)
+        if starts_withs is not None:
+            pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> Optional[_builtins.str]:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
 
 
 @pulumi.output_type
@@ -23579,6 +26940,263 @@ class GetClientOidcLogoutBackchannelLogoutSessionMetadataResult(dict):
 
 
 @pulumi.output_type
+class GetClientProfileApplyPolicyResult(dict):
+    def __init__(__self__, *,
+                 external_metadata_created_by: _builtins.str,
+                 external_metadata_type: _builtins.str):
+        """
+        :param _builtins.str external_metadata_created_by: The creator of the clients to match. Defaults to `client`, which means the client was registered dynamically. Possible values: [client].
+        :param _builtins.str external_metadata_type: The type of external metadata of the clients to match. Defaults to `cimd`. Possible values: [cimd].
+        """
+        pulumi.set(__self__, "external_metadata_created_by", external_metadata_created_by)
+        pulumi.set(__self__, "external_metadata_type", external_metadata_type)
+
+    @_builtins.property
+    @pulumi.getter(name="externalMetadataCreatedBy")
+    def external_metadata_created_by(self) -> _builtins.str:
+        """
+        The creator of the clients to match. Defaults to `client`, which means the client was registered dynamically. Possible values: [client].
+        """
+        return pulumi.get(self, "external_metadata_created_by")
+
+    @_builtins.property
+    @pulumi.getter(name="externalMetadataType")
+    def external_metadata_type(self) -> _builtins.str:
+        """
+        The type of external metadata of the clients to match. Defaults to `cimd`. Possible values: [cimd].
+        """
+        return pulumi.get(self, "external_metadata_type")
+
+
+@pulumi.output_type
+class GetClientProfileClientConfigurationResult(dict):
+    def __init__(__self__, *,
+                 organization_discovery_methods: Sequence['outputs.GetClientProfileClientConfigurationOrganizationDiscoveryMethodResult'],
+                 organization_require_behaviors: Sequence['outputs.GetClientProfileClientConfigurationOrganizationRequireBehaviorResult'],
+                 organization_usages: Sequence['outputs.GetClientProfileClientConfigurationOrganizationUsageResult'],
+                 refresh_tokens: Sequence['outputs.GetClientProfileClientConfigurationRefreshTokenResult'],
+                 require_proof_of_possessions: Sequence['outputs.GetClientProfileClientConfigurationRequireProofOfPossessionResult']):
+        """
+        :param Sequence['GetClientProfileClientConfigurationOrganizationDiscoveryMethodArgs'] organization_discovery_methods: Methods used to discover the organization during login. Requires the `organization_require_behavior` default value to be `pre_login_prompt`.
+        :param Sequence['GetClientProfileClientConfigurationOrganizationRequireBehaviorArgs'] organization_require_behaviors: Defines how to proceed during an authentication transaction when the organization usage is `require`.
+        :param Sequence['GetClientProfileClientConfigurationOrganizationUsageArgs'] organization_usages: Whether matched clients can use organizations.
+        :param Sequence['GetClientProfileClientConfigurationRefreshTokenArgs'] refresh_tokens: Refresh token settings applied to matched clients. Auth0 replaces this block as a whole, so removing it clears all of its settings.
+        :param Sequence['GetClientProfileClientConfigurationRequireProofOfPossessionArgs'] require_proof_of_possessions: Whether matched clients must use proof of possession (DPoP) for their tokens.
+        """
+        pulumi.set(__self__, "organization_discovery_methods", organization_discovery_methods)
+        pulumi.set(__self__, "organization_require_behaviors", organization_require_behaviors)
+        pulumi.set(__self__, "organization_usages", organization_usages)
+        pulumi.set(__self__, "refresh_tokens", refresh_tokens)
+        pulumi.set(__self__, "require_proof_of_possessions", require_proof_of_possessions)
+
+    @_builtins.property
+    @pulumi.getter(name="organizationDiscoveryMethods")
+    def organization_discovery_methods(self) -> Sequence['outputs.GetClientProfileClientConfigurationOrganizationDiscoveryMethodResult']:
+        """
+        Methods used to discover the organization during login. Requires the `organization_require_behavior` default value to be `pre_login_prompt`.
+        """
+        return pulumi.get(self, "organization_discovery_methods")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationRequireBehaviors")
+    def organization_require_behaviors(self) -> Sequence['outputs.GetClientProfileClientConfigurationOrganizationRequireBehaviorResult']:
+        """
+        Defines how to proceed during an authentication transaction when the organization usage is `require`.
+        """
+        return pulumi.get(self, "organization_require_behaviors")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationUsages")
+    def organization_usages(self) -> Sequence['outputs.GetClientProfileClientConfigurationOrganizationUsageResult']:
+        """
+        Whether matched clients can use organizations.
+        """
+        return pulumi.get(self, "organization_usages")
+
+    @_builtins.property
+    @pulumi.getter(name="refreshTokens")
+    def refresh_tokens(self) -> Sequence['outputs.GetClientProfileClientConfigurationRefreshTokenResult']:
+        """
+        Refresh token settings applied to matched clients. Auth0 replaces this block as a whole, so removing it clears all of its settings.
+        """
+        return pulumi.get(self, "refresh_tokens")
+
+    @_builtins.property
+    @pulumi.getter(name="requireProofOfPossessions")
+    def require_proof_of_possessions(self) -> Sequence['outputs.GetClientProfileClientConfigurationRequireProofOfPossessionResult']:
+        """
+        Whether matched clients must use proof of possession (DPoP) for their tokens.
+        """
+        return pulumi.get(self, "require_proof_of_possessions")
+
+
+@pulumi.output_type
+class GetClientProfileClientConfigurationOrganizationDiscoveryMethodResult(dict):
+    def __init__(__self__, *,
+                 default_values: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] default_values: Possible values: [email organization_name].
+        """
+        pulumi.set(__self__, "default_values", default_values)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultValues")
+    def default_values(self) -> Sequence[_builtins.str]:
+        """
+        Possible values: [email organization_name].
+        """
+        return pulumi.get(self, "default_values")
+
+
+@pulumi.output_type
+class GetClientProfileClientConfigurationOrganizationRequireBehaviorResult(dict):
+    def __init__(__self__, *,
+                 default_value: _builtins.str):
+        """
+        :param _builtins.str default_value: Possible values: [no_prompt pre_login_prompt post_login_prompt].
+        """
+        pulumi.set(__self__, "default_value", default_value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> _builtins.str:
+        """
+        Possible values: [no_prompt pre_login_prompt post_login_prompt].
+        """
+        return pulumi.get(self, "default_value")
+
+
+@pulumi.output_type
+class GetClientProfileClientConfigurationOrganizationUsageResult(dict):
+    def __init__(__self__, *,
+                 default_value: _builtins.str):
+        """
+        :param _builtins.str default_value: Possible values: [deny allow require].
+        """
+        pulumi.set(__self__, "default_value", default_value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> _builtins.str:
+        """
+        Possible values: [deny allow require].
+        """
+        return pulumi.get(self, "default_value")
+
+
+@pulumi.output_type
+class GetClientProfileClientConfigurationRefreshTokenResult(dict):
+    def __init__(__self__, *,
+                 idle_token_lifetimes: Sequence['outputs.GetClientProfileClientConfigurationRefreshTokenIdleTokenLifetimeResult'],
+                 leeways: Sequence['outputs.GetClientProfileClientConfigurationRefreshTokenLeewayResult'],
+                 token_lifetimes: Sequence['outputs.GetClientProfileClientConfigurationRefreshTokenTokenLifetimeResult']):
+        """
+        :param Sequence['GetClientProfileClientConfigurationRefreshTokenIdleTokenLifetimeArgs'] idle_token_lifetimes: The inactivity lifetime of a refresh token. It must not exceed `token_lifetime`. If only one of `token_lifetime` and `idle_token_lifetime` is set, Auth0 derives the other.
+        :param Sequence['GetClientProfileClientConfigurationRefreshTokenLeewayArgs'] leeways: The period in which a refresh token may be reused without triggering reuse detection.
+        :param Sequence['GetClientProfileClientConfigurationRefreshTokenTokenLifetimeArgs'] token_lifetimes: The absolute lifetime of a refresh token. If only one of `token_lifetime` and `idle_token_lifetime` is set, Auth0 derives the other.
+        """
+        pulumi.set(__self__, "idle_token_lifetimes", idle_token_lifetimes)
+        pulumi.set(__self__, "leeways", leeways)
+        pulumi.set(__self__, "token_lifetimes", token_lifetimes)
+
+    @_builtins.property
+    @pulumi.getter(name="idleTokenLifetimes")
+    def idle_token_lifetimes(self) -> Sequence['outputs.GetClientProfileClientConfigurationRefreshTokenIdleTokenLifetimeResult']:
+        """
+        The inactivity lifetime of a refresh token. It must not exceed `token_lifetime`. If only one of `token_lifetime` and `idle_token_lifetime` is set, Auth0 derives the other.
+        """
+        return pulumi.get(self, "idle_token_lifetimes")
+
+    @_builtins.property
+    @pulumi.getter
+    def leeways(self) -> Sequence['outputs.GetClientProfileClientConfigurationRefreshTokenLeewayResult']:
+        """
+        The period in which a refresh token may be reused without triggering reuse detection.
+        """
+        return pulumi.get(self, "leeways")
+
+    @_builtins.property
+    @pulumi.getter(name="tokenLifetimes")
+    def token_lifetimes(self) -> Sequence['outputs.GetClientProfileClientConfigurationRefreshTokenTokenLifetimeResult']:
+        """
+        The absolute lifetime of a refresh token. If only one of `token_lifetime` and `idle_token_lifetime` is set, Auth0 derives the other.
+        """
+        return pulumi.get(self, "token_lifetimes")
+
+
+@pulumi.output_type
+class GetClientProfileClientConfigurationRefreshTokenIdleTokenLifetimeResult(dict):
+    def __init__(__self__, *,
+                 default_value: _builtins.int):
+        """
+        :param _builtins.int default_value: The lifetime in seconds.
+        """
+        pulumi.set(__self__, "default_value", default_value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> _builtins.int:
+        """
+        The lifetime in seconds.
+        """
+        return pulumi.get(self, "default_value")
+
+
+@pulumi.output_type
+class GetClientProfileClientConfigurationRefreshTokenLeewayResult(dict):
+    def __init__(__self__, *,
+                 default_value: _builtins.int):
+        """
+        :param _builtins.int default_value: The leeway in seconds. `0` disables the leeway.
+        """
+        pulumi.set(__self__, "default_value", default_value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> _builtins.int:
+        """
+        The leeway in seconds. `0` disables the leeway.
+        """
+        return pulumi.get(self, "default_value")
+
+
+@pulumi.output_type
+class GetClientProfileClientConfigurationRefreshTokenTokenLifetimeResult(dict):
+    def __init__(__self__, *,
+                 default_value: _builtins.int):
+        """
+        :param _builtins.int default_value: The lifetime in seconds.
+        """
+        pulumi.set(__self__, "default_value", default_value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> _builtins.int:
+        """
+        The lifetime in seconds.
+        """
+        return pulumi.get(self, "default_value")
+
+
+@pulumi.output_type
+class GetClientProfileClientConfigurationRequireProofOfPossessionResult(dict):
+    def __init__(__self__, *,
+                 default_value: _builtins.bool):
+        """
+        :param _builtins.bool default_value: Whether proof of possession is required.
+        """
+        pulumi.set(__self__, "default_value", default_value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> _builtins.bool:
+        """
+        Whether proof of possession is required.
+        """
+        return pulumi.get(self, "default_value")
+
+
+@pulumi.output_type
 class GetClientRefreshTokenResult(dict):
     def __init__(__self__, *,
                  expiration_type: _builtins.str,
@@ -29024,6 +32642,2071 @@ class GetEventStreamWebhookConfigurationWebhookAuthorizationResult(dict):
         The username for `basic` authentication. Required only when `method` is set to `basic`.
         """
         return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GetExperimentAllocationResult(dict):
+    def __init__(__self__, *,
+                 is_control: _builtins.bool,
+                 is_fallback: _builtins.bool,
+                 priority: _builtins.int,
+                 segment_id: _builtins.str,
+                 segment_name: _builtins.str,
+                 segment_snapshot: _builtins.str,
+                 variation_id: _builtins.str,
+                 variation_name: _builtins.str,
+                 variation_snapshot: _builtins.str,
+                 weight: _builtins.int):
+        """
+        :param _builtins.bool is_control: Whether this allocation is the control variation. At most one allocation can be the control.
+        :param _builtins.bool is_fallback: Whether this allocation is the fallback. Only for the segment strategy.
+        :param _builtins.int priority: The evaluation priority of this allocation. Only for the segment strategy.
+        :param _builtins.str segment_id: The segment targeted by this allocation. Only for the segment strategy. Omit for the fallback allocation.
+        :param _builtins.str segment_name: The name of the targeted segment.
+        :param _builtins.str segment_snapshot: The snapshot of the segment.
+        :param _builtins.str variation_id: The ID of the feature flag variation assigned to this allocation.
+        :param _builtins.str variation_name: The name of the assigned variation.
+        :param _builtins.str variation_snapshot: The snapshot of the variation.
+        :param _builtins.int weight: The percentage weight of this allocation. Only for the percentage strategy. Omit when using levels.
+        """
+        pulumi.set(__self__, "is_control", is_control)
+        pulumi.set(__self__, "is_fallback", is_fallback)
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "segment_id", segment_id)
+        pulumi.set(__self__, "segment_name", segment_name)
+        pulumi.set(__self__, "segment_snapshot", segment_snapshot)
+        pulumi.set(__self__, "variation_id", variation_id)
+        pulumi.set(__self__, "variation_name", variation_name)
+        pulumi.set(__self__, "variation_snapshot", variation_snapshot)
+        pulumi.set(__self__, "weight", weight)
+
+    @_builtins.property
+    @pulumi.getter(name="isControl")
+    def is_control(self) -> _builtins.bool:
+        """
+        Whether this allocation is the control variation. At most one allocation can be the control.
+        """
+        return pulumi.get(self, "is_control")
+
+    @_builtins.property
+    @pulumi.getter(name="isFallback")
+    def is_fallback(self) -> _builtins.bool:
+        """
+        Whether this allocation is the fallback. Only for the segment strategy.
+        """
+        return pulumi.get(self, "is_fallback")
+
+    @_builtins.property
+    @pulumi.getter
+    def priority(self) -> _builtins.int:
+        """
+        The evaluation priority of this allocation. Only for the segment strategy.
+        """
+        return pulumi.get(self, "priority")
+
+    @_builtins.property
+    @pulumi.getter(name="segmentId")
+    def segment_id(self) -> _builtins.str:
+        """
+        The segment targeted by this allocation. Only for the segment strategy. Omit for the fallback allocation.
+        """
+        return pulumi.get(self, "segment_id")
+
+    @_builtins.property
+    @pulumi.getter(name="segmentName")
+    def segment_name(self) -> _builtins.str:
+        """
+        The name of the targeted segment.
+        """
+        return pulumi.get(self, "segment_name")
+
+    @_builtins.property
+    @pulumi.getter(name="segmentSnapshot")
+    def segment_snapshot(self) -> _builtins.str:
+        """
+        The snapshot of the segment.
+        """
+        return pulumi.get(self, "segment_snapshot")
+
+    @_builtins.property
+    @pulumi.getter(name="variationId")
+    def variation_id(self) -> _builtins.str:
+        """
+        The ID of the feature flag variation assigned to this allocation.
+        """
+        return pulumi.get(self, "variation_id")
+
+    @_builtins.property
+    @pulumi.getter(name="variationName")
+    def variation_name(self) -> _builtins.str:
+        """
+        The name of the assigned variation.
+        """
+        return pulumi.get(self, "variation_name")
+
+    @_builtins.property
+    @pulumi.getter(name="variationSnapshot")
+    def variation_snapshot(self) -> _builtins.str:
+        """
+        The snapshot of the variation.
+        """
+        return pulumi.get(self, "variation_snapshot")
+
+    @_builtins.property
+    @pulumi.getter
+    def weight(self) -> _builtins.int:
+        """
+        The percentage weight of this allocation. Only for the percentage strategy. Omit when using levels.
+        """
+        return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class GetExperimentFeatureFlagParameterResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 name: _builtins.str,
+                 type: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str description: Description of the parameter.
+        :param _builtins.str name: The key of the parameter.
+        :param _builtins.str type: The value type of the parameter. One of boolean, string, number, array, object
+        :param _builtins.str value: The default value of the parameter, as a string. For `type = "object"` or `type = "array"` supply a JSON-encoded string; for `boolean`/`number` supply the literal value as a string.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Description of the parameter.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The key of the parameter.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The value type of the parameter. One of boolean, string, number, array, object
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The default value of the parameter, as a string. For `type = "object"` or `type = "array"` supply a JSON-encoded string; for `boolean`/`number` supply the literal value as a string.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetExperimentFeatureFlagVariationResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 name: _builtins.str,
+                 overrides: Sequence['outputs.GetExperimentFeatureFlagVariationOverrideResult']):
+        """
+        :param _builtins.str description: Description of the variation. Must contain 3 to 1024 characters when set.
+        :param _builtins.str name: The name of the variation. Must be unique within the feature flag and contain 3 to 255 characters without surrounding whitespace. Changing the name deletes the variation and creates a new one with a new ID.
+        :param Sequence['GetExperimentFeatureFlagVariationOverrideArgs'] overrides: Parameter overrides for the variation. Omit for a control variation.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "overrides", overrides)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Description of the variation. Must contain 3 to 1024 characters when set.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the variation. Must be unique within the feature flag and contain 3 to 255 characters without surrounding whitespace. Changing the name deletes the variation and creates a new one with a new ID.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def overrides(self) -> Sequence['outputs.GetExperimentFeatureFlagVariationOverrideResult']:
+        """
+        Parameter overrides for the variation. Omit for a control variation.
+        """
+        return pulumi.get(self, "overrides")
+
+
+@pulumi.output_type
+class GetExperimentFeatureFlagVariationOverrideResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 type: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str name: The name of a parameter on the feature flag. Each name can appear once.
+        :param _builtins.str type: The type of the parameter value. One of boolean, string, number, array, object.
+        :param _builtins.str value: The override value as a string. For object and array values, provide JSON; for boolean and number values, provide their literal text.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of a parameter on the feature flag. Each name can appear once.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The type of the parameter value. One of boolean, string, number, array, object.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The override value as a string. For object and array values, provide JSON; for boolean and number values, provide their literal text.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetExperimentSegmentRuleResult(dict):
+    def __init__(__self__, *,
+                 matches: Sequence['outputs.GetExperimentSegmentRuleMatchResult'],
+                 not_matches: Sequence['outputs.GetExperimentSegmentRuleNotMatchResult']):
+        """
+        :param Sequence['GetExperimentSegmentRuleMatchArgs'] matches: Attribute conditions that must match. Set between 1 and 10 attributes, including each `anonymous_session_metadata` block. At least one of `match` or `not_match` is required per rule.
+        :param Sequence['GetExperimentSegmentRuleNotMatchArgs'] not_matches: Attribute conditions that must not match. Set between 1 and 10 attributes, including each `anonymous_session_metadata` block. At least one of `match` or `not_match` is required per rule.
+        """
+        pulumi.set(__self__, "matches", matches)
+        pulumi.set(__self__, "not_matches", not_matches)
+
+    @_builtins.property
+    @pulumi.getter
+    def matches(self) -> Sequence['outputs.GetExperimentSegmentRuleMatchResult']:
+        """
+        Attribute conditions that must match. Set between 1 and 10 attributes, including each `anonymous_session_metadata` block. At least one of `match` or `not_match` is required per rule.
+        """
+        return pulumi.get(self, "matches")
+
+    @_builtins.property
+    @pulumi.getter(name="notMatches")
+    def not_matches(self) -> Sequence['outputs.GetExperimentSegmentRuleNotMatchResult']:
+        """
+        Attribute conditions that must not match. Set between 1 and 10 attributes, including each `anonymous_session_metadata` block. At least one of `match` or `not_match` is required per rule.
+        """
+        return pulumi.get(self, "not_matches")
+
+
+@pulumi.output_type
+class GetExperimentSegmentRuleMatchResult(dict):
+    def __init__(__self__, *,
+                 anonymous_session_metadatas: Sequence['outputs.GetExperimentSegmentRuleMatchAnonymousSessionMetadataResult'],
+                 browsers: Sequence['outputs.GetExperimentSegmentRuleMatchBrowserResult'],
+                 client_ids: Sequence['outputs.GetExperimentSegmentRuleMatchClientIdResult'],
+                 connection_types: Sequence['outputs.GetExperimentSegmentRuleMatchConnectionTypeResult'],
+                 connections: Sequence['outputs.GetExperimentSegmentRuleMatchConnectionResult'],
+                 countries: Sequence['outputs.GetExperimentSegmentRuleMatchCountryResult'],
+                 device_types: Sequence['outputs.GetExperimentSegmentRuleMatchDeviceTypeResult'],
+                 domains: Sequence['outputs.GetExperimentSegmentRuleMatchDomainResult'],
+                 organization_ids: Sequence['outputs.GetExperimentSegmentRuleMatchOrganizationIdResult'],
+                 platforms: Sequence['outputs.GetExperimentSegmentRuleMatchPlatformResult'],
+                 regions: Sequence['outputs.GetExperimentSegmentRuleMatchRegionResult'],
+                 user_agents: Sequence['outputs.GetExperimentSegmentRuleMatchUserAgentResult']):
+        """
+        :param Sequence['GetExperimentSegmentRuleMatchAnonymousSessionMetadataArgs'] anonymous_session_metadatas: Condition on a namespaced `anonymous_session_metadata.<key>` attribute. Repeat the block once per key. Each key can appear only once per `match/not_match` block.
+        :param Sequence['GetExperimentSegmentRuleMatchBrowserArgs'] browsers: Condition on the `browser` attribute. Set exactly one operator.
+        :param Sequence['GetExperimentSegmentRuleMatchClientIdArgs'] client_ids: Condition on the `client_id` attribute. Set exactly one operator.
+        :param Sequence['GetExperimentSegmentRuleMatchConnectionTypeArgs'] connection_types: Condition on the `connection_type` attribute. Set exactly one operator.
+        :param Sequence['GetExperimentSegmentRuleMatchConnectionArgs'] connections: Condition on the `connection` attribute. Set exactly one operator.
+        :param Sequence['GetExperimentSegmentRuleMatchCountryArgs'] countries: Condition on the `country` attribute. Set exactly one operator.
+        :param Sequence['GetExperimentSegmentRuleMatchDeviceTypeArgs'] device_types: Condition on the `device_type` attribute. Set exactly one operator.
+        :param Sequence['GetExperimentSegmentRuleMatchDomainArgs'] domains: Condition on the `domain` attribute. Set exactly one operator.
+        :param Sequence['GetExperimentSegmentRuleMatchOrganizationIdArgs'] organization_ids: Condition on the `organization_id` attribute. Set exactly one operator.
+        :param Sequence['GetExperimentSegmentRuleMatchPlatformArgs'] platforms: Condition on the `platform` attribute. Set exactly one operator.
+        :param Sequence['GetExperimentSegmentRuleMatchRegionArgs'] regions: Condition on the `region` attribute. Set exactly one operator.
+        :param Sequence['GetExperimentSegmentRuleMatchUserAgentArgs'] user_agents: Condition on the `user_agent` attribute. Set exactly one operator.
+        """
+        pulumi.set(__self__, "anonymous_session_metadatas", anonymous_session_metadatas)
+        pulumi.set(__self__, "browsers", browsers)
+        pulumi.set(__self__, "client_ids", client_ids)
+        pulumi.set(__self__, "connection_types", connection_types)
+        pulumi.set(__self__, "connections", connections)
+        pulumi.set(__self__, "countries", countries)
+        pulumi.set(__self__, "device_types", device_types)
+        pulumi.set(__self__, "domains", domains)
+        pulumi.set(__self__, "organization_ids", organization_ids)
+        pulumi.set(__self__, "platforms", platforms)
+        pulumi.set(__self__, "regions", regions)
+        pulumi.set(__self__, "user_agents", user_agents)
+
+    @_builtins.property
+    @pulumi.getter(name="anonymousSessionMetadatas")
+    def anonymous_session_metadatas(self) -> Sequence['outputs.GetExperimentSegmentRuleMatchAnonymousSessionMetadataResult']:
+        """
+        Condition on a namespaced `anonymous_session_metadata.<key>` attribute. Repeat the block once per key. Each key can appear only once per `match/not_match` block.
+        """
+        return pulumi.get(self, "anonymous_session_metadatas")
+
+    @_builtins.property
+    @pulumi.getter
+    def browsers(self) -> Sequence['outputs.GetExperimentSegmentRuleMatchBrowserResult']:
+        """
+        Condition on the `browser` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "browsers")
+
+    @_builtins.property
+    @pulumi.getter(name="clientIds")
+    def client_ids(self) -> Sequence['outputs.GetExperimentSegmentRuleMatchClientIdResult']:
+        """
+        Condition on the `client_id` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "client_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="connectionTypes")
+    def connection_types(self) -> Sequence['outputs.GetExperimentSegmentRuleMatchConnectionTypeResult']:
+        """
+        Condition on the `connection_type` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "connection_types")
+
+    @_builtins.property
+    @pulumi.getter
+    def connections(self) -> Sequence['outputs.GetExperimentSegmentRuleMatchConnectionResult']:
+        """
+        Condition on the `connection` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "connections")
+
+    @_builtins.property
+    @pulumi.getter
+    def countries(self) -> Sequence['outputs.GetExperimentSegmentRuleMatchCountryResult']:
+        """
+        Condition on the `country` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "countries")
+
+    @_builtins.property
+    @pulumi.getter(name="deviceTypes")
+    def device_types(self) -> Sequence['outputs.GetExperimentSegmentRuleMatchDeviceTypeResult']:
+        """
+        Condition on the `device_type` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "device_types")
+
+    @_builtins.property
+    @pulumi.getter
+    def domains(self) -> Sequence['outputs.GetExperimentSegmentRuleMatchDomainResult']:
+        """
+        Condition on the `domain` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "domains")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationIds")
+    def organization_ids(self) -> Sequence['outputs.GetExperimentSegmentRuleMatchOrganizationIdResult']:
+        """
+        Condition on the `organization_id` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "organization_ids")
+
+    @_builtins.property
+    @pulumi.getter
+    def platforms(self) -> Sequence['outputs.GetExperimentSegmentRuleMatchPlatformResult']:
+        """
+        Condition on the `platform` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "platforms")
+
+    @_builtins.property
+    @pulumi.getter
+    def regions(self) -> Sequence['outputs.GetExperimentSegmentRuleMatchRegionResult']:
+        """
+        Condition on the `region` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "regions")
+
+    @_builtins.property
+    @pulumi.getter(name="userAgents")
+    def user_agents(self) -> Sequence['outputs.GetExperimentSegmentRuleMatchUserAgentResult']:
+        """
+        Condition on the `user_agent` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "user_agents")
+
+
+@pulumi.output_type
+class GetExperimentSegmentRuleMatchAnonymousSessionMetadataResult(dict):
+    def __init__(__self__, *,
+                 contains: Sequence[_builtins.str],
+                 ends_withs: Sequence[_builtins.str],
+                 exists: _builtins.str,
+                 key: _builtins.str,
+                 one_ofs: Sequence[_builtins.str],
+                 starts_withs: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param _builtins.str key: The metadata key, without the `anonymous_session_metadata.` prefix. Between 1 and 255 characters, not blank.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        pulumi.set(__self__, "contains", contains)
+        pulumi.set(__self__, "ends_withs", ends_withs)
+        pulumi.set(__self__, "exists", exists)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "one_ofs", one_ofs)
+        pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> _builtins.str:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The metadata key, without the `anonymous_session_metadata.` prefix. Between 1 and 255 characters, not blank.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class GetExperimentSegmentRuleMatchBrowserResult(dict):
+    def __init__(__self__, *,
+                 contains: Sequence[_builtins.str],
+                 ends_withs: Sequence[_builtins.str],
+                 exists: _builtins.str,
+                 one_ofs: Sequence[_builtins.str],
+                 starts_withs: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        pulumi.set(__self__, "contains", contains)
+        pulumi.set(__self__, "ends_withs", ends_withs)
+        pulumi.set(__self__, "exists", exists)
+        pulumi.set(__self__, "one_ofs", one_ofs)
+        pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> _builtins.str:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class GetExperimentSegmentRuleMatchClientIdResult(dict):
+    def __init__(__self__, *,
+                 contains: Sequence[_builtins.str],
+                 ends_withs: Sequence[_builtins.str],
+                 exists: _builtins.str,
+                 one_ofs: Sequence[_builtins.str],
+                 starts_withs: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        pulumi.set(__self__, "contains", contains)
+        pulumi.set(__self__, "ends_withs", ends_withs)
+        pulumi.set(__self__, "exists", exists)
+        pulumi.set(__self__, "one_ofs", one_ofs)
+        pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> _builtins.str:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class GetExperimentSegmentRuleMatchConnectionResult(dict):
+    def __init__(__self__, *,
+                 contains: Sequence[_builtins.str],
+                 ends_withs: Sequence[_builtins.str],
+                 exists: _builtins.str,
+                 one_ofs: Sequence[_builtins.str],
+                 starts_withs: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        pulumi.set(__self__, "contains", contains)
+        pulumi.set(__self__, "ends_withs", ends_withs)
+        pulumi.set(__self__, "exists", exists)
+        pulumi.set(__self__, "one_ofs", one_ofs)
+        pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> _builtins.str:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class GetExperimentSegmentRuleMatchConnectionTypeResult(dict):
+    def __init__(__self__, *,
+                 contains: Sequence[_builtins.str],
+                 ends_withs: Sequence[_builtins.str],
+                 exists: _builtins.str,
+                 one_ofs: Sequence[_builtins.str],
+                 starts_withs: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        pulumi.set(__self__, "contains", contains)
+        pulumi.set(__self__, "ends_withs", ends_withs)
+        pulumi.set(__self__, "exists", exists)
+        pulumi.set(__self__, "one_ofs", one_ofs)
+        pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> _builtins.str:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class GetExperimentSegmentRuleMatchCountryResult(dict):
+    def __init__(__self__, *,
+                 contains: Sequence[_builtins.str],
+                 ends_withs: Sequence[_builtins.str],
+                 exists: _builtins.str,
+                 one_ofs: Sequence[_builtins.str],
+                 starts_withs: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        pulumi.set(__self__, "contains", contains)
+        pulumi.set(__self__, "ends_withs", ends_withs)
+        pulumi.set(__self__, "exists", exists)
+        pulumi.set(__self__, "one_ofs", one_ofs)
+        pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> _builtins.str:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class GetExperimentSegmentRuleMatchDeviceTypeResult(dict):
+    def __init__(__self__, *,
+                 contains: Sequence[_builtins.str],
+                 ends_withs: Sequence[_builtins.str],
+                 exists: _builtins.str,
+                 one_ofs: Sequence[_builtins.str],
+                 starts_withs: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        pulumi.set(__self__, "contains", contains)
+        pulumi.set(__self__, "ends_withs", ends_withs)
+        pulumi.set(__self__, "exists", exists)
+        pulumi.set(__self__, "one_ofs", one_ofs)
+        pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> _builtins.str:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class GetExperimentSegmentRuleMatchDomainResult(dict):
+    def __init__(__self__, *,
+                 contains: Sequence[_builtins.str],
+                 ends_withs: Sequence[_builtins.str],
+                 exists: _builtins.str,
+                 one_ofs: Sequence[_builtins.str],
+                 starts_withs: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        pulumi.set(__self__, "contains", contains)
+        pulumi.set(__self__, "ends_withs", ends_withs)
+        pulumi.set(__self__, "exists", exists)
+        pulumi.set(__self__, "one_ofs", one_ofs)
+        pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> _builtins.str:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class GetExperimentSegmentRuleMatchOrganizationIdResult(dict):
+    def __init__(__self__, *,
+                 contains: Sequence[_builtins.str],
+                 ends_withs: Sequence[_builtins.str],
+                 exists: _builtins.str,
+                 one_ofs: Sequence[_builtins.str],
+                 starts_withs: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        pulumi.set(__self__, "contains", contains)
+        pulumi.set(__self__, "ends_withs", ends_withs)
+        pulumi.set(__self__, "exists", exists)
+        pulumi.set(__self__, "one_ofs", one_ofs)
+        pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> _builtins.str:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class GetExperimentSegmentRuleMatchPlatformResult(dict):
+    def __init__(__self__, *,
+                 contains: Sequence[_builtins.str],
+                 ends_withs: Sequence[_builtins.str],
+                 exists: _builtins.str,
+                 one_ofs: Sequence[_builtins.str],
+                 starts_withs: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        pulumi.set(__self__, "contains", contains)
+        pulumi.set(__self__, "ends_withs", ends_withs)
+        pulumi.set(__self__, "exists", exists)
+        pulumi.set(__self__, "one_ofs", one_ofs)
+        pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> _builtins.str:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class GetExperimentSegmentRuleMatchRegionResult(dict):
+    def __init__(__self__, *,
+                 contains: Sequence[_builtins.str],
+                 ends_withs: Sequence[_builtins.str],
+                 exists: _builtins.str,
+                 one_ofs: Sequence[_builtins.str],
+                 starts_withs: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        pulumi.set(__self__, "contains", contains)
+        pulumi.set(__self__, "ends_withs", ends_withs)
+        pulumi.set(__self__, "exists", exists)
+        pulumi.set(__self__, "one_ofs", one_ofs)
+        pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> _builtins.str:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class GetExperimentSegmentRuleMatchUserAgentResult(dict):
+    def __init__(__self__, *,
+                 contains: Sequence[_builtins.str],
+                 ends_withs: Sequence[_builtins.str],
+                 exists: _builtins.str,
+                 one_ofs: Sequence[_builtins.str],
+                 starts_withs: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        pulumi.set(__self__, "contains", contains)
+        pulumi.set(__self__, "ends_withs", ends_withs)
+        pulumi.set(__self__, "exists", exists)
+        pulumi.set(__self__, "one_ofs", one_ofs)
+        pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> _builtins.str:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class GetExperimentSegmentRuleNotMatchResult(dict):
+    def __init__(__self__, *,
+                 anonymous_session_metadatas: Sequence['outputs.GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataResult'],
+                 browsers: Sequence['outputs.GetExperimentSegmentRuleNotMatchBrowserResult'],
+                 client_ids: Sequence['outputs.GetExperimentSegmentRuleNotMatchClientIdResult'],
+                 connection_types: Sequence['outputs.GetExperimentSegmentRuleNotMatchConnectionTypeResult'],
+                 connections: Sequence['outputs.GetExperimentSegmentRuleNotMatchConnectionResult'],
+                 countries: Sequence['outputs.GetExperimentSegmentRuleNotMatchCountryResult'],
+                 device_types: Sequence['outputs.GetExperimentSegmentRuleNotMatchDeviceTypeResult'],
+                 domains: Sequence['outputs.GetExperimentSegmentRuleNotMatchDomainResult'],
+                 organization_ids: Sequence['outputs.GetExperimentSegmentRuleNotMatchOrganizationIdResult'],
+                 platforms: Sequence['outputs.GetExperimentSegmentRuleNotMatchPlatformResult'],
+                 regions: Sequence['outputs.GetExperimentSegmentRuleNotMatchRegionResult'],
+                 user_agents: Sequence['outputs.GetExperimentSegmentRuleNotMatchUserAgentResult']):
+        """
+        :param Sequence['GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataArgs'] anonymous_session_metadatas: Condition on a namespaced `anonymous_session_metadata.<key>` attribute. Repeat the block once per key. Each key can appear only once per `match/not_match` block.
+        :param Sequence['GetExperimentSegmentRuleNotMatchBrowserArgs'] browsers: Condition on the `browser` attribute. Set exactly one operator.
+        :param Sequence['GetExperimentSegmentRuleNotMatchClientIdArgs'] client_ids: Condition on the `client_id` attribute. Set exactly one operator.
+        :param Sequence['GetExperimentSegmentRuleNotMatchConnectionTypeArgs'] connection_types: Condition on the `connection_type` attribute. Set exactly one operator.
+        :param Sequence['GetExperimentSegmentRuleNotMatchConnectionArgs'] connections: Condition on the `connection` attribute. Set exactly one operator.
+        :param Sequence['GetExperimentSegmentRuleNotMatchCountryArgs'] countries: Condition on the `country` attribute. Set exactly one operator.
+        :param Sequence['GetExperimentSegmentRuleNotMatchDeviceTypeArgs'] device_types: Condition on the `device_type` attribute. Set exactly one operator.
+        :param Sequence['GetExperimentSegmentRuleNotMatchDomainArgs'] domains: Condition on the `domain` attribute. Set exactly one operator.
+        :param Sequence['GetExperimentSegmentRuleNotMatchOrganizationIdArgs'] organization_ids: Condition on the `organization_id` attribute. Set exactly one operator.
+        :param Sequence['GetExperimentSegmentRuleNotMatchPlatformArgs'] platforms: Condition on the `platform` attribute. Set exactly one operator.
+        :param Sequence['GetExperimentSegmentRuleNotMatchRegionArgs'] regions: Condition on the `region` attribute. Set exactly one operator.
+        :param Sequence['GetExperimentSegmentRuleNotMatchUserAgentArgs'] user_agents: Condition on the `user_agent` attribute. Set exactly one operator.
+        """
+        pulumi.set(__self__, "anonymous_session_metadatas", anonymous_session_metadatas)
+        pulumi.set(__self__, "browsers", browsers)
+        pulumi.set(__self__, "client_ids", client_ids)
+        pulumi.set(__self__, "connection_types", connection_types)
+        pulumi.set(__self__, "connections", connections)
+        pulumi.set(__self__, "countries", countries)
+        pulumi.set(__self__, "device_types", device_types)
+        pulumi.set(__self__, "domains", domains)
+        pulumi.set(__self__, "organization_ids", organization_ids)
+        pulumi.set(__self__, "platforms", platforms)
+        pulumi.set(__self__, "regions", regions)
+        pulumi.set(__self__, "user_agents", user_agents)
+
+    @_builtins.property
+    @pulumi.getter(name="anonymousSessionMetadatas")
+    def anonymous_session_metadatas(self) -> Sequence['outputs.GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataResult']:
+        """
+        Condition on a namespaced `anonymous_session_metadata.<key>` attribute. Repeat the block once per key. Each key can appear only once per `match/not_match` block.
+        """
+        return pulumi.get(self, "anonymous_session_metadatas")
+
+    @_builtins.property
+    @pulumi.getter
+    def browsers(self) -> Sequence['outputs.GetExperimentSegmentRuleNotMatchBrowserResult']:
+        """
+        Condition on the `browser` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "browsers")
+
+    @_builtins.property
+    @pulumi.getter(name="clientIds")
+    def client_ids(self) -> Sequence['outputs.GetExperimentSegmentRuleNotMatchClientIdResult']:
+        """
+        Condition on the `client_id` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "client_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="connectionTypes")
+    def connection_types(self) -> Sequence['outputs.GetExperimentSegmentRuleNotMatchConnectionTypeResult']:
+        """
+        Condition on the `connection_type` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "connection_types")
+
+    @_builtins.property
+    @pulumi.getter
+    def connections(self) -> Sequence['outputs.GetExperimentSegmentRuleNotMatchConnectionResult']:
+        """
+        Condition on the `connection` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "connections")
+
+    @_builtins.property
+    @pulumi.getter
+    def countries(self) -> Sequence['outputs.GetExperimentSegmentRuleNotMatchCountryResult']:
+        """
+        Condition on the `country` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "countries")
+
+    @_builtins.property
+    @pulumi.getter(name="deviceTypes")
+    def device_types(self) -> Sequence['outputs.GetExperimentSegmentRuleNotMatchDeviceTypeResult']:
+        """
+        Condition on the `device_type` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "device_types")
+
+    @_builtins.property
+    @pulumi.getter
+    def domains(self) -> Sequence['outputs.GetExperimentSegmentRuleNotMatchDomainResult']:
+        """
+        Condition on the `domain` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "domains")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationIds")
+    def organization_ids(self) -> Sequence['outputs.GetExperimentSegmentRuleNotMatchOrganizationIdResult']:
+        """
+        Condition on the `organization_id` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "organization_ids")
+
+    @_builtins.property
+    @pulumi.getter
+    def platforms(self) -> Sequence['outputs.GetExperimentSegmentRuleNotMatchPlatformResult']:
+        """
+        Condition on the `platform` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "platforms")
+
+    @_builtins.property
+    @pulumi.getter
+    def regions(self) -> Sequence['outputs.GetExperimentSegmentRuleNotMatchRegionResult']:
+        """
+        Condition on the `region` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "regions")
+
+    @_builtins.property
+    @pulumi.getter(name="userAgents")
+    def user_agents(self) -> Sequence['outputs.GetExperimentSegmentRuleNotMatchUserAgentResult']:
+        """
+        Condition on the `user_agent` attribute. Set exactly one operator.
+        """
+        return pulumi.get(self, "user_agents")
+
+
+@pulumi.output_type
+class GetExperimentSegmentRuleNotMatchAnonymousSessionMetadataResult(dict):
+    def __init__(__self__, *,
+                 contains: Sequence[_builtins.str],
+                 ends_withs: Sequence[_builtins.str],
+                 exists: _builtins.str,
+                 key: _builtins.str,
+                 one_ofs: Sequence[_builtins.str],
+                 starts_withs: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param _builtins.str key: The metadata key, without the `anonymous_session_metadata.` prefix. Between 1 and 255 characters, not blank.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        pulumi.set(__self__, "contains", contains)
+        pulumi.set(__self__, "ends_withs", ends_withs)
+        pulumi.set(__self__, "exists", exists)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "one_ofs", one_ofs)
+        pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> _builtins.str:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The metadata key, without the `anonymous_session_metadata.` prefix. Between 1 and 255 characters, not blank.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class GetExperimentSegmentRuleNotMatchBrowserResult(dict):
+    def __init__(__self__, *,
+                 contains: Sequence[_builtins.str],
+                 ends_withs: Sequence[_builtins.str],
+                 exists: _builtins.str,
+                 one_ofs: Sequence[_builtins.str],
+                 starts_withs: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        pulumi.set(__self__, "contains", contains)
+        pulumi.set(__self__, "ends_withs", ends_withs)
+        pulumi.set(__self__, "exists", exists)
+        pulumi.set(__self__, "one_ofs", one_ofs)
+        pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> _builtins.str:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class GetExperimentSegmentRuleNotMatchClientIdResult(dict):
+    def __init__(__self__, *,
+                 contains: Sequence[_builtins.str],
+                 ends_withs: Sequence[_builtins.str],
+                 exists: _builtins.str,
+                 one_ofs: Sequence[_builtins.str],
+                 starts_withs: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        pulumi.set(__self__, "contains", contains)
+        pulumi.set(__self__, "ends_withs", ends_withs)
+        pulumi.set(__self__, "exists", exists)
+        pulumi.set(__self__, "one_ofs", one_ofs)
+        pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> _builtins.str:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class GetExperimentSegmentRuleNotMatchConnectionResult(dict):
+    def __init__(__self__, *,
+                 contains: Sequence[_builtins.str],
+                 ends_withs: Sequence[_builtins.str],
+                 exists: _builtins.str,
+                 one_ofs: Sequence[_builtins.str],
+                 starts_withs: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        pulumi.set(__self__, "contains", contains)
+        pulumi.set(__self__, "ends_withs", ends_withs)
+        pulumi.set(__self__, "exists", exists)
+        pulumi.set(__self__, "one_ofs", one_ofs)
+        pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> _builtins.str:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class GetExperimentSegmentRuleNotMatchConnectionTypeResult(dict):
+    def __init__(__self__, *,
+                 contains: Sequence[_builtins.str],
+                 ends_withs: Sequence[_builtins.str],
+                 exists: _builtins.str,
+                 one_ofs: Sequence[_builtins.str],
+                 starts_withs: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        pulumi.set(__self__, "contains", contains)
+        pulumi.set(__self__, "ends_withs", ends_withs)
+        pulumi.set(__self__, "exists", exists)
+        pulumi.set(__self__, "one_ofs", one_ofs)
+        pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> _builtins.str:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class GetExperimentSegmentRuleNotMatchCountryResult(dict):
+    def __init__(__self__, *,
+                 contains: Sequence[_builtins.str],
+                 ends_withs: Sequence[_builtins.str],
+                 exists: _builtins.str,
+                 one_ofs: Sequence[_builtins.str],
+                 starts_withs: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        pulumi.set(__self__, "contains", contains)
+        pulumi.set(__self__, "ends_withs", ends_withs)
+        pulumi.set(__self__, "exists", exists)
+        pulumi.set(__self__, "one_ofs", one_ofs)
+        pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> _builtins.str:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class GetExperimentSegmentRuleNotMatchDeviceTypeResult(dict):
+    def __init__(__self__, *,
+                 contains: Sequence[_builtins.str],
+                 ends_withs: Sequence[_builtins.str],
+                 exists: _builtins.str,
+                 one_ofs: Sequence[_builtins.str],
+                 starts_withs: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        pulumi.set(__self__, "contains", contains)
+        pulumi.set(__self__, "ends_withs", ends_withs)
+        pulumi.set(__self__, "exists", exists)
+        pulumi.set(__self__, "one_ofs", one_ofs)
+        pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> _builtins.str:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class GetExperimentSegmentRuleNotMatchDomainResult(dict):
+    def __init__(__self__, *,
+                 contains: Sequence[_builtins.str],
+                 ends_withs: Sequence[_builtins.str],
+                 exists: _builtins.str,
+                 one_ofs: Sequence[_builtins.str],
+                 starts_withs: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        pulumi.set(__self__, "contains", contains)
+        pulumi.set(__self__, "ends_withs", ends_withs)
+        pulumi.set(__self__, "exists", exists)
+        pulumi.set(__self__, "one_ofs", one_ofs)
+        pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> _builtins.str:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class GetExperimentSegmentRuleNotMatchOrganizationIdResult(dict):
+    def __init__(__self__, *,
+                 contains: Sequence[_builtins.str],
+                 ends_withs: Sequence[_builtins.str],
+                 exists: _builtins.str,
+                 one_ofs: Sequence[_builtins.str],
+                 starts_withs: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        pulumi.set(__self__, "contains", contains)
+        pulumi.set(__self__, "ends_withs", ends_withs)
+        pulumi.set(__self__, "exists", exists)
+        pulumi.set(__self__, "one_ofs", one_ofs)
+        pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> _builtins.str:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class GetExperimentSegmentRuleNotMatchPlatformResult(dict):
+    def __init__(__self__, *,
+                 contains: Sequence[_builtins.str],
+                 ends_withs: Sequence[_builtins.str],
+                 exists: _builtins.str,
+                 one_ofs: Sequence[_builtins.str],
+                 starts_withs: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        pulumi.set(__self__, "contains", contains)
+        pulumi.set(__self__, "ends_withs", ends_withs)
+        pulumi.set(__self__, "exists", exists)
+        pulumi.set(__self__, "one_ofs", one_ofs)
+        pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> _builtins.str:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class GetExperimentSegmentRuleNotMatchRegionResult(dict):
+    def __init__(__self__, *,
+                 contains: Sequence[_builtins.str],
+                 ends_withs: Sequence[_builtins.str],
+                 exists: _builtins.str,
+                 one_ofs: Sequence[_builtins.str],
+                 starts_withs: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        pulumi.set(__self__, "contains", contains)
+        pulumi.set(__self__, "ends_withs", ends_withs)
+        pulumi.set(__self__, "exists", exists)
+        pulumi.set(__self__, "one_ofs", one_ofs)
+        pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> _builtins.str:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
+
+
+@pulumi.output_type
+class GetExperimentSegmentRuleNotMatchUserAgentResult(dict):
+    def __init__(__self__, *,
+                 contains: Sequence[_builtins.str],
+                 ends_withs: Sequence[_builtins.str],
+                 exists: _builtins.str,
+                 one_ofs: Sequence[_builtins.str],
+                 starts_withs: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] contains: Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] ends_withs: Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param _builtins.str exists: Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        :param Sequence[_builtins.str] one_ofs: Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        :param Sequence[_builtins.str] starts_withs: Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        pulumi.set(__self__, "contains", contains)
+        pulumi.set(__self__, "ends_withs", ends_withs)
+        pulumi.set(__self__, "exists", exists)
+        pulumi.set(__self__, "one_ofs", one_ofs)
+        pulumi.set(__self__, "starts_withs", starts_withs)
+
+    @_builtins.property
+    @pulumi.getter
+    def contains(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `contains` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "contains")
+
+    @_builtins.property
+    @pulumi.getter(name="endsWiths")
+    def ends_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `ends_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "ends_withs")
+
+    @_builtins.property
+    @pulumi.getter
+    def exists(self) -> _builtins.str:
+        """
+        Value for the `exists` operator: `true` or `false`. Bare boolean values are accepted.
+        """
+        return pulumi.get(self, "exists")
+
+    @_builtins.property
+    @pulumi.getter(name="oneOfs")
+    def one_ofs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `one_of` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "one_ofs")
+
+    @_builtins.property
+    @pulumi.getter(name="startsWiths")
+    def starts_withs(self) -> Sequence[_builtins.str]:
+        """
+        Values for the `starts_with` operator. Between 1 and 50 values, each up to 1024 characters. An empty list counts as not set.
+        """
+        return pulumi.get(self, "starts_withs")
 
 
 @pulumi.output_type
