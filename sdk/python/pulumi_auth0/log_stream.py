@@ -550,6 +550,28 @@ class LogStream(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return LogStream(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            filters: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+            is_priority: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            pii_config: pulumi.Input[Optional[Union['LogStreamPiiConfigArgs', 'LogStreamPiiConfigArgsDict', 'outputs.LogStreamPiiConfig']]] = None,
+            sink: pulumi.Input[Optional[Union['LogStreamSinkArgs', 'LogStreamSinkArgsDict', 'outputs.LogStreamSink']]] = None,
+            start_from: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["filters"] = filters
+        __props__["isPriority"] = is_priority
+        __props__["name"] = name
+        __props__["piiConfig"] = pii_config
+        __props__["sink"] = sink
+        __props__["startFrom"] = start_from
+        __props__["status"] = status
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'auth0:index/logStream:LogStream', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def filters(self) -> pulumi.Output[Sequence[Mapping[str, _builtins.str]]]:

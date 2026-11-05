@@ -66,6 +66,12 @@ func (RiskAssessmentsNewDeviceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*riskAssessmentsNewDeviceState)(nil)).Elem()
 }
 
+// RiskAssessmentsNewDeviceExists checks whether an existing RiskAssessmentsNewDevice resource with the given ID exists.
+func RiskAssessmentsNewDeviceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RiskAssessmentsNewDeviceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/riskAssessmentsNewDevice:RiskAssessmentsNewDevice", id, state, "", opts...)
+}
+
 type riskAssessmentsNewDeviceArgs struct {
 	// Length of time to remember devices for, in days
 	RememberFor int `pulumi:"rememberFor"`

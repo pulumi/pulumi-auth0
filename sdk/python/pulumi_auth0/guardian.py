@@ -741,6 +741,36 @@ class Guardian(pulumi.CustomResource):
         __props__.__dict__["webauthn_roaming"] = webauthn_roaming
         return Guardian(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            duo: pulumi.Input[Optional[Union['GuardianDuoArgs', 'GuardianDuoArgsDict', 'outputs.GuardianDuo']]] = None,
+            email: pulumi.Input[Optional[_builtins.bool]] = None,
+            email_settings: pulumi.Input[Optional[Union['GuardianEmailSettingsArgs', 'GuardianEmailSettingsArgsDict', 'outputs.GuardianEmailSettings']]] = None,
+            otp: pulumi.Input[Optional[_builtins.bool]] = None,
+            phone: pulumi.Input[Optional[Union['GuardianPhoneArgs', 'GuardianPhoneArgsDict', 'outputs.GuardianPhone']]] = None,
+            phone_settings: pulumi.Input[Optional[Union['GuardianPhoneSettingsArgs', 'GuardianPhoneSettingsArgsDict', 'outputs.GuardianPhoneSettings']]] = None,
+            policy: pulumi.Input[Optional[_builtins.str]] = None,
+            push: pulumi.Input[Optional[Union['GuardianPushArgs', 'GuardianPushArgsDict', 'outputs.GuardianPush']]] = None,
+            recovery_code: pulumi.Input[Optional[_builtins.bool]] = None,
+            settings: pulumi.Input[Optional[Union['GuardianSettingsArgs', 'GuardianSettingsArgsDict', 'outputs.GuardianSettings']]] = None,
+            webauthn_platform: pulumi.Input[Optional[Union['GuardianWebauthnPlatformArgs', 'GuardianWebauthnPlatformArgsDict', 'outputs.GuardianWebauthnPlatform']]] = None,
+            webauthn_roaming: pulumi.Input[Optional[Union['GuardianWebauthnRoamingArgs', 'GuardianWebauthnRoamingArgsDict', 'outputs.GuardianWebauthnRoaming']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["duo"] = duo
+        __props__["email"] = email
+        __props__["emailSettings"] = email_settings
+        __props__["otp"] = otp
+        __props__["phone"] = phone
+        __props__["phoneSettings"] = phone_settings
+        __props__["policy"] = policy
+        __props__["push"] = push
+        __props__["recoveryCode"] = recovery_code
+        __props__["settings"] = settings
+        __props__["webauthnPlatform"] = webauthn_platform
+        __props__["webauthnRoaming"] = webauthn_roaming
+        return pulumi.runtime.exists_resource(None, 'auth0:index/guardian:Guardian', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def duo(self) -> pulumi.Output['outputs.GuardianDuo']:

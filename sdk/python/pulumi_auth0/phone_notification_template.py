@@ -306,6 +306,26 @@ class PhoneNotificationTemplate(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return PhoneNotificationTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            channel: pulumi.Input[Optional[_builtins.str]] = None,
+            content: pulumi.Input[Optional[Union['PhoneNotificationTemplateContentArgs', 'PhoneNotificationTemplateContentArgsDict', 'outputs.PhoneNotificationTemplateContent']]] = None,
+            customizable: pulumi.Input[Optional[_builtins.bool]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            template_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["channel"] = channel
+        __props__["content"] = content
+        __props__["customizable"] = customizable
+        __props__["disabled"] = disabled
+        __props__["templateId"] = template_id
+        __props__["tenant"] = tenant
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'auth0:index/phoneNotificationTemplate:PhoneNotificationTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def channel(self) -> pulumi.Output[_builtins.str]:

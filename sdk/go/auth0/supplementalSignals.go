@@ -92,6 +92,12 @@ func (SupplementalSignalsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*supplementalSignalsState)(nil)).Elem()
 }
 
+// SupplementalSignalsExists checks whether an existing SupplementalSignals resource with the given ID exists.
+func SupplementalSignalsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SupplementalSignalsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/supplementalSignals:SupplementalSignals", id, state, "", opts...)
+}
+
 type supplementalSignalsArgs struct {
 	// Indicates if incoming Akamai Headers should be processed.
 	AkamaiEnabled bool `pulumi:"akamaiEnabled"`

@@ -348,22 +348,20 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
      * 
-     * @deprecated
-     * This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
+     * @deprecated This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
      * 
      */
-    @Deprecated /* This Flag is not supported by the Auth0 Management API and will be removed in the next major release. */
+    @Deprecated
     @Import(name="requirePushedAuthorizationRequests")
     private @Nullable Output<Boolean> requirePushedAuthorizationRequests;
 
     /**
      * @return This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
      * 
-     * @deprecated
-     * This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
+     * @deprecated This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
      * 
      */
-    @Deprecated /* This Flag is not supported by the Auth0 Management API and will be removed in the next major release. */
+    @Deprecated
     public Optional<Output<Boolean>> requirePushedAuthorizationRequests() {
         return Optional.ofNullable(this.requirePushedAuthorizationRequests);
     }
@@ -913,11 +911,10 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
+         * @deprecated This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
          * 
          */
-        @Deprecated /* This Flag is not supported by the Auth0 Management API and will be removed in the next major release. */
+        @Deprecated
         public Builder requirePushedAuthorizationRequests(@Nullable Output<Boolean> requirePushedAuthorizationRequests) {
             $.requirePushedAuthorizationRequests = requirePushedAuthorizationRequests;
             return this;
@@ -928,11 +925,10 @@ public final class TenantFlagsArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
+         * @deprecated This Flag is not supported by the Auth0 Management API and will be removed in the next major release.
          * 
          */
-        @Deprecated /* This Flag is not supported by the Auth0 Management API and will be removed in the next major release. */
+        @Deprecated
         public Builder requirePushedAuthorizationRequests(Boolean requirePushedAuthorizationRequests) {
             return requirePushedAuthorizationRequests(Output.of(requirePushedAuthorizationRequests));
         }

@@ -14,7 +14,7 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GetClientAddonSapApiResult
     {
         /// <summary>
-        /// If activated in the OAuth 2.0 client configuration (transaction `SOAUTH2) the SAML attribute `ClientId` must be set and equal the `ClientId` form parameter of the access token request.
+        /// If activated in the OAuth 2.0 client configuration (transaction ` SOAUTH2) the SAML attribute  `ClientId`must be set and equal the`ClientId` form parameter of the access token request.
         /// </summary>
         public readonly string ClientId;
         /// <summary>

@@ -321,14 +321,14 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
+     * Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----&#92;nMIGf...bpP/t3&#92;n+JGNGIRMj1hF1rnb6QIDAQAB&#92;n-----END PUBLIC KEY-----&#92;n`.
      * 
      */
     @Import(name="signingCert")
     private @Nullable Output<String> signingCert;
 
     /**
-     * @return Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
+     * @return Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----&#92;nMIGf...bpP/t3&#92;n+JGNGIRMj1hF1rnb6QIDAQAB&#92;n-----END PUBLIC KEY-----&#92;n`.
      * 
      */
     public Optional<Output<String>> signingCert() {
@@ -826,7 +826,7 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param signingCert Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
+         * @param signingCert Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----&#92;nMIGf...bpP/t3&#92;n+JGNGIRMj1hF1rnb6QIDAQAB&#92;n-----END PUBLIC KEY-----&#92;n`.
          * 
          * @return builder
          * 
@@ -837,7 +837,7 @@ public final class ClientAddonsSamlpArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param signingCert Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----\nMIGf...bpP/t3\n+JGNGIRMj1hF1rnb6QIDAQAB\n-----END PUBLIC KEY-----\n`.
+         * @param signingCert Optionally indicates the public key certificate used to validate SAML requests. If set, SAML requests will be required to be signed. A sample value would be `-----BEGIN PUBLIC KEY-----&#92;nMIGf...bpP/t3&#92;n+JGNGIRMj1hF1rnb6QIDAQAB&#92;n-----END PUBLIC KEY-----&#92;n`.
          * 
          * @return builder
          * 

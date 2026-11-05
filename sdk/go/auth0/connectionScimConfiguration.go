@@ -185,6 +185,12 @@ func (ConnectionScimConfigurationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectionScimConfigurationState)(nil)).Elem()
 }
 
+// ConnectionScimConfigurationExists checks whether an existing ConnectionScimConfiguration resource with the given ID exists.
+func ConnectionScimConfigurationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConnectionScimConfigurationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/connectionScimConfiguration:ConnectionScimConfiguration", id, state, "", opts...)
+}
+
 type connectionScimConfigurationArgs struct {
 	// ID of the connection for this SCIM configuration.
 	ConnectionId string `pulumi:"connectionId"`

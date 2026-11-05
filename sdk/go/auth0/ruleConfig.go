@@ -127,6 +127,12 @@ func (RuleConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ruleConfigState)(nil)).Elem()
 }
 
+// RuleConfigExists checks whether an existing RuleConfig resource with the given ID exists.
+func RuleConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RuleConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/ruleConfig:RuleConfig", id, state, "", opts...)
+}
+
 type ruleConfigArgs struct {
 	// Key for a rules configuration variable.
 	Key string `pulumi:"key"`

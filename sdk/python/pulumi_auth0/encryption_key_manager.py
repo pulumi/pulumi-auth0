@@ -206,6 +206,18 @@ class EncryptionKeyManager(pulumi.CustomResource):
         __props__.__dict__["key_rotation_id"] = key_rotation_id
         return EncryptionKeyManager(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            customer_provided_root_key: pulumi.Input[Optional[Union['EncryptionKeyManagerCustomerProvidedRootKeyArgs', 'EncryptionKeyManagerCustomerProvidedRootKeyArgsDict', 'outputs.EncryptionKeyManagerCustomerProvidedRootKey']]] = None,
+            encryption_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EncryptionKeyManagerEncryptionKeyArgs', 'EncryptionKeyManagerEncryptionKeyArgsDict', 'outputs.EncryptionKeyManagerEncryptionKey']]]]] = None,
+            key_rotation_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["customerProvidedRootKey"] = customer_provided_root_key
+        __props__["encryptionKeys"] = encryption_keys
+        __props__["keyRotationId"] = key_rotation_id
+        return pulumi.runtime.exists_resource(None, 'auth0:index/encryptionKeyManager:EncryptionKeyManager', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="customerProvidedRootKey")
     def customer_provided_root_key(self) -> pulumi.Output[Optional['outputs.EncryptionKeyManagerCustomerProvidedRootKey']]:

@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *  *}&#47;{@code
  * module.exports = }{{@code
  *   greet: function(name) }{{@code
- *     return \"Hello, \" + name + \"!\";
+ *     return }&#92;{@code "Hello, }&#92;{@code " + name + }&#92;{@code "!}&#92;{@code ";
  *   }}{@code ,
  *   formatDate: function(date) }{{@code
  *     return date.toISOString();

@@ -194,6 +194,12 @@ func (EmailTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*emailTemplateState)(nil)).Elem()
 }
 
+// EmailTemplateExists checks whether an existing EmailTemplate resource with the given ID exists.
+func EmailTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EmailTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/emailTemplate:EmailTemplate", id, state, "", opts...)
+}
+
 type emailTemplateArgs struct {
 	// Body of the email template. You can include [common variables](https://auth0.com/docs/customize/email/email-templates#common-variables).
 	Body string `pulumi:"body"`

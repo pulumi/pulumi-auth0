@@ -151,6 +151,12 @@ func (ConnectionDirectorySynchronizedGroupsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectionDirectorySynchronizedGroupsState)(nil)).Elem()
 }
 
+// ConnectionDirectorySynchronizedGroupsExists checks whether an existing ConnectionDirectorySynchronizedGroups resource with the given ID exists.
+func ConnectionDirectorySynchronizedGroupsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConnectionDirectorySynchronizedGroupsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/connectionDirectorySynchronizedGroups:ConnectionDirectorySynchronizedGroups", id, state, "", opts...)
+}
+
 type connectionDirectorySynchronizedGroupsArgs struct {
 	// ID of the connection for which to manage synchronized groups.
 	ConnectionId string `pulumi:"connectionId"`

@@ -75,6 +75,12 @@ func (OrganizationDiscoveryDomainsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationDiscoveryDomainsState)(nil)).Elem()
 }
 
+// OrganizationDiscoveryDomainsExists checks whether an existing OrganizationDiscoveryDomains resource with the given ID exists.
+func OrganizationDiscoveryDomainsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrganizationDiscoveryDomainsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/organizationDiscoveryDomains:OrganizationDiscoveryDomains", id, state, "", opts...)
+}
+
 type organizationDiscoveryDomainsArgs struct {
 	// Discovery domains that are configured for the organization.
 	DiscoveryDomains []OrganizationDiscoveryDomainsDiscoveryDomain `pulumi:"discoveryDomains"`

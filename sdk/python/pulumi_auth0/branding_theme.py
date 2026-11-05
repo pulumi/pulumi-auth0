@@ -356,6 +356,26 @@ class BrandingTheme(pulumi.CustomResource):
         __props__.__dict__["widget"] = widget
         return BrandingTheme(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            borders: pulumi.Input[Optional[Union['BrandingThemeBordersArgs', 'BrandingThemeBordersArgsDict', 'outputs.BrandingThemeBorders']]] = None,
+            colors: pulumi.Input[Optional[Union['BrandingThemeColorsArgs', 'BrandingThemeColorsArgsDict', 'outputs.BrandingThemeColors']]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            fonts: pulumi.Input[Optional[Union['BrandingThemeFontsArgs', 'BrandingThemeFontsArgsDict', 'outputs.BrandingThemeFonts']]] = None,
+            identifiers: pulumi.Input[Optional[Union['BrandingThemeIdentifiersArgs', 'BrandingThemeIdentifiersArgsDict', 'outputs.BrandingThemeIdentifiers']]] = None,
+            page_background: pulumi.Input[Optional[Union['BrandingThemePageBackgroundArgs', 'BrandingThemePageBackgroundArgsDict', 'outputs.BrandingThemePageBackground']]] = None,
+            widget: pulumi.Input[Optional[Union['BrandingThemeWidgetArgs', 'BrandingThemeWidgetArgsDict', 'outputs.BrandingThemeWidget']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["borders"] = borders
+        __props__["colors"] = colors
+        __props__["displayName"] = display_name
+        __props__["fonts"] = fonts
+        __props__["identifiers"] = identifiers
+        __props__["pageBackground"] = page_background
+        __props__["widget"] = widget
+        return pulumi.runtime.exists_resource(None, 'auth0:index/brandingTheme:BrandingTheme', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def borders(self) -> pulumi.Output['outputs.BrandingThemeBorders']:

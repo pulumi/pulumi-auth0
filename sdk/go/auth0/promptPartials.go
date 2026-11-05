@@ -189,6 +189,12 @@ func (PromptPartialsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*promptPartialsState)(nil)).Elem()
 }
 
+// PromptPartialsExists checks whether an existing PromptPartials resource with the given ID exists.
+func PromptPartialsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PromptPartialsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/promptPartials:PromptPartials", id, state, "", opts...)
+}
+
 type promptPartialsArgs struct {
 	// Content that goes at the end of the form.
 	//

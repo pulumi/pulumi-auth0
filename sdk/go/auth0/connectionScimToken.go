@@ -176,6 +176,12 @@ func (ConnectionScimTokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectionScimTokenState)(nil)).Elem()
 }
 
+// ConnectionScimTokenExists checks whether an existing ConnectionScimToken resource with the given ID exists.
+func ConnectionScimTokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConnectionScimTokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/connectionScimToken:ConnectionScimToken", id, state, "", opts...)
+}
+
 type connectionScimTokenArgs struct {
 	// ID of the connection for this SCIM token.
 	ConnectionId string `pulumi:"connectionId"`

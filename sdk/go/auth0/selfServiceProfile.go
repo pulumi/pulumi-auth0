@@ -154,6 +154,12 @@ func (SelfServiceProfileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*selfServiceProfileState)(nil)).Elem()
 }
 
+// SelfServiceProfileExists checks whether an existing SelfServiceProfile resource with the given ID exists.
+func SelfServiceProfileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SelfServiceProfileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/selfServiceProfile:SelfServiceProfile", id, state, "", opts...)
+}
+
 type selfServiceProfileArgs struct {
 	// List of IdP strategies that will be shown to users during the Self-Service SSO flow. Valid values are: oidc, samlp, waad, google-apps, adfs, okta, keycloak-samlp, pingfederate, auth0-samlp, okta-samlp.
 	AllowedStrategies []string `pulumi:"allowedStrategies"`

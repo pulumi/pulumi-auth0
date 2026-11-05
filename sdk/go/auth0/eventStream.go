@@ -221,6 +221,12 @@ func (EventStreamState) ElementType() reflect.Type {
 	return reflect.TypeOf((*eventStreamState)(nil)).Elem()
 }
 
+// EventStreamExists checks whether an existing EventStream resource with the given ID exists.
+func EventStreamExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EventStreamState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/eventStream:EventStream", id, state, "", opts...)
+}
+
 type eventStreamArgs struct {
 	// Configuration for the Action destination. This block is only applicable when `destinationType` is set to `action`. Action configurations **cannot** be updated after creation. Any change to this block will force the resource to be recreated.
 	ActionConfiguration *EventStreamActionConfiguration `pulumi:"actionConfiguration"`

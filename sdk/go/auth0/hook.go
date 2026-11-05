@@ -153,6 +153,12 @@ func (HookState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hookState)(nil)).Elem()
 }
 
+// HookExists checks whether an existing Hook resource with the given ID exists.
+func HookExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HookState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/hook:Hook", id, state, "", opts...)
+}
+
 type hookArgs struct {
 	// Dependencies of this hook used by the WebTask server.
 	Dependencies map[string]string `pulumi:"dependencies"`

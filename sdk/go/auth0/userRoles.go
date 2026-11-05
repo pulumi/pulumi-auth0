@@ -138,6 +138,12 @@ func (UserRolesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userRolesState)(nil)).Elem()
 }
 
+// UserRolesExists checks whether an existing UserRoles resource with the given ID exists.
+func UserRolesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserRolesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/userRoles:UserRoles", id, state, "", opts...)
+}
+
 type userRolesArgs struct {
 	// Set of IDs of roles assigned to the user.
 	Roles []string `pulumi:"roles"`

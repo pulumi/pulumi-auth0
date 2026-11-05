@@ -142,6 +142,12 @@ func (PromptScreenPartialState) ElementType() reflect.Type {
 	return reflect.TypeOf((*promptScreenPartialState)(nil)).Elem()
 }
 
+// PromptScreenPartialExists checks whether an existing PromptScreenPartial resource with the given ID exists.
+func PromptScreenPartialExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PromptScreenPartialState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/promptScreenPartial:PromptScreenPartial", id, state, "", opts...)
+}
+
 type promptScreenPartialArgs struct {
 	// The insertion points for the partials.
 	InsertionPoints *PromptScreenPartialInsertionPoints `pulumi:"insertionPoints"`

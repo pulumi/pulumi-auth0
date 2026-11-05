@@ -146,6 +146,14 @@ class RiskAssessmentsNewDevice(pulumi.CustomResource):
         __props__.__dict__["remember_for"] = remember_for
         return RiskAssessmentsNewDevice(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            remember_for: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["rememberFor"] = remember_for
+        return pulumi.runtime.exists_resource(None, 'auth0:index/riskAssessmentsNewDevice:RiskAssessmentsNewDevice', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="rememberFor")
     def remember_for(self) -> pulumi.Output[_builtins.int]:

@@ -254,6 +254,18 @@ class CustomDomainVerification(pulumi.CustomResource):
         __props__.__dict__["origin_domain_name"] = origin_domain_name
         return CustomDomainVerification(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cname_api_key: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+            origin_domain_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cnameApiKey"] = cname_api_key
+        __props__["customDomainId"] = custom_domain_id
+        __props__["originDomainName"] = origin_domain_name
+        return pulumi.runtime.exists_resource(None, 'auth0:index/customDomainVerification:CustomDomainVerification', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cnameApiKey")
     def cname_api_key(self) -> pulumi.Output[_builtins.str]:

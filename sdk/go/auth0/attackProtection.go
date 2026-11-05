@@ -290,6 +290,12 @@ func (AttackProtectionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*attackProtectionState)(nil)).Elem()
 }
 
+// AttackProtectionExists checks whether an existing AttackProtection resource with the given ID exists.
+func AttackProtectionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AttackProtectionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/attackProtection:AttackProtection", id, state, "", opts...)
+}
+
 type attackProtectionArgs struct {
 	// Bot detection configuration to identify and prevent automated threats.
 	BotDetection *AttackProtectionBotDetection `pulumi:"botDetection"`

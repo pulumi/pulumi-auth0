@@ -161,6 +161,12 @@ func (RolePermissionsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*rolePermissionsState)(nil)).Elem()
 }
 
+// RolePermissionsExists checks whether an existing RolePermissions resource with the given ID exists.
+func RolePermissionsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RolePermissionsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/rolePermissions:RolePermissions", id, state, "", opts...)
+}
+
 type rolePermissionsArgs struct {
 	// List of API permissions granted to the role.
 	Permissions []RolePermissionsPermission `pulumi:"permissions"`

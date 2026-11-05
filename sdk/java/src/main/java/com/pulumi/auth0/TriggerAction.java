@@ -43,12 +43,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var loginAlert = new Action("loginAlert", ActionArgs.builder()
  *             .supportedTriggers(ActionSupportedTriggersArgs.builder()
  *                 .id("post-login")
@@ -56,9 +56,9 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .name("Alert after login")
  *             .code("""
- * exports.onContinuePostLogin = async (event, api) => {
- *   console.log(\"foo\");
- * };\"
+ * exports.onContinuePostLogin = async (event, api) => }{{@code
+ *   console.log(}&#92;{@code "foo}&#92;{@code ");
+ * }}{@code ;}&#92;{@code "
  *             """)
  *             .deploy(true)
  *             .build());
@@ -68,8 +68,8 @@ import javax.annotation.Nullable;
  *             .actionId(loginAlert.id())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

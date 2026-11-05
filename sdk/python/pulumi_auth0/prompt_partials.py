@@ -494,6 +494,26 @@ class PromptPartials(pulumi.CustomResource):
         __props__.__dict__["secondary_actions_start"] = secondary_actions_start
         return PromptPartials(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            form_content_end: pulumi.Input[Optional[_builtins.str]] = None,
+            form_content_start: pulumi.Input[Optional[_builtins.str]] = None,
+            form_footer_end: pulumi.Input[Optional[_builtins.str]] = None,
+            form_footer_start: pulumi.Input[Optional[_builtins.str]] = None,
+            prompt: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_actions_end: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_actions_start: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["formContentEnd"] = form_content_end
+        __props__["formContentStart"] = form_content_start
+        __props__["formFooterEnd"] = form_footer_end
+        __props__["formFooterStart"] = form_footer_start
+        __props__["prompt"] = prompt
+        __props__["secondaryActionsEnd"] = secondary_actions_end
+        __props__["secondaryActionsStart"] = secondary_actions_start
+        return pulumi.runtime.exists_resource(None, 'auth0:index/promptPartials:PromptPartials', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="formContentEnd")
     @_utilities.deprecated("""This resource is deprecated and will be removed in the next major version. Please use `PromptScreenPartials` for managing multiple prompt screens or `PromptScreenPartial` for managing a single prompt screen, depending on your use case.""")

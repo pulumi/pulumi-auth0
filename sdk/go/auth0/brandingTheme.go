@@ -109,6 +109,12 @@ func (BrandingThemeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*brandingThemeState)(nil)).Elem()
 }
 
+// BrandingThemeExists checks whether an existing BrandingTheme resource with the given ID exists.
+func BrandingThemeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BrandingThemeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/brandingTheme:BrandingTheme", id, state, "", opts...)
+}
+
 type brandingThemeArgs struct {
 	Borders BrandingThemeBorders `pulumi:"borders"`
 	Colors  BrandingThemeColors  `pulumi:"colors"`

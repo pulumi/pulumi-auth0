@@ -252,6 +252,12 @@ func (NetworkAclState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkAclState)(nil)).Elem()
 }
 
+// NetworkAclExists checks whether an existing NetworkAcl resource with the given ID exists.
+func NetworkAclExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkAclState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/networkAcl:NetworkAcl", id, state, "", opts...)
+}
+
 type networkAclArgs struct {
 	// Whether the Network ACL is active
 	Active bool `pulumi:"active"`

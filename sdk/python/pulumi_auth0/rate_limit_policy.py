@@ -368,6 +368,24 @@ class RateLimitPolicy(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         return RateLimitPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            configuration: pulumi.Input[Optional[Union['RateLimitPolicyConfigurationArgs', 'RateLimitPolicyConfigurationArgsDict', 'outputs.RateLimitPolicyConfiguration']]] = None,
+            consumer: pulumi.Input[Optional[_builtins.str]] = None,
+            consumer_selector: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            resource: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["configuration"] = configuration
+        __props__["consumer"] = consumer
+        __props__["consumerSelector"] = consumer_selector
+        __props__["createdAt"] = created_at
+        __props__["resource"] = resource
+        __props__["updatedAt"] = updated_at
+        return pulumi.runtime.exists_resource(None, 'auth0:index/rateLimitPolicy:RateLimitPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def configuration(self) -> pulumi.Output['outputs.RateLimitPolicyConfiguration']:

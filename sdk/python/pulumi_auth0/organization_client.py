@@ -407,6 +407,30 @@ class OrganizationClient(pulumi.CustomResource):
         __props__.__dict__["use_for_member_access"] = use_for_member_access
         return OrganizationClient(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_type: pulumi.Input[Optional[_builtins.str]] = None,
+            client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            grant_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            is_first_party: pulumi.Input[Optional[_builtins.bool]] = None,
+            logo_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_usage: pulumi.Input[Optional[_builtins.str]] = None,
+            use_for_member_access: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appType"] = app_type
+        __props__["clientId"] = client_id
+        __props__["grantTypes"] = grant_types
+        __props__["isFirstParty"] = is_first_party
+        __props__["logoUri"] = logo_uri
+        __props__["name"] = name
+        __props__["organizationId"] = organization_id
+        __props__["organizationUsage"] = organization_usage
+        __props__["useForMemberAccess"] = use_for_member_access
+        return pulumi.runtime.exists_resource(None, 'auth0:index/organizationClient:OrganizationClient', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appType")
     def app_type(self) -> pulumi.Output[_builtins.str]:

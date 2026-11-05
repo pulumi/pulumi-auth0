@@ -254,6 +254,16 @@ class ResourceServerScopes(pulumi.CustomResource):
         __props__.__dict__["scopes"] = scopes
         return ResourceServerScopes(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            resource_server_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceServerScopesScopeArgs', 'ResourceServerScopesScopeArgsDict', 'outputs.ResourceServerScopesScope']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["resourceServerIdentifier"] = resource_server_identifier
+        __props__["scopes"] = scopes
+        return pulumi.runtime.exists_resource(None, 'auth0:index/resourceServerScopes:ResourceServerScopes', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="resourceServerIdentifier")
     def resource_server_identifier(self) -> pulumi.Output[_builtins.str]:

@@ -273,6 +273,18 @@ class Prompt(pulumi.CustomResource):
         __props__.__dict__["webauthn_platform_first_factor"] = webauthn_platform_first_factor
         return Prompt(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            identifier_first: pulumi.Input[Optional[_builtins.bool]] = None,
+            universal_login_experience: pulumi.Input[Optional[_builtins.str]] = None,
+            webauthn_platform_first_factor: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["identifierFirst"] = identifier_first
+        __props__["universalLoginExperience"] = universal_login_experience
+        __props__["webauthnPlatformFirstFactor"] = webauthn_platform_first_factor
+        return pulumi.runtime.exists_resource(None, 'auth0:index/prompt:Prompt', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="identifierFirst")
     def identifier_first(self) -> pulumi.Output[_builtins.bool]:

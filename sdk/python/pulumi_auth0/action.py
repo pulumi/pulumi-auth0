@@ -722,6 +722,36 @@ class Action(pulumi.CustomResource):
         __props__.__dict__["version_id"] = version_id
         return Action(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            code: pulumi.Input[Optional[_builtins.str]] = None,
+            dependencies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionDependencyArgs', 'ActionDependencyArgsDict', 'outputs.ActionDependency']]]]] = None,
+            deploy: pulumi.Input[Optional[_builtins.bool]] = None,
+            modules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionModuleArgs', 'ActionModuleArgsDict', 'outputs.ActionModule']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            runtime: pulumi.Input[Optional[_builtins.str]] = None,
+            secrets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionSecretArgs', 'ActionSecretArgsDict', 'outputs.ActionSecret']]]]] = None,
+            secrets_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
+            secrets_wos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionSecretsWoArgs', 'ActionSecretsWoArgsDict', 'outputs.ActionSecretsWo']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            supported_triggers: pulumi.Input[Optional[Union['ActionSupportedTriggersArgs', 'ActionSupportedTriggersArgsDict', 'outputs.ActionSupportedTriggers']]] = None,
+            version_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["code"] = code
+        __props__["dependencies"] = dependencies
+        __props__["deploy"] = deploy
+        __props__["modules"] = modules
+        __props__["name"] = name
+        __props__["runtime"] = runtime
+        __props__["secrets"] = secrets
+        __props__["secretsWoVersion"] = secrets_wo_version
+        __props__["secretsWos"] = secrets_wos
+        __props__["status"] = status
+        __props__["supportedTriggers"] = supported_triggers
+        __props__["versionId"] = version_id
+        return pulumi.runtime.exists_resource(None, 'auth0:index/action:Action', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def code(self) -> pulumi.Output[_builtins.str]:

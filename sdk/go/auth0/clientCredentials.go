@@ -150,6 +150,12 @@ func (ClientCredentialsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clientCredentialsState)(nil)).Elem()
 }
 
+// ClientCredentialsExists checks whether an existing ClientCredentials resource with the given ID exists.
+func ClientCredentialsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClientCredentialsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/clientCredentials:ClientCredentials", id, state, "", opts...)
+}
+
 type clientCredentialsArgs struct {
 	// Configure the method to use when making requests to any endpoint that requires this client to authenticate. Options include `none` (public client without a client secret), `clientSecretPost` (confidential client using HTTP POST parameters), `clientSecretBasic` (confidential client using HTTP Basic), `privateKeyJwt` (confidential client using a Private Key JWT), `tlsClientAuth` (confidential client using CA-based mTLS authentication), `selfSignedTlsClientAuth` (confidential client using mTLS authentication utilizing a self-signed certificate).
 	AuthenticationMethod *string `pulumi:"authenticationMethod"`

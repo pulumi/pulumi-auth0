@@ -494,6 +494,20 @@ class NetworkAcl(pulumi.CustomResource):
         __props__.__dict__["rule"] = rule
         return NetworkAcl(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            rule: pulumi.Input[Optional[Union['NetworkAclRuleArgs', 'NetworkAclRuleArgsDict', 'outputs.NetworkAclRule']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["active"] = active
+        __props__["description"] = description
+        __props__["priority"] = priority
+        __props__["rule"] = rule
+        return pulumi.runtime.exists_resource(None, 'auth0:index/networkAcl:NetworkAcl', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def active(self) -> pulumi.Output[_builtins.bool]:

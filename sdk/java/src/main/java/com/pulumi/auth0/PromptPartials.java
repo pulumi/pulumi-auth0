@@ -75,11 +75,10 @@ public class PromptPartials extends com.pulumi.resources.CustomResource {
     /**
      * Content that goes at the end of the form.
      * 
-     * @deprecated
-     * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      * 
      */
-    @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
+    @Deprecated
     @Export(name="formContentEnd", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> formContentEnd;
 
@@ -93,11 +92,10 @@ public class PromptPartials extends com.pulumi.resources.CustomResource {
     /**
      * Content that goes at the start of the form.
      * 
-     * @deprecated
-     * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      * 
      */
-    @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
+    @Deprecated
     @Export(name="formContentStart", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> formContentStart;
 
@@ -111,11 +109,10 @@ public class PromptPartials extends com.pulumi.resources.CustomResource {
     /**
      * Footer content for the end of the footer.
      * 
-     * @deprecated
-     * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      * 
      */
-    @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
+    @Deprecated
     @Export(name="formFooterEnd", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> formFooterEnd;
 
@@ -129,11 +126,10 @@ public class PromptPartials extends com.pulumi.resources.CustomResource {
     /**
      * Footer content for the start of the footer.
      * 
-     * @deprecated
-     * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      * 
      */
-    @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
+    @Deprecated
     @Export(name="formFooterStart", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> formFooterStart;
 
@@ -147,11 +143,10 @@ public class PromptPartials extends com.pulumi.resources.CustomResource {
     /**
      * The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`, `confirmation`.
      * 
-     * @deprecated
-     * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      * 
      */
-    @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
+    @Deprecated
     @Export(name="prompt", refs={String.class}, tree="[0]")
     private Output<String> prompt;
 
@@ -165,11 +160,10 @@ public class PromptPartials extends com.pulumi.resources.CustomResource {
     /**
      * Actions that go at the end of secondary actions.
      * 
-     * @deprecated
-     * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      * 
      */
-    @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
+    @Deprecated
     @Export(name="secondaryActionsEnd", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secondaryActionsEnd;
 
@@ -183,11 +177,10 @@ public class PromptPartials extends com.pulumi.resources.CustomResource {
     /**
      * Actions that go at the start of secondary actions.
      * 
-     * @deprecated
-     * This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
+     * @deprecated This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case.
      * 
      */
-    @Deprecated /* This resource is deprecated and will be removed in the next major version. Please use `auth0.PromptScreenPartials` for managing multiple prompt screens or `auth0.PromptScreenPartial` for managing a single prompt screen, depending on your use case. */
+    @Deprecated
     @Export(name="secondaryActionsStart", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secondaryActionsStart;
 

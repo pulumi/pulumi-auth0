@@ -36,22 +36,20 @@ public final class ConnectionDirectorySynchronizedGroupsArgs extends com.pulumi.
     /**
      * IDs of the Google Workspace Directory groups to synchronize.
      * 
-     * @deprecated
-     * Use `groups` instead, which exposes each group&#39;s name, email and member count alongside its ID.
+     * @deprecated Use `groups` instead, which exposes each group&#39;s name, email and member count alongside its ID.
      * 
      */
-    @Deprecated /* Use `groups` instead, which exposes each group's name, email and member count alongside its ID. */
+    @Deprecated
     @Import(name="groupIds")
     private @Nullable Output<List<String>> groupIds;
 
     /**
      * @return IDs of the Google Workspace Directory groups to synchronize.
      * 
-     * @deprecated
-     * Use `groups` instead, which exposes each group&#39;s name, email and member count alongside its ID.
+     * @deprecated Use `groups` instead, which exposes each group&#39;s name, email and member count alongside its ID.
      * 
      */
-    @Deprecated /* Use `groups` instead, which exposes each group's name, email and member count alongside its ID. */
+    @Deprecated
     public Optional<Output<List<String>>> groupIds() {
         return Optional.ofNullable(this.groupIds);
     }
@@ -123,11 +121,10 @@ public final class ConnectionDirectorySynchronizedGroupsArgs extends com.pulumi.
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use `groups` instead, which exposes each group&#39;s name, email and member count alongside its ID.
+         * @deprecated Use `groups` instead, which exposes each group&#39;s name, email and member count alongside its ID.
          * 
          */
-        @Deprecated /* Use `groups` instead, which exposes each group's name, email and member count alongside its ID. */
+        @Deprecated
         public Builder groupIds(@Nullable Output<List<String>> groupIds) {
             $.groupIds = groupIds;
             return this;
@@ -138,11 +135,10 @@ public final class ConnectionDirectorySynchronizedGroupsArgs extends com.pulumi.
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use `groups` instead, which exposes each group&#39;s name, email and member count alongside its ID.
+         * @deprecated Use `groups` instead, which exposes each group&#39;s name, email and member count alongside its ID.
          * 
          */
-        @Deprecated /* Use `groups` instead, which exposes each group's name, email and member count alongside its ID. */
+        @Deprecated
         public Builder groupIds(List<String> groupIds) {
             return groupIds(Output.of(groupIds));
         }
@@ -152,11 +148,10 @@ public final class ConnectionDirectorySynchronizedGroupsArgs extends com.pulumi.
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use `groups` instead, which exposes each group&#39;s name, email and member count alongside its ID.
+         * @deprecated Use `groups` instead, which exposes each group&#39;s name, email and member count alongside its ID.
          * 
          */
-        @Deprecated /* Use `groups` instead, which exposes each group's name, email and member count alongside its ID. */
+        @Deprecated
         public Builder groupIds(String... groupIds) {
             return groupIds(List.of(groupIds));
         }

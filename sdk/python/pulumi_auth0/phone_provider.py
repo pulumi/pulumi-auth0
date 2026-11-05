@@ -456,6 +456,24 @@ class PhoneProvider(pulumi.CustomResource):
         __props__.__dict__["tenant"] = tenant
         return PhoneProvider(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            channel: pulumi.Input[Optional[_builtins.str]] = None,
+            configuration: pulumi.Input[Optional[Union['PhoneProviderConfigurationArgs', 'PhoneProviderConfigurationArgsDict', 'outputs.PhoneProviderConfiguration']]] = None,
+            credentials: pulumi.Input[Optional[Union['PhoneProviderCredentialsArgs', 'PhoneProviderCredentialsArgsDict', 'outputs.PhoneProviderCredentials']]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["channel"] = channel
+        __props__["configuration"] = configuration
+        __props__["credentials"] = credentials
+        __props__["disabled"] = disabled
+        __props__["name"] = name
+        __props__["tenant"] = tenant
+        return pulumi.runtime.exists_resource(None, 'auth0:index/phoneProvider:PhoneProvider', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def channel(self) -> pulumi.Output[_builtins.str]:

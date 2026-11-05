@@ -206,6 +206,12 @@ func (ConnectionKeysState) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectionKeysState)(nil)).Elem()
 }
 
+// ConnectionKeysExists checks whether an existing ConnectionKeys resource with the given ID exists.
+func ConnectionKeysExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConnectionKeysState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/connectionKeys:ConnectionKeys", id, state, "", opts...)
+}
+
 type connectionKeysArgs struct {
 	ConnectionId string `pulumi:"connectionId"`
 	// This is an arbitrary map, which when edited shall perform rotation of keys for the corresponding connection. It can host keys like version, timestamp of last rotation etc.The field has no association with API

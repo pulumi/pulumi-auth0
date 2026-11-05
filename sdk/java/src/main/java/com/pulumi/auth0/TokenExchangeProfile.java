@@ -38,12 +38,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         // Below action is created with custom-token-exchange as supported_triggers
  *         // This action is then linked using the action_id param to the token-exchange profile
  *         var myAction = new Action("myAction", ActionArgs.builder()
@@ -53,9 +53,9 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .name("TokenExchange-Action")
  *             .code("""
- * exports.onExecuteCustomTokenExchange = async (event, api) => {
- * \tconsole.log(\"foo\")
- * };\"
+ * exports.onExecuteCustomTokenExchange = async (event, api) => }{{@code
+ * }&#92;{@code tconsole.log(}&#92;{@code "foo}&#92;{@code ")
+ * }}{@code ;}&#92;{@code "
  *             """)
  *             .deploy(true)
  *             .build());
@@ -67,8 +67,8 @@ import javax.annotation.Nullable;
  *             .type("custom_authentication")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

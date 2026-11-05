@@ -208,6 +208,12 @@ func (ConnectionDirectoryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectionDirectoryState)(nil)).Elem()
 }
 
+// ConnectionDirectoryExists checks whether an existing ConnectionDirectory resource with the given ID exists.
+func ConnectionDirectoryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConnectionDirectoryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/connectionDirectory:ConnectionDirectory", id, state, "", opts...)
+}
+
 type connectionDirectoryArgs struct {
 	// ID of the connection for this directory provisioning configuration.
 	ConnectionId string `pulumi:"connectionId"`

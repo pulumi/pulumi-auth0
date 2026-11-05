@@ -152,6 +152,12 @@ func (ConnectionProfileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectionProfileState)(nil)).Elem()
 }
 
+// ConnectionProfileExists checks whether an existing ConnectionProfile resource with the given ID exists.
+func ConnectionProfileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConnectionProfileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/connectionProfile:ConnectionProfile", id, state, "", opts...)
+}
+
 type connectionProfileArgs struct {
 	// Connection configuration for the profile.
 	ConnectionConfig *ConnectionProfileConnectionConfig `pulumi:"connectionConfig"`

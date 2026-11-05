@@ -307,6 +307,12 @@ func (ClientCimdState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clientCimdState)(nil)).Elem()
 }
 
+// ClientCimdExists checks whether an existing ClientCimd resource with the given ID exists.
+func ClientCimdExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClientCimdState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/clientCimd:ClientCimd", id, state, "", opts...)
+}
+
 type clientCimdArgs struct {
 	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins []string `pulumi:"allowedOrigins"`

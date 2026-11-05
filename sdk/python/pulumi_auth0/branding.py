@@ -365,6 +365,22 @@ class Branding(pulumi.CustomResource):
         __props__.__dict__["universal_login"] = universal_login
         return Branding(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            colors: pulumi.Input[Optional[Union['BrandingColorsArgs', 'BrandingColorsArgsDict', 'outputs.BrandingColors']]] = None,
+            favicon_url: pulumi.Input[Optional[_builtins.str]] = None,
+            font: pulumi.Input[Optional[Union['BrandingFontArgs', 'BrandingFontArgsDict', 'outputs.BrandingFont']]] = None,
+            logo_url: pulumi.Input[Optional[_builtins.str]] = None,
+            universal_login: pulumi.Input[Optional[Union['BrandingUniversalLoginArgs', 'BrandingUniversalLoginArgsDict', 'outputs.BrandingUniversalLogin']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["colors"] = colors
+        __props__["faviconUrl"] = favicon_url
+        __props__["font"] = font
+        __props__["logoUrl"] = logo_url
+        __props__["universalLogin"] = universal_login
+        return pulumi.runtime.exists_resource(None, 'auth0:index/branding:Branding', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def colors(self) -> pulumi.Output['outputs.BrandingColors']:

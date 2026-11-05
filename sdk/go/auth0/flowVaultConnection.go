@@ -153,6 +153,12 @@ func (FlowVaultConnectionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*flowVaultConnectionState)(nil)).Elem()
 }
 
+// FlowVaultConnectionExists checks whether an existing FlowVaultConnection resource with the given ID exists.
+func FlowVaultConnectionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FlowVaultConnectionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/flowVaultConnection:FlowVaultConnection", id, state, "", opts...)
+}
+
 type flowVaultConnectionArgs struct {
 	// Custom account name of the vault connection.
 	AccountName *string `pulumi:"accountName"`

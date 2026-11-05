@@ -163,6 +163,12 @@ func (NetworkAclKeyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkAclKeyState)(nil)).Elem()
 }
 
+// NetworkAclKeyExists checks whether an existing NetworkAclKey resource with the given ID exists.
+func NetworkAclKeyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkAclKeyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/networkAclKey:NetworkAclKey", id, state, "", opts...)
+}
+
 type networkAclKeyArgs struct {
 	// Algorithm used for the key. Currently only `hmac-sha256` is supported.
 	Alg string `pulumi:"alg"`

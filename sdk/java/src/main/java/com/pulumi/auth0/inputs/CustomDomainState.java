@@ -113,22 +113,20 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
     /**
      * Indicates whether this is a primary domain.
      * 
-     * @deprecated
-     * Primary field is no longer used and will be removed in a future release.
+     * @deprecated Primary field is no longer used and will be removed in a future release.
      * 
      */
-    @Deprecated /* Primary field is no longer used and will be removed in a future release. */
+    @Deprecated
     @Import(name="primary")
     private @Nullable Output<Boolean> primary;
 
     /**
      * @return Indicates whether this is a primary domain.
      * 
-     * @deprecated
-     * Primary field is no longer used and will be removed in a future release.
+     * @deprecated Primary field is no longer used and will be removed in a future release.
      * 
      */
-    @Deprecated /* Primary field is no longer used and will be removed in a future release. */
+    @Deprecated
     public Optional<Output<Boolean>> primary() {
         return Optional.ofNullable(this.primary);
     }
@@ -384,11 +382,10 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Primary field is no longer used and will be removed in a future release.
+         * @deprecated Primary field is no longer used and will be removed in a future release.
          * 
          */
-        @Deprecated /* Primary field is no longer used and will be removed in a future release. */
+        @Deprecated
         public Builder primary(@Nullable Output<Boolean> primary) {
             $.primary = primary;
             return this;
@@ -399,11 +396,10 @@ public final class CustomDomainState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Primary field is no longer used and will be removed in a future release.
+         * @deprecated Primary field is no longer used and will be removed in a future release.
          * 
          */
-        @Deprecated /* Primary field is no longer used and will be removed in a future release. */
+        @Deprecated
         public Builder primary(Boolean primary) {
             return primary(Output.of(primary));
         }

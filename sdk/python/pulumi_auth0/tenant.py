@@ -1484,6 +1484,76 @@ class Tenant(pulumi.CustomResource):
         __props__.__dict__["support_url"] = support_url
         return Tenant(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acr_values_supporteds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            allow_organization_name_in_authentication_api: pulumi.Input[Optional[_builtins.bool]] = None,
+            allowed_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            client_id_metadata_document_supported: pulumi.Input[Optional[_builtins.bool]] = None,
+            country_codes: pulumi.Input[Optional[Union['TenantCountryCodesArgs', 'TenantCountryCodesArgsDict', 'outputs.TenantCountryCodes']]] = None,
+            customize_mfa_in_postlogin_action: pulumi.Input[Optional[_builtins.bool]] = None,
+            default_audience: pulumi.Input[Optional[_builtins.str]] = None,
+            default_directory: pulumi.Input[Optional[_builtins.str]] = None,
+            default_redirection_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            default_token_quota: pulumi.Input[Optional[Union['TenantDefaultTokenQuotaArgs', 'TenantDefaultTokenQuotaArgsDict', 'outputs.TenantDefaultTokenQuota']]] = None,
+            disable_acr_values_supported: pulumi.Input[Optional[_builtins.bool]] = None,
+            dynamic_client_registration_security_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled_locales: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ephemeral_session_lifetime: pulumi.Input[Optional[_builtins.float]] = None,
+            error_page: pulumi.Input[Optional[Union['TenantErrorPageArgs', 'TenantErrorPageArgsDict', 'outputs.TenantErrorPage']]] = None,
+            flags: pulumi.Input[Optional[Union['TenantFlagsArgs', 'TenantFlagsArgsDict', 'outputs.TenantFlags']]] = None,
+            friendly_name: pulumi.Input[Optional[_builtins.str]] = None,
+            idle_ephemeral_session_lifetime: pulumi.Input[Optional[_builtins.float]] = None,
+            idle_session_lifetime: pulumi.Input[Optional[_builtins.float]] = None,
+            mtls: pulumi.Input[Optional[Union['TenantMtlsArgs', 'TenantMtlsArgsDict', 'outputs.TenantMtls']]] = None,
+            oidc_logout: pulumi.Input[Optional[Union['TenantOidcLogoutArgs', 'TenantOidcLogoutArgsDict', 'outputs.TenantOidcLogout']]] = None,
+            phone_consolidated_experience: pulumi.Input[Optional[_builtins.bool]] = None,
+            picture_url: pulumi.Input[Optional[_builtins.str]] = None,
+            pushed_authorization_requests_supported: pulumi.Input[Optional[_builtins.bool]] = None,
+            resource_parameter_profile: pulumi.Input[Optional[_builtins.str]] = None,
+            sandbox_version: pulumi.Input[Optional[_builtins.str]] = None,
+            session_cookie: pulumi.Input[Optional[Union['TenantSessionCookieArgs', 'TenantSessionCookieArgsDict', 'outputs.TenantSessionCookie']]] = None,
+            session_lifetime: pulumi.Input[Optional[_builtins.float]] = None,
+            sessions: pulumi.Input[Optional[Union['TenantSessionsArgs', 'TenantSessionsArgsDict', 'outputs.TenantSessions']]] = None,
+            skip_non_verifiable_callback_uri_confirmation_prompt: pulumi.Input[Optional[_builtins.str]] = None,
+            support_email: pulumi.Input[Optional[_builtins.str]] = None,
+            support_url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acrValuesSupporteds"] = acr_values_supporteds
+        __props__["allowOrganizationNameInAuthenticationApi"] = allow_organization_name_in_authentication_api
+        __props__["allowedLogoutUrls"] = allowed_logout_urls
+        __props__["clientIdMetadataDocumentSupported"] = client_id_metadata_document_supported
+        __props__["countryCodes"] = country_codes
+        __props__["customizeMfaInPostloginAction"] = customize_mfa_in_postlogin_action
+        __props__["defaultAudience"] = default_audience
+        __props__["defaultDirectory"] = default_directory
+        __props__["defaultRedirectionUri"] = default_redirection_uri
+        __props__["defaultTokenQuota"] = default_token_quota
+        __props__["disableAcrValuesSupported"] = disable_acr_values_supported
+        __props__["dynamicClientRegistrationSecurityMode"] = dynamic_client_registration_security_mode
+        __props__["enabledLocales"] = enabled_locales
+        __props__["ephemeralSessionLifetime"] = ephemeral_session_lifetime
+        __props__["errorPage"] = error_page
+        __props__["flags"] = flags
+        __props__["friendlyName"] = friendly_name
+        __props__["idleEphemeralSessionLifetime"] = idle_ephemeral_session_lifetime
+        __props__["idleSessionLifetime"] = idle_session_lifetime
+        __props__["mtls"] = mtls
+        __props__["oidcLogout"] = oidc_logout
+        __props__["phoneConsolidatedExperience"] = phone_consolidated_experience
+        __props__["pictureUrl"] = picture_url
+        __props__["pushedAuthorizationRequestsSupported"] = pushed_authorization_requests_supported
+        __props__["resourceParameterProfile"] = resource_parameter_profile
+        __props__["sandboxVersion"] = sandbox_version
+        __props__["sessionCookie"] = session_cookie
+        __props__["sessionLifetime"] = session_lifetime
+        __props__["sessions"] = sessions
+        __props__["skipNonVerifiableCallbackUriConfirmationPrompt"] = skip_non_verifiable_callback_uri_confirmation_prompt
+        __props__["supportEmail"] = support_email
+        __props__["supportUrl"] = support_url
+        return pulumi.runtime.exists_resource(None, 'auth0:index/tenant:Tenant', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="acrValuesSupporteds")
     def acr_values_supporteds(self) -> pulumi.Output[Sequence[_builtins.str]]:

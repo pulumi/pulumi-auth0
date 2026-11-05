@@ -138,6 +138,12 @@ func (PagesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pagesState)(nil)).Elem()
 }
 
+// PagesExists checks whether an existing Pages resource with the given ID exists.
+func PagesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PagesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/pages:Pages", id, state, "", opts...)
+}
+
 type pagesArgs struct {
 	// Configuration settings for customizing the Password Reset page.
 	ChangePassword *PagesChangePassword `pulumi:"changePassword"`

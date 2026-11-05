@@ -457,6 +457,26 @@ class ConnectionProfile(pulumi.CustomResource):
         __props__.__dict__["strategy_overrides"] = strategy_overrides
         return ConnectionProfile(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connection_config: pulumi.Input[Optional[Union['ConnectionProfileConnectionConfigArgs', 'ConnectionProfileConnectionConfigArgsDict', 'outputs.ConnectionProfileConnectionConfig']]] = None,
+            connection_name_prefix_template: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_app_access_resource_app: pulumi.Input[Optional[Union['ConnectionProfileCrossAppAccessResourceAppArgs', 'ConnectionProfileCrossAppAccessResourceAppArgsDict', 'outputs.ConnectionProfileCrossAppAccessResourceApp']]] = None,
+            enabled_features: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization: pulumi.Input[Optional[Union['ConnectionProfileOrganizationArgs', 'ConnectionProfileOrganizationArgsDict', 'outputs.ConnectionProfileOrganization']]] = None,
+            strategy_overrides: pulumi.Input[Optional[Union['ConnectionProfileStrategyOverridesArgs', 'ConnectionProfileStrategyOverridesArgsDict', 'outputs.ConnectionProfileStrategyOverrides']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["connectionConfig"] = connection_config
+        __props__["connectionNamePrefixTemplate"] = connection_name_prefix_template
+        __props__["crossAppAccessResourceApp"] = cross_app_access_resource_app
+        __props__["enabledFeatures"] = enabled_features
+        __props__["name"] = name
+        __props__["organization"] = organization
+        __props__["strategyOverrides"] = strategy_overrides
+        return pulumi.runtime.exists_resource(None, 'auth0:index/connectionProfile:ConnectionProfile', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="connectionConfig")
     def connection_config(self) -> pulumi.Output['outputs.ConnectionProfileConnectionConfig']:

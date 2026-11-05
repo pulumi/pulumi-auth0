@@ -141,6 +141,12 @@ func (PromptScreenPartialsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*promptScreenPartialsState)(nil)).Elem()
 }
 
+// PromptScreenPartialsExists checks whether an existing PromptScreenPartials resource with the given ID exists.
+func PromptScreenPartialsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PromptScreenPartialsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/promptScreenPartials:PromptScreenPartials", id, state, "", opts...)
+}
+
 type promptScreenPartialsArgs struct {
 	// The prompt that you are adding partials for. Options are: `login-id`, `login`, `login-password`, `signup`, `signup-id`, `signup-password`, `login-passwordless`, `customized-consent`, `passkeys`, `confirmation`.
 	PromptType     string                              `pulumi:"promptType"`

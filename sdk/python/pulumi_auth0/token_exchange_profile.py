@@ -374,6 +374,24 @@ class TokenExchangeProfile(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         return TokenExchangeProfile(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            subject_token_type: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["actionId"] = action_id
+        __props__["createdAt"] = created_at
+        __props__["name"] = name
+        __props__["subjectTokenType"] = subject_token_type
+        __props__["type"] = type
+        __props__["updatedAt"] = updated_at
+        return pulumi.runtime.exists_resource(None, 'auth0:index/tokenExchangeProfile:TokenExchangeProfile', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="actionId")
     def action_id(self) -> pulumi.Output[Optional[_builtins.str]]:

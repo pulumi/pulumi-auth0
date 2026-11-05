@@ -70,12 +70,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         // This is an example of an Auth0 connection.
  *         var myConnection = new Connection("myConnection", ConnectionArgs.builder()
  *             .options(ConnectionOptionsArgs.builder()
@@ -127,9 +127,9 @@ import javax.annotation.Nullable;
  *                 .requiresUsername(true)
  *                 .disableSignup(false)
  *                 .customScripts(Map.of("get_user", """
- *         function getByEmail(email, callback) {
- *           return callback(new Error(\"Whoops!\"));
- *         }
+ *         function getByEmail(email, callback) }{{@code
+ *           return callback(new Error(}&#92;{@code "Whoops!}&#92;{@code "));
+ *         }}{@code
  *                 """))
  *                 .configuration(Map.ofEntries(
  *                     Map.entry("foo", "bar"),
@@ -177,8 +177,8 @@ import javax.annotation.Nullable;
  *             .optionsClientSecretWoVersion(1)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -567,12 +567,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         // This is an example of an OAuth2 connection.
  *         var oauth2 = new Connection("oauth2", ConnectionArgs.builder()
  *             .options(ConnectionOptionsArgs.builder()
@@ -597,9 +597,9 @@ import javax.annotation.Nullable;
  *                 .pkceEnabled(true)
  *                 .iconUrl("https://auth.example.com/assets/logo.png")
  *                 .scripts(Map.of("fetchUserProfile", """
- *         function fetchUserProfile(accessToken, context, callback) {
- *           return callback(new Error(\"Whoops!\"));
- *         }
+ *         function fetchUserProfile(accessToken, context, callback) }{{@code
+ *           return callback(new Error(}&#92;{@code "Whoops!}&#92;{@code "));
+ *         }}{@code
  *                 """))
  *                 .setUserRootAttributes("on_each_login")
  *                 .nonPersistentAttrs(                
@@ -610,8 +610,8 @@ import javax.annotation.Nullable;
  *             .strategy("oauth2")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -894,11 +894,11 @@ import javax.annotation.Nullable;
  *                 .iconUrl("https://saml.provider/assets/logo.png")
  *                 .entityId("<entity_id>")
  *                 .metadataXml("""
- *     <?xml version=\"1.0\"?>
- *     <md:EntityDescriptor xmlns:md=\"urn:oasis:names:tc:SAML:2.0:metadata\" xmlns:ds=\"http://www.w3.org/2000/09/xmldsig#\" entityID=\"https://example.com\">
- *       <md:IDPSSODescriptor protocolSupportEnumeration=\"urn:oasis:names:tc:SAML:2.0:protocol\">
- *         <md:SingleLogoutService Binding=\"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect\" Location=\"https://saml.provider/sign_out\"/>
- *         <md:SingleSignOnService Binding=\"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect\" Location=\"https://saml.provider/sign_in\"/>
+ *     <?xml version=}&#92;{@code "1.0}&#92;{@code "?>
+ *     <md:EntityDescriptor xmlns:md=}&#92;{@code "urn:oasis:names:tc:SAML:2.0:metadata}&#92;{@code " xmlns:ds=}&#92;{@code "http://www.w3.org/2000/09/xmldsig#}&#92;{@code " entityID=}&#92;{@code "https://example.com}&#92;{@code ">
+ *       <md:IDPSSODescriptor protocolSupportEnumeration=}&#92;{@code "urn:oasis:names:tc:SAML:2.0:protocol}&#92;{@code ">
+ *         <md:SingleLogoutService Binding=}&#92;{@code "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect}&#92;{@code " Location=}&#92;{@code "https://saml.provider/sign_out}&#92;{@code "/>
+ *         <md:SingleSignOnService Binding=}&#92;{@code "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect}&#92;{@code " Location=}&#92;{@code "https://saml.provider/sign_in}&#92;{@code "/>
  *       </md:IDPSSODescriptor>
  *     </md:EntityDescriptor>
  *                 """)

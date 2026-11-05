@@ -406,6 +406,24 @@ class ConnectionScimConfiguration(pulumi.CustomResource):
         __props__.__dict__["user_id_attribute"] = user_id_attribute
         return ConnectionScimConfiguration(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+            mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionScimConfigurationMappingArgs', 'ConnectionScimConfigurationMappingArgsDict', 'outputs.ConnectionScimConfigurationMapping']]]]] = None,
+            strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant_name: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id_attribute: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["connectionId"] = connection_id
+        __props__["connectionName"] = connection_name
+        __props__["mappings"] = mappings
+        __props__["strategy"] = strategy
+        __props__["tenantName"] = tenant_name
+        __props__["userIdAttribute"] = user_id_attribute
+        return pulumi.runtime.exists_resource(None, 'auth0:index/connectionScimConfiguration:ConnectionScimConfiguration', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> pulumi.Output[_builtins.str]:

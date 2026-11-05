@@ -511,6 +511,34 @@ class ConnectionDirectory(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         return ConnectionDirectory(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            last_synchronization_at: pulumi.Input[Optional[_builtins.str]] = None,
+            last_synchronization_error: pulumi.Input[Optional[_builtins.str]] = None,
+            last_synchronization_status: pulumi.Input[Optional[_builtins.str]] = None,
+            mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionDirectoryMappingArgs', 'ConnectionDirectoryMappingArgsDict', 'outputs.ConnectionDirectoryMapping']]]]] = None,
+            strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            synchronize_automatically: pulumi.Input[Optional[_builtins.bool]] = None,
+            synchronize_groups: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["connectionId"] = connection_id
+        __props__["connectionName"] = connection_name
+        __props__["createdAt"] = created_at
+        __props__["lastSynchronizationAt"] = last_synchronization_at
+        __props__["lastSynchronizationError"] = last_synchronization_error
+        __props__["lastSynchronizationStatus"] = last_synchronization_status
+        __props__["mappings"] = mappings
+        __props__["strategy"] = strategy
+        __props__["synchronizeAutomatically"] = synchronize_automatically
+        __props__["synchronizeGroups"] = synchronize_groups
+        __props__["updatedAt"] = updated_at
+        return pulumi.runtime.exists_resource(None, 'auth0:index/connectionDirectory:ConnectionDirectory', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> pulumi.Output[_builtins.str]:

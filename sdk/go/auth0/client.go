@@ -424,6 +424,12 @@ func (ClientState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clientState)(nil)).Elem()
 }
 
+// ClientExists checks whether an existing Client resource with the given ID exists.
+func ClientExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClientState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("auth0:index/client:Client", id, state, "", opts...)
+}
+
 type clientArgs struct {
 	// Addons enabled for this client and their associated configurations.
 	Addons *ClientAddons `pulumi:"addons"`

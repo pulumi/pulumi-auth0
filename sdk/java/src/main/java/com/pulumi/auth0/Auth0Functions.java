@@ -472,23 +472,23 @@ public final class Auth0Functions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         // Example: Retrieve a specific version of an action module
      *         // Create and publish an action module
      *         var myModule = new ActionModule("myModule", ActionModuleArgs.builder()
      *             .name("My Shared Module")
      *             .publish(true)
      *             .code("""
-     * module.exports = {
-     *   greet: function(name) {
-     *     return \"Hello, \" + name + \"!\";
-     *   }
-     * };
+     * module.exports = }{{@code
+     *   greet: function(name) }{{@code
+     *     return }&#92;{@code "Hello, }&#92;{@code " + name + }&#92;{@code "!}&#92;{@code ";
+     *   }}{@code
+     * }}{@code ;
      *             """)
      *             .build());
      * 
@@ -501,8 +501,8 @@ public final class Auth0Functions {
      *         ctx.export("versionNumber", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.versionNumber()));
      *         ctx.export("versionCode", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.code()));
      *         ctx.export("versionCreatedAt", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.createdAt()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -533,23 +533,23 @@ public final class Auth0Functions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         // Example: Retrieve a specific version of an action module
      *         // Create and publish an action module
      *         var myModule = new ActionModule("myModule", ActionModuleArgs.builder()
      *             .name("My Shared Module")
      *             .publish(true)
      *             .code("""
-     * module.exports = {
-     *   greet: function(name) {
-     *     return \"Hello, \" + name + \"!\";
-     *   }
-     * };
+     * module.exports = }{{@code
+     *   greet: function(name) }{{@code
+     *     return }&#92;{@code "Hello, }&#92;{@code " + name + }&#92;{@code "!}&#92;{@code ";
+     *   }}{@code
+     * }}{@code ;
      *             """)
      *             .build());
      * 
@@ -562,8 +562,8 @@ public final class Auth0Functions {
      *         ctx.export("versionNumber", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.versionNumber()));
      *         ctx.export("versionCode", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.code()));
      *         ctx.export("versionCreatedAt", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.createdAt()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -594,23 +594,23 @@ public final class Auth0Functions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         // Example: Retrieve a specific version of an action module
      *         // Create and publish an action module
      *         var myModule = new ActionModule("myModule", ActionModuleArgs.builder()
      *             .name("My Shared Module")
      *             .publish(true)
      *             .code("""
-     * module.exports = {
-     *   greet: function(name) {
-     *     return \"Hello, \" + name + \"!\";
-     *   }
-     * };
+     * module.exports = }{{@code
+     *   greet: function(name) }{{@code
+     *     return }&#92;{@code "Hello, }&#92;{@code " + name + }&#92;{@code "!}&#92;{@code ";
+     *   }}{@code
+     * }}{@code ;
      *             """)
      *             .build());
      * 
@@ -623,8 +623,8 @@ public final class Auth0Functions {
      *         ctx.export("versionNumber", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.versionNumber()));
      *         ctx.export("versionCode", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.code()));
      *         ctx.export("versionCreatedAt", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.createdAt()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -655,23 +655,23 @@ public final class Auth0Functions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         // Example: Retrieve a specific version of an action module
      *         // Create and publish an action module
      *         var myModule = new ActionModule("myModule", ActionModuleArgs.builder()
      *             .name("My Shared Module")
      *             .publish(true)
      *             .code("""
-     * module.exports = {
-     *   greet: function(name) {
-     *     return \"Hello, \" + name + \"!\";
-     *   }
-     * };
+     * module.exports = }{{@code
+     *   greet: function(name) }{{@code
+     *     return }&#92;{@code "Hello, }&#92;{@code " + name + }&#92;{@code "!}&#92;{@code ";
+     *   }}{@code
+     * }}{@code ;
      *             """)
      *             .build());
      * 
@@ -684,8 +684,8 @@ public final class Auth0Functions {
      *         ctx.export("versionNumber", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.versionNumber()));
      *         ctx.export("versionCode", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.code()));
      *         ctx.export("versionCreatedAt", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.createdAt()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -716,23 +716,23 @@ public final class Auth0Functions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         // Example: Retrieve a specific version of an action module
      *         // Create and publish an action module
      *         var myModule = new ActionModule("myModule", ActionModuleArgs.builder()
      *             .name("My Shared Module")
      *             .publish(true)
      *             .code("""
-     * module.exports = {
-     *   greet: function(name) {
-     *     return \"Hello, \" + name + \"!\";
-     *   }
-     * };
+     * module.exports = }{{@code
+     *   greet: function(name) }{{@code
+     *     return }&#92;{@code "Hello, }&#92;{@code " + name + }&#92;{@code "!}&#92;{@code ";
+     *   }}{@code
+     * }}{@code ;
      *             """)
      *             .build());
      * 
@@ -745,8 +745,8 @@ public final class Auth0Functions {
      *         ctx.export("versionNumber", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.versionNumber()));
      *         ctx.export("versionCode", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.code()));
      *         ctx.export("versionCreatedAt", myModuleVersion.applyValue(_myModuleVersion -> _myModuleVersion.createdAt()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 

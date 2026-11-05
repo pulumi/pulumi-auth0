@@ -632,6 +632,28 @@ class Form(pulumi.CustomResource):
         __props__.__dict__["translations"] = translations
         return Form(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ending: pulumi.Input[Optional[_builtins.str]] = None,
+            languages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FormLanguageArgs', 'FormLanguageArgsDict', 'outputs.FormLanguage']]]]] = None,
+            messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FormMessageArgs', 'FormMessageArgsDict', 'outputs.FormMessage']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            nodes: pulumi.Input[Optional[_builtins.str]] = None,
+            start: pulumi.Input[Optional[_builtins.str]] = None,
+            style: pulumi.Input[Optional[_builtins.str]] = None,
+            translations: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["ending"] = ending
+        __props__["languages"] = languages
+        __props__["messages"] = messages
+        __props__["name"] = name
+        __props__["nodes"] = nodes
+        __props__["start"] = start
+        __props__["style"] = style
+        __props__["translations"] = translations
+        return pulumi.runtime.exists_resource(None, 'auth0:index/form:Form', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def ending(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -302,6 +302,20 @@ class UserRole(pulumi.CustomResource):
         __props__.__dict__["user_id"] = user_id
         return UserRole(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            role_description: pulumi.Input[Optional[_builtins.str]] = None,
+            role_id: pulumi.Input[Optional[_builtins.str]] = None,
+            role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["roleDescription"] = role_description
+        __props__["roleId"] = role_id
+        __props__["roleName"] = role_name
+        __props__["userId"] = user_id
+        return pulumi.runtime.exists_resource(None, 'auth0:index/userRole:UserRole', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="roleDescription")
     def role_description(self) -> pulumi.Output[_builtins.str]:
