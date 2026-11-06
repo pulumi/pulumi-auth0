@@ -30,6 +30,10 @@ import * as utilities from "./utilities";
  * const firstPartyApps = auth0.getClients({
  *     isFirstParty: true,
  * });
+ * // Find CIMD clients by their metadata document URL.
+ * const cimdApps = auth0.getClients({
+ *     externalClientId: "https://mcp-agent.example.com/oauth/metadata.json",
+ * });
  * ```
  */
 export function getClients(args?: GetClientsArgs, opts?: pulumi.InvokeOptions): Promise<GetClientsResult> {
@@ -126,6 +130,10 @@ export interface GetClientsResult {
  * // Auth0 clients filtered by is_first_party equal to true
  * const firstPartyApps = auth0.getClients({
  *     isFirstParty: true,
+ * });
+ * // Find CIMD clients by their metadata document URL.
+ * const cimdApps = auth0.getClients({
+ *     externalClientId: "https://mcp-agent.example.com/oauth/metadata.json",
  * });
  * ```
  */

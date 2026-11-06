@@ -92,6 +92,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly ImmutableArray<string> AllowedLogoutUrls;
         /// <summary>
+        /// Whether the authorization server supports registering clients dynamically from a `ClientId` URL (EA only). Requires `ClientIdMetadataDocumentSupported` to be enabled.
+        /// </summary>
+        public readonly bool ClientIdMetadataDocumentDynamicRegistrationSupported;
+        /// <summary>
         /// Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
         /// </summary>
         public readonly bool ClientIdMetadataDocumentSupported;
@@ -228,6 +232,8 @@ namespace Pulumi.Auth0
 
             ImmutableArray<string> allowedLogoutUrls,
 
+            bool clientIdMetadataDocumentDynamicRegistrationSupported,
+
             bool clientIdMetadataDocumentSupported,
 
             ImmutableArray<Outputs.GetTenantCountryCodeResult> countryCodes,
@@ -295,6 +301,7 @@ namespace Pulumi.Auth0
             AcrValuesSupporteds = acrValuesSupporteds;
             AllowOrganizationNameInAuthenticationApi = allowOrganizationNameInAuthenticationApi;
             AllowedLogoutUrls = allowedLogoutUrls;
+            ClientIdMetadataDocumentDynamicRegistrationSupported = clientIdMetadataDocumentDynamicRegistrationSupported;
             ClientIdMetadataDocumentSupported = clientIdMetadataDocumentSupported;
             CountryCodes = countryCodes;
             CustomizeMfaInPostloginAction = customizeMfaInPostloginAction;

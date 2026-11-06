@@ -37,6 +37,11 @@ public final class GetTenantResult {
      */
     private List<String> allowedLogoutUrls;
     /**
+     * @return Whether the authorization server supports registering clients dynamically from a `clientId` URL (EA only). Requires `clientIdMetadataDocumentSupported` to be enabled.
+     * 
+     */
+    private Boolean clientIdMetadataDocumentDynamicRegistrationSupported;
+    /**
      * @return Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
      * 
      */
@@ -218,6 +223,13 @@ public final class GetTenantResult {
      */
     public List<String> allowedLogoutUrls() {
         return this.allowedLogoutUrls;
+    }
+    /**
+     * @return Whether the authorization server supports registering clients dynamically from a `clientId` URL (EA only). Requires `clientIdMetadataDocumentSupported` to be enabled.
+     * 
+     */
+    public Boolean clientIdMetadataDocumentDynamicRegistrationSupported() {
+        return this.clientIdMetadataDocumentDynamicRegistrationSupported;
     }
     /**
      * @return Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
@@ -456,6 +468,7 @@ public final class GetTenantResult {
         private List<String> acrValuesSupporteds;
         private Boolean allowOrganizationNameInAuthenticationApi;
         private List<String> allowedLogoutUrls;
+        private Boolean clientIdMetadataDocumentDynamicRegistrationSupported;
         private Boolean clientIdMetadataDocumentSupported;
         private List<GetTenantCountryCode> countryCodes;
         private Boolean customizeMfaInPostloginAction;
@@ -494,6 +507,7 @@ public final class GetTenantResult {
     	      this.acrValuesSupporteds = defaults.acrValuesSupporteds;
     	      this.allowOrganizationNameInAuthenticationApi = defaults.allowOrganizationNameInAuthenticationApi;
     	      this.allowedLogoutUrls = defaults.allowedLogoutUrls;
+    	      this.clientIdMetadataDocumentDynamicRegistrationSupported = defaults.clientIdMetadataDocumentDynamicRegistrationSupported;
     	      this.clientIdMetadataDocumentSupported = defaults.clientIdMetadataDocumentSupported;
     	      this.countryCodes = defaults.countryCodes;
     	      this.customizeMfaInPostloginAction = defaults.customizeMfaInPostloginAction;
@@ -557,6 +571,14 @@ public final class GetTenantResult {
         }
         public Builder allowedLogoutUrls(String... allowedLogoutUrls) {
             return allowedLogoutUrls(List.of(allowedLogoutUrls));
+        }
+        @CustomType.Setter
+        public Builder clientIdMetadataDocumentDynamicRegistrationSupported(Boolean clientIdMetadataDocumentDynamicRegistrationSupported) {
+            if (clientIdMetadataDocumentDynamicRegistrationSupported == null) {
+              throw new MissingRequiredPropertyException("GetTenantResult", "clientIdMetadataDocumentDynamicRegistrationSupported");
+            }
+            this.clientIdMetadataDocumentDynamicRegistrationSupported = clientIdMetadataDocumentDynamicRegistrationSupported;
+            return this;
         }
         @CustomType.Setter
         public Builder clientIdMetadataDocumentSupported(Boolean clientIdMetadataDocumentSupported) {
@@ -846,6 +868,7 @@ public final class GetTenantResult {
             _resultValue.acrValuesSupporteds = acrValuesSupporteds;
             _resultValue.allowOrganizationNameInAuthenticationApi = allowOrganizationNameInAuthenticationApi;
             _resultValue.allowedLogoutUrls = allowedLogoutUrls;
+            _resultValue.clientIdMetadataDocumentDynamicRegistrationSupported = clientIdMetadataDocumentDynamicRegistrationSupported;
             _resultValue.clientIdMetadataDocumentSupported = clientIdMetadataDocumentSupported;
             _resultValue.countryCodes = countryCodes;
             _resultValue.customizeMfaInPostloginAction = customizeMfaInPostloginAction;

@@ -54,6 +54,8 @@ type LookupTenantResult struct {
 	AllowOrganizationNameInAuthenticationApi bool `pulumi:"allowOrganizationNameInAuthenticationApi"`
 	// URLs that Auth0 may redirect to after logout.
 	AllowedLogoutUrls []string `pulumi:"allowedLogoutUrls"`
+	// Whether the authorization server supports registering clients dynamically from a `clientId` URL (EA only). Requires `clientIdMetadataDocumentSupported` to be enabled.
+	ClientIdMetadataDocumentDynamicRegistrationSupported bool `pulumi:"clientIdMetadataDocumentDynamicRegistrationSupported"`
 	// Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
 	ClientIdMetadataDocumentSupported bool `pulumi:"clientIdMetadataDocumentSupported"`
 	// Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
@@ -153,6 +155,11 @@ func (o LookupTenantResultOutput) AllowOrganizationNameInAuthenticationApi() pul
 // URLs that Auth0 may redirect to after logout.
 func (o LookupTenantResultOutput) AllowedLogoutUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupTenantResult) []string { return v.AllowedLogoutUrls }).(pulumi.StringArrayOutput)
+}
+
+// Whether the authorization server supports registering clients dynamically from a `clientId` URL (EA only). Requires `clientIdMetadataDocumentSupported` to be enabled.
+func (o LookupTenantResultOutput) ClientIdMetadataDocumentDynamicRegistrationSupported() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupTenantResult) bool { return v.ClientIdMetadataDocumentDynamicRegistrationSupported }).(pulumi.BoolOutput)
 }
 
 // Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.

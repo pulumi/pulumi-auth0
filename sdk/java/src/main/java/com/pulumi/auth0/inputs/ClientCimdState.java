@@ -40,14 +40,14 @@ public final class ClientCimdState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`.
+     * Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
      * 
      */
     @Import(name="appType")
     private @Nullable Output<String> appType;
 
     /**
-     * @return Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`.
+     * @return Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
      * 
      */
     public Optional<Output<String>> appType() {
@@ -115,14 +115,14 @@ public final class ClientCimdState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of the purpose of the client.
+     * Description of the purpose of the client. Once set, removing this argument from configuration does not clear it. For admin-registered clients, set `description = &#34;&#34;` to clear it. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the purpose of the client.
+     * @return Description of the purpose of the client. Once set, removing this argument from configuration does not clear it. For admin-registered clients, set `description = &#34;&#34;` to clear it. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
      * 
      */
     public Optional<Output<String>> description() {
@@ -145,14 +145,14 @@ public final class ClientCimdState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.
+     * Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document. Only applies to clients with `externalMetadataCreatedBy` set to `admin`.
      * 
      */
     @Import(name="externalClientIdVersion")
     private @Nullable Output<Integer> externalClientIdVersion;
 
     /**
-     * @return Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.
+     * @return Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document. Only applies to clients with `externalMetadataCreatedBy` set to `admin`.
      * 
      */
     public Optional<Output<Integer>> externalClientIdVersion() {
@@ -160,18 +160,33 @@ public final class ClientCimdState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Who created the external metadata client: `admin` (via Management API) or `client` (self-registered).
+     * Who created the external metadata client: `admin` (via Management API) or `client` (dynamically self-registered). Read-only; available in Terraform state after import, not in generated configuration.
      * 
      */
     @Import(name="externalMetadataCreatedBy")
     private @Nullable Output<String> externalMetadataCreatedBy;
 
     /**
-     * @return Who created the external metadata client: `admin` (via Management API) or `client` (self-registered).
+     * @return Who created the external metadata client: `admin` (via Management API) or `client` (dynamically self-registered). Read-only; available in Terraform state after import, not in generated configuration.
      * 
      */
     public Optional<Output<String>> externalMetadataCreatedBy() {
         return Optional.ofNullable(this.externalMetadataCreatedBy);
+    }
+
+    /**
+     * Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only).
+     * 
+     */
+    @Import(name="externalMetadataStatus")
+    private @Nullable Output<String> externalMetadataStatus;
+
+    /**
+     * @return Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only).
+     * 
+     */
+    public Optional<Output<String>> externalMetadataStatus() {
+        return Optional.ofNullable(this.externalMetadataStatus);
     }
 
     /**
@@ -190,14 +205,14 @@ public final class ClientCimdState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`.
+     * Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
      * 
      */
     @Import(name="grantTypes")
     private @Nullable Output<List<String>> grantTypes;
 
     /**
-     * @return Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`.
+     * @return Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
      * 
      */
     public Optional<Output<List<String>>> grantTypes() {
@@ -307,6 +322,36 @@ public final class ClientCimdState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<String>>> organizationDiscoveryMethods() {
         return Optional.ofNullable(this.organizationDiscoveryMethods);
+    }
+
+    /**
+     * Defines how to proceed during an authentication transaction when `organizationUsage = &#34;require&#34;`. Can be `noPrompt` (default), `preLoginPrompt` or `postLoginPrompt`.
+     * 
+     */
+    @Import(name="organizationRequireBehavior")
+    private @Nullable Output<String> organizationRequireBehavior;
+
+    /**
+     * @return Defines how to proceed during an authentication transaction when `organizationUsage = &#34;require&#34;`. Can be `noPrompt` (default), `preLoginPrompt` or `postLoginPrompt`.
+     * 
+     */
+    public Optional<Output<String>> organizationRequireBehavior() {
+        return Optional.ofNullable(this.organizationRequireBehavior);
+    }
+
+    /**
+     * Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+     * 
+     */
+    @Import(name="organizationUsage")
+    private @Nullable Output<String> organizationUsage;
+
+    /**
+     * @return Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+     * 
+     */
+    public Optional<Output<String>> organizationUsage() {
+        return Optional.ofNullable(this.organizationUsage);
     }
 
     /**
@@ -457,6 +502,7 @@ public final class ClientCimdState extends com.pulumi.resources.ResourceArgs {
         this.externalClientId = $.externalClientId;
         this.externalClientIdVersion = $.externalClientIdVersion;
         this.externalMetadataCreatedBy = $.externalMetadataCreatedBy;
+        this.externalMetadataStatus = $.externalMetadataStatus;
         this.externalMetadataType = $.externalMetadataType;
         this.grantTypes = $.grantTypes;
         this.isFirstParty = $.isFirstParty;
@@ -466,6 +512,8 @@ public final class ClientCimdState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.oidcConformant = $.oidcConformant;
         this.organizationDiscoveryMethods = $.organizationDiscoveryMethods;
+        this.organizationRequireBehavior = $.organizationRequireBehavior;
+        this.organizationUsage = $.organizationUsage;
         this.redirectionPolicy = $.redirectionPolicy;
         this.refreshToken = $.refreshToken;
         this.requireProofOfPossession = $.requireProofOfPossession;
@@ -527,7 +575,7 @@ public final class ClientCimdState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appType Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`.
+         * @param appType Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
          * 
          * @return builder
          * 
@@ -538,7 +586,7 @@ public final class ClientCimdState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appType Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`.
+         * @param appType Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
          * 
          * @return builder
          * 
@@ -642,7 +690,7 @@ public final class ClientCimdState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the purpose of the client.
+         * @param description Description of the purpose of the client. Once set, removing this argument from configuration does not clear it. For admin-registered clients, set `description = &#34;&#34;` to clear it. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
          * 
          * @return builder
          * 
@@ -653,7 +701,7 @@ public final class ClientCimdState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the purpose of the client.
+         * @param description Description of the purpose of the client. Once set, removing this argument from configuration does not clear it. For admin-registered clients, set `description = &#34;&#34;` to clear it. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
          * 
          * @return builder
          * 
@@ -684,7 +732,7 @@ public final class ClientCimdState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalClientIdVersion Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.
+         * @param externalClientIdVersion Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document. Only applies to clients with `externalMetadataCreatedBy` set to `admin`.
          * 
          * @return builder
          * 
@@ -695,7 +743,7 @@ public final class ClientCimdState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalClientIdVersion Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.
+         * @param externalClientIdVersion Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document. Only applies to clients with `externalMetadataCreatedBy` set to `admin`.
          * 
          * @return builder
          * 
@@ -705,7 +753,7 @@ public final class ClientCimdState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalMetadataCreatedBy Who created the external metadata client: `admin` (via Management API) or `client` (self-registered).
+         * @param externalMetadataCreatedBy Who created the external metadata client: `admin` (via Management API) or `client` (dynamically self-registered). Read-only; available in Terraform state after import, not in generated configuration.
          * 
          * @return builder
          * 
@@ -716,13 +764,34 @@ public final class ClientCimdState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalMetadataCreatedBy Who created the external metadata client: `admin` (via Management API) or `client` (self-registered).
+         * @param externalMetadataCreatedBy Who created the external metadata client: `admin` (via Management API) or `client` (dynamically self-registered). Read-only; available in Terraform state after import, not in generated configuration.
          * 
          * @return builder
          * 
          */
         public Builder externalMetadataCreatedBy(String externalMetadataCreatedBy) {
             return externalMetadataCreatedBy(Output.of(externalMetadataCreatedBy));
+        }
+
+        /**
+         * @param externalMetadataStatus Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalMetadataStatus(@Nullable Output<String> externalMetadataStatus) {
+            $.externalMetadataStatus = externalMetadataStatus;
+            return this;
+        }
+
+        /**
+         * @param externalMetadataStatus Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalMetadataStatus(String externalMetadataStatus) {
+            return externalMetadataStatus(Output.of(externalMetadataStatus));
         }
 
         /**
@@ -747,7 +816,7 @@ public final class ClientCimdState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param grantTypes Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`.
+         * @param grantTypes Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
          * 
          * @return builder
          * 
@@ -758,7 +827,7 @@ public final class ClientCimdState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param grantTypes Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`.
+         * @param grantTypes Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
          * 
          * @return builder
          * 
@@ -768,7 +837,7 @@ public final class ClientCimdState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param grantTypes Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`.
+         * @param grantTypes Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
          * 
          * @return builder
          * 
@@ -932,6 +1001,48 @@ public final class ClientCimdState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder organizationDiscoveryMethods(String... organizationDiscoveryMethods) {
             return organizationDiscoveryMethods(List.of(organizationDiscoveryMethods));
+        }
+
+        /**
+         * @param organizationRequireBehavior Defines how to proceed during an authentication transaction when `organizationUsage = &#34;require&#34;`. Can be `noPrompt` (default), `preLoginPrompt` or `postLoginPrompt`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder organizationRequireBehavior(@Nullable Output<String> organizationRequireBehavior) {
+            $.organizationRequireBehavior = organizationRequireBehavior;
+            return this;
+        }
+
+        /**
+         * @param organizationRequireBehavior Defines how to proceed during an authentication transaction when `organizationUsage = &#34;require&#34;`. Can be `noPrompt` (default), `preLoginPrompt` or `postLoginPrompt`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder organizationRequireBehavior(String organizationRequireBehavior) {
+            return organizationRequireBehavior(Output.of(organizationRequireBehavior));
+        }
+
+        /**
+         * @param organizationUsage Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder organizationUsage(@Nullable Output<String> organizationUsage) {
+            $.organizationUsage = organizationUsage;
+            return this;
+        }
+
+        /**
+         * @param organizationUsage Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder organizationUsage(String organizationUsage) {
+            return organizationUsage(Output.of(organizationUsage));
         }
 
         /**

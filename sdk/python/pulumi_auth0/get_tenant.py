@@ -27,7 +27,7 @@ class GetTenantResult:
     """
     A collection of values returned by getTenant.
     """
-    def __init__(__self__, acr_values_supporteds=None, allow_organization_name_in_authentication_api=None, allowed_logout_urls=None, client_id_metadata_document_supported=None, country_codes=None, customize_mfa_in_postlogin_action=None, default_audience=None, default_directory=None, default_redirection_uri=None, default_token_quotas=None, disable_acr_values_supported=None, domain=None, dynamic_client_registration_security_mode=None, enabled_locales=None, ephemeral_session_lifetime=None, error_pages=None, flags=None, friendly_name=None, id=None, idle_ephemeral_session_lifetime=None, idle_session_lifetime=None, management_api_identifier=None, mtls=None, oidc_logouts=None, phone_consolidated_experience=None, picture_url=None, pushed_authorization_requests_supported=None, resource_parameter_profile=None, sandbox_version=None, session_cookies=None, session_lifetime=None, sessions=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, support_email=None, support_url=None):
+    def __init__(__self__, acr_values_supporteds=None, allow_organization_name_in_authentication_api=None, allowed_logout_urls=None, client_id_metadata_document_dynamic_registration_supported=None, client_id_metadata_document_supported=None, country_codes=None, customize_mfa_in_postlogin_action=None, default_audience=None, default_directory=None, default_redirection_uri=None, default_token_quotas=None, disable_acr_values_supported=None, domain=None, dynamic_client_registration_security_mode=None, enabled_locales=None, ephemeral_session_lifetime=None, error_pages=None, flags=None, friendly_name=None, id=None, idle_ephemeral_session_lifetime=None, idle_session_lifetime=None, management_api_identifier=None, mtls=None, oidc_logouts=None, phone_consolidated_experience=None, picture_url=None, pushed_authorization_requests_supported=None, resource_parameter_profile=None, sandbox_version=None, session_cookies=None, session_lifetime=None, sessions=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, support_email=None, support_url=None):
         if acr_values_supporteds and not isinstance(acr_values_supporteds, list):
             raise TypeError("Expected argument 'acr_values_supporteds' to be a list")
         pulumi.set(__self__, "acr_values_supporteds", acr_values_supporteds)
@@ -37,6 +37,9 @@ class GetTenantResult:
         if allowed_logout_urls and not isinstance(allowed_logout_urls, list):
             raise TypeError("Expected argument 'allowed_logout_urls' to be a list")
         pulumi.set(__self__, "allowed_logout_urls", allowed_logout_urls)
+        if client_id_metadata_document_dynamic_registration_supported and not isinstance(client_id_metadata_document_dynamic_registration_supported, bool):
+            raise TypeError("Expected argument 'client_id_metadata_document_dynamic_registration_supported' to be a bool")
+        pulumi.set(__self__, "client_id_metadata_document_dynamic_registration_supported", client_id_metadata_document_dynamic_registration_supported)
         if client_id_metadata_document_supported and not isinstance(client_id_metadata_document_supported, bool):
             raise TypeError("Expected argument 'client_id_metadata_document_supported' to be a bool")
         pulumi.set(__self__, "client_id_metadata_document_supported", client_id_metadata_document_supported)
@@ -157,6 +160,14 @@ class GetTenantResult:
         URLs that Auth0 may redirect to after logout.
         """
         return pulumi.get(self, "allowed_logout_urls")
+
+    @_builtins.property
+    @pulumi.getter(name="clientIdMetadataDocumentDynamicRegistrationSupported")
+    def client_id_metadata_document_dynamic_registration_supported(self) -> _builtins.bool:
+        """
+        Whether the authorization server supports registering clients dynamically from a `client_id` URL (EA only). Requires `client_id_metadata_document_supported` to be enabled.
+        """
+        return pulumi.get(self, "client_id_metadata_document_dynamic_registration_supported")
 
     @_builtins.property
     @pulumi.getter(name="clientIdMetadataDocumentSupported")
@@ -424,6 +435,7 @@ class AwaitableGetTenantResult(GetTenantResult):
             acr_values_supporteds=self.acr_values_supporteds,
             allow_organization_name_in_authentication_api=self.allow_organization_name_in_authentication_api,
             allowed_logout_urls=self.allowed_logout_urls,
+            client_id_metadata_document_dynamic_registration_supported=self.client_id_metadata_document_dynamic_registration_supported,
             client_id_metadata_document_supported=self.client_id_metadata_document_supported,
             country_codes=self.country_codes,
             customize_mfa_in_postlogin_action=self.customize_mfa_in_postlogin_action,
@@ -479,6 +491,7 @@ def get_tenant(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTenan
         acr_values_supporteds=pulumi.get(__ret__, 'acr_values_supporteds'),
         allow_organization_name_in_authentication_api=pulumi.get(__ret__, 'allow_organization_name_in_authentication_api'),
         allowed_logout_urls=pulumi.get(__ret__, 'allowed_logout_urls'),
+        client_id_metadata_document_dynamic_registration_supported=pulumi.get(__ret__, 'client_id_metadata_document_dynamic_registration_supported'),
         client_id_metadata_document_supported=pulumi.get(__ret__, 'client_id_metadata_document_supported'),
         country_codes=pulumi.get(__ret__, 'country_codes'),
         customize_mfa_in_postlogin_action=pulumi.get(__ret__, 'customize_mfa_in_postlogin_action'),
@@ -531,6 +544,7 @@ def get_tenant_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOu
         acr_values_supporteds=pulumi.get(__response__, 'acr_values_supporteds'),
         allow_organization_name_in_authentication_api=pulumi.get(__response__, 'allow_organization_name_in_authentication_api'),
         allowed_logout_urls=pulumi.get(__response__, 'allowed_logout_urls'),
+        client_id_metadata_document_dynamic_registration_supported=pulumi.get(__response__, 'client_id_metadata_document_dynamic_registration_supported'),
         client_id_metadata_document_supported=pulumi.get(__response__, 'client_id_metadata_document_supported'),
         country_codes=pulumi.get(__response__, 'country_codes'),
         customize_mfa_in_postlogin_action=pulumi.get(__response__, 'customize_mfa_in_postlogin_action'),

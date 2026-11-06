@@ -126,6 +126,10 @@ export class Tenant extends pulumi.CustomResource {
      */
     declare public readonly allowedLogoutUrls: pulumi.Output<string[]>;
     /**
+     * Whether the authorization server supports registering clients dynamically from a `clientId` URL (EA only). Requires `clientIdMetadataDocumentSupported` to be enabled.
+     */
+    declare public readonly clientIdMetadataDocumentDynamicRegistrationSupported: pulumi.Output<boolean>;
+    /**
      * Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
      */
     declare public readonly clientIdMetadataDocumentSupported: pulumi.Output<boolean>;
@@ -258,6 +262,7 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["acrValuesSupporteds"] = state?.acrValuesSupporteds;
             resourceInputs["allowOrganizationNameInAuthenticationApi"] = state?.allowOrganizationNameInAuthenticationApi;
             resourceInputs["allowedLogoutUrls"] = state?.allowedLogoutUrls;
+            resourceInputs["clientIdMetadataDocumentDynamicRegistrationSupported"] = state?.clientIdMetadataDocumentDynamicRegistrationSupported;
             resourceInputs["clientIdMetadataDocumentSupported"] = state?.clientIdMetadataDocumentSupported;
             resourceInputs["countryCodes"] = state?.countryCodes;
             resourceInputs["customizeMfaInPostloginAction"] = state?.customizeMfaInPostloginAction;
@@ -292,6 +297,7 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["acrValuesSupporteds"] = args?.acrValuesSupporteds;
             resourceInputs["allowOrganizationNameInAuthenticationApi"] = args?.allowOrganizationNameInAuthenticationApi;
             resourceInputs["allowedLogoutUrls"] = args?.allowedLogoutUrls;
+            resourceInputs["clientIdMetadataDocumentDynamicRegistrationSupported"] = args?.clientIdMetadataDocumentDynamicRegistrationSupported;
             resourceInputs["clientIdMetadataDocumentSupported"] = args?.clientIdMetadataDocumentSupported;
             resourceInputs["countryCodes"] = args?.countryCodes;
             resourceInputs["customizeMfaInPostloginAction"] = args?.customizeMfaInPostloginAction;
@@ -343,6 +349,10 @@ export interface TenantState {
      * URLs that Auth0 may redirect to after logout.
      */
     allowedLogoutUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether the authorization server supports registering clients dynamically from a `clientId` URL (EA only). Requires `clientIdMetadataDocumentSupported` to be enabled.
+     */
+    clientIdMetadataDocumentDynamicRegistrationSupported?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
      */
@@ -477,6 +487,10 @@ export interface TenantArgs {
      * URLs that Auth0 may redirect to after logout.
      */
     allowedLogoutUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether the authorization server supports registering clients dynamically from a `clientId` URL (EA only). Requires `clientIdMetadataDocumentSupported` to be enabled.
+     */
+    clientIdMetadataDocumentDynamicRegistrationSupported?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
      */

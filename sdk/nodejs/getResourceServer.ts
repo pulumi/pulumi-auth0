@@ -157,6 +157,10 @@ export interface GetResourceServerResult {
      */
     readonly tokenLifetimeForWeb: number;
     /**
+     * Type of the resource server. Only `universalCommerceProtocolServer` is supported, and only one typed resource server is allowed per tenant. Removing this attribute clears the type on the API, which requires that any `dev.ucp` scopes on the resource server are removed first. If they are still present, the apply warns and keeps the type; apply again once the scopes are gone. (EA only).
+     */
+    readonly type: string;
+    /**
      * URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
      */
     readonly verificationLocation: string;

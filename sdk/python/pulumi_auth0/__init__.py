@@ -16,6 +16,7 @@ from .client import *
 from .client_cimd import *
 from .client_credentials import *
 from .client_grant import *
+from .client_profile import *
 from .connection import *
 from .connection_client import *
 from .connection_clients import *
@@ -32,6 +33,9 @@ from .email_provider import *
 from .email_template import *
 from .encryption_key_manager import *
 from .event_stream import *
+from .experiment import *
+from .experiment_feature_flag import *
+from .experiment_segment import *
 from .flow import *
 from .flow_vault_connection import *
 from .form import *
@@ -47,6 +51,7 @@ from .get_branding_theme import *
 from .get_client import *
 from .get_client_grant_organizations import *
 from .get_client_grants import *
+from .get_client_profile import *
 from .get_clients import *
 from .get_connection import *
 from .get_connection_directory import *
@@ -58,6 +63,9 @@ from .get_connection_scim_configuration import *
 from .get_custom_domain import *
 from .get_custom_domains import *
 from .get_event_stream import *
+from .get_experiment import *
+from .get_experiment_feature_flag import *
+from .get_experiment_segment import *
 from .get_flow import *
 from .get_flow_vault_connection import *
 from .get_form import *
@@ -233,6 +241,14 @@ _utilities.register(
  },
  {
   "pkg": "auth0",
+  "mod": "index/clientProfile",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/clientProfile:ClientProfile": "ClientProfile"
+  }
+ },
+ {
+  "pkg": "auth0",
   "mod": "index/connection",
   "fqn": "pulumi_auth0",
   "classes": {
@@ -357,6 +373,30 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/eventStream:EventStream": "EventStream"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/experiment",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/experiment:Experiment": "Experiment"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/experimentFeatureFlag",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/experimentFeatureFlag:ExperimentFeatureFlag": "ExperimentFeatureFlag"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/experimentSegment",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/experimentSegment:ExperimentSegment": "ExperimentSegment"
   }
  },
  {

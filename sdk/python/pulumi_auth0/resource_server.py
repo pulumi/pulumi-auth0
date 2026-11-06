@@ -42,6 +42,7 @@ class ResourceServerArgs:
                  token_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
                  token_lifetime_for_anonymous_access_tokens: pulumi.Input[Optional[_builtins.int]] = None,
                  token_lifetime_for_web: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  verification_location: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ResourceServer resource.
@@ -67,6 +68,7 @@ class ResourceServerArgs:
         :param pulumi.Input[_builtins.int] token_lifetime: Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
         :param pulumi.Input[_builtins.int] token_lifetime_for_anonymous_access_tokens: Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Must be between 86400 (1 day) and 2592000 (30 days) when present. Removing this attribute clears the value on the API. (EA only)
         :param pulumi.Input[_builtins.int] token_lifetime_for_web: Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
+        :param pulumi.Input[_builtins.str] type: Type of the resource server. Only `universal_commerce_protocol_server` is supported, and only one typed resource server is allowed per tenant. Removing this attribute clears the type on the API, which requires that any `dev.ucp` scopes on the resource server are removed first. If they are still present, the apply warns and keeps the type; apply again once the scopes are gone. (EA only).
         :param pulumi.Input[_builtins.str] verification_location: URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
         """
         pulumi.set(__self__, "identifier", identifier)
@@ -110,6 +112,8 @@ class ResourceServerArgs:
             pulumi.set(__self__, "token_lifetime_for_anonymous_access_tokens", token_lifetime_for_anonymous_access_tokens)
         if token_lifetime_for_web is not None:
             pulumi.set(__self__, "token_lifetime_for_web", token_lifetime_for_web)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
         if verification_location is not None:
             pulumi.set(__self__, "verification_location", verification_location)
 
@@ -366,6 +370,18 @@ class ResourceServerArgs:
         pulumi.set(self, "token_lifetime_for_web", value)
 
     @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Type of the resource server. Only `universal_commerce_protocol_server` is supported, and only one typed resource server is allowed per tenant. Removing this attribute clears the type on the API, which requires that any `dev.ucp` scopes on the resource server are removed first. If they are still present, the apply warns and keeps the type; apply again once the scopes are gone. (EA only).
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
     @pulumi.getter(name="verificationLocation")
     def verification_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -404,6 +420,7 @@ class _ResourceServerState:
                  token_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
                  token_lifetime_for_anonymous_access_tokens: pulumi.Input[Optional[_builtins.int]] = None,
                  token_lifetime_for_web: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  verification_location: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ResourceServer resources.
@@ -431,6 +448,7 @@ class _ResourceServerState:
         :param pulumi.Input[_builtins.int] token_lifetime: Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
         :param pulumi.Input[_builtins.int] token_lifetime_for_anonymous_access_tokens: Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Must be between 86400 (1 day) and 2592000 (30 days) when present. Removing this attribute clears the value on the API. (EA only)
         :param pulumi.Input[_builtins.int] token_lifetime_for_web: Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
+        :param pulumi.Input[_builtins.str] type: Type of the resource server. Only `universal_commerce_protocol_server` is supported, and only one typed resource server is allowed per tenant. Removing this attribute clears the type on the API, which requires that any `dev.ucp` scopes on the resource server are removed first. If they are still present, the apply warns and keeps the type; apply again once the scopes are gone. (EA only).
         :param pulumi.Input[_builtins.str] verification_location: URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
         """
         if access_token is not None:
@@ -479,6 +497,8 @@ class _ResourceServerState:
             pulumi.set(__self__, "token_lifetime_for_anonymous_access_tokens", token_lifetime_for_anonymous_access_tokens)
         if token_lifetime_for_web is not None:
             pulumi.set(__self__, "token_lifetime_for_web", token_lifetime_for_web)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
         if verification_location is not None:
             pulumi.set(__self__, "verification_location", verification_location)
 
@@ -759,6 +779,18 @@ class _ResourceServerState:
         pulumi.set(self, "token_lifetime_for_web", value)
 
     @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Type of the resource server. Only `universal_commerce_protocol_server` is supported, and only one typed resource server is allowed per tenant. Removing this attribute clears the type on the API, which requires that any `dev.ucp` scopes on the resource server are removed first. If they are still present, the apply warns and keeps the type; apply again once the scopes are gone. (EA only).
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
     @pulumi.getter(name="verificationLocation")
     def verification_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -798,6 +830,7 @@ class ResourceServer(pulumi.CustomResource):
                  token_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
                  token_lifetime_for_anonymous_access_tokens: pulumi.Input[Optional[_builtins.int]] = None,
                  token_lifetime_for_web: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  verification_location: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -929,6 +962,7 @@ class ResourceServer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] token_lifetime: Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
         :param pulumi.Input[_builtins.int] token_lifetime_for_anonymous_access_tokens: Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Must be between 86400 (1 day) and 2592000 (30 days) when present. Removing this attribute clears the value on the API. (EA only)
         :param pulumi.Input[_builtins.int] token_lifetime_for_web: Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
+        :param pulumi.Input[_builtins.str] type: Type of the resource server. Only `universal_commerce_protocol_server` is supported, and only one typed resource server is allowed per tenant. Removing this attribute clears the type on the API, which requires that any `dev.ucp` scopes on the resource server are removed first. If they are still present, the apply warns and keeps the type; apply again once the scopes are gone. (EA only).
         :param pulumi.Input[_builtins.str] verification_location: URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
         """
         ...
@@ -1079,6 +1113,7 @@ class ResourceServer(pulumi.CustomResource):
                  token_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
                  token_lifetime_for_anonymous_access_tokens: pulumi.Input[Optional[_builtins.int]] = None,
                  token_lifetime_for_web: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  verification_location: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1112,6 +1147,7 @@ class ResourceServer(pulumi.CustomResource):
             __props__.__dict__["token_lifetime"] = token_lifetime
             __props__.__dict__["token_lifetime_for_anonymous_access_tokens"] = token_lifetime_for_anonymous_access_tokens
             __props__.__dict__["token_lifetime_for_web"] = token_lifetime_for_web
+            __props__.__dict__["type"] = type
             __props__.__dict__["verification_location"] = verification_location
             __props__.__dict__["client_id"] = None
             __props__.__dict__["is_system"] = None
@@ -1148,6 +1184,7 @@ class ResourceServer(pulumi.CustomResource):
             token_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
             token_lifetime_for_anonymous_access_tokens: pulumi.Input[Optional[_builtins.int]] = None,
             token_lifetime_for_web: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
             verification_location: pulumi.Input[Optional[_builtins.str]] = None) -> 'ResourceServer':
         """
         Get an existing ResourceServer resource's state with the given name, id, and optional extra
@@ -1179,6 +1216,7 @@ class ResourceServer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] token_lifetime: Number of seconds during which access tokens issued for this resource server from the token endpoint remain valid.
         :param pulumi.Input[_builtins.int] token_lifetime_for_anonymous_access_tokens: Number of seconds during which anonymous-session access tokens issued for this resource server remain valid. Must be between 86400 (1 day) and 2592000 (30 days) when present. Removing this attribute clears the value on the API. (EA only)
         :param pulumi.Input[_builtins.int] token_lifetime_for_web: Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
+        :param pulumi.Input[_builtins.str] type: Type of the resource server. Only `universal_commerce_protocol_server` is supported, and only one typed resource server is allowed per tenant. Removing this attribute clears the type on the API, which requires that any `dev.ucp` scopes on the resource server are removed first. If they are still present, the apply warns and keeps the type; apply again once the scopes are gone. (EA only).
         :param pulumi.Input[_builtins.str] verification_location: URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1208,6 +1246,7 @@ class ResourceServer(pulumi.CustomResource):
         __props__.__dict__["token_lifetime"] = token_lifetime
         __props__.__dict__["token_lifetime_for_anonymous_access_tokens"] = token_lifetime_for_anonymous_access_tokens
         __props__.__dict__["token_lifetime_for_web"] = token_lifetime_for_web
+        __props__.__dict__["type"] = type
         __props__.__dict__["verification_location"] = verification_location
         return ResourceServer(resource_name, opts=opts, __props__=__props__)
 
@@ -1237,6 +1276,7 @@ class ResourceServer(pulumi.CustomResource):
             token_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
             token_lifetime_for_anonymous_access_tokens: pulumi.Input[Optional[_builtins.int]] = None,
             token_lifetime_for_web: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
             verification_location: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
         __props__["accessToken"] = access_token
@@ -1262,6 +1302,7 @@ class ResourceServer(pulumi.CustomResource):
         __props__["tokenLifetime"] = token_lifetime
         __props__["tokenLifetimeForAnonymousAccessTokens"] = token_lifetime_for_anonymous_access_tokens
         __props__["tokenLifetimeForWeb"] = token_lifetime_for_web
+        __props__["type"] = type
         __props__["verificationLocation"] = verification_location
         return pulumi.runtime.exists_resource(None, 'auth0:index/resourceServer:ResourceServer', id, __props__, opts or pulumi.ResourceOptions())
 
@@ -1448,6 +1489,14 @@ class ResourceServer(pulumi.CustomResource):
         Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `token_lifetime` value.
         """
         return pulumi.get(self, "token_lifetime_for_web")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Type of the resource server. Only `universal_commerce_protocol_server` is supported, and only one typed resource server is allowed per tenant. Removing this attribute clears the type on the API, which requires that any `dev.ucp` scopes on the resource server are removed first. If they are still present, the apply warns and keeps the type; apply again once the scopes are gone. (EA only).
+        """
+        return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="verificationLocation")

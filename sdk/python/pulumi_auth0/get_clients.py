@@ -146,6 +146,8 @@ def get_clients(app_types: Optional[Sequence[_builtins.str]] = None,
     ])
     # Auth0 clients filtered by is_first_party equal to true
     first_party_apps = auth0.get_clients(is_first_party=True)
+    # Find CIMD clients by their metadata document URL.
+    cimd_apps = auth0.get_clients(external_client_id="https://mcp-agent.example.com/oauth/metadata.json")
     ```
 
 
@@ -196,6 +198,8 @@ def get_clients_output(app_types: pulumi.Input[Optional[Optional[Sequence[_built
     ])
     # Auth0 clients filtered by is_first_party equal to true
     first_party_apps = auth0.get_clients(is_first_party=True)
+    # Find CIMD clients by their metadata document URL.
+    cimd_apps = auth0.get_clients(external_client_id="https://mcp-agent.example.com/oauth/metadata.json")
     ```
 
 

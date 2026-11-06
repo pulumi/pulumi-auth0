@@ -381,6 +381,21 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only). Only present for CIMD-registered clients.
+     * 
+     */
+    @Import(name="externalMetadataStatus")
+    private @Nullable Output<String> externalMetadataStatus;
+
+    /**
+     * @return Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only). Only present for CIMD-registered clients.
+     * 
+     */
+    public Optional<Output<String>> externalMetadataStatus() {
+        return Optional.ofNullable(this.externalMetadataStatus);
+    }
+
+    /**
      * Type of external metadata. Value is `cimd` for CIMD-registered clients.
      * 
      */
@@ -929,6 +944,7 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
         this.expressConfiguration = $.expressConfiguration;
         this.externalClientId = $.externalClientId;
         this.externalMetadataCreatedBy = $.externalMetadataCreatedBy;
+        this.externalMetadataStatus = $.externalMetadataStatus;
         this.externalMetadataType = $.externalMetadataType;
         this.fedcmLogin = $.fedcmLogin;
         this.formTemplate = $.formTemplate;
@@ -1525,6 +1541,27 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder externalMetadataCreatedBy(String externalMetadataCreatedBy) {
             return externalMetadataCreatedBy(Output.of(externalMetadataCreatedBy));
+        }
+
+        /**
+         * @param externalMetadataStatus Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only). Only present for CIMD-registered clients.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalMetadataStatus(@Nullable Output<String> externalMetadataStatus) {
+            $.externalMetadataStatus = externalMetadataStatus;
+            return this;
+        }
+
+        /**
+         * @param externalMetadataStatus Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only). Only present for CIMD-registered clients.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalMetadataStatus(String externalMetadataStatus) {
+            return externalMetadataStatus(Output.of(externalMetadataStatus));
         }
 
         /**

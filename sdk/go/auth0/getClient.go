@@ -118,6 +118,8 @@ type LookupClientResult struct {
 	ExternalClientId string `pulumi:"externalClientId"`
 	// Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
 	ExternalMetadataCreatedBy string `pulumi:"externalMetadataCreatedBy"`
+	// Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only). Only present for CIMD-registered clients.
+	ExternalMetadataStatus string `pulumi:"externalMetadataStatus"`
 	// Type of external metadata. Value is `cimd` for CIMD-registered clients.
 	ExternalMetadataType string `pulumi:"externalMetadataType"`
 	// Federated Credential Management (FedCM) configuration. (EA only)
@@ -356,6 +358,11 @@ func (o LookupClientResultOutput) ExternalClientId() pulumi.StringOutput {
 // Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
 func (o LookupClientResultOutput) ExternalMetadataCreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientResult) string { return v.ExternalMetadataCreatedBy }).(pulumi.StringOutput)
+}
+
+// Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only). Only present for CIMD-registered clients.
+func (o LookupClientResultOutput) ExternalMetadataStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClientResult) string { return v.ExternalMetadataStatus }).(pulumi.StringOutput)
 }
 
 // Type of external metadata. Value is `cimd` for CIMD-registered clients.

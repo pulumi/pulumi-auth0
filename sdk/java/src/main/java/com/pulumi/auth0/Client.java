@@ -372,6 +372,20 @@ public class Client extends com.pulumi.resources.CustomResource {
         return this.externalMetadataCreatedBy;
     }
     /**
+     * Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only). Only present for CIMD-registered clients.
+     * 
+     */
+    @Export(name="externalMetadataStatus", refs={String.class}, tree="[0]")
+    private Output<String> externalMetadataStatus;
+
+    /**
+     * @return Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only). Only present for CIMD-registered clients.
+     * 
+     */
+    public Output<String> externalMetadataStatus() {
+        return this.externalMetadataStatus;
+    }
+    /**
      * Type of external metadata. Value is `cimd` for CIMD-registered clients.
      * 
      */

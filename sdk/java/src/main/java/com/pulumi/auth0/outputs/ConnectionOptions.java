@@ -14,6 +14,7 @@ import com.pulumi.auth0.outputs.ConnectionOptionsFederatedConnectionsAccessToken
 import com.pulumi.auth0.outputs.ConnectionOptionsGatewayAuthentication;
 import com.pulumi.auth0.outputs.ConnectionOptionsIdpInitiated;
 import com.pulumi.auth0.outputs.ConnectionOptionsMfa;
+import com.pulumi.auth0.outputs.ConnectionOptionsOtpSettings;
 import com.pulumi.auth0.outputs.ConnectionOptionsPasskeyOptions;
 import com.pulumi.auth0.outputs.ConnectionOptionsPasswordComplexityOptions;
 import com.pulumi.auth0.outputs.ConnectionOptionsPasswordDictionary;
@@ -365,6 +366,11 @@ public final class ConnectionOptions {
      * 
      */
     private @Nullable String oidcMetadata;
+    /**
+     * @return One-time password settings for database (`auth0` strategy) connections, configurable per delivery channel. (EA only)
+     * 
+     */
+    private @Nullable ConnectionOptionsOtpSettings otpSettings;
     /**
      * @return Defines options for the passkey authentication method
      * 
@@ -1105,6 +1111,13 @@ public final class ConnectionOptions {
         return Optional.ofNullable(this.oidcMetadata);
     }
     /**
+     * @return One-time password settings for database (`auth0` strategy) connections, configurable per delivery channel. (EA only)
+     * 
+     */
+    public Optional<ConnectionOptionsOtpSettings> otpSettings() {
+        return Optional.ofNullable(this.otpSettings);
+    }
+    /**
      * @return Defines options for the passkey authentication method
      * 
      */
@@ -1565,6 +1578,7 @@ public final class ConnectionOptions {
         private @Nullable String name;
         private @Nullable List<String> nonPersistentAttrs;
         private @Nullable String oidcMetadata;
+        private @Nullable ConnectionOptionsOtpSettings otpSettings;
         private @Nullable ConnectionOptionsPasskeyOptions passkeyOptions;
         private @Nullable ConnectionOptionsPasswordComplexityOptions passwordComplexityOptions;
         private @Nullable ConnectionOptionsPasswordDictionary passwordDictionary;
@@ -1689,6 +1703,7 @@ public final class ConnectionOptions {
     	      this.name = defaults.name;
     	      this.nonPersistentAttrs = defaults.nonPersistentAttrs;
     	      this.oidcMetadata = defaults.oidcMetadata;
+    	      this.otpSettings = defaults.otpSettings;
     	      this.passkeyOptions = defaults.passkeyOptions;
     	      this.passwordComplexityOptions = defaults.passwordComplexityOptions;
     	      this.passwordDictionary = defaults.passwordDictionary;
@@ -2167,6 +2182,12 @@ public final class ConnectionOptions {
             return this;
         }
         @CustomType.Setter
+        public Builder otpSettings(@Nullable ConnectionOptionsOtpSettings otpSettings) {
+
+            this.otpSettings = otpSettings;
+            return this;
+        }
+        @CustomType.Setter
         public Builder passkeyOptions(@Nullable ConnectionOptionsPasskeyOptions passkeyOptions) {
 
             this.passkeyOptions = passkeyOptions;
@@ -2573,6 +2594,7 @@ public final class ConnectionOptions {
             _resultValue.name = name;
             _resultValue.nonPersistentAttrs = nonPersistentAttrs;
             _resultValue.oidcMetadata = oidcMetadata;
+            _resultValue.otpSettings = otpSettings;
             _resultValue.passkeyOptions = passkeyOptions;
             _resultValue.passwordComplexityOptions = passwordComplexityOptions;
             _resultValue.passwordDictionary = passwordDictionary;

@@ -27,7 +27,7 @@ class GetClientResult:
     """
     A collection of values returned by getClient.
     """
-    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, anonymous_sessions=None, app_type=None, async_approval_notification_channels=None, b2b_integration_configurations=None, callbacks=None, client_aliases=None, client_authentication_methods=None, client_id=None, client_metadata=None, client_secret=None, compliance_level=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, default_organizations=None, description=None, encryption_key=None, express_configurations=None, external_client_id=None, external_metadata_created_by=None, external_metadata_type=None, fedcm_logins=None, form_template=None, grant_types=None, hide_client_secret=None, id=None, identity_assertion_authorization_grants=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwks_uri=None, jwt_configurations=None, logo_uri=None, mobiles=None, my_organization_configurations=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, oidc_logouts=None, organization_discovery_methods=None, organization_require_behavior=None, organization_usage=None, redirection_policy=None, refresh_tokens=None, require_proof_of_possession=None, require_pushed_authorization_requests=None, resource_server_identifier=None, session_transfers=None, signed_request_objects=None, signing_keys=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, sso=None, sso_disabled=None, third_party_security_mode=None, token_endpoint_auth_method=None, token_exchanges=None, token_quotas=None, web_origins=None):
+    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, anonymous_sessions=None, app_type=None, async_approval_notification_channels=None, b2b_integration_configurations=None, callbacks=None, client_aliases=None, client_authentication_methods=None, client_id=None, client_metadata=None, client_secret=None, compliance_level=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, default_organizations=None, description=None, encryption_key=None, express_configurations=None, external_client_id=None, external_metadata_created_by=None, external_metadata_status=None, external_metadata_type=None, fedcm_logins=None, form_template=None, grant_types=None, hide_client_secret=None, id=None, identity_assertion_authorization_grants=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwks_uri=None, jwt_configurations=None, logo_uri=None, mobiles=None, my_organization_configurations=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, oidc_logouts=None, organization_discovery_methods=None, organization_require_behavior=None, organization_usage=None, redirection_policy=None, refresh_tokens=None, require_proof_of_possession=None, require_pushed_authorization_requests=None, resource_server_identifier=None, session_transfers=None, signed_request_objects=None, signing_keys=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, sso=None, sso_disabled=None, third_party_security_mode=None, token_endpoint_auth_method=None, token_exchanges=None, token_quotas=None, web_origins=None):
         if addons and not isinstance(addons, list):
             raise TypeError("Expected argument 'addons' to be a list")
         pulumi.set(__self__, "addons", addons)
@@ -103,6 +103,9 @@ class GetClientResult:
         if external_metadata_created_by and not isinstance(external_metadata_created_by, str):
             raise TypeError("Expected argument 'external_metadata_created_by' to be a str")
         pulumi.set(__self__, "external_metadata_created_by", external_metadata_created_by)
+        if external_metadata_status and not isinstance(external_metadata_status, str):
+            raise TypeError("Expected argument 'external_metadata_status' to be a str")
+        pulumi.set(__self__, "external_metadata_status", external_metadata_status)
         if external_metadata_type and not isinstance(external_metadata_type, str):
             raise TypeError("Expected argument 'external_metadata_type' to be a str")
         pulumi.set(__self__, "external_metadata_type", external_metadata_type)
@@ -420,6 +423,14 @@ class GetClientResult:
         Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
         """
         return pulumi.get(self, "external_metadata_created_by")
+
+    @_builtins.property
+    @pulumi.getter(name="externalMetadataStatus")
+    def external_metadata_status(self) -> _builtins.str:
+        """
+        Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only). Only present for CIMD-registered clients.
+        """
+        return pulumi.get(self, "external_metadata_status")
 
     @_builtins.property
     @pulumi.getter(name="externalMetadataType")
@@ -762,6 +773,7 @@ class AwaitableGetClientResult(GetClientResult):
             express_configurations=self.express_configurations,
             external_client_id=self.external_client_id,
             external_metadata_created_by=self.external_metadata_created_by,
+            external_metadata_status=self.external_metadata_status,
             external_metadata_type=self.external_metadata_type,
             fedcm_logins=self.fedcm_logins,
             form_template=self.form_template,
@@ -860,6 +872,7 @@ def get_client(client_id: Optional[_builtins.str] = None,
         express_configurations=pulumi.get(__ret__, 'express_configurations'),
         external_client_id=pulumi.get(__ret__, 'external_client_id'),
         external_metadata_created_by=pulumi.get(__ret__, 'external_metadata_created_by'),
+        external_metadata_status=pulumi.get(__ret__, 'external_metadata_status'),
         external_metadata_type=pulumi.get(__ret__, 'external_metadata_type'),
         fedcm_logins=pulumi.get(__ret__, 'fedcm_logins'),
         form_template=pulumi.get(__ret__, 'form_template'),
@@ -955,6 +968,7 @@ def get_client_output(client_id: pulumi.Input[Optional[Optional[_builtins.str]]]
         express_configurations=pulumi.get(__response__, 'express_configurations'),
         external_client_id=pulumi.get(__response__, 'external_client_id'),
         external_metadata_created_by=pulumi.get(__response__, 'external_metadata_created_by'),
+        external_metadata_status=pulumi.get(__response__, 'external_metadata_status'),
         external_metadata_type=pulumi.get(__response__, 'external_metadata_type'),
         fedcm_logins=pulumi.get(__response__, 'fedcm_logins'),
         form_template=pulumi.get(__response__, 'form_template'),

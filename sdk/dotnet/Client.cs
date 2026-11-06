@@ -164,6 +164,12 @@ namespace Pulumi.Auth0
         public Output<string> ExternalMetadataCreatedBy { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `Available` or `Unavailable` (EA only). Only present for CIMD-registered clients.
+        /// </summary>
+        [Output("externalMetadataStatus")]
+        public Output<string> ExternalMetadataStatus { get; private set; } = null!;
+
+        /// <summary>
         /// Type of external metadata. Value is `Cimd` for CIMD-registered clients.
         /// </summary>
         [Output("externalMetadataType")]
@@ -1002,6 +1008,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("externalMetadataCreatedBy")]
         public Input<string>? ExternalMetadataCreatedBy { get; set; }
+
+        /// <summary>
+        /// Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `Available` or `Unavailable` (EA only). Only present for CIMD-registered clients.
+        /// </summary>
+        [Input("externalMetadataStatus")]
+        public Input<string>? ExternalMetadataStatus { get; set; }
 
         /// <summary>
         /// Type of external metadata. Value is `Cimd` for CIMD-registered clients.

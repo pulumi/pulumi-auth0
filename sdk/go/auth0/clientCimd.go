@@ -65,6 +65,8 @@ import (
 //					pulumi.String("authorization_code"),
 //					pulumi.String("refresh_token"),
 //				},
+//				OrganizationUsage:           pulumi.String("require"),
+//				OrganizationRequireBehavior: pulumi.String("post_login_prompt"),
 //				ClientMetadata: pulumi.StringMap{
 //					"environment": pulumi.String("production"),
 //				},
@@ -80,10 +82,9 @@ import (
 //
 // ## Import
 //
-// This resource can be imported by specifying the client ID.
-// Generally CIMD clients have a "tpc_" prefix in their client ID.
-//
-// Example:
+// Import an existing CIMD client by its client ID (usually prefixed with "tpc_").
+// For a dynamically registered client, import instead of creating a second
+// client for the same externalClientId URL.
 //
 // ```sh
 // $ pulumi import auth0:index/clientCimd:ClientCimd my_mcp_agent "tpc_5FPpaVyZGSNRCBzTb2zURZ"
@@ -93,7 +94,7 @@ type ClientCimd struct {
 
 	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins pulumi.StringArrayOutput `pulumi:"allowedOrigins"`
-	// Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`.
+	// Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
 	AppType pulumi.StringOutput `pulumi:"appType"`
 	// URLs that Auth0 may call back after authentication. Derived from the CIMD metadata document.
 	Callbacks pulumi.StringArrayOutput `pulumi:"callbacks"`
@@ -103,17 +104,19 @@ type ClientCimd struct {
 	ClientMetadata pulumi.StringMapOutput `pulumi:"clientMetadata"`
 	// Configure and associate an organization with the Client
 	DefaultOrganization ClientCimdDefaultOrganizationPtrOutput `pulumi:"defaultOrganization"`
-	// Description of the purpose of the client.
+	// Description of the purpose of the client. Once set, removing this argument from configuration does not clear it. For admin-registered clients, set `description = ""` to clear it. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The HTTPS URL of the Client ID Metadata Document. Must include a path component (e.g. `https://app.example.com/client.json`). This value is immutable after creation.
 	ExternalClientId pulumi.StringOutput `pulumi:"externalClientId"`
-	// Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.
+	// Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document. Only applies to clients with `externalMetadataCreatedBy` set to `admin`.
 	ExternalClientIdVersion pulumi.IntPtrOutput `pulumi:"externalClientIdVersion"`
-	// Who created the external metadata client: `admin` (via Management API) or `client` (self-registered).
+	// Who created the external metadata client: `admin` (via Management API) or `client` (dynamically self-registered). Read-only; available in Terraform state after import, not in generated configuration.
 	ExternalMetadataCreatedBy pulumi.StringOutput `pulumi:"externalMetadataCreatedBy"`
+	// Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only).
+	ExternalMetadataStatus pulumi.StringOutput `pulumi:"externalMetadataStatus"`
 	// Type of external metadata. Always `cimd` for CIMD-registered clients.
 	ExternalMetadataType pulumi.StringOutput `pulumi:"externalMetadataType"`
-	// Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`.
+	// Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
 	GrantTypes pulumi.StringArrayOutput `pulumi:"grantTypes"`
 	// Whether this is a first-party client. Always `false` for CIMD clients.
 	IsFirstParty pulumi.BoolOutput `pulumi:"isFirstParty"`
@@ -129,6 +132,10 @@ type ClientCimd struct {
 	OidcConformant pulumi.BoolOutput `pulumi:"oidcConformant"`
 	// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
 	OrganizationDiscoveryMethods pulumi.StringArrayOutput `pulumi:"organizationDiscoveryMethods"`
+	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or `postLoginPrompt`.
+	OrganizationRequireBehavior pulumi.StringOutput `pulumi:"organizationRequireBehavior"`
+	// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+	OrganizationUsage pulumi.StringOutput `pulumi:"organizationUsage"`
 	// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.
 	RedirectionPolicy pulumi.StringOutput `pulumi:"redirectionPolicy"`
 	// Configuration settings for the refresh tokens issued for this client.
@@ -188,7 +195,7 @@ func GetClientCimd(ctx *pulumi.Context,
 type clientCimdState struct {
 	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins []string `pulumi:"allowedOrigins"`
-	// Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`.
+	// Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
 	AppType *string `pulumi:"appType"`
 	// URLs that Auth0 may call back after authentication. Derived from the CIMD metadata document.
 	Callbacks []string `pulumi:"callbacks"`
@@ -198,17 +205,19 @@ type clientCimdState struct {
 	ClientMetadata map[string]string `pulumi:"clientMetadata"`
 	// Configure and associate an organization with the Client
 	DefaultOrganization *ClientCimdDefaultOrganization `pulumi:"defaultOrganization"`
-	// Description of the purpose of the client.
+	// Description of the purpose of the client. Once set, removing this argument from configuration does not clear it. For admin-registered clients, set `description = ""` to clear it. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
 	Description *string `pulumi:"description"`
 	// The HTTPS URL of the Client ID Metadata Document. Must include a path component (e.g. `https://app.example.com/client.json`). This value is immutable after creation.
 	ExternalClientId *string `pulumi:"externalClientId"`
-	// Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.
+	// Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document. Only applies to clients with `externalMetadataCreatedBy` set to `admin`.
 	ExternalClientIdVersion *int `pulumi:"externalClientIdVersion"`
-	// Who created the external metadata client: `admin` (via Management API) or `client` (self-registered).
+	// Who created the external metadata client: `admin` (via Management API) or `client` (dynamically self-registered). Read-only; available in Terraform state after import, not in generated configuration.
 	ExternalMetadataCreatedBy *string `pulumi:"externalMetadataCreatedBy"`
+	// Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only).
+	ExternalMetadataStatus *string `pulumi:"externalMetadataStatus"`
 	// Type of external metadata. Always `cimd` for CIMD-registered clients.
 	ExternalMetadataType *string `pulumi:"externalMetadataType"`
-	// Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`.
+	// Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
 	GrantTypes []string `pulumi:"grantTypes"`
 	// Whether this is a first-party client. Always `false` for CIMD clients.
 	IsFirstParty *bool `pulumi:"isFirstParty"`
@@ -224,6 +233,10 @@ type clientCimdState struct {
 	OidcConformant *bool `pulumi:"oidcConformant"`
 	// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
 	OrganizationDiscoveryMethods []string `pulumi:"organizationDiscoveryMethods"`
+	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or `postLoginPrompt`.
+	OrganizationRequireBehavior *string `pulumi:"organizationRequireBehavior"`
+	// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+	OrganizationUsage *string `pulumi:"organizationUsage"`
 	// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.
 	RedirectionPolicy *string `pulumi:"redirectionPolicy"`
 	// Configuration settings for the refresh tokens issued for this client.
@@ -247,7 +260,7 @@ type clientCimdState struct {
 type ClientCimdState struct {
 	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins pulumi.StringArrayInput
-	// Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`.
+	// Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
 	AppType pulumi.StringPtrInput
 	// URLs that Auth0 may call back after authentication. Derived from the CIMD metadata document.
 	Callbacks pulumi.StringArrayInput
@@ -257,17 +270,19 @@ type ClientCimdState struct {
 	ClientMetadata pulumi.StringMapInput
 	// Configure and associate an organization with the Client
 	DefaultOrganization ClientCimdDefaultOrganizationPtrInput
-	// Description of the purpose of the client.
+	// Description of the purpose of the client. Once set, removing this argument from configuration does not clear it. For admin-registered clients, set `description = ""` to clear it. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
 	Description pulumi.StringPtrInput
 	// The HTTPS URL of the Client ID Metadata Document. Must include a path component (e.g. `https://app.example.com/client.json`). This value is immutable after creation.
 	ExternalClientId pulumi.StringPtrInput
-	// Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.
+	// Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document. Only applies to clients with `externalMetadataCreatedBy` set to `admin`.
 	ExternalClientIdVersion pulumi.IntPtrInput
-	// Who created the external metadata client: `admin` (via Management API) or `client` (self-registered).
+	// Who created the external metadata client: `admin` (via Management API) or `client` (dynamically self-registered). Read-only; available in Terraform state after import, not in generated configuration.
 	ExternalMetadataCreatedBy pulumi.StringPtrInput
+	// Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only).
+	ExternalMetadataStatus pulumi.StringPtrInput
 	// Type of external metadata. Always `cimd` for CIMD-registered clients.
 	ExternalMetadataType pulumi.StringPtrInput
-	// Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`.
+	// Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
 	GrantTypes pulumi.StringArrayInput
 	// Whether this is a first-party client. Always `false` for CIMD clients.
 	IsFirstParty pulumi.BoolPtrInput
@@ -283,6 +298,10 @@ type ClientCimdState struct {
 	OidcConformant pulumi.BoolPtrInput
 	// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
 	OrganizationDiscoveryMethods pulumi.StringArrayInput
+	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or `postLoginPrompt`.
+	OrganizationRequireBehavior pulumi.StringPtrInput
+	// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+	OrganizationUsage pulumi.StringPtrInput
 	// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.
 	RedirectionPolicy pulumi.StringPtrInput
 	// Configuration settings for the refresh tokens issued for this client.
@@ -316,19 +335,19 @@ func ClientCimdExists(ctx *pulumi.Context,
 type clientCimdArgs struct {
 	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins []string `pulumi:"allowedOrigins"`
-	// Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`.
+	// Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
 	AppType *string `pulumi:"appType"`
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 	ClientMetadata map[string]string `pulumi:"clientMetadata"`
 	// Configure and associate an organization with the Client
 	DefaultOrganization *ClientCimdDefaultOrganization `pulumi:"defaultOrganization"`
-	// Description of the purpose of the client.
+	// Description of the purpose of the client. Once set, removing this argument from configuration does not clear it. For admin-registered clients, set `description = ""` to clear it. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
 	Description *string `pulumi:"description"`
 	// The HTTPS URL of the Client ID Metadata Document. Must include a path component (e.g. `https://app.example.com/client.json`). This value is immutable after creation.
 	ExternalClientId string `pulumi:"externalClientId"`
-	// Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.
+	// Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document. Only applies to clients with `externalMetadataCreatedBy` set to `admin`.
 	ExternalClientIdVersion *int `pulumi:"externalClientIdVersion"`
-	// Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`.
+	// Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
 	GrantTypes []string `pulumi:"grantTypes"`
 	// Configuration settings for the JWTs issued for this client.
 	JwtConfiguration *ClientCimdJwtConfiguration `pulumi:"jwtConfiguration"`
@@ -336,6 +355,10 @@ type clientCimdArgs struct {
 	OidcConformant *bool `pulumi:"oidcConformant"`
 	// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
 	OrganizationDiscoveryMethods []string `pulumi:"organizationDiscoveryMethods"`
+	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or `postLoginPrompt`.
+	OrganizationRequireBehavior *string `pulumi:"organizationRequireBehavior"`
+	// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+	OrganizationUsage *string `pulumi:"organizationUsage"`
 	// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.
 	RedirectionPolicy *string `pulumi:"redirectionPolicy"`
 	// Configuration settings for the refresh tokens issued for this client.
@@ -354,19 +377,19 @@ type clientCimdArgs struct {
 type ClientCimdArgs struct {
 	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
 	AllowedOrigins pulumi.StringArrayInput
-	// Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`.
+	// Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
 	AppType pulumi.StringPtrInput
 	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
 	ClientMetadata pulumi.StringMapInput
 	// Configure and associate an organization with the Client
 	DefaultOrganization ClientCimdDefaultOrganizationPtrInput
-	// Description of the purpose of the client.
+	// Description of the purpose of the client. Once set, removing this argument from configuration does not clear it. For admin-registered clients, set `description = ""` to clear it. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
 	Description pulumi.StringPtrInput
 	// The HTTPS URL of the Client ID Metadata Document. Must include a path component (e.g. `https://app.example.com/client.json`). This value is immutable after creation.
 	ExternalClientId pulumi.StringInput
-	// Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.
+	// Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document. Only applies to clients with `externalMetadataCreatedBy` set to `admin`.
 	ExternalClientIdVersion pulumi.IntPtrInput
-	// Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`.
+	// Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
 	GrantTypes pulumi.StringArrayInput
 	// Configuration settings for the JWTs issued for this client.
 	JwtConfiguration ClientCimdJwtConfigurationPtrInput
@@ -374,6 +397,10 @@ type ClientCimdArgs struct {
 	OidcConformant pulumi.BoolPtrInput
 	// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
 	OrganizationDiscoveryMethods pulumi.StringArrayInput
+	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or `postLoginPrompt`.
+	OrganizationRequireBehavior pulumi.StringPtrInput
+	// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+	OrganizationUsage pulumi.StringPtrInput
 	// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.
 	RedirectionPolicy pulumi.StringPtrInput
 	// Configuration settings for the refresh tokens issued for this client.
@@ -480,7 +507,7 @@ func (o ClientCimdOutput) AllowedOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClientCimd) pulumi.StringArrayOutput { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
 }
 
-// Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`.
+// Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
 func (o ClientCimdOutput) AppType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientCimd) pulumi.StringOutput { return v.AppType }).(pulumi.StringOutput)
 }
@@ -505,7 +532,7 @@ func (o ClientCimdOutput) DefaultOrganization() ClientCimdDefaultOrganizationPtr
 	return o.ApplyT(func(v *ClientCimd) ClientCimdDefaultOrganizationPtrOutput { return v.DefaultOrganization }).(ClientCimdDefaultOrganizationPtrOutput)
 }
 
-// Description of the purpose of the client.
+// Description of the purpose of the client. Once set, removing this argument from configuration does not clear it. For admin-registered clients, set `description = ""` to clear it. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
 func (o ClientCimdOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientCimd) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -515,14 +542,19 @@ func (o ClientCimdOutput) ExternalClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientCimd) pulumi.StringOutput { return v.ExternalClientId }).(pulumi.StringOutput)
 }
 
-// Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.
+// Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document. Only applies to clients with `externalMetadataCreatedBy` set to `admin`.
 func (o ClientCimdOutput) ExternalClientIdVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClientCimd) pulumi.IntPtrOutput { return v.ExternalClientIdVersion }).(pulumi.IntPtrOutput)
 }
 
-// Who created the external metadata client: `admin` (via Management API) or `client` (self-registered).
+// Who created the external metadata client: `admin` (via Management API) or `client` (dynamically self-registered). Read-only; available in Terraform state after import, not in generated configuration.
 func (o ClientCimdOutput) ExternalMetadataCreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientCimd) pulumi.StringOutput { return v.ExternalMetadataCreatedBy }).(pulumi.StringOutput)
+}
+
+// Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only).
+func (o ClientCimdOutput) ExternalMetadataStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClientCimd) pulumi.StringOutput { return v.ExternalMetadataStatus }).(pulumi.StringOutput)
 }
 
 // Type of external metadata. Always `cimd` for CIMD-registered clients.
@@ -530,7 +562,7 @@ func (o ClientCimdOutput) ExternalMetadataType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClientCimd) pulumi.StringOutput { return v.ExternalMetadataType }).(pulumi.StringOutput)
 }
 
-// Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`.
+// Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
 func (o ClientCimdOutput) GrantTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClientCimd) pulumi.StringArrayOutput { return v.GrantTypes }).(pulumi.StringArrayOutput)
 }
@@ -568,6 +600,16 @@ func (o ClientCimdOutput) OidcConformant() pulumi.BoolOutput {
 // Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`.
 func (o ClientCimdOutput) OrganizationDiscoveryMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClientCimd) pulumi.StringArrayOutput { return v.OrganizationDiscoveryMethods }).(pulumi.StringArrayOutput)
+}
+
+// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or `postLoginPrompt`.
+func (o ClientCimdOutput) OrganizationRequireBehavior() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClientCimd) pulumi.StringOutput { return v.OrganizationRequireBehavior }).(pulumi.StringOutput)
+}
+
+// Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+func (o ClientCimdOutput) OrganizationUsage() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClientCimd) pulumi.StringOutput { return v.OrganizationUsage }).(pulumi.StringOutput)
 }
 
 // Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.

@@ -119,6 +119,12 @@ namespace Pulumi.Auth0
         public Output<ImmutableArray<string>> AllowedLogoutUrls { get; private set; } = null!;
 
         /// <summary>
+        /// Whether the authorization server supports registering clients dynamically from a `ClientId` URL (EA only). Requires `ClientIdMetadataDocumentSupported` to be enabled.
+        /// </summary>
+        [Output("clientIdMetadataDocumentDynamicRegistrationSupported")]
+        public Output<bool> ClientIdMetadataDocumentDynamicRegistrationSupported { get; private set; } = null!;
+
+        /// <summary>
         /// Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
         /// </summary>
         [Output("clientIdMetadataDocumentSupported")]
@@ -369,6 +375,12 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
+        /// Whether the authorization server supports registering clients dynamically from a `ClientId` URL (EA only). Requires `ClientIdMetadataDocumentSupported` to be enabled.
+        /// </summary>
+        [Input("clientIdMetadataDocumentDynamicRegistrationSupported")]
+        public Input<bool>? ClientIdMetadataDocumentDynamicRegistrationSupported { get; set; }
+
+        /// <summary>
         /// Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
         /// </summary>
         [Input("clientIdMetadataDocumentSupported")]
@@ -585,6 +597,12 @@ namespace Pulumi.Auth0
             get => _allowedLogoutUrls ?? (_allowedLogoutUrls = new InputList<string>());
             set => _allowedLogoutUrls = value;
         }
+
+        /// <summary>
+        /// Whether the authorization server supports registering clients dynamically from a `ClientId` URL (EA only). Requires `ClientIdMetadataDocumentSupported` to be enabled.
+        /// </summary>
+        [Input("clientIdMetadataDocumentDynamicRegistrationSupported")]
+        public Input<bool>? ClientIdMetadataDocumentDynamicRegistrationSupported { get; set; }
 
         /// <summary>
         /// Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.

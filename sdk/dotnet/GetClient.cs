@@ -263,6 +263,10 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string ExternalMetadataCreatedBy;
         /// <summary>
+        /// Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `Available` or `Unavailable` (EA only). Only present for CIMD-registered clients.
+        /// </summary>
+        public readonly string ExternalMetadataStatus;
+        /// <summary>
         /// Type of external metadata. Value is `Cimd` for CIMD-registered clients.
         /// </summary>
         public readonly string ExternalMetadataType;
@@ -468,6 +472,8 @@ namespace Pulumi.Auth0
 
             string externalMetadataCreatedBy,
 
+            string externalMetadataStatus,
+
             string externalMetadataType,
 
             ImmutableArray<Outputs.GetClientFedcmLoginResult> fedcmLogins,
@@ -571,6 +577,7 @@ namespace Pulumi.Auth0
             ExpressConfigurations = expressConfigurations;
             ExternalClientId = externalClientId;
             ExternalMetadataCreatedBy = externalMetadataCreatedBy;
+            ExternalMetadataStatus = externalMetadataStatus;
             ExternalMetadataType = externalMetadataType;
             FedcmLogins = fedcmLogins;
             FormTemplate = formTemplate;

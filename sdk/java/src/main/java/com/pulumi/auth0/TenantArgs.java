@@ -72,6 +72,21 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether the authorization server supports registering clients dynamically from a `clientId` URL (EA only). Requires `clientIdMetadataDocumentSupported` to be enabled.
+     * 
+     */
+    @Import(name="clientIdMetadataDocumentDynamicRegistrationSupported")
+    private @Nullable Output<Boolean> clientIdMetadataDocumentDynamicRegistrationSupported;
+
+    /**
+     * @return Whether the authorization server supports registering clients dynamically from a `clientId` URL (EA only). Requires `clientIdMetadataDocumentSupported` to be enabled.
+     * 
+     */
+    public Optional<Output<Boolean>> clientIdMetadataDocumentDynamicRegistrationSupported() {
+        return Optional.ofNullable(this.clientIdMetadataDocumentDynamicRegistrationSupported);
+    }
+
+    /**
      * Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
      * 
      */
@@ -512,6 +527,7 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
         this.acrValuesSupporteds = $.acrValuesSupporteds;
         this.allowOrganizationNameInAuthenticationApi = $.allowOrganizationNameInAuthenticationApi;
         this.allowedLogoutUrls = $.allowedLogoutUrls;
+        this.clientIdMetadataDocumentDynamicRegistrationSupported = $.clientIdMetadataDocumentDynamicRegistrationSupported;
         this.clientIdMetadataDocumentSupported = $.clientIdMetadataDocumentSupported;
         this.countryCodes = $.countryCodes;
         this.customizeMfaInPostloginAction = $.customizeMfaInPostloginAction;
@@ -642,6 +658,27 @@ public final class TenantArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder allowedLogoutUrls(String... allowedLogoutUrls) {
             return allowedLogoutUrls(List.of(allowedLogoutUrls));
+        }
+
+        /**
+         * @param clientIdMetadataDocumentDynamicRegistrationSupported Whether the authorization server supports registering clients dynamically from a `clientId` URL (EA only). Requires `clientIdMetadataDocumentSupported` to be enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientIdMetadataDocumentDynamicRegistrationSupported(@Nullable Output<Boolean> clientIdMetadataDocumentDynamicRegistrationSupported) {
+            $.clientIdMetadataDocumentDynamicRegistrationSupported = clientIdMetadataDocumentDynamicRegistrationSupported;
+            return this;
+        }
+
+        /**
+         * @param clientIdMetadataDocumentDynamicRegistrationSupported Whether the authorization server supports registering clients dynamically from a `clientId` URL (EA only). Requires `clientIdMetadataDocumentSupported` to be enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientIdMetadataDocumentDynamicRegistrationSupported(Boolean clientIdMetadataDocumentDynamicRegistrationSupported) {
+            return clientIdMetadataDocumentDynamicRegistrationSupported(Output.of(clientIdMetadataDocumentDynamicRegistrationSupported));
         }
 
         /**

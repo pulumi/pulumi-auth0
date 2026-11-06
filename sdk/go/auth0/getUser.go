@@ -60,7 +60,7 @@ type LookupUserResult struct {
 	Name string `pulumi:"name"`
 	// Preferred nickname or alias of the user. This value can only be updated if the connection is a database connection (using the Auth0 store), a passwordless connection (email or sms) or has disabled 'Sync user profile attributes at each login'. For more information, see: [Configure Identity Provider Connection for User Profile Updates](https://auth0.com/docs/manage-users/user-accounts/user-profiles/configure-connection-sync-with-auth0).
 	Nickname string `pulumi:"nickname"`
-	// Initial password for this user. Required for non-passwordless connections (SMS and email).
+	// Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `passwordWo`.
 	Password string `pulumi:"password"`
 	// List of API permissions granted to the user. Skips if `skipPermissions` is `true`. When `skipPermissions` is `true` (default), this will be an empty set to optimize performance and reduce rate limit consumption.
 	Permissions []GetUserPermissionType `pulumi:"permissions"`
@@ -181,7 +181,7 @@ func (o LookupUserResultOutput) Nickname() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Nickname }).(pulumi.StringOutput)
 }
 
-// Initial password for this user. Required for non-passwordless connections (SMS and email).
+// Initial password for this user. Required for non-passwordless connections (SMS and email). Conflicts with `passwordWo`.
 func (o LookupUserResultOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Password }).(pulumi.StringOutput)
 }
