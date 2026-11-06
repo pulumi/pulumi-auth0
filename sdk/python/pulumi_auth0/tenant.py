@@ -24,6 +24,7 @@ class TenantArgs:
                  acr_values_supporteds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allow_organization_name_in_authentication_api: pulumi.Input[Optional[_builtins.bool]] = None,
                  allowed_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 client_id_metadata_document_dynamic_registration_supported: pulumi.Input[Optional[_builtins.bool]] = None,
                  client_id_metadata_document_supported: pulumi.Input[Optional[_builtins.bool]] = None,
                  country_codes: pulumi.Input[Optional['TenantCountryCodesArgs']] = None,
                  customize_mfa_in_postlogin_action: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -59,6 +60,7 @@ class TenantArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acr_values_supporteds: List of supported ACR values.
         :param pulumi.Input[_builtins.bool] allow_organization_name_in_authentication_api: Whether to accept an organization name instead of an ID on auth endpoints.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
+        :param pulumi.Input[_builtins.bool] client_id_metadata_document_dynamic_registration_supported: Whether the authorization server supports registering clients dynamically from a `client_id` URL (EA only). Requires `client_id_metadata_document_supported` to be enabled.
         :param pulumi.Input[_builtins.bool] client_id_metadata_document_supported: Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
         :param pulumi.Input['TenantCountryCodesArgs'] country_codes: Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
         :param pulumi.Input[_builtins.bool] customize_mfa_in_postlogin_action: Whether to enable flexible factors for MFA in the PostLogin action.
@@ -95,6 +97,8 @@ class TenantArgs:
             pulumi.set(__self__, "allow_organization_name_in_authentication_api", allow_organization_name_in_authentication_api)
         if allowed_logout_urls is not None:
             pulumi.set(__self__, "allowed_logout_urls", allowed_logout_urls)
+        if client_id_metadata_document_dynamic_registration_supported is not None:
+            pulumi.set(__self__, "client_id_metadata_document_dynamic_registration_supported", client_id_metadata_document_dynamic_registration_supported)
         if client_id_metadata_document_supported is not None:
             pulumi.set(__self__, "client_id_metadata_document_supported", client_id_metadata_document_supported)
         if country_codes is not None:
@@ -189,6 +193,18 @@ class TenantArgs:
     @allowed_logout_urls.setter
     def allowed_logout_urls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_logout_urls", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientIdMetadataDocumentDynamicRegistrationSupported")
+    def client_id_metadata_document_dynamic_registration_supported(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the authorization server supports registering clients dynamically from a `client_id` URL (EA only). Requires `client_id_metadata_document_supported` to be enabled.
+        """
+        return pulumi.get(self, "client_id_metadata_document_dynamic_registration_supported")
+
+    @client_id_metadata_document_dynamic_registration_supported.setter
+    def client_id_metadata_document_dynamic_registration_supported(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "client_id_metadata_document_dynamic_registration_supported", value)
 
     @_builtins.property
     @pulumi.getter(name="clientIdMetadataDocumentSupported")
@@ -545,6 +561,7 @@ class _TenantState:
                  acr_values_supporteds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allow_organization_name_in_authentication_api: pulumi.Input[Optional[_builtins.bool]] = None,
                  allowed_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 client_id_metadata_document_dynamic_registration_supported: pulumi.Input[Optional[_builtins.bool]] = None,
                  client_id_metadata_document_supported: pulumi.Input[Optional[_builtins.bool]] = None,
                  country_codes: pulumi.Input[Optional['TenantCountryCodesArgs']] = None,
                  customize_mfa_in_postlogin_action: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -580,6 +597,7 @@ class _TenantState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acr_values_supporteds: List of supported ACR values.
         :param pulumi.Input[_builtins.bool] allow_organization_name_in_authentication_api: Whether to accept an organization name instead of an ID on auth endpoints.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
+        :param pulumi.Input[_builtins.bool] client_id_metadata_document_dynamic_registration_supported: Whether the authorization server supports registering clients dynamically from a `client_id` URL (EA only). Requires `client_id_metadata_document_supported` to be enabled.
         :param pulumi.Input[_builtins.bool] client_id_metadata_document_supported: Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
         :param pulumi.Input['TenantCountryCodesArgs'] country_codes: Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
         :param pulumi.Input[_builtins.bool] customize_mfa_in_postlogin_action: Whether to enable flexible factors for MFA in the PostLogin action.
@@ -616,6 +634,8 @@ class _TenantState:
             pulumi.set(__self__, "allow_organization_name_in_authentication_api", allow_organization_name_in_authentication_api)
         if allowed_logout_urls is not None:
             pulumi.set(__self__, "allowed_logout_urls", allowed_logout_urls)
+        if client_id_metadata_document_dynamic_registration_supported is not None:
+            pulumi.set(__self__, "client_id_metadata_document_dynamic_registration_supported", client_id_metadata_document_dynamic_registration_supported)
         if client_id_metadata_document_supported is not None:
             pulumi.set(__self__, "client_id_metadata_document_supported", client_id_metadata_document_supported)
         if country_codes is not None:
@@ -710,6 +730,18 @@ class _TenantState:
     @allowed_logout_urls.setter
     def allowed_logout_urls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_logout_urls", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientIdMetadataDocumentDynamicRegistrationSupported")
+    def client_id_metadata_document_dynamic_registration_supported(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the authorization server supports registering clients dynamically from a `client_id` URL (EA only). Requires `client_id_metadata_document_supported` to be enabled.
+        """
+        return pulumi.get(self, "client_id_metadata_document_dynamic_registration_supported")
+
+    @client_id_metadata_document_dynamic_registration_supported.setter
+    def client_id_metadata_document_dynamic_registration_supported(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "client_id_metadata_document_dynamic_registration_supported", value)
 
     @_builtins.property
     @pulumi.getter(name="clientIdMetadataDocumentSupported")
@@ -1069,6 +1101,7 @@ class Tenant(pulumi.CustomResource):
                  acr_values_supporteds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allow_organization_name_in_authentication_api: pulumi.Input[Optional[_builtins.bool]] = None,
                  allowed_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 client_id_metadata_document_dynamic_registration_supported: pulumi.Input[Optional[_builtins.bool]] = None,
                  client_id_metadata_document_supported: pulumi.Input[Optional[_builtins.bool]] = None,
                  country_codes: pulumi.Input[Optional[Union['TenantCountryCodesArgs', 'TenantCountryCodesArgsDict', 'outputs.TenantCountryCodes']]] = None,
                  customize_mfa_in_postlogin_action: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1172,6 +1205,7 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acr_values_supporteds: List of supported ACR values.
         :param pulumi.Input[_builtins.bool] allow_organization_name_in_authentication_api: Whether to accept an organization name instead of an ID on auth endpoints.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
+        :param pulumi.Input[_builtins.bool] client_id_metadata_document_dynamic_registration_supported: Whether the authorization server supports registering clients dynamically from a `client_id` URL (EA only). Requires `client_id_metadata_document_supported` to be enabled.
         :param pulumi.Input[_builtins.bool] client_id_metadata_document_supported: Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
         :param pulumi.Input[Union['TenantCountryCodesArgs', 'TenantCountryCodesArgsDict', 'outputs.TenantCountryCodes']] country_codes: Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
         :param pulumi.Input[_builtins.bool] customize_mfa_in_postlogin_action: Whether to enable flexible factors for MFA in the PostLogin action.
@@ -1294,6 +1328,7 @@ class Tenant(pulumi.CustomResource):
                  acr_values_supporteds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allow_organization_name_in_authentication_api: pulumi.Input[Optional[_builtins.bool]] = None,
                  allowed_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 client_id_metadata_document_dynamic_registration_supported: pulumi.Input[Optional[_builtins.bool]] = None,
                  client_id_metadata_document_supported: pulumi.Input[Optional[_builtins.bool]] = None,
                  country_codes: pulumi.Input[Optional[Union['TenantCountryCodesArgs', 'TenantCountryCodesArgsDict', 'outputs.TenantCountryCodes']]] = None,
                  customize_mfa_in_postlogin_action: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1335,6 +1370,7 @@ class Tenant(pulumi.CustomResource):
             __props__.__dict__["acr_values_supporteds"] = acr_values_supporteds
             __props__.__dict__["allow_organization_name_in_authentication_api"] = allow_organization_name_in_authentication_api
             __props__.__dict__["allowed_logout_urls"] = allowed_logout_urls
+            __props__.__dict__["client_id_metadata_document_dynamic_registration_supported"] = client_id_metadata_document_dynamic_registration_supported
             __props__.__dict__["client_id_metadata_document_supported"] = client_id_metadata_document_supported
             __props__.__dict__["country_codes"] = country_codes
             __props__.__dict__["customize_mfa_in_postlogin_action"] = customize_mfa_in_postlogin_action
@@ -1377,6 +1413,7 @@ class Tenant(pulumi.CustomResource):
             acr_values_supporteds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             allow_organization_name_in_authentication_api: pulumi.Input[Optional[_builtins.bool]] = None,
             allowed_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            client_id_metadata_document_dynamic_registration_supported: pulumi.Input[Optional[_builtins.bool]] = None,
             client_id_metadata_document_supported: pulumi.Input[Optional[_builtins.bool]] = None,
             country_codes: pulumi.Input[Optional[Union['TenantCountryCodesArgs', 'TenantCountryCodesArgsDict', 'outputs.TenantCountryCodes']]] = None,
             customize_mfa_in_postlogin_action: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1416,6 +1453,7 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acr_values_supporteds: List of supported ACR values.
         :param pulumi.Input[_builtins.bool] allow_organization_name_in_authentication_api: Whether to accept an organization name instead of an ID on auth endpoints.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
+        :param pulumi.Input[_builtins.bool] client_id_metadata_document_dynamic_registration_supported: Whether the authorization server supports registering clients dynamically from a `client_id` URL (EA only). Requires `client_id_metadata_document_supported` to be enabled.
         :param pulumi.Input[_builtins.bool] client_id_metadata_document_supported: Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
         :param pulumi.Input[Union['TenantCountryCodesArgs', 'TenantCountryCodesArgsDict', 'outputs.TenantCountryCodes']] country_codes: Configuration for phone identifier country code filtering. Remove this block to disable filtering. Requires the country codes feature flag to be enabled on the tenant.
         :param pulumi.Input[_builtins.bool] customize_mfa_in_postlogin_action: Whether to enable flexible factors for MFA in the PostLogin action.
@@ -1453,6 +1491,7 @@ class Tenant(pulumi.CustomResource):
         __props__.__dict__["acr_values_supporteds"] = acr_values_supporteds
         __props__.__dict__["allow_organization_name_in_authentication_api"] = allow_organization_name_in_authentication_api
         __props__.__dict__["allowed_logout_urls"] = allowed_logout_urls
+        __props__.__dict__["client_id_metadata_document_dynamic_registration_supported"] = client_id_metadata_document_dynamic_registration_supported
         __props__.__dict__["client_id_metadata_document_supported"] = client_id_metadata_document_supported
         __props__.__dict__["country_codes"] = country_codes
         __props__.__dict__["customize_mfa_in_postlogin_action"] = customize_mfa_in_postlogin_action
@@ -1490,6 +1529,7 @@ class Tenant(pulumi.CustomResource):
             acr_values_supporteds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             allow_organization_name_in_authentication_api: pulumi.Input[Optional[_builtins.bool]] = None,
             allowed_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            client_id_metadata_document_dynamic_registration_supported: pulumi.Input[Optional[_builtins.bool]] = None,
             client_id_metadata_document_supported: pulumi.Input[Optional[_builtins.bool]] = None,
             country_codes: pulumi.Input[Optional[Union['TenantCountryCodesArgs', 'TenantCountryCodesArgsDict', 'outputs.TenantCountryCodes']]] = None,
             customize_mfa_in_postlogin_action: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1523,6 +1563,7 @@ class Tenant(pulumi.CustomResource):
         __props__["acrValuesSupporteds"] = acr_values_supporteds
         __props__["allowOrganizationNameInAuthenticationApi"] = allow_organization_name_in_authentication_api
         __props__["allowedLogoutUrls"] = allowed_logout_urls
+        __props__["clientIdMetadataDocumentDynamicRegistrationSupported"] = client_id_metadata_document_dynamic_registration_supported
         __props__["clientIdMetadataDocumentSupported"] = client_id_metadata_document_supported
         __props__["countryCodes"] = country_codes
         __props__["customizeMfaInPostloginAction"] = customize_mfa_in_postlogin_action
@@ -1577,6 +1618,14 @@ class Tenant(pulumi.CustomResource):
         URLs that Auth0 may redirect to after logout.
         """
         return pulumi.get(self, "allowed_logout_urls")
+
+    @_builtins.property
+    @pulumi.getter(name="clientIdMetadataDocumentDynamicRegistrationSupported")
+    def client_id_metadata_document_dynamic_registration_supported(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether the authorization server supports registering clients dynamically from a `client_id` URL (EA only). Requires `client_id_metadata_document_supported` to be enabled.
+        """
+        return pulumi.get(self, "client_id_metadata_document_dynamic_registration_supported")
 
     @_builtins.property
     @pulumi.getter(name="clientIdMetadataDocumentSupported")

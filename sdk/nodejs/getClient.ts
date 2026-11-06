@@ -158,6 +158,10 @@ export interface GetClientResult {
      */
     readonly externalMetadataCreatedBy: string;
     /**
+     * Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only). Only present for CIMD-registered clients.
+     */
+    readonly externalMetadataStatus: string;
+    /**
      * Type of external metadata. Value is `cimd` for CIMD-registered clients.
      */
     readonly externalMetadataType: string;

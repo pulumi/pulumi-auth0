@@ -159,6 +159,11 @@ public final class GetClientResult {
      */
     private String externalMetadataCreatedBy;
     /**
+     * @return Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only). Only present for CIMD-registered clients.
+     * 
+     */
+    private String externalMetadataStatus;
+    /**
      * @return Type of external metadata. Value is `cimd` for CIMD-registered clients.
      * 
      */
@@ -527,6 +532,13 @@ public final class GetClientResult {
         return this.externalMetadataCreatedBy;
     }
     /**
+     * @return Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only). Only present for CIMD-registered clients.
+     * 
+     */
+    public String externalMetadataStatus() {
+        return this.externalMetadataStatus;
+    }
+    /**
      * @return Type of external metadata. Value is `cimd` for CIMD-registered clients.
      * 
      */
@@ -830,6 +842,7 @@ public final class GetClientResult {
         private List<GetClientExpressConfiguration> expressConfigurations;
         private String externalClientId;
         private String externalMetadataCreatedBy;
+        private String externalMetadataStatus;
         private String externalMetadataType;
         private List<GetClientFedcmLogin> fedcmLogins;
         private String formTemplate;
@@ -897,6 +910,7 @@ public final class GetClientResult {
     	      this.expressConfigurations = defaults.expressConfigurations;
     	      this.externalClientId = defaults.externalClientId;
     	      this.externalMetadataCreatedBy = defaults.externalMetadataCreatedBy;
+    	      this.externalMetadataStatus = defaults.externalMetadataStatus;
     	      this.externalMetadataType = defaults.externalMetadataType;
     	      this.fedcmLogins = defaults.fedcmLogins;
     	      this.formTemplate = defaults.formTemplate;
@@ -1170,6 +1184,14 @@ public final class GetClientResult {
               throw new MissingRequiredPropertyException("GetClientResult", "externalMetadataCreatedBy");
             }
             this.externalMetadataCreatedBy = externalMetadataCreatedBy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder externalMetadataStatus(String externalMetadataStatus) {
+            if (externalMetadataStatus == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "externalMetadataStatus");
+            }
+            this.externalMetadataStatus = externalMetadataStatus;
             return this;
         }
         @CustomType.Setter
@@ -1555,6 +1577,7 @@ public final class GetClientResult {
             _resultValue.expressConfigurations = expressConfigurations;
             _resultValue.externalClientId = externalClientId;
             _resultValue.externalMetadataCreatedBy = externalMetadataCreatedBy;
+            _resultValue.externalMetadataStatus = externalMetadataStatus;
             _resultValue.externalMetadataType = externalMetadataType;
             _resultValue.fedcmLogins = fedcmLogins;
             _resultValue.formTemplate = formTemplate;

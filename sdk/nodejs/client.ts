@@ -151,6 +151,10 @@ export class Client extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly externalMetadataCreatedBy: pulumi.Output<string>;
     /**
+     * Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only). Only present for CIMD-registered clients.
+     */
+    declare public /*out*/ readonly externalMetadataStatus: pulumi.Output<string>;
+    /**
      * Type of external metadata. Value is `cimd` for CIMD-registered clients.
      */
     declare public /*out*/ readonly externalMetadataType: pulumi.Output<string>;
@@ -326,6 +330,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["expressConfiguration"] = state?.expressConfiguration;
             resourceInputs["externalClientId"] = state?.externalClientId;
             resourceInputs["externalMetadataCreatedBy"] = state?.externalMetadataCreatedBy;
+            resourceInputs["externalMetadataStatus"] = state?.externalMetadataStatus;
             resourceInputs["externalMetadataType"] = state?.externalMetadataType;
             resourceInputs["fedcmLogin"] = state?.fedcmLogin;
             resourceInputs["formTemplate"] = state?.formTemplate;
@@ -418,6 +423,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["webOrigins"] = args?.webOrigins;
             resourceInputs["externalClientId"] = undefined /*out*/;
             resourceInputs["externalMetadataCreatedBy"] = undefined /*out*/;
+            resourceInputs["externalMetadataStatus"] = undefined /*out*/;
             resourceInputs["externalMetadataType"] = undefined /*out*/;
             resourceInputs["jwksUri"] = undefined /*out*/;
             resourceInputs["signingKeys"] = undefined /*out*/;
@@ -525,6 +531,10 @@ export interface ClientState {
      * Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
      */
     externalMetadataCreatedBy?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only). Only present for CIMD-registered clients.
+     */
+    externalMetadataStatus?: pulumi.Input<string | undefined>;
     /**
      * Type of external metadata. Value is `cimd` for CIMD-registered clients.
      */

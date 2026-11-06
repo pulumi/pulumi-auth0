@@ -166,6 +166,20 @@ public class Tenant extends com.pulumi.resources.CustomResource {
         return this.allowedLogoutUrls;
     }
     /**
+     * Whether the authorization server supports registering clients dynamically from a `clientId` URL (EA only). Requires `clientIdMetadataDocumentSupported` to be enabled.
+     * 
+     */
+    @Export(name="clientIdMetadataDocumentDynamicRegistrationSupported", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> clientIdMetadataDocumentDynamicRegistrationSupported;
+
+    /**
+     * @return Whether the authorization server supports registering clients dynamically from a `clientId` URL (EA only). Requires `clientIdMetadataDocumentSupported` to be enabled.
+     * 
+     */
+    public Output<Boolean> clientIdMetadataDocumentDynamicRegistrationSupported() {
+        return this.clientIdMetadataDocumentDynamicRegistrationSupported;
+    }
+    /**
      * Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
      * 
      */

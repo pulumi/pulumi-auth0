@@ -51,6 +51,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Find CIMD clients by their metadata document URL.
+//			_, err = auth0.GetClients(ctx, &auth0.GetClientsArgs{
+//				ExternalClientId: pulumi.StringRef("https://mcp-agent.example.com/oauth/metadata.json"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}

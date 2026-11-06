@@ -278,6 +278,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? OidcMetadata;
         /// <summary>
+        /// One-time password settings for database (`Auth0` strategy) connections, configurable per delivery channel. (EA only)
+        /// </summary>
+        public readonly Outputs.ConnectionOptionsOtpSettings? OtpSettings;
+        /// <summary>
         /// Defines options for the passkey authentication method
         /// </summary>
         public readonly Outputs.ConnectionOptionsPasskeyOptions? PasskeyOptions;
@@ -632,6 +636,8 @@ namespace Pulumi.Auth0.Outputs
 
             string? oidcMetadata,
 
+            Outputs.ConnectionOptionsOtpSettings? otpSettings,
+
             Outputs.ConnectionOptionsPasskeyOptions? passkeyOptions,
 
             Outputs.ConnectionOptionsPasswordComplexityOptions? passwordComplexityOptions,
@@ -808,6 +814,7 @@ namespace Pulumi.Auth0.Outputs
             Name = name;
             NonPersistentAttrs = nonPersistentAttrs;
             OidcMetadata = oidcMetadata;
+            OtpSettings = otpSettings;
             PasskeyOptions = passkeyOptions;
             PasswordComplexityOptions = passwordComplexityOptions;
             PasswordDictionary = passwordDictionary;

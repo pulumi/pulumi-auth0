@@ -153,6 +153,11 @@ public final class GetResourceServerResult {
      */
     private Integer tokenLifetimeForWeb;
     /**
+     * @return Type of the resource server. Only `universalCommerceProtocolServer` is supported, and only one typed resource server is allowed per tenant. Removing this attribute clears the type on the API, which requires that any `dev.ucp` scopes on the resource server are removed first. If they are still present, the apply warns and keeps the type; apply again once the scopes are gone. (EA only).
+     * 
+     */
+    private String type;
+    /**
      * @return URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
      * 
      */
@@ -342,6 +347,13 @@ public final class GetResourceServerResult {
         return this.tokenLifetimeForWeb;
     }
     /**
+     * @return Type of the resource server. Only `universalCommerceProtocolServer` is supported, and only one typed resource server is allowed per tenant. Removing this attribute clears the type on the API, which requires that any `dev.ucp` scopes on the resource server are removed first. If they are still present, the apply warns and keeps the type; apply again once the scopes are gone. (EA only).
+     * 
+     */
+    public String type() {
+        return this.type;
+    }
+    /**
      * @return URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
      * 
      */
@@ -384,6 +396,7 @@ public final class GetResourceServerResult {
         private Integer tokenLifetime;
         private Integer tokenLifetimeForAnonymousAccessTokens;
         private Integer tokenLifetimeForWeb;
+        private String type;
         private String verificationLocation;
         public Builder() {}
         public Builder(GetResourceServerResult defaults) {
@@ -414,6 +427,7 @@ public final class GetResourceServerResult {
     	      this.tokenLifetime = defaults.tokenLifetime;
     	      this.tokenLifetimeForAnonymousAccessTokens = defaults.tokenLifetimeForAnonymousAccessTokens;
     	      this.tokenLifetimeForWeb = defaults.tokenLifetimeForWeb;
+    	      this.type = defaults.type;
     	      this.verificationLocation = defaults.verificationLocation;
         }
 
@@ -643,6 +657,14 @@ public final class GetResourceServerResult {
             return this;
         }
         @CustomType.Setter
+        public Builder type(String type) {
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetResourceServerResult", "type");
+            }
+            this.type = type;
+            return this;
+        }
+        @CustomType.Setter
         public Builder verificationLocation(String verificationLocation) {
             if (verificationLocation == null) {
               throw new MissingRequiredPropertyException("GetResourceServerResult", "verificationLocation");
@@ -678,6 +700,7 @@ public final class GetResourceServerResult {
             _resultValue.tokenLifetime = tokenLifetime;
             _resultValue.tokenLifetimeForAnonymousAccessTokens = tokenLifetimeForAnonymousAccessTokens;
             _resultValue.tokenLifetimeForWeb = tokenLifetimeForWeb;
+            _resultValue.type = type;
             _resultValue.verificationLocation = verificationLocation;
             return _resultValue;
         }

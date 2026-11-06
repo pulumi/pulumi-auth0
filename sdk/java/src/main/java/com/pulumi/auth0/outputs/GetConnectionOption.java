@@ -14,6 +14,7 @@ import com.pulumi.auth0.outputs.GetConnectionOptionFederatedConnectionsAccessTok
 import com.pulumi.auth0.outputs.GetConnectionOptionGatewayAuthentication;
 import com.pulumi.auth0.outputs.GetConnectionOptionIdpInitiated;
 import com.pulumi.auth0.outputs.GetConnectionOptionMfa;
+import com.pulumi.auth0.outputs.GetConnectionOptionOtpSetting;
 import com.pulumi.auth0.outputs.GetConnectionOptionPasskeyOption;
 import com.pulumi.auth0.outputs.GetConnectionOptionPasswordComplexityOption;
 import com.pulumi.auth0.outputs.GetConnectionOptionPasswordDictionary;
@@ -364,6 +365,11 @@ public final class GetConnectionOption {
      * 
      */
     private String oidcMetadata;
+    /**
+     * @return One-time password settings for database (`auth0` strategy) connections, configurable per delivery channel. (EA only)
+     * 
+     */
+    private List<GetConnectionOptionOtpSetting> otpSettings;
     /**
      * @return Defines options for the passkey authentication method
      * 
@@ -1104,6 +1110,13 @@ public final class GetConnectionOption {
         return this.oidcMetadata;
     }
     /**
+     * @return One-time password settings for database (`auth0` strategy) connections, configurable per delivery channel. (EA only)
+     * 
+     */
+    public List<GetConnectionOptionOtpSetting> otpSettings() {
+        return this.otpSettings;
+    }
+    /**
      * @return Defines options for the passkey authentication method
      * 
      */
@@ -1564,6 +1577,7 @@ public final class GetConnectionOption {
         private String name;
         private List<String> nonPersistentAttrs;
         private String oidcMetadata;
+        private List<GetConnectionOptionOtpSetting> otpSettings;
         private List<GetConnectionOptionPasskeyOption> passkeyOptions;
         private List<GetConnectionOptionPasswordComplexityOption> passwordComplexityOptions;
         private List<GetConnectionOptionPasswordDictionary> passwordDictionaries;
@@ -1688,6 +1702,7 @@ public final class GetConnectionOption {
     	      this.name = defaults.name;
     	      this.nonPersistentAttrs = defaults.nonPersistentAttrs;
     	      this.oidcMetadata = defaults.oidcMetadata;
+    	      this.otpSettings = defaults.otpSettings;
     	      this.passkeyOptions = defaults.passkeyOptions;
     	      this.passwordComplexityOptions = defaults.passwordComplexityOptions;
     	      this.passwordDictionaries = defaults.passwordDictionaries;
@@ -2322,6 +2337,17 @@ public final class GetConnectionOption {
             return this;
         }
         @CustomType.Setter
+        public Builder otpSettings(List<GetConnectionOptionOtpSetting> otpSettings) {
+            if (otpSettings == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "otpSettings");
+            }
+            this.otpSettings = otpSettings;
+            return this;
+        }
+        public Builder otpSettings(GetConnectionOptionOtpSetting... otpSettings) {
+            return otpSettings(List.of(otpSettings));
+        }
+        @CustomType.Setter
         public Builder passkeyOptions(List<GetConnectionOptionPasskeyOption> passkeyOptions) {
             if (passkeyOptions == null) {
               throw new MissingRequiredPropertyException("GetConnectionOption", "passkeyOptions");
@@ -2862,6 +2888,7 @@ public final class GetConnectionOption {
             _resultValue.name = name;
             _resultValue.nonPersistentAttrs = nonPersistentAttrs;
             _resultValue.oidcMetadata = oidcMetadata;
+            _resultValue.otpSettings = otpSettings;
             _resultValue.passkeyOptions = passkeyOptions;
             _resultValue.passwordComplexityOptions = passwordComplexityOptions;
             _resultValue.passwordDictionaries = passwordDictionaries;

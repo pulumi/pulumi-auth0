@@ -341,6 +341,21 @@ public final class ResourceServerArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Type of the resource server. Only `universalCommerceProtocolServer` is supported, and only one typed resource server is allowed per tenant. Removing this attribute clears the type on the API, which requires that any `dev.ucp` scopes on the resource server are removed first. If they are still present, the apply warns and keeps the type; apply again once the scopes are gone. (EA only).
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return Type of the resource server. Only `universalCommerceProtocolServer` is supported, and only one typed resource server is allowed per tenant. Removing this attribute clears the type on the API, which requires that any `dev.ucp` scopes on the resource server are removed first. If they are still present, the apply warns and keeps the type; apply again once the scopes are gone. (EA only).
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
+    /**
      * URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
      * 
      */
@@ -379,6 +394,7 @@ public final class ResourceServerArgs extends com.pulumi.resources.ResourceArgs 
         this.tokenLifetime = $.tokenLifetime;
         this.tokenLifetimeForAnonymousAccessTokens = $.tokenLifetimeForAnonymousAccessTokens;
         this.tokenLifetimeForWeb = $.tokenLifetimeForWeb;
+        this.type = $.type;
         this.verificationLocation = $.verificationLocation;
     }
 
@@ -849,6 +865,27 @@ public final class ResourceServerArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder tokenLifetimeForWeb(Integer tokenLifetimeForWeb) {
             return tokenLifetimeForWeb(Output.of(tokenLifetimeForWeb));
+        }
+
+        /**
+         * @param type Type of the resource server. Only `universalCommerceProtocolServer` is supported, and only one typed resource server is allowed per tenant. Removing this attribute clears the type on the API, which requires that any `dev.ucp` scopes on the resource server are removed first. If they are still present, the apply warns and keeps the type; apply again once the scopes are gone. (EA only).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type Type of the resource server. Only `universalCommerceProtocolServer` is supported, and only one typed resource server is allowed per tenant. Removing this attribute clears the type on the API, which requires that any `dev.ucp` scopes on the resource server are removed first. If they are still present, the apply warns and keeps the type; apply again once the scopes are gone. (EA only).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
         }
 
         /**

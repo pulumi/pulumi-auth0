@@ -82,6 +82,8 @@ import javax.annotation.Nullable;
  *             .grantTypes(            
  *                 "authorization_code",
  *                 "refresh_token")
+ *             .organizationUsage("require")
+ *             .organizationRequireBehavior("post_login_prompt")
  *             .clientMetadata(Map.of("environment", "production"))
  *             .build());
  * 
@@ -92,10 +94,9 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported by specifying the client ID.
- * Generally CIMD clients have a &#34;tpc_&#34; prefix in their client ID.
- * 
- * Example:
+ * Import an existing CIMD client by its client ID (usually prefixed with &#34;tpc_&#34;).
+ * For a dynamically registered client, import instead of creating a second
+ * client for the same externalClientId URL.
  * 
  * ```sh
  * $ pulumi import auth0:index/clientCimd:ClientCimd my_mcp_agent &#34;tpc_5FPpaVyZGSNRCBzTb2zURZ&#34;
@@ -119,14 +120,14 @@ public class ClientCimd extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.allowedOrigins);
     }
     /**
-     * Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`.
+     * Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
      * 
      */
     @Export(name="appType", refs={String.class}, tree="[0]")
     private Output<String> appType;
 
     /**
-     * @return Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`.
+     * @return Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
      * 
      */
     public Output<String> appType() {
@@ -189,14 +190,14 @@ public class ClientCimd extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.defaultOrganization);
     }
     /**
-     * Description of the purpose of the client.
+     * Description of the purpose of the client. Once set, removing this argument from configuration does not clear it. For admin-registered clients, set `description = &#34;&#34;` to clear it. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the purpose of the client.
+     * @return Description of the purpose of the client. Once set, removing this argument from configuration does not clear it. For admin-registered clients, set `description = &#34;&#34;` to clear it. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
      * 
      */
     public Output<Optional<String>> description() {
@@ -217,32 +218,46 @@ public class ClientCimd extends com.pulumi.resources.CustomResource {
         return this.externalClientId;
     }
     /**
-     * Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.
+     * Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document. Only applies to clients with `externalMetadataCreatedBy` set to `admin`.
      * 
      */
     @Export(name="externalClientIdVersion", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> externalClientIdVersion;
 
     /**
-     * @return Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.
+     * @return Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document. Only applies to clients with `externalMetadataCreatedBy` set to `admin`.
      * 
      */
     public Output<Optional<Integer>> externalClientIdVersion() {
         return Codegen.optional(this.externalClientIdVersion);
     }
     /**
-     * Who created the external metadata client: `admin` (via Management API) or `client` (self-registered).
+     * Who created the external metadata client: `admin` (via Management API) or `client` (dynamically self-registered). Read-only; available in Terraform state after import, not in generated configuration.
      * 
      */
     @Export(name="externalMetadataCreatedBy", refs={String.class}, tree="[0]")
     private Output<String> externalMetadataCreatedBy;
 
     /**
-     * @return Who created the external metadata client: `admin` (via Management API) or `client` (self-registered).
+     * @return Who created the external metadata client: `admin` (via Management API) or `client` (dynamically self-registered). Read-only; available in Terraform state after import, not in generated configuration.
      * 
      */
     public Output<String> externalMetadataCreatedBy() {
         return this.externalMetadataCreatedBy;
+    }
+    /**
+     * Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only).
+     * 
+     */
+    @Export(name="externalMetadataStatus", refs={String.class}, tree="[0]")
+    private Output<String> externalMetadataStatus;
+
+    /**
+     * @return Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only).
+     * 
+     */
+    public Output<String> externalMetadataStatus() {
+        return this.externalMetadataStatus;
     }
     /**
      * Type of external metadata. Always `cimd` for CIMD-registered clients.
@@ -259,14 +274,14 @@ public class ClientCimd extends com.pulumi.resources.CustomResource {
         return this.externalMetadataType;
     }
     /**
-     * Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`.
+     * Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
      * 
      */
     @Export(name="grantTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> grantTypes;
 
     /**
-     * @return Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`.
+     * @return Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
      * 
      */
     public Output<List<String>> grantTypes() {
@@ -369,6 +384,34 @@ public class ClientCimd extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> organizationDiscoveryMethods() {
         return Codegen.optional(this.organizationDiscoveryMethods);
+    }
+    /**
+     * Defines how to proceed during an authentication transaction when `organizationUsage = &#34;require&#34;`. Can be `noPrompt` (default), `preLoginPrompt` or `postLoginPrompt`.
+     * 
+     */
+    @Export(name="organizationRequireBehavior", refs={String.class}, tree="[0]")
+    private Output<String> organizationRequireBehavior;
+
+    /**
+     * @return Defines how to proceed during an authentication transaction when `organizationUsage = &#34;require&#34;`. Can be `noPrompt` (default), `preLoginPrompt` or `postLoginPrompt`.
+     * 
+     */
+    public Output<String> organizationRequireBehavior() {
+        return this.organizationRequireBehavior;
+    }
+    /**
+     * Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+     * 
+     */
+    @Export(name="organizationUsage", refs={String.class}, tree="[0]")
+    private Output<String> organizationUsage;
+
+    /**
+     * @return Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+     * 
+     */
+    public Output<String> organizationUsage() {
+        return this.organizationUsage;
     }
     /**
      * Controls whether Auth0 redirects users to the application&#39;s callback URL on authentication errors or in email verification flows.

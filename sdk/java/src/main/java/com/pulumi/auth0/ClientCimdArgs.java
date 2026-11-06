@@ -40,14 +40,14 @@ public final class ClientCimdArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`.
+     * Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
      * 
      */
     @Import(name="appType")
     private @Nullable Output<String> appType;
 
     /**
-     * @return Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`.
+     * @return Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
      * 
      */
     public Optional<Output<String>> appType() {
@@ -85,14 +85,14 @@ public final class ClientCimdArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of the purpose of the client.
+     * Description of the purpose of the client. Once set, removing this argument from configuration does not clear it. For admin-registered clients, set `description = &#34;&#34;` to clear it. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the purpose of the client.
+     * @return Description of the purpose of the client. Once set, removing this argument from configuration does not clear it. For admin-registered clients, set `description = &#34;&#34;` to clear it. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
      * 
      */
     public Optional<Output<String>> description() {
@@ -115,14 +115,14 @@ public final class ClientCimdArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.
+     * Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document. Only applies to clients with `externalMetadataCreatedBy` set to `admin`.
      * 
      */
     @Import(name="externalClientIdVersion")
     private @Nullable Output<Integer> externalClientIdVersion;
 
     /**
-     * @return Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.
+     * @return Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document. Only applies to clients with `externalMetadataCreatedBy` set to `admin`.
      * 
      */
     public Optional<Output<Integer>> externalClientIdVersion() {
@@ -130,14 +130,14 @@ public final class ClientCimdArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`.
+     * Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
      * 
      */
     @Import(name="grantTypes")
     private @Nullable Output<List<String>> grantTypes;
 
     /**
-     * @return Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`.
+     * @return Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
      * 
      */
     public Optional<Output<List<String>>> grantTypes() {
@@ -187,6 +187,36 @@ public final class ClientCimdArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<String>>> organizationDiscoveryMethods() {
         return Optional.ofNullable(this.organizationDiscoveryMethods);
+    }
+
+    /**
+     * Defines how to proceed during an authentication transaction when `organizationUsage = &#34;require&#34;`. Can be `noPrompt` (default), `preLoginPrompt` or `postLoginPrompt`.
+     * 
+     */
+    @Import(name="organizationRequireBehavior")
+    private @Nullable Output<String> organizationRequireBehavior;
+
+    /**
+     * @return Defines how to proceed during an authentication transaction when `organizationUsage = &#34;require&#34;`. Can be `noPrompt` (default), `preLoginPrompt` or `postLoginPrompt`.
+     * 
+     */
+    public Optional<Output<String>> organizationRequireBehavior() {
+        return Optional.ofNullable(this.organizationRequireBehavior);
+    }
+
+    /**
+     * Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+     * 
+     */
+    @Import(name="organizationUsage")
+    private @Nullable Output<String> organizationUsage;
+
+    /**
+     * @return Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+     * 
+     */
+    public Optional<Output<String>> organizationUsage() {
+        return Optional.ofNullable(this.organizationUsage);
     }
 
     /**
@@ -293,6 +323,8 @@ public final class ClientCimdArgs extends com.pulumi.resources.ResourceArgs {
         this.jwtConfiguration = $.jwtConfiguration;
         this.oidcConformant = $.oidcConformant;
         this.organizationDiscoveryMethods = $.organizationDiscoveryMethods;
+        this.organizationRequireBehavior = $.organizationRequireBehavior;
+        this.organizationUsage = $.organizationUsage;
         this.redirectionPolicy = $.redirectionPolicy;
         this.refreshToken = $.refreshToken;
         this.requireProofOfPossession = $.requireProofOfPossession;
@@ -351,7 +383,7 @@ public final class ClientCimdArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appType Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`.
+         * @param appType Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
          * 
          * @return builder
          * 
@@ -362,7 +394,7 @@ public final class ClientCimdArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appType Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`.
+         * @param appType Type of application the client represents. CIMD clients only support `native`, `spa`, and `regularWeb`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
          * 
          * @return builder
          * 
@@ -414,7 +446,7 @@ public final class ClientCimdArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the purpose of the client.
+         * @param description Description of the purpose of the client. Once set, removing this argument from configuration does not clear it. For admin-registered clients, set `description = &#34;&#34;` to clear it. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
          * 
          * @return builder
          * 
@@ -425,7 +457,7 @@ public final class ClientCimdArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the purpose of the client.
+         * @param description Description of the purpose of the client. Once set, removing this argument from configuration does not clear it. For admin-registered clients, set `description = &#34;&#34;` to clear it. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
          * 
          * @return builder
          * 
@@ -456,7 +488,7 @@ public final class ClientCimdArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalClientIdVersion Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.
+         * @param externalClientIdVersion Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document. Only applies to clients with `externalMetadataCreatedBy` set to `admin`.
          * 
          * @return builder
          * 
@@ -467,7 +499,7 @@ public final class ClientCimdArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalClientIdVersion Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.
+         * @param externalClientIdVersion Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document. Only applies to clients with `externalMetadataCreatedBy` set to `admin`.
          * 
          * @return builder
          * 
@@ -477,7 +509,7 @@ public final class ClientCimdArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param grantTypes Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`.
+         * @param grantTypes Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
          * 
          * @return builder
          * 
@@ -488,7 +520,7 @@ public final class ClientCimdArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param grantTypes Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`.
+         * @param grantTypes Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
          * 
          * @return builder
          * 
@@ -498,7 +530,7 @@ public final class ClientCimdArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param grantTypes Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`.
+         * @param grantTypes Types of grants that this client is authorized to use. CIMD clients support `authorizationCode` and `refreshToken`. Do not update this field for dynamically registered clients where `externalMetadataCreatedBy` is set to `client`. Auth0 rejects the update.
          * 
          * @return builder
          * 
@@ -578,6 +610,48 @@ public final class ClientCimdArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder organizationDiscoveryMethods(String... organizationDiscoveryMethods) {
             return organizationDiscoveryMethods(List.of(organizationDiscoveryMethods));
+        }
+
+        /**
+         * @param organizationRequireBehavior Defines how to proceed during an authentication transaction when `organizationUsage = &#34;require&#34;`. Can be `noPrompt` (default), `preLoginPrompt` or `postLoginPrompt`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder organizationRequireBehavior(@Nullable Output<String> organizationRequireBehavior) {
+            $.organizationRequireBehavior = organizationRequireBehavior;
+            return this;
+        }
+
+        /**
+         * @param organizationRequireBehavior Defines how to proceed during an authentication transaction when `organizationUsage = &#34;require&#34;`. Can be `noPrompt` (default), `preLoginPrompt` or `postLoginPrompt`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder organizationRequireBehavior(String organizationRequireBehavior) {
+            return organizationRequireBehavior(Output.of(organizationRequireBehavior));
+        }
+
+        /**
+         * @param organizationUsage Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder organizationUsage(@Nullable Output<String> organizationUsage) {
+            $.organizationUsage = organizationUsage;
+            return this;
+        }
+
+        /**
+         * @param organizationUsage Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder organizationUsage(String organizationUsage) {
+            return organizationUsage(Output.of(organizationUsage));
         }
 
         /**

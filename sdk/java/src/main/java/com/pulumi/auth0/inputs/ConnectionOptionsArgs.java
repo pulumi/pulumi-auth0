@@ -14,6 +14,7 @@ import com.pulumi.auth0.inputs.ConnectionOptionsFederatedConnectionsAccessTokens
 import com.pulumi.auth0.inputs.ConnectionOptionsGatewayAuthenticationArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsIdpInitiatedArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsMfaArgs;
+import com.pulumi.auth0.inputs.ConnectionOptionsOtpSettingsArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsPasskeyOptionsArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsPasswordComplexityOptionsArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsPasswordDictionaryArgs;
@@ -1030,6 +1031,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * One-time password settings for database (`auth0` strategy) connections, configurable per delivery channel. (EA only)
+     * 
+     */
+    @Import(name="otpSettings")
+    private @Nullable Output<ConnectionOptionsOtpSettingsArgs> otpSettings;
+
+    /**
+     * @return One-time password settings for database (`auth0` strategy) connections, configurable per delivery channel. (EA only)
+     * 
+     */
+    public Optional<Output<ConnectionOptionsOtpSettingsArgs>> otpSettings() {
+        return Optional.ofNullable(this.otpSettings);
+    }
+
+    /**
      * Defines options for the passkey authentication method
      * 
      */
@@ -1923,6 +1939,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.name = $.name;
         this.nonPersistentAttrs = $.nonPersistentAttrs;
         this.oidcMetadata = $.oidcMetadata;
+        this.otpSettings = $.otpSettings;
         this.passkeyOptions = $.passkeyOptions;
         this.passwordComplexityOptions = $.passwordComplexityOptions;
         this.passwordDictionary = $.passwordDictionary;
@@ -3462,6 +3479,27 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder oidcMetadata(String oidcMetadata) {
             return oidcMetadata(Output.of(oidcMetadata));
+        }
+
+        /**
+         * @param otpSettings One-time password settings for database (`auth0` strategy) connections, configurable per delivery channel. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder otpSettings(@Nullable Output<ConnectionOptionsOtpSettingsArgs> otpSettings) {
+            $.otpSettings = otpSettings;
+            return this;
+        }
+
+        /**
+         * @param otpSettings One-time password settings for database (`auth0` strategy) connections, configurable per delivery channel. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder otpSettings(ConnectionOptionsOtpSettingsArgs otpSettings) {
+            return otpSettings(Output.of(otpSettings));
         }
 
         /**

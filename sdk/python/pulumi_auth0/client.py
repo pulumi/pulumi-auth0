@@ -903,6 +903,7 @@ class _ClientState:
                  express_configuration: pulumi.Input[Optional['ClientExpressConfigurationArgs']] = None,
                  external_client_id: pulumi.Input[Optional[_builtins.str]] = None,
                  external_metadata_created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_metadata_status: pulumi.Input[Optional[_builtins.str]] = None,
                  external_metadata_type: pulumi.Input[Optional[_builtins.str]] = None,
                  fedcm_login: pulumi.Input[Optional['ClientFedcmLoginArgs']] = None,
                  form_template: pulumi.Input[Optional[_builtins.str]] = None,
@@ -964,6 +965,7 @@ class _ClientState:
         :param pulumi.Input['ClientExpressConfigurationArgs'] express_configuration: Express Configuration settings for the client. Used with OIN Express Configuration.
         :param pulumi.Input[_builtins.str] external_client_id: The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
         :param pulumi.Input[_builtins.str] external_metadata_created_by: Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
+        :param pulumi.Input[_builtins.str] external_metadata_status: Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only). Only present for CIMD-registered clients.
         :param pulumi.Input[_builtins.str] external_metadata_type: Type of external metadata. Value is `cimd` for CIMD-registered clients.
         :param pulumi.Input['ClientFedcmLoginArgs'] fedcm_login: Federated Credential Management (FedCM) configuration. (EA only)
         :param pulumi.Input[_builtins.str] form_template: HTML form template to be used for WS-Federation.
@@ -1047,6 +1049,8 @@ class _ClientState:
             pulumi.set(__self__, "external_client_id", external_client_id)
         if external_metadata_created_by is not None:
             pulumi.set(__self__, "external_metadata_created_by", external_metadata_created_by)
+        if external_metadata_status is not None:
+            pulumi.set(__self__, "external_metadata_status", external_metadata_status)
         if external_metadata_type is not None:
             pulumi.set(__self__, "external_metadata_type", external_metadata_type)
         if fedcm_login is not None:
@@ -1396,6 +1400,18 @@ class _ClientState:
     @external_metadata_created_by.setter
     def external_metadata_created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_metadata_created_by", value)
+
+    @_builtins.property
+    @pulumi.getter(name="externalMetadataStatus")
+    def external_metadata_status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only). Only present for CIMD-registered clients.
+        """
+        return pulumi.get(self, "external_metadata_status")
+
+    @external_metadata_status.setter
+    def external_metadata_status(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "external_metadata_status", value)
 
     @_builtins.property
     @pulumi.getter(name="externalMetadataType")
@@ -2099,6 +2115,7 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["web_origins"] = web_origins
             __props__.__dict__["external_client_id"] = None
             __props__.__dict__["external_metadata_created_by"] = None
+            __props__.__dict__["external_metadata_status"] = None
             __props__.__dict__["external_metadata_type"] = None
             __props__.__dict__["jwks_uri"] = None
             __props__.__dict__["signing_keys"] = None
@@ -2137,6 +2154,7 @@ class Client(pulumi.CustomResource):
             express_configuration: pulumi.Input[Optional[Union['ClientExpressConfigurationArgs', 'ClientExpressConfigurationArgsDict', 'outputs.ClientExpressConfiguration']]] = None,
             external_client_id: pulumi.Input[Optional[_builtins.str]] = None,
             external_metadata_created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            external_metadata_status: pulumi.Input[Optional[_builtins.str]] = None,
             external_metadata_type: pulumi.Input[Optional[_builtins.str]] = None,
             fedcm_login: pulumi.Input[Optional[Union['ClientFedcmLoginArgs', 'ClientFedcmLoginArgsDict', 'outputs.ClientFedcmLogin']]] = None,
             form_template: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2202,6 +2220,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Union['ClientExpressConfigurationArgs', 'ClientExpressConfigurationArgsDict', 'outputs.ClientExpressConfiguration']] express_configuration: Express Configuration settings for the client. Used with OIN Express Configuration.
         :param pulumi.Input[_builtins.str] external_client_id: The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
         :param pulumi.Input[_builtins.str] external_metadata_created_by: Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
+        :param pulumi.Input[_builtins.str] external_metadata_status: Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only). Only present for CIMD-registered clients.
         :param pulumi.Input[_builtins.str] external_metadata_type: Type of external metadata. Value is `cimd` for CIMD-registered clients.
         :param pulumi.Input[Union['ClientFedcmLoginArgs', 'ClientFedcmLoginArgsDict', 'outputs.ClientFedcmLogin']] fedcm_login: Federated Credential Management (FedCM) configuration. (EA only)
         :param pulumi.Input[_builtins.str] form_template: HTML form template to be used for WS-Federation.
@@ -2264,6 +2283,7 @@ class Client(pulumi.CustomResource):
         __props__.__dict__["express_configuration"] = express_configuration
         __props__.__dict__["external_client_id"] = external_client_id
         __props__.__dict__["external_metadata_created_by"] = external_metadata_created_by
+        __props__.__dict__["external_metadata_status"] = external_metadata_status
         __props__.__dict__["external_metadata_type"] = external_metadata_type
         __props__.__dict__["fedcm_login"] = fedcm_login
         __props__.__dict__["form_template"] = form_template
@@ -2327,6 +2347,7 @@ class Client(pulumi.CustomResource):
             express_configuration: pulumi.Input[Optional[Union['ClientExpressConfigurationArgs', 'ClientExpressConfigurationArgsDict', 'outputs.ClientExpressConfiguration']]] = None,
             external_client_id: pulumi.Input[Optional[_builtins.str]] = None,
             external_metadata_created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            external_metadata_status: pulumi.Input[Optional[_builtins.str]] = None,
             external_metadata_type: pulumi.Input[Optional[_builtins.str]] = None,
             fedcm_login: pulumi.Input[Optional[Union['ClientFedcmLoginArgs', 'ClientFedcmLoginArgsDict', 'outputs.ClientFedcmLogin']]] = None,
             form_template: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2386,6 +2407,7 @@ class Client(pulumi.CustomResource):
         __props__["expressConfiguration"] = express_configuration
         __props__["externalClientId"] = external_client_id
         __props__["externalMetadataCreatedBy"] = external_metadata_created_by
+        __props__["externalMetadataStatus"] = external_metadata_status
         __props__["externalMetadataType"] = external_metadata_type
         __props__["fedcmLogin"] = fedcm_login
         __props__["formTemplate"] = form_template
@@ -2606,6 +2628,14 @@ class Client(pulumi.CustomResource):
         Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
         """
         return pulumi.get(self, "external_metadata_created_by")
+
+    @_builtins.property
+    @pulumi.getter(name="externalMetadataStatus")
+    def external_metadata_status(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only). Only present for CIMD-registered clients.
+        """
+        return pulumi.get(self, "external_metadata_status")
 
     @_builtins.property
     @pulumi.getter(name="externalMetadataType")

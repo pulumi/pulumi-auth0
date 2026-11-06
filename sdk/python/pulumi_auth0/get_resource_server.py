@@ -27,7 +27,7 @@ class GetResourceServerResult:
     """
     A collection of values returned by getResourceServer.
     """
-    def __init__(__self__, access_tokens=None, allow_offline_access=None, allow_online_access=None, allow_online_access_with_ephemeral_sessions=None, authorization_details=None, authorization_policies=None, client_id=None, consent_policy=None, enforce_policies=None, id=None, identifier=None, is_system=None, name=None, proof_of_possessions=None, require_consent_non_repudiation=None, resource_server_id=None, scopes=None, signing_alg=None, signing_secret=None, skip_consent_for_verifiable_first_party_clients=None, subject_type_authorizations=None, token_dialect=None, token_encryptions=None, token_lifetime=None, token_lifetime_for_anonymous_access_tokens=None, token_lifetime_for_web=None, verification_location=None):
+    def __init__(__self__, access_tokens=None, allow_offline_access=None, allow_online_access=None, allow_online_access_with_ephemeral_sessions=None, authorization_details=None, authorization_policies=None, client_id=None, consent_policy=None, enforce_policies=None, id=None, identifier=None, is_system=None, name=None, proof_of_possessions=None, require_consent_non_repudiation=None, resource_server_id=None, scopes=None, signing_alg=None, signing_secret=None, skip_consent_for_verifiable_first_party_clients=None, subject_type_authorizations=None, token_dialect=None, token_encryptions=None, token_lifetime=None, token_lifetime_for_anonymous_access_tokens=None, token_lifetime_for_web=None, type=None, verification_location=None):
         if access_tokens and not isinstance(access_tokens, list):
             raise TypeError("Expected argument 'access_tokens' to be a list")
         pulumi.set(__self__, "access_tokens", access_tokens)
@@ -106,6 +106,9 @@ class GetResourceServerResult:
         if token_lifetime_for_web and not isinstance(token_lifetime_for_web, int):
             raise TypeError("Expected argument 'token_lifetime_for_web' to be a int")
         pulumi.set(__self__, "token_lifetime_for_web", token_lifetime_for_web)
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        pulumi.set(__self__, "type", type)
         if verification_location and not isinstance(verification_location, str):
             raise TypeError("Expected argument 'verification_location' to be a str")
         pulumi.set(__self__, "verification_location", verification_location)
@@ -319,6 +322,14 @@ class GetResourceServerResult:
         return pulumi.get(self, "token_lifetime_for_web")
 
     @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the resource server. Only `universal_commerce_protocol_server` is supported, and only one typed resource server is allowed per tenant. Removing this attribute clears the type on the API, which requires that any `dev.ucp` scopes on the resource server are removed first. If they are still present, the apply warns and keeps the type; apply again once the scopes are gone. (EA only).
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
     @pulumi.getter(name="verificationLocation")
     def verification_location(self) -> _builtins.str:
         """
@@ -359,6 +370,7 @@ class AwaitableGetResourceServerResult(GetResourceServerResult):
             token_lifetime=self.token_lifetime,
             token_lifetime_for_anonymous_access_tokens=self.token_lifetime_for_anonymous_access_tokens,
             token_lifetime_for_web=self.token_lifetime_for_web,
+            type=self.type,
             verification_location=self.verification_location)
 
 
@@ -417,6 +429,7 @@ def get_resource_server(identifier: Optional[_builtins.str] = None,
         token_lifetime=pulumi.get(__ret__, 'token_lifetime'),
         token_lifetime_for_anonymous_access_tokens=pulumi.get(__ret__, 'token_lifetime_for_anonymous_access_tokens'),
         token_lifetime_for_web=pulumi.get(__ret__, 'token_lifetime_for_web'),
+        type=pulumi.get(__ret__, 'type'),
         verification_location=pulumi.get(__ret__, 'verification_location'))
 def get_resource_server_output(identifier: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                resource_server_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -472,4 +485,5 @@ def get_resource_server_output(identifier: pulumi.Input[Optional[Optional[_built
         token_lifetime=pulumi.get(__response__, 'token_lifetime'),
         token_lifetime_for_anonymous_access_tokens=pulumi.get(__response__, 'token_lifetime_for_anonymous_access_tokens'),
         token_lifetime_for_web=pulumi.get(__response__, 'token_lifetime_for_web'),
+        type=pulumi.get(__response__, 'type'),
         verification_location=pulumi.get(__response__, 'verification_location')))

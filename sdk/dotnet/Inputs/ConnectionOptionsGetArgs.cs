@@ -489,6 +489,12 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? OidcMetadata { get; set; }
 
         /// <summary>
+        /// One-time password settings for database (`Auth0` strategy) connections, configurable per delivery channel. (EA only)
+        /// </summary>
+        [Input("otpSettings")]
+        public Input<Inputs.ConnectionOptionsOtpSettingsGetArgs>? OtpSettings { get; set; }
+
+        /// <summary>
         /// Defines options for the passkey authentication method
         /// </summary>
         [Input("passkeyOptions")]

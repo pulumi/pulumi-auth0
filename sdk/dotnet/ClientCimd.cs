@@ -64,6 +64,8 @@ namespace Pulumi.Auth0
     ///             "authorization_code",
     ///             "refresh_token",
     ///         },
+    ///         OrganizationUsage = "require",
+    ///         OrganizationRequireBehavior = "post_login_prompt",
     ///         ClientMetadata = 
     ///         {
     ///             { "environment", "production" },
@@ -75,10 +77,9 @@ namespace Pulumi.Auth0
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported by specifying the client ID.
-    /// Generally CIMD clients have a "tpc_" prefix in their client ID.
-    /// 
-    /// Example:
+    /// Import an existing CIMD client by its client ID (usually prefixed with "tpc_").
+    /// For a dynamically registered client, import instead of creating a second
+    /// client for the same ExternalClientId URL.
     /// 
     /// ```sh
     /// $ pulumi import auth0:index/clientCimd:ClientCimd my_mcp_agent "tpc_5FPpaVyZGSNRCBzTb2zURZ"
@@ -94,7 +95,7 @@ namespace Pulumi.Auth0
         public Output<ImmutableArray<string>> AllowedOrigins { get; private set; } = null!;
 
         /// <summary>
-        /// Type of application the client represents. CIMD clients only support `Native`, `Spa`, and `RegularWeb`.
+        /// Type of application the client represents. CIMD clients only support `Native`, `Spa`, and `RegularWeb`. Do not update this field for dynamically registered clients where `ExternalMetadataCreatedBy` is set to `Client`. Auth0 rejects the update.
         /// </summary>
         [Output("appType")]
         public Output<string> AppType { get; private set; } = null!;
@@ -124,7 +125,7 @@ namespace Pulumi.Auth0
         public Output<Outputs.ClientCimdDefaultOrganization?> DefaultOrganization { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the purpose of the client.
+        /// Description of the purpose of the client. Once set, removing this argument from configuration does not clear it. For admin-registered clients, set `description = ""` to clear it. Do not update this field for dynamically registered clients where `ExternalMetadataCreatedBy` is set to `Client`. Auth0 rejects the update.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -136,16 +137,22 @@ namespace Pulumi.Auth0
         public Output<string> ExternalClientId { get; private set; } = null!;
 
         /// <summary>
-        /// Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.
+        /// Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document. Only applies to clients with `ExternalMetadataCreatedBy` set to `Admin`.
         /// </summary>
         [Output("externalClientIdVersion")]
         public Output<int?> ExternalClientIdVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Who created the external metadata client: `Admin` (via Management API) or `Client` (self-registered).
+        /// Who created the external metadata client: `Admin` (via Management API) or `Client` (dynamically self-registered). Read-only; available in Terraform state after import, not in generated configuration.
         /// </summary>
         [Output("externalMetadataCreatedBy")]
         public Output<string> ExternalMetadataCreatedBy { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `Available` or `Unavailable` (EA only).
+        /// </summary>
+        [Output("externalMetadataStatus")]
+        public Output<string> ExternalMetadataStatus { get; private set; } = null!;
 
         /// <summary>
         /// Type of external metadata. Always `Cimd` for CIMD-registered clients.
@@ -154,7 +161,7 @@ namespace Pulumi.Auth0
         public Output<string> ExternalMetadataType { get; private set; } = null!;
 
         /// <summary>
-        /// Types of grants that this client is authorized to use. CIMD clients support `AuthorizationCode` and `RefreshToken`.
+        /// Types of grants that this client is authorized to use. CIMD clients support `AuthorizationCode` and `RefreshToken`. Do not update this field for dynamically registered clients where `ExternalMetadataCreatedBy` is set to `Client`. Auth0 rejects the update.
         /// </summary>
         [Output("grantTypes")]
         public Output<ImmutableArray<string>> GrantTypes { get; private set; } = null!;
@@ -200,6 +207,18 @@ namespace Pulumi.Auth0
         /// </summary>
         [Output("organizationDiscoveryMethods")]
         public Output<ImmutableArray<string>> OrganizationDiscoveryMethods { get; private set; } = null!;
+
+        /// <summary>
+        /// Defines how to proceed during an authentication transaction when `OrganizationUsage = "require"`. Can be `NoPrompt` (default), `PreLoginPrompt` or `PostLoginPrompt`.
+        /// </summary>
+        [Output("organizationRequireBehavior")]
+        public Output<string> OrganizationRequireBehavior { get; private set; } = null!;
+
+        /// <summary>
+        /// Defines how to proceed during an authentication transaction with regards to an organization. Can be `Deny` (default), `Allow` or `Require`.
+        /// </summary>
+        [Output("organizationUsage")]
+        public Output<string> OrganizationUsage { get; private set; } = null!;
 
         /// <summary>
         /// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.
@@ -318,7 +337,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Type of application the client represents. CIMD clients only support `Native`, `Spa`, and `RegularWeb`.
+        /// Type of application the client represents. CIMD clients only support `Native`, `Spa`, and `RegularWeb`. Do not update this field for dynamically registered clients where `ExternalMetadataCreatedBy` is set to `Client`. Auth0 rejects the update.
         /// </summary>
         [Input("appType")]
         public Input<string>? AppType { get; set; }
@@ -342,7 +361,7 @@ namespace Pulumi.Auth0
         public Input<Inputs.ClientCimdDefaultOrganizationArgs>? DefaultOrganization { get; set; }
 
         /// <summary>
-        /// Description of the purpose of the client.
+        /// Description of the purpose of the client. Once set, removing this argument from configuration does not clear it. For admin-registered clients, set `description = ""` to clear it. Do not update this field for dynamically registered clients where `ExternalMetadataCreatedBy` is set to `Client`. Auth0 rejects the update.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -354,7 +373,7 @@ namespace Pulumi.Auth0
         public Input<string> ExternalClientId { get; set; } = null!;
 
         /// <summary>
-        /// Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.
+        /// Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document. Only applies to clients with `ExternalMetadataCreatedBy` set to `Admin`.
         /// </summary>
         [Input("externalClientIdVersion")]
         public Input<int>? ExternalClientIdVersion { get; set; }
@@ -363,7 +382,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _grantTypes;
 
         /// <summary>
-        /// Types of grants that this client is authorized to use. CIMD clients support `AuthorizationCode` and `RefreshToken`.
+        /// Types of grants that this client is authorized to use. CIMD clients support `AuthorizationCode` and `RefreshToken`. Do not update this field for dynamically registered clients where `ExternalMetadataCreatedBy` is set to `Client`. Auth0 rejects the update.
         /// </summary>
         public InputList<string> GrantTypes
         {
@@ -394,6 +413,18 @@ namespace Pulumi.Auth0
             get => _organizationDiscoveryMethods ?? (_organizationDiscoveryMethods = new InputList<string>());
             set => _organizationDiscoveryMethods = value;
         }
+
+        /// <summary>
+        /// Defines how to proceed during an authentication transaction when `OrganizationUsage = "require"`. Can be `NoPrompt` (default), `PreLoginPrompt` or `PostLoginPrompt`.
+        /// </summary>
+        [Input("organizationRequireBehavior")]
+        public Input<string>? OrganizationRequireBehavior { get; set; }
+
+        /// <summary>
+        /// Defines how to proceed during an authentication transaction with regards to an organization. Can be `Deny` (default), `Allow` or `Require`.
+        /// </summary>
+        [Input("organizationUsage")]
+        public Input<string>? OrganizationUsage { get; set; }
 
         /// <summary>
         /// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.
@@ -458,7 +489,7 @@ namespace Pulumi.Auth0
         }
 
         /// <summary>
-        /// Type of application the client represents. CIMD clients only support `Native`, `Spa`, and `RegularWeb`.
+        /// Type of application the client represents. CIMD clients only support `Native`, `Spa`, and `RegularWeb`. Do not update this field for dynamically registered clients where `ExternalMetadataCreatedBy` is set to `Client`. Auth0 rejects the update.
         /// </summary>
         [Input("appType")]
         public Input<string>? AppType { get; set; }
@@ -500,7 +531,7 @@ namespace Pulumi.Auth0
         public Input<Inputs.ClientCimdDefaultOrganizationGetArgs>? DefaultOrganization { get; set; }
 
         /// <summary>
-        /// Description of the purpose of the client.
+        /// Description of the purpose of the client. Once set, removing this argument from configuration does not clear it. For admin-registered clients, set `description = ""` to clear it. Do not update this field for dynamically registered clients where `ExternalMetadataCreatedBy` is set to `Client`. Auth0 rejects the update.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -512,16 +543,22 @@ namespace Pulumi.Auth0
         public Input<string>? ExternalClientId { get; set; }
 
         /// <summary>
-        /// Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.
+        /// Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document. Only applies to clients with `ExternalMetadataCreatedBy` set to `Admin`.
         /// </summary>
         [Input("externalClientIdVersion")]
         public Input<int>? ExternalClientIdVersion { get; set; }
 
         /// <summary>
-        /// Who created the external metadata client: `Admin` (via Management API) or `Client` (self-registered).
+        /// Who created the external metadata client: `Admin` (via Management API) or `Client` (dynamically self-registered). Read-only; available in Terraform state after import, not in generated configuration.
         /// </summary>
         [Input("externalMetadataCreatedBy")]
         public Input<string>? ExternalMetadataCreatedBy { get; set; }
+
+        /// <summary>
+        /// Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `Available` or `Unavailable` (EA only).
+        /// </summary>
+        [Input("externalMetadataStatus")]
+        public Input<string>? ExternalMetadataStatus { get; set; }
 
         /// <summary>
         /// Type of external metadata. Always `Cimd` for CIMD-registered clients.
@@ -533,7 +570,7 @@ namespace Pulumi.Auth0
         private InputList<string>? _grantTypes;
 
         /// <summary>
-        /// Types of grants that this client is authorized to use. CIMD clients support `AuthorizationCode` and `RefreshToken`.
+        /// Types of grants that this client is authorized to use. CIMD clients support `AuthorizationCode` and `RefreshToken`. Do not update this field for dynamically registered clients where `ExternalMetadataCreatedBy` is set to `Client`. Auth0 rejects the update.
         /// </summary>
         public InputList<string> GrantTypes
         {
@@ -588,6 +625,18 @@ namespace Pulumi.Auth0
             get => _organizationDiscoveryMethods ?? (_organizationDiscoveryMethods = new InputList<string>());
             set => _organizationDiscoveryMethods = value;
         }
+
+        /// <summary>
+        /// Defines how to proceed during an authentication transaction when `OrganizationUsage = "require"`. Can be `NoPrompt` (default), `PreLoginPrompt` or `PostLoginPrompt`.
+        /// </summary>
+        [Input("organizationRequireBehavior")]
+        public Input<string>? OrganizationRequireBehavior { get; set; }
+
+        /// <summary>
+        /// Defines how to proceed during an authentication transaction with regards to an organization. Can be `Deny` (default), `Allow` or `Require`.
+        /// </summary>
+        [Input("organizationUsage")]
+        public Input<string>? OrganizationUsage { get; set; }
 
         /// <summary>
         /// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.

@@ -246,6 +246,10 @@ export class ResourceServer extends pulumi.CustomResource {
      */
     declare public readonly tokenLifetimeForWeb: pulumi.Output<number>;
     /**
+     * Type of the resource server. Only `universalCommerceProtocolServer` is supported, and only one typed resource server is allowed per tenant. Removing this attribute clears the type on the API, which requires that any `dev.ucp` scopes on the resource server are removed first. If they are still present, the apply warns and keeps the type; apply again once the scopes are gone. (EA only).
+     */
+    declare public readonly type: pulumi.Output<string | undefined>;
+    /**
      * URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
      */
     declare public readonly verificationLocation: pulumi.Output<string | undefined>;
@@ -286,6 +290,7 @@ export class ResourceServer extends pulumi.CustomResource {
             resourceInputs["tokenLifetime"] = state?.tokenLifetime;
             resourceInputs["tokenLifetimeForAnonymousAccessTokens"] = state?.tokenLifetimeForAnonymousAccessTokens;
             resourceInputs["tokenLifetimeForWeb"] = state?.tokenLifetimeForWeb;
+            resourceInputs["type"] = state?.type;
             resourceInputs["verificationLocation"] = state?.verificationLocation;
         } else {
             const args = argsOrState as ResourceServerArgs | undefined;
@@ -313,6 +318,7 @@ export class ResourceServer extends pulumi.CustomResource {
             resourceInputs["tokenLifetime"] = args?.tokenLifetime;
             resourceInputs["tokenLifetimeForAnonymousAccessTokens"] = args?.tokenLifetimeForAnonymousAccessTokens;
             resourceInputs["tokenLifetimeForWeb"] = args?.tokenLifetimeForWeb;
+            resourceInputs["type"] = args?.type;
             resourceInputs["verificationLocation"] = args?.verificationLocation;
             resourceInputs["clientId"] = undefined /*out*/;
             resourceInputs["isSystem"] = undefined /*out*/;
@@ -419,6 +425,10 @@ export interface ResourceServerState {
      */
     tokenLifetimeForWeb?: pulumi.Input<number | undefined>;
     /**
+     * Type of the resource server. Only `universalCommerceProtocolServer` is supported, and only one typed resource server is allowed per tenant. Removing this attribute clears the type on the API, which requires that any `dev.ucp` scopes on the resource server are removed first. If they are still present, the apply warns and keeps the type; apply again once the scopes are gone. (EA only).
+     */
+    type?: pulumi.Input<string | undefined>;
+    /**
      * URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
      */
     verificationLocation?: pulumi.Input<string | undefined>;
@@ -512,6 +522,10 @@ export interface ResourceServerArgs {
      * Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
      */
     tokenLifetimeForWeb?: pulumi.Input<number | undefined>;
+    /**
+     * Type of the resource server. Only `universalCommerceProtocolServer` is supported, and only one typed resource server is allowed per tenant. Removing this attribute clears the type on the API, which requires that any `dev.ucp` scopes on the resource server are removed first. If they are still present, the apply warns and keeps the type; apply again once the scopes are gone. (EA only).
+     */
+    type?: pulumi.Input<string | undefined>;
     /**
      * URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
      */

@@ -46,6 +46,12 @@ namespace Pulumi.Auth0
         ///         IsFirstParty = true,
         ///     });
         /// 
+        ///     // Find CIMD clients by their metadata document URL.
+        ///     var cimdApps = Auth0.GetClients.Invoke(new()
+        ///     {
+        ///         ExternalClientId = "https://mcp-agent.example.com/oauth/metadata.json",
+        ///     });
+        /// 
         /// });
         /// ```
         /// </summary>
@@ -87,6 +93,12 @@ namespace Pulumi.Auth0
         ///         IsFirstParty = true,
         ///     });
         /// 
+        ///     // Find CIMD clients by their metadata document URL.
+        ///     var cimdApps = Auth0.GetClients.Invoke(new()
+        ///     {
+        ///         ExternalClientId = "https://mcp-agent.example.com/oauth/metadata.json",
+        ///     });
+        /// 
         /// });
         /// ```
         /// </summary>
@@ -126,6 +138,12 @@ namespace Pulumi.Auth0
         ///     var firstPartyApps = Auth0.GetClients.Invoke(new()
         ///     {
         ///         IsFirstParty = true,
+        ///     });
+        /// 
+        ///     // Find CIMD clients by their metadata document URL.
+        ///     var cimdApps = Auth0.GetClients.Invoke(new()
+        ///     {
+        ///         ExternalClientId = "https://mcp-agent.example.com/oauth/metadata.json",
         ///     });
         /// 
         /// });

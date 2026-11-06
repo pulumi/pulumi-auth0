@@ -118,6 +118,8 @@ type LookupResourceServerResult struct {
 	TokenLifetimeForAnonymousAccessTokens int `pulumi:"tokenLifetimeForAnonymousAccessTokens"`
 	// Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
 	TokenLifetimeForWeb int `pulumi:"tokenLifetimeForWeb"`
+	// Type of the resource server. Only `universalCommerceProtocolServer` is supported, and only one typed resource server is allowed per tenant. Removing this attribute clears the type on the API, which requires that any `dev.ucp` scopes on the resource server are removed first. If they are still present, the apply warns and keeps the type; apply again once the scopes are gone. (EA only).
+	Type string `pulumi:"type"`
 	// URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.
 	VerificationLocation string `pulumi:"verificationLocation"`
 }
@@ -288,6 +290,11 @@ func (o LookupResourceServerResultOutput) TokenLifetimeForAnonymousAccessTokens(
 // Number of seconds during which access tokens issued for this resource server via implicit or hybrid flows remain valid. Cannot be greater than the `tokenLifetime` value.
 func (o LookupResourceServerResultOutput) TokenLifetimeForWeb() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupResourceServerResult) int { return v.TokenLifetimeForWeb }).(pulumi.IntOutput)
+}
+
+// Type of the resource server. Only `universalCommerceProtocolServer` is supported, and only one typed resource server is allowed per tenant. Removing this attribute clears the type on the API, which requires that any `dev.ucp` scopes on the resource server are removed first. If they are still present, the apply warns and keeps the type; apply again once the scopes are gone. (EA only).
+func (o LookupResourceServerResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourceServerResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // URL from which to retrieve JWKs for this resource server. Used for verifying the JWT sent to Auth0 for token introspection.

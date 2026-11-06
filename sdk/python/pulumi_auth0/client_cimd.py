@@ -32,6 +32,8 @@ class ClientCimdArgs:
                  jwt_configuration: pulumi.Input[Optional['ClientCimdJwtConfigurationArgs']] = None,
                  oidc_conformant: pulumi.Input[Optional[_builtins.bool]] = None,
                  organization_discovery_methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 organization_require_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_usage: pulumi.Input[Optional[_builtins.str]] = None,
                  redirection_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  refresh_token: pulumi.Input[Optional['ClientCimdRefreshTokenArgs']] = None,
                  require_proof_of_possession: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -43,15 +45,17 @@ class ClientCimdArgs:
 
         :param pulumi.Input[_builtins.str] external_client_id: The HTTPS URL of the Client ID Metadata Document. Must include a path component (e.g. `https://app.example.com/client.json`). This value is immutable after creation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
-        :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. CIMD clients only support `native`, `spa`, and `regular_web`.
+        :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. CIMD clients only support `native`, `spa`, and `regular_web`. Do not update this field for dynamically registered clients where `external_metadata_created_by` is set to `client`. Auth0 rejects the update.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
         :param pulumi.Input['ClientCimdDefaultOrganizationArgs'] default_organization: Configure and associate an organization with the Client
-        :param pulumi.Input[_builtins.str] description: Description of the purpose of the client.
-        :param pulumi.Input[_builtins.int] external_client_id_version: Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Types of grants that this client is authorized to use. CIMD clients support `authorization_code` and `refresh_token`.
+        :param pulumi.Input[_builtins.str] description: Description of the purpose of the client. Once set, removing this argument from configuration does not clear it. For admin-registered clients, set `description = ""` to clear it. Do not update this field for dynamically registered clients where `external_metadata_created_by` is set to `client`. Auth0 rejects the update.
+        :param pulumi.Input[_builtins.int] external_client_id_version: Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document. Only applies to clients with `external_metadata_created_by` set to `admin`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Types of grants that this client is authorized to use. CIMD clients support `authorization_code` and `refresh_token`. Do not update this field for dynamically registered clients where `external_metadata_created_by` is set to `client`. Auth0 rejects the update.
         :param pulumi.Input['ClientCimdJwtConfigurationArgs'] jwt_configuration: Configuration settings for the JWTs issued for this client.
         :param pulumi.Input[_builtins.bool] oidc_conformant: Whether this client conforms to strict OIDC specifications. Must be `true` for CIMD clients.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] organization_discovery_methods: Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
+        :param pulumi.Input[_builtins.str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or `post_login_prompt`.
+        :param pulumi.Input[_builtins.str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input[_builtins.str] redirection_policy: Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.
         :param pulumi.Input['ClientCimdRefreshTokenArgs'] refresh_token: Configuration settings for the refresh tokens issued for this client.
         :param pulumi.Input[_builtins.bool] require_proof_of_possession: Makes the use of Proof-of-Possession mandatory for this client.
@@ -80,6 +84,10 @@ class ClientCimdArgs:
             pulumi.set(__self__, "oidc_conformant", oidc_conformant)
         if organization_discovery_methods is not None:
             pulumi.set(__self__, "organization_discovery_methods", organization_discovery_methods)
+        if organization_require_behavior is not None:
+            pulumi.set(__self__, "organization_require_behavior", organization_require_behavior)
+        if organization_usage is not None:
+            pulumi.set(__self__, "organization_usage", organization_usage)
         if redirection_policy is not None:
             pulumi.set(__self__, "redirection_policy", redirection_policy)
         if refresh_token is not None:
@@ -121,7 +129,7 @@ class ClientCimdArgs:
     @pulumi.getter(name="appType")
     def app_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Type of application the client represents. CIMD clients only support `native`, `spa`, and `regular_web`.
+        Type of application the client represents. CIMD clients only support `native`, `spa`, and `regular_web`. Do not update this field for dynamically registered clients where `external_metadata_created_by` is set to `client`. Auth0 rejects the update.
         """
         return pulumi.get(self, "app_type")
 
@@ -157,7 +165,7 @@ class ClientCimdArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Description of the purpose of the client.
+        Description of the purpose of the client. Once set, removing this argument from configuration does not clear it. For admin-registered clients, set `description = ""` to clear it. Do not update this field for dynamically registered clients where `external_metadata_created_by` is set to `client`. Auth0 rejects the update.
         """
         return pulumi.get(self, "description")
 
@@ -169,7 +177,7 @@ class ClientCimdArgs:
     @pulumi.getter(name="externalClientIdVersion")
     def external_client_id_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.
+        Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document. Only applies to clients with `external_metadata_created_by` set to `admin`.
         """
         return pulumi.get(self, "external_client_id_version")
 
@@ -181,7 +189,7 @@ class ClientCimdArgs:
     @pulumi.getter(name="grantTypes")
     def grant_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Types of grants that this client is authorized to use. CIMD clients support `authorization_code` and `refresh_token`.
+        Types of grants that this client is authorized to use. CIMD clients support `authorization_code` and `refresh_token`. Do not update this field for dynamically registered clients where `external_metadata_created_by` is set to `client`. Auth0 rejects the update.
         """
         return pulumi.get(self, "grant_types")
 
@@ -224,6 +232,30 @@ class ClientCimdArgs:
     @organization_discovery_methods.setter
     def organization_discovery_methods(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "organization_discovery_methods", value)
+
+    @_builtins.property
+    @pulumi.getter(name="organizationRequireBehavior")
+    def organization_require_behavior(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or `post_login_prompt`.
+        """
+        return pulumi.get(self, "organization_require_behavior")
+
+    @organization_require_behavior.setter
+    def organization_require_behavior(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "organization_require_behavior", value)
+
+    @_builtins.property
+    @pulumi.getter(name="organizationUsage")
+    def organization_usage(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+        """
+        return pulumi.get(self, "organization_usage")
+
+    @organization_usage.setter
+    def organization_usage(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "organization_usage", value)
 
     @_builtins.property
     @pulumi.getter(name="redirectionPolicy")
@@ -311,6 +343,7 @@ class _ClientCimdState:
                  external_client_id: pulumi.Input[Optional[_builtins.str]] = None,
                  external_client_id_version: pulumi.Input[Optional[_builtins.int]] = None,
                  external_metadata_created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_metadata_status: pulumi.Input[Optional[_builtins.str]] = None,
                  external_metadata_type: pulumi.Input[Optional[_builtins.str]] = None,
                  grant_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  is_first_party: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -320,6 +353,8 @@ class _ClientCimdState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  oidc_conformant: pulumi.Input[Optional[_builtins.bool]] = None,
                  organization_discovery_methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 organization_require_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_usage: pulumi.Input[Optional[_builtins.str]] = None,
                  redirection_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  refresh_token: pulumi.Input[Optional['ClientCimdRefreshTokenArgs']] = None,
                  require_proof_of_possession: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -333,17 +368,18 @@ class _ClientCimdState:
         Input properties used for looking up and filtering ClientCimd resources.
 
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
-        :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. CIMD clients only support `native`, `spa`, and `regular_web`.
+        :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. CIMD clients only support `native`, `spa`, and `regular_web`. Do not update this field for dynamically registered clients where `external_metadata_created_by` is set to `client`. Auth0 rejects the update.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] callbacks: URLs that Auth0 may call back after authentication. Derived from the CIMD metadata document.
         :param pulumi.Input[_builtins.str] client_id: The ID of the client.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
         :param pulumi.Input['ClientCimdDefaultOrganizationArgs'] default_organization: Configure and associate an organization with the Client
-        :param pulumi.Input[_builtins.str] description: Description of the purpose of the client.
+        :param pulumi.Input[_builtins.str] description: Description of the purpose of the client. Once set, removing this argument from configuration does not clear it. For admin-registered clients, set `description = ""` to clear it. Do not update this field for dynamically registered clients where `external_metadata_created_by` is set to `client`. Auth0 rejects the update.
         :param pulumi.Input[_builtins.str] external_client_id: The HTTPS URL of the Client ID Metadata Document. Must include a path component (e.g. `https://app.example.com/client.json`). This value is immutable after creation.
-        :param pulumi.Input[_builtins.int] external_client_id_version: Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.
-        :param pulumi.Input[_builtins.str] external_metadata_created_by: Who created the external metadata client: `admin` (via Management API) or `client` (self-registered).
+        :param pulumi.Input[_builtins.int] external_client_id_version: Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document. Only applies to clients with `external_metadata_created_by` set to `admin`.
+        :param pulumi.Input[_builtins.str] external_metadata_created_by: Who created the external metadata client: `admin` (via Management API) or `client` (dynamically self-registered). Read-only; available in Terraform state after import, not in generated configuration.
+        :param pulumi.Input[_builtins.str] external_metadata_status: Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only).
         :param pulumi.Input[_builtins.str] external_metadata_type: Type of external metadata. Always `cimd` for CIMD-registered clients.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Types of grants that this client is authorized to use. CIMD clients support `authorization_code` and `refresh_token`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Types of grants that this client is authorized to use. CIMD clients support `authorization_code` and `refresh_token`. Do not update this field for dynamically registered clients where `external_metadata_created_by` is set to `client`. Auth0 rejects the update.
         :param pulumi.Input[_builtins.bool] is_first_party: Whether this is a first-party client. Always `false` for CIMD clients.
         :param pulumi.Input[_builtins.str] jwks_uri: URL for the JSON Web Key Set (JWKS) containing the public keys used for `private_key_jwt` authentication.
         :param pulumi.Input['ClientCimdJwtConfigurationArgs'] jwt_configuration: Configuration settings for the JWTs issued for this client.
@@ -351,6 +387,8 @@ class _ClientCimdState:
         :param pulumi.Input[_builtins.str] name: Name of the client, derived from the CIMD metadata document.
         :param pulumi.Input[_builtins.bool] oidc_conformant: Whether this client conforms to strict OIDC specifications. Must be `true` for CIMD clients.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] organization_discovery_methods: Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
+        :param pulumi.Input[_builtins.str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or `post_login_prompt`.
+        :param pulumi.Input[_builtins.str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input[_builtins.str] redirection_policy: Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.
         :param pulumi.Input['ClientCimdRefreshTokenArgs'] refresh_token: Configuration settings for the refresh tokens issued for this client.
         :param pulumi.Input[_builtins.bool] require_proof_of_possession: Makes the use of Proof-of-Possession mandatory for this client.
@@ -381,6 +419,8 @@ class _ClientCimdState:
             pulumi.set(__self__, "external_client_id_version", external_client_id_version)
         if external_metadata_created_by is not None:
             pulumi.set(__self__, "external_metadata_created_by", external_metadata_created_by)
+        if external_metadata_status is not None:
+            pulumi.set(__self__, "external_metadata_status", external_metadata_status)
         if external_metadata_type is not None:
             pulumi.set(__self__, "external_metadata_type", external_metadata_type)
         if grant_types is not None:
@@ -399,6 +439,10 @@ class _ClientCimdState:
             pulumi.set(__self__, "oidc_conformant", oidc_conformant)
         if organization_discovery_methods is not None:
             pulumi.set(__self__, "organization_discovery_methods", organization_discovery_methods)
+        if organization_require_behavior is not None:
+            pulumi.set(__self__, "organization_require_behavior", organization_require_behavior)
+        if organization_usage is not None:
+            pulumi.set(__self__, "organization_usage", organization_usage)
         if redirection_policy is not None:
             pulumi.set(__self__, "redirection_policy", redirection_policy)
         if refresh_token is not None:
@@ -434,7 +478,7 @@ class _ClientCimdState:
     @pulumi.getter(name="appType")
     def app_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Type of application the client represents. CIMD clients only support `native`, `spa`, and `regular_web`.
+        Type of application the client represents. CIMD clients only support `native`, `spa`, and `regular_web`. Do not update this field for dynamically registered clients where `external_metadata_created_by` is set to `client`. Auth0 rejects the update.
         """
         return pulumi.get(self, "app_type")
 
@@ -494,7 +538,7 @@ class _ClientCimdState:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Description of the purpose of the client.
+        Description of the purpose of the client. Once set, removing this argument from configuration does not clear it. For admin-registered clients, set `description = ""` to clear it. Do not update this field for dynamically registered clients where `external_metadata_created_by` is set to `client`. Auth0 rejects the update.
         """
         return pulumi.get(self, "description")
 
@@ -518,7 +562,7 @@ class _ClientCimdState:
     @pulumi.getter(name="externalClientIdVersion")
     def external_client_id_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.
+        Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document. Only applies to clients with `external_metadata_created_by` set to `admin`.
         """
         return pulumi.get(self, "external_client_id_version")
 
@@ -530,13 +574,25 @@ class _ClientCimdState:
     @pulumi.getter(name="externalMetadataCreatedBy")
     def external_metadata_created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Who created the external metadata client: `admin` (via Management API) or `client` (self-registered).
+        Who created the external metadata client: `admin` (via Management API) or `client` (dynamically self-registered). Read-only; available in Terraform state after import, not in generated configuration.
         """
         return pulumi.get(self, "external_metadata_created_by")
 
     @external_metadata_created_by.setter
     def external_metadata_created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_metadata_created_by", value)
+
+    @_builtins.property
+    @pulumi.getter(name="externalMetadataStatus")
+    def external_metadata_status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only).
+        """
+        return pulumi.get(self, "external_metadata_status")
+
+    @external_metadata_status.setter
+    def external_metadata_status(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "external_metadata_status", value)
 
     @_builtins.property
     @pulumi.getter(name="externalMetadataType")
@@ -554,7 +610,7 @@ class _ClientCimdState:
     @pulumi.getter(name="grantTypes")
     def grant_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Types of grants that this client is authorized to use. CIMD clients support `authorization_code` and `refresh_token`.
+        Types of grants that this client is authorized to use. CIMD clients support `authorization_code` and `refresh_token`. Do not update this field for dynamically registered clients where `external_metadata_created_by` is set to `client`. Auth0 rejects the update.
         """
         return pulumi.get(self, "grant_types")
 
@@ -645,6 +701,30 @@ class _ClientCimdState:
     @organization_discovery_methods.setter
     def organization_discovery_methods(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "organization_discovery_methods", value)
+
+    @_builtins.property
+    @pulumi.getter(name="organizationRequireBehavior")
+    def organization_require_behavior(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or `post_login_prompt`.
+        """
+        return pulumi.get(self, "organization_require_behavior")
+
+    @organization_require_behavior.setter
+    def organization_require_behavior(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "organization_require_behavior", value)
+
+    @_builtins.property
+    @pulumi.getter(name="organizationUsage")
+    def organization_usage(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+        """
+        return pulumi.get(self, "organization_usage")
+
+    @organization_usage.setter
+    def organization_usage(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "organization_usage", value)
 
     @_builtins.property
     @pulumi.getter(name="redirectionPolicy")
@@ -772,6 +852,8 @@ class ClientCimd(pulumi.CustomResource):
                  jwt_configuration: pulumi.Input[Optional[Union['ClientCimdJwtConfigurationArgs', 'ClientCimdJwtConfigurationArgsDict', 'outputs.ClientCimdJwtConfiguration']]] = None,
                  oidc_conformant: pulumi.Input[Optional[_builtins.bool]] = None,
                  organization_discovery_methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 organization_require_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_usage: pulumi.Input[Optional[_builtins.str]] = None,
                  redirection_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  refresh_token: pulumi.Input[Optional[Union['ClientCimdRefreshTokenArgs', 'ClientCimdRefreshTokenArgsDict', 'outputs.ClientCimdRefreshToken']]] = None,
                  require_proof_of_possession: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -816,6 +898,8 @@ class ClientCimd(pulumi.CustomResource):
                 "authorization_code",
                 "refresh_token",
             ],
+            organization_usage="require",
+            organization_require_behavior="post_login_prompt",
             client_metadata={
                 "environment": "production",
             })
@@ -823,10 +907,9 @@ class ClientCimd(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the client ID.
-        Generally CIMD clients have a "tpc_" prefix in their client ID.
-
-        Example:
+        Import an existing CIMD client by its client ID (usually prefixed with "tpc_").
+        For a dynamically registered client, import instead of creating a second
+        client for the same external_client_id URL.
 
         ```sh
         $ pulumi import auth0:index/clientCimd:ClientCimd my_mcp_agent "tpc_5FPpaVyZGSNRCBzTb2zURZ"
@@ -836,16 +919,18 @@ class ClientCimd(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
-        :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. CIMD clients only support `native`, `spa`, and `regular_web`.
+        :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. CIMD clients only support `native`, `spa`, and `regular_web`. Do not update this field for dynamically registered clients where `external_metadata_created_by` is set to `client`. Auth0 rejects the update.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
         :param pulumi.Input[Union['ClientCimdDefaultOrganizationArgs', 'ClientCimdDefaultOrganizationArgsDict', 'outputs.ClientCimdDefaultOrganization']] default_organization: Configure and associate an organization with the Client
-        :param pulumi.Input[_builtins.str] description: Description of the purpose of the client.
+        :param pulumi.Input[_builtins.str] description: Description of the purpose of the client. Once set, removing this argument from configuration does not clear it. For admin-registered clients, set `description = ""` to clear it. Do not update this field for dynamically registered clients where `external_metadata_created_by` is set to `client`. Auth0 rejects the update.
         :param pulumi.Input[_builtins.str] external_client_id: The HTTPS URL of the Client ID Metadata Document. Must include a path component (e.g. `https://app.example.com/client.json`). This value is immutable after creation.
-        :param pulumi.Input[_builtins.int] external_client_id_version: Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Types of grants that this client is authorized to use. CIMD clients support `authorization_code` and `refresh_token`.
+        :param pulumi.Input[_builtins.int] external_client_id_version: Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document. Only applies to clients with `external_metadata_created_by` set to `admin`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Types of grants that this client is authorized to use. CIMD clients support `authorization_code` and `refresh_token`. Do not update this field for dynamically registered clients where `external_metadata_created_by` is set to `client`. Auth0 rejects the update.
         :param pulumi.Input[Union['ClientCimdJwtConfigurationArgs', 'ClientCimdJwtConfigurationArgsDict', 'outputs.ClientCimdJwtConfiguration']] jwt_configuration: Configuration settings for the JWTs issued for this client.
         :param pulumi.Input[_builtins.bool] oidc_conformant: Whether this client conforms to strict OIDC specifications. Must be `true` for CIMD clients.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] organization_discovery_methods: Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
+        :param pulumi.Input[_builtins.str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or `post_login_prompt`.
+        :param pulumi.Input[_builtins.str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input[_builtins.str] redirection_policy: Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.
         :param pulumi.Input[Union['ClientCimdRefreshTokenArgs', 'ClientCimdRefreshTokenArgsDict', 'outputs.ClientCimdRefreshToken']] refresh_token: Configuration settings for the refresh tokens issued for this client.
         :param pulumi.Input[_builtins.bool] require_proof_of_possession: Makes the use of Proof-of-Possession mandatory for this client.
@@ -896,6 +981,8 @@ class ClientCimd(pulumi.CustomResource):
                 "authorization_code",
                 "refresh_token",
             ],
+            organization_usage="require",
+            organization_require_behavior="post_login_prompt",
             client_metadata={
                 "environment": "production",
             })
@@ -903,10 +990,9 @@ class ClientCimd(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the client ID.
-        Generally CIMD clients have a "tpc_" prefix in their client ID.
-
-        Example:
+        Import an existing CIMD client by its client ID (usually prefixed with "tpc_").
+        For a dynamically registered client, import instead of creating a second
+        client for the same external_client_id URL.
 
         ```sh
         $ pulumi import auth0:index/clientCimd:ClientCimd my_mcp_agent "tpc_5FPpaVyZGSNRCBzTb2zURZ"
@@ -939,6 +1025,8 @@ class ClientCimd(pulumi.CustomResource):
                  jwt_configuration: pulumi.Input[Optional[Union['ClientCimdJwtConfigurationArgs', 'ClientCimdJwtConfigurationArgsDict', 'outputs.ClientCimdJwtConfiguration']]] = None,
                  oidc_conformant: pulumi.Input[Optional[_builtins.bool]] = None,
                  organization_discovery_methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 organization_require_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_usage: pulumi.Input[Optional[_builtins.str]] = None,
                  redirection_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  refresh_token: pulumi.Input[Optional[Union['ClientCimdRefreshTokenArgs', 'ClientCimdRefreshTokenArgsDict', 'outputs.ClientCimdRefreshToken']]] = None,
                  require_proof_of_possession: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -967,6 +1055,8 @@ class ClientCimd(pulumi.CustomResource):
             __props__.__dict__["jwt_configuration"] = jwt_configuration
             __props__.__dict__["oidc_conformant"] = oidc_conformant
             __props__.__dict__["organization_discovery_methods"] = organization_discovery_methods
+            __props__.__dict__["organization_require_behavior"] = organization_require_behavior
+            __props__.__dict__["organization_usage"] = organization_usage
             __props__.__dict__["redirection_policy"] = redirection_policy
             __props__.__dict__["refresh_token"] = refresh_token
             __props__.__dict__["require_proof_of_possession"] = require_proof_of_possession
@@ -976,6 +1066,7 @@ class ClientCimd(pulumi.CustomResource):
             __props__.__dict__["callbacks"] = None
             __props__.__dict__["client_id"] = None
             __props__.__dict__["external_metadata_created_by"] = None
+            __props__.__dict__["external_metadata_status"] = None
             __props__.__dict__["external_metadata_type"] = None
             __props__.__dict__["is_first_party"] = None
             __props__.__dict__["jwks_uri"] = None
@@ -1006,6 +1097,7 @@ class ClientCimd(pulumi.CustomResource):
             external_client_id: pulumi.Input[Optional[_builtins.str]] = None,
             external_client_id_version: pulumi.Input[Optional[_builtins.int]] = None,
             external_metadata_created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            external_metadata_status: pulumi.Input[Optional[_builtins.str]] = None,
             external_metadata_type: pulumi.Input[Optional[_builtins.str]] = None,
             grant_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             is_first_party: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1015,6 +1107,8 @@ class ClientCimd(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             oidc_conformant: pulumi.Input[Optional[_builtins.bool]] = None,
             organization_discovery_methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            organization_require_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_usage: pulumi.Input[Optional[_builtins.str]] = None,
             redirection_policy: pulumi.Input[Optional[_builtins.str]] = None,
             refresh_token: pulumi.Input[Optional[Union['ClientCimdRefreshTokenArgs', 'ClientCimdRefreshTokenArgsDict', 'outputs.ClientCimdRefreshToken']]] = None,
             require_proof_of_possession: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1032,17 +1126,18 @@ class ClientCimd(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
-        :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. CIMD clients only support `native`, `spa`, and `regular_web`.
+        :param pulumi.Input[_builtins.str] app_type: Type of application the client represents. CIMD clients only support `native`, `spa`, and `regular_web`. Do not update this field for dynamically registered clients where `external_metadata_created_by` is set to `client`. Auth0 rejects the update.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] callbacks: URLs that Auth0 may call back after authentication. Derived from the CIMD metadata document.
         :param pulumi.Input[_builtins.str] client_id: The ID of the client.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] client_metadata: Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\\()<>@ [Tab] [Space]`.
         :param pulumi.Input[Union['ClientCimdDefaultOrganizationArgs', 'ClientCimdDefaultOrganizationArgsDict', 'outputs.ClientCimdDefaultOrganization']] default_organization: Configure and associate an organization with the Client
-        :param pulumi.Input[_builtins.str] description: Description of the purpose of the client.
+        :param pulumi.Input[_builtins.str] description: Description of the purpose of the client. Once set, removing this argument from configuration does not clear it. For admin-registered clients, set `description = ""` to clear it. Do not update this field for dynamically registered clients where `external_metadata_created_by` is set to `client`. Auth0 rejects the update.
         :param pulumi.Input[_builtins.str] external_client_id: The HTTPS URL of the Client ID Metadata Document. Must include a path component (e.g. `https://app.example.com/client.json`). This value is immutable after creation.
-        :param pulumi.Input[_builtins.int] external_client_id_version: Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.
-        :param pulumi.Input[_builtins.str] external_metadata_created_by: Who created the external metadata client: `admin` (via Management API) or `client` (self-registered).
+        :param pulumi.Input[_builtins.int] external_client_id_version: Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document. Only applies to clients with `external_metadata_created_by` set to `admin`.
+        :param pulumi.Input[_builtins.str] external_metadata_created_by: Who created the external metadata client: `admin` (via Management API) or `client` (dynamically self-registered). Read-only; available in Terraform state after import, not in generated configuration.
+        :param pulumi.Input[_builtins.str] external_metadata_status: Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only).
         :param pulumi.Input[_builtins.str] external_metadata_type: Type of external metadata. Always `cimd` for CIMD-registered clients.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Types of grants that this client is authorized to use. CIMD clients support `authorization_code` and `refresh_token`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grant_types: Types of grants that this client is authorized to use. CIMD clients support `authorization_code` and `refresh_token`. Do not update this field for dynamically registered clients where `external_metadata_created_by` is set to `client`. Auth0 rejects the update.
         :param pulumi.Input[_builtins.bool] is_first_party: Whether this is a first-party client. Always `false` for CIMD clients.
         :param pulumi.Input[_builtins.str] jwks_uri: URL for the JSON Web Key Set (JWKS) containing the public keys used for `private_key_jwt` authentication.
         :param pulumi.Input[Union['ClientCimdJwtConfigurationArgs', 'ClientCimdJwtConfigurationArgsDict', 'outputs.ClientCimdJwtConfiguration']] jwt_configuration: Configuration settings for the JWTs issued for this client.
@@ -1050,6 +1145,8 @@ class ClientCimd(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the client, derived from the CIMD metadata document.
         :param pulumi.Input[_builtins.bool] oidc_conformant: Whether this client conforms to strict OIDC specifications. Must be `true` for CIMD clients.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] organization_discovery_methods: Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
+        :param pulumi.Input[_builtins.str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or `post_login_prompt`.
+        :param pulumi.Input[_builtins.str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
         :param pulumi.Input[_builtins.str] redirection_policy: Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.
         :param pulumi.Input[Union['ClientCimdRefreshTokenArgs', 'ClientCimdRefreshTokenArgsDict', 'outputs.ClientCimdRefreshToken']] refresh_token: Configuration settings for the refresh tokens issued for this client.
         :param pulumi.Input[_builtins.bool] require_proof_of_possession: Makes the use of Proof-of-Possession mandatory for this client.
@@ -1074,6 +1171,7 @@ class ClientCimd(pulumi.CustomResource):
         __props__.__dict__["external_client_id"] = external_client_id
         __props__.__dict__["external_client_id_version"] = external_client_id_version
         __props__.__dict__["external_metadata_created_by"] = external_metadata_created_by
+        __props__.__dict__["external_metadata_status"] = external_metadata_status
         __props__.__dict__["external_metadata_type"] = external_metadata_type
         __props__.__dict__["grant_types"] = grant_types
         __props__.__dict__["is_first_party"] = is_first_party
@@ -1083,6 +1181,8 @@ class ClientCimd(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["oidc_conformant"] = oidc_conformant
         __props__.__dict__["organization_discovery_methods"] = organization_discovery_methods
+        __props__.__dict__["organization_require_behavior"] = organization_require_behavior
+        __props__.__dict__["organization_usage"] = organization_usage
         __props__.__dict__["redirection_policy"] = redirection_policy
         __props__.__dict__["refresh_token"] = refresh_token
         __props__.__dict__["require_proof_of_possession"] = require_proof_of_possession
@@ -1107,6 +1207,7 @@ class ClientCimd(pulumi.CustomResource):
             external_client_id: pulumi.Input[Optional[_builtins.str]] = None,
             external_client_id_version: pulumi.Input[Optional[_builtins.int]] = None,
             external_metadata_created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            external_metadata_status: pulumi.Input[Optional[_builtins.str]] = None,
             external_metadata_type: pulumi.Input[Optional[_builtins.str]] = None,
             grant_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             is_first_party: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1116,6 +1217,8 @@ class ClientCimd(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             oidc_conformant: pulumi.Input[Optional[_builtins.bool]] = None,
             organization_discovery_methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            organization_require_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_usage: pulumi.Input[Optional[_builtins.str]] = None,
             redirection_policy: pulumi.Input[Optional[_builtins.str]] = None,
             refresh_token: pulumi.Input[Optional[Union['ClientCimdRefreshTokenArgs', 'ClientCimdRefreshTokenArgsDict', 'outputs.ClientCimdRefreshToken']]] = None,
             require_proof_of_possession: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1136,6 +1239,7 @@ class ClientCimd(pulumi.CustomResource):
         __props__["externalClientId"] = external_client_id
         __props__["externalClientIdVersion"] = external_client_id_version
         __props__["externalMetadataCreatedBy"] = external_metadata_created_by
+        __props__["externalMetadataStatus"] = external_metadata_status
         __props__["externalMetadataType"] = external_metadata_type
         __props__["grantTypes"] = grant_types
         __props__["isFirstParty"] = is_first_party
@@ -1145,6 +1249,8 @@ class ClientCimd(pulumi.CustomResource):
         __props__["name"] = name
         __props__["oidcConformant"] = oidc_conformant
         __props__["organizationDiscoveryMethods"] = organization_discovery_methods
+        __props__["organizationRequireBehavior"] = organization_require_behavior
+        __props__["organizationUsage"] = organization_usage
         __props__["redirectionPolicy"] = redirection_policy
         __props__["refreshToken"] = refresh_token
         __props__["requireProofOfPossession"] = require_proof_of_possession
@@ -1168,7 +1274,7 @@ class ClientCimd(pulumi.CustomResource):
     @pulumi.getter(name="appType")
     def app_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Type of application the client represents. CIMD clients only support `native`, `spa`, and `regular_web`.
+        Type of application the client represents. CIMD clients only support `native`, `spa`, and `regular_web`. Do not update this field for dynamically registered clients where `external_metadata_created_by` is set to `client`. Auth0 rejects the update.
         """
         return pulumi.get(self, "app_type")
 
@@ -1208,7 +1314,7 @@ class ClientCimd(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Description of the purpose of the client.
+        Description of the purpose of the client. Once set, removing this argument from configuration does not clear it. For admin-registered clients, set `description = ""` to clear it. Do not update this field for dynamically registered clients where `external_metadata_created_by` is set to `client`. Auth0 rejects the update.
         """
         return pulumi.get(self, "description")
 
@@ -1224,7 +1330,7 @@ class ClientCimd(pulumi.CustomResource):
     @pulumi.getter(name="externalClientIdVersion")
     def external_client_id_version(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document.
+        Version number for external*client*id metadata document changes. Update this value to sync the client with the latest values of the json metadata document. Only applies to clients with `external_metadata_created_by` set to `admin`.
         """
         return pulumi.get(self, "external_client_id_version")
 
@@ -1232,9 +1338,17 @@ class ClientCimd(pulumi.CustomResource):
     @pulumi.getter(name="externalMetadataCreatedBy")
     def external_metadata_created_by(self) -> pulumi.Output[_builtins.str]:
         """
-        Who created the external metadata client: `admin` (via Management API) or `client` (self-registered).
+        Who created the external metadata client: `admin` (via Management API) or `client` (dynamically self-registered). Read-only; available in Terraform state after import, not in generated configuration.
         """
         return pulumi.get(self, "external_metadata_created_by")
+
+    @_builtins.property
+    @pulumi.getter(name="externalMetadataStatus")
+    def external_metadata_status(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only).
+        """
+        return pulumi.get(self, "external_metadata_status")
 
     @_builtins.property
     @pulumi.getter(name="externalMetadataType")
@@ -1248,7 +1362,7 @@ class ClientCimd(pulumi.CustomResource):
     @pulumi.getter(name="grantTypes")
     def grant_types(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        Types of grants that this client is authorized to use. CIMD clients support `authorization_code` and `refresh_token`.
+        Types of grants that this client is authorized to use. CIMD clients support `authorization_code` and `refresh_token`. Do not update this field for dynamically registered clients where `external_metadata_created_by` is set to `client`. Auth0 rejects the update.
         """
         return pulumi.get(self, "grant_types")
 
@@ -1307,6 +1421,22 @@ class ClientCimd(pulumi.CustomResource):
         Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`.
         """
         return pulumi.get(self, "organization_discovery_methods")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationRequireBehavior")
+    def organization_require_behavior(self) -> pulumi.Output[_builtins.str]:
+        """
+        Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or `post_login_prompt`.
+        """
+        return pulumi.get(self, "organization_require_behavior")
+
+    @_builtins.property
+    @pulumi.getter(name="organizationUsage")
+    def organization_usage(self) -> pulumi.Output[_builtins.str]:
+        """
+        Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
+        """
+        return pulumi.get(self, "organization_usage")
 
     @_builtins.property
     @pulumi.getter(name="redirectionPolicy")

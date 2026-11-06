@@ -41,6 +41,10 @@ export interface GetTenantResult {
      */
     readonly allowedLogoutUrls: string[];
     /**
+     * Whether the authorization server supports registering clients dynamically from a `clientId` URL (EA only). Requires `clientIdMetadataDocumentSupported` to be enabled.
+     */
+    readonly clientIdMetadataDocumentDynamicRegistrationSupported: boolean;
+    /**
      * Whether the tenant supports Client ID Metadata Document (CIMD) for client registration.
      */
     readonly clientIdMetadataDocumentSupported: boolean;
