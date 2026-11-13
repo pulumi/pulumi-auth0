@@ -32,6 +32,12 @@ namespace Pulumi.Auth0
         public Output<Outputs.ClientAddons?> Addons { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the agent (`auth0.Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.&lt;name&gt;.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
+        /// </summary>
+        [Output("agentId")]
+        public Output<string?> AgentId { get; private set; } = null!;
+
+        /// <summary>
         /// List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         /// </summary>
         [Output("allowedClients")]
@@ -432,6 +438,12 @@ namespace Pulumi.Auth0
         [Input("addons")]
         public Input<Inputs.ClientAddonsArgs>? Addons { get; set; }
 
+        /// <summary>
+        /// The ID of the agent (`auth0.Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.&lt;name&gt;.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
+        /// </summary>
+        [Input("agentId")]
+        public Input<string>? AgentId { get; set; }
+
         [Input("allowedClients")]
         private InputList<string>? _allowedClients;
 
@@ -828,6 +840,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("addons")]
         public Input<Inputs.ClientAddonsGetArgs>? Addons { get; set; }
+
+        /// <summary>
+        /// The ID of the agent (`auth0.Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.&lt;name&gt;.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
+        /// </summary>
+        [Input("agentId")]
+        public Input<string>? AgentId { get; set; }
 
         [Input("allowedClients")]
         private InputList<string>? _allowedClients;

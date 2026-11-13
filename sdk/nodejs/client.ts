@@ -63,6 +63,10 @@ export class Client extends pulumi.CustomResource {
      */
     declare public readonly addons: pulumi.Output<outputs.ClientAddons | undefined>;
     /**
+     * The ID of the agent (`auth0.Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.<name>.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
+     */
+    declare public readonly agentId: pulumi.Output<string | undefined>;
+    /**
      * List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
      */
     declare public readonly allowedClients: pulumi.Output<string[] | undefined>;
@@ -308,6 +312,7 @@ export class Client extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ClientState | undefined;
             resourceInputs["addons"] = state?.addons;
+            resourceInputs["agentId"] = state?.agentId;
             resourceInputs["allowedClients"] = state?.allowedClients;
             resourceInputs["allowedLogoutUrls"] = state?.allowedLogoutUrls;
             resourceInputs["allowedOrigins"] = state?.allowedOrigins;
@@ -369,6 +374,7 @@ export class Client extends pulumi.CustomResource {
         } else {
             const args = argsOrState as ClientArgs | undefined;
             resourceInputs["addons"] = args?.addons;
+            resourceInputs["agentId"] = args?.agentId;
             resourceInputs["allowedClients"] = args?.allowedClients;
             resourceInputs["allowedLogoutUrls"] = args?.allowedLogoutUrls;
             resourceInputs["allowedOrigins"] = args?.allowedOrigins;
@@ -443,6 +449,10 @@ export interface ClientState {
      * Addons enabled for this client and their associated configurations.
      */
     addons?: pulumi.Input<inputs.ClientAddons | undefined>;
+    /**
+     * The ID of the agent (`auth0.Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.<name>.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
+     */
+    agentId?: pulumi.Input<string | undefined>;
     /**
      * List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
      */
@@ -684,6 +694,10 @@ export interface ClientArgs {
      * Addons enabled for this client and their associated configurations.
      */
     addons?: pulumi.Input<inputs.ClientAddons | undefined>;
+    /**
+     * The ID of the agent (`auth0.Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.<name>.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
+     */
+    agentId?: pulumi.Input<string | undefined>;
     /**
      * List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
      */

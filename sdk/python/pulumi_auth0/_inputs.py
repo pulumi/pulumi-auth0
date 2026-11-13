@@ -289,6 +289,8 @@ __all__ = [
     'ConnectionDirectorySynchronizedGroupsGroupArgsDict',
     'ConnectionOptionsArgs',
     'ConnectionOptionsArgsDict',
+    'ConnectionOptionsAssertionDecryptionSettingsArgs',
+    'ConnectionOptionsAssertionDecryptionSettingsArgsDict',
     'ConnectionOptionsAttributeArgs',
     'ConnectionOptionsAttributeArgsDict',
     'ConnectionOptionsAttributeEmailArgs',
@@ -587,6 +589,72 @@ __all__ = [
     'PhoneProviderConfigurationArgsDict',
     'PhoneProviderCredentialsArgs',
     'PhoneProviderCredentialsArgsDict',
+    'PortalClientArgs',
+    'PortalClientArgsDict',
+    'PortalClientClientSecretPostArgs',
+    'PortalClientClientSecretPostArgsDict',
+    'PortalCustomCodeArgs',
+    'PortalCustomCodeArgsDict',
+    'PortalNavigationArgs',
+    'PortalNavigationArgsDict',
+    'PortalNavigationSidebarArgs',
+    'PortalNavigationSidebarArgsDict',
+    'PortalNavigationSidebarComponentArgs',
+    'PortalNavigationSidebarComponentArgsDict',
+    'PortalNavigationSidebarComponentExternalLinkV2Args',
+    'PortalNavigationSidebarComponentExternalLinkV2ArgsDict',
+    'PortalNavigationSidebarComponentInternalLinkV2Args',
+    'PortalNavigationSidebarComponentInternalLinkV2ArgsDict',
+    'PortalPagesArgs',
+    'PortalPagesArgsDict',
+    'PortalPagesStandardArgs',
+    'PortalPagesStandardArgsDict',
+    'PortalPagesStandardComponentArgs',
+    'PortalPagesStandardComponentArgsDict',
+    'PortalPagesStandardComponentFormArgs',
+    'PortalPagesStandardComponentFormArgsDict',
+    'PortalPagesStandardComponentMediaImageArgs',
+    'PortalPagesStandardComponentMediaImageArgsDict',
+    'PortalPagesStandardComponentMyAccountMfaManagementArgs',
+    'PortalPagesStandardComponentMyAccountMfaManagementArgsDict',
+    'PortalPagesStandardComponentMyAccountPasskeyManagementArgs',
+    'PortalPagesStandardComponentMyAccountPasskeyManagementArgsDict',
+    'PortalPagesStandardComponentMyOrganizationDetailsEditArgs',
+    'PortalPagesStandardComponentMyOrganizationDetailsEditArgsDict',
+    'PortalPagesStandardComponentMyOrganizationDomainTableArgs',
+    'PortalPagesStandardComponentMyOrganizationDomainTableArgsDict',
+    'PortalPagesStandardComponentMyOrganizationMemberManagementArgs',
+    'PortalPagesStandardComponentMyOrganizationMemberManagementArgsDict',
+    'PortalPagesStandardComponentStructureSectionArgs',
+    'PortalPagesStandardComponentStructureSectionArgsDict',
+    'PortalPagesStandardComponentStructureSectionChildArgs',
+    'PortalPagesStandardComponentStructureSectionChildArgsDict',
+    'PortalPagesStandardComponentStructureSectionChildFormArgs',
+    'PortalPagesStandardComponentStructureSectionChildFormArgsDict',
+    'PortalPagesStandardComponentStructureSectionChildMediaImageArgs',
+    'PortalPagesStandardComponentStructureSectionChildMediaImageArgsDict',
+    'PortalPagesStandardComponentStructureSectionChildMyAccountMfaManagementArgs',
+    'PortalPagesStandardComponentStructureSectionChildMyAccountMfaManagementArgsDict',
+    'PortalPagesStandardComponentStructureSectionChildMyAccountPasskeyManagementArgs',
+    'PortalPagesStandardComponentStructureSectionChildMyAccountPasskeyManagementArgsDict',
+    'PortalPagesStandardComponentStructureSectionChildMyOrganizationDetailsEditArgs',
+    'PortalPagesStandardComponentStructureSectionChildMyOrganizationDetailsEditArgsDict',
+    'PortalPagesStandardComponentStructureSectionChildMyOrganizationDomainTableArgs',
+    'PortalPagesStandardComponentStructureSectionChildMyOrganizationDomainTableArgsDict',
+    'PortalPagesStandardComponentStructureSectionChildMyOrganizationMemberManagementArgs',
+    'PortalPagesStandardComponentStructureSectionChildMyOrganizationMemberManagementArgsDict',
+    'PortalPagesStandardComponentStructureSectionChildStructureSeparatorArgs',
+    'PortalPagesStandardComponentStructureSectionChildStructureSeparatorArgsDict',
+    'PortalPagesStandardComponentStructureSectionChildTypographyHeadingArgs',
+    'PortalPagesStandardComponentStructureSectionChildTypographyHeadingArgsDict',
+    'PortalPagesStandardComponentStructureSectionChildTypographyRichTextArgs',
+    'PortalPagesStandardComponentStructureSectionChildTypographyRichTextArgsDict',
+    'PortalPagesStandardComponentStructureSeparatorArgs',
+    'PortalPagesStandardComponentStructureSeparatorArgsDict',
+    'PortalPagesStandardComponentTypographyHeadingArgs',
+    'PortalPagesStandardComponentTypographyHeadingArgsDict',
+    'PortalPagesStandardComponentTypographyRichTextArgs',
+    'PortalPagesStandardComponentTypographyRichTextArgsDict',
     'PromptScreenPartialInsertionPointsArgs',
     'PromptScreenPartialInsertionPointsArgsDict',
     'PromptScreenPartialsScreenPartialArgs',
@@ -2898,6 +2966,10 @@ class BrandingThemeColorsArgsDict(TypedDict):
     """
     Primary button label. Defaults to `#ffffff`.
     """
+    read_only_background: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Read only background.
+    """
     secondary_button_border: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Secondary button border. Defaults to `#c9cace`.
@@ -2936,6 +3008,7 @@ class BrandingThemeColorsArgs:
                  links_focused_components: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_button: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_button_label: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_only_background: pulumi.Input[Optional[_builtins.str]] = None,
                  secondary_button_border: pulumi.Input[Optional[_builtins.str]] = None,
                  secondary_button_label: pulumi.Input[Optional[_builtins.str]] = None,
                  success: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2956,6 +3029,7 @@ class BrandingThemeColorsArgs:
         :param pulumi.Input[_builtins.str] links_focused_components: Links & focused components. Defaults to `#635dff`.
         :param pulumi.Input[_builtins.str] primary_button: Primary button. Defaults to `#635dff`.
         :param pulumi.Input[_builtins.str] primary_button_label: Primary button label. Defaults to `#ffffff`.
+        :param pulumi.Input[_builtins.str] read_only_background: Read only background.
         :param pulumi.Input[_builtins.str] secondary_button_border: Secondary button border. Defaults to `#c9cace`.
         :param pulumi.Input[_builtins.str] secondary_button_label: Secondary button label. Defaults to `#1e212a`.
         :param pulumi.Input[_builtins.str] success: Success. Defaults to `#13a688`.
@@ -2990,6 +3064,8 @@ class BrandingThemeColorsArgs:
             pulumi.set(__self__, "primary_button", primary_button)
         if primary_button_label is not None:
             pulumi.set(__self__, "primary_button_label", primary_button_label)
+        if read_only_background is not None:
+            pulumi.set(__self__, "read_only_background", read_only_background)
         if secondary_button_border is not None:
             pulumi.set(__self__, "secondary_button_border", secondary_button_border)
         if secondary_button_label is not None:
@@ -3168,6 +3244,18 @@ class BrandingThemeColorsArgs:
     @primary_button_label.setter
     def primary_button_label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_button_label", value)
+
+    @_builtins.property
+    @pulumi.getter(name="readOnlyBackground")
+    def read_only_background(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Read only background.
+        """
+        return pulumi.get(self, "read_only_background")
+
+    @read_only_background.setter
+    def read_only_background(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "read_only_background", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryButtonBorder")
@@ -10575,6 +10663,10 @@ class ConnectionOptionsArgsDict(TypedDict):
     """
     App ID.
     """
+    assertion_decryption_settings: NotRequired[pulumi.Input[Optional['ConnectionOptionsAssertionDecryptionSettingsArgsDict']]]
+    """
+    Settings for SAML assertion decryption. Only applicable when strategy=samlp or pingfederate.
+    """
     attribute_map: NotRequired[pulumi.Input[Optional['ConnectionOptionsAttributeMapArgsDict']]]
     """
     OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
@@ -11049,6 +11141,7 @@ class ConnectionOptionsArgs:
                  api_enable_groups: pulumi.Input[Optional[_builtins.bool]] = None,
                  api_enable_users: pulumi.Input[Optional[_builtins.bool]] = None,
                  app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 assertion_decryption_settings: pulumi.Input[Optional['ConnectionOptionsAssertionDecryptionSettingsArgs']] = None,
                  attribute_map: pulumi.Input[Optional['ConnectionOptionsAttributeMapArgs']] = None,
                  attributes: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionOptionsAttributeArgs']]]] = None,
                  auth_params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -11172,6 +11265,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[_builtins.bool] api_enable_groups: Enable API Access to groups.
         :param pulumi.Input[_builtins.bool] api_enable_users: Enable API Access to users.
         :param pulumi.Input[_builtins.str] app_id: App ID.
+        :param pulumi.Input['ConnectionOptionsAssertionDecryptionSettingsArgs'] assertion_decryption_settings: Settings for SAML assertion decryption. Only applicable when strategy=samlp or pingfederate.
         :param pulumi.Input['ConnectionOptionsAttributeMapArgs'] attribute_map: OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionOptionsAttributeArgs']]] attributes: Order of attributes for precedence in identification.Valid values: email, phone*number, username. If Precedence is set, it must contain all values (email, phone*number, username) in specific order
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] auth_params: Query string parameters to be included as part of the generated passwordless email link.
@@ -11301,6 +11395,8 @@ class ConnectionOptionsArgs:
             pulumi.set(__self__, "api_enable_users", api_enable_users)
         if app_id is not None:
             pulumi.set(__self__, "app_id", app_id)
+        if assertion_decryption_settings is not None:
+            pulumi.set(__self__, "assertion_decryption_settings", assertion_decryption_settings)
         if attribute_map is not None:
             pulumi.set(__self__, "attribute_map", attribute_map)
         if attributes is not None:
@@ -11605,6 +11701,18 @@ class ConnectionOptionsArgs:
     @app_id.setter
     def app_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="assertionDecryptionSettings")
+    def assertion_decryption_settings(self) -> pulumi.Input[Optional['ConnectionOptionsAssertionDecryptionSettingsArgs']]:
+        """
+        Settings for SAML assertion decryption. Only applicable when strategy=samlp or pingfederate.
+        """
+        return pulumi.get(self, "assertion_decryption_settings")
+
+    @assertion_decryption_settings.setter
+    def assertion_decryption_settings(self, value: pulumi.Input[Optional['ConnectionOptionsAssertionDecryptionSettingsArgs']]):
+        pulumi.set(self, "assertion_decryption_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="attributeMap")
@@ -12997,6 +13105,54 @@ class ConnectionOptionsArgs:
     @waad_protocol.setter
     def waad_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "waad_protocol", value)
+
+
+class ConnectionOptionsAssertionDecryptionSettingsArgsDict(TypedDict):
+    algorithm_profile: pulumi.Input[_builtins.str]
+    """
+    The algorithm profile to use for decrypting SAML assertions. Options include: `v2026-1`.
+    """
+    algorithm_exceptions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    A list of insecure algorithms to allow for SAML assertion decryption.
+    """
+
+@pulumi.input_type
+class ConnectionOptionsAssertionDecryptionSettingsArgs:
+    def __init__(__self__, *,
+                 algorithm_profile: pulumi.Input[_builtins.str],
+                 algorithm_exceptions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] algorithm_profile: The algorithm profile to use for decrypting SAML assertions. Options include: `v2026-1`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] algorithm_exceptions: A list of insecure algorithms to allow for SAML assertion decryption.
+        """
+        pulumi.set(__self__, "algorithm_profile", algorithm_profile)
+        if algorithm_exceptions is not None:
+            pulumi.set(__self__, "algorithm_exceptions", algorithm_exceptions)
+
+    @_builtins.property
+    @pulumi.getter(name="algorithmProfile")
+    def algorithm_profile(self) -> pulumi.Input[_builtins.str]:
+        """
+        The algorithm profile to use for decrypting SAML assertions. Options include: `v2026-1`.
+        """
+        return pulumi.get(self, "algorithm_profile")
+
+    @algorithm_profile.setter
+    def algorithm_profile(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "algorithm_profile", value)
+
+    @_builtins.property
+    @pulumi.getter(name="algorithmExceptions")
+    def algorithm_exceptions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of insecure algorithms to allow for SAML assertion decryption.
+        """
+        return pulumi.get(self, "algorithm_exceptions")
+
+    @algorithm_exceptions.setter
+    def algorithm_exceptions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "algorithm_exceptions", value)
 
 
 class ConnectionOptionsAttributeArgsDict(TypedDict):
@@ -24596,6 +24752,1607 @@ class PhoneProviderCredentialsArgs:
     @auth_token.setter
     def auth_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_token", value)
+
+
+class PortalClientArgsDict(TypedDict):
+    client_secret_post: pulumi.Input['PortalClientClientSecretPostArgsDict']
+    """
+    Client credentials using client_secret_post authentication.
+    """
+
+@pulumi.input_type
+class PortalClientArgs:
+    def __init__(__self__, *,
+                 client_secret_post: pulumi.Input['PortalClientClientSecretPostArgs']):
+        """
+        :param pulumi.Input['PortalClientClientSecretPostArgs'] client_secret_post: Client credentials using client_secret_post authentication.
+        """
+        pulumi.set(__self__, "client_secret_post", client_secret_post)
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecretPost")
+    def client_secret_post(self) -> pulumi.Input['PortalClientClientSecretPostArgs']:
+        """
+        Client credentials using client_secret_post authentication.
+        """
+        return pulumi.get(self, "client_secret_post")
+
+    @client_secret_post.setter
+    def client_secret_post(self, value: pulumi.Input['PortalClientClientSecretPostArgs']):
+        pulumi.set(self, "client_secret_post", value)
+
+
+class PortalClientClientSecretPostArgsDict(TypedDict):
+    client_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the client.
+    """
+    client_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The client secret. This value is stored in Terraform state.
+    """
+    client_secret_wo: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+    The write-only client secret. This value is not stored in Terraform state. It is also sent when any other attribute in `client_secret_post` changes.
+    """
+    client_secret_wo_version: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Version of the write-only client secret. Increment this value to send a new secret.
+    """
+
+@pulumi.input_type
+class PortalClientClientSecretPostArgs:
+    def __init__(__self__, *,
+                 client_id: pulumi.Input[_builtins.str],
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret_wo_version: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] client_id: The ID of the client.
+        :param pulumi.Input[_builtins.str] client_secret: The client secret. This value is stored in Terraform state.
+        :param pulumi.Input[_builtins.str] client_secret_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The write-only client secret. This value is not stored in Terraform state. It is also sent when any other attribute in `client_secret_post` changes.
+        :param pulumi.Input[_builtins.int] client_secret_wo_version: Version of the write-only client secret. Increment this value to send a new secret.
+        """
+        pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if client_secret_wo is not None:
+            pulumi.set(__self__, "client_secret_wo", client_secret_wo)
+        if client_secret_wo_version is not None:
+            pulumi.set(__self__, "client_secret_wo_version", client_secret_wo_version)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of the client.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "client_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The client secret. This value is stored in Terraform state.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "client_secret", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecretWo")
+    def client_secret_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The write-only client secret. This value is not stored in Terraform state. It is also sent when any other attribute in `client_secret_post` changes.
+        """
+        return pulumi.get(self, "client_secret_wo")
+
+    @client_secret_wo.setter
+    def client_secret_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "client_secret_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecretWoVersion")
+    def client_secret_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Version of the write-only client secret. Increment this value to send a new secret.
+        """
+        return pulumi.get(self, "client_secret_wo_version")
+
+    @client_secret_wo_version.setter
+    def client_secret_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "client_secret_wo_version", value)
+
+
+class PortalCustomCodeArgsDict(TypedDict):
+    head: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Code added to the page head.
+    """
+
+@pulumi.input_type
+class PortalCustomCodeArgs:
+    def __init__(__self__, *,
+                 head: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] head: Code added to the page head.
+        """
+        if head is not None:
+            pulumi.set(__self__, "head", head)
+
+    @_builtins.property
+    @pulumi.getter
+    def head(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Code added to the page head.
+        """
+        return pulumi.get(self, "head")
+
+    @head.setter
+    def head(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "head", value)
+
+
+class PortalNavigationArgsDict(TypedDict):
+    sidebar: NotRequired[pulumi.Input[Optional['PortalNavigationSidebarArgsDict']]]
+    """
+    Sidebar navigation for the portal.
+    """
+
+@pulumi.input_type
+class PortalNavigationArgs:
+    def __init__(__self__, *,
+                 sidebar: pulumi.Input[Optional['PortalNavigationSidebarArgs']] = None):
+        """
+        :param pulumi.Input['PortalNavigationSidebarArgs'] sidebar: Sidebar navigation for the portal.
+        """
+        if sidebar is not None:
+            pulumi.set(__self__, "sidebar", sidebar)
+
+    @_builtins.property
+    @pulumi.getter
+    def sidebar(self) -> pulumi.Input[Optional['PortalNavigationSidebarArgs']]:
+        """
+        Sidebar navigation for the portal.
+        """
+        return pulumi.get(self, "sidebar")
+
+    @sidebar.setter
+    def sidebar(self, value: pulumi.Input[Optional['PortalNavigationSidebarArgs']]):
+        pulumi.set(self, "sidebar", value)
+
+
+class PortalNavigationSidebarArgsDict(TypedDict):
+    components: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PortalNavigationSidebarComponentArgsDict']]]]]
+    """
+    Sidebar components in display order. Only V2 links are supported.
+    """
+
+@pulumi.input_type
+class PortalNavigationSidebarArgs:
+    def __init__(__self__, *,
+                 components: pulumi.Input[Optional[Sequence[pulumi.Input['PortalNavigationSidebarComponentArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['PortalNavigationSidebarComponentArgs']]] components: Sidebar components in display order. Only V2 links are supported.
+        """
+        if components is not None:
+            pulumi.set(__self__, "components", components)
+
+    @_builtins.property
+    @pulumi.getter
+    def components(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PortalNavigationSidebarComponentArgs']]]]:
+        """
+        Sidebar components in display order. Only V2 links are supported.
+        """
+        return pulumi.get(self, "components")
+
+    @components.setter
+    def components(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PortalNavigationSidebarComponentArgs']]]]):
+        pulumi.set(self, "components", value)
+
+
+class PortalNavigationSidebarComponentArgsDict(TypedDict):
+    external_link_v2: NotRequired[pulumi.Input[Optional['PortalNavigationSidebarComponentExternalLinkV2ArgsDict']]]
+    """
+    A V2 link to an external URL.
+    """
+    internal_link_v2: NotRequired[pulumi.Input[Optional['PortalNavigationSidebarComponentInternalLinkV2ArgsDict']]]
+    """
+    A V2 link to a portal page.
+    """
+
+@pulumi.input_type
+class PortalNavigationSidebarComponentArgs:
+    def __init__(__self__, *,
+                 external_link_v2: pulumi.Input[Optional['PortalNavigationSidebarComponentExternalLinkV2Args']] = None,
+                 internal_link_v2: pulumi.Input[Optional['PortalNavigationSidebarComponentInternalLinkV2Args']] = None):
+        """
+        :param pulumi.Input['PortalNavigationSidebarComponentExternalLinkV2Args'] external_link_v2: A V2 link to an external URL.
+        :param pulumi.Input['PortalNavigationSidebarComponentInternalLinkV2Args'] internal_link_v2: A V2 link to a portal page.
+        """
+        if external_link_v2 is not None:
+            pulumi.set(__self__, "external_link_v2", external_link_v2)
+        if internal_link_v2 is not None:
+            pulumi.set(__self__, "internal_link_v2", internal_link_v2)
+
+    @_builtins.property
+    @pulumi.getter(name="externalLinkV2")
+    def external_link_v2(self) -> pulumi.Input[Optional['PortalNavigationSidebarComponentExternalLinkV2Args']]:
+        """
+        A V2 link to an external URL.
+        """
+        return pulumi.get(self, "external_link_v2")
+
+    @external_link_v2.setter
+    def external_link_v2(self, value: pulumi.Input[Optional['PortalNavigationSidebarComponentExternalLinkV2Args']]):
+        pulumi.set(self, "external_link_v2", value)
+
+    @_builtins.property
+    @pulumi.getter(name="internalLinkV2")
+    def internal_link_v2(self) -> pulumi.Input[Optional['PortalNavigationSidebarComponentInternalLinkV2Args']]:
+        """
+        A V2 link to a portal page.
+        """
+        return pulumi.get(self, "internal_link_v2")
+
+    @internal_link_v2.setter
+    def internal_link_v2(self, value: pulumi.Input[Optional['PortalNavigationSidebarComponentInternalLinkV2Args']]):
+        pulumi.set(self, "internal_link_v2", value)
+
+
+class PortalNavigationSidebarComponentExternalLinkV2ArgsDict(TypedDict):
+    href: pulumi.Input[_builtins.str]
+    """
+    The URL of the link.
+    """
+    label: pulumi.Input[_builtins.str]
+    """
+    The label of the link.
+    """
+    icon: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The icon of the link.
+    """
+
+@pulumi.input_type
+class PortalNavigationSidebarComponentExternalLinkV2Args:
+    def __init__(__self__, *,
+                 href: pulumi.Input[_builtins.str],
+                 label: pulumi.Input[_builtins.str],
+                 icon: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] href: The URL of the link.
+        :param pulumi.Input[_builtins.str] label: The label of the link.
+        :param pulumi.Input[_builtins.str] icon: The icon of the link.
+        """
+        pulumi.set(__self__, "href", href)
+        pulumi.set(__self__, "label", label)
+        if icon is not None:
+            pulumi.set(__self__, "icon", icon)
+
+    @_builtins.property
+    @pulumi.getter
+    def href(self) -> pulumi.Input[_builtins.str]:
+        """
+        The URL of the link.
+        """
+        return pulumi.get(self, "href")
+
+    @href.setter
+    def href(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "href", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[_builtins.str]:
+        """
+        The label of the link.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "label", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def icon(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The icon of the link.
+        """
+        return pulumi.get(self, "icon")
+
+    @icon.setter
+    def icon(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "icon", value)
+
+
+class PortalNavigationSidebarComponentInternalLinkV2ArgsDict(TypedDict):
+    label: pulumi.Input[_builtins.str]
+    """
+    The label of the link.
+    """
+    page_slug: pulumi.Input[_builtins.str]
+    """
+    The slug of the linked page.
+    """
+    icon: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The icon of the link.
+    """
+
+@pulumi.input_type
+class PortalNavigationSidebarComponentInternalLinkV2Args:
+    def __init__(__self__, *,
+                 label: pulumi.Input[_builtins.str],
+                 page_slug: pulumi.Input[_builtins.str],
+                 icon: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] label: The label of the link.
+        :param pulumi.Input[_builtins.str] page_slug: The slug of the linked page.
+        :param pulumi.Input[_builtins.str] icon: The icon of the link.
+        """
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "page_slug", page_slug)
+        if icon is not None:
+            pulumi.set(__self__, "icon", icon)
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[_builtins.str]:
+        """
+        The label of the link.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "label", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pageSlug")
+    def page_slug(self) -> pulumi.Input[_builtins.str]:
+        """
+        The slug of the linked page.
+        """
+        return pulumi.get(self, "page_slug")
+
+    @page_slug.setter
+    def page_slug(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "page_slug", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def icon(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The icon of the link.
+        """
+        return pulumi.get(self, "icon")
+
+    @icon.setter
+    def icon(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "icon", value)
+
+
+class PortalPagesArgsDict(TypedDict):
+    default: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The slug of the default page.
+    """
+    standards: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PortalPagesStandardArgsDict']]]]]
+    """
+    Standard pages in display order.
+    """
+
+@pulumi.input_type
+class PortalPagesArgs:
+    def __init__(__self__, *,
+                 default: pulumi.Input[Optional[_builtins.str]] = None,
+                 standards: pulumi.Input[Optional[Sequence[pulumi.Input['PortalPagesStandardArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] default: The slug of the default page.
+        :param pulumi.Input[Sequence[pulumi.Input['PortalPagesStandardArgs']]] standards: Standard pages in display order.
+        """
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if standards is not None:
+            pulumi.set(__self__, "standards", standards)
+
+    @_builtins.property
+    @pulumi.getter
+    def default(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The slug of the default page.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "default", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def standards(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PortalPagesStandardArgs']]]]:
+        """
+        Standard pages in display order.
+        """
+        return pulumi.get(self, "standards")
+
+    @standards.setter
+    def standards(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PortalPagesStandardArgs']]]]):
+        pulumi.set(self, "standards", value)
+
+
+class PortalPagesStandardArgsDict(TypedDict):
+    slug: pulumi.Input[_builtins.str]
+    """
+    The slug of the page.
+    """
+    title: pulumi.Input[_builtins.str]
+    """
+    The title of the page.
+    """
+    components: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PortalPagesStandardComponentArgsDict']]]]]
+    """
+    Page components in display order.
+    """
+
+@pulumi.input_type
+class PortalPagesStandardArgs:
+    def __init__(__self__, *,
+                 slug: pulumi.Input[_builtins.str],
+                 title: pulumi.Input[_builtins.str],
+                 components: pulumi.Input[Optional[Sequence[pulumi.Input['PortalPagesStandardComponentArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] slug: The slug of the page.
+        :param pulumi.Input[_builtins.str] title: The title of the page.
+        :param pulumi.Input[Sequence[pulumi.Input['PortalPagesStandardComponentArgs']]] components: Page components in display order.
+        """
+        pulumi.set(__self__, "slug", slug)
+        pulumi.set(__self__, "title", title)
+        if components is not None:
+            pulumi.set(__self__, "components", components)
+
+    @_builtins.property
+    @pulumi.getter
+    def slug(self) -> pulumi.Input[_builtins.str]:
+        """
+        The slug of the page.
+        """
+        return pulumi.get(self, "slug")
+
+    @slug.setter
+    def slug(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "slug", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[_builtins.str]:
+        """
+        The title of the page.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def components(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PortalPagesStandardComponentArgs']]]]:
+        """
+        Page components in display order.
+        """
+        return pulumi.get(self, "components")
+
+    @components.setter
+    def components(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PortalPagesStandardComponentArgs']]]]):
+        pulumi.set(self, "components", value)
+
+
+class PortalPagesStandardComponentArgsDict(TypedDict):
+    form: NotRequired[pulumi.Input[Optional['PortalPagesStandardComponentFormArgsDict']]]
+    """
+    A form component.
+    """
+    media_image: NotRequired[pulumi.Input[Optional['PortalPagesStandardComponentMediaImageArgsDict']]]
+    """
+    An image component.
+    """
+    my_account_mfa_management: NotRequired[pulumi.Input[Optional['PortalPagesStandardComponentMyAccountMfaManagementArgsDict']]]
+    """
+    An MFA management component.
+    """
+    my_account_passkey_management: NotRequired[pulumi.Input[Optional['PortalPagesStandardComponentMyAccountPasskeyManagementArgsDict']]]
+    """
+    A passkey management component.
+    """
+    my_organization_details_edit: NotRequired[pulumi.Input[Optional['PortalPagesStandardComponentMyOrganizationDetailsEditArgsDict']]]
+    """
+    An organization details edit component.
+    """
+    my_organization_domain_table: NotRequired[pulumi.Input[Optional['PortalPagesStandardComponentMyOrganizationDomainTableArgsDict']]]
+    """
+    An organization domain table component.
+    """
+    my_organization_member_management: NotRequired[pulumi.Input[Optional['PortalPagesStandardComponentMyOrganizationMemberManagementArgsDict']]]
+    """
+    An organization member management component.
+    """
+    structure_section: NotRequired[pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionArgsDict']]]
+    """
+    A section containing up to 20 components.
+    """
+    structure_separator: NotRequired[pulumi.Input[Optional['PortalPagesStandardComponentStructureSeparatorArgsDict']]]
+    """
+    A separator component.
+    """
+    typography_heading: NotRequired[pulumi.Input[Optional['PortalPagesStandardComponentTypographyHeadingArgsDict']]]
+    """
+    A heading component.
+    """
+    typography_rich_text: NotRequired[pulumi.Input[Optional['PortalPagesStandardComponentTypographyRichTextArgsDict']]]
+    """
+    A rich text component.
+    """
+
+@pulumi.input_type
+class PortalPagesStandardComponentArgs:
+    def __init__(__self__, *,
+                 form: pulumi.Input[Optional['PortalPagesStandardComponentFormArgs']] = None,
+                 media_image: pulumi.Input[Optional['PortalPagesStandardComponentMediaImageArgs']] = None,
+                 my_account_mfa_management: pulumi.Input[Optional['PortalPagesStandardComponentMyAccountMfaManagementArgs']] = None,
+                 my_account_passkey_management: pulumi.Input[Optional['PortalPagesStandardComponentMyAccountPasskeyManagementArgs']] = None,
+                 my_organization_details_edit: pulumi.Input[Optional['PortalPagesStandardComponentMyOrganizationDetailsEditArgs']] = None,
+                 my_organization_domain_table: pulumi.Input[Optional['PortalPagesStandardComponentMyOrganizationDomainTableArgs']] = None,
+                 my_organization_member_management: pulumi.Input[Optional['PortalPagesStandardComponentMyOrganizationMemberManagementArgs']] = None,
+                 structure_section: pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionArgs']] = None,
+                 structure_separator: pulumi.Input[Optional['PortalPagesStandardComponentStructureSeparatorArgs']] = None,
+                 typography_heading: pulumi.Input[Optional['PortalPagesStandardComponentTypographyHeadingArgs']] = None,
+                 typography_rich_text: pulumi.Input[Optional['PortalPagesStandardComponentTypographyRichTextArgs']] = None):
+        """
+        :param pulumi.Input['PortalPagesStandardComponentFormArgs'] form: A form component.
+        :param pulumi.Input['PortalPagesStandardComponentMediaImageArgs'] media_image: An image component.
+        :param pulumi.Input['PortalPagesStandardComponentMyAccountMfaManagementArgs'] my_account_mfa_management: An MFA management component.
+        :param pulumi.Input['PortalPagesStandardComponentMyAccountPasskeyManagementArgs'] my_account_passkey_management: A passkey management component.
+        :param pulumi.Input['PortalPagesStandardComponentMyOrganizationDetailsEditArgs'] my_organization_details_edit: An organization details edit component.
+        :param pulumi.Input['PortalPagesStandardComponentMyOrganizationDomainTableArgs'] my_organization_domain_table: An organization domain table component.
+        :param pulumi.Input['PortalPagesStandardComponentMyOrganizationMemberManagementArgs'] my_organization_member_management: An organization member management component.
+        :param pulumi.Input['PortalPagesStandardComponentStructureSectionArgs'] structure_section: A section containing up to 20 components.
+        :param pulumi.Input['PortalPagesStandardComponentStructureSeparatorArgs'] structure_separator: A separator component.
+        :param pulumi.Input['PortalPagesStandardComponentTypographyHeadingArgs'] typography_heading: A heading component.
+        :param pulumi.Input['PortalPagesStandardComponentTypographyRichTextArgs'] typography_rich_text: A rich text component.
+        """
+        if form is not None:
+            pulumi.set(__self__, "form", form)
+        if media_image is not None:
+            pulumi.set(__self__, "media_image", media_image)
+        if my_account_mfa_management is not None:
+            pulumi.set(__self__, "my_account_mfa_management", my_account_mfa_management)
+        if my_account_passkey_management is not None:
+            pulumi.set(__self__, "my_account_passkey_management", my_account_passkey_management)
+        if my_organization_details_edit is not None:
+            pulumi.set(__self__, "my_organization_details_edit", my_organization_details_edit)
+        if my_organization_domain_table is not None:
+            pulumi.set(__self__, "my_organization_domain_table", my_organization_domain_table)
+        if my_organization_member_management is not None:
+            pulumi.set(__self__, "my_organization_member_management", my_organization_member_management)
+        if structure_section is not None:
+            pulumi.set(__self__, "structure_section", structure_section)
+        if structure_separator is not None:
+            pulumi.set(__self__, "structure_separator", structure_separator)
+        if typography_heading is not None:
+            pulumi.set(__self__, "typography_heading", typography_heading)
+        if typography_rich_text is not None:
+            pulumi.set(__self__, "typography_rich_text", typography_rich_text)
+
+    @_builtins.property
+    @pulumi.getter
+    def form(self) -> pulumi.Input[Optional['PortalPagesStandardComponentFormArgs']]:
+        """
+        A form component.
+        """
+        return pulumi.get(self, "form")
+
+    @form.setter
+    def form(self, value: pulumi.Input[Optional['PortalPagesStandardComponentFormArgs']]):
+        pulumi.set(self, "form", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mediaImage")
+    def media_image(self) -> pulumi.Input[Optional['PortalPagesStandardComponentMediaImageArgs']]:
+        """
+        An image component.
+        """
+        return pulumi.get(self, "media_image")
+
+    @media_image.setter
+    def media_image(self, value: pulumi.Input[Optional['PortalPagesStandardComponentMediaImageArgs']]):
+        pulumi.set(self, "media_image", value)
+
+    @_builtins.property
+    @pulumi.getter(name="myAccountMfaManagement")
+    def my_account_mfa_management(self) -> pulumi.Input[Optional['PortalPagesStandardComponentMyAccountMfaManagementArgs']]:
+        """
+        An MFA management component.
+        """
+        return pulumi.get(self, "my_account_mfa_management")
+
+    @my_account_mfa_management.setter
+    def my_account_mfa_management(self, value: pulumi.Input[Optional['PortalPagesStandardComponentMyAccountMfaManagementArgs']]):
+        pulumi.set(self, "my_account_mfa_management", value)
+
+    @_builtins.property
+    @pulumi.getter(name="myAccountPasskeyManagement")
+    def my_account_passkey_management(self) -> pulumi.Input[Optional['PortalPagesStandardComponentMyAccountPasskeyManagementArgs']]:
+        """
+        A passkey management component.
+        """
+        return pulumi.get(self, "my_account_passkey_management")
+
+    @my_account_passkey_management.setter
+    def my_account_passkey_management(self, value: pulumi.Input[Optional['PortalPagesStandardComponentMyAccountPasskeyManagementArgs']]):
+        pulumi.set(self, "my_account_passkey_management", value)
+
+    @_builtins.property
+    @pulumi.getter(name="myOrganizationDetailsEdit")
+    def my_organization_details_edit(self) -> pulumi.Input[Optional['PortalPagesStandardComponentMyOrganizationDetailsEditArgs']]:
+        """
+        An organization details edit component.
+        """
+        return pulumi.get(self, "my_organization_details_edit")
+
+    @my_organization_details_edit.setter
+    def my_organization_details_edit(self, value: pulumi.Input[Optional['PortalPagesStandardComponentMyOrganizationDetailsEditArgs']]):
+        pulumi.set(self, "my_organization_details_edit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="myOrganizationDomainTable")
+    def my_organization_domain_table(self) -> pulumi.Input[Optional['PortalPagesStandardComponentMyOrganizationDomainTableArgs']]:
+        """
+        An organization domain table component.
+        """
+        return pulumi.get(self, "my_organization_domain_table")
+
+    @my_organization_domain_table.setter
+    def my_organization_domain_table(self, value: pulumi.Input[Optional['PortalPagesStandardComponentMyOrganizationDomainTableArgs']]):
+        pulumi.set(self, "my_organization_domain_table", value)
+
+    @_builtins.property
+    @pulumi.getter(name="myOrganizationMemberManagement")
+    def my_organization_member_management(self) -> pulumi.Input[Optional['PortalPagesStandardComponentMyOrganizationMemberManagementArgs']]:
+        """
+        An organization member management component.
+        """
+        return pulumi.get(self, "my_organization_member_management")
+
+    @my_organization_member_management.setter
+    def my_organization_member_management(self, value: pulumi.Input[Optional['PortalPagesStandardComponentMyOrganizationMemberManagementArgs']]):
+        pulumi.set(self, "my_organization_member_management", value)
+
+    @_builtins.property
+    @pulumi.getter(name="structureSection")
+    def structure_section(self) -> pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionArgs']]:
+        """
+        A section containing up to 20 components.
+        """
+        return pulumi.get(self, "structure_section")
+
+    @structure_section.setter
+    def structure_section(self, value: pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionArgs']]):
+        pulumi.set(self, "structure_section", value)
+
+    @_builtins.property
+    @pulumi.getter(name="structureSeparator")
+    def structure_separator(self) -> pulumi.Input[Optional['PortalPagesStandardComponentStructureSeparatorArgs']]:
+        """
+        A separator component.
+        """
+        return pulumi.get(self, "structure_separator")
+
+    @structure_separator.setter
+    def structure_separator(self, value: pulumi.Input[Optional['PortalPagesStandardComponentStructureSeparatorArgs']]):
+        pulumi.set(self, "structure_separator", value)
+
+    @_builtins.property
+    @pulumi.getter(name="typographyHeading")
+    def typography_heading(self) -> pulumi.Input[Optional['PortalPagesStandardComponentTypographyHeadingArgs']]:
+        """
+        A heading component.
+        """
+        return pulumi.get(self, "typography_heading")
+
+    @typography_heading.setter
+    def typography_heading(self, value: pulumi.Input[Optional['PortalPagesStandardComponentTypographyHeadingArgs']]):
+        pulumi.set(self, "typography_heading", value)
+
+    @_builtins.property
+    @pulumi.getter(name="typographyRichText")
+    def typography_rich_text(self) -> pulumi.Input[Optional['PortalPagesStandardComponentTypographyRichTextArgs']]:
+        """
+        A rich text component.
+        """
+        return pulumi.get(self, "typography_rich_text")
+
+    @typography_rich_text.setter
+    def typography_rich_text(self, value: pulumi.Input[Optional['PortalPagesStandardComponentTypographyRichTextArgs']]):
+        pulumi.set(self, "typography_rich_text", value)
+
+
+class PortalPagesStandardComponentFormArgsDict(TypedDict):
+    completion_message: pulumi.Input[_builtins.str]
+    """
+    The message shown after form completion.
+    """
+    form_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the form.
+    """
+
+@pulumi.input_type
+class PortalPagesStandardComponentFormArgs:
+    def __init__(__self__, *,
+                 completion_message: pulumi.Input[_builtins.str],
+                 form_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] completion_message: The message shown after form completion.
+        :param pulumi.Input[_builtins.str] form_id: The ID of the form.
+        """
+        pulumi.set(__self__, "completion_message", completion_message)
+        pulumi.set(__self__, "form_id", form_id)
+
+    @_builtins.property
+    @pulumi.getter(name="completionMessage")
+    def completion_message(self) -> pulumi.Input[_builtins.str]:
+        """
+        The message shown after form completion.
+        """
+        return pulumi.get(self, "completion_message")
+
+    @completion_message.setter
+    def completion_message(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "completion_message", value)
+
+    @_builtins.property
+    @pulumi.getter(name="formId")
+    def form_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of the form.
+        """
+        return pulumi.get(self, "form_id")
+
+    @form_id.setter
+    def form_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "form_id", value)
+
+
+class PortalPagesStandardComponentMediaImageArgsDict(TypedDict):
+    src: pulumi.Input[_builtins.str]
+    """
+    The URL of the image.
+    """
+    height: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The height of the image.
+    """
+    position: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The position of the image.
+    """
+
+@pulumi.input_type
+class PortalPagesStandardComponentMediaImageArgs:
+    def __init__(__self__, *,
+                 src: pulumi.Input[_builtins.str],
+                 height: pulumi.Input[Optional[_builtins.int]] = None,
+                 position: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] src: The URL of the image.
+        :param pulumi.Input[_builtins.int] height: The height of the image.
+        :param pulumi.Input[_builtins.str] position: The position of the image.
+        """
+        pulumi.set(__self__, "src", src)
+        if height is not None:
+            pulumi.set(__self__, "height", height)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
+
+    @_builtins.property
+    @pulumi.getter
+    def src(self) -> pulumi.Input[_builtins.str]:
+        """
+        The URL of the image.
+        """
+        return pulumi.get(self, "src")
+
+    @src.setter
+    def src(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "src", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def height(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The height of the image.
+        """
+        return pulumi.get(self, "height")
+
+    @height.setter
+    def height(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "height", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def position(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The position of the image.
+        """
+        return pulumi.get(self, "position")
+
+    @position.setter
+    def position(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "position", value)
+
+
+class PortalPagesStandardComponentMyAccountMfaManagementArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class PortalPagesStandardComponentMyAccountMfaManagementArgs:
+    def __init__(__self__):
+        pass
+
+
+class PortalPagesStandardComponentMyAccountPasskeyManagementArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class PortalPagesStandardComponentMyAccountPasskeyManagementArgs:
+    def __init__(__self__):
+        pass
+
+
+class PortalPagesStandardComponentMyOrganizationDetailsEditArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class PortalPagesStandardComponentMyOrganizationDetailsEditArgs:
+    def __init__(__self__):
+        pass
+
+
+class PortalPagesStandardComponentMyOrganizationDomainTableArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class PortalPagesStandardComponentMyOrganizationDomainTableArgs:
+    def __init__(__self__):
+        pass
+
+
+class PortalPagesStandardComponentMyOrganizationMemberManagementArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class PortalPagesStandardComponentMyOrganizationMemberManagementArgs:
+    def __init__(__self__):
+        pass
+
+
+class PortalPagesStandardComponentStructureSectionArgsDict(TypedDict):
+    variant: pulumi.Input[_builtins.str]
+    """
+    The section style. Can be `card` or `none`.
+    """
+    children: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PortalPagesStandardComponentStructureSectionChildArgsDict']]]]]
+    """
+    Components in the section. Sections cannot be nested.
+    """
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The description of the section.
+    """
+    title: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The title of the section.
+    """
+
+@pulumi.input_type
+class PortalPagesStandardComponentStructureSectionArgs:
+    def __init__(__self__, *,
+                 variant: pulumi.Input[_builtins.str],
+                 children: pulumi.Input[Optional[Sequence[pulumi.Input['PortalPagesStandardComponentStructureSectionChildArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] variant: The section style. Can be `card` or `none`.
+        :param pulumi.Input[Sequence[pulumi.Input['PortalPagesStandardComponentStructureSectionChildArgs']]] children: Components in the section. Sections cannot be nested.
+        :param pulumi.Input[_builtins.str] description: The description of the section.
+        :param pulumi.Input[_builtins.str] title: The title of the section.
+        """
+        pulumi.set(__self__, "variant", variant)
+        if children is not None:
+            pulumi.set(__self__, "children", children)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @_builtins.property
+    @pulumi.getter
+    def variant(self) -> pulumi.Input[_builtins.str]:
+        """
+        The section style. Can be `card` or `none`.
+        """
+        return pulumi.get(self, "variant")
+
+    @variant.setter
+    def variant(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "variant", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def children(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PortalPagesStandardComponentStructureSectionChildArgs']]]]:
+        """
+        Components in the section. Sections cannot be nested.
+        """
+        return pulumi.get(self, "children")
+
+    @children.setter
+    def children(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PortalPagesStandardComponentStructureSectionChildArgs']]]]):
+        pulumi.set(self, "children", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The description of the section.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The title of the section.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "title", value)
+
+
+class PortalPagesStandardComponentStructureSectionChildArgsDict(TypedDict):
+    form: NotRequired[pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildFormArgsDict']]]
+    """
+    A form component.
+    """
+    media_image: NotRequired[pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildMediaImageArgsDict']]]
+    """
+    An image component.
+    """
+    my_account_mfa_management: NotRequired[pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildMyAccountMfaManagementArgsDict']]]
+    """
+    An MFA management component.
+    """
+    my_account_passkey_management: NotRequired[pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildMyAccountPasskeyManagementArgsDict']]]
+    """
+    A passkey management component.
+    """
+    my_organization_details_edit: NotRequired[pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildMyOrganizationDetailsEditArgsDict']]]
+    """
+    An organization details edit component.
+    """
+    my_organization_domain_table: NotRequired[pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildMyOrganizationDomainTableArgsDict']]]
+    """
+    An organization domain table component.
+    """
+    my_organization_member_management: NotRequired[pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildMyOrganizationMemberManagementArgsDict']]]
+    """
+    An organization member management component.
+    """
+    structure_separator: NotRequired[pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildStructureSeparatorArgsDict']]]
+    """
+    A separator component.
+    """
+    typography_heading: NotRequired[pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildTypographyHeadingArgsDict']]]
+    """
+    A heading component.
+    """
+    typography_rich_text: NotRequired[pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildTypographyRichTextArgsDict']]]
+    """
+    A rich text component.
+    """
+
+@pulumi.input_type
+class PortalPagesStandardComponentStructureSectionChildArgs:
+    def __init__(__self__, *,
+                 form: pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildFormArgs']] = None,
+                 media_image: pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildMediaImageArgs']] = None,
+                 my_account_mfa_management: pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildMyAccountMfaManagementArgs']] = None,
+                 my_account_passkey_management: pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildMyAccountPasskeyManagementArgs']] = None,
+                 my_organization_details_edit: pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildMyOrganizationDetailsEditArgs']] = None,
+                 my_organization_domain_table: pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildMyOrganizationDomainTableArgs']] = None,
+                 my_organization_member_management: pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildMyOrganizationMemberManagementArgs']] = None,
+                 structure_separator: pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildStructureSeparatorArgs']] = None,
+                 typography_heading: pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildTypographyHeadingArgs']] = None,
+                 typography_rich_text: pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildTypographyRichTextArgs']] = None):
+        """
+        :param pulumi.Input['PortalPagesStandardComponentStructureSectionChildFormArgs'] form: A form component.
+        :param pulumi.Input['PortalPagesStandardComponentStructureSectionChildMediaImageArgs'] media_image: An image component.
+        :param pulumi.Input['PortalPagesStandardComponentStructureSectionChildMyAccountMfaManagementArgs'] my_account_mfa_management: An MFA management component.
+        :param pulumi.Input['PortalPagesStandardComponentStructureSectionChildMyAccountPasskeyManagementArgs'] my_account_passkey_management: A passkey management component.
+        :param pulumi.Input['PortalPagesStandardComponentStructureSectionChildMyOrganizationDetailsEditArgs'] my_organization_details_edit: An organization details edit component.
+        :param pulumi.Input['PortalPagesStandardComponentStructureSectionChildMyOrganizationDomainTableArgs'] my_organization_domain_table: An organization domain table component.
+        :param pulumi.Input['PortalPagesStandardComponentStructureSectionChildMyOrganizationMemberManagementArgs'] my_organization_member_management: An organization member management component.
+        :param pulumi.Input['PortalPagesStandardComponentStructureSectionChildStructureSeparatorArgs'] structure_separator: A separator component.
+        :param pulumi.Input['PortalPagesStandardComponentStructureSectionChildTypographyHeadingArgs'] typography_heading: A heading component.
+        :param pulumi.Input['PortalPagesStandardComponentStructureSectionChildTypographyRichTextArgs'] typography_rich_text: A rich text component.
+        """
+        if form is not None:
+            pulumi.set(__self__, "form", form)
+        if media_image is not None:
+            pulumi.set(__self__, "media_image", media_image)
+        if my_account_mfa_management is not None:
+            pulumi.set(__self__, "my_account_mfa_management", my_account_mfa_management)
+        if my_account_passkey_management is not None:
+            pulumi.set(__self__, "my_account_passkey_management", my_account_passkey_management)
+        if my_organization_details_edit is not None:
+            pulumi.set(__self__, "my_organization_details_edit", my_organization_details_edit)
+        if my_organization_domain_table is not None:
+            pulumi.set(__self__, "my_organization_domain_table", my_organization_domain_table)
+        if my_organization_member_management is not None:
+            pulumi.set(__self__, "my_organization_member_management", my_organization_member_management)
+        if structure_separator is not None:
+            pulumi.set(__self__, "structure_separator", structure_separator)
+        if typography_heading is not None:
+            pulumi.set(__self__, "typography_heading", typography_heading)
+        if typography_rich_text is not None:
+            pulumi.set(__self__, "typography_rich_text", typography_rich_text)
+
+    @_builtins.property
+    @pulumi.getter
+    def form(self) -> pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildFormArgs']]:
+        """
+        A form component.
+        """
+        return pulumi.get(self, "form")
+
+    @form.setter
+    def form(self, value: pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildFormArgs']]):
+        pulumi.set(self, "form", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mediaImage")
+    def media_image(self) -> pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildMediaImageArgs']]:
+        """
+        An image component.
+        """
+        return pulumi.get(self, "media_image")
+
+    @media_image.setter
+    def media_image(self, value: pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildMediaImageArgs']]):
+        pulumi.set(self, "media_image", value)
+
+    @_builtins.property
+    @pulumi.getter(name="myAccountMfaManagement")
+    def my_account_mfa_management(self) -> pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildMyAccountMfaManagementArgs']]:
+        """
+        An MFA management component.
+        """
+        return pulumi.get(self, "my_account_mfa_management")
+
+    @my_account_mfa_management.setter
+    def my_account_mfa_management(self, value: pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildMyAccountMfaManagementArgs']]):
+        pulumi.set(self, "my_account_mfa_management", value)
+
+    @_builtins.property
+    @pulumi.getter(name="myAccountPasskeyManagement")
+    def my_account_passkey_management(self) -> pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildMyAccountPasskeyManagementArgs']]:
+        """
+        A passkey management component.
+        """
+        return pulumi.get(self, "my_account_passkey_management")
+
+    @my_account_passkey_management.setter
+    def my_account_passkey_management(self, value: pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildMyAccountPasskeyManagementArgs']]):
+        pulumi.set(self, "my_account_passkey_management", value)
+
+    @_builtins.property
+    @pulumi.getter(name="myOrganizationDetailsEdit")
+    def my_organization_details_edit(self) -> pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildMyOrganizationDetailsEditArgs']]:
+        """
+        An organization details edit component.
+        """
+        return pulumi.get(self, "my_organization_details_edit")
+
+    @my_organization_details_edit.setter
+    def my_organization_details_edit(self, value: pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildMyOrganizationDetailsEditArgs']]):
+        pulumi.set(self, "my_organization_details_edit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="myOrganizationDomainTable")
+    def my_organization_domain_table(self) -> pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildMyOrganizationDomainTableArgs']]:
+        """
+        An organization domain table component.
+        """
+        return pulumi.get(self, "my_organization_domain_table")
+
+    @my_organization_domain_table.setter
+    def my_organization_domain_table(self, value: pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildMyOrganizationDomainTableArgs']]):
+        pulumi.set(self, "my_organization_domain_table", value)
+
+    @_builtins.property
+    @pulumi.getter(name="myOrganizationMemberManagement")
+    def my_organization_member_management(self) -> pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildMyOrganizationMemberManagementArgs']]:
+        """
+        An organization member management component.
+        """
+        return pulumi.get(self, "my_organization_member_management")
+
+    @my_organization_member_management.setter
+    def my_organization_member_management(self, value: pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildMyOrganizationMemberManagementArgs']]):
+        pulumi.set(self, "my_organization_member_management", value)
+
+    @_builtins.property
+    @pulumi.getter(name="structureSeparator")
+    def structure_separator(self) -> pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildStructureSeparatorArgs']]:
+        """
+        A separator component.
+        """
+        return pulumi.get(self, "structure_separator")
+
+    @structure_separator.setter
+    def structure_separator(self, value: pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildStructureSeparatorArgs']]):
+        pulumi.set(self, "structure_separator", value)
+
+    @_builtins.property
+    @pulumi.getter(name="typographyHeading")
+    def typography_heading(self) -> pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildTypographyHeadingArgs']]:
+        """
+        A heading component.
+        """
+        return pulumi.get(self, "typography_heading")
+
+    @typography_heading.setter
+    def typography_heading(self, value: pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildTypographyHeadingArgs']]):
+        pulumi.set(self, "typography_heading", value)
+
+    @_builtins.property
+    @pulumi.getter(name="typographyRichText")
+    def typography_rich_text(self) -> pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildTypographyRichTextArgs']]:
+        """
+        A rich text component.
+        """
+        return pulumi.get(self, "typography_rich_text")
+
+    @typography_rich_text.setter
+    def typography_rich_text(self, value: pulumi.Input[Optional['PortalPagesStandardComponentStructureSectionChildTypographyRichTextArgs']]):
+        pulumi.set(self, "typography_rich_text", value)
+
+
+class PortalPagesStandardComponentStructureSectionChildFormArgsDict(TypedDict):
+    completion_message: pulumi.Input[_builtins.str]
+    """
+    The message shown after form completion.
+    """
+    form_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the form.
+    """
+
+@pulumi.input_type
+class PortalPagesStandardComponentStructureSectionChildFormArgs:
+    def __init__(__self__, *,
+                 completion_message: pulumi.Input[_builtins.str],
+                 form_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] completion_message: The message shown after form completion.
+        :param pulumi.Input[_builtins.str] form_id: The ID of the form.
+        """
+        pulumi.set(__self__, "completion_message", completion_message)
+        pulumi.set(__self__, "form_id", form_id)
+
+    @_builtins.property
+    @pulumi.getter(name="completionMessage")
+    def completion_message(self) -> pulumi.Input[_builtins.str]:
+        """
+        The message shown after form completion.
+        """
+        return pulumi.get(self, "completion_message")
+
+    @completion_message.setter
+    def completion_message(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "completion_message", value)
+
+    @_builtins.property
+    @pulumi.getter(name="formId")
+    def form_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of the form.
+        """
+        return pulumi.get(self, "form_id")
+
+    @form_id.setter
+    def form_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "form_id", value)
+
+
+class PortalPagesStandardComponentStructureSectionChildMediaImageArgsDict(TypedDict):
+    src: pulumi.Input[_builtins.str]
+    """
+    The URL of the image.
+    """
+    height: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The height of the image.
+    """
+    position: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The position of the image.
+    """
+
+@pulumi.input_type
+class PortalPagesStandardComponentStructureSectionChildMediaImageArgs:
+    def __init__(__self__, *,
+                 src: pulumi.Input[_builtins.str],
+                 height: pulumi.Input[Optional[_builtins.int]] = None,
+                 position: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] src: The URL of the image.
+        :param pulumi.Input[_builtins.int] height: The height of the image.
+        :param pulumi.Input[_builtins.str] position: The position of the image.
+        """
+        pulumi.set(__self__, "src", src)
+        if height is not None:
+            pulumi.set(__self__, "height", height)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
+
+    @_builtins.property
+    @pulumi.getter
+    def src(self) -> pulumi.Input[_builtins.str]:
+        """
+        The URL of the image.
+        """
+        return pulumi.get(self, "src")
+
+    @src.setter
+    def src(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "src", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def height(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The height of the image.
+        """
+        return pulumi.get(self, "height")
+
+    @height.setter
+    def height(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "height", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def position(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The position of the image.
+        """
+        return pulumi.get(self, "position")
+
+    @position.setter
+    def position(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "position", value)
+
+
+class PortalPagesStandardComponentStructureSectionChildMyAccountMfaManagementArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class PortalPagesStandardComponentStructureSectionChildMyAccountMfaManagementArgs:
+    def __init__(__self__):
+        pass
+
+
+class PortalPagesStandardComponentStructureSectionChildMyAccountPasskeyManagementArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class PortalPagesStandardComponentStructureSectionChildMyAccountPasskeyManagementArgs:
+    def __init__(__self__):
+        pass
+
+
+class PortalPagesStandardComponentStructureSectionChildMyOrganizationDetailsEditArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class PortalPagesStandardComponentStructureSectionChildMyOrganizationDetailsEditArgs:
+    def __init__(__self__):
+        pass
+
+
+class PortalPagesStandardComponentStructureSectionChildMyOrganizationDomainTableArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class PortalPagesStandardComponentStructureSectionChildMyOrganizationDomainTableArgs:
+    def __init__(__self__):
+        pass
+
+
+class PortalPagesStandardComponentStructureSectionChildMyOrganizationMemberManagementArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class PortalPagesStandardComponentStructureSectionChildMyOrganizationMemberManagementArgs:
+    def __init__(__self__):
+        pass
+
+
+class PortalPagesStandardComponentStructureSectionChildStructureSeparatorArgsDict(TypedDict):
+    text: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The text of the separator.
+    """
+    variant: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The separator style.
+    """
+
+@pulumi.input_type
+class PortalPagesStandardComponentStructureSectionChildStructureSeparatorArgs:
+    def __init__(__self__, *,
+                 text: pulumi.Input[Optional[_builtins.str]] = None,
+                 variant: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] text: The text of the separator.
+        :param pulumi.Input[_builtins.str] variant: The separator style.
+        """
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+        if variant is not None:
+            pulumi.set(__self__, "variant", variant)
+
+    @_builtins.property
+    @pulumi.getter
+    def text(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The text of the separator.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "text", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def variant(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The separator style.
+        """
+        return pulumi.get(self, "variant")
+
+    @variant.setter
+    def variant(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "variant", value)
+
+
+class PortalPagesStandardComponentStructureSectionChildTypographyHeadingArgsDict(TypedDict):
+    title: pulumi.Input[_builtins.str]
+    """
+    The heading text.
+    """
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The description below the heading.
+    """
+
+@pulumi.input_type
+class PortalPagesStandardComponentStructureSectionChildTypographyHeadingArgs:
+    def __init__(__self__, *,
+                 title: pulumi.Input[_builtins.str],
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] title: The heading text.
+        :param pulumi.Input[_builtins.str] description: The description below the heading.
+        """
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[_builtins.str]:
+        """
+        The heading text.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The description below the heading.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+class PortalPagesStandardComponentStructureSectionChildTypographyRichTextArgsDict(TypedDict):
+    content: pulumi.Input[_builtins.str]
+    """
+    The HTML content.
+    """
+
+@pulumi.input_type
+class PortalPagesStandardComponentStructureSectionChildTypographyRichTextArgs:
+    def __init__(__self__, *,
+                 content: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] content: The HTML content.
+        """
+        pulumi.set(__self__, "content", content)
+
+    @_builtins.property
+    @pulumi.getter
+    def content(self) -> pulumi.Input[_builtins.str]:
+        """
+        The HTML content.
+        """
+        return pulumi.get(self, "content")
+
+    @content.setter
+    def content(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "content", value)
+
+
+class PortalPagesStandardComponentStructureSeparatorArgsDict(TypedDict):
+    text: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The text of the separator.
+    """
+    variant: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The separator style.
+    """
+
+@pulumi.input_type
+class PortalPagesStandardComponentStructureSeparatorArgs:
+    def __init__(__self__, *,
+                 text: pulumi.Input[Optional[_builtins.str]] = None,
+                 variant: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] text: The text of the separator.
+        :param pulumi.Input[_builtins.str] variant: The separator style.
+        """
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+        if variant is not None:
+            pulumi.set(__self__, "variant", variant)
+
+    @_builtins.property
+    @pulumi.getter
+    def text(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The text of the separator.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "text", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def variant(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The separator style.
+        """
+        return pulumi.get(self, "variant")
+
+    @variant.setter
+    def variant(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "variant", value)
+
+
+class PortalPagesStandardComponentTypographyHeadingArgsDict(TypedDict):
+    title: pulumi.Input[_builtins.str]
+    """
+    The heading text.
+    """
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The description below the heading.
+    """
+
+@pulumi.input_type
+class PortalPagesStandardComponentTypographyHeadingArgs:
+    def __init__(__self__, *,
+                 title: pulumi.Input[_builtins.str],
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] title: The heading text.
+        :param pulumi.Input[_builtins.str] description: The description below the heading.
+        """
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[_builtins.str]:
+        """
+        The heading text.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The description below the heading.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+class PortalPagesStandardComponentTypographyRichTextArgsDict(TypedDict):
+    content: pulumi.Input[_builtins.str]
+    """
+    The HTML content.
+    """
+
+@pulumi.input_type
+class PortalPagesStandardComponentTypographyRichTextArgs:
+    def __init__(__self__, *,
+                 content: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] content: The HTML content.
+        """
+        pulumi.set(__self__, "content", content)
+
+    @_builtins.property
+    @pulumi.getter
+    def content(self) -> pulumi.Input[_builtins.str]:
+        """
+        The HTML content.
+        """
+        return pulumi.get(self, "content")
+
+    @content.setter
+    def content(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "content", value)
 
 
 class PromptScreenPartialInsertionPointsArgsDict(TypedDict):

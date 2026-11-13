@@ -27,6 +27,8 @@ type Client struct {
 
 	// Addons enabled for this client and their associated configurations.
 	Addons ClientAddonsPtrOutput `pulumi:"addons"`
+	// The ID of the agent (`Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.<name>.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
+	AgentId pulumi.StringPtrOutput `pulumi:"agentId"`
 	// List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
 	AllowedClients pulumi.StringArrayOutput `pulumi:"allowedClients"`
 	// URLs that Auth0 may redirect to after logout.
@@ -185,6 +187,8 @@ func GetClient(ctx *pulumi.Context,
 type clientState struct {
 	// Addons enabled for this client and their associated configurations.
 	Addons *ClientAddons `pulumi:"addons"`
+	// The ID of the agent (`Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.<name>.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
+	AgentId *string `pulumi:"agentId"`
 	// List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
 	AllowedClients []string `pulumi:"allowedClients"`
 	// URLs that Auth0 may redirect to after logout.
@@ -307,6 +311,8 @@ type clientState struct {
 type ClientState struct {
 	// Addons enabled for this client and their associated configurations.
 	Addons ClientAddonsPtrInput
+	// The ID of the agent (`Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.<name>.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
+	AgentId pulumi.StringPtrInput
 	// List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
 	AllowedClients pulumi.StringArrayInput
 	// URLs that Auth0 may redirect to after logout.
@@ -439,6 +445,8 @@ func ClientExists(ctx *pulumi.Context,
 type clientArgs struct {
 	// Addons enabled for this client and their associated configurations.
 	Addons *ClientAddons `pulumi:"addons"`
+	// The ID of the agent (`Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.<name>.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
+	AgentId *string `pulumi:"agentId"`
 	// List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
 	AllowedClients []string `pulumi:"allowedClients"`
 	// URLs that Auth0 may redirect to after logout.
@@ -550,6 +558,8 @@ type clientArgs struct {
 type ClientArgs struct {
 	// Addons enabled for this client and their associated configurations.
 	Addons ClientAddonsPtrInput
+	// The ID of the agent (`Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.<name>.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
+	AgentId pulumi.StringPtrInput
 	// List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
 	AllowedClients pulumi.StringArrayInput
 	// URLs that Auth0 may redirect to after logout.
@@ -747,6 +757,11 @@ func (o ClientOutput) ToClientOutputWithContext(ctx context.Context) ClientOutpu
 // Addons enabled for this client and their associated configurations.
 func (o ClientOutput) Addons() ClientAddonsPtrOutput {
 	return o.ApplyT(func(v *Client) ClientAddonsPtrOutput { return v.Addons }).(ClientAddonsPtrOutput)
+}
+
+// The ID of the agent (`Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.<name>.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
+func (o ClientOutput) AgentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Client) pulumi.StringPtrOutput { return v.AgentId }).(pulumi.StringPtrOutput)
 }
 
 // List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.

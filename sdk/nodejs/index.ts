@@ -15,6 +15,11 @@ export type ActionModule = import("./actionModule").ActionModule;
 export const ActionModule: typeof import("./actionModule").ActionModule = null as any;
 utilities.lazyLoad(exports, ["ActionModule"], () => require("./actionModule"));
 
+export { AgentArgs, AgentState } from "./agent";
+export type Agent = import("./agent").Agent;
+export const Agent: typeof import("./agent").Agent = null as any;
+utilities.lazyLoad(exports, ["Agent"], () => require("./agent"));
+
 export { AttackProtectionArgs, AttackProtectionState } from "./attackProtection";
 export type AttackProtection = import("./attackProtection").AttackProtection;
 export const AttackProtection: typeof import("./attackProtection").AttackProtection = null as any;
@@ -194,6 +199,11 @@ export { GetActionModuleVersionsArgs, GetActionModuleVersionsResult, GetActionMo
 export const getActionModuleVersions: typeof import("./getActionModuleVersions").getActionModuleVersions = null as any;
 export const getActionModuleVersionsOutput: typeof import("./getActionModuleVersions").getActionModuleVersionsOutput = null as any;
 utilities.lazyLoad(exports, ["getActionModuleVersions","getActionModuleVersionsOutput"], () => require("./getActionModuleVersions"));
+
+export { GetAgentArgs, GetAgentResult, GetAgentOutputArgs } from "./getAgent";
+export const getAgent: typeof import("./getAgent").getAgent = null as any;
+export const getAgentOutput: typeof import("./getAgent").getAgentOutput = null as any;
+utilities.lazyLoad(exports, ["getAgent","getAgentOutput"], () => require("./getAgent"));
 
 export { GetAttackProtectionResult } from "./getAttackProtection";
 export const getAttackProtection: typeof import("./getAttackProtection").getAttackProtection = null as any;
@@ -380,6 +390,11 @@ export const getPhoneProvider: typeof import("./getPhoneProvider").getPhoneProvi
 export const getPhoneProviderOutput: typeof import("./getPhoneProvider").getPhoneProviderOutput = null as any;
 utilities.lazyLoad(exports, ["getPhoneProvider","getPhoneProviderOutput"], () => require("./getPhoneProvider"));
 
+export { GetPortalArgs, GetPortalResult, GetPortalOutputArgs } from "./getPortal";
+export const getPortal: typeof import("./getPortal").getPortal = null as any;
+export const getPortalOutput: typeof import("./getPortal").getPortalOutput = null as any;
+utilities.lazyLoad(exports, ["getPortal","getPortalOutput"], () => require("./getPortal"));
+
 export { GetPromptScreenPartialsArgs, GetPromptScreenPartialsResult, GetPromptScreenPartialsOutputArgs } from "./getPromptScreenPartials";
 export const getPromptScreenPartials: typeof import("./getPromptScreenPartials").getPromptScreenPartials = null as any;
 export const getPromptScreenPartialsOutput: typeof import("./getPromptScreenPartials").getPromptScreenPartialsOutput = null as any;
@@ -549,6 +564,11 @@ export { PhoneProviderArgs, PhoneProviderState } from "./phoneProvider";
 export type PhoneProvider = import("./phoneProvider").PhoneProvider;
 export const PhoneProvider: typeof import("./phoneProvider").PhoneProvider = null as any;
 utilities.lazyLoad(exports, ["PhoneProvider"], () => require("./phoneProvider"));
+
+export { PortalArgs, PortalState } from "./portal";
+export type Portal = import("./portal").Portal;
+export const Portal: typeof import("./portal").Portal = null as any;
+utilities.lazyLoad(exports, ["Portal"], () => require("./portal"));
 
 export { PromptArgs, PromptState } from "./prompt";
 export type Prompt = import("./prompt").Prompt;
@@ -721,6 +741,8 @@ const _module = {
                 return new Action(name, <any>undefined, { urn })
             case "auth0:index/actionModule:ActionModule":
                 return new ActionModule(name, <any>undefined, { urn })
+            case "auth0:index/agent:Agent":
+                return new Agent(name, <any>undefined, { urn })
             case "auth0:index/attackProtection:AttackProtection":
                 return new AttackProtection(name, <any>undefined, { urn })
             case "auth0:index/branding:Branding":
@@ -823,6 +845,8 @@ const _module = {
                 return new PhoneNotificationTemplate(name, <any>undefined, { urn })
             case "auth0:index/phoneProvider:PhoneProvider":
                 return new PhoneProvider(name, <any>undefined, { urn })
+            case "auth0:index/portal:Portal":
+                return new Portal(name, <any>undefined, { urn })
             case "auth0:index/prompt:Prompt":
                 return new Prompt(name, <any>undefined, { urn })
             case "auth0:index/promptCustomText:PromptCustomText":
@@ -890,6 +914,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("auth0", "index/action", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/actionModule", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/agent", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/attackProtection", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/branding", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/brandingPhoneNotificationTemplate", _module)
@@ -941,6 +966,7 @@ pulumi.runtime.registerResourceModule("auth0", "index/organizationMembers", _mod
 pulumi.runtime.registerResourceModule("auth0", "index/pages", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/phoneNotificationTemplate", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/phoneProvider", _module)
+pulumi.runtime.registerResourceModule("auth0", "index/portal", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/prompt", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/promptCustomText", _module)
 pulumi.runtime.registerResourceModule("auth0", "index/promptPartials", _module)

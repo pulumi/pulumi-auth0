@@ -537,6 +537,10 @@ export interface BrandingThemeColors {
      */
     primaryButtonLabel?: string;
     /**
+     * Read only background.
+     */
+    readOnlyBackground?: string;
+    /**
      * Secondary button border. Defaults to `#c9cace`.
      */
     secondaryButtonBorder?: string;
@@ -2166,6 +2170,10 @@ export interface ConnectionOptions {
      */
     appId?: string;
     /**
+     * Settings for SAML assertion decryption. Only applicable when strategy=samlp or pingfederate.
+     */
+    assertionDecryptionSettings: outputs.ConnectionOptionsAssertionDecryptionSettings;
+    /**
      * OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
      */
     attributeMap: outputs.ConnectionOptionsAttributeMap;
@@ -2629,6 +2637,17 @@ export interface ConnectionOptions {
      * Protocol to use.
      */
     waadProtocol?: string;
+}
+
+export interface ConnectionOptionsAssertionDecryptionSettings {
+    /**
+     * A list of insecure algorithms to allow for SAML assertion decryption.
+     */
+    algorithmExceptions?: string[];
+    /**
+     * The algorithm profile to use for decrypting SAML assertions. Options include: `v2026-1`.
+     */
+    algorithmProfile: string;
 }
 
 export interface ConnectionOptionsAttribute {
@@ -5020,6 +5039,10 @@ export interface GetBrandingThemeColor {
      */
     primaryButtonLabel: string;
     /**
+     * Read only background.
+     */
+    readOnlyBackground: string;
+    /**
      * Secondary button border. Defaults to `#c9cace`.
      */
     secondaryButtonBorder: string;
@@ -6495,6 +6518,10 @@ export interface GetClientTokenQuotaClientCredential {
 
 export interface GetClientsClient {
     /**
+     * The ID of the agent (`auth0.Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.<name>.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
+     */
+    agentId: string;
+    /**
      * List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
      */
     allowedClients: string[];
@@ -7007,6 +7034,10 @@ export interface GetConnectionOption {
      */
     appId: string;
     /**
+     * Settings for SAML assertion decryption. Only applicable when strategy=samlp or pingfederate.
+     */
+    assertionDecryptionSettings: outputs.GetConnectionOptionAssertionDecryptionSetting[];
+    /**
      * OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
      */
     attributeMaps: outputs.GetConnectionOptionAttributeMap[];
@@ -7470,6 +7501,17 @@ export interface GetConnectionOption {
      * Protocol to use.
      */
     waadProtocol: string;
+}
+
+export interface GetConnectionOptionAssertionDecryptionSetting {
+    /**
+     * A list of insecure algorithms to allow for SAML assertion decryption.
+     */
+    algorithmExceptions: string[];
+    /**
+     * The algorithm profile to use for decrypting SAML assertions. Options include: `v2026-1`.
+     */
+    algorithmProfile: string;
 }
 
 export interface GetConnectionOptionAttribute {
@@ -9710,6 +9752,357 @@ export interface GetPhoneProviderCredential {
     authToken: string;
 }
 
+export interface GetPortalClient {
+    /**
+     * Client credentials using clientSecretPost authentication.
+     */
+    clientSecretPosts: outputs.GetPortalClientClientSecretPost[];
+}
+
+export interface GetPortalClientClientSecretPost {
+    /**
+     * The ID of the client.
+     */
+    clientId: string;
+}
+
+export interface GetPortalCustomCode {
+    /**
+     * Code added to the page head.
+     */
+    head: string;
+}
+
+export interface GetPortalNavigation {
+    /**
+     * Sidebar navigation for the portal.
+     */
+    sidebars: outputs.GetPortalNavigationSidebar[];
+}
+
+export interface GetPortalNavigationSidebar {
+    /**
+     * Sidebar components in display order. Only V2 links are supported.
+     */
+    components: outputs.GetPortalNavigationSidebarComponent[];
+}
+
+export interface GetPortalNavigationSidebarComponent {
+    /**
+     * A V2 link to an external URL.
+     */
+    externalLinkV2s: outputs.GetPortalNavigationSidebarComponentExternalLinkV2[];
+    /**
+     * A V2 link to a portal page.
+     */
+    internalLinkV2s: outputs.GetPortalNavigationSidebarComponentInternalLinkV2[];
+}
+
+export interface GetPortalNavigationSidebarComponentExternalLinkV2 {
+    /**
+     * The URL of the link.
+     */
+    href: string;
+    /**
+     * The icon of the link.
+     */
+    icon: string;
+    /**
+     * The label of the link.
+     */
+    label: string;
+}
+
+export interface GetPortalNavigationSidebarComponentInternalLinkV2 {
+    /**
+     * The icon of the link.
+     */
+    icon: string;
+    /**
+     * The label of the link.
+     */
+    label: string;
+    /**
+     * The slug of the linked page.
+     */
+    pageSlug: string;
+}
+
+export interface GetPortalPage {
+    /**
+     * The slug of the default page.
+     */
+    default: string;
+    /**
+     * Standard pages in display order.
+     */
+    standards: outputs.GetPortalPageStandard[];
+}
+
+export interface GetPortalPageStandard {
+    /**
+     * Page components in display order.
+     */
+    components: outputs.GetPortalPageStandardComponent[];
+    /**
+     * The slug of the page.
+     */
+    slug: string;
+    /**
+     * The title of the page.
+     */
+    title: string;
+}
+
+export interface GetPortalPageStandardComponent {
+    /**
+     * A form component.
+     */
+    forms: outputs.GetPortalPageStandardComponentForm[];
+    /**
+     * An image component.
+     */
+    mediaImages: outputs.GetPortalPageStandardComponentMediaImage[];
+    /**
+     * An MFA management component.
+     */
+    myAccountMfaManagements: outputs.GetPortalPageStandardComponentMyAccountMfaManagement[];
+    /**
+     * A passkey management component.
+     */
+    myAccountPasskeyManagements: outputs.GetPortalPageStandardComponentMyAccountPasskeyManagement[];
+    /**
+     * An organization details edit component.
+     */
+    myOrganizationDetailsEdits: outputs.GetPortalPageStandardComponentMyOrganizationDetailsEdit[];
+    /**
+     * An organization domain table component.
+     */
+    myOrganizationDomainTables: outputs.GetPortalPageStandardComponentMyOrganizationDomainTable[];
+    /**
+     * An organization member management component.
+     */
+    myOrganizationMemberManagements: outputs.GetPortalPageStandardComponentMyOrganizationMemberManagement[];
+    /**
+     * A section containing up to 20 components.
+     */
+    structureSections: outputs.GetPortalPageStandardComponentStructureSection[];
+    /**
+     * A separator component.
+     */
+    structureSeparators: outputs.GetPortalPageStandardComponentStructureSeparator[];
+    /**
+     * A heading component.
+     */
+    typographyHeadings: outputs.GetPortalPageStandardComponentTypographyHeading[];
+    /**
+     * A rich text component.
+     */
+    typographyRichTexts: outputs.GetPortalPageStandardComponentTypographyRichText[];
+}
+
+export interface GetPortalPageStandardComponentForm {
+    /**
+     * The message shown after form completion.
+     */
+    completionMessage: string;
+    /**
+     * The ID of the form.
+     */
+    formId: string;
+}
+
+export interface GetPortalPageStandardComponentMediaImage {
+    /**
+     * The height of the image.
+     */
+    height: number;
+    /**
+     * The position of the image.
+     */
+    position: string;
+    /**
+     * The URL of the image.
+     */
+    src: string;
+}
+
+export interface GetPortalPageStandardComponentMyAccountMfaManagement {
+}
+
+export interface GetPortalPageStandardComponentMyAccountPasskeyManagement {
+}
+
+export interface GetPortalPageStandardComponentMyOrganizationDetailsEdit {
+}
+
+export interface GetPortalPageStandardComponentMyOrganizationDomainTable {
+}
+
+export interface GetPortalPageStandardComponentMyOrganizationMemberManagement {
+}
+
+export interface GetPortalPageStandardComponentStructureSection {
+    /**
+     * Components in the section. Sections cannot be nested.
+     */
+    children: outputs.GetPortalPageStandardComponentStructureSectionChild[];
+    /**
+     * The description of the section.
+     */
+    description: string;
+    /**
+     * The title of the section.
+     */
+    title: string;
+    /**
+     * The section style. Can be `card` or `none`.
+     */
+    variant: string;
+}
+
+export interface GetPortalPageStandardComponentStructureSectionChild {
+    /**
+     * A form component.
+     */
+    forms: outputs.GetPortalPageStandardComponentStructureSectionChildForm[];
+    /**
+     * An image component.
+     */
+    mediaImages: outputs.GetPortalPageStandardComponentStructureSectionChildMediaImage[];
+    /**
+     * An MFA management component.
+     */
+    myAccountMfaManagements: outputs.GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagement[];
+    /**
+     * A passkey management component.
+     */
+    myAccountPasskeyManagements: outputs.GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagement[];
+    /**
+     * An organization details edit component.
+     */
+    myOrganizationDetailsEdits: outputs.GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEdit[];
+    /**
+     * An organization domain table component.
+     */
+    myOrganizationDomainTables: outputs.GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTable[];
+    /**
+     * An organization member management component.
+     */
+    myOrganizationMemberManagements: outputs.GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagement[];
+    /**
+     * A separator component.
+     */
+    structureSeparators: outputs.GetPortalPageStandardComponentStructureSectionChildStructureSeparator[];
+    /**
+     * A heading component.
+     */
+    typographyHeadings: outputs.GetPortalPageStandardComponentStructureSectionChildTypographyHeading[];
+    /**
+     * A rich text component.
+     */
+    typographyRichTexts: outputs.GetPortalPageStandardComponentStructureSectionChildTypographyRichText[];
+}
+
+export interface GetPortalPageStandardComponentStructureSectionChildForm {
+    /**
+     * The message shown after form completion.
+     */
+    completionMessage: string;
+    /**
+     * The ID of the form.
+     */
+    formId: string;
+}
+
+export interface GetPortalPageStandardComponentStructureSectionChildMediaImage {
+    /**
+     * The height of the image.
+     */
+    height: number;
+    /**
+     * The position of the image.
+     */
+    position: string;
+    /**
+     * The URL of the image.
+     */
+    src: string;
+}
+
+export interface GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagement {
+}
+
+export interface GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagement {
+}
+
+export interface GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEdit {
+}
+
+export interface GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTable {
+}
+
+export interface GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagement {
+}
+
+export interface GetPortalPageStandardComponentStructureSectionChildStructureSeparator {
+    /**
+     * The text of the separator.
+     */
+    text: string;
+    /**
+     * The separator style.
+     */
+    variant: string;
+}
+
+export interface GetPortalPageStandardComponentStructureSectionChildTypographyHeading {
+    /**
+     * The description below the heading.
+     */
+    description: string;
+    /**
+     * The heading text.
+     */
+    title: string;
+}
+
+export interface GetPortalPageStandardComponentStructureSectionChildTypographyRichText {
+    /**
+     * The HTML content.
+     */
+    content: string;
+}
+
+export interface GetPortalPageStandardComponentStructureSeparator {
+    /**
+     * The text of the separator.
+     */
+    text: string;
+    /**
+     * The separator style.
+     */
+    variant: string;
+}
+
+export interface GetPortalPageStandardComponentTypographyHeading {
+    /**
+     * The description below the heading.
+     */
+    description: string;
+    /**
+     * The heading text.
+     */
+    title: string;
+}
+
+export interface GetPortalPageStandardComponentTypographyRichText {
+    /**
+     * The HTML content.
+     */
+    content: string;
+}
+
 export interface GetPromptScreenPartialsScreenPartial {
     insertionPoints: outputs.GetPromptScreenPartialsScreenPartialInsertionPoint[];
     /**
@@ -11277,6 +11670,370 @@ export interface PhoneProviderCredentials {
      * The Auth Token for the phone provider.
      */
     authToken?: string;
+}
+
+export interface PortalClient {
+    /**
+     * Client credentials using clientSecretPost authentication.
+     */
+    clientSecretPost: outputs.PortalClientClientSecretPost;
+}
+
+export interface PortalClientClientSecretPost {
+    /**
+     * The ID of the client.
+     */
+    clientId: string;
+    /**
+     * The client secret. This value is stored in Terraform state.
+     */
+    clientSecret?: string;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only client secret. This value is not stored in Terraform state. It is also sent when any other attribute in `clientSecretPost` changes.
+     */
+    clientSecretWo?: string;
+    /**
+     * Version of the write-only client secret. Increment this value to send a new secret.
+     */
+    clientSecretWoVersion?: number;
+}
+
+export interface PortalCustomCode {
+    /**
+     * Code added to the page head.
+     */
+    head?: string;
+}
+
+export interface PortalNavigation {
+    /**
+     * Sidebar navigation for the portal.
+     */
+    sidebar?: outputs.PortalNavigationSidebar;
+}
+
+export interface PortalNavigationSidebar {
+    /**
+     * Sidebar components in display order. Only V2 links are supported.
+     */
+    components?: outputs.PortalNavigationSidebarComponent[];
+}
+
+export interface PortalNavigationSidebarComponent {
+    /**
+     * A V2 link to an external URL.
+     */
+    externalLinkV2?: outputs.PortalNavigationSidebarComponentExternalLinkV2;
+    /**
+     * A V2 link to a portal page.
+     */
+    internalLinkV2?: outputs.PortalNavigationSidebarComponentInternalLinkV2;
+}
+
+export interface PortalNavigationSidebarComponentExternalLinkV2 {
+    /**
+     * The URL of the link.
+     */
+    href: string;
+    /**
+     * The icon of the link.
+     */
+    icon?: string;
+    /**
+     * The label of the link.
+     */
+    label: string;
+}
+
+export interface PortalNavigationSidebarComponentInternalLinkV2 {
+    /**
+     * The icon of the link.
+     */
+    icon?: string;
+    /**
+     * The label of the link.
+     */
+    label: string;
+    /**
+     * The slug of the linked page.
+     */
+    pageSlug: string;
+}
+
+export interface PortalPages {
+    /**
+     * The slug of the default page.
+     */
+    default?: string;
+    /**
+     * Standard pages in display order.
+     */
+    standards?: outputs.PortalPagesStandard[];
+}
+
+export interface PortalPagesStandard {
+    /**
+     * Page components in display order.
+     */
+    components?: outputs.PortalPagesStandardComponent[];
+    /**
+     * The slug of the page.
+     */
+    slug: string;
+    /**
+     * The title of the page.
+     */
+    title: string;
+}
+
+export interface PortalPagesStandardComponent {
+    /**
+     * A form component.
+     */
+    form?: outputs.PortalPagesStandardComponentForm;
+    /**
+     * An image component.
+     */
+    mediaImage?: outputs.PortalPagesStandardComponentMediaImage;
+    /**
+     * An MFA management component.
+     */
+    myAccountMfaManagement?: outputs.PortalPagesStandardComponentMyAccountMfaManagement;
+    /**
+     * A passkey management component.
+     */
+    myAccountPasskeyManagement?: outputs.PortalPagesStandardComponentMyAccountPasskeyManagement;
+    /**
+     * An organization details edit component.
+     */
+    myOrganizationDetailsEdit?: outputs.PortalPagesStandardComponentMyOrganizationDetailsEdit;
+    /**
+     * An organization domain table component.
+     */
+    myOrganizationDomainTable?: outputs.PortalPagesStandardComponentMyOrganizationDomainTable;
+    /**
+     * An organization member management component.
+     */
+    myOrganizationMemberManagement?: outputs.PortalPagesStandardComponentMyOrganizationMemberManagement;
+    /**
+     * A section containing up to 20 components.
+     */
+    structureSection?: outputs.PortalPagesStandardComponentStructureSection;
+    /**
+     * A separator component.
+     */
+    structureSeparator?: outputs.PortalPagesStandardComponentStructureSeparator;
+    /**
+     * A heading component.
+     */
+    typographyHeading?: outputs.PortalPagesStandardComponentTypographyHeading;
+    /**
+     * A rich text component.
+     */
+    typographyRichText?: outputs.PortalPagesStandardComponentTypographyRichText;
+}
+
+export interface PortalPagesStandardComponentForm {
+    /**
+     * The message shown after form completion.
+     */
+    completionMessage: string;
+    /**
+     * The ID of the form.
+     */
+    formId: string;
+}
+
+export interface PortalPagesStandardComponentMediaImage {
+    /**
+     * The height of the image.
+     */
+    height?: number;
+    /**
+     * The position of the image.
+     */
+    position?: string;
+    /**
+     * The URL of the image.
+     */
+    src: string;
+}
+
+export interface PortalPagesStandardComponentMyAccountMfaManagement {
+}
+
+export interface PortalPagesStandardComponentMyAccountPasskeyManagement {
+}
+
+export interface PortalPagesStandardComponentMyOrganizationDetailsEdit {
+}
+
+export interface PortalPagesStandardComponentMyOrganizationDomainTable {
+}
+
+export interface PortalPagesStandardComponentMyOrganizationMemberManagement {
+}
+
+export interface PortalPagesStandardComponentStructureSection {
+    /**
+     * Components in the section. Sections cannot be nested.
+     */
+    children?: outputs.PortalPagesStandardComponentStructureSectionChild[];
+    /**
+     * The description of the section.
+     */
+    description?: string;
+    /**
+     * The title of the section.
+     */
+    title?: string;
+    /**
+     * The section style. Can be `card` or `none`.
+     */
+    variant: string;
+}
+
+export interface PortalPagesStandardComponentStructureSectionChild {
+    /**
+     * A form component.
+     */
+    form?: outputs.PortalPagesStandardComponentStructureSectionChildForm;
+    /**
+     * An image component.
+     */
+    mediaImage?: outputs.PortalPagesStandardComponentStructureSectionChildMediaImage;
+    /**
+     * An MFA management component.
+     */
+    myAccountMfaManagement?: outputs.PortalPagesStandardComponentStructureSectionChildMyAccountMfaManagement;
+    /**
+     * A passkey management component.
+     */
+    myAccountPasskeyManagement?: outputs.PortalPagesStandardComponentStructureSectionChildMyAccountPasskeyManagement;
+    /**
+     * An organization details edit component.
+     */
+    myOrganizationDetailsEdit?: outputs.PortalPagesStandardComponentStructureSectionChildMyOrganizationDetailsEdit;
+    /**
+     * An organization domain table component.
+     */
+    myOrganizationDomainTable?: outputs.PortalPagesStandardComponentStructureSectionChildMyOrganizationDomainTable;
+    /**
+     * An organization member management component.
+     */
+    myOrganizationMemberManagement?: outputs.PortalPagesStandardComponentStructureSectionChildMyOrganizationMemberManagement;
+    /**
+     * A separator component.
+     */
+    structureSeparator?: outputs.PortalPagesStandardComponentStructureSectionChildStructureSeparator;
+    /**
+     * A heading component.
+     */
+    typographyHeading?: outputs.PortalPagesStandardComponentStructureSectionChildTypographyHeading;
+    /**
+     * A rich text component.
+     */
+    typographyRichText?: outputs.PortalPagesStandardComponentStructureSectionChildTypographyRichText;
+}
+
+export interface PortalPagesStandardComponentStructureSectionChildForm {
+    /**
+     * The message shown after form completion.
+     */
+    completionMessage: string;
+    /**
+     * The ID of the form.
+     */
+    formId: string;
+}
+
+export interface PortalPagesStandardComponentStructureSectionChildMediaImage {
+    /**
+     * The height of the image.
+     */
+    height?: number;
+    /**
+     * The position of the image.
+     */
+    position?: string;
+    /**
+     * The URL of the image.
+     */
+    src: string;
+}
+
+export interface PortalPagesStandardComponentStructureSectionChildMyAccountMfaManagement {
+}
+
+export interface PortalPagesStandardComponentStructureSectionChildMyAccountPasskeyManagement {
+}
+
+export interface PortalPagesStandardComponentStructureSectionChildMyOrganizationDetailsEdit {
+}
+
+export interface PortalPagesStandardComponentStructureSectionChildMyOrganizationDomainTable {
+}
+
+export interface PortalPagesStandardComponentStructureSectionChildMyOrganizationMemberManagement {
+}
+
+export interface PortalPagesStandardComponentStructureSectionChildStructureSeparator {
+    /**
+     * The text of the separator.
+     */
+    text?: string;
+    /**
+     * The separator style.
+     */
+    variant?: string;
+}
+
+export interface PortalPagesStandardComponentStructureSectionChildTypographyHeading {
+    /**
+     * The description below the heading.
+     */
+    description?: string;
+    /**
+     * The heading text.
+     */
+    title: string;
+}
+
+export interface PortalPagesStandardComponentStructureSectionChildTypographyRichText {
+    /**
+     * The HTML content.
+     */
+    content: string;
+}
+
+export interface PortalPagesStandardComponentStructureSeparator {
+    /**
+     * The text of the separator.
+     */
+    text?: string;
+    /**
+     * The separator style.
+     */
+    variant?: string;
+}
+
+export interface PortalPagesStandardComponentTypographyHeading {
+    /**
+     * The description below the heading.
+     */
+    description?: string;
+    /**
+     * The heading text.
+     */
+    title: string;
+}
+
+export interface PortalPagesStandardComponentTypographyRichText {
+    /**
+     * The HTML content.
+     */
+    content: string;
 }
 
 export interface PromptScreenPartialInsertionPoints {

@@ -22,6 +22,7 @@ __all__ = ['ClientArgs', 'Client']
 class ClientArgs:
     def __init__(__self__, *,
                  addons: pulumi.Input[Optional['ClientAddonsArgs']] = None,
+                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  allowed_clients: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allowed_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -78,6 +79,7 @@ class ClientArgs:
         The set of arguments for constructing a Client resource.
 
         :param pulumi.Input['ClientAddonsArgs'] addons: Addons enabled for this client and their associated configurations.
+        :param pulumi.Input[_builtins.str] agent_id: The ID of the agent (`Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.<name>.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_clients: List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
@@ -132,6 +134,8 @@ class ClientArgs:
         """
         if addons is not None:
             pulumi.set(__self__, "addons", addons)
+        if agent_id is not None:
+            pulumi.set(__self__, "agent_id", agent_id)
         if allowed_clients is not None:
             pulumi.set(__self__, "allowed_clients", allowed_clients)
         if allowed_logout_urls is not None:
@@ -253,6 +257,18 @@ class ClientArgs:
     @addons.setter
     def addons(self, value: pulumi.Input[Optional['ClientAddonsArgs']]):
         pulumi.set(self, "addons", value)
+
+    @_builtins.property
+    @pulumi.getter(name="agentId")
+    def agent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the agent (`Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.<name>.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
+        """
+        return pulumi.get(self, "agent_id")
+
+    @agent_id.setter
+    def agent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "agent_id", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedClients")
@@ -881,6 +897,7 @@ class ClientArgs:
 class _ClientState:
     def __init__(__self__, *,
                  addons: pulumi.Input[Optional['ClientAddonsArgs']] = None,
+                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  allowed_clients: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allowed_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -943,6 +960,7 @@ class _ClientState:
         Input properties used for looking up and filtering Client resources.
 
         :param pulumi.Input['ClientAddonsArgs'] addons: Addons enabled for this client and their associated configurations.
+        :param pulumi.Input[_builtins.str] agent_id: The ID of the agent (`Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.<name>.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_clients: List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
@@ -1003,6 +1021,8 @@ class _ClientState:
         """
         if addons is not None:
             pulumi.set(__self__, "addons", addons)
+        if agent_id is not None:
+            pulumi.set(__self__, "agent_id", agent_id)
         if allowed_clients is not None:
             pulumi.set(__self__, "allowed_clients", allowed_clients)
         if allowed_logout_urls is not None:
@@ -1136,6 +1156,18 @@ class _ClientState:
     @addons.setter
     def addons(self, value: pulumi.Input[Optional['ClientAddonsArgs']]):
         pulumi.set(self, "addons", value)
+
+    @_builtins.property
+    @pulumi.getter(name="agentId")
+    def agent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the agent (`Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.<name>.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
+        """
+        return pulumi.get(self, "agent_id")
+
+    @agent_id.setter
+    def agent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "agent_id", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedClients")
@@ -1839,6 +1871,7 @@ class Client(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addons: pulumi.Input[Optional[Union['ClientAddonsArgs', 'ClientAddonsArgsDict', 'outputs.ClientAddons']]] = None,
+                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  allowed_clients: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allowed_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1909,6 +1942,7 @@ class Client(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ClientAddonsArgs', 'ClientAddonsArgsDict', 'outputs.ClientAddons']] addons: Addons enabled for this client and their associated configurations.
+        :param pulumi.Input[_builtins.str] agent_id: The ID of the agent (`Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.<name>.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_clients: List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
@@ -1997,6 +2031,7 @@ class Client(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addons: pulumi.Input[Optional[Union['ClientAddonsArgs', 'ClientAddonsArgsDict', 'outputs.ClientAddons']]] = None,
+                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  allowed_clients: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allowed_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -2059,6 +2094,7 @@ class Client(pulumi.CustomResource):
             __props__ = ClientArgs.__new__(ClientArgs)
 
             __props__.__dict__["addons"] = addons
+            __props__.__dict__["agent_id"] = agent_id
             __props__.__dict__["allowed_clients"] = allowed_clients
             __props__.__dict__["allowed_logout_urls"] = allowed_logout_urls
             __props__.__dict__["allowed_origins"] = allowed_origins
@@ -2132,6 +2168,7 @@ class Client(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             addons: pulumi.Input[Optional[Union['ClientAddonsArgs', 'ClientAddonsArgsDict', 'outputs.ClientAddons']]] = None,
+            agent_id: pulumi.Input[Optional[_builtins.str]] = None,
             allowed_clients: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             allowed_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -2198,6 +2235,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ClientAddonsArgs', 'ClientAddonsArgsDict', 'outputs.ClientAddons']] addons: Addons enabled for this client and their associated configurations.
+        :param pulumi.Input[_builtins.str] agent_id: The ID of the agent (`Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.<name>.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_clients: List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_logout_urls: URLs that Auth0 may redirect to after logout.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_origins: URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
@@ -2261,6 +2299,7 @@ class Client(pulumi.CustomResource):
         __props__ = _ClientState.__new__(_ClientState)
 
         __props__.__dict__["addons"] = addons
+        __props__.__dict__["agent_id"] = agent_id
         __props__.__dict__["allowed_clients"] = allowed_clients
         __props__.__dict__["allowed_logout_urls"] = allowed_logout_urls
         __props__.__dict__["allowed_origins"] = allowed_origins
@@ -2325,6 +2364,7 @@ class Client(pulumi.CustomResource):
     def exists(id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             addons: pulumi.Input[Optional[Union['ClientAddonsArgs', 'ClientAddonsArgsDict', 'outputs.ClientAddons']]] = None,
+            agent_id: pulumi.Input[Optional[_builtins.str]] = None,
             allowed_clients: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             allowed_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             allowed_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -2385,6 +2425,7 @@ class Client(pulumi.CustomResource):
             web_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
         __props__["addons"] = addons
+        __props__["agentId"] = agent_id
         __props__["allowedClients"] = allowed_clients
         __props__["allowedLogoutUrls"] = allowed_logout_urls
         __props__["allowedOrigins"] = allowed_origins
@@ -2452,6 +2493,14 @@ class Client(pulumi.CustomResource):
         Addons enabled for this client and their associated configurations.
         """
         return pulumi.get(self, "addons")
+
+    @_builtins.property
+    @pulumi.getter(name="agentId")
+    def agent_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the agent (`Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.<name>.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
+        """
+        return pulumi.get(self, "agent_id")
 
     @_builtins.property
     @pulumi.getter(name="allowedClients")

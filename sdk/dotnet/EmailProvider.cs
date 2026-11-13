@@ -94,6 +94,18 @@ namespace Pulumi.Auth0
     ///         DefaultFromAddress = "accounts@example.com",
     ///     });
     /// 
+    ///     // This is an example on how to set up the email provider with Resend.
+    ///     var resendEmailProvider = new Auth0.EmailProvider("resend_email_provider", new()
+    ///     {
+    ///         Credentials = new Auth0.Inputs.EmailProviderCredentialsArgs
+    ///         {
+    ///             ApiKey = "secretAPIKey",
+    ///         },
+    ///         Name = "resend",
+    ///         Enabled = true,
+    ///         DefaultFromAddress = "accounts@example.com",
+    ///     });
+    /// 
     ///     // Below is an example of how to set up a custom email provider.
     ///     // The action with custom-email-provider as supported_triggers is a prerequisite.
     ///     var customEmailProviderAction = new Auth0.Action("custom_email_provider_action", new()
@@ -172,7 +184,7 @@ namespace Pulumi.Auth0
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the email provider. Options include `AzureCs`, `Custom`, `Mailgun`, `Mandrill`, `Ms365`, `Sendgrid`, `Ses`, `Smtp` and `Sparkpost`.
+        /// Name of the email provider. Options include `AzureCs`, `Custom`, `Mailgun`, `Mandrill`, `Ms365`, `Resend`, `Sendgrid`, `Ses`, `Smtp` and `Sparkpost`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -248,7 +260,7 @@ namespace Pulumi.Auth0
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Name of the email provider. Options include `AzureCs`, `Custom`, `Mailgun`, `Mandrill`, `Ms365`, `Sendgrid`, `Ses`, `Smtp` and `Sparkpost`.
+        /// Name of the email provider. Options include `AzureCs`, `Custom`, `Mailgun`, `Mandrill`, `Ms365`, `Resend`, `Sendgrid`, `Ses`, `Smtp` and `Sparkpost`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -286,7 +298,7 @@ namespace Pulumi.Auth0
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Name of the email provider. Options include `AzureCs`, `Custom`, `Mailgun`, `Mandrill`, `Ms365`, `Sendgrid`, `Ses`, `Smtp` and `Sparkpost`.
+        /// Name of the email provider. Options include `AzureCs`, `Custom`, `Mailgun`, `Mandrill`, `Ms365`, `Resend`, `Sendgrid`, `Ses`, `Smtp` and `Sparkpost`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

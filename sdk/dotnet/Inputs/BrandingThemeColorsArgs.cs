@@ -97,6 +97,12 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? PrimaryButtonLabel { get; set; }
 
         /// <summary>
+        /// Read only background.
+        /// </summary>
+        [Input("readOnlyBackground")]
+        public Input<string>? ReadOnlyBackground { get; set; }
+
+        /// <summary>
         /// Secondary button border. Defaults to `#c9cace`.
         /// </summary>
         [Input("secondaryButtonBorder")]

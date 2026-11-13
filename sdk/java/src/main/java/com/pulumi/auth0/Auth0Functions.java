@@ -14,6 +14,8 @@ import com.pulumi.auth0.inputs.GetActionModuleVersionPlainArgs;
 import com.pulumi.auth0.inputs.GetActionModuleVersionsArgs;
 import com.pulumi.auth0.inputs.GetActionModuleVersionsPlainArgs;
 import com.pulumi.auth0.inputs.GetActionPlainArgs;
+import com.pulumi.auth0.inputs.GetAgentArgs;
+import com.pulumi.auth0.inputs.GetAgentPlainArgs;
 import com.pulumi.auth0.inputs.GetBrandingPhoneNotificationTemplateArgs;
 import com.pulumi.auth0.inputs.GetBrandingPhoneNotificationTemplatePlainArgs;
 import com.pulumi.auth0.inputs.GetClientArgs;
@@ -78,6 +80,8 @@ import com.pulumi.auth0.inputs.GetPhoneNotificationTemplateArgs;
 import com.pulumi.auth0.inputs.GetPhoneNotificationTemplatePlainArgs;
 import com.pulumi.auth0.inputs.GetPhoneProviderArgs;
 import com.pulumi.auth0.inputs.GetPhoneProviderPlainArgs;
+import com.pulumi.auth0.inputs.GetPortalArgs;
+import com.pulumi.auth0.inputs.GetPortalPlainArgs;
 import com.pulumi.auth0.inputs.GetPromptScreenPartialsArgs;
 import com.pulumi.auth0.inputs.GetPromptScreenPartialsPlainArgs;
 import com.pulumi.auth0.inputs.GetPromptScreenRendererArgs;
@@ -107,6 +111,7 @@ import com.pulumi.auth0.outputs.GetActionModuleResult;
 import com.pulumi.auth0.outputs.GetActionModuleVersionResult;
 import com.pulumi.auth0.outputs.GetActionModuleVersionsResult;
 import com.pulumi.auth0.outputs.GetActionResult;
+import com.pulumi.auth0.outputs.GetAgentResult;
 import com.pulumi.auth0.outputs.GetAttackProtectionResult;
 import com.pulumi.auth0.outputs.GetBrandingPhoneNotificationTemplateResult;
 import com.pulumi.auth0.outputs.GetBrandingResult;
@@ -144,6 +149,7 @@ import com.pulumi.auth0.outputs.GetOutboundIpsResult;
 import com.pulumi.auth0.outputs.GetPagesResult;
 import com.pulumi.auth0.outputs.GetPhoneNotificationTemplateResult;
 import com.pulumi.auth0.outputs.GetPhoneProviderResult;
+import com.pulumi.auth0.outputs.GetPortalResult;
 import com.pulumi.auth0.outputs.GetPromptScreenPartialsResult;
 import com.pulumi.auth0.outputs.GetPromptScreenRendererResult;
 import com.pulumi.auth0.outputs.GetRateLimitPoliciesResult;
@@ -810,6 +816,211 @@ public final class Auth0Functions {
      */
     public static CompletableFuture<GetActionModuleVersionsResult> getActionModuleVersionsPlain(GetActionModuleVersionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getActionModuleVersions:getActionModuleVersions", TypeShape.of(GetActionModuleVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 agent by its `agentId` (EA only).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetAgentArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Available in Early Access (EA).
+     *         final var myAgent = Auth0Functions.getAgent(GetAgentArgs.builder()
+     *             .agentId("agt_XXXXXXXXXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAgentResult> getAgent(GetAgentArgs args) {
+        return getAgent(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 agent by its `agentId` (EA only).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetAgentArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Available in Early Access (EA).
+     *         final var myAgent = Auth0Functions.getAgent(GetAgentArgs.builder()
+     *             .agentId("agt_XXXXXXXXXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAgentResult> getAgentPlain(GetAgentPlainArgs args) {
+        return getAgentPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Auth0 agent by its `agentId` (EA only).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetAgentArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Available in Early Access (EA).
+     *         final var myAgent = Auth0Functions.getAgent(GetAgentArgs.builder()
+     *             .agentId("agt_XXXXXXXXXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAgentResult> getAgent(GetAgentArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getAgent:getAgent", TypeShape.of(GetAgentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 agent by its `agentId` (EA only).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetAgentArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Available in Early Access (EA).
+     *         final var myAgent = Auth0Functions.getAgent(GetAgentArgs.builder()
+     *             .agentId("agt_XXXXXXXXXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAgentResult> getAgent(GetAgentArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getAgent:getAgent", TypeShape.of(GetAgentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Auth0 agent by its `agentId` (EA only).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetAgentArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Available in Early Access (EA).
+     *         final var myAgent = Auth0Functions.getAgent(GetAgentArgs.builder()
+     *             .agentId("agt_XXXXXXXXXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAgentResult> getAgentPlain(GetAgentPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getAgent:getAgent", TypeShape.of(GetAgentResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to access information about the tenant&#39;s attack protection settings.
@@ -9874,6 +10085,211 @@ public final class Auth0Functions {
      */
     public static CompletableFuture<GetPhoneProviderResult> getPhoneProviderPlain(GetPhoneProviderPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("auth0:index/getPhoneProvider:getPhoneProvider", TypeShape.of(GetPhoneProviderResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Universal Portal by `id`. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetPortalArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 Universal Portal can be retrieved by its ID.
+     *         final var myPortal = Auth0Functions.getPortal(GetPortalArgs.builder()
+     *             .id("up_XXXXXXXXXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPortalResult> getPortal(GetPortalArgs args) {
+        return getPortal(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Universal Portal by `id`. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetPortalArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 Universal Portal can be retrieved by its ID.
+     *         final var myPortal = Auth0Functions.getPortal(GetPortalArgs.builder()
+     *             .id("up_XXXXXXXXXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPortalResult> getPortalPlain(GetPortalPlainArgs args) {
+        return getPortalPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source to retrieve a specific Universal Portal by `id`. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetPortalArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 Universal Portal can be retrieved by its ID.
+     *         final var myPortal = Auth0Functions.getPortal(GetPortalArgs.builder()
+     *             .id("up_XXXXXXXXXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPortalResult> getPortal(GetPortalArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getPortal:getPortal", TypeShape.of(GetPortalResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Universal Portal by `id`. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetPortalArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 Universal Portal can be retrieved by its ID.
+     *         final var myPortal = Auth0Functions.getPortal(GetPortalArgs.builder()
+     *             .id("up_XXXXXXXXXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPortalResult> getPortal(GetPortalArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("auth0:index/getPortal:getPortal", TypeShape.of(GetPortalResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source to retrieve a specific Universal Portal by `id`. (EA only)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.auth0.Auth0Functions;
+     * import com.pulumi.auth0.inputs.GetPortalArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // An Auth0 Universal Portal can be retrieved by its ID.
+     *         final var myPortal = Auth0Functions.getPortal(GetPortalArgs.builder()
+     *             .id("up_XXXXXXXXXXXXXXXXXXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPortalResult> getPortalPlain(GetPortalPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("auth0:index/getPortal:getPortal", TypeShape.of(GetPortalResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source to retrieve a specific Auth0 prompt screen partials by `promptType`.

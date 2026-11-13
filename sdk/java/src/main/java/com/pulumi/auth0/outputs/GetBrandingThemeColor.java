@@ -81,6 +81,11 @@ public final class GetBrandingThemeColor {
      */
     private String primaryButtonLabel;
     /**
+     * @return Read only background.
+     * 
+     */
+    private String readOnlyBackground;
+    /**
      * @return Secondary button border. Defaults to `#c9cace`.
      * 
      */
@@ -206,6 +211,13 @@ public final class GetBrandingThemeColor {
         return this.primaryButtonLabel;
     }
     /**
+     * @return Read only background.
+     * 
+     */
+    public String readOnlyBackground() {
+        return this.readOnlyBackground;
+    }
+    /**
      * @return Secondary button border. Defaults to `#c9cace`.
      * 
      */
@@ -264,6 +276,7 @@ public final class GetBrandingThemeColor {
         private String linksFocusedComponents;
         private String primaryButton;
         private String primaryButtonLabel;
+        private String readOnlyBackground;
         private String secondaryButtonBorder;
         private String secondaryButtonLabel;
         private String success;
@@ -286,6 +299,7 @@ public final class GetBrandingThemeColor {
     	      this.linksFocusedComponents = defaults.linksFocusedComponents;
     	      this.primaryButton = defaults.primaryButton;
     	      this.primaryButtonLabel = defaults.primaryButtonLabel;
+    	      this.readOnlyBackground = defaults.readOnlyBackground;
     	      this.secondaryButtonBorder = defaults.secondaryButtonBorder;
     	      this.secondaryButtonLabel = defaults.secondaryButtonLabel;
     	      this.success = defaults.success;
@@ -406,6 +420,14 @@ public final class GetBrandingThemeColor {
             return this;
         }
         @CustomType.Setter
+        public Builder readOnlyBackground(String readOnlyBackground) {
+            if (readOnlyBackground == null) {
+              throw new MissingRequiredPropertyException("GetBrandingThemeColor", "readOnlyBackground");
+            }
+            this.readOnlyBackground = readOnlyBackground;
+            return this;
+        }
+        @CustomType.Setter
         public Builder secondaryButtonBorder(String secondaryButtonBorder) {
             if (secondaryButtonBorder == null) {
               throw new MissingRequiredPropertyException("GetBrandingThemeColor", "secondaryButtonBorder");
@@ -461,6 +483,7 @@ public final class GetBrandingThemeColor {
             _resultValue.linksFocusedComponents = linksFocusedComponents;
             _resultValue.primaryButton = primaryButton;
             _resultValue.primaryButtonLabel = primaryButtonLabel;
+            _resultValue.readOnlyBackground = readOnlyBackground;
             _resultValue.secondaryButtonBorder = secondaryButtonBorder;
             _resultValue.secondaryButtonLabel = secondaryButtonLabel;
             _resultValue.success = success;

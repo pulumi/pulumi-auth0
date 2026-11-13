@@ -226,6 +226,21 @@ public final class BrandingThemeColorsArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Read only background.
+     * 
+     */
+    @Import(name="readOnlyBackground")
+    private @Nullable Output<String> readOnlyBackground;
+
+    /**
+     * @return Read only background.
+     * 
+     */
+    public Optional<Output<String>> readOnlyBackground() {
+        return Optional.ofNullable(this.readOnlyBackground);
+    }
+
+    /**
      * Secondary button border. Defaults to `#c9cace`.
      * 
      */
@@ -317,6 +332,7 @@ public final class BrandingThemeColorsArgs extends com.pulumi.resources.Resource
         this.linksFocusedComponents = $.linksFocusedComponents;
         this.primaryButton = $.primaryButton;
         this.primaryButtonLabel = $.primaryButtonLabel;
+        this.readOnlyBackground = $.readOnlyBackground;
         this.secondaryButtonBorder = $.secondaryButtonBorder;
         this.secondaryButtonLabel = $.secondaryButtonLabel;
         this.success = $.success;
@@ -634,6 +650,27 @@ public final class BrandingThemeColorsArgs extends com.pulumi.resources.Resource
          */
         public Builder primaryButtonLabel(String primaryButtonLabel) {
             return primaryButtonLabel(Output.of(primaryButtonLabel));
+        }
+
+        /**
+         * @param readOnlyBackground Read only background.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readOnlyBackground(@Nullable Output<String> readOnlyBackground) {
+            $.readOnlyBackground = readOnlyBackground;
+            return this;
+        }
+
+        /**
+         * @param readOnlyBackground Read only background.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readOnlyBackground(String readOnlyBackground) {
+            return readOnlyBackground(Output.of(readOnlyBackground));
         }
 
         /**

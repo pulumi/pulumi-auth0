@@ -38,6 +38,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string AppId;
         /// <summary>
+        /// Settings for SAML assertion decryption. Only applicable when strategy=samlp or pingfederate.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetConnectionOptionAssertionDecryptionSettingResult> AssertionDecryptionSettings;
+        /// <summary>
         /// OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionOptionAttributeMapResult> AttributeMaps;
@@ -516,6 +520,8 @@ namespace Pulumi.Auth0.Outputs
 
             string appId,
 
+            ImmutableArray<Outputs.GetConnectionOptionAssertionDecryptionSettingResult> assertionDecryptionSettings,
+
             ImmutableArray<Outputs.GetConnectionOptionAttributeMapResult> attributeMaps,
 
             ImmutableArray<Outputs.GetConnectionOptionAttributeResult> attributes,
@@ -754,6 +760,7 @@ namespace Pulumi.Auth0.Outputs
             ApiEnableGroups = apiEnableGroups;
             ApiEnableUsers = apiEnableUsers;
             AppId = appId;
+            AssertionDecryptionSettings = assertionDecryptionSettings;
             AttributeMaps = attributeMaps;
             Attributes = attributes;
             AuthParams = authParams;

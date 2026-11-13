@@ -822,6 +822,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.auth0.inputs.ConnectionOptionsArgs;
  * import com.pulumi.auth0.inputs.ConnectionOptionsSigningKeyArgs;
  * import com.pulumi.auth0.inputs.ConnectionOptionsDecryptionKeyArgs;
+ * import com.pulumi.auth0.inputs.ConnectionOptionsAssertionDecryptionSettingsArgs;
  * import com.pulumi.auth0.inputs.ConnectionOptionsIdpInitiatedArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.ArrayList;
@@ -859,6 +860,10 @@ import javax.annotation.Nullable;
  * -----BEGIN CERTIFICATE-----
  * ...}{{@code your public key cert here}}{@code ...
  * -----END CERTIFICATE-----                    """)
+ *                     .build())
+ *                 .assertionDecryptionSettings(ConnectionOptionsAssertionDecryptionSettingsArgs.builder()
+ *                     .algorithmProfile("v2026-1")
+ *                     .algorithmExceptions("http://www.w3.org/2001/04/xmlenc#tripledes-cbc")
  *                     .build())
  *                 .idpInitiated(ConnectionOptionsIdpInitiatedArgs.builder()
  *                     .clientId("client_id")

@@ -8,6 +8,7 @@ import typing
 # Export this package's modules as members:
 from .action import *
 from .action_module import *
+from .agent import *
 from .attack_protection import *
 from .branding import *
 from .branding_phone_notification_template import *
@@ -44,6 +45,7 @@ from .get_action_module import *
 from .get_action_module_actions import *
 from .get_action_module_version import *
 from .get_action_module_versions import *
+from .get_agent import *
 from .get_attack_protection import *
 from .get_branding import *
 from .get_branding_phone_notification_template import *
@@ -81,6 +83,7 @@ from .get_outbound_ips import *
 from .get_pages import *
 from .get_phone_notification_template import *
 from .get_phone_provider import *
+from .get_portal import *
 from .get_prompt_screen_partials import *
 from .get_prompt_screen_renderer import *
 from .get_rate_limit_policies import *
@@ -115,6 +118,7 @@ from .organization_members import *
 from .pages import *
 from .phone_notification_template import *
 from .phone_provider import *
+from .portal import *
 from .prompt import *
 from .prompt_custom_text import *
 from .prompt_partials import *
@@ -173,6 +177,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/actionModule:ActionModule": "ActionModule"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/agent",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/agent:Agent": "Agent"
   }
  },
  {
@@ -581,6 +593,14 @@ _utilities.register(
   "fqn": "pulumi_auth0",
   "classes": {
    "auth0:index/phoneProvider:PhoneProvider": "PhoneProvider"
+  }
+ },
+ {
+  "pkg": "auth0",
+  "mod": "index/portal",
+  "fqn": "pulumi_auth0",
+  "classes": {
+   "auth0:index/portal:Portal": "Portal"
   }
  },
  {

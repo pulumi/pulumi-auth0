@@ -721,6 +721,14 @@ namespace Pulumi.Auth0
     /// ...{your public key cert here}...
     /// -----END CERTIFICATE-----",
     ///             },
+    ///             AssertionDecryptionSettings = new Auth0.Inputs.ConnectionOptionsAssertionDecryptionSettingsArgs
+    ///             {
+    ///                 AlgorithmProfile = "v2026-1",
+    ///                 AlgorithmExceptions = new[]
+    ///                 {
+    ///                     "http://www.w3.org/2001/04/xmlenc#tripledes-cbc",
+    ///                 },
+    ///             },
     ///             IdpInitiated = new Auth0.Inputs.ConnectionOptionsIdpInitiatedArgs
     ///             {
     ///                 ClientId = "client_id",

@@ -1040,6 +1040,10 @@ class Connection(pulumi.CustomResource):
         ...{your public key cert here}...
         -----END CERTIFICATE-----\"\"\",
                 },
+                "assertion_decryption_settings": {
+                    "algorithm_profile": "v2026-1",
+                    "algorithm_exceptions": ["http://www.w3.org/2001/04/xmlenc#tripledes-cbc"],
+                },
                 "idp_initiated": {
                     "client_id": "client_id",
                     "client_protocol": "samlp",
@@ -1805,6 +1809,10 @@ class Connection(pulumi.CustomResource):
                     "cert": \"\"\"-----BEGIN CERTIFICATE-----
         ...{your public key cert here}...
         -----END CERTIFICATE-----\"\"\",
+                },
+                "assertion_decryption_settings": {
+                    "algorithm_profile": "v2026-1",
+                    "algorithm_exceptions": ["http://www.w3.org/2001/04/xmlenc#tripledes-cbc"],
                 },
                 "idp_initiated": {
                     "client_id": "client_id",

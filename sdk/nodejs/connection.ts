@@ -546,6 +546,10 @@ import * as utilities from "./utilities";
  * ...{your public key cert here}...
  * -----END CERTIFICATE-----`,
  *         },
+ *         assertionDecryptionSettings: {
+ *             algorithmProfile: "v2026-1",
+ *             algorithmExceptions: ["http://www.w3.org/2001/04/xmlenc#tripledes-cbc"],
+ *         },
  *         idpInitiated: {
  *             clientId: "client_id",
  *             clientProtocol: "samlp",

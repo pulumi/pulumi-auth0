@@ -111,6 +111,16 @@ import javax.annotation.Nullable;
  *             .defaultFromAddress("accounts}{@literal @}{@code example.com")
  *             .build());
  * 
+ *         // This is an example on how to set up the email provider with Resend.
+ *         var resendEmailProvider = new EmailProvider("resendEmailProvider", EmailProviderArgs.builder()
+ *             .credentials(EmailProviderCredentialsArgs.builder()
+ *                 .apiKey("secretAPIKey")
+ *                 .build())
+ *             .name("resend")
+ *             .enabled(true)
+ *             .defaultFromAddress("accounts}{@literal @}{@code example.com")
+ *             .build());
+ * 
  *         // Below is an example of how to set up a custom email provider.
  *         // The action with custom-email-provider as supported_triggers is a prerequisite.
  *         var customEmailProviderAction = new Action("customEmailProviderAction", ActionArgs.builder()
@@ -210,14 +220,14 @@ public class EmailProvider extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enabled);
     }
     /**
-     * Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+     * Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `resend`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+     * @return Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `resend`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
      * 
      */
     public Output<String> name() {

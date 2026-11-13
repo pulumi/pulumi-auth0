@@ -64,6 +64,20 @@ public class Client extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.addons);
     }
     /**
+     * The ID of the agent (`auth0.Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.&lt;name&gt;.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
+     * 
+     */
+    @Export(name="agentId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> agentId;
+
+    /**
+     * @return The ID of the agent (`auth0.Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.&lt;name&gt;.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
+     * 
+     */
+    public Output<Optional<String>> agentId() {
+        return Codegen.optional(this.agentId);
+    }
+    /**
      * List of applications ID&#39;s that will be allowed to make delegation request. By default, all applications will be allowed.
      * 
      */
