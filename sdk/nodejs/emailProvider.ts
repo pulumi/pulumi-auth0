@@ -72,6 +72,15 @@ import * as utilities from "./utilities";
  *     enabled: true,
  *     defaultFromAddress: "accounts@example.com",
  * });
+ * // This is an example on how to set up the email provider with Resend.
+ * const resendEmailProvider = new auth0.EmailProvider("resend_email_provider", {
+ *     credentials: {
+ *         apiKey: "secretAPIKey",
+ *     },
+ *     name: "resend",
+ *     enabled: true,
+ *     defaultFromAddress: "accounts@example.com",
+ * });
  * // Below is an example of how to set up a custom email provider.
  * // The action with custom-email-provider as supported_triggers is a prerequisite.
  * const customEmailProviderAction = new auth0.Action("custom_email_provider_action", {
@@ -170,7 +179,7 @@ export class EmailProvider extends pulumi.CustomResource {
      */
     declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
-     * Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+     * Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `resend`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -232,7 +241,7 @@ export interface EmailProviderState {
      */
     enabled?: pulumi.Input<boolean | undefined>;
     /**
-     * Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+     * Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `resend`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -258,7 +267,7 @@ export interface EmailProviderArgs {
      */
     enabled?: pulumi.Input<boolean | undefined>;
     /**
-     * Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+     * Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `resend`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
      */
     name?: pulumi.Input<string | undefined>;
     /**

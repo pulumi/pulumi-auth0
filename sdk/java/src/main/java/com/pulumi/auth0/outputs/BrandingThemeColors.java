@@ -82,6 +82,11 @@ public final class BrandingThemeColors {
      */
     private @Nullable String primaryButtonLabel;
     /**
+     * @return Read only background.
+     * 
+     */
+    private @Nullable String readOnlyBackground;
+    /**
      * @return Secondary button border. Defaults to `#c9cace`.
      * 
      */
@@ -207,6 +212,13 @@ public final class BrandingThemeColors {
         return Optional.ofNullable(this.primaryButtonLabel);
     }
     /**
+     * @return Read only background.
+     * 
+     */
+    public Optional<String> readOnlyBackground() {
+        return Optional.ofNullable(this.readOnlyBackground);
+    }
+    /**
      * @return Secondary button border. Defaults to `#c9cace`.
      * 
      */
@@ -265,6 +277,7 @@ public final class BrandingThemeColors {
         private @Nullable String linksFocusedComponents;
         private @Nullable String primaryButton;
         private @Nullable String primaryButtonLabel;
+        private @Nullable String readOnlyBackground;
         private @Nullable String secondaryButtonBorder;
         private @Nullable String secondaryButtonLabel;
         private @Nullable String success;
@@ -287,6 +300,7 @@ public final class BrandingThemeColors {
     	      this.linksFocusedComponents = defaults.linksFocusedComponents;
     	      this.primaryButton = defaults.primaryButton;
     	      this.primaryButtonLabel = defaults.primaryButtonLabel;
+    	      this.readOnlyBackground = defaults.readOnlyBackground;
     	      this.secondaryButtonBorder = defaults.secondaryButtonBorder;
     	      this.secondaryButtonLabel = defaults.secondaryButtonLabel;
     	      this.success = defaults.success;
@@ -379,6 +393,12 @@ public final class BrandingThemeColors {
             return this;
         }
         @CustomType.Setter
+        public Builder readOnlyBackground(@Nullable String readOnlyBackground) {
+
+            this.readOnlyBackground = readOnlyBackground;
+            return this;
+        }
+        @CustomType.Setter
         public Builder secondaryButtonBorder(@Nullable String secondaryButtonBorder) {
 
             this.secondaryButtonBorder = secondaryButtonBorder;
@@ -424,6 +444,7 @@ public final class BrandingThemeColors {
             _resultValue.linksFocusedComponents = linksFocusedComponents;
             _resultValue.primaryButton = primaryButton;
             _resultValue.primaryButtonLabel = primaryButtonLabel;
+            _resultValue.readOnlyBackground = readOnlyBackground;
             _resultValue.secondaryButtonBorder = secondaryButtonBorder;
             _resultValue.secondaryButtonLabel = secondaryButtonLabel;
             _resultValue.success = success;

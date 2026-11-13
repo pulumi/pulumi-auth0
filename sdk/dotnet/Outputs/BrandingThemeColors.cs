@@ -70,6 +70,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string? PrimaryButtonLabel;
         /// <summary>
+        /// Read only background.
+        /// </summary>
+        public readonly string? ReadOnlyBackground;
+        /// <summary>
         /// Secondary button border. Defaults to `#c9cace`.
         /// </summary>
         public readonly string? SecondaryButtonBorder;
@@ -120,6 +124,8 @@ namespace Pulumi.Auth0.Outputs
 
             string? primaryButtonLabel,
 
+            string? readOnlyBackground,
+
             string? secondaryButtonBorder,
 
             string? secondaryButtonLabel,
@@ -144,6 +150,7 @@ namespace Pulumi.Auth0.Outputs
             LinksFocusedComponents = linksFocusedComponents;
             PrimaryButton = primaryButton;
             PrimaryButtonLabel = primaryButtonLabel;
+            ReadOnlyBackground = readOnlyBackground;
             SecondaryButtonBorder = secondaryButtonBorder;
             SecondaryButtonLabel = secondaryButtonLabel;
             Success = success;

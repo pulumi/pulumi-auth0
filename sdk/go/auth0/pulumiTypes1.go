@@ -13,6 +13,5069 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetClientsClientExpressConfiguration struct {
+	// The domain that admins are expected to log in via for authenticating for express configuration.
+	AdminLoginDomain string `pulumi:"adminLoginDomain"`
+	// The ID of the connection profile to use for this application.
+	ConnectionProfileId string `pulumi:"connectionProfileId"`
+	// When true, all connections made via express configuration will be enabled for this application.
+	EnableClient bool `pulumi:"enableClient"`
+	// When true, all connections made via express configuration will have the associated organization enabled.
+	EnableOrganization bool `pulumi:"enableOrganization"`
+	// The URI users should bookmark to log in to this application. Variable substitution is permitted for: organization_name, organization_id, and connection_name.
+	InitiateLoginUriTemplate string `pulumi:"initiateLoginUriTemplate"`
+	// List of client IDs that are linked to this express configuration (e.g. web or mobile clients).
+	LinkedClients []GetClientsClientExpressConfigurationLinkedClient `pulumi:"linkedClients"`
+	// The identifier of the published application in the OKTA OIN.
+	OinSubmissionId string `pulumi:"oinSubmissionId"`
+	// The unique identifier for the Okta OIN Express Configuration Client.
+	OktaOinClientId string `pulumi:"oktaOinClientId"`
+	// The ID of the user attribute profile to use for this application.
+	UserAttributeProfileId string `pulumi:"userAttributeProfileId"`
+}
+
+// GetClientsClientExpressConfigurationInput is an input type that accepts GetClientsClientExpressConfigurationArgs and GetClientsClientExpressConfigurationOutput values.
+// You can construct a concrete instance of `GetClientsClientExpressConfigurationInput` via:
+//
+//	GetClientsClientExpressConfigurationArgs{...}
+type GetClientsClientExpressConfigurationInput interface {
+	pulumi.Input
+
+	ToGetClientsClientExpressConfigurationOutput() GetClientsClientExpressConfigurationOutput
+	ToGetClientsClientExpressConfigurationOutputWithContext(context.Context) GetClientsClientExpressConfigurationOutput
+}
+
+type GetClientsClientExpressConfigurationArgs struct {
+	// The domain that admins are expected to log in via for authenticating for express configuration.
+	AdminLoginDomain pulumi.StringInput `pulumi:"adminLoginDomain"`
+	// The ID of the connection profile to use for this application.
+	ConnectionProfileId pulumi.StringInput `pulumi:"connectionProfileId"`
+	// When true, all connections made via express configuration will be enabled for this application.
+	EnableClient pulumi.BoolInput `pulumi:"enableClient"`
+	// When true, all connections made via express configuration will have the associated organization enabled.
+	EnableOrganization pulumi.BoolInput `pulumi:"enableOrganization"`
+	// The URI users should bookmark to log in to this application. Variable substitution is permitted for: organization_name, organization_id, and connection_name.
+	InitiateLoginUriTemplate pulumi.StringInput `pulumi:"initiateLoginUriTemplate"`
+	// List of client IDs that are linked to this express configuration (e.g. web or mobile clients).
+	LinkedClients GetClientsClientExpressConfigurationLinkedClientArrayInput `pulumi:"linkedClients"`
+	// The identifier of the published application in the OKTA OIN.
+	OinSubmissionId pulumi.StringInput `pulumi:"oinSubmissionId"`
+	// The unique identifier for the Okta OIN Express Configuration Client.
+	OktaOinClientId pulumi.StringInput `pulumi:"oktaOinClientId"`
+	// The ID of the user attribute profile to use for this application.
+	UserAttributeProfileId pulumi.StringInput `pulumi:"userAttributeProfileId"`
+}
+
+func (GetClientsClientExpressConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientExpressConfiguration)(nil)).Elem()
+}
+
+func (i GetClientsClientExpressConfigurationArgs) ToGetClientsClientExpressConfigurationOutput() GetClientsClientExpressConfigurationOutput {
+	return i.ToGetClientsClientExpressConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientExpressConfigurationArgs) ToGetClientsClientExpressConfigurationOutputWithContext(ctx context.Context) GetClientsClientExpressConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientExpressConfigurationOutput)
+}
+
+// GetClientsClientExpressConfigurationArrayInput is an input type that accepts GetClientsClientExpressConfigurationArray and GetClientsClientExpressConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetClientsClientExpressConfigurationArrayInput` via:
+//
+//	GetClientsClientExpressConfigurationArray{ GetClientsClientExpressConfigurationArgs{...} }
+type GetClientsClientExpressConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetClientsClientExpressConfigurationArrayOutput() GetClientsClientExpressConfigurationArrayOutput
+	ToGetClientsClientExpressConfigurationArrayOutputWithContext(context.Context) GetClientsClientExpressConfigurationArrayOutput
+}
+
+type GetClientsClientExpressConfigurationArray []GetClientsClientExpressConfigurationInput
+
+func (GetClientsClientExpressConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientExpressConfiguration)(nil)).Elem()
+}
+
+func (i GetClientsClientExpressConfigurationArray) ToGetClientsClientExpressConfigurationArrayOutput() GetClientsClientExpressConfigurationArrayOutput {
+	return i.ToGetClientsClientExpressConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientExpressConfigurationArray) ToGetClientsClientExpressConfigurationArrayOutputWithContext(ctx context.Context) GetClientsClientExpressConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientExpressConfigurationArrayOutput)
+}
+
+type GetClientsClientExpressConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientExpressConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientExpressConfiguration)(nil)).Elem()
+}
+
+func (o GetClientsClientExpressConfigurationOutput) ToGetClientsClientExpressConfigurationOutput() GetClientsClientExpressConfigurationOutput {
+	return o
+}
+
+func (o GetClientsClientExpressConfigurationOutput) ToGetClientsClientExpressConfigurationOutputWithContext(ctx context.Context) GetClientsClientExpressConfigurationOutput {
+	return o
+}
+
+// The domain that admins are expected to log in via for authenticating for express configuration.
+func (o GetClientsClientExpressConfigurationOutput) AdminLoginDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClientExpressConfiguration) string { return v.AdminLoginDomain }).(pulumi.StringOutput)
+}
+
+// The ID of the connection profile to use for this application.
+func (o GetClientsClientExpressConfigurationOutput) ConnectionProfileId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClientExpressConfiguration) string { return v.ConnectionProfileId }).(pulumi.StringOutput)
+}
+
+// When true, all connections made via express configuration will be enabled for this application.
+func (o GetClientsClientExpressConfigurationOutput) EnableClient() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientsClientExpressConfiguration) bool { return v.EnableClient }).(pulumi.BoolOutput)
+}
+
+// When true, all connections made via express configuration will have the associated organization enabled.
+func (o GetClientsClientExpressConfigurationOutput) EnableOrganization() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientsClientExpressConfiguration) bool { return v.EnableOrganization }).(pulumi.BoolOutput)
+}
+
+// The URI users should bookmark to log in to this application. Variable substitution is permitted for: organization_name, organization_id, and connection_name.
+func (o GetClientsClientExpressConfigurationOutput) InitiateLoginUriTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClientExpressConfiguration) string { return v.InitiateLoginUriTemplate }).(pulumi.StringOutput)
+}
+
+// List of client IDs that are linked to this express configuration (e.g. web or mobile clients).
+func (o GetClientsClientExpressConfigurationOutput) LinkedClients() GetClientsClientExpressConfigurationLinkedClientArrayOutput {
+	return o.ApplyT(func(v GetClientsClientExpressConfiguration) []GetClientsClientExpressConfigurationLinkedClient {
+		return v.LinkedClients
+	}).(GetClientsClientExpressConfigurationLinkedClientArrayOutput)
+}
+
+// The identifier of the published application in the OKTA OIN.
+func (o GetClientsClientExpressConfigurationOutput) OinSubmissionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClientExpressConfiguration) string { return v.OinSubmissionId }).(pulumi.StringOutput)
+}
+
+// The unique identifier for the Okta OIN Express Configuration Client.
+func (o GetClientsClientExpressConfigurationOutput) OktaOinClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClientExpressConfiguration) string { return v.OktaOinClientId }).(pulumi.StringOutput)
+}
+
+// The ID of the user attribute profile to use for this application.
+func (o GetClientsClientExpressConfigurationOutput) UserAttributeProfileId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClientExpressConfiguration) string { return v.UserAttributeProfileId }).(pulumi.StringOutput)
+}
+
+type GetClientsClientExpressConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientExpressConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientExpressConfiguration)(nil)).Elem()
+}
+
+func (o GetClientsClientExpressConfigurationArrayOutput) ToGetClientsClientExpressConfigurationArrayOutput() GetClientsClientExpressConfigurationArrayOutput {
+	return o
+}
+
+func (o GetClientsClientExpressConfigurationArrayOutput) ToGetClientsClientExpressConfigurationArrayOutputWithContext(ctx context.Context) GetClientsClientExpressConfigurationArrayOutput {
+	return o
+}
+
+func (o GetClientsClientExpressConfigurationArrayOutput) Index(i pulumi.IntInput) GetClientsClientExpressConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientExpressConfiguration {
+		return vs[0].([]GetClientsClientExpressConfiguration)[vs[1].(int)]
+	}).(GetClientsClientExpressConfigurationOutput)
+}
+
+type GetClientsClientExpressConfigurationLinkedClient struct {
+	// The ID of the linked client.
+	ClientId string `pulumi:"clientId"`
+}
+
+// GetClientsClientExpressConfigurationLinkedClientInput is an input type that accepts GetClientsClientExpressConfigurationLinkedClientArgs and GetClientsClientExpressConfigurationLinkedClientOutput values.
+// You can construct a concrete instance of `GetClientsClientExpressConfigurationLinkedClientInput` via:
+//
+//	GetClientsClientExpressConfigurationLinkedClientArgs{...}
+type GetClientsClientExpressConfigurationLinkedClientInput interface {
+	pulumi.Input
+
+	ToGetClientsClientExpressConfigurationLinkedClientOutput() GetClientsClientExpressConfigurationLinkedClientOutput
+	ToGetClientsClientExpressConfigurationLinkedClientOutputWithContext(context.Context) GetClientsClientExpressConfigurationLinkedClientOutput
+}
+
+type GetClientsClientExpressConfigurationLinkedClientArgs struct {
+	// The ID of the linked client.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+}
+
+func (GetClientsClientExpressConfigurationLinkedClientArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientExpressConfigurationLinkedClient)(nil)).Elem()
+}
+
+func (i GetClientsClientExpressConfigurationLinkedClientArgs) ToGetClientsClientExpressConfigurationLinkedClientOutput() GetClientsClientExpressConfigurationLinkedClientOutput {
+	return i.ToGetClientsClientExpressConfigurationLinkedClientOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientExpressConfigurationLinkedClientArgs) ToGetClientsClientExpressConfigurationLinkedClientOutputWithContext(ctx context.Context) GetClientsClientExpressConfigurationLinkedClientOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientExpressConfigurationLinkedClientOutput)
+}
+
+// GetClientsClientExpressConfigurationLinkedClientArrayInput is an input type that accepts GetClientsClientExpressConfigurationLinkedClientArray and GetClientsClientExpressConfigurationLinkedClientArrayOutput values.
+// You can construct a concrete instance of `GetClientsClientExpressConfigurationLinkedClientArrayInput` via:
+//
+//	GetClientsClientExpressConfigurationLinkedClientArray{ GetClientsClientExpressConfigurationLinkedClientArgs{...} }
+type GetClientsClientExpressConfigurationLinkedClientArrayInput interface {
+	pulumi.Input
+
+	ToGetClientsClientExpressConfigurationLinkedClientArrayOutput() GetClientsClientExpressConfigurationLinkedClientArrayOutput
+	ToGetClientsClientExpressConfigurationLinkedClientArrayOutputWithContext(context.Context) GetClientsClientExpressConfigurationLinkedClientArrayOutput
+}
+
+type GetClientsClientExpressConfigurationLinkedClientArray []GetClientsClientExpressConfigurationLinkedClientInput
+
+func (GetClientsClientExpressConfigurationLinkedClientArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientExpressConfigurationLinkedClient)(nil)).Elem()
+}
+
+func (i GetClientsClientExpressConfigurationLinkedClientArray) ToGetClientsClientExpressConfigurationLinkedClientArrayOutput() GetClientsClientExpressConfigurationLinkedClientArrayOutput {
+	return i.ToGetClientsClientExpressConfigurationLinkedClientArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientExpressConfigurationLinkedClientArray) ToGetClientsClientExpressConfigurationLinkedClientArrayOutputWithContext(ctx context.Context) GetClientsClientExpressConfigurationLinkedClientArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientExpressConfigurationLinkedClientArrayOutput)
+}
+
+type GetClientsClientExpressConfigurationLinkedClientOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientExpressConfigurationLinkedClientOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientExpressConfigurationLinkedClient)(nil)).Elem()
+}
+
+func (o GetClientsClientExpressConfigurationLinkedClientOutput) ToGetClientsClientExpressConfigurationLinkedClientOutput() GetClientsClientExpressConfigurationLinkedClientOutput {
+	return o
+}
+
+func (o GetClientsClientExpressConfigurationLinkedClientOutput) ToGetClientsClientExpressConfigurationLinkedClientOutputWithContext(ctx context.Context) GetClientsClientExpressConfigurationLinkedClientOutput {
+	return o
+}
+
+// The ID of the linked client.
+func (o GetClientsClientExpressConfigurationLinkedClientOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClientExpressConfigurationLinkedClient) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+type GetClientsClientExpressConfigurationLinkedClientArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientExpressConfigurationLinkedClientArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientExpressConfigurationLinkedClient)(nil)).Elem()
+}
+
+func (o GetClientsClientExpressConfigurationLinkedClientArrayOutput) ToGetClientsClientExpressConfigurationLinkedClientArrayOutput() GetClientsClientExpressConfigurationLinkedClientArrayOutput {
+	return o
+}
+
+func (o GetClientsClientExpressConfigurationLinkedClientArrayOutput) ToGetClientsClientExpressConfigurationLinkedClientArrayOutputWithContext(ctx context.Context) GetClientsClientExpressConfigurationLinkedClientArrayOutput {
+	return o
+}
+
+func (o GetClientsClientExpressConfigurationLinkedClientArrayOutput) Index(i pulumi.IntInput) GetClientsClientExpressConfigurationLinkedClientOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientExpressConfigurationLinkedClient {
+		return vs[0].([]GetClientsClientExpressConfigurationLinkedClient)[vs[1].(int)]
+	}).(GetClientsClientExpressConfigurationLinkedClientOutput)
+}
+
+type GetClientsClientFedcmLogin struct {
+	// Google FedCM configuration. (EA only)
+	Googles []GetClientsClientFedcmLoginGoogle `pulumi:"googles"`
+}
+
+// GetClientsClientFedcmLoginInput is an input type that accepts GetClientsClientFedcmLoginArgs and GetClientsClientFedcmLoginOutput values.
+// You can construct a concrete instance of `GetClientsClientFedcmLoginInput` via:
+//
+//	GetClientsClientFedcmLoginArgs{...}
+type GetClientsClientFedcmLoginInput interface {
+	pulumi.Input
+
+	ToGetClientsClientFedcmLoginOutput() GetClientsClientFedcmLoginOutput
+	ToGetClientsClientFedcmLoginOutputWithContext(context.Context) GetClientsClientFedcmLoginOutput
+}
+
+type GetClientsClientFedcmLoginArgs struct {
+	// Google FedCM configuration. (EA only)
+	Googles GetClientsClientFedcmLoginGoogleArrayInput `pulumi:"googles"`
+}
+
+func (GetClientsClientFedcmLoginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientFedcmLogin)(nil)).Elem()
+}
+
+func (i GetClientsClientFedcmLoginArgs) ToGetClientsClientFedcmLoginOutput() GetClientsClientFedcmLoginOutput {
+	return i.ToGetClientsClientFedcmLoginOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientFedcmLoginArgs) ToGetClientsClientFedcmLoginOutputWithContext(ctx context.Context) GetClientsClientFedcmLoginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientFedcmLoginOutput)
+}
+
+// GetClientsClientFedcmLoginArrayInput is an input type that accepts GetClientsClientFedcmLoginArray and GetClientsClientFedcmLoginArrayOutput values.
+// You can construct a concrete instance of `GetClientsClientFedcmLoginArrayInput` via:
+//
+//	GetClientsClientFedcmLoginArray{ GetClientsClientFedcmLoginArgs{...} }
+type GetClientsClientFedcmLoginArrayInput interface {
+	pulumi.Input
+
+	ToGetClientsClientFedcmLoginArrayOutput() GetClientsClientFedcmLoginArrayOutput
+	ToGetClientsClientFedcmLoginArrayOutputWithContext(context.Context) GetClientsClientFedcmLoginArrayOutput
+}
+
+type GetClientsClientFedcmLoginArray []GetClientsClientFedcmLoginInput
+
+func (GetClientsClientFedcmLoginArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientFedcmLogin)(nil)).Elem()
+}
+
+func (i GetClientsClientFedcmLoginArray) ToGetClientsClientFedcmLoginArrayOutput() GetClientsClientFedcmLoginArrayOutput {
+	return i.ToGetClientsClientFedcmLoginArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientFedcmLoginArray) ToGetClientsClientFedcmLoginArrayOutputWithContext(ctx context.Context) GetClientsClientFedcmLoginArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientFedcmLoginArrayOutput)
+}
+
+type GetClientsClientFedcmLoginOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientFedcmLoginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientFedcmLogin)(nil)).Elem()
+}
+
+func (o GetClientsClientFedcmLoginOutput) ToGetClientsClientFedcmLoginOutput() GetClientsClientFedcmLoginOutput {
+	return o
+}
+
+func (o GetClientsClientFedcmLoginOutput) ToGetClientsClientFedcmLoginOutputWithContext(ctx context.Context) GetClientsClientFedcmLoginOutput {
+	return o
+}
+
+// Google FedCM configuration. (EA only)
+func (o GetClientsClientFedcmLoginOutput) Googles() GetClientsClientFedcmLoginGoogleArrayOutput {
+	return o.ApplyT(func(v GetClientsClientFedcmLogin) []GetClientsClientFedcmLoginGoogle { return v.Googles }).(GetClientsClientFedcmLoginGoogleArrayOutput)
+}
+
+type GetClientsClientFedcmLoginArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientFedcmLoginArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientFedcmLogin)(nil)).Elem()
+}
+
+func (o GetClientsClientFedcmLoginArrayOutput) ToGetClientsClientFedcmLoginArrayOutput() GetClientsClientFedcmLoginArrayOutput {
+	return o
+}
+
+func (o GetClientsClientFedcmLoginArrayOutput) ToGetClientsClientFedcmLoginArrayOutputWithContext(ctx context.Context) GetClientsClientFedcmLoginArrayOutput {
+	return o
+}
+
+func (o GetClientsClientFedcmLoginArrayOutput) Index(i pulumi.IntInput) GetClientsClientFedcmLoginOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientFedcmLogin {
+		return vs[0].([]GetClientsClientFedcmLogin)[vs[1].(int)]
+	}).(GetClientsClientFedcmLoginOutput)
+}
+
+type GetClientsClientFedcmLoginGoogle struct {
+	// Whether to show the Google FedCM prompt on Login. (EA only)
+	IsEnabled bool `pulumi:"isEnabled"`
+}
+
+// GetClientsClientFedcmLoginGoogleInput is an input type that accepts GetClientsClientFedcmLoginGoogleArgs and GetClientsClientFedcmLoginGoogleOutput values.
+// You can construct a concrete instance of `GetClientsClientFedcmLoginGoogleInput` via:
+//
+//	GetClientsClientFedcmLoginGoogleArgs{...}
+type GetClientsClientFedcmLoginGoogleInput interface {
+	pulumi.Input
+
+	ToGetClientsClientFedcmLoginGoogleOutput() GetClientsClientFedcmLoginGoogleOutput
+	ToGetClientsClientFedcmLoginGoogleOutputWithContext(context.Context) GetClientsClientFedcmLoginGoogleOutput
+}
+
+type GetClientsClientFedcmLoginGoogleArgs struct {
+	// Whether to show the Google FedCM prompt on Login. (EA only)
+	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
+}
+
+func (GetClientsClientFedcmLoginGoogleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientFedcmLoginGoogle)(nil)).Elem()
+}
+
+func (i GetClientsClientFedcmLoginGoogleArgs) ToGetClientsClientFedcmLoginGoogleOutput() GetClientsClientFedcmLoginGoogleOutput {
+	return i.ToGetClientsClientFedcmLoginGoogleOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientFedcmLoginGoogleArgs) ToGetClientsClientFedcmLoginGoogleOutputWithContext(ctx context.Context) GetClientsClientFedcmLoginGoogleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientFedcmLoginGoogleOutput)
+}
+
+// GetClientsClientFedcmLoginGoogleArrayInput is an input type that accepts GetClientsClientFedcmLoginGoogleArray and GetClientsClientFedcmLoginGoogleArrayOutput values.
+// You can construct a concrete instance of `GetClientsClientFedcmLoginGoogleArrayInput` via:
+//
+//	GetClientsClientFedcmLoginGoogleArray{ GetClientsClientFedcmLoginGoogleArgs{...} }
+type GetClientsClientFedcmLoginGoogleArrayInput interface {
+	pulumi.Input
+
+	ToGetClientsClientFedcmLoginGoogleArrayOutput() GetClientsClientFedcmLoginGoogleArrayOutput
+	ToGetClientsClientFedcmLoginGoogleArrayOutputWithContext(context.Context) GetClientsClientFedcmLoginGoogleArrayOutput
+}
+
+type GetClientsClientFedcmLoginGoogleArray []GetClientsClientFedcmLoginGoogleInput
+
+func (GetClientsClientFedcmLoginGoogleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientFedcmLoginGoogle)(nil)).Elem()
+}
+
+func (i GetClientsClientFedcmLoginGoogleArray) ToGetClientsClientFedcmLoginGoogleArrayOutput() GetClientsClientFedcmLoginGoogleArrayOutput {
+	return i.ToGetClientsClientFedcmLoginGoogleArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientFedcmLoginGoogleArray) ToGetClientsClientFedcmLoginGoogleArrayOutputWithContext(ctx context.Context) GetClientsClientFedcmLoginGoogleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientFedcmLoginGoogleArrayOutput)
+}
+
+type GetClientsClientFedcmLoginGoogleOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientFedcmLoginGoogleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientFedcmLoginGoogle)(nil)).Elem()
+}
+
+func (o GetClientsClientFedcmLoginGoogleOutput) ToGetClientsClientFedcmLoginGoogleOutput() GetClientsClientFedcmLoginGoogleOutput {
+	return o
+}
+
+func (o GetClientsClientFedcmLoginGoogleOutput) ToGetClientsClientFedcmLoginGoogleOutputWithContext(ctx context.Context) GetClientsClientFedcmLoginGoogleOutput {
+	return o
+}
+
+// Whether to show the Google FedCM prompt on Login. (EA only)
+func (o GetClientsClientFedcmLoginGoogleOutput) IsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientsClientFedcmLoginGoogle) bool { return v.IsEnabled }).(pulumi.BoolOutput)
+}
+
+type GetClientsClientFedcmLoginGoogleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientFedcmLoginGoogleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientFedcmLoginGoogle)(nil)).Elem()
+}
+
+func (o GetClientsClientFedcmLoginGoogleArrayOutput) ToGetClientsClientFedcmLoginGoogleArrayOutput() GetClientsClientFedcmLoginGoogleArrayOutput {
+	return o
+}
+
+func (o GetClientsClientFedcmLoginGoogleArrayOutput) ToGetClientsClientFedcmLoginGoogleArrayOutputWithContext(ctx context.Context) GetClientsClientFedcmLoginGoogleArrayOutput {
+	return o
+}
+
+func (o GetClientsClientFedcmLoginGoogleArrayOutput) Index(i pulumi.IntInput) GetClientsClientFedcmLoginGoogleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientFedcmLoginGoogle {
+		return vs[0].([]GetClientsClientFedcmLoginGoogle)[vs[1].(int)]
+	}).(GetClientsClientFedcmLoginGoogleOutput)
+}
+
+type GetClientsClientIdentityAssertionAuthorizationGrant struct {
+	// Whether the client can exchange ID-JAGs for access tokens. (EA only)
+	Active bool `pulumi:"active"`
+}
+
+// GetClientsClientIdentityAssertionAuthorizationGrantInput is an input type that accepts GetClientsClientIdentityAssertionAuthorizationGrantArgs and GetClientsClientIdentityAssertionAuthorizationGrantOutput values.
+// You can construct a concrete instance of `GetClientsClientIdentityAssertionAuthorizationGrantInput` via:
+//
+//	GetClientsClientIdentityAssertionAuthorizationGrantArgs{...}
+type GetClientsClientIdentityAssertionAuthorizationGrantInput interface {
+	pulumi.Input
+
+	ToGetClientsClientIdentityAssertionAuthorizationGrantOutput() GetClientsClientIdentityAssertionAuthorizationGrantOutput
+	ToGetClientsClientIdentityAssertionAuthorizationGrantOutputWithContext(context.Context) GetClientsClientIdentityAssertionAuthorizationGrantOutput
+}
+
+type GetClientsClientIdentityAssertionAuthorizationGrantArgs struct {
+	// Whether the client can exchange ID-JAGs for access tokens. (EA only)
+	Active pulumi.BoolInput `pulumi:"active"`
+}
+
+func (GetClientsClientIdentityAssertionAuthorizationGrantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientIdentityAssertionAuthorizationGrant)(nil)).Elem()
+}
+
+func (i GetClientsClientIdentityAssertionAuthorizationGrantArgs) ToGetClientsClientIdentityAssertionAuthorizationGrantOutput() GetClientsClientIdentityAssertionAuthorizationGrantOutput {
+	return i.ToGetClientsClientIdentityAssertionAuthorizationGrantOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientIdentityAssertionAuthorizationGrantArgs) ToGetClientsClientIdentityAssertionAuthorizationGrantOutputWithContext(ctx context.Context) GetClientsClientIdentityAssertionAuthorizationGrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientIdentityAssertionAuthorizationGrantOutput)
+}
+
+// GetClientsClientIdentityAssertionAuthorizationGrantArrayInput is an input type that accepts GetClientsClientIdentityAssertionAuthorizationGrantArray and GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput values.
+// You can construct a concrete instance of `GetClientsClientIdentityAssertionAuthorizationGrantArrayInput` via:
+//
+//	GetClientsClientIdentityAssertionAuthorizationGrantArray{ GetClientsClientIdentityAssertionAuthorizationGrantArgs{...} }
+type GetClientsClientIdentityAssertionAuthorizationGrantArrayInput interface {
+	pulumi.Input
+
+	ToGetClientsClientIdentityAssertionAuthorizationGrantArrayOutput() GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput
+	ToGetClientsClientIdentityAssertionAuthorizationGrantArrayOutputWithContext(context.Context) GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput
+}
+
+type GetClientsClientIdentityAssertionAuthorizationGrantArray []GetClientsClientIdentityAssertionAuthorizationGrantInput
+
+func (GetClientsClientIdentityAssertionAuthorizationGrantArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientIdentityAssertionAuthorizationGrant)(nil)).Elem()
+}
+
+func (i GetClientsClientIdentityAssertionAuthorizationGrantArray) ToGetClientsClientIdentityAssertionAuthorizationGrantArrayOutput() GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput {
+	return i.ToGetClientsClientIdentityAssertionAuthorizationGrantArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientIdentityAssertionAuthorizationGrantArray) ToGetClientsClientIdentityAssertionAuthorizationGrantArrayOutputWithContext(ctx context.Context) GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput)
+}
+
+type GetClientsClientIdentityAssertionAuthorizationGrantOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientIdentityAssertionAuthorizationGrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientIdentityAssertionAuthorizationGrant)(nil)).Elem()
+}
+
+func (o GetClientsClientIdentityAssertionAuthorizationGrantOutput) ToGetClientsClientIdentityAssertionAuthorizationGrantOutput() GetClientsClientIdentityAssertionAuthorizationGrantOutput {
+	return o
+}
+
+func (o GetClientsClientIdentityAssertionAuthorizationGrantOutput) ToGetClientsClientIdentityAssertionAuthorizationGrantOutputWithContext(ctx context.Context) GetClientsClientIdentityAssertionAuthorizationGrantOutput {
+	return o
+}
+
+// Whether the client can exchange ID-JAGs for access tokens. (EA only)
+func (o GetClientsClientIdentityAssertionAuthorizationGrantOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientsClientIdentityAssertionAuthorizationGrant) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+type GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientIdentityAssertionAuthorizationGrant)(nil)).Elem()
+}
+
+func (o GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput) ToGetClientsClientIdentityAssertionAuthorizationGrantArrayOutput() GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput {
+	return o
+}
+
+func (o GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput) ToGetClientsClientIdentityAssertionAuthorizationGrantArrayOutputWithContext(ctx context.Context) GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput {
+	return o
+}
+
+func (o GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput) Index(i pulumi.IntInput) GetClientsClientIdentityAssertionAuthorizationGrantOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientIdentityAssertionAuthorizationGrant {
+		return vs[0].([]GetClientsClientIdentityAssertionAuthorizationGrant)[vs[1].(int)]
+	}).(GetClientsClientIdentityAssertionAuthorizationGrantOutput)
+}
+
+type GetClientsClientMyOrganizationConfiguration struct {
+	// The list of connection strategies that are allowed when creating organizations for this client (e.g. "okta", "samlp").
+	AllowedStrategies []string `pulumi:"allowedStrategies"`
+	// Controls the behavior when deleting connections associated with organizations for this client. Possible values: `allow`, `allowIfEmpty`.
+	ConnectionDeletionBehavior string `pulumi:"connectionDeletionBehavior"`
+	// The ID of the connection profile to use when creating organizations for this client.
+	ConnectionProfileId string `pulumi:"connectionProfileId"`
+	// When true, limits the permissions that organization admins can assign to members to only those held by the admin themselves. Requires the `myOrgMemberManagementEa` feature flag. Available in Early Access (EA).
+	EnforcePermissionCeiling bool `pulumi:"enforcePermissionCeiling"`
+	// When true, prevents organization admins from assigning permissions to themselves. Requires the `myOrgMemberManagementEa` feature flag. Available in Early Access (EA).
+	EnforceSelfAssignmentRestriction bool `pulumi:"enforceSelfAssignmentRestriction"`
+	// The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
+	InvitationLandingClientId string `pulumi:"invitationLandingClientId"`
+	// Configures third-party client access to organizations created for this client through the My Organization API. Requires the `myOrgsThirdPartyClientSupport` 	 (EA Only)
+	ThirdPartyClientAccesses []GetClientsClientMyOrganizationConfigurationThirdPartyClientAccess `pulumi:"thirdPartyClientAccesses"`
+	// The ID of the user attribute profile to use when creating organizations for this client.
+	UserAttributeProfileId string `pulumi:"userAttributeProfileId"`
+}
+
+// GetClientsClientMyOrganizationConfigurationInput is an input type that accepts GetClientsClientMyOrganizationConfigurationArgs and GetClientsClientMyOrganizationConfigurationOutput values.
+// You can construct a concrete instance of `GetClientsClientMyOrganizationConfigurationInput` via:
+//
+//	GetClientsClientMyOrganizationConfigurationArgs{...}
+type GetClientsClientMyOrganizationConfigurationInput interface {
+	pulumi.Input
+
+	ToGetClientsClientMyOrganizationConfigurationOutput() GetClientsClientMyOrganizationConfigurationOutput
+	ToGetClientsClientMyOrganizationConfigurationOutputWithContext(context.Context) GetClientsClientMyOrganizationConfigurationOutput
+}
+
+type GetClientsClientMyOrganizationConfigurationArgs struct {
+	// The list of connection strategies that are allowed when creating organizations for this client (e.g. "okta", "samlp").
+	AllowedStrategies pulumi.StringArrayInput `pulumi:"allowedStrategies"`
+	// Controls the behavior when deleting connections associated with organizations for this client. Possible values: `allow`, `allowIfEmpty`.
+	ConnectionDeletionBehavior pulumi.StringInput `pulumi:"connectionDeletionBehavior"`
+	// The ID of the connection profile to use when creating organizations for this client.
+	ConnectionProfileId pulumi.StringInput `pulumi:"connectionProfileId"`
+	// When true, limits the permissions that organization admins can assign to members to only those held by the admin themselves. Requires the `myOrgMemberManagementEa` feature flag. Available in Early Access (EA).
+	EnforcePermissionCeiling pulumi.BoolInput `pulumi:"enforcePermissionCeiling"`
+	// When true, prevents organization admins from assigning permissions to themselves. Requires the `myOrgMemberManagementEa` feature flag. Available in Early Access (EA).
+	EnforceSelfAssignmentRestriction pulumi.BoolInput `pulumi:"enforceSelfAssignmentRestriction"`
+	// The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
+	InvitationLandingClientId pulumi.StringInput `pulumi:"invitationLandingClientId"`
+	// Configures third-party client access to organizations created for this client through the My Organization API. Requires the `myOrgsThirdPartyClientSupport` 	 (EA Only)
+	ThirdPartyClientAccesses GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArrayInput `pulumi:"thirdPartyClientAccesses"`
+	// The ID of the user attribute profile to use when creating organizations for this client.
+	UserAttributeProfileId pulumi.StringInput `pulumi:"userAttributeProfileId"`
+}
+
+func (GetClientsClientMyOrganizationConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientMyOrganizationConfiguration)(nil)).Elem()
+}
+
+func (i GetClientsClientMyOrganizationConfigurationArgs) ToGetClientsClientMyOrganizationConfigurationOutput() GetClientsClientMyOrganizationConfigurationOutput {
+	return i.ToGetClientsClientMyOrganizationConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientMyOrganizationConfigurationArgs) ToGetClientsClientMyOrganizationConfigurationOutputWithContext(ctx context.Context) GetClientsClientMyOrganizationConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientMyOrganizationConfigurationOutput)
+}
+
+// GetClientsClientMyOrganizationConfigurationArrayInput is an input type that accepts GetClientsClientMyOrganizationConfigurationArray and GetClientsClientMyOrganizationConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetClientsClientMyOrganizationConfigurationArrayInput` via:
+//
+//	GetClientsClientMyOrganizationConfigurationArray{ GetClientsClientMyOrganizationConfigurationArgs{...} }
+type GetClientsClientMyOrganizationConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetClientsClientMyOrganizationConfigurationArrayOutput() GetClientsClientMyOrganizationConfigurationArrayOutput
+	ToGetClientsClientMyOrganizationConfigurationArrayOutputWithContext(context.Context) GetClientsClientMyOrganizationConfigurationArrayOutput
+}
+
+type GetClientsClientMyOrganizationConfigurationArray []GetClientsClientMyOrganizationConfigurationInput
+
+func (GetClientsClientMyOrganizationConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientMyOrganizationConfiguration)(nil)).Elem()
+}
+
+func (i GetClientsClientMyOrganizationConfigurationArray) ToGetClientsClientMyOrganizationConfigurationArrayOutput() GetClientsClientMyOrganizationConfigurationArrayOutput {
+	return i.ToGetClientsClientMyOrganizationConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientMyOrganizationConfigurationArray) ToGetClientsClientMyOrganizationConfigurationArrayOutputWithContext(ctx context.Context) GetClientsClientMyOrganizationConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientMyOrganizationConfigurationArrayOutput)
+}
+
+type GetClientsClientMyOrganizationConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientMyOrganizationConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientMyOrganizationConfiguration)(nil)).Elem()
+}
+
+func (o GetClientsClientMyOrganizationConfigurationOutput) ToGetClientsClientMyOrganizationConfigurationOutput() GetClientsClientMyOrganizationConfigurationOutput {
+	return o
+}
+
+func (o GetClientsClientMyOrganizationConfigurationOutput) ToGetClientsClientMyOrganizationConfigurationOutputWithContext(ctx context.Context) GetClientsClientMyOrganizationConfigurationOutput {
+	return o
+}
+
+// The list of connection strategies that are allowed when creating organizations for this client (e.g. "okta", "samlp").
+func (o GetClientsClientMyOrganizationConfigurationOutput) AllowedStrategies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientsClientMyOrganizationConfiguration) []string { return v.AllowedStrategies }).(pulumi.StringArrayOutput)
+}
+
+// Controls the behavior when deleting connections associated with organizations for this client. Possible values: `allow`, `allowIfEmpty`.
+func (o GetClientsClientMyOrganizationConfigurationOutput) ConnectionDeletionBehavior() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClientMyOrganizationConfiguration) string { return v.ConnectionDeletionBehavior }).(pulumi.StringOutput)
+}
+
+// The ID of the connection profile to use when creating organizations for this client.
+func (o GetClientsClientMyOrganizationConfigurationOutput) ConnectionProfileId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClientMyOrganizationConfiguration) string { return v.ConnectionProfileId }).(pulumi.StringOutput)
+}
+
+// When true, limits the permissions that organization admins can assign to members to only those held by the admin themselves. Requires the `myOrgMemberManagementEa` feature flag. Available in Early Access (EA).
+func (o GetClientsClientMyOrganizationConfigurationOutput) EnforcePermissionCeiling() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientsClientMyOrganizationConfiguration) bool { return v.EnforcePermissionCeiling }).(pulumi.BoolOutput)
+}
+
+// When true, prevents organization admins from assigning permissions to themselves. Requires the `myOrgMemberManagementEa` feature flag. Available in Early Access (EA).
+func (o GetClientsClientMyOrganizationConfigurationOutput) EnforceSelfAssignmentRestriction() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientsClientMyOrganizationConfiguration) bool { return v.EnforceSelfAssignmentRestriction }).(pulumi.BoolOutput)
+}
+
+// The client ID used as the invitation landing page when creating invitations through the My Organization API. Requires the tenant to have member management enabled, and the referenced client must allow organizations.
+func (o GetClientsClientMyOrganizationConfigurationOutput) InvitationLandingClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClientMyOrganizationConfiguration) string { return v.InvitationLandingClientId }).(pulumi.StringOutput)
+}
+
+// Configures third-party client access to organizations created for this client through the My Organization API. Requires the `myOrgsThirdPartyClientSupport` 	 (EA Only)
+func (o GetClientsClientMyOrganizationConfigurationOutput) ThirdPartyClientAccesses() GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArrayOutput {
+	return o.ApplyT(func(v GetClientsClientMyOrganizationConfiguration) []GetClientsClientMyOrganizationConfigurationThirdPartyClientAccess {
+		return v.ThirdPartyClientAccesses
+	}).(GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArrayOutput)
+}
+
+// The ID of the user attribute profile to use when creating organizations for this client.
+func (o GetClientsClientMyOrganizationConfigurationOutput) UserAttributeProfileId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClientMyOrganizationConfiguration) string { return v.UserAttributeProfileId }).(pulumi.StringOutput)
+}
+
+type GetClientsClientMyOrganizationConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientMyOrganizationConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientMyOrganizationConfiguration)(nil)).Elem()
+}
+
+func (o GetClientsClientMyOrganizationConfigurationArrayOutput) ToGetClientsClientMyOrganizationConfigurationArrayOutput() GetClientsClientMyOrganizationConfigurationArrayOutput {
+	return o
+}
+
+func (o GetClientsClientMyOrganizationConfigurationArrayOutput) ToGetClientsClientMyOrganizationConfigurationArrayOutputWithContext(ctx context.Context) GetClientsClientMyOrganizationConfigurationArrayOutput {
+	return o
+}
+
+func (o GetClientsClientMyOrganizationConfigurationArrayOutput) Index(i pulumi.IntInput) GetClientsClientMyOrganizationConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientMyOrganizationConfiguration {
+		return vs[0].([]GetClientsClientMyOrganizationConfiguration)[vs[1].(int)]
+	}).(GetClientsClientMyOrganizationConfigurationOutput)
+}
+
+type GetClientsClientMyOrganizationConfigurationThirdPartyClientAccess struct {
+	// The third-party client access values that can be set on organizations created for this client through the My Organization API. Required whenever this block is set — the API rejects the block without it. Possible values: `allow`, `block`. Unlike `ConnectionProfile`'s `crossAppAccessResourceApp`, a single value is accepted here. (EA Only)
+	AllowedValues []string `pulumi:"allowedValues"`
+	// The default third-party client access value applied to organizations created for this client. The API currently only accepts "block"; "allow" is rejected with a 400 error, so this is exposed as computed-only rather than user-settable. (EA Only)
+	DefaultValue string `pulumi:"defaultValue"`
+}
+
+// GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessInput is an input type that accepts GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArgs and GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessOutput values.
+// You can construct a concrete instance of `GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessInput` via:
+//
+//	GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArgs{...}
+type GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessInput interface {
+	pulumi.Input
+
+	ToGetClientsClientMyOrganizationConfigurationThirdPartyClientAccessOutput() GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessOutput
+	ToGetClientsClientMyOrganizationConfigurationThirdPartyClientAccessOutputWithContext(context.Context) GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessOutput
+}
+
+type GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArgs struct {
+	// The third-party client access values that can be set on organizations created for this client through the My Organization API. Required whenever this block is set — the API rejects the block without it. Possible values: `allow`, `block`. Unlike `ConnectionProfile`'s `crossAppAccessResourceApp`, a single value is accepted here. (EA Only)
+	AllowedValues pulumi.StringArrayInput `pulumi:"allowedValues"`
+	// The default third-party client access value applied to organizations created for this client. The API currently only accepts "block"; "allow" is rejected with a 400 error, so this is exposed as computed-only rather than user-settable. (EA Only)
+	DefaultValue pulumi.StringInput `pulumi:"defaultValue"`
+}
+
+func (GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientMyOrganizationConfigurationThirdPartyClientAccess)(nil)).Elem()
+}
+
+func (i GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArgs) ToGetClientsClientMyOrganizationConfigurationThirdPartyClientAccessOutput() GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessOutput {
+	return i.ToGetClientsClientMyOrganizationConfigurationThirdPartyClientAccessOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArgs) ToGetClientsClientMyOrganizationConfigurationThirdPartyClientAccessOutputWithContext(ctx context.Context) GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessOutput)
+}
+
+// GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArrayInput is an input type that accepts GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArray and GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArrayOutput values.
+// You can construct a concrete instance of `GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArrayInput` via:
+//
+//	GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArray{ GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArgs{...} }
+type GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArrayInput interface {
+	pulumi.Input
+
+	ToGetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArrayOutput() GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArrayOutput
+	ToGetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArrayOutputWithContext(context.Context) GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArrayOutput
+}
+
+type GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArray []GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessInput
+
+func (GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientMyOrganizationConfigurationThirdPartyClientAccess)(nil)).Elem()
+}
+
+func (i GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArray) ToGetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArrayOutput() GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArrayOutput {
+	return i.ToGetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArray) ToGetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArrayOutputWithContext(ctx context.Context) GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArrayOutput)
+}
+
+type GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientMyOrganizationConfigurationThirdPartyClientAccess)(nil)).Elem()
+}
+
+func (o GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessOutput) ToGetClientsClientMyOrganizationConfigurationThirdPartyClientAccessOutput() GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessOutput {
+	return o
+}
+
+func (o GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessOutput) ToGetClientsClientMyOrganizationConfigurationThirdPartyClientAccessOutputWithContext(ctx context.Context) GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessOutput {
+	return o
+}
+
+// The third-party client access values that can be set on organizations created for this client through the My Organization API. Required whenever this block is set — the API rejects the block without it. Possible values: `allow`, `block`. Unlike `ConnectionProfile`'s `crossAppAccessResourceApp`, a single value is accepted here. (EA Only)
+func (o GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessOutput) AllowedValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientsClientMyOrganizationConfigurationThirdPartyClientAccess) []string {
+		return v.AllowedValues
+	}).(pulumi.StringArrayOutput)
+}
+
+// The default third-party client access value applied to organizations created for this client. The API currently only accepts "block"; "allow" is rejected with a 400 error, so this is exposed as computed-only rather than user-settable. (EA Only)
+func (o GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessOutput) DefaultValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClientMyOrganizationConfigurationThirdPartyClientAccess) string {
+		return v.DefaultValue
+	}).(pulumi.StringOutput)
+}
+
+type GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientMyOrganizationConfigurationThirdPartyClientAccess)(nil)).Elem()
+}
+
+func (o GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArrayOutput) ToGetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArrayOutput() GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArrayOutput {
+	return o
+}
+
+func (o GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArrayOutput) ToGetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArrayOutputWithContext(ctx context.Context) GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArrayOutput {
+	return o
+}
+
+func (o GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArrayOutput) Index(i pulumi.IntInput) GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientMyOrganizationConfigurationThirdPartyClientAccess {
+		return vs[0].([]GetClientsClientMyOrganizationConfigurationThirdPartyClientAccess)[vs[1].(int)]
+	}).(GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessOutput)
+}
+
+type GetClientsClientOidcLogout struct {
+	// Configure OIDC logout initiators for the Client
+	BackchannelLogoutInitiators []GetClientsClientOidcLogoutBackchannelLogoutInitiator `pulumi:"backchannelLogoutInitiators"`
+	// Controls whether session metadata is included in the logout token. Default value is null.
+	BackchannelLogoutSessionMetadatas []GetClientsClientOidcLogoutBackchannelLogoutSessionMetadata `pulumi:"backchannelLogoutSessionMetadatas"`
+	// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+	BackchannelLogoutUrls []string `pulumi:"backchannelLogoutUrls"`
+}
+
+// GetClientsClientOidcLogoutInput is an input type that accepts GetClientsClientOidcLogoutArgs and GetClientsClientOidcLogoutOutput values.
+// You can construct a concrete instance of `GetClientsClientOidcLogoutInput` via:
+//
+//	GetClientsClientOidcLogoutArgs{...}
+type GetClientsClientOidcLogoutInput interface {
+	pulumi.Input
+
+	ToGetClientsClientOidcLogoutOutput() GetClientsClientOidcLogoutOutput
+	ToGetClientsClientOidcLogoutOutputWithContext(context.Context) GetClientsClientOidcLogoutOutput
+}
+
+type GetClientsClientOidcLogoutArgs struct {
+	// Configure OIDC logout initiators for the Client
+	BackchannelLogoutInitiators GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayInput `pulumi:"backchannelLogoutInitiators"`
+	// Controls whether session metadata is included in the logout token. Default value is null.
+	BackchannelLogoutSessionMetadatas GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayInput `pulumi:"backchannelLogoutSessionMetadatas"`
+	// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+	BackchannelLogoutUrls pulumi.StringArrayInput `pulumi:"backchannelLogoutUrls"`
+}
+
+func (GetClientsClientOidcLogoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientOidcLogout)(nil)).Elem()
+}
+
+func (i GetClientsClientOidcLogoutArgs) ToGetClientsClientOidcLogoutOutput() GetClientsClientOidcLogoutOutput {
+	return i.ToGetClientsClientOidcLogoutOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientOidcLogoutArgs) ToGetClientsClientOidcLogoutOutputWithContext(ctx context.Context) GetClientsClientOidcLogoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientOidcLogoutOutput)
+}
+
+// GetClientsClientOidcLogoutArrayInput is an input type that accepts GetClientsClientOidcLogoutArray and GetClientsClientOidcLogoutArrayOutput values.
+// You can construct a concrete instance of `GetClientsClientOidcLogoutArrayInput` via:
+//
+//	GetClientsClientOidcLogoutArray{ GetClientsClientOidcLogoutArgs{...} }
+type GetClientsClientOidcLogoutArrayInput interface {
+	pulumi.Input
+
+	ToGetClientsClientOidcLogoutArrayOutput() GetClientsClientOidcLogoutArrayOutput
+	ToGetClientsClientOidcLogoutArrayOutputWithContext(context.Context) GetClientsClientOidcLogoutArrayOutput
+}
+
+type GetClientsClientOidcLogoutArray []GetClientsClientOidcLogoutInput
+
+func (GetClientsClientOidcLogoutArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientOidcLogout)(nil)).Elem()
+}
+
+func (i GetClientsClientOidcLogoutArray) ToGetClientsClientOidcLogoutArrayOutput() GetClientsClientOidcLogoutArrayOutput {
+	return i.ToGetClientsClientOidcLogoutArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientOidcLogoutArray) ToGetClientsClientOidcLogoutArrayOutputWithContext(ctx context.Context) GetClientsClientOidcLogoutArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientOidcLogoutArrayOutput)
+}
+
+type GetClientsClientOidcLogoutOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientOidcLogoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientOidcLogout)(nil)).Elem()
+}
+
+func (o GetClientsClientOidcLogoutOutput) ToGetClientsClientOidcLogoutOutput() GetClientsClientOidcLogoutOutput {
+	return o
+}
+
+func (o GetClientsClientOidcLogoutOutput) ToGetClientsClientOidcLogoutOutputWithContext(ctx context.Context) GetClientsClientOidcLogoutOutput {
+	return o
+}
+
+// Configure OIDC logout initiators for the Client
+func (o GetClientsClientOidcLogoutOutput) BackchannelLogoutInitiators() GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput {
+	return o.ApplyT(func(v GetClientsClientOidcLogout) []GetClientsClientOidcLogoutBackchannelLogoutInitiator {
+		return v.BackchannelLogoutInitiators
+	}).(GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput)
+}
+
+// Controls whether session metadata is included in the logout token. Default value is null.
+func (o GetClientsClientOidcLogoutOutput) BackchannelLogoutSessionMetadatas() GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput {
+	return o.ApplyT(func(v GetClientsClientOidcLogout) []GetClientsClientOidcLogoutBackchannelLogoutSessionMetadata {
+		return v.BackchannelLogoutSessionMetadatas
+	}).(GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput)
+}
+
+// Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
+func (o GetClientsClientOidcLogoutOutput) BackchannelLogoutUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientsClientOidcLogout) []string { return v.BackchannelLogoutUrls }).(pulumi.StringArrayOutput)
+}
+
+type GetClientsClientOidcLogoutArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientOidcLogoutArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientOidcLogout)(nil)).Elem()
+}
+
+func (o GetClientsClientOidcLogoutArrayOutput) ToGetClientsClientOidcLogoutArrayOutput() GetClientsClientOidcLogoutArrayOutput {
+	return o
+}
+
+func (o GetClientsClientOidcLogoutArrayOutput) ToGetClientsClientOidcLogoutArrayOutputWithContext(ctx context.Context) GetClientsClientOidcLogoutArrayOutput {
+	return o
+}
+
+func (o GetClientsClientOidcLogoutArrayOutput) Index(i pulumi.IntInput) GetClientsClientOidcLogoutOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientOidcLogout {
+		return vs[0].([]GetClientsClientOidcLogout)[vs[1].(int)]
+	}).(GetClientsClientOidcLogoutOutput)
+}
+
+type GetClientsClientOidcLogoutBackchannelLogoutInitiator struct {
+	// Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannelLogoutSelectedInitiators set, `all` enables all current and future initiators.
+	Mode string `pulumi:"mode"`
+	// Contains the list of initiators to be enabled for the given client.
+	SelectedInitiators []string `pulumi:"selectedInitiators"`
+}
+
+// GetClientsClientOidcLogoutBackchannelLogoutInitiatorInput is an input type that accepts GetClientsClientOidcLogoutBackchannelLogoutInitiatorArgs and GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput values.
+// You can construct a concrete instance of `GetClientsClientOidcLogoutBackchannelLogoutInitiatorInput` via:
+//
+//	GetClientsClientOidcLogoutBackchannelLogoutInitiatorArgs{...}
+type GetClientsClientOidcLogoutBackchannelLogoutInitiatorInput interface {
+	pulumi.Input
+
+	ToGetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput() GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput
+	ToGetClientsClientOidcLogoutBackchannelLogoutInitiatorOutputWithContext(context.Context) GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput
+}
+
+type GetClientsClientOidcLogoutBackchannelLogoutInitiatorArgs struct {
+	// Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannelLogoutSelectedInitiators set, `all` enables all current and future initiators.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// Contains the list of initiators to be enabled for the given client.
+	SelectedInitiators pulumi.StringArrayInput `pulumi:"selectedInitiators"`
+}
+
+func (GetClientsClientOidcLogoutBackchannelLogoutInitiatorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientOidcLogoutBackchannelLogoutInitiator)(nil)).Elem()
+}
+
+func (i GetClientsClientOidcLogoutBackchannelLogoutInitiatorArgs) ToGetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput() GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput {
+	return i.ToGetClientsClientOidcLogoutBackchannelLogoutInitiatorOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientOidcLogoutBackchannelLogoutInitiatorArgs) ToGetClientsClientOidcLogoutBackchannelLogoutInitiatorOutputWithContext(ctx context.Context) GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput)
+}
+
+// GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayInput is an input type that accepts GetClientsClientOidcLogoutBackchannelLogoutInitiatorArray and GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput values.
+// You can construct a concrete instance of `GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayInput` via:
+//
+//	GetClientsClientOidcLogoutBackchannelLogoutInitiatorArray{ GetClientsClientOidcLogoutBackchannelLogoutInitiatorArgs{...} }
+type GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayInput interface {
+	pulumi.Input
+
+	ToGetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput() GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput
+	ToGetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutputWithContext(context.Context) GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput
+}
+
+type GetClientsClientOidcLogoutBackchannelLogoutInitiatorArray []GetClientsClientOidcLogoutBackchannelLogoutInitiatorInput
+
+func (GetClientsClientOidcLogoutBackchannelLogoutInitiatorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientOidcLogoutBackchannelLogoutInitiator)(nil)).Elem()
+}
+
+func (i GetClientsClientOidcLogoutBackchannelLogoutInitiatorArray) ToGetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput() GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput {
+	return i.ToGetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientOidcLogoutBackchannelLogoutInitiatorArray) ToGetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutputWithContext(ctx context.Context) GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput)
+}
+
+type GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientOidcLogoutBackchannelLogoutInitiator)(nil)).Elem()
+}
+
+func (o GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput) ToGetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput() GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput {
+	return o
+}
+
+func (o GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput) ToGetClientsClientOidcLogoutBackchannelLogoutInitiatorOutputWithContext(ctx context.Context) GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput {
+	return o
+}
+
+// Determines the configuration method for enabling initiators. `custom` enables only the initiators listed in the backchannelLogoutSelectedInitiators set, `all` enables all current and future initiators.
+func (o GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClientOidcLogoutBackchannelLogoutInitiator) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// Contains the list of initiators to be enabled for the given client.
+func (o GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput) SelectedInitiators() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientsClientOidcLogoutBackchannelLogoutInitiator) []string { return v.SelectedInitiators }).(pulumi.StringArrayOutput)
+}
+
+type GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientOidcLogoutBackchannelLogoutInitiator)(nil)).Elem()
+}
+
+func (o GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput) ToGetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput() GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput {
+	return o
+}
+
+func (o GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput) ToGetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutputWithContext(ctx context.Context) GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput {
+	return o
+}
+
+func (o GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput) Index(i pulumi.IntInput) GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientOidcLogoutBackchannelLogoutInitiator {
+		return vs[0].([]GetClientsClientOidcLogoutBackchannelLogoutInitiator)[vs[1].(int)]
+	}).(GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput)
+}
+
+type GetClientsClientOidcLogoutBackchannelLogoutSessionMetadata struct {
+	// The `include` property determines whether session metadata is included in the logout token.
+	Include bool `pulumi:"include"`
+}
+
+// GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataInput is an input type that accepts GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArgs and GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput values.
+// You can construct a concrete instance of `GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataInput` via:
+//
+//	GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArgs{...}
+type GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataInput interface {
+	pulumi.Input
+
+	ToGetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput() GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput
+	ToGetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutputWithContext(context.Context) GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput
+}
+
+type GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArgs struct {
+	// The `include` property determines whether session metadata is included in the logout token.
+	Include pulumi.BoolInput `pulumi:"include"`
+}
+
+func (GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientOidcLogoutBackchannelLogoutSessionMetadata)(nil)).Elem()
+}
+
+func (i GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArgs) ToGetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput() GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput {
+	return i.ToGetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArgs) ToGetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutputWithContext(ctx context.Context) GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput)
+}
+
+// GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayInput is an input type that accepts GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArray and GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput values.
+// You can construct a concrete instance of `GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayInput` via:
+//
+//	GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArray{ GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArgs{...} }
+type GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayInput interface {
+	pulumi.Input
+
+	ToGetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput() GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput
+	ToGetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutputWithContext(context.Context) GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput
+}
+
+type GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArray []GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataInput
+
+func (GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientOidcLogoutBackchannelLogoutSessionMetadata)(nil)).Elem()
+}
+
+func (i GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArray) ToGetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput() GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput {
+	return i.ToGetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArray) ToGetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutputWithContext(ctx context.Context) GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput)
+}
+
+type GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientOidcLogoutBackchannelLogoutSessionMetadata)(nil)).Elem()
+}
+
+func (o GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput) ToGetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput() GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput {
+	return o
+}
+
+func (o GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput) ToGetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutputWithContext(ctx context.Context) GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput {
+	return o
+}
+
+// The `include` property determines whether session metadata is included in the logout token.
+func (o GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput) Include() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientsClientOidcLogoutBackchannelLogoutSessionMetadata) bool { return v.Include }).(pulumi.BoolOutput)
+}
+
+type GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientOidcLogoutBackchannelLogoutSessionMetadata)(nil)).Elem()
+}
+
+func (o GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput) ToGetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput() GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput {
+	return o
+}
+
+func (o GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput) ToGetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutputWithContext(ctx context.Context) GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput {
+	return o
+}
+
+func (o GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput) Index(i pulumi.IntInput) GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientOidcLogoutBackchannelLogoutSessionMetadata {
+		return vs[0].([]GetClientsClientOidcLogoutBackchannelLogoutSessionMetadata)[vs[1].(int)]
+	}).(GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput)
+}
+
+type GetClientsClientSessionTransfer struct {
+	// Indicates whether the application is allowed to use a refresh token when using a sessionTransferToken session.
+	AllowRefreshToken            bool     `pulumi:"allowRefreshToken"`
+	AllowedAuthenticationMethods []string `pulumi:"allowedAuthenticationMethods"`
+	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
+	CanCreateSessionTransferToken bool `pulumi:"canCreateSessionTransferToken"`
+	// Configuration for delegation (impersonation) access using Session Transfer Tokens.
+	Delegations []GetClientsClientSessionTransferDelegation `pulumi:"delegations"`
+	// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
+	EnforceCascadeRevocation bool `pulumi:"enforceCascadeRevocation"`
+	// Configures the level of device binding enforced when a sessionTransferToken is consumed. Can be one of `ip`, `asn` or `none`.
+	EnforceDeviceBinding string `pulumi:"enforceDeviceBinding"`
+	// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
+	EnforceOnlineRefreshTokens bool `pulumi:"enforceOnlineRefreshTokens"`
+}
+
+// GetClientsClientSessionTransferInput is an input type that accepts GetClientsClientSessionTransferArgs and GetClientsClientSessionTransferOutput values.
+// You can construct a concrete instance of `GetClientsClientSessionTransferInput` via:
+//
+//	GetClientsClientSessionTransferArgs{...}
+type GetClientsClientSessionTransferInput interface {
+	pulumi.Input
+
+	ToGetClientsClientSessionTransferOutput() GetClientsClientSessionTransferOutput
+	ToGetClientsClientSessionTransferOutputWithContext(context.Context) GetClientsClientSessionTransferOutput
+}
+
+type GetClientsClientSessionTransferArgs struct {
+	// Indicates whether the application is allowed to use a refresh token when using a sessionTransferToken session.
+	AllowRefreshToken            pulumi.BoolInput        `pulumi:"allowRefreshToken"`
+	AllowedAuthenticationMethods pulumi.StringArrayInput `pulumi:"allowedAuthenticationMethods"`
+	// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
+	CanCreateSessionTransferToken pulumi.BoolInput `pulumi:"canCreateSessionTransferToken"`
+	// Configuration for delegation (impersonation) access using Session Transfer Tokens.
+	Delegations GetClientsClientSessionTransferDelegationArrayInput `pulumi:"delegations"`
+	// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
+	EnforceCascadeRevocation pulumi.BoolInput `pulumi:"enforceCascadeRevocation"`
+	// Configures the level of device binding enforced when a sessionTransferToken is consumed. Can be one of `ip`, `asn` or `none`.
+	EnforceDeviceBinding pulumi.StringInput `pulumi:"enforceDeviceBinding"`
+	// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
+	EnforceOnlineRefreshTokens pulumi.BoolInput `pulumi:"enforceOnlineRefreshTokens"`
+}
+
+func (GetClientsClientSessionTransferArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientSessionTransfer)(nil)).Elem()
+}
+
+func (i GetClientsClientSessionTransferArgs) ToGetClientsClientSessionTransferOutput() GetClientsClientSessionTransferOutput {
+	return i.ToGetClientsClientSessionTransferOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientSessionTransferArgs) ToGetClientsClientSessionTransferOutputWithContext(ctx context.Context) GetClientsClientSessionTransferOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientSessionTransferOutput)
+}
+
+// GetClientsClientSessionTransferArrayInput is an input type that accepts GetClientsClientSessionTransferArray and GetClientsClientSessionTransferArrayOutput values.
+// You can construct a concrete instance of `GetClientsClientSessionTransferArrayInput` via:
+//
+//	GetClientsClientSessionTransferArray{ GetClientsClientSessionTransferArgs{...} }
+type GetClientsClientSessionTransferArrayInput interface {
+	pulumi.Input
+
+	ToGetClientsClientSessionTransferArrayOutput() GetClientsClientSessionTransferArrayOutput
+	ToGetClientsClientSessionTransferArrayOutputWithContext(context.Context) GetClientsClientSessionTransferArrayOutput
+}
+
+type GetClientsClientSessionTransferArray []GetClientsClientSessionTransferInput
+
+func (GetClientsClientSessionTransferArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientSessionTransfer)(nil)).Elem()
+}
+
+func (i GetClientsClientSessionTransferArray) ToGetClientsClientSessionTransferArrayOutput() GetClientsClientSessionTransferArrayOutput {
+	return i.ToGetClientsClientSessionTransferArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientSessionTransferArray) ToGetClientsClientSessionTransferArrayOutputWithContext(ctx context.Context) GetClientsClientSessionTransferArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientSessionTransferArrayOutput)
+}
+
+type GetClientsClientSessionTransferOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientSessionTransferOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientSessionTransfer)(nil)).Elem()
+}
+
+func (o GetClientsClientSessionTransferOutput) ToGetClientsClientSessionTransferOutput() GetClientsClientSessionTransferOutput {
+	return o
+}
+
+func (o GetClientsClientSessionTransferOutput) ToGetClientsClientSessionTransferOutputWithContext(ctx context.Context) GetClientsClientSessionTransferOutput {
+	return o
+}
+
+// Indicates whether the application is allowed to use a refresh token when using a sessionTransferToken session.
+func (o GetClientsClientSessionTransferOutput) AllowRefreshToken() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientsClientSessionTransfer) bool { return v.AllowRefreshToken }).(pulumi.BoolOutput)
+}
+
+func (o GetClientsClientSessionTransferOutput) AllowedAuthenticationMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientsClientSessionTransfer) []string { return v.AllowedAuthenticationMethods }).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether the application(Native app) can use the Token Exchange endpoint to create a session_transfer_token
+func (o GetClientsClientSessionTransferOutput) CanCreateSessionTransferToken() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientsClientSessionTransfer) bool { return v.CanCreateSessionTransferToken }).(pulumi.BoolOutput)
+}
+
+// Configuration for delegation (impersonation) access using Session Transfer Tokens.
+func (o GetClientsClientSessionTransferOutput) Delegations() GetClientsClientSessionTransferDelegationArrayOutput {
+	return o.ApplyT(func(v GetClientsClientSessionTransfer) []GetClientsClientSessionTransferDelegation {
+		return v.Delegations
+	}).(GetClientsClientSessionTransferDelegationArrayOutput)
+}
+
+// Indicates whether revoking the parent Refresh Token that initiated a Native to Web flow and was used to issue a Session Transfer Token should trigger a cascade revocation affecting its dependent child entities. Usually configured in the native application.
+func (o GetClientsClientSessionTransferOutput) EnforceCascadeRevocation() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientsClientSessionTransfer) bool { return v.EnforceCascadeRevocation }).(pulumi.BoolOutput)
+}
+
+// Configures the level of device binding enforced when a sessionTransferToken is consumed. Can be one of `ip`, `asn` or `none`.
+func (o GetClientsClientSessionTransferOutput) EnforceDeviceBinding() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClientSessionTransfer) string { return v.EnforceDeviceBinding }).(pulumi.StringOutput)
+}
+
+// Indicates whether Refresh Tokens created during a native-to-web session are tied to that session's lifetime. This determines if such refresh tokens should be automatically revoked when their corresponding sessions are. Usually configured in the web application.
+func (o GetClientsClientSessionTransferOutput) EnforceOnlineRefreshTokens() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientsClientSessionTransfer) bool { return v.EnforceOnlineRefreshTokens }).(pulumi.BoolOutput)
+}
+
+type GetClientsClientSessionTransferArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientSessionTransferArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientSessionTransfer)(nil)).Elem()
+}
+
+func (o GetClientsClientSessionTransferArrayOutput) ToGetClientsClientSessionTransferArrayOutput() GetClientsClientSessionTransferArrayOutput {
+	return o
+}
+
+func (o GetClientsClientSessionTransferArrayOutput) ToGetClientsClientSessionTransferArrayOutputWithContext(ctx context.Context) GetClientsClientSessionTransferArrayOutput {
+	return o
+}
+
+func (o GetClientsClientSessionTransferArrayOutput) Index(i pulumi.IntInput) GetClientsClientSessionTransferOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientSessionTransfer {
+		return vs[0].([]GetClientsClientSessionTransfer)[vs[1].(int)]
+	}).(GetClientsClientSessionTransferOutput)
+}
+
+type GetClientsClientSessionTransferDelegation struct {
+	// Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`.
+	AllowDelegatedAccess bool `pulumi:"allowDelegatedAccess"`
+	// Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`.
+	EnforceDeviceBinding string `pulumi:"enforceDeviceBinding"`
+}
+
+// GetClientsClientSessionTransferDelegationInput is an input type that accepts GetClientsClientSessionTransferDelegationArgs and GetClientsClientSessionTransferDelegationOutput values.
+// You can construct a concrete instance of `GetClientsClientSessionTransferDelegationInput` via:
+//
+//	GetClientsClientSessionTransferDelegationArgs{...}
+type GetClientsClientSessionTransferDelegationInput interface {
+	pulumi.Input
+
+	ToGetClientsClientSessionTransferDelegationOutput() GetClientsClientSessionTransferDelegationOutput
+	ToGetClientsClientSessionTransferDelegationOutputWithContext(context.Context) GetClientsClientSessionTransferDelegationOutput
+}
+
+type GetClientsClientSessionTransferDelegationArgs struct {
+	// Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`.
+	AllowDelegatedAccess pulumi.BoolInput `pulumi:"allowDelegatedAccess"`
+	// Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`.
+	EnforceDeviceBinding pulumi.StringInput `pulumi:"enforceDeviceBinding"`
+}
+
+func (GetClientsClientSessionTransferDelegationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientSessionTransferDelegation)(nil)).Elem()
+}
+
+func (i GetClientsClientSessionTransferDelegationArgs) ToGetClientsClientSessionTransferDelegationOutput() GetClientsClientSessionTransferDelegationOutput {
+	return i.ToGetClientsClientSessionTransferDelegationOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientSessionTransferDelegationArgs) ToGetClientsClientSessionTransferDelegationOutputWithContext(ctx context.Context) GetClientsClientSessionTransferDelegationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientSessionTransferDelegationOutput)
+}
+
+// GetClientsClientSessionTransferDelegationArrayInput is an input type that accepts GetClientsClientSessionTransferDelegationArray and GetClientsClientSessionTransferDelegationArrayOutput values.
+// You can construct a concrete instance of `GetClientsClientSessionTransferDelegationArrayInput` via:
+//
+//	GetClientsClientSessionTransferDelegationArray{ GetClientsClientSessionTransferDelegationArgs{...} }
+type GetClientsClientSessionTransferDelegationArrayInput interface {
+	pulumi.Input
+
+	ToGetClientsClientSessionTransferDelegationArrayOutput() GetClientsClientSessionTransferDelegationArrayOutput
+	ToGetClientsClientSessionTransferDelegationArrayOutputWithContext(context.Context) GetClientsClientSessionTransferDelegationArrayOutput
+}
+
+type GetClientsClientSessionTransferDelegationArray []GetClientsClientSessionTransferDelegationInput
+
+func (GetClientsClientSessionTransferDelegationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientSessionTransferDelegation)(nil)).Elem()
+}
+
+func (i GetClientsClientSessionTransferDelegationArray) ToGetClientsClientSessionTransferDelegationArrayOutput() GetClientsClientSessionTransferDelegationArrayOutput {
+	return i.ToGetClientsClientSessionTransferDelegationArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientSessionTransferDelegationArray) ToGetClientsClientSessionTransferDelegationArrayOutputWithContext(ctx context.Context) GetClientsClientSessionTransferDelegationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientSessionTransferDelegationArrayOutput)
+}
+
+type GetClientsClientSessionTransferDelegationOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientSessionTransferDelegationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientSessionTransferDelegation)(nil)).Elem()
+}
+
+func (o GetClientsClientSessionTransferDelegationOutput) ToGetClientsClientSessionTransferDelegationOutput() GetClientsClientSessionTransferDelegationOutput {
+	return o
+}
+
+func (o GetClientsClientSessionTransferDelegationOutput) ToGetClientsClientSessionTransferDelegationOutputWithContext(ctx context.Context) GetClientsClientSessionTransferDelegationOutput {
+	return o
+}
+
+// Indicates whether delegation (impersonation) access is allowed using Session Transfer Tokens. Defaults to `false`.
+func (o GetClientsClientSessionTransferDelegationOutput) AllowDelegatedAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientsClientSessionTransferDelegation) bool { return v.AllowDelegatedAccess }).(pulumi.BoolOutput)
+}
+
+// Indicates the device binding enforcement for delegation (impersonation) access. If set to 'ip', device binding is enforced by IP. If set to 'asn', device binding is enforced by ASN. Defaults to `ip`.
+func (o GetClientsClientSessionTransferDelegationOutput) EnforceDeviceBinding() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClientSessionTransferDelegation) string { return v.EnforceDeviceBinding }).(pulumi.StringOutput)
+}
+
+type GetClientsClientSessionTransferDelegationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientSessionTransferDelegationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientSessionTransferDelegation)(nil)).Elem()
+}
+
+func (o GetClientsClientSessionTransferDelegationArrayOutput) ToGetClientsClientSessionTransferDelegationArrayOutput() GetClientsClientSessionTransferDelegationArrayOutput {
+	return o
+}
+
+func (o GetClientsClientSessionTransferDelegationArrayOutput) ToGetClientsClientSessionTransferDelegationArrayOutputWithContext(ctx context.Context) GetClientsClientSessionTransferDelegationArrayOutput {
+	return o
+}
+
+func (o GetClientsClientSessionTransferDelegationArrayOutput) Index(i pulumi.IntInput) GetClientsClientSessionTransferDelegationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientSessionTransferDelegation {
+		return vs[0].([]GetClientsClientSessionTransferDelegation)[vs[1].(int)]
+	}).(GetClientsClientSessionTransferDelegationOutput)
+}
+
+type GetClientsClientTokenExchange struct {
+	// List of allowed profile types for token exchange. Supported values include: custom_authentication, on_behalf_of_token_exchange.
+	AllowAnyProfileOfTypes []string `pulumi:"allowAnyProfileOfTypes"`
+}
+
+// GetClientsClientTokenExchangeInput is an input type that accepts GetClientsClientTokenExchangeArgs and GetClientsClientTokenExchangeOutput values.
+// You can construct a concrete instance of `GetClientsClientTokenExchangeInput` via:
+//
+//	GetClientsClientTokenExchangeArgs{...}
+type GetClientsClientTokenExchangeInput interface {
+	pulumi.Input
+
+	ToGetClientsClientTokenExchangeOutput() GetClientsClientTokenExchangeOutput
+	ToGetClientsClientTokenExchangeOutputWithContext(context.Context) GetClientsClientTokenExchangeOutput
+}
+
+type GetClientsClientTokenExchangeArgs struct {
+	// List of allowed profile types for token exchange. Supported values include: custom_authentication, on_behalf_of_token_exchange.
+	AllowAnyProfileOfTypes pulumi.StringArrayInput `pulumi:"allowAnyProfileOfTypes"`
+}
+
+func (GetClientsClientTokenExchangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientTokenExchange)(nil)).Elem()
+}
+
+func (i GetClientsClientTokenExchangeArgs) ToGetClientsClientTokenExchangeOutput() GetClientsClientTokenExchangeOutput {
+	return i.ToGetClientsClientTokenExchangeOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientTokenExchangeArgs) ToGetClientsClientTokenExchangeOutputWithContext(ctx context.Context) GetClientsClientTokenExchangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientTokenExchangeOutput)
+}
+
+// GetClientsClientTokenExchangeArrayInput is an input type that accepts GetClientsClientTokenExchangeArray and GetClientsClientTokenExchangeArrayOutput values.
+// You can construct a concrete instance of `GetClientsClientTokenExchangeArrayInput` via:
+//
+//	GetClientsClientTokenExchangeArray{ GetClientsClientTokenExchangeArgs{...} }
+type GetClientsClientTokenExchangeArrayInput interface {
+	pulumi.Input
+
+	ToGetClientsClientTokenExchangeArrayOutput() GetClientsClientTokenExchangeArrayOutput
+	ToGetClientsClientTokenExchangeArrayOutputWithContext(context.Context) GetClientsClientTokenExchangeArrayOutput
+}
+
+type GetClientsClientTokenExchangeArray []GetClientsClientTokenExchangeInput
+
+func (GetClientsClientTokenExchangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientTokenExchange)(nil)).Elem()
+}
+
+func (i GetClientsClientTokenExchangeArray) ToGetClientsClientTokenExchangeArrayOutput() GetClientsClientTokenExchangeArrayOutput {
+	return i.ToGetClientsClientTokenExchangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientTokenExchangeArray) ToGetClientsClientTokenExchangeArrayOutputWithContext(ctx context.Context) GetClientsClientTokenExchangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientTokenExchangeArrayOutput)
+}
+
+type GetClientsClientTokenExchangeOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientTokenExchangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientTokenExchange)(nil)).Elem()
+}
+
+func (o GetClientsClientTokenExchangeOutput) ToGetClientsClientTokenExchangeOutput() GetClientsClientTokenExchangeOutput {
+	return o
+}
+
+func (o GetClientsClientTokenExchangeOutput) ToGetClientsClientTokenExchangeOutputWithContext(ctx context.Context) GetClientsClientTokenExchangeOutput {
+	return o
+}
+
+// List of allowed profile types for token exchange. Supported values include: custom_authentication, on_behalf_of_token_exchange.
+func (o GetClientsClientTokenExchangeOutput) AllowAnyProfileOfTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientsClientTokenExchange) []string { return v.AllowAnyProfileOfTypes }).(pulumi.StringArrayOutput)
+}
+
+type GetClientsClientTokenExchangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientTokenExchangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientTokenExchange)(nil)).Elem()
+}
+
+func (o GetClientsClientTokenExchangeArrayOutput) ToGetClientsClientTokenExchangeArrayOutput() GetClientsClientTokenExchangeArrayOutput {
+	return o
+}
+
+func (o GetClientsClientTokenExchangeArrayOutput) ToGetClientsClientTokenExchangeArrayOutputWithContext(ctx context.Context) GetClientsClientTokenExchangeArrayOutput {
+	return o
+}
+
+func (o GetClientsClientTokenExchangeArrayOutput) Index(i pulumi.IntInput) GetClientsClientTokenExchangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientTokenExchange {
+		return vs[0].([]GetClientsClientTokenExchange)[vs[1].(int)]
+	}).(GetClientsClientTokenExchangeOutput)
+}
+
+type GetClientsClientTokenQuota struct {
+	// The token quota configuration for client credentials.
+	ClientCredentials []GetClientsClientTokenQuotaClientCredential `pulumi:"clientCredentials"`
+}
+
+// GetClientsClientTokenQuotaInput is an input type that accepts GetClientsClientTokenQuotaArgs and GetClientsClientTokenQuotaOutput values.
+// You can construct a concrete instance of `GetClientsClientTokenQuotaInput` via:
+//
+//	GetClientsClientTokenQuotaArgs{...}
+type GetClientsClientTokenQuotaInput interface {
+	pulumi.Input
+
+	ToGetClientsClientTokenQuotaOutput() GetClientsClientTokenQuotaOutput
+	ToGetClientsClientTokenQuotaOutputWithContext(context.Context) GetClientsClientTokenQuotaOutput
+}
+
+type GetClientsClientTokenQuotaArgs struct {
+	// The token quota configuration for client credentials.
+	ClientCredentials GetClientsClientTokenQuotaClientCredentialArrayInput `pulumi:"clientCredentials"`
+}
+
+func (GetClientsClientTokenQuotaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientTokenQuota)(nil)).Elem()
+}
+
+func (i GetClientsClientTokenQuotaArgs) ToGetClientsClientTokenQuotaOutput() GetClientsClientTokenQuotaOutput {
+	return i.ToGetClientsClientTokenQuotaOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientTokenQuotaArgs) ToGetClientsClientTokenQuotaOutputWithContext(ctx context.Context) GetClientsClientTokenQuotaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientTokenQuotaOutput)
+}
+
+// GetClientsClientTokenQuotaArrayInput is an input type that accepts GetClientsClientTokenQuotaArray and GetClientsClientTokenQuotaArrayOutput values.
+// You can construct a concrete instance of `GetClientsClientTokenQuotaArrayInput` via:
+//
+//	GetClientsClientTokenQuotaArray{ GetClientsClientTokenQuotaArgs{...} }
+type GetClientsClientTokenQuotaArrayInput interface {
+	pulumi.Input
+
+	ToGetClientsClientTokenQuotaArrayOutput() GetClientsClientTokenQuotaArrayOutput
+	ToGetClientsClientTokenQuotaArrayOutputWithContext(context.Context) GetClientsClientTokenQuotaArrayOutput
+}
+
+type GetClientsClientTokenQuotaArray []GetClientsClientTokenQuotaInput
+
+func (GetClientsClientTokenQuotaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientTokenQuota)(nil)).Elem()
+}
+
+func (i GetClientsClientTokenQuotaArray) ToGetClientsClientTokenQuotaArrayOutput() GetClientsClientTokenQuotaArrayOutput {
+	return i.ToGetClientsClientTokenQuotaArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientTokenQuotaArray) ToGetClientsClientTokenQuotaArrayOutputWithContext(ctx context.Context) GetClientsClientTokenQuotaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientTokenQuotaArrayOutput)
+}
+
+type GetClientsClientTokenQuotaOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientTokenQuotaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientTokenQuota)(nil)).Elem()
+}
+
+func (o GetClientsClientTokenQuotaOutput) ToGetClientsClientTokenQuotaOutput() GetClientsClientTokenQuotaOutput {
+	return o
+}
+
+func (o GetClientsClientTokenQuotaOutput) ToGetClientsClientTokenQuotaOutputWithContext(ctx context.Context) GetClientsClientTokenQuotaOutput {
+	return o
+}
+
+// The token quota configuration for client credentials.
+func (o GetClientsClientTokenQuotaOutput) ClientCredentials() GetClientsClientTokenQuotaClientCredentialArrayOutput {
+	return o.ApplyT(func(v GetClientsClientTokenQuota) []GetClientsClientTokenQuotaClientCredential {
+		return v.ClientCredentials
+	}).(GetClientsClientTokenQuotaClientCredentialArrayOutput)
+}
+
+type GetClientsClientTokenQuotaArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientTokenQuotaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientTokenQuota)(nil)).Elem()
+}
+
+func (o GetClientsClientTokenQuotaArrayOutput) ToGetClientsClientTokenQuotaArrayOutput() GetClientsClientTokenQuotaArrayOutput {
+	return o
+}
+
+func (o GetClientsClientTokenQuotaArrayOutput) ToGetClientsClientTokenQuotaArrayOutputWithContext(ctx context.Context) GetClientsClientTokenQuotaArrayOutput {
+	return o
+}
+
+func (o GetClientsClientTokenQuotaArrayOutput) Index(i pulumi.IntInput) GetClientsClientTokenQuotaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientTokenQuota {
+		return vs[0].([]GetClientsClientTokenQuota)[vs[1].(int)]
+	}).(GetClientsClientTokenQuotaOutput)
+}
+
+type GetClientsClientTokenQuotaClientCredential struct {
+	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+	Enforce bool `pulumi:"enforce"`
+	// Maximum number of issued tokens per day
+	PerDay int `pulumi:"perDay"`
+	// Maximum number of issued tokens per hour
+	PerHour int `pulumi:"perHour"`
+}
+
+// GetClientsClientTokenQuotaClientCredentialInput is an input type that accepts GetClientsClientTokenQuotaClientCredentialArgs and GetClientsClientTokenQuotaClientCredentialOutput values.
+// You can construct a concrete instance of `GetClientsClientTokenQuotaClientCredentialInput` via:
+//
+//	GetClientsClientTokenQuotaClientCredentialArgs{...}
+type GetClientsClientTokenQuotaClientCredentialInput interface {
+	pulumi.Input
+
+	ToGetClientsClientTokenQuotaClientCredentialOutput() GetClientsClientTokenQuotaClientCredentialOutput
+	ToGetClientsClientTokenQuotaClientCredentialOutputWithContext(context.Context) GetClientsClientTokenQuotaClientCredentialOutput
+}
+
+type GetClientsClientTokenQuotaClientCredentialArgs struct {
+	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+	Enforce pulumi.BoolInput `pulumi:"enforce"`
+	// Maximum number of issued tokens per day
+	PerDay pulumi.IntInput `pulumi:"perDay"`
+	// Maximum number of issued tokens per hour
+	PerHour pulumi.IntInput `pulumi:"perHour"`
+}
+
+func (GetClientsClientTokenQuotaClientCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientTokenQuotaClientCredential)(nil)).Elem()
+}
+
+func (i GetClientsClientTokenQuotaClientCredentialArgs) ToGetClientsClientTokenQuotaClientCredentialOutput() GetClientsClientTokenQuotaClientCredentialOutput {
+	return i.ToGetClientsClientTokenQuotaClientCredentialOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientTokenQuotaClientCredentialArgs) ToGetClientsClientTokenQuotaClientCredentialOutputWithContext(ctx context.Context) GetClientsClientTokenQuotaClientCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientTokenQuotaClientCredentialOutput)
+}
+
+// GetClientsClientTokenQuotaClientCredentialArrayInput is an input type that accepts GetClientsClientTokenQuotaClientCredentialArray and GetClientsClientTokenQuotaClientCredentialArrayOutput values.
+// You can construct a concrete instance of `GetClientsClientTokenQuotaClientCredentialArrayInput` via:
+//
+//	GetClientsClientTokenQuotaClientCredentialArray{ GetClientsClientTokenQuotaClientCredentialArgs{...} }
+type GetClientsClientTokenQuotaClientCredentialArrayInput interface {
+	pulumi.Input
+
+	ToGetClientsClientTokenQuotaClientCredentialArrayOutput() GetClientsClientTokenQuotaClientCredentialArrayOutput
+	ToGetClientsClientTokenQuotaClientCredentialArrayOutputWithContext(context.Context) GetClientsClientTokenQuotaClientCredentialArrayOutput
+}
+
+type GetClientsClientTokenQuotaClientCredentialArray []GetClientsClientTokenQuotaClientCredentialInput
+
+func (GetClientsClientTokenQuotaClientCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientTokenQuotaClientCredential)(nil)).Elem()
+}
+
+func (i GetClientsClientTokenQuotaClientCredentialArray) ToGetClientsClientTokenQuotaClientCredentialArrayOutput() GetClientsClientTokenQuotaClientCredentialArrayOutput {
+	return i.ToGetClientsClientTokenQuotaClientCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientTokenQuotaClientCredentialArray) ToGetClientsClientTokenQuotaClientCredentialArrayOutputWithContext(ctx context.Context) GetClientsClientTokenQuotaClientCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientTokenQuotaClientCredentialArrayOutput)
+}
+
+type GetClientsClientTokenQuotaClientCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientTokenQuotaClientCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientTokenQuotaClientCredential)(nil)).Elem()
+}
+
+func (o GetClientsClientTokenQuotaClientCredentialOutput) ToGetClientsClientTokenQuotaClientCredentialOutput() GetClientsClientTokenQuotaClientCredentialOutput {
+	return o
+}
+
+func (o GetClientsClientTokenQuotaClientCredentialOutput) ToGetClientsClientTokenQuotaClientCredentialOutputWithContext(ctx context.Context) GetClientsClientTokenQuotaClientCredentialOutput {
+	return o
+}
+
+// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+func (o GetClientsClientTokenQuotaClientCredentialOutput) Enforce() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientsClientTokenQuotaClientCredential) bool { return v.Enforce }).(pulumi.BoolOutput)
+}
+
+// Maximum number of issued tokens per day
+func (o GetClientsClientTokenQuotaClientCredentialOutput) PerDay() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClientsClientTokenQuotaClientCredential) int { return v.PerDay }).(pulumi.IntOutput)
+}
+
+// Maximum number of issued tokens per hour
+func (o GetClientsClientTokenQuotaClientCredentialOutput) PerHour() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClientsClientTokenQuotaClientCredential) int { return v.PerHour }).(pulumi.IntOutput)
+}
+
+type GetClientsClientTokenQuotaClientCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientTokenQuotaClientCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientTokenQuotaClientCredential)(nil)).Elem()
+}
+
+func (o GetClientsClientTokenQuotaClientCredentialArrayOutput) ToGetClientsClientTokenQuotaClientCredentialArrayOutput() GetClientsClientTokenQuotaClientCredentialArrayOutput {
+	return o
+}
+
+func (o GetClientsClientTokenQuotaClientCredentialArrayOutput) ToGetClientsClientTokenQuotaClientCredentialArrayOutputWithContext(ctx context.Context) GetClientsClientTokenQuotaClientCredentialArrayOutput {
+	return o
+}
+
+func (o GetClientsClientTokenQuotaClientCredentialArrayOutput) Index(i pulumi.IntInput) GetClientsClientTokenQuotaClientCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientTokenQuotaClientCredential {
+		return vs[0].([]GetClientsClientTokenQuotaClientCredential)[vs[1].(int)]
+	}).(GetClientsClientTokenQuotaClientCredentialOutput)
+}
+
+type GetConnectionAuthentication struct {
+	Active bool `pulumi:"active"`
+}
+
+// GetConnectionAuthenticationInput is an input type that accepts GetConnectionAuthenticationArgs and GetConnectionAuthenticationOutput values.
+// You can construct a concrete instance of `GetConnectionAuthenticationInput` via:
+//
+//	GetConnectionAuthenticationArgs{...}
+type GetConnectionAuthenticationInput interface {
+	pulumi.Input
+
+	ToGetConnectionAuthenticationOutput() GetConnectionAuthenticationOutput
+	ToGetConnectionAuthenticationOutputWithContext(context.Context) GetConnectionAuthenticationOutput
+}
+
+type GetConnectionAuthenticationArgs struct {
+	Active pulumi.BoolInput `pulumi:"active"`
+}
+
+func (GetConnectionAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionAuthentication)(nil)).Elem()
+}
+
+func (i GetConnectionAuthenticationArgs) ToGetConnectionAuthenticationOutput() GetConnectionAuthenticationOutput {
+	return i.ToGetConnectionAuthenticationOutputWithContext(context.Background())
+}
+
+func (i GetConnectionAuthenticationArgs) ToGetConnectionAuthenticationOutputWithContext(ctx context.Context) GetConnectionAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionAuthenticationOutput)
+}
+
+// GetConnectionAuthenticationArrayInput is an input type that accepts GetConnectionAuthenticationArray and GetConnectionAuthenticationArrayOutput values.
+// You can construct a concrete instance of `GetConnectionAuthenticationArrayInput` via:
+//
+//	GetConnectionAuthenticationArray{ GetConnectionAuthenticationArgs{...} }
+type GetConnectionAuthenticationArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionAuthenticationArrayOutput() GetConnectionAuthenticationArrayOutput
+	ToGetConnectionAuthenticationArrayOutputWithContext(context.Context) GetConnectionAuthenticationArrayOutput
+}
+
+type GetConnectionAuthenticationArray []GetConnectionAuthenticationInput
+
+func (GetConnectionAuthenticationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionAuthentication)(nil)).Elem()
+}
+
+func (i GetConnectionAuthenticationArray) ToGetConnectionAuthenticationArrayOutput() GetConnectionAuthenticationArrayOutput {
+	return i.ToGetConnectionAuthenticationArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionAuthenticationArray) ToGetConnectionAuthenticationArrayOutputWithContext(ctx context.Context) GetConnectionAuthenticationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionAuthenticationArrayOutput)
+}
+
+type GetConnectionAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionAuthentication)(nil)).Elem()
+}
+
+func (o GetConnectionAuthenticationOutput) ToGetConnectionAuthenticationOutput() GetConnectionAuthenticationOutput {
+	return o
+}
+
+func (o GetConnectionAuthenticationOutput) ToGetConnectionAuthenticationOutputWithContext(ctx context.Context) GetConnectionAuthenticationOutput {
+	return o
+}
+
+func (o GetConnectionAuthenticationOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionAuthentication) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+type GetConnectionAuthenticationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionAuthenticationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionAuthentication)(nil)).Elem()
+}
+
+func (o GetConnectionAuthenticationArrayOutput) ToGetConnectionAuthenticationArrayOutput() GetConnectionAuthenticationArrayOutput {
+	return o
+}
+
+func (o GetConnectionAuthenticationArrayOutput) ToGetConnectionAuthenticationArrayOutputWithContext(ctx context.Context) GetConnectionAuthenticationArrayOutput {
+	return o
+}
+
+func (o GetConnectionAuthenticationArrayOutput) Index(i pulumi.IntInput) GetConnectionAuthenticationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionAuthentication {
+		return vs[0].([]GetConnectionAuthentication)[vs[1].(int)]
+	}).(GetConnectionAuthenticationOutput)
+}
+
+type GetConnectionConnectedAccount struct {
+	Active bool `pulumi:"active"`
+}
+
+// GetConnectionConnectedAccountInput is an input type that accepts GetConnectionConnectedAccountArgs and GetConnectionConnectedAccountOutput values.
+// You can construct a concrete instance of `GetConnectionConnectedAccountInput` via:
+//
+//	GetConnectionConnectedAccountArgs{...}
+type GetConnectionConnectedAccountInput interface {
+	pulumi.Input
+
+	ToGetConnectionConnectedAccountOutput() GetConnectionConnectedAccountOutput
+	ToGetConnectionConnectedAccountOutputWithContext(context.Context) GetConnectionConnectedAccountOutput
+}
+
+type GetConnectionConnectedAccountArgs struct {
+	Active pulumi.BoolInput `pulumi:"active"`
+}
+
+func (GetConnectionConnectedAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionConnectedAccount)(nil)).Elem()
+}
+
+func (i GetConnectionConnectedAccountArgs) ToGetConnectionConnectedAccountOutput() GetConnectionConnectedAccountOutput {
+	return i.ToGetConnectionConnectedAccountOutputWithContext(context.Background())
+}
+
+func (i GetConnectionConnectedAccountArgs) ToGetConnectionConnectedAccountOutputWithContext(ctx context.Context) GetConnectionConnectedAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionConnectedAccountOutput)
+}
+
+// GetConnectionConnectedAccountArrayInput is an input type that accepts GetConnectionConnectedAccountArray and GetConnectionConnectedAccountArrayOutput values.
+// You can construct a concrete instance of `GetConnectionConnectedAccountArrayInput` via:
+//
+//	GetConnectionConnectedAccountArray{ GetConnectionConnectedAccountArgs{...} }
+type GetConnectionConnectedAccountArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionConnectedAccountArrayOutput() GetConnectionConnectedAccountArrayOutput
+	ToGetConnectionConnectedAccountArrayOutputWithContext(context.Context) GetConnectionConnectedAccountArrayOutput
+}
+
+type GetConnectionConnectedAccountArray []GetConnectionConnectedAccountInput
+
+func (GetConnectionConnectedAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionConnectedAccount)(nil)).Elem()
+}
+
+func (i GetConnectionConnectedAccountArray) ToGetConnectionConnectedAccountArrayOutput() GetConnectionConnectedAccountArrayOutput {
+	return i.ToGetConnectionConnectedAccountArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionConnectedAccountArray) ToGetConnectionConnectedAccountArrayOutputWithContext(ctx context.Context) GetConnectionConnectedAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionConnectedAccountArrayOutput)
+}
+
+type GetConnectionConnectedAccountOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionConnectedAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionConnectedAccount)(nil)).Elem()
+}
+
+func (o GetConnectionConnectedAccountOutput) ToGetConnectionConnectedAccountOutput() GetConnectionConnectedAccountOutput {
+	return o
+}
+
+func (o GetConnectionConnectedAccountOutput) ToGetConnectionConnectedAccountOutputWithContext(ctx context.Context) GetConnectionConnectedAccountOutput {
+	return o
+}
+
+func (o GetConnectionConnectedAccountOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionConnectedAccount) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+type GetConnectionConnectedAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionConnectedAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionConnectedAccount)(nil)).Elem()
+}
+
+func (o GetConnectionConnectedAccountArrayOutput) ToGetConnectionConnectedAccountArrayOutput() GetConnectionConnectedAccountArrayOutput {
+	return o
+}
+
+func (o GetConnectionConnectedAccountArrayOutput) ToGetConnectionConnectedAccountArrayOutputWithContext(ctx context.Context) GetConnectionConnectedAccountArrayOutput {
+	return o
+}
+
+func (o GetConnectionConnectedAccountArrayOutput) Index(i pulumi.IntInput) GetConnectionConnectedAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionConnectedAccount {
+		return vs[0].([]GetConnectionConnectedAccount)[vs[1].(int)]
+	}).(GetConnectionConnectedAccountOutput)
+}
+
+type GetConnectionCrossAppAccessRequestingApp struct {
+	Active bool `pulumi:"active"`
+}
+
+// GetConnectionCrossAppAccessRequestingAppInput is an input type that accepts GetConnectionCrossAppAccessRequestingAppArgs and GetConnectionCrossAppAccessRequestingAppOutput values.
+// You can construct a concrete instance of `GetConnectionCrossAppAccessRequestingAppInput` via:
+//
+//	GetConnectionCrossAppAccessRequestingAppArgs{...}
+type GetConnectionCrossAppAccessRequestingAppInput interface {
+	pulumi.Input
+
+	ToGetConnectionCrossAppAccessRequestingAppOutput() GetConnectionCrossAppAccessRequestingAppOutput
+	ToGetConnectionCrossAppAccessRequestingAppOutputWithContext(context.Context) GetConnectionCrossAppAccessRequestingAppOutput
+}
+
+type GetConnectionCrossAppAccessRequestingAppArgs struct {
+	Active pulumi.BoolInput `pulumi:"active"`
+}
+
+func (GetConnectionCrossAppAccessRequestingAppArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionCrossAppAccessRequestingApp)(nil)).Elem()
+}
+
+func (i GetConnectionCrossAppAccessRequestingAppArgs) ToGetConnectionCrossAppAccessRequestingAppOutput() GetConnectionCrossAppAccessRequestingAppOutput {
+	return i.ToGetConnectionCrossAppAccessRequestingAppOutputWithContext(context.Background())
+}
+
+func (i GetConnectionCrossAppAccessRequestingAppArgs) ToGetConnectionCrossAppAccessRequestingAppOutputWithContext(ctx context.Context) GetConnectionCrossAppAccessRequestingAppOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionCrossAppAccessRequestingAppOutput)
+}
+
+// GetConnectionCrossAppAccessRequestingAppArrayInput is an input type that accepts GetConnectionCrossAppAccessRequestingAppArray and GetConnectionCrossAppAccessRequestingAppArrayOutput values.
+// You can construct a concrete instance of `GetConnectionCrossAppAccessRequestingAppArrayInput` via:
+//
+//	GetConnectionCrossAppAccessRequestingAppArray{ GetConnectionCrossAppAccessRequestingAppArgs{...} }
+type GetConnectionCrossAppAccessRequestingAppArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionCrossAppAccessRequestingAppArrayOutput() GetConnectionCrossAppAccessRequestingAppArrayOutput
+	ToGetConnectionCrossAppAccessRequestingAppArrayOutputWithContext(context.Context) GetConnectionCrossAppAccessRequestingAppArrayOutput
+}
+
+type GetConnectionCrossAppAccessRequestingAppArray []GetConnectionCrossAppAccessRequestingAppInput
+
+func (GetConnectionCrossAppAccessRequestingAppArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionCrossAppAccessRequestingApp)(nil)).Elem()
+}
+
+func (i GetConnectionCrossAppAccessRequestingAppArray) ToGetConnectionCrossAppAccessRequestingAppArrayOutput() GetConnectionCrossAppAccessRequestingAppArrayOutput {
+	return i.ToGetConnectionCrossAppAccessRequestingAppArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionCrossAppAccessRequestingAppArray) ToGetConnectionCrossAppAccessRequestingAppArrayOutputWithContext(ctx context.Context) GetConnectionCrossAppAccessRequestingAppArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionCrossAppAccessRequestingAppArrayOutput)
+}
+
+type GetConnectionCrossAppAccessRequestingAppOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionCrossAppAccessRequestingAppOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionCrossAppAccessRequestingApp)(nil)).Elem()
+}
+
+func (o GetConnectionCrossAppAccessRequestingAppOutput) ToGetConnectionCrossAppAccessRequestingAppOutput() GetConnectionCrossAppAccessRequestingAppOutput {
+	return o
+}
+
+func (o GetConnectionCrossAppAccessRequestingAppOutput) ToGetConnectionCrossAppAccessRequestingAppOutputWithContext(ctx context.Context) GetConnectionCrossAppAccessRequestingAppOutput {
+	return o
+}
+
+func (o GetConnectionCrossAppAccessRequestingAppOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionCrossAppAccessRequestingApp) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+type GetConnectionCrossAppAccessRequestingAppArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionCrossAppAccessRequestingAppArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionCrossAppAccessRequestingApp)(nil)).Elem()
+}
+
+func (o GetConnectionCrossAppAccessRequestingAppArrayOutput) ToGetConnectionCrossAppAccessRequestingAppArrayOutput() GetConnectionCrossAppAccessRequestingAppArrayOutput {
+	return o
+}
+
+func (o GetConnectionCrossAppAccessRequestingAppArrayOutput) ToGetConnectionCrossAppAccessRequestingAppArrayOutputWithContext(ctx context.Context) GetConnectionCrossAppAccessRequestingAppArrayOutput {
+	return o
+}
+
+func (o GetConnectionCrossAppAccessRequestingAppArrayOutput) Index(i pulumi.IntInput) GetConnectionCrossAppAccessRequestingAppOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionCrossAppAccessRequestingApp {
+		return vs[0].([]GetConnectionCrossAppAccessRequestingApp)[vs[1].(int)]
+	}).(GetConnectionCrossAppAccessRequestingAppOutput)
+}
+
+type GetConnectionCrossAppAccessResourceApp struct {
+	// Whether the connection acts as a Cross App Access resource application. One of `enabled` or `disabled`. (EA only)
+	Status string `pulumi:"status"`
+}
+
+// GetConnectionCrossAppAccessResourceAppInput is an input type that accepts GetConnectionCrossAppAccessResourceAppArgs and GetConnectionCrossAppAccessResourceAppOutput values.
+// You can construct a concrete instance of `GetConnectionCrossAppAccessResourceAppInput` via:
+//
+//	GetConnectionCrossAppAccessResourceAppArgs{...}
+type GetConnectionCrossAppAccessResourceAppInput interface {
+	pulumi.Input
+
+	ToGetConnectionCrossAppAccessResourceAppOutput() GetConnectionCrossAppAccessResourceAppOutput
+	ToGetConnectionCrossAppAccessResourceAppOutputWithContext(context.Context) GetConnectionCrossAppAccessResourceAppOutput
+}
+
+type GetConnectionCrossAppAccessResourceAppArgs struct {
+	// Whether the connection acts as a Cross App Access resource application. One of `enabled` or `disabled`. (EA only)
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetConnectionCrossAppAccessResourceAppArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionCrossAppAccessResourceApp)(nil)).Elem()
+}
+
+func (i GetConnectionCrossAppAccessResourceAppArgs) ToGetConnectionCrossAppAccessResourceAppOutput() GetConnectionCrossAppAccessResourceAppOutput {
+	return i.ToGetConnectionCrossAppAccessResourceAppOutputWithContext(context.Background())
+}
+
+func (i GetConnectionCrossAppAccessResourceAppArgs) ToGetConnectionCrossAppAccessResourceAppOutputWithContext(ctx context.Context) GetConnectionCrossAppAccessResourceAppOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionCrossAppAccessResourceAppOutput)
+}
+
+// GetConnectionCrossAppAccessResourceAppArrayInput is an input type that accepts GetConnectionCrossAppAccessResourceAppArray and GetConnectionCrossAppAccessResourceAppArrayOutput values.
+// You can construct a concrete instance of `GetConnectionCrossAppAccessResourceAppArrayInput` via:
+//
+//	GetConnectionCrossAppAccessResourceAppArray{ GetConnectionCrossAppAccessResourceAppArgs{...} }
+type GetConnectionCrossAppAccessResourceAppArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionCrossAppAccessResourceAppArrayOutput() GetConnectionCrossAppAccessResourceAppArrayOutput
+	ToGetConnectionCrossAppAccessResourceAppArrayOutputWithContext(context.Context) GetConnectionCrossAppAccessResourceAppArrayOutput
+}
+
+type GetConnectionCrossAppAccessResourceAppArray []GetConnectionCrossAppAccessResourceAppInput
+
+func (GetConnectionCrossAppAccessResourceAppArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionCrossAppAccessResourceApp)(nil)).Elem()
+}
+
+func (i GetConnectionCrossAppAccessResourceAppArray) ToGetConnectionCrossAppAccessResourceAppArrayOutput() GetConnectionCrossAppAccessResourceAppArrayOutput {
+	return i.ToGetConnectionCrossAppAccessResourceAppArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionCrossAppAccessResourceAppArray) ToGetConnectionCrossAppAccessResourceAppArrayOutputWithContext(ctx context.Context) GetConnectionCrossAppAccessResourceAppArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionCrossAppAccessResourceAppArrayOutput)
+}
+
+type GetConnectionCrossAppAccessResourceAppOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionCrossAppAccessResourceAppOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionCrossAppAccessResourceApp)(nil)).Elem()
+}
+
+func (o GetConnectionCrossAppAccessResourceAppOutput) ToGetConnectionCrossAppAccessResourceAppOutput() GetConnectionCrossAppAccessResourceAppOutput {
+	return o
+}
+
+func (o GetConnectionCrossAppAccessResourceAppOutput) ToGetConnectionCrossAppAccessResourceAppOutputWithContext(ctx context.Context) GetConnectionCrossAppAccessResourceAppOutput {
+	return o
+}
+
+// Whether the connection acts as a Cross App Access resource application. One of `enabled` or `disabled`. (EA only)
+func (o GetConnectionCrossAppAccessResourceAppOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionCrossAppAccessResourceApp) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetConnectionCrossAppAccessResourceAppArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionCrossAppAccessResourceAppArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionCrossAppAccessResourceApp)(nil)).Elem()
+}
+
+func (o GetConnectionCrossAppAccessResourceAppArrayOutput) ToGetConnectionCrossAppAccessResourceAppArrayOutput() GetConnectionCrossAppAccessResourceAppArrayOutput {
+	return o
+}
+
+func (o GetConnectionCrossAppAccessResourceAppArrayOutput) ToGetConnectionCrossAppAccessResourceAppArrayOutputWithContext(ctx context.Context) GetConnectionCrossAppAccessResourceAppArrayOutput {
+	return o
+}
+
+func (o GetConnectionCrossAppAccessResourceAppArrayOutput) Index(i pulumi.IntInput) GetConnectionCrossAppAccessResourceAppOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionCrossAppAccessResourceApp {
+		return vs[0].([]GetConnectionCrossAppAccessResourceApp)[vs[1].(int)]
+	}).(GetConnectionCrossAppAccessResourceAppOutput)
+}
+
+type GetConnectionDirectoryDefaultMappingMapping struct {
+	// The field location in the Auth0 schema.
+	Auth0 string `pulumi:"auth0"`
+	// The field location in the IDP schema.
+	Idp string `pulumi:"idp"`
+}
+
+// GetConnectionDirectoryDefaultMappingMappingInput is an input type that accepts GetConnectionDirectoryDefaultMappingMappingArgs and GetConnectionDirectoryDefaultMappingMappingOutput values.
+// You can construct a concrete instance of `GetConnectionDirectoryDefaultMappingMappingInput` via:
+//
+//	GetConnectionDirectoryDefaultMappingMappingArgs{...}
+type GetConnectionDirectoryDefaultMappingMappingInput interface {
+	pulumi.Input
+
+	ToGetConnectionDirectoryDefaultMappingMappingOutput() GetConnectionDirectoryDefaultMappingMappingOutput
+	ToGetConnectionDirectoryDefaultMappingMappingOutputWithContext(context.Context) GetConnectionDirectoryDefaultMappingMappingOutput
+}
+
+type GetConnectionDirectoryDefaultMappingMappingArgs struct {
+	// The field location in the Auth0 schema.
+	Auth0 pulumi.StringInput `pulumi:"auth0"`
+	// The field location in the IDP schema.
+	Idp pulumi.StringInput `pulumi:"idp"`
+}
+
+func (GetConnectionDirectoryDefaultMappingMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionDirectoryDefaultMappingMapping)(nil)).Elem()
+}
+
+func (i GetConnectionDirectoryDefaultMappingMappingArgs) ToGetConnectionDirectoryDefaultMappingMappingOutput() GetConnectionDirectoryDefaultMappingMappingOutput {
+	return i.ToGetConnectionDirectoryDefaultMappingMappingOutputWithContext(context.Background())
+}
+
+func (i GetConnectionDirectoryDefaultMappingMappingArgs) ToGetConnectionDirectoryDefaultMappingMappingOutputWithContext(ctx context.Context) GetConnectionDirectoryDefaultMappingMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionDirectoryDefaultMappingMappingOutput)
+}
+
+// GetConnectionDirectoryDefaultMappingMappingArrayInput is an input type that accepts GetConnectionDirectoryDefaultMappingMappingArray and GetConnectionDirectoryDefaultMappingMappingArrayOutput values.
+// You can construct a concrete instance of `GetConnectionDirectoryDefaultMappingMappingArrayInput` via:
+//
+//	GetConnectionDirectoryDefaultMappingMappingArray{ GetConnectionDirectoryDefaultMappingMappingArgs{...} }
+type GetConnectionDirectoryDefaultMappingMappingArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionDirectoryDefaultMappingMappingArrayOutput() GetConnectionDirectoryDefaultMappingMappingArrayOutput
+	ToGetConnectionDirectoryDefaultMappingMappingArrayOutputWithContext(context.Context) GetConnectionDirectoryDefaultMappingMappingArrayOutput
+}
+
+type GetConnectionDirectoryDefaultMappingMappingArray []GetConnectionDirectoryDefaultMappingMappingInput
+
+func (GetConnectionDirectoryDefaultMappingMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionDirectoryDefaultMappingMapping)(nil)).Elem()
+}
+
+func (i GetConnectionDirectoryDefaultMappingMappingArray) ToGetConnectionDirectoryDefaultMappingMappingArrayOutput() GetConnectionDirectoryDefaultMappingMappingArrayOutput {
+	return i.ToGetConnectionDirectoryDefaultMappingMappingArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionDirectoryDefaultMappingMappingArray) ToGetConnectionDirectoryDefaultMappingMappingArrayOutputWithContext(ctx context.Context) GetConnectionDirectoryDefaultMappingMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionDirectoryDefaultMappingMappingArrayOutput)
+}
+
+type GetConnectionDirectoryDefaultMappingMappingOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionDirectoryDefaultMappingMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionDirectoryDefaultMappingMapping)(nil)).Elem()
+}
+
+func (o GetConnectionDirectoryDefaultMappingMappingOutput) ToGetConnectionDirectoryDefaultMappingMappingOutput() GetConnectionDirectoryDefaultMappingMappingOutput {
+	return o
+}
+
+func (o GetConnectionDirectoryDefaultMappingMappingOutput) ToGetConnectionDirectoryDefaultMappingMappingOutputWithContext(ctx context.Context) GetConnectionDirectoryDefaultMappingMappingOutput {
+	return o
+}
+
+// The field location in the Auth0 schema.
+func (o GetConnectionDirectoryDefaultMappingMappingOutput) Auth0() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionDirectoryDefaultMappingMapping) string { return v.Auth0 }).(pulumi.StringOutput)
+}
+
+// The field location in the IDP schema.
+func (o GetConnectionDirectoryDefaultMappingMappingOutput) Idp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionDirectoryDefaultMappingMapping) string { return v.Idp }).(pulumi.StringOutput)
+}
+
+type GetConnectionDirectoryDefaultMappingMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionDirectoryDefaultMappingMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionDirectoryDefaultMappingMapping)(nil)).Elem()
+}
+
+func (o GetConnectionDirectoryDefaultMappingMappingArrayOutput) ToGetConnectionDirectoryDefaultMappingMappingArrayOutput() GetConnectionDirectoryDefaultMappingMappingArrayOutput {
+	return o
+}
+
+func (o GetConnectionDirectoryDefaultMappingMappingArrayOutput) ToGetConnectionDirectoryDefaultMappingMappingArrayOutputWithContext(ctx context.Context) GetConnectionDirectoryDefaultMappingMappingArrayOutput {
+	return o
+}
+
+func (o GetConnectionDirectoryDefaultMappingMappingArrayOutput) Index(i pulumi.IntInput) GetConnectionDirectoryDefaultMappingMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionDirectoryDefaultMappingMapping {
+		return vs[0].([]GetConnectionDirectoryDefaultMappingMapping)[vs[1].(int)]
+	}).(GetConnectionDirectoryDefaultMappingMappingOutput)
+}
+
+type GetConnectionDirectoryMapping struct {
+	// The field location in the Auth0 schema.
+	Auth0 string `pulumi:"auth0"`
+	// The field location in the IDP schema.
+	Idp string `pulumi:"idp"`
+}
+
+// GetConnectionDirectoryMappingInput is an input type that accepts GetConnectionDirectoryMappingArgs and GetConnectionDirectoryMappingOutput values.
+// You can construct a concrete instance of `GetConnectionDirectoryMappingInput` via:
+//
+//	GetConnectionDirectoryMappingArgs{...}
+type GetConnectionDirectoryMappingInput interface {
+	pulumi.Input
+
+	ToGetConnectionDirectoryMappingOutput() GetConnectionDirectoryMappingOutput
+	ToGetConnectionDirectoryMappingOutputWithContext(context.Context) GetConnectionDirectoryMappingOutput
+}
+
+type GetConnectionDirectoryMappingArgs struct {
+	// The field location in the Auth0 schema.
+	Auth0 pulumi.StringInput `pulumi:"auth0"`
+	// The field location in the IDP schema.
+	Idp pulumi.StringInput `pulumi:"idp"`
+}
+
+func (GetConnectionDirectoryMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionDirectoryMapping)(nil)).Elem()
+}
+
+func (i GetConnectionDirectoryMappingArgs) ToGetConnectionDirectoryMappingOutput() GetConnectionDirectoryMappingOutput {
+	return i.ToGetConnectionDirectoryMappingOutputWithContext(context.Background())
+}
+
+func (i GetConnectionDirectoryMappingArgs) ToGetConnectionDirectoryMappingOutputWithContext(ctx context.Context) GetConnectionDirectoryMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionDirectoryMappingOutput)
+}
+
+// GetConnectionDirectoryMappingArrayInput is an input type that accepts GetConnectionDirectoryMappingArray and GetConnectionDirectoryMappingArrayOutput values.
+// You can construct a concrete instance of `GetConnectionDirectoryMappingArrayInput` via:
+//
+//	GetConnectionDirectoryMappingArray{ GetConnectionDirectoryMappingArgs{...} }
+type GetConnectionDirectoryMappingArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionDirectoryMappingArrayOutput() GetConnectionDirectoryMappingArrayOutput
+	ToGetConnectionDirectoryMappingArrayOutputWithContext(context.Context) GetConnectionDirectoryMappingArrayOutput
+}
+
+type GetConnectionDirectoryMappingArray []GetConnectionDirectoryMappingInput
+
+func (GetConnectionDirectoryMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionDirectoryMapping)(nil)).Elem()
+}
+
+func (i GetConnectionDirectoryMappingArray) ToGetConnectionDirectoryMappingArrayOutput() GetConnectionDirectoryMappingArrayOutput {
+	return i.ToGetConnectionDirectoryMappingArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionDirectoryMappingArray) ToGetConnectionDirectoryMappingArrayOutputWithContext(ctx context.Context) GetConnectionDirectoryMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionDirectoryMappingArrayOutput)
+}
+
+type GetConnectionDirectoryMappingOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionDirectoryMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionDirectoryMapping)(nil)).Elem()
+}
+
+func (o GetConnectionDirectoryMappingOutput) ToGetConnectionDirectoryMappingOutput() GetConnectionDirectoryMappingOutput {
+	return o
+}
+
+func (o GetConnectionDirectoryMappingOutput) ToGetConnectionDirectoryMappingOutputWithContext(ctx context.Context) GetConnectionDirectoryMappingOutput {
+	return o
+}
+
+// The field location in the Auth0 schema.
+func (o GetConnectionDirectoryMappingOutput) Auth0() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionDirectoryMapping) string { return v.Auth0 }).(pulumi.StringOutput)
+}
+
+// The field location in the IDP schema.
+func (o GetConnectionDirectoryMappingOutput) Idp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionDirectoryMapping) string { return v.Idp }).(pulumi.StringOutput)
+}
+
+type GetConnectionDirectoryMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionDirectoryMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionDirectoryMapping)(nil)).Elem()
+}
+
+func (o GetConnectionDirectoryMappingArrayOutput) ToGetConnectionDirectoryMappingArrayOutput() GetConnectionDirectoryMappingArrayOutput {
+	return o
+}
+
+func (o GetConnectionDirectoryMappingArrayOutput) ToGetConnectionDirectoryMappingArrayOutputWithContext(ctx context.Context) GetConnectionDirectoryMappingArrayOutput {
+	return o
+}
+
+func (o GetConnectionDirectoryMappingArrayOutput) Index(i pulumi.IntInput) GetConnectionDirectoryMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionDirectoryMapping {
+		return vs[0].([]GetConnectionDirectoryMapping)[vs[1].(int)]
+	}).(GetConnectionDirectoryMappingOutput)
+}
+
+type GetConnectionDirectorySynchronizedGroupsGroup struct {
+	// Number of direct members in the Google Workspace Directory group.
+	DirectMembersCount int `pulumi:"directMembersCount"`
+	// Google Workspace Directory group email.
+	Email string `pulumi:"email"`
+	// Google Workspace Directory group ID.
+	Id string `pulumi:"id"`
+	// Google Workspace Directory group name.
+	Name string `pulumi:"name"`
+}
+
+// GetConnectionDirectorySynchronizedGroupsGroupInput is an input type that accepts GetConnectionDirectorySynchronizedGroupsGroupArgs and GetConnectionDirectorySynchronizedGroupsGroupOutput values.
+// You can construct a concrete instance of `GetConnectionDirectorySynchronizedGroupsGroupInput` via:
+//
+//	GetConnectionDirectorySynchronizedGroupsGroupArgs{...}
+type GetConnectionDirectorySynchronizedGroupsGroupInput interface {
+	pulumi.Input
+
+	ToGetConnectionDirectorySynchronizedGroupsGroupOutput() GetConnectionDirectorySynchronizedGroupsGroupOutput
+	ToGetConnectionDirectorySynchronizedGroupsGroupOutputWithContext(context.Context) GetConnectionDirectorySynchronizedGroupsGroupOutput
+}
+
+type GetConnectionDirectorySynchronizedGroupsGroupArgs struct {
+	// Number of direct members in the Google Workspace Directory group.
+	DirectMembersCount pulumi.IntInput `pulumi:"directMembersCount"`
+	// Google Workspace Directory group email.
+	Email pulumi.StringInput `pulumi:"email"`
+	// Google Workspace Directory group ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Google Workspace Directory group name.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetConnectionDirectorySynchronizedGroupsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionDirectorySynchronizedGroupsGroup)(nil)).Elem()
+}
+
+func (i GetConnectionDirectorySynchronizedGroupsGroupArgs) ToGetConnectionDirectorySynchronizedGroupsGroupOutput() GetConnectionDirectorySynchronizedGroupsGroupOutput {
+	return i.ToGetConnectionDirectorySynchronizedGroupsGroupOutputWithContext(context.Background())
+}
+
+func (i GetConnectionDirectorySynchronizedGroupsGroupArgs) ToGetConnectionDirectorySynchronizedGroupsGroupOutputWithContext(ctx context.Context) GetConnectionDirectorySynchronizedGroupsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionDirectorySynchronizedGroupsGroupOutput)
+}
+
+// GetConnectionDirectorySynchronizedGroupsGroupArrayInput is an input type that accepts GetConnectionDirectorySynchronizedGroupsGroupArray and GetConnectionDirectorySynchronizedGroupsGroupArrayOutput values.
+// You can construct a concrete instance of `GetConnectionDirectorySynchronizedGroupsGroupArrayInput` via:
+//
+//	GetConnectionDirectorySynchronizedGroupsGroupArray{ GetConnectionDirectorySynchronizedGroupsGroupArgs{...} }
+type GetConnectionDirectorySynchronizedGroupsGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionDirectorySynchronizedGroupsGroupArrayOutput() GetConnectionDirectorySynchronizedGroupsGroupArrayOutput
+	ToGetConnectionDirectorySynchronizedGroupsGroupArrayOutputWithContext(context.Context) GetConnectionDirectorySynchronizedGroupsGroupArrayOutput
+}
+
+type GetConnectionDirectorySynchronizedGroupsGroupArray []GetConnectionDirectorySynchronizedGroupsGroupInput
+
+func (GetConnectionDirectorySynchronizedGroupsGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionDirectorySynchronizedGroupsGroup)(nil)).Elem()
+}
+
+func (i GetConnectionDirectorySynchronizedGroupsGroupArray) ToGetConnectionDirectorySynchronizedGroupsGroupArrayOutput() GetConnectionDirectorySynchronizedGroupsGroupArrayOutput {
+	return i.ToGetConnectionDirectorySynchronizedGroupsGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionDirectorySynchronizedGroupsGroupArray) ToGetConnectionDirectorySynchronizedGroupsGroupArrayOutputWithContext(ctx context.Context) GetConnectionDirectorySynchronizedGroupsGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionDirectorySynchronizedGroupsGroupArrayOutput)
+}
+
+type GetConnectionDirectorySynchronizedGroupsGroupOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionDirectorySynchronizedGroupsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionDirectorySynchronizedGroupsGroup)(nil)).Elem()
+}
+
+func (o GetConnectionDirectorySynchronizedGroupsGroupOutput) ToGetConnectionDirectorySynchronizedGroupsGroupOutput() GetConnectionDirectorySynchronizedGroupsGroupOutput {
+	return o
+}
+
+func (o GetConnectionDirectorySynchronizedGroupsGroupOutput) ToGetConnectionDirectorySynchronizedGroupsGroupOutputWithContext(ctx context.Context) GetConnectionDirectorySynchronizedGroupsGroupOutput {
+	return o
+}
+
+// Number of direct members in the Google Workspace Directory group.
+func (o GetConnectionDirectorySynchronizedGroupsGroupOutput) DirectMembersCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionDirectorySynchronizedGroupsGroup) int { return v.DirectMembersCount }).(pulumi.IntOutput)
+}
+
+// Google Workspace Directory group email.
+func (o GetConnectionDirectorySynchronizedGroupsGroupOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionDirectorySynchronizedGroupsGroup) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// Google Workspace Directory group ID.
+func (o GetConnectionDirectorySynchronizedGroupsGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionDirectorySynchronizedGroupsGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Google Workspace Directory group name.
+func (o GetConnectionDirectorySynchronizedGroupsGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionDirectorySynchronizedGroupsGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetConnectionDirectorySynchronizedGroupsGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionDirectorySynchronizedGroupsGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionDirectorySynchronizedGroupsGroup)(nil)).Elem()
+}
+
+func (o GetConnectionDirectorySynchronizedGroupsGroupArrayOutput) ToGetConnectionDirectorySynchronizedGroupsGroupArrayOutput() GetConnectionDirectorySynchronizedGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetConnectionDirectorySynchronizedGroupsGroupArrayOutput) ToGetConnectionDirectorySynchronizedGroupsGroupArrayOutputWithContext(ctx context.Context) GetConnectionDirectorySynchronizedGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetConnectionDirectorySynchronizedGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetConnectionDirectorySynchronizedGroupsGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionDirectorySynchronizedGroupsGroup {
+		return vs[0].([]GetConnectionDirectorySynchronizedGroupsGroup)[vs[1].(int)]
+	}).(GetConnectionDirectorySynchronizedGroupsGroupOutput)
+}
+
+type GetConnectionKeysKey struct {
+	// The signing key algorithm.
+	Algorithm string `pulumi:"algorithm"`
+	// The public certificate of the signing key.
+	Cert         string `pulumi:"cert"`
+	ConnectionId string `pulumi:"connectionId"`
+	// True if the key is the current key.
+	Current bool `pulumi:"current"`
+	// The date and time when the key became the current key.
+	CurrentSince string `pulumi:"currentSince"`
+	// The certificate fingerprint.
+	Fingerprint string `pulumi:"fingerprint"`
+	// The signing key use, whether for encryption or signing.
+	KeyUse string `pulumi:"keyUse"`
+	// The key ID of the signing key.
+	Kid string `pulumi:"kid"`
+	// True if the key is the next key.
+	Next bool `pulumi:"next"`
+	// The public certificate of the signing key in PKCS7 format.
+	Pkcs string `pulumi:"pkcs"`
+	// True if the key is the previous key.
+	Previous bool `pulumi:"previous"`
+	// The subject distinguished name (DN) of the certificate.
+	SubjectDn string `pulumi:"subjectDn"`
+	// The certificate thumbprint.
+	Thumbprint string `pulumi:"thumbprint"`
+	// This is an arbitrary map, which when edited shall perform rotation of keys for the corresponding connection. It can host keys like version, timestamp of last rotation etc.The field has no association with API
+	Triggers map[string]string `pulumi:"triggers"`
+}
+
+// GetConnectionKeysKeyInput is an input type that accepts GetConnectionKeysKeyArgs and GetConnectionKeysKeyOutput values.
+// You can construct a concrete instance of `GetConnectionKeysKeyInput` via:
+//
+//	GetConnectionKeysKeyArgs{...}
+type GetConnectionKeysKeyInput interface {
+	pulumi.Input
+
+	ToGetConnectionKeysKeyOutput() GetConnectionKeysKeyOutput
+	ToGetConnectionKeysKeyOutputWithContext(context.Context) GetConnectionKeysKeyOutput
+}
+
+type GetConnectionKeysKeyArgs struct {
+	// The signing key algorithm.
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// The public certificate of the signing key.
+	Cert         pulumi.StringInput `pulumi:"cert"`
+	ConnectionId pulumi.StringInput `pulumi:"connectionId"`
+	// True if the key is the current key.
+	Current pulumi.BoolInput `pulumi:"current"`
+	// The date and time when the key became the current key.
+	CurrentSince pulumi.StringInput `pulumi:"currentSince"`
+	// The certificate fingerprint.
+	Fingerprint pulumi.StringInput `pulumi:"fingerprint"`
+	// The signing key use, whether for encryption or signing.
+	KeyUse pulumi.StringInput `pulumi:"keyUse"`
+	// The key ID of the signing key.
+	Kid pulumi.StringInput `pulumi:"kid"`
+	// True if the key is the next key.
+	Next pulumi.BoolInput `pulumi:"next"`
+	// The public certificate of the signing key in PKCS7 format.
+	Pkcs pulumi.StringInput `pulumi:"pkcs"`
+	// True if the key is the previous key.
+	Previous pulumi.BoolInput `pulumi:"previous"`
+	// The subject distinguished name (DN) of the certificate.
+	SubjectDn pulumi.StringInput `pulumi:"subjectDn"`
+	// The certificate thumbprint.
+	Thumbprint pulumi.StringInput `pulumi:"thumbprint"`
+	// This is an arbitrary map, which when edited shall perform rotation of keys for the corresponding connection. It can host keys like version, timestamp of last rotation etc.The field has no association with API
+	Triggers pulumi.StringMapInput `pulumi:"triggers"`
+}
+
+func (GetConnectionKeysKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionKeysKey)(nil)).Elem()
+}
+
+func (i GetConnectionKeysKeyArgs) ToGetConnectionKeysKeyOutput() GetConnectionKeysKeyOutput {
+	return i.ToGetConnectionKeysKeyOutputWithContext(context.Background())
+}
+
+func (i GetConnectionKeysKeyArgs) ToGetConnectionKeysKeyOutputWithContext(ctx context.Context) GetConnectionKeysKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionKeysKeyOutput)
+}
+
+// GetConnectionKeysKeyArrayInput is an input type that accepts GetConnectionKeysKeyArray and GetConnectionKeysKeyArrayOutput values.
+// You can construct a concrete instance of `GetConnectionKeysKeyArrayInput` via:
+//
+//	GetConnectionKeysKeyArray{ GetConnectionKeysKeyArgs{...} }
+type GetConnectionKeysKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionKeysKeyArrayOutput() GetConnectionKeysKeyArrayOutput
+	ToGetConnectionKeysKeyArrayOutputWithContext(context.Context) GetConnectionKeysKeyArrayOutput
+}
+
+type GetConnectionKeysKeyArray []GetConnectionKeysKeyInput
+
+func (GetConnectionKeysKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionKeysKey)(nil)).Elem()
+}
+
+func (i GetConnectionKeysKeyArray) ToGetConnectionKeysKeyArrayOutput() GetConnectionKeysKeyArrayOutput {
+	return i.ToGetConnectionKeysKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionKeysKeyArray) ToGetConnectionKeysKeyArrayOutputWithContext(ctx context.Context) GetConnectionKeysKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionKeysKeyArrayOutput)
+}
+
+type GetConnectionKeysKeyOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionKeysKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionKeysKey)(nil)).Elem()
+}
+
+func (o GetConnectionKeysKeyOutput) ToGetConnectionKeysKeyOutput() GetConnectionKeysKeyOutput {
+	return o
+}
+
+func (o GetConnectionKeysKeyOutput) ToGetConnectionKeysKeyOutputWithContext(ctx context.Context) GetConnectionKeysKeyOutput {
+	return o
+}
+
+// The signing key algorithm.
+func (o GetConnectionKeysKeyOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// The public certificate of the signing key.
+func (o GetConnectionKeysKeyOutput) Cert() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) string { return v.Cert }).(pulumi.StringOutput)
+}
+
+func (o GetConnectionKeysKeyOutput) ConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) string { return v.ConnectionId }).(pulumi.StringOutput)
+}
+
+// True if the key is the current key.
+func (o GetConnectionKeysKeyOutput) Current() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) bool { return v.Current }).(pulumi.BoolOutput)
+}
+
+// The date and time when the key became the current key.
+func (o GetConnectionKeysKeyOutput) CurrentSince() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) string { return v.CurrentSince }).(pulumi.StringOutput)
+}
+
+// The certificate fingerprint.
+func (o GetConnectionKeysKeyOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) string { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// The signing key use, whether for encryption or signing.
+func (o GetConnectionKeysKeyOutput) KeyUse() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) string { return v.KeyUse }).(pulumi.StringOutput)
+}
+
+// The key ID of the signing key.
+func (o GetConnectionKeysKeyOutput) Kid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) string { return v.Kid }).(pulumi.StringOutput)
+}
+
+// True if the key is the next key.
+func (o GetConnectionKeysKeyOutput) Next() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) bool { return v.Next }).(pulumi.BoolOutput)
+}
+
+// The public certificate of the signing key in PKCS7 format.
+func (o GetConnectionKeysKeyOutput) Pkcs() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) string { return v.Pkcs }).(pulumi.StringOutput)
+}
+
+// True if the key is the previous key.
+func (o GetConnectionKeysKeyOutput) Previous() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) bool { return v.Previous }).(pulumi.BoolOutput)
+}
+
+// The subject distinguished name (DN) of the certificate.
+func (o GetConnectionKeysKeyOutput) SubjectDn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) string { return v.SubjectDn }).(pulumi.StringOutput)
+}
+
+// The certificate thumbprint.
+func (o GetConnectionKeysKeyOutput) Thumbprint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) string { return v.Thumbprint }).(pulumi.StringOutput)
+}
+
+// This is an arbitrary map, which when edited shall perform rotation of keys for the corresponding connection. It can host keys like version, timestamp of last rotation etc.The field has no association with API
+func (o GetConnectionKeysKeyOutput) Triggers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetConnectionKeysKey) map[string]string { return v.Triggers }).(pulumi.StringMapOutput)
+}
+
+type GetConnectionKeysKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionKeysKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionKeysKey)(nil)).Elem()
+}
+
+func (o GetConnectionKeysKeyArrayOutput) ToGetConnectionKeysKeyArrayOutput() GetConnectionKeysKeyArrayOutput {
+	return o
+}
+
+func (o GetConnectionKeysKeyArrayOutput) ToGetConnectionKeysKeyArrayOutputWithContext(ctx context.Context) GetConnectionKeysKeyArrayOutput {
+	return o
+}
+
+func (o GetConnectionKeysKeyArrayOutput) Index(i pulumi.IntInput) GetConnectionKeysKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionKeysKey {
+		return vs[0].([]GetConnectionKeysKey)[vs[1].(int)]
+	}).(GetConnectionKeysKeyOutput)
+}
+
+type GetConnectionOption struct {
+	// URL used to exchange a user-authorized request token for an access token.
+	AccessTokenUrl string `pulumi:"accessTokenUrl"`
+	// ADFS URL where to fetch the metadata source.
+	AdfsServer string `pulumi:"adfsServer"`
+	// List of allowed audiences.
+	AllowedAudiences []string `pulumi:"allowedAudiences"`
+	// Enable API Access to groups.
+	ApiEnableGroups bool `pulumi:"apiEnableGroups"`
+	// Enable API Access to users.
+	ApiEnableUsers bool `pulumi:"apiEnableUsers"`
+	// App ID.
+	AppId string `pulumi:"appId"`
+	// Settings for SAML assertion decryption. Only applicable when strategy=samlp or pingfederate.
+	AssertionDecryptionSettings []GetConnectionOptionAssertionDecryptionSetting `pulumi:"assertionDecryptionSettings"`
+	// OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
+	AttributeMaps []GetConnectionOptionAttributeMap `pulumi:"attributeMaps"`
+	// Order of attributes for precedence in identification.Valid values: email, phone_number, username. If Precedence is set, it must contain all values (email, phone_number, username) in specific order
+	Attributes []GetConnectionOptionAttribute `pulumi:"attributes"`
+	// Query string parameters to be included as part of the generated passwordless email link.
+	AuthParams map[string]string `pulumi:"authParams"`
+	// Specifies the authentication methods and their configuration (enabled or disabled)
+	AuthenticationMethods []GetConnectionOptionAuthenticationMethod `pulumi:"authenticationMethods"`
+	// Authorization endpoint.
+	AuthorizationEndpoint string `pulumi:"authorizationEndpoint"`
+	// Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
+	BruteForceProtection bool `pulumi:"bruteForceProtection"`
+	// The strategy's client ID.
+	ClientId string `pulumi:"clientId"`
+	// The strategy's client secret. **Note:** For better security, consider using `optionsClientSecretWo` instead to avoid storing the secret in Terraform state.
+	ClientSecret string `pulumi:"clientSecret"`
+	// Salesforce community base URL.
+	CommunityBaseUrl string `pulumi:"communityBaseUrl"`
+	// A case-sensitive map of key value pairs used as configuration variables for the `customScript`.
+	Configuration map[string]string `pulumi:"configuration"`
+	// Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
+	ConnectionSettings []GetConnectionOptionConnectionSetting `pulumi:"connectionSettings"`
+	// Identifies the client to the service provider
+	ConsumerKey string `pulumi:"consumerKey"`
+	// Secret used to establish ownership of the consumer key.
+	ConsumerSecret string `pulumi:"consumerSecret"`
+	// Configure extra headers to the Token endpoint of an OAuth 2.0 provider
+	CustomHeaders []GetConnectionOptionCustomHeader `pulumi:"customHeaders"`
+	// Configure custom password hashing within a connection. (EA only)
+	CustomPasswordHashes []GetConnectionOptionCustomPasswordHash `pulumi:"customPasswordHashes"`
+	// A map of scripts used to integrate with a custom database.
+	CustomScripts map[string]string `pulumi:"customScripts"`
+	// When enabled, additional debug information will be generated.
+	Debug bool `pulumi:"debug"`
+	// The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+	DecryptionKeys []GetConnectionOptionDecryptionKey `pulumi:"decryptionKeys"`
+	// The destination URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+	DestinationUrl string `pulumi:"destinationUrl"`
+	// Sign Request Algorithm Digest.
+	DigestAlgorithm string `pulumi:"digestAlgorithm"`
+	// Indicates whether to disable the cache or not.
+	DisableCache bool `pulumi:"disableCache"`
+	// Indicates whether to remove the forgot password link within the New Universal Login.
+	DisableSelfServiceChangePassword bool `pulumi:"disableSelfServiceChangePassword"`
+	// When enabled, will disable sign out.
+	DisableSignOut bool `pulumi:"disableSignOut"`
+	// Indicates whether to allow user sign-ups to your application.
+	DisableSignup bool `pulumi:"disableSignup"`
+	// OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
+	DiscoveryUrl string `pulumi:"discoveryUrl"`
+	// Domain name.
+	Domain string `pulumi:"domain"`
+	// List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
+	DomainAliases []string `pulumi:"domainAliases"`
+	// The algorithm used to sign the DPoP proof. Allowed values: ES256, ES384, ES512, Ed25519.
+	DpopSigningAlg string `pulumi:"dpopSigningAlg"`
+	// Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
+	Email bool `pulumi:"email"`
+	// Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
+	EnableScriptContext bool `pulumi:"enableScriptContext"`
+	// Set to `true` to use a legacy user store.
+	EnabledDatabaseCustomization bool `pulumi:"enabledDatabaseCustomization"`
+	// Custom Entity ID for the connection.
+	EntityId string `pulumi:"entityId"`
+	// Federation Metadata for the ADFS connection.
+	FedMetadataXml string `pulumi:"fedMetadataXml"`
+	// Configuration for collecting access tokens and refresh tokens from federated connections. Only applicable for OIDC connections.
+	FederatedConnectionsAccessTokens []GetConnectionOptionFederatedConnectionsAccessToken `pulumi:"federatedConnectionsAccessTokens"`
+	// If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
+	FieldsMap string `pulumi:"fieldsMap"`
+	// Specifies whether or not request info should be forwarded to sms gateway.
+	ForwardRequestInfo bool `pulumi:"forwardRequestInfo"`
+	// Address to use as the sender.
+	From string `pulumi:"from"`
+	// Defines the parameters used to generate the auth token for the custom gateway.
+	GatewayAuthentications []GetConnectionOptionGatewayAuthentication `pulumi:"gatewayAuthentications"`
+	// Defines a custom sms gateway to use instead of Twilio.
+	GatewayUrl string `pulumi:"gatewayUrl"`
+	// Specifies the issuer of the JWT used for global token revocation for the SAML connection.
+	GlobalTokenRevocationJwtIss string `pulumi:"globalTokenRevocationJwtIss"`
+	// Specifies the subject of the JWT used for global token revocation for the SAML connection.
+	GlobalTokenRevocationJwtSub string `pulumi:"globalTokenRevocationJwtSub"`
+	// Icon URL.
+	IconUrl string `pulumi:"iconUrl"`
+	// Indicates whether the identity provider supports session expiry via the id_token. When true, Auth0 will use the sessionExpiry claim from the upstream IdP's ID token to determine the maximum session lifetime. Only applicable for Okta and OIDC connections.
+	IdTokenSessionExpirySupported bool `pulumi:"idTokenSessionExpirySupported"`
+	// List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
+	IdTokenSignedResponseAlgs []string `pulumi:"idTokenSignedResponseAlgs"`
+	// Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
+	IdentityApi string `pulumi:"identityApi"`
+	// Configuration options for IDP Initiated Authentication. This is an object with the properties: `clientId`, `clientProtocol`, and `clientAuthorizeQuery`.
+	IdpInitiateds []GetConnectionOptionIdpInitiated `pulumi:"idpInitiateds"`
+	// Indicates whether you have a legacy user store and want to gradually migrate those users to the Auth0 user store.
+	ImportMode bool `pulumi:"importMode"`
+	// A list of IPs.
+	Ips []string `pulumi:"ips"`
+	// Issuer URL, e.g. `https://auth.example.com`.
+	Issuer string `pulumi:"issuer"`
+	// JWKS URI.
+	JwksUri string `pulumi:"jwksUri"`
+	// Apple Key ID.
+	KeyId string `pulumi:"keyId"`
+	// By default Auth0 maps `userId` to `email`. Enabling this setting changes the behavior to map `userId` to 'id' instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
+	MapUserIdToId bool `pulumi:"mapUserIdToId"`
+	// Maximum number of groups to retrieve.
+	MaxGroupsToRetrieve string `pulumi:"maxGroupsToRetrieve"`
+	// SID for Copilot. Used when SMS Source is Copilot.
+	MessagingServiceSid string `pulumi:"messagingServiceSid"`
+	// The URL of the SAML metadata document.
+	MetadataUrl string `pulumi:"metadataUrl"`
+	// The XML content for the SAML metadata document. Values within the xml will take precedence over other attributes set on the options block.
+	MetadataXml string `pulumi:"metadataXml"`
+	// Configuration options for multifactor authentication.
+	Mfas []GetConnectionOptionMfa `pulumi:"mfas"`
+	// The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+	Name string `pulumi:"name"`
+	// If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
+	NonPersistentAttrs []string `pulumi:"nonPersistentAttrs"`
+	// Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. On oidc and okta, Auth0 defaults any omitted `claimsParameterSupported`, `requestParameterSupported`, `requestUriParameterSupported`, `requireRequestUriRegistration` field to false. Those defaults are not tracked in provider until set to true explisitly. (EA only)
+	OidcMetadata string `pulumi:"oidcMetadata"`
+	// One-time password settings for database (`auth0` strategy) connections, configurable per delivery channel. (EA only)
+	OtpSettings []GetConnectionOptionOtpSetting `pulumi:"otpSettings"`
+	// Defines options for the passkey authentication method
+	PasskeyOptions []GetConnectionOptionPasskeyOption `pulumi:"passkeyOptions"`
+	// Configuration settings for password complexity.
+	PasswordComplexityOptions []GetConnectionOptionPasswordComplexityOption `pulumi:"passwordComplexityOptions"`
+	// Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
+	PasswordDictionaries []GetConnectionOptionPasswordDictionary `pulumi:"passwordDictionaries"`
+	// Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords.
+	PasswordHistories []GetConnectionOptionPasswordHistory `pulumi:"passwordHistories"`
+	// Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's `name`, `username`, `nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user's `email`, or first part of the user's `email`.
+	PasswordNoPersonalInfos []GetConnectionOptionPasswordNoPersonalInfo `pulumi:"passwordNoPersonalInfos"`
+	// Flexible password policy configuration. Only available for `auth0` strategy connections. Cannot be set together with legacy password policy fields (`passwordPolicy`, `passwordComplexityOptions`, `passwordHistory`, `passwordNoPersonalInfo`, `passwordDictionary`).
+	PasswordOptions []GetConnectionOptionPasswordOption `pulumi:"passwordOptions"`
+	// Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
+	PasswordPolicy string `pulumi:"passwordPolicy"`
+	// Ping Federate Server URL.
+	PingFederateBaseUrl string `pulumi:"pingFederateBaseUrl"`
+	// Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
+	PkceEnabled bool `pulumi:"pkceEnabled"`
+	// Order of attributes for precedence in identification.Valid values: email, phone_number, username. If Precedence is set, it must contain all values (email, phone_number, username) in specific order
+	Precedences []string `pulumi:"precedences"`
+	// The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
+	ProtocolBinding string `pulumi:"protocolBinding"`
+	// Defines the custom `smsGateway` provider.
+	Provider string `pulumi:"provider"`
+	// Allows configuration if connectionsRealmFallback flag is enabled for the tenant
+	RealmFallback bool `pulumi:"realmFallback"`
+	// The recipient URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+	RecipientUrl string `pulumi:"recipientUrl"`
+	// Template that formats the SAML request.
+	RequestTemplate string `pulumi:"requestTemplate"`
+	// URL used to obtain an unauthorized request token.
+	RequestTokenUrl string `pulumi:"requestTokenUrl"`
+	// Indicates whether the user is required to provide a username in addition to an email address.
+	RequiresUsername bool `pulumi:"requiresUsername"`
+	// Permissions to grant to the connection. Within the Auth0 dashboard these appear under the "Attributes" and "Extended Attributes" sections. Some examples: `basicProfile`, `extProfile`, `extNestedGroups`, etc.
+	Scopes []string `pulumi:"scopes"`
+	// A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
+	Scripts map[string]string `pulumi:"scripts"`
+	// When true and `type` is 'back_channel', includes a cryptographic nonce in authorization requests to prevent replay attacks. The identity provider must include this nonce in the ID token for validation.
+	SendBackChannelNonce bool `pulumi:"sendBackChannelNonce"`
+	// Session Key for storing the request token.
+	SessionKey string `pulumi:"sessionKey"`
+	// Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
+	SetUserRootAttributes string `pulumi:"setUserRootAttributes"`
+	// Choose how Auth0 sets the emailVerified field in the user profile.
+	ShouldTrustEmailVerifiedConnection string `pulumi:"shouldTrustEmailVerifiedConnection"`
+	// SAML single login URL for the connection.
+	SignInEndpoint string `pulumi:"signInEndpoint"`
+	// SAML single logout URL for the connection.
+	SignOutEndpoint string `pulumi:"signOutEndpoint"`
+	// When enabled, the SAML authentication request will be signed.
+	SignSamlRequest bool `pulumi:"signSamlRequest"`
+	// Sign Request Algorithm.
+	SignatureAlgorithm string `pulumi:"signatureAlgorithm"`
+	// Signature method used to sign the request
+	SignatureMethod string `pulumi:"signatureMethod"`
+	// X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
+	SigningCert string `pulumi:"signingCert"`
+	// The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+	SigningKeys []GetConnectionOptionSigningKey `pulumi:"signingKeys"`
+	// Version 1 is deprecated, use version 2.
+	StrategyVersion int `pulumi:"strategyVersion"`
+	// Subject line of the email.
+	Subject string `pulumi:"subject"`
+	// Syntax of the template body.
+	Syntax string `pulumi:"syntax"`
+	// Apple Team ID.
+	TeamId string `pulumi:"teamId"`
+	// Body of the template.
+	Template string `pulumi:"template"`
+	// Tenant domain name.
+	TenantDomain string `pulumi:"tenantDomain"`
+	// Token endpoint.
+	TokenEndpoint string `pulumi:"tokenEndpoint"`
+	// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+	TokenEndpointAuthMethod string `pulumi:"tokenEndpointAuthMethod"`
+	// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+	TokenEndpointAuthSigningAlg string `pulumi:"tokenEndpointAuthSigningAlg"`
+	// Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)
+	TokenEndpointJwtcaAudFormat string `pulumi:"tokenEndpointJwtcaAudFormat"`
+	// Configuration options for one-time passwords.
+	Totps []GetConnectionOptionTotp `pulumi:"totps"`
+	// SID for your Twilio account.
+	TwilioSid string `pulumi:"twilioSid"`
+	// AuthToken for your Twilio account.
+	TwilioToken string `pulumi:"twilioToken"`
+	// The connection's communication channel type. For OIDC connections, accepted values are `backChannel` and `frontChannel`; for Okta Workforce connections, only `backChannel` is accepted. Front Channel uses the OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel uses `response_type=code`.
+	Type string `pulumi:"type"`
+	// You can pass provider-specific parameters to an identity provider during authentication. The values can either be static per connection or dynamic per user.
+	UpstreamParams string `pulumi:"upstreamParams"`
+	// Indicates whether to use cert auth or not.
+	UseCertAuth bool `pulumi:"useCertAuth"`
+	// Indicates whether to use Kerberos or not.
+	UseKerberos bool `pulumi:"useKerberos"`
+	// Enabling this when using the connectionScope parameter, uses space as a delimiter for scopes when calling the IdP's API.
+	UseOauthSpecScope bool `pulumi:"useOauthSpecScope"`
+	// Whether to use WS-Fed.
+	UseWsfed bool `pulumi:"useWsfed"`
+	// URL used to obtain user authorization.
+	UserAuthorizationUrl string `pulumi:"userAuthorizationUrl"`
+	// Attribute in the token that will be mapped to the userId property in Auth0.
+	UserIdAttribute string `pulumi:"userIdAttribute"`
+	// User info endpoint.
+	UserinfoEndpoint string `pulumi:"userinfoEndpoint"`
+	// Validation of the minimum and maximum values allowed for a user to have as username.
+	Validations []GetConnectionOptionValidation `pulumi:"validations"`
+	// Indicates whether to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
+	WaadCommonEndpoint bool `pulumi:"waadCommonEndpoint"`
+	// Protocol to use.
+	WaadProtocol string `pulumi:"waadProtocol"`
+}
+
+// GetConnectionOptionInput is an input type that accepts GetConnectionOptionArgs and GetConnectionOptionOutput values.
+// You can construct a concrete instance of `GetConnectionOptionInput` via:
+//
+//	GetConnectionOptionArgs{...}
+type GetConnectionOptionInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionOutput() GetConnectionOptionOutput
+	ToGetConnectionOptionOutputWithContext(context.Context) GetConnectionOptionOutput
+}
+
+type GetConnectionOptionArgs struct {
+	// URL used to exchange a user-authorized request token for an access token.
+	AccessTokenUrl pulumi.StringInput `pulumi:"accessTokenUrl"`
+	// ADFS URL where to fetch the metadata source.
+	AdfsServer pulumi.StringInput `pulumi:"adfsServer"`
+	// List of allowed audiences.
+	AllowedAudiences pulumi.StringArrayInput `pulumi:"allowedAudiences"`
+	// Enable API Access to groups.
+	ApiEnableGroups pulumi.BoolInput `pulumi:"apiEnableGroups"`
+	// Enable API Access to users.
+	ApiEnableUsers pulumi.BoolInput `pulumi:"apiEnableUsers"`
+	// App ID.
+	AppId pulumi.StringInput `pulumi:"appId"`
+	// Settings for SAML assertion decryption. Only applicable when strategy=samlp or pingfederate.
+	AssertionDecryptionSettings GetConnectionOptionAssertionDecryptionSettingArrayInput `pulumi:"assertionDecryptionSettings"`
+	// OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
+	AttributeMaps GetConnectionOptionAttributeMapArrayInput `pulumi:"attributeMaps"`
+	// Order of attributes for precedence in identification.Valid values: email, phone_number, username. If Precedence is set, it must contain all values (email, phone_number, username) in specific order
+	Attributes GetConnectionOptionAttributeArrayInput `pulumi:"attributes"`
+	// Query string parameters to be included as part of the generated passwordless email link.
+	AuthParams pulumi.StringMapInput `pulumi:"authParams"`
+	// Specifies the authentication methods and their configuration (enabled or disabled)
+	AuthenticationMethods GetConnectionOptionAuthenticationMethodArrayInput `pulumi:"authenticationMethods"`
+	// Authorization endpoint.
+	AuthorizationEndpoint pulumi.StringInput `pulumi:"authorizationEndpoint"`
+	// Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
+	BruteForceProtection pulumi.BoolInput `pulumi:"bruteForceProtection"`
+	// The strategy's client ID.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// The strategy's client secret. **Note:** For better security, consider using `optionsClientSecretWo` instead to avoid storing the secret in Terraform state.
+	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
+	// Salesforce community base URL.
+	CommunityBaseUrl pulumi.StringInput `pulumi:"communityBaseUrl"`
+	// A case-sensitive map of key value pairs used as configuration variables for the `customScript`.
+	Configuration pulumi.StringMapInput `pulumi:"configuration"`
+	// Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
+	ConnectionSettings GetConnectionOptionConnectionSettingArrayInput `pulumi:"connectionSettings"`
+	// Identifies the client to the service provider
+	ConsumerKey pulumi.StringInput `pulumi:"consumerKey"`
+	// Secret used to establish ownership of the consumer key.
+	ConsumerSecret pulumi.StringInput `pulumi:"consumerSecret"`
+	// Configure extra headers to the Token endpoint of an OAuth 2.0 provider
+	CustomHeaders GetConnectionOptionCustomHeaderArrayInput `pulumi:"customHeaders"`
+	// Configure custom password hashing within a connection. (EA only)
+	CustomPasswordHashes GetConnectionOptionCustomPasswordHashArrayInput `pulumi:"customPasswordHashes"`
+	// A map of scripts used to integrate with a custom database.
+	CustomScripts pulumi.StringMapInput `pulumi:"customScripts"`
+	// When enabled, additional debug information will be generated.
+	Debug pulumi.BoolInput `pulumi:"debug"`
+	// The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+	DecryptionKeys GetConnectionOptionDecryptionKeyArrayInput `pulumi:"decryptionKeys"`
+	// The destination URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+	DestinationUrl pulumi.StringInput `pulumi:"destinationUrl"`
+	// Sign Request Algorithm Digest.
+	DigestAlgorithm pulumi.StringInput `pulumi:"digestAlgorithm"`
+	// Indicates whether to disable the cache or not.
+	DisableCache pulumi.BoolInput `pulumi:"disableCache"`
+	// Indicates whether to remove the forgot password link within the New Universal Login.
+	DisableSelfServiceChangePassword pulumi.BoolInput `pulumi:"disableSelfServiceChangePassword"`
+	// When enabled, will disable sign out.
+	DisableSignOut pulumi.BoolInput `pulumi:"disableSignOut"`
+	// Indicates whether to allow user sign-ups to your application.
+	DisableSignup pulumi.BoolInput `pulumi:"disableSignup"`
+	// OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
+	DiscoveryUrl pulumi.StringInput `pulumi:"discoveryUrl"`
+	// Domain name.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
+	DomainAliases pulumi.StringArrayInput `pulumi:"domainAliases"`
+	// The algorithm used to sign the DPoP proof. Allowed values: ES256, ES384, ES512, Ed25519.
+	DpopSigningAlg pulumi.StringInput `pulumi:"dpopSigningAlg"`
+	// Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
+	Email pulumi.BoolInput `pulumi:"email"`
+	// Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
+	EnableScriptContext pulumi.BoolInput `pulumi:"enableScriptContext"`
+	// Set to `true` to use a legacy user store.
+	EnabledDatabaseCustomization pulumi.BoolInput `pulumi:"enabledDatabaseCustomization"`
+	// Custom Entity ID for the connection.
+	EntityId pulumi.StringInput `pulumi:"entityId"`
+	// Federation Metadata for the ADFS connection.
+	FedMetadataXml pulumi.StringInput `pulumi:"fedMetadataXml"`
+	// Configuration for collecting access tokens and refresh tokens from federated connections. Only applicable for OIDC connections.
+	FederatedConnectionsAccessTokens GetConnectionOptionFederatedConnectionsAccessTokenArrayInput `pulumi:"federatedConnectionsAccessTokens"`
+	// If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
+	FieldsMap pulumi.StringInput `pulumi:"fieldsMap"`
+	// Specifies whether or not request info should be forwarded to sms gateway.
+	ForwardRequestInfo pulumi.BoolInput `pulumi:"forwardRequestInfo"`
+	// Address to use as the sender.
+	From pulumi.StringInput `pulumi:"from"`
+	// Defines the parameters used to generate the auth token for the custom gateway.
+	GatewayAuthentications GetConnectionOptionGatewayAuthenticationArrayInput `pulumi:"gatewayAuthentications"`
+	// Defines a custom sms gateway to use instead of Twilio.
+	GatewayUrl pulumi.StringInput `pulumi:"gatewayUrl"`
+	// Specifies the issuer of the JWT used for global token revocation for the SAML connection.
+	GlobalTokenRevocationJwtIss pulumi.StringInput `pulumi:"globalTokenRevocationJwtIss"`
+	// Specifies the subject of the JWT used for global token revocation for the SAML connection.
+	GlobalTokenRevocationJwtSub pulumi.StringInput `pulumi:"globalTokenRevocationJwtSub"`
+	// Icon URL.
+	IconUrl pulumi.StringInput `pulumi:"iconUrl"`
+	// Indicates whether the identity provider supports session expiry via the id_token. When true, Auth0 will use the sessionExpiry claim from the upstream IdP's ID token to determine the maximum session lifetime. Only applicable for Okta and OIDC connections.
+	IdTokenSessionExpirySupported pulumi.BoolInput `pulumi:"idTokenSessionExpirySupported"`
+	// List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
+	IdTokenSignedResponseAlgs pulumi.StringArrayInput `pulumi:"idTokenSignedResponseAlgs"`
+	// Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
+	IdentityApi pulumi.StringInput `pulumi:"identityApi"`
+	// Configuration options for IDP Initiated Authentication. This is an object with the properties: `clientId`, `clientProtocol`, and `clientAuthorizeQuery`.
+	IdpInitiateds GetConnectionOptionIdpInitiatedArrayInput `pulumi:"idpInitiateds"`
+	// Indicates whether you have a legacy user store and want to gradually migrate those users to the Auth0 user store.
+	ImportMode pulumi.BoolInput `pulumi:"importMode"`
+	// A list of IPs.
+	Ips pulumi.StringArrayInput `pulumi:"ips"`
+	// Issuer URL, e.g. `https://auth.example.com`.
+	Issuer pulumi.StringInput `pulumi:"issuer"`
+	// JWKS URI.
+	JwksUri pulumi.StringInput `pulumi:"jwksUri"`
+	// Apple Key ID.
+	KeyId pulumi.StringInput `pulumi:"keyId"`
+	// By default Auth0 maps `userId` to `email`. Enabling this setting changes the behavior to map `userId` to 'id' instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
+	MapUserIdToId pulumi.BoolInput `pulumi:"mapUserIdToId"`
+	// Maximum number of groups to retrieve.
+	MaxGroupsToRetrieve pulumi.StringInput `pulumi:"maxGroupsToRetrieve"`
+	// SID for Copilot. Used when SMS Source is Copilot.
+	MessagingServiceSid pulumi.StringInput `pulumi:"messagingServiceSid"`
+	// The URL of the SAML metadata document.
+	MetadataUrl pulumi.StringInput `pulumi:"metadataUrl"`
+	// The XML content for the SAML metadata document. Values within the xml will take precedence over other attributes set on the options block.
+	MetadataXml pulumi.StringInput `pulumi:"metadataXml"`
+	// Configuration options for multifactor authentication.
+	Mfas GetConnectionOptionMfaArrayInput `pulumi:"mfas"`
+	// The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
+	NonPersistentAttrs pulumi.StringArrayInput `pulumi:"nonPersistentAttrs"`
+	// Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. On oidc and okta, Auth0 defaults any omitted `claimsParameterSupported`, `requestParameterSupported`, `requestUriParameterSupported`, `requireRequestUriRegistration` field to false. Those defaults are not tracked in provider until set to true explisitly. (EA only)
+	OidcMetadata pulumi.StringInput `pulumi:"oidcMetadata"`
+	// One-time password settings for database (`auth0` strategy) connections, configurable per delivery channel. (EA only)
+	OtpSettings GetConnectionOptionOtpSettingArrayInput `pulumi:"otpSettings"`
+	// Defines options for the passkey authentication method
+	PasskeyOptions GetConnectionOptionPasskeyOptionArrayInput `pulumi:"passkeyOptions"`
+	// Configuration settings for password complexity.
+	PasswordComplexityOptions GetConnectionOptionPasswordComplexityOptionArrayInput `pulumi:"passwordComplexityOptions"`
+	// Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
+	PasswordDictionaries GetConnectionOptionPasswordDictionaryArrayInput `pulumi:"passwordDictionaries"`
+	// Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords.
+	PasswordHistories GetConnectionOptionPasswordHistoryArrayInput `pulumi:"passwordHistories"`
+	// Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's `name`, `username`, `nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user's `email`, or first part of the user's `email`.
+	PasswordNoPersonalInfos GetConnectionOptionPasswordNoPersonalInfoArrayInput `pulumi:"passwordNoPersonalInfos"`
+	// Flexible password policy configuration. Only available for `auth0` strategy connections. Cannot be set together with legacy password policy fields (`passwordPolicy`, `passwordComplexityOptions`, `passwordHistory`, `passwordNoPersonalInfo`, `passwordDictionary`).
+	PasswordOptions GetConnectionOptionPasswordOptionArrayInput `pulumi:"passwordOptions"`
+	// Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
+	PasswordPolicy pulumi.StringInput `pulumi:"passwordPolicy"`
+	// Ping Federate Server URL.
+	PingFederateBaseUrl pulumi.StringInput `pulumi:"pingFederateBaseUrl"`
+	// Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
+	PkceEnabled pulumi.BoolInput `pulumi:"pkceEnabled"`
+	// Order of attributes for precedence in identification.Valid values: email, phone_number, username. If Precedence is set, it must contain all values (email, phone_number, username) in specific order
+	Precedences pulumi.StringArrayInput `pulumi:"precedences"`
+	// The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
+	ProtocolBinding pulumi.StringInput `pulumi:"protocolBinding"`
+	// Defines the custom `smsGateway` provider.
+	Provider pulumi.StringInput `pulumi:"provider"`
+	// Allows configuration if connectionsRealmFallback flag is enabled for the tenant
+	RealmFallback pulumi.BoolInput `pulumi:"realmFallback"`
+	// The recipient URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+	RecipientUrl pulumi.StringInput `pulumi:"recipientUrl"`
+	// Template that formats the SAML request.
+	RequestTemplate pulumi.StringInput `pulumi:"requestTemplate"`
+	// URL used to obtain an unauthorized request token.
+	RequestTokenUrl pulumi.StringInput `pulumi:"requestTokenUrl"`
+	// Indicates whether the user is required to provide a username in addition to an email address.
+	RequiresUsername pulumi.BoolInput `pulumi:"requiresUsername"`
+	// Permissions to grant to the connection. Within the Auth0 dashboard these appear under the "Attributes" and "Extended Attributes" sections. Some examples: `basicProfile`, `extProfile`, `extNestedGroups`, etc.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+	// A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
+	Scripts pulumi.StringMapInput `pulumi:"scripts"`
+	// When true and `type` is 'back_channel', includes a cryptographic nonce in authorization requests to prevent replay attacks. The identity provider must include this nonce in the ID token for validation.
+	SendBackChannelNonce pulumi.BoolInput `pulumi:"sendBackChannelNonce"`
+	// Session Key for storing the request token.
+	SessionKey pulumi.StringInput `pulumi:"sessionKey"`
+	// Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
+	SetUserRootAttributes pulumi.StringInput `pulumi:"setUserRootAttributes"`
+	// Choose how Auth0 sets the emailVerified field in the user profile.
+	ShouldTrustEmailVerifiedConnection pulumi.StringInput `pulumi:"shouldTrustEmailVerifiedConnection"`
+	// SAML single login URL for the connection.
+	SignInEndpoint pulumi.StringInput `pulumi:"signInEndpoint"`
+	// SAML single logout URL for the connection.
+	SignOutEndpoint pulumi.StringInput `pulumi:"signOutEndpoint"`
+	// When enabled, the SAML authentication request will be signed.
+	SignSamlRequest pulumi.BoolInput `pulumi:"signSamlRequest"`
+	// Sign Request Algorithm.
+	SignatureAlgorithm pulumi.StringInput `pulumi:"signatureAlgorithm"`
+	// Signature method used to sign the request
+	SignatureMethod pulumi.StringInput `pulumi:"signatureMethod"`
+	// X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
+	SigningCert pulumi.StringInput `pulumi:"signingCert"`
+	// The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+	SigningKeys GetConnectionOptionSigningKeyArrayInput `pulumi:"signingKeys"`
+	// Version 1 is deprecated, use version 2.
+	StrategyVersion pulumi.IntInput `pulumi:"strategyVersion"`
+	// Subject line of the email.
+	Subject pulumi.StringInput `pulumi:"subject"`
+	// Syntax of the template body.
+	Syntax pulumi.StringInput `pulumi:"syntax"`
+	// Apple Team ID.
+	TeamId pulumi.StringInput `pulumi:"teamId"`
+	// Body of the template.
+	Template pulumi.StringInput `pulumi:"template"`
+	// Tenant domain name.
+	TenantDomain pulumi.StringInput `pulumi:"tenantDomain"`
+	// Token endpoint.
+	TokenEndpoint pulumi.StringInput `pulumi:"tokenEndpoint"`
+	// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+	TokenEndpointAuthMethod pulumi.StringInput `pulumi:"tokenEndpointAuthMethod"`
+	// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+	TokenEndpointAuthSigningAlg pulumi.StringInput `pulumi:"tokenEndpointAuthSigningAlg"`
+	// Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)
+	TokenEndpointJwtcaAudFormat pulumi.StringInput `pulumi:"tokenEndpointJwtcaAudFormat"`
+	// Configuration options for one-time passwords.
+	Totps GetConnectionOptionTotpArrayInput `pulumi:"totps"`
+	// SID for your Twilio account.
+	TwilioSid pulumi.StringInput `pulumi:"twilioSid"`
+	// AuthToken for your Twilio account.
+	TwilioToken pulumi.StringInput `pulumi:"twilioToken"`
+	// The connection's communication channel type. For OIDC connections, accepted values are `backChannel` and `frontChannel`; for Okta Workforce connections, only `backChannel` is accepted. Front Channel uses the OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel uses `response_type=code`.
+	Type pulumi.StringInput `pulumi:"type"`
+	// You can pass provider-specific parameters to an identity provider during authentication. The values can either be static per connection or dynamic per user.
+	UpstreamParams pulumi.StringInput `pulumi:"upstreamParams"`
+	// Indicates whether to use cert auth or not.
+	UseCertAuth pulumi.BoolInput `pulumi:"useCertAuth"`
+	// Indicates whether to use Kerberos or not.
+	UseKerberos pulumi.BoolInput `pulumi:"useKerberos"`
+	// Enabling this when using the connectionScope parameter, uses space as a delimiter for scopes when calling the IdP's API.
+	UseOauthSpecScope pulumi.BoolInput `pulumi:"useOauthSpecScope"`
+	// Whether to use WS-Fed.
+	UseWsfed pulumi.BoolInput `pulumi:"useWsfed"`
+	// URL used to obtain user authorization.
+	UserAuthorizationUrl pulumi.StringInput `pulumi:"userAuthorizationUrl"`
+	// Attribute in the token that will be mapped to the userId property in Auth0.
+	UserIdAttribute pulumi.StringInput `pulumi:"userIdAttribute"`
+	// User info endpoint.
+	UserinfoEndpoint pulumi.StringInput `pulumi:"userinfoEndpoint"`
+	// Validation of the minimum and maximum values allowed for a user to have as username.
+	Validations GetConnectionOptionValidationArrayInput `pulumi:"validations"`
+	// Indicates whether to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
+	WaadCommonEndpoint pulumi.BoolInput `pulumi:"waadCommonEndpoint"`
+	// Protocol to use.
+	WaadProtocol pulumi.StringInput `pulumi:"waadProtocol"`
+}
+
+func (GetConnectionOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOption)(nil)).Elem()
+}
+
+func (i GetConnectionOptionArgs) ToGetConnectionOptionOutput() GetConnectionOptionOutput {
+	return i.ToGetConnectionOptionOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionArgs) ToGetConnectionOptionOutputWithContext(ctx context.Context) GetConnectionOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionOutput)
+}
+
+// GetConnectionOptionArrayInput is an input type that accepts GetConnectionOptionArray and GetConnectionOptionArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionArrayInput` via:
+//
+//	GetConnectionOptionArray{ GetConnectionOptionArgs{...} }
+type GetConnectionOptionArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionArrayOutput() GetConnectionOptionArrayOutput
+	ToGetConnectionOptionArrayOutputWithContext(context.Context) GetConnectionOptionArrayOutput
+}
+
+type GetConnectionOptionArray []GetConnectionOptionInput
+
+func (GetConnectionOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOption)(nil)).Elem()
+}
+
+func (i GetConnectionOptionArray) ToGetConnectionOptionArrayOutput() GetConnectionOptionArrayOutput {
+	return i.ToGetConnectionOptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionArray) ToGetConnectionOptionArrayOutputWithContext(ctx context.Context) GetConnectionOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionArrayOutput)
+}
+
+type GetConnectionOptionOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOption)(nil)).Elem()
+}
+
+func (o GetConnectionOptionOutput) ToGetConnectionOptionOutput() GetConnectionOptionOutput {
+	return o
+}
+
+func (o GetConnectionOptionOutput) ToGetConnectionOptionOutputWithContext(ctx context.Context) GetConnectionOptionOutput {
+	return o
+}
+
+// URL used to exchange a user-authorized request token for an access token.
+func (o GetConnectionOptionOutput) AccessTokenUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.AccessTokenUrl }).(pulumi.StringOutput)
+}
+
+// ADFS URL where to fetch the metadata source.
+func (o GetConnectionOptionOutput) AdfsServer() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.AdfsServer }).(pulumi.StringOutput)
+}
+
+// List of allowed audiences.
+func (o GetConnectionOptionOutput) AllowedAudiences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []string { return v.AllowedAudiences }).(pulumi.StringArrayOutput)
+}
+
+// Enable API Access to groups.
+func (o GetConnectionOptionOutput) ApiEnableGroups() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.ApiEnableGroups }).(pulumi.BoolOutput)
+}
+
+// Enable API Access to users.
+func (o GetConnectionOptionOutput) ApiEnableUsers() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.ApiEnableUsers }).(pulumi.BoolOutput)
+}
+
+// App ID.
+func (o GetConnectionOptionOutput) AppId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.AppId }).(pulumi.StringOutput)
+}
+
+// Settings for SAML assertion decryption. Only applicable when strategy=samlp or pingfederate.
+func (o GetConnectionOptionOutput) AssertionDecryptionSettings() GetConnectionOptionAssertionDecryptionSettingArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionAssertionDecryptionSetting {
+		return v.AssertionDecryptionSettings
+	}).(GetConnectionOptionAssertionDecryptionSettingArrayOutput)
+}
+
+// OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
+func (o GetConnectionOptionOutput) AttributeMaps() GetConnectionOptionAttributeMapArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionAttributeMap { return v.AttributeMaps }).(GetConnectionOptionAttributeMapArrayOutput)
+}
+
+// Order of attributes for precedence in identification.Valid values: email, phone_number, username. If Precedence is set, it must contain all values (email, phone_number, username) in specific order
+func (o GetConnectionOptionOutput) Attributes() GetConnectionOptionAttributeArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionAttribute { return v.Attributes }).(GetConnectionOptionAttributeArrayOutput)
+}
+
+// Query string parameters to be included as part of the generated passwordless email link.
+func (o GetConnectionOptionOutput) AuthParams() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetConnectionOption) map[string]string { return v.AuthParams }).(pulumi.StringMapOutput)
+}
+
+// Specifies the authentication methods and their configuration (enabled or disabled)
+func (o GetConnectionOptionOutput) AuthenticationMethods() GetConnectionOptionAuthenticationMethodArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionAuthenticationMethod { return v.AuthenticationMethods }).(GetConnectionOptionAuthenticationMethodArrayOutput)
+}
+
+// Authorization endpoint.
+func (o GetConnectionOptionOutput) AuthorizationEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.AuthorizationEndpoint }).(pulumi.StringOutput)
+}
+
+// Indicates whether to enable brute force protection, which will limit the number of signups and failed logins from a suspicious IP address.
+func (o GetConnectionOptionOutput) BruteForceProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.BruteForceProtection }).(pulumi.BoolOutput)
+}
+
+// The strategy's client ID.
+func (o GetConnectionOptionOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The strategy's client secret. **Note:** For better security, consider using `optionsClientSecretWo` instead to avoid storing the secret in Terraform state.
+func (o GetConnectionOptionOutput) ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.ClientSecret }).(pulumi.StringOutput)
+}
+
+// Salesforce community base URL.
+func (o GetConnectionOptionOutput) CommunityBaseUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.CommunityBaseUrl }).(pulumi.StringOutput)
+}
+
+// A case-sensitive map of key value pairs used as configuration variables for the `customScript`.
+func (o GetConnectionOptionOutput) Configuration() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetConnectionOption) map[string]string { return v.Configuration }).(pulumi.StringMapOutput)
+}
+
+// Proof Key for Code Exchange (PKCE) configuration settings for an OIDC or Okta Workforce connection.
+func (o GetConnectionOptionOutput) ConnectionSettings() GetConnectionOptionConnectionSettingArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionConnectionSetting { return v.ConnectionSettings }).(GetConnectionOptionConnectionSettingArrayOutput)
+}
+
+// Identifies the client to the service provider
+func (o GetConnectionOptionOutput) ConsumerKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.ConsumerKey }).(pulumi.StringOutput)
+}
+
+// Secret used to establish ownership of the consumer key.
+func (o GetConnectionOptionOutput) ConsumerSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.ConsumerSecret }).(pulumi.StringOutput)
+}
+
+// Configure extra headers to the Token endpoint of an OAuth 2.0 provider
+func (o GetConnectionOptionOutput) CustomHeaders() GetConnectionOptionCustomHeaderArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionCustomHeader { return v.CustomHeaders }).(GetConnectionOptionCustomHeaderArrayOutput)
+}
+
+// Configure custom password hashing within a connection. (EA only)
+func (o GetConnectionOptionOutput) CustomPasswordHashes() GetConnectionOptionCustomPasswordHashArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionCustomPasswordHash { return v.CustomPasswordHashes }).(GetConnectionOptionCustomPasswordHashArrayOutput)
+}
+
+// A map of scripts used to integrate with a custom database.
+func (o GetConnectionOptionOutput) CustomScripts() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetConnectionOption) map[string]string { return v.CustomScripts }).(pulumi.StringMapOutput)
+}
+
+// When enabled, additional debug information will be generated.
+func (o GetConnectionOptionOutput) Debug() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.Debug }).(pulumi.BoolOutput)
+}
+
+// The key used to decrypt encrypted responses from the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+func (o GetConnectionOptionOutput) DecryptionKeys() GetConnectionOptionDecryptionKeyArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionDecryptionKey { return v.DecryptionKeys }).(GetConnectionOptionDecryptionKeyArrayOutput)
+}
+
+// The destination URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+func (o GetConnectionOptionOutput) DestinationUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.DestinationUrl }).(pulumi.StringOutput)
+}
+
+// Sign Request Algorithm Digest.
+func (o GetConnectionOptionOutput) DigestAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.DigestAlgorithm }).(pulumi.StringOutput)
+}
+
+// Indicates whether to disable the cache or not.
+func (o GetConnectionOptionOutput) DisableCache() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.DisableCache }).(pulumi.BoolOutput)
+}
+
+// Indicates whether to remove the forgot password link within the New Universal Login.
+func (o GetConnectionOptionOutput) DisableSelfServiceChangePassword() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.DisableSelfServiceChangePassword }).(pulumi.BoolOutput)
+}
+
+// When enabled, will disable sign out.
+func (o GetConnectionOptionOutput) DisableSignOut() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.DisableSignOut }).(pulumi.BoolOutput)
+}
+
+// Indicates whether to allow user sign-ups to your application.
+func (o GetConnectionOptionOutput) DisableSignup() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.DisableSignup }).(pulumi.BoolOutput)
+}
+
+// OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
+func (o GetConnectionOptionOutput) DiscoveryUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.DiscoveryUrl }).(pulumi.StringOutput)
+}
+
+// Domain name.
+func (o GetConnectionOptionOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
+func (o GetConnectionOptionOutput) DomainAliases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []string { return v.DomainAliases }).(pulumi.StringArrayOutput)
+}
+
+// The algorithm used to sign the DPoP proof. Allowed values: ES256, ES384, ES512, Ed25519.
+func (o GetConnectionOptionOutput) DpopSigningAlg() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.DpopSigningAlg }).(pulumi.StringOutput)
+}
+
+// Indicates whether to request the email scope. Used by some OAuth2 connections (e.g., LINE).
+func (o GetConnectionOptionOutput) Email() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.Email }).(pulumi.BoolOutput)
+}
+
+// Set to `true` to inject context into custom DB scripts (warning: cannot be disabled once enabled).
+func (o GetConnectionOptionOutput) EnableScriptContext() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.EnableScriptContext }).(pulumi.BoolOutput)
+}
+
+// Set to `true` to use a legacy user store.
+func (o GetConnectionOptionOutput) EnabledDatabaseCustomization() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.EnabledDatabaseCustomization }).(pulumi.BoolOutput)
+}
+
+// Custom Entity ID for the connection.
+func (o GetConnectionOptionOutput) EntityId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.EntityId }).(pulumi.StringOutput)
+}
+
+// Federation Metadata for the ADFS connection.
+func (o GetConnectionOptionOutput) FedMetadataXml() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.FedMetadataXml }).(pulumi.StringOutput)
+}
+
+// Configuration for collecting access tokens and refresh tokens from federated connections. Only applicable for OIDC connections.
+func (o GetConnectionOptionOutput) FederatedConnectionsAccessTokens() GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionFederatedConnectionsAccessToken {
+		return v.FederatedConnectionsAccessTokens
+	}).(GetConnectionOptionFederatedConnectionsAccessTokenArrayOutput)
+}
+
+// If you're configuring a SAML enterprise connection for a non-standard PingFederate Server, you must update the attribute mappings.
+func (o GetConnectionOptionOutput) FieldsMap() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.FieldsMap }).(pulumi.StringOutput)
+}
+
+// Specifies whether or not request info should be forwarded to sms gateway.
+func (o GetConnectionOptionOutput) ForwardRequestInfo() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.ForwardRequestInfo }).(pulumi.BoolOutput)
+}
+
+// Address to use as the sender.
+func (o GetConnectionOptionOutput) From() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.From }).(pulumi.StringOutput)
+}
+
+// Defines the parameters used to generate the auth token for the custom gateway.
+func (o GetConnectionOptionOutput) GatewayAuthentications() GetConnectionOptionGatewayAuthenticationArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionGatewayAuthentication {
+		return v.GatewayAuthentications
+	}).(GetConnectionOptionGatewayAuthenticationArrayOutput)
+}
+
+// Defines a custom sms gateway to use instead of Twilio.
+func (o GetConnectionOptionOutput) GatewayUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.GatewayUrl }).(pulumi.StringOutput)
+}
+
+// Specifies the issuer of the JWT used for global token revocation for the SAML connection.
+func (o GetConnectionOptionOutput) GlobalTokenRevocationJwtIss() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.GlobalTokenRevocationJwtIss }).(pulumi.StringOutput)
+}
+
+// Specifies the subject of the JWT used for global token revocation for the SAML connection.
+func (o GetConnectionOptionOutput) GlobalTokenRevocationJwtSub() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.GlobalTokenRevocationJwtSub }).(pulumi.StringOutput)
+}
+
+// Icon URL.
+func (o GetConnectionOptionOutput) IconUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.IconUrl }).(pulumi.StringOutput)
+}
+
+// Indicates whether the identity provider supports session expiry via the id_token. When true, Auth0 will use the sessionExpiry claim from the upstream IdP's ID token to determine the maximum session lifetime. Only applicable for Okta and OIDC connections.
+func (o GetConnectionOptionOutput) IdTokenSessionExpirySupported() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.IdTokenSessionExpirySupported }).(pulumi.BoolOutput)
+}
+
+// List of allowed algorithms for the ID token signature. If not set or empty, default algorithm(s) will be applied at runtime. (Okta/OIDC Connections)
+func (o GetConnectionOptionOutput) IdTokenSignedResponseAlgs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []string { return v.IdTokenSignedResponseAlgs }).(pulumi.StringArrayOutput)
+}
+
+// Azure AD Identity API. Available options are: `microsoft-identity-platform-v2.0` or `azure-active-directory-v1.0`.
+func (o GetConnectionOptionOutput) IdentityApi() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.IdentityApi }).(pulumi.StringOutput)
+}
+
+// Configuration options for IDP Initiated Authentication. This is an object with the properties: `clientId`, `clientProtocol`, and `clientAuthorizeQuery`.
+func (o GetConnectionOptionOutput) IdpInitiateds() GetConnectionOptionIdpInitiatedArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionIdpInitiated { return v.IdpInitiateds }).(GetConnectionOptionIdpInitiatedArrayOutput)
+}
+
+// Indicates whether you have a legacy user store and want to gradually migrate those users to the Auth0 user store.
+func (o GetConnectionOptionOutput) ImportMode() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.ImportMode }).(pulumi.BoolOutput)
+}
+
+// A list of IPs.
+func (o GetConnectionOptionOutput) Ips() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []string { return v.Ips }).(pulumi.StringArrayOutput)
+}
+
+// Issuer URL, e.g. `https://auth.example.com`.
+func (o GetConnectionOptionOutput) Issuer() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.Issuer }).(pulumi.StringOutput)
+}
+
+// JWKS URI.
+func (o GetConnectionOptionOutput) JwksUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.JwksUri }).(pulumi.StringOutput)
+}
+
+// Apple Key ID.
+func (o GetConnectionOptionOutput) KeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.KeyId }).(pulumi.StringOutput)
+}
+
+// By default Auth0 maps `userId` to `email`. Enabling this setting changes the behavior to map `userId` to 'id' instead. This can only be defined on a new Google Workspace connection and can not be changed once set.
+func (o GetConnectionOptionOutput) MapUserIdToId() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.MapUserIdToId }).(pulumi.BoolOutput)
+}
+
+// Maximum number of groups to retrieve.
+func (o GetConnectionOptionOutput) MaxGroupsToRetrieve() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.MaxGroupsToRetrieve }).(pulumi.StringOutput)
+}
+
+// SID for Copilot. Used when SMS Source is Copilot.
+func (o GetConnectionOptionOutput) MessagingServiceSid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.MessagingServiceSid }).(pulumi.StringOutput)
+}
+
+// The URL of the SAML metadata document.
+func (o GetConnectionOptionOutput) MetadataUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.MetadataUrl }).(pulumi.StringOutput)
+}
+
+// The XML content for the SAML metadata document. Values within the xml will take precedence over other attributes set on the options block.
+func (o GetConnectionOptionOutput) MetadataXml() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.MetadataXml }).(pulumi.StringOutput)
+}
+
+// Configuration options for multifactor authentication.
+func (o GetConnectionOptionOutput) Mfas() GetConnectionOptionMfaArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionMfa { return v.Mfas }).(GetConnectionOptionMfaArrayOutput)
+}
+
+// The public name of the email or SMS Connection. In most cases this is the same name as the connection name.
+func (o GetConnectionOptionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// If there are user fields that should not be stored in Auth0 databases due to privacy reasons, you can add them to the DenyList here.
+func (o GetConnectionOptionOutput) NonPersistentAttrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []string { return v.NonPersistentAttrs }).(pulumi.StringArrayOutput)
+}
+
+// Additional OIDC metadata to include in the discovery document. Only applicable when strategy=oidc, okta, or samlp. On oidc and okta, Auth0 defaults any omitted `claimsParameterSupported`, `requestParameterSupported`, `requestUriParameterSupported`, `requireRequestUriRegistration` field to false. Those defaults are not tracked in provider until set to true explisitly. (EA only)
+func (o GetConnectionOptionOutput) OidcMetadata() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.OidcMetadata }).(pulumi.StringOutput)
+}
+
+// One-time password settings for database (`auth0` strategy) connections, configurable per delivery channel. (EA only)
+func (o GetConnectionOptionOutput) OtpSettings() GetConnectionOptionOtpSettingArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionOtpSetting { return v.OtpSettings }).(GetConnectionOptionOtpSettingArrayOutput)
+}
+
+// Defines options for the passkey authentication method
+func (o GetConnectionOptionOutput) PasskeyOptions() GetConnectionOptionPasskeyOptionArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionPasskeyOption { return v.PasskeyOptions }).(GetConnectionOptionPasskeyOptionArrayOutput)
+}
+
+// Configuration settings for password complexity.
+func (o GetConnectionOptionOutput) PasswordComplexityOptions() GetConnectionOptionPasswordComplexityOptionArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionPasswordComplexityOption {
+		return v.PasswordComplexityOptions
+	}).(GetConnectionOptionPasswordComplexityOptionArrayOutput)
+}
+
+// Configuration settings for the password dictionary check, which does not allow passwords that are part of the password dictionary.
+func (o GetConnectionOptionOutput) PasswordDictionaries() GetConnectionOptionPasswordDictionaryArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionPasswordDictionary { return v.PasswordDictionaries }).(GetConnectionOptionPasswordDictionaryArrayOutput)
+}
+
+// Configuration settings for the password history that is maintained for each user to prevent the reuse of passwords.
+func (o GetConnectionOptionOutput) PasswordHistories() GetConnectionOptionPasswordHistoryArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionPasswordHistory { return v.PasswordHistories }).(GetConnectionOptionPasswordHistoryArrayOutput)
+}
+
+// Configuration settings for the password personal info check, which does not allow passwords that contain any part of the user's personal data, including user's `name`, `username`, `nickname`, `user_metadata.name`, `user_metadata.first`, `user_metadata.last`, user's `email`, or first part of the user's `email`.
+func (o GetConnectionOptionOutput) PasswordNoPersonalInfos() GetConnectionOptionPasswordNoPersonalInfoArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionPasswordNoPersonalInfo {
+		return v.PasswordNoPersonalInfos
+	}).(GetConnectionOptionPasswordNoPersonalInfoArrayOutput)
+}
+
+// Flexible password policy configuration. Only available for `auth0` strategy connections. Cannot be set together with legacy password policy fields (`passwordPolicy`, `passwordComplexityOptions`, `passwordHistory`, `passwordNoPersonalInfo`, `passwordDictionary`).
+func (o GetConnectionOptionOutput) PasswordOptions() GetConnectionOptionPasswordOptionArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionPasswordOption { return v.PasswordOptions }).(GetConnectionOptionPasswordOptionArrayOutput)
+}
+
+// Indicates level of password strength to enforce during authentication. A strong password policy will make it difficult, if not improbable, for someone to guess a password through either manual or automated means. Options include `none`, `low`, `fair`, `good`, `excellent`.
+func (o GetConnectionOptionOutput) PasswordPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.PasswordPolicy }).(pulumi.StringOutput)
+}
+
+// Ping Federate Server URL.
+func (o GetConnectionOptionOutput) PingFederateBaseUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.PingFederateBaseUrl }).(pulumi.StringOutput)
+}
+
+// Enables Proof Key for Code Exchange (PKCE) functionality for OAuth2 connections.
+func (o GetConnectionOptionOutput) PkceEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.PkceEnabled }).(pulumi.BoolOutput)
+}
+
+// Order of attributes for precedence in identification.Valid values: email, phone_number, username. If Precedence is set, it must contain all values (email, phone_number, username) in specific order
+func (o GetConnectionOptionOutput) Precedences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []string { return v.Precedences }).(pulumi.StringArrayOutput)
+}
+
+// The SAML Response Binding: how the SAML token is received by Auth0 from the IdP.
+func (o GetConnectionOptionOutput) ProtocolBinding() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.ProtocolBinding }).(pulumi.StringOutput)
+}
+
+// Defines the custom `smsGateway` provider.
+func (o GetConnectionOptionOutput) Provider() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.Provider }).(pulumi.StringOutput)
+}
+
+// Allows configuration if connectionsRealmFallback flag is enabled for the tenant
+func (o GetConnectionOptionOutput) RealmFallback() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.RealmFallback }).(pulumi.BoolOutput)
+}
+
+// The recipient URL for the SAML assertion. Used when configuring a SAML connection for proxy gateways.
+func (o GetConnectionOptionOutput) RecipientUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.RecipientUrl }).(pulumi.StringOutput)
+}
+
+// Template that formats the SAML request.
+func (o GetConnectionOptionOutput) RequestTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.RequestTemplate }).(pulumi.StringOutput)
+}
+
+// URL used to obtain an unauthorized request token.
+func (o GetConnectionOptionOutput) RequestTokenUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.RequestTokenUrl }).(pulumi.StringOutput)
+}
+
+// Indicates whether the user is required to provide a username in addition to an email address.
+func (o GetConnectionOptionOutput) RequiresUsername() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.RequiresUsername }).(pulumi.BoolOutput)
+}
+
+// Permissions to grant to the connection. Within the Auth0 dashboard these appear under the "Attributes" and "Extended Attributes" sections. Some examples: `basicProfile`, `extProfile`, `extNestedGroups`, etc.
+func (o GetConnectionOptionOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// A map of scripts used for an OAuth connection. Only accepts a `fetchUserProfile` script.
+func (o GetConnectionOptionOutput) Scripts() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetConnectionOption) map[string]string { return v.Scripts }).(pulumi.StringMapOutput)
+}
+
+// When true and `type` is 'back_channel', includes a cryptographic nonce in authorization requests to prevent replay attacks. The identity provider must include this nonce in the ID token for validation.
+func (o GetConnectionOptionOutput) SendBackChannelNonce() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.SendBackChannelNonce }).(pulumi.BoolOutput)
+}
+
+// Session Key for storing the request token.
+func (o GetConnectionOptionOutput) SessionKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.SessionKey }).(pulumi.StringOutput)
+}
+
+// Determines whether to sync user profile attributes (`name`, `givenName`, `familyName`, `nickname`, `picture`) at each login or only on the first login. Options include: `onEachLogin`, `onFirstLogin`, `neverOnLogin`. Default value: `onEachLogin`.
+func (o GetConnectionOptionOutput) SetUserRootAttributes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.SetUserRootAttributes }).(pulumi.StringOutput)
+}
+
+// Choose how Auth0 sets the emailVerified field in the user profile.
+func (o GetConnectionOptionOutput) ShouldTrustEmailVerifiedConnection() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.ShouldTrustEmailVerifiedConnection }).(pulumi.StringOutput)
+}
+
+// SAML single login URL for the connection.
+func (o GetConnectionOptionOutput) SignInEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.SignInEndpoint }).(pulumi.StringOutput)
+}
+
+// SAML single logout URL for the connection.
+func (o GetConnectionOptionOutput) SignOutEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.SignOutEndpoint }).(pulumi.StringOutput)
+}
+
+// When enabled, the SAML authentication request will be signed.
+func (o GetConnectionOptionOutput) SignSamlRequest() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.SignSamlRequest }).(pulumi.BoolOutput)
+}
+
+// Sign Request Algorithm.
+func (o GetConnectionOptionOutput) SignatureAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.SignatureAlgorithm }).(pulumi.StringOutput)
+}
+
+// Signature method used to sign the request
+func (o GetConnectionOptionOutput) SignatureMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.SignatureMethod }).(pulumi.StringOutput)
+}
+
+// X.509 signing certificate (encoded in PEM or CER) you retrieved from the IdP, Base64-encoded.
+func (o GetConnectionOptionOutput) SigningCert() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.SigningCert }).(pulumi.StringOutput)
+}
+
+// The key used to sign requests in the connection. Uses the `key` and `cert` properties to provide the private key and certificate respectively.
+func (o GetConnectionOptionOutput) SigningKeys() GetConnectionOptionSigningKeyArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionSigningKey { return v.SigningKeys }).(GetConnectionOptionSigningKeyArrayOutput)
+}
+
+// Version 1 is deprecated, use version 2.
+func (o GetConnectionOptionOutput) StrategyVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GetConnectionOption) int { return v.StrategyVersion }).(pulumi.IntOutput)
+}
+
+// Subject line of the email.
+func (o GetConnectionOptionOutput) Subject() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.Subject }).(pulumi.StringOutput)
+}
+
+// Syntax of the template body.
+func (o GetConnectionOptionOutput) Syntax() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.Syntax }).(pulumi.StringOutput)
+}
+
+// Apple Team ID.
+func (o GetConnectionOptionOutput) TeamId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.TeamId }).(pulumi.StringOutput)
+}
+
+// Body of the template.
+func (o GetConnectionOptionOutput) Template() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.Template }).(pulumi.StringOutput)
+}
+
+// Tenant domain name.
+func (o GetConnectionOptionOutput) TenantDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.TenantDomain }).(pulumi.StringOutput)
+}
+
+// Token endpoint.
+func (o GetConnectionOptionOutput) TokenEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.TokenEndpoint }).(pulumi.StringOutput)
+}
+
+// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+func (o GetConnectionOptionOutput) TokenEndpointAuthMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.TokenEndpointAuthMethod }).(pulumi.StringOutput)
+}
+
+// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+func (o GetConnectionOptionOutput) TokenEndpointAuthSigningAlg() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.TokenEndpointAuthSigningAlg }).(pulumi.StringOutput)
+}
+
+// Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)
+func (o GetConnectionOptionOutput) TokenEndpointJwtcaAudFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.TokenEndpointJwtcaAudFormat }).(pulumi.StringOutput)
+}
+
+// Configuration options for one-time passwords.
+func (o GetConnectionOptionOutput) Totps() GetConnectionOptionTotpArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionTotp { return v.Totps }).(GetConnectionOptionTotpArrayOutput)
+}
+
+// SID for your Twilio account.
+func (o GetConnectionOptionOutput) TwilioSid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.TwilioSid }).(pulumi.StringOutput)
+}
+
+// AuthToken for your Twilio account.
+func (o GetConnectionOptionOutput) TwilioToken() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.TwilioToken }).(pulumi.StringOutput)
+}
+
+// The connection's communication channel type. For OIDC connections, accepted values are `backChannel` and `frontChannel`; for Okta Workforce connections, only `backChannel` is accepted. Front Channel uses the OIDC protocol with `response_mode=form_post` and `response_type=id_token`. Back Channel uses `response_type=code`.
+func (o GetConnectionOptionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// You can pass provider-specific parameters to an identity provider during authentication. The values can either be static per connection or dynamic per user.
+func (o GetConnectionOptionOutput) UpstreamParams() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.UpstreamParams }).(pulumi.StringOutput)
+}
+
+// Indicates whether to use cert auth or not.
+func (o GetConnectionOptionOutput) UseCertAuth() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.UseCertAuth }).(pulumi.BoolOutput)
+}
+
+// Indicates whether to use Kerberos or not.
+func (o GetConnectionOptionOutput) UseKerberos() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.UseKerberos }).(pulumi.BoolOutput)
+}
+
+// Enabling this when using the connectionScope parameter, uses space as a delimiter for scopes when calling the IdP's API.
+func (o GetConnectionOptionOutput) UseOauthSpecScope() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.UseOauthSpecScope }).(pulumi.BoolOutput)
+}
+
+// Whether to use WS-Fed.
+func (o GetConnectionOptionOutput) UseWsfed() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.UseWsfed }).(pulumi.BoolOutput)
+}
+
+// URL used to obtain user authorization.
+func (o GetConnectionOptionOutput) UserAuthorizationUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.UserAuthorizationUrl }).(pulumi.StringOutput)
+}
+
+// Attribute in the token that will be mapped to the userId property in Auth0.
+func (o GetConnectionOptionOutput) UserIdAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.UserIdAttribute }).(pulumi.StringOutput)
+}
+
+// User info endpoint.
+func (o GetConnectionOptionOutput) UserinfoEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.UserinfoEndpoint }).(pulumi.StringOutput)
+}
+
+// Validation of the minimum and maximum values allowed for a user to have as username.
+func (o GetConnectionOptionOutput) Validations() GetConnectionOptionValidationArrayOutput {
+	return o.ApplyT(func(v GetConnectionOption) []GetConnectionOptionValidation { return v.Validations }).(GetConnectionOptionValidationArrayOutput)
+}
+
+// Indicates whether to use the common endpoint rather than the default endpoint. Typically enabled if you're using this for a multi-tenant application in Azure AD.
+func (o GetConnectionOptionOutput) WaadCommonEndpoint() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOption) bool { return v.WaadCommonEndpoint }).(pulumi.BoolOutput)
+}
+
+// Protocol to use.
+func (o GetConnectionOptionOutput) WaadProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOption) string { return v.WaadProtocol }).(pulumi.StringOutput)
+}
+
+type GetConnectionOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOption)(nil)).Elem()
+}
+
+func (o GetConnectionOptionArrayOutput) ToGetConnectionOptionArrayOutput() GetConnectionOptionArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionArrayOutput) ToGetConnectionOptionArrayOutputWithContext(ctx context.Context) GetConnectionOptionArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOption {
+		return vs[0].([]GetConnectionOption)[vs[1].(int)]
+	}).(GetConnectionOptionOutput)
+}
+
+type GetConnectionOptionAssertionDecryptionSetting struct {
+	// A list of insecure algorithms to allow for SAML assertion decryption.
+	AlgorithmExceptions []string `pulumi:"algorithmExceptions"`
+	// The algorithm profile to use for decrypting SAML assertions. Options include: `v2026-1`.
+	AlgorithmProfile string `pulumi:"algorithmProfile"`
+}
+
+// GetConnectionOptionAssertionDecryptionSettingInput is an input type that accepts GetConnectionOptionAssertionDecryptionSettingArgs and GetConnectionOptionAssertionDecryptionSettingOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAssertionDecryptionSettingInput` via:
+//
+//	GetConnectionOptionAssertionDecryptionSettingArgs{...}
+type GetConnectionOptionAssertionDecryptionSettingInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAssertionDecryptionSettingOutput() GetConnectionOptionAssertionDecryptionSettingOutput
+	ToGetConnectionOptionAssertionDecryptionSettingOutputWithContext(context.Context) GetConnectionOptionAssertionDecryptionSettingOutput
+}
+
+type GetConnectionOptionAssertionDecryptionSettingArgs struct {
+	// A list of insecure algorithms to allow for SAML assertion decryption.
+	AlgorithmExceptions pulumi.StringArrayInput `pulumi:"algorithmExceptions"`
+	// The algorithm profile to use for decrypting SAML assertions. Options include: `v2026-1`.
+	AlgorithmProfile pulumi.StringInput `pulumi:"algorithmProfile"`
+}
+
+func (GetConnectionOptionAssertionDecryptionSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAssertionDecryptionSetting)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAssertionDecryptionSettingArgs) ToGetConnectionOptionAssertionDecryptionSettingOutput() GetConnectionOptionAssertionDecryptionSettingOutput {
+	return i.ToGetConnectionOptionAssertionDecryptionSettingOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAssertionDecryptionSettingArgs) ToGetConnectionOptionAssertionDecryptionSettingOutputWithContext(ctx context.Context) GetConnectionOptionAssertionDecryptionSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAssertionDecryptionSettingOutput)
+}
+
+// GetConnectionOptionAssertionDecryptionSettingArrayInput is an input type that accepts GetConnectionOptionAssertionDecryptionSettingArray and GetConnectionOptionAssertionDecryptionSettingArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAssertionDecryptionSettingArrayInput` via:
+//
+//	GetConnectionOptionAssertionDecryptionSettingArray{ GetConnectionOptionAssertionDecryptionSettingArgs{...} }
+type GetConnectionOptionAssertionDecryptionSettingArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAssertionDecryptionSettingArrayOutput() GetConnectionOptionAssertionDecryptionSettingArrayOutput
+	ToGetConnectionOptionAssertionDecryptionSettingArrayOutputWithContext(context.Context) GetConnectionOptionAssertionDecryptionSettingArrayOutput
+}
+
+type GetConnectionOptionAssertionDecryptionSettingArray []GetConnectionOptionAssertionDecryptionSettingInput
+
+func (GetConnectionOptionAssertionDecryptionSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAssertionDecryptionSetting)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAssertionDecryptionSettingArray) ToGetConnectionOptionAssertionDecryptionSettingArrayOutput() GetConnectionOptionAssertionDecryptionSettingArrayOutput {
+	return i.ToGetConnectionOptionAssertionDecryptionSettingArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAssertionDecryptionSettingArray) ToGetConnectionOptionAssertionDecryptionSettingArrayOutputWithContext(ctx context.Context) GetConnectionOptionAssertionDecryptionSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAssertionDecryptionSettingArrayOutput)
+}
+
+type GetConnectionOptionAssertionDecryptionSettingOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAssertionDecryptionSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAssertionDecryptionSetting)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAssertionDecryptionSettingOutput) ToGetConnectionOptionAssertionDecryptionSettingOutput() GetConnectionOptionAssertionDecryptionSettingOutput {
+	return o
+}
+
+func (o GetConnectionOptionAssertionDecryptionSettingOutput) ToGetConnectionOptionAssertionDecryptionSettingOutputWithContext(ctx context.Context) GetConnectionOptionAssertionDecryptionSettingOutput {
+	return o
+}
+
+// A list of insecure algorithms to allow for SAML assertion decryption.
+func (o GetConnectionOptionAssertionDecryptionSettingOutput) AlgorithmExceptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAssertionDecryptionSetting) []string { return v.AlgorithmExceptions }).(pulumi.StringArrayOutput)
+}
+
+// The algorithm profile to use for decrypting SAML assertions. Options include: `v2026-1`.
+func (o GetConnectionOptionAssertionDecryptionSettingOutput) AlgorithmProfile() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionAssertionDecryptionSetting) string { return v.AlgorithmProfile }).(pulumi.StringOutput)
+}
+
+type GetConnectionOptionAssertionDecryptionSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAssertionDecryptionSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAssertionDecryptionSetting)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAssertionDecryptionSettingArrayOutput) ToGetConnectionOptionAssertionDecryptionSettingArrayOutput() GetConnectionOptionAssertionDecryptionSettingArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAssertionDecryptionSettingArrayOutput) ToGetConnectionOptionAssertionDecryptionSettingArrayOutputWithContext(ctx context.Context) GetConnectionOptionAssertionDecryptionSettingArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAssertionDecryptionSettingArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAssertionDecryptionSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAssertionDecryptionSetting {
+		return vs[0].([]GetConnectionOptionAssertionDecryptionSetting)[vs[1].(int)]
+	}).(GetConnectionOptionAssertionDecryptionSettingOutput)
+}
+
+type GetConnectionOptionAttribute struct {
+	// Connection Options for Email Attribute
+	Emails []GetConnectionOptionAttributeEmail `pulumi:"emails"`
+	// Connection Options for Phone Number Attribute
+	PhoneNumbers []GetConnectionOptionAttributePhoneNumber `pulumi:"phoneNumbers"`
+	// Connection Options for User Name Attribute
+	Usernames []GetConnectionOptionAttributeUsername `pulumi:"usernames"`
+}
+
+// GetConnectionOptionAttributeInput is an input type that accepts GetConnectionOptionAttributeArgs and GetConnectionOptionAttributeOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeInput` via:
+//
+//	GetConnectionOptionAttributeArgs{...}
+type GetConnectionOptionAttributeInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeOutput() GetConnectionOptionAttributeOutput
+	ToGetConnectionOptionAttributeOutputWithContext(context.Context) GetConnectionOptionAttributeOutput
+}
+
+type GetConnectionOptionAttributeArgs struct {
+	// Connection Options for Email Attribute
+	Emails GetConnectionOptionAttributeEmailArrayInput `pulumi:"emails"`
+	// Connection Options for Phone Number Attribute
+	PhoneNumbers GetConnectionOptionAttributePhoneNumberArrayInput `pulumi:"phoneNumbers"`
+	// Connection Options for User Name Attribute
+	Usernames GetConnectionOptionAttributeUsernameArrayInput `pulumi:"usernames"`
+}
+
+func (GetConnectionOptionAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttribute)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeArgs) ToGetConnectionOptionAttributeOutput() GetConnectionOptionAttributeOutput {
+	return i.ToGetConnectionOptionAttributeOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeArgs) ToGetConnectionOptionAttributeOutputWithContext(ctx context.Context) GetConnectionOptionAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeOutput)
+}
+
+// GetConnectionOptionAttributeArrayInput is an input type that accepts GetConnectionOptionAttributeArray and GetConnectionOptionAttributeArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeArrayInput` via:
+//
+//	GetConnectionOptionAttributeArray{ GetConnectionOptionAttributeArgs{...} }
+type GetConnectionOptionAttributeArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeArrayOutput() GetConnectionOptionAttributeArrayOutput
+	ToGetConnectionOptionAttributeArrayOutputWithContext(context.Context) GetConnectionOptionAttributeArrayOutput
+}
+
+type GetConnectionOptionAttributeArray []GetConnectionOptionAttributeInput
+
+func (GetConnectionOptionAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttribute)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeArray) ToGetConnectionOptionAttributeArrayOutput() GetConnectionOptionAttributeArrayOutput {
+	return i.ToGetConnectionOptionAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeArray) ToGetConnectionOptionAttributeArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeArrayOutput)
+}
+
+type GetConnectionOptionAttributeOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttribute)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeOutput) ToGetConnectionOptionAttributeOutput() GetConnectionOptionAttributeOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeOutput) ToGetConnectionOptionAttributeOutputWithContext(ctx context.Context) GetConnectionOptionAttributeOutput {
+	return o
+}
+
+// Connection Options for Email Attribute
+func (o GetConnectionOptionAttributeOutput) Emails() GetConnectionOptionAttributeEmailArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttribute) []GetConnectionOptionAttributeEmail { return v.Emails }).(GetConnectionOptionAttributeEmailArrayOutput)
+}
+
+// Connection Options for Phone Number Attribute
+func (o GetConnectionOptionAttributeOutput) PhoneNumbers() GetConnectionOptionAttributePhoneNumberArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttribute) []GetConnectionOptionAttributePhoneNumber { return v.PhoneNumbers }).(GetConnectionOptionAttributePhoneNumberArrayOutput)
+}
+
+// Connection Options for User Name Attribute
+func (o GetConnectionOptionAttributeOutput) Usernames() GetConnectionOptionAttributeUsernameArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttribute) []GetConnectionOptionAttributeUsername { return v.Usernames }).(GetConnectionOptionAttributeUsernameArrayOutput)
+}
+
+type GetConnectionOptionAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttribute)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeArrayOutput) ToGetConnectionOptionAttributeArrayOutput() GetConnectionOptionAttributeArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeArrayOutput) ToGetConnectionOptionAttributeArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAttribute {
+		return vs[0].([]GetConnectionOptionAttribute)[vs[1].(int)]
+	}).(GetConnectionOptionAttributeOutput)
+}
+
+type GetConnectionOptionAttributeEmail struct {
+	// Connection Options Email Attribute Identifier
+	Identifiers []GetConnectionOptionAttributeEmailIdentifier `pulumi:"identifiers"`
+	// Defines whether Profile is required
+	ProfileRequired bool `pulumi:"profileRequired"`
+	// Defines signup settings for Email attribute
+	Signups []GetConnectionOptionAttributeEmailSignup `pulumi:"signups"`
+	// If set to false, it allow multiple accounts with the same email address. Defaults to `true`. This can only be set when the connection is created: the Auth0 Management API does not allow updating it, so changing it on an existing connection fails at plan time and requires recreating the connection. The API also refuses to add a non-unique email attribute to a connection that does not already have one.
+	Unique bool `pulumi:"unique"`
+	// Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
+	VerificationMethod string `pulumi:"verificationMethod"`
+}
+
+// GetConnectionOptionAttributeEmailInput is an input type that accepts GetConnectionOptionAttributeEmailArgs and GetConnectionOptionAttributeEmailOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeEmailInput` via:
+//
+//	GetConnectionOptionAttributeEmailArgs{...}
+type GetConnectionOptionAttributeEmailInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeEmailOutput() GetConnectionOptionAttributeEmailOutput
+	ToGetConnectionOptionAttributeEmailOutputWithContext(context.Context) GetConnectionOptionAttributeEmailOutput
+}
+
+type GetConnectionOptionAttributeEmailArgs struct {
+	// Connection Options Email Attribute Identifier
+	Identifiers GetConnectionOptionAttributeEmailIdentifierArrayInput `pulumi:"identifiers"`
+	// Defines whether Profile is required
+	ProfileRequired pulumi.BoolInput `pulumi:"profileRequired"`
+	// Defines signup settings for Email attribute
+	Signups GetConnectionOptionAttributeEmailSignupArrayInput `pulumi:"signups"`
+	// If set to false, it allow multiple accounts with the same email address. Defaults to `true`. This can only be set when the connection is created: the Auth0 Management API does not allow updating it, so changing it on an existing connection fails at plan time and requires recreating the connection. The API also refuses to add a non-unique email attribute to a connection that does not already have one.
+	Unique pulumi.BoolInput `pulumi:"unique"`
+	// Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
+	VerificationMethod pulumi.StringInput `pulumi:"verificationMethod"`
+}
+
+func (GetConnectionOptionAttributeEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeEmail)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeEmailArgs) ToGetConnectionOptionAttributeEmailOutput() GetConnectionOptionAttributeEmailOutput {
+	return i.ToGetConnectionOptionAttributeEmailOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeEmailArgs) ToGetConnectionOptionAttributeEmailOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeEmailOutput)
+}
+
+// GetConnectionOptionAttributeEmailArrayInput is an input type that accepts GetConnectionOptionAttributeEmailArray and GetConnectionOptionAttributeEmailArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeEmailArrayInput` via:
+//
+//	GetConnectionOptionAttributeEmailArray{ GetConnectionOptionAttributeEmailArgs{...} }
+type GetConnectionOptionAttributeEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeEmailArrayOutput() GetConnectionOptionAttributeEmailArrayOutput
+	ToGetConnectionOptionAttributeEmailArrayOutputWithContext(context.Context) GetConnectionOptionAttributeEmailArrayOutput
+}
+
+type GetConnectionOptionAttributeEmailArray []GetConnectionOptionAttributeEmailInput
+
+func (GetConnectionOptionAttributeEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeEmail)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeEmailArray) ToGetConnectionOptionAttributeEmailArrayOutput() GetConnectionOptionAttributeEmailArrayOutput {
+	return i.ToGetConnectionOptionAttributeEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeEmailArray) ToGetConnectionOptionAttributeEmailArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeEmailArrayOutput)
+}
+
+type GetConnectionOptionAttributeEmailOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeEmail)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeEmailOutput) ToGetConnectionOptionAttributeEmailOutput() GetConnectionOptionAttributeEmailOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeEmailOutput) ToGetConnectionOptionAttributeEmailOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailOutput {
+	return o
+}
+
+// Connection Options Email Attribute Identifier
+func (o GetConnectionOptionAttributeEmailOutput) Identifiers() GetConnectionOptionAttributeEmailIdentifierArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeEmail) []GetConnectionOptionAttributeEmailIdentifier {
+		return v.Identifiers
+	}).(GetConnectionOptionAttributeEmailIdentifierArrayOutput)
+}
+
+// Defines whether Profile is required
+func (o GetConnectionOptionAttributeEmailOutput) ProfileRequired() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeEmail) bool { return v.ProfileRequired }).(pulumi.BoolOutput)
+}
+
+// Defines signup settings for Email attribute
+func (o GetConnectionOptionAttributeEmailOutput) Signups() GetConnectionOptionAttributeEmailSignupArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeEmail) []GetConnectionOptionAttributeEmailSignup { return v.Signups }).(GetConnectionOptionAttributeEmailSignupArrayOutput)
+}
+
+// If set to false, it allow multiple accounts with the same email address. Defaults to `true`. This can only be set when the connection is created: the Auth0 Management API does not allow updating it, so changing it on an existing connection fails at plan time and requires recreating the connection. The API also refuses to add a non-unique email attribute to a connection that does not already have one.
+func (o GetConnectionOptionAttributeEmailOutput) Unique() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeEmail) bool { return v.Unique }).(pulumi.BoolOutput)
+}
+
+// Defines whether whether user will receive a link or an OTP during user signup for email verification and password reset for email verification
+func (o GetConnectionOptionAttributeEmailOutput) VerificationMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeEmail) string { return v.VerificationMethod }).(pulumi.StringOutput)
+}
+
+type GetConnectionOptionAttributeEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeEmail)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeEmailArrayOutput) ToGetConnectionOptionAttributeEmailArrayOutput() GetConnectionOptionAttributeEmailArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeEmailArrayOutput) ToGetConnectionOptionAttributeEmailArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeEmailArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAttributeEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAttributeEmail {
+		return vs[0].([]GetConnectionOptionAttributeEmail)[vs[1].(int)]
+	}).(GetConnectionOptionAttributeEmailOutput)
+}
+
+type GetConnectionOptionAttributeEmailIdentifier struct {
+	// Defines whether email attribute is active as an identifier
+	Active bool `pulumi:"active"`
+	// Gets and Sets the default authentication method for the email identifier type. Valid values: `password`, `emailOtp`
+	DefaultMethod string `pulumi:"defaultMethod"`
+}
+
+// GetConnectionOptionAttributeEmailIdentifierInput is an input type that accepts GetConnectionOptionAttributeEmailIdentifierArgs and GetConnectionOptionAttributeEmailIdentifierOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeEmailIdentifierInput` via:
+//
+//	GetConnectionOptionAttributeEmailIdentifierArgs{...}
+type GetConnectionOptionAttributeEmailIdentifierInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeEmailIdentifierOutput() GetConnectionOptionAttributeEmailIdentifierOutput
+	ToGetConnectionOptionAttributeEmailIdentifierOutputWithContext(context.Context) GetConnectionOptionAttributeEmailIdentifierOutput
+}
+
+type GetConnectionOptionAttributeEmailIdentifierArgs struct {
+	// Defines whether email attribute is active as an identifier
+	Active pulumi.BoolInput `pulumi:"active"`
+	// Gets and Sets the default authentication method for the email identifier type. Valid values: `password`, `emailOtp`
+	DefaultMethod pulumi.StringInput `pulumi:"defaultMethod"`
+}
+
+func (GetConnectionOptionAttributeEmailIdentifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeEmailIdentifier)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeEmailIdentifierArgs) ToGetConnectionOptionAttributeEmailIdentifierOutput() GetConnectionOptionAttributeEmailIdentifierOutput {
+	return i.ToGetConnectionOptionAttributeEmailIdentifierOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeEmailIdentifierArgs) ToGetConnectionOptionAttributeEmailIdentifierOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailIdentifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeEmailIdentifierOutput)
+}
+
+// GetConnectionOptionAttributeEmailIdentifierArrayInput is an input type that accepts GetConnectionOptionAttributeEmailIdentifierArray and GetConnectionOptionAttributeEmailIdentifierArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeEmailIdentifierArrayInput` via:
+//
+//	GetConnectionOptionAttributeEmailIdentifierArray{ GetConnectionOptionAttributeEmailIdentifierArgs{...} }
+type GetConnectionOptionAttributeEmailIdentifierArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeEmailIdentifierArrayOutput() GetConnectionOptionAttributeEmailIdentifierArrayOutput
+	ToGetConnectionOptionAttributeEmailIdentifierArrayOutputWithContext(context.Context) GetConnectionOptionAttributeEmailIdentifierArrayOutput
+}
+
+type GetConnectionOptionAttributeEmailIdentifierArray []GetConnectionOptionAttributeEmailIdentifierInput
+
+func (GetConnectionOptionAttributeEmailIdentifierArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeEmailIdentifier)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeEmailIdentifierArray) ToGetConnectionOptionAttributeEmailIdentifierArrayOutput() GetConnectionOptionAttributeEmailIdentifierArrayOutput {
+	return i.ToGetConnectionOptionAttributeEmailIdentifierArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeEmailIdentifierArray) ToGetConnectionOptionAttributeEmailIdentifierArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailIdentifierArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeEmailIdentifierArrayOutput)
+}
+
+type GetConnectionOptionAttributeEmailIdentifierOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeEmailIdentifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeEmailIdentifier)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeEmailIdentifierOutput) ToGetConnectionOptionAttributeEmailIdentifierOutput() GetConnectionOptionAttributeEmailIdentifierOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeEmailIdentifierOutput) ToGetConnectionOptionAttributeEmailIdentifierOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailIdentifierOutput {
+	return o
+}
+
+// Defines whether email attribute is active as an identifier
+func (o GetConnectionOptionAttributeEmailIdentifierOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeEmailIdentifier) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+// Gets and Sets the default authentication method for the email identifier type. Valid values: `password`, `emailOtp`
+func (o GetConnectionOptionAttributeEmailIdentifierOutput) DefaultMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeEmailIdentifier) string { return v.DefaultMethod }).(pulumi.StringOutput)
+}
+
+type GetConnectionOptionAttributeEmailIdentifierArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeEmailIdentifierArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeEmailIdentifier)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeEmailIdentifierArrayOutput) ToGetConnectionOptionAttributeEmailIdentifierArrayOutput() GetConnectionOptionAttributeEmailIdentifierArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeEmailIdentifierArrayOutput) ToGetConnectionOptionAttributeEmailIdentifierArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailIdentifierArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeEmailIdentifierArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAttributeEmailIdentifierOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAttributeEmailIdentifier {
+		return vs[0].([]GetConnectionOptionAttributeEmailIdentifier)[vs[1].(int)]
+	}).(GetConnectionOptionAttributeEmailIdentifierOutput)
+}
+
+type GetConnectionOptionAttributeEmailSignup struct {
+	// Defines signup status for Email Attribute
+	Status string `pulumi:"status"`
+	// Defines settings for Verification under Email attribute
+	Verifications []GetConnectionOptionAttributeEmailSignupVerification `pulumi:"verifications"`
+}
+
+// GetConnectionOptionAttributeEmailSignupInput is an input type that accepts GetConnectionOptionAttributeEmailSignupArgs and GetConnectionOptionAttributeEmailSignupOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeEmailSignupInput` via:
+//
+//	GetConnectionOptionAttributeEmailSignupArgs{...}
+type GetConnectionOptionAttributeEmailSignupInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeEmailSignupOutput() GetConnectionOptionAttributeEmailSignupOutput
+	ToGetConnectionOptionAttributeEmailSignupOutputWithContext(context.Context) GetConnectionOptionAttributeEmailSignupOutput
+}
+
+type GetConnectionOptionAttributeEmailSignupArgs struct {
+	// Defines signup status for Email Attribute
+	Status pulumi.StringInput `pulumi:"status"`
+	// Defines settings for Verification under Email attribute
+	Verifications GetConnectionOptionAttributeEmailSignupVerificationArrayInput `pulumi:"verifications"`
+}
+
+func (GetConnectionOptionAttributeEmailSignupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeEmailSignup)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeEmailSignupArgs) ToGetConnectionOptionAttributeEmailSignupOutput() GetConnectionOptionAttributeEmailSignupOutput {
+	return i.ToGetConnectionOptionAttributeEmailSignupOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeEmailSignupArgs) ToGetConnectionOptionAttributeEmailSignupOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailSignupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeEmailSignupOutput)
+}
+
+// GetConnectionOptionAttributeEmailSignupArrayInput is an input type that accepts GetConnectionOptionAttributeEmailSignupArray and GetConnectionOptionAttributeEmailSignupArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeEmailSignupArrayInput` via:
+//
+//	GetConnectionOptionAttributeEmailSignupArray{ GetConnectionOptionAttributeEmailSignupArgs{...} }
+type GetConnectionOptionAttributeEmailSignupArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeEmailSignupArrayOutput() GetConnectionOptionAttributeEmailSignupArrayOutput
+	ToGetConnectionOptionAttributeEmailSignupArrayOutputWithContext(context.Context) GetConnectionOptionAttributeEmailSignupArrayOutput
+}
+
+type GetConnectionOptionAttributeEmailSignupArray []GetConnectionOptionAttributeEmailSignupInput
+
+func (GetConnectionOptionAttributeEmailSignupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeEmailSignup)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeEmailSignupArray) ToGetConnectionOptionAttributeEmailSignupArrayOutput() GetConnectionOptionAttributeEmailSignupArrayOutput {
+	return i.ToGetConnectionOptionAttributeEmailSignupArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeEmailSignupArray) ToGetConnectionOptionAttributeEmailSignupArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailSignupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeEmailSignupArrayOutput)
+}
+
+type GetConnectionOptionAttributeEmailSignupOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeEmailSignupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeEmailSignup)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeEmailSignupOutput) ToGetConnectionOptionAttributeEmailSignupOutput() GetConnectionOptionAttributeEmailSignupOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeEmailSignupOutput) ToGetConnectionOptionAttributeEmailSignupOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailSignupOutput {
+	return o
+}
+
+// Defines signup status for Email Attribute
+func (o GetConnectionOptionAttributeEmailSignupOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeEmailSignup) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Defines settings for Verification under Email attribute
+func (o GetConnectionOptionAttributeEmailSignupOutput) Verifications() GetConnectionOptionAttributeEmailSignupVerificationArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeEmailSignup) []GetConnectionOptionAttributeEmailSignupVerification {
+		return v.Verifications
+	}).(GetConnectionOptionAttributeEmailSignupVerificationArrayOutput)
+}
+
+type GetConnectionOptionAttributeEmailSignupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeEmailSignupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeEmailSignup)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeEmailSignupArrayOutput) ToGetConnectionOptionAttributeEmailSignupArrayOutput() GetConnectionOptionAttributeEmailSignupArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeEmailSignupArrayOutput) ToGetConnectionOptionAttributeEmailSignupArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailSignupArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeEmailSignupArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAttributeEmailSignupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAttributeEmailSignup {
+		return vs[0].([]GetConnectionOptionAttributeEmailSignup)[vs[1].(int)]
+	}).(GetConnectionOptionAttributeEmailSignupOutput)
+}
+
+type GetConnectionOptionAttributeEmailSignupVerification struct {
+	// Defines verification settings for signup attribute
+	Active bool `pulumi:"active"`
+}
+
+// GetConnectionOptionAttributeEmailSignupVerificationInput is an input type that accepts GetConnectionOptionAttributeEmailSignupVerificationArgs and GetConnectionOptionAttributeEmailSignupVerificationOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeEmailSignupVerificationInput` via:
+//
+//	GetConnectionOptionAttributeEmailSignupVerificationArgs{...}
+type GetConnectionOptionAttributeEmailSignupVerificationInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeEmailSignupVerificationOutput() GetConnectionOptionAttributeEmailSignupVerificationOutput
+	ToGetConnectionOptionAttributeEmailSignupVerificationOutputWithContext(context.Context) GetConnectionOptionAttributeEmailSignupVerificationOutput
+}
+
+type GetConnectionOptionAttributeEmailSignupVerificationArgs struct {
+	// Defines verification settings for signup attribute
+	Active pulumi.BoolInput `pulumi:"active"`
+}
+
+func (GetConnectionOptionAttributeEmailSignupVerificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeEmailSignupVerification)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeEmailSignupVerificationArgs) ToGetConnectionOptionAttributeEmailSignupVerificationOutput() GetConnectionOptionAttributeEmailSignupVerificationOutput {
+	return i.ToGetConnectionOptionAttributeEmailSignupVerificationOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeEmailSignupVerificationArgs) ToGetConnectionOptionAttributeEmailSignupVerificationOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailSignupVerificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeEmailSignupVerificationOutput)
+}
+
+// GetConnectionOptionAttributeEmailSignupVerificationArrayInput is an input type that accepts GetConnectionOptionAttributeEmailSignupVerificationArray and GetConnectionOptionAttributeEmailSignupVerificationArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeEmailSignupVerificationArrayInput` via:
+//
+//	GetConnectionOptionAttributeEmailSignupVerificationArray{ GetConnectionOptionAttributeEmailSignupVerificationArgs{...} }
+type GetConnectionOptionAttributeEmailSignupVerificationArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeEmailSignupVerificationArrayOutput() GetConnectionOptionAttributeEmailSignupVerificationArrayOutput
+	ToGetConnectionOptionAttributeEmailSignupVerificationArrayOutputWithContext(context.Context) GetConnectionOptionAttributeEmailSignupVerificationArrayOutput
+}
+
+type GetConnectionOptionAttributeEmailSignupVerificationArray []GetConnectionOptionAttributeEmailSignupVerificationInput
+
+func (GetConnectionOptionAttributeEmailSignupVerificationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeEmailSignupVerification)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeEmailSignupVerificationArray) ToGetConnectionOptionAttributeEmailSignupVerificationArrayOutput() GetConnectionOptionAttributeEmailSignupVerificationArrayOutput {
+	return i.ToGetConnectionOptionAttributeEmailSignupVerificationArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeEmailSignupVerificationArray) ToGetConnectionOptionAttributeEmailSignupVerificationArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailSignupVerificationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeEmailSignupVerificationArrayOutput)
+}
+
+type GetConnectionOptionAttributeEmailSignupVerificationOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeEmailSignupVerificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeEmailSignupVerification)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeEmailSignupVerificationOutput) ToGetConnectionOptionAttributeEmailSignupVerificationOutput() GetConnectionOptionAttributeEmailSignupVerificationOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeEmailSignupVerificationOutput) ToGetConnectionOptionAttributeEmailSignupVerificationOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailSignupVerificationOutput {
+	return o
+}
+
+// Defines verification settings for signup attribute
+func (o GetConnectionOptionAttributeEmailSignupVerificationOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeEmailSignupVerification) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+type GetConnectionOptionAttributeEmailSignupVerificationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeEmailSignupVerificationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeEmailSignupVerification)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeEmailSignupVerificationArrayOutput) ToGetConnectionOptionAttributeEmailSignupVerificationArrayOutput() GetConnectionOptionAttributeEmailSignupVerificationArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeEmailSignupVerificationArrayOutput) ToGetConnectionOptionAttributeEmailSignupVerificationArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeEmailSignupVerificationArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeEmailSignupVerificationArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAttributeEmailSignupVerificationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAttributeEmailSignupVerification {
+		return vs[0].([]GetConnectionOptionAttributeEmailSignupVerification)[vs[1].(int)]
+	}).(GetConnectionOptionAttributeEmailSignupVerificationOutput)
+}
+
+type GetConnectionOptionAttributeMap struct {
+	// This property is an object containing mapping information that allows Auth0 to interpret incoming claims from the IdP. Mapping information must be provided as key/value pairs.
+	Attributes string `pulumi:"attributes"`
+	// Method used to map incoming claims. Possible values: `useMap` (Okta or OIDC), `bindAll` (OIDC) or `basicProfile` (Okta).
+	MappingMode string `pulumi:"mappingMode"`
+	// This property defines the scopes that Auth0 sends to the IdP’s UserInfo endpoint when requested.
+	UserinfoScope string `pulumi:"userinfoScope"`
+}
+
+// GetConnectionOptionAttributeMapInput is an input type that accepts GetConnectionOptionAttributeMap and GetConnectionOptionAttributeMapOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeMapInput` via:
+//
+//	GetConnectionOptionAttributeMap{ "key": GetConnectionOptionAttributeArgs{...} }
+type GetConnectionOptionAttributeMapInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeMapOutput() GetConnectionOptionAttributeMapOutput
+	ToGetConnectionOptionAttributeMapOutputWithContext(context.Context) GetConnectionOptionAttributeMapOutput
+}
+
+type GetConnectionOptionAttributeMapArgs struct {
+	// This property is an object containing mapping information that allows Auth0 to interpret incoming claims from the IdP. Mapping information must be provided as key/value pairs.
+	Attributes pulumi.StringInput `pulumi:"attributes"`
+	// Method used to map incoming claims. Possible values: `useMap` (Okta or OIDC), `bindAll` (OIDC) or `basicProfile` (Okta).
+	MappingMode pulumi.StringInput `pulumi:"mappingMode"`
+	// This property defines the scopes that Auth0 sends to the IdP’s UserInfo endpoint when requested.
+	UserinfoScope pulumi.StringInput `pulumi:"userinfoScope"`
+}
+
+func (GetConnectionOptionAttributeMapArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeMap)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeMapArgs) ToGetConnectionOptionAttributeMapOutput() GetConnectionOptionAttributeMapOutput {
+	return i.ToGetConnectionOptionAttributeMapOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeMapArgs) ToGetConnectionOptionAttributeMapOutputWithContext(ctx context.Context) GetConnectionOptionAttributeMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeMapOutput)
+}
+
+// GetConnectionOptionAttributeMapArrayInput is an input type that accepts GetConnectionOptionAttributeMapArray and GetConnectionOptionAttributeMapArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributeMapArrayInput` via:
+//
+//	GetConnectionOptionAttributeMapArray{ GetConnectionOptionAttributeMapArgs{...} }
+type GetConnectionOptionAttributeMapArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributeMapArrayOutput() GetConnectionOptionAttributeMapArrayOutput
+	ToGetConnectionOptionAttributeMapArrayOutputWithContext(context.Context) GetConnectionOptionAttributeMapArrayOutput
+}
+
+type GetConnectionOptionAttributeMapArray []GetConnectionOptionAttributeMapInput
+
+func (GetConnectionOptionAttributeMapArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeMap)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributeMapArray) ToGetConnectionOptionAttributeMapArrayOutput() GetConnectionOptionAttributeMapArrayOutput {
+	return i.ToGetConnectionOptionAttributeMapArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributeMapArray) ToGetConnectionOptionAttributeMapArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeMapArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributeMapArrayOutput)
+}
+
+type GetConnectionOptionAttributeMapOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributeMap)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeMapOutput) ToGetConnectionOptionAttributeMapOutput() GetConnectionOptionAttributeMapOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeMapOutput) ToGetConnectionOptionAttributeMapOutputWithContext(ctx context.Context) GetConnectionOptionAttributeMapOutput {
+	return o
+}
+
+// This property is an object containing mapping information that allows Auth0 to interpret incoming claims from the IdP. Mapping information must be provided as key/value pairs.
+func (o GetConnectionOptionAttributeMapOutput) Attributes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeMap) string { return v.Attributes }).(pulumi.StringOutput)
+}
+
+// Method used to map incoming claims. Possible values: `useMap` (Okta or OIDC), `bindAll` (OIDC) or `basicProfile` (Okta).
+func (o GetConnectionOptionAttributeMapOutput) MappingMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeMap) string { return v.MappingMode }).(pulumi.StringOutput)
+}
+
+// This property defines the scopes that Auth0 sends to the IdP’s UserInfo endpoint when requested.
+func (o GetConnectionOptionAttributeMapOutput) UserinfoScope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributeMap) string { return v.UserinfoScope }).(pulumi.StringOutput)
+}
+
+type GetConnectionOptionAttributeMapArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributeMapArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributeMap)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributeMapArrayOutput) ToGetConnectionOptionAttributeMapArrayOutput() GetConnectionOptionAttributeMapArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeMapArrayOutput) ToGetConnectionOptionAttributeMapArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributeMapArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributeMapArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAttributeMapOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAttributeMap {
+		return vs[0].([]GetConnectionOptionAttributeMap)[vs[1].(int)]
+	}).(GetConnectionOptionAttributeMapOutput)
+}
+
+type GetConnectionOptionAttributePhoneNumber struct {
+	// Connection Options Phone Number Attribute Identifier
+	Identifiers []GetConnectionOptionAttributePhoneNumberIdentifier `pulumi:"identifiers"`
+	// Defines whether Profile is required
+	ProfileRequired bool `pulumi:"profileRequired"`
+	// Defines signup settings for Phone Number attribute
+	Signups []GetConnectionOptionAttributePhoneNumberSignup `pulumi:"signups"`
+}
+
+// GetConnectionOptionAttributePhoneNumberInput is an input type that accepts GetConnectionOptionAttributePhoneNumberArgs and GetConnectionOptionAttributePhoneNumberOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributePhoneNumberInput` via:
+//
+//	GetConnectionOptionAttributePhoneNumberArgs{...}
+type GetConnectionOptionAttributePhoneNumberInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributePhoneNumberOutput() GetConnectionOptionAttributePhoneNumberOutput
+	ToGetConnectionOptionAttributePhoneNumberOutputWithContext(context.Context) GetConnectionOptionAttributePhoneNumberOutput
+}
+
+type GetConnectionOptionAttributePhoneNumberArgs struct {
+	// Connection Options Phone Number Attribute Identifier
+	Identifiers GetConnectionOptionAttributePhoneNumberIdentifierArrayInput `pulumi:"identifiers"`
+	// Defines whether Profile is required
+	ProfileRequired pulumi.BoolInput `pulumi:"profileRequired"`
+	// Defines signup settings for Phone Number attribute
+	Signups GetConnectionOptionAttributePhoneNumberSignupArrayInput `pulumi:"signups"`
+}
+
+func (GetConnectionOptionAttributePhoneNumberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributePhoneNumber)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributePhoneNumberArgs) ToGetConnectionOptionAttributePhoneNumberOutput() GetConnectionOptionAttributePhoneNumberOutput {
+	return i.ToGetConnectionOptionAttributePhoneNumberOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributePhoneNumberArgs) ToGetConnectionOptionAttributePhoneNumberOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributePhoneNumberOutput)
+}
+
+// GetConnectionOptionAttributePhoneNumberArrayInput is an input type that accepts GetConnectionOptionAttributePhoneNumberArray and GetConnectionOptionAttributePhoneNumberArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributePhoneNumberArrayInput` via:
+//
+//	GetConnectionOptionAttributePhoneNumberArray{ GetConnectionOptionAttributePhoneNumberArgs{...} }
+type GetConnectionOptionAttributePhoneNumberArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributePhoneNumberArrayOutput() GetConnectionOptionAttributePhoneNumberArrayOutput
+	ToGetConnectionOptionAttributePhoneNumberArrayOutputWithContext(context.Context) GetConnectionOptionAttributePhoneNumberArrayOutput
+}
+
+type GetConnectionOptionAttributePhoneNumberArray []GetConnectionOptionAttributePhoneNumberInput
+
+func (GetConnectionOptionAttributePhoneNumberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributePhoneNumber)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributePhoneNumberArray) ToGetConnectionOptionAttributePhoneNumberArrayOutput() GetConnectionOptionAttributePhoneNumberArrayOutput {
+	return i.ToGetConnectionOptionAttributePhoneNumberArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributePhoneNumberArray) ToGetConnectionOptionAttributePhoneNumberArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributePhoneNumberArrayOutput)
+}
+
+type GetConnectionOptionAttributePhoneNumberOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributePhoneNumberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributePhoneNumber)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributePhoneNumberOutput) ToGetConnectionOptionAttributePhoneNumberOutput() GetConnectionOptionAttributePhoneNumberOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributePhoneNumberOutput) ToGetConnectionOptionAttributePhoneNumberOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberOutput {
+	return o
+}
+
+// Connection Options Phone Number Attribute Identifier
+func (o GetConnectionOptionAttributePhoneNumberOutput) Identifiers() GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributePhoneNumber) []GetConnectionOptionAttributePhoneNumberIdentifier {
+		return v.Identifiers
+	}).(GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput)
+}
+
+// Defines whether Profile is required
+func (o GetConnectionOptionAttributePhoneNumberOutput) ProfileRequired() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributePhoneNumber) bool { return v.ProfileRequired }).(pulumi.BoolOutput)
+}
+
+// Defines signup settings for Phone Number attribute
+func (o GetConnectionOptionAttributePhoneNumberOutput) Signups() GetConnectionOptionAttributePhoneNumberSignupArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributePhoneNumber) []GetConnectionOptionAttributePhoneNumberSignup {
+		return v.Signups
+	}).(GetConnectionOptionAttributePhoneNumberSignupArrayOutput)
+}
+
+type GetConnectionOptionAttributePhoneNumberArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributePhoneNumberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributePhoneNumber)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributePhoneNumberArrayOutput) ToGetConnectionOptionAttributePhoneNumberArrayOutput() GetConnectionOptionAttributePhoneNumberArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributePhoneNumberArrayOutput) ToGetConnectionOptionAttributePhoneNumberArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributePhoneNumberArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAttributePhoneNumberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAttributePhoneNumber {
+		return vs[0].([]GetConnectionOptionAttributePhoneNumber)[vs[1].(int)]
+	}).(GetConnectionOptionAttributePhoneNumberOutput)
+}
+
+type GetConnectionOptionAttributePhoneNumberIdentifier struct {
+	// Defines whether Phone Number attribute is active as an identifier
+	Active bool `pulumi:"active"`
+	// Gets and Sets the default authentication method for the phoneNumber identifier type. Valid values: `password`, `phoneOtp`
+	DefaultMethod string `pulumi:"defaultMethod"`
+}
+
+// GetConnectionOptionAttributePhoneNumberIdentifierInput is an input type that accepts GetConnectionOptionAttributePhoneNumberIdentifierArgs and GetConnectionOptionAttributePhoneNumberIdentifierOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributePhoneNumberIdentifierInput` via:
+//
+//	GetConnectionOptionAttributePhoneNumberIdentifierArgs{...}
+type GetConnectionOptionAttributePhoneNumberIdentifierInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributePhoneNumberIdentifierOutput() GetConnectionOptionAttributePhoneNumberIdentifierOutput
+	ToGetConnectionOptionAttributePhoneNumberIdentifierOutputWithContext(context.Context) GetConnectionOptionAttributePhoneNumberIdentifierOutput
+}
+
+type GetConnectionOptionAttributePhoneNumberIdentifierArgs struct {
+	// Defines whether Phone Number attribute is active as an identifier
+	Active pulumi.BoolInput `pulumi:"active"`
+	// Gets and Sets the default authentication method for the phoneNumber identifier type. Valid values: `password`, `phoneOtp`
+	DefaultMethod pulumi.StringInput `pulumi:"defaultMethod"`
+}
+
+func (GetConnectionOptionAttributePhoneNumberIdentifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributePhoneNumberIdentifier)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributePhoneNumberIdentifierArgs) ToGetConnectionOptionAttributePhoneNumberIdentifierOutput() GetConnectionOptionAttributePhoneNumberIdentifierOutput {
+	return i.ToGetConnectionOptionAttributePhoneNumberIdentifierOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributePhoneNumberIdentifierArgs) ToGetConnectionOptionAttributePhoneNumberIdentifierOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberIdentifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributePhoneNumberIdentifierOutput)
+}
+
+// GetConnectionOptionAttributePhoneNumberIdentifierArrayInput is an input type that accepts GetConnectionOptionAttributePhoneNumberIdentifierArray and GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributePhoneNumberIdentifierArrayInput` via:
+//
+//	GetConnectionOptionAttributePhoneNumberIdentifierArray{ GetConnectionOptionAttributePhoneNumberIdentifierArgs{...} }
+type GetConnectionOptionAttributePhoneNumberIdentifierArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributePhoneNumberIdentifierArrayOutput() GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput
+	ToGetConnectionOptionAttributePhoneNumberIdentifierArrayOutputWithContext(context.Context) GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput
+}
+
+type GetConnectionOptionAttributePhoneNumberIdentifierArray []GetConnectionOptionAttributePhoneNumberIdentifierInput
+
+func (GetConnectionOptionAttributePhoneNumberIdentifierArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributePhoneNumberIdentifier)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributePhoneNumberIdentifierArray) ToGetConnectionOptionAttributePhoneNumberIdentifierArrayOutput() GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput {
+	return i.ToGetConnectionOptionAttributePhoneNumberIdentifierArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributePhoneNumberIdentifierArray) ToGetConnectionOptionAttributePhoneNumberIdentifierArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput)
+}
+
+type GetConnectionOptionAttributePhoneNumberIdentifierOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributePhoneNumberIdentifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributePhoneNumberIdentifier)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributePhoneNumberIdentifierOutput) ToGetConnectionOptionAttributePhoneNumberIdentifierOutput() GetConnectionOptionAttributePhoneNumberIdentifierOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributePhoneNumberIdentifierOutput) ToGetConnectionOptionAttributePhoneNumberIdentifierOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberIdentifierOutput {
+	return o
+}
+
+// Defines whether Phone Number attribute is active as an identifier
+func (o GetConnectionOptionAttributePhoneNumberIdentifierOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributePhoneNumberIdentifier) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+// Gets and Sets the default authentication method for the phoneNumber identifier type. Valid values: `password`, `phoneOtp`
+func (o GetConnectionOptionAttributePhoneNumberIdentifierOutput) DefaultMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributePhoneNumberIdentifier) string { return v.DefaultMethod }).(pulumi.StringOutput)
+}
+
+type GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributePhoneNumberIdentifier)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput) ToGetConnectionOptionAttributePhoneNumberIdentifierArrayOutput() GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput) ToGetConnectionOptionAttributePhoneNumberIdentifierArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAttributePhoneNumberIdentifierOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAttributePhoneNumberIdentifier {
+		return vs[0].([]GetConnectionOptionAttributePhoneNumberIdentifier)[vs[1].(int)]
+	}).(GetConnectionOptionAttributePhoneNumberIdentifierOutput)
+}
+
+type GetConnectionOptionAttributePhoneNumberSignup struct {
+	// Defines status of signup for Phone Number attribute
+	Status string `pulumi:"status"`
+	// Defines verification settings for Phone Number attribute
+	Verifications []GetConnectionOptionAttributePhoneNumberSignupVerification `pulumi:"verifications"`
+}
+
+// GetConnectionOptionAttributePhoneNumberSignupInput is an input type that accepts GetConnectionOptionAttributePhoneNumberSignupArgs and GetConnectionOptionAttributePhoneNumberSignupOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributePhoneNumberSignupInput` via:
+//
+//	GetConnectionOptionAttributePhoneNumberSignupArgs{...}
+type GetConnectionOptionAttributePhoneNumberSignupInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributePhoneNumberSignupOutput() GetConnectionOptionAttributePhoneNumberSignupOutput
+	ToGetConnectionOptionAttributePhoneNumberSignupOutputWithContext(context.Context) GetConnectionOptionAttributePhoneNumberSignupOutput
+}
+
+type GetConnectionOptionAttributePhoneNumberSignupArgs struct {
+	// Defines status of signup for Phone Number attribute
+	Status pulumi.StringInput `pulumi:"status"`
+	// Defines verification settings for Phone Number attribute
+	Verifications GetConnectionOptionAttributePhoneNumberSignupVerificationArrayInput `pulumi:"verifications"`
+}
+
+func (GetConnectionOptionAttributePhoneNumberSignupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributePhoneNumberSignup)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributePhoneNumberSignupArgs) ToGetConnectionOptionAttributePhoneNumberSignupOutput() GetConnectionOptionAttributePhoneNumberSignupOutput {
+	return i.ToGetConnectionOptionAttributePhoneNumberSignupOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributePhoneNumberSignupArgs) ToGetConnectionOptionAttributePhoneNumberSignupOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberSignupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributePhoneNumberSignupOutput)
+}
+
+// GetConnectionOptionAttributePhoneNumberSignupArrayInput is an input type that accepts GetConnectionOptionAttributePhoneNumberSignupArray and GetConnectionOptionAttributePhoneNumberSignupArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributePhoneNumberSignupArrayInput` via:
+//
+//	GetConnectionOptionAttributePhoneNumberSignupArray{ GetConnectionOptionAttributePhoneNumberSignupArgs{...} }
+type GetConnectionOptionAttributePhoneNumberSignupArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributePhoneNumberSignupArrayOutput() GetConnectionOptionAttributePhoneNumberSignupArrayOutput
+	ToGetConnectionOptionAttributePhoneNumberSignupArrayOutputWithContext(context.Context) GetConnectionOptionAttributePhoneNumberSignupArrayOutput
+}
+
+type GetConnectionOptionAttributePhoneNumberSignupArray []GetConnectionOptionAttributePhoneNumberSignupInput
+
+func (GetConnectionOptionAttributePhoneNumberSignupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributePhoneNumberSignup)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributePhoneNumberSignupArray) ToGetConnectionOptionAttributePhoneNumberSignupArrayOutput() GetConnectionOptionAttributePhoneNumberSignupArrayOutput {
+	return i.ToGetConnectionOptionAttributePhoneNumberSignupArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributePhoneNumberSignupArray) ToGetConnectionOptionAttributePhoneNumberSignupArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberSignupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributePhoneNumberSignupArrayOutput)
+}
+
+type GetConnectionOptionAttributePhoneNumberSignupOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributePhoneNumberSignupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributePhoneNumberSignup)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributePhoneNumberSignupOutput) ToGetConnectionOptionAttributePhoneNumberSignupOutput() GetConnectionOptionAttributePhoneNumberSignupOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributePhoneNumberSignupOutput) ToGetConnectionOptionAttributePhoneNumberSignupOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberSignupOutput {
+	return o
+}
+
+// Defines status of signup for Phone Number attribute
+func (o GetConnectionOptionAttributePhoneNumberSignupOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributePhoneNumberSignup) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Defines verification settings for Phone Number attribute
+func (o GetConnectionOptionAttributePhoneNumberSignupOutput) Verifications() GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributePhoneNumberSignup) []GetConnectionOptionAttributePhoneNumberSignupVerification {
+		return v.Verifications
+	}).(GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput)
+}
+
+type GetConnectionOptionAttributePhoneNumberSignupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributePhoneNumberSignupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributePhoneNumberSignup)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributePhoneNumberSignupArrayOutput) ToGetConnectionOptionAttributePhoneNumberSignupArrayOutput() GetConnectionOptionAttributePhoneNumberSignupArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributePhoneNumberSignupArrayOutput) ToGetConnectionOptionAttributePhoneNumberSignupArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberSignupArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributePhoneNumberSignupArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAttributePhoneNumberSignupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAttributePhoneNumberSignup {
+		return vs[0].([]GetConnectionOptionAttributePhoneNumberSignup)[vs[1].(int)]
+	}).(GetConnectionOptionAttributePhoneNumberSignupOutput)
+}
+
+type GetConnectionOptionAttributePhoneNumberSignupVerification struct {
+	// Defines verification settings for Phone Number attribute
+	Active bool `pulumi:"active"`
+}
+
+// GetConnectionOptionAttributePhoneNumberSignupVerificationInput is an input type that accepts GetConnectionOptionAttributePhoneNumberSignupVerificationArgs and GetConnectionOptionAttributePhoneNumberSignupVerificationOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributePhoneNumberSignupVerificationInput` via:
+//
+//	GetConnectionOptionAttributePhoneNumberSignupVerificationArgs{...}
+type GetConnectionOptionAttributePhoneNumberSignupVerificationInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributePhoneNumberSignupVerificationOutput() GetConnectionOptionAttributePhoneNumberSignupVerificationOutput
+	ToGetConnectionOptionAttributePhoneNumberSignupVerificationOutputWithContext(context.Context) GetConnectionOptionAttributePhoneNumberSignupVerificationOutput
+}
+
+type GetConnectionOptionAttributePhoneNumberSignupVerificationArgs struct {
+	// Defines verification settings for Phone Number attribute
+	Active pulumi.BoolInput `pulumi:"active"`
+}
+
+func (GetConnectionOptionAttributePhoneNumberSignupVerificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributePhoneNumberSignupVerification)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributePhoneNumberSignupVerificationArgs) ToGetConnectionOptionAttributePhoneNumberSignupVerificationOutput() GetConnectionOptionAttributePhoneNumberSignupVerificationOutput {
+	return i.ToGetConnectionOptionAttributePhoneNumberSignupVerificationOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributePhoneNumberSignupVerificationArgs) ToGetConnectionOptionAttributePhoneNumberSignupVerificationOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberSignupVerificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributePhoneNumberSignupVerificationOutput)
+}
+
+// GetConnectionOptionAttributePhoneNumberSignupVerificationArrayInput is an input type that accepts GetConnectionOptionAttributePhoneNumberSignupVerificationArray and GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput values.
+// You can construct a concrete instance of `GetConnectionOptionAttributePhoneNumberSignupVerificationArrayInput` via:
+//
+//	GetConnectionOptionAttributePhoneNumberSignupVerificationArray{ GetConnectionOptionAttributePhoneNumberSignupVerificationArgs{...} }
+type GetConnectionOptionAttributePhoneNumberSignupVerificationArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput() GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput
+	ToGetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutputWithContext(context.Context) GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput
+}
+
+type GetConnectionOptionAttributePhoneNumberSignupVerificationArray []GetConnectionOptionAttributePhoneNumberSignupVerificationInput
+
+func (GetConnectionOptionAttributePhoneNumberSignupVerificationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributePhoneNumberSignupVerification)(nil)).Elem()
+}
+
+func (i GetConnectionOptionAttributePhoneNumberSignupVerificationArray) ToGetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput() GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput {
+	return i.ToGetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectionOptionAttributePhoneNumberSignupVerificationArray) ToGetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput)
+}
+
+type GetConnectionOptionAttributePhoneNumberSignupVerificationOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributePhoneNumberSignupVerificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectionOptionAttributePhoneNumberSignupVerification)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributePhoneNumberSignupVerificationOutput) ToGetConnectionOptionAttributePhoneNumberSignupVerificationOutput() GetConnectionOptionAttributePhoneNumberSignupVerificationOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributePhoneNumberSignupVerificationOutput) ToGetConnectionOptionAttributePhoneNumberSignupVerificationOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberSignupVerificationOutput {
+	return o
+}
+
+// Defines verification settings for Phone Number attribute
+func (o GetConnectionOptionAttributePhoneNumberSignupVerificationOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConnectionOptionAttributePhoneNumberSignupVerification) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+type GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectionOptionAttributePhoneNumberSignupVerification)(nil)).Elem()
+}
+
+func (o GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput) ToGetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput() GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput) ToGetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutputWithContext(ctx context.Context) GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput {
+	return o
+}
+
+func (o GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput) Index(i pulumi.IntInput) GetConnectionOptionAttributePhoneNumberSignupVerificationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectionOptionAttributePhoneNumberSignupVerification {
+		return vs[0].([]GetConnectionOptionAttributePhoneNumberSignupVerification)[vs[1].(int)]
+	}).(GetConnectionOptionAttributePhoneNumberSignupVerificationOutput)
+}
+
 type GetConnectionOptionAttributeUsername struct {
 	// Connection options for User Name Attribute Identifier
 	Identifiers []GetConnectionOptionAttributeUsernameIdentifier `pulumi:"identifiers"`
@@ -14761,6 +19824,3525 @@ func (o GetPhoneProviderCredentialArrayOutput) Index(i pulumi.IntInput) GetPhone
 	}).(GetPhoneProviderCredentialOutput)
 }
 
+type GetPortalClient struct {
+	// Client credentials using clientSecretPost authentication.
+	ClientSecretPosts []GetPortalClientClientSecretPost `pulumi:"clientSecretPosts"`
+}
+
+// GetPortalClientInput is an input type that accepts GetPortalClientArgs and GetPortalClientOutput values.
+// You can construct a concrete instance of `GetPortalClientInput` via:
+//
+//	GetPortalClientArgs{...}
+type GetPortalClientInput interface {
+	pulumi.Input
+
+	ToGetPortalClientOutput() GetPortalClientOutput
+	ToGetPortalClientOutputWithContext(context.Context) GetPortalClientOutput
+}
+
+type GetPortalClientArgs struct {
+	// Client credentials using clientSecretPost authentication.
+	ClientSecretPosts GetPortalClientClientSecretPostArrayInput `pulumi:"clientSecretPosts"`
+}
+
+func (GetPortalClientArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalClient)(nil)).Elem()
+}
+
+func (i GetPortalClientArgs) ToGetPortalClientOutput() GetPortalClientOutput {
+	return i.ToGetPortalClientOutputWithContext(context.Background())
+}
+
+func (i GetPortalClientArgs) ToGetPortalClientOutputWithContext(ctx context.Context) GetPortalClientOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalClientOutput)
+}
+
+// GetPortalClientArrayInput is an input type that accepts GetPortalClientArray and GetPortalClientArrayOutput values.
+// You can construct a concrete instance of `GetPortalClientArrayInput` via:
+//
+//	GetPortalClientArray{ GetPortalClientArgs{...} }
+type GetPortalClientArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalClientArrayOutput() GetPortalClientArrayOutput
+	ToGetPortalClientArrayOutputWithContext(context.Context) GetPortalClientArrayOutput
+}
+
+type GetPortalClientArray []GetPortalClientInput
+
+func (GetPortalClientArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalClient)(nil)).Elem()
+}
+
+func (i GetPortalClientArray) ToGetPortalClientArrayOutput() GetPortalClientArrayOutput {
+	return i.ToGetPortalClientArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalClientArray) ToGetPortalClientArrayOutputWithContext(ctx context.Context) GetPortalClientArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalClientArrayOutput)
+}
+
+type GetPortalClientOutput struct{ *pulumi.OutputState }
+
+func (GetPortalClientOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalClient)(nil)).Elem()
+}
+
+func (o GetPortalClientOutput) ToGetPortalClientOutput() GetPortalClientOutput {
+	return o
+}
+
+func (o GetPortalClientOutput) ToGetPortalClientOutputWithContext(ctx context.Context) GetPortalClientOutput {
+	return o
+}
+
+// Client credentials using clientSecretPost authentication.
+func (o GetPortalClientOutput) ClientSecretPosts() GetPortalClientClientSecretPostArrayOutput {
+	return o.ApplyT(func(v GetPortalClient) []GetPortalClientClientSecretPost { return v.ClientSecretPosts }).(GetPortalClientClientSecretPostArrayOutput)
+}
+
+type GetPortalClientArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalClientArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalClient)(nil)).Elem()
+}
+
+func (o GetPortalClientArrayOutput) ToGetPortalClientArrayOutput() GetPortalClientArrayOutput {
+	return o
+}
+
+func (o GetPortalClientArrayOutput) ToGetPortalClientArrayOutputWithContext(ctx context.Context) GetPortalClientArrayOutput {
+	return o
+}
+
+func (o GetPortalClientArrayOutput) Index(i pulumi.IntInput) GetPortalClientOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalClient {
+		return vs[0].([]GetPortalClient)[vs[1].(int)]
+	}).(GetPortalClientOutput)
+}
+
+type GetPortalClientClientSecretPost struct {
+	// The ID of the client.
+	ClientId string `pulumi:"clientId"`
+}
+
+// GetPortalClientClientSecretPostInput is an input type that accepts GetPortalClientClientSecretPostArgs and GetPortalClientClientSecretPostOutput values.
+// You can construct a concrete instance of `GetPortalClientClientSecretPostInput` via:
+//
+//	GetPortalClientClientSecretPostArgs{...}
+type GetPortalClientClientSecretPostInput interface {
+	pulumi.Input
+
+	ToGetPortalClientClientSecretPostOutput() GetPortalClientClientSecretPostOutput
+	ToGetPortalClientClientSecretPostOutputWithContext(context.Context) GetPortalClientClientSecretPostOutput
+}
+
+type GetPortalClientClientSecretPostArgs struct {
+	// The ID of the client.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+}
+
+func (GetPortalClientClientSecretPostArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalClientClientSecretPost)(nil)).Elem()
+}
+
+func (i GetPortalClientClientSecretPostArgs) ToGetPortalClientClientSecretPostOutput() GetPortalClientClientSecretPostOutput {
+	return i.ToGetPortalClientClientSecretPostOutputWithContext(context.Background())
+}
+
+func (i GetPortalClientClientSecretPostArgs) ToGetPortalClientClientSecretPostOutputWithContext(ctx context.Context) GetPortalClientClientSecretPostOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalClientClientSecretPostOutput)
+}
+
+// GetPortalClientClientSecretPostArrayInput is an input type that accepts GetPortalClientClientSecretPostArray and GetPortalClientClientSecretPostArrayOutput values.
+// You can construct a concrete instance of `GetPortalClientClientSecretPostArrayInput` via:
+//
+//	GetPortalClientClientSecretPostArray{ GetPortalClientClientSecretPostArgs{...} }
+type GetPortalClientClientSecretPostArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalClientClientSecretPostArrayOutput() GetPortalClientClientSecretPostArrayOutput
+	ToGetPortalClientClientSecretPostArrayOutputWithContext(context.Context) GetPortalClientClientSecretPostArrayOutput
+}
+
+type GetPortalClientClientSecretPostArray []GetPortalClientClientSecretPostInput
+
+func (GetPortalClientClientSecretPostArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalClientClientSecretPost)(nil)).Elem()
+}
+
+func (i GetPortalClientClientSecretPostArray) ToGetPortalClientClientSecretPostArrayOutput() GetPortalClientClientSecretPostArrayOutput {
+	return i.ToGetPortalClientClientSecretPostArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalClientClientSecretPostArray) ToGetPortalClientClientSecretPostArrayOutputWithContext(ctx context.Context) GetPortalClientClientSecretPostArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalClientClientSecretPostArrayOutput)
+}
+
+type GetPortalClientClientSecretPostOutput struct{ *pulumi.OutputState }
+
+func (GetPortalClientClientSecretPostOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalClientClientSecretPost)(nil)).Elem()
+}
+
+func (o GetPortalClientClientSecretPostOutput) ToGetPortalClientClientSecretPostOutput() GetPortalClientClientSecretPostOutput {
+	return o
+}
+
+func (o GetPortalClientClientSecretPostOutput) ToGetPortalClientClientSecretPostOutputWithContext(ctx context.Context) GetPortalClientClientSecretPostOutput {
+	return o
+}
+
+// The ID of the client.
+func (o GetPortalClientClientSecretPostOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalClientClientSecretPost) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+type GetPortalClientClientSecretPostArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalClientClientSecretPostArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalClientClientSecretPost)(nil)).Elem()
+}
+
+func (o GetPortalClientClientSecretPostArrayOutput) ToGetPortalClientClientSecretPostArrayOutput() GetPortalClientClientSecretPostArrayOutput {
+	return o
+}
+
+func (o GetPortalClientClientSecretPostArrayOutput) ToGetPortalClientClientSecretPostArrayOutputWithContext(ctx context.Context) GetPortalClientClientSecretPostArrayOutput {
+	return o
+}
+
+func (o GetPortalClientClientSecretPostArrayOutput) Index(i pulumi.IntInput) GetPortalClientClientSecretPostOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalClientClientSecretPost {
+		return vs[0].([]GetPortalClientClientSecretPost)[vs[1].(int)]
+	}).(GetPortalClientClientSecretPostOutput)
+}
+
+type GetPortalCustomCode struct {
+	// Code added to the page head.
+	Head string `pulumi:"head"`
+}
+
+// GetPortalCustomCodeInput is an input type that accepts GetPortalCustomCodeArgs and GetPortalCustomCodeOutput values.
+// You can construct a concrete instance of `GetPortalCustomCodeInput` via:
+//
+//	GetPortalCustomCodeArgs{...}
+type GetPortalCustomCodeInput interface {
+	pulumi.Input
+
+	ToGetPortalCustomCodeOutput() GetPortalCustomCodeOutput
+	ToGetPortalCustomCodeOutputWithContext(context.Context) GetPortalCustomCodeOutput
+}
+
+type GetPortalCustomCodeArgs struct {
+	// Code added to the page head.
+	Head pulumi.StringInput `pulumi:"head"`
+}
+
+func (GetPortalCustomCodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalCustomCode)(nil)).Elem()
+}
+
+func (i GetPortalCustomCodeArgs) ToGetPortalCustomCodeOutput() GetPortalCustomCodeOutput {
+	return i.ToGetPortalCustomCodeOutputWithContext(context.Background())
+}
+
+func (i GetPortalCustomCodeArgs) ToGetPortalCustomCodeOutputWithContext(ctx context.Context) GetPortalCustomCodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalCustomCodeOutput)
+}
+
+// GetPortalCustomCodeArrayInput is an input type that accepts GetPortalCustomCodeArray and GetPortalCustomCodeArrayOutput values.
+// You can construct a concrete instance of `GetPortalCustomCodeArrayInput` via:
+//
+//	GetPortalCustomCodeArray{ GetPortalCustomCodeArgs{...} }
+type GetPortalCustomCodeArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalCustomCodeArrayOutput() GetPortalCustomCodeArrayOutput
+	ToGetPortalCustomCodeArrayOutputWithContext(context.Context) GetPortalCustomCodeArrayOutput
+}
+
+type GetPortalCustomCodeArray []GetPortalCustomCodeInput
+
+func (GetPortalCustomCodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalCustomCode)(nil)).Elem()
+}
+
+func (i GetPortalCustomCodeArray) ToGetPortalCustomCodeArrayOutput() GetPortalCustomCodeArrayOutput {
+	return i.ToGetPortalCustomCodeArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalCustomCodeArray) ToGetPortalCustomCodeArrayOutputWithContext(ctx context.Context) GetPortalCustomCodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalCustomCodeArrayOutput)
+}
+
+type GetPortalCustomCodeOutput struct{ *pulumi.OutputState }
+
+func (GetPortalCustomCodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalCustomCode)(nil)).Elem()
+}
+
+func (o GetPortalCustomCodeOutput) ToGetPortalCustomCodeOutput() GetPortalCustomCodeOutput {
+	return o
+}
+
+func (o GetPortalCustomCodeOutput) ToGetPortalCustomCodeOutputWithContext(ctx context.Context) GetPortalCustomCodeOutput {
+	return o
+}
+
+// Code added to the page head.
+func (o GetPortalCustomCodeOutput) Head() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalCustomCode) string { return v.Head }).(pulumi.StringOutput)
+}
+
+type GetPortalCustomCodeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalCustomCodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalCustomCode)(nil)).Elem()
+}
+
+func (o GetPortalCustomCodeArrayOutput) ToGetPortalCustomCodeArrayOutput() GetPortalCustomCodeArrayOutput {
+	return o
+}
+
+func (o GetPortalCustomCodeArrayOutput) ToGetPortalCustomCodeArrayOutputWithContext(ctx context.Context) GetPortalCustomCodeArrayOutput {
+	return o
+}
+
+func (o GetPortalCustomCodeArrayOutput) Index(i pulumi.IntInput) GetPortalCustomCodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalCustomCode {
+		return vs[0].([]GetPortalCustomCode)[vs[1].(int)]
+	}).(GetPortalCustomCodeOutput)
+}
+
+type GetPortalNavigation struct {
+	// Sidebar navigation for the portal.
+	Sidebars []GetPortalNavigationSidebar `pulumi:"sidebars"`
+}
+
+// GetPortalNavigationInput is an input type that accepts GetPortalNavigationArgs and GetPortalNavigationOutput values.
+// You can construct a concrete instance of `GetPortalNavigationInput` via:
+//
+//	GetPortalNavigationArgs{...}
+type GetPortalNavigationInput interface {
+	pulumi.Input
+
+	ToGetPortalNavigationOutput() GetPortalNavigationOutput
+	ToGetPortalNavigationOutputWithContext(context.Context) GetPortalNavigationOutput
+}
+
+type GetPortalNavigationArgs struct {
+	// Sidebar navigation for the portal.
+	Sidebars GetPortalNavigationSidebarArrayInput `pulumi:"sidebars"`
+}
+
+func (GetPortalNavigationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalNavigation)(nil)).Elem()
+}
+
+func (i GetPortalNavigationArgs) ToGetPortalNavigationOutput() GetPortalNavigationOutput {
+	return i.ToGetPortalNavigationOutputWithContext(context.Background())
+}
+
+func (i GetPortalNavigationArgs) ToGetPortalNavigationOutputWithContext(ctx context.Context) GetPortalNavigationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalNavigationOutput)
+}
+
+// GetPortalNavigationArrayInput is an input type that accepts GetPortalNavigationArray and GetPortalNavigationArrayOutput values.
+// You can construct a concrete instance of `GetPortalNavigationArrayInput` via:
+//
+//	GetPortalNavigationArray{ GetPortalNavigationArgs{...} }
+type GetPortalNavigationArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalNavigationArrayOutput() GetPortalNavigationArrayOutput
+	ToGetPortalNavigationArrayOutputWithContext(context.Context) GetPortalNavigationArrayOutput
+}
+
+type GetPortalNavigationArray []GetPortalNavigationInput
+
+func (GetPortalNavigationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalNavigation)(nil)).Elem()
+}
+
+func (i GetPortalNavigationArray) ToGetPortalNavigationArrayOutput() GetPortalNavigationArrayOutput {
+	return i.ToGetPortalNavigationArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalNavigationArray) ToGetPortalNavigationArrayOutputWithContext(ctx context.Context) GetPortalNavigationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalNavigationArrayOutput)
+}
+
+type GetPortalNavigationOutput struct{ *pulumi.OutputState }
+
+func (GetPortalNavigationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalNavigation)(nil)).Elem()
+}
+
+func (o GetPortalNavigationOutput) ToGetPortalNavigationOutput() GetPortalNavigationOutput {
+	return o
+}
+
+func (o GetPortalNavigationOutput) ToGetPortalNavigationOutputWithContext(ctx context.Context) GetPortalNavigationOutput {
+	return o
+}
+
+// Sidebar navigation for the portal.
+func (o GetPortalNavigationOutput) Sidebars() GetPortalNavigationSidebarArrayOutput {
+	return o.ApplyT(func(v GetPortalNavigation) []GetPortalNavigationSidebar { return v.Sidebars }).(GetPortalNavigationSidebarArrayOutput)
+}
+
+type GetPortalNavigationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalNavigationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalNavigation)(nil)).Elem()
+}
+
+func (o GetPortalNavigationArrayOutput) ToGetPortalNavigationArrayOutput() GetPortalNavigationArrayOutput {
+	return o
+}
+
+func (o GetPortalNavigationArrayOutput) ToGetPortalNavigationArrayOutputWithContext(ctx context.Context) GetPortalNavigationArrayOutput {
+	return o
+}
+
+func (o GetPortalNavigationArrayOutput) Index(i pulumi.IntInput) GetPortalNavigationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalNavigation {
+		return vs[0].([]GetPortalNavigation)[vs[1].(int)]
+	}).(GetPortalNavigationOutput)
+}
+
+type GetPortalNavigationSidebar struct {
+	// Sidebar components in display order. Only V2 links are supported.
+	Components []GetPortalNavigationSidebarComponent `pulumi:"components"`
+}
+
+// GetPortalNavigationSidebarInput is an input type that accepts GetPortalNavigationSidebarArgs and GetPortalNavigationSidebarOutput values.
+// You can construct a concrete instance of `GetPortalNavigationSidebarInput` via:
+//
+//	GetPortalNavigationSidebarArgs{...}
+type GetPortalNavigationSidebarInput interface {
+	pulumi.Input
+
+	ToGetPortalNavigationSidebarOutput() GetPortalNavigationSidebarOutput
+	ToGetPortalNavigationSidebarOutputWithContext(context.Context) GetPortalNavigationSidebarOutput
+}
+
+type GetPortalNavigationSidebarArgs struct {
+	// Sidebar components in display order. Only V2 links are supported.
+	Components GetPortalNavigationSidebarComponentArrayInput `pulumi:"components"`
+}
+
+func (GetPortalNavigationSidebarArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalNavigationSidebar)(nil)).Elem()
+}
+
+func (i GetPortalNavigationSidebarArgs) ToGetPortalNavigationSidebarOutput() GetPortalNavigationSidebarOutput {
+	return i.ToGetPortalNavigationSidebarOutputWithContext(context.Background())
+}
+
+func (i GetPortalNavigationSidebarArgs) ToGetPortalNavigationSidebarOutputWithContext(ctx context.Context) GetPortalNavigationSidebarOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalNavigationSidebarOutput)
+}
+
+// GetPortalNavigationSidebarArrayInput is an input type that accepts GetPortalNavigationSidebarArray and GetPortalNavigationSidebarArrayOutput values.
+// You can construct a concrete instance of `GetPortalNavigationSidebarArrayInput` via:
+//
+//	GetPortalNavigationSidebarArray{ GetPortalNavigationSidebarArgs{...} }
+type GetPortalNavigationSidebarArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalNavigationSidebarArrayOutput() GetPortalNavigationSidebarArrayOutput
+	ToGetPortalNavigationSidebarArrayOutputWithContext(context.Context) GetPortalNavigationSidebarArrayOutput
+}
+
+type GetPortalNavigationSidebarArray []GetPortalNavigationSidebarInput
+
+func (GetPortalNavigationSidebarArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalNavigationSidebar)(nil)).Elem()
+}
+
+func (i GetPortalNavigationSidebarArray) ToGetPortalNavigationSidebarArrayOutput() GetPortalNavigationSidebarArrayOutput {
+	return i.ToGetPortalNavigationSidebarArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalNavigationSidebarArray) ToGetPortalNavigationSidebarArrayOutputWithContext(ctx context.Context) GetPortalNavigationSidebarArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalNavigationSidebarArrayOutput)
+}
+
+type GetPortalNavigationSidebarOutput struct{ *pulumi.OutputState }
+
+func (GetPortalNavigationSidebarOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalNavigationSidebar)(nil)).Elem()
+}
+
+func (o GetPortalNavigationSidebarOutput) ToGetPortalNavigationSidebarOutput() GetPortalNavigationSidebarOutput {
+	return o
+}
+
+func (o GetPortalNavigationSidebarOutput) ToGetPortalNavigationSidebarOutputWithContext(ctx context.Context) GetPortalNavigationSidebarOutput {
+	return o
+}
+
+// Sidebar components in display order. Only V2 links are supported.
+func (o GetPortalNavigationSidebarOutput) Components() GetPortalNavigationSidebarComponentArrayOutput {
+	return o.ApplyT(func(v GetPortalNavigationSidebar) []GetPortalNavigationSidebarComponent { return v.Components }).(GetPortalNavigationSidebarComponentArrayOutput)
+}
+
+type GetPortalNavigationSidebarArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalNavigationSidebarArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalNavigationSidebar)(nil)).Elem()
+}
+
+func (o GetPortalNavigationSidebarArrayOutput) ToGetPortalNavigationSidebarArrayOutput() GetPortalNavigationSidebarArrayOutput {
+	return o
+}
+
+func (o GetPortalNavigationSidebarArrayOutput) ToGetPortalNavigationSidebarArrayOutputWithContext(ctx context.Context) GetPortalNavigationSidebarArrayOutput {
+	return o
+}
+
+func (o GetPortalNavigationSidebarArrayOutput) Index(i pulumi.IntInput) GetPortalNavigationSidebarOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalNavigationSidebar {
+		return vs[0].([]GetPortalNavigationSidebar)[vs[1].(int)]
+	}).(GetPortalNavigationSidebarOutput)
+}
+
+type GetPortalNavigationSidebarComponent struct {
+	// A V2 link to an external URL.
+	ExternalLinkV2s []GetPortalNavigationSidebarComponentExternalLinkV2 `pulumi:"externalLinkV2s"`
+	// A V2 link to a portal page.
+	InternalLinkV2s []GetPortalNavigationSidebarComponentInternalLinkV2 `pulumi:"internalLinkV2s"`
+}
+
+// GetPortalNavigationSidebarComponentInput is an input type that accepts GetPortalNavigationSidebarComponentArgs and GetPortalNavigationSidebarComponentOutput values.
+// You can construct a concrete instance of `GetPortalNavigationSidebarComponentInput` via:
+//
+//	GetPortalNavigationSidebarComponentArgs{...}
+type GetPortalNavigationSidebarComponentInput interface {
+	pulumi.Input
+
+	ToGetPortalNavigationSidebarComponentOutput() GetPortalNavigationSidebarComponentOutput
+	ToGetPortalNavigationSidebarComponentOutputWithContext(context.Context) GetPortalNavigationSidebarComponentOutput
+}
+
+type GetPortalNavigationSidebarComponentArgs struct {
+	// A V2 link to an external URL.
+	ExternalLinkV2s GetPortalNavigationSidebarComponentExternalLinkV2ArrayInput `pulumi:"externalLinkV2s"`
+	// A V2 link to a portal page.
+	InternalLinkV2s GetPortalNavigationSidebarComponentInternalLinkV2ArrayInput `pulumi:"internalLinkV2s"`
+}
+
+func (GetPortalNavigationSidebarComponentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalNavigationSidebarComponent)(nil)).Elem()
+}
+
+func (i GetPortalNavigationSidebarComponentArgs) ToGetPortalNavigationSidebarComponentOutput() GetPortalNavigationSidebarComponentOutput {
+	return i.ToGetPortalNavigationSidebarComponentOutputWithContext(context.Background())
+}
+
+func (i GetPortalNavigationSidebarComponentArgs) ToGetPortalNavigationSidebarComponentOutputWithContext(ctx context.Context) GetPortalNavigationSidebarComponentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalNavigationSidebarComponentOutput)
+}
+
+// GetPortalNavigationSidebarComponentArrayInput is an input type that accepts GetPortalNavigationSidebarComponentArray and GetPortalNavigationSidebarComponentArrayOutput values.
+// You can construct a concrete instance of `GetPortalNavigationSidebarComponentArrayInput` via:
+//
+//	GetPortalNavigationSidebarComponentArray{ GetPortalNavigationSidebarComponentArgs{...} }
+type GetPortalNavigationSidebarComponentArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalNavigationSidebarComponentArrayOutput() GetPortalNavigationSidebarComponentArrayOutput
+	ToGetPortalNavigationSidebarComponentArrayOutputWithContext(context.Context) GetPortalNavigationSidebarComponentArrayOutput
+}
+
+type GetPortalNavigationSidebarComponentArray []GetPortalNavigationSidebarComponentInput
+
+func (GetPortalNavigationSidebarComponentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalNavigationSidebarComponent)(nil)).Elem()
+}
+
+func (i GetPortalNavigationSidebarComponentArray) ToGetPortalNavigationSidebarComponentArrayOutput() GetPortalNavigationSidebarComponentArrayOutput {
+	return i.ToGetPortalNavigationSidebarComponentArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalNavigationSidebarComponentArray) ToGetPortalNavigationSidebarComponentArrayOutputWithContext(ctx context.Context) GetPortalNavigationSidebarComponentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalNavigationSidebarComponentArrayOutput)
+}
+
+type GetPortalNavigationSidebarComponentOutput struct{ *pulumi.OutputState }
+
+func (GetPortalNavigationSidebarComponentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalNavigationSidebarComponent)(nil)).Elem()
+}
+
+func (o GetPortalNavigationSidebarComponentOutput) ToGetPortalNavigationSidebarComponentOutput() GetPortalNavigationSidebarComponentOutput {
+	return o
+}
+
+func (o GetPortalNavigationSidebarComponentOutput) ToGetPortalNavigationSidebarComponentOutputWithContext(ctx context.Context) GetPortalNavigationSidebarComponentOutput {
+	return o
+}
+
+// A V2 link to an external URL.
+func (o GetPortalNavigationSidebarComponentOutput) ExternalLinkV2s() GetPortalNavigationSidebarComponentExternalLinkV2ArrayOutput {
+	return o.ApplyT(func(v GetPortalNavigationSidebarComponent) []GetPortalNavigationSidebarComponentExternalLinkV2 {
+		return v.ExternalLinkV2s
+	}).(GetPortalNavigationSidebarComponentExternalLinkV2ArrayOutput)
+}
+
+// A V2 link to a portal page.
+func (o GetPortalNavigationSidebarComponentOutput) InternalLinkV2s() GetPortalNavigationSidebarComponentInternalLinkV2ArrayOutput {
+	return o.ApplyT(func(v GetPortalNavigationSidebarComponent) []GetPortalNavigationSidebarComponentInternalLinkV2 {
+		return v.InternalLinkV2s
+	}).(GetPortalNavigationSidebarComponentInternalLinkV2ArrayOutput)
+}
+
+type GetPortalNavigationSidebarComponentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalNavigationSidebarComponentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalNavigationSidebarComponent)(nil)).Elem()
+}
+
+func (o GetPortalNavigationSidebarComponentArrayOutput) ToGetPortalNavigationSidebarComponentArrayOutput() GetPortalNavigationSidebarComponentArrayOutput {
+	return o
+}
+
+func (o GetPortalNavigationSidebarComponentArrayOutput) ToGetPortalNavigationSidebarComponentArrayOutputWithContext(ctx context.Context) GetPortalNavigationSidebarComponentArrayOutput {
+	return o
+}
+
+func (o GetPortalNavigationSidebarComponentArrayOutput) Index(i pulumi.IntInput) GetPortalNavigationSidebarComponentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalNavigationSidebarComponent {
+		return vs[0].([]GetPortalNavigationSidebarComponent)[vs[1].(int)]
+	}).(GetPortalNavigationSidebarComponentOutput)
+}
+
+type GetPortalNavigationSidebarComponentExternalLinkV2 struct {
+	// The URL of the link.
+	Href string `pulumi:"href"`
+	// The icon of the link.
+	Icon string `pulumi:"icon"`
+	// The label of the link.
+	Label string `pulumi:"label"`
+}
+
+// GetPortalNavigationSidebarComponentExternalLinkV2Input is an input type that accepts GetPortalNavigationSidebarComponentExternalLinkV2Args and GetPortalNavigationSidebarComponentExternalLinkV2Output values.
+// You can construct a concrete instance of `GetPortalNavigationSidebarComponentExternalLinkV2Input` via:
+//
+//	GetPortalNavigationSidebarComponentExternalLinkV2Args{...}
+type GetPortalNavigationSidebarComponentExternalLinkV2Input interface {
+	pulumi.Input
+
+	ToGetPortalNavigationSidebarComponentExternalLinkV2Output() GetPortalNavigationSidebarComponentExternalLinkV2Output
+	ToGetPortalNavigationSidebarComponentExternalLinkV2OutputWithContext(context.Context) GetPortalNavigationSidebarComponentExternalLinkV2Output
+}
+
+type GetPortalNavigationSidebarComponentExternalLinkV2Args struct {
+	// The URL of the link.
+	Href pulumi.StringInput `pulumi:"href"`
+	// The icon of the link.
+	Icon pulumi.StringInput `pulumi:"icon"`
+	// The label of the link.
+	Label pulumi.StringInput `pulumi:"label"`
+}
+
+func (GetPortalNavigationSidebarComponentExternalLinkV2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalNavigationSidebarComponentExternalLinkV2)(nil)).Elem()
+}
+
+func (i GetPortalNavigationSidebarComponentExternalLinkV2Args) ToGetPortalNavigationSidebarComponentExternalLinkV2Output() GetPortalNavigationSidebarComponentExternalLinkV2Output {
+	return i.ToGetPortalNavigationSidebarComponentExternalLinkV2OutputWithContext(context.Background())
+}
+
+func (i GetPortalNavigationSidebarComponentExternalLinkV2Args) ToGetPortalNavigationSidebarComponentExternalLinkV2OutputWithContext(ctx context.Context) GetPortalNavigationSidebarComponentExternalLinkV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalNavigationSidebarComponentExternalLinkV2Output)
+}
+
+// GetPortalNavigationSidebarComponentExternalLinkV2ArrayInput is an input type that accepts GetPortalNavigationSidebarComponentExternalLinkV2Array and GetPortalNavigationSidebarComponentExternalLinkV2ArrayOutput values.
+// You can construct a concrete instance of `GetPortalNavigationSidebarComponentExternalLinkV2ArrayInput` via:
+//
+//	GetPortalNavigationSidebarComponentExternalLinkV2Array{ GetPortalNavigationSidebarComponentExternalLinkV2Args{...} }
+type GetPortalNavigationSidebarComponentExternalLinkV2ArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalNavigationSidebarComponentExternalLinkV2ArrayOutput() GetPortalNavigationSidebarComponentExternalLinkV2ArrayOutput
+	ToGetPortalNavigationSidebarComponentExternalLinkV2ArrayOutputWithContext(context.Context) GetPortalNavigationSidebarComponentExternalLinkV2ArrayOutput
+}
+
+type GetPortalNavigationSidebarComponentExternalLinkV2Array []GetPortalNavigationSidebarComponentExternalLinkV2Input
+
+func (GetPortalNavigationSidebarComponentExternalLinkV2Array) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalNavigationSidebarComponentExternalLinkV2)(nil)).Elem()
+}
+
+func (i GetPortalNavigationSidebarComponentExternalLinkV2Array) ToGetPortalNavigationSidebarComponentExternalLinkV2ArrayOutput() GetPortalNavigationSidebarComponentExternalLinkV2ArrayOutput {
+	return i.ToGetPortalNavigationSidebarComponentExternalLinkV2ArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalNavigationSidebarComponentExternalLinkV2Array) ToGetPortalNavigationSidebarComponentExternalLinkV2ArrayOutputWithContext(ctx context.Context) GetPortalNavigationSidebarComponentExternalLinkV2ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalNavigationSidebarComponentExternalLinkV2ArrayOutput)
+}
+
+type GetPortalNavigationSidebarComponentExternalLinkV2Output struct{ *pulumi.OutputState }
+
+func (GetPortalNavigationSidebarComponentExternalLinkV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalNavigationSidebarComponentExternalLinkV2)(nil)).Elem()
+}
+
+func (o GetPortalNavigationSidebarComponentExternalLinkV2Output) ToGetPortalNavigationSidebarComponentExternalLinkV2Output() GetPortalNavigationSidebarComponentExternalLinkV2Output {
+	return o
+}
+
+func (o GetPortalNavigationSidebarComponentExternalLinkV2Output) ToGetPortalNavigationSidebarComponentExternalLinkV2OutputWithContext(ctx context.Context) GetPortalNavigationSidebarComponentExternalLinkV2Output {
+	return o
+}
+
+// The URL of the link.
+func (o GetPortalNavigationSidebarComponentExternalLinkV2Output) Href() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalNavigationSidebarComponentExternalLinkV2) string { return v.Href }).(pulumi.StringOutput)
+}
+
+// The icon of the link.
+func (o GetPortalNavigationSidebarComponentExternalLinkV2Output) Icon() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalNavigationSidebarComponentExternalLinkV2) string { return v.Icon }).(pulumi.StringOutput)
+}
+
+// The label of the link.
+func (o GetPortalNavigationSidebarComponentExternalLinkV2Output) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalNavigationSidebarComponentExternalLinkV2) string { return v.Label }).(pulumi.StringOutput)
+}
+
+type GetPortalNavigationSidebarComponentExternalLinkV2ArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalNavigationSidebarComponentExternalLinkV2ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalNavigationSidebarComponentExternalLinkV2)(nil)).Elem()
+}
+
+func (o GetPortalNavigationSidebarComponentExternalLinkV2ArrayOutput) ToGetPortalNavigationSidebarComponentExternalLinkV2ArrayOutput() GetPortalNavigationSidebarComponentExternalLinkV2ArrayOutput {
+	return o
+}
+
+func (o GetPortalNavigationSidebarComponentExternalLinkV2ArrayOutput) ToGetPortalNavigationSidebarComponentExternalLinkV2ArrayOutputWithContext(ctx context.Context) GetPortalNavigationSidebarComponentExternalLinkV2ArrayOutput {
+	return o
+}
+
+func (o GetPortalNavigationSidebarComponentExternalLinkV2ArrayOutput) Index(i pulumi.IntInput) GetPortalNavigationSidebarComponentExternalLinkV2Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalNavigationSidebarComponentExternalLinkV2 {
+		return vs[0].([]GetPortalNavigationSidebarComponentExternalLinkV2)[vs[1].(int)]
+	}).(GetPortalNavigationSidebarComponentExternalLinkV2Output)
+}
+
+type GetPortalNavigationSidebarComponentInternalLinkV2 struct {
+	// The icon of the link.
+	Icon string `pulumi:"icon"`
+	// The label of the link.
+	Label string `pulumi:"label"`
+	// The slug of the linked page.
+	PageSlug string `pulumi:"pageSlug"`
+}
+
+// GetPortalNavigationSidebarComponentInternalLinkV2Input is an input type that accepts GetPortalNavigationSidebarComponentInternalLinkV2Args and GetPortalNavigationSidebarComponentInternalLinkV2Output values.
+// You can construct a concrete instance of `GetPortalNavigationSidebarComponentInternalLinkV2Input` via:
+//
+//	GetPortalNavigationSidebarComponentInternalLinkV2Args{...}
+type GetPortalNavigationSidebarComponentInternalLinkV2Input interface {
+	pulumi.Input
+
+	ToGetPortalNavigationSidebarComponentInternalLinkV2Output() GetPortalNavigationSidebarComponentInternalLinkV2Output
+	ToGetPortalNavigationSidebarComponentInternalLinkV2OutputWithContext(context.Context) GetPortalNavigationSidebarComponentInternalLinkV2Output
+}
+
+type GetPortalNavigationSidebarComponentInternalLinkV2Args struct {
+	// The icon of the link.
+	Icon pulumi.StringInput `pulumi:"icon"`
+	// The label of the link.
+	Label pulumi.StringInput `pulumi:"label"`
+	// The slug of the linked page.
+	PageSlug pulumi.StringInput `pulumi:"pageSlug"`
+}
+
+func (GetPortalNavigationSidebarComponentInternalLinkV2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalNavigationSidebarComponentInternalLinkV2)(nil)).Elem()
+}
+
+func (i GetPortalNavigationSidebarComponentInternalLinkV2Args) ToGetPortalNavigationSidebarComponentInternalLinkV2Output() GetPortalNavigationSidebarComponentInternalLinkV2Output {
+	return i.ToGetPortalNavigationSidebarComponentInternalLinkV2OutputWithContext(context.Background())
+}
+
+func (i GetPortalNavigationSidebarComponentInternalLinkV2Args) ToGetPortalNavigationSidebarComponentInternalLinkV2OutputWithContext(ctx context.Context) GetPortalNavigationSidebarComponentInternalLinkV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalNavigationSidebarComponentInternalLinkV2Output)
+}
+
+// GetPortalNavigationSidebarComponentInternalLinkV2ArrayInput is an input type that accepts GetPortalNavigationSidebarComponentInternalLinkV2Array and GetPortalNavigationSidebarComponentInternalLinkV2ArrayOutput values.
+// You can construct a concrete instance of `GetPortalNavigationSidebarComponentInternalLinkV2ArrayInput` via:
+//
+//	GetPortalNavigationSidebarComponentInternalLinkV2Array{ GetPortalNavigationSidebarComponentInternalLinkV2Args{...} }
+type GetPortalNavigationSidebarComponentInternalLinkV2ArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalNavigationSidebarComponentInternalLinkV2ArrayOutput() GetPortalNavigationSidebarComponentInternalLinkV2ArrayOutput
+	ToGetPortalNavigationSidebarComponentInternalLinkV2ArrayOutputWithContext(context.Context) GetPortalNavigationSidebarComponentInternalLinkV2ArrayOutput
+}
+
+type GetPortalNavigationSidebarComponentInternalLinkV2Array []GetPortalNavigationSidebarComponentInternalLinkV2Input
+
+func (GetPortalNavigationSidebarComponentInternalLinkV2Array) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalNavigationSidebarComponentInternalLinkV2)(nil)).Elem()
+}
+
+func (i GetPortalNavigationSidebarComponentInternalLinkV2Array) ToGetPortalNavigationSidebarComponentInternalLinkV2ArrayOutput() GetPortalNavigationSidebarComponentInternalLinkV2ArrayOutput {
+	return i.ToGetPortalNavigationSidebarComponentInternalLinkV2ArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalNavigationSidebarComponentInternalLinkV2Array) ToGetPortalNavigationSidebarComponentInternalLinkV2ArrayOutputWithContext(ctx context.Context) GetPortalNavigationSidebarComponentInternalLinkV2ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalNavigationSidebarComponentInternalLinkV2ArrayOutput)
+}
+
+type GetPortalNavigationSidebarComponentInternalLinkV2Output struct{ *pulumi.OutputState }
+
+func (GetPortalNavigationSidebarComponentInternalLinkV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalNavigationSidebarComponentInternalLinkV2)(nil)).Elem()
+}
+
+func (o GetPortalNavigationSidebarComponentInternalLinkV2Output) ToGetPortalNavigationSidebarComponentInternalLinkV2Output() GetPortalNavigationSidebarComponentInternalLinkV2Output {
+	return o
+}
+
+func (o GetPortalNavigationSidebarComponentInternalLinkV2Output) ToGetPortalNavigationSidebarComponentInternalLinkV2OutputWithContext(ctx context.Context) GetPortalNavigationSidebarComponentInternalLinkV2Output {
+	return o
+}
+
+// The icon of the link.
+func (o GetPortalNavigationSidebarComponentInternalLinkV2Output) Icon() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalNavigationSidebarComponentInternalLinkV2) string { return v.Icon }).(pulumi.StringOutput)
+}
+
+// The label of the link.
+func (o GetPortalNavigationSidebarComponentInternalLinkV2Output) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalNavigationSidebarComponentInternalLinkV2) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// The slug of the linked page.
+func (o GetPortalNavigationSidebarComponentInternalLinkV2Output) PageSlug() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalNavigationSidebarComponentInternalLinkV2) string { return v.PageSlug }).(pulumi.StringOutput)
+}
+
+type GetPortalNavigationSidebarComponentInternalLinkV2ArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalNavigationSidebarComponentInternalLinkV2ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalNavigationSidebarComponentInternalLinkV2)(nil)).Elem()
+}
+
+func (o GetPortalNavigationSidebarComponentInternalLinkV2ArrayOutput) ToGetPortalNavigationSidebarComponentInternalLinkV2ArrayOutput() GetPortalNavigationSidebarComponentInternalLinkV2ArrayOutput {
+	return o
+}
+
+func (o GetPortalNavigationSidebarComponentInternalLinkV2ArrayOutput) ToGetPortalNavigationSidebarComponentInternalLinkV2ArrayOutputWithContext(ctx context.Context) GetPortalNavigationSidebarComponentInternalLinkV2ArrayOutput {
+	return o
+}
+
+func (o GetPortalNavigationSidebarComponentInternalLinkV2ArrayOutput) Index(i pulumi.IntInput) GetPortalNavigationSidebarComponentInternalLinkV2Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalNavigationSidebarComponentInternalLinkV2 {
+		return vs[0].([]GetPortalNavigationSidebarComponentInternalLinkV2)[vs[1].(int)]
+	}).(GetPortalNavigationSidebarComponentInternalLinkV2Output)
+}
+
+type GetPortalPage struct {
+	// The slug of the default page.
+	Default string `pulumi:"default"`
+	// Standard pages in display order.
+	Standards []GetPortalPageStandard `pulumi:"standards"`
+}
+
+// GetPortalPageInput is an input type that accepts GetPortalPageArgs and GetPortalPageOutput values.
+// You can construct a concrete instance of `GetPortalPageInput` via:
+//
+//	GetPortalPageArgs{...}
+type GetPortalPageInput interface {
+	pulumi.Input
+
+	ToGetPortalPageOutput() GetPortalPageOutput
+	ToGetPortalPageOutputWithContext(context.Context) GetPortalPageOutput
+}
+
+type GetPortalPageArgs struct {
+	// The slug of the default page.
+	Default pulumi.StringInput `pulumi:"default"`
+	// Standard pages in display order.
+	Standards GetPortalPageStandardArrayInput `pulumi:"standards"`
+}
+
+func (GetPortalPageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPage)(nil)).Elem()
+}
+
+func (i GetPortalPageArgs) ToGetPortalPageOutput() GetPortalPageOutput {
+	return i.ToGetPortalPageOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageArgs) ToGetPortalPageOutputWithContext(ctx context.Context) GetPortalPageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageOutput)
+}
+
+// GetPortalPageArrayInput is an input type that accepts GetPortalPageArray and GetPortalPageArrayOutput values.
+// You can construct a concrete instance of `GetPortalPageArrayInput` via:
+//
+//	GetPortalPageArray{ GetPortalPageArgs{...} }
+type GetPortalPageArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalPageArrayOutput() GetPortalPageArrayOutput
+	ToGetPortalPageArrayOutputWithContext(context.Context) GetPortalPageArrayOutput
+}
+
+type GetPortalPageArray []GetPortalPageInput
+
+func (GetPortalPageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPage)(nil)).Elem()
+}
+
+func (i GetPortalPageArray) ToGetPortalPageArrayOutput() GetPortalPageArrayOutput {
+	return i.ToGetPortalPageArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageArray) ToGetPortalPageArrayOutputWithContext(ctx context.Context) GetPortalPageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageArrayOutput)
+}
+
+type GetPortalPageOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPage)(nil)).Elem()
+}
+
+func (o GetPortalPageOutput) ToGetPortalPageOutput() GetPortalPageOutput {
+	return o
+}
+
+func (o GetPortalPageOutput) ToGetPortalPageOutputWithContext(ctx context.Context) GetPortalPageOutput {
+	return o
+}
+
+// The slug of the default page.
+func (o GetPortalPageOutput) Default() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalPage) string { return v.Default }).(pulumi.StringOutput)
+}
+
+// Standard pages in display order.
+func (o GetPortalPageOutput) Standards() GetPortalPageStandardArrayOutput {
+	return o.ApplyT(func(v GetPortalPage) []GetPortalPageStandard { return v.Standards }).(GetPortalPageStandardArrayOutput)
+}
+
+type GetPortalPageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPage)(nil)).Elem()
+}
+
+func (o GetPortalPageArrayOutput) ToGetPortalPageArrayOutput() GetPortalPageArrayOutput {
+	return o
+}
+
+func (o GetPortalPageArrayOutput) ToGetPortalPageArrayOutputWithContext(ctx context.Context) GetPortalPageArrayOutput {
+	return o
+}
+
+func (o GetPortalPageArrayOutput) Index(i pulumi.IntInput) GetPortalPageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalPage {
+		return vs[0].([]GetPortalPage)[vs[1].(int)]
+	}).(GetPortalPageOutput)
+}
+
+type GetPortalPageStandard struct {
+	// Page components in display order.
+	Components []GetPortalPageStandardComponent `pulumi:"components"`
+	// The slug of the page.
+	Slug string `pulumi:"slug"`
+	// The title of the page.
+	Title string `pulumi:"title"`
+}
+
+// GetPortalPageStandardInput is an input type that accepts GetPortalPageStandardArgs and GetPortalPageStandardOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardInput` via:
+//
+//	GetPortalPageStandardArgs{...}
+type GetPortalPageStandardInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardOutput() GetPortalPageStandardOutput
+	ToGetPortalPageStandardOutputWithContext(context.Context) GetPortalPageStandardOutput
+}
+
+type GetPortalPageStandardArgs struct {
+	// Page components in display order.
+	Components GetPortalPageStandardComponentArrayInput `pulumi:"components"`
+	// The slug of the page.
+	Slug pulumi.StringInput `pulumi:"slug"`
+	// The title of the page.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (GetPortalPageStandardArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandard)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardArgs) ToGetPortalPageStandardOutput() GetPortalPageStandardOutput {
+	return i.ToGetPortalPageStandardOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardArgs) ToGetPortalPageStandardOutputWithContext(ctx context.Context) GetPortalPageStandardOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardOutput)
+}
+
+// GetPortalPageStandardArrayInput is an input type that accepts GetPortalPageStandardArray and GetPortalPageStandardArrayOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardArrayInput` via:
+//
+//	GetPortalPageStandardArray{ GetPortalPageStandardArgs{...} }
+type GetPortalPageStandardArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardArrayOutput() GetPortalPageStandardArrayOutput
+	ToGetPortalPageStandardArrayOutputWithContext(context.Context) GetPortalPageStandardArrayOutput
+}
+
+type GetPortalPageStandardArray []GetPortalPageStandardInput
+
+func (GetPortalPageStandardArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandard)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardArray) ToGetPortalPageStandardArrayOutput() GetPortalPageStandardArrayOutput {
+	return i.ToGetPortalPageStandardArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardArray) ToGetPortalPageStandardArrayOutputWithContext(ctx context.Context) GetPortalPageStandardArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardArrayOutput)
+}
+
+type GetPortalPageStandardOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandard)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardOutput) ToGetPortalPageStandardOutput() GetPortalPageStandardOutput {
+	return o
+}
+
+func (o GetPortalPageStandardOutput) ToGetPortalPageStandardOutputWithContext(ctx context.Context) GetPortalPageStandardOutput {
+	return o
+}
+
+// Page components in display order.
+func (o GetPortalPageStandardOutput) Components() GetPortalPageStandardComponentArrayOutput {
+	return o.ApplyT(func(v GetPortalPageStandard) []GetPortalPageStandardComponent { return v.Components }).(GetPortalPageStandardComponentArrayOutput)
+}
+
+// The slug of the page.
+func (o GetPortalPageStandardOutput) Slug() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalPageStandard) string { return v.Slug }).(pulumi.StringOutput)
+}
+
+// The title of the page.
+func (o GetPortalPageStandardOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalPageStandard) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type GetPortalPageStandardArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandard)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardArrayOutput) ToGetPortalPageStandardArrayOutput() GetPortalPageStandardArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardArrayOutput) ToGetPortalPageStandardArrayOutputWithContext(ctx context.Context) GetPortalPageStandardArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardArrayOutput) Index(i pulumi.IntInput) GetPortalPageStandardOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalPageStandard {
+		return vs[0].([]GetPortalPageStandard)[vs[1].(int)]
+	}).(GetPortalPageStandardOutput)
+}
+
+type GetPortalPageStandardComponent struct {
+	// A form component.
+	Forms []GetPortalPageStandardComponentForm `pulumi:"forms"`
+	// An image component.
+	MediaImages []GetPortalPageStandardComponentMediaImage `pulumi:"mediaImages"`
+	// An MFA management component.
+	MyAccountMfaManagements []GetPortalPageStandardComponentMyAccountMfaManagement `pulumi:"myAccountMfaManagements"`
+	// A passkey management component.
+	MyAccountPasskeyManagements []GetPortalPageStandardComponentMyAccountPasskeyManagement `pulumi:"myAccountPasskeyManagements"`
+	// An organization details edit component.
+	MyOrganizationDetailsEdits []GetPortalPageStandardComponentMyOrganizationDetailsEdit `pulumi:"myOrganizationDetailsEdits"`
+	// An organization domain table component.
+	MyOrganizationDomainTables []GetPortalPageStandardComponentMyOrganizationDomainTable `pulumi:"myOrganizationDomainTables"`
+	// An organization member management component.
+	MyOrganizationMemberManagements []GetPortalPageStandardComponentMyOrganizationMemberManagement `pulumi:"myOrganizationMemberManagements"`
+	// A section containing up to 20 components.
+	StructureSections []GetPortalPageStandardComponentStructureSection `pulumi:"structureSections"`
+	// A separator component.
+	StructureSeparators []GetPortalPageStandardComponentStructureSeparator `pulumi:"structureSeparators"`
+	// A heading component.
+	TypographyHeadings []GetPortalPageStandardComponentTypographyHeading `pulumi:"typographyHeadings"`
+	// A rich text component.
+	TypographyRichTexts []GetPortalPageStandardComponentTypographyRichText `pulumi:"typographyRichTexts"`
+}
+
+// GetPortalPageStandardComponentInput is an input type that accepts GetPortalPageStandardComponentArgs and GetPortalPageStandardComponentOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentInput` via:
+//
+//	GetPortalPageStandardComponentArgs{...}
+type GetPortalPageStandardComponentInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentOutput() GetPortalPageStandardComponentOutput
+	ToGetPortalPageStandardComponentOutputWithContext(context.Context) GetPortalPageStandardComponentOutput
+}
+
+type GetPortalPageStandardComponentArgs struct {
+	// A form component.
+	Forms GetPortalPageStandardComponentFormArrayInput `pulumi:"forms"`
+	// An image component.
+	MediaImages GetPortalPageStandardComponentMediaImageArrayInput `pulumi:"mediaImages"`
+	// An MFA management component.
+	MyAccountMfaManagements GetPortalPageStandardComponentMyAccountMfaManagementArrayInput `pulumi:"myAccountMfaManagements"`
+	// A passkey management component.
+	MyAccountPasskeyManagements GetPortalPageStandardComponentMyAccountPasskeyManagementArrayInput `pulumi:"myAccountPasskeyManagements"`
+	// An organization details edit component.
+	MyOrganizationDetailsEdits GetPortalPageStandardComponentMyOrganizationDetailsEditArrayInput `pulumi:"myOrganizationDetailsEdits"`
+	// An organization domain table component.
+	MyOrganizationDomainTables GetPortalPageStandardComponentMyOrganizationDomainTableArrayInput `pulumi:"myOrganizationDomainTables"`
+	// An organization member management component.
+	MyOrganizationMemberManagements GetPortalPageStandardComponentMyOrganizationMemberManagementArrayInput `pulumi:"myOrganizationMemberManagements"`
+	// A section containing up to 20 components.
+	StructureSections GetPortalPageStandardComponentStructureSectionArrayInput `pulumi:"structureSections"`
+	// A separator component.
+	StructureSeparators GetPortalPageStandardComponentStructureSeparatorArrayInput `pulumi:"structureSeparators"`
+	// A heading component.
+	TypographyHeadings GetPortalPageStandardComponentTypographyHeadingArrayInput `pulumi:"typographyHeadings"`
+	// A rich text component.
+	TypographyRichTexts GetPortalPageStandardComponentTypographyRichTextArrayInput `pulumi:"typographyRichTexts"`
+}
+
+func (GetPortalPageStandardComponentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponent)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentArgs) ToGetPortalPageStandardComponentOutput() GetPortalPageStandardComponentOutput {
+	return i.ToGetPortalPageStandardComponentOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentArgs) ToGetPortalPageStandardComponentOutputWithContext(ctx context.Context) GetPortalPageStandardComponentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentOutput)
+}
+
+// GetPortalPageStandardComponentArrayInput is an input type that accepts GetPortalPageStandardComponentArray and GetPortalPageStandardComponentArrayOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentArrayInput` via:
+//
+//	GetPortalPageStandardComponentArray{ GetPortalPageStandardComponentArgs{...} }
+type GetPortalPageStandardComponentArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentArrayOutput() GetPortalPageStandardComponentArrayOutput
+	ToGetPortalPageStandardComponentArrayOutputWithContext(context.Context) GetPortalPageStandardComponentArrayOutput
+}
+
+type GetPortalPageStandardComponentArray []GetPortalPageStandardComponentInput
+
+func (GetPortalPageStandardComponentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponent)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentArray) ToGetPortalPageStandardComponentArrayOutput() GetPortalPageStandardComponentArrayOutput {
+	return i.ToGetPortalPageStandardComponentArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentArray) ToGetPortalPageStandardComponentArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentArrayOutput)
+}
+
+type GetPortalPageStandardComponentOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponent)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentOutput) ToGetPortalPageStandardComponentOutput() GetPortalPageStandardComponentOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentOutput) ToGetPortalPageStandardComponentOutputWithContext(ctx context.Context) GetPortalPageStandardComponentOutput {
+	return o
+}
+
+// A form component.
+func (o GetPortalPageStandardComponentOutput) Forms() GetPortalPageStandardComponentFormArrayOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponent) []GetPortalPageStandardComponentForm { return v.Forms }).(GetPortalPageStandardComponentFormArrayOutput)
+}
+
+// An image component.
+func (o GetPortalPageStandardComponentOutput) MediaImages() GetPortalPageStandardComponentMediaImageArrayOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponent) []GetPortalPageStandardComponentMediaImage {
+		return v.MediaImages
+	}).(GetPortalPageStandardComponentMediaImageArrayOutput)
+}
+
+// An MFA management component.
+func (o GetPortalPageStandardComponentOutput) MyAccountMfaManagements() GetPortalPageStandardComponentMyAccountMfaManagementArrayOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponent) []GetPortalPageStandardComponentMyAccountMfaManagement {
+		return v.MyAccountMfaManagements
+	}).(GetPortalPageStandardComponentMyAccountMfaManagementArrayOutput)
+}
+
+// A passkey management component.
+func (o GetPortalPageStandardComponentOutput) MyAccountPasskeyManagements() GetPortalPageStandardComponentMyAccountPasskeyManagementArrayOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponent) []GetPortalPageStandardComponentMyAccountPasskeyManagement {
+		return v.MyAccountPasskeyManagements
+	}).(GetPortalPageStandardComponentMyAccountPasskeyManagementArrayOutput)
+}
+
+// An organization details edit component.
+func (o GetPortalPageStandardComponentOutput) MyOrganizationDetailsEdits() GetPortalPageStandardComponentMyOrganizationDetailsEditArrayOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponent) []GetPortalPageStandardComponentMyOrganizationDetailsEdit {
+		return v.MyOrganizationDetailsEdits
+	}).(GetPortalPageStandardComponentMyOrganizationDetailsEditArrayOutput)
+}
+
+// An organization domain table component.
+func (o GetPortalPageStandardComponentOutput) MyOrganizationDomainTables() GetPortalPageStandardComponentMyOrganizationDomainTableArrayOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponent) []GetPortalPageStandardComponentMyOrganizationDomainTable {
+		return v.MyOrganizationDomainTables
+	}).(GetPortalPageStandardComponentMyOrganizationDomainTableArrayOutput)
+}
+
+// An organization member management component.
+func (o GetPortalPageStandardComponentOutput) MyOrganizationMemberManagements() GetPortalPageStandardComponentMyOrganizationMemberManagementArrayOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponent) []GetPortalPageStandardComponentMyOrganizationMemberManagement {
+		return v.MyOrganizationMemberManagements
+	}).(GetPortalPageStandardComponentMyOrganizationMemberManagementArrayOutput)
+}
+
+// A section containing up to 20 components.
+func (o GetPortalPageStandardComponentOutput) StructureSections() GetPortalPageStandardComponentStructureSectionArrayOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponent) []GetPortalPageStandardComponentStructureSection {
+		return v.StructureSections
+	}).(GetPortalPageStandardComponentStructureSectionArrayOutput)
+}
+
+// A separator component.
+func (o GetPortalPageStandardComponentOutput) StructureSeparators() GetPortalPageStandardComponentStructureSeparatorArrayOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponent) []GetPortalPageStandardComponentStructureSeparator {
+		return v.StructureSeparators
+	}).(GetPortalPageStandardComponentStructureSeparatorArrayOutput)
+}
+
+// A heading component.
+func (o GetPortalPageStandardComponentOutput) TypographyHeadings() GetPortalPageStandardComponentTypographyHeadingArrayOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponent) []GetPortalPageStandardComponentTypographyHeading {
+		return v.TypographyHeadings
+	}).(GetPortalPageStandardComponentTypographyHeadingArrayOutput)
+}
+
+// A rich text component.
+func (o GetPortalPageStandardComponentOutput) TypographyRichTexts() GetPortalPageStandardComponentTypographyRichTextArrayOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponent) []GetPortalPageStandardComponentTypographyRichText {
+		return v.TypographyRichTexts
+	}).(GetPortalPageStandardComponentTypographyRichTextArrayOutput)
+}
+
+type GetPortalPageStandardComponentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponent)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentArrayOutput) ToGetPortalPageStandardComponentArrayOutput() GetPortalPageStandardComponentArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentArrayOutput) ToGetPortalPageStandardComponentArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentArrayOutput) Index(i pulumi.IntInput) GetPortalPageStandardComponentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalPageStandardComponent {
+		return vs[0].([]GetPortalPageStandardComponent)[vs[1].(int)]
+	}).(GetPortalPageStandardComponentOutput)
+}
+
+type GetPortalPageStandardComponentForm struct {
+	// The message shown after form completion.
+	CompletionMessage string `pulumi:"completionMessage"`
+	// The ID of the form.
+	FormId string `pulumi:"formId"`
+}
+
+// GetPortalPageStandardComponentFormInput is an input type that accepts GetPortalPageStandardComponentFormArgs and GetPortalPageStandardComponentFormOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentFormInput` via:
+//
+//	GetPortalPageStandardComponentFormArgs{...}
+type GetPortalPageStandardComponentFormInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentFormOutput() GetPortalPageStandardComponentFormOutput
+	ToGetPortalPageStandardComponentFormOutputWithContext(context.Context) GetPortalPageStandardComponentFormOutput
+}
+
+type GetPortalPageStandardComponentFormArgs struct {
+	// The message shown after form completion.
+	CompletionMessage pulumi.StringInput `pulumi:"completionMessage"`
+	// The ID of the form.
+	FormId pulumi.StringInput `pulumi:"formId"`
+}
+
+func (GetPortalPageStandardComponentFormArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentForm)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentFormArgs) ToGetPortalPageStandardComponentFormOutput() GetPortalPageStandardComponentFormOutput {
+	return i.ToGetPortalPageStandardComponentFormOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentFormArgs) ToGetPortalPageStandardComponentFormOutputWithContext(ctx context.Context) GetPortalPageStandardComponentFormOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentFormOutput)
+}
+
+// GetPortalPageStandardComponentFormArrayInput is an input type that accepts GetPortalPageStandardComponentFormArray and GetPortalPageStandardComponentFormArrayOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentFormArrayInput` via:
+//
+//	GetPortalPageStandardComponentFormArray{ GetPortalPageStandardComponentFormArgs{...} }
+type GetPortalPageStandardComponentFormArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentFormArrayOutput() GetPortalPageStandardComponentFormArrayOutput
+	ToGetPortalPageStandardComponentFormArrayOutputWithContext(context.Context) GetPortalPageStandardComponentFormArrayOutput
+}
+
+type GetPortalPageStandardComponentFormArray []GetPortalPageStandardComponentFormInput
+
+func (GetPortalPageStandardComponentFormArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentForm)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentFormArray) ToGetPortalPageStandardComponentFormArrayOutput() GetPortalPageStandardComponentFormArrayOutput {
+	return i.ToGetPortalPageStandardComponentFormArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentFormArray) ToGetPortalPageStandardComponentFormArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentFormArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentFormArrayOutput)
+}
+
+type GetPortalPageStandardComponentFormOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentFormOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentForm)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentFormOutput) ToGetPortalPageStandardComponentFormOutput() GetPortalPageStandardComponentFormOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentFormOutput) ToGetPortalPageStandardComponentFormOutputWithContext(ctx context.Context) GetPortalPageStandardComponentFormOutput {
+	return o
+}
+
+// The message shown after form completion.
+func (o GetPortalPageStandardComponentFormOutput) CompletionMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentForm) string { return v.CompletionMessage }).(pulumi.StringOutput)
+}
+
+// The ID of the form.
+func (o GetPortalPageStandardComponentFormOutput) FormId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentForm) string { return v.FormId }).(pulumi.StringOutput)
+}
+
+type GetPortalPageStandardComponentFormArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentFormArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentForm)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentFormArrayOutput) ToGetPortalPageStandardComponentFormArrayOutput() GetPortalPageStandardComponentFormArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentFormArrayOutput) ToGetPortalPageStandardComponentFormArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentFormArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentFormArrayOutput) Index(i pulumi.IntInput) GetPortalPageStandardComponentFormOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalPageStandardComponentForm {
+		return vs[0].([]GetPortalPageStandardComponentForm)[vs[1].(int)]
+	}).(GetPortalPageStandardComponentFormOutput)
+}
+
+type GetPortalPageStandardComponentMediaImage struct {
+	// The height of the image.
+	Height int `pulumi:"height"`
+	// The position of the image.
+	Position string `pulumi:"position"`
+	// The URL of the image.
+	Src string `pulumi:"src"`
+}
+
+// GetPortalPageStandardComponentMediaImageInput is an input type that accepts GetPortalPageStandardComponentMediaImageArgs and GetPortalPageStandardComponentMediaImageOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentMediaImageInput` via:
+//
+//	GetPortalPageStandardComponentMediaImageArgs{...}
+type GetPortalPageStandardComponentMediaImageInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentMediaImageOutput() GetPortalPageStandardComponentMediaImageOutput
+	ToGetPortalPageStandardComponentMediaImageOutputWithContext(context.Context) GetPortalPageStandardComponentMediaImageOutput
+}
+
+type GetPortalPageStandardComponentMediaImageArgs struct {
+	// The height of the image.
+	Height pulumi.IntInput `pulumi:"height"`
+	// The position of the image.
+	Position pulumi.StringInput `pulumi:"position"`
+	// The URL of the image.
+	Src pulumi.StringInput `pulumi:"src"`
+}
+
+func (GetPortalPageStandardComponentMediaImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentMediaImage)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentMediaImageArgs) ToGetPortalPageStandardComponentMediaImageOutput() GetPortalPageStandardComponentMediaImageOutput {
+	return i.ToGetPortalPageStandardComponentMediaImageOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentMediaImageArgs) ToGetPortalPageStandardComponentMediaImageOutputWithContext(ctx context.Context) GetPortalPageStandardComponentMediaImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentMediaImageOutput)
+}
+
+// GetPortalPageStandardComponentMediaImageArrayInput is an input type that accepts GetPortalPageStandardComponentMediaImageArray and GetPortalPageStandardComponentMediaImageArrayOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentMediaImageArrayInput` via:
+//
+//	GetPortalPageStandardComponentMediaImageArray{ GetPortalPageStandardComponentMediaImageArgs{...} }
+type GetPortalPageStandardComponentMediaImageArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentMediaImageArrayOutput() GetPortalPageStandardComponentMediaImageArrayOutput
+	ToGetPortalPageStandardComponentMediaImageArrayOutputWithContext(context.Context) GetPortalPageStandardComponentMediaImageArrayOutput
+}
+
+type GetPortalPageStandardComponentMediaImageArray []GetPortalPageStandardComponentMediaImageInput
+
+func (GetPortalPageStandardComponentMediaImageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentMediaImage)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentMediaImageArray) ToGetPortalPageStandardComponentMediaImageArrayOutput() GetPortalPageStandardComponentMediaImageArrayOutput {
+	return i.ToGetPortalPageStandardComponentMediaImageArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentMediaImageArray) ToGetPortalPageStandardComponentMediaImageArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentMediaImageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentMediaImageArrayOutput)
+}
+
+type GetPortalPageStandardComponentMediaImageOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentMediaImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentMediaImage)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentMediaImageOutput) ToGetPortalPageStandardComponentMediaImageOutput() GetPortalPageStandardComponentMediaImageOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentMediaImageOutput) ToGetPortalPageStandardComponentMediaImageOutputWithContext(ctx context.Context) GetPortalPageStandardComponentMediaImageOutput {
+	return o
+}
+
+// The height of the image.
+func (o GetPortalPageStandardComponentMediaImageOutput) Height() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentMediaImage) int { return v.Height }).(pulumi.IntOutput)
+}
+
+// The position of the image.
+func (o GetPortalPageStandardComponentMediaImageOutput) Position() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentMediaImage) string { return v.Position }).(pulumi.StringOutput)
+}
+
+// The URL of the image.
+func (o GetPortalPageStandardComponentMediaImageOutput) Src() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentMediaImage) string { return v.Src }).(pulumi.StringOutput)
+}
+
+type GetPortalPageStandardComponentMediaImageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentMediaImageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentMediaImage)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentMediaImageArrayOutput) ToGetPortalPageStandardComponentMediaImageArrayOutput() GetPortalPageStandardComponentMediaImageArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentMediaImageArrayOutput) ToGetPortalPageStandardComponentMediaImageArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentMediaImageArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentMediaImageArrayOutput) Index(i pulumi.IntInput) GetPortalPageStandardComponentMediaImageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalPageStandardComponentMediaImage {
+		return vs[0].([]GetPortalPageStandardComponentMediaImage)[vs[1].(int)]
+	}).(GetPortalPageStandardComponentMediaImageOutput)
+}
+
+type GetPortalPageStandardComponentMyAccountMfaManagement struct {
+}
+
+// GetPortalPageStandardComponentMyAccountMfaManagementInput is an input type that accepts GetPortalPageStandardComponentMyAccountMfaManagementArgs and GetPortalPageStandardComponentMyAccountMfaManagementOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentMyAccountMfaManagementInput` via:
+//
+//	GetPortalPageStandardComponentMyAccountMfaManagementArgs{...}
+type GetPortalPageStandardComponentMyAccountMfaManagementInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentMyAccountMfaManagementOutput() GetPortalPageStandardComponentMyAccountMfaManagementOutput
+	ToGetPortalPageStandardComponentMyAccountMfaManagementOutputWithContext(context.Context) GetPortalPageStandardComponentMyAccountMfaManagementOutput
+}
+
+type GetPortalPageStandardComponentMyAccountMfaManagementArgs struct {
+}
+
+func (GetPortalPageStandardComponentMyAccountMfaManagementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentMyAccountMfaManagement)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentMyAccountMfaManagementArgs) ToGetPortalPageStandardComponentMyAccountMfaManagementOutput() GetPortalPageStandardComponentMyAccountMfaManagementOutput {
+	return i.ToGetPortalPageStandardComponentMyAccountMfaManagementOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentMyAccountMfaManagementArgs) ToGetPortalPageStandardComponentMyAccountMfaManagementOutputWithContext(ctx context.Context) GetPortalPageStandardComponentMyAccountMfaManagementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentMyAccountMfaManagementOutput)
+}
+
+// GetPortalPageStandardComponentMyAccountMfaManagementArrayInput is an input type that accepts GetPortalPageStandardComponentMyAccountMfaManagementArray and GetPortalPageStandardComponentMyAccountMfaManagementArrayOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentMyAccountMfaManagementArrayInput` via:
+//
+//	GetPortalPageStandardComponentMyAccountMfaManagementArray{ GetPortalPageStandardComponentMyAccountMfaManagementArgs{...} }
+type GetPortalPageStandardComponentMyAccountMfaManagementArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentMyAccountMfaManagementArrayOutput() GetPortalPageStandardComponentMyAccountMfaManagementArrayOutput
+	ToGetPortalPageStandardComponentMyAccountMfaManagementArrayOutputWithContext(context.Context) GetPortalPageStandardComponentMyAccountMfaManagementArrayOutput
+}
+
+type GetPortalPageStandardComponentMyAccountMfaManagementArray []GetPortalPageStandardComponentMyAccountMfaManagementInput
+
+func (GetPortalPageStandardComponentMyAccountMfaManagementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentMyAccountMfaManagement)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentMyAccountMfaManagementArray) ToGetPortalPageStandardComponentMyAccountMfaManagementArrayOutput() GetPortalPageStandardComponentMyAccountMfaManagementArrayOutput {
+	return i.ToGetPortalPageStandardComponentMyAccountMfaManagementArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentMyAccountMfaManagementArray) ToGetPortalPageStandardComponentMyAccountMfaManagementArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentMyAccountMfaManagementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentMyAccountMfaManagementArrayOutput)
+}
+
+type GetPortalPageStandardComponentMyAccountMfaManagementOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentMyAccountMfaManagementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentMyAccountMfaManagement)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentMyAccountMfaManagementOutput) ToGetPortalPageStandardComponentMyAccountMfaManagementOutput() GetPortalPageStandardComponentMyAccountMfaManagementOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentMyAccountMfaManagementOutput) ToGetPortalPageStandardComponentMyAccountMfaManagementOutputWithContext(ctx context.Context) GetPortalPageStandardComponentMyAccountMfaManagementOutput {
+	return o
+}
+
+type GetPortalPageStandardComponentMyAccountMfaManagementArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentMyAccountMfaManagementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentMyAccountMfaManagement)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentMyAccountMfaManagementArrayOutput) ToGetPortalPageStandardComponentMyAccountMfaManagementArrayOutput() GetPortalPageStandardComponentMyAccountMfaManagementArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentMyAccountMfaManagementArrayOutput) ToGetPortalPageStandardComponentMyAccountMfaManagementArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentMyAccountMfaManagementArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentMyAccountMfaManagementArrayOutput) Index(i pulumi.IntInput) GetPortalPageStandardComponentMyAccountMfaManagementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalPageStandardComponentMyAccountMfaManagement {
+		return vs[0].([]GetPortalPageStandardComponentMyAccountMfaManagement)[vs[1].(int)]
+	}).(GetPortalPageStandardComponentMyAccountMfaManagementOutput)
+}
+
+type GetPortalPageStandardComponentMyAccountPasskeyManagement struct {
+}
+
+// GetPortalPageStandardComponentMyAccountPasskeyManagementInput is an input type that accepts GetPortalPageStandardComponentMyAccountPasskeyManagementArgs and GetPortalPageStandardComponentMyAccountPasskeyManagementOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentMyAccountPasskeyManagementInput` via:
+//
+//	GetPortalPageStandardComponentMyAccountPasskeyManagementArgs{...}
+type GetPortalPageStandardComponentMyAccountPasskeyManagementInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentMyAccountPasskeyManagementOutput() GetPortalPageStandardComponentMyAccountPasskeyManagementOutput
+	ToGetPortalPageStandardComponentMyAccountPasskeyManagementOutputWithContext(context.Context) GetPortalPageStandardComponentMyAccountPasskeyManagementOutput
+}
+
+type GetPortalPageStandardComponentMyAccountPasskeyManagementArgs struct {
+}
+
+func (GetPortalPageStandardComponentMyAccountPasskeyManagementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentMyAccountPasskeyManagement)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentMyAccountPasskeyManagementArgs) ToGetPortalPageStandardComponentMyAccountPasskeyManagementOutput() GetPortalPageStandardComponentMyAccountPasskeyManagementOutput {
+	return i.ToGetPortalPageStandardComponentMyAccountPasskeyManagementOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentMyAccountPasskeyManagementArgs) ToGetPortalPageStandardComponentMyAccountPasskeyManagementOutputWithContext(ctx context.Context) GetPortalPageStandardComponentMyAccountPasskeyManagementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentMyAccountPasskeyManagementOutput)
+}
+
+// GetPortalPageStandardComponentMyAccountPasskeyManagementArrayInput is an input type that accepts GetPortalPageStandardComponentMyAccountPasskeyManagementArray and GetPortalPageStandardComponentMyAccountPasskeyManagementArrayOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentMyAccountPasskeyManagementArrayInput` via:
+//
+//	GetPortalPageStandardComponentMyAccountPasskeyManagementArray{ GetPortalPageStandardComponentMyAccountPasskeyManagementArgs{...} }
+type GetPortalPageStandardComponentMyAccountPasskeyManagementArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentMyAccountPasskeyManagementArrayOutput() GetPortalPageStandardComponentMyAccountPasskeyManagementArrayOutput
+	ToGetPortalPageStandardComponentMyAccountPasskeyManagementArrayOutputWithContext(context.Context) GetPortalPageStandardComponentMyAccountPasskeyManagementArrayOutput
+}
+
+type GetPortalPageStandardComponentMyAccountPasskeyManagementArray []GetPortalPageStandardComponentMyAccountPasskeyManagementInput
+
+func (GetPortalPageStandardComponentMyAccountPasskeyManagementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentMyAccountPasskeyManagement)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentMyAccountPasskeyManagementArray) ToGetPortalPageStandardComponentMyAccountPasskeyManagementArrayOutput() GetPortalPageStandardComponentMyAccountPasskeyManagementArrayOutput {
+	return i.ToGetPortalPageStandardComponentMyAccountPasskeyManagementArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentMyAccountPasskeyManagementArray) ToGetPortalPageStandardComponentMyAccountPasskeyManagementArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentMyAccountPasskeyManagementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentMyAccountPasskeyManagementArrayOutput)
+}
+
+type GetPortalPageStandardComponentMyAccountPasskeyManagementOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentMyAccountPasskeyManagementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentMyAccountPasskeyManagement)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentMyAccountPasskeyManagementOutput) ToGetPortalPageStandardComponentMyAccountPasskeyManagementOutput() GetPortalPageStandardComponentMyAccountPasskeyManagementOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentMyAccountPasskeyManagementOutput) ToGetPortalPageStandardComponentMyAccountPasskeyManagementOutputWithContext(ctx context.Context) GetPortalPageStandardComponentMyAccountPasskeyManagementOutput {
+	return o
+}
+
+type GetPortalPageStandardComponentMyAccountPasskeyManagementArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentMyAccountPasskeyManagementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentMyAccountPasskeyManagement)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentMyAccountPasskeyManagementArrayOutput) ToGetPortalPageStandardComponentMyAccountPasskeyManagementArrayOutput() GetPortalPageStandardComponentMyAccountPasskeyManagementArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentMyAccountPasskeyManagementArrayOutput) ToGetPortalPageStandardComponentMyAccountPasskeyManagementArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentMyAccountPasskeyManagementArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentMyAccountPasskeyManagementArrayOutput) Index(i pulumi.IntInput) GetPortalPageStandardComponentMyAccountPasskeyManagementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalPageStandardComponentMyAccountPasskeyManagement {
+		return vs[0].([]GetPortalPageStandardComponentMyAccountPasskeyManagement)[vs[1].(int)]
+	}).(GetPortalPageStandardComponentMyAccountPasskeyManagementOutput)
+}
+
+type GetPortalPageStandardComponentMyOrganizationDetailsEdit struct {
+}
+
+// GetPortalPageStandardComponentMyOrganizationDetailsEditInput is an input type that accepts GetPortalPageStandardComponentMyOrganizationDetailsEditArgs and GetPortalPageStandardComponentMyOrganizationDetailsEditOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentMyOrganizationDetailsEditInput` via:
+//
+//	GetPortalPageStandardComponentMyOrganizationDetailsEditArgs{...}
+type GetPortalPageStandardComponentMyOrganizationDetailsEditInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentMyOrganizationDetailsEditOutput() GetPortalPageStandardComponentMyOrganizationDetailsEditOutput
+	ToGetPortalPageStandardComponentMyOrganizationDetailsEditOutputWithContext(context.Context) GetPortalPageStandardComponentMyOrganizationDetailsEditOutput
+}
+
+type GetPortalPageStandardComponentMyOrganizationDetailsEditArgs struct {
+}
+
+func (GetPortalPageStandardComponentMyOrganizationDetailsEditArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentMyOrganizationDetailsEdit)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentMyOrganizationDetailsEditArgs) ToGetPortalPageStandardComponentMyOrganizationDetailsEditOutput() GetPortalPageStandardComponentMyOrganizationDetailsEditOutput {
+	return i.ToGetPortalPageStandardComponentMyOrganizationDetailsEditOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentMyOrganizationDetailsEditArgs) ToGetPortalPageStandardComponentMyOrganizationDetailsEditOutputWithContext(ctx context.Context) GetPortalPageStandardComponentMyOrganizationDetailsEditOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentMyOrganizationDetailsEditOutput)
+}
+
+// GetPortalPageStandardComponentMyOrganizationDetailsEditArrayInput is an input type that accepts GetPortalPageStandardComponentMyOrganizationDetailsEditArray and GetPortalPageStandardComponentMyOrganizationDetailsEditArrayOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentMyOrganizationDetailsEditArrayInput` via:
+//
+//	GetPortalPageStandardComponentMyOrganizationDetailsEditArray{ GetPortalPageStandardComponentMyOrganizationDetailsEditArgs{...} }
+type GetPortalPageStandardComponentMyOrganizationDetailsEditArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentMyOrganizationDetailsEditArrayOutput() GetPortalPageStandardComponentMyOrganizationDetailsEditArrayOutput
+	ToGetPortalPageStandardComponentMyOrganizationDetailsEditArrayOutputWithContext(context.Context) GetPortalPageStandardComponentMyOrganizationDetailsEditArrayOutput
+}
+
+type GetPortalPageStandardComponentMyOrganizationDetailsEditArray []GetPortalPageStandardComponentMyOrganizationDetailsEditInput
+
+func (GetPortalPageStandardComponentMyOrganizationDetailsEditArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentMyOrganizationDetailsEdit)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentMyOrganizationDetailsEditArray) ToGetPortalPageStandardComponentMyOrganizationDetailsEditArrayOutput() GetPortalPageStandardComponentMyOrganizationDetailsEditArrayOutput {
+	return i.ToGetPortalPageStandardComponentMyOrganizationDetailsEditArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentMyOrganizationDetailsEditArray) ToGetPortalPageStandardComponentMyOrganizationDetailsEditArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentMyOrganizationDetailsEditArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentMyOrganizationDetailsEditArrayOutput)
+}
+
+type GetPortalPageStandardComponentMyOrganizationDetailsEditOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentMyOrganizationDetailsEditOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentMyOrganizationDetailsEdit)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentMyOrganizationDetailsEditOutput) ToGetPortalPageStandardComponentMyOrganizationDetailsEditOutput() GetPortalPageStandardComponentMyOrganizationDetailsEditOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentMyOrganizationDetailsEditOutput) ToGetPortalPageStandardComponentMyOrganizationDetailsEditOutputWithContext(ctx context.Context) GetPortalPageStandardComponentMyOrganizationDetailsEditOutput {
+	return o
+}
+
+type GetPortalPageStandardComponentMyOrganizationDetailsEditArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentMyOrganizationDetailsEditArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentMyOrganizationDetailsEdit)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentMyOrganizationDetailsEditArrayOutput) ToGetPortalPageStandardComponentMyOrganizationDetailsEditArrayOutput() GetPortalPageStandardComponentMyOrganizationDetailsEditArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentMyOrganizationDetailsEditArrayOutput) ToGetPortalPageStandardComponentMyOrganizationDetailsEditArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentMyOrganizationDetailsEditArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentMyOrganizationDetailsEditArrayOutput) Index(i pulumi.IntInput) GetPortalPageStandardComponentMyOrganizationDetailsEditOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalPageStandardComponentMyOrganizationDetailsEdit {
+		return vs[0].([]GetPortalPageStandardComponentMyOrganizationDetailsEdit)[vs[1].(int)]
+	}).(GetPortalPageStandardComponentMyOrganizationDetailsEditOutput)
+}
+
+type GetPortalPageStandardComponentMyOrganizationDomainTable struct {
+}
+
+// GetPortalPageStandardComponentMyOrganizationDomainTableInput is an input type that accepts GetPortalPageStandardComponentMyOrganizationDomainTableArgs and GetPortalPageStandardComponentMyOrganizationDomainTableOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentMyOrganizationDomainTableInput` via:
+//
+//	GetPortalPageStandardComponentMyOrganizationDomainTableArgs{...}
+type GetPortalPageStandardComponentMyOrganizationDomainTableInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentMyOrganizationDomainTableOutput() GetPortalPageStandardComponentMyOrganizationDomainTableOutput
+	ToGetPortalPageStandardComponentMyOrganizationDomainTableOutputWithContext(context.Context) GetPortalPageStandardComponentMyOrganizationDomainTableOutput
+}
+
+type GetPortalPageStandardComponentMyOrganizationDomainTableArgs struct {
+}
+
+func (GetPortalPageStandardComponentMyOrganizationDomainTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentMyOrganizationDomainTable)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentMyOrganizationDomainTableArgs) ToGetPortalPageStandardComponentMyOrganizationDomainTableOutput() GetPortalPageStandardComponentMyOrganizationDomainTableOutput {
+	return i.ToGetPortalPageStandardComponentMyOrganizationDomainTableOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentMyOrganizationDomainTableArgs) ToGetPortalPageStandardComponentMyOrganizationDomainTableOutputWithContext(ctx context.Context) GetPortalPageStandardComponentMyOrganizationDomainTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentMyOrganizationDomainTableOutput)
+}
+
+// GetPortalPageStandardComponentMyOrganizationDomainTableArrayInput is an input type that accepts GetPortalPageStandardComponentMyOrganizationDomainTableArray and GetPortalPageStandardComponentMyOrganizationDomainTableArrayOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentMyOrganizationDomainTableArrayInput` via:
+//
+//	GetPortalPageStandardComponentMyOrganizationDomainTableArray{ GetPortalPageStandardComponentMyOrganizationDomainTableArgs{...} }
+type GetPortalPageStandardComponentMyOrganizationDomainTableArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentMyOrganizationDomainTableArrayOutput() GetPortalPageStandardComponentMyOrganizationDomainTableArrayOutput
+	ToGetPortalPageStandardComponentMyOrganizationDomainTableArrayOutputWithContext(context.Context) GetPortalPageStandardComponentMyOrganizationDomainTableArrayOutput
+}
+
+type GetPortalPageStandardComponentMyOrganizationDomainTableArray []GetPortalPageStandardComponentMyOrganizationDomainTableInput
+
+func (GetPortalPageStandardComponentMyOrganizationDomainTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentMyOrganizationDomainTable)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentMyOrganizationDomainTableArray) ToGetPortalPageStandardComponentMyOrganizationDomainTableArrayOutput() GetPortalPageStandardComponentMyOrganizationDomainTableArrayOutput {
+	return i.ToGetPortalPageStandardComponentMyOrganizationDomainTableArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentMyOrganizationDomainTableArray) ToGetPortalPageStandardComponentMyOrganizationDomainTableArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentMyOrganizationDomainTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentMyOrganizationDomainTableArrayOutput)
+}
+
+type GetPortalPageStandardComponentMyOrganizationDomainTableOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentMyOrganizationDomainTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentMyOrganizationDomainTable)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentMyOrganizationDomainTableOutput) ToGetPortalPageStandardComponentMyOrganizationDomainTableOutput() GetPortalPageStandardComponentMyOrganizationDomainTableOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentMyOrganizationDomainTableOutput) ToGetPortalPageStandardComponentMyOrganizationDomainTableOutputWithContext(ctx context.Context) GetPortalPageStandardComponentMyOrganizationDomainTableOutput {
+	return o
+}
+
+type GetPortalPageStandardComponentMyOrganizationDomainTableArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentMyOrganizationDomainTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentMyOrganizationDomainTable)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentMyOrganizationDomainTableArrayOutput) ToGetPortalPageStandardComponentMyOrganizationDomainTableArrayOutput() GetPortalPageStandardComponentMyOrganizationDomainTableArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentMyOrganizationDomainTableArrayOutput) ToGetPortalPageStandardComponentMyOrganizationDomainTableArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentMyOrganizationDomainTableArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentMyOrganizationDomainTableArrayOutput) Index(i pulumi.IntInput) GetPortalPageStandardComponentMyOrganizationDomainTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalPageStandardComponentMyOrganizationDomainTable {
+		return vs[0].([]GetPortalPageStandardComponentMyOrganizationDomainTable)[vs[1].(int)]
+	}).(GetPortalPageStandardComponentMyOrganizationDomainTableOutput)
+}
+
+type GetPortalPageStandardComponentMyOrganizationMemberManagement struct {
+}
+
+// GetPortalPageStandardComponentMyOrganizationMemberManagementInput is an input type that accepts GetPortalPageStandardComponentMyOrganizationMemberManagementArgs and GetPortalPageStandardComponentMyOrganizationMemberManagementOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentMyOrganizationMemberManagementInput` via:
+//
+//	GetPortalPageStandardComponentMyOrganizationMemberManagementArgs{...}
+type GetPortalPageStandardComponentMyOrganizationMemberManagementInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentMyOrganizationMemberManagementOutput() GetPortalPageStandardComponentMyOrganizationMemberManagementOutput
+	ToGetPortalPageStandardComponentMyOrganizationMemberManagementOutputWithContext(context.Context) GetPortalPageStandardComponentMyOrganizationMemberManagementOutput
+}
+
+type GetPortalPageStandardComponentMyOrganizationMemberManagementArgs struct {
+}
+
+func (GetPortalPageStandardComponentMyOrganizationMemberManagementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentMyOrganizationMemberManagement)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentMyOrganizationMemberManagementArgs) ToGetPortalPageStandardComponentMyOrganizationMemberManagementOutput() GetPortalPageStandardComponentMyOrganizationMemberManagementOutput {
+	return i.ToGetPortalPageStandardComponentMyOrganizationMemberManagementOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentMyOrganizationMemberManagementArgs) ToGetPortalPageStandardComponentMyOrganizationMemberManagementOutputWithContext(ctx context.Context) GetPortalPageStandardComponentMyOrganizationMemberManagementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentMyOrganizationMemberManagementOutput)
+}
+
+// GetPortalPageStandardComponentMyOrganizationMemberManagementArrayInput is an input type that accepts GetPortalPageStandardComponentMyOrganizationMemberManagementArray and GetPortalPageStandardComponentMyOrganizationMemberManagementArrayOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentMyOrganizationMemberManagementArrayInput` via:
+//
+//	GetPortalPageStandardComponentMyOrganizationMemberManagementArray{ GetPortalPageStandardComponentMyOrganizationMemberManagementArgs{...} }
+type GetPortalPageStandardComponentMyOrganizationMemberManagementArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentMyOrganizationMemberManagementArrayOutput() GetPortalPageStandardComponentMyOrganizationMemberManagementArrayOutput
+	ToGetPortalPageStandardComponentMyOrganizationMemberManagementArrayOutputWithContext(context.Context) GetPortalPageStandardComponentMyOrganizationMemberManagementArrayOutput
+}
+
+type GetPortalPageStandardComponentMyOrganizationMemberManagementArray []GetPortalPageStandardComponentMyOrganizationMemberManagementInput
+
+func (GetPortalPageStandardComponentMyOrganizationMemberManagementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentMyOrganizationMemberManagement)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentMyOrganizationMemberManagementArray) ToGetPortalPageStandardComponentMyOrganizationMemberManagementArrayOutput() GetPortalPageStandardComponentMyOrganizationMemberManagementArrayOutput {
+	return i.ToGetPortalPageStandardComponentMyOrganizationMemberManagementArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentMyOrganizationMemberManagementArray) ToGetPortalPageStandardComponentMyOrganizationMemberManagementArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentMyOrganizationMemberManagementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentMyOrganizationMemberManagementArrayOutput)
+}
+
+type GetPortalPageStandardComponentMyOrganizationMemberManagementOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentMyOrganizationMemberManagementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentMyOrganizationMemberManagement)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentMyOrganizationMemberManagementOutput) ToGetPortalPageStandardComponentMyOrganizationMemberManagementOutput() GetPortalPageStandardComponentMyOrganizationMemberManagementOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentMyOrganizationMemberManagementOutput) ToGetPortalPageStandardComponentMyOrganizationMemberManagementOutputWithContext(ctx context.Context) GetPortalPageStandardComponentMyOrganizationMemberManagementOutput {
+	return o
+}
+
+type GetPortalPageStandardComponentMyOrganizationMemberManagementArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentMyOrganizationMemberManagementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentMyOrganizationMemberManagement)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentMyOrganizationMemberManagementArrayOutput) ToGetPortalPageStandardComponentMyOrganizationMemberManagementArrayOutput() GetPortalPageStandardComponentMyOrganizationMemberManagementArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentMyOrganizationMemberManagementArrayOutput) ToGetPortalPageStandardComponentMyOrganizationMemberManagementArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentMyOrganizationMemberManagementArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentMyOrganizationMemberManagementArrayOutput) Index(i pulumi.IntInput) GetPortalPageStandardComponentMyOrganizationMemberManagementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalPageStandardComponentMyOrganizationMemberManagement {
+		return vs[0].([]GetPortalPageStandardComponentMyOrganizationMemberManagement)[vs[1].(int)]
+	}).(GetPortalPageStandardComponentMyOrganizationMemberManagementOutput)
+}
+
+type GetPortalPageStandardComponentStructureSection struct {
+	// Components in the section. Sections cannot be nested.
+	Children []GetPortalPageStandardComponentStructureSectionChild `pulumi:"children"`
+	// The description of the section.
+	Description string `pulumi:"description"`
+	// The title of the section.
+	Title string `pulumi:"title"`
+	// The section style. Can be `card` or `none`.
+	Variant string `pulumi:"variant"`
+}
+
+// GetPortalPageStandardComponentStructureSectionInput is an input type that accepts GetPortalPageStandardComponentStructureSectionArgs and GetPortalPageStandardComponentStructureSectionOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentStructureSectionInput` via:
+//
+//	GetPortalPageStandardComponentStructureSectionArgs{...}
+type GetPortalPageStandardComponentStructureSectionInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentStructureSectionOutput() GetPortalPageStandardComponentStructureSectionOutput
+	ToGetPortalPageStandardComponentStructureSectionOutputWithContext(context.Context) GetPortalPageStandardComponentStructureSectionOutput
+}
+
+type GetPortalPageStandardComponentStructureSectionArgs struct {
+	// Components in the section. Sections cannot be nested.
+	Children GetPortalPageStandardComponentStructureSectionChildArrayInput `pulumi:"children"`
+	// The description of the section.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The title of the section.
+	Title pulumi.StringInput `pulumi:"title"`
+	// The section style. Can be `card` or `none`.
+	Variant pulumi.StringInput `pulumi:"variant"`
+}
+
+func (GetPortalPageStandardComponentStructureSectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentStructureSection)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentStructureSectionArgs) ToGetPortalPageStandardComponentStructureSectionOutput() GetPortalPageStandardComponentStructureSectionOutput {
+	return i.ToGetPortalPageStandardComponentStructureSectionOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentStructureSectionArgs) ToGetPortalPageStandardComponentStructureSectionOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentStructureSectionOutput)
+}
+
+// GetPortalPageStandardComponentStructureSectionArrayInput is an input type that accepts GetPortalPageStandardComponentStructureSectionArray and GetPortalPageStandardComponentStructureSectionArrayOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentStructureSectionArrayInput` via:
+//
+//	GetPortalPageStandardComponentStructureSectionArray{ GetPortalPageStandardComponentStructureSectionArgs{...} }
+type GetPortalPageStandardComponentStructureSectionArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentStructureSectionArrayOutput() GetPortalPageStandardComponentStructureSectionArrayOutput
+	ToGetPortalPageStandardComponentStructureSectionArrayOutputWithContext(context.Context) GetPortalPageStandardComponentStructureSectionArrayOutput
+}
+
+type GetPortalPageStandardComponentStructureSectionArray []GetPortalPageStandardComponentStructureSectionInput
+
+func (GetPortalPageStandardComponentStructureSectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentStructureSection)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentStructureSectionArray) ToGetPortalPageStandardComponentStructureSectionArrayOutput() GetPortalPageStandardComponentStructureSectionArrayOutput {
+	return i.ToGetPortalPageStandardComponentStructureSectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentStructureSectionArray) ToGetPortalPageStandardComponentStructureSectionArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentStructureSectionArrayOutput)
+}
+
+type GetPortalPageStandardComponentStructureSectionOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentStructureSectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentStructureSection)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentStructureSectionOutput) ToGetPortalPageStandardComponentStructureSectionOutput() GetPortalPageStandardComponentStructureSectionOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionOutput) ToGetPortalPageStandardComponentStructureSectionOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionOutput {
+	return o
+}
+
+// Components in the section. Sections cannot be nested.
+func (o GetPortalPageStandardComponentStructureSectionOutput) Children() GetPortalPageStandardComponentStructureSectionChildArrayOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentStructureSection) []GetPortalPageStandardComponentStructureSectionChild {
+		return v.Children
+	}).(GetPortalPageStandardComponentStructureSectionChildArrayOutput)
+}
+
+// The description of the section.
+func (o GetPortalPageStandardComponentStructureSectionOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentStructureSection) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The title of the section.
+func (o GetPortalPageStandardComponentStructureSectionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentStructureSection) string { return v.Title }).(pulumi.StringOutput)
+}
+
+// The section style. Can be `card` or `none`.
+func (o GetPortalPageStandardComponentStructureSectionOutput) Variant() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentStructureSection) string { return v.Variant }).(pulumi.StringOutput)
+}
+
+type GetPortalPageStandardComponentStructureSectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentStructureSectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentStructureSection)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentStructureSectionArrayOutput) ToGetPortalPageStandardComponentStructureSectionArrayOutput() GetPortalPageStandardComponentStructureSectionArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionArrayOutput) ToGetPortalPageStandardComponentStructureSectionArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionArrayOutput) Index(i pulumi.IntInput) GetPortalPageStandardComponentStructureSectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalPageStandardComponentStructureSection {
+		return vs[0].([]GetPortalPageStandardComponentStructureSection)[vs[1].(int)]
+	}).(GetPortalPageStandardComponentStructureSectionOutput)
+}
+
+type GetPortalPageStandardComponentStructureSectionChild struct {
+	// A form component.
+	Forms []GetPortalPageStandardComponentStructureSectionChildForm `pulumi:"forms"`
+	// An image component.
+	MediaImages []GetPortalPageStandardComponentStructureSectionChildMediaImage `pulumi:"mediaImages"`
+	// An MFA management component.
+	MyAccountMfaManagements []GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagement `pulumi:"myAccountMfaManagements"`
+	// A passkey management component.
+	MyAccountPasskeyManagements []GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagement `pulumi:"myAccountPasskeyManagements"`
+	// An organization details edit component.
+	MyOrganizationDetailsEdits []GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEdit `pulumi:"myOrganizationDetailsEdits"`
+	// An organization domain table component.
+	MyOrganizationDomainTables []GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTable `pulumi:"myOrganizationDomainTables"`
+	// An organization member management component.
+	MyOrganizationMemberManagements []GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagement `pulumi:"myOrganizationMemberManagements"`
+	// A separator component.
+	StructureSeparators []GetPortalPageStandardComponentStructureSectionChildStructureSeparator `pulumi:"structureSeparators"`
+	// A heading component.
+	TypographyHeadings []GetPortalPageStandardComponentStructureSectionChildTypographyHeading `pulumi:"typographyHeadings"`
+	// A rich text component.
+	TypographyRichTexts []GetPortalPageStandardComponentStructureSectionChildTypographyRichText `pulumi:"typographyRichTexts"`
+}
+
+// GetPortalPageStandardComponentStructureSectionChildInput is an input type that accepts GetPortalPageStandardComponentStructureSectionChildArgs and GetPortalPageStandardComponentStructureSectionChildOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentStructureSectionChildInput` via:
+//
+//	GetPortalPageStandardComponentStructureSectionChildArgs{...}
+type GetPortalPageStandardComponentStructureSectionChildInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentStructureSectionChildOutput() GetPortalPageStandardComponentStructureSectionChildOutput
+	ToGetPortalPageStandardComponentStructureSectionChildOutputWithContext(context.Context) GetPortalPageStandardComponentStructureSectionChildOutput
+}
+
+type GetPortalPageStandardComponentStructureSectionChildArgs struct {
+	// A form component.
+	Forms GetPortalPageStandardComponentStructureSectionChildFormArrayInput `pulumi:"forms"`
+	// An image component.
+	MediaImages GetPortalPageStandardComponentStructureSectionChildMediaImageArrayInput `pulumi:"mediaImages"`
+	// An MFA management component.
+	MyAccountMfaManagements GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArrayInput `pulumi:"myAccountMfaManagements"`
+	// A passkey management component.
+	MyAccountPasskeyManagements GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArrayInput `pulumi:"myAccountPasskeyManagements"`
+	// An organization details edit component.
+	MyOrganizationDetailsEdits GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArrayInput `pulumi:"myOrganizationDetailsEdits"`
+	// An organization domain table component.
+	MyOrganizationDomainTables GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArrayInput `pulumi:"myOrganizationDomainTables"`
+	// An organization member management component.
+	MyOrganizationMemberManagements GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArrayInput `pulumi:"myOrganizationMemberManagements"`
+	// A separator component.
+	StructureSeparators GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArrayInput `pulumi:"structureSeparators"`
+	// A heading component.
+	TypographyHeadings GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArrayInput `pulumi:"typographyHeadings"`
+	// A rich text component.
+	TypographyRichTexts GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArrayInput `pulumi:"typographyRichTexts"`
+}
+
+func (GetPortalPageStandardComponentStructureSectionChildArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChild)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildArgs) ToGetPortalPageStandardComponentStructureSectionChildOutput() GetPortalPageStandardComponentStructureSectionChildOutput {
+	return i.ToGetPortalPageStandardComponentStructureSectionChildOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildArgs) ToGetPortalPageStandardComponentStructureSectionChildOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentStructureSectionChildOutput)
+}
+
+// GetPortalPageStandardComponentStructureSectionChildArrayInput is an input type that accepts GetPortalPageStandardComponentStructureSectionChildArray and GetPortalPageStandardComponentStructureSectionChildArrayOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentStructureSectionChildArrayInput` via:
+//
+//	GetPortalPageStandardComponentStructureSectionChildArray{ GetPortalPageStandardComponentStructureSectionChildArgs{...} }
+type GetPortalPageStandardComponentStructureSectionChildArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentStructureSectionChildArrayOutput() GetPortalPageStandardComponentStructureSectionChildArrayOutput
+	ToGetPortalPageStandardComponentStructureSectionChildArrayOutputWithContext(context.Context) GetPortalPageStandardComponentStructureSectionChildArrayOutput
+}
+
+type GetPortalPageStandardComponentStructureSectionChildArray []GetPortalPageStandardComponentStructureSectionChildInput
+
+func (GetPortalPageStandardComponentStructureSectionChildArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentStructureSectionChild)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildArray) ToGetPortalPageStandardComponentStructureSectionChildArrayOutput() GetPortalPageStandardComponentStructureSectionChildArrayOutput {
+	return i.ToGetPortalPageStandardComponentStructureSectionChildArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildArray) ToGetPortalPageStandardComponentStructureSectionChildArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentStructureSectionChildArrayOutput)
+}
+
+type GetPortalPageStandardComponentStructureSectionChildOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentStructureSectionChildOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChild)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildOutput) ToGetPortalPageStandardComponentStructureSectionChildOutput() GetPortalPageStandardComponentStructureSectionChildOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildOutput) ToGetPortalPageStandardComponentStructureSectionChildOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildOutput {
+	return o
+}
+
+// A form component.
+func (o GetPortalPageStandardComponentStructureSectionChildOutput) Forms() GetPortalPageStandardComponentStructureSectionChildFormArrayOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentStructureSectionChild) []GetPortalPageStandardComponentStructureSectionChildForm {
+		return v.Forms
+	}).(GetPortalPageStandardComponentStructureSectionChildFormArrayOutput)
+}
+
+// An image component.
+func (o GetPortalPageStandardComponentStructureSectionChildOutput) MediaImages() GetPortalPageStandardComponentStructureSectionChildMediaImageArrayOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentStructureSectionChild) []GetPortalPageStandardComponentStructureSectionChildMediaImage {
+		return v.MediaImages
+	}).(GetPortalPageStandardComponentStructureSectionChildMediaImageArrayOutput)
+}
+
+// An MFA management component.
+func (o GetPortalPageStandardComponentStructureSectionChildOutput) MyAccountMfaManagements() GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArrayOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentStructureSectionChild) []GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagement {
+		return v.MyAccountMfaManagements
+	}).(GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArrayOutput)
+}
+
+// A passkey management component.
+func (o GetPortalPageStandardComponentStructureSectionChildOutput) MyAccountPasskeyManagements() GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArrayOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentStructureSectionChild) []GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagement {
+		return v.MyAccountPasskeyManagements
+	}).(GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArrayOutput)
+}
+
+// An organization details edit component.
+func (o GetPortalPageStandardComponentStructureSectionChildOutput) MyOrganizationDetailsEdits() GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArrayOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentStructureSectionChild) []GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEdit {
+		return v.MyOrganizationDetailsEdits
+	}).(GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArrayOutput)
+}
+
+// An organization domain table component.
+func (o GetPortalPageStandardComponentStructureSectionChildOutput) MyOrganizationDomainTables() GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArrayOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentStructureSectionChild) []GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTable {
+		return v.MyOrganizationDomainTables
+	}).(GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArrayOutput)
+}
+
+// An organization member management component.
+func (o GetPortalPageStandardComponentStructureSectionChildOutput) MyOrganizationMemberManagements() GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArrayOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentStructureSectionChild) []GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagement {
+		return v.MyOrganizationMemberManagements
+	}).(GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArrayOutput)
+}
+
+// A separator component.
+func (o GetPortalPageStandardComponentStructureSectionChildOutput) StructureSeparators() GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArrayOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentStructureSectionChild) []GetPortalPageStandardComponentStructureSectionChildStructureSeparator {
+		return v.StructureSeparators
+	}).(GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArrayOutput)
+}
+
+// A heading component.
+func (o GetPortalPageStandardComponentStructureSectionChildOutput) TypographyHeadings() GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArrayOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentStructureSectionChild) []GetPortalPageStandardComponentStructureSectionChildTypographyHeading {
+		return v.TypographyHeadings
+	}).(GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArrayOutput)
+}
+
+// A rich text component.
+func (o GetPortalPageStandardComponentStructureSectionChildOutput) TypographyRichTexts() GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArrayOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentStructureSectionChild) []GetPortalPageStandardComponentStructureSectionChildTypographyRichText {
+		return v.TypographyRichTexts
+	}).(GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArrayOutput)
+}
+
+type GetPortalPageStandardComponentStructureSectionChildArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentStructureSectionChildArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentStructureSectionChild)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildArrayOutput) ToGetPortalPageStandardComponentStructureSectionChildArrayOutput() GetPortalPageStandardComponentStructureSectionChildArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildArrayOutput) ToGetPortalPageStandardComponentStructureSectionChildArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildArrayOutput) Index(i pulumi.IntInput) GetPortalPageStandardComponentStructureSectionChildOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalPageStandardComponentStructureSectionChild {
+		return vs[0].([]GetPortalPageStandardComponentStructureSectionChild)[vs[1].(int)]
+	}).(GetPortalPageStandardComponentStructureSectionChildOutput)
+}
+
+type GetPortalPageStandardComponentStructureSectionChildForm struct {
+	// The message shown after form completion.
+	CompletionMessage string `pulumi:"completionMessage"`
+	// The ID of the form.
+	FormId string `pulumi:"formId"`
+}
+
+// GetPortalPageStandardComponentStructureSectionChildFormInput is an input type that accepts GetPortalPageStandardComponentStructureSectionChildFormArgs and GetPortalPageStandardComponentStructureSectionChildFormOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentStructureSectionChildFormInput` via:
+//
+//	GetPortalPageStandardComponentStructureSectionChildFormArgs{...}
+type GetPortalPageStandardComponentStructureSectionChildFormInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentStructureSectionChildFormOutput() GetPortalPageStandardComponentStructureSectionChildFormOutput
+	ToGetPortalPageStandardComponentStructureSectionChildFormOutputWithContext(context.Context) GetPortalPageStandardComponentStructureSectionChildFormOutput
+}
+
+type GetPortalPageStandardComponentStructureSectionChildFormArgs struct {
+	// The message shown after form completion.
+	CompletionMessage pulumi.StringInput `pulumi:"completionMessage"`
+	// The ID of the form.
+	FormId pulumi.StringInput `pulumi:"formId"`
+}
+
+func (GetPortalPageStandardComponentStructureSectionChildFormArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildForm)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildFormArgs) ToGetPortalPageStandardComponentStructureSectionChildFormOutput() GetPortalPageStandardComponentStructureSectionChildFormOutput {
+	return i.ToGetPortalPageStandardComponentStructureSectionChildFormOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildFormArgs) ToGetPortalPageStandardComponentStructureSectionChildFormOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildFormOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentStructureSectionChildFormOutput)
+}
+
+// GetPortalPageStandardComponentStructureSectionChildFormArrayInput is an input type that accepts GetPortalPageStandardComponentStructureSectionChildFormArray and GetPortalPageStandardComponentStructureSectionChildFormArrayOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentStructureSectionChildFormArrayInput` via:
+//
+//	GetPortalPageStandardComponentStructureSectionChildFormArray{ GetPortalPageStandardComponentStructureSectionChildFormArgs{...} }
+type GetPortalPageStandardComponentStructureSectionChildFormArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentStructureSectionChildFormArrayOutput() GetPortalPageStandardComponentStructureSectionChildFormArrayOutput
+	ToGetPortalPageStandardComponentStructureSectionChildFormArrayOutputWithContext(context.Context) GetPortalPageStandardComponentStructureSectionChildFormArrayOutput
+}
+
+type GetPortalPageStandardComponentStructureSectionChildFormArray []GetPortalPageStandardComponentStructureSectionChildFormInput
+
+func (GetPortalPageStandardComponentStructureSectionChildFormArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentStructureSectionChildForm)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildFormArray) ToGetPortalPageStandardComponentStructureSectionChildFormArrayOutput() GetPortalPageStandardComponentStructureSectionChildFormArrayOutput {
+	return i.ToGetPortalPageStandardComponentStructureSectionChildFormArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildFormArray) ToGetPortalPageStandardComponentStructureSectionChildFormArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildFormArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentStructureSectionChildFormArrayOutput)
+}
+
+type GetPortalPageStandardComponentStructureSectionChildFormOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentStructureSectionChildFormOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildForm)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildFormOutput) ToGetPortalPageStandardComponentStructureSectionChildFormOutput() GetPortalPageStandardComponentStructureSectionChildFormOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildFormOutput) ToGetPortalPageStandardComponentStructureSectionChildFormOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildFormOutput {
+	return o
+}
+
+// The message shown after form completion.
+func (o GetPortalPageStandardComponentStructureSectionChildFormOutput) CompletionMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentStructureSectionChildForm) string { return v.CompletionMessage }).(pulumi.StringOutput)
+}
+
+// The ID of the form.
+func (o GetPortalPageStandardComponentStructureSectionChildFormOutput) FormId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentStructureSectionChildForm) string { return v.FormId }).(pulumi.StringOutput)
+}
+
+type GetPortalPageStandardComponentStructureSectionChildFormArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentStructureSectionChildFormArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentStructureSectionChildForm)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildFormArrayOutput) ToGetPortalPageStandardComponentStructureSectionChildFormArrayOutput() GetPortalPageStandardComponentStructureSectionChildFormArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildFormArrayOutput) ToGetPortalPageStandardComponentStructureSectionChildFormArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildFormArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildFormArrayOutput) Index(i pulumi.IntInput) GetPortalPageStandardComponentStructureSectionChildFormOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalPageStandardComponentStructureSectionChildForm {
+		return vs[0].([]GetPortalPageStandardComponentStructureSectionChildForm)[vs[1].(int)]
+	}).(GetPortalPageStandardComponentStructureSectionChildFormOutput)
+}
+
+type GetPortalPageStandardComponentStructureSectionChildMediaImage struct {
+	// The height of the image.
+	Height int `pulumi:"height"`
+	// The position of the image.
+	Position string `pulumi:"position"`
+	// The URL of the image.
+	Src string `pulumi:"src"`
+}
+
+// GetPortalPageStandardComponentStructureSectionChildMediaImageInput is an input type that accepts GetPortalPageStandardComponentStructureSectionChildMediaImageArgs and GetPortalPageStandardComponentStructureSectionChildMediaImageOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentStructureSectionChildMediaImageInput` via:
+//
+//	GetPortalPageStandardComponentStructureSectionChildMediaImageArgs{...}
+type GetPortalPageStandardComponentStructureSectionChildMediaImageInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentStructureSectionChildMediaImageOutput() GetPortalPageStandardComponentStructureSectionChildMediaImageOutput
+	ToGetPortalPageStandardComponentStructureSectionChildMediaImageOutputWithContext(context.Context) GetPortalPageStandardComponentStructureSectionChildMediaImageOutput
+}
+
+type GetPortalPageStandardComponentStructureSectionChildMediaImageArgs struct {
+	// The height of the image.
+	Height pulumi.IntInput `pulumi:"height"`
+	// The position of the image.
+	Position pulumi.StringInput `pulumi:"position"`
+	// The URL of the image.
+	Src pulumi.StringInput `pulumi:"src"`
+}
+
+func (GetPortalPageStandardComponentStructureSectionChildMediaImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildMediaImage)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildMediaImageArgs) ToGetPortalPageStandardComponentStructureSectionChildMediaImageOutput() GetPortalPageStandardComponentStructureSectionChildMediaImageOutput {
+	return i.ToGetPortalPageStandardComponentStructureSectionChildMediaImageOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildMediaImageArgs) ToGetPortalPageStandardComponentStructureSectionChildMediaImageOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildMediaImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentStructureSectionChildMediaImageOutput)
+}
+
+// GetPortalPageStandardComponentStructureSectionChildMediaImageArrayInput is an input type that accepts GetPortalPageStandardComponentStructureSectionChildMediaImageArray and GetPortalPageStandardComponentStructureSectionChildMediaImageArrayOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentStructureSectionChildMediaImageArrayInput` via:
+//
+//	GetPortalPageStandardComponentStructureSectionChildMediaImageArray{ GetPortalPageStandardComponentStructureSectionChildMediaImageArgs{...} }
+type GetPortalPageStandardComponentStructureSectionChildMediaImageArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentStructureSectionChildMediaImageArrayOutput() GetPortalPageStandardComponentStructureSectionChildMediaImageArrayOutput
+	ToGetPortalPageStandardComponentStructureSectionChildMediaImageArrayOutputWithContext(context.Context) GetPortalPageStandardComponentStructureSectionChildMediaImageArrayOutput
+}
+
+type GetPortalPageStandardComponentStructureSectionChildMediaImageArray []GetPortalPageStandardComponentStructureSectionChildMediaImageInput
+
+func (GetPortalPageStandardComponentStructureSectionChildMediaImageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentStructureSectionChildMediaImage)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildMediaImageArray) ToGetPortalPageStandardComponentStructureSectionChildMediaImageArrayOutput() GetPortalPageStandardComponentStructureSectionChildMediaImageArrayOutput {
+	return i.ToGetPortalPageStandardComponentStructureSectionChildMediaImageArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildMediaImageArray) ToGetPortalPageStandardComponentStructureSectionChildMediaImageArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildMediaImageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentStructureSectionChildMediaImageArrayOutput)
+}
+
+type GetPortalPageStandardComponentStructureSectionChildMediaImageOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentStructureSectionChildMediaImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildMediaImage)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildMediaImageOutput) ToGetPortalPageStandardComponentStructureSectionChildMediaImageOutput() GetPortalPageStandardComponentStructureSectionChildMediaImageOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildMediaImageOutput) ToGetPortalPageStandardComponentStructureSectionChildMediaImageOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildMediaImageOutput {
+	return o
+}
+
+// The height of the image.
+func (o GetPortalPageStandardComponentStructureSectionChildMediaImageOutput) Height() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentStructureSectionChildMediaImage) int { return v.Height }).(pulumi.IntOutput)
+}
+
+// The position of the image.
+func (o GetPortalPageStandardComponentStructureSectionChildMediaImageOutput) Position() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentStructureSectionChildMediaImage) string { return v.Position }).(pulumi.StringOutput)
+}
+
+// The URL of the image.
+func (o GetPortalPageStandardComponentStructureSectionChildMediaImageOutput) Src() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentStructureSectionChildMediaImage) string { return v.Src }).(pulumi.StringOutput)
+}
+
+type GetPortalPageStandardComponentStructureSectionChildMediaImageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentStructureSectionChildMediaImageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentStructureSectionChildMediaImage)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildMediaImageArrayOutput) ToGetPortalPageStandardComponentStructureSectionChildMediaImageArrayOutput() GetPortalPageStandardComponentStructureSectionChildMediaImageArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildMediaImageArrayOutput) ToGetPortalPageStandardComponentStructureSectionChildMediaImageArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildMediaImageArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildMediaImageArrayOutput) Index(i pulumi.IntInput) GetPortalPageStandardComponentStructureSectionChildMediaImageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalPageStandardComponentStructureSectionChildMediaImage {
+		return vs[0].([]GetPortalPageStandardComponentStructureSectionChildMediaImage)[vs[1].(int)]
+	}).(GetPortalPageStandardComponentStructureSectionChildMediaImageOutput)
+}
+
+type GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagement struct {
+}
+
+// GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementInput is an input type that accepts GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArgs and GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementInput` via:
+//
+//	GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArgs{...}
+type GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementOutput() GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementOutput
+	ToGetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementOutputWithContext(context.Context) GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementOutput
+}
+
+type GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArgs struct {
+}
+
+func (GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagement)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArgs) ToGetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementOutput() GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementOutput {
+	return i.ToGetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArgs) ToGetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementOutput)
+}
+
+// GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArrayInput is an input type that accepts GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArray and GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArrayOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArrayInput` via:
+//
+//	GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArray{ GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArgs{...} }
+type GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArrayOutput() GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArrayOutput
+	ToGetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArrayOutputWithContext(context.Context) GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArrayOutput
+}
+
+type GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArray []GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementInput
+
+func (GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagement)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArray) ToGetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArrayOutput() GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArrayOutput {
+	return i.ToGetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArray) ToGetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArrayOutput)
+}
+
+type GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagement)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementOutput) ToGetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementOutput() GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementOutput) ToGetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementOutput {
+	return o
+}
+
+type GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagement)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArrayOutput) ToGetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArrayOutput() GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArrayOutput) ToGetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArrayOutput) Index(i pulumi.IntInput) GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagement {
+		return vs[0].([]GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagement)[vs[1].(int)]
+	}).(GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementOutput)
+}
+
+type GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagement struct {
+}
+
+// GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementInput is an input type that accepts GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArgs and GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementInput` via:
+//
+//	GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArgs{...}
+type GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementOutput() GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementOutput
+	ToGetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementOutputWithContext(context.Context) GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementOutput
+}
+
+type GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArgs struct {
+}
+
+func (GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagement)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArgs) ToGetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementOutput() GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementOutput {
+	return i.ToGetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArgs) ToGetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementOutput)
+}
+
+// GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArrayInput is an input type that accepts GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArray and GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArrayOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArrayInput` via:
+//
+//	GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArray{ GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArgs{...} }
+type GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArrayOutput() GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArrayOutput
+	ToGetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArrayOutputWithContext(context.Context) GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArrayOutput
+}
+
+type GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArray []GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementInput
+
+func (GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagement)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArray) ToGetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArrayOutput() GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArrayOutput {
+	return i.ToGetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArray) ToGetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArrayOutput)
+}
+
+type GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagement)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementOutput) ToGetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementOutput() GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementOutput) ToGetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementOutput {
+	return o
+}
+
+type GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagement)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArrayOutput) ToGetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArrayOutput() GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArrayOutput) ToGetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArrayOutput) Index(i pulumi.IntInput) GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagement {
+		return vs[0].([]GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagement)[vs[1].(int)]
+	}).(GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementOutput)
+}
+
+type GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEdit struct {
+}
+
+// GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditInput is an input type that accepts GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArgs and GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditInput` via:
+//
+//	GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArgs{...}
+type GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditOutput() GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditOutput
+	ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditOutputWithContext(context.Context) GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditOutput
+}
+
+type GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArgs struct {
+}
+
+func (GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEdit)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArgs) ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditOutput() GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditOutput {
+	return i.ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArgs) ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditOutput)
+}
+
+// GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArrayInput is an input type that accepts GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArray and GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArrayOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArrayInput` via:
+//
+//	GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArray{ GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArgs{...} }
+type GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArrayOutput() GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArrayOutput
+	ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArrayOutputWithContext(context.Context) GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArrayOutput
+}
+
+type GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArray []GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditInput
+
+func (GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEdit)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArray) ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArrayOutput() GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArrayOutput {
+	return i.ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArray) ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArrayOutput)
+}
+
+type GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEdit)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditOutput) ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditOutput() GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditOutput) ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditOutput {
+	return o
+}
+
+type GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEdit)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArrayOutput) ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArrayOutput() GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArrayOutput) ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArrayOutput) Index(i pulumi.IntInput) GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEdit {
+		return vs[0].([]GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEdit)[vs[1].(int)]
+	}).(GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditOutput)
+}
+
+type GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTable struct {
+}
+
+// GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableInput is an input type that accepts GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArgs and GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableInput` via:
+//
+//	GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArgs{...}
+type GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableOutput() GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableOutput
+	ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableOutputWithContext(context.Context) GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableOutput
+}
+
+type GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArgs struct {
+}
+
+func (GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTable)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArgs) ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableOutput() GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableOutput {
+	return i.ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArgs) ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableOutput)
+}
+
+// GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArrayInput is an input type that accepts GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArray and GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArrayOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArrayInput` via:
+//
+//	GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArray{ GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArgs{...} }
+type GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArrayOutput() GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArrayOutput
+	ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArrayOutputWithContext(context.Context) GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArrayOutput
+}
+
+type GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArray []GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableInput
+
+func (GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTable)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArray) ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArrayOutput() GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArrayOutput {
+	return i.ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArray) ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArrayOutput)
+}
+
+type GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTable)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableOutput) ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableOutput() GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableOutput) ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableOutput {
+	return o
+}
+
+type GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTable)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArrayOutput) ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArrayOutput() GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArrayOutput) ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArrayOutput) Index(i pulumi.IntInput) GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTable {
+		return vs[0].([]GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTable)[vs[1].(int)]
+	}).(GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableOutput)
+}
+
+type GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagement struct {
+}
+
+// GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementInput is an input type that accepts GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArgs and GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementInput` via:
+//
+//	GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArgs{...}
+type GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementOutput() GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementOutput
+	ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementOutputWithContext(context.Context) GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementOutput
+}
+
+type GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArgs struct {
+}
+
+func (GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagement)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArgs) ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementOutput() GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementOutput {
+	return i.ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArgs) ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementOutput)
+}
+
+// GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArrayInput is an input type that accepts GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArray and GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArrayOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArrayInput` via:
+//
+//	GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArray{ GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArgs{...} }
+type GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArrayOutput() GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArrayOutput
+	ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArrayOutputWithContext(context.Context) GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArrayOutput
+}
+
+type GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArray []GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementInput
+
+func (GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagement)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArray) ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArrayOutput() GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArrayOutput {
+	return i.ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArray) ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArrayOutput)
+}
+
+type GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagement)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementOutput) ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementOutput() GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementOutput) ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementOutput {
+	return o
+}
+
+type GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagement)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArrayOutput) ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArrayOutput() GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArrayOutput) ToGetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArrayOutput) Index(i pulumi.IntInput) GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagement {
+		return vs[0].([]GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagement)[vs[1].(int)]
+	}).(GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementOutput)
+}
+
+type GetPortalPageStandardComponentStructureSectionChildStructureSeparator struct {
+	// The text of the separator.
+	Text string `pulumi:"text"`
+	// The separator style.
+	Variant string `pulumi:"variant"`
+}
+
+// GetPortalPageStandardComponentStructureSectionChildStructureSeparatorInput is an input type that accepts GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArgs and GetPortalPageStandardComponentStructureSectionChildStructureSeparatorOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentStructureSectionChildStructureSeparatorInput` via:
+//
+//	GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArgs{...}
+type GetPortalPageStandardComponentStructureSectionChildStructureSeparatorInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentStructureSectionChildStructureSeparatorOutput() GetPortalPageStandardComponentStructureSectionChildStructureSeparatorOutput
+	ToGetPortalPageStandardComponentStructureSectionChildStructureSeparatorOutputWithContext(context.Context) GetPortalPageStandardComponentStructureSectionChildStructureSeparatorOutput
+}
+
+type GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArgs struct {
+	// The text of the separator.
+	Text pulumi.StringInput `pulumi:"text"`
+	// The separator style.
+	Variant pulumi.StringInput `pulumi:"variant"`
+}
+
+func (GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildStructureSeparator)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArgs) ToGetPortalPageStandardComponentStructureSectionChildStructureSeparatorOutput() GetPortalPageStandardComponentStructureSectionChildStructureSeparatorOutput {
+	return i.ToGetPortalPageStandardComponentStructureSectionChildStructureSeparatorOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArgs) ToGetPortalPageStandardComponentStructureSectionChildStructureSeparatorOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildStructureSeparatorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentStructureSectionChildStructureSeparatorOutput)
+}
+
+// GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArrayInput is an input type that accepts GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArray and GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArrayOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArrayInput` via:
+//
+//	GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArray{ GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArgs{...} }
+type GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentStructureSectionChildStructureSeparatorArrayOutput() GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArrayOutput
+	ToGetPortalPageStandardComponentStructureSectionChildStructureSeparatorArrayOutputWithContext(context.Context) GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArrayOutput
+}
+
+type GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArray []GetPortalPageStandardComponentStructureSectionChildStructureSeparatorInput
+
+func (GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentStructureSectionChildStructureSeparator)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArray) ToGetPortalPageStandardComponentStructureSectionChildStructureSeparatorArrayOutput() GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArrayOutput {
+	return i.ToGetPortalPageStandardComponentStructureSectionChildStructureSeparatorArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArray) ToGetPortalPageStandardComponentStructureSectionChildStructureSeparatorArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArrayOutput)
+}
+
+type GetPortalPageStandardComponentStructureSectionChildStructureSeparatorOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentStructureSectionChildStructureSeparatorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildStructureSeparator)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildStructureSeparatorOutput) ToGetPortalPageStandardComponentStructureSectionChildStructureSeparatorOutput() GetPortalPageStandardComponentStructureSectionChildStructureSeparatorOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildStructureSeparatorOutput) ToGetPortalPageStandardComponentStructureSectionChildStructureSeparatorOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildStructureSeparatorOutput {
+	return o
+}
+
+// The text of the separator.
+func (o GetPortalPageStandardComponentStructureSectionChildStructureSeparatorOutput) Text() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentStructureSectionChildStructureSeparator) string { return v.Text }).(pulumi.StringOutput)
+}
+
+// The separator style.
+func (o GetPortalPageStandardComponentStructureSectionChildStructureSeparatorOutput) Variant() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentStructureSectionChildStructureSeparator) string { return v.Variant }).(pulumi.StringOutput)
+}
+
+type GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentStructureSectionChildStructureSeparator)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArrayOutput) ToGetPortalPageStandardComponentStructureSectionChildStructureSeparatorArrayOutput() GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArrayOutput) ToGetPortalPageStandardComponentStructureSectionChildStructureSeparatorArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArrayOutput) Index(i pulumi.IntInput) GetPortalPageStandardComponentStructureSectionChildStructureSeparatorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalPageStandardComponentStructureSectionChildStructureSeparator {
+		return vs[0].([]GetPortalPageStandardComponentStructureSectionChildStructureSeparator)[vs[1].(int)]
+	}).(GetPortalPageStandardComponentStructureSectionChildStructureSeparatorOutput)
+}
+
+type GetPortalPageStandardComponentStructureSectionChildTypographyHeading struct {
+	// The description below the heading.
+	Description string `pulumi:"description"`
+	// The heading text.
+	Title string `pulumi:"title"`
+}
+
+// GetPortalPageStandardComponentStructureSectionChildTypographyHeadingInput is an input type that accepts GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArgs and GetPortalPageStandardComponentStructureSectionChildTypographyHeadingOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentStructureSectionChildTypographyHeadingInput` via:
+//
+//	GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArgs{...}
+type GetPortalPageStandardComponentStructureSectionChildTypographyHeadingInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentStructureSectionChildTypographyHeadingOutput() GetPortalPageStandardComponentStructureSectionChildTypographyHeadingOutput
+	ToGetPortalPageStandardComponentStructureSectionChildTypographyHeadingOutputWithContext(context.Context) GetPortalPageStandardComponentStructureSectionChildTypographyHeadingOutput
+}
+
+type GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArgs struct {
+	// The description below the heading.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The heading text.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildTypographyHeading)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArgs) ToGetPortalPageStandardComponentStructureSectionChildTypographyHeadingOutput() GetPortalPageStandardComponentStructureSectionChildTypographyHeadingOutput {
+	return i.ToGetPortalPageStandardComponentStructureSectionChildTypographyHeadingOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArgs) ToGetPortalPageStandardComponentStructureSectionChildTypographyHeadingOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildTypographyHeadingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentStructureSectionChildTypographyHeadingOutput)
+}
+
+// GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArrayInput is an input type that accepts GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArray and GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArrayOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArrayInput` via:
+//
+//	GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArray{ GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArgs{...} }
+type GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentStructureSectionChildTypographyHeadingArrayOutput() GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArrayOutput
+	ToGetPortalPageStandardComponentStructureSectionChildTypographyHeadingArrayOutputWithContext(context.Context) GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArrayOutput
+}
+
+type GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArray []GetPortalPageStandardComponentStructureSectionChildTypographyHeadingInput
+
+func (GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentStructureSectionChildTypographyHeading)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArray) ToGetPortalPageStandardComponentStructureSectionChildTypographyHeadingArrayOutput() GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArrayOutput {
+	return i.ToGetPortalPageStandardComponentStructureSectionChildTypographyHeadingArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArray) ToGetPortalPageStandardComponentStructureSectionChildTypographyHeadingArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArrayOutput)
+}
+
+type GetPortalPageStandardComponentStructureSectionChildTypographyHeadingOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentStructureSectionChildTypographyHeadingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildTypographyHeading)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildTypographyHeadingOutput) ToGetPortalPageStandardComponentStructureSectionChildTypographyHeadingOutput() GetPortalPageStandardComponentStructureSectionChildTypographyHeadingOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildTypographyHeadingOutput) ToGetPortalPageStandardComponentStructureSectionChildTypographyHeadingOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildTypographyHeadingOutput {
+	return o
+}
+
+// The description below the heading.
+func (o GetPortalPageStandardComponentStructureSectionChildTypographyHeadingOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentStructureSectionChildTypographyHeading) string {
+		return v.Description
+	}).(pulumi.StringOutput)
+}
+
+// The heading text.
+func (o GetPortalPageStandardComponentStructureSectionChildTypographyHeadingOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentStructureSectionChildTypographyHeading) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentStructureSectionChildTypographyHeading)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArrayOutput) ToGetPortalPageStandardComponentStructureSectionChildTypographyHeadingArrayOutput() GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArrayOutput) ToGetPortalPageStandardComponentStructureSectionChildTypographyHeadingArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArrayOutput) Index(i pulumi.IntInput) GetPortalPageStandardComponentStructureSectionChildTypographyHeadingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalPageStandardComponentStructureSectionChildTypographyHeading {
+		return vs[0].([]GetPortalPageStandardComponentStructureSectionChildTypographyHeading)[vs[1].(int)]
+	}).(GetPortalPageStandardComponentStructureSectionChildTypographyHeadingOutput)
+}
+
+type GetPortalPageStandardComponentStructureSectionChildTypographyRichText struct {
+	// The HTML content.
+	Content string `pulumi:"content"`
+}
+
+// GetPortalPageStandardComponentStructureSectionChildTypographyRichTextInput is an input type that accepts GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArgs and GetPortalPageStandardComponentStructureSectionChildTypographyRichTextOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentStructureSectionChildTypographyRichTextInput` via:
+//
+//	GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArgs{...}
+type GetPortalPageStandardComponentStructureSectionChildTypographyRichTextInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentStructureSectionChildTypographyRichTextOutput() GetPortalPageStandardComponentStructureSectionChildTypographyRichTextOutput
+	ToGetPortalPageStandardComponentStructureSectionChildTypographyRichTextOutputWithContext(context.Context) GetPortalPageStandardComponentStructureSectionChildTypographyRichTextOutput
+}
+
+type GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArgs struct {
+	// The HTML content.
+	Content pulumi.StringInput `pulumi:"content"`
+}
+
+func (GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildTypographyRichText)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArgs) ToGetPortalPageStandardComponentStructureSectionChildTypographyRichTextOutput() GetPortalPageStandardComponentStructureSectionChildTypographyRichTextOutput {
+	return i.ToGetPortalPageStandardComponentStructureSectionChildTypographyRichTextOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArgs) ToGetPortalPageStandardComponentStructureSectionChildTypographyRichTextOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildTypographyRichTextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentStructureSectionChildTypographyRichTextOutput)
+}
+
+// GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArrayInput is an input type that accepts GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArray and GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArrayOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArrayInput` via:
+//
+//	GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArray{ GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArgs{...} }
+type GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentStructureSectionChildTypographyRichTextArrayOutput() GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArrayOutput
+	ToGetPortalPageStandardComponentStructureSectionChildTypographyRichTextArrayOutputWithContext(context.Context) GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArrayOutput
+}
+
+type GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArray []GetPortalPageStandardComponentStructureSectionChildTypographyRichTextInput
+
+func (GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentStructureSectionChildTypographyRichText)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArray) ToGetPortalPageStandardComponentStructureSectionChildTypographyRichTextArrayOutput() GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArrayOutput {
+	return i.ToGetPortalPageStandardComponentStructureSectionChildTypographyRichTextArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArray) ToGetPortalPageStandardComponentStructureSectionChildTypographyRichTextArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArrayOutput)
+}
+
+type GetPortalPageStandardComponentStructureSectionChildTypographyRichTextOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentStructureSectionChildTypographyRichTextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildTypographyRichText)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildTypographyRichTextOutput) ToGetPortalPageStandardComponentStructureSectionChildTypographyRichTextOutput() GetPortalPageStandardComponentStructureSectionChildTypographyRichTextOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildTypographyRichTextOutput) ToGetPortalPageStandardComponentStructureSectionChildTypographyRichTextOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildTypographyRichTextOutput {
+	return o
+}
+
+// The HTML content.
+func (o GetPortalPageStandardComponentStructureSectionChildTypographyRichTextOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentStructureSectionChildTypographyRichText) string { return v.Content }).(pulumi.StringOutput)
+}
+
+type GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentStructureSectionChildTypographyRichText)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArrayOutput) ToGetPortalPageStandardComponentStructureSectionChildTypographyRichTextArrayOutput() GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArrayOutput) ToGetPortalPageStandardComponentStructureSectionChildTypographyRichTextArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArrayOutput) Index(i pulumi.IntInput) GetPortalPageStandardComponentStructureSectionChildTypographyRichTextOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalPageStandardComponentStructureSectionChildTypographyRichText {
+		return vs[0].([]GetPortalPageStandardComponentStructureSectionChildTypographyRichText)[vs[1].(int)]
+	}).(GetPortalPageStandardComponentStructureSectionChildTypographyRichTextOutput)
+}
+
+type GetPortalPageStandardComponentStructureSeparator struct {
+	// The text of the separator.
+	Text string `pulumi:"text"`
+	// The separator style.
+	Variant string `pulumi:"variant"`
+}
+
+// GetPortalPageStandardComponentStructureSeparatorInput is an input type that accepts GetPortalPageStandardComponentStructureSeparatorArgs and GetPortalPageStandardComponentStructureSeparatorOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentStructureSeparatorInput` via:
+//
+//	GetPortalPageStandardComponentStructureSeparatorArgs{...}
+type GetPortalPageStandardComponentStructureSeparatorInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentStructureSeparatorOutput() GetPortalPageStandardComponentStructureSeparatorOutput
+	ToGetPortalPageStandardComponentStructureSeparatorOutputWithContext(context.Context) GetPortalPageStandardComponentStructureSeparatorOutput
+}
+
+type GetPortalPageStandardComponentStructureSeparatorArgs struct {
+	// The text of the separator.
+	Text pulumi.StringInput `pulumi:"text"`
+	// The separator style.
+	Variant pulumi.StringInput `pulumi:"variant"`
+}
+
+func (GetPortalPageStandardComponentStructureSeparatorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentStructureSeparator)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentStructureSeparatorArgs) ToGetPortalPageStandardComponentStructureSeparatorOutput() GetPortalPageStandardComponentStructureSeparatorOutput {
+	return i.ToGetPortalPageStandardComponentStructureSeparatorOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentStructureSeparatorArgs) ToGetPortalPageStandardComponentStructureSeparatorOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSeparatorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentStructureSeparatorOutput)
+}
+
+// GetPortalPageStandardComponentStructureSeparatorArrayInput is an input type that accepts GetPortalPageStandardComponentStructureSeparatorArray and GetPortalPageStandardComponentStructureSeparatorArrayOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentStructureSeparatorArrayInput` via:
+//
+//	GetPortalPageStandardComponentStructureSeparatorArray{ GetPortalPageStandardComponentStructureSeparatorArgs{...} }
+type GetPortalPageStandardComponentStructureSeparatorArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentStructureSeparatorArrayOutput() GetPortalPageStandardComponentStructureSeparatorArrayOutput
+	ToGetPortalPageStandardComponentStructureSeparatorArrayOutputWithContext(context.Context) GetPortalPageStandardComponentStructureSeparatorArrayOutput
+}
+
+type GetPortalPageStandardComponentStructureSeparatorArray []GetPortalPageStandardComponentStructureSeparatorInput
+
+func (GetPortalPageStandardComponentStructureSeparatorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentStructureSeparator)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentStructureSeparatorArray) ToGetPortalPageStandardComponentStructureSeparatorArrayOutput() GetPortalPageStandardComponentStructureSeparatorArrayOutput {
+	return i.ToGetPortalPageStandardComponentStructureSeparatorArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentStructureSeparatorArray) ToGetPortalPageStandardComponentStructureSeparatorArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSeparatorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentStructureSeparatorArrayOutput)
+}
+
+type GetPortalPageStandardComponentStructureSeparatorOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentStructureSeparatorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentStructureSeparator)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentStructureSeparatorOutput) ToGetPortalPageStandardComponentStructureSeparatorOutput() GetPortalPageStandardComponentStructureSeparatorOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSeparatorOutput) ToGetPortalPageStandardComponentStructureSeparatorOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSeparatorOutput {
+	return o
+}
+
+// The text of the separator.
+func (o GetPortalPageStandardComponentStructureSeparatorOutput) Text() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentStructureSeparator) string { return v.Text }).(pulumi.StringOutput)
+}
+
+// The separator style.
+func (o GetPortalPageStandardComponentStructureSeparatorOutput) Variant() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentStructureSeparator) string { return v.Variant }).(pulumi.StringOutput)
+}
+
+type GetPortalPageStandardComponentStructureSeparatorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentStructureSeparatorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentStructureSeparator)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentStructureSeparatorArrayOutput) ToGetPortalPageStandardComponentStructureSeparatorArrayOutput() GetPortalPageStandardComponentStructureSeparatorArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSeparatorArrayOutput) ToGetPortalPageStandardComponentStructureSeparatorArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentStructureSeparatorArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentStructureSeparatorArrayOutput) Index(i pulumi.IntInput) GetPortalPageStandardComponentStructureSeparatorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalPageStandardComponentStructureSeparator {
+		return vs[0].([]GetPortalPageStandardComponentStructureSeparator)[vs[1].(int)]
+	}).(GetPortalPageStandardComponentStructureSeparatorOutput)
+}
+
+type GetPortalPageStandardComponentTypographyHeading struct {
+	// The description below the heading.
+	Description string `pulumi:"description"`
+	// The heading text.
+	Title string `pulumi:"title"`
+}
+
+// GetPortalPageStandardComponentTypographyHeadingInput is an input type that accepts GetPortalPageStandardComponentTypographyHeadingArgs and GetPortalPageStandardComponentTypographyHeadingOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentTypographyHeadingInput` via:
+//
+//	GetPortalPageStandardComponentTypographyHeadingArgs{...}
+type GetPortalPageStandardComponentTypographyHeadingInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentTypographyHeadingOutput() GetPortalPageStandardComponentTypographyHeadingOutput
+	ToGetPortalPageStandardComponentTypographyHeadingOutputWithContext(context.Context) GetPortalPageStandardComponentTypographyHeadingOutput
+}
+
+type GetPortalPageStandardComponentTypographyHeadingArgs struct {
+	// The description below the heading.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The heading text.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (GetPortalPageStandardComponentTypographyHeadingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentTypographyHeading)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentTypographyHeadingArgs) ToGetPortalPageStandardComponentTypographyHeadingOutput() GetPortalPageStandardComponentTypographyHeadingOutput {
+	return i.ToGetPortalPageStandardComponentTypographyHeadingOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentTypographyHeadingArgs) ToGetPortalPageStandardComponentTypographyHeadingOutputWithContext(ctx context.Context) GetPortalPageStandardComponentTypographyHeadingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentTypographyHeadingOutput)
+}
+
+// GetPortalPageStandardComponentTypographyHeadingArrayInput is an input type that accepts GetPortalPageStandardComponentTypographyHeadingArray and GetPortalPageStandardComponentTypographyHeadingArrayOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentTypographyHeadingArrayInput` via:
+//
+//	GetPortalPageStandardComponentTypographyHeadingArray{ GetPortalPageStandardComponentTypographyHeadingArgs{...} }
+type GetPortalPageStandardComponentTypographyHeadingArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentTypographyHeadingArrayOutput() GetPortalPageStandardComponentTypographyHeadingArrayOutput
+	ToGetPortalPageStandardComponentTypographyHeadingArrayOutputWithContext(context.Context) GetPortalPageStandardComponentTypographyHeadingArrayOutput
+}
+
+type GetPortalPageStandardComponentTypographyHeadingArray []GetPortalPageStandardComponentTypographyHeadingInput
+
+func (GetPortalPageStandardComponentTypographyHeadingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentTypographyHeading)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentTypographyHeadingArray) ToGetPortalPageStandardComponentTypographyHeadingArrayOutput() GetPortalPageStandardComponentTypographyHeadingArrayOutput {
+	return i.ToGetPortalPageStandardComponentTypographyHeadingArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentTypographyHeadingArray) ToGetPortalPageStandardComponentTypographyHeadingArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentTypographyHeadingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentTypographyHeadingArrayOutput)
+}
+
+type GetPortalPageStandardComponentTypographyHeadingOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentTypographyHeadingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentTypographyHeading)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentTypographyHeadingOutput) ToGetPortalPageStandardComponentTypographyHeadingOutput() GetPortalPageStandardComponentTypographyHeadingOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentTypographyHeadingOutput) ToGetPortalPageStandardComponentTypographyHeadingOutputWithContext(ctx context.Context) GetPortalPageStandardComponentTypographyHeadingOutput {
+	return o
+}
+
+// The description below the heading.
+func (o GetPortalPageStandardComponentTypographyHeadingOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentTypographyHeading) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The heading text.
+func (o GetPortalPageStandardComponentTypographyHeadingOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentTypographyHeading) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type GetPortalPageStandardComponentTypographyHeadingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentTypographyHeadingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentTypographyHeading)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentTypographyHeadingArrayOutput) ToGetPortalPageStandardComponentTypographyHeadingArrayOutput() GetPortalPageStandardComponentTypographyHeadingArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentTypographyHeadingArrayOutput) ToGetPortalPageStandardComponentTypographyHeadingArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentTypographyHeadingArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentTypographyHeadingArrayOutput) Index(i pulumi.IntInput) GetPortalPageStandardComponentTypographyHeadingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalPageStandardComponentTypographyHeading {
+		return vs[0].([]GetPortalPageStandardComponentTypographyHeading)[vs[1].(int)]
+	}).(GetPortalPageStandardComponentTypographyHeadingOutput)
+}
+
+type GetPortalPageStandardComponentTypographyRichText struct {
+	// The HTML content.
+	Content string `pulumi:"content"`
+}
+
+// GetPortalPageStandardComponentTypographyRichTextInput is an input type that accepts GetPortalPageStandardComponentTypographyRichTextArgs and GetPortalPageStandardComponentTypographyRichTextOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentTypographyRichTextInput` via:
+//
+//	GetPortalPageStandardComponentTypographyRichTextArgs{...}
+type GetPortalPageStandardComponentTypographyRichTextInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentTypographyRichTextOutput() GetPortalPageStandardComponentTypographyRichTextOutput
+	ToGetPortalPageStandardComponentTypographyRichTextOutputWithContext(context.Context) GetPortalPageStandardComponentTypographyRichTextOutput
+}
+
+type GetPortalPageStandardComponentTypographyRichTextArgs struct {
+	// The HTML content.
+	Content pulumi.StringInput `pulumi:"content"`
+}
+
+func (GetPortalPageStandardComponentTypographyRichTextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentTypographyRichText)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentTypographyRichTextArgs) ToGetPortalPageStandardComponentTypographyRichTextOutput() GetPortalPageStandardComponentTypographyRichTextOutput {
+	return i.ToGetPortalPageStandardComponentTypographyRichTextOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentTypographyRichTextArgs) ToGetPortalPageStandardComponentTypographyRichTextOutputWithContext(ctx context.Context) GetPortalPageStandardComponentTypographyRichTextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentTypographyRichTextOutput)
+}
+
+// GetPortalPageStandardComponentTypographyRichTextArrayInput is an input type that accepts GetPortalPageStandardComponentTypographyRichTextArray and GetPortalPageStandardComponentTypographyRichTextArrayOutput values.
+// You can construct a concrete instance of `GetPortalPageStandardComponentTypographyRichTextArrayInput` via:
+//
+//	GetPortalPageStandardComponentTypographyRichTextArray{ GetPortalPageStandardComponentTypographyRichTextArgs{...} }
+type GetPortalPageStandardComponentTypographyRichTextArrayInput interface {
+	pulumi.Input
+
+	ToGetPortalPageStandardComponentTypographyRichTextArrayOutput() GetPortalPageStandardComponentTypographyRichTextArrayOutput
+	ToGetPortalPageStandardComponentTypographyRichTextArrayOutputWithContext(context.Context) GetPortalPageStandardComponentTypographyRichTextArrayOutput
+}
+
+type GetPortalPageStandardComponentTypographyRichTextArray []GetPortalPageStandardComponentTypographyRichTextInput
+
+func (GetPortalPageStandardComponentTypographyRichTextArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentTypographyRichText)(nil)).Elem()
+}
+
+func (i GetPortalPageStandardComponentTypographyRichTextArray) ToGetPortalPageStandardComponentTypographyRichTextArrayOutput() GetPortalPageStandardComponentTypographyRichTextArrayOutput {
+	return i.ToGetPortalPageStandardComponentTypographyRichTextArrayOutputWithContext(context.Background())
+}
+
+func (i GetPortalPageStandardComponentTypographyRichTextArray) ToGetPortalPageStandardComponentTypographyRichTextArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentTypographyRichTextArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPortalPageStandardComponentTypographyRichTextArrayOutput)
+}
+
+type GetPortalPageStandardComponentTypographyRichTextOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentTypographyRichTextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPortalPageStandardComponentTypographyRichText)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentTypographyRichTextOutput) ToGetPortalPageStandardComponentTypographyRichTextOutput() GetPortalPageStandardComponentTypographyRichTextOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentTypographyRichTextOutput) ToGetPortalPageStandardComponentTypographyRichTextOutputWithContext(ctx context.Context) GetPortalPageStandardComponentTypographyRichTextOutput {
+	return o
+}
+
+// The HTML content.
+func (o GetPortalPageStandardComponentTypographyRichTextOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPortalPageStandardComponentTypographyRichText) string { return v.Content }).(pulumi.StringOutput)
+}
+
+type GetPortalPageStandardComponentTypographyRichTextArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPortalPageStandardComponentTypographyRichTextArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPortalPageStandardComponentTypographyRichText)(nil)).Elem()
+}
+
+func (o GetPortalPageStandardComponentTypographyRichTextArrayOutput) ToGetPortalPageStandardComponentTypographyRichTextArrayOutput() GetPortalPageStandardComponentTypographyRichTextArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentTypographyRichTextArrayOutput) ToGetPortalPageStandardComponentTypographyRichTextArrayOutputWithContext(ctx context.Context) GetPortalPageStandardComponentTypographyRichTextArrayOutput {
+	return o
+}
+
+func (o GetPortalPageStandardComponentTypographyRichTextArrayOutput) Index(i pulumi.IntInput) GetPortalPageStandardComponentTypographyRichTextOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPortalPageStandardComponentTypographyRichText {
+		return vs[0].([]GetPortalPageStandardComponentTypographyRichText)[vs[1].(int)]
+	}).(GetPortalPageStandardComponentTypographyRichTextOutput)
+}
+
 type GetPromptScreenPartialsScreenPartial struct {
 	InsertionPoints []GetPromptScreenPartialsScreenPartialInsertionPoint `pulumi:"insertionPoints"`
 	// The name of the screen associated with the partials
@@ -20644,6 +29226,76 @@ func (o GetUserPermissionTypeArrayOutput) Index(i pulumi.IntInput) GetUserPermis
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientExpressConfigurationInput)(nil)).Elem(), GetClientsClientExpressConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientExpressConfigurationArrayInput)(nil)).Elem(), GetClientsClientExpressConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientExpressConfigurationLinkedClientInput)(nil)).Elem(), GetClientsClientExpressConfigurationLinkedClientArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientExpressConfigurationLinkedClientArrayInput)(nil)).Elem(), GetClientsClientExpressConfigurationLinkedClientArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientFedcmLoginInput)(nil)).Elem(), GetClientsClientFedcmLoginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientFedcmLoginArrayInput)(nil)).Elem(), GetClientsClientFedcmLoginArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientFedcmLoginGoogleInput)(nil)).Elem(), GetClientsClientFedcmLoginGoogleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientFedcmLoginGoogleArrayInput)(nil)).Elem(), GetClientsClientFedcmLoginGoogleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientIdentityAssertionAuthorizationGrantInput)(nil)).Elem(), GetClientsClientIdentityAssertionAuthorizationGrantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientIdentityAssertionAuthorizationGrantArrayInput)(nil)).Elem(), GetClientsClientIdentityAssertionAuthorizationGrantArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientMyOrganizationConfigurationInput)(nil)).Elem(), GetClientsClientMyOrganizationConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientMyOrganizationConfigurationArrayInput)(nil)).Elem(), GetClientsClientMyOrganizationConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessInput)(nil)).Elem(), GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArrayInput)(nil)).Elem(), GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutInput)(nil)).Elem(), GetClientsClientOidcLogoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutArrayInput)(nil)).Elem(), GetClientsClientOidcLogoutArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutBackchannelLogoutInitiatorInput)(nil)).Elem(), GetClientsClientOidcLogoutBackchannelLogoutInitiatorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayInput)(nil)).Elem(), GetClientsClientOidcLogoutBackchannelLogoutInitiatorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataInput)(nil)).Elem(), GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayInput)(nil)).Elem(), GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientSessionTransferInput)(nil)).Elem(), GetClientsClientSessionTransferArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientSessionTransferArrayInput)(nil)).Elem(), GetClientsClientSessionTransferArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientSessionTransferDelegationInput)(nil)).Elem(), GetClientsClientSessionTransferDelegationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientSessionTransferDelegationArrayInput)(nil)).Elem(), GetClientsClientSessionTransferDelegationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientTokenExchangeInput)(nil)).Elem(), GetClientsClientTokenExchangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientTokenExchangeArrayInput)(nil)).Elem(), GetClientsClientTokenExchangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientTokenQuotaInput)(nil)).Elem(), GetClientsClientTokenQuotaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientTokenQuotaArrayInput)(nil)).Elem(), GetClientsClientTokenQuotaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientTokenQuotaClientCredentialInput)(nil)).Elem(), GetClientsClientTokenQuotaClientCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientTokenQuotaClientCredentialArrayInput)(nil)).Elem(), GetClientsClientTokenQuotaClientCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionAuthenticationInput)(nil)).Elem(), GetConnectionAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionAuthenticationArrayInput)(nil)).Elem(), GetConnectionAuthenticationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionConnectedAccountInput)(nil)).Elem(), GetConnectionConnectedAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionConnectedAccountArrayInput)(nil)).Elem(), GetConnectionConnectedAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionCrossAppAccessRequestingAppInput)(nil)).Elem(), GetConnectionCrossAppAccessRequestingAppArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionCrossAppAccessRequestingAppArrayInput)(nil)).Elem(), GetConnectionCrossAppAccessRequestingAppArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionCrossAppAccessResourceAppInput)(nil)).Elem(), GetConnectionCrossAppAccessResourceAppArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionCrossAppAccessResourceAppArrayInput)(nil)).Elem(), GetConnectionCrossAppAccessResourceAppArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionDirectoryDefaultMappingMappingInput)(nil)).Elem(), GetConnectionDirectoryDefaultMappingMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionDirectoryDefaultMappingMappingArrayInput)(nil)).Elem(), GetConnectionDirectoryDefaultMappingMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionDirectoryMappingInput)(nil)).Elem(), GetConnectionDirectoryMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionDirectoryMappingArrayInput)(nil)).Elem(), GetConnectionDirectoryMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionDirectorySynchronizedGroupsGroupInput)(nil)).Elem(), GetConnectionDirectorySynchronizedGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionDirectorySynchronizedGroupsGroupArrayInput)(nil)).Elem(), GetConnectionDirectorySynchronizedGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionKeysKeyInput)(nil)).Elem(), GetConnectionKeysKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionKeysKeyArrayInput)(nil)).Elem(), GetConnectionKeysKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionInput)(nil)).Elem(), GetConnectionOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionArrayInput)(nil)).Elem(), GetConnectionOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAssertionDecryptionSettingInput)(nil)).Elem(), GetConnectionOptionAssertionDecryptionSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAssertionDecryptionSettingArrayInput)(nil)).Elem(), GetConnectionOptionAssertionDecryptionSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeInput)(nil)).Elem(), GetConnectionOptionAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeArrayInput)(nil)).Elem(), GetConnectionOptionAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeEmailInput)(nil)).Elem(), GetConnectionOptionAttributeEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeEmailArrayInput)(nil)).Elem(), GetConnectionOptionAttributeEmailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeEmailIdentifierInput)(nil)).Elem(), GetConnectionOptionAttributeEmailIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeEmailIdentifierArrayInput)(nil)).Elem(), GetConnectionOptionAttributeEmailIdentifierArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeEmailSignupInput)(nil)).Elem(), GetConnectionOptionAttributeEmailSignupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeEmailSignupArrayInput)(nil)).Elem(), GetConnectionOptionAttributeEmailSignupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeEmailSignupVerificationInput)(nil)).Elem(), GetConnectionOptionAttributeEmailSignupVerificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeEmailSignupVerificationArrayInput)(nil)).Elem(), GetConnectionOptionAttributeEmailSignupVerificationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeMapInput)(nil)).Elem(), GetConnectionOptionAttributeMapArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeMapArrayInput)(nil)).Elem(), GetConnectionOptionAttributeMapArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributePhoneNumberInput)(nil)).Elem(), GetConnectionOptionAttributePhoneNumberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributePhoneNumberArrayInput)(nil)).Elem(), GetConnectionOptionAttributePhoneNumberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributePhoneNumberIdentifierInput)(nil)).Elem(), GetConnectionOptionAttributePhoneNumberIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributePhoneNumberIdentifierArrayInput)(nil)).Elem(), GetConnectionOptionAttributePhoneNumberIdentifierArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributePhoneNumberSignupInput)(nil)).Elem(), GetConnectionOptionAttributePhoneNumberSignupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributePhoneNumberSignupArrayInput)(nil)).Elem(), GetConnectionOptionAttributePhoneNumberSignupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributePhoneNumberSignupVerificationInput)(nil)).Elem(), GetConnectionOptionAttributePhoneNumberSignupVerificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributePhoneNumberSignupVerificationArrayInput)(nil)).Elem(), GetConnectionOptionAttributePhoneNumberSignupVerificationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeUsernameInput)(nil)).Elem(), GetConnectionOptionAttributeUsernameArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeUsernameArrayInput)(nil)).Elem(), GetConnectionOptionAttributeUsernameArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectionOptionAttributeUsernameIdentifierInput)(nil)).Elem(), GetConnectionOptionAttributeUsernameIdentifierArgs{})
@@ -20888,6 +29540,72 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPhoneProviderConfigurationArrayInput)(nil)).Elem(), GetPhoneProviderConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPhoneProviderCredentialInput)(nil)).Elem(), GetPhoneProviderCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPhoneProviderCredentialArrayInput)(nil)).Elem(), GetPhoneProviderCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalClientInput)(nil)).Elem(), GetPortalClientArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalClientArrayInput)(nil)).Elem(), GetPortalClientArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalClientClientSecretPostInput)(nil)).Elem(), GetPortalClientClientSecretPostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalClientClientSecretPostArrayInput)(nil)).Elem(), GetPortalClientClientSecretPostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalCustomCodeInput)(nil)).Elem(), GetPortalCustomCodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalCustomCodeArrayInput)(nil)).Elem(), GetPortalCustomCodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalNavigationInput)(nil)).Elem(), GetPortalNavigationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalNavigationArrayInput)(nil)).Elem(), GetPortalNavigationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalNavigationSidebarInput)(nil)).Elem(), GetPortalNavigationSidebarArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalNavigationSidebarArrayInput)(nil)).Elem(), GetPortalNavigationSidebarArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalNavigationSidebarComponentInput)(nil)).Elem(), GetPortalNavigationSidebarComponentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalNavigationSidebarComponentArrayInput)(nil)).Elem(), GetPortalNavigationSidebarComponentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalNavigationSidebarComponentExternalLinkV2Input)(nil)).Elem(), GetPortalNavigationSidebarComponentExternalLinkV2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalNavigationSidebarComponentExternalLinkV2ArrayInput)(nil)).Elem(), GetPortalNavigationSidebarComponentExternalLinkV2Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalNavigationSidebarComponentInternalLinkV2Input)(nil)).Elem(), GetPortalNavigationSidebarComponentInternalLinkV2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalNavigationSidebarComponentInternalLinkV2ArrayInput)(nil)).Elem(), GetPortalNavigationSidebarComponentInternalLinkV2Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageInput)(nil)).Elem(), GetPortalPageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageArrayInput)(nil)).Elem(), GetPortalPageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardInput)(nil)).Elem(), GetPortalPageStandardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardArrayInput)(nil)).Elem(), GetPortalPageStandardArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentInput)(nil)).Elem(), GetPortalPageStandardComponentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentArrayInput)(nil)).Elem(), GetPortalPageStandardComponentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentFormInput)(nil)).Elem(), GetPortalPageStandardComponentFormArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentFormArrayInput)(nil)).Elem(), GetPortalPageStandardComponentFormArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentMediaImageInput)(nil)).Elem(), GetPortalPageStandardComponentMediaImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentMediaImageArrayInput)(nil)).Elem(), GetPortalPageStandardComponentMediaImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentMyAccountMfaManagementInput)(nil)).Elem(), GetPortalPageStandardComponentMyAccountMfaManagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentMyAccountMfaManagementArrayInput)(nil)).Elem(), GetPortalPageStandardComponentMyAccountMfaManagementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentMyAccountPasskeyManagementInput)(nil)).Elem(), GetPortalPageStandardComponentMyAccountPasskeyManagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentMyAccountPasskeyManagementArrayInput)(nil)).Elem(), GetPortalPageStandardComponentMyAccountPasskeyManagementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentMyOrganizationDetailsEditInput)(nil)).Elem(), GetPortalPageStandardComponentMyOrganizationDetailsEditArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentMyOrganizationDetailsEditArrayInput)(nil)).Elem(), GetPortalPageStandardComponentMyOrganizationDetailsEditArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentMyOrganizationDomainTableInput)(nil)).Elem(), GetPortalPageStandardComponentMyOrganizationDomainTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentMyOrganizationDomainTableArrayInput)(nil)).Elem(), GetPortalPageStandardComponentMyOrganizationDomainTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentMyOrganizationMemberManagementInput)(nil)).Elem(), GetPortalPageStandardComponentMyOrganizationMemberManagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentMyOrganizationMemberManagementArrayInput)(nil)).Elem(), GetPortalPageStandardComponentMyOrganizationMemberManagementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionInput)(nil)).Elem(), GetPortalPageStandardComponentStructureSectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionArrayInput)(nil)).Elem(), GetPortalPageStandardComponentStructureSectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildInput)(nil)).Elem(), GetPortalPageStandardComponentStructureSectionChildArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildArrayInput)(nil)).Elem(), GetPortalPageStandardComponentStructureSectionChildArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildFormInput)(nil)).Elem(), GetPortalPageStandardComponentStructureSectionChildFormArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildFormArrayInput)(nil)).Elem(), GetPortalPageStandardComponentStructureSectionChildFormArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildMediaImageInput)(nil)).Elem(), GetPortalPageStandardComponentStructureSectionChildMediaImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildMediaImageArrayInput)(nil)).Elem(), GetPortalPageStandardComponentStructureSectionChildMediaImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementInput)(nil)).Elem(), GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArrayInput)(nil)).Elem(), GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementInput)(nil)).Elem(), GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArrayInput)(nil)).Elem(), GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditInput)(nil)).Elem(), GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArrayInput)(nil)).Elem(), GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableInput)(nil)).Elem(), GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArrayInput)(nil)).Elem(), GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementInput)(nil)).Elem(), GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArrayInput)(nil)).Elem(), GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildStructureSeparatorInput)(nil)).Elem(), GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArrayInput)(nil)).Elem(), GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildTypographyHeadingInput)(nil)).Elem(), GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArrayInput)(nil)).Elem(), GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildTypographyRichTextInput)(nil)).Elem(), GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArrayInput)(nil)).Elem(), GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentStructureSeparatorInput)(nil)).Elem(), GetPortalPageStandardComponentStructureSeparatorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentStructureSeparatorArrayInput)(nil)).Elem(), GetPortalPageStandardComponentStructureSeparatorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentTypographyHeadingInput)(nil)).Elem(), GetPortalPageStandardComponentTypographyHeadingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentTypographyHeadingArrayInput)(nil)).Elem(), GetPortalPageStandardComponentTypographyHeadingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentTypographyRichTextInput)(nil)).Elem(), GetPortalPageStandardComponentTypographyRichTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPortalPageStandardComponentTypographyRichTextArrayInput)(nil)).Elem(), GetPortalPageStandardComponentTypographyRichTextArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPromptScreenPartialsScreenPartialInput)(nil)).Elem(), GetPromptScreenPartialsScreenPartialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPromptScreenPartialsScreenPartialArrayInput)(nil)).Elem(), GetPromptScreenPartialsScreenPartialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPromptScreenPartialsScreenPartialInsertionPointInput)(nil)).Elem(), GetPromptScreenPartialsScreenPartialInsertionPointArgs{})
@@ -20986,6 +29704,76 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserOrganizationsOrganizationTokenQuotaClientCredentialArrayInput)(nil)).Elem(), GetUserOrganizationsOrganizationTokenQuotaClientCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPermissionTypeInput)(nil)).Elem(), GetUserPermissionTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPermissionTypeArrayInput)(nil)).Elem(), GetUserPermissionTypeArray{})
+	pulumi.RegisterOutputType(GetClientsClientExpressConfigurationOutput{})
+	pulumi.RegisterOutputType(GetClientsClientExpressConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetClientsClientExpressConfigurationLinkedClientOutput{})
+	pulumi.RegisterOutputType(GetClientsClientExpressConfigurationLinkedClientArrayOutput{})
+	pulumi.RegisterOutputType(GetClientsClientFedcmLoginOutput{})
+	pulumi.RegisterOutputType(GetClientsClientFedcmLoginArrayOutput{})
+	pulumi.RegisterOutputType(GetClientsClientFedcmLoginGoogleOutput{})
+	pulumi.RegisterOutputType(GetClientsClientFedcmLoginGoogleArrayOutput{})
+	pulumi.RegisterOutputType(GetClientsClientIdentityAssertionAuthorizationGrantOutput{})
+	pulumi.RegisterOutputType(GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput{})
+	pulumi.RegisterOutputType(GetClientsClientMyOrganizationConfigurationOutput{})
+	pulumi.RegisterOutputType(GetClientsClientMyOrganizationConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessOutput{})
+	pulumi.RegisterOutputType(GetClientsClientMyOrganizationConfigurationThirdPartyClientAccessArrayOutput{})
+	pulumi.RegisterOutputType(GetClientsClientOidcLogoutOutput{})
+	pulumi.RegisterOutputType(GetClientsClientOidcLogoutArrayOutput{})
+	pulumi.RegisterOutputType(GetClientsClientOidcLogoutBackchannelLogoutInitiatorOutput{})
+	pulumi.RegisterOutputType(GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput{})
+	pulumi.RegisterOutputType(GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput{})
+	pulumi.RegisterOutputType(GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput{})
+	pulumi.RegisterOutputType(GetClientsClientSessionTransferOutput{})
+	pulumi.RegisterOutputType(GetClientsClientSessionTransferArrayOutput{})
+	pulumi.RegisterOutputType(GetClientsClientSessionTransferDelegationOutput{})
+	pulumi.RegisterOutputType(GetClientsClientSessionTransferDelegationArrayOutput{})
+	pulumi.RegisterOutputType(GetClientsClientTokenExchangeOutput{})
+	pulumi.RegisterOutputType(GetClientsClientTokenExchangeArrayOutput{})
+	pulumi.RegisterOutputType(GetClientsClientTokenQuotaOutput{})
+	pulumi.RegisterOutputType(GetClientsClientTokenQuotaArrayOutput{})
+	pulumi.RegisterOutputType(GetClientsClientTokenQuotaClientCredentialOutput{})
+	pulumi.RegisterOutputType(GetClientsClientTokenQuotaClientCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionAuthenticationOutput{})
+	pulumi.RegisterOutputType(GetConnectionAuthenticationArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionConnectedAccountOutput{})
+	pulumi.RegisterOutputType(GetConnectionConnectedAccountArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionCrossAppAccessRequestingAppOutput{})
+	pulumi.RegisterOutputType(GetConnectionCrossAppAccessRequestingAppArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionCrossAppAccessResourceAppOutput{})
+	pulumi.RegisterOutputType(GetConnectionCrossAppAccessResourceAppArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionDirectoryDefaultMappingMappingOutput{})
+	pulumi.RegisterOutputType(GetConnectionDirectoryDefaultMappingMappingArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionDirectoryMappingOutput{})
+	pulumi.RegisterOutputType(GetConnectionDirectoryMappingArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionDirectorySynchronizedGroupsGroupOutput{})
+	pulumi.RegisterOutputType(GetConnectionDirectorySynchronizedGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionKeysKeyOutput{})
+	pulumi.RegisterOutputType(GetConnectionKeysKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAssertionDecryptionSettingOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAssertionDecryptionSettingArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeEmailOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeEmailArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeEmailIdentifierOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeEmailIdentifierArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeEmailSignupOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeEmailSignupArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeEmailSignupVerificationOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeEmailSignupVerificationArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeMapOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributeMapArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributePhoneNumberOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributePhoneNumberArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributePhoneNumberIdentifierOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributePhoneNumberIdentifierArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributePhoneNumberSignupOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributePhoneNumberSignupArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributePhoneNumberSignupVerificationOutput{})
+	pulumi.RegisterOutputType(GetConnectionOptionAttributePhoneNumberSignupVerificationArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionAttributeUsernameOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionAttributeUsernameArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectionOptionAttributeUsernameIdentifierOutput{})
@@ -21230,6 +30018,72 @@ func init() {
 	pulumi.RegisterOutputType(GetPhoneProviderConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetPhoneProviderCredentialOutput{})
 	pulumi.RegisterOutputType(GetPhoneProviderCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalClientOutput{})
+	pulumi.RegisterOutputType(GetPortalClientArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalClientClientSecretPostOutput{})
+	pulumi.RegisterOutputType(GetPortalClientClientSecretPostArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalCustomCodeOutput{})
+	pulumi.RegisterOutputType(GetPortalCustomCodeArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalNavigationOutput{})
+	pulumi.RegisterOutputType(GetPortalNavigationArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalNavigationSidebarOutput{})
+	pulumi.RegisterOutputType(GetPortalNavigationSidebarArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalNavigationSidebarComponentOutput{})
+	pulumi.RegisterOutputType(GetPortalNavigationSidebarComponentArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalNavigationSidebarComponentExternalLinkV2Output{})
+	pulumi.RegisterOutputType(GetPortalNavigationSidebarComponentExternalLinkV2ArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalNavigationSidebarComponentInternalLinkV2Output{})
+	pulumi.RegisterOutputType(GetPortalNavigationSidebarComponentInternalLinkV2ArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalPageOutput{})
+	pulumi.RegisterOutputType(GetPortalPageArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentFormOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentFormArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentMediaImageOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentMediaImageArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentMyAccountMfaManagementOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentMyAccountMfaManagementArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentMyAccountPasskeyManagementOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentMyAccountPasskeyManagementArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentMyOrganizationDetailsEditOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentMyOrganizationDetailsEditArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentMyOrganizationDomainTableOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentMyOrganizationDomainTableArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentMyOrganizationMemberManagementOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentMyOrganizationMemberManagementArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentStructureSectionOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentStructureSectionArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentStructureSectionChildOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentStructureSectionChildArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentStructureSectionChildFormOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentStructureSectionChildFormArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentStructureSectionChildMediaImageOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentStructureSectionChildMediaImageArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentStructureSectionChildMyAccountMfaManagementArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentStructureSectionChildMyAccountPasskeyManagementArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentStructureSectionChildMyOrganizationDetailsEditArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentStructureSectionChildMyOrganizationDomainTableArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentStructureSectionChildMyOrganizationMemberManagementArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentStructureSectionChildStructureSeparatorOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentStructureSectionChildStructureSeparatorArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentStructureSectionChildTypographyHeadingOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentStructureSectionChildTypographyHeadingArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentStructureSectionChildTypographyRichTextOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentStructureSectionChildTypographyRichTextArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentStructureSeparatorOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentStructureSeparatorArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentTypographyHeadingOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentTypographyHeadingArrayOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentTypographyRichTextOutput{})
+	pulumi.RegisterOutputType(GetPortalPageStandardComponentTypographyRichTextArrayOutput{})
 	pulumi.RegisterOutputType(GetPromptScreenPartialsScreenPartialOutput{})
 	pulumi.RegisterOutputType(GetPromptScreenPartialsScreenPartialArrayOutput{})
 	pulumi.RegisterOutputType(GetPromptScreenPartialsScreenPartialInsertionPointOutput{})

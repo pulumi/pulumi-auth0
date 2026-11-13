@@ -775,6 +775,12 @@ import (
 //						Key:  pulumi.String("-----BEGIN PRIVATE KEY-----\n...{your private key here}...\n-----END PRIVATE KEY-----"),
 //						Cert: pulumi.String("-----BEGIN CERTIFICATE-----\n...{your public key cert here}...\n-----END CERTIFICATE-----"),
 //					},
+//					AssertionDecryptionSettings: &auth0.ConnectionOptionsAssertionDecryptionSettingsArgs{
+//						AlgorithmProfile: pulumi.String("v2026-1"),
+//						AlgorithmExceptions: pulumi.StringArray{
+//							pulumi.String("http://www.w3.org/2001/04/xmlenc#tripledes-cbc"),
+//						},
+//					},
 //					IdpInitiated: &auth0.ConnectionOptionsIdpInitiatedArgs{
 //						ClientId:             pulumi.String("client_id"),
 //						ClientProtocol:       pulumi.String("samlp"),

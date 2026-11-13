@@ -32,7 +32,7 @@ class EmailProviderArgs:
         :param pulumi.Input['EmailProviderCredentialsArgs'] credentials: Configuration settings for the credentials for the email provider.
         :param pulumi.Input[_builtins.str] default_from_address: Email address to use as the sender when no other "from" address is specified.
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether the email provider is enabled.
-        :param pulumi.Input[_builtins.str] name: Name of the email provider. Options include `azure_cs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+        :param pulumi.Input[_builtins.str] name: Name of the email provider. Options include `azure_cs`, `custom`, `mailgun`, `mandrill`, `ms365`, `resend`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
         :param pulumi.Input['EmailProviderSettingsArgs'] settings: Specific email provider settings.
         """
         pulumi.set(__self__, "credentials", credentials)
@@ -84,7 +84,7 @@ class EmailProviderArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of the email provider. Options include `azure_cs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+        Name of the email provider. Options include `azure_cs`, `custom`, `mailgun`, `mandrill`, `ms365`, `resend`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
         """
         return pulumi.get(self, "name")
 
@@ -119,7 +119,7 @@ class _EmailProviderState:
         :param pulumi.Input['EmailProviderCredentialsArgs'] credentials: Configuration settings for the credentials for the email provider.
         :param pulumi.Input[_builtins.str] default_from_address: Email address to use as the sender when no other "from" address is specified.
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether the email provider is enabled.
-        :param pulumi.Input[_builtins.str] name: Name of the email provider. Options include `azure_cs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+        :param pulumi.Input[_builtins.str] name: Name of the email provider. Options include `azure_cs`, `custom`, `mailgun`, `mandrill`, `ms365`, `resend`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
         :param pulumi.Input['EmailProviderSettingsArgs'] settings: Specific email provider settings.
         """
         if credentials is not None:
@@ -173,7 +173,7 @@ class _EmailProviderState:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of the email provider. Options include `azure_cs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+        Name of the email provider. Options include `azure_cs`, `custom`, `mailgun`, `mandrill`, `ms365`, `resend`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
         """
         return pulumi.get(self, "name")
 
@@ -267,6 +267,14 @@ class EmailProvider(pulumi.CustomResource):
             name="ms365",
             enabled=True,
             default_from_address="accounts@example.com")
+        # This is an example on how to set up the email provider with Resend.
+        resend_email_provider = auth0.EmailProvider("resend_email_provider",
+            credentials={
+                "api_key": "secretAPIKey",
+            },
+            name="resend",
+            enabled=True,
+            default_from_address="accounts@example.com")
         # Below is an example of how to set up a custom email provider.
         # The action with custom-email-provider as supported_triggers is a prerequisite.
         custom_email_provider_action = auth0.Action("custom_email_provider_action",
@@ -316,7 +324,7 @@ class EmailProvider(pulumi.CustomResource):
         :param pulumi.Input[Union['EmailProviderCredentialsArgs', 'EmailProviderCredentialsArgsDict', 'outputs.EmailProviderCredentials']] credentials: Configuration settings for the credentials for the email provider.
         :param pulumi.Input[_builtins.str] default_from_address: Email address to use as the sender when no other "from" address is specified.
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether the email provider is enabled.
-        :param pulumi.Input[_builtins.str] name: Name of the email provider. Options include `azure_cs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+        :param pulumi.Input[_builtins.str] name: Name of the email provider. Options include `azure_cs`, `custom`, `mailgun`, `mandrill`, `ms365`, `resend`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
         :param pulumi.Input[Union['EmailProviderSettingsArgs', 'EmailProviderSettingsArgsDict', 'outputs.EmailProviderSettings']] settings: Specific email provider settings.
         """
         ...
@@ -384,6 +392,14 @@ class EmailProvider(pulumi.CustomResource):
                 "ms365_client_secret": "ms365_client_secret",
             },
             name="ms365",
+            enabled=True,
+            default_from_address="accounts@example.com")
+        # This is an example on how to set up the email provider with Resend.
+        resend_email_provider = auth0.EmailProvider("resend_email_provider",
+            credentials={
+                "api_key": "secretAPIKey",
+            },
+            name="resend",
             enabled=True,
             default_from_address="accounts@example.com")
         # Below is an example of how to set up a custom email provider.
@@ -493,7 +509,7 @@ class EmailProvider(pulumi.CustomResource):
         :param pulumi.Input[Union['EmailProviderCredentialsArgs', 'EmailProviderCredentialsArgsDict', 'outputs.EmailProviderCredentials']] credentials: Configuration settings for the credentials for the email provider.
         :param pulumi.Input[_builtins.str] default_from_address: Email address to use as the sender when no other "from" address is specified.
         :param pulumi.Input[_builtins.bool] enabled: Indicates whether the email provider is enabled.
-        :param pulumi.Input[_builtins.str] name: Name of the email provider. Options include `azure_cs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+        :param pulumi.Input[_builtins.str] name: Name of the email provider. Options include `azure_cs`, `custom`, `mailgun`, `mandrill`, `ms365`, `resend`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
         :param pulumi.Input[Union['EmailProviderSettingsArgs', 'EmailProviderSettingsArgsDict', 'outputs.EmailProviderSettings']] settings: Specific email provider settings.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -551,7 +567,7 @@ class EmailProvider(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of the email provider. Options include `azure_cs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+        Name of the email provider. Options include `azure_cs`, `custom`, `mailgun`, `mandrill`, `ms365`, `resend`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
         """
         return pulumi.get(self, "name")
 

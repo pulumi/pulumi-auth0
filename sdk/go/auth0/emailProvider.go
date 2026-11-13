@@ -100,6 +100,18 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// This is an example on how to set up the email provider with Resend.
+//			_, err = auth0.NewEmailProvider(ctx, "resend_email_provider", &auth0.EmailProviderArgs{
+//				Credentials: &auth0.EmailProviderCredentialsArgs{
+//					ApiKey: pulumi.String("secretAPIKey"),
+//				},
+//				Name:               pulumi.String("resend"),
+//				Enabled:            pulumi.Bool(true),
+//				DefaultFromAddress: pulumi.String("accounts@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			// Below is an example of how to set up a custom email provider.
 //			// The action with custom-email-provider as supported_triggers is a prerequisite.
 //			customEmailProviderAction, err := auth0.NewAction(ctx, "custom_email_provider_action", &auth0.ActionArgs{
@@ -166,7 +178,7 @@ type EmailProvider struct {
 	DefaultFromAddress pulumi.StringOutput `pulumi:"defaultFromAddress"`
 	// Indicates whether the email provider is enabled.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+	// Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `resend`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specific email provider settings.
 	Settings EmailProviderSettingsOutput `pulumi:"settings"`
@@ -214,7 +226,7 @@ type emailProviderState struct {
 	DefaultFromAddress *string `pulumi:"defaultFromAddress"`
 	// Indicates whether the email provider is enabled.
 	Enabled *bool `pulumi:"enabled"`
-	// Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+	// Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `resend`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
 	Name *string `pulumi:"name"`
 	// Specific email provider settings.
 	Settings *EmailProviderSettings `pulumi:"settings"`
@@ -227,7 +239,7 @@ type EmailProviderState struct {
 	DefaultFromAddress pulumi.StringPtrInput
 	// Indicates whether the email provider is enabled.
 	Enabled pulumi.BoolPtrInput
-	// Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+	// Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `resend`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
 	Name pulumi.StringPtrInput
 	// Specific email provider settings.
 	Settings EmailProviderSettingsPtrInput
@@ -250,7 +262,7 @@ type emailProviderArgs struct {
 	DefaultFromAddress string `pulumi:"defaultFromAddress"`
 	// Indicates whether the email provider is enabled.
 	Enabled *bool `pulumi:"enabled"`
-	// Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+	// Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `resend`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
 	Name *string `pulumi:"name"`
 	// Specific email provider settings.
 	Settings *EmailProviderSettings `pulumi:"settings"`
@@ -264,7 +276,7 @@ type EmailProviderArgs struct {
 	DefaultFromAddress pulumi.StringInput
 	// Indicates whether the email provider is enabled.
 	Enabled pulumi.BoolPtrInput
-	// Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+	// Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `resend`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
 	Name pulumi.StringPtrInput
 	// Specific email provider settings.
 	Settings EmailProviderSettingsPtrInput
@@ -372,7 +384,7 @@ func (o EmailProviderOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EmailProvider) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
+// Name of the email provider. Options include `azureCs`, `custom`, `mailgun`, `mandrill`, `ms365`, `resend`, `sendgrid`, `ses`, `smtp` and `sparkpost`.
 func (o EmailProviderOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailProvider) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -26,6 +26,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetClientsClient {
     /**
+     * @return The ID of the agent (`auth0.Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.&lt;name&gt;.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
+     * 
+     */
+    private String agentId;
+    /**
      * @return List of applications ID&#39;s that will be allowed to make delegation request. By default, all applications will be allowed.
      * 
      */
@@ -198,6 +203,13 @@ public final class GetClientsClient {
     private List<String> webOrigins;
 
     private GetClientsClient() {}
+    /**
+     * @return The ID of the agent (`auth0.Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.&lt;name&gt;.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
+     * 
+     */
+    public String agentId() {
+        return this.agentId;
+    }
     /**
      * @return List of applications ID&#39;s that will be allowed to make delegation request. By default, all applications will be allowed.
      * 
@@ -449,6 +461,7 @@ public final class GetClientsClient {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String agentId;
         private List<String> allowedClients;
         private List<String> allowedLogoutUrls;
         private List<String> allowedOrigins;
@@ -487,6 +500,7 @@ public final class GetClientsClient {
         public Builder() {}
         public Builder(GetClientsClient defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.agentId = defaults.agentId;
     	      this.allowedClients = defaults.allowedClients;
     	      this.allowedLogoutUrls = defaults.allowedLogoutUrls;
     	      this.allowedOrigins = defaults.allowedOrigins;
@@ -524,6 +538,14 @@ public final class GetClientsClient {
     	      this.webOrigins = defaults.webOrigins;
         }
 
+        @CustomType.Setter
+        public Builder agentId(String agentId) {
+            if (agentId == null) {
+              throw new MissingRequiredPropertyException("GetClientsClient", "agentId");
+            }
+            this.agentId = agentId;
+            return this;
+        }
         @CustomType.Setter
         public Builder allowedClients(List<String> allowedClients) {
             if (allowedClients == null) {
@@ -856,6 +878,7 @@ public final class GetClientsClient {
         }
         public GetClientsClient build() {
             final var _resultValue = new GetClientsClient();
+            _resultValue.agentId = agentId;
             _resultValue.allowedClients = allowedClients;
             _resultValue.allowedLogoutUrls = allowedLogoutUrls;
             _resultValue.allowedOrigins = allowedOrigins;

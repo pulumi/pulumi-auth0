@@ -70,6 +70,8 @@ type LookupClientArgs struct {
 type LookupClientResult struct {
 	// Addons enabled for this client and their associated configurations.
 	Addons []GetClientAddon `pulumi:"addons"`
+	// The ID of the agent (`Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.<name>.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
+	AgentId string `pulumi:"agentId"`
 	// List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
 	AllowedClients []string `pulumi:"allowedClients"`
 	// URLs that Auth0 may redirect to after logout.
@@ -236,6 +238,11 @@ func (o LookupClientResultOutput) ToLookupClientResultOutputWithContext(ctx cont
 // Addons enabled for this client and their associated configurations.
 func (o LookupClientResultOutput) Addons() GetClientAddonArrayOutput {
 	return o.ApplyT(func(v LookupClientResult) []GetClientAddon { return v.Addons }).(GetClientAddonArrayOutput)
+}
+
+// The ID of the agent (`Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.<name>.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
+func (o LookupClientResultOutput) AgentId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClientResult) string { return v.AgentId }).(pulumi.StringOutput)
 }
 
 // List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.

@@ -47,6 +47,10 @@
                     }
                 }
             },
+            "auth0_agent": {
+                "current": "auth0:index/agent:Agent",
+                "majorVersion": 3
+            },
             "auth0_attack_protection": {
                 "current": "auth0:index/attackProtection:AttackProtection",
                 "majorVersion": 3,
@@ -785,6 +789,16 @@
                             "fields": {
                                 "allowed_audiences": {
                                     "maxItemsOne": false
+                                },
+                                "assertion_decryption_settings": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "algorithm_exceptions": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "attribute_map": {
                                     "maxItemsOne": true
@@ -2206,6 +2220,147 @@
                     }
                 }
             },
+            "auth0_portal": {
+                "current": "auth0:index/portal:Portal",
+                "majorVersion": 3,
+                "fields": {
+                    "client": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "client_secret_post": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "custom_code": {
+                        "maxItemsOne": true
+                    },
+                    "navigation": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "sidebar": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "component": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "external_link_v2": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "internal_link_v2": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "pages": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "standard": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "component": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "form": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "media_image": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "my_account_mfa_management": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "my_account_passkey_management": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "my_organization_details_edit": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "my_organization_domain_table": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "my_organization_member_management": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "structure_section": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "child": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "form": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "media_image": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "my_account_mfa_management": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "my_account_passkey_management": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "my_organization_details_edit": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "my_organization_domain_table": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "my_organization_member_management": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "structure_separator": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "typography_heading": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "typography_rich_text": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "structure_separator": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "typography_heading": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "typography_rich_text": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "auth0_prompt": {
                 "current": "auth0:index/prompt:Prompt",
                 "majorVersion": 3
@@ -2668,6 +2823,10 @@
                         }
                     }
                 }
+            },
+            "auth0_agent": {
+                "current": "auth0:index/getAgent:getAgent",
+                "majorVersion": 3
             },
             "auth0_attack_protection": {
                 "current": "auth0:index/getAttackProtection:getAttackProtection",
@@ -3507,6 +3666,16 @@
                             "fields": {
                                 "allowed_audiences": {
                                     "maxItemsOne": false
+                                },
+                                "assertion_decryption_settings": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "algorithm_exceptions": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "attribute_map": {
                                     "maxItemsOne": false
@@ -4844,6 +5013,147 @@
                     },
                     "credentials": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "auth0_portal": {
+                "current": "auth0:index/getPortal:getPortal",
+                "majorVersion": 3,
+                "fields": {
+                    "client": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "client_secret_post": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "custom_code": {
+                        "maxItemsOne": false
+                    },
+                    "navigation": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "sidebar": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "component": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "external_link_v2": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "internal_link_v2": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "pages": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "standard": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "component": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "form": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "media_image": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "my_account_mfa_management": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "my_account_passkey_management": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "my_organization_details_edit": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "my_organization_domain_table": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "my_organization_member_management": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "structure_section": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "child": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "form": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "media_image": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "my_account_mfa_management": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "my_account_passkey_management": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "my_organization_details_edit": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "my_organization_domain_table": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "my_organization_member_management": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "structure_separator": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "typography_heading": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "typography_rich_text": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "structure_separator": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "typography_heading": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "typography_rich_text": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },

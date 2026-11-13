@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.inputs;
 
+import com.pulumi.auth0.inputs.ConnectionOptionsAssertionDecryptionSettingsArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsAttributeArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsAttributeMapArgs;
 import com.pulumi.auth0.inputs.ConnectionOptionsAuthenticationMethodArgs;
@@ -128,6 +129,21 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> appId() {
         return Optional.ofNullable(this.appId);
+    }
+
+    /**
+     * Settings for SAML assertion decryption. Only applicable when strategy=samlp or pingfederate.
+     * 
+     */
+    @Import(name="assertionDecryptionSettings")
+    private @Nullable Output<ConnectionOptionsAssertionDecryptionSettingsArgs> assertionDecryptionSettings;
+
+    /**
+     * @return Settings for SAML assertion decryption. Only applicable when strategy=samlp or pingfederate.
+     * 
+     */
+    public Optional<Output<ConnectionOptionsAssertionDecryptionSettingsArgs>> assertionDecryptionSettings() {
+        return Optional.ofNullable(this.assertionDecryptionSettings);
     }
 
     /**
@@ -1879,6 +1895,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         this.apiEnableGroups = $.apiEnableGroups;
         this.apiEnableUsers = $.apiEnableUsers;
         this.appId = $.appId;
+        this.assertionDecryptionSettings = $.assertionDecryptionSettings;
         this.attributeMap = $.attributeMap;
         this.attributes = $.attributes;
         this.authParams = $.authParams;
@@ -2149,6 +2166,27 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder appId(String appId) {
             return appId(Output.of(appId));
+        }
+
+        /**
+         * @param assertionDecryptionSettings Settings for SAML assertion decryption. Only applicable when strategy=samlp or pingfederate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder assertionDecryptionSettings(@Nullable Output<ConnectionOptionsAssertionDecryptionSettingsArgs> assertionDecryptionSettings) {
+            $.assertionDecryptionSettings = assertionDecryptionSettings;
+            return this;
+        }
+
+        /**
+         * @param assertionDecryptionSettings Settings for SAML assertion decryption. Only applicable when strategy=samlp or pingfederate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder assertionDecryptionSettings(ConnectionOptionsAssertionDecryptionSettingsArgs assertionDecryptionSettings) {
+            return assertionDecryptionSettings(Output.of(assertionDecryptionSettings));
         }
 
         /**

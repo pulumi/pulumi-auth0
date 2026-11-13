@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.ConnectionOptionsAssertionDecryptionSettings;
 import com.pulumi.auth0.outputs.ConnectionOptionsAttribute;
 import com.pulumi.auth0.outputs.ConnectionOptionsAttributeMap;
 import com.pulumi.auth0.outputs.ConnectionOptionsAuthenticationMethod;
@@ -66,6 +67,11 @@ public final class ConnectionOptions {
      * 
      */
     private @Nullable String appId;
+    /**
+     * @return Settings for SAML assertion decryption. Only applicable when strategy=samlp or pingfederate.
+     * 
+     */
+    private @Nullable ConnectionOptionsAssertionDecryptionSettings assertionDecryptionSettings;
     /**
      * @return OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
      * 
@@ -689,6 +695,13 @@ public final class ConnectionOptions {
      */
     public Optional<String> appId() {
         return Optional.ofNullable(this.appId);
+    }
+    /**
+     * @return Settings for SAML assertion decryption. Only applicable when strategy=samlp or pingfederate.
+     * 
+     */
+    public Optional<ConnectionOptionsAssertionDecryptionSettings> assertionDecryptionSettings() {
+        return Optional.ofNullable(this.assertionDecryptionSettings);
     }
     /**
      * @return OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
@@ -1518,6 +1531,7 @@ public final class ConnectionOptions {
         private @Nullable Boolean apiEnableGroups;
         private @Nullable Boolean apiEnableUsers;
         private @Nullable String appId;
+        private @Nullable ConnectionOptionsAssertionDecryptionSettings assertionDecryptionSettings;
         private @Nullable ConnectionOptionsAttributeMap attributeMap;
         private @Nullable List<ConnectionOptionsAttribute> attributes;
         private @Nullable Map<String,String> authParams;
@@ -1643,6 +1657,7 @@ public final class ConnectionOptions {
     	      this.apiEnableGroups = defaults.apiEnableGroups;
     	      this.apiEnableUsers = defaults.apiEnableUsers;
     	      this.appId = defaults.appId;
+    	      this.assertionDecryptionSettings = defaults.assertionDecryptionSettings;
     	      this.attributeMap = defaults.attributeMap;
     	      this.attributes = defaults.attributes;
     	      this.authParams = defaults.authParams;
@@ -1798,6 +1813,12 @@ public final class ConnectionOptions {
         public Builder appId(@Nullable String appId) {
 
             this.appId = appId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder assertionDecryptionSettings(@Nullable ConnectionOptionsAssertionDecryptionSettings assertionDecryptionSettings) {
+
+            this.assertionDecryptionSettings = assertionDecryptionSettings;
             return this;
         }
         @CustomType.Setter
@@ -2534,6 +2555,7 @@ public final class ConnectionOptions {
             _resultValue.apiEnableGroups = apiEnableGroups;
             _resultValue.apiEnableUsers = apiEnableUsers;
             _resultValue.appId = appId;
+            _resultValue.assertionDecryptionSettings = assertionDecryptionSettings;
             _resultValue.attributeMap = attributeMap;
             _resultValue.attributes = attributes;
             _resultValue.authParams = authParams;

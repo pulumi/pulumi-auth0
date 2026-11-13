@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.GetConnectionOptionAssertionDecryptionSetting;
 import com.pulumi.auth0.outputs.GetConnectionOptionAttribute;
 import com.pulumi.auth0.outputs.GetConnectionOptionAttributeMap;
 import com.pulumi.auth0.outputs.GetConnectionOptionAuthenticationMethod;
@@ -65,6 +66,11 @@ public final class GetConnectionOption {
      * 
      */
     private String appId;
+    /**
+     * @return Settings for SAML assertion decryption. Only applicable when strategy=samlp or pingfederate.
+     * 
+     */
+    private List<GetConnectionOptionAssertionDecryptionSetting> assertionDecryptionSettings;
     /**
      * @return OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
      * 
@@ -688,6 +694,13 @@ public final class GetConnectionOption {
      */
     public String appId() {
         return this.appId;
+    }
+    /**
+     * @return Settings for SAML assertion decryption. Only applicable when strategy=samlp or pingfederate.
+     * 
+     */
+    public List<GetConnectionOptionAssertionDecryptionSetting> assertionDecryptionSettings() {
+        return this.assertionDecryptionSettings;
     }
     /**
      * @return OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
@@ -1517,6 +1530,7 @@ public final class GetConnectionOption {
         private Boolean apiEnableGroups;
         private Boolean apiEnableUsers;
         private String appId;
+        private List<GetConnectionOptionAssertionDecryptionSetting> assertionDecryptionSettings;
         private List<GetConnectionOptionAttributeMap> attributeMaps;
         private List<GetConnectionOptionAttribute> attributes;
         private Map<String,String> authParams;
@@ -1642,6 +1656,7 @@ public final class GetConnectionOption {
     	      this.apiEnableGroups = defaults.apiEnableGroups;
     	      this.apiEnableUsers = defaults.apiEnableUsers;
     	      this.appId = defaults.appId;
+    	      this.assertionDecryptionSettings = defaults.assertionDecryptionSettings;
     	      this.attributeMaps = defaults.attributeMaps;
     	      this.attributes = defaults.attributes;
     	      this.authParams = defaults.authParams;
@@ -1810,6 +1825,17 @@ public final class GetConnectionOption {
             }
             this.appId = appId;
             return this;
+        }
+        @CustomType.Setter
+        public Builder assertionDecryptionSettings(List<GetConnectionOptionAssertionDecryptionSetting> assertionDecryptionSettings) {
+            if (assertionDecryptionSettings == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOption", "assertionDecryptionSettings");
+            }
+            this.assertionDecryptionSettings = assertionDecryptionSettings;
+            return this;
+        }
+        public Builder assertionDecryptionSettings(GetConnectionOptionAssertionDecryptionSetting... assertionDecryptionSettings) {
+            return assertionDecryptionSettings(List.of(assertionDecryptionSettings));
         }
         @CustomType.Setter
         public Builder attributeMaps(List<GetConnectionOptionAttributeMap> attributeMaps) {
@@ -2828,6 +2854,7 @@ public final class GetConnectionOption {
             _resultValue.apiEnableGroups = apiEnableGroups;
             _resultValue.apiEnableUsers = apiEnableUsers;
             _resultValue.appId = appId;
+            _resultValue.assertionDecryptionSettings = assertionDecryptionSettings;
             _resultValue.attributeMaps = attributeMaps;
             _resultValue.attributes = attributes;
             _resultValue.authParams = authParams;

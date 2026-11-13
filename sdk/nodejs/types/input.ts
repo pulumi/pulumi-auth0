@@ -537,6 +537,10 @@ export interface BrandingThemeColors {
      */
     primaryButtonLabel?: pulumi.Input<string | undefined>;
     /**
+     * Read only background.
+     */
+    readOnlyBackground?: pulumi.Input<string | undefined>;
+    /**
      * Secondary button border. Defaults to `#c9cace`.
      */
     secondaryButtonBorder?: pulumi.Input<string | undefined>;
@@ -2166,6 +2170,10 @@ export interface ConnectionOptions {
      */
     appId?: pulumi.Input<string | undefined>;
     /**
+     * Settings for SAML assertion decryption. Only applicable when strategy=samlp or pingfederate.
+     */
+    assertionDecryptionSettings?: pulumi.Input<inputs.ConnectionOptionsAssertionDecryptionSettings | undefined>;
+    /**
      * OpenID Connect and Okta Workforce connections can automatically map claims received from the identity provider (IdP). You can configure this mapping through a library template provided by Auth0 or by entering your own template directly. Click [here](https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/configure-pkce-claim-mapping-for-oidc#map-claims-for-oidc-connections) for more info.
      */
     attributeMap?: pulumi.Input<inputs.ConnectionOptionsAttributeMap | undefined>;
@@ -2629,6 +2637,17 @@ export interface ConnectionOptions {
      * Protocol to use.
      */
     waadProtocol?: pulumi.Input<string | undefined>;
+}
+
+export interface ConnectionOptionsAssertionDecryptionSettings {
+    /**
+     * A list of insecure algorithms to allow for SAML assertion decryption.
+     */
+    algorithmExceptions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The algorithm profile to use for decrypting SAML assertions. Options include: `v2026-1`.
+     */
+    algorithmProfile: pulumi.Input<string>;
 }
 
 export interface ConnectionOptionsAttribute {
@@ -5241,6 +5260,370 @@ export interface PhoneProviderCredentials {
      * The Auth Token for the phone provider.
      */
     authToken?: pulumi.Input<string | undefined>;
+}
+
+export interface PortalClient {
+    /**
+     * Client credentials using clientSecretPost authentication.
+     */
+    clientSecretPost: pulumi.Input<inputs.PortalClientClientSecretPost>;
+}
+
+export interface PortalClientClientSecretPost {
+    /**
+     * The ID of the client.
+     */
+    clientId: pulumi.Input<string>;
+    /**
+     * The client secret. This value is stored in Terraform state.
+     */
+    clientSecret?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The write-only client secret. This value is not stored in Terraform state. It is also sent when any other attribute in `clientSecretPost` changes.
+     */
+    clientSecretWo?: pulumi.Input<string | undefined>;
+    /**
+     * Version of the write-only client secret. Increment this value to send a new secret.
+     */
+    clientSecretWoVersion?: pulumi.Input<number | undefined>;
+}
+
+export interface PortalCustomCode {
+    /**
+     * Code added to the page head.
+     */
+    head?: pulumi.Input<string | undefined>;
+}
+
+export interface PortalNavigation {
+    /**
+     * Sidebar navigation for the portal.
+     */
+    sidebar?: pulumi.Input<inputs.PortalNavigationSidebar | undefined>;
+}
+
+export interface PortalNavigationSidebar {
+    /**
+     * Sidebar components in display order. Only V2 links are supported.
+     */
+    components?: pulumi.Input<pulumi.Input<inputs.PortalNavigationSidebarComponent>[] | undefined>;
+}
+
+export interface PortalNavigationSidebarComponent {
+    /**
+     * A V2 link to an external URL.
+     */
+    externalLinkV2?: pulumi.Input<inputs.PortalNavigationSidebarComponentExternalLinkV2 | undefined>;
+    /**
+     * A V2 link to a portal page.
+     */
+    internalLinkV2?: pulumi.Input<inputs.PortalNavigationSidebarComponentInternalLinkV2 | undefined>;
+}
+
+export interface PortalNavigationSidebarComponentExternalLinkV2 {
+    /**
+     * The URL of the link.
+     */
+    href: pulumi.Input<string>;
+    /**
+     * The icon of the link.
+     */
+    icon?: pulumi.Input<string | undefined>;
+    /**
+     * The label of the link.
+     */
+    label: pulumi.Input<string>;
+}
+
+export interface PortalNavigationSidebarComponentInternalLinkV2 {
+    /**
+     * The icon of the link.
+     */
+    icon?: pulumi.Input<string | undefined>;
+    /**
+     * The label of the link.
+     */
+    label: pulumi.Input<string>;
+    /**
+     * The slug of the linked page.
+     */
+    pageSlug: pulumi.Input<string>;
+}
+
+export interface PortalPages {
+    /**
+     * The slug of the default page.
+     */
+    default?: pulumi.Input<string | undefined>;
+    /**
+     * Standard pages in display order.
+     */
+    standards?: pulumi.Input<pulumi.Input<inputs.PortalPagesStandard>[] | undefined>;
+}
+
+export interface PortalPagesStandard {
+    /**
+     * Page components in display order.
+     */
+    components?: pulumi.Input<pulumi.Input<inputs.PortalPagesStandardComponent>[] | undefined>;
+    /**
+     * The slug of the page.
+     */
+    slug: pulumi.Input<string>;
+    /**
+     * The title of the page.
+     */
+    title: pulumi.Input<string>;
+}
+
+export interface PortalPagesStandardComponent {
+    /**
+     * A form component.
+     */
+    form?: pulumi.Input<inputs.PortalPagesStandardComponentForm | undefined>;
+    /**
+     * An image component.
+     */
+    mediaImage?: pulumi.Input<inputs.PortalPagesStandardComponentMediaImage | undefined>;
+    /**
+     * An MFA management component.
+     */
+    myAccountMfaManagement?: pulumi.Input<inputs.PortalPagesStandardComponentMyAccountMfaManagement | undefined>;
+    /**
+     * A passkey management component.
+     */
+    myAccountPasskeyManagement?: pulumi.Input<inputs.PortalPagesStandardComponentMyAccountPasskeyManagement | undefined>;
+    /**
+     * An organization details edit component.
+     */
+    myOrganizationDetailsEdit?: pulumi.Input<inputs.PortalPagesStandardComponentMyOrganizationDetailsEdit | undefined>;
+    /**
+     * An organization domain table component.
+     */
+    myOrganizationDomainTable?: pulumi.Input<inputs.PortalPagesStandardComponentMyOrganizationDomainTable | undefined>;
+    /**
+     * An organization member management component.
+     */
+    myOrganizationMemberManagement?: pulumi.Input<inputs.PortalPagesStandardComponentMyOrganizationMemberManagement | undefined>;
+    /**
+     * A section containing up to 20 components.
+     */
+    structureSection?: pulumi.Input<inputs.PortalPagesStandardComponentStructureSection | undefined>;
+    /**
+     * A separator component.
+     */
+    structureSeparator?: pulumi.Input<inputs.PortalPagesStandardComponentStructureSeparator | undefined>;
+    /**
+     * A heading component.
+     */
+    typographyHeading?: pulumi.Input<inputs.PortalPagesStandardComponentTypographyHeading | undefined>;
+    /**
+     * A rich text component.
+     */
+    typographyRichText?: pulumi.Input<inputs.PortalPagesStandardComponentTypographyRichText | undefined>;
+}
+
+export interface PortalPagesStandardComponentForm {
+    /**
+     * The message shown after form completion.
+     */
+    completionMessage: pulumi.Input<string>;
+    /**
+     * The ID of the form.
+     */
+    formId: pulumi.Input<string>;
+}
+
+export interface PortalPagesStandardComponentMediaImage {
+    /**
+     * The height of the image.
+     */
+    height?: pulumi.Input<number | undefined>;
+    /**
+     * The position of the image.
+     */
+    position?: pulumi.Input<string | undefined>;
+    /**
+     * The URL of the image.
+     */
+    src: pulumi.Input<string>;
+}
+
+export interface PortalPagesStandardComponentMyAccountMfaManagement {
+}
+
+export interface PortalPagesStandardComponentMyAccountPasskeyManagement {
+}
+
+export interface PortalPagesStandardComponentMyOrganizationDetailsEdit {
+}
+
+export interface PortalPagesStandardComponentMyOrganizationDomainTable {
+}
+
+export interface PortalPagesStandardComponentMyOrganizationMemberManagement {
+}
+
+export interface PortalPagesStandardComponentStructureSection {
+    /**
+     * Components in the section. Sections cannot be nested.
+     */
+    children?: pulumi.Input<pulumi.Input<inputs.PortalPagesStandardComponentStructureSectionChild>[] | undefined>;
+    /**
+     * The description of the section.
+     */
+    description?: pulumi.Input<string | undefined>;
+    /**
+     * The title of the section.
+     */
+    title?: pulumi.Input<string | undefined>;
+    /**
+     * The section style. Can be `card` or `none`.
+     */
+    variant: pulumi.Input<string>;
+}
+
+export interface PortalPagesStandardComponentStructureSectionChild {
+    /**
+     * A form component.
+     */
+    form?: pulumi.Input<inputs.PortalPagesStandardComponentStructureSectionChildForm | undefined>;
+    /**
+     * An image component.
+     */
+    mediaImage?: pulumi.Input<inputs.PortalPagesStandardComponentStructureSectionChildMediaImage | undefined>;
+    /**
+     * An MFA management component.
+     */
+    myAccountMfaManagement?: pulumi.Input<inputs.PortalPagesStandardComponentStructureSectionChildMyAccountMfaManagement | undefined>;
+    /**
+     * A passkey management component.
+     */
+    myAccountPasskeyManagement?: pulumi.Input<inputs.PortalPagesStandardComponentStructureSectionChildMyAccountPasskeyManagement | undefined>;
+    /**
+     * An organization details edit component.
+     */
+    myOrganizationDetailsEdit?: pulumi.Input<inputs.PortalPagesStandardComponentStructureSectionChildMyOrganizationDetailsEdit | undefined>;
+    /**
+     * An organization domain table component.
+     */
+    myOrganizationDomainTable?: pulumi.Input<inputs.PortalPagesStandardComponentStructureSectionChildMyOrganizationDomainTable | undefined>;
+    /**
+     * An organization member management component.
+     */
+    myOrganizationMemberManagement?: pulumi.Input<inputs.PortalPagesStandardComponentStructureSectionChildMyOrganizationMemberManagement | undefined>;
+    /**
+     * A separator component.
+     */
+    structureSeparator?: pulumi.Input<inputs.PortalPagesStandardComponentStructureSectionChildStructureSeparator | undefined>;
+    /**
+     * A heading component.
+     */
+    typographyHeading?: pulumi.Input<inputs.PortalPagesStandardComponentStructureSectionChildTypographyHeading | undefined>;
+    /**
+     * A rich text component.
+     */
+    typographyRichText?: pulumi.Input<inputs.PortalPagesStandardComponentStructureSectionChildTypographyRichText | undefined>;
+}
+
+export interface PortalPagesStandardComponentStructureSectionChildForm {
+    /**
+     * The message shown after form completion.
+     */
+    completionMessage: pulumi.Input<string>;
+    /**
+     * The ID of the form.
+     */
+    formId: pulumi.Input<string>;
+}
+
+export interface PortalPagesStandardComponentStructureSectionChildMediaImage {
+    /**
+     * The height of the image.
+     */
+    height?: pulumi.Input<number | undefined>;
+    /**
+     * The position of the image.
+     */
+    position?: pulumi.Input<string | undefined>;
+    /**
+     * The URL of the image.
+     */
+    src: pulumi.Input<string>;
+}
+
+export interface PortalPagesStandardComponentStructureSectionChildMyAccountMfaManagement {
+}
+
+export interface PortalPagesStandardComponentStructureSectionChildMyAccountPasskeyManagement {
+}
+
+export interface PortalPagesStandardComponentStructureSectionChildMyOrganizationDetailsEdit {
+}
+
+export interface PortalPagesStandardComponentStructureSectionChildMyOrganizationDomainTable {
+}
+
+export interface PortalPagesStandardComponentStructureSectionChildMyOrganizationMemberManagement {
+}
+
+export interface PortalPagesStandardComponentStructureSectionChildStructureSeparator {
+    /**
+     * The text of the separator.
+     */
+    text?: pulumi.Input<string | undefined>;
+    /**
+     * The separator style.
+     */
+    variant?: pulumi.Input<string | undefined>;
+}
+
+export interface PortalPagesStandardComponentStructureSectionChildTypographyHeading {
+    /**
+     * The description below the heading.
+     */
+    description?: pulumi.Input<string | undefined>;
+    /**
+     * The heading text.
+     */
+    title: pulumi.Input<string>;
+}
+
+export interface PortalPagesStandardComponentStructureSectionChildTypographyRichText {
+    /**
+     * The HTML content.
+     */
+    content: pulumi.Input<string>;
+}
+
+export interface PortalPagesStandardComponentStructureSeparator {
+    /**
+     * The text of the separator.
+     */
+    text?: pulumi.Input<string | undefined>;
+    /**
+     * The separator style.
+     */
+    variant?: pulumi.Input<string | undefined>;
+}
+
+export interface PortalPagesStandardComponentTypographyHeading {
+    /**
+     * The description below the heading.
+     */
+    description?: pulumi.Input<string | undefined>;
+    /**
+     * The heading text.
+     */
+    title: pulumi.Input<string>;
+}
+
+export interface PortalPagesStandardComponentTypographyRichText {
+    /**
+     * The HTML content.
+     */
+    content: pulumi.Input<string>;
 }
 
 export interface PromptScreenPartialInsertionPoints {

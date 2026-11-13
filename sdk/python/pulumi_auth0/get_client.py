@@ -27,10 +27,13 @@ class GetClientResult:
     """
     A collection of values returned by getClient.
     """
-    def __init__(__self__, addons=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, anonymous_sessions=None, app_type=None, async_approval_notification_channels=None, b2b_integration_configurations=None, callbacks=None, client_aliases=None, client_authentication_methods=None, client_id=None, client_metadata=None, client_secret=None, compliance_level=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, default_organizations=None, description=None, encryption_key=None, express_configurations=None, external_client_id=None, external_metadata_created_by=None, external_metadata_status=None, external_metadata_type=None, fedcm_logins=None, form_template=None, grant_types=None, hide_client_secret=None, id=None, identity_assertion_authorization_grants=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwks_uri=None, jwt_configurations=None, logo_uri=None, mobiles=None, my_organization_configurations=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, oidc_logouts=None, organization_discovery_methods=None, organization_require_behavior=None, organization_usage=None, redirection_policy=None, refresh_tokens=None, require_proof_of_possession=None, require_pushed_authorization_requests=None, resource_server_identifier=None, session_transfers=None, signed_request_objects=None, signing_keys=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, sso=None, sso_disabled=None, third_party_security_mode=None, token_endpoint_auth_method=None, token_exchanges=None, token_quotas=None, web_origins=None):
+    def __init__(__self__, addons=None, agent_id=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, anonymous_sessions=None, app_type=None, async_approval_notification_channels=None, b2b_integration_configurations=None, callbacks=None, client_aliases=None, client_authentication_methods=None, client_id=None, client_metadata=None, client_secret=None, compliance_level=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, default_organizations=None, description=None, encryption_key=None, express_configurations=None, external_client_id=None, external_metadata_created_by=None, external_metadata_status=None, external_metadata_type=None, fedcm_logins=None, form_template=None, grant_types=None, hide_client_secret=None, id=None, identity_assertion_authorization_grants=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwks_uri=None, jwt_configurations=None, logo_uri=None, mobiles=None, my_organization_configurations=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, oidc_logouts=None, organization_discovery_methods=None, organization_require_behavior=None, organization_usage=None, redirection_policy=None, refresh_tokens=None, require_proof_of_possession=None, require_pushed_authorization_requests=None, resource_server_identifier=None, session_transfers=None, signed_request_objects=None, signing_keys=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, sso=None, sso_disabled=None, third_party_security_mode=None, token_endpoint_auth_method=None, token_exchanges=None, token_quotas=None, web_origins=None):
         if addons and not isinstance(addons, list):
             raise TypeError("Expected argument 'addons' to be a list")
         pulumi.set(__self__, "addons", addons)
+        if agent_id and not isinstance(agent_id, str):
+            raise TypeError("Expected argument 'agent_id' to be a str")
+        pulumi.set(__self__, "agent_id", agent_id)
         if allowed_clients and not isinstance(allowed_clients, list):
             raise TypeError("Expected argument 'allowed_clients' to be a list")
         pulumi.set(__self__, "allowed_clients", allowed_clients)
@@ -231,6 +234,14 @@ class GetClientResult:
         Addons enabled for this client and their associated configurations.
         """
         return pulumi.get(self, "addons")
+
+    @_builtins.property
+    @pulumi.getter(name="agentId")
+    def agent_id(self) -> _builtins.str:
+        """
+        The ID of the agent (`Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.<name>.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
+        """
+        return pulumi.get(self, "agent_id")
 
     @_builtins.property
     @pulumi.getter(name="allowedClients")
@@ -749,6 +760,7 @@ class AwaitableGetClientResult(GetClientResult):
             yield self
         return GetClientResult(
             addons=self.addons,
+            agent_id=self.agent_id,
             allowed_clients=self.allowed_clients,
             allowed_logout_urls=self.allowed_logout_urls,
             allowed_origins=self.allowed_origins,
@@ -848,6 +860,7 @@ def get_client(client_id: Optional[_builtins.str] = None,
 
     return AwaitableGetClientResult(
         addons=pulumi.get(__ret__, 'addons'),
+        agent_id=pulumi.get(__ret__, 'agent_id'),
         allowed_clients=pulumi.get(__ret__, 'allowed_clients'),
         allowed_logout_urls=pulumi.get(__ret__, 'allowed_logout_urls'),
         allowed_origins=pulumi.get(__ret__, 'allowed_origins'),
@@ -944,6 +957,7 @@ def get_client_output(client_id: pulumi.Input[Optional[Optional[_builtins.str]]]
     __ret__ = pulumi.runtime.invoke_output('auth0:index/getClient:getClient', __args__, opts=opts, typ=GetClientResult)
     return __ret__.apply(lambda __response__: GetClientResult(
         addons=pulumi.get(__response__, 'addons'),
+        agent_id=pulumi.get(__response__, 'agent_id'),
         allowed_clients=pulumi.get(__response__, 'allowed_clients'),
         allowed_logout_urls=pulumi.get(__response__, 'allowed_logout_urls'),
         allowed_origins=pulumi.get(__response__, 'allowed_origins'),

@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Action{}
 	case "auth0:index/actionModule:ActionModule":
 		r = &ActionModule{}
+	case "auth0:index/agent:Agent":
+		r = &Agent{}
 	case "auth0:index/attackProtection:AttackProtection":
 		r = &AttackProtection{}
 	case "auth0:index/branding:Branding":
@@ -127,6 +129,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PhoneNotificationTemplate{}
 	case "auth0:index/phoneProvider:PhoneProvider":
 		r = &PhoneProvider{}
+	case "auth0:index/portal:Portal":
+		r = &Portal{}
 	case "auth0:index/prompt:Prompt":
 		r = &Prompt{}
 	case "auth0:index/promptCustomText:PromptCustomText":
@@ -226,6 +230,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"auth0",
 		"index/actionModule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/agent",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -481,6 +490,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"auth0",
 		"index/phoneProvider",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"auth0",
+		"index/portal",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

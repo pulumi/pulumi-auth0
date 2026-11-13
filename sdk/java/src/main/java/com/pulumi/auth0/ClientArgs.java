@@ -51,6 +51,21 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the agent (`auth0.Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.&lt;name&gt;.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
+     * 
+     */
+    @Import(name="agentId")
+    private @Nullable Output<String> agentId;
+
+    /**
+     * @return The ID of the agent (`auth0.Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.&lt;name&gt;.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
+     * 
+     */
+    public Optional<Output<String>> agentId() {
+        return Optional.ofNullable(this.agentId);
+    }
+
+    /**
      * List of applications ID&#39;s that will be allowed to make delegation request. By default, all applications will be allowed.
      * 
      */
@@ -832,6 +847,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
 
     private ClientArgs(ClientArgs $) {
         this.addons = $.addons;
+        this.agentId = $.agentId;
         this.allowedClients = $.allowedClients;
         this.allowedLogoutUrls = $.allowedLogoutUrls;
         this.allowedOrigins = $.allowedOrigins;
@@ -923,6 +939,27 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder addons(ClientAddonsArgs addons) {
             return addons(Output.of(addons));
+        }
+
+        /**
+         * @param agentId The ID of the agent (`auth0.Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.&lt;name&gt;.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder agentId(@Nullable Output<String> agentId) {
+            $.agentId = agentId;
+            return this;
+        }
+
+        /**
+         * @param agentId The ID of the agent (`auth0.Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.&lt;name&gt;.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder agentId(String agentId) {
+            return agentId(Output.of(agentId));
         }
 
         /**

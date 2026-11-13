@@ -14,6 +14,10 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GetClientsClientResult
     {
         /// <summary>
+        /// The ID of the agent (`auth0.Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.&lt;name&gt;.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
+        /// </summary>
+        public readonly string AgentId;
+        /// <summary>
         /// List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
         /// </summary>
         public readonly ImmutableArray<string> AllowedClients;
@@ -153,6 +157,8 @@ namespace Pulumi.Auth0.Outputs
 
         [OutputConstructor]
         private GetClientsClientResult(
+            string agentId,
+
             ImmutableArray<string> allowedClients,
 
             ImmutableArray<string> allowedLogoutUrls,
@@ -223,6 +229,7 @@ namespace Pulumi.Auth0.Outputs
 
             ImmutableArray<string> webOrigins)
         {
+            AgentId = agentId;
             AllowedClients = allowedClients;
             AllowedLogoutUrls = allowedLogoutUrls;
             AllowedOrigins = allowedOrigins;
