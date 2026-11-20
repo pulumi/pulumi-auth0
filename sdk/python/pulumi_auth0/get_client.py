@@ -27,7 +27,7 @@ class GetClientResult:
     """
     A collection of values returned by getClient.
     """
-    def __init__(__self__, addons=None, agent_id=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, anonymous_sessions=None, app_type=None, async_approval_notification_channels=None, b2b_integration_configurations=None, callbacks=None, client_aliases=None, client_authentication_methods=None, client_id=None, client_metadata=None, client_secret=None, compliance_level=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, default_organizations=None, description=None, encryption_key=None, express_configurations=None, external_client_id=None, external_metadata_created_by=None, external_metadata_status=None, external_metadata_type=None, fedcm_logins=None, form_template=None, grant_types=None, hide_client_secret=None, id=None, identity_assertion_authorization_grants=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwks_uri=None, jwt_configurations=None, logo_uri=None, mobiles=None, my_organization_configurations=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, oidc_logouts=None, organization_discovery_methods=None, organization_require_behavior=None, organization_usage=None, redirection_policy=None, refresh_tokens=None, require_proof_of_possession=None, require_pushed_authorization_requests=None, resource_server_identifier=None, session_transfers=None, signed_request_objects=None, signing_keys=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, sso=None, sso_disabled=None, third_party_security_mode=None, token_endpoint_auth_method=None, token_exchanges=None, token_quotas=None, web_origins=None):
+    def __init__(__self__, addons=None, agent_id=None, allowed_clients=None, allowed_logout_urls=None, allowed_origins=None, anonymous_sessions=None, app_type=None, async_approval_notification_channels=None, b2b_integration_configurations=None, callbacks=None, client_aliases=None, client_authentication_methods=None, client_id=None, client_metadata=None, client_secret=None, compliance_level=None, cross_origin_auth=None, cross_origin_loc=None, custom_login_page=None, custom_login_page_on=None, default_organizations=None, description=None, encryption_key=None, express_configurations=None, external_client_id=None, external_metadata_created_by=None, external_metadata_status=None, external_metadata_type=None, fedcm_logins=None, form_template=None, grant_types=None, hide_client_secret=None, id=None, identity_assertion_authorization_grants=None, initiate_login_uri=None, is_first_party=None, is_token_endpoint_ip_header_trusted=None, jwks_uri=None, jwt_configurations=None, logo_uri=None, mobiles=None, my_organization_configurations=None, name=None, native_social_logins=None, oidc_backchannel_logout_urls=None, oidc_conformant=None, oidc_logouts=None, oidc_supports=None, organization_discovery_methods=None, organization_require_behavior=None, organization_usage=None, redirection_policy=None, refresh_tokens=None, require_proof_of_possession=None, require_pushed_authorization_requests=None, resource_server_identifier=None, session_transfers=None, signed_request_objects=None, signing_keys=None, skip_non_verifiable_callback_uri_confirmation_prompt=None, sso=None, sso_disabled=None, third_party_security_mode=None, token_endpoint_auth_method=None, token_exchanges=None, token_quotas=None, web_origins=None):
         if addons and not isinstance(addons, list):
             raise TypeError("Expected argument 'addons' to be a list")
         pulumi.set(__self__, "addons", addons)
@@ -169,6 +169,9 @@ class GetClientResult:
         if oidc_logouts and not isinstance(oidc_logouts, list):
             raise TypeError("Expected argument 'oidc_logouts' to be a list")
         pulumi.set(__self__, "oidc_logouts", oidc_logouts)
+        if oidc_supports and not isinstance(oidc_supports, list):
+            raise TypeError("Expected argument 'oidc_supports' to be a list")
+        pulumi.set(__self__, "oidc_supports", oidc_supports)
         if organization_discovery_methods and not isinstance(organization_discovery_methods, list):
             raise TypeError("Expected argument 'organization_discovery_methods' to be a list")
         pulumi.set(__self__, "organization_discovery_methods", organization_discovery_methods)
@@ -604,6 +607,14 @@ class GetClientResult:
         return pulumi.get(self, "oidc_logouts")
 
     @_builtins.property
+    @pulumi.getter(name="oidcSupports")
+    def oidc_supports(self) -> Sequence['outputs.GetClientOidcSupportResult']:
+        """
+        Controls which optional OIDC scopes the client may request. Requires `oidc_conformant` to be `true`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `oidc_conformant` to `false` while this block is not configured clears it.
+        """
+        return pulumi.get(self, "oidc_supports")
+
+    @_builtins.property
     @pulumi.getter(name="organizationDiscoveryMethods")
     def organization_discovery_methods(self) -> Sequence[_builtins.str]:
         """
@@ -806,6 +817,7 @@ class AwaitableGetClientResult(GetClientResult):
             oidc_backchannel_logout_urls=self.oidc_backchannel_logout_urls,
             oidc_conformant=self.oidc_conformant,
             oidc_logouts=self.oidc_logouts,
+            oidc_supports=self.oidc_supports,
             organization_discovery_methods=self.organization_discovery_methods,
             organization_require_behavior=self.organization_require_behavior,
             organization_usage=self.organization_usage,
@@ -906,6 +918,7 @@ def get_client(client_id: Optional[_builtins.str] = None,
         oidc_backchannel_logout_urls=pulumi.get(__ret__, 'oidc_backchannel_logout_urls'),
         oidc_conformant=pulumi.get(__ret__, 'oidc_conformant'),
         oidc_logouts=pulumi.get(__ret__, 'oidc_logouts'),
+        oidc_supports=pulumi.get(__ret__, 'oidc_supports'),
         organization_discovery_methods=pulumi.get(__ret__, 'organization_discovery_methods'),
         organization_require_behavior=pulumi.get(__ret__, 'organization_require_behavior'),
         organization_usage=pulumi.get(__ret__, 'organization_usage'),
@@ -1003,6 +1016,7 @@ def get_client_output(client_id: pulumi.Input[Optional[Optional[_builtins.str]]]
         oidc_backchannel_logout_urls=pulumi.get(__response__, 'oidc_backchannel_logout_urls'),
         oidc_conformant=pulumi.get(__response__, 'oidc_conformant'),
         oidc_logouts=pulumi.get(__response__, 'oidc_logouts'),
+        oidc_supports=pulumi.get(__response__, 'oidc_supports'),
         organization_discovery_methods=pulumi.get(__response__, 'organization_discovery_methods'),
         organization_require_behavior=pulumi.get(__response__, 'organization_require_behavior'),
         organization_usage=pulumi.get(__response__, 'organization_usage'),

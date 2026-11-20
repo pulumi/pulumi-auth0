@@ -18,6 +18,12 @@ namespace Pulumi.Auth0.Inputs
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// Specifies whether passkey is allowed or blocked during signup flows. Possible values: "allow", "block". This is an Early Access feature and must be enabled for your tenant before it can be set.
+        /// </summary>
+        [Input("signupBehavior")]
+        public Input<string>? SignupBehavior { get; set; }
+
         public ConnectionOptionsAuthenticationMethodPasskeyArgs()
         {
         }

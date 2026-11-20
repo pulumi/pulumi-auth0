@@ -255,7 +255,7 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool>? DisableSignup { get; set; }
 
         /// <summary>
-        /// OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
+        /// OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`. Also applicable to `Samlp` connections (EA only).
         /// </summary>
         [Input("discoveryUrl")]
         public Input<string>? DiscoveryUrl { get; set; }
@@ -747,19 +747,19 @@ namespace Pulumi.Auth0.Inputs
         public Input<string>? TokenEndpoint { get; set; }
 
         /// <summary>
-        /// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+        /// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
         /// </summary>
         [Input("tokenEndpointAuthMethod")]
         public Input<string>? TokenEndpointAuthMethod { get; set; }
 
         /// <summary>
-        /// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+        /// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
         /// </summary>
         [Input("tokenEndpointAuthSigningAlg")]
         public Input<string>? TokenEndpointAuthSigningAlg { get; set; }
 
         /// <summary>
-        /// Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)
+        /// Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections; SAML Connections (EA only))
         /// </summary>
         [Input("tokenEndpointJwtcaAudFormat")]
         public Input<string>? TokenEndpointJwtcaAudFormat { get; set; }

@@ -6,6 +6,7 @@ package com.pulumi.auth0.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,10 +31,26 @@ public final class ConnectionOptionsAuthenticationMethodPasskeyArgs extends com.
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * Specifies whether passkey is allowed or blocked during signup flows. Possible values: &#34;allow&#34;, &#34;block&#34;. This is an Early Access feature and must be enabled for your tenant before it can be set.
+     * 
+     */
+    @Import(name="signupBehavior")
+    private @Nullable Output<String> signupBehavior;
+
+    /**
+     * @return Specifies whether passkey is allowed or blocked during signup flows. Possible values: &#34;allow&#34;, &#34;block&#34;. This is an Early Access feature and must be enabled for your tenant before it can be set.
+     * 
+     */
+    public Optional<Output<String>> signupBehavior() {
+        return Optional.ofNullable(this.signupBehavior);
+    }
+
     private ConnectionOptionsAuthenticationMethodPasskeyArgs() {}
 
     private ConnectionOptionsAuthenticationMethodPasskeyArgs(ConnectionOptionsAuthenticationMethodPasskeyArgs $) {
         this.enabled = $.enabled;
+        this.signupBehavior = $.signupBehavior;
     }
 
     public static Builder builder() {
@@ -73,6 +90,27 @@ public final class ConnectionOptionsAuthenticationMethodPasskeyArgs extends com.
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param signupBehavior Specifies whether passkey is allowed or blocked during signup flows. Possible values: &#34;allow&#34;, &#34;block&#34;. This is an Early Access feature and must be enabled for your tenant before it can be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signupBehavior(@Nullable Output<String> signupBehavior) {
+            $.signupBehavior = signupBehavior;
+            return this;
+        }
+
+        /**
+         * @param signupBehavior Specifies whether passkey is allowed or blocked during signup flows. Possible values: &#34;allow&#34;, &#34;block&#34;. This is an Early Access feature and must be enabled for your tenant before it can be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signupBehavior(String signupBehavior) {
+            return signupBehavior(Output.of(signupBehavior));
         }
 
         public ConnectionOptionsAuthenticationMethodPasskeyArgs build() {

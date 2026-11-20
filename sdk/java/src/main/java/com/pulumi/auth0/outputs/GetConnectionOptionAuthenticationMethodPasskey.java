@@ -6,6 +6,7 @@ package com.pulumi.auth0.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 
 @CustomType
@@ -15,6 +16,11 @@ public final class GetConnectionOptionAuthenticationMethodPasskey {
      * 
      */
     private Boolean enabled;
+    /**
+     * @return Specifies whether passkey is allowed or blocked during signup flows. Possible values: &#34;allow&#34;, &#34;block&#34;. This is an Early Access feature and must be enabled for your tenant before it can be set.
+     * 
+     */
+    private String signupBehavior;
 
     private GetConnectionOptionAuthenticationMethodPasskey() {}
     /**
@@ -23,6 +29,13 @@ public final class GetConnectionOptionAuthenticationMethodPasskey {
      */
     public Boolean enabled() {
         return this.enabled;
+    }
+    /**
+     * @return Specifies whether passkey is allowed or blocked during signup flows. Possible values: &#34;allow&#34;, &#34;block&#34;. This is an Early Access feature and must be enabled for your tenant before it can be set.
+     * 
+     */
+    public String signupBehavior() {
+        return this.signupBehavior;
     }
 
     public static Builder builder() {
@@ -35,10 +48,12 @@ public final class GetConnectionOptionAuthenticationMethodPasskey {
     @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
+        private String signupBehavior;
         public Builder() {}
         public Builder(GetConnectionOptionAuthenticationMethodPasskey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
+    	      this.signupBehavior = defaults.signupBehavior;
         }
 
         @CustomType.Setter
@@ -49,9 +64,18 @@ public final class GetConnectionOptionAuthenticationMethodPasskey {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
+        public Builder signupBehavior(String signupBehavior) {
+            if (signupBehavior == null) {
+              throw new MissingRequiredPropertyException("GetConnectionOptionAuthenticationMethodPasskey", "signupBehavior");
+            }
+            this.signupBehavior = signupBehavior;
+            return this;
+        }
         public GetConnectionOptionAuthenticationMethodPasskey build() {
             final var _resultValue = new GetConnectionOptionAuthenticationMethodPasskey();
             _resultValue.enabled = enabled;
+            _resultValue.signupBehavior = signupBehavior;
             return _resultValue;
         }
     }

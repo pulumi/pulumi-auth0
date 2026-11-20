@@ -72,6 +72,15 @@ import (
 //					RequireProofOfPossession: &auth0.ClientProfileClientConfigurationRequireProofOfPossessionArgs{
 //						DefaultValue: pulumi.Bool(true),
 //					},
+//					OidcSupport: &auth0.ClientProfileClientConfigurationOidcSupportArgs{
+//						DefaultValue: &auth0.ClientProfileClientConfigurationOidcSupportDefaultValueArgs{
+//							IsAllowed: pulumi.Bool(true),
+//							AllowedScopes: pulumi.StringArray{
+//								pulumi.String("profile"),
+//								pulumi.String("email"),
+//							},
+//						},
+//					},
 //				},
 //				Name:        pulumi.String("Dynamic client profile"),
 //				Description: pulumi.String("Runtime policy for dynamically registered clients."),

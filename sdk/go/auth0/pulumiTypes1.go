@@ -13,6 +13,942 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetClientTokenExchange struct {
+	// List of allowed profile types for token exchange. Supported values include: custom_authentication, on_behalf_of_token_exchange.
+	AllowAnyProfileOfTypes []string `pulumi:"allowAnyProfileOfTypes"`
+}
+
+// GetClientTokenExchangeInput is an input type that accepts GetClientTokenExchangeArgs and GetClientTokenExchangeOutput values.
+// You can construct a concrete instance of `GetClientTokenExchangeInput` via:
+//
+//	GetClientTokenExchangeArgs{...}
+type GetClientTokenExchangeInput interface {
+	pulumi.Input
+
+	ToGetClientTokenExchangeOutput() GetClientTokenExchangeOutput
+	ToGetClientTokenExchangeOutputWithContext(context.Context) GetClientTokenExchangeOutput
+}
+
+type GetClientTokenExchangeArgs struct {
+	// List of allowed profile types for token exchange. Supported values include: custom_authentication, on_behalf_of_token_exchange.
+	AllowAnyProfileOfTypes pulumi.StringArrayInput `pulumi:"allowAnyProfileOfTypes"`
+}
+
+func (GetClientTokenExchangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientTokenExchange)(nil)).Elem()
+}
+
+func (i GetClientTokenExchangeArgs) ToGetClientTokenExchangeOutput() GetClientTokenExchangeOutput {
+	return i.ToGetClientTokenExchangeOutputWithContext(context.Background())
+}
+
+func (i GetClientTokenExchangeArgs) ToGetClientTokenExchangeOutputWithContext(ctx context.Context) GetClientTokenExchangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientTokenExchangeOutput)
+}
+
+// GetClientTokenExchangeArrayInput is an input type that accepts GetClientTokenExchangeArray and GetClientTokenExchangeArrayOutput values.
+// You can construct a concrete instance of `GetClientTokenExchangeArrayInput` via:
+//
+//	GetClientTokenExchangeArray{ GetClientTokenExchangeArgs{...} }
+type GetClientTokenExchangeArrayInput interface {
+	pulumi.Input
+
+	ToGetClientTokenExchangeArrayOutput() GetClientTokenExchangeArrayOutput
+	ToGetClientTokenExchangeArrayOutputWithContext(context.Context) GetClientTokenExchangeArrayOutput
+}
+
+type GetClientTokenExchangeArray []GetClientTokenExchangeInput
+
+func (GetClientTokenExchangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientTokenExchange)(nil)).Elem()
+}
+
+func (i GetClientTokenExchangeArray) ToGetClientTokenExchangeArrayOutput() GetClientTokenExchangeArrayOutput {
+	return i.ToGetClientTokenExchangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientTokenExchangeArray) ToGetClientTokenExchangeArrayOutputWithContext(ctx context.Context) GetClientTokenExchangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientTokenExchangeArrayOutput)
+}
+
+type GetClientTokenExchangeOutput struct{ *pulumi.OutputState }
+
+func (GetClientTokenExchangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientTokenExchange)(nil)).Elem()
+}
+
+func (o GetClientTokenExchangeOutput) ToGetClientTokenExchangeOutput() GetClientTokenExchangeOutput {
+	return o
+}
+
+func (o GetClientTokenExchangeOutput) ToGetClientTokenExchangeOutputWithContext(ctx context.Context) GetClientTokenExchangeOutput {
+	return o
+}
+
+// List of allowed profile types for token exchange. Supported values include: custom_authentication, on_behalf_of_token_exchange.
+func (o GetClientTokenExchangeOutput) AllowAnyProfileOfTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientTokenExchange) []string { return v.AllowAnyProfileOfTypes }).(pulumi.StringArrayOutput)
+}
+
+type GetClientTokenExchangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientTokenExchangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientTokenExchange)(nil)).Elem()
+}
+
+func (o GetClientTokenExchangeArrayOutput) ToGetClientTokenExchangeArrayOutput() GetClientTokenExchangeArrayOutput {
+	return o
+}
+
+func (o GetClientTokenExchangeArrayOutput) ToGetClientTokenExchangeArrayOutputWithContext(ctx context.Context) GetClientTokenExchangeArrayOutput {
+	return o
+}
+
+func (o GetClientTokenExchangeArrayOutput) Index(i pulumi.IntInput) GetClientTokenExchangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientTokenExchange {
+		return vs[0].([]GetClientTokenExchange)[vs[1].(int)]
+	}).(GetClientTokenExchangeOutput)
+}
+
+type GetClientTokenQuota struct {
+	// The token quota configuration for client credentials.
+	ClientCredentials []GetClientTokenQuotaClientCredential `pulumi:"clientCredentials"`
+}
+
+// GetClientTokenQuotaInput is an input type that accepts GetClientTokenQuotaArgs and GetClientTokenQuotaOutput values.
+// You can construct a concrete instance of `GetClientTokenQuotaInput` via:
+//
+//	GetClientTokenQuotaArgs{...}
+type GetClientTokenQuotaInput interface {
+	pulumi.Input
+
+	ToGetClientTokenQuotaOutput() GetClientTokenQuotaOutput
+	ToGetClientTokenQuotaOutputWithContext(context.Context) GetClientTokenQuotaOutput
+}
+
+type GetClientTokenQuotaArgs struct {
+	// The token quota configuration for client credentials.
+	ClientCredentials GetClientTokenQuotaClientCredentialArrayInput `pulumi:"clientCredentials"`
+}
+
+func (GetClientTokenQuotaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientTokenQuota)(nil)).Elem()
+}
+
+func (i GetClientTokenQuotaArgs) ToGetClientTokenQuotaOutput() GetClientTokenQuotaOutput {
+	return i.ToGetClientTokenQuotaOutputWithContext(context.Background())
+}
+
+func (i GetClientTokenQuotaArgs) ToGetClientTokenQuotaOutputWithContext(ctx context.Context) GetClientTokenQuotaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientTokenQuotaOutput)
+}
+
+// GetClientTokenQuotaArrayInput is an input type that accepts GetClientTokenQuotaArray and GetClientTokenQuotaArrayOutput values.
+// You can construct a concrete instance of `GetClientTokenQuotaArrayInput` via:
+//
+//	GetClientTokenQuotaArray{ GetClientTokenQuotaArgs{...} }
+type GetClientTokenQuotaArrayInput interface {
+	pulumi.Input
+
+	ToGetClientTokenQuotaArrayOutput() GetClientTokenQuotaArrayOutput
+	ToGetClientTokenQuotaArrayOutputWithContext(context.Context) GetClientTokenQuotaArrayOutput
+}
+
+type GetClientTokenQuotaArray []GetClientTokenQuotaInput
+
+func (GetClientTokenQuotaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientTokenQuota)(nil)).Elem()
+}
+
+func (i GetClientTokenQuotaArray) ToGetClientTokenQuotaArrayOutput() GetClientTokenQuotaArrayOutput {
+	return i.ToGetClientTokenQuotaArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientTokenQuotaArray) ToGetClientTokenQuotaArrayOutputWithContext(ctx context.Context) GetClientTokenQuotaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientTokenQuotaArrayOutput)
+}
+
+type GetClientTokenQuotaOutput struct{ *pulumi.OutputState }
+
+func (GetClientTokenQuotaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientTokenQuota)(nil)).Elem()
+}
+
+func (o GetClientTokenQuotaOutput) ToGetClientTokenQuotaOutput() GetClientTokenQuotaOutput {
+	return o
+}
+
+func (o GetClientTokenQuotaOutput) ToGetClientTokenQuotaOutputWithContext(ctx context.Context) GetClientTokenQuotaOutput {
+	return o
+}
+
+// The token quota configuration for client credentials.
+func (o GetClientTokenQuotaOutput) ClientCredentials() GetClientTokenQuotaClientCredentialArrayOutput {
+	return o.ApplyT(func(v GetClientTokenQuota) []GetClientTokenQuotaClientCredential { return v.ClientCredentials }).(GetClientTokenQuotaClientCredentialArrayOutput)
+}
+
+type GetClientTokenQuotaArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientTokenQuotaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientTokenQuota)(nil)).Elem()
+}
+
+func (o GetClientTokenQuotaArrayOutput) ToGetClientTokenQuotaArrayOutput() GetClientTokenQuotaArrayOutput {
+	return o
+}
+
+func (o GetClientTokenQuotaArrayOutput) ToGetClientTokenQuotaArrayOutputWithContext(ctx context.Context) GetClientTokenQuotaArrayOutput {
+	return o
+}
+
+func (o GetClientTokenQuotaArrayOutput) Index(i pulumi.IntInput) GetClientTokenQuotaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientTokenQuota {
+		return vs[0].([]GetClientTokenQuota)[vs[1].(int)]
+	}).(GetClientTokenQuotaOutput)
+}
+
+type GetClientTokenQuotaClientCredential struct {
+	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+	Enforce bool `pulumi:"enforce"`
+	// Maximum number of issued tokens per day
+	PerDay int `pulumi:"perDay"`
+	// Maximum number of issued tokens per hour
+	PerHour int `pulumi:"perHour"`
+}
+
+// GetClientTokenQuotaClientCredentialInput is an input type that accepts GetClientTokenQuotaClientCredentialArgs and GetClientTokenQuotaClientCredentialOutput values.
+// You can construct a concrete instance of `GetClientTokenQuotaClientCredentialInput` via:
+//
+//	GetClientTokenQuotaClientCredentialArgs{...}
+type GetClientTokenQuotaClientCredentialInput interface {
+	pulumi.Input
+
+	ToGetClientTokenQuotaClientCredentialOutput() GetClientTokenQuotaClientCredentialOutput
+	ToGetClientTokenQuotaClientCredentialOutputWithContext(context.Context) GetClientTokenQuotaClientCredentialOutput
+}
+
+type GetClientTokenQuotaClientCredentialArgs struct {
+	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+	Enforce pulumi.BoolInput `pulumi:"enforce"`
+	// Maximum number of issued tokens per day
+	PerDay pulumi.IntInput `pulumi:"perDay"`
+	// Maximum number of issued tokens per hour
+	PerHour pulumi.IntInput `pulumi:"perHour"`
+}
+
+func (GetClientTokenQuotaClientCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientTokenQuotaClientCredential)(nil)).Elem()
+}
+
+func (i GetClientTokenQuotaClientCredentialArgs) ToGetClientTokenQuotaClientCredentialOutput() GetClientTokenQuotaClientCredentialOutput {
+	return i.ToGetClientTokenQuotaClientCredentialOutputWithContext(context.Background())
+}
+
+func (i GetClientTokenQuotaClientCredentialArgs) ToGetClientTokenQuotaClientCredentialOutputWithContext(ctx context.Context) GetClientTokenQuotaClientCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientTokenQuotaClientCredentialOutput)
+}
+
+// GetClientTokenQuotaClientCredentialArrayInput is an input type that accepts GetClientTokenQuotaClientCredentialArray and GetClientTokenQuotaClientCredentialArrayOutput values.
+// You can construct a concrete instance of `GetClientTokenQuotaClientCredentialArrayInput` via:
+//
+//	GetClientTokenQuotaClientCredentialArray{ GetClientTokenQuotaClientCredentialArgs{...} }
+type GetClientTokenQuotaClientCredentialArrayInput interface {
+	pulumi.Input
+
+	ToGetClientTokenQuotaClientCredentialArrayOutput() GetClientTokenQuotaClientCredentialArrayOutput
+	ToGetClientTokenQuotaClientCredentialArrayOutputWithContext(context.Context) GetClientTokenQuotaClientCredentialArrayOutput
+}
+
+type GetClientTokenQuotaClientCredentialArray []GetClientTokenQuotaClientCredentialInput
+
+func (GetClientTokenQuotaClientCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientTokenQuotaClientCredential)(nil)).Elem()
+}
+
+func (i GetClientTokenQuotaClientCredentialArray) ToGetClientTokenQuotaClientCredentialArrayOutput() GetClientTokenQuotaClientCredentialArrayOutput {
+	return i.ToGetClientTokenQuotaClientCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientTokenQuotaClientCredentialArray) ToGetClientTokenQuotaClientCredentialArrayOutputWithContext(ctx context.Context) GetClientTokenQuotaClientCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientTokenQuotaClientCredentialArrayOutput)
+}
+
+type GetClientTokenQuotaClientCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetClientTokenQuotaClientCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientTokenQuotaClientCredential)(nil)).Elem()
+}
+
+func (o GetClientTokenQuotaClientCredentialOutput) ToGetClientTokenQuotaClientCredentialOutput() GetClientTokenQuotaClientCredentialOutput {
+	return o
+}
+
+func (o GetClientTokenQuotaClientCredentialOutput) ToGetClientTokenQuotaClientCredentialOutputWithContext(ctx context.Context) GetClientTokenQuotaClientCredentialOutput {
+	return o
+}
+
+// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
+func (o GetClientTokenQuotaClientCredentialOutput) Enforce() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientTokenQuotaClientCredential) bool { return v.Enforce }).(pulumi.BoolOutput)
+}
+
+// Maximum number of issued tokens per day
+func (o GetClientTokenQuotaClientCredentialOutput) PerDay() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClientTokenQuotaClientCredential) int { return v.PerDay }).(pulumi.IntOutput)
+}
+
+// Maximum number of issued tokens per hour
+func (o GetClientTokenQuotaClientCredentialOutput) PerHour() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClientTokenQuotaClientCredential) int { return v.PerHour }).(pulumi.IntOutput)
+}
+
+type GetClientTokenQuotaClientCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientTokenQuotaClientCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientTokenQuotaClientCredential)(nil)).Elem()
+}
+
+func (o GetClientTokenQuotaClientCredentialArrayOutput) ToGetClientTokenQuotaClientCredentialArrayOutput() GetClientTokenQuotaClientCredentialArrayOutput {
+	return o
+}
+
+func (o GetClientTokenQuotaClientCredentialArrayOutput) ToGetClientTokenQuotaClientCredentialArrayOutputWithContext(ctx context.Context) GetClientTokenQuotaClientCredentialArrayOutput {
+	return o
+}
+
+func (o GetClientTokenQuotaClientCredentialArrayOutput) Index(i pulumi.IntInput) GetClientTokenQuotaClientCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientTokenQuotaClientCredential {
+		return vs[0].([]GetClientTokenQuotaClientCredential)[vs[1].(int)]
+	}).(GetClientTokenQuotaClientCredentialOutput)
+}
+
+type GetClientsClient struct {
+	// The ID of the agent (`Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.<name>.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
+	AgentId string `pulumi:"agentId"`
+	// List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+	AllowedClients []string `pulumi:"allowedClients"`
+	// URLs that Auth0 may redirect to after logout.
+	AllowedLogoutUrls []string `pulumi:"allowedLogoutUrls"`
+	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+	AllowedOrigins []string `pulumi:"allowedOrigins"`
+	// Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+	AnonymousSessions []GetClientsClientAnonymousSession `pulumi:"anonymousSessions"`
+	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
+	AppType string `pulumi:"appType"`
+	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push`, `email`, and `my-account`.The order is significant as this is the order in which notification channels will be evaluated.
+	AsyncApprovalNotificationChannels []string `pulumi:"asyncApprovalNotificationChannels"`
+	// Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
+	B2bIntegrationConfigurations []GetClientsClientB2bIntegrationConfiguration `pulumi:"b2bIntegrationConfigurations"`
+	// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+	Callbacks []string `pulumi:"callbacks"`
+	// The ID of the client. If not provided, `name` must be set.
+	ClientId *string `pulumi:"clientId"`
+	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
+	ClientMetadata map[string]string `pulumi:"clientMetadata"`
+	// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. Set `hideClientSecret` to `true` to avoid persisting this value into Terraform state.
+	ClientSecret string `pulumi:"clientSecret"`
+	// Description of the purpose of the client.
+	Description string `pulumi:"description"`
+	// Express Configuration settings for the client. Used with OIN Express Configuration.
+	ExpressConfigurations []GetClientsClientExpressConfiguration `pulumi:"expressConfigurations"`
+	// The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+	ExternalClientId string `pulumi:"externalClientId"`
+	// Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
+	ExternalMetadataCreatedBy string `pulumi:"externalMetadataCreatedBy"`
+	// Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only). Only present for CIMD-registered clients.
+	ExternalMetadataStatus string `pulumi:"externalMetadataStatus"`
+	// Type of external metadata. Value is `cimd` for CIMD-registered clients.
+	ExternalMetadataType string `pulumi:"externalMetadataType"`
+	// Federated Credential Management (FedCM) configuration. (EA only)
+	FedcmLogins []GetClientsClientFedcmLogin `pulumi:"fedcmLogins"`
+	// Types of grants that this client is authorized to use.
+	GrantTypes []string `pulumi:"grantTypes"`
+	// Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+	IdentityAssertionAuthorizationGrants []GetClientsClientIdentityAssertionAuthorizationGrant `pulumi:"identityAssertionAuthorizationGrants"`
+	// Indicates whether this client is a first-party client.
+	IsFirstParty bool `pulumi:"isFirstParty"`
+	// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `ClientCredentials` resource.
+	IsTokenEndpointIpHeaderTrusted bool `pulumi:"isTokenEndpointIpHeaderTrusted"`
+	// URL for the JSON Web Key Set (JWKS) containing the public keys used for `privateKeyJwt` authentication. Only present for CIMD clients using `privateKeyJwt` authentication.
+	JwksUri string `pulumi:"jwksUri"`
+	// Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+	MyOrganizationConfigurations []GetClientsClientMyOrganizationConfiguration `pulumi:"myOrganizationConfigurations"`
+	// The name of the client. If not provided, `clientId` must be set.
+	Name *string `pulumi:"name"`
+	// Configure OIDC logout for the Client
+	OidcLogouts []GetClientsClientOidcLogout `pulumi:"oidcLogouts"`
+	// Controls which optional OIDC scopes the client may request. Requires `oidcConformant` to be `true`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `oidcConformant` to `false` while this block is not configured clears it.
+	OidcSupports []GetClientsClientOidcSupport `pulumi:"oidcSupports"`
+	// Methods for discovering organizations during the pre_login_prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
+	OrganizationDiscoveryMethods []string `pulumi:"organizationDiscoveryMethods"`
+	// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allowAlways` or `openRedirectProtection`.
+	RedirectionPolicy string `pulumi:"redirectionPolicy"`
+	// The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
+	ResourceServerIdentifier string                            `pulumi:"resourceServerIdentifier"`
+	SessionTransfers         []GetClientsClientSessionTransfer `pulumi:"sessionTransfers"`
+	// Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
+	SkipNonVerifiableCallbackUriConfirmationPrompt string `pulumi:"skipNonVerifiableCallbackUriConfirmationPrompt"`
+	// Security mode for third-party clients. Allowed values: `strict` or `permissive`.
+	ThirdPartySecurityMode string `pulumi:"thirdPartySecurityMode"`
+	// Allows configuration for token exchange
+	TokenExchanges []GetClientsClientTokenExchange `pulumi:"tokenExchanges"`
+	// The token quota configuration.
+	TokenQuotas []GetClientsClientTokenQuota `pulumi:"tokenQuotas"`
+	// URLs that represent valid web origins for use with web message response mode.
+	WebOrigins []string `pulumi:"webOrigins"`
+}
+
+// GetClientsClientInput is an input type that accepts GetClientsClientArgs and GetClientsClientOutput values.
+// You can construct a concrete instance of `GetClientsClientInput` via:
+//
+//	GetClientsClientArgs{...}
+type GetClientsClientInput interface {
+	pulumi.Input
+
+	ToGetClientsClientOutput() GetClientsClientOutput
+	ToGetClientsClientOutputWithContext(context.Context) GetClientsClientOutput
+}
+
+type GetClientsClientArgs struct {
+	// The ID of the agent (`Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.<name>.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
+	AgentId pulumi.StringInput `pulumi:"agentId"`
+	// List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+	AllowedClients pulumi.StringArrayInput `pulumi:"allowedClients"`
+	// URLs that Auth0 may redirect to after logout.
+	AllowedLogoutUrls pulumi.StringArrayInput `pulumi:"allowedLogoutUrls"`
+	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+	AllowedOrigins pulumi.StringArrayInput `pulumi:"allowedOrigins"`
+	// Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+	AnonymousSessions GetClientsClientAnonymousSessionArrayInput `pulumi:"anonymousSessions"`
+	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
+	AppType pulumi.StringInput `pulumi:"appType"`
+	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push`, `email`, and `my-account`.The order is significant as this is the order in which notification channels will be evaluated.
+	AsyncApprovalNotificationChannels pulumi.StringArrayInput `pulumi:"asyncApprovalNotificationChannels"`
+	// Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
+	B2bIntegrationConfigurations GetClientsClientB2bIntegrationConfigurationArrayInput `pulumi:"b2bIntegrationConfigurations"`
+	// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+	Callbacks pulumi.StringArrayInput `pulumi:"callbacks"`
+	// The ID of the client. If not provided, `name` must be set.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
+	ClientMetadata pulumi.StringMapInput `pulumi:"clientMetadata"`
+	// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. Set `hideClientSecret` to `true` to avoid persisting this value into Terraform state.
+	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
+	// Description of the purpose of the client.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Express Configuration settings for the client. Used with OIN Express Configuration.
+	ExpressConfigurations GetClientsClientExpressConfigurationArrayInput `pulumi:"expressConfigurations"`
+	// The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+	ExternalClientId pulumi.StringInput `pulumi:"externalClientId"`
+	// Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
+	ExternalMetadataCreatedBy pulumi.StringInput `pulumi:"externalMetadataCreatedBy"`
+	// Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only). Only present for CIMD-registered clients.
+	ExternalMetadataStatus pulumi.StringInput `pulumi:"externalMetadataStatus"`
+	// Type of external metadata. Value is `cimd` for CIMD-registered clients.
+	ExternalMetadataType pulumi.StringInput `pulumi:"externalMetadataType"`
+	// Federated Credential Management (FedCM) configuration. (EA only)
+	FedcmLogins GetClientsClientFedcmLoginArrayInput `pulumi:"fedcmLogins"`
+	// Types of grants that this client is authorized to use.
+	GrantTypes pulumi.StringArrayInput `pulumi:"grantTypes"`
+	// Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+	IdentityAssertionAuthorizationGrants GetClientsClientIdentityAssertionAuthorizationGrantArrayInput `pulumi:"identityAssertionAuthorizationGrants"`
+	// Indicates whether this client is a first-party client.
+	IsFirstParty pulumi.BoolInput `pulumi:"isFirstParty"`
+	// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `ClientCredentials` resource.
+	IsTokenEndpointIpHeaderTrusted pulumi.BoolInput `pulumi:"isTokenEndpointIpHeaderTrusted"`
+	// URL for the JSON Web Key Set (JWKS) containing the public keys used for `privateKeyJwt` authentication. Only present for CIMD clients using `privateKeyJwt` authentication.
+	JwksUri pulumi.StringInput `pulumi:"jwksUri"`
+	// Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+	MyOrganizationConfigurations GetClientsClientMyOrganizationConfigurationArrayInput `pulumi:"myOrganizationConfigurations"`
+	// The name of the client. If not provided, `clientId` must be set.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Configure OIDC logout for the Client
+	OidcLogouts GetClientsClientOidcLogoutArrayInput `pulumi:"oidcLogouts"`
+	// Controls which optional OIDC scopes the client may request. Requires `oidcConformant` to be `true`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `oidcConformant` to `false` while this block is not configured clears it.
+	OidcSupports GetClientsClientOidcSupportArrayInput `pulumi:"oidcSupports"`
+	// Methods for discovering organizations during the pre_login_prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
+	OrganizationDiscoveryMethods pulumi.StringArrayInput `pulumi:"organizationDiscoveryMethods"`
+	// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allowAlways` or `openRedirectProtection`.
+	RedirectionPolicy pulumi.StringInput `pulumi:"redirectionPolicy"`
+	// The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
+	ResourceServerIdentifier pulumi.StringInput                        `pulumi:"resourceServerIdentifier"`
+	SessionTransfers         GetClientsClientSessionTransferArrayInput `pulumi:"sessionTransfers"`
+	// Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
+	SkipNonVerifiableCallbackUriConfirmationPrompt pulumi.StringInput `pulumi:"skipNonVerifiableCallbackUriConfirmationPrompt"`
+	// Security mode for third-party clients. Allowed values: `strict` or `permissive`.
+	ThirdPartySecurityMode pulumi.StringInput `pulumi:"thirdPartySecurityMode"`
+	// Allows configuration for token exchange
+	TokenExchanges GetClientsClientTokenExchangeArrayInput `pulumi:"tokenExchanges"`
+	// The token quota configuration.
+	TokenQuotas GetClientsClientTokenQuotaArrayInput `pulumi:"tokenQuotas"`
+	// URLs that represent valid web origins for use with web message response mode.
+	WebOrigins pulumi.StringArrayInput `pulumi:"webOrigins"`
+}
+
+func (GetClientsClientArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClient)(nil)).Elem()
+}
+
+func (i GetClientsClientArgs) ToGetClientsClientOutput() GetClientsClientOutput {
+	return i.ToGetClientsClientOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientArgs) ToGetClientsClientOutputWithContext(ctx context.Context) GetClientsClientOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientOutput)
+}
+
+// GetClientsClientArrayInput is an input type that accepts GetClientsClientArray and GetClientsClientArrayOutput values.
+// You can construct a concrete instance of `GetClientsClientArrayInput` via:
+//
+//	GetClientsClientArray{ GetClientsClientArgs{...} }
+type GetClientsClientArrayInput interface {
+	pulumi.Input
+
+	ToGetClientsClientArrayOutput() GetClientsClientArrayOutput
+	ToGetClientsClientArrayOutputWithContext(context.Context) GetClientsClientArrayOutput
+}
+
+type GetClientsClientArray []GetClientsClientInput
+
+func (GetClientsClientArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClient)(nil)).Elem()
+}
+
+func (i GetClientsClientArray) ToGetClientsClientArrayOutput() GetClientsClientArrayOutput {
+	return i.ToGetClientsClientArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientArray) ToGetClientsClientArrayOutputWithContext(ctx context.Context) GetClientsClientArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientArrayOutput)
+}
+
+type GetClientsClientOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClient)(nil)).Elem()
+}
+
+func (o GetClientsClientOutput) ToGetClientsClientOutput() GetClientsClientOutput {
+	return o
+}
+
+func (o GetClientsClientOutput) ToGetClientsClientOutputWithContext(ctx context.Context) GetClientsClientOutput {
+	return o
+}
+
+// The ID of the agent (`Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.<name>.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
+func (o GetClientsClientOutput) AgentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClient) string { return v.AgentId }).(pulumi.StringOutput)
+}
+
+// List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
+func (o GetClientsClientOutput) AllowedClients() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []string { return v.AllowedClients }).(pulumi.StringArrayOutput)
+}
+
+// URLs that Auth0 may redirect to after logout.
+func (o GetClientsClientOutput) AllowedLogoutUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []string { return v.AllowedLogoutUrls }).(pulumi.StringArrayOutput)
+}
+
+// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
+func (o GetClientsClientOutput) AllowedOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
+}
+
+// Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
+func (o GetClientsClientOutput) AnonymousSessions() GetClientsClientAnonymousSessionArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []GetClientsClientAnonymousSession { return v.AnonymousSessions }).(GetClientsClientAnonymousSessionArrayOutput)
+}
+
+// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
+func (o GetClientsClientOutput) AppType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClient) string { return v.AppType }).(pulumi.StringOutput)
+}
+
+// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push`, `email`, and `my-account`.The order is significant as this is the order in which notification channels will be evaluated.
+func (o GetClientsClientOutput) AsyncApprovalNotificationChannels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []string { return v.AsyncApprovalNotificationChannels }).(pulumi.StringArrayOutput)
+}
+
+// Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
+func (o GetClientsClientOutput) B2bIntegrationConfigurations() GetClientsClientB2bIntegrationConfigurationArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []GetClientsClientB2bIntegrationConfiguration {
+		return v.B2bIntegrationConfigurations
+	}).(GetClientsClientB2bIntegrationConfigurationArrayOutput)
+}
+
+// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
+func (o GetClientsClientOutput) Callbacks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []string { return v.Callbacks }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the client. If not provided, `name` must be set.
+func (o GetClientsClientOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClientsClient) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
+func (o GetClientsClientOutput) ClientMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClientsClient) map[string]string { return v.ClientMetadata }).(pulumi.StringMapOutput)
+}
+
+// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. Set `hideClientSecret` to `true` to avoid persisting this value into Terraform state.
+func (o GetClientsClientOutput) ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClient) string { return v.ClientSecret }).(pulumi.StringOutput)
+}
+
+// Description of the purpose of the client.
+func (o GetClientsClientOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClient) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Express Configuration settings for the client. Used with OIN Express Configuration.
+func (o GetClientsClientOutput) ExpressConfigurations() GetClientsClientExpressConfigurationArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []GetClientsClientExpressConfiguration { return v.ExpressConfigurations }).(GetClientsClientExpressConfigurationArrayOutput)
+}
+
+// The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
+func (o GetClientsClientOutput) ExternalClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClient) string { return v.ExternalClientId }).(pulumi.StringOutput)
+}
+
+// Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
+func (o GetClientsClientOutput) ExternalMetadataCreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClient) string { return v.ExternalMetadataCreatedBy }).(pulumi.StringOutput)
+}
+
+// Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only). Only present for CIMD-registered clients.
+func (o GetClientsClientOutput) ExternalMetadataStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClient) string { return v.ExternalMetadataStatus }).(pulumi.StringOutput)
+}
+
+// Type of external metadata. Value is `cimd` for CIMD-registered clients.
+func (o GetClientsClientOutput) ExternalMetadataType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClient) string { return v.ExternalMetadataType }).(pulumi.StringOutput)
+}
+
+// Federated Credential Management (FedCM) configuration. (EA only)
+func (o GetClientsClientOutput) FedcmLogins() GetClientsClientFedcmLoginArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []GetClientsClientFedcmLogin { return v.FedcmLogins }).(GetClientsClientFedcmLoginArrayOutput)
+}
+
+// Types of grants that this client is authorized to use.
+func (o GetClientsClientOutput) GrantTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []string { return v.GrantTypes }).(pulumi.StringArrayOutput)
+}
+
+// Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
+func (o GetClientsClientOutput) IdentityAssertionAuthorizationGrants() GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []GetClientsClientIdentityAssertionAuthorizationGrant {
+		return v.IdentityAssertionAuthorizationGrants
+	}).(GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput)
+}
+
+// Indicates whether this client is a first-party client.
+func (o GetClientsClientOutput) IsFirstParty() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientsClient) bool { return v.IsFirstParty }).(pulumi.BoolOutput)
+}
+
+// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `ClientCredentials` resource.
+func (o GetClientsClientOutput) IsTokenEndpointIpHeaderTrusted() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientsClient) bool { return v.IsTokenEndpointIpHeaderTrusted }).(pulumi.BoolOutput)
+}
+
+// URL for the JSON Web Key Set (JWKS) containing the public keys used for `privateKeyJwt` authentication. Only present for CIMD clients using `privateKeyJwt` authentication.
+func (o GetClientsClientOutput) JwksUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClient) string { return v.JwksUri }).(pulumi.StringOutput)
+}
+
+// Configuration for self-service organization features, controlling how organizations are created and managed for this client.
+func (o GetClientsClientOutput) MyOrganizationConfigurations() GetClientsClientMyOrganizationConfigurationArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []GetClientsClientMyOrganizationConfiguration {
+		return v.MyOrganizationConfigurations
+	}).(GetClientsClientMyOrganizationConfigurationArrayOutput)
+}
+
+// The name of the client. If not provided, `clientId` must be set.
+func (o GetClientsClientOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetClientsClient) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Configure OIDC logout for the Client
+func (o GetClientsClientOutput) OidcLogouts() GetClientsClientOidcLogoutArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []GetClientsClientOidcLogout { return v.OidcLogouts }).(GetClientsClientOidcLogoutArrayOutput)
+}
+
+// Controls which optional OIDC scopes the client may request. Requires `oidcConformant` to be `true`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `oidcConformant` to `false` while this block is not configured clears it.
+func (o GetClientsClientOutput) OidcSupports() GetClientsClientOidcSupportArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []GetClientsClientOidcSupport { return v.OidcSupports }).(GetClientsClientOidcSupportArrayOutput)
+}
+
+// Methods for discovering organizations during the pre_login_prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
+func (o GetClientsClientOutput) OrganizationDiscoveryMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []string { return v.OrganizationDiscoveryMethods }).(pulumi.StringArrayOutput)
+}
+
+// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allowAlways` or `openRedirectProtection`.
+func (o GetClientsClientOutput) RedirectionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClient) string { return v.RedirectionPolicy }).(pulumi.StringOutput)
+}
+
+// The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
+func (o GetClientsClientOutput) ResourceServerIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClient) string { return v.ResourceServerIdentifier }).(pulumi.StringOutput)
+}
+
+func (o GetClientsClientOutput) SessionTransfers() GetClientsClientSessionTransferArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []GetClientsClientSessionTransfer { return v.SessionTransfers }).(GetClientsClientSessionTransferArrayOutput)
+}
+
+// Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
+func (o GetClientsClientOutput) SkipNonVerifiableCallbackUriConfirmationPrompt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClient) string { return v.SkipNonVerifiableCallbackUriConfirmationPrompt }).(pulumi.StringOutput)
+}
+
+// Security mode for third-party clients. Allowed values: `strict` or `permissive`.
+func (o GetClientsClientOutput) ThirdPartySecurityMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClient) string { return v.ThirdPartySecurityMode }).(pulumi.StringOutput)
+}
+
+// Allows configuration for token exchange
+func (o GetClientsClientOutput) TokenExchanges() GetClientsClientTokenExchangeArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []GetClientsClientTokenExchange { return v.TokenExchanges }).(GetClientsClientTokenExchangeArrayOutput)
+}
+
+// The token quota configuration.
+func (o GetClientsClientOutput) TokenQuotas() GetClientsClientTokenQuotaArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []GetClientsClientTokenQuota { return v.TokenQuotas }).(GetClientsClientTokenQuotaArrayOutput)
+}
+
+// URLs that represent valid web origins for use with web message response mode.
+func (o GetClientsClientOutput) WebOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientsClient) []string { return v.WebOrigins }).(pulumi.StringArrayOutput)
+}
+
+type GetClientsClientArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClient)(nil)).Elem()
+}
+
+func (o GetClientsClientArrayOutput) ToGetClientsClientArrayOutput() GetClientsClientArrayOutput {
+	return o
+}
+
+func (o GetClientsClientArrayOutput) ToGetClientsClientArrayOutputWithContext(ctx context.Context) GetClientsClientArrayOutput {
+	return o
+}
+
+func (o GetClientsClientArrayOutput) Index(i pulumi.IntInput) GetClientsClientOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClient {
+		return vs[0].([]GetClientsClient)[vs[1].(int)]
+	}).(GetClientsClientOutput)
+}
+
+type GetClientsClientAnonymousSession struct {
+	// If set to true, this client is allowed to create anonymous sessions. Requires `oidcConformant` to be set to `true`. Set to `false` to disable. (EA only)
+	Active bool `pulumi:"active"`
+}
+
+// GetClientsClientAnonymousSessionInput is an input type that accepts GetClientsClientAnonymousSessionArgs and GetClientsClientAnonymousSessionOutput values.
+// You can construct a concrete instance of `GetClientsClientAnonymousSessionInput` via:
+//
+//	GetClientsClientAnonymousSessionArgs{...}
+type GetClientsClientAnonymousSessionInput interface {
+	pulumi.Input
+
+	ToGetClientsClientAnonymousSessionOutput() GetClientsClientAnonymousSessionOutput
+	ToGetClientsClientAnonymousSessionOutputWithContext(context.Context) GetClientsClientAnonymousSessionOutput
+}
+
+type GetClientsClientAnonymousSessionArgs struct {
+	// If set to true, this client is allowed to create anonymous sessions. Requires `oidcConformant` to be set to `true`. Set to `false` to disable. (EA only)
+	Active pulumi.BoolInput `pulumi:"active"`
+}
+
+func (GetClientsClientAnonymousSessionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientAnonymousSession)(nil)).Elem()
+}
+
+func (i GetClientsClientAnonymousSessionArgs) ToGetClientsClientAnonymousSessionOutput() GetClientsClientAnonymousSessionOutput {
+	return i.ToGetClientsClientAnonymousSessionOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientAnonymousSessionArgs) ToGetClientsClientAnonymousSessionOutputWithContext(ctx context.Context) GetClientsClientAnonymousSessionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientAnonymousSessionOutput)
+}
+
+// GetClientsClientAnonymousSessionArrayInput is an input type that accepts GetClientsClientAnonymousSessionArray and GetClientsClientAnonymousSessionArrayOutput values.
+// You can construct a concrete instance of `GetClientsClientAnonymousSessionArrayInput` via:
+//
+//	GetClientsClientAnonymousSessionArray{ GetClientsClientAnonymousSessionArgs{...} }
+type GetClientsClientAnonymousSessionArrayInput interface {
+	pulumi.Input
+
+	ToGetClientsClientAnonymousSessionArrayOutput() GetClientsClientAnonymousSessionArrayOutput
+	ToGetClientsClientAnonymousSessionArrayOutputWithContext(context.Context) GetClientsClientAnonymousSessionArrayOutput
+}
+
+type GetClientsClientAnonymousSessionArray []GetClientsClientAnonymousSessionInput
+
+func (GetClientsClientAnonymousSessionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientAnonymousSession)(nil)).Elem()
+}
+
+func (i GetClientsClientAnonymousSessionArray) ToGetClientsClientAnonymousSessionArrayOutput() GetClientsClientAnonymousSessionArrayOutput {
+	return i.ToGetClientsClientAnonymousSessionArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientAnonymousSessionArray) ToGetClientsClientAnonymousSessionArrayOutputWithContext(ctx context.Context) GetClientsClientAnonymousSessionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientAnonymousSessionArrayOutput)
+}
+
+type GetClientsClientAnonymousSessionOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientAnonymousSessionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientAnonymousSession)(nil)).Elem()
+}
+
+func (o GetClientsClientAnonymousSessionOutput) ToGetClientsClientAnonymousSessionOutput() GetClientsClientAnonymousSessionOutput {
+	return o
+}
+
+func (o GetClientsClientAnonymousSessionOutput) ToGetClientsClientAnonymousSessionOutputWithContext(ctx context.Context) GetClientsClientAnonymousSessionOutput {
+	return o
+}
+
+// If set to true, this client is allowed to create anonymous sessions. Requires `oidcConformant` to be set to `true`. Set to `false` to disable. (EA only)
+func (o GetClientsClientAnonymousSessionOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientsClientAnonymousSession) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+type GetClientsClientAnonymousSessionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientAnonymousSessionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientAnonymousSession)(nil)).Elem()
+}
+
+func (o GetClientsClientAnonymousSessionArrayOutput) ToGetClientsClientAnonymousSessionArrayOutput() GetClientsClientAnonymousSessionArrayOutput {
+	return o
+}
+
+func (o GetClientsClientAnonymousSessionArrayOutput) ToGetClientsClientAnonymousSessionArrayOutputWithContext(ctx context.Context) GetClientsClientAnonymousSessionArrayOutput {
+	return o
+}
+
+func (o GetClientsClientAnonymousSessionArrayOutput) Index(i pulumi.IntInput) GetClientsClientAnonymousSessionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientAnonymousSession {
+		return vs[0].([]GetClientsClientAnonymousSession)[vs[1].(int)]
+	}).(GetClientsClientAnonymousSessionOutput)
+}
+
+type GetClientsClientB2bIntegrationConfiguration struct {
+	// The type of integration used to connect to this B2B integration client. One of custom_auth_server, third_party, application
+	IntegrationType string `pulumi:"integrationType"`
+	// ID of the self-service SSO profile (an `SelfServiceProfile` id, in `ssp_...` format) linked to this B2B integration client. Maximum 1.
+	SsoProfiles []string `pulumi:"ssoProfiles"`
+}
+
+// GetClientsClientB2bIntegrationConfigurationInput is an input type that accepts GetClientsClientB2bIntegrationConfigurationArgs and GetClientsClientB2bIntegrationConfigurationOutput values.
+// You can construct a concrete instance of `GetClientsClientB2bIntegrationConfigurationInput` via:
+//
+//	GetClientsClientB2bIntegrationConfigurationArgs{...}
+type GetClientsClientB2bIntegrationConfigurationInput interface {
+	pulumi.Input
+
+	ToGetClientsClientB2bIntegrationConfigurationOutput() GetClientsClientB2bIntegrationConfigurationOutput
+	ToGetClientsClientB2bIntegrationConfigurationOutputWithContext(context.Context) GetClientsClientB2bIntegrationConfigurationOutput
+}
+
+type GetClientsClientB2bIntegrationConfigurationArgs struct {
+	// The type of integration used to connect to this B2B integration client. One of custom_auth_server, third_party, application
+	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
+	// ID of the self-service SSO profile (an `SelfServiceProfile` id, in `ssp_...` format) linked to this B2B integration client. Maximum 1.
+	SsoProfiles pulumi.StringArrayInput `pulumi:"ssoProfiles"`
+}
+
+func (GetClientsClientB2bIntegrationConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientB2bIntegrationConfiguration)(nil)).Elem()
+}
+
+func (i GetClientsClientB2bIntegrationConfigurationArgs) ToGetClientsClientB2bIntegrationConfigurationOutput() GetClientsClientB2bIntegrationConfigurationOutput {
+	return i.ToGetClientsClientB2bIntegrationConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientB2bIntegrationConfigurationArgs) ToGetClientsClientB2bIntegrationConfigurationOutputWithContext(ctx context.Context) GetClientsClientB2bIntegrationConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientB2bIntegrationConfigurationOutput)
+}
+
+// GetClientsClientB2bIntegrationConfigurationArrayInput is an input type that accepts GetClientsClientB2bIntegrationConfigurationArray and GetClientsClientB2bIntegrationConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetClientsClientB2bIntegrationConfigurationArrayInput` via:
+//
+//	GetClientsClientB2bIntegrationConfigurationArray{ GetClientsClientB2bIntegrationConfigurationArgs{...} }
+type GetClientsClientB2bIntegrationConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetClientsClientB2bIntegrationConfigurationArrayOutput() GetClientsClientB2bIntegrationConfigurationArrayOutput
+	ToGetClientsClientB2bIntegrationConfigurationArrayOutputWithContext(context.Context) GetClientsClientB2bIntegrationConfigurationArrayOutput
+}
+
+type GetClientsClientB2bIntegrationConfigurationArray []GetClientsClientB2bIntegrationConfigurationInput
+
+func (GetClientsClientB2bIntegrationConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientB2bIntegrationConfiguration)(nil)).Elem()
+}
+
+func (i GetClientsClientB2bIntegrationConfigurationArray) ToGetClientsClientB2bIntegrationConfigurationArrayOutput() GetClientsClientB2bIntegrationConfigurationArrayOutput {
+	return i.ToGetClientsClientB2bIntegrationConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientB2bIntegrationConfigurationArray) ToGetClientsClientB2bIntegrationConfigurationArrayOutputWithContext(ctx context.Context) GetClientsClientB2bIntegrationConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientB2bIntegrationConfigurationArrayOutput)
+}
+
+type GetClientsClientB2bIntegrationConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientB2bIntegrationConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientB2bIntegrationConfiguration)(nil)).Elem()
+}
+
+func (o GetClientsClientB2bIntegrationConfigurationOutput) ToGetClientsClientB2bIntegrationConfigurationOutput() GetClientsClientB2bIntegrationConfigurationOutput {
+	return o
+}
+
+func (o GetClientsClientB2bIntegrationConfigurationOutput) ToGetClientsClientB2bIntegrationConfigurationOutputWithContext(ctx context.Context) GetClientsClientB2bIntegrationConfigurationOutput {
+	return o
+}
+
+// The type of integration used to connect to this B2B integration client. One of custom_auth_server, third_party, application
+func (o GetClientsClientB2bIntegrationConfigurationOutput) IntegrationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClientsClientB2bIntegrationConfiguration) string { return v.IntegrationType }).(pulumi.StringOutput)
+}
+
+// ID of the self-service SSO profile (an `SelfServiceProfile` id, in `ssp_...` format) linked to this B2B integration client. Maximum 1.
+func (o GetClientsClientB2bIntegrationConfigurationOutput) SsoProfiles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientsClientB2bIntegrationConfiguration) []string { return v.SsoProfiles }).(pulumi.StringArrayOutput)
+}
+
+type GetClientsClientB2bIntegrationConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientB2bIntegrationConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientB2bIntegrationConfiguration)(nil)).Elem()
+}
+
+func (o GetClientsClientB2bIntegrationConfigurationArrayOutput) ToGetClientsClientB2bIntegrationConfigurationArrayOutput() GetClientsClientB2bIntegrationConfigurationArrayOutput {
+	return o
+}
+
+func (o GetClientsClientB2bIntegrationConfigurationArrayOutput) ToGetClientsClientB2bIntegrationConfigurationArrayOutputWithContext(ctx context.Context) GetClientsClientB2bIntegrationConfigurationArrayOutput {
+	return o
+}
+
+func (o GetClientsClientB2bIntegrationConfigurationArrayOutput) Index(i pulumi.IntInput) GetClientsClientB2bIntegrationConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientB2bIntegrationConfiguration {
+		return vs[0].([]GetClientsClientB2bIntegrationConfiguration)[vs[1].(int)]
+	}).(GetClientsClientB2bIntegrationConfigurationOutput)
+}
+
 type GetClientsClientExpressConfiguration struct {
 	// The domain that admins are expected to log in via for authenticating for express configuration.
 	AdminLoginDomain string `pulumi:"adminLoginDomain"`
@@ -1164,6 +2100,121 @@ func (o GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput) I
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientOidcLogoutBackchannelLogoutSessionMetadata {
 		return vs[0].([]GetClientsClientOidcLogoutBackchannelLogoutSessionMetadata)[vs[1].(int)]
 	}).(GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput)
+}
+
+type GetClientsClientOidcSupport struct {
+	// Indicates whether the client may request all optional OIDC scopes. Conflicts with `allowedScopes`.
+	AllowAllScopes bool `pulumi:"allowAllScopes"`
+	// Optional OIDC scopes the client may request. Possible values: [profile email address phone]. The `openid` scope is implied and must not be listed. Conflicts with `allowAllScopes`.
+	AllowedScopes []string `pulumi:"allowedScopes"`
+	// Indicates whether the client may request optional OIDC scopes. When `false`, `allowedScopes` and `allowAllScopes` cannot be set.
+	IsAllowed bool `pulumi:"isAllowed"`
+}
+
+// GetClientsClientOidcSupportInput is an input type that accepts GetClientsClientOidcSupportArgs and GetClientsClientOidcSupportOutput values.
+// You can construct a concrete instance of `GetClientsClientOidcSupportInput` via:
+//
+//	GetClientsClientOidcSupportArgs{...}
+type GetClientsClientOidcSupportInput interface {
+	pulumi.Input
+
+	ToGetClientsClientOidcSupportOutput() GetClientsClientOidcSupportOutput
+	ToGetClientsClientOidcSupportOutputWithContext(context.Context) GetClientsClientOidcSupportOutput
+}
+
+type GetClientsClientOidcSupportArgs struct {
+	// Indicates whether the client may request all optional OIDC scopes. Conflicts with `allowedScopes`.
+	AllowAllScopes pulumi.BoolInput `pulumi:"allowAllScopes"`
+	// Optional OIDC scopes the client may request. Possible values: [profile email address phone]. The `openid` scope is implied and must not be listed. Conflicts with `allowAllScopes`.
+	AllowedScopes pulumi.StringArrayInput `pulumi:"allowedScopes"`
+	// Indicates whether the client may request optional OIDC scopes. When `false`, `allowedScopes` and `allowAllScopes` cannot be set.
+	IsAllowed pulumi.BoolInput `pulumi:"isAllowed"`
+}
+
+func (GetClientsClientOidcSupportArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientOidcSupport)(nil)).Elem()
+}
+
+func (i GetClientsClientOidcSupportArgs) ToGetClientsClientOidcSupportOutput() GetClientsClientOidcSupportOutput {
+	return i.ToGetClientsClientOidcSupportOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientOidcSupportArgs) ToGetClientsClientOidcSupportOutputWithContext(ctx context.Context) GetClientsClientOidcSupportOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientOidcSupportOutput)
+}
+
+// GetClientsClientOidcSupportArrayInput is an input type that accepts GetClientsClientOidcSupportArray and GetClientsClientOidcSupportArrayOutput values.
+// You can construct a concrete instance of `GetClientsClientOidcSupportArrayInput` via:
+//
+//	GetClientsClientOidcSupportArray{ GetClientsClientOidcSupportArgs{...} }
+type GetClientsClientOidcSupportArrayInput interface {
+	pulumi.Input
+
+	ToGetClientsClientOidcSupportArrayOutput() GetClientsClientOidcSupportArrayOutput
+	ToGetClientsClientOidcSupportArrayOutputWithContext(context.Context) GetClientsClientOidcSupportArrayOutput
+}
+
+type GetClientsClientOidcSupportArray []GetClientsClientOidcSupportInput
+
+func (GetClientsClientOidcSupportArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientOidcSupport)(nil)).Elem()
+}
+
+func (i GetClientsClientOidcSupportArray) ToGetClientsClientOidcSupportArrayOutput() GetClientsClientOidcSupportArrayOutput {
+	return i.ToGetClientsClientOidcSupportArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientsClientOidcSupportArray) ToGetClientsClientOidcSupportArrayOutputWithContext(ctx context.Context) GetClientsClientOidcSupportArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientOidcSupportArrayOutput)
+}
+
+type GetClientsClientOidcSupportOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientOidcSupportOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientsClientOidcSupport)(nil)).Elem()
+}
+
+func (o GetClientsClientOidcSupportOutput) ToGetClientsClientOidcSupportOutput() GetClientsClientOidcSupportOutput {
+	return o
+}
+
+func (o GetClientsClientOidcSupportOutput) ToGetClientsClientOidcSupportOutputWithContext(ctx context.Context) GetClientsClientOidcSupportOutput {
+	return o
+}
+
+// Indicates whether the client may request all optional OIDC scopes. Conflicts with `allowedScopes`.
+func (o GetClientsClientOidcSupportOutput) AllowAllScopes() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientsClientOidcSupport) bool { return v.AllowAllScopes }).(pulumi.BoolOutput)
+}
+
+// Optional OIDC scopes the client may request. Possible values: [profile email address phone]. The `openid` scope is implied and must not be listed. Conflicts with `allowAllScopes`.
+func (o GetClientsClientOidcSupportOutput) AllowedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientsClientOidcSupport) []string { return v.AllowedScopes }).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether the client may request optional OIDC scopes. When `false`, `allowedScopes` and `allowAllScopes` cannot be set.
+func (o GetClientsClientOidcSupportOutput) IsAllowed() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientsClientOidcSupport) bool { return v.IsAllowed }).(pulumi.BoolOutput)
+}
+
+type GetClientsClientOidcSupportArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientsClientOidcSupportArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientsClientOidcSupport)(nil)).Elem()
+}
+
+func (o GetClientsClientOidcSupportArrayOutput) ToGetClientsClientOidcSupportArrayOutput() GetClientsClientOidcSupportArrayOutput {
+	return o
+}
+
+func (o GetClientsClientOidcSupportArrayOutput) ToGetClientsClientOidcSupportArrayOutputWithContext(ctx context.Context) GetClientsClientOidcSupportArrayOutput {
+	return o
+}
+
+func (o GetClientsClientOidcSupportArrayOutput) Index(i pulumi.IntInput) GetClientsClientOidcSupportOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientOidcSupport {
+		return vs[0].([]GetClientsClientOidcSupport)[vs[1].(int)]
+	}).(GetClientsClientOidcSupportOutput)
 }
 
 type GetClientsClientSessionTransfer struct {
@@ -2722,7 +3773,7 @@ type GetConnectionOption struct {
 	DisableSignOut bool `pulumi:"disableSignOut"`
 	// Indicates whether to allow user sign-ups to your application.
 	DisableSignup bool `pulumi:"disableSignup"`
-	// OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
+	// OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`. Also applicable to `samlp` connections (EA only).
 	DiscoveryUrl string `pulumi:"discoveryUrl"`
 	// Domain name.
 	Domain string `pulumi:"domain"`
@@ -2870,11 +3921,11 @@ type GetConnectionOption struct {
 	TenantDomain string `pulumi:"tenantDomain"`
 	// Token endpoint.
 	TokenEndpoint string `pulumi:"tokenEndpoint"`
-	// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+	// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
 	TokenEndpointAuthMethod string `pulumi:"tokenEndpointAuthMethod"`
-	// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+	// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
 	TokenEndpointAuthSigningAlg string `pulumi:"tokenEndpointAuthSigningAlg"`
-	// Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)
+	// Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections; SAML Connections (EA only))
 	TokenEndpointJwtcaAudFormat string `pulumi:"tokenEndpointJwtcaAudFormat"`
 	// Configuration options for one-time passwords.
 	Totps []GetConnectionOptionTotp `pulumi:"totps"`
@@ -2982,7 +4033,7 @@ type GetConnectionOptionArgs struct {
 	DisableSignOut pulumi.BoolInput `pulumi:"disableSignOut"`
 	// Indicates whether to allow user sign-ups to your application.
 	DisableSignup pulumi.BoolInput `pulumi:"disableSignup"`
-	// OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
+	// OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`. Also applicable to `samlp` connections (EA only).
 	DiscoveryUrl pulumi.StringInput `pulumi:"discoveryUrl"`
 	// Domain name.
 	Domain pulumi.StringInput `pulumi:"domain"`
@@ -3130,11 +4181,11 @@ type GetConnectionOptionArgs struct {
 	TenantDomain pulumi.StringInput `pulumi:"tenantDomain"`
 	// Token endpoint.
 	TokenEndpoint pulumi.StringInput `pulumi:"tokenEndpoint"`
-	// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+	// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
 	TokenEndpointAuthMethod pulumi.StringInput `pulumi:"tokenEndpointAuthMethod"`
-	// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+	// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
 	TokenEndpointAuthSigningAlg pulumi.StringInput `pulumi:"tokenEndpointAuthSigningAlg"`
-	// Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)
+	// Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections; SAML Connections (EA only))
 	TokenEndpointJwtcaAudFormat pulumi.StringInput `pulumi:"tokenEndpointJwtcaAudFormat"`
 	// Configuration options for one-time passwords.
 	Totps GetConnectionOptionTotpArrayInput `pulumi:"totps"`
@@ -3376,7 +4427,7 @@ func (o GetConnectionOptionOutput) DisableSignup() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetConnectionOption) bool { return v.DisableSignup }).(pulumi.BoolOutput)
 }
 
-// OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
+// OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`. Also applicable to `samlp` connections (EA only).
 func (o GetConnectionOptionOutput) DiscoveryUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionOption) string { return v.DiscoveryUrl }).(pulumi.StringOutput)
 }
@@ -3754,17 +4805,17 @@ func (o GetConnectionOptionOutput) TokenEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionOption) string { return v.TokenEndpoint }).(pulumi.StringOutput)
 }
 
-// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
 func (o GetConnectionOptionOutput) TokenEndpointAuthMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionOption) string { return v.TokenEndpointAuthMethod }).(pulumi.StringOutput)
 }
 
-// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
 func (o GetConnectionOptionOutput) TokenEndpointAuthSigningAlg() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionOption) string { return v.TokenEndpointAuthSigningAlg }).(pulumi.StringOutput)
 }
 
-// Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)
+// Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections; SAML Connections (EA only))
 func (o GetConnectionOptionOutput) TokenEndpointJwtcaAudFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionOption) string { return v.TokenEndpointJwtcaAudFormat }).(pulumi.StringOutput)
 }
@@ -5864,6 +6915,8 @@ func (o GetConnectionOptionAuthenticationMethodEmailOtpArrayOutput) Index(i pulu
 type GetConnectionOptionAuthenticationMethodPasskey struct {
 	// Enables passkey authentication
 	Enabled bool `pulumi:"enabled"`
+	// Specifies whether passkey is allowed or blocked during signup flows. Possible values: "allow", "block". This is an Early Access feature and must be enabled for your tenant before it can be set.
+	SignupBehavior string `pulumi:"signupBehavior"`
 }
 
 // GetConnectionOptionAuthenticationMethodPasskeyInput is an input type that accepts GetConnectionOptionAuthenticationMethodPasskeyArgs and GetConnectionOptionAuthenticationMethodPasskeyOutput values.
@@ -5880,6 +6933,8 @@ type GetConnectionOptionAuthenticationMethodPasskeyInput interface {
 type GetConnectionOptionAuthenticationMethodPasskeyArgs struct {
 	// Enables passkey authentication
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Specifies whether passkey is allowed or blocked during signup flows. Possible values: "allow", "block". This is an Early Access feature and must be enabled for your tenant before it can be set.
+	SignupBehavior pulumi.StringInput `pulumi:"signupBehavior"`
 }
 
 func (GetConnectionOptionAuthenticationMethodPasskeyArgs) ElementType() reflect.Type {
@@ -5936,6 +6991,11 @@ func (o GetConnectionOptionAuthenticationMethodPasskeyOutput) ToGetConnectionOpt
 // Enables passkey authentication
 func (o GetConnectionOptionAuthenticationMethodPasskeyOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetConnectionOptionAuthenticationMethodPasskey) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Specifies whether passkey is allowed or blocked during signup flows. Possible values: "allow", "block". This is an Early Access feature and must be enabled for your tenant before it can be set.
+func (o GetConnectionOptionAuthenticationMethodPasskeyOutput) SignupBehavior() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectionOptionAuthenticationMethodPasskey) string { return v.SignupBehavior }).(pulumi.StringOutput)
 }
 
 type GetConnectionOptionAuthenticationMethodPasskeyArrayOutput struct{ *pulumi.OutputState }
@@ -29226,6 +30286,18 @@ func (o GetUserPermissionTypeArrayOutput) Index(i pulumi.IntInput) GetUserPermis
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientTokenExchangeInput)(nil)).Elem(), GetClientTokenExchangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientTokenExchangeArrayInput)(nil)).Elem(), GetClientTokenExchangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientTokenQuotaInput)(nil)).Elem(), GetClientTokenQuotaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientTokenQuotaArrayInput)(nil)).Elem(), GetClientTokenQuotaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientTokenQuotaClientCredentialInput)(nil)).Elem(), GetClientTokenQuotaClientCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientTokenQuotaClientCredentialArrayInput)(nil)).Elem(), GetClientTokenQuotaClientCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientInput)(nil)).Elem(), GetClientsClientArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientArrayInput)(nil)).Elem(), GetClientsClientArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientAnonymousSessionInput)(nil)).Elem(), GetClientsClientAnonymousSessionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientAnonymousSessionArrayInput)(nil)).Elem(), GetClientsClientAnonymousSessionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientB2bIntegrationConfigurationInput)(nil)).Elem(), GetClientsClientB2bIntegrationConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientB2bIntegrationConfigurationArrayInput)(nil)).Elem(), GetClientsClientB2bIntegrationConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientExpressConfigurationInput)(nil)).Elem(), GetClientsClientExpressConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientExpressConfigurationArrayInput)(nil)).Elem(), GetClientsClientExpressConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientExpressConfigurationLinkedClientInput)(nil)).Elem(), GetClientsClientExpressConfigurationLinkedClientArgs{})
@@ -29246,6 +30318,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayInput)(nil)).Elem(), GetClientsClientOidcLogoutBackchannelLogoutInitiatorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataInput)(nil)).Elem(), GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayInput)(nil)).Elem(), GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcSupportInput)(nil)).Elem(), GetClientsClientOidcSupportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientOidcSupportArrayInput)(nil)).Elem(), GetClientsClientOidcSupportArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientSessionTransferInput)(nil)).Elem(), GetClientsClientSessionTransferArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientSessionTransferArrayInput)(nil)).Elem(), GetClientsClientSessionTransferArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientSessionTransferDelegationInput)(nil)).Elem(), GetClientsClientSessionTransferDelegationArgs{})
@@ -29704,6 +30778,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserOrganizationsOrganizationTokenQuotaClientCredentialArrayInput)(nil)).Elem(), GetUserOrganizationsOrganizationTokenQuotaClientCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPermissionTypeInput)(nil)).Elem(), GetUserPermissionTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserPermissionTypeArrayInput)(nil)).Elem(), GetUserPermissionTypeArray{})
+	pulumi.RegisterOutputType(GetClientTokenExchangeOutput{})
+	pulumi.RegisterOutputType(GetClientTokenExchangeArrayOutput{})
+	pulumi.RegisterOutputType(GetClientTokenQuotaOutput{})
+	pulumi.RegisterOutputType(GetClientTokenQuotaArrayOutput{})
+	pulumi.RegisterOutputType(GetClientTokenQuotaClientCredentialOutput{})
+	pulumi.RegisterOutputType(GetClientTokenQuotaClientCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetClientsClientOutput{})
+	pulumi.RegisterOutputType(GetClientsClientArrayOutput{})
+	pulumi.RegisterOutputType(GetClientsClientAnonymousSessionOutput{})
+	pulumi.RegisterOutputType(GetClientsClientAnonymousSessionArrayOutput{})
+	pulumi.RegisterOutputType(GetClientsClientB2bIntegrationConfigurationOutput{})
+	pulumi.RegisterOutputType(GetClientsClientB2bIntegrationConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetClientsClientExpressConfigurationOutput{})
 	pulumi.RegisterOutputType(GetClientsClientExpressConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetClientsClientExpressConfigurationLinkedClientOutput{})
@@ -29724,6 +30810,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClientsClientOidcLogoutBackchannelLogoutInitiatorArrayOutput{})
 	pulumi.RegisterOutputType(GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataOutput{})
 	pulumi.RegisterOutputType(GetClientsClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput{})
+	pulumi.RegisterOutputType(GetClientsClientOidcSupportOutput{})
+	pulumi.RegisterOutputType(GetClientsClientOidcSupportArrayOutput{})
 	pulumi.RegisterOutputType(GetClientsClientSessionTransferOutput{})
 	pulumi.RegisterOutputType(GetClientsClientSessionTransferArrayOutput{})
 	pulumi.RegisterOutputType(GetClientsClientSessionTransferDelegationOutput{})

@@ -222,6 +222,10 @@ export interface AttackProtectionBruteForceProtection {
      */
     enabled: pulumi.Input<boolean>;
     /**
+     * Controls whether the brute-force protection unblock form is automatically submitted on load or requires manual interaction. Possible values: `auto` (submit the form automatically) or `manual` (require the user to submit the form). Once set, this value cannot be unset; removing it from the configuration leaves the current tenant value unchanged. (EA only)
+     */
+    formSubmissionMode?: pulumi.Input<string | undefined>;
+    /**
      * Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
      */
     maxAttempts?: pulumi.Input<number | undefined>;
@@ -1883,6 +1887,21 @@ export interface ClientOidcLogoutBackchannelLogoutSessionMetadata {
     include: pulumi.Input<boolean>;
 }
 
+export interface ClientOidcSupport {
+    /**
+     * Indicates whether the client may request all optional OIDC scopes. Conflicts with `allowedScopes`.
+     */
+    allowAllScopes?: pulumi.Input<boolean | undefined>;
+    /**
+     * Optional OIDC scopes the client may request. Possible values: [profile email address phone]. The `openid` scope is implied and must not be listed. Conflicts with `allowAllScopes`.
+     */
+    allowedScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Indicates whether the client may request optional OIDC scopes. When `false`, `allowedScopes` and `allowAllScopes` cannot be set.
+     */
+    isAllowed: pulumi.Input<boolean>;
+}
+
 export interface ClientProfileApplyPolicy {
     /**
      * The creator of the clients to match. Defaults to `client`, which means the client was registered dynamically. Possible values: [client].
@@ -1895,6 +1914,10 @@ export interface ClientProfileApplyPolicy {
 }
 
 export interface ClientProfileClientConfiguration {
+    /**
+     * OIDC support defaults applied to matched clients. Auth0 replaces this block as a whole, so removing it clears all of its settings.
+     */
+    oidcSupport?: pulumi.Input<inputs.ClientProfileClientConfigurationOidcSupport | undefined>;
     /**
      * Methods used to discover the organization during login. Requires the `organizationRequireBehavior` default value to be `preLoginPrompt`.
      */
@@ -1915,6 +1938,28 @@ export interface ClientProfileClientConfiguration {
      * Whether matched clients must use proof of possession (DPoP) for their tokens.
      */
     requireProofOfPossession?: pulumi.Input<inputs.ClientProfileClientConfigurationRequireProofOfPossession | undefined>;
+}
+
+export interface ClientProfileClientConfigurationOidcSupport {
+    /**
+     * The default OIDC support settings for matched clients.
+     */
+    defaultValue: pulumi.Input<inputs.ClientProfileClientConfigurationOidcSupportDefaultValue>;
+}
+
+export interface ClientProfileClientConfigurationOidcSupportDefaultValue {
+    /**
+     * Indicates whether matched clients may request all optional OIDC scopes. Conflicts with `allowedScopes`.
+     */
+    allowAllScopes?: pulumi.Input<boolean | undefined>;
+    /**
+     * Optional OIDC scopes matched clients may request. Possible values: [profile email address phone]. The `openid` scope is implied and must not be listed. Conflicts with `allowAllScopes`.
+     */
+    allowedScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Indicates whether matched clients may use OIDC. When `false`, `allowedScopes` and `allowAllScopes` cannot be set.
+     */
+    isAllowed: pulumi.Input<boolean>;
 }
 
 export interface ClientProfileClientConfigurationOrganizationDiscoveryMethods {
@@ -2270,7 +2315,7 @@ export interface ConnectionOptions {
      */
     disableSignup?: pulumi.Input<boolean | undefined>;
     /**
-     * OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
+     * OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`. Also applicable to `samlp` connections (EA only).
      */
     discoveryUrl?: pulumi.Input<string | undefined>;
     /**
@@ -2566,15 +2611,15 @@ export interface ConnectionOptions {
      */
     tokenEndpoint?: pulumi.Input<string | undefined>;
     /**
-     * Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+     * Specifies the authentication method for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
      */
     tokenEndpointAuthMethod?: pulumi.Input<string | undefined>;
     /**
-     * Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+     * Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
      */
     tokenEndpointAuthSigningAlg?: pulumi.Input<string | undefined>;
     /**
-     * Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)
+     * Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections; SAML Connections (EA only))
      */
     tokenEndpointJwtcaAudFormat?: pulumi.Input<string | undefined>;
     /**
@@ -2870,6 +2915,10 @@ export interface ConnectionOptionsAuthenticationMethodPasskey {
      * Enables passkey authentication
      */
     enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Specifies whether passkey is allowed or blocked during signup flows. Possible values: "allow", "block". This is an Early Access feature and must be enabled for your tenant before it can be set.
+     */
+    signupBehavior?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectionOptionsAuthenticationMethodPassword {

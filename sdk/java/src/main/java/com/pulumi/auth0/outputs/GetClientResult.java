@@ -16,6 +16,7 @@ import com.pulumi.auth0.outputs.GetClientMobile;
 import com.pulumi.auth0.outputs.GetClientMyOrganizationConfiguration;
 import com.pulumi.auth0.outputs.GetClientNativeSocialLogin;
 import com.pulumi.auth0.outputs.GetClientOidcLogout;
+import com.pulumi.auth0.outputs.GetClientOidcSupport;
 import com.pulumi.auth0.outputs.GetClientRefreshToken;
 import com.pulumi.auth0.outputs.GetClientSessionTransfer;
 import com.pulumi.auth0.outputs.GetClientSignedRequestObject;
@@ -268,6 +269,11 @@ public final class GetClientResult {
      * 
      */
     private List<GetClientOidcLogout> oidcLogouts;
+    /**
+     * @return Controls which optional OIDC scopes the client may request. Requires `oidcConformant` to be `true`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `oidcConformant` to `false` while this block is not configured clears it.
+     * 
+     */
+    private List<GetClientOidcSupport> oidcSupports;
     /**
      * @return Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
      * 
@@ -691,6 +697,13 @@ public final class GetClientResult {
         return this.oidcLogouts;
     }
     /**
+     * @return Controls which optional OIDC scopes the client may request. Requires `oidcConformant` to be `true`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `oidcConformant` to `false` while this block is not configured clears it.
+     * 
+     */
+    public List<GetClientOidcSupport> oidcSupports() {
+        return this.oidcSupports;
+    }
+    /**
      * @return Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
      * 
      */
@@ -876,6 +889,7 @@ public final class GetClientResult {
         private List<String> oidcBackchannelLogoutUrls;
         private Boolean oidcConformant;
         private List<GetClientOidcLogout> oidcLogouts;
+        private List<GetClientOidcSupport> oidcSupports;
         private List<String> organizationDiscoveryMethods;
         private String organizationRequireBehavior;
         private String organizationUsage;
@@ -945,6 +959,7 @@ public final class GetClientResult {
     	      this.oidcBackchannelLogoutUrls = defaults.oidcBackchannelLogoutUrls;
     	      this.oidcConformant = defaults.oidcConformant;
     	      this.oidcLogouts = defaults.oidcLogouts;
+    	      this.oidcSupports = defaults.oidcSupports;
     	      this.organizationDiscoveryMethods = defaults.organizationDiscoveryMethods;
     	      this.organizationRequireBehavior = defaults.organizationRequireBehavior;
     	      this.organizationUsage = defaults.organizationUsage;
@@ -1400,6 +1415,17 @@ public final class GetClientResult {
             return oidcLogouts(List.of(oidcLogouts));
         }
         @CustomType.Setter
+        public Builder oidcSupports(List<GetClientOidcSupport> oidcSupports) {
+            if (oidcSupports == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "oidcSupports");
+            }
+            this.oidcSupports = oidcSupports;
+            return this;
+        }
+        public Builder oidcSupports(GetClientOidcSupport... oidcSupports) {
+            return oidcSupports(List.of(oidcSupports));
+        }
+        @CustomType.Setter
         public Builder organizationDiscoveryMethods(List<String> organizationDiscoveryMethods) {
             if (organizationDiscoveryMethods == null) {
               throw new MissingRequiredPropertyException("GetClientResult", "organizationDiscoveryMethods");
@@ -1621,6 +1647,7 @@ public final class GetClientResult {
             _resultValue.oidcBackchannelLogoutUrls = oidcBackchannelLogoutUrls;
             _resultValue.oidcConformant = oidcConformant;
             _resultValue.oidcLogouts = oidcLogouts;
+            _resultValue.oidcSupports = oidcSupports;
             _resultValue.organizationDiscoveryMethods = organizationDiscoveryMethods;
             _resultValue.organizationRequireBehavior = organizationRequireBehavior;
             _resultValue.organizationUsage = organizationUsage;

@@ -55,6 +55,15 @@ import * as utilities from "./utilities";
  *         requireProofOfPossession: {
  *             defaultValue: true,
  *         },
+ *         oidcSupport: {
+ *             defaultValue: {
+ *                 isAllowed: true,
+ *                 allowedScopes: [
+ *                     "profile",
+ *                     "email",
+ *                 ],
+ *             },
+ *         },
  *     },
  *     name: "Dynamic client profile",
  *     description: "Runtime policy for dynamically registered clients.",

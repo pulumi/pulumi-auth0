@@ -162,6 +162,8 @@ type LookupClientResult struct {
 	OidcConformant bool `pulumi:"oidcConformant"`
 	// Configure OIDC logout for the Client
 	OidcLogouts []GetClientOidcLogout `pulumi:"oidcLogouts"`
+	// Controls which optional OIDC scopes the client may request. Requires `oidcConformant` to be `true`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `oidcConformant` to `false` while this block is not configured clears it.
+	OidcSupports []GetClientOidcSupport `pulumi:"oidcSupports"`
 	// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
 	OrganizationDiscoveryMethods []string `pulumi:"organizationDiscoveryMethods"`
 	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
@@ -474,6 +476,11 @@ func (o LookupClientResultOutput) OidcConformant() pulumi.BoolOutput {
 // Configure OIDC logout for the Client
 func (o LookupClientResultOutput) OidcLogouts() GetClientOidcLogoutArrayOutput {
 	return o.ApplyT(func(v LookupClientResult) []GetClientOidcLogout { return v.OidcLogouts }).(GetClientOidcLogoutArrayOutput)
+}
+
+// Controls which optional OIDC scopes the client may request. Requires `oidcConformant` to be `true`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `oidcConformant` to `false` while this block is not configured clears it.
+func (o LookupClientResultOutput) OidcSupports() GetClientOidcSupportArrayOutput {
+	return o.ApplyT(func(v LookupClientResult) []GetClientOidcSupport { return v.OidcSupports }).(GetClientOidcSupportArrayOutput)
 }
 
 // Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.

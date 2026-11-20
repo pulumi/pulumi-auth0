@@ -10,6 +10,7 @@ import com.pulumi.auth0.outputs.GetClientsClientFedcmLogin;
 import com.pulumi.auth0.outputs.GetClientsClientIdentityAssertionAuthorizationGrant;
 import com.pulumi.auth0.outputs.GetClientsClientMyOrganizationConfiguration;
 import com.pulumi.auth0.outputs.GetClientsClientOidcLogout;
+import com.pulumi.auth0.outputs.GetClientsClientOidcSupport;
 import com.pulumi.auth0.outputs.GetClientsClientSessionTransfer;
 import com.pulumi.auth0.outputs.GetClientsClientTokenExchange;
 import com.pulumi.auth0.outputs.GetClientsClientTokenQuota;
@@ -160,6 +161,11 @@ public final class GetClientsClient {
      * 
      */
     private List<GetClientsClientOidcLogout> oidcLogouts;
+    /**
+     * @return Controls which optional OIDC scopes the client may request. Requires `oidcConformant` to be `true`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `oidcConformant` to `false` while this block is not configured clears it.
+     * 
+     */
+    private List<GetClientsClientOidcSupport> oidcSupports;
     /**
      * @return Methods for discovering organizations during the pre_login_prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
      * 
@@ -393,6 +399,13 @@ public final class GetClientsClient {
         return this.oidcLogouts;
     }
     /**
+     * @return Controls which optional OIDC scopes the client may request. Requires `oidcConformant` to be `true`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `oidcConformant` to `false` while this block is not configured clears it.
+     * 
+     */
+    public List<GetClientsClientOidcSupport> oidcSupports() {
+        return this.oidcSupports;
+    }
+    /**
      * @return Methods for discovering organizations during the pre_login_prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
      * 
      */
@@ -488,6 +501,7 @@ public final class GetClientsClient {
         private List<GetClientsClientMyOrganizationConfiguration> myOrganizationConfigurations;
         private @Nullable String name;
         private List<GetClientsClientOidcLogout> oidcLogouts;
+        private List<GetClientsClientOidcSupport> oidcSupports;
         private List<String> organizationDiscoveryMethods;
         private String redirectionPolicy;
         private String resourceServerIdentifier;
@@ -527,6 +541,7 @@ public final class GetClientsClient {
     	      this.myOrganizationConfigurations = defaults.myOrganizationConfigurations;
     	      this.name = defaults.name;
     	      this.oidcLogouts = defaults.oidcLogouts;
+    	      this.oidcSupports = defaults.oidcSupports;
     	      this.organizationDiscoveryMethods = defaults.organizationDiscoveryMethods;
     	      this.redirectionPolicy = defaults.redirectionPolicy;
     	      this.resourceServerIdentifier = defaults.resourceServerIdentifier;
@@ -790,6 +805,17 @@ public final class GetClientsClient {
             return oidcLogouts(List.of(oidcLogouts));
         }
         @CustomType.Setter
+        public Builder oidcSupports(List<GetClientsClientOidcSupport> oidcSupports) {
+            if (oidcSupports == null) {
+              throw new MissingRequiredPropertyException("GetClientsClient", "oidcSupports");
+            }
+            this.oidcSupports = oidcSupports;
+            return this;
+        }
+        public Builder oidcSupports(GetClientsClientOidcSupport... oidcSupports) {
+            return oidcSupports(List.of(oidcSupports));
+        }
+        @CustomType.Setter
         public Builder organizationDiscoveryMethods(List<String> organizationDiscoveryMethods) {
             if (organizationDiscoveryMethods == null) {
               throw new MissingRequiredPropertyException("GetClientsClient", "organizationDiscoveryMethods");
@@ -905,6 +931,7 @@ public final class GetClientsClient {
             _resultValue.myOrganizationConfigurations = myOrganizationConfigurations;
             _resultValue.name = name;
             _resultValue.oidcLogouts = oidcLogouts;
+            _resultValue.oidcSupports = oidcSupports;
             _resultValue.organizationDiscoveryMethods = organizationDiscoveryMethods;
             _resultValue.redirectionPolicy = redirectionPolicy;
             _resultValue.resourceServerIdentifier = resourceServerIdentifier;

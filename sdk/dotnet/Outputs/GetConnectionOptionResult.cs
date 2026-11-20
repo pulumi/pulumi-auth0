@@ -138,7 +138,7 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool DisableSignup;
         /// <summary>
-        /// OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
+        /// OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`. Also applicable to `Samlp` connections (EA only).
         /// </summary>
         public readonly string DiscoveryUrl;
         /// <summary>
@@ -434,15 +434,15 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly string TokenEndpoint;
         /// <summary>
-        /// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+        /// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
         /// </summary>
         public readonly string TokenEndpointAuthMethod;
         /// <summary>
-        /// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+        /// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
         /// </summary>
         public readonly string TokenEndpointAuthSigningAlg;
         /// <summary>
-        /// Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)
+        /// Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections; SAML Connections (EA only))
         /// </summary>
         public readonly string TokenEndpointJwtcaAudFormat;
         /// <summary>

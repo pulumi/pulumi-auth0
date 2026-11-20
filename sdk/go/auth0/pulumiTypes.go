@@ -1936,6 +1936,8 @@ type AttackProtectionBruteForceProtection struct {
 	Allowlists []string `pulumi:"allowlists"`
 	// Whether brute force attack protections are active.
 	Enabled bool `pulumi:"enabled"`
+	// Controls whether the brute-force protection unblock form is automatically submitted on load or requires manual interaction. Possible values: `auto` (submit the form automatically) or `manual` (require the user to submit the form). Once set, this value cannot be unset; removing it from the configuration leaves the current tenant value unchanged. (EA only)
+	FormSubmissionMode *string `pulumi:"formSubmissionMode"`
 	// Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
 	MaxAttempts *int `pulumi:"maxAttempts"`
 	// Determines whether the IP address is used when counting failed attempts. Possible values: `countPerIdentifierAndIp` (lockout an account from a given IP Address) or `countPerIdentifier` (lockout an account regardless of IP Address).
@@ -1960,6 +1962,8 @@ type AttackProtectionBruteForceProtectionArgs struct {
 	Allowlists pulumi.StringArrayInput `pulumi:"allowlists"`
 	// Whether brute force attack protections are active.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Controls whether the brute-force protection unblock form is automatically submitted on load or requires manual interaction. Possible values: `auto` (submit the form automatically) or `manual` (require the user to submit the form). Once set, this value cannot be unset; removing it from the configuration leaves the current tenant value unchanged. (EA only)
+	FormSubmissionMode pulumi.StringPtrInput `pulumi:"formSubmissionMode"`
 	// Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
 	MaxAttempts pulumi.IntPtrInput `pulumi:"maxAttempts"`
 	// Determines whether the IP address is used when counting failed attempts. Possible values: `countPerIdentifierAndIp` (lockout an account from a given IP Address) or `countPerIdentifier` (lockout an account regardless of IP Address).
@@ -2055,6 +2059,11 @@ func (o AttackProtectionBruteForceProtectionOutput) Enabled() pulumi.BoolOutput 
 	return o.ApplyT(func(v AttackProtectionBruteForceProtection) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Controls whether the brute-force protection unblock form is automatically submitted on load or requires manual interaction. Possible values: `auto` (submit the form automatically) or `manual` (require the user to submit the form). Once set, this value cannot be unset; removing it from the configuration leaves the current tenant value unchanged. (EA only)
+func (o AttackProtectionBruteForceProtectionOutput) FormSubmissionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AttackProtectionBruteForceProtection) *string { return v.FormSubmissionMode }).(pulumi.StringPtrOutput)
+}
+
 // Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
 func (o AttackProtectionBruteForceProtectionOutput) MaxAttempts() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AttackProtectionBruteForceProtection) *int { return v.MaxAttempts }).(pulumi.IntPtrOutput)
@@ -2112,6 +2121,16 @@ func (o AttackProtectionBruteForceProtectionPtrOutput) Enabled() pulumi.BoolPtrO
 		}
 		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Controls whether the brute-force protection unblock form is automatically submitted on load or requires manual interaction. Possible values: `auto` (submit the form automatically) or `manual` (require the user to submit the form). Once set, this value cannot be unset; removing it from the configuration leaves the current tenant value unchanged. (EA only)
+func (o AttackProtectionBruteForceProtectionPtrOutput) FormSubmissionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttackProtectionBruteForceProtection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FormSubmissionMode
+	}).(pulumi.StringPtrOutput)
 }
 
 // Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
@@ -19518,6 +19537,181 @@ func (o ClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutput) Include() pul
 	}).(pulumi.BoolPtrOutput)
 }
 
+type ClientOidcSupport struct {
+	// Indicates whether the client may request all optional OIDC scopes. Conflicts with `allowedScopes`.
+	AllowAllScopes *bool `pulumi:"allowAllScopes"`
+	// Optional OIDC scopes the client may request. Possible values: [profile email address phone]. The `openid` scope is implied and must not be listed. Conflicts with `allowAllScopes`.
+	AllowedScopes []string `pulumi:"allowedScopes"`
+	// Indicates whether the client may request optional OIDC scopes. When `false`, `allowedScopes` and `allowAllScopes` cannot be set.
+	IsAllowed bool `pulumi:"isAllowed"`
+}
+
+// ClientOidcSupportInput is an input type that accepts ClientOidcSupportArgs and ClientOidcSupportOutput values.
+// You can construct a concrete instance of `ClientOidcSupportInput` via:
+//
+//	ClientOidcSupportArgs{...}
+type ClientOidcSupportInput interface {
+	pulumi.Input
+
+	ToClientOidcSupportOutput() ClientOidcSupportOutput
+	ToClientOidcSupportOutputWithContext(context.Context) ClientOidcSupportOutput
+}
+
+type ClientOidcSupportArgs struct {
+	// Indicates whether the client may request all optional OIDC scopes. Conflicts with `allowedScopes`.
+	AllowAllScopes pulumi.BoolPtrInput `pulumi:"allowAllScopes"`
+	// Optional OIDC scopes the client may request. Possible values: [profile email address phone]. The `openid` scope is implied and must not be listed. Conflicts with `allowAllScopes`.
+	AllowedScopes pulumi.StringArrayInput `pulumi:"allowedScopes"`
+	// Indicates whether the client may request optional OIDC scopes. When `false`, `allowedScopes` and `allowAllScopes` cannot be set.
+	IsAllowed pulumi.BoolInput `pulumi:"isAllowed"`
+}
+
+func (ClientOidcSupportArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientOidcSupport)(nil)).Elem()
+}
+
+func (i ClientOidcSupportArgs) ToClientOidcSupportOutput() ClientOidcSupportOutput {
+	return i.ToClientOidcSupportOutputWithContext(context.Background())
+}
+
+func (i ClientOidcSupportArgs) ToClientOidcSupportOutputWithContext(ctx context.Context) ClientOidcSupportOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientOidcSupportOutput)
+}
+
+func (i ClientOidcSupportArgs) ToClientOidcSupportPtrOutput() ClientOidcSupportPtrOutput {
+	return i.ToClientOidcSupportPtrOutputWithContext(context.Background())
+}
+
+func (i ClientOidcSupportArgs) ToClientOidcSupportPtrOutputWithContext(ctx context.Context) ClientOidcSupportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientOidcSupportOutput).ToClientOidcSupportPtrOutputWithContext(ctx)
+}
+
+// ClientOidcSupportPtrInput is an input type that accepts ClientOidcSupportArgs, ClientOidcSupportPtr and ClientOidcSupportPtrOutput values.
+// You can construct a concrete instance of `ClientOidcSupportPtrInput` via:
+//
+//	        ClientOidcSupportArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientOidcSupportPtrInput interface {
+	pulumi.Input
+
+	ToClientOidcSupportPtrOutput() ClientOidcSupportPtrOutput
+	ToClientOidcSupportPtrOutputWithContext(context.Context) ClientOidcSupportPtrOutput
+}
+
+type clientOidcSupportPtrType ClientOidcSupportArgs
+
+func ClientOidcSupportPtr(v *ClientOidcSupportArgs) ClientOidcSupportPtrInput {
+	return (*clientOidcSupportPtrType)(v)
+}
+
+func (*clientOidcSupportPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientOidcSupport)(nil)).Elem()
+}
+
+func (i *clientOidcSupportPtrType) ToClientOidcSupportPtrOutput() ClientOidcSupportPtrOutput {
+	return i.ToClientOidcSupportPtrOutputWithContext(context.Background())
+}
+
+func (i *clientOidcSupportPtrType) ToClientOidcSupportPtrOutputWithContext(ctx context.Context) ClientOidcSupportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientOidcSupportPtrOutput)
+}
+
+type ClientOidcSupportOutput struct{ *pulumi.OutputState }
+
+func (ClientOidcSupportOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientOidcSupport)(nil)).Elem()
+}
+
+func (o ClientOidcSupportOutput) ToClientOidcSupportOutput() ClientOidcSupportOutput {
+	return o
+}
+
+func (o ClientOidcSupportOutput) ToClientOidcSupportOutputWithContext(ctx context.Context) ClientOidcSupportOutput {
+	return o
+}
+
+func (o ClientOidcSupportOutput) ToClientOidcSupportPtrOutput() ClientOidcSupportPtrOutput {
+	return o.ToClientOidcSupportPtrOutputWithContext(context.Background())
+}
+
+func (o ClientOidcSupportOutput) ToClientOidcSupportPtrOutputWithContext(ctx context.Context) ClientOidcSupportPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientOidcSupport) *ClientOidcSupport {
+		return &v
+	}).(ClientOidcSupportPtrOutput)
+}
+
+// Indicates whether the client may request all optional OIDC scopes. Conflicts with `allowedScopes`.
+func (o ClientOidcSupportOutput) AllowAllScopes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientOidcSupport) *bool { return v.AllowAllScopes }).(pulumi.BoolPtrOutput)
+}
+
+// Optional OIDC scopes the client may request. Possible values: [profile email address phone]. The `openid` scope is implied and must not be listed. Conflicts with `allowAllScopes`.
+func (o ClientOidcSupportOutput) AllowedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClientOidcSupport) []string { return v.AllowedScopes }).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether the client may request optional OIDC scopes. When `false`, `allowedScopes` and `allowAllScopes` cannot be set.
+func (o ClientOidcSupportOutput) IsAllowed() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClientOidcSupport) bool { return v.IsAllowed }).(pulumi.BoolOutput)
+}
+
+type ClientOidcSupportPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientOidcSupportPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientOidcSupport)(nil)).Elem()
+}
+
+func (o ClientOidcSupportPtrOutput) ToClientOidcSupportPtrOutput() ClientOidcSupportPtrOutput {
+	return o
+}
+
+func (o ClientOidcSupportPtrOutput) ToClientOidcSupportPtrOutputWithContext(ctx context.Context) ClientOidcSupportPtrOutput {
+	return o
+}
+
+func (o ClientOidcSupportPtrOutput) Elem() ClientOidcSupportOutput {
+	return o.ApplyT(func(v *ClientOidcSupport) ClientOidcSupport {
+		if v != nil {
+			return *v
+		}
+		var ret ClientOidcSupport
+		return ret
+	}).(ClientOidcSupportOutput)
+}
+
+// Indicates whether the client may request all optional OIDC scopes. Conflicts with `allowedScopes`.
+func (o ClientOidcSupportPtrOutput) AllowAllScopes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientOidcSupport) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowAllScopes
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional OIDC scopes the client may request. Possible values: [profile email address phone]. The `openid` scope is implied and must not be listed. Conflicts with `allowAllScopes`.
+func (o ClientOidcSupportPtrOutput) AllowedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClientOidcSupport) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedScopes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether the client may request optional OIDC scopes. When `false`, `allowedScopes` and `allowAllScopes` cannot be set.
+func (o ClientOidcSupportPtrOutput) IsAllowed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientOidcSupport) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.IsAllowed
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ClientProfileApplyPolicy struct {
 	// The creator of the clients to match. Defaults to `client`, which means the client was registered dynamically. Possible values: [client].
 	ExternalMetadataCreatedBy *string `pulumi:"externalMetadataCreatedBy"`
@@ -19675,6 +19869,8 @@ func (o ClientProfileApplyPolicyPtrOutput) ExternalMetadataType() pulumi.StringP
 }
 
 type ClientProfileClientConfiguration struct {
+	// OIDC support defaults applied to matched clients. Auth0 replaces this block as a whole, so removing it clears all of its settings.
+	OidcSupport *ClientProfileClientConfigurationOidcSupport `pulumi:"oidcSupport"`
 	// Methods used to discover the organization during login. Requires the `organizationRequireBehavior` default value to be `preLoginPrompt`.
 	OrganizationDiscoveryMethods *ClientProfileClientConfigurationOrganizationDiscoveryMethods `pulumi:"organizationDiscoveryMethods"`
 	// Defines how to proceed during an authentication transaction when the organization usage is `require`.
@@ -19699,6 +19895,8 @@ type ClientProfileClientConfigurationInput interface {
 }
 
 type ClientProfileClientConfigurationArgs struct {
+	// OIDC support defaults applied to matched clients. Auth0 replaces this block as a whole, so removing it clears all of its settings.
+	OidcSupport ClientProfileClientConfigurationOidcSupportPtrInput `pulumi:"oidcSupport"`
 	// Methods used to discover the organization during login. Requires the `organizationRequireBehavior` default value to be `preLoginPrompt`.
 	OrganizationDiscoveryMethods ClientProfileClientConfigurationOrganizationDiscoveryMethodsPtrInput `pulumi:"organizationDiscoveryMethods"`
 	// Defines how to proceed during an authentication transaction when the organization usage is `require`.
@@ -19788,6 +19986,13 @@ func (o ClientProfileClientConfigurationOutput) ToClientProfileClientConfigurati
 	}).(ClientProfileClientConfigurationPtrOutput)
 }
 
+// OIDC support defaults applied to matched clients. Auth0 replaces this block as a whole, so removing it clears all of its settings.
+func (o ClientProfileClientConfigurationOutput) OidcSupport() ClientProfileClientConfigurationOidcSupportPtrOutput {
+	return o.ApplyT(func(v ClientProfileClientConfiguration) *ClientProfileClientConfigurationOidcSupport {
+		return v.OidcSupport
+	}).(ClientProfileClientConfigurationOidcSupportPtrOutput)
+}
+
 // Methods used to discover the organization during login. Requires the `organizationRequireBehavior` default value to be `preLoginPrompt`.
 func (o ClientProfileClientConfigurationOutput) OrganizationDiscoveryMethods() ClientProfileClientConfigurationOrganizationDiscoveryMethodsPtrOutput {
 	return o.ApplyT(func(v ClientProfileClientConfiguration) *ClientProfileClientConfigurationOrganizationDiscoveryMethods {
@@ -19847,6 +20052,16 @@ func (o ClientProfileClientConfigurationPtrOutput) Elem() ClientProfileClientCon
 	}).(ClientProfileClientConfigurationOutput)
 }
 
+// OIDC support defaults applied to matched clients. Auth0 replaces this block as a whole, so removing it clears all of its settings.
+func (o ClientProfileClientConfigurationPtrOutput) OidcSupport() ClientProfileClientConfigurationOidcSupportPtrOutput {
+	return o.ApplyT(func(v *ClientProfileClientConfiguration) *ClientProfileClientConfigurationOidcSupport {
+		if v == nil {
+			return nil
+		}
+		return v.OidcSupport
+	}).(ClientProfileClientConfigurationOidcSupportPtrOutput)
+}
+
 // Methods used to discover the organization during login. Requires the `organizationRequireBehavior` default value to be `preLoginPrompt`.
 func (o ClientProfileClientConfigurationPtrOutput) OrganizationDiscoveryMethods() ClientProfileClientConfigurationOrganizationDiscoveryMethodsPtrOutput {
 	return o.ApplyT(func(v *ClientProfileClientConfiguration) *ClientProfileClientConfigurationOrganizationDiscoveryMethods {
@@ -19895,6 +20110,320 @@ func (o ClientProfileClientConfigurationPtrOutput) RequireProofOfPossession() Cl
 		}
 		return v.RequireProofOfPossession
 	}).(ClientProfileClientConfigurationRequireProofOfPossessionPtrOutput)
+}
+
+type ClientProfileClientConfigurationOidcSupport struct {
+	// The default OIDC support settings for matched clients.
+	DefaultValue ClientProfileClientConfigurationOidcSupportDefaultValue `pulumi:"defaultValue"`
+}
+
+// ClientProfileClientConfigurationOidcSupportInput is an input type that accepts ClientProfileClientConfigurationOidcSupportArgs and ClientProfileClientConfigurationOidcSupportOutput values.
+// You can construct a concrete instance of `ClientProfileClientConfigurationOidcSupportInput` via:
+//
+//	ClientProfileClientConfigurationOidcSupportArgs{...}
+type ClientProfileClientConfigurationOidcSupportInput interface {
+	pulumi.Input
+
+	ToClientProfileClientConfigurationOidcSupportOutput() ClientProfileClientConfigurationOidcSupportOutput
+	ToClientProfileClientConfigurationOidcSupportOutputWithContext(context.Context) ClientProfileClientConfigurationOidcSupportOutput
+}
+
+type ClientProfileClientConfigurationOidcSupportArgs struct {
+	// The default OIDC support settings for matched clients.
+	DefaultValue ClientProfileClientConfigurationOidcSupportDefaultValueInput `pulumi:"defaultValue"`
+}
+
+func (ClientProfileClientConfigurationOidcSupportArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientProfileClientConfigurationOidcSupport)(nil)).Elem()
+}
+
+func (i ClientProfileClientConfigurationOidcSupportArgs) ToClientProfileClientConfigurationOidcSupportOutput() ClientProfileClientConfigurationOidcSupportOutput {
+	return i.ToClientProfileClientConfigurationOidcSupportOutputWithContext(context.Background())
+}
+
+func (i ClientProfileClientConfigurationOidcSupportArgs) ToClientProfileClientConfigurationOidcSupportOutputWithContext(ctx context.Context) ClientProfileClientConfigurationOidcSupportOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientProfileClientConfigurationOidcSupportOutput)
+}
+
+func (i ClientProfileClientConfigurationOidcSupportArgs) ToClientProfileClientConfigurationOidcSupportPtrOutput() ClientProfileClientConfigurationOidcSupportPtrOutput {
+	return i.ToClientProfileClientConfigurationOidcSupportPtrOutputWithContext(context.Background())
+}
+
+func (i ClientProfileClientConfigurationOidcSupportArgs) ToClientProfileClientConfigurationOidcSupportPtrOutputWithContext(ctx context.Context) ClientProfileClientConfigurationOidcSupportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientProfileClientConfigurationOidcSupportOutput).ToClientProfileClientConfigurationOidcSupportPtrOutputWithContext(ctx)
+}
+
+// ClientProfileClientConfigurationOidcSupportPtrInput is an input type that accepts ClientProfileClientConfigurationOidcSupportArgs, ClientProfileClientConfigurationOidcSupportPtr and ClientProfileClientConfigurationOidcSupportPtrOutput values.
+// You can construct a concrete instance of `ClientProfileClientConfigurationOidcSupportPtrInput` via:
+//
+//	        ClientProfileClientConfigurationOidcSupportArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientProfileClientConfigurationOidcSupportPtrInput interface {
+	pulumi.Input
+
+	ToClientProfileClientConfigurationOidcSupportPtrOutput() ClientProfileClientConfigurationOidcSupportPtrOutput
+	ToClientProfileClientConfigurationOidcSupportPtrOutputWithContext(context.Context) ClientProfileClientConfigurationOidcSupportPtrOutput
+}
+
+type clientProfileClientConfigurationOidcSupportPtrType ClientProfileClientConfigurationOidcSupportArgs
+
+func ClientProfileClientConfigurationOidcSupportPtr(v *ClientProfileClientConfigurationOidcSupportArgs) ClientProfileClientConfigurationOidcSupportPtrInput {
+	return (*clientProfileClientConfigurationOidcSupportPtrType)(v)
+}
+
+func (*clientProfileClientConfigurationOidcSupportPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientProfileClientConfigurationOidcSupport)(nil)).Elem()
+}
+
+func (i *clientProfileClientConfigurationOidcSupportPtrType) ToClientProfileClientConfigurationOidcSupportPtrOutput() ClientProfileClientConfigurationOidcSupportPtrOutput {
+	return i.ToClientProfileClientConfigurationOidcSupportPtrOutputWithContext(context.Background())
+}
+
+func (i *clientProfileClientConfigurationOidcSupportPtrType) ToClientProfileClientConfigurationOidcSupportPtrOutputWithContext(ctx context.Context) ClientProfileClientConfigurationOidcSupportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientProfileClientConfigurationOidcSupportPtrOutput)
+}
+
+type ClientProfileClientConfigurationOidcSupportOutput struct{ *pulumi.OutputState }
+
+func (ClientProfileClientConfigurationOidcSupportOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientProfileClientConfigurationOidcSupport)(nil)).Elem()
+}
+
+func (o ClientProfileClientConfigurationOidcSupportOutput) ToClientProfileClientConfigurationOidcSupportOutput() ClientProfileClientConfigurationOidcSupportOutput {
+	return o
+}
+
+func (o ClientProfileClientConfigurationOidcSupportOutput) ToClientProfileClientConfigurationOidcSupportOutputWithContext(ctx context.Context) ClientProfileClientConfigurationOidcSupportOutput {
+	return o
+}
+
+func (o ClientProfileClientConfigurationOidcSupportOutput) ToClientProfileClientConfigurationOidcSupportPtrOutput() ClientProfileClientConfigurationOidcSupportPtrOutput {
+	return o.ToClientProfileClientConfigurationOidcSupportPtrOutputWithContext(context.Background())
+}
+
+func (o ClientProfileClientConfigurationOidcSupportOutput) ToClientProfileClientConfigurationOidcSupportPtrOutputWithContext(ctx context.Context) ClientProfileClientConfigurationOidcSupportPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientProfileClientConfigurationOidcSupport) *ClientProfileClientConfigurationOidcSupport {
+		return &v
+	}).(ClientProfileClientConfigurationOidcSupportPtrOutput)
+}
+
+// The default OIDC support settings for matched clients.
+func (o ClientProfileClientConfigurationOidcSupportOutput) DefaultValue() ClientProfileClientConfigurationOidcSupportDefaultValueOutput {
+	return o.ApplyT(func(v ClientProfileClientConfigurationOidcSupport) ClientProfileClientConfigurationOidcSupportDefaultValue {
+		return v.DefaultValue
+	}).(ClientProfileClientConfigurationOidcSupportDefaultValueOutput)
+}
+
+type ClientProfileClientConfigurationOidcSupportPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientProfileClientConfigurationOidcSupportPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientProfileClientConfigurationOidcSupport)(nil)).Elem()
+}
+
+func (o ClientProfileClientConfigurationOidcSupportPtrOutput) ToClientProfileClientConfigurationOidcSupportPtrOutput() ClientProfileClientConfigurationOidcSupportPtrOutput {
+	return o
+}
+
+func (o ClientProfileClientConfigurationOidcSupportPtrOutput) ToClientProfileClientConfigurationOidcSupportPtrOutputWithContext(ctx context.Context) ClientProfileClientConfigurationOidcSupportPtrOutput {
+	return o
+}
+
+func (o ClientProfileClientConfigurationOidcSupportPtrOutput) Elem() ClientProfileClientConfigurationOidcSupportOutput {
+	return o.ApplyT(func(v *ClientProfileClientConfigurationOidcSupport) ClientProfileClientConfigurationOidcSupport {
+		if v != nil {
+			return *v
+		}
+		var ret ClientProfileClientConfigurationOidcSupport
+		return ret
+	}).(ClientProfileClientConfigurationOidcSupportOutput)
+}
+
+// The default OIDC support settings for matched clients.
+func (o ClientProfileClientConfigurationOidcSupportPtrOutput) DefaultValue() ClientProfileClientConfigurationOidcSupportDefaultValuePtrOutput {
+	return o.ApplyT(func(v *ClientProfileClientConfigurationOidcSupport) *ClientProfileClientConfigurationOidcSupportDefaultValue {
+		if v == nil {
+			return nil
+		}
+		return &v.DefaultValue
+	}).(ClientProfileClientConfigurationOidcSupportDefaultValuePtrOutput)
+}
+
+type ClientProfileClientConfigurationOidcSupportDefaultValue struct {
+	// Indicates whether matched clients may request all optional OIDC scopes. Conflicts with `allowedScopes`.
+	AllowAllScopes *bool `pulumi:"allowAllScopes"`
+	// Optional OIDC scopes matched clients may request. Possible values: [profile email address phone]. The `openid` scope is implied and must not be listed. Conflicts with `allowAllScopes`.
+	AllowedScopes []string `pulumi:"allowedScopes"`
+	// Indicates whether matched clients may use OIDC. When `false`, `allowedScopes` and `allowAllScopes` cannot be set.
+	IsAllowed bool `pulumi:"isAllowed"`
+}
+
+// ClientProfileClientConfigurationOidcSupportDefaultValueInput is an input type that accepts ClientProfileClientConfigurationOidcSupportDefaultValueArgs and ClientProfileClientConfigurationOidcSupportDefaultValueOutput values.
+// You can construct a concrete instance of `ClientProfileClientConfigurationOidcSupportDefaultValueInput` via:
+//
+//	ClientProfileClientConfigurationOidcSupportDefaultValueArgs{...}
+type ClientProfileClientConfigurationOidcSupportDefaultValueInput interface {
+	pulumi.Input
+
+	ToClientProfileClientConfigurationOidcSupportDefaultValueOutput() ClientProfileClientConfigurationOidcSupportDefaultValueOutput
+	ToClientProfileClientConfigurationOidcSupportDefaultValueOutputWithContext(context.Context) ClientProfileClientConfigurationOidcSupportDefaultValueOutput
+}
+
+type ClientProfileClientConfigurationOidcSupportDefaultValueArgs struct {
+	// Indicates whether matched clients may request all optional OIDC scopes. Conflicts with `allowedScopes`.
+	AllowAllScopes pulumi.BoolPtrInput `pulumi:"allowAllScopes"`
+	// Optional OIDC scopes matched clients may request. Possible values: [profile email address phone]. The `openid` scope is implied and must not be listed. Conflicts with `allowAllScopes`.
+	AllowedScopes pulumi.StringArrayInput `pulumi:"allowedScopes"`
+	// Indicates whether matched clients may use OIDC. When `false`, `allowedScopes` and `allowAllScopes` cannot be set.
+	IsAllowed pulumi.BoolInput `pulumi:"isAllowed"`
+}
+
+func (ClientProfileClientConfigurationOidcSupportDefaultValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientProfileClientConfigurationOidcSupportDefaultValue)(nil)).Elem()
+}
+
+func (i ClientProfileClientConfigurationOidcSupportDefaultValueArgs) ToClientProfileClientConfigurationOidcSupportDefaultValueOutput() ClientProfileClientConfigurationOidcSupportDefaultValueOutput {
+	return i.ToClientProfileClientConfigurationOidcSupportDefaultValueOutputWithContext(context.Background())
+}
+
+func (i ClientProfileClientConfigurationOidcSupportDefaultValueArgs) ToClientProfileClientConfigurationOidcSupportDefaultValueOutputWithContext(ctx context.Context) ClientProfileClientConfigurationOidcSupportDefaultValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientProfileClientConfigurationOidcSupportDefaultValueOutput)
+}
+
+func (i ClientProfileClientConfigurationOidcSupportDefaultValueArgs) ToClientProfileClientConfigurationOidcSupportDefaultValuePtrOutput() ClientProfileClientConfigurationOidcSupportDefaultValuePtrOutput {
+	return i.ToClientProfileClientConfigurationOidcSupportDefaultValuePtrOutputWithContext(context.Background())
+}
+
+func (i ClientProfileClientConfigurationOidcSupportDefaultValueArgs) ToClientProfileClientConfigurationOidcSupportDefaultValuePtrOutputWithContext(ctx context.Context) ClientProfileClientConfigurationOidcSupportDefaultValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientProfileClientConfigurationOidcSupportDefaultValueOutput).ToClientProfileClientConfigurationOidcSupportDefaultValuePtrOutputWithContext(ctx)
+}
+
+// ClientProfileClientConfigurationOidcSupportDefaultValuePtrInput is an input type that accepts ClientProfileClientConfigurationOidcSupportDefaultValueArgs, ClientProfileClientConfigurationOidcSupportDefaultValuePtr and ClientProfileClientConfigurationOidcSupportDefaultValuePtrOutput values.
+// You can construct a concrete instance of `ClientProfileClientConfigurationOidcSupportDefaultValuePtrInput` via:
+//
+//	        ClientProfileClientConfigurationOidcSupportDefaultValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClientProfileClientConfigurationOidcSupportDefaultValuePtrInput interface {
+	pulumi.Input
+
+	ToClientProfileClientConfigurationOidcSupportDefaultValuePtrOutput() ClientProfileClientConfigurationOidcSupportDefaultValuePtrOutput
+	ToClientProfileClientConfigurationOidcSupportDefaultValuePtrOutputWithContext(context.Context) ClientProfileClientConfigurationOidcSupportDefaultValuePtrOutput
+}
+
+type clientProfileClientConfigurationOidcSupportDefaultValuePtrType ClientProfileClientConfigurationOidcSupportDefaultValueArgs
+
+func ClientProfileClientConfigurationOidcSupportDefaultValuePtr(v *ClientProfileClientConfigurationOidcSupportDefaultValueArgs) ClientProfileClientConfigurationOidcSupportDefaultValuePtrInput {
+	return (*clientProfileClientConfigurationOidcSupportDefaultValuePtrType)(v)
+}
+
+func (*clientProfileClientConfigurationOidcSupportDefaultValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientProfileClientConfigurationOidcSupportDefaultValue)(nil)).Elem()
+}
+
+func (i *clientProfileClientConfigurationOidcSupportDefaultValuePtrType) ToClientProfileClientConfigurationOidcSupportDefaultValuePtrOutput() ClientProfileClientConfigurationOidcSupportDefaultValuePtrOutput {
+	return i.ToClientProfileClientConfigurationOidcSupportDefaultValuePtrOutputWithContext(context.Background())
+}
+
+func (i *clientProfileClientConfigurationOidcSupportDefaultValuePtrType) ToClientProfileClientConfigurationOidcSupportDefaultValuePtrOutputWithContext(ctx context.Context) ClientProfileClientConfigurationOidcSupportDefaultValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientProfileClientConfigurationOidcSupportDefaultValuePtrOutput)
+}
+
+type ClientProfileClientConfigurationOidcSupportDefaultValueOutput struct{ *pulumi.OutputState }
+
+func (ClientProfileClientConfigurationOidcSupportDefaultValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientProfileClientConfigurationOidcSupportDefaultValue)(nil)).Elem()
+}
+
+func (o ClientProfileClientConfigurationOidcSupportDefaultValueOutput) ToClientProfileClientConfigurationOidcSupportDefaultValueOutput() ClientProfileClientConfigurationOidcSupportDefaultValueOutput {
+	return o
+}
+
+func (o ClientProfileClientConfigurationOidcSupportDefaultValueOutput) ToClientProfileClientConfigurationOidcSupportDefaultValueOutputWithContext(ctx context.Context) ClientProfileClientConfigurationOidcSupportDefaultValueOutput {
+	return o
+}
+
+func (o ClientProfileClientConfigurationOidcSupportDefaultValueOutput) ToClientProfileClientConfigurationOidcSupportDefaultValuePtrOutput() ClientProfileClientConfigurationOidcSupportDefaultValuePtrOutput {
+	return o.ToClientProfileClientConfigurationOidcSupportDefaultValuePtrOutputWithContext(context.Background())
+}
+
+func (o ClientProfileClientConfigurationOidcSupportDefaultValueOutput) ToClientProfileClientConfigurationOidcSupportDefaultValuePtrOutputWithContext(ctx context.Context) ClientProfileClientConfigurationOidcSupportDefaultValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientProfileClientConfigurationOidcSupportDefaultValue) *ClientProfileClientConfigurationOidcSupportDefaultValue {
+		return &v
+	}).(ClientProfileClientConfigurationOidcSupportDefaultValuePtrOutput)
+}
+
+// Indicates whether matched clients may request all optional OIDC scopes. Conflicts with `allowedScopes`.
+func (o ClientProfileClientConfigurationOidcSupportDefaultValueOutput) AllowAllScopes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientProfileClientConfigurationOidcSupportDefaultValue) *bool { return v.AllowAllScopes }).(pulumi.BoolPtrOutput)
+}
+
+// Optional OIDC scopes matched clients may request. Possible values: [profile email address phone]. The `openid` scope is implied and must not be listed. Conflicts with `allowAllScopes`.
+func (o ClientProfileClientConfigurationOidcSupportDefaultValueOutput) AllowedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClientProfileClientConfigurationOidcSupportDefaultValue) []string { return v.AllowedScopes }).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether matched clients may use OIDC. When `false`, `allowedScopes` and `allowAllScopes` cannot be set.
+func (o ClientProfileClientConfigurationOidcSupportDefaultValueOutput) IsAllowed() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClientProfileClientConfigurationOidcSupportDefaultValue) bool { return v.IsAllowed }).(pulumi.BoolOutput)
+}
+
+type ClientProfileClientConfigurationOidcSupportDefaultValuePtrOutput struct{ *pulumi.OutputState }
+
+func (ClientProfileClientConfigurationOidcSupportDefaultValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientProfileClientConfigurationOidcSupportDefaultValue)(nil)).Elem()
+}
+
+func (o ClientProfileClientConfigurationOidcSupportDefaultValuePtrOutput) ToClientProfileClientConfigurationOidcSupportDefaultValuePtrOutput() ClientProfileClientConfigurationOidcSupportDefaultValuePtrOutput {
+	return o
+}
+
+func (o ClientProfileClientConfigurationOidcSupportDefaultValuePtrOutput) ToClientProfileClientConfigurationOidcSupportDefaultValuePtrOutputWithContext(ctx context.Context) ClientProfileClientConfigurationOidcSupportDefaultValuePtrOutput {
+	return o
+}
+
+func (o ClientProfileClientConfigurationOidcSupportDefaultValuePtrOutput) Elem() ClientProfileClientConfigurationOidcSupportDefaultValueOutput {
+	return o.ApplyT(func(v *ClientProfileClientConfigurationOidcSupportDefaultValue) ClientProfileClientConfigurationOidcSupportDefaultValue {
+		if v != nil {
+			return *v
+		}
+		var ret ClientProfileClientConfigurationOidcSupportDefaultValue
+		return ret
+	}).(ClientProfileClientConfigurationOidcSupportDefaultValueOutput)
+}
+
+// Indicates whether matched clients may request all optional OIDC scopes. Conflicts with `allowedScopes`.
+func (o ClientProfileClientConfigurationOidcSupportDefaultValuePtrOutput) AllowAllScopes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientProfileClientConfigurationOidcSupportDefaultValue) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowAllScopes
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional OIDC scopes matched clients may request. Possible values: [profile email address phone]. The `openid` scope is implied and must not be listed. Conflicts with `allowAllScopes`.
+func (o ClientProfileClientConfigurationOidcSupportDefaultValuePtrOutput) AllowedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClientProfileClientConfigurationOidcSupportDefaultValue) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedScopes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether matched clients may use OIDC. When `false`, `allowedScopes` and `allowAllScopes` cannot be set.
+func (o ClientProfileClientConfigurationOidcSupportDefaultValuePtrOutput) IsAllowed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClientProfileClientConfigurationOidcSupportDefaultValue) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.IsAllowed
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClientProfileClientConfigurationOrganizationDiscoveryMethods struct {
@@ -23094,7 +23623,7 @@ type ConnectionOptions struct {
 	DisableSignOut *bool `pulumi:"disableSignOut"`
 	// Indicates whether to allow user sign-ups to your application.
 	DisableSignup *bool `pulumi:"disableSignup"`
-	// OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
+	// OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`. Also applicable to `samlp` connections (EA only).
 	DiscoveryUrl *string `pulumi:"discoveryUrl"`
 	// Domain name.
 	Domain *string `pulumi:"domain"`
@@ -23242,11 +23771,11 @@ type ConnectionOptions struct {
 	TenantDomain *string `pulumi:"tenantDomain"`
 	// Token endpoint.
 	TokenEndpoint *string `pulumi:"tokenEndpoint"`
-	// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+	// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
 	TokenEndpointAuthMethod *string `pulumi:"tokenEndpointAuthMethod"`
-	// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+	// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
 	TokenEndpointAuthSigningAlg *string `pulumi:"tokenEndpointAuthSigningAlg"`
-	// Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)
+	// Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections; SAML Connections (EA only))
 	TokenEndpointJwtcaAudFormat *string `pulumi:"tokenEndpointJwtcaAudFormat"`
 	// Configuration options for one-time passwords.
 	Totp *ConnectionOptionsTotp `pulumi:"totp"`
@@ -23354,7 +23883,7 @@ type ConnectionOptionsArgs struct {
 	DisableSignOut pulumi.BoolPtrInput `pulumi:"disableSignOut"`
 	// Indicates whether to allow user sign-ups to your application.
 	DisableSignup pulumi.BoolPtrInput `pulumi:"disableSignup"`
-	// OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
+	// OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`. Also applicable to `samlp` connections (EA only).
 	DiscoveryUrl pulumi.StringPtrInput `pulumi:"discoveryUrl"`
 	// Domain name.
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
@@ -23502,11 +24031,11 @@ type ConnectionOptionsArgs struct {
 	TenantDomain pulumi.StringPtrInput `pulumi:"tenantDomain"`
 	// Token endpoint.
 	TokenEndpoint pulumi.StringPtrInput `pulumi:"tokenEndpoint"`
-	// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+	// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
 	TokenEndpointAuthMethod pulumi.StringPtrInput `pulumi:"tokenEndpointAuthMethod"`
-	// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+	// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
 	TokenEndpointAuthSigningAlg pulumi.StringPtrInput `pulumi:"tokenEndpointAuthSigningAlg"`
-	// Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)
+	// Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections; SAML Connections (EA only))
 	TokenEndpointJwtcaAudFormat pulumi.StringPtrInput `pulumi:"tokenEndpointJwtcaAudFormat"`
 	// Configuration options for one-time passwords.
 	Totp ConnectionOptionsTotpPtrInput `pulumi:"totp"`
@@ -23774,7 +24303,7 @@ func (o ConnectionOptionsOutput) DisableSignup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *bool { return v.DisableSignup }).(pulumi.BoolPtrOutput)
 }
 
-// OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
+// OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`. Also applicable to `samlp` connections (EA only).
 func (o ConnectionOptionsOutput) DiscoveryUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.DiscoveryUrl }).(pulumi.StringPtrOutput)
 }
@@ -24148,17 +24677,17 @@ func (o ConnectionOptionsOutput) TokenEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.TokenEndpoint }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
 func (o ConnectionOptionsOutput) TokenEndpointAuthMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.TokenEndpointAuthMethod }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
 func (o ConnectionOptionsOutput) TokenEndpointAuthSigningAlg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.TokenEndpointAuthSigningAlg }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)
+// Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections; SAML Connections (EA only))
 func (o ConnectionOptionsOutput) TokenEndpointJwtcaAudFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionOptions) *string { return v.TokenEndpointJwtcaAudFormat }).(pulumi.StringPtrOutput)
 }
@@ -24572,7 +25101,7 @@ func (o ConnectionOptionsPtrOutput) DisableSignup() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
+// OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`. Also applicable to `samlp` connections (EA only).
 func (o ConnectionOptionsPtrOutput) DiscoveryUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -25312,7 +25841,7 @@ func (o ConnectionOptionsPtrOutput) TokenEndpoint() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+// Specifies the authentication method for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
 func (o ConnectionOptionsPtrOutput) TokenEndpointAuthMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -25322,7 +25851,7 @@ func (o ConnectionOptionsPtrOutput) TokenEndpointAuthMethod() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+// Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
 func (o ConnectionOptionsPtrOutput) TokenEndpointAuthSigningAlg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -25332,7 +25861,7 @@ func (o ConnectionOptionsPtrOutput) TokenEndpointAuthSigningAlg() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)
+// Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections; SAML Connections (EA only))
 func (o ConnectionOptionsPtrOutput) TokenEndpointJwtcaAudFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionOptions) *string {
 		if v == nil {
@@ -27642,6 +28171,8 @@ func (o ConnectionOptionsAuthenticationMethodEmailOtpPtrOutput) Enabled() pulumi
 type ConnectionOptionsAuthenticationMethodPasskey struct {
 	// Enables passkey authentication
 	Enabled *bool `pulumi:"enabled"`
+	// Specifies whether passkey is allowed or blocked during signup flows. Possible values: "allow", "block". This is an Early Access feature and must be enabled for your tenant before it can be set.
+	SignupBehavior *string `pulumi:"signupBehavior"`
 }
 
 // ConnectionOptionsAuthenticationMethodPasskeyInput is an input type that accepts ConnectionOptionsAuthenticationMethodPasskeyArgs and ConnectionOptionsAuthenticationMethodPasskeyOutput values.
@@ -27658,6 +28189,8 @@ type ConnectionOptionsAuthenticationMethodPasskeyInput interface {
 type ConnectionOptionsAuthenticationMethodPasskeyArgs struct {
 	// Enables passkey authentication
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Specifies whether passkey is allowed or blocked during signup flows. Possible values: "allow", "block". This is an Early Access feature and must be enabled for your tenant before it can be set.
+	SignupBehavior pulumi.StringPtrInput `pulumi:"signupBehavior"`
 }
 
 func (ConnectionOptionsAuthenticationMethodPasskeyArgs) ElementType() reflect.Type {
@@ -27742,6 +28275,11 @@ func (o ConnectionOptionsAuthenticationMethodPasskeyOutput) Enabled() pulumi.Boo
 	return o.ApplyT(func(v ConnectionOptionsAuthenticationMethodPasskey) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Specifies whether passkey is allowed or blocked during signup flows. Possible values: "allow", "block". This is an Early Access feature and must be enabled for your tenant before it can be set.
+func (o ConnectionOptionsAuthenticationMethodPasskeyOutput) SignupBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionOptionsAuthenticationMethodPasskey) *string { return v.SignupBehavior }).(pulumi.StringPtrOutput)
+}
+
 type ConnectionOptionsAuthenticationMethodPasskeyPtrOutput struct{ *pulumi.OutputState }
 
 func (ConnectionOptionsAuthenticationMethodPasskeyPtrOutput) ElementType() reflect.Type {
@@ -27774,6 +28312,16 @@ func (o ConnectionOptionsAuthenticationMethodPasskeyPtrOutput) Enabled() pulumi.
 		}
 		return v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether passkey is allowed or blocked during signup flows. Possible values: "allow", "block". This is an Early Access feature and must be enabled for your tenant before it can be set.
+func (o ConnectionOptionsAuthenticationMethodPasskeyPtrOutput) SignupBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionOptionsAuthenticationMethodPasskey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SignupBehavior
+	}).(pulumi.StringPtrOutput)
 }
 
 type ConnectionOptionsAuthenticationMethodPassword struct {
@@ -65143,6 +65691,8 @@ type GetAttackProtectionBruteForceProtection struct {
 	Allowlists []string `pulumi:"allowlists"`
 	// Whether brute force attack protections are active.
 	Enabled bool `pulumi:"enabled"`
+	// Controls whether the brute-force protection unblock form is automatically submitted on load or requires manual interaction. Possible values: `auto` (submit the form automatically) or `manual` (require the user to submit the form). Once set, this value cannot be unset; removing it from the configuration leaves the current tenant value unchanged. (EA only)
+	FormSubmissionMode string `pulumi:"formSubmissionMode"`
 	// Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
 	MaxAttempts int `pulumi:"maxAttempts"`
 	// Determines whether the IP address is used when counting failed attempts. Possible values: `countPerIdentifierAndIp` (lockout an account from a given IP Address) or `countPerIdentifier` (lockout an account regardless of IP Address).
@@ -65167,6 +65717,8 @@ type GetAttackProtectionBruteForceProtectionArgs struct {
 	Allowlists pulumi.StringArrayInput `pulumi:"allowlists"`
 	// Whether brute force attack protections are active.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Controls whether the brute-force protection unblock form is automatically submitted on load or requires manual interaction. Possible values: `auto` (submit the form automatically) or `manual` (require the user to submit the form). Once set, this value cannot be unset; removing it from the configuration leaves the current tenant value unchanged. (EA only)
+	FormSubmissionMode pulumi.StringInput `pulumi:"formSubmissionMode"`
 	// Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
 	MaxAttempts pulumi.IntInput `pulumi:"maxAttempts"`
 	// Determines whether the IP address is used when counting failed attempts. Possible values: `countPerIdentifierAndIp` (lockout an account from a given IP Address) or `countPerIdentifier` (lockout an account regardless of IP Address).
@@ -65234,6 +65786,11 @@ func (o GetAttackProtectionBruteForceProtectionOutput) Allowlists() pulumi.Strin
 // Whether brute force attack protections are active.
 func (o GetAttackProtectionBruteForceProtectionOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAttackProtectionBruteForceProtection) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Controls whether the brute-force protection unblock form is automatically submitted on load or requires manual interaction. Possible values: `auto` (submit the form automatically) or `manual` (require the user to submit the form). Once set, this value cannot be unset; removing it from the configuration leaves the current tenant value unchanged. (EA only)
+func (o GetAttackProtectionBruteForceProtectionOutput) FormSubmissionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAttackProtectionBruteForceProtection) string { return v.FormSubmissionMode }).(pulumi.StringOutput)
 }
 
 // Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
@@ -76329,6 +76886,121 @@ func (o GetClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput) Index(i 
 	}).(GetClientOidcLogoutBackchannelLogoutSessionMetadataOutput)
 }
 
+type GetClientOidcSupport struct {
+	// Indicates whether the client may request all optional OIDC scopes. Conflicts with `allowedScopes`.
+	AllowAllScopes bool `pulumi:"allowAllScopes"`
+	// Optional OIDC scopes the client may request. Possible values: [profile email address phone]. The `openid` scope is implied and must not be listed. Conflicts with `allowAllScopes`.
+	AllowedScopes []string `pulumi:"allowedScopes"`
+	// Indicates whether the client may request optional OIDC scopes. When `false`, `allowedScopes` and `allowAllScopes` cannot be set.
+	IsAllowed bool `pulumi:"isAllowed"`
+}
+
+// GetClientOidcSupportInput is an input type that accepts GetClientOidcSupportArgs and GetClientOidcSupportOutput values.
+// You can construct a concrete instance of `GetClientOidcSupportInput` via:
+//
+//	GetClientOidcSupportArgs{...}
+type GetClientOidcSupportInput interface {
+	pulumi.Input
+
+	ToGetClientOidcSupportOutput() GetClientOidcSupportOutput
+	ToGetClientOidcSupportOutputWithContext(context.Context) GetClientOidcSupportOutput
+}
+
+type GetClientOidcSupportArgs struct {
+	// Indicates whether the client may request all optional OIDC scopes. Conflicts with `allowedScopes`.
+	AllowAllScopes pulumi.BoolInput `pulumi:"allowAllScopes"`
+	// Optional OIDC scopes the client may request. Possible values: [profile email address phone]. The `openid` scope is implied and must not be listed. Conflicts with `allowAllScopes`.
+	AllowedScopes pulumi.StringArrayInput `pulumi:"allowedScopes"`
+	// Indicates whether the client may request optional OIDC scopes. When `false`, `allowedScopes` and `allowAllScopes` cannot be set.
+	IsAllowed pulumi.BoolInput `pulumi:"isAllowed"`
+}
+
+func (GetClientOidcSupportArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientOidcSupport)(nil)).Elem()
+}
+
+func (i GetClientOidcSupportArgs) ToGetClientOidcSupportOutput() GetClientOidcSupportOutput {
+	return i.ToGetClientOidcSupportOutputWithContext(context.Background())
+}
+
+func (i GetClientOidcSupportArgs) ToGetClientOidcSupportOutputWithContext(ctx context.Context) GetClientOidcSupportOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientOidcSupportOutput)
+}
+
+// GetClientOidcSupportArrayInput is an input type that accepts GetClientOidcSupportArray and GetClientOidcSupportArrayOutput values.
+// You can construct a concrete instance of `GetClientOidcSupportArrayInput` via:
+//
+//	GetClientOidcSupportArray{ GetClientOidcSupportArgs{...} }
+type GetClientOidcSupportArrayInput interface {
+	pulumi.Input
+
+	ToGetClientOidcSupportArrayOutput() GetClientOidcSupportArrayOutput
+	ToGetClientOidcSupportArrayOutputWithContext(context.Context) GetClientOidcSupportArrayOutput
+}
+
+type GetClientOidcSupportArray []GetClientOidcSupportInput
+
+func (GetClientOidcSupportArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientOidcSupport)(nil)).Elem()
+}
+
+func (i GetClientOidcSupportArray) ToGetClientOidcSupportArrayOutput() GetClientOidcSupportArrayOutput {
+	return i.ToGetClientOidcSupportArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientOidcSupportArray) ToGetClientOidcSupportArrayOutputWithContext(ctx context.Context) GetClientOidcSupportArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientOidcSupportArrayOutput)
+}
+
+type GetClientOidcSupportOutput struct{ *pulumi.OutputState }
+
+func (GetClientOidcSupportOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientOidcSupport)(nil)).Elem()
+}
+
+func (o GetClientOidcSupportOutput) ToGetClientOidcSupportOutput() GetClientOidcSupportOutput {
+	return o
+}
+
+func (o GetClientOidcSupportOutput) ToGetClientOidcSupportOutputWithContext(ctx context.Context) GetClientOidcSupportOutput {
+	return o
+}
+
+// Indicates whether the client may request all optional OIDC scopes. Conflicts with `allowedScopes`.
+func (o GetClientOidcSupportOutput) AllowAllScopes() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientOidcSupport) bool { return v.AllowAllScopes }).(pulumi.BoolOutput)
+}
+
+// Optional OIDC scopes the client may request. Possible values: [profile email address phone]. The `openid` scope is implied and must not be listed. Conflicts with `allowAllScopes`.
+func (o GetClientOidcSupportOutput) AllowedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientOidcSupport) []string { return v.AllowedScopes }).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether the client may request optional OIDC scopes. When `false`, `allowedScopes` and `allowAllScopes` cannot be set.
+func (o GetClientOidcSupportOutput) IsAllowed() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientOidcSupport) bool { return v.IsAllowed }).(pulumi.BoolOutput)
+}
+
+type GetClientOidcSupportArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientOidcSupportArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientOidcSupport)(nil)).Elem()
+}
+
+func (o GetClientOidcSupportArrayOutput) ToGetClientOidcSupportArrayOutput() GetClientOidcSupportArrayOutput {
+	return o
+}
+
+func (o GetClientOidcSupportArrayOutput) ToGetClientOidcSupportArrayOutputWithContext(ctx context.Context) GetClientOidcSupportArrayOutput {
+	return o
+}
+
+func (o GetClientOidcSupportArrayOutput) Index(i pulumi.IntInput) GetClientOidcSupportOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientOidcSupport {
+		return vs[0].([]GetClientOidcSupport)[vs[1].(int)]
+	}).(GetClientOidcSupportOutput)
+}
+
 type GetClientProfileApplyPolicy struct {
 	// The creator of the clients to match. Defaults to `client`, which means the client was registered dynamically. Possible values: [client].
 	ExternalMetadataCreatedBy string `pulumi:"externalMetadataCreatedBy"`
@@ -76436,6 +77108,8 @@ func (o GetClientProfileApplyPolicyArrayOutput) Index(i pulumi.IntInput) GetClie
 }
 
 type GetClientProfileClientConfiguration struct {
+	// OIDC support defaults applied to matched clients. Auth0 replaces this block as a whole, so removing it clears all of its settings.
+	OidcSupports []GetClientProfileClientConfigurationOidcSupport `pulumi:"oidcSupports"`
 	// Methods used to discover the organization during login. Requires the `organizationRequireBehavior` default value to be `preLoginPrompt`.
 	OrganizationDiscoveryMethods []GetClientProfileClientConfigurationOrganizationDiscoveryMethod `pulumi:"organizationDiscoveryMethods"`
 	// Defines how to proceed during an authentication transaction when the organization usage is `require`.
@@ -76460,6 +77134,8 @@ type GetClientProfileClientConfigurationInput interface {
 }
 
 type GetClientProfileClientConfigurationArgs struct {
+	// OIDC support defaults applied to matched clients. Auth0 replaces this block as a whole, so removing it clears all of its settings.
+	OidcSupports GetClientProfileClientConfigurationOidcSupportArrayInput `pulumi:"oidcSupports"`
 	// Methods used to discover the organization during login. Requires the `organizationRequireBehavior` default value to be `preLoginPrompt`.
 	OrganizationDiscoveryMethods GetClientProfileClientConfigurationOrganizationDiscoveryMethodArrayInput `pulumi:"organizationDiscoveryMethods"`
 	// Defines how to proceed during an authentication transaction when the organization usage is `require`.
@@ -76523,6 +77199,13 @@ func (o GetClientProfileClientConfigurationOutput) ToGetClientProfileClientConfi
 	return o
 }
 
+// OIDC support defaults applied to matched clients. Auth0 replaces this block as a whole, so removing it clears all of its settings.
+func (o GetClientProfileClientConfigurationOutput) OidcSupports() GetClientProfileClientConfigurationOidcSupportArrayOutput {
+	return o.ApplyT(func(v GetClientProfileClientConfiguration) []GetClientProfileClientConfigurationOidcSupport {
+		return v.OidcSupports
+	}).(GetClientProfileClientConfigurationOidcSupportArrayOutput)
+}
+
 // Methods used to discover the organization during login. Requires the `organizationRequireBehavior` default value to be `preLoginPrompt`.
 func (o GetClientProfileClientConfigurationOutput) OrganizationDiscoveryMethods() GetClientProfileClientConfigurationOrganizationDiscoveryMethodArrayOutput {
 	return o.ApplyT(func(v GetClientProfileClientConfiguration) []GetClientProfileClientConfigurationOrganizationDiscoveryMethod {
@@ -76576,6 +77259,220 @@ func (o GetClientProfileClientConfigurationArrayOutput) Index(i pulumi.IntInput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientProfileClientConfiguration {
 		return vs[0].([]GetClientProfileClientConfiguration)[vs[1].(int)]
 	}).(GetClientProfileClientConfigurationOutput)
+}
+
+type GetClientProfileClientConfigurationOidcSupport struct {
+	// The default OIDC support settings for matched clients.
+	DefaultValues []GetClientProfileClientConfigurationOidcSupportDefaultValue `pulumi:"defaultValues"`
+}
+
+// GetClientProfileClientConfigurationOidcSupportInput is an input type that accepts GetClientProfileClientConfigurationOidcSupportArgs and GetClientProfileClientConfigurationOidcSupportOutput values.
+// You can construct a concrete instance of `GetClientProfileClientConfigurationOidcSupportInput` via:
+//
+//	GetClientProfileClientConfigurationOidcSupportArgs{...}
+type GetClientProfileClientConfigurationOidcSupportInput interface {
+	pulumi.Input
+
+	ToGetClientProfileClientConfigurationOidcSupportOutput() GetClientProfileClientConfigurationOidcSupportOutput
+	ToGetClientProfileClientConfigurationOidcSupportOutputWithContext(context.Context) GetClientProfileClientConfigurationOidcSupportOutput
+}
+
+type GetClientProfileClientConfigurationOidcSupportArgs struct {
+	// The default OIDC support settings for matched clients.
+	DefaultValues GetClientProfileClientConfigurationOidcSupportDefaultValueArrayInput `pulumi:"defaultValues"`
+}
+
+func (GetClientProfileClientConfigurationOidcSupportArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientProfileClientConfigurationOidcSupport)(nil)).Elem()
+}
+
+func (i GetClientProfileClientConfigurationOidcSupportArgs) ToGetClientProfileClientConfigurationOidcSupportOutput() GetClientProfileClientConfigurationOidcSupportOutput {
+	return i.ToGetClientProfileClientConfigurationOidcSupportOutputWithContext(context.Background())
+}
+
+func (i GetClientProfileClientConfigurationOidcSupportArgs) ToGetClientProfileClientConfigurationOidcSupportOutputWithContext(ctx context.Context) GetClientProfileClientConfigurationOidcSupportOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientProfileClientConfigurationOidcSupportOutput)
+}
+
+// GetClientProfileClientConfigurationOidcSupportArrayInput is an input type that accepts GetClientProfileClientConfigurationOidcSupportArray and GetClientProfileClientConfigurationOidcSupportArrayOutput values.
+// You can construct a concrete instance of `GetClientProfileClientConfigurationOidcSupportArrayInput` via:
+//
+//	GetClientProfileClientConfigurationOidcSupportArray{ GetClientProfileClientConfigurationOidcSupportArgs{...} }
+type GetClientProfileClientConfigurationOidcSupportArrayInput interface {
+	pulumi.Input
+
+	ToGetClientProfileClientConfigurationOidcSupportArrayOutput() GetClientProfileClientConfigurationOidcSupportArrayOutput
+	ToGetClientProfileClientConfigurationOidcSupportArrayOutputWithContext(context.Context) GetClientProfileClientConfigurationOidcSupportArrayOutput
+}
+
+type GetClientProfileClientConfigurationOidcSupportArray []GetClientProfileClientConfigurationOidcSupportInput
+
+func (GetClientProfileClientConfigurationOidcSupportArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientProfileClientConfigurationOidcSupport)(nil)).Elem()
+}
+
+func (i GetClientProfileClientConfigurationOidcSupportArray) ToGetClientProfileClientConfigurationOidcSupportArrayOutput() GetClientProfileClientConfigurationOidcSupportArrayOutput {
+	return i.ToGetClientProfileClientConfigurationOidcSupportArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientProfileClientConfigurationOidcSupportArray) ToGetClientProfileClientConfigurationOidcSupportArrayOutputWithContext(ctx context.Context) GetClientProfileClientConfigurationOidcSupportArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientProfileClientConfigurationOidcSupportArrayOutput)
+}
+
+type GetClientProfileClientConfigurationOidcSupportOutput struct{ *pulumi.OutputState }
+
+func (GetClientProfileClientConfigurationOidcSupportOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientProfileClientConfigurationOidcSupport)(nil)).Elem()
+}
+
+func (o GetClientProfileClientConfigurationOidcSupportOutput) ToGetClientProfileClientConfigurationOidcSupportOutput() GetClientProfileClientConfigurationOidcSupportOutput {
+	return o
+}
+
+func (o GetClientProfileClientConfigurationOidcSupportOutput) ToGetClientProfileClientConfigurationOidcSupportOutputWithContext(ctx context.Context) GetClientProfileClientConfigurationOidcSupportOutput {
+	return o
+}
+
+// The default OIDC support settings for matched clients.
+func (o GetClientProfileClientConfigurationOidcSupportOutput) DefaultValues() GetClientProfileClientConfigurationOidcSupportDefaultValueArrayOutput {
+	return o.ApplyT(func(v GetClientProfileClientConfigurationOidcSupport) []GetClientProfileClientConfigurationOidcSupportDefaultValue {
+		return v.DefaultValues
+	}).(GetClientProfileClientConfigurationOidcSupportDefaultValueArrayOutput)
+}
+
+type GetClientProfileClientConfigurationOidcSupportArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientProfileClientConfigurationOidcSupportArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientProfileClientConfigurationOidcSupport)(nil)).Elem()
+}
+
+func (o GetClientProfileClientConfigurationOidcSupportArrayOutput) ToGetClientProfileClientConfigurationOidcSupportArrayOutput() GetClientProfileClientConfigurationOidcSupportArrayOutput {
+	return o
+}
+
+func (o GetClientProfileClientConfigurationOidcSupportArrayOutput) ToGetClientProfileClientConfigurationOidcSupportArrayOutputWithContext(ctx context.Context) GetClientProfileClientConfigurationOidcSupportArrayOutput {
+	return o
+}
+
+func (o GetClientProfileClientConfigurationOidcSupportArrayOutput) Index(i pulumi.IntInput) GetClientProfileClientConfigurationOidcSupportOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientProfileClientConfigurationOidcSupport {
+		return vs[0].([]GetClientProfileClientConfigurationOidcSupport)[vs[1].(int)]
+	}).(GetClientProfileClientConfigurationOidcSupportOutput)
+}
+
+type GetClientProfileClientConfigurationOidcSupportDefaultValue struct {
+	// Indicates whether matched clients may request all optional OIDC scopes. Conflicts with `allowedScopes`.
+	AllowAllScopes bool `pulumi:"allowAllScopes"`
+	// Optional OIDC scopes matched clients may request. Possible values: [profile email address phone]. The `openid` scope is implied and must not be listed. Conflicts with `allowAllScopes`.
+	AllowedScopes []string `pulumi:"allowedScopes"`
+	// Indicates whether matched clients may use OIDC. When `false`, `allowedScopes` and `allowAllScopes` cannot be set.
+	IsAllowed bool `pulumi:"isAllowed"`
+}
+
+// GetClientProfileClientConfigurationOidcSupportDefaultValueInput is an input type that accepts GetClientProfileClientConfigurationOidcSupportDefaultValueArgs and GetClientProfileClientConfigurationOidcSupportDefaultValueOutput values.
+// You can construct a concrete instance of `GetClientProfileClientConfigurationOidcSupportDefaultValueInput` via:
+//
+//	GetClientProfileClientConfigurationOidcSupportDefaultValueArgs{...}
+type GetClientProfileClientConfigurationOidcSupportDefaultValueInput interface {
+	pulumi.Input
+
+	ToGetClientProfileClientConfigurationOidcSupportDefaultValueOutput() GetClientProfileClientConfigurationOidcSupportDefaultValueOutput
+	ToGetClientProfileClientConfigurationOidcSupportDefaultValueOutputWithContext(context.Context) GetClientProfileClientConfigurationOidcSupportDefaultValueOutput
+}
+
+type GetClientProfileClientConfigurationOidcSupportDefaultValueArgs struct {
+	// Indicates whether matched clients may request all optional OIDC scopes. Conflicts with `allowedScopes`.
+	AllowAllScopes pulumi.BoolInput `pulumi:"allowAllScopes"`
+	// Optional OIDC scopes matched clients may request. Possible values: [profile email address phone]. The `openid` scope is implied and must not be listed. Conflicts with `allowAllScopes`.
+	AllowedScopes pulumi.StringArrayInput `pulumi:"allowedScopes"`
+	// Indicates whether matched clients may use OIDC. When `false`, `allowedScopes` and `allowAllScopes` cannot be set.
+	IsAllowed pulumi.BoolInput `pulumi:"isAllowed"`
+}
+
+func (GetClientProfileClientConfigurationOidcSupportDefaultValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientProfileClientConfigurationOidcSupportDefaultValue)(nil)).Elem()
+}
+
+func (i GetClientProfileClientConfigurationOidcSupportDefaultValueArgs) ToGetClientProfileClientConfigurationOidcSupportDefaultValueOutput() GetClientProfileClientConfigurationOidcSupportDefaultValueOutput {
+	return i.ToGetClientProfileClientConfigurationOidcSupportDefaultValueOutputWithContext(context.Background())
+}
+
+func (i GetClientProfileClientConfigurationOidcSupportDefaultValueArgs) ToGetClientProfileClientConfigurationOidcSupportDefaultValueOutputWithContext(ctx context.Context) GetClientProfileClientConfigurationOidcSupportDefaultValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientProfileClientConfigurationOidcSupportDefaultValueOutput)
+}
+
+// GetClientProfileClientConfigurationOidcSupportDefaultValueArrayInput is an input type that accepts GetClientProfileClientConfigurationOidcSupportDefaultValueArray and GetClientProfileClientConfigurationOidcSupportDefaultValueArrayOutput values.
+// You can construct a concrete instance of `GetClientProfileClientConfigurationOidcSupportDefaultValueArrayInput` via:
+//
+//	GetClientProfileClientConfigurationOidcSupportDefaultValueArray{ GetClientProfileClientConfigurationOidcSupportDefaultValueArgs{...} }
+type GetClientProfileClientConfigurationOidcSupportDefaultValueArrayInput interface {
+	pulumi.Input
+
+	ToGetClientProfileClientConfigurationOidcSupportDefaultValueArrayOutput() GetClientProfileClientConfigurationOidcSupportDefaultValueArrayOutput
+	ToGetClientProfileClientConfigurationOidcSupportDefaultValueArrayOutputWithContext(context.Context) GetClientProfileClientConfigurationOidcSupportDefaultValueArrayOutput
+}
+
+type GetClientProfileClientConfigurationOidcSupportDefaultValueArray []GetClientProfileClientConfigurationOidcSupportDefaultValueInput
+
+func (GetClientProfileClientConfigurationOidcSupportDefaultValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientProfileClientConfigurationOidcSupportDefaultValue)(nil)).Elem()
+}
+
+func (i GetClientProfileClientConfigurationOidcSupportDefaultValueArray) ToGetClientProfileClientConfigurationOidcSupportDefaultValueArrayOutput() GetClientProfileClientConfigurationOidcSupportDefaultValueArrayOutput {
+	return i.ToGetClientProfileClientConfigurationOidcSupportDefaultValueArrayOutputWithContext(context.Background())
+}
+
+func (i GetClientProfileClientConfigurationOidcSupportDefaultValueArray) ToGetClientProfileClientConfigurationOidcSupportDefaultValueArrayOutputWithContext(ctx context.Context) GetClientProfileClientConfigurationOidcSupportDefaultValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClientProfileClientConfigurationOidcSupportDefaultValueArrayOutput)
+}
+
+type GetClientProfileClientConfigurationOidcSupportDefaultValueOutput struct{ *pulumi.OutputState }
+
+func (GetClientProfileClientConfigurationOidcSupportDefaultValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClientProfileClientConfigurationOidcSupportDefaultValue)(nil)).Elem()
+}
+
+func (o GetClientProfileClientConfigurationOidcSupportDefaultValueOutput) ToGetClientProfileClientConfigurationOidcSupportDefaultValueOutput() GetClientProfileClientConfigurationOidcSupportDefaultValueOutput {
+	return o
+}
+
+func (o GetClientProfileClientConfigurationOidcSupportDefaultValueOutput) ToGetClientProfileClientConfigurationOidcSupportDefaultValueOutputWithContext(ctx context.Context) GetClientProfileClientConfigurationOidcSupportDefaultValueOutput {
+	return o
+}
+
+// Indicates whether matched clients may request all optional OIDC scopes. Conflicts with `allowedScopes`.
+func (o GetClientProfileClientConfigurationOidcSupportDefaultValueOutput) AllowAllScopes() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientProfileClientConfigurationOidcSupportDefaultValue) bool { return v.AllowAllScopes }).(pulumi.BoolOutput)
+}
+
+// Optional OIDC scopes matched clients may request. Possible values: [profile email address phone]. The `openid` scope is implied and must not be listed. Conflicts with `allowAllScopes`.
+func (o GetClientProfileClientConfigurationOidcSupportDefaultValueOutput) AllowedScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClientProfileClientConfigurationOidcSupportDefaultValue) []string { return v.AllowedScopes }).(pulumi.StringArrayOutput)
+}
+
+// Indicates whether matched clients may use OIDC. When `false`, `allowedScopes` and `allowAllScopes` cannot be set.
+func (o GetClientProfileClientConfigurationOidcSupportDefaultValueOutput) IsAllowed() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClientProfileClientConfigurationOidcSupportDefaultValue) bool { return v.IsAllowed }).(pulumi.BoolOutput)
+}
+
+type GetClientProfileClientConfigurationOidcSupportDefaultValueArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClientProfileClientConfigurationOidcSupportDefaultValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClientProfileClientConfigurationOidcSupportDefaultValue)(nil)).Elem()
+}
+
+func (o GetClientProfileClientConfigurationOidcSupportDefaultValueArrayOutput) ToGetClientProfileClientConfigurationOidcSupportDefaultValueArrayOutput() GetClientProfileClientConfigurationOidcSupportDefaultValueArrayOutput {
+	return o
+}
+
+func (o GetClientProfileClientConfigurationOidcSupportDefaultValueArrayOutput) ToGetClientProfileClientConfigurationOidcSupportDefaultValueArrayOutputWithContext(ctx context.Context) GetClientProfileClientConfigurationOidcSupportDefaultValueArrayOutput {
+	return o
+}
+
+func (o GetClientProfileClientConfigurationOidcSupportDefaultValueArrayOutput) Index(i pulumi.IntInput) GetClientProfileClientConfigurationOidcSupportDefaultValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientProfileClientConfigurationOidcSupportDefaultValue {
+		return vs[0].([]GetClientProfileClientConfigurationOidcSupportDefaultValue)[vs[1].(int)]
+	}).(GetClientProfileClientConfigurationOidcSupportDefaultValueOutput)
 }
 
 type GetClientProfileClientConfigurationOrganizationDiscoveryMethod struct {
@@ -78166,933 +79063,6 @@ func (o GetClientSignedRequestObjectCredentialArrayOutput) Index(i pulumi.IntInp
 	}).(GetClientSignedRequestObjectCredentialOutput)
 }
 
-type GetClientTokenExchange struct {
-	// List of allowed profile types for token exchange. Supported values include: custom_authentication, on_behalf_of_token_exchange.
-	AllowAnyProfileOfTypes []string `pulumi:"allowAnyProfileOfTypes"`
-}
-
-// GetClientTokenExchangeInput is an input type that accepts GetClientTokenExchangeArgs and GetClientTokenExchangeOutput values.
-// You can construct a concrete instance of `GetClientTokenExchangeInput` via:
-//
-//	GetClientTokenExchangeArgs{...}
-type GetClientTokenExchangeInput interface {
-	pulumi.Input
-
-	ToGetClientTokenExchangeOutput() GetClientTokenExchangeOutput
-	ToGetClientTokenExchangeOutputWithContext(context.Context) GetClientTokenExchangeOutput
-}
-
-type GetClientTokenExchangeArgs struct {
-	// List of allowed profile types for token exchange. Supported values include: custom_authentication, on_behalf_of_token_exchange.
-	AllowAnyProfileOfTypes pulumi.StringArrayInput `pulumi:"allowAnyProfileOfTypes"`
-}
-
-func (GetClientTokenExchangeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClientTokenExchange)(nil)).Elem()
-}
-
-func (i GetClientTokenExchangeArgs) ToGetClientTokenExchangeOutput() GetClientTokenExchangeOutput {
-	return i.ToGetClientTokenExchangeOutputWithContext(context.Background())
-}
-
-func (i GetClientTokenExchangeArgs) ToGetClientTokenExchangeOutputWithContext(ctx context.Context) GetClientTokenExchangeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClientTokenExchangeOutput)
-}
-
-// GetClientTokenExchangeArrayInput is an input type that accepts GetClientTokenExchangeArray and GetClientTokenExchangeArrayOutput values.
-// You can construct a concrete instance of `GetClientTokenExchangeArrayInput` via:
-//
-//	GetClientTokenExchangeArray{ GetClientTokenExchangeArgs{...} }
-type GetClientTokenExchangeArrayInput interface {
-	pulumi.Input
-
-	ToGetClientTokenExchangeArrayOutput() GetClientTokenExchangeArrayOutput
-	ToGetClientTokenExchangeArrayOutputWithContext(context.Context) GetClientTokenExchangeArrayOutput
-}
-
-type GetClientTokenExchangeArray []GetClientTokenExchangeInput
-
-func (GetClientTokenExchangeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClientTokenExchange)(nil)).Elem()
-}
-
-func (i GetClientTokenExchangeArray) ToGetClientTokenExchangeArrayOutput() GetClientTokenExchangeArrayOutput {
-	return i.ToGetClientTokenExchangeArrayOutputWithContext(context.Background())
-}
-
-func (i GetClientTokenExchangeArray) ToGetClientTokenExchangeArrayOutputWithContext(ctx context.Context) GetClientTokenExchangeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClientTokenExchangeArrayOutput)
-}
-
-type GetClientTokenExchangeOutput struct{ *pulumi.OutputState }
-
-func (GetClientTokenExchangeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClientTokenExchange)(nil)).Elem()
-}
-
-func (o GetClientTokenExchangeOutput) ToGetClientTokenExchangeOutput() GetClientTokenExchangeOutput {
-	return o
-}
-
-func (o GetClientTokenExchangeOutput) ToGetClientTokenExchangeOutputWithContext(ctx context.Context) GetClientTokenExchangeOutput {
-	return o
-}
-
-// List of allowed profile types for token exchange. Supported values include: custom_authentication, on_behalf_of_token_exchange.
-func (o GetClientTokenExchangeOutput) AllowAnyProfileOfTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetClientTokenExchange) []string { return v.AllowAnyProfileOfTypes }).(pulumi.StringArrayOutput)
-}
-
-type GetClientTokenExchangeArrayOutput struct{ *pulumi.OutputState }
-
-func (GetClientTokenExchangeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClientTokenExchange)(nil)).Elem()
-}
-
-func (o GetClientTokenExchangeArrayOutput) ToGetClientTokenExchangeArrayOutput() GetClientTokenExchangeArrayOutput {
-	return o
-}
-
-func (o GetClientTokenExchangeArrayOutput) ToGetClientTokenExchangeArrayOutputWithContext(ctx context.Context) GetClientTokenExchangeArrayOutput {
-	return o
-}
-
-func (o GetClientTokenExchangeArrayOutput) Index(i pulumi.IntInput) GetClientTokenExchangeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientTokenExchange {
-		return vs[0].([]GetClientTokenExchange)[vs[1].(int)]
-	}).(GetClientTokenExchangeOutput)
-}
-
-type GetClientTokenQuota struct {
-	// The token quota configuration for client credentials.
-	ClientCredentials []GetClientTokenQuotaClientCredential `pulumi:"clientCredentials"`
-}
-
-// GetClientTokenQuotaInput is an input type that accepts GetClientTokenQuotaArgs and GetClientTokenQuotaOutput values.
-// You can construct a concrete instance of `GetClientTokenQuotaInput` via:
-//
-//	GetClientTokenQuotaArgs{...}
-type GetClientTokenQuotaInput interface {
-	pulumi.Input
-
-	ToGetClientTokenQuotaOutput() GetClientTokenQuotaOutput
-	ToGetClientTokenQuotaOutputWithContext(context.Context) GetClientTokenQuotaOutput
-}
-
-type GetClientTokenQuotaArgs struct {
-	// The token quota configuration for client credentials.
-	ClientCredentials GetClientTokenQuotaClientCredentialArrayInput `pulumi:"clientCredentials"`
-}
-
-func (GetClientTokenQuotaArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClientTokenQuota)(nil)).Elem()
-}
-
-func (i GetClientTokenQuotaArgs) ToGetClientTokenQuotaOutput() GetClientTokenQuotaOutput {
-	return i.ToGetClientTokenQuotaOutputWithContext(context.Background())
-}
-
-func (i GetClientTokenQuotaArgs) ToGetClientTokenQuotaOutputWithContext(ctx context.Context) GetClientTokenQuotaOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClientTokenQuotaOutput)
-}
-
-// GetClientTokenQuotaArrayInput is an input type that accepts GetClientTokenQuotaArray and GetClientTokenQuotaArrayOutput values.
-// You can construct a concrete instance of `GetClientTokenQuotaArrayInput` via:
-//
-//	GetClientTokenQuotaArray{ GetClientTokenQuotaArgs{...} }
-type GetClientTokenQuotaArrayInput interface {
-	pulumi.Input
-
-	ToGetClientTokenQuotaArrayOutput() GetClientTokenQuotaArrayOutput
-	ToGetClientTokenQuotaArrayOutputWithContext(context.Context) GetClientTokenQuotaArrayOutput
-}
-
-type GetClientTokenQuotaArray []GetClientTokenQuotaInput
-
-func (GetClientTokenQuotaArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClientTokenQuota)(nil)).Elem()
-}
-
-func (i GetClientTokenQuotaArray) ToGetClientTokenQuotaArrayOutput() GetClientTokenQuotaArrayOutput {
-	return i.ToGetClientTokenQuotaArrayOutputWithContext(context.Background())
-}
-
-func (i GetClientTokenQuotaArray) ToGetClientTokenQuotaArrayOutputWithContext(ctx context.Context) GetClientTokenQuotaArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClientTokenQuotaArrayOutput)
-}
-
-type GetClientTokenQuotaOutput struct{ *pulumi.OutputState }
-
-func (GetClientTokenQuotaOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClientTokenQuota)(nil)).Elem()
-}
-
-func (o GetClientTokenQuotaOutput) ToGetClientTokenQuotaOutput() GetClientTokenQuotaOutput {
-	return o
-}
-
-func (o GetClientTokenQuotaOutput) ToGetClientTokenQuotaOutputWithContext(ctx context.Context) GetClientTokenQuotaOutput {
-	return o
-}
-
-// The token quota configuration for client credentials.
-func (o GetClientTokenQuotaOutput) ClientCredentials() GetClientTokenQuotaClientCredentialArrayOutput {
-	return o.ApplyT(func(v GetClientTokenQuota) []GetClientTokenQuotaClientCredential { return v.ClientCredentials }).(GetClientTokenQuotaClientCredentialArrayOutput)
-}
-
-type GetClientTokenQuotaArrayOutput struct{ *pulumi.OutputState }
-
-func (GetClientTokenQuotaArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClientTokenQuota)(nil)).Elem()
-}
-
-func (o GetClientTokenQuotaArrayOutput) ToGetClientTokenQuotaArrayOutput() GetClientTokenQuotaArrayOutput {
-	return o
-}
-
-func (o GetClientTokenQuotaArrayOutput) ToGetClientTokenQuotaArrayOutputWithContext(ctx context.Context) GetClientTokenQuotaArrayOutput {
-	return o
-}
-
-func (o GetClientTokenQuotaArrayOutput) Index(i pulumi.IntInput) GetClientTokenQuotaOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientTokenQuota {
-		return vs[0].([]GetClientTokenQuota)[vs[1].(int)]
-	}).(GetClientTokenQuotaOutput)
-}
-
-type GetClientTokenQuotaClientCredential struct {
-	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
-	Enforce bool `pulumi:"enforce"`
-	// Maximum number of issued tokens per day
-	PerDay int `pulumi:"perDay"`
-	// Maximum number of issued tokens per hour
-	PerHour int `pulumi:"perHour"`
-}
-
-// GetClientTokenQuotaClientCredentialInput is an input type that accepts GetClientTokenQuotaClientCredentialArgs and GetClientTokenQuotaClientCredentialOutput values.
-// You can construct a concrete instance of `GetClientTokenQuotaClientCredentialInput` via:
-//
-//	GetClientTokenQuotaClientCredentialArgs{...}
-type GetClientTokenQuotaClientCredentialInput interface {
-	pulumi.Input
-
-	ToGetClientTokenQuotaClientCredentialOutput() GetClientTokenQuotaClientCredentialOutput
-	ToGetClientTokenQuotaClientCredentialOutputWithContext(context.Context) GetClientTokenQuotaClientCredentialOutput
-}
-
-type GetClientTokenQuotaClientCredentialArgs struct {
-	// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
-	Enforce pulumi.BoolInput `pulumi:"enforce"`
-	// Maximum number of issued tokens per day
-	PerDay pulumi.IntInput `pulumi:"perDay"`
-	// Maximum number of issued tokens per hour
-	PerHour pulumi.IntInput `pulumi:"perHour"`
-}
-
-func (GetClientTokenQuotaClientCredentialArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClientTokenQuotaClientCredential)(nil)).Elem()
-}
-
-func (i GetClientTokenQuotaClientCredentialArgs) ToGetClientTokenQuotaClientCredentialOutput() GetClientTokenQuotaClientCredentialOutput {
-	return i.ToGetClientTokenQuotaClientCredentialOutputWithContext(context.Background())
-}
-
-func (i GetClientTokenQuotaClientCredentialArgs) ToGetClientTokenQuotaClientCredentialOutputWithContext(ctx context.Context) GetClientTokenQuotaClientCredentialOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClientTokenQuotaClientCredentialOutput)
-}
-
-// GetClientTokenQuotaClientCredentialArrayInput is an input type that accepts GetClientTokenQuotaClientCredentialArray and GetClientTokenQuotaClientCredentialArrayOutput values.
-// You can construct a concrete instance of `GetClientTokenQuotaClientCredentialArrayInput` via:
-//
-//	GetClientTokenQuotaClientCredentialArray{ GetClientTokenQuotaClientCredentialArgs{...} }
-type GetClientTokenQuotaClientCredentialArrayInput interface {
-	pulumi.Input
-
-	ToGetClientTokenQuotaClientCredentialArrayOutput() GetClientTokenQuotaClientCredentialArrayOutput
-	ToGetClientTokenQuotaClientCredentialArrayOutputWithContext(context.Context) GetClientTokenQuotaClientCredentialArrayOutput
-}
-
-type GetClientTokenQuotaClientCredentialArray []GetClientTokenQuotaClientCredentialInput
-
-func (GetClientTokenQuotaClientCredentialArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClientTokenQuotaClientCredential)(nil)).Elem()
-}
-
-func (i GetClientTokenQuotaClientCredentialArray) ToGetClientTokenQuotaClientCredentialArrayOutput() GetClientTokenQuotaClientCredentialArrayOutput {
-	return i.ToGetClientTokenQuotaClientCredentialArrayOutputWithContext(context.Background())
-}
-
-func (i GetClientTokenQuotaClientCredentialArray) ToGetClientTokenQuotaClientCredentialArrayOutputWithContext(ctx context.Context) GetClientTokenQuotaClientCredentialArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClientTokenQuotaClientCredentialArrayOutput)
-}
-
-type GetClientTokenQuotaClientCredentialOutput struct{ *pulumi.OutputState }
-
-func (GetClientTokenQuotaClientCredentialOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClientTokenQuotaClientCredential)(nil)).Elem()
-}
-
-func (o GetClientTokenQuotaClientCredentialOutput) ToGetClientTokenQuotaClientCredentialOutput() GetClientTokenQuotaClientCredentialOutput {
-	return o
-}
-
-func (o GetClientTokenQuotaClientCredentialOutput) ToGetClientTokenQuotaClientCredentialOutputWithContext(ctx context.Context) GetClientTokenQuotaClientCredentialOutput {
-	return o
-}
-
-// If enabled, the quota will be enforced and requests in excess of the quota will fail. If disabled, the quota will not be enforced, but notifications for requests exceeding the quota will be available in logs.
-func (o GetClientTokenQuotaClientCredentialOutput) Enforce() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetClientTokenQuotaClientCredential) bool { return v.Enforce }).(pulumi.BoolOutput)
-}
-
-// Maximum number of issued tokens per day
-func (o GetClientTokenQuotaClientCredentialOutput) PerDay() pulumi.IntOutput {
-	return o.ApplyT(func(v GetClientTokenQuotaClientCredential) int { return v.PerDay }).(pulumi.IntOutput)
-}
-
-// Maximum number of issued tokens per hour
-func (o GetClientTokenQuotaClientCredentialOutput) PerHour() pulumi.IntOutput {
-	return o.ApplyT(func(v GetClientTokenQuotaClientCredential) int { return v.PerHour }).(pulumi.IntOutput)
-}
-
-type GetClientTokenQuotaClientCredentialArrayOutput struct{ *pulumi.OutputState }
-
-func (GetClientTokenQuotaClientCredentialArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClientTokenQuotaClientCredential)(nil)).Elem()
-}
-
-func (o GetClientTokenQuotaClientCredentialArrayOutput) ToGetClientTokenQuotaClientCredentialArrayOutput() GetClientTokenQuotaClientCredentialArrayOutput {
-	return o
-}
-
-func (o GetClientTokenQuotaClientCredentialArrayOutput) ToGetClientTokenQuotaClientCredentialArrayOutputWithContext(ctx context.Context) GetClientTokenQuotaClientCredentialArrayOutput {
-	return o
-}
-
-func (o GetClientTokenQuotaClientCredentialArrayOutput) Index(i pulumi.IntInput) GetClientTokenQuotaClientCredentialOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientTokenQuotaClientCredential {
-		return vs[0].([]GetClientTokenQuotaClientCredential)[vs[1].(int)]
-	}).(GetClientTokenQuotaClientCredentialOutput)
-}
-
-type GetClientsClient struct {
-	// The ID of the agent (`Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.<name>.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
-	AgentId string `pulumi:"agentId"`
-	// List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
-	AllowedClients []string `pulumi:"allowedClients"`
-	// URLs that Auth0 may redirect to after logout.
-	AllowedLogoutUrls []string `pulumi:"allowedLogoutUrls"`
-	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
-	AllowedOrigins []string `pulumi:"allowedOrigins"`
-	// Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
-	AnonymousSessions []GetClientsClientAnonymousSession `pulumi:"anonymousSessions"`
-	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
-	AppType string `pulumi:"appType"`
-	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push`, `email`, and `my-account`.The order is significant as this is the order in which notification channels will be evaluated.
-	AsyncApprovalNotificationChannels []string `pulumi:"asyncApprovalNotificationChannels"`
-	// Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
-	B2bIntegrationConfigurations []GetClientsClientB2bIntegrationConfiguration `pulumi:"b2bIntegrationConfigurations"`
-	// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
-	Callbacks []string `pulumi:"callbacks"`
-	// The ID of the client. If not provided, `name` must be set.
-	ClientId *string `pulumi:"clientId"`
-	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
-	ClientMetadata map[string]string `pulumi:"clientMetadata"`
-	// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. Set `hideClientSecret` to `true` to avoid persisting this value into Terraform state.
-	ClientSecret string `pulumi:"clientSecret"`
-	// Description of the purpose of the client.
-	Description string `pulumi:"description"`
-	// Express Configuration settings for the client. Used with OIN Express Configuration.
-	ExpressConfigurations []GetClientsClientExpressConfiguration `pulumi:"expressConfigurations"`
-	// The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
-	ExternalClientId string `pulumi:"externalClientId"`
-	// Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
-	ExternalMetadataCreatedBy string `pulumi:"externalMetadataCreatedBy"`
-	// Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only). Only present for CIMD-registered clients.
-	ExternalMetadataStatus string `pulumi:"externalMetadataStatus"`
-	// Type of external metadata. Value is `cimd` for CIMD-registered clients.
-	ExternalMetadataType string `pulumi:"externalMetadataType"`
-	// Federated Credential Management (FedCM) configuration. (EA only)
-	FedcmLogins []GetClientsClientFedcmLogin `pulumi:"fedcmLogins"`
-	// Types of grants that this client is authorized to use.
-	GrantTypes []string `pulumi:"grantTypes"`
-	// Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
-	IdentityAssertionAuthorizationGrants []GetClientsClientIdentityAssertionAuthorizationGrant `pulumi:"identityAssertionAuthorizationGrants"`
-	// Indicates whether this client is a first-party client.
-	IsFirstParty bool `pulumi:"isFirstParty"`
-	// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `ClientCredentials` resource.
-	IsTokenEndpointIpHeaderTrusted bool `pulumi:"isTokenEndpointIpHeaderTrusted"`
-	// URL for the JSON Web Key Set (JWKS) containing the public keys used for `privateKeyJwt` authentication. Only present for CIMD clients using `privateKeyJwt` authentication.
-	JwksUri string `pulumi:"jwksUri"`
-	// Configuration for self-service organization features, controlling how organizations are created and managed for this client.
-	MyOrganizationConfigurations []GetClientsClientMyOrganizationConfiguration `pulumi:"myOrganizationConfigurations"`
-	// The name of the client. If not provided, `clientId` must be set.
-	Name *string `pulumi:"name"`
-	// Configure OIDC logout for the Client
-	OidcLogouts []GetClientsClientOidcLogout `pulumi:"oidcLogouts"`
-	// Methods for discovering organizations during the pre_login_prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
-	OrganizationDiscoveryMethods []string `pulumi:"organizationDiscoveryMethods"`
-	// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allowAlways` or `openRedirectProtection`.
-	RedirectionPolicy string `pulumi:"redirectionPolicy"`
-	// The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
-	ResourceServerIdentifier string                            `pulumi:"resourceServerIdentifier"`
-	SessionTransfers         []GetClientsClientSessionTransfer `pulumi:"sessionTransfers"`
-	// Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
-	SkipNonVerifiableCallbackUriConfirmationPrompt string `pulumi:"skipNonVerifiableCallbackUriConfirmationPrompt"`
-	// Security mode for third-party clients. Allowed values: `strict` or `permissive`.
-	ThirdPartySecurityMode string `pulumi:"thirdPartySecurityMode"`
-	// Allows configuration for token exchange
-	TokenExchanges []GetClientsClientTokenExchange `pulumi:"tokenExchanges"`
-	// The token quota configuration.
-	TokenQuotas []GetClientsClientTokenQuota `pulumi:"tokenQuotas"`
-	// URLs that represent valid web origins for use with web message response mode.
-	WebOrigins []string `pulumi:"webOrigins"`
-}
-
-// GetClientsClientInput is an input type that accepts GetClientsClientArgs and GetClientsClientOutput values.
-// You can construct a concrete instance of `GetClientsClientInput` via:
-//
-//	GetClientsClientArgs{...}
-type GetClientsClientInput interface {
-	pulumi.Input
-
-	ToGetClientsClientOutput() GetClientsClientOutput
-	ToGetClientsClientOutputWithContext(context.Context) GetClientsClientOutput
-}
-
-type GetClientsClientArgs struct {
-	// The ID of the agent (`Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.<name>.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
-	AgentId pulumi.StringInput `pulumi:"agentId"`
-	// List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
-	AllowedClients pulumi.StringArrayInput `pulumi:"allowedClients"`
-	// URLs that Auth0 may redirect to after logout.
-	AllowedLogoutUrls pulumi.StringArrayInput `pulumi:"allowedLogoutUrls"`
-	// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
-	AllowedOrigins pulumi.StringArrayInput `pulumi:"allowedOrigins"`
-	// Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
-	AnonymousSessions GetClientsClientAnonymousSessionArrayInput `pulumi:"anonymousSessions"`
-	// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
-	AppType pulumi.StringInput `pulumi:"appType"`
-	// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push`, `email`, and `my-account`.The order is significant as this is the order in which notification channels will be evaluated.
-	AsyncApprovalNotificationChannels pulumi.StringArrayInput `pulumi:"asyncApprovalNotificationChannels"`
-	// Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
-	B2bIntegrationConfigurations GetClientsClientB2bIntegrationConfigurationArrayInput `pulumi:"b2bIntegrationConfigurations"`
-	// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
-	Callbacks pulumi.StringArrayInput `pulumi:"callbacks"`
-	// The ID of the client. If not provided, `name` must be set.
-	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
-	// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
-	ClientMetadata pulumi.StringMapInput `pulumi:"clientMetadata"`
-	// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. Set `hideClientSecret` to `true` to avoid persisting this value into Terraform state.
-	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
-	// Description of the purpose of the client.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Express Configuration settings for the client. Used with OIN Express Configuration.
-	ExpressConfigurations GetClientsClientExpressConfigurationArrayInput `pulumi:"expressConfigurations"`
-	// The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
-	ExternalClientId pulumi.StringInput `pulumi:"externalClientId"`
-	// Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
-	ExternalMetadataCreatedBy pulumi.StringInput `pulumi:"externalMetadataCreatedBy"`
-	// Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only). Only present for CIMD-registered clients.
-	ExternalMetadataStatus pulumi.StringInput `pulumi:"externalMetadataStatus"`
-	// Type of external metadata. Value is `cimd` for CIMD-registered clients.
-	ExternalMetadataType pulumi.StringInput `pulumi:"externalMetadataType"`
-	// Federated Credential Management (FedCM) configuration. (EA only)
-	FedcmLogins GetClientsClientFedcmLoginArrayInput `pulumi:"fedcmLogins"`
-	// Types of grants that this client is authorized to use.
-	GrantTypes pulumi.StringArrayInput `pulumi:"grantTypes"`
-	// Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
-	IdentityAssertionAuthorizationGrants GetClientsClientIdentityAssertionAuthorizationGrantArrayInput `pulumi:"identityAssertionAuthorizationGrants"`
-	// Indicates whether this client is a first-party client.
-	IsFirstParty pulumi.BoolInput `pulumi:"isFirstParty"`
-	// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `ClientCredentials` resource.
-	IsTokenEndpointIpHeaderTrusted pulumi.BoolInput `pulumi:"isTokenEndpointIpHeaderTrusted"`
-	// URL for the JSON Web Key Set (JWKS) containing the public keys used for `privateKeyJwt` authentication. Only present for CIMD clients using `privateKeyJwt` authentication.
-	JwksUri pulumi.StringInput `pulumi:"jwksUri"`
-	// Configuration for self-service organization features, controlling how organizations are created and managed for this client.
-	MyOrganizationConfigurations GetClientsClientMyOrganizationConfigurationArrayInput `pulumi:"myOrganizationConfigurations"`
-	// The name of the client. If not provided, `clientId` must be set.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Configure OIDC logout for the Client
-	OidcLogouts GetClientsClientOidcLogoutArrayInput `pulumi:"oidcLogouts"`
-	// Methods for discovering organizations during the pre_login_prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
-	OrganizationDiscoveryMethods pulumi.StringArrayInput `pulumi:"organizationDiscoveryMethods"`
-	// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allowAlways` or `openRedirectProtection`.
-	RedirectionPolicy pulumi.StringInput `pulumi:"redirectionPolicy"`
-	// The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
-	ResourceServerIdentifier pulumi.StringInput                        `pulumi:"resourceServerIdentifier"`
-	SessionTransfers         GetClientsClientSessionTransferArrayInput `pulumi:"sessionTransfers"`
-	// Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
-	SkipNonVerifiableCallbackUriConfirmationPrompt pulumi.StringInput `pulumi:"skipNonVerifiableCallbackUriConfirmationPrompt"`
-	// Security mode for third-party clients. Allowed values: `strict` or `permissive`.
-	ThirdPartySecurityMode pulumi.StringInput `pulumi:"thirdPartySecurityMode"`
-	// Allows configuration for token exchange
-	TokenExchanges GetClientsClientTokenExchangeArrayInput `pulumi:"tokenExchanges"`
-	// The token quota configuration.
-	TokenQuotas GetClientsClientTokenQuotaArrayInput `pulumi:"tokenQuotas"`
-	// URLs that represent valid web origins for use with web message response mode.
-	WebOrigins pulumi.StringArrayInput `pulumi:"webOrigins"`
-}
-
-func (GetClientsClientArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClientsClient)(nil)).Elem()
-}
-
-func (i GetClientsClientArgs) ToGetClientsClientOutput() GetClientsClientOutput {
-	return i.ToGetClientsClientOutputWithContext(context.Background())
-}
-
-func (i GetClientsClientArgs) ToGetClientsClientOutputWithContext(ctx context.Context) GetClientsClientOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientOutput)
-}
-
-// GetClientsClientArrayInput is an input type that accepts GetClientsClientArray and GetClientsClientArrayOutput values.
-// You can construct a concrete instance of `GetClientsClientArrayInput` via:
-//
-//	GetClientsClientArray{ GetClientsClientArgs{...} }
-type GetClientsClientArrayInput interface {
-	pulumi.Input
-
-	ToGetClientsClientArrayOutput() GetClientsClientArrayOutput
-	ToGetClientsClientArrayOutputWithContext(context.Context) GetClientsClientArrayOutput
-}
-
-type GetClientsClientArray []GetClientsClientInput
-
-func (GetClientsClientArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClientsClient)(nil)).Elem()
-}
-
-func (i GetClientsClientArray) ToGetClientsClientArrayOutput() GetClientsClientArrayOutput {
-	return i.ToGetClientsClientArrayOutputWithContext(context.Background())
-}
-
-func (i GetClientsClientArray) ToGetClientsClientArrayOutputWithContext(ctx context.Context) GetClientsClientArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientArrayOutput)
-}
-
-type GetClientsClientOutput struct{ *pulumi.OutputState }
-
-func (GetClientsClientOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClientsClient)(nil)).Elem()
-}
-
-func (o GetClientsClientOutput) ToGetClientsClientOutput() GetClientsClientOutput {
-	return o
-}
-
-func (o GetClientsClientOutput) ToGetClientsClientOutputWithContext(ctx context.Context) GetClientsClientOutput {
-	return o
-}
-
-// The ID of the agent (`Agent`) this client is linked to (EA Only). Reference it as `auth0_agent.<name>.id` so that the client is unlinked before the agent is deleted. Removing the attribute unlinks the client, including a link made outside Terraform. Requires the `update:clients` and `update:agents` scopes.
-func (o GetClientsClientOutput) AgentId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClientsClient) string { return v.AgentId }).(pulumi.StringOutput)
-}
-
-// List of applications ID's that will be allowed to make delegation request. By default, all applications will be allowed.
-func (o GetClientsClientOutput) AllowedClients() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetClientsClient) []string { return v.AllowedClients }).(pulumi.StringArrayOutput)
-}
-
-// URLs that Auth0 may redirect to after logout.
-func (o GetClientsClientOutput) AllowedLogoutUrls() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetClientsClient) []string { return v.AllowedLogoutUrls }).(pulumi.StringArrayOutput)
-}
-
-// URLs that represent valid origins for cross-origin resource sharing. By default, all your callback URLs will be allowed.
-func (o GetClientsClientOutput) AllowedOrigins() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetClientsClient) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
-}
-
-// Anonymous Sessions settings for the client. Removing this block clears the setting on the API. (EA only)
-func (o GetClientsClientOutput) AnonymousSessions() GetClientsClientAnonymousSessionArrayOutput {
-	return o.ApplyT(func(v GetClientsClient) []GetClientsClientAnonymousSession { return v.AnonymousSessions }).(GetClientsClientAnonymousSessionArrayOutput)
-}
-
-// Type of application the client represents. Possible values are: `native`, `spa`, `regularWeb`, `nonInteractive`, `resourceServer`,`ssoIntegration`. Specific SSO integrations types accepted as well are: `rms`, `box`, `cloudbees`, `concur`, `dropbox`, `mscrm`, `echosign`, `egnyte`, `newrelic`, `office365`, `salesforce`, `sentry`, `sharepoint`, `slack`, `springcm`, `zendesk`, `zoom`, `expressConfiguration`
-func (o GetClientsClientOutput) AppType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClientsClient) string { return v.AppType }).(pulumi.StringOutput)
-}
-
-// List of notification channels enabled for CIBA (Client-Initiated Backchannel Authentication) requests initiated by this client. Valid values are `guardian-push`, `email`, and `my-account`.The order is significant as this is the order in which notification channels will be evaluated.
-func (o GetClientsClientOutput) AsyncApprovalNotificationChannels() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetClientsClient) []string { return v.AsyncApprovalNotificationChannels }).(pulumi.StringArrayOutput)
-}
-
-// Configuration for B2B Integration (Enterprise Connect) clients. Contents can be updated in place, but adding or removing whole block forces client recreation. (EA only)
-func (o GetClientsClientOutput) B2bIntegrationConfigurations() GetClientsClientB2bIntegrationConfigurationArrayOutput {
-	return o.ApplyT(func(v GetClientsClient) []GetClientsClientB2bIntegrationConfiguration {
-		return v.B2bIntegrationConfigurations
-	}).(GetClientsClientB2bIntegrationConfigurationArrayOutput)
-}
-
-// URLs that Auth0 may call back to after a user authenticates for the client. Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://.
-func (o GetClientsClientOutput) Callbacks() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetClientsClient) []string { return v.Callbacks }).(pulumi.StringArrayOutput)
-}
-
-// The ID of the client. If not provided, `name` must be set.
-func (o GetClientsClientOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetClientsClient) *string { return v.ClientId }).(pulumi.StringPtrOutput)
-}
-
-// Metadata associated with the client, in the form of an object with string values (max 255 chars). Maximum of 10 metadata properties allowed. Field names (max 255 chars) are alphanumeric and may only include the following special characters: `:,-+=_*?"/\()<>@ [Tab] [Space]`.
-func (o GetClientsClientOutput) ClientMetadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetClientsClient) map[string]string { return v.ClientMetadata }).(pulumi.StringMapOutput)
-}
-
-// Secret for the client. Keep this private. To access this attribute you need to add the `read:client_keys` scope to the Terraform client. Otherwise, the attribute will contain an empty string. Set `hideClientSecret` to `true` to avoid persisting this value into Terraform state.
-func (o GetClientsClientOutput) ClientSecret() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClientsClient) string { return v.ClientSecret }).(pulumi.StringOutput)
-}
-
-// Description of the purpose of the client.
-func (o GetClientsClientOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClientsClient) string { return v.Description }).(pulumi.StringOutput)
-}
-
-// Express Configuration settings for the client. Used with OIN Express Configuration.
-func (o GetClientsClientOutput) ExpressConfigurations() GetClientsClientExpressConfigurationArrayOutput {
-	return o.ApplyT(func(v GetClientsClient) []GetClientsClientExpressConfiguration { return v.ExpressConfigurations }).(GetClientsClientExpressConfigurationArrayOutput)
-}
-
-// The URL of the Client ID Metadata Document. Only present for CIMD-registered clients.
-func (o GetClientsClientOutput) ExternalClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClientsClient) string { return v.ExternalClientId }).(pulumi.StringOutput)
-}
-
-// Who created the external metadata client: `admin` (via Management API), `client` (self-registered), or `unknown`.
-func (o GetClientsClientOutput) ExternalMetadataCreatedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClientsClient) string { return v.ExternalMetadataCreatedBy }).(pulumi.StringOutput)
-}
-
-// Whether Auth0 can resolve the Client ID Metadata Document from its cache or the document URL: `available` or `unavailable` (EA only). Only present for CIMD-registered clients.
-func (o GetClientsClientOutput) ExternalMetadataStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClientsClient) string { return v.ExternalMetadataStatus }).(pulumi.StringOutput)
-}
-
-// Type of external metadata. Value is `cimd` for CIMD-registered clients.
-func (o GetClientsClientOutput) ExternalMetadataType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClientsClient) string { return v.ExternalMetadataType }).(pulumi.StringOutput)
-}
-
-// Federated Credential Management (FedCM) configuration. (EA only)
-func (o GetClientsClientOutput) FedcmLogins() GetClientsClientFedcmLoginArrayOutput {
-	return o.ApplyT(func(v GetClientsClient) []GetClientsClientFedcmLogin { return v.FedcmLogins }).(GetClientsClientFedcmLoginArrayOutput)
-}
-
-// Types of grants that this client is authorized to use.
-func (o GetClientsClientOutput) GrantTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetClientsClient) []string { return v.GrantTypes }).(pulumi.StringArrayOutput)
-}
-
-// Configures the client to participate in the Identity Assertion Authorization Grant (ID-JAG) exchange, used for Cross App Access (XAA). (EA only)
-func (o GetClientsClientOutput) IdentityAssertionAuthorizationGrants() GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput {
-	return o.ApplyT(func(v GetClientsClient) []GetClientsClientIdentityAssertionAuthorizationGrant {
-		return v.IdentityAssertionAuthorizationGrants
-	}).(GetClientsClientIdentityAssertionAuthorizationGrantArrayOutput)
-}
-
-// Indicates whether this client is a first-party client.
-func (o GetClientsClientOutput) IsFirstParty() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetClientsClient) bool { return v.IsFirstParty }).(pulumi.BoolOutput)
-}
-
-// Indicates whether the token endpoint IP header is trusted. Requires the authentication method to be set to `clientSecretPost` or `clientSecretBasic`. Setting this property when creating the resource, will default the authentication method to `clientSecretPost`. To change the authentication method to `clientSecretBasic` use the `ClientCredentials` resource.
-func (o GetClientsClientOutput) IsTokenEndpointIpHeaderTrusted() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetClientsClient) bool { return v.IsTokenEndpointIpHeaderTrusted }).(pulumi.BoolOutput)
-}
-
-// URL for the JSON Web Key Set (JWKS) containing the public keys used for `privateKeyJwt` authentication. Only present for CIMD clients using `privateKeyJwt` authentication.
-func (o GetClientsClientOutput) JwksUri() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClientsClient) string { return v.JwksUri }).(pulumi.StringOutput)
-}
-
-// Configuration for self-service organization features, controlling how organizations are created and managed for this client.
-func (o GetClientsClientOutput) MyOrganizationConfigurations() GetClientsClientMyOrganizationConfigurationArrayOutput {
-	return o.ApplyT(func(v GetClientsClient) []GetClientsClientMyOrganizationConfiguration {
-		return v.MyOrganizationConfigurations
-	}).(GetClientsClientMyOrganizationConfigurationArrayOutput)
-}
-
-// The name of the client. If not provided, `clientId` must be set.
-func (o GetClientsClientOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetClientsClient) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Configure OIDC logout for the Client
-func (o GetClientsClientOutput) OidcLogouts() GetClientsClientOidcLogoutArrayOutput {
-	return o.ApplyT(func(v GetClientsClient) []GetClientsClientOidcLogout { return v.OidcLogouts }).(GetClientsClientOidcLogoutArrayOutput)
-}
-
-// Methods for discovering organizations during the pre_login_prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
-func (o GetClientsClientOutput) OrganizationDiscoveryMethods() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetClientsClient) []string { return v.OrganizationDiscoveryMethods }).(pulumi.StringArrayOutput)
-}
-
-// Controls whether Auth0 redirects users to the application's callback URL on authentication errors or in email verification flows.Allowed values: `allowAlways` or `openRedirectProtection`.
-func (o GetClientsClientOutput) RedirectionPolicy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClientsClient) string { return v.RedirectionPolicy }).(pulumi.StringOutput)
-}
-
-// The identifier of a resource server that client is associated withThis property can be sent only when app_type=resource_server.This property can not be changed, once the client is created.
-func (o GetClientsClientOutput) ResourceServerIdentifier() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClientsClient) string { return v.ResourceServerIdentifier }).(pulumi.StringOutput)
-}
-
-func (o GetClientsClientOutput) SessionTransfers() GetClientsClientSessionTransferArrayOutput {
-	return o.ApplyT(func(v GetClientsClient) []GetClientsClientSessionTransfer { return v.SessionTransfers }).(GetClientsClientSessionTransferArrayOutput)
-}
-
-// Indicates whether the confirmation prompt appears when using non-verifiable callback URIs. Set to true to skip the prompt, false to show it, or null to unset. Accepts (true/false/null) or ("true"/"false"/"null")
-func (o GetClientsClientOutput) SkipNonVerifiableCallbackUriConfirmationPrompt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClientsClient) string { return v.SkipNonVerifiableCallbackUriConfirmationPrompt }).(pulumi.StringOutput)
-}
-
-// Security mode for third-party clients. Allowed values: `strict` or `permissive`.
-func (o GetClientsClientOutput) ThirdPartySecurityMode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClientsClient) string { return v.ThirdPartySecurityMode }).(pulumi.StringOutput)
-}
-
-// Allows configuration for token exchange
-func (o GetClientsClientOutput) TokenExchanges() GetClientsClientTokenExchangeArrayOutput {
-	return o.ApplyT(func(v GetClientsClient) []GetClientsClientTokenExchange { return v.TokenExchanges }).(GetClientsClientTokenExchangeArrayOutput)
-}
-
-// The token quota configuration.
-func (o GetClientsClientOutput) TokenQuotas() GetClientsClientTokenQuotaArrayOutput {
-	return o.ApplyT(func(v GetClientsClient) []GetClientsClientTokenQuota { return v.TokenQuotas }).(GetClientsClientTokenQuotaArrayOutput)
-}
-
-// URLs that represent valid web origins for use with web message response mode.
-func (o GetClientsClientOutput) WebOrigins() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetClientsClient) []string { return v.WebOrigins }).(pulumi.StringArrayOutput)
-}
-
-type GetClientsClientArrayOutput struct{ *pulumi.OutputState }
-
-func (GetClientsClientArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClientsClient)(nil)).Elem()
-}
-
-func (o GetClientsClientArrayOutput) ToGetClientsClientArrayOutput() GetClientsClientArrayOutput {
-	return o
-}
-
-func (o GetClientsClientArrayOutput) ToGetClientsClientArrayOutputWithContext(ctx context.Context) GetClientsClientArrayOutput {
-	return o
-}
-
-func (o GetClientsClientArrayOutput) Index(i pulumi.IntInput) GetClientsClientOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClient {
-		return vs[0].([]GetClientsClient)[vs[1].(int)]
-	}).(GetClientsClientOutput)
-}
-
-type GetClientsClientAnonymousSession struct {
-	// If set to true, this client is allowed to create anonymous sessions. Requires `oidcConformant` to be set to `true`. Set to `false` to disable. (EA only)
-	Active bool `pulumi:"active"`
-}
-
-// GetClientsClientAnonymousSessionInput is an input type that accepts GetClientsClientAnonymousSessionArgs and GetClientsClientAnonymousSessionOutput values.
-// You can construct a concrete instance of `GetClientsClientAnonymousSessionInput` via:
-//
-//	GetClientsClientAnonymousSessionArgs{...}
-type GetClientsClientAnonymousSessionInput interface {
-	pulumi.Input
-
-	ToGetClientsClientAnonymousSessionOutput() GetClientsClientAnonymousSessionOutput
-	ToGetClientsClientAnonymousSessionOutputWithContext(context.Context) GetClientsClientAnonymousSessionOutput
-}
-
-type GetClientsClientAnonymousSessionArgs struct {
-	// If set to true, this client is allowed to create anonymous sessions. Requires `oidcConformant` to be set to `true`. Set to `false` to disable. (EA only)
-	Active pulumi.BoolInput `pulumi:"active"`
-}
-
-func (GetClientsClientAnonymousSessionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClientsClientAnonymousSession)(nil)).Elem()
-}
-
-func (i GetClientsClientAnonymousSessionArgs) ToGetClientsClientAnonymousSessionOutput() GetClientsClientAnonymousSessionOutput {
-	return i.ToGetClientsClientAnonymousSessionOutputWithContext(context.Background())
-}
-
-func (i GetClientsClientAnonymousSessionArgs) ToGetClientsClientAnonymousSessionOutputWithContext(ctx context.Context) GetClientsClientAnonymousSessionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientAnonymousSessionOutput)
-}
-
-// GetClientsClientAnonymousSessionArrayInput is an input type that accepts GetClientsClientAnonymousSessionArray and GetClientsClientAnonymousSessionArrayOutput values.
-// You can construct a concrete instance of `GetClientsClientAnonymousSessionArrayInput` via:
-//
-//	GetClientsClientAnonymousSessionArray{ GetClientsClientAnonymousSessionArgs{...} }
-type GetClientsClientAnonymousSessionArrayInput interface {
-	pulumi.Input
-
-	ToGetClientsClientAnonymousSessionArrayOutput() GetClientsClientAnonymousSessionArrayOutput
-	ToGetClientsClientAnonymousSessionArrayOutputWithContext(context.Context) GetClientsClientAnonymousSessionArrayOutput
-}
-
-type GetClientsClientAnonymousSessionArray []GetClientsClientAnonymousSessionInput
-
-func (GetClientsClientAnonymousSessionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClientsClientAnonymousSession)(nil)).Elem()
-}
-
-func (i GetClientsClientAnonymousSessionArray) ToGetClientsClientAnonymousSessionArrayOutput() GetClientsClientAnonymousSessionArrayOutput {
-	return i.ToGetClientsClientAnonymousSessionArrayOutputWithContext(context.Background())
-}
-
-func (i GetClientsClientAnonymousSessionArray) ToGetClientsClientAnonymousSessionArrayOutputWithContext(ctx context.Context) GetClientsClientAnonymousSessionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientAnonymousSessionArrayOutput)
-}
-
-type GetClientsClientAnonymousSessionOutput struct{ *pulumi.OutputState }
-
-func (GetClientsClientAnonymousSessionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClientsClientAnonymousSession)(nil)).Elem()
-}
-
-func (o GetClientsClientAnonymousSessionOutput) ToGetClientsClientAnonymousSessionOutput() GetClientsClientAnonymousSessionOutput {
-	return o
-}
-
-func (o GetClientsClientAnonymousSessionOutput) ToGetClientsClientAnonymousSessionOutputWithContext(ctx context.Context) GetClientsClientAnonymousSessionOutput {
-	return o
-}
-
-// If set to true, this client is allowed to create anonymous sessions. Requires `oidcConformant` to be set to `true`. Set to `false` to disable. (EA only)
-func (o GetClientsClientAnonymousSessionOutput) Active() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetClientsClientAnonymousSession) bool { return v.Active }).(pulumi.BoolOutput)
-}
-
-type GetClientsClientAnonymousSessionArrayOutput struct{ *pulumi.OutputState }
-
-func (GetClientsClientAnonymousSessionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClientsClientAnonymousSession)(nil)).Elem()
-}
-
-func (o GetClientsClientAnonymousSessionArrayOutput) ToGetClientsClientAnonymousSessionArrayOutput() GetClientsClientAnonymousSessionArrayOutput {
-	return o
-}
-
-func (o GetClientsClientAnonymousSessionArrayOutput) ToGetClientsClientAnonymousSessionArrayOutputWithContext(ctx context.Context) GetClientsClientAnonymousSessionArrayOutput {
-	return o
-}
-
-func (o GetClientsClientAnonymousSessionArrayOutput) Index(i pulumi.IntInput) GetClientsClientAnonymousSessionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientAnonymousSession {
-		return vs[0].([]GetClientsClientAnonymousSession)[vs[1].(int)]
-	}).(GetClientsClientAnonymousSessionOutput)
-}
-
-type GetClientsClientB2bIntegrationConfiguration struct {
-	// The type of integration used to connect to this B2B integration client. One of custom_auth_server, third_party, application
-	IntegrationType string `pulumi:"integrationType"`
-	// ID of the self-service SSO profile (an `SelfServiceProfile` id, in `ssp_...` format) linked to this B2B integration client. Maximum 1.
-	SsoProfiles []string `pulumi:"ssoProfiles"`
-}
-
-// GetClientsClientB2bIntegrationConfigurationInput is an input type that accepts GetClientsClientB2bIntegrationConfigurationArgs and GetClientsClientB2bIntegrationConfigurationOutput values.
-// You can construct a concrete instance of `GetClientsClientB2bIntegrationConfigurationInput` via:
-//
-//	GetClientsClientB2bIntegrationConfigurationArgs{...}
-type GetClientsClientB2bIntegrationConfigurationInput interface {
-	pulumi.Input
-
-	ToGetClientsClientB2bIntegrationConfigurationOutput() GetClientsClientB2bIntegrationConfigurationOutput
-	ToGetClientsClientB2bIntegrationConfigurationOutputWithContext(context.Context) GetClientsClientB2bIntegrationConfigurationOutput
-}
-
-type GetClientsClientB2bIntegrationConfigurationArgs struct {
-	// The type of integration used to connect to this B2B integration client. One of custom_auth_server, third_party, application
-	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
-	// ID of the self-service SSO profile (an `SelfServiceProfile` id, in `ssp_...` format) linked to this B2B integration client. Maximum 1.
-	SsoProfiles pulumi.StringArrayInput `pulumi:"ssoProfiles"`
-}
-
-func (GetClientsClientB2bIntegrationConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClientsClientB2bIntegrationConfiguration)(nil)).Elem()
-}
-
-func (i GetClientsClientB2bIntegrationConfigurationArgs) ToGetClientsClientB2bIntegrationConfigurationOutput() GetClientsClientB2bIntegrationConfigurationOutput {
-	return i.ToGetClientsClientB2bIntegrationConfigurationOutputWithContext(context.Background())
-}
-
-func (i GetClientsClientB2bIntegrationConfigurationArgs) ToGetClientsClientB2bIntegrationConfigurationOutputWithContext(ctx context.Context) GetClientsClientB2bIntegrationConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientB2bIntegrationConfigurationOutput)
-}
-
-// GetClientsClientB2bIntegrationConfigurationArrayInput is an input type that accepts GetClientsClientB2bIntegrationConfigurationArray and GetClientsClientB2bIntegrationConfigurationArrayOutput values.
-// You can construct a concrete instance of `GetClientsClientB2bIntegrationConfigurationArrayInput` via:
-//
-//	GetClientsClientB2bIntegrationConfigurationArray{ GetClientsClientB2bIntegrationConfigurationArgs{...} }
-type GetClientsClientB2bIntegrationConfigurationArrayInput interface {
-	pulumi.Input
-
-	ToGetClientsClientB2bIntegrationConfigurationArrayOutput() GetClientsClientB2bIntegrationConfigurationArrayOutput
-	ToGetClientsClientB2bIntegrationConfigurationArrayOutputWithContext(context.Context) GetClientsClientB2bIntegrationConfigurationArrayOutput
-}
-
-type GetClientsClientB2bIntegrationConfigurationArray []GetClientsClientB2bIntegrationConfigurationInput
-
-func (GetClientsClientB2bIntegrationConfigurationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClientsClientB2bIntegrationConfiguration)(nil)).Elem()
-}
-
-func (i GetClientsClientB2bIntegrationConfigurationArray) ToGetClientsClientB2bIntegrationConfigurationArrayOutput() GetClientsClientB2bIntegrationConfigurationArrayOutput {
-	return i.ToGetClientsClientB2bIntegrationConfigurationArrayOutputWithContext(context.Background())
-}
-
-func (i GetClientsClientB2bIntegrationConfigurationArray) ToGetClientsClientB2bIntegrationConfigurationArrayOutputWithContext(ctx context.Context) GetClientsClientB2bIntegrationConfigurationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClientsClientB2bIntegrationConfigurationArrayOutput)
-}
-
-type GetClientsClientB2bIntegrationConfigurationOutput struct{ *pulumi.OutputState }
-
-func (GetClientsClientB2bIntegrationConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClientsClientB2bIntegrationConfiguration)(nil)).Elem()
-}
-
-func (o GetClientsClientB2bIntegrationConfigurationOutput) ToGetClientsClientB2bIntegrationConfigurationOutput() GetClientsClientB2bIntegrationConfigurationOutput {
-	return o
-}
-
-func (o GetClientsClientB2bIntegrationConfigurationOutput) ToGetClientsClientB2bIntegrationConfigurationOutputWithContext(ctx context.Context) GetClientsClientB2bIntegrationConfigurationOutput {
-	return o
-}
-
-// The type of integration used to connect to this B2B integration client. One of custom_auth_server, third_party, application
-func (o GetClientsClientB2bIntegrationConfigurationOutput) IntegrationType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClientsClientB2bIntegrationConfiguration) string { return v.IntegrationType }).(pulumi.StringOutput)
-}
-
-// ID of the self-service SSO profile (an `SelfServiceProfile` id, in `ssp_...` format) linked to this B2B integration client. Maximum 1.
-func (o GetClientsClientB2bIntegrationConfigurationOutput) SsoProfiles() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetClientsClientB2bIntegrationConfiguration) []string { return v.SsoProfiles }).(pulumi.StringArrayOutput)
-}
-
-type GetClientsClientB2bIntegrationConfigurationArrayOutput struct{ *pulumi.OutputState }
-
-func (GetClientsClientB2bIntegrationConfigurationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClientsClientB2bIntegrationConfiguration)(nil)).Elem()
-}
-
-func (o GetClientsClientB2bIntegrationConfigurationArrayOutput) ToGetClientsClientB2bIntegrationConfigurationArrayOutput() GetClientsClientB2bIntegrationConfigurationArrayOutput {
-	return o
-}
-
-func (o GetClientsClientB2bIntegrationConfigurationArrayOutput) ToGetClientsClientB2bIntegrationConfigurationArrayOutputWithContext(ctx context.Context) GetClientsClientB2bIntegrationConfigurationArrayOutput {
-	return o
-}
-
-func (o GetClientsClientB2bIntegrationConfigurationArrayOutput) Index(i pulumi.IntInput) GetClientsClientB2bIntegrationConfigurationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClientsClientB2bIntegrationConfiguration {
-		return vs[0].([]GetClientsClientB2bIntegrationConfiguration)[vs[1].(int)]
-	}).(GetClientsClientB2bIntegrationConfigurationOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionDependencyInput)(nil)).Elem(), ActionDependencyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionDependencyArrayInput)(nil)).Elem(), ActionDependencyArray{})
@@ -79320,10 +79290,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientOidcLogoutBackchannelLogoutInitiatorsPtrInput)(nil)).Elem(), ClientOidcLogoutBackchannelLogoutInitiatorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientOidcLogoutBackchannelLogoutSessionMetadataInput)(nil)).Elem(), ClientOidcLogoutBackchannelLogoutSessionMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientOidcLogoutBackchannelLogoutSessionMetadataPtrInput)(nil)).Elem(), ClientOidcLogoutBackchannelLogoutSessionMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientOidcSupportInput)(nil)).Elem(), ClientOidcSupportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientOidcSupportPtrInput)(nil)).Elem(), ClientOidcSupportArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientProfileApplyPolicyInput)(nil)).Elem(), ClientProfileApplyPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientProfileApplyPolicyPtrInput)(nil)).Elem(), ClientProfileApplyPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientProfileClientConfigurationInput)(nil)).Elem(), ClientProfileClientConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientProfileClientConfigurationPtrInput)(nil)).Elem(), ClientProfileClientConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientProfileClientConfigurationOidcSupportInput)(nil)).Elem(), ClientProfileClientConfigurationOidcSupportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientProfileClientConfigurationOidcSupportPtrInput)(nil)).Elem(), ClientProfileClientConfigurationOidcSupportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientProfileClientConfigurationOidcSupportDefaultValueInput)(nil)).Elem(), ClientProfileClientConfigurationOidcSupportDefaultValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientProfileClientConfigurationOidcSupportDefaultValuePtrInput)(nil)).Elem(), ClientProfileClientConfigurationOidcSupportDefaultValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientProfileClientConfigurationOrganizationDiscoveryMethodsInput)(nil)).Elem(), ClientProfileClientConfigurationOrganizationDiscoveryMethodsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientProfileClientConfigurationOrganizationDiscoveryMethodsPtrInput)(nil)).Elem(), ClientProfileClientConfigurationOrganizationDiscoveryMethodsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientProfileClientConfigurationOrganizationRequireBehaviorInput)(nil)).Elem(), ClientProfileClientConfigurationOrganizationRequireBehaviorArgs{})
@@ -80049,10 +80025,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientOidcLogoutBackchannelLogoutInitiatorArrayInput)(nil)).Elem(), GetClientOidcLogoutBackchannelLogoutInitiatorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientOidcLogoutBackchannelLogoutSessionMetadataInput)(nil)).Elem(), GetClientOidcLogoutBackchannelLogoutSessionMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientOidcLogoutBackchannelLogoutSessionMetadataArrayInput)(nil)).Elem(), GetClientOidcLogoutBackchannelLogoutSessionMetadataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientOidcSupportInput)(nil)).Elem(), GetClientOidcSupportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientOidcSupportArrayInput)(nil)).Elem(), GetClientOidcSupportArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientProfileApplyPolicyInput)(nil)).Elem(), GetClientProfileApplyPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientProfileApplyPolicyArrayInput)(nil)).Elem(), GetClientProfileApplyPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientProfileClientConfigurationInput)(nil)).Elem(), GetClientProfileClientConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientProfileClientConfigurationArrayInput)(nil)).Elem(), GetClientProfileClientConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientProfileClientConfigurationOidcSupportInput)(nil)).Elem(), GetClientProfileClientConfigurationOidcSupportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientProfileClientConfigurationOidcSupportArrayInput)(nil)).Elem(), GetClientProfileClientConfigurationOidcSupportArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientProfileClientConfigurationOidcSupportDefaultValueInput)(nil)).Elem(), GetClientProfileClientConfigurationOidcSupportDefaultValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClientProfileClientConfigurationOidcSupportDefaultValueArrayInput)(nil)).Elem(), GetClientProfileClientConfigurationOidcSupportDefaultValueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientProfileClientConfigurationOrganizationDiscoveryMethodInput)(nil)).Elem(), GetClientProfileClientConfigurationOrganizationDiscoveryMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientProfileClientConfigurationOrganizationDiscoveryMethodArrayInput)(nil)).Elem(), GetClientProfileClientConfigurationOrganizationDiscoveryMethodArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientProfileClientConfigurationOrganizationRequireBehaviorInput)(nil)).Elem(), GetClientProfileClientConfigurationOrganizationRequireBehaviorArgs{})
@@ -80081,18 +80063,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientSignedRequestObjectArrayInput)(nil)).Elem(), GetClientSignedRequestObjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientSignedRequestObjectCredentialInput)(nil)).Elem(), GetClientSignedRequestObjectCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClientSignedRequestObjectCredentialArrayInput)(nil)).Elem(), GetClientSignedRequestObjectCredentialArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClientTokenExchangeInput)(nil)).Elem(), GetClientTokenExchangeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClientTokenExchangeArrayInput)(nil)).Elem(), GetClientTokenExchangeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClientTokenQuotaInput)(nil)).Elem(), GetClientTokenQuotaArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClientTokenQuotaArrayInput)(nil)).Elem(), GetClientTokenQuotaArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClientTokenQuotaClientCredentialInput)(nil)).Elem(), GetClientTokenQuotaClientCredentialArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClientTokenQuotaClientCredentialArrayInput)(nil)).Elem(), GetClientTokenQuotaClientCredentialArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientInput)(nil)).Elem(), GetClientsClientArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientArrayInput)(nil)).Elem(), GetClientsClientArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientAnonymousSessionInput)(nil)).Elem(), GetClientsClientAnonymousSessionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientAnonymousSessionArrayInput)(nil)).Elem(), GetClientsClientAnonymousSessionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientB2bIntegrationConfigurationInput)(nil)).Elem(), GetClientsClientB2bIntegrationConfigurationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClientsClientB2bIntegrationConfigurationArrayInput)(nil)).Elem(), GetClientsClientB2bIntegrationConfigurationArray{})
 	pulumi.RegisterOutputType(ActionDependencyOutput{})
 	pulumi.RegisterOutputType(ActionDependencyArrayOutput{})
 	pulumi.RegisterOutputType(ActionModuleTypeOutput{})
@@ -80319,10 +80289,16 @@ func init() {
 	pulumi.RegisterOutputType(ClientOidcLogoutBackchannelLogoutInitiatorsPtrOutput{})
 	pulumi.RegisterOutputType(ClientOidcLogoutBackchannelLogoutSessionMetadataOutput{})
 	pulumi.RegisterOutputType(ClientOidcLogoutBackchannelLogoutSessionMetadataPtrOutput{})
+	pulumi.RegisterOutputType(ClientOidcSupportOutput{})
+	pulumi.RegisterOutputType(ClientOidcSupportPtrOutput{})
 	pulumi.RegisterOutputType(ClientProfileApplyPolicyOutput{})
 	pulumi.RegisterOutputType(ClientProfileApplyPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ClientProfileClientConfigurationOutput{})
 	pulumi.RegisterOutputType(ClientProfileClientConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(ClientProfileClientConfigurationOidcSupportOutput{})
+	pulumi.RegisterOutputType(ClientProfileClientConfigurationOidcSupportPtrOutput{})
+	pulumi.RegisterOutputType(ClientProfileClientConfigurationOidcSupportDefaultValueOutput{})
+	pulumi.RegisterOutputType(ClientProfileClientConfigurationOidcSupportDefaultValuePtrOutput{})
 	pulumi.RegisterOutputType(ClientProfileClientConfigurationOrganizationDiscoveryMethodsOutput{})
 	pulumi.RegisterOutputType(ClientProfileClientConfigurationOrganizationDiscoveryMethodsPtrOutput{})
 	pulumi.RegisterOutputType(ClientProfileClientConfigurationOrganizationRequireBehaviorOutput{})
@@ -81048,10 +81024,16 @@ func init() {
 	pulumi.RegisterOutputType(GetClientOidcLogoutBackchannelLogoutInitiatorArrayOutput{})
 	pulumi.RegisterOutputType(GetClientOidcLogoutBackchannelLogoutSessionMetadataOutput{})
 	pulumi.RegisterOutputType(GetClientOidcLogoutBackchannelLogoutSessionMetadataArrayOutput{})
+	pulumi.RegisterOutputType(GetClientOidcSupportOutput{})
+	pulumi.RegisterOutputType(GetClientOidcSupportArrayOutput{})
 	pulumi.RegisterOutputType(GetClientProfileApplyPolicyOutput{})
 	pulumi.RegisterOutputType(GetClientProfileApplyPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetClientProfileClientConfigurationOutput{})
 	pulumi.RegisterOutputType(GetClientProfileClientConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetClientProfileClientConfigurationOidcSupportOutput{})
+	pulumi.RegisterOutputType(GetClientProfileClientConfigurationOidcSupportArrayOutput{})
+	pulumi.RegisterOutputType(GetClientProfileClientConfigurationOidcSupportDefaultValueOutput{})
+	pulumi.RegisterOutputType(GetClientProfileClientConfigurationOidcSupportDefaultValueArrayOutput{})
 	pulumi.RegisterOutputType(GetClientProfileClientConfigurationOrganizationDiscoveryMethodOutput{})
 	pulumi.RegisterOutputType(GetClientProfileClientConfigurationOrganizationDiscoveryMethodArrayOutput{})
 	pulumi.RegisterOutputType(GetClientProfileClientConfigurationOrganizationRequireBehaviorOutput{})
@@ -81080,16 +81062,4 @@ func init() {
 	pulumi.RegisterOutputType(GetClientSignedRequestObjectArrayOutput{})
 	pulumi.RegisterOutputType(GetClientSignedRequestObjectCredentialOutput{})
 	pulumi.RegisterOutputType(GetClientSignedRequestObjectCredentialArrayOutput{})
-	pulumi.RegisterOutputType(GetClientTokenExchangeOutput{})
-	pulumi.RegisterOutputType(GetClientTokenExchangeArrayOutput{})
-	pulumi.RegisterOutputType(GetClientTokenQuotaOutput{})
-	pulumi.RegisterOutputType(GetClientTokenQuotaArrayOutput{})
-	pulumi.RegisterOutputType(GetClientTokenQuotaClientCredentialOutput{})
-	pulumi.RegisterOutputType(GetClientTokenQuotaClientCredentialArrayOutput{})
-	pulumi.RegisterOutputType(GetClientsClientOutput{})
-	pulumi.RegisterOutputType(GetClientsClientArrayOutput{})
-	pulumi.RegisterOutputType(GetClientsClientAnonymousSessionOutput{})
-	pulumi.RegisterOutputType(GetClientsClientAnonymousSessionArrayOutput{})
-	pulumi.RegisterOutputType(GetClientsClientB2bIntegrationConfigurationOutput{})
-	pulumi.RegisterOutputType(GetClientsClientB2bIntegrationConfigurationArrayOutput{})
 }

@@ -78,6 +78,18 @@ namespace Pulumi.Auth0
     ///             {
     ///                 DefaultValue = true,
     ///             },
+    ///             OidcSupport = new Auth0.Inputs.ClientProfileClientConfigurationOidcSupportArgs
+    ///             {
+    ///                 DefaultValue = new Auth0.Inputs.ClientProfileClientConfigurationOidcSupportDefaultValueArgs
+    ///                 {
+    ///                     IsAllowed = true,
+    ///                     AllowedScopes = new[]
+    ///                     {
+    ///                         "profile",
+    ///                         "email",
+    ///                     },
+    ///                 },
+    ///             },
     ///         },
     ///         Name = "Dynamic client profile",
     ///         Description = "Runtime policy for dynamically registered clients.",

@@ -233,6 +233,10 @@ export class Client extends pulumi.CustomResource {
      */
     declare public readonly oidcLogout: pulumi.Output<outputs.ClientOidcLogout | undefined>;
     /**
+     * Controls which optional OIDC scopes the client may request. Requires `oidcConformant` to be `true`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `oidcConformant` to `false` while this block is not configured clears it.
+     */
+    declare public readonly oidcSupport: pulumi.Output<outputs.ClientOidcSupport>;
+    /**
      * Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
      */
     declare public readonly organizationDiscoveryMethods: pulumi.Output<string[]>;
@@ -354,6 +358,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["oidcBackchannelLogoutUrls"] = state?.oidcBackchannelLogoutUrls;
             resourceInputs["oidcConformant"] = state?.oidcConformant;
             resourceInputs["oidcLogout"] = state?.oidcLogout;
+            resourceInputs["oidcSupport"] = state?.oidcSupport;
             resourceInputs["organizationDiscoveryMethods"] = state?.organizationDiscoveryMethods;
             resourceInputs["organizationRequireBehavior"] = state?.organizationRequireBehavior;
             resourceInputs["organizationUsage"] = state?.organizationUsage;
@@ -411,6 +416,7 @@ export class Client extends pulumi.CustomResource {
             resourceInputs["oidcBackchannelLogoutUrls"] = args?.oidcBackchannelLogoutUrls;
             resourceInputs["oidcConformant"] = args?.oidcConformant;
             resourceInputs["oidcLogout"] = args?.oidcLogout;
+            resourceInputs["oidcSupport"] = args?.oidcSupport;
             resourceInputs["organizationDiscoveryMethods"] = args?.organizationDiscoveryMethods;
             resourceInputs["organizationRequireBehavior"] = args?.organizationRequireBehavior;
             resourceInputs["organizationUsage"] = args?.organizationUsage;
@@ -619,6 +625,10 @@ export interface ClientState {
      * Configure OIDC logout for the Client
      */
     oidcLogout?: pulumi.Input<inputs.ClientOidcLogout | undefined>;
+    /**
+     * Controls which optional OIDC scopes the client may request. Requires `oidcConformant` to be `true`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `oidcConformant` to `false` while this block is not configured clears it.
+     */
+    oidcSupport?: pulumi.Input<inputs.ClientOidcSupport | undefined>;
     /**
      * Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
      */
@@ -844,6 +854,10 @@ export interface ClientArgs {
      * Configure OIDC logout for the Client
      */
     oidcLogout?: pulumi.Input<inputs.ClientOidcLogout | undefined>;
+    /**
+     * Controls which optional OIDC scopes the client may request. Requires `oidcConformant` to be `true`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `oidcConformant` to `false` while this block is not configured clears it.
+     */
+    oidcSupport?: pulumi.Input<inputs.ClientOidcSupport | undefined>;
     /**
      * Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
      */

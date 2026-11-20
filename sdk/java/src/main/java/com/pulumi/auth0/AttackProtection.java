@@ -80,6 +80,7 @@ import javax.annotation.Nullable;
  *             .bruteForceProtection(AttackProtectionBruteForceProtectionArgs.builder()
  *                 .allowlists("127.0.0.1")
  *                 .enabled(true)
+ *                 .formSubmissionMode("auto")
  *                 .maxAttempts(5)
  *                 .mode("count_per_identifier_and_ip")
  *                 .shields(                
