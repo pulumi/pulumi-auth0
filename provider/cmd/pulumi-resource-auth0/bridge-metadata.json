@@ -511,6 +511,16 @@
                             }
                         }
                     },
+                    "oidc_support": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "allowed_scopes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "organization_discovery_methods": {
                         "maxItemsOne": false
                     },
@@ -727,6 +737,23 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "oidc_support": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "default_value": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "allowed_scopes": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "organization_discovery_methods": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -3325,6 +3352,16 @@
                             }
                         }
                     },
+                    "oidc_support": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "allowed_scopes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "organization_discovery_methods": {
                         "maxItemsOne": false
                     },
@@ -3449,6 +3486,23 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "oidc_support": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "default_value": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "allowed_scopes": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "organization_discovery_methods": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -3592,6 +3646,16 @@
                                                 "maxItemsOne": false
                                             },
                                             "backchannel_logout_urls": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "oidc_support": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "allowed_scopes": {
                                                 "maxItemsOne": false
                                             }
                                         }
