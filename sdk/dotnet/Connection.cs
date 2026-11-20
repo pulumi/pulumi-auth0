@@ -85,6 +85,7 @@ namespace Pulumi.Auth0
     ///                     Passkey = new Auth0.Inputs.ConnectionOptionsAuthenticationMethodPasskeyArgs
     ///                     {
     ///                         Enabled = true,
+    ///                         SignupBehavior = "allow",
     ///                     },
     ///                     Password = new Auth0.Inputs.ConnectionOptionsAuthenticationMethodPasswordArgs
     ///                     {
@@ -795,6 +796,58 @@ namespace Pulumi.Auth0
     /// });
     /// ```
     /// 
+    /// ### SAML Connection as a Cross-App Access Requesting App
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Auth0 = Pulumi.Auth0;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // This is an example of a SAML connection configured as a Cross-App Access (XAA)
+    ///     // requesting application authorization server.
+    ///     //
+    ///     // The cross_app_access_requesting_app block is an Early Access (EA only) feature.
+    ///     //
+    ///     // Note: Once configured, removing the block from your configuration is a no-op and will
+    ///     // not disable the purpose on the connection. Set `active = false` explicitly to deactivate it.
+    ///     var samlXaa = new Auth0.Connection("saml_xaa", new()
+    ///     {
+    ///         Options = new Auth0.Inputs.ConnectionOptionsArgs
+    ///         {
+    ///             SigningCert = "&lt;signing-certificate&gt;",
+    ///             SignInEndpoint = "https://saml.provider/sign_in",
+    ///             ClientId = "1234567",
+    ///             ClientSecret = "1234567",
+    ///             TokenEndpointAuthMethod = "client_secret_post",
+    ///             TokenEndpointAuthSigningAlg = "RS256",
+    ///             TokenEndpointJwtcaAudFormat = "token_endpoint",
+    ///             OidcMetadata = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["issuer"] = "https://idp.example.com",
+    ///                 ["authorization_endpoint"] = "https://idp.example.com/authorize",
+    ///                 ["token_endpoint"] = "https://idp.example.com/token",
+    ///                 ["jwks_uri"] = "https://idp.example.com/jwks",
+    ///                 ["id_token_signing_alg_values_supported"] = new[]
+    ///                 {
+    ///                     "RS256",
+    ///                 },
+    ///             }),
+    ///         },
+    ///         CrossAppAccessRequestingApp = new Auth0.Inputs.ConnectionCrossAppAccessRequestingAppArgs
+    ///         {
+    ///             Active = true,
+    ///         },
+    ///         Name = "saml-xaa-connection",
+    ///         Strategy = "samlp",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ### WindowsLive Connection
     /// 
     /// ```csharp
@@ -1009,7 +1062,7 @@ namespace Pulumi.Auth0
         public Output<Outputs.ConnectionConnectedAccounts> ConnectedAccounts { get; private set; } = null!;
 
         /// <summary>
-        /// Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `TokenVaultXaa` flag to be enabled on your tenant. Only supported on `Oidc` and `Okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `Active` to `False` explicitly to deactivate it. (EA Only)
+        /// Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature. Only supported on `Oidc`, `Okta` and `Samlp` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `Active` to `False` explicitly to deactivate it. (EA Only)
         /// </summary>
         [Output("crossAppAccessRequestingApp")]
         public Output<Outputs.ConnectionCrossAppAccessRequestingApp> CrossAppAccessRequestingApp { get; private set; } = null!;
@@ -1144,7 +1197,7 @@ namespace Pulumi.Auth0
         public Input<Inputs.ConnectionConnectedAccountsArgs>? ConnectedAccounts { get; set; }
 
         /// <summary>
-        /// Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `TokenVaultXaa` flag to be enabled on your tenant. Only supported on `Oidc` and `Okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `Active` to `False` explicitly to deactivate it. (EA Only)
+        /// Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature. Only supported on `Oidc`, `Okta` and `Samlp` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `Active` to `False` explicitly to deactivate it. (EA Only)
         /// </summary>
         [Input("crossAppAccessRequestingApp")]
         public Input<Inputs.ConnectionCrossAppAccessRequestingAppArgs>? CrossAppAccessRequestingApp { get; set; }
@@ -1259,7 +1312,7 @@ namespace Pulumi.Auth0
         public Input<Inputs.ConnectionConnectedAccountsGetArgs>? ConnectedAccounts { get; set; }
 
         /// <summary>
-        /// Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `TokenVaultXaa` flag to be enabled on your tenant. Only supported on `Oidc` and `Okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `Active` to `False` explicitly to deactivate it. (EA Only)
+        /// Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature. Only supported on `Oidc`, `Okta` and `Samlp` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `Active` to `False` explicitly to deactivate it. (EA Only)
         /// </summary>
         [Input("crossAppAccessRequestingApp")]
         public Input<Inputs.ConnectionCrossAppAccessRequestingAppGetArgs>? CrossAppAccessRequestingApp { get; set; }

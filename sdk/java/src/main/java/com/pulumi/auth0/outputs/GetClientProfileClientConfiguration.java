@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.GetClientProfileClientConfigurationOidcSupport;
 import com.pulumi.auth0.outputs.GetClientProfileClientConfigurationOrganizationDiscoveryMethod;
 import com.pulumi.auth0.outputs.GetClientProfileClientConfigurationOrganizationRequireBehavior;
 import com.pulumi.auth0.outputs.GetClientProfileClientConfigurationOrganizationUsage;
@@ -15,6 +16,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClientProfileClientConfiguration {
+    /**
+     * @return OIDC support defaults applied to matched clients. Auth0 replaces this block as a whole, so removing it clears all of its settings.
+     * 
+     */
+    private List<GetClientProfileClientConfigurationOidcSupport> oidcSupports;
     /**
      * @return Methods used to discover the organization during login. Requires the `organizationRequireBehavior` default value to be `preLoginPrompt`.
      * 
@@ -42,6 +48,13 @@ public final class GetClientProfileClientConfiguration {
     private List<GetClientProfileClientConfigurationRequireProofOfPossession> requireProofOfPossessions;
 
     private GetClientProfileClientConfiguration() {}
+    /**
+     * @return OIDC support defaults applied to matched clients. Auth0 replaces this block as a whole, so removing it clears all of its settings.
+     * 
+     */
+    public List<GetClientProfileClientConfigurationOidcSupport> oidcSupports() {
+        return this.oidcSupports;
+    }
     /**
      * @return Methods used to discover the organization during login. Requires the `organizationRequireBehavior` default value to be `preLoginPrompt`.
      * 
@@ -87,6 +100,7 @@ public final class GetClientProfileClientConfiguration {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetClientProfileClientConfigurationOidcSupport> oidcSupports;
         private List<GetClientProfileClientConfigurationOrganizationDiscoveryMethod> organizationDiscoveryMethods;
         private List<GetClientProfileClientConfigurationOrganizationRequireBehavior> organizationRequireBehaviors;
         private List<GetClientProfileClientConfigurationOrganizationUsage> organizationUsages;
@@ -95,6 +109,7 @@ public final class GetClientProfileClientConfiguration {
         public Builder() {}
         public Builder(GetClientProfileClientConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.oidcSupports = defaults.oidcSupports;
     	      this.organizationDiscoveryMethods = defaults.organizationDiscoveryMethods;
     	      this.organizationRequireBehaviors = defaults.organizationRequireBehaviors;
     	      this.organizationUsages = defaults.organizationUsages;
@@ -102,6 +117,17 @@ public final class GetClientProfileClientConfiguration {
     	      this.requireProofOfPossessions = defaults.requireProofOfPossessions;
         }
 
+        @CustomType.Setter
+        public Builder oidcSupports(List<GetClientProfileClientConfigurationOidcSupport> oidcSupports) {
+            if (oidcSupports == null) {
+              throw new MissingRequiredPropertyException("GetClientProfileClientConfiguration", "oidcSupports");
+            }
+            this.oidcSupports = oidcSupports;
+            return this;
+        }
+        public Builder oidcSupports(GetClientProfileClientConfigurationOidcSupport... oidcSupports) {
+            return oidcSupports(List.of(oidcSupports));
+        }
         @CustomType.Setter
         public Builder organizationDiscoveryMethods(List<GetClientProfileClientConfigurationOrganizationDiscoveryMethod> organizationDiscoveryMethods) {
             if (organizationDiscoveryMethods == null) {
@@ -159,6 +185,7 @@ public final class GetClientProfileClientConfiguration {
         }
         public GetClientProfileClientConfiguration build() {
             final var _resultValue = new GetClientProfileClientConfiguration();
+            _resultValue.oidcSupports = oidcSupports;
             _resultValue.organizationDiscoveryMethods = organizationDiscoveryMethods;
             _resultValue.organizationRequireBehaviors = organizationRequireBehaviors;
             _resultValue.organizationUsages = organizationUsages;

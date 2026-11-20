@@ -59,6 +59,7 @@ class ClientArgs:
                  oidc_backchannel_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  oidc_conformant: pulumi.Input[Optional[_builtins.bool]] = None,
                  oidc_logout: pulumi.Input[Optional['ClientOidcLogoutArgs']] = None,
+                 oidc_support: pulumi.Input[Optional['ClientOidcSupportArgs']] = None,
                  organization_discovery_methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  organization_require_behavior: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_usage: pulumi.Input[Optional[_builtins.str]] = None,
@@ -116,6 +117,7 @@ class ClientArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oidc_backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         :param pulumi.Input[_builtins.bool] oidc_conformant: Indicates whether this client will conform to strict OIDC specifications.
         :param pulumi.Input['ClientOidcLogoutArgs'] oidc_logout: Configure OIDC logout for the Client
+        :param pulumi.Input['ClientOidcSupportArgs'] oidc_support: Controls which optional OIDC scopes the client may request. Requires `oidc_conformant` to be `true`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `oidc_conformant` to `false` while this block is not configured clears it.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] organization_discovery_methods: Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`. For clients that set `b2b_integration_configuration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
         :param pulumi.Input[_builtins.str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[_builtins.str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
@@ -213,6 +215,8 @@ class ClientArgs:
             pulumi.set(__self__, "oidc_conformant", oidc_conformant)
         if oidc_logout is not None:
             pulumi.set(__self__, "oidc_logout", oidc_logout)
+        if oidc_support is not None:
+            pulumi.set(__self__, "oidc_support", oidc_support)
         if organization_discovery_methods is not None:
             pulumi.set(__self__, "organization_discovery_methods", organization_discovery_methods)
         if organization_require_behavior is not None:
@@ -704,6 +708,18 @@ class ClientArgs:
         pulumi.set(self, "oidc_logout", value)
 
     @_builtins.property
+    @pulumi.getter(name="oidcSupport")
+    def oidc_support(self) -> pulumi.Input[Optional['ClientOidcSupportArgs']]:
+        """
+        Controls which optional OIDC scopes the client may request. Requires `oidc_conformant` to be `true`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `oidc_conformant` to `false` while this block is not configured clears it.
+        """
+        return pulumi.get(self, "oidc_support")
+
+    @oidc_support.setter
+    def oidc_support(self, value: pulumi.Input[Optional['ClientOidcSupportArgs']]):
+        pulumi.set(self, "oidc_support", value)
+
+    @_builtins.property
     @pulumi.getter(name="organizationDiscoveryMethods")
     def organization_discovery_methods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -939,6 +955,7 @@ class _ClientState:
                  oidc_backchannel_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  oidc_conformant: pulumi.Input[Optional[_builtins.bool]] = None,
                  oidc_logout: pulumi.Input[Optional['ClientOidcLogoutArgs']] = None,
+                 oidc_support: pulumi.Input[Optional['ClientOidcSupportArgs']] = None,
                  organization_discovery_methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  organization_require_behavior: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_usage: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1002,6 +1019,7 @@ class _ClientState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oidc_backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         :param pulumi.Input[_builtins.bool] oidc_conformant: Indicates whether this client will conform to strict OIDC specifications.
         :param pulumi.Input['ClientOidcLogoutArgs'] oidc_logout: Configure OIDC logout for the Client
+        :param pulumi.Input['ClientOidcSupportArgs'] oidc_support: Controls which optional OIDC scopes the client may request. Requires `oidc_conformant` to be `true`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `oidc_conformant` to `false` while this block is not configured clears it.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] organization_discovery_methods: Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`. For clients that set `b2b_integration_configuration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
         :param pulumi.Input[_builtins.str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[_builtins.str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
@@ -1110,6 +1128,8 @@ class _ClientState:
             pulumi.set(__self__, "oidc_conformant", oidc_conformant)
         if oidc_logout is not None:
             pulumi.set(__self__, "oidc_logout", oidc_logout)
+        if oidc_support is not None:
+            pulumi.set(__self__, "oidc_support", oidc_support)
         if organization_discovery_methods is not None:
             pulumi.set(__self__, "organization_discovery_methods", organization_discovery_methods)
         if organization_require_behavior is not None:
@@ -1663,6 +1683,18 @@ class _ClientState:
         pulumi.set(self, "oidc_logout", value)
 
     @_builtins.property
+    @pulumi.getter(name="oidcSupport")
+    def oidc_support(self) -> pulumi.Input[Optional['ClientOidcSupportArgs']]:
+        """
+        Controls which optional OIDC scopes the client may request. Requires `oidc_conformant` to be `true`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `oidc_conformant` to `false` while this block is not configured clears it.
+        """
+        return pulumi.get(self, "oidc_support")
+
+    @oidc_support.setter
+    def oidc_support(self, value: pulumi.Input[Optional['ClientOidcSupportArgs']]):
+        pulumi.set(self, "oidc_support", value)
+
+    @_builtins.property
     @pulumi.getter(name="organizationDiscoveryMethods")
     def organization_discovery_methods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -1908,6 +1940,7 @@ class Client(pulumi.CustomResource):
                  oidc_backchannel_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  oidc_conformant: pulumi.Input[Optional[_builtins.bool]] = None,
                  oidc_logout: pulumi.Input[Optional[Union['ClientOidcLogoutArgs', 'ClientOidcLogoutArgsDict', 'outputs.ClientOidcLogout']]] = None,
+                 oidc_support: pulumi.Input[Optional[Union['ClientOidcSupportArgs', 'ClientOidcSupportArgsDict', 'outputs.ClientOidcSupport']]] = None,
                  organization_discovery_methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  organization_require_behavior: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_usage: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1979,6 +2012,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oidc_backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         :param pulumi.Input[_builtins.bool] oidc_conformant: Indicates whether this client will conform to strict OIDC specifications.
         :param pulumi.Input[Union['ClientOidcLogoutArgs', 'ClientOidcLogoutArgsDict', 'outputs.ClientOidcLogout']] oidc_logout: Configure OIDC logout for the Client
+        :param pulumi.Input[Union['ClientOidcSupportArgs', 'ClientOidcSupportArgsDict', 'outputs.ClientOidcSupport']] oidc_support: Controls which optional OIDC scopes the client may request. Requires `oidc_conformant` to be `true`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `oidc_conformant` to `false` while this block is not configured clears it.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] organization_discovery_methods: Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`. For clients that set `b2b_integration_configuration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
         :param pulumi.Input[_builtins.str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[_builtins.str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
@@ -2068,6 +2102,7 @@ class Client(pulumi.CustomResource):
                  oidc_backchannel_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  oidc_conformant: pulumi.Input[Optional[_builtins.bool]] = None,
                  oidc_logout: pulumi.Input[Optional[Union['ClientOidcLogoutArgs', 'ClientOidcLogoutArgsDict', 'outputs.ClientOidcLogout']]] = None,
+                 oidc_support: pulumi.Input[Optional[Union['ClientOidcSupportArgs', 'ClientOidcSupportArgsDict', 'outputs.ClientOidcSupport']]] = None,
                  organization_discovery_methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  organization_require_behavior: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_usage: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2133,6 +2168,7 @@ class Client(pulumi.CustomResource):
             __props__.__dict__["oidc_backchannel_logout_urls"] = oidc_backchannel_logout_urls
             __props__.__dict__["oidc_conformant"] = oidc_conformant
             __props__.__dict__["oidc_logout"] = oidc_logout
+            __props__.__dict__["oidc_support"] = oidc_support
             __props__.__dict__["organization_discovery_methods"] = organization_discovery_methods
             __props__.__dict__["organization_require_behavior"] = organization_require_behavior
             __props__.__dict__["organization_usage"] = organization_usage
@@ -2210,6 +2246,7 @@ class Client(pulumi.CustomResource):
             oidc_backchannel_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             oidc_conformant: pulumi.Input[Optional[_builtins.bool]] = None,
             oidc_logout: pulumi.Input[Optional[Union['ClientOidcLogoutArgs', 'ClientOidcLogoutArgsDict', 'outputs.ClientOidcLogout']]] = None,
+            oidc_support: pulumi.Input[Optional[Union['ClientOidcSupportArgs', 'ClientOidcSupportArgsDict', 'outputs.ClientOidcSupport']]] = None,
             organization_discovery_methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             organization_require_behavior: pulumi.Input[Optional[_builtins.str]] = None,
             organization_usage: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2277,6 +2314,7 @@ class Client(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oidc_backchannel_logout_urls: Set of URLs that are valid to call back from Auth0 for OIDC backchannel logout. Currently only one URL is allowed.
         :param pulumi.Input[_builtins.bool] oidc_conformant: Indicates whether this client will conform to strict OIDC specifications.
         :param pulumi.Input[Union['ClientOidcLogoutArgs', 'ClientOidcLogoutArgsDict', 'outputs.ClientOidcLogout']] oidc_logout: Configure OIDC logout for the Client
+        :param pulumi.Input[Union['ClientOidcSupportArgs', 'ClientOidcSupportArgsDict', 'outputs.ClientOidcSupport']] oidc_support: Controls which optional OIDC scopes the client may request. Requires `oidc_conformant` to be `true`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `oidc_conformant` to `false` while this block is not configured clears it.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] organization_discovery_methods: Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organization_name` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organization_require_behavior` is set to `pre_login_prompt`. For clients that set `b2b_integration_configuration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
         :param pulumi.Input[_builtins.str] organization_require_behavior: Defines how to proceed during an authentication transaction when `organization_usage = "require"`. Can be `no_prompt` (default), `pre_login_prompt` or  `post_login_prompt`.
         :param pulumi.Input[_builtins.str] organization_usage: Defines how to proceed during an authentication transaction with regards to an organization. Can be `deny` (default), `allow` or `require`.
@@ -2341,6 +2379,7 @@ class Client(pulumi.CustomResource):
         __props__.__dict__["oidc_backchannel_logout_urls"] = oidc_backchannel_logout_urls
         __props__.__dict__["oidc_conformant"] = oidc_conformant
         __props__.__dict__["oidc_logout"] = oidc_logout
+        __props__.__dict__["oidc_support"] = oidc_support
         __props__.__dict__["organization_discovery_methods"] = organization_discovery_methods
         __props__.__dict__["organization_require_behavior"] = organization_require_behavior
         __props__.__dict__["organization_usage"] = organization_usage
@@ -2406,6 +2445,7 @@ class Client(pulumi.CustomResource):
             oidc_backchannel_logout_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             oidc_conformant: pulumi.Input[Optional[_builtins.bool]] = None,
             oidc_logout: pulumi.Input[Optional[Union['ClientOidcLogoutArgs', 'ClientOidcLogoutArgsDict', 'outputs.ClientOidcLogout']]] = None,
+            oidc_support: pulumi.Input[Optional[Union['ClientOidcSupportArgs', 'ClientOidcSupportArgsDict', 'outputs.ClientOidcSupport']]] = None,
             organization_discovery_methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             organization_require_behavior: pulumi.Input[Optional[_builtins.str]] = None,
             organization_usage: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2467,6 +2507,7 @@ class Client(pulumi.CustomResource):
         __props__["oidcBackchannelLogoutUrls"] = oidc_backchannel_logout_urls
         __props__["oidcConformant"] = oidc_conformant
         __props__["oidcLogout"] = oidc_logout
+        __props__["oidcSupport"] = oidc_support
         __props__["organizationDiscoveryMethods"] = organization_discovery_methods
         __props__["organizationRequireBehavior"] = organization_require_behavior
         __props__["organizationUsage"] = organization_usage
@@ -2830,6 +2871,14 @@ class Client(pulumi.CustomResource):
         Configure OIDC logout for the Client
         """
         return pulumi.get(self, "oidc_logout")
+
+    @_builtins.property
+    @pulumi.getter(name="oidcSupport")
+    def oidc_support(self) -> pulumi.Output['outputs.ClientOidcSupport']:
+        """
+        Controls which optional OIDC scopes the client may request. Requires `oidc_conformant` to be `true`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `oidc_conformant` to `false` while this block is not configured clears it.
+        """
+        return pulumi.get(self, "oidc_support")
 
     @_builtins.property
     @pulumi.getter(name="organizationDiscoveryMethods")

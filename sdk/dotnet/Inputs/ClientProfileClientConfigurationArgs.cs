@@ -13,6 +13,12 @@ namespace Pulumi.Auth0.Inputs
     public sealed class ClientProfileClientConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// OIDC support defaults applied to matched clients. Auth0 replaces this block as a whole, so removing it clears all of its settings.
+        /// </summary>
+        [Input("oidcSupport")]
+        public Input<Inputs.ClientProfileClientConfigurationOidcSupportArgs>? OidcSupport { get; set; }
+
+        /// <summary>
         /// Methods used to discover the organization during login. Requires the `OrganizationRequireBehavior` default value to be `PreLoginPrompt`.
         /// </summary>
         [Input("organizationDiscoveryMethods")]

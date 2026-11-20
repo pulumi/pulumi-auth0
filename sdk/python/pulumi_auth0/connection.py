@@ -41,7 +41,7 @@ class ConnectionArgs:
         :param pulumi.Input[_builtins.str] strategy: Type of the connection, which indicates the identity provider.
         :param pulumi.Input['ConnectionAuthenticationArgs'] authentication: Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
         :param pulumi.Input['ConnectionConnectedAccountsArgs'] connected_accounts: Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
-        :param pulumi.Input['ConnectionCrossAppAccessRequestingAppArgs'] cross_app_access_requesting_app: Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `token_vault_xaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+        :param pulumi.Input['ConnectionCrossAppAccessRequestingAppArgs'] cross_app_access_requesting_app: Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature. Only supported on `oidc`, `okta` and `samlp` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
         :param pulumi.Input['ConnectionCrossAppAccessResourceAppArgs'] cross_app_access_resource_app: Resource App settings that apply to this connection. (EA only)
         :param pulumi.Input[_builtins.str] display_name: Name used in login screen.
         :param pulumi.Input[_builtins.bool] is_domain_connection: Indicates whether the connection is domain level.
@@ -122,7 +122,7 @@ class ConnectionArgs:
     @pulumi.getter(name="crossAppAccessRequestingApp")
     def cross_app_access_requesting_app(self) -> pulumi.Input[Optional['ConnectionCrossAppAccessRequestingAppArgs']]:
         """
-        Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `token_vault_xaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+        Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature. Only supported on `oidc`, `okta` and `samlp` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
         """
         return pulumi.get(self, "cross_app_access_requesting_app")
 
@@ -274,7 +274,7 @@ class _ConnectionState:
 
         :param pulumi.Input['ConnectionAuthenticationArgs'] authentication: Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
         :param pulumi.Input['ConnectionConnectedAccountsArgs'] connected_accounts: Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
-        :param pulumi.Input['ConnectionCrossAppAccessRequestingAppArgs'] cross_app_access_requesting_app: Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `token_vault_xaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+        :param pulumi.Input['ConnectionCrossAppAccessRequestingAppArgs'] cross_app_access_requesting_app: Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature. Only supported on `oidc`, `okta` and `samlp` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
         :param pulumi.Input['ConnectionCrossAppAccessResourceAppArgs'] cross_app_access_resource_app: Resource App settings that apply to this connection. (EA only)
         :param pulumi.Input[_builtins.str] display_name: Name used in login screen.
         :param pulumi.Input[_builtins.bool] is_domain_connection: Indicates whether the connection is domain level.
@@ -345,7 +345,7 @@ class _ConnectionState:
     @pulumi.getter(name="crossAppAccessRequestingApp")
     def cross_app_access_requesting_app(self) -> pulumi.Input[Optional['ConnectionCrossAppAccessRequestingAppArgs']]:
         """
-        Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `token_vault_xaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+        Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature. Only supported on `oidc`, `okta` and `samlp` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
         """
         return pulumi.get(self, "cross_app_access_requesting_app")
 
@@ -566,6 +566,7 @@ class Connection(pulumi.CustomResource):
                 "authentication_methods": [{
                     "passkey": {
                         "enabled": True,
+                        "signup_behavior": "allow",
                     },
                     "password": {
                         "enabled": True,
@@ -1102,6 +1103,44 @@ class Connection(pulumi.CustomResource):
             strategy="samlp")
         ```
 
+        ### SAML Connection as a Cross-App Access Requesting App
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_auth0 as auth0
+
+        # This is an example of a SAML connection configured as a Cross-App Access (XAA)
+        # requesting application authorization server.
+        #
+        # The cross_app_access_requesting_app block is an Early Access (EA only) feature.
+        #
+        # Note: Once configured, removing the block from your configuration is a no-op and will
+        # not disable the purpose on the connection. Set `active = false` explicitly to deactivate it.
+        saml_xaa = auth0.Connection("saml_xaa",
+            options={
+                "signing_cert": "<signing-certificate>",
+                "sign_in_endpoint": "https://saml.provider/sign_in",
+                "client_id": "1234567",
+                "client_secret": "1234567",
+                "token_endpoint_auth_method": "client_secret_post",
+                "token_endpoint_auth_signing_alg": "RS256",
+                "token_endpoint_jwtca_aud_format": "token_endpoint",
+                "oidc_metadata": json.dumps({
+                    "issuer": "https://idp.example.com",
+                    "authorization_endpoint": "https://idp.example.com/authorize",
+                    "token_endpoint": "https://idp.example.com/token",
+                    "jwks_uri": "https://idp.example.com/jwks",
+                    "id_token_signing_alg_values_supported": ["RS256"],
+                }),
+            },
+            cross_app_access_requesting_app={
+                "active": True,
+            },
+            name="saml-xaa-connection",
+            strategy="samlp")
+        ```
+
         ### WindowsLive Connection
 
         ```python
@@ -1258,7 +1297,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict', 'outputs.ConnectionAuthentication']] authentication: Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
         :param pulumi.Input[Union['ConnectionConnectedAccountsArgs', 'ConnectionConnectedAccountsArgsDict', 'outputs.ConnectionConnectedAccounts']] connected_accounts: Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
-        :param pulumi.Input[Union['ConnectionCrossAppAccessRequestingAppArgs', 'ConnectionCrossAppAccessRequestingAppArgsDict', 'outputs.ConnectionCrossAppAccessRequestingApp']] cross_app_access_requesting_app: Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `token_vault_xaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+        :param pulumi.Input[Union['ConnectionCrossAppAccessRequestingAppArgs', 'ConnectionCrossAppAccessRequestingAppArgsDict', 'outputs.ConnectionCrossAppAccessRequestingApp']] cross_app_access_requesting_app: Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature. Only supported on `oidc`, `okta` and `samlp` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
         :param pulumi.Input[Union['ConnectionCrossAppAccessResourceAppArgs', 'ConnectionCrossAppAccessResourceAppArgsDict', 'outputs.ConnectionCrossAppAccessResourceApp']] cross_app_access_resource_app: Resource App settings that apply to this connection. (EA only)
         :param pulumi.Input[_builtins.str] display_name: Name used in login screen.
         :param pulumi.Input[_builtins.bool] is_domain_connection: Indicates whether the connection is domain level.
@@ -1336,6 +1375,7 @@ class Connection(pulumi.CustomResource):
                 "authentication_methods": [{
                     "passkey": {
                         "enabled": True,
+                        "signup_behavior": "allow",
                     },
                     "password": {
                         "enabled": True,
@@ -1869,6 +1909,44 @@ class Connection(pulumi.CustomResource):
                 }),
             },
             name="SAML-Connection",
+            strategy="samlp")
+        ```
+
+        ### SAML Connection as a Cross-App Access Requesting App
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_auth0 as auth0
+
+        # This is an example of a SAML connection configured as a Cross-App Access (XAA)
+        # requesting application authorization server.
+        #
+        # The cross_app_access_requesting_app block is an Early Access (EA only) feature.
+        #
+        # Note: Once configured, removing the block from your configuration is a no-op and will
+        # not disable the purpose on the connection. Set `active = false` explicitly to deactivate it.
+        saml_xaa = auth0.Connection("saml_xaa",
+            options={
+                "signing_cert": "<signing-certificate>",
+                "sign_in_endpoint": "https://saml.provider/sign_in",
+                "client_id": "1234567",
+                "client_secret": "1234567",
+                "token_endpoint_auth_method": "client_secret_post",
+                "token_endpoint_auth_signing_alg": "RS256",
+                "token_endpoint_jwtca_aud_format": "token_endpoint",
+                "oidc_metadata": json.dumps({
+                    "issuer": "https://idp.example.com",
+                    "authorization_endpoint": "https://idp.example.com/authorize",
+                    "token_endpoint": "https://idp.example.com/token",
+                    "jwks_uri": "https://idp.example.com/jwks",
+                    "id_token_signing_alg_values_supported": ["RS256"],
+                }),
+            },
+            cross_app_access_requesting_app={
+                "active": True,
+            },
+            name="saml-xaa-connection",
             strategy="samlp")
         ```
 
@@ -2113,7 +2191,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ConnectionAuthenticationArgs', 'ConnectionAuthenticationArgsDict', 'outputs.ConnectionAuthentication']] authentication: Configure the purpose of a connection to be used for authentication during login.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
         :param pulumi.Input[Union['ConnectionConnectedAccountsArgs', 'ConnectionConnectedAccountsArgsDict', 'outputs.ConnectionConnectedAccounts']] connected_accounts: Configure the purpose of a connection to be used for connected accounts and Token Vault.**Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it.
-        :param pulumi.Input[Union['ConnectionCrossAppAccessRequestingAppArgs', 'ConnectionCrossAppAccessRequestingAppArgsDict', 'outputs.ConnectionCrossAppAccessRequestingApp']] cross_app_access_requesting_app: Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `token_vault_xaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+        :param pulumi.Input[Union['ConnectionCrossAppAccessRequestingAppArgs', 'ConnectionCrossAppAccessRequestingAppArgsDict', 'outputs.ConnectionCrossAppAccessRequestingApp']] cross_app_access_requesting_app: Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature. Only supported on `oidc`, `okta` and `samlp` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
         :param pulumi.Input[Union['ConnectionCrossAppAccessResourceAppArgs', 'ConnectionCrossAppAccessResourceAppArgsDict', 'outputs.ConnectionCrossAppAccessResourceApp']] cross_app_access_resource_app: Resource App settings that apply to this connection. (EA only)
         :param pulumi.Input[_builtins.str] display_name: Name used in login screen.
         :param pulumi.Input[_builtins.bool] is_domain_connection: Indicates whether the connection is domain level.
@@ -2201,7 +2279,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="crossAppAccessRequestingApp")
     def cross_app_access_requesting_app(self) -> pulumi.Output['outputs.ConnectionCrossAppAccessRequestingApp']:
         """
-        Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `token_vault_xaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+        Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature. Only supported on `oidc`, `okta` and `samlp` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
         """
         return pulumi.get(self, "cross_app_access_requesting_app")
 

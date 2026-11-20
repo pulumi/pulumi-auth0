@@ -15,6 +15,7 @@ import com.pulumi.auth0.inputs.ClientMobileArgs;
 import com.pulumi.auth0.inputs.ClientMyOrganizationConfigurationArgs;
 import com.pulumi.auth0.inputs.ClientNativeSocialLoginArgs;
 import com.pulumi.auth0.inputs.ClientOidcLogoutArgs;
+import com.pulumi.auth0.inputs.ClientOidcSupportArgs;
 import com.pulumi.auth0.inputs.ClientRefreshTokenArgs;
 import com.pulumi.auth0.inputs.ClientSessionTransferArgs;
 import com.pulumi.auth0.inputs.ClientTokenExchangeArgs;
@@ -612,6 +613,21 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Controls which optional OIDC scopes the client may request. Requires `oidcConformant` to be `true`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `oidcConformant` to `false` while this block is not configured clears it.
+     * 
+     */
+    @Import(name="oidcSupport")
+    private @Nullable Output<ClientOidcSupportArgs> oidcSupport;
+
+    /**
+     * @return Controls which optional OIDC scopes the client may request. Requires `oidcConformant` to be `true`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `oidcConformant` to `false` while this block is not configured clears it.
+     * 
+     */
+    public Optional<Output<ClientOidcSupportArgs>> oidcSupport() {
+        return Optional.ofNullable(this.oidcSupport);
+    }
+
+    /**
      * Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
      * 
      */
@@ -884,6 +900,7 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         this.oidcBackchannelLogoutUrls = $.oidcBackchannelLogoutUrls;
         this.oidcConformant = $.oidcConformant;
         this.oidcLogout = $.oidcLogout;
+        this.oidcSupport = $.oidcSupport;
         this.organizationDiscoveryMethods = $.organizationDiscoveryMethods;
         this.organizationRequireBehavior = $.organizationRequireBehavior;
         this.organizationUsage = $.organizationUsage;
@@ -1805,6 +1822,27 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder oidcLogout(ClientOidcLogoutArgs oidcLogout) {
             return oidcLogout(Output.of(oidcLogout));
+        }
+
+        /**
+         * @param oidcSupport Controls which optional OIDC scopes the client may request. Requires `oidcConformant` to be `true`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `oidcConformant` to `false` while this block is not configured clears it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcSupport(@Nullable Output<ClientOidcSupportArgs> oidcSupport) {
+            $.oidcSupport = oidcSupport;
+            return this;
+        }
+
+        /**
+         * @param oidcSupport Controls which optional OIDC scopes the client may request. Requires `oidcConformant` to be `true`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `oidcConformant` to `false` while this block is not configured clears it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcSupport(ClientOidcSupportArgs oidcSupport) {
+            return oidcSupport(Output.of(oidcSupport));
         }
 
         /**

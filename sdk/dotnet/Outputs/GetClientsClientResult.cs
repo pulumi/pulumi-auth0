@@ -122,6 +122,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClientsClientOidcLogoutResult> OidcLogouts;
         /// <summary>
+        /// Controls which optional OIDC scopes the client may request. Requires `OidcConformant` to be `True`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `OidcConformant` to `False` while this block is not configured clears it.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClientsClientOidcSupportResult> OidcSupports;
+        /// <summary>
         /// Methods for discovering organizations during the pre_login_prompt. Can include `Email` (allows users to find their organization by entering their email address) and/or `OrganizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `OrganizationRequireBehavior` is set to `PreLoginPrompt`. For clients that set `B2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
         /// </summary>
         public readonly ImmutableArray<string> OrganizationDiscoveryMethods;
@@ -211,6 +215,8 @@ namespace Pulumi.Auth0.Outputs
 
             ImmutableArray<Outputs.GetClientsClientOidcLogoutResult> oidcLogouts,
 
+            ImmutableArray<Outputs.GetClientsClientOidcSupportResult> oidcSupports,
+
             ImmutableArray<string> organizationDiscoveryMethods,
 
             string redirectionPolicy,
@@ -256,6 +262,7 @@ namespace Pulumi.Auth0.Outputs
             MyOrganizationConfigurations = myOrganizationConfigurations;
             Name = name;
             OidcLogouts = oidcLogouts;
+            OidcSupports = oidcSupports;
             OrganizationDiscoveryMethods = organizationDiscoveryMethods;
             RedirectionPolicy = redirectionPolicy;
             ResourceServerIdentifier = resourceServerIdentifier;

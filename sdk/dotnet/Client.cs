@@ -284,6 +284,12 @@ namespace Pulumi.Auth0
         public Output<Outputs.ClientOidcLogout?> OidcLogout { get; private set; } = null!;
 
         /// <summary>
+        /// Controls which optional OIDC scopes the client may request. Requires `OidcConformant` to be `True`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `OidcConformant` to `False` while this block is not configured clears it.
+        /// </summary>
+        [Output("oidcSupport")]
+        public Output<Outputs.ClientOidcSupport> OidcSupport { get; private set; } = null!;
+
+        /// <summary>
         /// Methods for discovering organizations during the pre*login*prompt. Can include `Email` (allows users to find their organization by entering their email address) and/or `OrganizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `OrganizationRequireBehavior` is set to `PreLoginPrompt`. For clients that set `B2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
         /// </summary>
         [Output("organizationDiscoveryMethods")]
@@ -721,6 +727,12 @@ namespace Pulumi.Auth0
         [Input("oidcLogout")]
         public Input<Inputs.ClientOidcLogoutArgs>? OidcLogout { get; set; }
 
+        /// <summary>
+        /// Controls which optional OIDC scopes the client may request. Requires `OidcConformant` to be `True`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `OidcConformant` to `False` while this block is not configured clears it.
+        /// </summary>
+        [Input("oidcSupport")]
+        public Input<Inputs.ClientOidcSupportArgs>? OidcSupport { get; set; }
+
         [Input("organizationDiscoveryMethods")]
         private InputList<string>? _organizationDiscoveryMethods;
 
@@ -1153,6 +1165,12 @@ namespace Pulumi.Auth0
         /// </summary>
         [Input("oidcLogout")]
         public Input<Inputs.ClientOidcLogoutGetArgs>? OidcLogout { get; set; }
+
+        /// <summary>
+        /// Controls which optional OIDC scopes the client may request. Requires `OidcConformant` to be `True`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `OidcConformant` to `False` while this block is not configured clears it.
+        /// </summary>
+        [Input("oidcSupport")]
+        public Input<Inputs.ClientOidcSupportGetArgs>? OidcSupport { get; set; }
 
         [Input("organizationDiscoveryMethods")]
         private InputList<string>? _organizationDiscoveryMethods;

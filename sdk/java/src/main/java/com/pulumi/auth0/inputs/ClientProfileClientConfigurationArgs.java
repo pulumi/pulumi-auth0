@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.inputs;
 
+import com.pulumi.auth0.inputs.ClientProfileClientConfigurationOidcSupportArgs;
 import com.pulumi.auth0.inputs.ClientProfileClientConfigurationOrganizationDiscoveryMethodsArgs;
 import com.pulumi.auth0.inputs.ClientProfileClientConfigurationOrganizationRequireBehaviorArgs;
 import com.pulumi.auth0.inputs.ClientProfileClientConfigurationOrganizationUsageArgs;
@@ -18,6 +19,21 @@ import javax.annotation.Nullable;
 public final class ClientProfileClientConfigurationArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClientProfileClientConfigurationArgs Empty = new ClientProfileClientConfigurationArgs();
+
+    /**
+     * OIDC support defaults applied to matched clients. Auth0 replaces this block as a whole, so removing it clears all of its settings.
+     * 
+     */
+    @Import(name="oidcSupport")
+    private @Nullable Output<ClientProfileClientConfigurationOidcSupportArgs> oidcSupport;
+
+    /**
+     * @return OIDC support defaults applied to matched clients. Auth0 replaces this block as a whole, so removing it clears all of its settings.
+     * 
+     */
+    public Optional<Output<ClientProfileClientConfigurationOidcSupportArgs>> oidcSupport() {
+        return Optional.ofNullable(this.oidcSupport);
+    }
 
     /**
      * Methods used to discover the organization during login. Requires the `organizationRequireBehavior` default value to be `preLoginPrompt`.
@@ -97,6 +113,7 @@ public final class ClientProfileClientConfigurationArgs extends com.pulumi.resou
     private ClientProfileClientConfigurationArgs() {}
 
     private ClientProfileClientConfigurationArgs(ClientProfileClientConfigurationArgs $) {
+        this.oidcSupport = $.oidcSupport;
         this.organizationDiscoveryMethods = $.organizationDiscoveryMethods;
         this.organizationRequireBehavior = $.organizationRequireBehavior;
         this.organizationUsage = $.organizationUsage;
@@ -120,6 +137,27 @@ public final class ClientProfileClientConfigurationArgs extends com.pulumi.resou
 
         public Builder(ClientProfileClientConfigurationArgs defaults) {
             $ = new ClientProfileClientConfigurationArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param oidcSupport OIDC support defaults applied to matched clients. Auth0 replaces this block as a whole, so removing it clears all of its settings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcSupport(@Nullable Output<ClientProfileClientConfigurationOidcSupportArgs> oidcSupport) {
+            $.oidcSupport = oidcSupport;
+            return this;
+        }
+
+        /**
+         * @param oidcSupport OIDC support defaults applied to matched clients. Auth0 replaces this block as a whole, so removing it clears all of its settings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcSupport(ClientProfileClientConfigurationOidcSupportArgs oidcSupport) {
+            return oidcSupport(Output.of(oidcSupport));
         }
 
         /**

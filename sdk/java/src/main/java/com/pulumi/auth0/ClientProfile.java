@@ -40,6 +40,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.auth0.inputs.ClientProfileClientConfigurationOrganizationRequireBehaviorArgs;
  * import com.pulumi.auth0.inputs.ClientProfileClientConfigurationOrganizationDiscoveryMethodsArgs;
  * import com.pulumi.auth0.inputs.ClientProfileClientConfigurationRequireProofOfPossessionArgs;
+ * import com.pulumi.auth0.inputs.ClientProfileClientConfigurationOidcSupportArgs;
+ * import com.pulumi.auth0.inputs.ClientProfileClientConfigurationOidcSupportDefaultValueArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -94,6 +96,14 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .requireProofOfPossession(ClientProfileClientConfigurationRequireProofOfPossessionArgs.builder()
  *                     .defaultValue(true)
+ *                     .build())
+ *                 .oidcSupport(ClientProfileClientConfigurationOidcSupportArgs.builder()
+ *                     .defaultValue(ClientProfileClientConfigurationOidcSupportDefaultValueArgs.builder()
+ *                         .isAllowed(true)
+ *                         .allowedScopes(                        
+ *                             "profile",
+ *                             "email")
+ *                         .build())
  *                     .build())
  *                 .build())
  *             .name("Dynamic client profile")

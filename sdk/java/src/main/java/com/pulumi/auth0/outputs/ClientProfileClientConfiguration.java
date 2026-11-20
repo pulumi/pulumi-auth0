@@ -3,6 +3,7 @@
 
 package com.pulumi.auth0.outputs;
 
+import com.pulumi.auth0.outputs.ClientProfileClientConfigurationOidcSupport;
 import com.pulumi.auth0.outputs.ClientProfileClientConfigurationOrganizationDiscoveryMethods;
 import com.pulumi.auth0.outputs.ClientProfileClientConfigurationOrganizationRequireBehavior;
 import com.pulumi.auth0.outputs.ClientProfileClientConfigurationOrganizationUsage;
@@ -15,6 +16,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClientProfileClientConfiguration {
+    /**
+     * @return OIDC support defaults applied to matched clients. Auth0 replaces this block as a whole, so removing it clears all of its settings.
+     * 
+     */
+    private @Nullable ClientProfileClientConfigurationOidcSupport oidcSupport;
     /**
      * @return Methods used to discover the organization during login. Requires the `organizationRequireBehavior` default value to be `preLoginPrompt`.
      * 
@@ -42,6 +48,13 @@ public final class ClientProfileClientConfiguration {
     private @Nullable ClientProfileClientConfigurationRequireProofOfPossession requireProofOfPossession;
 
     private ClientProfileClientConfiguration() {}
+    /**
+     * @return OIDC support defaults applied to matched clients. Auth0 replaces this block as a whole, so removing it clears all of its settings.
+     * 
+     */
+    public Optional<ClientProfileClientConfigurationOidcSupport> oidcSupport() {
+        return Optional.ofNullable(this.oidcSupport);
+    }
     /**
      * @return Methods used to discover the organization during login. Requires the `organizationRequireBehavior` default value to be `preLoginPrompt`.
      * 
@@ -87,6 +100,7 @@ public final class ClientProfileClientConfiguration {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable ClientProfileClientConfigurationOidcSupport oidcSupport;
         private @Nullable ClientProfileClientConfigurationOrganizationDiscoveryMethods organizationDiscoveryMethods;
         private @Nullable ClientProfileClientConfigurationOrganizationRequireBehavior organizationRequireBehavior;
         private @Nullable ClientProfileClientConfigurationOrganizationUsage organizationUsage;
@@ -95,6 +109,7 @@ public final class ClientProfileClientConfiguration {
         public Builder() {}
         public Builder(ClientProfileClientConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.oidcSupport = defaults.oidcSupport;
     	      this.organizationDiscoveryMethods = defaults.organizationDiscoveryMethods;
     	      this.organizationRequireBehavior = defaults.organizationRequireBehavior;
     	      this.organizationUsage = defaults.organizationUsage;
@@ -102,6 +117,12 @@ public final class ClientProfileClientConfiguration {
     	      this.requireProofOfPossession = defaults.requireProofOfPossession;
         }
 
+        @CustomType.Setter
+        public Builder oidcSupport(@Nullable ClientProfileClientConfigurationOidcSupport oidcSupport) {
+
+            this.oidcSupport = oidcSupport;
+            return this;
+        }
         @CustomType.Setter
         public Builder organizationDiscoveryMethods(@Nullable ClientProfileClientConfigurationOrganizationDiscoveryMethods organizationDiscoveryMethods) {
 
@@ -134,6 +155,7 @@ public final class ClientProfileClientConfiguration {
         }
         public ClientProfileClientConfiguration build() {
             final var _resultValue = new ClientProfileClientConfiguration();
+            _resultValue.oidcSupport = oidcSupport;
             _resultValue.organizationDiscoveryMethods = organizationDiscoveryMethods;
             _resultValue.organizationRequireBehavior = organizationRequireBehavior;
             _resultValue.organizationUsage = organizationUsage;

@@ -24,6 +24,11 @@ public final class GetAttackProtectionBruteForceProtection {
      */
     private Boolean enabled;
     /**
+     * @return Controls whether the brute-force protection unblock form is automatically submitted on load or requires manual interaction. Possible values: `auto` (submit the form automatically) or `manual` (require the user to submit the form). Once set, this value cannot be unset; removing it from the configuration leaves the current tenant value unchanged. (EA only)
+     * 
+     */
+    private String formSubmissionMode;
+    /**
      * @return Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
      * 
      */
@@ -53,6 +58,13 @@ public final class GetAttackProtectionBruteForceProtection {
      */
     public Boolean enabled() {
         return this.enabled;
+    }
+    /**
+     * @return Controls whether the brute-force protection unblock form is automatically submitted on load or requires manual interaction. Possible values: `auto` (submit the form automatically) or `manual` (require the user to submit the form). Once set, this value cannot be unset; removing it from the configuration leaves the current tenant value unchanged. (EA only)
+     * 
+     */
+    public String formSubmissionMode() {
+        return this.formSubmissionMode;
     }
     /**
      * @return Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
@@ -87,6 +99,7 @@ public final class GetAttackProtectionBruteForceProtection {
     public static final class Builder {
         private List<String> allowlists;
         private Boolean enabled;
+        private String formSubmissionMode;
         private Integer maxAttempts;
         private String mode;
         private List<String> shields;
@@ -95,6 +108,7 @@ public final class GetAttackProtectionBruteForceProtection {
     	      Objects.requireNonNull(defaults);
     	      this.allowlists = defaults.allowlists;
     	      this.enabled = defaults.enabled;
+    	      this.formSubmissionMode = defaults.formSubmissionMode;
     	      this.maxAttempts = defaults.maxAttempts;
     	      this.mode = defaults.mode;
     	      this.shields = defaults.shields;
@@ -117,6 +131,14 @@ public final class GetAttackProtectionBruteForceProtection {
               throw new MissingRequiredPropertyException("GetAttackProtectionBruteForceProtection", "enabled");
             }
             this.enabled = enabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder formSubmissionMode(String formSubmissionMode) {
+            if (formSubmissionMode == null) {
+              throw new MissingRequiredPropertyException("GetAttackProtectionBruteForceProtection", "formSubmissionMode");
+            }
+            this.formSubmissionMode = formSubmissionMode;
             return this;
         }
         @CustomType.Setter
@@ -150,6 +172,7 @@ public final class GetAttackProtectionBruteForceProtection {
             final var _resultValue = new GetAttackProtectionBruteForceProtection();
             _resultValue.allowlists = allowlists;
             _resultValue.enabled = enabled;
+            _resultValue.formSubmissionMode = formSubmissionMode;
             _resultValue.maxAttempts = maxAttempts;
             _resultValue.mode = mode;
             _resultValue.shields = shields;

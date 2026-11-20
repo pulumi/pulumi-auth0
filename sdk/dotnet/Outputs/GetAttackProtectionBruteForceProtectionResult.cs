@@ -22,6 +22,10 @@ namespace Pulumi.Auth0.Outputs
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
+        /// Controls whether the brute-force protection unblock form is automatically submitted on load or requires manual interaction. Possible values: `Auto` (submit the form automatically) or `Manual` (require the user to submit the form). Once set, this value cannot be unset; removing it from the configuration leaves the current tenant value unchanged. (EA only)
+        /// </summary>
+        public readonly string FormSubmissionMode;
+        /// <summary>
         /// Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
         /// </summary>
         public readonly int MaxAttempts;
@@ -40,6 +44,8 @@ namespace Pulumi.Auth0.Outputs
 
             bool enabled,
 
+            string formSubmissionMode,
+
             int maxAttempts,
 
             string mode,
@@ -48,6 +54,7 @@ namespace Pulumi.Auth0.Outputs
         {
             Allowlists = allowlists;
             Enabled = enabled;
+            FormSubmissionMode = formSubmissionMode;
             MaxAttempts = maxAttempts;
             Mode = mode;
             Shields = shields;

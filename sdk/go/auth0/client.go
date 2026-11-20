@@ -113,6 +113,8 @@ type Client struct {
 	OidcConformant pulumi.BoolOutput `pulumi:"oidcConformant"`
 	// Configure OIDC logout for the Client
 	OidcLogout ClientOidcLogoutPtrOutput `pulumi:"oidcLogout"`
+	// Controls which optional OIDC scopes the client may request. Requires `oidcConformant` to be `true`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `oidcConformant` to `false` while this block is not configured clears it.
+	OidcSupport ClientOidcSupportOutput `pulumi:"oidcSupport"`
 	// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
 	OrganizationDiscoveryMethods pulumi.StringArrayOutput `pulumi:"organizationDiscoveryMethods"`
 	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
@@ -273,6 +275,8 @@ type clientState struct {
 	OidcConformant *bool `pulumi:"oidcConformant"`
 	// Configure OIDC logout for the Client
 	OidcLogout *ClientOidcLogout `pulumi:"oidcLogout"`
+	// Controls which optional OIDC scopes the client may request. Requires `oidcConformant` to be `true`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `oidcConformant` to `false` while this block is not configured clears it.
+	OidcSupport *ClientOidcSupport `pulumi:"oidcSupport"`
 	// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
 	OrganizationDiscoveryMethods []string `pulumi:"organizationDiscoveryMethods"`
 	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
@@ -397,6 +401,8 @@ type ClientState struct {
 	OidcConformant pulumi.BoolPtrInput
 	// Configure OIDC logout for the Client
 	OidcLogout ClientOidcLogoutPtrInput
+	// Controls which optional OIDC scopes the client may request. Requires `oidcConformant` to be `true`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `oidcConformant` to `false` while this block is not configured clears it.
+	OidcSupport ClientOidcSupportPtrInput
 	// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
 	OrganizationDiscoveryMethods pulumi.StringArrayInput
 	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
@@ -521,6 +527,8 @@ type clientArgs struct {
 	OidcConformant *bool `pulumi:"oidcConformant"`
 	// Configure OIDC logout for the Client
 	OidcLogout *ClientOidcLogout `pulumi:"oidcLogout"`
+	// Controls which optional OIDC scopes the client may request. Requires `oidcConformant` to be `true`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `oidcConformant` to `false` while this block is not configured clears it.
+	OidcSupport *ClientOidcSupport `pulumi:"oidcSupport"`
 	// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
 	OrganizationDiscoveryMethods []string `pulumi:"organizationDiscoveryMethods"`
 	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
@@ -634,6 +642,8 @@ type ClientArgs struct {
 	OidcConformant pulumi.BoolPtrInput
 	// Configure OIDC logout for the Client
 	OidcLogout ClientOidcLogoutPtrInput
+	// Controls which optional OIDC scopes the client may request. Requires `oidcConformant` to be `true`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `oidcConformant` to `false` while this block is not configured clears it.
+	OidcSupport ClientOidcSupportPtrInput
 	// Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
 	OrganizationDiscoveryMethods pulumi.StringArrayInput
 	// Defines how to proceed during an authentication transaction when `organizationUsage = "require"`. Can be `noPrompt` (default), `preLoginPrompt` or  `postLoginPrompt`.
@@ -971,6 +981,11 @@ func (o ClientOutput) OidcConformant() pulumi.BoolOutput {
 // Configure OIDC logout for the Client
 func (o ClientOutput) OidcLogout() ClientOidcLogoutPtrOutput {
 	return o.ApplyT(func(v *Client) ClientOidcLogoutPtrOutput { return v.OidcLogout }).(ClientOidcLogoutPtrOutput)
+}
+
+// Controls which optional OIDC scopes the client may request. Requires `oidcConformant` to be `true`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `oidcConformant` to `false` while this block is not configured clears it.
+func (o ClientOutput) OidcSupport() ClientOidcSupportOutput {
+	return o.ApplyT(func(v *Client) ClientOidcSupportOutput { return v.OidcSupport }).(ClientOidcSupportOutput)
 }
 
 // Methods for discovering organizations during the pre*login*prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.

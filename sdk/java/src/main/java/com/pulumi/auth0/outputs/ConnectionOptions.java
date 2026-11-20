@@ -193,7 +193,7 @@ public final class ConnectionOptions {
      */
     private @Nullable Boolean disableSignup;
     /**
-     * @return OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
+     * @return OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`. Also applicable to `samlp` connections (EA only).
      * 
      */
     private @Nullable String discoveryUrl;
@@ -563,17 +563,17 @@ public final class ConnectionOptions {
      */
     private @Nullable String tokenEndpoint;
     /**
-     * @return Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+     * @return Specifies the authentication method for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
      * 
      */
     private @Nullable String tokenEndpointAuthMethod;
     /**
-     * @return Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+     * @return Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
      * 
      */
     private @Nullable String tokenEndpointAuthSigningAlg;
     /**
-     * @return Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: &#39;issuer&#39; or &#39;token_endpoint&#39;. (Okta/OIDC Connections)
+     * @return Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: &#39;issuer&#39; or &#39;token_endpoint&#39;. (Okta/OIDC Connections; SAML Connections (EA only))
      * 
      */
     private @Nullable String tokenEndpointJwtcaAudFormat;
@@ -872,7 +872,7 @@ public final class ConnectionOptions {
         return Optional.ofNullable(this.disableSignup);
     }
     /**
-     * @return OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
+     * @return OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`. Also applicable to `samlp` connections (EA only).
      * 
      */
     public Optional<String> discoveryUrl() {
@@ -1390,21 +1390,21 @@ public final class ConnectionOptions {
         return Optional.ofNullable(this.tokenEndpoint);
     }
     /**
-     * @return Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+     * @return Specifies the authentication method for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
      * 
      */
     public Optional<String> tokenEndpointAuthMethod() {
         return Optional.ofNullable(this.tokenEndpointAuthMethod);
     }
     /**
-     * @return Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+     * @return Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
      * 
      */
     public Optional<String> tokenEndpointAuthSigningAlg() {
         return Optional.ofNullable(this.tokenEndpointAuthSigningAlg);
     }
     /**
-     * @return Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: &#39;issuer&#39; or &#39;token_endpoint&#39;. (Okta/OIDC Connections)
+     * @return Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: &#39;issuer&#39; or &#39;token_endpoint&#39;. (Okta/OIDC Connections; SAML Connections (EA only))
      * 
      */
     public Optional<String> tokenEndpointJwtcaAudFormat() {

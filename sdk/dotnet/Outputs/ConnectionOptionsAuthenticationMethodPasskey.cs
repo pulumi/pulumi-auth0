@@ -17,11 +17,19 @@ namespace Pulumi.Auth0.Outputs
         /// Enables passkey authentication
         /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// Specifies whether passkey is allowed or blocked during signup flows. Possible values: "allow", "block". This is an Early Access feature and must be enabled for your tenant before it can be set.
+        /// </summary>
+        public readonly string? SignupBehavior;
 
         [OutputConstructor]
-        private ConnectionOptionsAuthenticationMethodPasskey(bool? enabled)
+        private ConnectionOptionsAuthenticationMethodPasskey(
+            bool? enabled,
+
+            string? signupBehavior)
         {
             Enabled = enabled;
+            SignupBehavior = signupBehavior;
         }
     }
 }

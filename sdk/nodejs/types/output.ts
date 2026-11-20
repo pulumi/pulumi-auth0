@@ -222,6 +222,10 @@ export interface AttackProtectionBruteForceProtection {
      */
     enabled: boolean;
     /**
+     * Controls whether the brute-force protection unblock form is automatically submitted on load or requires manual interaction. Possible values: `auto` (submit the form automatically) or `manual` (require the user to submit the form). Once set, this value cannot be unset; removing it from the configuration leaves the current tenant value unchanged. (EA only)
+     */
+    formSubmissionMode: string;
+    /**
      * Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
      */
     maxAttempts: number;
@@ -1883,6 +1887,21 @@ export interface ClientOidcLogoutBackchannelLogoutSessionMetadata {
     include: boolean;
 }
 
+export interface ClientOidcSupport {
+    /**
+     * Indicates whether the client may request all optional OIDC scopes. Conflicts with `allowedScopes`.
+     */
+    allowAllScopes?: boolean;
+    /**
+     * Optional OIDC scopes the client may request. Possible values: [profile email address phone]. The `openid` scope is implied and must not be listed. Conflicts with `allowAllScopes`.
+     */
+    allowedScopes?: string[];
+    /**
+     * Indicates whether the client may request optional OIDC scopes. When `false`, `allowedScopes` and `allowAllScopes` cannot be set.
+     */
+    isAllowed: boolean;
+}
+
 export interface ClientProfileApplyPolicy {
     /**
      * The creator of the clients to match. Defaults to `client`, which means the client was registered dynamically. Possible values: [client].
@@ -1895,6 +1914,10 @@ export interface ClientProfileApplyPolicy {
 }
 
 export interface ClientProfileClientConfiguration {
+    /**
+     * OIDC support defaults applied to matched clients. Auth0 replaces this block as a whole, so removing it clears all of its settings.
+     */
+    oidcSupport?: outputs.ClientProfileClientConfigurationOidcSupport;
     /**
      * Methods used to discover the organization during login. Requires the `organizationRequireBehavior` default value to be `preLoginPrompt`.
      */
@@ -1915,6 +1938,28 @@ export interface ClientProfileClientConfiguration {
      * Whether matched clients must use proof of possession (DPoP) for their tokens.
      */
     requireProofOfPossession?: outputs.ClientProfileClientConfigurationRequireProofOfPossession;
+}
+
+export interface ClientProfileClientConfigurationOidcSupport {
+    /**
+     * The default OIDC support settings for matched clients.
+     */
+    defaultValue: outputs.ClientProfileClientConfigurationOidcSupportDefaultValue;
+}
+
+export interface ClientProfileClientConfigurationOidcSupportDefaultValue {
+    /**
+     * Indicates whether matched clients may request all optional OIDC scopes. Conflicts with `allowedScopes`.
+     */
+    allowAllScopes?: boolean;
+    /**
+     * Optional OIDC scopes matched clients may request. Possible values: [profile email address phone]. The `openid` scope is implied and must not be listed. Conflicts with `allowAllScopes`.
+     */
+    allowedScopes?: string[];
+    /**
+     * Indicates whether matched clients may use OIDC. When `false`, `allowedScopes` and `allowAllScopes` cannot be set.
+     */
+    isAllowed: boolean;
 }
 
 export interface ClientProfileClientConfigurationOrganizationDiscoveryMethods {
@@ -2270,7 +2315,7 @@ export interface ConnectionOptions {
      */
     disableSignup?: boolean;
     /**
-     * OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
+     * OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`. Also applicable to `samlp` connections (EA only).
      */
     discoveryUrl?: string;
     /**
@@ -2566,15 +2611,15 @@ export interface ConnectionOptions {
      */
     tokenEndpoint: string;
     /**
-     * Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+     * Specifies the authentication method for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
      */
     tokenEndpointAuthMethod?: string;
     /**
-     * Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+     * Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
      */
     tokenEndpointAuthSigningAlg?: string;
     /**
-     * Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)
+     * Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections; SAML Connections (EA only))
      */
     tokenEndpointJwtcaAudFormat?: string;
     /**
@@ -2870,6 +2915,10 @@ export interface ConnectionOptionsAuthenticationMethodPasskey {
      * Enables passkey authentication
      */
     enabled: boolean;
+    /**
+     * Specifies whether passkey is allowed or blocked during signup flows. Possible values: "allow", "block". This is an Early Access feature and must be enabled for your tenant before it can be set.
+     */
+    signupBehavior: string;
 }
 
 export interface ConnectionOptionsAuthenticationMethodPassword {
@@ -4724,6 +4773,10 @@ export interface GetAttackProtectionBruteForceProtection {
      */
     enabled: boolean;
     /**
+     * Controls whether the brute-force protection unblock form is automatically submitted on load or requires manual interaction. Possible values: `auto` (submit the form automatically) or `manual` (require the user to submit the form). Once set, this value cannot be unset; removing it from the configuration leaves the current tenant value unchanged. (EA only)
+     */
+    formSubmissionMode: string;
+    /**
      * Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
      */
     maxAttempts: number;
@@ -6258,6 +6311,21 @@ export interface GetClientOidcLogoutBackchannelLogoutSessionMetadata {
     include: boolean;
 }
 
+export interface GetClientOidcSupport {
+    /**
+     * Indicates whether the client may request all optional OIDC scopes. Conflicts with `allowedScopes`.
+     */
+    allowAllScopes: boolean;
+    /**
+     * Optional OIDC scopes the client may request. Possible values: [profile email address phone]. The `openid` scope is implied and must not be listed. Conflicts with `allowAllScopes`.
+     */
+    allowedScopes: string[];
+    /**
+     * Indicates whether the client may request optional OIDC scopes. When `false`, `allowedScopes` and `allowAllScopes` cannot be set.
+     */
+    isAllowed: boolean;
+}
+
 export interface GetClientProfileApplyPolicy {
     /**
      * The creator of the clients to match. Defaults to `client`, which means the client was registered dynamically. Possible values: [client].
@@ -6270,6 +6338,10 @@ export interface GetClientProfileApplyPolicy {
 }
 
 export interface GetClientProfileClientConfiguration {
+    /**
+     * OIDC support defaults applied to matched clients. Auth0 replaces this block as a whole, so removing it clears all of its settings.
+     */
+    oidcSupports: outputs.GetClientProfileClientConfigurationOidcSupport[];
     /**
      * Methods used to discover the organization during login. Requires the `organizationRequireBehavior` default value to be `preLoginPrompt`.
      */
@@ -6290,6 +6362,28 @@ export interface GetClientProfileClientConfiguration {
      * Whether matched clients must use proof of possession (DPoP) for their tokens.
      */
     requireProofOfPossessions: outputs.GetClientProfileClientConfigurationRequireProofOfPossession[];
+}
+
+export interface GetClientProfileClientConfigurationOidcSupport {
+    /**
+     * The default OIDC support settings for matched clients.
+     */
+    defaultValues: outputs.GetClientProfileClientConfigurationOidcSupportDefaultValue[];
+}
+
+export interface GetClientProfileClientConfigurationOidcSupportDefaultValue {
+    /**
+     * Indicates whether matched clients may request all optional OIDC scopes. Conflicts with `allowedScopes`.
+     */
+    allowAllScopes: boolean;
+    /**
+     * Optional OIDC scopes matched clients may request. Possible values: [profile email address phone]. The `openid` scope is implied and must not be listed. Conflicts with `allowAllScopes`.
+     */
+    allowedScopes: string[];
+    /**
+     * Indicates whether matched clients may use OIDC. When `false`, `allowedScopes` and `allowAllScopes` cannot be set.
+     */
+    isAllowed: boolean;
 }
 
 export interface GetClientProfileClientConfigurationOrganizationDiscoveryMethod {
@@ -6626,6 +6720,10 @@ export interface GetClientsClient {
      */
     oidcLogouts: outputs.GetClientsClientOidcLogout[];
     /**
+     * Controls which optional OIDC scopes the client may request. Requires `oidcConformant` to be `true`. Auth0 replaces the whole object on every write and cannot clear a stored value on an OIDC conformant client, so removing this block stops Terraform from managing it and does not reset the setting on the API. Setting `oidcConformant` to `false` while this block is not configured clears it.
+     */
+    oidcSupports: outputs.GetClientsClientOidcSupport[];
+    /**
      * Methods for discovering organizations during the pre_login_prompt. Can include `email` (allows users to find their organization by entering their email address) and/or `organizationName` (requires users to enter the organization name directly). These methods can be combined. Setting this property requires that `organizationRequireBehavior` is set to `preLoginPrompt`. For clients that set `b2bIntegrationConfiguration`, server-side defaults the values when this is not specified; Set to `[]` (empty array) to clear the values.
      */
     organizationDiscoveryMethods: string[];
@@ -6822,6 +6920,21 @@ export interface GetClientsClientOidcLogoutBackchannelLogoutSessionMetadata {
      * The `include` property determines whether session metadata is included in the logout token.
      */
     include: boolean;
+}
+
+export interface GetClientsClientOidcSupport {
+    /**
+     * Indicates whether the client may request all optional OIDC scopes. Conflicts with `allowedScopes`.
+     */
+    allowAllScopes: boolean;
+    /**
+     * Optional OIDC scopes the client may request. Possible values: [profile email address phone]. The `openid` scope is implied and must not be listed. Conflicts with `allowAllScopes`.
+     */
+    allowedScopes: string[];
+    /**
+     * Indicates whether the client may request optional OIDC scopes. When `false`, `allowedScopes` and `allowAllScopes` cannot be set.
+     */
+    isAllowed: boolean;
 }
 
 export interface GetClientsClientSessionTransfer {
@@ -7134,7 +7247,7 @@ export interface GetConnectionOption {
      */
     disableSignup: boolean;
     /**
-     * OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
+     * OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`. Also applicable to `samlp` connections (EA only).
      */
     discoveryUrl: string;
     /**
@@ -7430,15 +7543,15 @@ export interface GetConnectionOption {
      */
     tokenEndpoint: string;
     /**
-     * Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+     * Specifies the authentication method for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
      */
     tokenEndpointAuthMethod: string;
     /**
-     * Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+     * Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
      */
     tokenEndpointAuthSigningAlg: string;
     /**
-     * Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)
+     * Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections; SAML Connections (EA only))
      */
     tokenEndpointJwtcaAudFormat: string;
     /**
@@ -7734,6 +7847,10 @@ export interface GetConnectionOptionAuthenticationMethodPasskey {
      * Enables passkey authentication
      */
     enabled: boolean;
+    /**
+     * Specifies whether passkey is allowed or blocked during signup flows. Possible values: "allow", "block". This is an Early Access feature and must be enabled for your tenant before it can be set.
+     */
+    signupBehavior: string;
 }
 
 export interface GetConnectionOptionAuthenticationMethodPassword {

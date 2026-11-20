@@ -256,6 +256,15 @@ class ClientProfile(pulumi.CustomResource):
                 "require_proof_of_possession": {
                     "default_value": True,
                 },
+                "oidc_support": {
+                    "default_value": {
+                        "is_allowed": True,
+                        "allowed_scopes": [
+                            "profile",
+                            "email",
+                        ],
+                    },
+                },
             },
             name="Dynamic client profile",
             description="Runtime policy for dynamically registered clients.")
@@ -336,6 +345,15 @@ class ClientProfile(pulumi.CustomResource):
                 },
                 "require_proof_of_possession": {
                     "default_value": True,
+                },
+                "oidc_support": {
+                    "default_value": {
+                        "is_allowed": True,
+                        "allowed_scopes": [
+                            "profile",
+                            "email",
+                        ],
+                    },
                 },
             },
             name="Dynamic client profile",

@@ -507,14 +507,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
+     * OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`. Also applicable to `samlp` connections (EA only).
      * 
      */
     @Import(name="discoveryUrl")
     private @Nullable Output<String> discoveryUrl;
 
     /**
-     * @return OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
+     * @return OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`. Also applicable to `samlp` connections (EA only).
      * 
      */
     public Optional<Output<String>> discoveryUrl() {
@@ -1617,14 +1617,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+     * Specifies the authentication method for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
      * 
      */
     @Import(name="tokenEndpointAuthMethod")
     private @Nullable Output<String> tokenEndpointAuthMethod;
 
     /**
-     * @return Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+     * @return Specifies the authentication method for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
      * 
      */
     public Optional<Output<String>> tokenEndpointAuthMethod() {
@@ -1632,14 +1632,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+     * Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
      * 
      */
     @Import(name="tokenEndpointAuthSigningAlg")
     private @Nullable Output<String> tokenEndpointAuthSigningAlg;
 
     /**
-     * @return Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+     * @return Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
      * 
      */
     public Optional<Output<String>> tokenEndpointAuthSigningAlg() {
@@ -1647,14 +1647,14 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: &#39;issuer&#39; or &#39;token_endpoint&#39;. (Okta/OIDC Connections)
+     * Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: &#39;issuer&#39; or &#39;token_endpoint&#39;. (Okta/OIDC Connections; SAML Connections (EA only))
      * 
      */
     @Import(name="tokenEndpointJwtcaAudFormat")
     private @Nullable Output<String> tokenEndpointJwtcaAudFormat;
 
     /**
-     * @return Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: &#39;issuer&#39; or &#39;token_endpoint&#39;. (Okta/OIDC Connections)
+     * @return Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: &#39;issuer&#39; or &#39;token_endpoint&#39;. (Okta/OIDC Connections; SAML Connections (EA only))
      * 
      */
     public Optional<Output<String>> tokenEndpointJwtcaAudFormat() {
@@ -2724,7 +2724,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param discoveryUrl OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
+         * @param discoveryUrl OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`. Also applicable to `samlp` connections (EA only).
          * 
          * @return builder
          * 
@@ -2735,7 +2735,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param discoveryUrl OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
+         * @param discoveryUrl OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`. Also applicable to `samlp` connections (EA only).
          * 
          * @return builder
          * 
@@ -4348,7 +4348,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tokenEndpointAuthMethod Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+         * @param tokenEndpointAuthMethod Specifies the authentication method for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
          * 
          * @return builder
          * 
@@ -4359,7 +4359,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tokenEndpointAuthMethod Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+         * @param tokenEndpointAuthMethod Specifies the authentication method for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
          * 
          * @return builder
          * 
@@ -4369,7 +4369,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tokenEndpointAuthSigningAlg Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+         * @param tokenEndpointAuthSigningAlg Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
          * 
          * @return builder
          * 
@@ -4380,7 +4380,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tokenEndpointAuthSigningAlg Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+         * @param tokenEndpointAuthSigningAlg Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
          * 
          * @return builder
          * 
@@ -4390,7 +4390,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tokenEndpointJwtcaAudFormat Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: &#39;issuer&#39; or &#39;token_endpoint&#39;. (Okta/OIDC Connections)
+         * @param tokenEndpointJwtcaAudFormat Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: &#39;issuer&#39; or &#39;token_endpoint&#39;. (Okta/OIDC Connections; SAML Connections (EA only))
          * 
          * @return builder
          * 
@@ -4401,7 +4401,7 @@ public final class ConnectionOptionsArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tokenEndpointJwtcaAudFormat Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: &#39;issuer&#39; or &#39;token_endpoint&#39;. (Okta/OIDC Connections)
+         * @param tokenEndpointJwtcaAudFormat Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: &#39;issuer&#39; or &#39;token_endpoint&#39;. (Okta/OIDC Connections; SAML Connections (EA only))
          * 
          * @return builder
          * 

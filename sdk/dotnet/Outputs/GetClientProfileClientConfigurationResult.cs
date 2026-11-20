@@ -14,6 +14,10 @@ namespace Pulumi.Auth0.Outputs
     public sealed class GetClientProfileClientConfigurationResult
     {
         /// <summary>
+        /// OIDC support defaults applied to matched clients. Auth0 replaces this block as a whole, so removing it clears all of its settings.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClientProfileClientConfigurationOidcSupportResult> OidcSupports;
+        /// <summary>
         /// Methods used to discover the organization during login. Requires the `OrganizationRequireBehavior` default value to be `PreLoginPrompt`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClientProfileClientConfigurationOrganizationDiscoveryMethodResult> OrganizationDiscoveryMethods;
@@ -36,6 +40,8 @@ namespace Pulumi.Auth0.Outputs
 
         [OutputConstructor]
         private GetClientProfileClientConfigurationResult(
+            ImmutableArray<Outputs.GetClientProfileClientConfigurationOidcSupportResult> oidcSupports,
+
             ImmutableArray<Outputs.GetClientProfileClientConfigurationOrganizationDiscoveryMethodResult> organizationDiscoveryMethods,
 
             ImmutableArray<Outputs.GetClientProfileClientConfigurationOrganizationRequireBehaviorResult> organizationRequireBehaviors,
@@ -46,6 +52,7 @@ namespace Pulumi.Auth0.Outputs
 
             ImmutableArray<Outputs.GetClientProfileClientConfigurationRequireProofOfPossessionResult> requireProofOfPossessions)
         {
+            OidcSupports = oidcSupports;
             OrganizationDiscoveryMethods = organizationDiscoveryMethods;
             OrganizationRequireBehaviors = organizationRequireBehaviors;
             OrganizationUsages = organizationUsages;

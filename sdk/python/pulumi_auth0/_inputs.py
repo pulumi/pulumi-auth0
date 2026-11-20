@@ -241,10 +241,16 @@ __all__ = [
     'ClientOidcLogoutBackchannelLogoutInitiatorsArgsDict',
     'ClientOidcLogoutBackchannelLogoutSessionMetadataArgs',
     'ClientOidcLogoutBackchannelLogoutSessionMetadataArgsDict',
+    'ClientOidcSupportArgs',
+    'ClientOidcSupportArgsDict',
     'ClientProfileApplyPolicyArgs',
     'ClientProfileApplyPolicyArgsDict',
     'ClientProfileClientConfigurationArgs',
     'ClientProfileClientConfigurationArgsDict',
+    'ClientProfileClientConfigurationOidcSupportArgs',
+    'ClientProfileClientConfigurationOidcSupportArgsDict',
+    'ClientProfileClientConfigurationOidcSupportDefaultValueArgs',
+    'ClientProfileClientConfigurationOidcSupportDefaultValueArgsDict',
     'ClientProfileClientConfigurationOrganizationDiscoveryMethodsArgs',
     'ClientProfileClientConfigurationOrganizationDiscoveryMethodsArgsDict',
     'ClientProfileClientConfigurationOrganizationRequireBehaviorArgs',
@@ -1694,6 +1700,10 @@ class AttackProtectionBruteForceProtectionArgsDict(TypedDict):
     """
     List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
     """
+    form_submission_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Controls whether the brute-force protection unblock form is automatically submitted on load or requires manual interaction. Possible values: `auto` (submit the form automatically) or `manual` (require the user to submit the form). Once set, this value cannot be unset; removing it from the configuration leaves the current tenant value unchanged. (EA only)
+    """
     max_attempts: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
@@ -1712,12 +1722,14 @@ class AttackProtectionBruteForceProtectionArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[_builtins.bool],
                  allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 form_submission_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  max_attempts: pulumi.Input[Optional[_builtins.int]] = None,
                  mode: pulumi.Input[Optional[_builtins.str]] = None,
                  shields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Whether brute force attack protections are active.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowlists: List of trusted IP addresses that will not have attack protection enforced against them. This field allows you to specify multiple IP addresses, or ranges. You can use IPv4 or IPv6 addresses and CIDR notation.
+        :param pulumi.Input[_builtins.str] form_submission_mode: Controls whether the brute-force protection unblock form is automatically submitted on load or requires manual interaction. Possible values: `auto` (submit the form automatically) or `manual` (require the user to submit the form). Once set, this value cannot be unset; removing it from the configuration leaves the current tenant value unchanged. (EA only)
         :param pulumi.Input[_builtins.int] max_attempts: Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
         :param pulumi.Input[_builtins.str] mode: Determines whether the IP address is used when counting failed attempts. Possible values: `count_per_identifier_and_ip` (lockout an account from a given IP Address) or `count_per_identifier` (lockout an account regardless of IP Address).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] shields: Action to take when a brute force protection threshold is violated. Possible values: `block` (block login attempts for a flagged user account), `user_notification` (send an email to user when their account has been blocked).
@@ -1725,6 +1737,8 @@ class AttackProtectionBruteForceProtectionArgs:
         pulumi.set(__self__, "enabled", enabled)
         if allowlists is not None:
             pulumi.set(__self__, "allowlists", allowlists)
+        if form_submission_mode is not None:
+            pulumi.set(__self__, "form_submission_mode", form_submission_mode)
         if max_attempts is not None:
             pulumi.set(__self__, "max_attempts", max_attempts)
         if mode is not None:
@@ -1755,6 +1769,18 @@ class AttackProtectionBruteForceProtectionArgs:
     @allowlists.setter
     def allowlists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowlists", value)
+
+    @_builtins.property
+    @pulumi.getter(name="formSubmissionMode")
+    def form_submission_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Controls whether the brute-force protection unblock form is automatically submitted on load or requires manual interaction. Possible values: `auto` (submit the form automatically) or `manual` (require the user to submit the form). Once set, this value cannot be unset; removing it from the configuration leaves the current tenant value unchanged. (EA only)
+        """
+        return pulumi.get(self, "form_submission_mode")
+
+    @form_submission_mode.setter
+    def form_submission_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "form_submission_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="maxAttempts")
@@ -9463,6 +9489,74 @@ class ClientOidcLogoutBackchannelLogoutSessionMetadataArgs:
         pulumi.set(self, "include", value)
 
 
+class ClientOidcSupportArgsDict(TypedDict):
+    is_allowed: pulumi.Input[_builtins.bool]
+    """
+    Indicates whether the client may request optional OIDC scopes. When `false`, `allowed_scopes` and `allow_all_scopes` cannot be set.
+    """
+    allow_all_scopes: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Indicates whether the client may request all optional OIDC scopes. Conflicts with `allowed_scopes`.
+    """
+    allowed_scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Optional OIDC scopes the client may request. Possible values: [profile email address phone]. The `openid` scope is implied and must not be listed. Conflicts with `allow_all_scopes`.
+    """
+
+@pulumi.input_type
+class ClientOidcSupportArgs:
+    def __init__(__self__, *,
+                 is_allowed: pulumi.Input[_builtins.bool],
+                 allow_all_scopes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] is_allowed: Indicates whether the client may request optional OIDC scopes. When `false`, `allowed_scopes` and `allow_all_scopes` cannot be set.
+        :param pulumi.Input[_builtins.bool] allow_all_scopes: Indicates whether the client may request all optional OIDC scopes. Conflicts with `allowed_scopes`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_scopes: Optional OIDC scopes the client may request. Possible values: [profile email address phone]. The `openid` scope is implied and must not be listed. Conflicts with `allow_all_scopes`.
+        """
+        pulumi.set(__self__, "is_allowed", is_allowed)
+        if allow_all_scopes is not None:
+            pulumi.set(__self__, "allow_all_scopes", allow_all_scopes)
+        if allowed_scopes is not None:
+            pulumi.set(__self__, "allowed_scopes", allowed_scopes)
+
+    @_builtins.property
+    @pulumi.getter(name="isAllowed")
+    def is_allowed(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Indicates whether the client may request optional OIDC scopes. When `false`, `allowed_scopes` and `allow_all_scopes` cannot be set.
+        """
+        return pulumi.get(self, "is_allowed")
+
+    @is_allowed.setter
+    def is_allowed(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "is_allowed", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowAllScopes")
+    def allow_all_scopes(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates whether the client may request all optional OIDC scopes. Conflicts with `allowed_scopes`.
+        """
+        return pulumi.get(self, "allow_all_scopes")
+
+    @allow_all_scopes.setter
+    def allow_all_scopes(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "allow_all_scopes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedScopes")
+    def allowed_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional OIDC scopes the client may request. Possible values: [profile email address phone]. The `openid` scope is implied and must not be listed. Conflicts with `allow_all_scopes`.
+        """
+        return pulumi.get(self, "allowed_scopes")
+
+    @allowed_scopes.setter
+    def allowed_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "allowed_scopes", value)
+
+
 class ClientProfileApplyPolicyArgsDict(TypedDict):
     external_metadata_created_by: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -9513,6 +9607,10 @@ class ClientProfileApplyPolicyArgs:
 
 
 class ClientProfileClientConfigurationArgsDict(TypedDict):
+    oidc_support: NotRequired[pulumi.Input[Optional['ClientProfileClientConfigurationOidcSupportArgsDict']]]
+    """
+    OIDC support defaults applied to matched clients. Auth0 replaces this block as a whole, so removing it clears all of its settings.
+    """
     organization_discovery_methods: NotRequired[pulumi.Input[Optional['ClientProfileClientConfigurationOrganizationDiscoveryMethodsArgsDict']]]
     """
     Methods used to discover the organization during login. Requires the `organization_require_behavior` default value to be `pre_login_prompt`.
@@ -9537,18 +9635,22 @@ class ClientProfileClientConfigurationArgsDict(TypedDict):
 @pulumi.input_type
 class ClientProfileClientConfigurationArgs:
     def __init__(__self__, *,
+                 oidc_support: pulumi.Input[Optional['ClientProfileClientConfigurationOidcSupportArgs']] = None,
                  organization_discovery_methods: pulumi.Input[Optional['ClientProfileClientConfigurationOrganizationDiscoveryMethodsArgs']] = None,
                  organization_require_behavior: pulumi.Input[Optional['ClientProfileClientConfigurationOrganizationRequireBehaviorArgs']] = None,
                  organization_usage: pulumi.Input[Optional['ClientProfileClientConfigurationOrganizationUsageArgs']] = None,
                  refresh_token: pulumi.Input[Optional['ClientProfileClientConfigurationRefreshTokenArgs']] = None,
                  require_proof_of_possession: pulumi.Input[Optional['ClientProfileClientConfigurationRequireProofOfPossessionArgs']] = None):
         """
+        :param pulumi.Input['ClientProfileClientConfigurationOidcSupportArgs'] oidc_support: OIDC support defaults applied to matched clients. Auth0 replaces this block as a whole, so removing it clears all of its settings.
         :param pulumi.Input['ClientProfileClientConfigurationOrganizationDiscoveryMethodsArgs'] organization_discovery_methods: Methods used to discover the organization during login. Requires the `organization_require_behavior` default value to be `pre_login_prompt`.
         :param pulumi.Input['ClientProfileClientConfigurationOrganizationRequireBehaviorArgs'] organization_require_behavior: Defines how to proceed during an authentication transaction when the organization usage is `require`.
         :param pulumi.Input['ClientProfileClientConfigurationOrganizationUsageArgs'] organization_usage: Whether matched clients can use organizations.
         :param pulumi.Input['ClientProfileClientConfigurationRefreshTokenArgs'] refresh_token: Refresh token settings applied to matched clients. Auth0 replaces this block as a whole, so removing it clears all of its settings.
         :param pulumi.Input['ClientProfileClientConfigurationRequireProofOfPossessionArgs'] require_proof_of_possession: Whether matched clients must use proof of possession (DPoP) for their tokens.
         """
+        if oidc_support is not None:
+            pulumi.set(__self__, "oidc_support", oidc_support)
         if organization_discovery_methods is not None:
             pulumi.set(__self__, "organization_discovery_methods", organization_discovery_methods)
         if organization_require_behavior is not None:
@@ -9559,6 +9661,18 @@ class ClientProfileClientConfigurationArgs:
             pulumi.set(__self__, "refresh_token", refresh_token)
         if require_proof_of_possession is not None:
             pulumi.set(__self__, "require_proof_of_possession", require_proof_of_possession)
+
+    @_builtins.property
+    @pulumi.getter(name="oidcSupport")
+    def oidc_support(self) -> pulumi.Input[Optional['ClientProfileClientConfigurationOidcSupportArgs']]:
+        """
+        OIDC support defaults applied to matched clients. Auth0 replaces this block as a whole, so removing it clears all of its settings.
+        """
+        return pulumi.get(self, "oidc_support")
+
+    @oidc_support.setter
+    def oidc_support(self, value: pulumi.Input[Optional['ClientProfileClientConfigurationOidcSupportArgs']]):
+        pulumi.set(self, "oidc_support", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationDiscoveryMethods")
@@ -9619,6 +9733,102 @@ class ClientProfileClientConfigurationArgs:
     @require_proof_of_possession.setter
     def require_proof_of_possession(self, value: pulumi.Input[Optional['ClientProfileClientConfigurationRequireProofOfPossessionArgs']]):
         pulumi.set(self, "require_proof_of_possession", value)
+
+
+class ClientProfileClientConfigurationOidcSupportArgsDict(TypedDict):
+    default_value: pulumi.Input['ClientProfileClientConfigurationOidcSupportDefaultValueArgsDict']
+    """
+    The default OIDC support settings for matched clients.
+    """
+
+@pulumi.input_type
+class ClientProfileClientConfigurationOidcSupportArgs:
+    def __init__(__self__, *,
+                 default_value: pulumi.Input['ClientProfileClientConfigurationOidcSupportDefaultValueArgs']):
+        """
+        :param pulumi.Input['ClientProfileClientConfigurationOidcSupportDefaultValueArgs'] default_value: The default OIDC support settings for matched clients.
+        """
+        pulumi.set(__self__, "default_value", default_value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> pulumi.Input['ClientProfileClientConfigurationOidcSupportDefaultValueArgs']:
+        """
+        The default OIDC support settings for matched clients.
+        """
+        return pulumi.get(self, "default_value")
+
+    @default_value.setter
+    def default_value(self, value: pulumi.Input['ClientProfileClientConfigurationOidcSupportDefaultValueArgs']):
+        pulumi.set(self, "default_value", value)
+
+
+class ClientProfileClientConfigurationOidcSupportDefaultValueArgsDict(TypedDict):
+    is_allowed: pulumi.Input[_builtins.bool]
+    """
+    Indicates whether matched clients may use OIDC. When `false`, `allowed_scopes` and `allow_all_scopes` cannot be set.
+    """
+    allow_all_scopes: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Indicates whether matched clients may request all optional OIDC scopes. Conflicts with `allowed_scopes`.
+    """
+    allowed_scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Optional OIDC scopes matched clients may request. Possible values: [profile email address phone]. The `openid` scope is implied and must not be listed. Conflicts with `allow_all_scopes`.
+    """
+
+@pulumi.input_type
+class ClientProfileClientConfigurationOidcSupportDefaultValueArgs:
+    def __init__(__self__, *,
+                 is_allowed: pulumi.Input[_builtins.bool],
+                 allow_all_scopes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allowed_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] is_allowed: Indicates whether matched clients may use OIDC. When `false`, `allowed_scopes` and `allow_all_scopes` cannot be set.
+        :param pulumi.Input[_builtins.bool] allow_all_scopes: Indicates whether matched clients may request all optional OIDC scopes. Conflicts with `allowed_scopes`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_scopes: Optional OIDC scopes matched clients may request. Possible values: [profile email address phone]. The `openid` scope is implied and must not be listed. Conflicts with `allow_all_scopes`.
+        """
+        pulumi.set(__self__, "is_allowed", is_allowed)
+        if allow_all_scopes is not None:
+            pulumi.set(__self__, "allow_all_scopes", allow_all_scopes)
+        if allowed_scopes is not None:
+            pulumi.set(__self__, "allowed_scopes", allowed_scopes)
+
+    @_builtins.property
+    @pulumi.getter(name="isAllowed")
+    def is_allowed(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Indicates whether matched clients may use OIDC. When `false`, `allowed_scopes` and `allow_all_scopes` cannot be set.
+        """
+        return pulumi.get(self, "is_allowed")
+
+    @is_allowed.setter
+    def is_allowed(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "is_allowed", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowAllScopes")
+    def allow_all_scopes(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates whether matched clients may request all optional OIDC scopes. Conflicts with `allowed_scopes`.
+        """
+        return pulumi.get(self, "allow_all_scopes")
+
+    @allow_all_scopes.setter
+    def allow_all_scopes(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "allow_all_scopes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedScopes")
+    def allowed_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional OIDC scopes matched clients may request. Possible values: [profile email address phone]. The `openid` scope is implied and must not be listed. Conflicts with `allow_all_scopes`.
+        """
+        return pulumi.get(self, "allowed_scopes")
+
+    @allowed_scopes.setter
+    def allowed_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "allowed_scopes", value)
 
 
 class ClientProfileClientConfigurationOrganizationDiscoveryMethodsArgsDict(TypedDict):
@@ -10765,7 +10975,7 @@ class ConnectionOptionsArgsDict(TypedDict):
     """
     discovery_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
+    OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`. Also applicable to `samlp` connections (EA only).
     """
     domain: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -11061,15 +11271,15 @@ class ConnectionOptionsArgsDict(TypedDict):
     """
     token_endpoint_auth_method: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+    Specifies the authentication method for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
     """
     token_endpoint_auth_signing_alg: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+    Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
     """
     token_endpoint_jwtca_aud_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)
+    Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections; SAML Connections (EA only))
     """
     totp: NotRequired[pulumi.Input[Optional['ConnectionOptionsTotpArgsDict']]]
     """
@@ -11290,7 +11500,7 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[_builtins.bool] disable_self_service_change_password: Indicates whether to remove the forgot password link within the New Universal Login.
         :param pulumi.Input[_builtins.bool] disable_sign_out: When enabled, will disable sign out.
         :param pulumi.Input[_builtins.bool] disable_signup: Indicates whether to allow user sign-ups to your application.
-        :param pulumi.Input[_builtins.str] discovery_url: OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
+        :param pulumi.Input[_builtins.str] discovery_url: OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`. Also applicable to `samlp` connections (EA only).
         :param pulumi.Input[_builtins.str] domain: Domain name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domain_aliases: List of the domains that can be authenticated using the identity provider. Only needed for Identifier First authentication flows.
         :param pulumi.Input[_builtins.str] dpop_signing_alg: The algorithm used to sign the DPoP proof. Allowed values: ES256, ES384, ES512, Ed25519.
@@ -11364,9 +11574,9 @@ class ConnectionOptionsArgs:
         :param pulumi.Input[_builtins.str] template: Body of the template.
         :param pulumi.Input[_builtins.str] tenant_domain: Tenant domain name.
         :param pulumi.Input[_builtins.str] token_endpoint: Token endpoint.
-        :param pulumi.Input[_builtins.str] token_endpoint_auth_method: Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
-        :param pulumi.Input[_builtins.str] token_endpoint_auth_signing_alg: Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
-        :param pulumi.Input[_builtins.str] token_endpoint_jwtca_aud_format: Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)
+        :param pulumi.Input[_builtins.str] token_endpoint_auth_method: Specifies the authentication method for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
+        :param pulumi.Input[_builtins.str] token_endpoint_auth_signing_alg: Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
+        :param pulumi.Input[_builtins.str] token_endpoint_jwtca_aud_format: Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections; SAML Connections (EA only))
         :param pulumi.Input['ConnectionOptionsTotpArgs'] totp: Configuration options for one-time passwords.
         :param pulumi.Input[_builtins.str] twilio_sid: SID for your Twilio account.
         :param pulumi.Input[_builtins.str] twilio_token: AuthToken for your Twilio account.
@@ -12006,7 +12216,7 @@ class ConnectionOptionsArgs:
     @pulumi.getter(name="discoveryUrl")
     def discovery_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`.
+        OpenID discovery URL, e.g. `https://auth.example.com/.well-known/openid-configuration`. Also applicable to `samlp` connections (EA only).
         """
         return pulumi.get(self, "discovery_url")
 
@@ -12894,7 +13104,7 @@ class ConnectionOptionsArgs:
     @pulumi.getter(name="tokenEndpointAuthMethod")
     def token_endpoint_auth_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Specifies the authentication method for the token endpoint. (Okta/OIDC Connections)
+        Specifies the authentication method for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
         """
         return pulumi.get(self, "token_endpoint_auth_method")
 
@@ -12906,7 +13116,7 @@ class ConnectionOptionsArgs:
     @pulumi.getter(name="tokenEndpointAuthSigningAlg")
     def token_endpoint_auth_signing_alg(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections)
+        Specifies the signing algorithm for the token endpoint. (Okta/OIDC Connections; SAML Connections (EA only))
         """
         return pulumi.get(self, "token_endpoint_auth_signing_alg")
 
@@ -12918,7 +13128,7 @@ class ConnectionOptionsArgs:
     @pulumi.getter(name="tokenEndpointJwtcaAudFormat")
     def token_endpoint_jwtca_aud_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections)
+        Specifies the format of the aud (audience) claim in the JWT for client authentication. Accepted values: 'issuer' or 'token_endpoint'. (Okta/OIDC Connections; SAML Connections (EA only))
         """
         return pulumi.get(self, "token_endpoint_jwtca_aud_format")
 
@@ -14132,16 +14342,24 @@ class ConnectionOptionsAuthenticationMethodPasskeyArgsDict(TypedDict):
     """
     Enables passkey authentication
     """
+    signup_behavior: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Specifies whether passkey is allowed or blocked during signup flows. Possible values: "allow", "block". This is an Early Access feature and must be enabled for your tenant before it can be set.
+    """
 
 @pulumi.input_type
 class ConnectionOptionsAuthenticationMethodPasskeyArgs:
     def __init__(__self__, *,
-                 enabled: pulumi.Input[Optional[_builtins.bool]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 signup_behavior: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Enables passkey authentication
+        :param pulumi.Input[_builtins.str] signup_behavior: Specifies whether passkey is allowed or blocked during signup flows. Possible values: "allow", "block". This is an Early Access feature and must be enabled for your tenant before it can be set.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if signup_behavior is not None:
+            pulumi.set(__self__, "signup_behavior", signup_behavior)
 
     @_builtins.property
     @pulumi.getter
@@ -14154,6 +14372,18 @@ class ConnectionOptionsAuthenticationMethodPasskeyArgs:
     @enabled.setter
     def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="signupBehavior")
+    def signup_behavior(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies whether passkey is allowed or blocked during signup flows. Possible values: "allow", "block". This is an Early Access feature and must be enabled for your tenant before it can be set.
+        """
+        return pulumi.get(self, "signup_behavior")
+
+    @signup_behavior.setter
+    def signup_behavior(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "signup_behavior", value)
 
 
 class ConnectionOptionsAuthenticationMethodPasswordArgsDict(TypedDict):

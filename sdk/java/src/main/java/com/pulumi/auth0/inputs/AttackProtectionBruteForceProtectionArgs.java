@@ -50,6 +50,21 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
     }
 
     /**
+     * Controls whether the brute-force protection unblock form is automatically submitted on load or requires manual interaction. Possible values: `auto` (submit the form automatically) or `manual` (require the user to submit the form). Once set, this value cannot be unset; removing it from the configuration leaves the current tenant value unchanged. (EA only)
+     * 
+     */
+    @Import(name="formSubmissionMode")
+    private @Nullable Output<String> formSubmissionMode;
+
+    /**
+     * @return Controls whether the brute-force protection unblock form is automatically submitted on load or requires manual interaction. Possible values: `auto` (submit the form automatically) or `manual` (require the user to submit the form). Once set, this value cannot be unset; removing it from the configuration leaves the current tenant value unchanged. (EA only)
+     * 
+     */
+    public Optional<Output<String>> formSubmissionMode() {
+        return Optional.ofNullable(this.formSubmissionMode);
+    }
+
+    /**
      * Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
      * 
      */
@@ -99,6 +114,7 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
     private AttackProtectionBruteForceProtectionArgs(AttackProtectionBruteForceProtectionArgs $) {
         this.allowlists = $.allowlists;
         this.enabled = $.enabled;
+        this.formSubmissionMode = $.formSubmissionMode;
         this.maxAttempts = $.maxAttempts;
         this.mode = $.mode;
         this.shields = $.shields;
@@ -172,6 +188,27 @@ public final class AttackProtectionBruteForceProtectionArgs extends com.pulumi.r
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param formSubmissionMode Controls whether the brute-force protection unblock form is automatically submitted on load or requires manual interaction. Possible values: `auto` (submit the form automatically) or `manual` (require the user to submit the form). Once set, this value cannot be unset; removing it from the configuration leaves the current tenant value unchanged. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder formSubmissionMode(@Nullable Output<String> formSubmissionMode) {
+            $.formSubmissionMode = formSubmissionMode;
+            return this;
+        }
+
+        /**
+         * @param formSubmissionMode Controls whether the brute-force protection unblock form is automatically submitted on load or requires manual interaction. Possible values: `auto` (submit the form automatically) or `manual` (require the user to submit the form). Once set, this value cannot be unset; removing it from the configuration leaves the current tenant value unchanged. (EA only)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder formSubmissionMode(String formSubmissionMode) {
+            return formSubmissionMode(Output.of(formSubmissionMode));
         }
 
         /**

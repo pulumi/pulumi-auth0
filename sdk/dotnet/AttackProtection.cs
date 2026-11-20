@@ -54,6 +54,7 @@ namespace Pulumi.Auth0
     ///                 "127.0.0.1",
     ///             },
     ///             Enabled = true,
+    ///             FormSubmissionMode = "auto",
     ///             MaxAttempts = 5,
     ///             Mode = "count_per_identifier_and_ip",
     ///             Shields = new[]

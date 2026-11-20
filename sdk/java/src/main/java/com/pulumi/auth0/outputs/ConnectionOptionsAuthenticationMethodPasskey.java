@@ -5,6 +5,7 @@ package com.pulumi.auth0.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,11 @@ public final class ConnectionOptionsAuthenticationMethodPasskey {
      * 
      */
     private @Nullable Boolean enabled;
+    /**
+     * @return Specifies whether passkey is allowed or blocked during signup flows. Possible values: &#34;allow&#34;, &#34;block&#34;. This is an Early Access feature and must be enabled for your tenant before it can be set.
+     * 
+     */
+    private @Nullable String signupBehavior;
 
     private ConnectionOptionsAuthenticationMethodPasskey() {}
     /**
@@ -24,6 +30,13 @@ public final class ConnectionOptionsAuthenticationMethodPasskey {
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
+    }
+    /**
+     * @return Specifies whether passkey is allowed or blocked during signup flows. Possible values: &#34;allow&#34;, &#34;block&#34;. This is an Early Access feature and must be enabled for your tenant before it can be set.
+     * 
+     */
+    public Optional<String> signupBehavior() {
+        return Optional.ofNullable(this.signupBehavior);
     }
 
     public static Builder builder() {
@@ -36,10 +49,12 @@ public final class ConnectionOptionsAuthenticationMethodPasskey {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
+        private @Nullable String signupBehavior;
         public Builder() {}
         public Builder(ConnectionOptionsAuthenticationMethodPasskey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
+    	      this.signupBehavior = defaults.signupBehavior;
         }
 
         @CustomType.Setter
@@ -48,9 +63,16 @@ public final class ConnectionOptionsAuthenticationMethodPasskey {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
+        public Builder signupBehavior(@Nullable String signupBehavior) {
+
+            this.signupBehavior = signupBehavior;
+            return this;
+        }
         public ConnectionOptionsAuthenticationMethodPasskey build() {
             final var _resultValue = new ConnectionOptionsAuthenticationMethodPasskey();
             _resultValue.enabled = enabled;
+            _resultValue.signupBehavior = signupBehavior;
             return _resultValue;
         }
     }

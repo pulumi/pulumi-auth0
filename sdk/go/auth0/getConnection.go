@@ -76,7 +76,7 @@ type LookupConnectionResult struct {
 	ConnectedAccounts []GetConnectionConnectedAccount `pulumi:"connectedAccounts"`
 	// The ID of the connection. If not provided, `name` must be set.
 	ConnectionId *string `pulumi:"connectionId"`
-	// Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `tokenVaultXaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+	// Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature. Only supported on `oidc`, `okta` and `samlp` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
 	CrossAppAccessRequestingApps []GetConnectionCrossAppAccessRequestingApp `pulumi:"crossAppAccessRequestingApps"`
 	// Resource App settings that apply to this connection. (EA only)
 	CrossAppAccessResourceApps []GetConnectionCrossAppAccessResourceApp `pulumi:"crossAppAccessResourceApps"`
@@ -157,7 +157,7 @@ func (o LookupConnectionResultOutput) ConnectionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConnectionResult) *string { return v.ConnectionId }).(pulumi.StringPtrOutput)
 }
 
-// Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `tokenVaultXaa` flag to be enabled on your tenant. Only supported on `oidc` and `okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
+// Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature. Only supported on `oidc`, `okta` and `samlp` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `active` to `false` explicitly to deactivate it. (EA Only)
 func (o LookupConnectionResultOutput) CrossAppAccessRequestingApps() GetConnectionCrossAppAccessRequestingAppArrayOutput {
 	return o.ApplyT(func(v LookupConnectionResult) []GetConnectionCrossAppAccessRequestingApp {
 		return v.CrossAppAccessRequestingApps

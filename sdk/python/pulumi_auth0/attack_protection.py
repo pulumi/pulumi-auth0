@@ -270,6 +270,7 @@ class AttackProtection(pulumi.CustomResource):
             brute_force_protection={
                 "allowlists": ["127.0.0.1"],
                 "enabled": True,
+                "form_submission_mode": "auto",
                 "max_attempts": 5,
                 "mode": "count_per_identifier_and_ip",
                 "shields": [
@@ -445,6 +446,7 @@ class AttackProtection(pulumi.CustomResource):
             brute_force_protection={
                 "allowlists": ["127.0.0.1"],
                 "enabled": True,
+                "form_submission_mode": "auto",
                 "max_attempts": 5,
                 "mode": "count_per_identifier_and_ip",
                 "shields": [

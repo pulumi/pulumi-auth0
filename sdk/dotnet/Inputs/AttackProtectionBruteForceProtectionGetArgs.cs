@@ -31,6 +31,12 @@ namespace Pulumi.Auth0.Inputs
         public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
+        /// Controls whether the brute-force protection unblock form is automatically submitted on load or requires manual interaction. Possible values: `Auto` (submit the form automatically) or `Manual` (require the user to submit the form). Once set, this value cannot be unset; removing it from the configuration leaves the current tenant value unchanged. (EA only)
+        /// </summary>
+        [Input("formSubmissionMode")]
+        public Input<string>? FormSubmissionMode { get; set; }
+
+        /// <summary>
         /// Maximum number of consecutive failed login attempts from a single user before blocking is triggered. Only available on public tenants.
         /// </summary>
         [Input("maxAttempts")]

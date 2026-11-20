@@ -187,7 +187,7 @@ namespace Pulumi.Auth0
         /// </summary>
         public readonly string? ConnectionId;
         /// <summary>
-        /// Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature and requires the `TokenVaultXaa` flag to be enabled on your tenant. Only supported on `Oidc` and `Okta` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `Active` to `False` explicitly to deactivate it. (EA Only)
+        /// Configure the purpose of a connection to be used as a requesting application authorization server for Cross-App Access (XAA). This is an Early Access feature. Only supported on `Oidc`, `Okta` and `Samlp` strategy connections. **Note:** Once configured, removing this block from your configuration is a no-op and will not disable the purpose on the connection; set `Active` to `False` explicitly to deactivate it. (EA Only)
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectionCrossAppAccessRequestingAppResult> CrossAppAccessRequestingApps;
         /// <summary>

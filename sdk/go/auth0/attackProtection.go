@@ -51,9 +51,10 @@ import (
 //					Allowlists: pulumi.StringArray{
 //						pulumi.String("127.0.0.1"),
 //					},
-//					Enabled:     pulumi.Bool(true),
-//					MaxAttempts: pulumi.Int(5),
-//					Mode:        pulumi.String("count_per_identifier_and_ip"),
+//					Enabled:            pulumi.Bool(true),
+//					FormSubmissionMode: pulumi.String("auto"),
+//					MaxAttempts:        pulumi.Int(5),
+//					Mode:               pulumi.String("count_per_identifier_and_ip"),
 //					Shields: pulumi.StringArray{
 //						pulumi.String("block"),
 //						pulumi.String("user_notification"),
